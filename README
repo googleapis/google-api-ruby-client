@@ -1,0 +1,26 @@
+== APIClient
+
+Homepage::  google-api-ruby-client[http://code.google.com/p/google-api-ruby-client/]
+Authors::   Bob Aman (mailto:bobaman@google.com), Matt Pokrzywa (mailto:mattpok@google.com)
+Copyright:: Copyright 2010 Google Inc.
+License::   Apache 2.0
+
+== Description
+
+The Google API Ruby Client makes it trivial to discover and access supported APIs.
+
+== Features
+
+* A feature list goes here.
+
+== Example Usage
+
+  # Some code goes here.
+
+== Requirements
+
+* APIClient has no dependencies.
+
+== Install
+
+* sudo gem install google-api-client
