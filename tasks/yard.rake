@@ -1,16 +1,17 @@
 require "rake"
 
 begin
+  require "yard"
   require "yard/rake/yardoc_task"
 
   namespace :doc do
     desc "Generate Yardoc documentation"
     YARD::Rake::YardocTask.new do |yardoc|
       yardoc.name = "yard"
-      yardoc.options = "-o doc/"
-      yardoc.files = FileList[
-          "lib/**/*.rb", "ext/**/*.c", "-", "README", "CHANGELOG", "LICENSE"
-      ].exclude(/^[_\.]/)
+      yardoc.options = ["--verbose"]
+      yardoc.files = [
+        "lib/**/*.rb", "ext/**/*.c", "README", "CHANGELOG", "LICENSE"
+      ]
     end
   end
 
