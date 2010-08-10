@@ -18,9 +18,13 @@ namespace :gem do
     s.extra_rdoc_files = %w( README )
     s.rdoc_options.concat ["--main",  "README"]
 
-    s.add_development_dependency("rake", ">= 0.8.3")
-    s.add_development_dependency("rspec", ">= 1.1.11")
+    s.add_runtime_dependency("oauth", ">= 0.4.1")
+    s.add_runtime_dependency("addressable", ">= 2.2.0")
+
+    s.add_development_dependency("rake", ">= 0.7.3")
+    s.add_development_dependency("rspec", ">= 1.0.8")
     s.add_development_dependency("launchy", ">= 0.3.2")
+    s.add_development_dependency("diff-lcs", ">= 1.1.2")
 
     s.require_path = "lib"
 

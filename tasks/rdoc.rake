@@ -23,7 +23,4 @@ namespace :doc do
   end
 end
 
-desc "Alias to doc:rdoc"
-task "doc" => "doc:rdoc"
-
 task "clobber" => ["doc:clobber_rdoc", "doc:clobber_ri"]

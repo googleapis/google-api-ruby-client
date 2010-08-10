@@ -12,25 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require "google/api_client/version"
-
 module Google #:nodoc:
-  ##
-  # This class manages communication with a single API.
-  class APIClient
-    def initialize(options={})
-      @options = {
-        # TODO: What configuration options need to go here?
-      }.merge(options)
-      unless @options[:authentication]
-        require "google/api_client/auth/oauth_1"
-        # NOTE: Do not rely on this default value, as it may change
-        @options[:authentication] = OAuth1.new
-      end
-      unless @options[:transport]
-        require "google/api_client/transport/http_transport"
-        @options[:transport] = HTTPTransport
-      end
+  class APIClient #:nodoc:
+    class HTTPTransport
+      
     end
   end
 end

@@ -14,8 +14,8 @@
 
 # Used to prevent the class/module from being loaded more than once
 unless defined? Google::APIClient::VERSION
-  module Google
-    module APIClient #:nodoc:
+  module Google #:nodoc:
+    class APIClient #:nodoc:
       module VERSION #:nodoc:
         MAJOR = 0
         MINOR = 1
