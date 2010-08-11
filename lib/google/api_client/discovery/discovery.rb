@@ -13,6 +13,7 @@
 # limitations under the License.
 
 require "json"
+require "addressable/template"
 
 module Google #:nodoc:
   class APIClient #:nodoc:
@@ -21,4 +22,3 @@ module Google #:nodoc:
     end
   end
 end
-
