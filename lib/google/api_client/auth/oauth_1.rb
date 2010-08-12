@@ -26,6 +26,9 @@ module Google #:nodoc:
             'https://www.google.com/accounts/OAuthAuthorizeToken',
           :access_token_uri =>
             'https://www.google.com/accounts/OAuthGetAccessToken',
+          :scopes => [],
+          :callback => OAuth::OUT_OF_BAND,
+          :displayname => nil,
           :consumer_key => "anonymous",
           :consumer_secret => "anonymous"
         }.merge(options)
@@ -54,7 +57,50 @@ module Google #:nodoc:
           }
         )
       end
-      
+
+      def request_token
+        oauth_parameters = {
+          :oauth_callback => @options[:callback]
+        }
+        app_parameters = {
+          :scope => @options[:scopes].join(" ")
+        }
+        if @options[:displayname]
+          app_parameters[:xoauth_displayname] = @options[:displayname]
+        end
+        return @request_token ||= @oauth_consumer.get_request_token(
+          oauth_parameters,
+          app_parameters
+        )
+      end
+
+      def request_token=(new_request_token)
+        if new_request_token.kind_of?(OAuth::RequestToken)
+          @request_token = new_request_token
+        else
+          raise TypeError,
+            "Expected OAuth::RequestToken, got #{new_request_token.class}."
+        end
+      end
+
+      def access_token
+        return @access_token ||=
+          @oauth_consumer.get_access_token(self.request_token)
+      end
+
+      def access_token=(new_access_token)
+        if new_access_token.kind_of?(OAuth::AccessToken)
+          @access_token = new_access_token
+        else
+          raise TypeError,
+            "Expected OAuth::AccessToken, got #{new_access_token.class}."
+        end
+      end
+
+      def scopes
+        return @options[:scopes]
+      end
+
       def consumer_key
         return @oauth_consumer.key
       end
@@ -62,13 +108,17 @@ module Google #:nodoc:
       def consumer_secret
         return @oauth_consumer.secret
       end
-      
+
       def request_token_uri
         return @oauth_consumer.request_token_url
       end
 
-      def authorization_uri
+      def authorization_endpoint_uri
         return @oauth_consumer.authorize_url
+      end
+
+      def authorization_uri(parameters={})
+        return self.request_token.authorize_url(parameters)
       end
 
       def access_token_uri

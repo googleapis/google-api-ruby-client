@@ -3,7 +3,7 @@ require 'spec/rake/verify_rcov'
 namespace :spec do
   Spec::Rake::SpecTask.new(:rcov) do |t|
     t.spec_files = FileList['spec/**/*_spec.rb']
-    t.spec_opts = ['--color', '--format', 'specdoc']
+    t.spec_opts = ['--require', 'rubygems', '--color', '--format', 'specdoc']
     if RCOV_ENABLED
       t.rcov = true
     else
@@ -16,9 +16,17 @@ namespace :spec do
     ]
   end
 
-  Spec::Rake::SpecTask.new(:normal) do |t|
+  Spec::Rake::SpecTask.new(:all) do |t|
     t.spec_files = FileList['spec/**/*_spec.rb']
-    t.spec_opts = ['--color', '--format', 'specdoc']
+    t.spec_opts = ['--require', 'rubygems', '--color', '--format', 'specdoc']
+    t.rcov = false
+  end
+
+  Spec::Rake::SpecTask.new(:fast) do |t|
+    t.spec_files = FileList['spec/**/*_spec.rb'].exclude(
+      'spec/**/*_slow_spec.rb'
+    )
+    t.spec_opts = ['--require', 'rubygems', '--color', '--format', 'specdoc']
     t.rcov = false
   end
 
@@ -56,8 +64,8 @@ if RCOV_ENABLED
   desc "Alias to spec:verify"
   task "spec" => "spec:verify"
 else
-  desc "Alias to spec:normal"
-  task "spec" => "spec:normal"
+  desc "Alias to spec:all"
+  task "spec" => "spec:all"
 end
 
 task "clobber" => ["spec:clobber_rcov"]

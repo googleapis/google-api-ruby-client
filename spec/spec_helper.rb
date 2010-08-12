@@ -3,5 +3,3 @@ lib_dir = File.expand_path(File.join(spec_dir, "../lib"))
 
 $:.unshift(lib_dir)
 $:.uniq!
-
-require "api_client"
