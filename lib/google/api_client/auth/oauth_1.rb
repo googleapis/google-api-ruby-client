@@ -17,6 +17,8 @@ require "oauth"
 
 module Google #:nodoc:
   class APIClient #:nodoc:
+    ##
+    # An OAuth 1.0a handler.
     class OAuth1
       ##
       # The default OAuth 1.0a configuration values.  These may be overrided

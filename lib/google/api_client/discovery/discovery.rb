@@ -17,6 +17,8 @@ require "addressable/template"
 
 module Google #:nodoc:
   class APIClient #:nodoc:
+    ##
+    # A discovery document handler.
     class Discovery
       ##
       # The default discovery configuration values.  These may be overrided
