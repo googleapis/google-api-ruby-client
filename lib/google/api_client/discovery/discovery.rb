@@ -34,6 +34,12 @@ module Google #:nodoc:
       # Creates a new API discovery handler.
       #
       # @param [Hash] options
+      #   <code>:service</code>::
+      #     The name of the service.
+      #   <code>:service_version</code>::
+      #     The version of the service.
+      #   <code>:discovery_uri</code>::
+      #     The URI of the discovery document.
       #
       # @return [Google::APIClient::Discovery] The API discovery handler.
       def initialize(options={})
@@ -43,6 +49,17 @@ module Google #:nodoc:
           @options = DEFAULTS.clone
         end
         @options.merge!(options)
+        if @options[:service] && !@options[:discovery_uri]
+          service_id = @options[:service]
+          service_version = @options[:service_version] || "1.0"
+          @options[:discovery_uri] =
+            "http://www.googleapis.com/discovery/0.1/describe" +
+            "?api=#{service_id}&apiVersion=#{service_version}"
+        end
+        unless @options[:discovery_uri]
+          raise ArgumentError,
+            "Missing required configuration value, :discovery_uri."
+        end
         # Handle any remaining configuration here
       end
 

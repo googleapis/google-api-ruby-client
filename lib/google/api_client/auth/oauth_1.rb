@@ -52,6 +52,8 @@ module Google #:nodoc:
       #
       # @param [Hash] options
       #   The configuration options.
+      #   <code>:service</code>::
+      #     The name of the service.
       #   <code>:request_token_uri</code>::
       #     The OAuth endpoint for obtaining a request token.
       #   <code>:authorization_uri</code>::
