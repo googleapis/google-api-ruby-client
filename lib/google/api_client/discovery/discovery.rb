@@ -73,6 +73,14 @@ module Google #:nodoc:
       def options
         return @options
       end
+      
+      ##
+      # Returns the URI of the discovery document.
+      #
+      # @return [String] The URI of the discovery document.
+      def discovery_uri
+        return @options[:discovery_uri]
+      end
     end
   end
 end
