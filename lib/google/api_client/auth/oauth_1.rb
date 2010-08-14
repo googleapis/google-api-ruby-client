@@ -76,7 +76,7 @@ module Google #:nodoc:
       #
       # @return [Google::APIClient::OAuth1] The OAuth 1.0a handler.
       def initialize(options={})
-        if options[:service]
+        if options[:service] && SERVICE_DEFAULTS[options[:service]]
           @options = DEFAULTS.merge(SERVICE_DEFAULTS[options[:service]])
         else
           @options = DEFAULTS.clone
@@ -106,6 +106,15 @@ module Google #:nodoc:
             :authorize_path     => @options[:authorization_uri].request_uri
           }
         )
+      end
+      
+      ##
+      # Returns the configuration of the handler.  Configuration options that
+      # are not recognized by the handler are ignored.
+      #
+      # @return [Hash] The configuration options.
+      def options
+        return @options
       end
 
       ##
@@ -172,6 +181,23 @@ module Google #:nodoc:
       # @return [Array] An <code>Array</code> of access scopes.
       def scopes
         return @options[:scopes]
+      end
+
+      ##
+      # Returns the callback for the handler.
+      #
+      # @return [String] The OAuth 1.0a callback for the consumer.
+      def callback
+        return @options[:callback]
+      end
+
+      ##
+      # Returns a human-readable service name to present to the user when they
+      # visit the <code>:authorization_uri</code>.
+      #
+      # @return [String] The display name for the consumer.
+      def display_name
+        return @options[:display_name]
       end
 
       ##

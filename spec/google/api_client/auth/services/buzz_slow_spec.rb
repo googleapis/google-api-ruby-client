@@ -23,6 +23,13 @@ describe Google::APIClient::OAuth1, "configured for use with Buzz" do
     @oauth = Google::APIClient::OAuth1.new(:service => :buzz)
   end
 
+  it "should not have the default configuration" do
+    @oauth.authorization_endpoint_uri.should_not ==
+      Google::APIClient::OAuth1::DEFAULTS[:authorization_uri]
+    @oauth.scopes.should_not ==
+      Google::APIClient::OAuth1::DEFAULTS[:scopes]
+  end
+
   it "should have the correct authorization_uri" do
     @oauth.authorization_endpoint_uri.should ==
       "https://www.google.com/buzz/api/auth/OAuthAuthorizeToken"

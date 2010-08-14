@@ -57,3 +57,28 @@ describe Google::APIClient::OAuth1, "in the default configuration" do
     end).should raise_error(TypeError)
   end
 end
+
+describe Google::APIClient::OAuth1, "configured for use with bogus service" do
+  before do
+    @oauth = Google::APIClient::OAuth1.new(:service => :bogus)
+  end
+
+  it "should have the default configuration" do
+    @oauth.request_token_uri.should ==
+      Google::APIClient::OAuth1::DEFAULTS[:request_token_uri]
+    @oauth.authorization_endpoint_uri.should ==
+      Google::APIClient::OAuth1::DEFAULTS[:authorization_uri]
+    @oauth.access_token_uri.should ==
+      Google::APIClient::OAuth1::DEFAULTS[:access_token_uri]
+    @oauth.scopes.should ==
+      Google::APIClient::OAuth1::DEFAULTS[:scopes]
+    @oauth.callback.should ==
+      Google::APIClient::OAuth1::DEFAULTS[:callback]
+    @oauth.display_name.should ==
+      Google::APIClient::OAuth1::DEFAULTS[:display_name]
+    @oauth.consumer_key.should ==
+      Google::APIClient::OAuth1::DEFAULTS[:consumer_key]
+    @oauth.consumer_secret.should ==
+      Google::APIClient::OAuth1::DEFAULTS[:consumer_secret]
+  end
+end

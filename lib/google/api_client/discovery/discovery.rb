@@ -18,7 +18,42 @@ require "addressable/template"
 module Google #:nodoc:
   class APIClient #:nodoc:
     class Discovery
+      ##
+      # The default discovery configuration values.  These may be overrided
+      # simply by passing in the same key to the constructor.
+      DEFAULTS = {
+      }
+      
+      ##
+      # A set of default configuration values specific to each service.  These
+      # may be overrided simply by passing in the same key to the constructor.
+      SERVICE_DEFAULTS = {
+      }
 
+      ##
+      # Creates a new API discovery handler.
+      #
+      # @param [Hash] options
+      #
+      # @return [Google::APIClient::Discovery] The API discovery handler.
+      def initialize(options={})
+        if options[:service] && SERVICE_DEFAULTS[options[:service]]
+          @options = DEFAULTS.merge(SERVICE_DEFAULTS[options[:service]])
+        else
+          @options = DEFAULTS.clone
+        end
+        @options.merge!(options)
+        # Handle any remaining configuration here
+      end
+
+      ##
+      # Returns the configuration of the handler.  Configuration options that
+      # are not recognized by the handler are ignored.
+      #
+      # @return [Hash] The configuration options.
+      def options
+        return @options
+      end
     end
   end
 end
