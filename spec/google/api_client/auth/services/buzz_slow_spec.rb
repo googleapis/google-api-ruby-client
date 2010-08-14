@@ -20,11 +20,16 @@ require "addressable/uri"
 
 describe Google::APIClient::OAuth1, "configured for use with Buzz" do
   before do
-    @oauth = Google::APIClient::OAuth1.new(
-      :authorization_uri =>
-        "https://www.google.com/buzz/api/auth/OAuthAuthorizeToken",
-      :scopes => ["https://www.googleapis.com/auth/buzz"]
-    )
+    @oauth = Google::APIClient::OAuth1.new(:service => :buzz)
+  end
+
+  it "should have the correct authorization_uri" do
+    @oauth.authorization_endpoint_uri.should ==
+      "https://www.google.com/buzz/api/auth/OAuthAuthorizeToken"
+  end
+
+  it "should have the correct scope" do
+    @oauth.scopes.should include("https://www.googleapis.com/auth/buzz")
   end
   
   it "should be able to get a request token" do
