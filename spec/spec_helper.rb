@@ -1,5 +1,5 @@
-spec_dir = File.expand_path(File.dirname(__FILE__))
-lib_dir = File.expand_path(File.join(spec_dir, "../lib"))
+spec_dir = File.expand_path("..", __FILE__)
+lib_dir = File.expand_path("../lib", spec_dir)
 
-$:.unshift(lib_dir)
-$:.uniq!
+$LOAD_PATH.unshift(lib_dir)
+$LOAD_PATH.uniq!

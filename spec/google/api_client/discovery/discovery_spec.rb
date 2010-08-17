@@ -12,25 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require "spec_helper"
+require 'spec_helper'
 
-require "oauth"
-require "google/api_client/discovery/discovery"
+require 'oauth'
+require 'google/api_client/discovery/discovery'
 
-describe Google::APIClient::Discovery, "configured for use with a service" do
+describe Google::APIClient::Discovery, 'configured for use with a service' do
   before do
     @discovery = Google::APIClient::Discovery.new(:service => :magic)
   end
 
-  it "should have the correct discovery document URI" do
+  it 'should have the correct discovery document URI' do
     @discovery.discovery_uri.should ==
-      "http://www.googleapis.com/discovery/0.1/describe" +
-      "?api=magic&apiVersion=1.0"
+      'http://www.googleapis.com/discovery/0.1/describe' +
+      '?api=magic&apiVersion=1.0'
   end
 end
 
 describe Google::APIClient::Discovery,
-    "configured for use with a specific service version" do
+    'configured for use with a specific service version' do
   before do
     @discovery = Google::APIClient::Discovery.new(
       :service => :magic,
@@ -38,9 +38,9 @@ describe Google::APIClient::Discovery,
     )
   end
 
-  it "should have the correct discovery document URI" do
+  it 'should have the correct discovery document URI' do
     @discovery.discovery_uri.should ==
-      "http://www.googleapis.com/discovery/0.1/describe" +
-      "?api=magic&apiVersion=42.0"
+      'http://www.googleapis.com/discovery/0.1/describe' +
+      '?api=magic&apiVersion=42.0'
   end
 end

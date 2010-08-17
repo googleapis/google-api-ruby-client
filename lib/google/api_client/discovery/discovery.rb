@@ -12,20 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require "json"
-require "addressable/template"
+require 'json'
+require 'addressable/template'
 
 module Google #:nodoc:
   class APIClient #:nodoc:
     ##
     # A discovery document handler.
     class Discovery
+
       ##
       # The default discovery configuration values.  These may be overrided
       # simply by passing in the same key to the constructor.
       DEFAULTS = {
       }
-      
+
       ##
       # A set of default configuration values specific to each service.  These
       # may be overrided simply by passing in the same key to the constructor.
@@ -53,14 +54,14 @@ module Google #:nodoc:
         @options.merge!(options)
         if @options[:service] && !@options[:discovery_uri]
           service_id = @options[:service]
-          service_version = @options[:service_version] || "1.0"
+          service_version = @options[:service_version] || '1.0'
           @options[:discovery_uri] =
             "http://www.googleapis.com/discovery/0.1/describe" +
             "?api=#{service_id}&apiVersion=#{service_version}"
         end
         unless @options[:discovery_uri]
           raise ArgumentError,
-            "Missing required configuration value, :discovery_uri."
+            'Missing required configuration value, :discovery_uri.'
         end
         # Handle any remaining configuration here
       end
@@ -73,7 +74,7 @@ module Google #:nodoc:
       def options
         return @options
       end
-      
+
       ##
       # Returns the URI of the discovery document.
       #

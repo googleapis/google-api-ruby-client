@@ -12,14 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require "addressable/uri"
-require "oauth"
+require 'addressable/uri'
+require 'oauth'
 
 module Google #:nodoc:
   class APIClient #:nodoc:
     ##
     # An OAuth 1.0a handler.
     class OAuth1
+
       ##
       # The default OAuth 1.0a configuration values.  These may be overrided
       # simply by passing in the same key to the constructor.
@@ -33,10 +34,10 @@ module Google #:nodoc:
         :scopes => [],
         :callback => OAuth::OUT_OF_BAND,
         :display_name => nil,
-        :consumer_key => "anonymous",
-        :consumer_secret => "anonymous"
+        :consumer_key => 'anonymous',
+        :consumer_secret => 'anonymous'
       }
-      
+
       ##
       # A set of default configuration values specific to each service.  These
       # may be overrided simply by passing in the same key to the constructor.
@@ -44,7 +45,12 @@ module Google #:nodoc:
         :buzz => {
           :authorization_uri =>
             'https://www.google.com/buzz/api/auth/OAuthAuthorizeToken',
-          :scopes => ["https://www.googleapis.com/auth/buzz"]
+          :scopes => ['https://www.googleapis.com/auth/buzz']
+        },
+        :latitude => {
+          :authorization_uri =>
+            'https://www.google.com/latitude/apps/OAuthAuthorizeToken',
+          :scopes => ['https://www.googleapis.com/auth/latitude']
         }
       }
 
@@ -96,7 +102,7 @@ module Google #:nodoc:
             @options[:authorization_uri].site) ||
             (@options[:request_token_uri].site !=
             @options[:authorization_uri].site)
-          raise ArgumentError, "All OAuth endpoints must be on the same site."
+          raise ArgumentError, 'All OAuth endpoints must be on the same site.'
         end
         @oauth_consumer = ::OAuth::Consumer.new(
           @options[:consumer_key], @options[:consumer_secret], {
@@ -111,7 +117,7 @@ module Google #:nodoc:
           }
         )
       end
-      
+
       ##
       # Returns the configuration of the handler.  Configuration options that
       # are not recognized by the handler are ignored.
@@ -131,7 +137,7 @@ module Google #:nodoc:
           :oauth_callback => @options[:callback]
         }
         app_parameters = {
-          :scope => @options[:scopes].join(" ")
+          :scope => @options[:scopes].join(' ')
         }
         if @options[:display_name]
           app_parameters[:xoauth_displayname] = @options[:display_name]
@@ -243,7 +249,7 @@ module Google #:nodoc:
       end
 
       ##
-      # Builds the authorization URI that the user will be redirected to. 
+      # Builds the authorization URI that the user will be redirected to.
       # Note that this value is derived from the
       # {#authorization_endpoint_uri}.
       #

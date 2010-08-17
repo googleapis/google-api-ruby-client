@@ -39,7 +39,7 @@ namespace :spec do
     task :verify => :rcov
   end
 
-  desc "Generate HTML Specdocs for all specs"
+  desc 'Generate HTML Specdocs for all specs'
   Spec::Rake::SpecTask.new(:specdoc) do |t|
     specdoc_path = File.expand_path(
       File.join(File.dirname(__FILE__), '../specdoc/'))
@@ -47,25 +47,25 @@ namespace :spec do
 
     output_file = File.join(specdoc_path, 'index.html')
     t.spec_files = FileList['spec/**/*_spec.rb']
-    t.spec_opts = ["--format", "\"html:#{output_file}\"", "--diff"]
+    t.spec_opts = ['--format', "\"html:#{output_file}\"", '--diff']
     t.fail_on_error = false
   end
 
   namespace :rcov do
-    desc "Browse the code coverage report."
-    task :browse => "spec:rcov" do
-      require "launchy"
-      Launchy::Browser.run("coverage/index.html")
+    desc 'Browse the code coverage report.'
+    task :browse => 'spec:rcov' do
+      require 'launchy'
+      Launchy::Browser.run('coverage/index.html')
     end
   end
 end
 
 if RCOV_ENABLED
-  desc "Alias to spec:verify"
-  task "spec" => "spec:verify"
+  desc 'Alias to spec:verify'
+  task 'spec' => 'spec:verify'
 else
-  desc "Alias to spec:all"
-  task "spec" => "spec:all"
+  desc 'Alias to spec:all'
+  task 'spec' => 'spec:all'
 end
 
-task "clobber" => ["spec:clobber_rcov"]
+task 'clobber' => ['spec:clobber_rcov']

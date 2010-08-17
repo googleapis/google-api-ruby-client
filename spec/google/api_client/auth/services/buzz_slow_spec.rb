@@ -12,49 +12,49 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require "spec_helper"
+require 'spec_helper'
 
-require "oauth"
-require "google/api_client/auth/oauth_1"
-require "addressable/uri"
+require 'oauth'
+require 'google/api_client/auth/oauth_1'
+require 'addressable/uri'
 
-describe Google::APIClient::OAuth1, "configured for use with Buzz" do
+describe Google::APIClient::OAuth1, 'configured for use with Buzz' do
   before do
     @oauth = Google::APIClient::OAuth1.new(:service => :buzz)
   end
 
-  it "should not have the default configuration" do
+  it 'should not have the default configuration' do
     @oauth.authorization_endpoint_uri.should_not ==
       Google::APIClient::OAuth1::DEFAULTS[:authorization_uri]
     @oauth.scopes.should_not ==
       Google::APIClient::OAuth1::DEFAULTS[:scopes]
   end
 
-  it "should have the correct authorization_uri" do
+  it 'should have the correct authorization_uri' do
     @oauth.authorization_endpoint_uri.should ==
-      "https://www.google.com/buzz/api/auth/OAuthAuthorizeToken"
+      'https://www.google.com/buzz/api/auth/OAuthAuthorizeToken'
   end
 
-  it "should have the correct scope" do
-    @oauth.scopes.should include("https://www.googleapis.com/auth/buzz")
+  it 'should have the correct scope' do
+    @oauth.scopes.should include('https://www.googleapis.com/auth/buzz')
   end
-  
-  it "should be able to get a request token" do
+
+  it 'should be able to get a request token' do
     @oauth.request_token.token.should =~ /^[a-zA-Z0-9\/\-\_\+]+$/
     @oauth.request_token.secret.should =~ /^[a-zA-Z0-9\/\-\_\+]+$/
   end
-  
-  it "should issue only a single request token" do
+
+  it 'should issue only a single request token' do
     @oauth.request_token.token.should == @oauth.request_token.token
     @oauth.request_token.secret.should == @oauth.request_token.secret
   end
-  
-  it "should build the correct authorization URI" do
-    icon_uri = "http://www.google.com/images/icons/feature/padlock-g128.png"
+
+  it 'should build the correct authorization URI' do
+    icon_uri = 'http://www.google.com/images/icons/feature/padlock-g128.png'
     uri = @oauth.authorization_uri(
       :domain => @oauth.consumer_key,
       :iconUrl => icon_uri,
-      :scope => @oauth.scopes.join(" ")
+      :scope => @oauth.scopes.join(' ')
     )
     uri.should =~
       /^https:\/\/www.google.com\/buzz\/api\/auth\/OAuthAuthorizeToken/
@@ -67,6 +67,6 @@ describe Google::APIClient::OAuth1, "configured for use with Buzz" do
         Regexp.new(Regexp.escape(scope))
     end
   end
-  
+
   # Not much we can do to test any further into the OAuth flow
 end

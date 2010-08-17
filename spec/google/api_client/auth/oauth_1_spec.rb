@@ -12,58 +12,58 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require "spec_helper"
+require 'spec_helper'
 
-require "oauth"
-require "google/api_client/auth/oauth_1"
+require 'oauth'
+require 'google/api_client/auth/oauth_1'
 
-describe Google::APIClient::OAuth1, "in the default configuration" do
+describe Google::APIClient::OAuth1, 'in the default configuration' do
   before do
     @oauth = Google::APIClient::OAuth1.new
   end
 
-  it "should have the correct request_token_uri" do
+  it 'should have the correct request_token_uri' do
     @oauth.request_token_uri.should ==
-      "https://www.google.com/accounts/OAuthGetRequestToken"
+      'https://www.google.com/accounts/OAuthGetRequestToken'
   end
 
-  it "should have the correct authorization_uri" do
+  it 'should have the correct authorization_uri' do
     @oauth.authorization_endpoint_uri.should ==
-      "https://www.google.com/accounts/OAuthAuthorizeToken"
+      'https://www.google.com/accounts/OAuthAuthorizeToken'
   end
 
-  it "should have the correct access_token_uri" do
+  it 'should have the correct access_token_uri' do
     @oauth.access_token_uri.should ==
-      "https://www.google.com/accounts/OAuthGetAccessToken"
+      'https://www.google.com/accounts/OAuthGetAccessToken'
   end
 
-  it "should have the correct consumer_key" do
-    @oauth.consumer_key.should == "anonymous"
+  it 'should have the correct consumer_key' do
+    @oauth.consumer_key.should == 'anonymous'
   end
 
-  it "should have the correct consumer_secret" do
-    @oauth.consumer_secret.should == "anonymous"
+  it 'should have the correct consumer_secret' do
+    @oauth.consumer_secret.should == 'anonymous'
   end
 
-  it "should allow the request_token to be set manually" do
-    @oauth.request_token = OAuth::RequestToken.new(@oauth, "key", "secret")
-    @oauth.request_token.token.should == "key"
-    @oauth.request_token.secret.should == "secret"
+  it 'should allow the request_token to be set manually' do
+    @oauth.request_token = OAuth::RequestToken.new(@oauth, 'key', 'secret')
+    @oauth.request_token.token.should == 'key'
+    @oauth.request_token.secret.should == 'secret'
   end
 
-  it "should not allow the request_token to be set to bogus value" do
+  it 'should not allow the request_token to be set to bogus value' do
     (lambda do
       @oauth.request_token = 42
     end).should raise_error(TypeError)
   end
 end
 
-describe Google::APIClient::OAuth1, "configured for use with bogus service" do
+describe Google::APIClient::OAuth1, 'configured for use with bogus service' do
   before do
     @oauth = Google::APIClient::OAuth1.new(:service => :bogus)
   end
 
-  it "should have the default configuration" do
+  it 'should have the default configuration' do
     @oauth.request_token_uri.should ==
       Google::APIClient::OAuth1::DEFAULTS[:request_token_uri]
     @oauth.authorization_endpoint_uri.should ==
