@@ -5,6 +5,11 @@ namespace :spec do
     t.spec_files = FileList['spec/**/*_spec.rb']
     t.spec_opts = ['--require', 'rubygems', '--color', '--format', 'specdoc']
     if RCOV_ENABLED
+      if `which rcov`.strip == ""
+        STDERR.puts "Please install rcov:"
+        STDERR.puts "sudo gem install relevance-rcov"
+        exit(1)
+      end
       t.rcov = true
     else
       t.rcov = false
