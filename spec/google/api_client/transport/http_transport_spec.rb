@@ -20,10 +20,44 @@ require 'google/api_client/parser/json_parser'
 describe Google::APIClient::HTTPTransport, 'with default configuration' do
   before do
     @transport = Google::APIClient::HTTPTransport.new
-    @parser = Google::APIClient::JSONParser.new
   end
 
   it 'should use the default json parser' do
     @transport.parser.should be_instance_of Google::APIClient::JSONParser
+  end
+end
+
+describe Google::APIClient::HTTPTransport, 'with custom pluggable parser' do
+  before do
+    class FakeJsonParser
+    end
+
+    @transport = Google::APIClient::HTTPTransport.new(:json_parser => FakeJsonParser.new)
+  end
+
+  it 'should use the custom parser' do
+    @transport.parser.should be_instance_of FakeJsonParser
+  end
+end
+
+describe Google::APIClient::HTTPTransport, 'with new parser type' do
+  before do
+    class FakeNewParser
+    end
+
+    @transport = Google::APIClient::HTTPTransport.new(
+      :parser => :new_parser,
+      :new_parser => FakeNewParser.new
+    )
+  end
+
+  it 'should use new parser type' do
+    @transport.parser.should be_instance_of FakeNewParser
+  end
+end
+
+describe Google::APIClient::HTTPTransport, 'with illegal parser config' do
+  it 'should raise ArgumentError' do
+    lambda { Google::APIClient::HTTPTransport.new(:parser => :fakeclass) }.should raise_exception(ArgumentError)
   end
 end
