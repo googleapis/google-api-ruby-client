@@ -14,50 +14,89 @@
 
 require 'spec_helper'
 
+require 'net/http'
+require 'net/https'
 require 'google/api_client/transport/http_transport'
-require 'google/api_client/parser/json_parser'
 
-describe Google::APIClient::HTTPTransport, 'with default configuration' do
+def assemble_body_string(body)
+  body_string = ""
+  body.each do |chunk|
+    body_string += chunk
+  end
+  return body_string
+end
+
+describe Google::APIClient::HTTPTransport, 'in the default configuration' do
   before do
-    @transport = Google::APIClient::HTTPTransport.new
+    @http = Google::APIClient::HTTPTransport.new
   end
 
-  it 'should use the default json parser' do
-    @transport.parser.should be_instance_of Google::APIClient::JSONParser
+  it 'should build a valid GET request' do
+    method, uri, headers, body =
+      @http.build_request(:get, "http://www.example.com/")
+    body_string = assemble_body_string(body)
+    method.should == "GET"
+    uri.should === "http://www.example.com/"
+    headers.keys.should_not include("Content-Length")
+    body_string.should == ""
+  end
+
+  it 'should build a valid POST request' do
+    method, uri, headers, body = @http.build_request(
+      :post, "http://www.example.com/", :body => "A body."
+    )
+    body_string = assemble_body_string(body)
+    method.should == "POST"
+    uri.should === "http://www.example.com/"
+    headers["Content-Length"].should == "7"
+    body_string.should == "A body."
+  end
+
+  it 'should build a valid PUT request' do
+    method, uri, headers, body = @http.build_request(
+      :put, "http://www.example.com/", :body => "A body."
+    )
+    body_string = assemble_body_string(body)
+    method.should == "PUT"
+    uri.should === "http://www.example.com/"
+    headers["Content-Length"].should == "7"
+    body_string.should == "A body."
+  end
+
+  it 'should build a valid DELETE request' do
+    method, uri, headers, body =
+      @http.build_request(:delete, "http://www.example.com/")
+    body_string = assemble_body_string(body)
+    method.should == "DELETE"
+    uri.should === "http://www.example.com/"
+    headers.keys.should_not include("Content-Length")
+    body_string.should == ""
+  end
+
+  it 'should not build a BOGUS request' do
+    (lambda do
+      @http.build_request(:bogus, "http://www.example.com/")
+    end).should raise_error(ArgumentError)
   end
 end
 
-describe Google::APIClient::HTTPTransport, 'with custom pluggable parser' do
+describe Google::APIClient::HTTPTransport,
+    'with a certificate store and connection pool' do
   before do
-    class FakeJsonParser
-    end
-
-    @transport = Google::APIClient::HTTPTransport.new(:json_parser => FakeJsonParser.new)
-  end
-
-  it 'should use the custom parser' do
-    @transport.parser.should be_instance_of FakeJsonParser
-  end
-end
-
-describe Google::APIClient::HTTPTransport, 'with new parser type' do
-  before do
-    class FakeNewParser
-    end
-
-    @transport = Google::APIClient::HTTPTransport.new(
-      :parser => :new_parser,
-      :new_parser => FakeNewParser.new
+    @http = Google::APIClient::HTTPTransport.new(
+      :cert_store => OpenSSL::X509::Store.new,
+      :connection_pool => {
+        "http://www.example.com" => Net::HTTP.new("www.example.com", 80)
+      }
     )
   end
 
-  it 'should use new parser type' do
-    @transport.parser.should be_instance_of FakeNewParser
+  it 'should have the correct certificate store' do
+    # TODO(bobaman) Write a real test
+    @http.cert_store.should_not == nil
   end
-end
 
-describe Google::APIClient::HTTPTransport, 'with illegal parser config' do
-  it 'should raise ArgumentError' do
-    lambda { Google::APIClient::HTTPTransport.new(:parser => :fakeclass) }.should raise_exception(ArgumentError)
+  it 'should have the correct connection pool' do
+    @http.connection_pool.keys.should include("http://www.example.com")
   end
 end

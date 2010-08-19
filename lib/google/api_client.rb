@@ -12,16 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/api_client/version'
-
 module Google #:nodoc:
   ##
   # This class manages communication with a single API.
   class APIClient
+
     def initialize(options={})
       @options = {
         # TODO: What configuration options need to go here?
       }.merge(options)
+      unless @options[:parser]
+        require 'google/api_client/parser/json_parser'
+        # NOTE: Do not rely on this default value, as it may change
+        @options[:parser] = JSONParser.new
+      end
       unless @options[:authentication]
         require 'google/api_client/auth/oauth_1'
         # NOTE: Do not rely on this default value, as it may change
@@ -32,5 +36,13 @@ module Google #:nodoc:
         @options[:transport] = HTTPTransport
       end
     end
+    
+    ##
+    # Returns the parser used by the client.
+    def parser
+      return @options[:parser]
+    end
   end
 end
+
+require 'google/api_client/version'
