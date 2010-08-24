@@ -25,6 +25,10 @@ describe Google::APIClient::JSONParser, 'generates json from hash' do
   it 'should translate simple hash to JSON string' do
     @parser.generate('test' => 23).should == "{\"test\":23}"
   end
+  it 'should translate simple nested into to nested JSON string' do
+    @parser.generate({'test' => 23, 'test2' => {'foo' => 'baz', 12 => 3.14 }}).should ==
+        "{\"test2\":{\"12\":3.14,\"foo\":\"baz\"},\"test\":23}"
+  end
 end
 
 describe Google::APIClient::JSONParser, 'parses json string into hash' do
@@ -34,6 +38,11 @@ describe Google::APIClient::JSONParser, 'parses json string into hash' do
 
   it 'should parse simple json string into hash' do
     @parser.parse('{"test":23}').should == {'test' => 23}
+  end
+
+  it 'should parse nested json object into hash' do
+    @parser.parse('{"test":23, "test2":{"bar":"baz", "foo":3.14}}').should ==
+        {'test' => 23, 'test2' => {'bar' => 'baz', 'foo' => 3.14}}
   end
 end
 
