@@ -42,6 +42,17 @@ module Google #:nodoc:
     def parser
       return @options[:parser]
     end
+    
+    def build_request(*args, &block)
+      if !args.empty? || block
+        # Build the request!
+        # TODO(bobaman): No-op / Debug code!
+        return args
+      else
+        require 'google/api_client/discovery/method_builder'
+        return ::Google::APIClient::MethodBuilder.new(self, :build_request)
+      end
+    end
   end
 end
 

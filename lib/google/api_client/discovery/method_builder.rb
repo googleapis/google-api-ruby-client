@@ -33,9 +33,10 @@ module Google #:nodoc:
       #
       # @param [Google::APIClient] client
       #   The client the {MethodBuilder} will use to build requests.
-      def initialize(client)
+      def initialize(client, callback=:build_request)
         @segments = []
         @client = client
+        @callback = callback
       end
       
       ##
@@ -77,7 +78,7 @@ module Google #:nodoc:
       def method_missing(method, *args, &block)
         self << method
         if !args.empty? || block
-          return @client.build_request(self.to_str, *args, &block)
+          return @client.send(callback, self.to_str, *args, &block)
         else
           return self
         end
