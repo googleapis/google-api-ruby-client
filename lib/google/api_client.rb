@@ -26,23 +26,38 @@ module Google #:nodoc:
         # NOTE: Do not rely on this default value, as it may change
         @options[:parser] = JSONParser.new
       end
-      unless @options[:authentication]
-        require 'google/api_client/auth/oauth_1'
+      unless @options[:authorization]
+        require 'signet/oauth_1/client'
         # NOTE: Do not rely on this default value, as it may change
-        @options[:authentication] = OAuth1.new
+        @options[:authorization] = Signet::OAuth1::Client.new(
+          :temporary_credential_uri =>
+            'https://www.google.com/accounts/OAuthGetRequestToken',
+          :authorization_uri =>
+            'https://www.google.com/accounts/OAuthAuthorizeToken',
+          :token_credential_uri =>
+            'https://www.google.com/accounts/OAuthGetAccessToken',
+          :client_credential_key => 'anonymous',
+          :client_credential_secret => 'anonymous'
+        )
       end
-      unless @options[:transport]
-        require 'google/api_client/transport/http_transport'
-        @options[:transport] = HTTPTransport
+      unless @options[:http_adapter]
+        require 'httpadapter/adapters/net_http'
+        @options[:http_adapter] = HTTPAdapter::NetHTTPRequestAdapter
       end
     end
-    
+
     ##
     # Returns the parser used by the client.
     def parser
       return @options[:parser]
     end
-    
+
+    ##
+    # Returns the authorization mechanism used by the client.
+    def authorization
+      return @options[:authorization]
+    end
+
     def build_request(*args, &block)
       if !args.empty? || block
         # Build the request!

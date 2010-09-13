@@ -14,12 +14,12 @@
 
 require 'spec_helper'
 
+require 'signet/oauth_1/client'
+require 'httpadapter/adapters/net_http'
+
 require 'google/api_client'
 require 'google/api_client/version'
 require 'google/api_client/parser/json_parser'
-require 'google/api_client/auth/oauth_1'
-require 'google/api_client/transport/http_transport'
-
 
 describe Google::APIClient, 'with default configuration' do
   before do
@@ -32,6 +32,18 @@ describe Google::APIClient, 'with default configuration' do
 
   it 'should use the default JSON parser' do
     @client.parser.should be_instance_of(Google::APIClient::JSONParser)
+  end
+
+  it 'should use the default OAuth1 client configuration' do
+    @client.authorization.temporary_credential_uri.to_s.should ==
+      'https://www.google.com/accounts/OAuthGetRequestToken'
+    @client.authorization.authorization_uri.to_s.should include(
+      'https://www.google.com/accounts/OAuthAuthorizeToken'
+    )
+    @client.authorization.token_credential_uri.to_s.should ==
+      'https://www.google.com/accounts/OAuthGetAccessToken'
+    @client.authorization.client_credential_key.should == 'anonymous'
+    @client.authorization.client_credential_secret.should == 'anonymous'
   end
 end
 
