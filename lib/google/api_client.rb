@@ -132,29 +132,44 @@ module Google #:nodoc:
       return nil
     end
 
-    def build_request(*args, &block)
-      if !args.empty? || block
-        if args.size != 2
-          raise ArgumentError, "wrong number of arguments (#{args.size} for 2)"
+    def discovered_method(rpc_name, service_version='1.0')
+      for service in self.discovered_services
+        # This looks kinda weird, but is not a real problem because there's
+        # almost always only one service, and this is memoized anyhow.
+        if service.version.to_s == service_version.to_s
+          return service.to_h[rpc_name] if service.to_h[rpc_name]
         end
-        rpc_name = args[0]
-        if !rpc_name.kind_of?(String)
-          raise TypeError, "Expected String, got #{rpc_name.class}."
-        end
-        parameters = args[1]
-        if !parameters.kind_of?(Hash)
-          raise TypeError, "Expected Hash, got #{parameters.class}."
-        end
-
-        signature_needed = false
-        if signature_needed
-          request = self.sign_request(request)
-        end
-        return args
-      else
-        require 'google/api_client/discovery/method_builder'
-        return ::Google::APIClient::MethodBuilder.new(self, :build_request)
       end
+      return nil
+    end
+
+    def generate_request(
+        api_method, parameters={}, body='', headers=[], options={})
+      options={
+        :signed => true,
+        :service_version => '1.0'
+      }.merge(options)
+      if api_method.kind_of?(String)
+        api_method = self.discovered_method(
+          api_method, options[:service_version]
+        )
+      elsif !api_method.kind_of?(::Google::APIClient::Service)
+        raise TypeError,
+          "Expected String or Google::APIClient::Service, " +
+          "got #{api_method.class}."
+      end
+      request = api_method.generate_request(parameters, body, headers)
+      if options[:signed]
+        request = self.sign_request(request)
+      end
+      return request
+    end
+
+    def execute(api_method, parameters={}, body='', headers=[], options={})
+      request = self.generate_request(
+        api_method, parameters, body, headers, options
+      )
+      return self.transmit_request(request)
     end
 
     def transmit_request(request)
@@ -171,10 +186,6 @@ module Google #:nodoc:
           'Expected authorization mechanism to respond to ' +
           '#generate_authenticated_request.'
       end
-    end
-
-    def execute_signed_request(*args, &block)
-      return self.transmit_request(self.build_request(*args, &block))
     end
   end
 end
