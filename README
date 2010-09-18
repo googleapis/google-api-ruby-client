@@ -15,7 +15,21 @@ The Google API Ruby Client makes it trivial to discover and access supported API
 
 == Example Usage
 
-  # Some code goes here.
+    require 'google/api_client'
+    client = Google::APIClient.new(:service => 'buzz')
+    client.authorization.fetch_temporary_credential!(
+      :additional_parameters => {
+        'scope' => 'https://www.googleapis.com/auth/buzz'
+      }
+    )
+    client.authorization.authorization_uri
+    # Redirect user here
+    client.authorization.fetch_token_credential!(:verifier => '12345')
+    response = client.execute(
+      'buzz.activities.list',
+      'scope' => '@self', 'userId' => '@me', 'alt' => 'json'
+    )
+    status, headers, body = response
 
 == Requirements
 

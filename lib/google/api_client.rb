@@ -15,7 +15,7 @@
 require 'httpadapter'
 require 'json'
 
-require 'google/api_client/discovery/service'
+require 'google/api_client/discovery'
 
 module Google #:nodoc:
   ##
@@ -32,9 +32,9 @@ module Google #:nodoc:
     # Returns the parser used by the client.
     def parser
       unless @options[:parser]
-        require 'google/api_client/parser/json_parser'
+        require 'google/api_client/parsers/json_parser'
         # NOTE: Do not rely on this default value, as it may change
-        @options[:parser] = JSONParser.new
+        @options[:parser] = JSONParser
       end
       return @options[:parser]
     end
@@ -72,9 +72,9 @@ module Google #:nodoc:
       return @options[:discovery_uri] ||= (begin
         if @options[:service]
           service_id = @options[:service]
-          service_version = @options[:service_version] || '1.0'
+          service_version = @options[:service_version] || 'v1'
           "http://www.googleapis.com/discovery/0.1/describe" +
-          "?api=#{service_id}&apiVersion=#{service_version}"
+          "?api=#{service_id}"
         else
           raise ArgumentError,
             'Missing required configuration value, :discovery_uri.'
@@ -107,10 +107,9 @@ module Google #:nodoc:
         services = []
         for service_name in service_names
           versions = self.discovery_document['data'][service_name]
-          for version_name in versions.keys()
+          for service_version in versions.keys()
             service_description =
-              self.discovery_document['data'][service_name][version_name]
-            service_version = "%.1f" % version_name.gsub(/^v/, '').to_f
+              self.discovery_document['data'][service_name][service_version]
             services << ::Google::APIClient::Service.new(
               service_name,
               service_version,
@@ -122,7 +121,7 @@ module Google #:nodoc:
       end)
     end
 
-    def discovered_service(service_name, service_version='1.0')
+    def discovered_service(service_name, service_version='v1')
       for service in self.discovered_services
         if service.name == service_name &&
             service.version.to_s == service_version.to_s
@@ -132,7 +131,7 @@ module Google #:nodoc:
       return nil
     end
 
-    def discovered_method(rpc_name, service_version='1.0')
+    def discovered_method(rpc_name, service_version='v1')
       for service in self.discovered_services
         # This looks kinda weird, but is not a real problem because there's
         # almost always only one service, and this is memoized anyhow.
@@ -143,11 +142,24 @@ module Google #:nodoc:
       return nil
     end
 
+    def latest_service(service_name)
+      versions = {}
+      for service in self.discovered_services
+        next if service.name != service_name
+        sortable_version = service.version.gsub(/^v/, '').split('.').map do |v|
+          v.to_i
+        end
+        versions[sortable_version] = service
+      end
+      return versions[versions.keys.sort.last]
+    end
+
     def generate_request(
         api_method, parameters={}, body='', headers=[], options={})
       options={
         :signed => true,
-        :service_version => '1.0'
+        :parser => self.parser,
+        :service_version => 'v1'
       }.merge(options)
       if api_method.kind_of?(String)
         api_method = self.discovered_method(
@@ -172,8 +184,8 @@ module Google #:nodoc:
       return self.transmit_request(request)
     end
 
-    def transmit_request(request)
-      ::HTTPAdapter.transmit(request, self.http_adapter)
+    def transmit_request(request, adapter=self.http_adapter)
+      ::HTTPAdapter.transmit(request, adapter)
     end
 
     def sign_request(request)

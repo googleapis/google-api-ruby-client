@@ -16,26 +16,24 @@ require 'json'
 
 module Google #:nodoc:
   class APIClient #:nodoc:
-
     ##
     # Provides a consistent interface by which to parse request and response
     # content.
     # TODO(mattpok): ensure floats, URLs, dates are parsed correctly
-    class JSONParser
+    module JSONParser
 
-      def generate(hash)
+      def self.serialize(hash)
         # JSON parser used can accept arrays as well, but we will limit
         # to only allow hash to JSON string parsing to keep a simple interface
         unless hash.instance_of? Hash
           raise ArgumentError,
             "JSON generate expected a Hash but got a #{hash.class}."
         end
-
-        return JSON.generate hash
+        return JSON.generate(hash)
       end
 
-      def parse(json_string)
-        return JSON.parse json_string
+      def self.parse(json_string)
+        return JSON.parse(json_string)
       end
     end
   end

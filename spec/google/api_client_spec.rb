@@ -19,7 +19,7 @@ require 'httpadapter/adapters/net_http'
 
 require 'google/api_client'
 require 'google/api_client/version'
-require 'google/api_client/parser/json_parser'
+require 'google/api_client/parsers/json_parser'
 
 describe Google::APIClient, 'with default configuration' do
   before do
@@ -31,7 +31,7 @@ describe Google::APIClient, 'with default configuration' do
   end
 
   it 'should use the default JSON parser' do
-    @client.parser.should be_instance_of(Google::APIClient::JSONParser)
+    @client.parser.should be(Google::APIClient::JSONParser)
   end
 
   it 'should use the default OAuth1 client configuration' do
