@@ -168,8 +168,11 @@ module Google #:nodoc:
       end
 
       def uri_template
+        # TODO(bobaman) We shouldn't be calling #to_s here, this should be
+        # a join operation on a URI, but we have to treat these as Strings
+        # because of the way the discovery document provides the URIs.
         return @uri_template ||=
-          Addressable::Template.new(base + self.description['pathUrl'])
+          Addressable::Template.new(base.to_s + self.description['pathUrl'])
       end
 
       def normalize_parameters(parameters={})

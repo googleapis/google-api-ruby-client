@@ -18,9 +18,16 @@ require 'json'
 require 'google/api_client/discovery'
 
 module Google #:nodoc:
+  # TODO(bobaman): Document all this stuff.
+
   ##
   # This class manages communication with a single API.
   class APIClient
+    ##
+    # An error which is raised when there is an unexpected response or other
+    # transport error that prevents an operation from succeeding.
+    class TransmissionError < StandardError
+    end
 
     def initialize(options={})
       @options = {
@@ -68,13 +75,19 @@ module Google #:nodoc:
       end)
     end
 
+    ##
+    # Returns the URI for the discovery document.
+    #
+    # @return [Addressable::URI] The URI of the discovery document.
     def discovery_uri
       return @options[:discovery_uri] ||= (begin
         if @options[:service]
           service_id = @options[:service]
           service_version = @options[:service_version] || 'v1'
-          "http://www.googleapis.com/discovery/0.1/describe" +
-          "?api=#{service_id}"
+          Addressable::URI.parse(
+            "http://www.googleapis.com/discovery/0.1/describe" +
+            "?api=#{service_id}"
+          )
         else
           raise ArgumentError,
             'Missing required configuration value, :discovery_uri.'
@@ -84,10 +97,10 @@ module Google #:nodoc:
 
     def discovery_document
       return @discovery_document ||= (begin
-        request = ['GET', self.discovery_uri, [], []]
+        request = ['GET', self.discovery_uri.to_s, [], []]
         response = self.transmit_request(request)
         status, headers, body = response
-        if status == 200
+        if status == 200 # TODO(bobaman) Better status code handling?
           merged_body = StringIO.new
           body.each do |chunk|
             merged_body.write(chunk)
