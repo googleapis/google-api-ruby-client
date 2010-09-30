@@ -302,3 +302,57 @@ describe Google::APIClient, 'configured for the buzz API' do
     status.should == 200
   end
 end
+
+describe Google::APIClient, 'configured for the latitude API' do
+  before do
+    @client = Google::APIClient.new(:service => 'latitude')
+  end
+
+  it 'should correctly determine the discovery URI' do
+    @client.discovery_uri.should ===
+      'http://www.googleapis.com/discovery/0.1/describe?api=latitude'
+  end
+
+  it 'should find APIs that are in the discovery document' do
+    @client.discovered_service('latitude').name.should == 'latitude'
+    @client.discovered_service('latitude').version.should == 'v1'
+  end
+
+  it 'should not find APIs that are not in the discovery document' do
+    @client.discovered_service('bogus').should == nil
+  end
+
+  it 'should find methods that are in the discovery document' do
+    @client.discovered_method('latitude.currentLocation.get').name.should ==
+      'get'
+  end
+
+  it 'should not find methods that are not in the discovery document' do
+    @client.discovered_method('latitude.bogus').should == nil
+  end
+
+  it 'should generate requests against the correct URIs' do
+    request = @client.generate_request(
+      'latitude.currentLocation.get',
+      {},
+      '',
+      [],
+      {:signed => false}
+    )
+    method, uri, headers, body = request
+    uri.should ==
+      'https://www.googleapis.com/latitude/v1/currentLocation'
+  end
+
+  it 'should not be able to execute requests without authorization' do
+    response = @client.execute(
+      'latitude.currentLocation.get',
+      {},
+      '',
+      [],
+      {:signed => false}
+    )
+    status, headers, body = response
+    status.should == 401
+  end
+end
