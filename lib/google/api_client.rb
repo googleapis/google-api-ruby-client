@@ -33,6 +33,11 @@ module Google #:nodoc:
       @options = {
         # TODO: What configuration options need to go here?
       }.merge(options)
+      if !self.authorization.respond_to?(:generate_authenticated_request)
+        raise TypeError,
+          'Expected authorization mechanism to respond to ' +
+          '#generate_authenticated_request.'
+      end
     end
 
     ##
@@ -135,6 +140,11 @@ module Google #:nodoc:
     end
 
     def discovered_service(service_name, service_version='v1')
+      if !service_name.kind_of?(String) && !service_name.kind_of?(Symbol)
+        raise TypeError,
+          "Expected String or Symbol, got #{service_name.class}."
+      end
+      service_name = service_name.to_s
       for service in self.discovered_services
         if service.name == service_name &&
             service.version.to_s == service_version.to_s
@@ -145,6 +155,11 @@ module Google #:nodoc:
     end
 
     def discovered_method(rpc_name, service_version='v1')
+      if !rpc_name.kind_of?(String) && !rpc_name.kind_of?(Symbol)
+        raise TypeError,
+          "Expected String or Symbol, got #{rpc_name.class}."
+      end
+      rpc_name = rpc_name.to_s
       for service in self.discovered_services
         # This looks kinda weird, but is not a real problem because there's
         # almost always only one service, and this is memoized anyhow.
@@ -156,6 +171,11 @@ module Google #:nodoc:
     end
 
     def latest_service(service_name)
+      if !service_name.kind_of?(String) && !service_name.kind_of?(Symbol)
+        raise TypeError,
+          "Expected String or Symbol, got #{service_name.class}."
+      end
+      service_name = service_name.to_s
       versions = {}
       for service in self.discovered_services
         next if service.name != service_name
@@ -174,14 +194,17 @@ module Google #:nodoc:
         :parser => self.parser,
         :service_version => 'v1'
       }.merge(options)
-      if api_method.kind_of?(String)
+      if api_method.kind_of?(String) || api_method.kind_of?(Symbol)
         api_method = self.discovered_method(
-          api_method, options[:service_version]
+          api_method.to_s, options[:service_version]
         )
       elsif !api_method.kind_of?(::Google::APIClient::Service)
         raise TypeError,
-          "Expected String or Google::APIClient::Service, " +
+          "Expected String, Symbol, or Google::APIClient::Service, " +
           "got #{api_method.class}."
+      end
+      unless api_method
+        raise ArgumentError, "API method does not exist."
       end
       request = api_method.generate_request(parameters, body, headers)
       if options[:signed]
@@ -202,15 +225,9 @@ module Google #:nodoc:
     end
 
     def sign_request(request)
-      if self.authorization.respond_to?(:generate_authenticated_request)
-        return self.authorization.generate_authenticated_request(
-          :request => request
-        )
-      else
-        raise TypeError,
-          'Expected authorization mechanism to respond to ' +
-          '#generate_authenticated_request.'
-      end
+      return self.authorization.generate_authenticated_request(
+        :request => request
+      )
     end
   end
 end

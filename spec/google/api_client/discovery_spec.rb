@@ -45,6 +45,14 @@ describe Google::APIClient, 'configured for a bogus API' do
   end
 end
 
+describe Google::APIClient, 'configured for bogus authorization' do
+  it 'should raise a type error' do
+    (lambda do
+      Google::APIClient.new(:service => 'prediction', :authorization => 42)
+    end).should raise_error(TypeError)
+  end
+end
+
 describe Google::APIClient, 'configured for the prediction API' do
   before do
     @client = Google::APIClient.new(:service => 'prediction')
@@ -59,8 +67,60 @@ describe Google::APIClient, 'configured for the prediction API' do
     @client.discovered_services.size.should > 1
   end
 
+  it 'should find APIs that are in the discovery document' do
+    @client.discovered_service('prediction').name.should == 'prediction'
+    @client.discovered_service('prediction').version.should == 'v1'
+    @client.discovered_service(:prediction).name.should == 'prediction'
+    @client.discovered_service(:prediction).version.should == 'v1'
+  end
+
+  it 'should find API versions that are in the discovery document' do
+    @client.discovered_service('prediction', 'v1.1').version.should == 'v1.1'
+  end
+
+  it 'should not find APIs that are not in the discovery document' do
+    @client.discovered_service('bogus').should == nil
+  end
+
+  it 'should raise an error for bogus services' do
+    (lambda do
+      @client.discovered_service(42)
+    end).should raise_error(TypeError)
+  end
+
+  it 'should find methods that are in the discovery document' do
+    @client.discovered_method('prediction.training.insert').name.should ==
+      'insert'
+    @client.discovered_method(:'prediction.training.insert').name.should ==
+      'insert'
+  end
+
+  it 'should find methods for versions that are in the discovery document' do
+    @client.discovered_method(
+      'prediction.training.delete', 'v1.1'
+    ).should_not == nil
+  end
+
+  it 'should not find methods that are not in the discovery document' do
+    @client.discovered_method('prediction.training.delete', 'v1').should == nil
+    @client.discovered_method('prediction.bogus').should == nil
+  end
+
+  it 'should raise an error for bogus methods' do
+    (lambda do
+      @client.discovered_method(42)
+    end).should raise_error(TypeError)
+  end
+
   it 'should correctly determine the latest version' do
     @client.latest_service('prediction').version.should_not == 'v1'
+    @client.latest_service(:prediction).version.should_not == 'v1'
+  end
+
+  it 'should raise an error for bogus services' do
+    (lambda do
+      @client.latest_service(42)
+    end).should raise_error(TypeError)
   end
 
   it 'should correctly determine the latest version' do
@@ -111,6 +171,19 @@ describe Google::APIClient, 'configured for the prediction API' do
       'https://www.googleapis.com/prediction/v1/training?query=12345'
   end
 
+  it 'should generate requests against the correct URIs' do
+    request = @client.generate_request(
+      :'prediction.training.insert',
+      {'query' => '12345'},
+      '',
+      [],
+      {:signed => false}
+    )
+    method, uri, headers, body = request
+    uri.should ==
+      'https://www.googleapis.com/prediction/v1/training?query=12345'
+  end
+
   it 'should generate signed requests' do
     @client.authorization.token_credential_key = '12345'
     @client.authorization.token_credential_secret = '12345'
@@ -139,5 +212,93 @@ describe Google::APIClient, 'configured for the prediction API' do
     )
     status, headers, body = response
     status.should == 401
+  end
+
+  it 'should raise an error for bogus methods' do
+    (lambda do
+      @client.generate_request(42)
+    end).should raise_error(TypeError)
+  end
+end
+
+describe Google::APIClient, 'configured for the buzz API' do
+  before do
+    @client = Google::APIClient.new(:service => 'buzz')
+  end
+
+  it 'should correctly determine the discovery URI' do
+    @client.discovery_uri.should ===
+      'http://www.googleapis.com/discovery/0.1/describe?api=buzz'
+  end
+
+  it 'should find APIs that are in the discovery document' do
+    @client.discovered_service('buzz').name.should == 'buzz'
+    @client.discovered_service('buzz').version.should == 'v1'
+  end
+
+  it 'should not find APIs that are not in the discovery document' do
+    @client.discovered_service('bogus').should == nil
+  end
+
+  it 'should find methods that are in the discovery document' do
+    # TODO(bobaman) Fix this when the RPC names are correct
+    @client.discovered_method('chili.activities.list').name.should == 'list'
+  end
+
+  it 'should not find methods that are not in the discovery document' do
+    @client.discovered_method('buzz.bogus').should == nil
+  end
+
+  it 'should generate requests against the correct URIs' do
+    # TODO(bobaman) Fix this when the RPC names are correct
+    request = @client.generate_request(
+      'chili.activities.list',
+      {'userId' => 'hikingfan', 'scope' => '@public'},
+      '',
+      [],
+      {:signed => false}
+    )
+    method, uri, headers, body = request
+    uri.should ==
+      'https://www.googleapis.com/buzz/v1/activities/hikingfan/@public'
+  end
+
+  it 'should correctly validate parameters' do
+    # TODO(bobaman) Fix this when the RPC names are correct
+    (lambda do
+      @client.generate_request(
+        'chili.activities.list',
+        {'alt' => 'json'},
+        '',
+        [],
+        {:signed => false}
+      )
+    end).should raise_error(ArgumentError)
+  end
+
+  it 'should correctly validate parameters' do
+    # TODO(bobaman) Fix this when the RPC names are correct
+    (lambda do
+      @client.generate_request(
+        'chili.activities.list',
+        {'userId' => 'hikingfan', 'scope' => '@bogus'},
+        '',
+        [],
+        {:signed => false}
+      )
+    end).should raise_error(ArgumentError)
+  end
+
+  it 'should be able to execute requests without authorization' do
+    # TODO(bobaman) Fix this when the RPC names are correct
+    response = @client.execute(
+      'chili.activities.list',
+      {'alt' => 'json', 'userId' => 'hikingfan', 'scope' => '@public'},
+      '',
+      [],
+      {:signed => false}
+    )
+    status, headers, body = response
+    status.should == 200
   end
 end
