@@ -356,3 +356,57 @@ describe Google::APIClient, 'configured for the latitude API' do
     status.should == 401
   end
 end
+
+describe Google::APIClient, 'configured for the moderator API' do
+  before do
+    @client = Google::APIClient.new(:service => 'moderator')
+  end
+
+  it 'should correctly determine the discovery URI' do
+    @client.discovery_uri.should ===
+      'http://www.googleapis.com/discovery/0.1/describe?api=moderator'
+  end
+
+  it 'should find APIs that are in the discovery document' do
+    @client.discovered_service('moderator').name.should == 'moderator'
+    @client.discovered_service('moderator').version.should == 'v1'
+  end
+
+  it 'should not find APIs that are not in the discovery document' do
+    @client.discovered_service('bogus').should == nil
+  end
+
+  it 'should find methods that are in the discovery document' do
+    @client.discovered_method('moderator.profiles.get').name.should ==
+      'get'
+  end
+
+  it 'should not find methods that are not in the discovery document' do
+    @client.discovered_method('moderator.bogus').should == nil
+  end
+
+  it 'should generate requests against the correct URIs' do
+    request = @client.generate_request(
+      'moderator.profiles.get',
+      {},
+      '',
+      [],
+      {:signed => false}
+    )
+    method, uri, headers, body = request
+    uri.should ==
+      'https://www.googleapis.com/moderator/v1/profiles/@me'
+  end
+
+  it 'should not be able to execute requests without authorization' do
+    response = @client.execute(
+      'moderator.profiles.get',
+      {},
+      '',
+      [],
+      {:signed => false}
+    )
+    status, headers, body = response
+    status.should == 401
+  end
+end
