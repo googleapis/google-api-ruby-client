@@ -228,7 +228,7 @@ module Google
     #   The method object or the RPC name of the method being executed.
     # @param [Hash, Array] parameters
     #   The parameters to send to the method.
-    # @param [String] The body of the request.
+    # @param [String] body The body of the request.
     # @param [Hash, Array] headers The HTTP headers for the request.
     # @param [Hash] options
     #   The configuration parameters for the request.
@@ -279,7 +279,7 @@ module Google
     #   The method object or the RPC name of the method being executed.
     # @param [Hash, Array] parameters
     #   The parameters to send to the method.
-    # @param [String] The body of the request.
+    # @param [String] body The body of the request.
     # @param [Hash, Array] headers The HTTP headers for the request.
     # @param [Hash] options
     #   The configuration parameters for the request.
