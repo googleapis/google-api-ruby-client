@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-module Google #:nodoc:
-  class APIClient #:nodoc:
-    module VERSION #:nodoc:
+module Google
+  class APIClient
+    module VERSION
       MAJOR = 0
       MINOR = 1
       TINY  = 0

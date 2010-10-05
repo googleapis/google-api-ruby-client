@@ -17,8 +17,8 @@ require 'addressable/uri'
 require 'addressable/template'
 require 'extlib/inflection'
 
-module Google #:nodoc:
-  class APIClient #:nodoc:
+module Google
+  class APIClient
     class ValidationError < StandardError
     end
 

@@ -14,8 +14,8 @@
 
 require 'json'
 
-module Google #:nodoc:
-  class APIClient #:nodoc:
+module Google
+  class APIClient
     ##
     # Provides a consistent interface by which to parse request and response
     # content.

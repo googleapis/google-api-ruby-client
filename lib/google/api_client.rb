@@ -17,7 +17,7 @@ require 'json'
 
 require 'google/api_client/discovery'
 
-module Google #:nodoc:
+module Google
   # TODO(bobaman): Document all this stuff.
 
   ##
