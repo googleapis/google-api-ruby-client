@@ -100,6 +100,10 @@ module Google #:nodoc:
       end)
     end
 
+    ##
+    # Returns the parsed discovery document.
+    #
+    # @return [Hash] The parsed JSON from the discovery document.
     def discovery_document
       return @discovery_document ||= (begin
         request = ['GET', self.discovery_uri.to_s, [], []]
@@ -119,6 +123,12 @@ module Google #:nodoc:
       end)
     end
 
+    ##
+    # Returns a list of services this client instance has performed discovery
+    # for.  This may return multiple versions of the same service.
+    #
+    # @return [Array]
+    #   A list of discovered <code>Google::APIClient::Service</code> objects.
     def discovered_services
       return @discovered_services ||= (begin
         service_names = self.discovery_document['data'].keys()
@@ -139,6 +149,13 @@ module Google #:nodoc:
       end)
     end
 
+    ##
+    # Returns the service object for a given service name and service version.
+    #
+    # @param [String, Symbol] service_name The service name.
+    # @param [String] service_version The desired version of the service.
+    #
+    # @return [Google::APIClient::Service] The service object.
     def discovered_service(service_name, service_version='v1')
       if !service_name.kind_of?(String) && !service_name.kind_of?(Symbol)
         raise TypeError,
@@ -154,6 +171,13 @@ module Google #:nodoc:
       return nil
     end
 
+    ##
+    # Returns the method object for a given RPC name and service version.
+    #
+    # @param [String, Symbol] rpc_name The RPC name of the desired method.
+    # @param [String] service_version The desired version of the service.
+    #
+    # @return [Google::APIClient::Method] The method object.
     def discovered_method(rpc_name, service_version='v1')
       if !rpc_name.kind_of?(String) && !rpc_name.kind_of?(Symbol)
         raise TypeError,
@@ -170,6 +194,16 @@ module Google #:nodoc:
       return nil
     end
 
+    ##
+    # Returns the service object with the highest version number.
+    #
+    # <em>Warning</em>: This method should be used with great care. As APIs
+    # are updated, minor differences between versions may cause
+    # incompatibilities. Requesting a specific version will avoid this issue.
+    #
+    # @param [String, Symbol] service_name The name of the service.
+    #
+    # @return [Google::APIClient::Service] The service object.
     def latest_service(service_name)
       if !service_name.kind_of?(String) && !service_name.kind_of?(Symbol)
         raise TypeError,
@@ -187,12 +221,37 @@ module Google #:nodoc:
       return versions[versions.keys.sort.last]
     end
 
+    ##
+    # Generates a request.
+    #
+    # @param [Google::APIClient::Method, String] api_method
+    #   The method object or the RPC name of the method being executed.
+    # @param [Hash, Array] parameters
+    #   The parameters to send to the method.
+    # @param [String] The body of the request.
+    # @param [Hash, Array] headers The HTTP headers for the request.
+    # @param [Hash] options
+    #   The configuration parameters for the request.
+    #   - <code>:service_version</code> — 
+    #     The service version.  Only used if <code>api_method</code> is a
+    #     <code>String</code>.  Defaults to <code>'v1'</code>.
+    #   - <code>:parser</code> — 
+    #     The parser for the response.
+    #   - <code>:authorization</code> — 
+    #     The authorization mechanism for the response.  Used only if
+    #     <code>:signed</code> is <code>true</code>.
+    #   - <code>:signed</code> — 
+    #     <code>true</code> if the request must be signed, <code>false</code>
+    #     otherwise.  Defaults to <code>true</code>.
+    #
+    # @return [Array] The generated request.
     def generate_request(
         api_method, parameters={}, body='', headers=[], options={})
       options={
         :signed => true,
         :parser => self.parser,
-        :service_version => 'v1'
+        :service_version => 'v1',
+        :authorization => self.authorization
       }.merge(options)
       if api_method.kind_of?(String) || api_method.kind_of?(Symbol)
         api_method = self.discovered_method(
@@ -208,24 +267,68 @@ module Google #:nodoc:
       end
       request = api_method.generate_request(parameters, body, headers)
       if options[:signed]
-        request = self.sign_request(request)
+        request = self.sign_request(request, options[:authorization])
       end
       return request
     end
 
+    ##
+    # Generates a request and transmits it.
+    #
+    # @param [Google::APIClient::Method, String] api_method
+    #   The method object or the RPC name of the method being executed.
+    # @param [Hash, Array] parameters
+    #   The parameters to send to the method.
+    # @param [String] The body of the request.
+    # @param [Hash, Array] headers The HTTP headers for the request.
+    # @param [Hash] options
+    #   The configuration parameters for the request.
+    #   - <code>:service_version</code> — 
+    #     The service version.  Only used if <code>api_method</code> is a
+    #     <code>String</code>.  Defaults to <code>'v1'</code>.
+    #   - <code>:adapter</code> — 
+    #     The HTTP adapter.
+    #   - <code>:parser</code> — 
+    #     The parser for the response.
+    #   - <code>:authorization</code> — 
+    #     The authorization mechanism for the response.  Used only if
+    #     <code>:signed</code> is <code>true</code>.
+    #   - <code>:signed</code> — 
+    #     <code>true</code> if the request must be signed, <code>false</code>
+    #     otherwise.  Defaults to <code>true</code>.
+    #
+    # @return [Array] The response from the API.
     def execute(api_method, parameters={}, body='', headers=[], options={})
       request = self.generate_request(
         api_method, parameters, body, headers, options
       )
-      return self.transmit_request(request)
+      return self.transmit_request(
+        request,
+        options[:adapter] || self.http_adapter
+      )
     end
 
+    ##
+    # Transmits the request using the current HTTP adapter.
+    #
+    # @param [Array] request The request to transmit.
+    # @param [#transmit] adapter The HTTP adapter.
+    #
+    # @return [Array] The response from the server.
     def transmit_request(request, adapter=self.http_adapter)
       ::HTTPAdapter.transmit(request, adapter)
     end
 
-    def sign_request(request)
-      return self.authorization.generate_authenticated_request(
+    ##
+    # Signs a request using the current authorization mechanism.
+    #
+    # @param [Array] request The request to sign.
+    # @param [#generate_authenticated_request] authorization
+    #   The authorization mechanism.
+    #
+    # @return [Array] The signed request.
+    def sign_request(request, authorization=self.authorization)
+      return authorization.generate_authenticated_request(
         :request => request
       )
     end
