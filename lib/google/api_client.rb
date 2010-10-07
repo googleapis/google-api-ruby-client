@@ -245,6 +245,14 @@ module Google
     #     otherwise.  Defaults to <code>true</code>.
     #
     # @return [Array] The generated request.
+    #
+    # @example
+    #   request = client.generate_request(
+    #     'chili.activities.list',
+    #     {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'},
+    #     '', [], {:signed => true}
+    #   )
+    #   method, uri, headers, body = request
     def generate_request(
         api_method, parameters={}, body='', headers=[], options={})
       options={
