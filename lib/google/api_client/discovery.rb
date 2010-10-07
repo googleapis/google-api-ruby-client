@@ -138,6 +138,10 @@ module Google
       # Returns a <code>String</code> representation of the service's state.
       #
       # @return [String] The service's state, as a <code>String</code>.
+      #
+      # @example
+      #   # Discover available methods
+      #   method_names = client.discovered_service('buzz').to_h.keys
       def inspect
         sprintf(
           "#<%s:%#0x NAME:%s>", self.class.to_s, self.object_id, self.name
