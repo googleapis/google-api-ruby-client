@@ -149,6 +149,8 @@ describe Google::APIClient, 'configured for the prediction API' do
     @client.discovered_services <<
       Google::APIClient::Service.new('two', 'v1', {})
     @client.discovered_services <<
+      Google::APIClient::Service.new('two', 'v1.1-r1c3', {})
+    @client.discovered_services <<
       Google::APIClient::Service.new('two', 'v2', {})
     @client.latest_service('two').version.should == 'v2'
   end

@@ -7,11 +7,8 @@ License::   Apache 2.0
 
 == Description
 
-The Google API Ruby Client makes it trivial to discover and access supported APIs.
-
-== Features
-
-* A feature list goes here.
+The Google API Ruby Client makes it trivial to discover and access supported
+APIs.
 
 == Example Usage
 
