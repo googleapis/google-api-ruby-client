@@ -32,7 +32,7 @@ APIs.
         'scope' => 'https://www.googleapis.com/auth/buzz'
       }
     )
-    client.authorization.authorization_uri(
+    redirect_uri = client.authorization.authorization_uri(
       :additional_parameters => {
         'domain' => client.authorization.client_credential_key,
         'scope' => 'https://www.googleapis.com/auth/buzz'
@@ -41,7 +41,7 @@ APIs.
     # Redirect user here
     client.authorization.fetch_token_credential!(:verifier => '12345')
     response = client.execute(
-      'buzz.activities.list',
+      'chili.activities.list',
       {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'},
       '', [], {:signed => true}
     )
