@@ -12,6 +12,7 @@ APIs.
 
 == Example Usage
 
+    # Initialize the client
     require 'google/api_client'
     require 'signet/oauth_1/client'
     client = Google::APIClient.new(
@@ -40,6 +41,11 @@ APIs.
     )
     # Redirect user here
     client.authorization.fetch_token_credential!(:verifier => '12345')
+
+    # Discover available methods
+    method_names = client.discovered_service('buzz').to_h.keys
+
+    # Make an API call
     response = client.execute(
       'chili.activities.list',
       {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'},
