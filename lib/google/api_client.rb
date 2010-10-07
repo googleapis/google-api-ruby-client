@@ -298,6 +298,14 @@ module Google
     #     otherwise.  Defaults to <code>true</code>.
     #
     # @return [Array] The response from the API.
+    #
+    # @example
+    #   response = client.execute(
+    #     'chili.activities.list',
+    #     {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'},
+    #     '', [], {:signed => true}
+    #   )
+    #   status, headers, body = response
     def execute(api_method, parameters={}, body='', headers=[], options={})
       request = self.generate_request(
         api_method, parameters, body, headers, options

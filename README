@@ -13,18 +13,37 @@ APIs.
 == Example Usage
 
     require 'google/api_client'
-    client = Google::APIClient.new(:service => 'buzz')
+    require 'signet/oauth_1/client'
+    client = Google::APIClient.new(
+      :service => 'buzz',
+      :authorization => Signet::OAuth1::Client.new(
+        :temporary_credential_uri =>
+          'https://www.google.com/accounts/OAuthGetRequestToken',
+        :authorization_uri =>
+          'https://www.google.com/buzz/api/auth/OAuthAuthorizeToken',
+        :token_credential_uri =>
+          'https://www.google.com/accounts/OAuthGetAccessToken',
+        :client_credential_key => 'anonymous',
+        :client_credential_secret => 'anonymous'
+      )
+    )
     client.authorization.fetch_temporary_credential!(
       :additional_parameters => {
         'scope' => 'https://www.googleapis.com/auth/buzz'
       }
     )
-    client.authorization.authorization_uri
+    client.authorization.authorization_uri(
+      :additional_parameters => {
+        'domain' => client.authorization.client_credential_key,
+        'scope' => 'https://www.googleapis.com/auth/buzz'
+      }
+    )
     # Redirect user here
     client.authorization.fetch_token_credential!(:verifier => '12345')
     response = client.execute(
       'buzz.activities.list',
-      'scope' => '@self', 'userId' => '@me', 'alt' => 'json'
+      {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'},
+      '', [], {:signed => true}
     )
     status, headers, body = response
 
