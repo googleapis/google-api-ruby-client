@@ -377,14 +377,72 @@ module Google
       #
       # @param [Hash, Array] parameters
       #   The parameters to send.
-      # @param [String] body The body for the HTTP request.
+      # @param [String, StringIO] body The body for the HTTP request.
       # @param [Hash, Array] headers The HTTP headers for the request.
       #
       # @return [Array] The generated HTTP request.
       def generate_request(parameters={}, body='', headers=[])
+        if body.respond_to?(:string)
+          body = body.string
+        elsif body.respond_to?(:to_str)
+          body = body.to_str
+        else
+          raise TypeError, "Expected String or StringIO, got #{body.class}."
+        end
+        if !headers.kind_of?(Array) && !headers.kind_of?(Hash)
+          raise TypeError, "Expected Hash or Array, got #{headers.class}."
+        end
         method = self.description['httpMethod'] || 'GET'
         uri = self.generate_uri(parameters)
+        headers = headers.to_a if headers.kind_of?(Hash)
         return [method, uri.to_str, headers, [body]]
+      end
+
+      ##
+      # Returns a <code>Hash</code> of the parameter descriptions for
+      # this method.
+      #
+      # @return [Hash] The parameter descriptions.
+      def parameter_descriptions
+        @parameter_descriptions ||= Hash[self.description['parameters'] || {}]
+      end
+
+      ##
+      # Returns an <code>Array</code> of the parameters for this method.
+      #
+      # @return [Array] The parameters.
+      def parameters
+        @parameters ||= Hash[self.description['parameters'] || {}].keys
+      end
+
+      ##
+      # Returns an <code>Array</code> of the required parameters for this
+      # method.
+      #
+      # @return [Array] The required parameters.
+      #
+      # @example
+      #   # A list of all required parameters.
+      #   method.required_parameters
+      def required_parameters
+        @required_parameters ||= Hash[self.parameter_descriptions.select do |k, v|
+          v['required']
+        end].keys
+      end
+
+      ##
+      # Returns an <code>Array</code> of the optional parameters for this
+      # method.
+      #
+      # @return [Array] The optional parameters.
+      #
+      # @example
+      #   # A list of all optional parameters.
+      #   method.optional_parameters
+      def optional_parameters
+        @optional_parameters ||= Hash[self.parameter_descriptions.reject do |k, v|
+          v['required']
+        end].keys
       end
 
       ##
@@ -397,8 +455,7 @@ module Google
       # @return [NilClass] <code>nil</code> if validation passes.
       def validate_parameters(parameters={})
         parameters = self.normalize_parameters(parameters)
-        parameter_description = self.description['parameters'] || {}
-        required_variables = Hash[parameter_description.select do |k, v|
+        required_variables = Hash[self.parameter_descriptions.select do |k, v|
           v['required']
         end].keys
         missing_variables = required_variables - parameters.keys
@@ -407,8 +464,8 @@ module Google
             "Missing required parameters: #{missing_variables.join(', ')}."
         end
         parameters.each do |k, v|
-          if parameter_description[k]
-            pattern = parameter_description[k]['pattern']
+          if self.parameter_descriptions[k]
+            pattern = self.parameter_descriptions[k]['pattern']
             if pattern
               regexp = Regexp.new("^#{pattern}$")
               if v !~ regexp

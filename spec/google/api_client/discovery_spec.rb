@@ -160,9 +160,25 @@ describe Google::APIClient, 'configured for the prediction API' do
     @client.latest_service('bogus').should == nil
   end
 
-  it 'should generate requests against the correct URIs' do
+  it 'should generate valid requests' do
     request = @client.generate_request(
       'prediction.training.insert',
+      {'query' => '12345'},
+      '',
+      [],
+      {:signed => false}
+    )
+    method, uri, headers, body = request
+    method.should == 'POST'
+    uri.should ==
+      'https://www.googleapis.com/prediction/v1/training?query=12345'
+    Hash[headers].should == {}
+    body.should respond_to(:each)
+  end
+
+  it 'should generate requests against the correct URIs' do
+    request = @client.generate_request(
+      :'prediction.training.insert',
       {'query' => '12345'},
       '',
       [],
@@ -174,8 +190,9 @@ describe Google::APIClient, 'configured for the prediction API' do
   end
 
   it 'should generate requests against the correct URIs' do
+    prediction = @client.discovered_service('prediction', 'v1')
     request = @client.generate_request(
-      :'prediction.training.insert',
+      prediction.training.insert,
       {'query' => '12345'},
       '',
       [],
@@ -219,6 +236,12 @@ describe Google::APIClient, 'configured for the prediction API' do
   it 'should raise an error for bogus methods' do
     (lambda do
       @client.generate_request(42)
+    end).should raise_error(TypeError)
+  end
+
+  it 'should raise an error for bogus methods' do
+    (lambda do
+      @client.generate_request(@client.discovered_service('prediction'))
     end).should raise_error(TypeError)
   end
 end

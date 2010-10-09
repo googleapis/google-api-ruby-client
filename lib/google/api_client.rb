@@ -265,13 +265,13 @@ module Google
         api_method = self.discovered_method(
           api_method.to_s, options[:service_version]
         )
-      elsif !api_method.kind_of?(::Google::APIClient::Service)
+      elsif !api_method.kind_of?(::Google::APIClient::Method)
         raise TypeError,
-          "Expected String, Symbol, or Google::APIClient::Service, " +
+          "Expected String, Symbol, or Google::APIClient::Method, " +
           "got #{api_method.class}."
       end
       unless api_method
-        raise ArgumentError, "API method does not exist."
+        raise ArgumentError, "API method could not be found."
       end
       request = api_method.generate_request(parameters, body, headers)
       if options[:signed]
