@@ -162,6 +162,7 @@ end
 
 def execute(options={})
   require 'signet/oauth_1/client'
+  require 'yaml'
   config_file = File.expand_path('~/.google-api.yaml')
   signed = File.exist?(config_file)
   rpcname = ARGV.detect { |p| p =~ /^[a-z0-9_-]+\.[a-z0-9_\.-]+$/i }
