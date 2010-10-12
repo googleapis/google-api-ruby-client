@@ -20,7 +20,7 @@ namespace :gem do
     s.rdoc_options.concat ['--main',  'README']
 
     s.add_runtime_dependency('signet', '>= 0.1.1')
-    s.add_runtime_dependency('addressable', '>= 2.2.1')
+    s.add_runtime_dependency('addressable', '>= 2.2.2')
     s.add_runtime_dependency('httpadapter', '>= 0.2.0')
     s.add_runtime_dependency('json', '>= 1.1.9')
 
