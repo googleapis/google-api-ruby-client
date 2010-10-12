@@ -113,13 +113,13 @@ describe Google::APIClient, 'configured for the prediction API' do
   end
 
   it 'should correctly determine the latest version' do
-    @client.latest_service('prediction').version.should_not == 'v1'
-    @client.latest_service(:prediction).version.should_not == 'v1'
+    @client.latest_service_version('prediction').version.should_not == 'v1'
+    @client.latest_service_version(:prediction).version.should_not == 'v1'
   end
 
   it 'should raise an error for bogus services' do
     (lambda do
-      @client.latest_service(42)
+      @client.latest_service_version(42)
     end).should raise_error(TypeError)
   end
 
@@ -138,7 +138,7 @@ describe Google::APIClient, 'configured for the prediction API' do
       Google::APIClient::Service.new('magic', 'v2.1', {})
     @client.discovered_services <<
       Google::APIClient::Service.new('magic', 'v10.0', {})
-    @client.latest_service('magic').version.should == 'v10.1'
+    @client.latest_service_version('magic').version.should == 'v10.1'
   end
 
   it 'should correctly determine the latest version' do
@@ -152,21 +152,20 @@ describe Google::APIClient, 'configured for the prediction API' do
       Google::APIClient::Service.new('two', 'v1.1-r1c3', {})
     @client.discovered_services <<
       Google::APIClient::Service.new('two', 'v2', {})
-    @client.latest_service('two').version.should == 'v2'
+    @client.discovered_services <<
+      Google::APIClient::Service.new('two', 'v2beta1', {})
+    @client.latest_service_version('two').version.should == 'v2'
   end
 
   it 'should return nil for bogus service names' do
     # Sanity check the algorithm
-    @client.latest_service('bogus').should == nil
+    @client.latest_service_version('bogus').should == nil
   end
 
   it 'should generate valid requests' do
     request = @client.generate_request(
       'prediction.training.insert',
-      {'query' => '12345'},
-      '',
-      [],
-      {:signed => false}
+      {'query' => '12345'}
     )
     method, uri, headers, body = request
     method.should == 'POST'
@@ -179,10 +178,7 @@ describe Google::APIClient, 'configured for the prediction API' do
   it 'should generate requests against the correct URIs' do
     request = @client.generate_request(
       :'prediction.training.insert',
-      {'query' => '12345'},
-      '',
-      [],
-      {:signed => false}
+      {'query' => '12345'}
     )
     method, uri, headers, body = request
     uri.should ==
@@ -193,10 +189,7 @@ describe Google::APIClient, 'configured for the prediction API' do
     prediction = @client.discovered_service('prediction', 'v1')
     request = @client.generate_request(
       prediction.training.insert,
-      {'query' => '12345'},
-      '',
-      [],
-      {:signed => false}
+      {'query' => '12345'}
     )
     method, uri, headers, body = request
     uri.should ==
@@ -204,14 +197,12 @@ describe Google::APIClient, 'configured for the prediction API' do
   end
 
   it 'should generate signed requests' do
+    @client.authorization = :oauth_1
     @client.authorization.token_credential_key = '12345'
     @client.authorization.token_credential_secret = '12345'
     request = @client.generate_request(
       'prediction.training.insert',
-      {'query' => '12345'},
-      '',
-      [],
-      {:signed => true}
+      {'query' => '12345'}
     )
     method, uri, headers, body = request
     headers = Hash[headers]
@@ -220,14 +211,12 @@ describe Google::APIClient, 'configured for the prediction API' do
   end
 
   it 'should not be able to execute improperly authorized requests' do
+    @client.authorization = :oauth_1
     @client.authorization.token_credential_key = '12345'
     @client.authorization.token_credential_secret = '12345'
     response = @client.execute(
       'prediction.training.insert',
-      {'query' => '12345'},
-      '',
-      [],
-      {:signed => true}
+      {'query' => '12345'}
     )
     status, headers, body = response
     status.should == 401

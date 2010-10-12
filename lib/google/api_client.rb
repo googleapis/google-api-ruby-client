@@ -33,11 +33,11 @@ module Google
       @options = {
         # TODO: What configuration options need to go here?
       }.merge(options)
-      if !self.authorization.respond_to?(:generate_authenticated_request)
-        raise TypeError,
-          'Expected authorization mechanism to respond to ' +
-          '#generate_authenticated_request.'
-      end
+      # Force immediate type-checking and short-cut resolution
+      self.parser
+      self.authorization
+      self.http_adapter
+      return self
     end
 
     ##
@@ -53,8 +53,11 @@ module Google
 
     ##
     # Returns the authorization mechanism used by the client.
+    #
+    # @return [#generate_authenticated_request] The authorization mechanism.
     def authorization
-      unless @options[:authorization]
+      case @options[:authorization]
+      when :oauth_1, :oauth
         require 'signet/oauth_1/client'
         # NOTE: Do not rely on this default value, as it may change
         @options[:authorization] = Signet::OAuth1::Client.new(
@@ -67,8 +70,27 @@ module Google
           :client_credential_key => 'anonymous',
           :client_credential_secret => 'anonymous'
         )
+      when nil
+        # No authorization mechanism
+      else
+        if !@options[:authorization].respond_to?(
+            :generate_authenticated_request)
+          raise TypeError,
+            'Expected authorization mechanism to respond to ' +
+            '#generate_authenticated_request.'
+        end
       end
       return @options[:authorization]
+    end
+
+    ##
+    # Sets the authorization mechanism used by the client.
+    #
+    # @param [#generate_authenticated_request] new_authorization
+    #   The new authorization mechanism.
+    def authorization=(new_authorization)
+      @options[:authorization] = new_authorization
+      return self.authorization
     end
 
     ##
@@ -204,21 +226,15 @@ module Google
     # @param [String, Symbol] service_name The name of the service.
     #
     # @return [Google::APIClient::Service] The service object.
-    def latest_service(service_name)
+    def latest_service_version(service_name)
       if !service_name.kind_of?(String) && !service_name.kind_of?(Symbol)
         raise TypeError,
           "Expected String or Symbol, got #{service_name.class}."
       end
       service_name = service_name.to_s
-      versions = {}
-      for service in self.discovered_services
-        next if service.name != service_name
-        sortable_version = service.version.gsub(/^v/, '').split('.').map do |v|
-          v.to_i
-        end
-        versions[sortable_version] = service
-      end
-      return versions[versions.keys.sort.last]
+      return (self.discovered_services.select do |service|
+        service.name == service_name
+      end).sort.last
     end
 
     ##
@@ -242,25 +258,31 @@ module Google
     #     <code>:signed</code> is <code>true</code>.
     #   - <code>:signed</code> — 
     #     <code>true</code> if the request must be signed, <code>false</code>
-    #     otherwise.  Defaults to <code>true</code>.
+    #     otherwise.  Defaults to <code>true</code> if an authorization
+    #     mechanism has been set, <code>false</code> otherwise.
     #
     # @return [Array] The generated request.
     #
     # @example
     #   request = client.generate_request(
     #     'chili.activities.list',
-    #     {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'},
-    #     '', [], {:signed => true}
+    #     {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'}
     #   )
     #   method, uri, headers, body = request
     def generate_request(
         api_method, parameters={}, body='', headers=[], options={})
       options={
-        :signed => true,
         :parser => self.parser,
         :service_version => 'v1',
         :authorization => self.authorization
       }.merge(options)
+      # The default value for the :signed option depends on whether an
+      # authorization mechanism has been set.
+      if options[:authorization]
+        options = {:signed => true}.merge(options)
+      else
+        options = {:signed => false}.merge(options)
+      end
       if api_method.kind_of?(String) || api_method.kind_of?(Symbol)
         api_method = self.discovered_method(
           api_method.to_s, options[:service_version]
@@ -310,8 +332,7 @@ module Google
     # @example
     #   response = client.execute(
     #     'chili.activities.list',
-    #     {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'},
-    #     '', [], {:signed => true}
+    #     {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'}
     #   )
     #   status, headers, body = response
     def execute(api_method, parameters={}, body='', headers=[], options={})

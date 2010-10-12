@@ -139,6 +139,44 @@ module Google
       end
 
       ##
+      # Compares two versions of a service.
+      #
+      # @param [Object] other The service to compare.
+      #
+      # @return [Integer]
+      #   <code>-1</code> if the service is older than <code>other</code>.
+      #   <code>0</code> if the service is the same as <code>other</code>.
+      #   <code>1</code> if the service is newer than <code>other</code>.
+      #   <code>nil</code> if the service cannot be compared to
+      #   <code>other</code>.
+      def <=>(other)
+        # We can only compare versions of the same service
+        if other.kind_of?(self.class) && self.name == other.name
+          split_version = lambda do |version|
+            dotted_version = version[/^v?(\d+(.\d+)*)-?(.*?)?$/, 1]
+            suffix = version[/^v?(\d+(.\d+)*)-?(.*?)?$/, 3]
+            [dotted_version.split('.').map { |v| v.to_i }, suffix]
+          end
+          self_sortable, self_suffix = split_version.call(self.version)
+          other_sortable, other_suffix = split_version.call(other.version)
+          result = self_sortable <=> other_sortable
+          if result != 0
+            return result
+          # If the dotted versions are equal, check the suffix.
+          # An omitted suffix should be sorted after an included suffix.
+          elsif self_suffix == ''
+            return 1
+          elsif other_suffix == ''
+            return -1
+          else
+            return self_suffix <=> other_suffix
+          end
+        else
+          return nil
+        end
+      end
+
+      ##
       # Returns a <code>String</code> representation of the service's state.
       #
       # @return [String] The service's state, as a <code>String</code>.

@@ -34,6 +34,24 @@ describe Google::APIClient, 'with default configuration' do
     @client.parser.should be(Google::APIClient::JSONParser)
   end
 
+  it 'should not use an authorization mechanism' do
+    @client.authorization.should be_nil
+  end
+end
+
+describe Google::APIClient, 'with default oauth configuration' do
+  before do
+    @client = Google::APIClient.new(:authorization => :oauth_1)
+  end
+
+  it 'should make its version number available' do
+    ::Google::APIClient::VERSION::STRING.should be_instance_of(String)
+  end
+
+  it 'should use the default JSON parser' do
+    @client.parser.should be(Google::APIClient::JSONParser)
+  end
+
   it 'should use the default OAuth1 client configuration' do
     @client.authorization.temporary_credential_uri.to_s.should ==
       'https://www.google.com/accounts/OAuthGetRequestToken'

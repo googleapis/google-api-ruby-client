@@ -17,6 +17,7 @@ APIs.
   require 'signet/oauth_1/client'
   client = Google::APIClient.new(
     :service => 'buzz',
+    # Buzz has API-specific endpoints
     :authorization => Signet::OAuth1::Client.new(
       :temporary_credential_uri =>
         'https://www.google.com/accounts/OAuthGetRequestToken',
@@ -48,8 +49,7 @@ APIs.
   # Make an API call
   response = client.execute(
     'chili.activities.list',
-    {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'},
-    '', [], {:signed => true}
+    {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'}
   )
   status, headers, body = response
 
