@@ -38,6 +38,21 @@ OptionParser.new do |opts|
       "--service-version <id>", String, "Select service version") do |id|
     options[:service_version] = id
   end
+  opts.on(
+      "--content-type <format>", String, "Content-Type for request") do |f|
+    # Resolve content type shortcuts
+    case f
+    when 'json'
+      f = 'application/json'
+    when 'xml'
+      f = 'application/xml'
+    when 'atom'
+      f = 'application/atom+xml'
+    when 'rss'
+      f = 'application/rss+xml'
+    end
+    options[:content_type] = f
+  end
   opts.on("--fuzz [rpcname]", String, "Fuzz an API or endpoint") do |rpcname|
     command = 'fuzz'
     options[:fuzz] = rpcname
@@ -193,8 +208,15 @@ def execute(options={})
   request_body = ''
   input_streams, _, _ = IO.select([STDIN], [], [], 0)
   request_body = STDIN.read || '' if input_streams
+  headers = []
+  if options[:content_type]
+    headers << ['Content-Type', options[:content_type]]
+  elsif request_body
+    # Default to JSON
+    headers << ['Content-Type', 'application/json']
+  end
   response = client.execute(
-    method, parameters, request_body, [], {:signed => signed}
+    method, parameters, request_body, headers, {:signed => signed}
   )
   status, headers, body = response
   puts body
