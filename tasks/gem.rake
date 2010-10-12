@@ -13,6 +13,7 @@ namespace :gem do
     s.description = PKG_DESCRIPTION
 
     s.files = PKG_FILES.to_a
+    s.executables << 'google-api'
 
     s.has_rdoc = true
     s.extra_rdoc_files = %w( README )

@@ -1,0 +1,214 @@
+#!/usr/bin/env ruby
+
+bin_dir = File.expand_path("..", __FILE__)
+lib_dir = File.expand_path("../lib", bin_dir)
+
+$LOAD_PATH.unshift(lib_dir)
+$LOAD_PATH.uniq!
+
+OAUTH_SERVER_PORT = 12736
+
+require 'rubygems'
+require 'optparse'
+require 'google/api_client/version'
+require 'google/api_client'
+
+ARGV.unshift('--help') if ARGV.empty?
+
+command = 'execute'
+options = {}
+OptionParser.new do |opts|
+  opts.banner =
+    "Usage: google-api <rpcname> [options] -- <parameters>\n" +
+    "   or: google-api --oauth-login=<scope> [options]\n" +
+    "   or: google-api --fuzz [options]"
+
+  opts.separator ""
+
+  opts.on(
+      "--oauth-login <scope>", String, "Authorize for the scope") do |s|
+    command = 'oauth-login'
+    options[:scope] = s
+  end
+  opts.on(
+      "-s", "--service <name>", String, "Perform discovery on service") do |s|
+    options[:service_name] = s
+  end
+  opts.on(
+      "--service-version <id>", String, "Select service version") do |id|
+    options[:service_version] = id
+  end
+  opts.on("--fuzz [rpcname]", String, "Fuzz an API or endpoint") do |rpcname|
+    command = 'fuzz'
+    options[:fuzz] = rpcname
+  end
+
+  opts.on_tail("-v", "--verbose", "Run verbosely") do |v|
+    options[:verbose] = v
+  end
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+  opts.on_tail("--version", "Show version") do
+    puts "google-api-client (#{Google::APIClient::VERSION::STRING})"
+    exit
+  end
+end.parse!
+
+if command == 'oauth-login' # Guard to keep start-up time short
+  require 'webrick'
+  # Used for oauth login
+  class OAuthVerifierServlet < WEBrick::HTTPServlet::AbstractServlet
+    def do_GET(request, response)
+      $verifier ||= Addressable::URI.unencode_component(
+        request.request_uri.to_s[/\?.*oauth_verifier=([^&$]+)(&|$)/, 1]
+      )
+      response.status = WEBrick::HTTPStatus::RC_ACCEPTED
+      # This javascript will auto-close the tab after the verifier is obtained.
+      response.body = <<-HTML
+<html>
+  <head>
+    <script>
+      function closeWindow() { 
+        window.open('', '_self', '');
+        window.close();
+      }
+      setTimeout(closeWindow, 10);
+    </script>
+  </head>
+  <body>
+    You may close this window.
+  </body>
+</html>
+HTML
+      self.instance_variable_get('@server').stop
+    end
+  end
+end
+
+def oauth_login(options={})
+  require 'signet/oauth_1/client'
+  require 'launchy'
+  require 'yaml'
+  $verifier = nil
+  logger = WEBrick::Log.new('/dev/null') # TODO(bobaman): Cross-platform?
+  server = WEBrick::HTTPServer.new(
+    :Port => OAUTH_SERVER_PORT,
+    :Logger => logger,
+    :AccessLog => logger
+  )
+  trap("INT") { server.shutdown }
+
+  server.mount("/", OAuthVerifierServlet)
+
+  oauth_client = Signet::OAuth1::Client.new(
+    :temporary_credential_uri =>
+      'https://www.google.com/accounts/OAuthGetRequestToken',
+    :authorization_uri =>
+      'https://www.google.com/accounts/OAuthAuthorizeToken',
+    :token_credential_uri =>
+      'https://www.google.com/accounts/OAuthGetAccessToken',
+    :client_credential_key => 'anonymous',
+    :client_credential_secret => 'anonymous',
+    :callback => "http://localhost:#{OAUTH_SERVER_PORT}/"
+  )
+  scope = options[:scope]
+  # Special cases
+  case scope
+  when "https://www.googleapis.com/auth/buzz",
+      "https://www.googleapis.com/auth/buzz.readonly"
+    oauth_client.authorization_uri =
+      'https://www.google.com/buzz/api/auth/OAuthAuthorizeToken?' +
+      "domain=#{oauth_client.client_credential_key}&" +
+      "scope=#{scope}&" +
+      "xoauth_displayname=Google%20API%20Client"
+  end
+  oauth_client.fetch_temporary_credential!(:additional_parameters => {
+    :scope => scope,
+    :xoauth_displayname => 'Google API Client'
+  })
+
+  # Launch browser
+  Launchy::Browser.run(oauth_client.authorization_uri.to_s)
+
+  server.start
+  oauth_client.fetch_token_credential!(:verifier => $verifier)
+  config = {
+    "client_credential_key" => oauth_client.client_credential_key,
+    "client_credential_secret" => oauth_client.client_credential_secret,
+    "token_credential_key" => oauth_client.token_credential_key,
+    "token_credential_secret" => oauth_client.token_credential_secret
+  }
+  config_file = File.expand_path('~/.google-api.yaml')
+  open(config_file, 'w') { |file| file.write(YAML.dump(config)) }
+  exit(0)
+end
+
+def execute(options={})
+  config_file = File.expand_path('~/.google-api.yaml')
+  signed = File.exist?(config_file)
+  rpcname = ARGV.detect { |p| p =~ /^[a-z0-9_-]+\.[a-z0-9_\.-]+$/i }
+  if rpcname
+    ARGV.delete(rpcname)
+  else
+    STDERR.puts('Could not find rpcname.')
+    exit(1)
+  end
+  service_name = options[:service_name] || rpcname[/^([^\.]+)\./, 1]
+  client = Google::APIClient.new(:service => service_name)
+  if signed
+    if !client.authorization.kind_of?(Signet::OAuth1::Client)
+      STDERR.puts(
+        "Unexpected authorization mechanism: #{client.authorization.class}"
+      )
+      exit(1)
+    end
+    config = open(config_file, 'r') { |file| YAML.load(file.read) }
+    client.authorization.client_credential_key =
+      config["client_credential_key"]
+    client.authorization.client_credential_secret =
+      config["client_credential_secret"]
+    client.authorization.token_credential_key =
+      config["token_credential_key"]
+    client.authorization.token_credential_secret =
+      config["token_credential_secret"]
+  end
+  service_version =
+    options[:service_version] || client.latest_service(service_name).version
+  service = client.discovered_service(service_name, service_version)
+  method = service.to_h[rpcname]
+  if !method
+    STDERR.puts(
+      "Method #{rpcname} does not exist for " +
+      "#{service_name}-#{service_version}."
+    )
+    exit(1)
+  end
+  parameters = ARGV.inject({}) do |accu, pair|
+    name, value = pair.split('=', 2)
+    accu[name] = value
+    accu
+  end
+  request_body = ''
+  input_streams, _, _ = IO.select([STDIN], [], [], 0)
+  request_body = STDIN.read || '' if input_streams
+  response = client.execute(
+    method, parameters, request_body, [], {:signed => signed}
+  )
+  status, headers, body = response
+  puts body
+  exit(0)
+end
+
+def fuzz(options={})
+  STDERR.puts('API fuzzing not yet supported.')
+  if rpcname
+    # Fuzz just one method
+  else
+    # Fuzz the entire API
+  end
+  exit(1)
+end
+
+self.send(command.gsub(/-/, "_").to_sym, options)
