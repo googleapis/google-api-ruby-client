@@ -133,6 +133,8 @@ describe Google::APIClient, 'configured for the prediction API' do
     @client.discovered_services <<
       Google::APIClient::Service.new('magic', 'v1.10', {})
     @client.discovered_services <<
+      Google::APIClient::Service.new('magic', 'v10.0.1', {})
+    @client.discovered_services <<
       Google::APIClient::Service.new('magic', 'v10.1', {})
     @client.discovered_services <<
       Google::APIClient::Service.new('magic', 'v2.1', {})
