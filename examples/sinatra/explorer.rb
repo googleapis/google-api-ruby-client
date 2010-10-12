@@ -23,6 +23,8 @@ rescue LoadError
   exit(1)
 end
 
+enable :sessions
+
 CSS = <<-CSS
 /* http://meyerweb.com/eric/tools/css/reset/ */
 /* v1.0 | 20080212 */
@@ -308,7 +310,7 @@ end
 
 def service(service_name, service_version)
   unless service_version
-    service_version = client.latest_service(service_name).version
+    service_version = client.latest_service_version(service_name).version
   end
   client.discovered_service(service_name, service_version)
 end

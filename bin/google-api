@@ -161,6 +161,7 @@ def oauth_login(options={})
 end
 
 def execute(options={})
+  require 'signet/oauth_1/client'
   config_file = File.expand_path('~/.google-api.yaml')
   signed = File.exist?(config_file)
   rpcname = ARGV.detect { |p| p =~ /^[a-z0-9_-]+\.[a-z0-9_\.-]+$/i }
@@ -171,7 +172,10 @@ def execute(options={})
     exit(1)
   end
   service_name = options[:service_name] || rpcname[/^([^\.]+)\./, 1]
-  client = Google::APIClient.new(:service => service_name)
+  client = Google::APIClient.new(
+    :service => service_name,
+    :authorization => :oauth_1
+  )
   if signed
     if !client.authorization.kind_of?(Signet::OAuth1::Client)
       STDERR.puts(
@@ -190,7 +194,8 @@ def execute(options={})
       config["token_credential_secret"]
   end
   service_version =
-    options[:service_version] || client.latest_service(service_name).version
+    options[:service_version] ||
+    client.latest_service_version(service_name).version
   service = client.discovered_service(service_name, service_version)
   method = service.to_h[rpcname]
   if !method
