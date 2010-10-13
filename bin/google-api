@@ -21,17 +21,31 @@ OptionParser.new do |opts|
   opts.banner =
     "Usage: google-api <rpcname> [options] -- <parameters>\n" +
     "   or: google-api --oauth-login=<scope> [options]\n" +
+    "   or: google-api --interactive=<service> [options]\n" +
     "   or: google-api --fuzz [options]"
 
   opts.separator ""
 
   opts.on(
       "--oauth-login <scope>", String, "Authorize for the scope") do |s|
+    if command != 'execute'
+      STDERR.puts("Ambiguous command: #{command}")
+      exit(1)
+    end
     command = 'oauth-login'
     options[:scope] = s
   end
   opts.on(
       "-s", "--service <name>", String, "Perform discovery on service") do |s|
+    options[:service_name] = s
+  end
+  opts.on(
+      "-i", "--interactive <name>", String, "Start interactive session") do |s|
+    if command != 'execute'
+      STDERR.puts("Ambiguous command: #{command}")
+      exit(1)
+    end
+    command = 'interactive'
     options[:service_name] = s
   end
   opts.on(
@@ -54,6 +68,10 @@ OptionParser.new do |opts|
     options[:content_type] = f
   end
   opts.on("--fuzz [rpcname]", String, "Fuzz an API or endpoint") do |rpcname|
+    if command != 'execute'
+      STDERR.puts("Ambiguous command: #{command}")
+      exit(1)
+    end
     command = 'fuzz'
     options[:fuzz] = rpcname
   end
@@ -150,6 +168,7 @@ def oauth_login(options={})
   server.start
   oauth_client.fetch_token_credential!(:verifier => $verifier)
   config = {
+    "scope" => scope,
     "client_credential_key" => oauth_client.client_credential_key,
     "client_credential_secret" => oauth_client.client_credential_secret,
     "token_credential_key" => oauth_client.token_credential_key,
@@ -227,6 +246,40 @@ def execute(options={})
   status, headers, body = response
   puts body
   exit(0)
+end
+
+def interactive(options={})
+  require 'signet/oauth_1/client'
+  require 'yaml'
+  config_file = File.expand_path('~/.google-api.yaml')
+  signed = File.exist?(config_file)
+
+  $client = Google::APIClient.new(
+    :service => options[:service_name],
+    :authorization => (signed ? :oauth_1 : nil)
+  )
+
+  if signed
+    if $client.authorization &&
+        !$client.authorization.kind_of?(Signet::OAuth1::Client)
+      STDERR.puts(
+        "Unexpected authorization mechanism: #{$client.authorization.class}"
+      )
+      exit(1)
+    end
+    config = open(config_file, 'r') { |file| YAML.load(file.read) }
+    $client.authorization.client_credential_key =
+      config["client_credential_key"]
+    $client.authorization.client_credential_secret =
+      config["client_credential_secret"]
+    $client.authorization.token_credential_key =
+      config["token_credential_key"]
+    $client.authorization.token_credential_secret =
+      config["token_credential_secret"]
+  end
+
+  require 'irb'
+  IRB.start(__FILE__)
 end
 
 def fuzz(options={})
