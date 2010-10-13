@@ -7,7 +7,9 @@ namespace :spec do
     if RCOV_ENABLED
       if `which rcov`.strip == ""
         STDERR.puts "Please install rcov:"
-        STDERR.puts "sudo gem install relevance-rcov"
+        STDERR.puts(
+          "sudo gem install relevance-rcov --source http://gems.github.com/"
+        )
         exit(1)
       end
       t.rcov = true

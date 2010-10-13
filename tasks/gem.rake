@@ -19,14 +19,14 @@ namespace :gem do
     s.extra_rdoc_files = %w( README )
     s.rdoc_options.concat ['--main',  'README']
 
-    s.add_runtime_dependency('signet', '>= 0.1.1')
+    s.add_runtime_dependency('signet', '>= 0.1.3')
     s.add_runtime_dependency('addressable', '>= 2.2.2')
     s.add_runtime_dependency('httpadapter', '>= 0.2.0')
     s.add_runtime_dependency('json', '>= 1.1.9')
     s.add_runtime_dependency('extlib', '>= 0.9.15')
 
     s.add_development_dependency('rake', '>= 0.7.3')
-    s.add_development_dependency('rspec', '~> 1.3.0')
+    s.add_development_dependency('rspec', '~> 1.2.9')
     s.add_development_dependency('launchy', '>= 0.3.2')
     s.add_development_dependency('diff-lcs', '>= 1.1.2')
 

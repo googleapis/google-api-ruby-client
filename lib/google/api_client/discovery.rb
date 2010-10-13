@@ -442,7 +442,9 @@ module Google
       #
       # @return [Hash] The parameter descriptions.
       def parameter_descriptions
-        @parameter_descriptions ||= Hash[self.description['parameters'] || {}]
+        @parameter_descriptions ||= (
+          self.description['parameters'] || {}
+        ).inject({}) { |h,(k,v)| h[k]=v; h }
       end
 
       ##
@@ -450,7 +452,9 @@ module Google
       #
       # @return [Array] The parameters.
       def parameters
-        @parameters ||= Hash[self.description['parameters'] || {}].keys
+        @parameters ||= ((
+          self.description['parameters'] || {}
+        ).inject({}) { |h,(k,v)| h[k]=v; h }).keys
       end
 
       ##
@@ -463,9 +467,9 @@ module Google
       #   # A list of all required parameters.
       #   method.required_parameters
       def required_parameters
-        @required_parameters ||= Hash[self.parameter_descriptions.select do |k, v|
+        @required_parameters ||= ((self.parameter_descriptions.select do |k, v|
           v['required']
-        end].keys
+        end).inject({}) { |h,(k,v)| h[k]=v; h }).keys
       end
 
       ##
@@ -478,9 +482,9 @@ module Google
       #   # A list of all optional parameters.
       #   method.optional_parameters
       def optional_parameters
-        @optional_parameters ||= Hash[self.parameter_descriptions.reject do |k, v|
+        @optional_parameters ||= ((self.parameter_descriptions.reject do |k, v|
           v['required']
-        end].keys
+        end).inject({}) { |h,(k,v)| h[k]=v; h }).keys
       end
 
       ##
@@ -493,9 +497,9 @@ module Google
       # @return [NilClass] <code>nil</code> if validation passes.
       def validate_parameters(parameters={})
         parameters = self.normalize_parameters(parameters)
-        required_variables = Hash[self.parameter_descriptions.select do |k, v|
+        required_variables = ((self.parameter_descriptions.select do |k, v|
           v['required']
-        end].keys
+        end).inject({}) { |h,(k,v)| h[k]=v; h }).keys
         missing_variables = required_variables - parameters.keys
         if missing_variables.size > 0
           raise ArgumentError,

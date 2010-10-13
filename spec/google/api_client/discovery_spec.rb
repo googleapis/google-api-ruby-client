@@ -173,7 +173,7 @@ describe Google::APIClient, 'configured for the prediction API' do
     method.should == 'POST'
     uri.should ==
       'https://www.googleapis.com/prediction/v1/training?query=12345'
-    Hash[headers].should == {}
+    (headers.inject({}) { |h,(k,v)| h[k]=v; h }).should == {}
     body.should respond_to(:each)
   end
 
@@ -207,7 +207,7 @@ describe Google::APIClient, 'configured for the prediction API' do
       {'query' => '12345'}
     )
     method, uri, headers, body = request
-    headers = Hash[headers]
+    headers = headers.inject({}) { |h,(k,v)| h[k]=v; h }
     headers.keys.should include('Authorization')
     headers['Authorization'].should =~ /^OAuth/
   end
