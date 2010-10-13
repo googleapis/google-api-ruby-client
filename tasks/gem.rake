@@ -26,6 +26,8 @@ namespace :gem do
     s.add_runtime_dependency('extlib', '>= 0.9.15')
 
     s.add_development_dependency('rack', '= 1.2.0')
+    s.add_development_dependency('sinatra', '>= 1.0')
+    s.add_development_dependency('liquid', '>= 2.2.2')
     s.add_development_dependency('rake', '>= 0.7.3')
     s.add_development_dependency('rspec', '~> 1.2.9')
     s.add_development_dependency('launchy', '>= 0.3.2')

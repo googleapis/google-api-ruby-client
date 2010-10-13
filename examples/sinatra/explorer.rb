@@ -13,6 +13,14 @@ $LOAD_PATH.uniq!
 
 require 'rubygems'
 begin
+  gem 'rack', '= 1.2.0'
+  require 'rack'
+rescue LoadError
+  STDERR.puts "Missing dependencies."
+  STDERR.puts "sudo gem install rack -v 1.2.0"
+  exit(1)
+end
+begin
   require 'sinatra'
   require 'liquid'
   require 'signet/oauth_1/client'
