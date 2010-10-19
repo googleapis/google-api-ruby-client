@@ -517,3 +517,7 @@ get '/favicon.ico' do
     HTTPAdapter::NetHTTPRequestAdapter
   )
 end
+
+get '/' do
+  redirect '/explore/buzz/'
+end
