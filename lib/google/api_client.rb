@@ -71,6 +71,14 @@ module Google
           :client_credential_key => 'anonymous',
           :client_credential_secret => 'anonymous'
         )
+      when :two_legged_oauth_1, :two_legged_oauth
+        require 'signet/oauth_1/client'
+        # NOTE: Do not rely on this default value, as it may change
+        @options[:authorization] = Signet::OAuth1::Client.new(
+          :client_credential_key => nil,
+          :client_credential_secret => nil,
+          :two_legged => true
+        )
       when nil
         # No authorization mechanism
       else

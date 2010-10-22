@@ -19,7 +19,7 @@ namespace :gem do
     s.extra_rdoc_files = %w( README )
     s.rdoc_options.concat ['--main',  'README']
 
-    s.add_runtime_dependency('signet', '>= 0.1.3')
+    s.add_runtime_dependency('signet', '>= 0.1.4')
     s.add_runtime_dependency('addressable', '>= 2.2.2')
     s.add_runtime_dependency('httpadapter', '>= 0.2.0')
     s.add_runtime_dependency('json', '>= 1.1.9')
