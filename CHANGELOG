@@ -1,3 +1,8 @@
+== 0.1.2
+
+* added support for two-legged OAuth
+* moved some development dependencies into runtime
+
 == 0.1.1
 
 * substantial improvements to the command line interface
