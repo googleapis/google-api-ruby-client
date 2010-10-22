@@ -155,7 +155,11 @@ module Google
           split_version = lambda do |version|
             dotted_version = version[/^v?(\d+(.\d+)*)-?(.*?)?$/, 1]
             suffix = version[/^v?(\d+(.\d+)*)-?(.*?)?$/, 3]
-            [dotted_version.split('.').map { |v| v.to_i }, suffix]
+            if dotted_version && suffix
+              [dotted_version.split('.').map { |v| v.to_i }, suffix]
+            else
+              [[-1], version]
+            end
           end
           self_sortable, self_suffix = split_version.call(self.version)
           other_sortable, other_suffix = split_version.call(other.version)

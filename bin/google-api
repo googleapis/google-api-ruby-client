@@ -133,6 +133,11 @@ HTML
             options[:uri] = u
           end
           opts.on(
+              "--discovery-uri <uri>", String,
+              "Sets the URI to perform discovery") do |u|
+            options[:discovery_uri] = u
+          end
+          opts.on(
               "-m", "--method <method>", String,
               "Sets the HTTP method to use for the request") do |m|
             options[:http_method] = m
@@ -264,10 +269,17 @@ HTML
 
       def list
         service_name = options[:service_name]
+        unless service_name
+          STDERR.puts('No service name supplied.')
+          exit(1)
+        end
         client = Google::APIClient.new(
           :service => service_name,
           :authorization => nil
         )
+        if options[:discovery_uri]
+          client.discovery_uri = options[:discovery_uri]
+        end
         service_version =
           options[:service_version] ||
           client.latest_service_version(service_name).version
@@ -334,6 +346,9 @@ HTML
           method ||= request_body == '' ? 'GET' : 'POST'
           method.upcase!
           client = Google::APIClient.new(:authorization => authorization_type)
+          if options[:discovery_uri]
+            client.discovery_uri = options[:discovery_uri]
+          end
           configure_authorization.call(client) if signed
           request = [method, uri.to_str, headers, [request_body]]
           request = client.sign_request(request)
@@ -353,6 +368,9 @@ HTML
             :service => service_name,
             :authorization => authorization_type
           )
+          if options[:discovery_uri]
+            client.discovery_uri = options[:discovery_uri]
+          end
           configure_authorization.call(client) if signed
           service_version =
             options[:service_version] ||

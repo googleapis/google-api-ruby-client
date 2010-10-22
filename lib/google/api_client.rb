@@ -132,6 +132,15 @@ module Google
     end
 
     ##
+    # Sets the discovery URI for the client.
+    #
+    # @param [Addressable::URI, #to_str, String] new_discovery_uri
+    #   The new discovery URI.
+    def discovery_uri=(new_discovery_uri)
+      @options[:discovery_uri] = Addressable::URI.parse(new_discovery_uri)
+    end
+
+    ##
     # Returns the parsed discovery document.
     #
     # @return [Hash] The parsed JSON from the discovery document.
