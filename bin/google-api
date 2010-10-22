@@ -137,6 +137,11 @@ HTML
               "Sets the HTTP method to use for the request") do |m|
             options[:http_method] = m
           end
+          opts.on(
+              "--requestor-id <email>", String,
+              "Sets the email address of the requestor") do |e|
+            options[:requestor_id] = e
+          end
 
           opts.on("-v", "--verbose", "Run verbosely") do |v|
             options[:verbose] = v
@@ -277,6 +282,7 @@ HTML
         require 'yaml'
         config_file = File.expand_path('~/.google-api.yaml')
         signed = File.exist?(config_file)
+        authorization_type = :oauth_1
 
         # Setup HTTP request data
         request_body = ''
@@ -307,6 +313,9 @@ HTML
             config["token_credential_key"]
           client.authorization.token_credential_secret =
             config["token_credential_secret"]
+          if client.authorization.token_credential == nil
+            authorization_type = :two_legged_oauth_1
+          end
         end
 
         if options[:uri]
@@ -316,10 +325,15 @@ HTML
             STDERR.puts('URI may not be relative.')
             exit(1)
           end
+          if options[:requestor_id]
+            uri.query_values = uri.query_values.merge(
+              'xoauth_requestor_id' => options[:requestor_id]
+            )
+          end
           method = options[:http_method]
           method ||= request_body == '' ? 'GET' : 'POST'
           method.upcase!
-          client = Google::APIClient.new(:authorization => :two_legged_oauth_1)
+          client = Google::APIClient.new(:authorization => authorization_type)
           configure_authorization.call(client) if signed
           request = [method, uri.to_str, headers, [request_body]]
           request = client.sign_request(request)
@@ -337,7 +351,7 @@ HTML
             options[:service_name] || self.rpcname[/^([^\.]+)\./, 1]
           client = Google::APIClient.new(
             :service => service_name,
-            :authorization => :oauth_1
+            :authorization => authorization_type
           )
           configure_authorization.call(client) if signed
           service_version =
@@ -356,6 +370,9 @@ HTML
             name, value = pair.split('=', 2)
             accu[name] = value
             accu
+          end
+          if options[:requestor_id]
+            parameters['xoauth_requestor_id'] = options[:requestor_id]
           end
           begin
             response = client.execute(
