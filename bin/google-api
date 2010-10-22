@@ -132,10 +132,10 @@ HTML
 
           opts.separator(
             "\nAvailable commands:\n" +
-            "   oauth-login   Log a user into an API\n" +
-            "   list          List the methods available for a service\n" +
-            "   execute       Execute a method on the API\n" +
-            "   irb           Start an interactive client session"
+            "    oauth-login   Log a user into an API\n" +
+            "    list          List the methods available for a service\n" +
+            "    execute       Execute a method on the API\n" +
+            "    irb           Start an interactive client session"
           )
         end
       end
