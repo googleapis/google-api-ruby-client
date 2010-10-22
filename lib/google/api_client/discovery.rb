@@ -90,6 +90,21 @@ module Google
       end
 
       ##
+      # Updates the hierarchy of resources and methods with the new base.
+      #
+      # @param [Addressable::URI, #to_str, String] new_base
+      #   The new base URI to use for the service.
+      def base=(new_base)
+        @base = Addressable::URI.parse(new_base)
+        self.resources.each do |resource|
+          resource.base = @base
+        end
+        self.methods.each do |method|
+          method.base = @base
+        end
+      end
+
+      ##
       # A list of resources available at the root level of this version of the
       # service.
       #
@@ -245,6 +260,21 @@ module Google
       attr_reader :base
 
       ##
+      # Updates the hierarchy of resources and methods with the new base.
+      #
+      # @param [Addressable::URI, #to_str, String] new_base
+      #   The new base URI to use for the resource.
+      def base=(new_base)
+        @base = Addressable::URI.parse(new_base)
+        self.resources.each do |resource|
+          resource.base = @base
+        end
+        self.methods.each do |method|
+          method.base = @base
+        end
+      end
+
+      ##
       # A list of sub-resources available on this resource.
       #
       # @return [Array] A list of {Google::APIClient::Resource} objects.
@@ -339,6 +369,16 @@ module Google
       # @return [Addressable::URI]
       #   The base URI that this method will be joined to.
       attr_reader :base
+
+      ##
+      # Updates the method with the new base.
+      #
+      # @param [Addressable::URI, #to_str, String] new_base
+      #   The new base URI to use for the method.
+      def base=(new_base)
+        @base = Addressable::URI.parse(new_base)
+        @uri_template = nil
+      end
 
       ##
       # Returns the RPC name for the method.

@@ -200,6 +200,18 @@ describe Google::APIClient, 'configured for the prediction API' do
       'https://www.googleapis.com/prediction/v1/training?query=12345'
   end
 
+  it 'should allow modification to the base URIs for testing purposes' do
+    prediction = @client.discovered_service('prediction', 'v1')
+    prediction.base = 'https://testing-domain.googleapis.com/prediction/v1/'
+    request = @client.generate_request(
+      prediction.training.insert,
+      {'query' => '123'}
+    )
+    method, uri, headers, body = request
+    uri.should ==
+      'https://testing-domain.googleapis.com/prediction/v1/training?query=123'
+  end
+
   it 'should generate signed requests' do
     @client.authorization = :oauth_1
     @client.authorization.token_credential_key = '12345'
