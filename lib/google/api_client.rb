@@ -32,7 +32,9 @@ module Google
 
     def initialize(options={})
       @options = {
-        # TODO: What configuration options need to go here?
+        :user_agent => (
+          'google-api-ruby-client/' + Google::APIClient::VERSION::STRING
+        )
       }.merge(options)
       # Force immediate type-checking and short-cut resolution
       self.parser
@@ -256,6 +258,29 @@ module Google
     end
 
     ##
+    # Returns the user agent used by the client.
+    #
+    # @return [String]
+    #   The user agent string used in the User-Agent header.
+    def user_agent
+      return @options[:user_agent]
+    end
+
+    ##
+    # Sets the user agent used by the client.
+    #
+    # @param [String, #to_str] new_user_agent
+    #   The new user agent string to use in the User-Agent header.
+    def user_agent=(new_user_agent)
+      unless new_user_agent == nil || new_user_agent.respond_to?(:to_str)
+        raise TypeError, "Expected String, got #{new_user_agent.class}."
+      end
+      new_user_agent = new_user_agent.to_str unless new_user_agent == nil
+      @options[:user_agent] = new_user_agent
+      return self.user_agent
+    end
+
+    ##
     # Generates a request.
     #
     # @param [Google::APIClient::Method, String] api_method
@@ -371,7 +396,21 @@ module Google
     #
     # @return [Array] The response from the server.
     def transmit_request(request, adapter=self.http_adapter)
-      ::HTTPAdapter.transmit(request, adapter)
+      if self.user_agent != nil
+        # If there's no User-Agent header, set one.
+        method, uri, headers, body = request
+        unless headers.kind_of?(Enumerable)
+          # We need to use some Enumerable methods, relying on the presence of
+          # the #each method.
+          class <<headers
+            include Enumerable
+          end
+        end
+        unless headers.any? { |k, v| k.downcase == 'user-agent' }
+          headers = headers.to_a.insert(0, ['User-Agent', self.user_agent])
+        end
+      end
+      ::HTTPAdapter.transmit([method, uri, headers, body], adapter)
     end
 
     ##

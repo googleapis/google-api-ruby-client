@@ -16,10 +16,43 @@ require 'spec_helper'
 
 require 'signet/oauth_1/client'
 require 'httpadapter/adapters/net_http'
+require 'httpadapter/adapters/mock'
 
 require 'google/api_client'
 require 'google/api_client/version'
 require 'google/api_client/parsers/json_parser'
+
+shared_examples_for 'configurable user agent' do
+  it 'should allow the user agent to be modified' do
+    @client.user_agent = 'Custom User Agent/1.2.3'
+    @client.user_agent.should == 'Custom User Agent/1.2.3'
+  end
+
+  it 'should allow the user agent to be set to nil' do
+    @client.user_agent = nil
+    @client.user_agent.should == nil
+  end
+
+  it 'should not allow the user agent to be set to bogus values' do
+    (lambda do
+      @client.user_agent = 42
+    end).should raise_error(TypeError)
+  end
+
+  it 'should transmit a User-Agent header when sending requests' do
+    @client.user_agent = 'Custom User Agent/1.2.3'
+    request = ['GET', 'http://www.google.com/', [], []]
+    adapter = HTTPAdapter::MockAdapter.request_adapter do |request, connection|
+      method, uri, headers, body = request
+      headers.should be_any { |k, v| k.downcase == 'user-agent' }
+      headers.each do |k, v|
+        v.should == @client.user_agent if k.downcase == 'user-agent'
+      end
+      [200, [], ['']]
+    end
+    @client.transmit_request(request, adapter)
+  end
+end
 
 describe Google::APIClient, 'with default configuration' do
   before do
@@ -37,6 +70,8 @@ describe Google::APIClient, 'with default configuration' do
   it 'should not use an authorization mechanism' do
     @client.authorization.should be_nil
   end
+
+  it_should_behave_like 'configurable user agent'
 end
 
 describe Google::APIClient, 'with default oauth configuration' do
@@ -63,6 +98,8 @@ describe Google::APIClient, 'with default oauth configuration' do
     @client.authorization.client_credential_key.should == 'anonymous'
     @client.authorization.client_credential_secret.should == 'anonymous'
   end
+
+  it_should_behave_like 'configurable user agent'
 end
 
 describe Google::APIClient, 'with custom pluggable parser' do
@@ -76,4 +113,6 @@ describe Google::APIClient, 'with custom pluggable parser' do
   it 'should use the custom parser' do
     @client.parser.should be_instance_of(FakeJsonParser)
   end
+
+  it_should_behave_like 'configurable user agent'
 end
