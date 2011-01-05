@@ -232,8 +232,8 @@ HTML
           scope = options[:scope]
           # Special cases
           case scope
-          when "https://www.googleapis.com/auth/buzz",
-              "https://www.googleapis.com/auth/buzz.readonly"
+          when /https:\/\/www\.googleapis\.com\/auth\/buzz/,
+              /https:\/\/www\.googleapis\.com\/auth\/buzz\.readonly/
             oauth_client.authorization_uri =
               'https://www.google.com/buzz/api/auth/OAuthAuthorizeToken?' +
               "domain=#{oauth_client.client_credential_key}&" +
