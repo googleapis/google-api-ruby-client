@@ -1,9 +1,8 @@
 #!/usr/bin/env ruby
 
-# INSTALL
-#   sudo gem install sinatra liquid
 # RUN
-#   ruby examples/sinatra/buzz_api.rb
+#   ruby examples/sinatra/explorer.rb
+#   navigate a browser to http://localhost:4567/explore/buzz-v1/
 
 root_dir = File.expand_path("../../..", __FILE__)
 lib_dir = File.expand_path("./lib", root_dir)
