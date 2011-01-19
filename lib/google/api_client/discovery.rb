@@ -15,7 +15,8 @@
 require 'json'
 require 'addressable/uri'
 require 'addressable/template'
-require 'extlib/inflection'
+
+require 'google/inflection'
 
 module Google
   class APIClient
@@ -49,13 +50,13 @@ module Google
         @description = service_description
         metaclass = (class <<self; self; end)
         self.resources.each do |resource|
-          method_name = Extlib::Inflection.underscore(resource.name).to_sym
+          method_name = Google::INFLECTOR.underscore(resource.name).to_sym
           if !self.respond_to?(method_name)
             metaclass.send(:define_method, method_name) { resource }
           end
         end
         self.methods.each do |method|
-          method_name = Extlib::Inflection.underscore(method.name).to_sym
+          method_name = Google::INFLECTOR.underscore(method.name).to_sym
           if !self.respond_to?(method_name)
             metaclass.send(:define_method, method_name) { method }
           end
@@ -227,13 +228,13 @@ module Google
         @description = resource_description
         metaclass = (class <<self; self; end)
         self.resources.each do |resource|
-          method_name = Extlib::Inflection.underscore(resource.name).to_sym
+          method_name = Google::INFLECTOR.underscore(resource.name).to_sym
           if !self.respond_to?(method_name)
             metaclass.send(:define_method, method_name) { resource }
           end
         end
         self.methods.each do |method|
-          method_name = Extlib::Inflection.underscore(method.name).to_sym
+          method_name = Google::INFLECTOR.underscore(method.name).to_sym
           if !self.respond_to?(method_name)
             metaclass.send(:define_method, method_name) { method }
           end
