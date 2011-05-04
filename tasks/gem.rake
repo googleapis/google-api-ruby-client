@@ -28,8 +28,6 @@ namespace :gem do
 
     # Dependencies used in the CLI
     s.add_runtime_dependency('launchy', '>= 0.3.2')
-    s.add_runtime_dependency('rack', '= 1.2.0')
-    s.add_runtime_dependency('sinatra', '>= 1.0')
 
     # Dependencies used in the examples
     s.add_runtime_dependency('liquid', '>= 2.2.2')
