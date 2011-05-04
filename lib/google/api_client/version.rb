@@ -12,12 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 module Google
   class APIClient
     module VERSION
       MAJOR = 0
-      MINOR = 1
-      TINY  = 3
+      MINOR = 2
+      TINY  = 0
 
       STRING = [MAJOR, MINOR, TINY].join('.')
     end

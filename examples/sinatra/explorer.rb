@@ -319,7 +319,7 @@ def service(service_name, service_version)
   unless service_version
     service_version = client.latest_service_version(service_name).version
   end
-  client.discovered_service(service_name, service_version)
+  client.discovered_api(service_name, service_version)
 end
 
 get '/template/:service/:method/' do

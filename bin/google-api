@@ -26,7 +26,8 @@ module Google
 
         def do_GET(request, response)
           $verifier ||= Addressable::URI.unencode_component(
-            request.request_uri.to_s[/\?.*oauth_verifier=([^&$]+)(&|$)/, 1]
+            request.request_uri.to_s[/\?.*oauth_verifier=([^&$]+)(&|$)/, 1] ||
+            request.request_uri.to_s[/\?.*code=([^&$]+)(&|$)/, 1]
           )
           response.status = WEBrick::HTTPStatus::RC_ACCEPTED
           # This javascript will auto-close the tab after the
@@ -92,24 +93,24 @@ HTML
             options[:scope] = s
           end
           opts.on(
-              "--client-key <key>", String,
-                "Set the 2-legged OAuth key") do |k|
+              "--client-id <key>", String,
+                "Set the OAuth client id or key") do |k|
             options[:client_credential_key] = k
           end
           opts.on(
               "--client-secret <secret>", String,
-                "Set the 2-legged OAuth secret") do |s|
+                "Set the OAuth client secret") do |s|
             options[:client_credential_secret] = s
           end
           opts.on(
-              "-s", "--service <name>", String,
-              "Perform discovery on service") do |s|
-            options[:service_name] = s
+              "--api <name>", String,
+              "Perform discovery on API") do |s|
+            options[:api] = s
           end
           opts.on(
               "--service-version <id>", String,
               "Select service version") do |id|
-            options[:service_version] = id
+            options[:version] = id
           end
           opts.on(
               "--content-type <format>", String,
@@ -162,10 +163,11 @@ HTML
 
           opts.separator(
             "\nAvailable commands:\n" +
-            "    oauth-login   Log a user into an API\n" +
-            "    list          List the methods available for a service\n" +
-            "    execute       Execute a method on the API\n" +
-            "    irb           Start an interactive client session"
+            "    oauth-1-login   Log a user into an API with OAuth 1.0a\n" +
+            "    oauth-2-login   Log a user into an API with OAuth 2.0 d10\n" +
+            "    list            List the methods available for a service\n" +
+            "    execute         Execute a method on the API\n" +
+            "    irb             Start an interactive client session"
           )
         end
       end
@@ -180,23 +182,98 @@ HTML
         self.send(symbol)
       end
 
+      def client
+        require 'signet/oauth_1/client'
+        require 'yaml'
+        require 'irb'
+        config_file = File.expand_path('~/.google-api.yaml')
+        authorization = nil
+        if File.exist?(config_file)
+          config = open(config_file, 'r') { |file| YAML.load(file.read) }
+        else
+          config = {}
+        end
+        if config["mechanism"]
+          authorization = config["mechanism"].to_sym
+        end
+
+        client = Google::APIClient.new(:authorization => authorization)
+
+        case authorization
+        when :oauth_1
+          if client.authorization &&
+              !client.authorization.kind_of?(Signet::OAuth1::Client)
+            STDERR.puts(
+              "Unexpected authorization mechanism: " +
+              "#{client.authorization.class}"
+            )
+            exit(1)
+          end
+          config = open(config_file, 'r') { |file| YAML.load(file.read) }
+          client.authorization.client_credential_key =
+            config["client_credential_key"]
+          client.authorization.client_credential_secret =
+            config["client_credential_secret"]
+          client.authorization.token_credential_key =
+            config["token_credential_key"]
+          client.authorization.token_credential_secret =
+            config["token_credential_secret"]
+        when :oauth_2
+          if client.authorization &&
+              !client.authorization.kind_of?(Signet::OAuth2::Client)
+            STDERR.puts(
+              "Unexpected authorization mechanism: " +
+              "#{client.authorization.class}"
+            )
+            exit(1)
+          end
+          config = open(config_file, 'r') { |file| YAML.load(file.read) }
+          client.authorization.scope = options[:scope]
+          client.authorization.client_id = config["client_id"]
+          client.authorization.client_secret = config["client_secret"]
+          client.authorization.access_token = config["access_token"]
+          client.authorization.refresh_token = config["refresh_token"]
+        else
+          # Dunno?
+        end
+
+        if options[:discovery_uri]
+          client.discovery_uri = options[:discovery_uri]
+        end
+
+        return client
+      end
+
+      def api_version(api, version)
+        v = version
+        if !version
+          if client.preferred_version(api)
+            v = client.preferred_version(api).version
+          else
+            v = 'v1'
+          end
+        end
+        return v
+      end
+
       COMMANDS = [
-        :oauth_login,
+        :oauth_1_login,
+        :oauth_2_login,
         :list,
         :execute,
         :irb,
         :fuzz
       ]
 
-      def oauth_login
+      def oauth_1_login
         require 'signet/oauth_1/client'
         require 'launchy'
         require 'yaml'
         if options[:client_credential_key] &&
             options[:client_credential_secret]
-          scope = options[:scope]
           config = {
-            "scope" => nil,
+            "mechanism" => "oauth_1",
+            "scope" => options[:scope],
             "client_credential_key" => options[:client_credential_key],
             "client_credential_secret" => options[:client_credential_secret],
             "token_credential_key" => nil,
@@ -229,19 +306,8 @@ HTML
             :client_credential_secret => 'anonymous',
             :callback => "http://localhost:#{OAUTH_SERVER_PORT}/"
           )
-          scope = options[:scope]
-          # Special cases
-          case scope
-          when /https:\/\/www\.googleapis\.com\/auth\/buzz/,
-              /https:\/\/www\.googleapis\.com\/auth\/buzz\.readonly/
-            oauth_client.authorization_uri =
-              'https://www.google.com/buzz/api/auth/OAuthAuthorizeToken?' +
-              "domain=#{oauth_client.client_credential_key}&" +
-              "scope=#{scope}&" +
-              "xoauth_displayname=Google%20API%20Client"
-          end
           oauth_client.fetch_temporary_credential!(:additional_parameters => {
-            :scope => scope,
+            :scope => options[:scope],
             :xoauth_displayname => 'Google API Client'
           })
 
@@ -251,7 +317,7 @@ HTML
           server.start
           oauth_client.fetch_token_credential!(:verifier => $verifier)
           config = {
-            "scope" => scope,
+            "scope" => options[:scope],
             "client_credential_key" =>
               oauth_client.client_credential_key,
             "client_credential_secret" =>
@@ -267,34 +333,90 @@ HTML
         end
       end
 
+      def oauth_2_login
+        require 'signet/oauth_2/client'
+        require 'launchy'
+        require 'yaml'
+        if !options[:client_credential_key] ||
+            !options[:client_credential_secret]
+          STDERR.puts('No client ID and secret supplied.')
+          exit(1)
+        end
+        if options[:access_token]
+          config = {
+            "mechanism" => "oauth_2",
+            "scope" => options[:scope],
+            "client_id" => options[:client_credential_key],
+            "client_secret" => options[:client_credential_secret],
+            "access_token" => options[:access_token],
+            "refresh_token" => options[:refresh_token]
+          }
+          config_file = File.expand_path('~/.google-api.yaml')
+          open(config_file, 'w') { |file| file.write(YAML.dump(config)) }
+          exit(0)
+        else
+          $verifier = nil
+          # TODO(bobaman): Cross-platform?
+          logger = WEBrick::Log.new('/dev/null')
+          server = WEBrick::HTTPServer.new(
+            :Port => OAUTH_SERVER_PORT,
+            :Logger => logger,
+            :AccessLog => logger
+          )
+          trap("INT") { server.shutdown }
+
+          server.mount("/", OAuthVerifierServlet)
+
+          oauth_client = Signet::OAuth2::Client.new(
+            :authorization_uri =>
+              'https://www.google.com/accounts/o8/oauth2/authorization',
+            :token_credential_uri =>
+              'https://www.google.com/accounts/o8/oauth2/token',
+            :client_id => options[:client_credential_key],
+            :client_secret => options[:client_credential_secret],
+            :redirect_uri => "http://localhost:#{OAUTH_SERVER_PORT}/",
+            :scope => options[:scope]
+          )
+
+          # Launch browser
+          Launchy::Browser.run(oauth_client.authorization_uri.to_s)
+
+          server.start
+          oauth_client.code = $verifier
+          oauth_client.fetch_access_token!
+          config = {
+            "mechanism" => "oauth_2",
+            "scope" => options[:scope],
+            "client_id" => oauth_client.client_id,
+            "client_secret" => oauth_client.client_secret,
+            "access_token" => oauth_client.access_token,
+            "refresh_token" => oauth_client.refresh_token
+          }
+          config_file = File.expand_path('~/.google-api.yaml')
+          open(config_file, 'w') { |file| file.write(YAML.dump(config)) }
+          exit(0)
+        end
+      end
+
       def list
-        service_name = options[:service_name]
-        unless service_name
+        api = options[:api]
+        unless api
           STDERR.puts('No service name supplied.')
           exit(1)
         end
-        client = Google::APIClient.new(
-          :service => service_name,
-          :authorization => nil
-        )
+        client = Google::APIClient.new(:authorization => nil)
         if options[:discovery_uri]
           client.discovery_uri = options[:discovery_uri]
         end
-        service_version =
-          options[:service_version] ||
-          client.latest_service_version(service_name).version
-        service = client.discovered_service(service_name, service_version)
+        version = api_version(api, options[:version])
+        service = client.discovered_api(api, version)
         rpcnames = service.to_h.keys
         puts rpcnames.sort.join("\n")
         exit(0)
       end
 
       def execute
-        require 'signet/oauth_1/client'
-        require 'yaml'
-        config_file = File.expand_path('~/.google-api.yaml')
-        signed = File.exist?(config_file)
-        authorization_type = :oauth_1
+        client = self.client
 
         # Setup HTTP request data
         request_body = ''
@@ -306,28 +428,6 @@ HTML
         elsif request_body
           # Default to JSON
           headers << ['Content-Type', 'application/json']
-        end
-
-        configure_authorization = lambda do |client|
-          if !client.authorization.kind_of?(Signet::OAuth1::Client)
-            STDERR.puts(
-              "Unexpected authorization mechanism: " +
-              "#{client.authorization.class}"
-            )
-            exit(1)
-          end
-          config = open(config_file, 'r') { |file| YAML.load(file.read) }
-          client.authorization.client_credential_key =
-            config["client_credential_key"]
-          client.authorization.client_credential_secret =
-            config["client_credential_secret"]
-          client.authorization.token_credential_key =
-            config["token_credential_key"]
-          client.authorization.token_credential_secret =
-            config["token_credential_secret"]
-          if client.authorization.token_credential == nil
-            authorization_type = :two_legged_oauth_1
-          end
         end
 
         if options[:uri]
@@ -345,13 +445,8 @@ HTML
           method = options[:http_method]
           method ||= request_body == '' ? 'GET' : 'POST'
           method.upcase!
-          client = Google::APIClient.new(:authorization => authorization_type)
-          if options[:discovery_uri]
-            client.discovery_uri = options[:discovery_uri]
-          end
-          configure_authorization.call(client) if signed
           request = [method, uri.to_str, headers, [request_body]]
-          request = client.sign_request(request)
+          request = client.generate_authenticated_request(:request => request)
           response = client.transmit_request(request)
           status, headers, body = response
           puts body
@@ -362,25 +457,14 @@ HTML
             STDERR.puts('No rpcname supplied.')
             exit(1)
           end
-          service_name =
-            options[:service_name] || self.rpcname[/^([^\.]+)\./, 1]
-          client = Google::APIClient.new(
-            :service => service_name,
-            :authorization => authorization_type
-          )
-          if options[:discovery_uri]
-            client.discovery_uri = options[:discovery_uri]
-          end
-          configure_authorization.call(client) if signed
-          service_version =
-            options[:service_version] ||
-            client.latest_service_version(service_name).version
-          service = client.discovered_service(service_name, service_version)
+          api = options[:api] || self.rpcname[/^([^\.]+)\./, 1]
+          version = api_version(api, options[:version])
+          service = client.discovered_api(api, version)
           method = service.to_h[self.rpcname]
           if !method
             STDERR.puts(
               "Method #{self.rpcname} does not exist for " +
-              "#{service_name}-#{service_version}."
+              "#{api}-#{version}."
             )
             exit(1)
           end
@@ -394,7 +478,7 @@ HTML
           end
           begin
             response = client.execute(
-              method, parameters, request_body, headers, {:signed => signed}
+              method, parameters, request_body, headers
             )
             status, headers, body = response
             puts body
@@ -407,37 +491,7 @@ HTML
       end
 
       def irb
-        require 'signet/oauth_1/client'
-        require 'yaml'
-        require 'irb'
-        config_file = File.expand_path('~/.google-api.yaml')
-        signed = File.exist?(config_file)
-
-        $client = Google::APIClient.new(
-          :service => options[:service_name],
-          :authorization => (signed ? :oauth_1 : nil)
-        )
-
-        if signed
-          if $client.authorization &&
-              !$client.authorization.kind_of?(Signet::OAuth1::Client)
-            STDERR.puts(
-              "Unexpected authorization mechanism: " +
-              "#{$client.authorization.class}"
-            )
-            exit(1)
-          end
-          config = open(config_file, 'r') { |file| YAML.load(file.read) }
-          $client.authorization.client_credential_key =
-            config["client_credential_key"]
-          $client.authorization.client_credential_secret =
-            config["client_credential_secret"]
-          $client.authorization.token_credential_key =
-            config["token_credential_key"]
-          $client.authorization.token_credential_secret =
-            config["token_credential_secret"]
-        end
-
+        $client = self.client
         # Otherwise IRB will misinterpret command-line options
         ARGV.clear
         IRB.start(__FILE__)

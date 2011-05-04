@@ -12,42 +12,37 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 require 'json'
 require 'addressable/uri'
 require 'addressable/template'
 
 require 'google/inflection'
+require 'google/api_client/errors'
 
 module Google
   class APIClient
     ##
-    # An exception that is raised if a method is called with missing or
-    # invalid parameter values.
-    class ValidationError < StandardError
-    end
-
-    ##
     # A service that has been described by a discovery document.
-    class Service
+    class API
 
       ##
       # Creates a description of a particular version of a service.
       #
-      # @param [String] service_name
+      # @param [String] api
       #   The identifier for the service.  Note that while this frequently
       #   matches the first segment of all of the service's RPC names, this
       #   should not be assumed.  There is no requirement that these match.
-      # @param [String] service_version
+      # @param [String] version
       #   The identifier for the service version.
-      # @param [Hash] service_description
+      # @param [Hash] api_description
       #   The section of the discovery document that applies to this service
       #   version.
       #
-      # @return [Google::APIClient::Service] The constructed service object.
-      def initialize(service_name, service_version, service_description)
-        @name = service_name
-        @version = service_version
-        @description = service_description
+      # @return [Google::APIClient::API] The constructed service object.
+      def initialize(document_base, discovery_document)
+        @document_base = Addressable::URI.parse(document_base)
+        @discovery_document = discovery_document
         metaclass = (class <<self; self; end)
         self.resources.each do |resource|
           method_name = Google::INFLECTOR.underscore(resource.name).to_sym
@@ -64,30 +59,66 @@ module Google
       end
 
       ##
+      # Returns the id of the service.
+      #
+      # @return [String] The service id.
+      def id
+        return @discovery_document['id']
+      end
+
+      ##
       # Returns the identifier for the service.
       #
       # @return [String] The service identifier.
-      attr_reader :name
+      def name
+        return @discovery_document['name']
+      end
 
       ##
       # Returns the version of the service.
       #
       # @return [String] The service version.
-      attr_reader :version
+      def version
+        return @discovery_document['version']
+      end
 
       ##
       # Returns the parsed section of the discovery document that applies to
       # this version of the service.
       #
       # @return [Hash] The service description.
-      attr_reader :description
+      def description
+        return @discovery_document['description']
+      end
+
+      ##
+      # Returns true if this is the preferred version of this API.
+      #
+      # @return [TrueClass, FalseClass]
+      #   Whether or not this is the preferred version of this API.
+      def preferred
+        return @discovery_document['preferred']
+      end
 
       ##
       # Returns the base URI for this version of the service.
       #
       # @return [Addressable::URI] The base URI that methods are joined to.
-      def base
-        return @base ||= Addressable::URI.parse(self.description['baseUrl'])
+      attr_reader :document_base
+
+      ##
+      # Returns the base URI for this version of the service.
+      #
+      # @return [Addressable::URI] The base URI that methods are joined to.
+      def rest_base
+        if @discovery_document['restBasePath']
+          return @rest_base ||= (
+            self.document_base +
+            Addressable::URI.parse(@discovery_document['restBasePath'])
+          ).normalize
+        else
+          return nil
+        end
       end
 
       ##
@@ -95,13 +126,13 @@ module Google
       #
       # @param [Addressable::URI, #to_str, String] new_base
       #   The new base URI to use for the service.
-      def base=(new_base)
-        @base = Addressable::URI.parse(new_base)
+      def rest_base=(new_rest_base)
+        @rest_base = Addressable::URI.parse(new_rest_base)
         self.resources.each do |resource|
-          resource.base = @base
+          resource.rest_base = @rest_base
         end
         self.methods.each do |method|
-          method.base = @base
+          method.rest_base = @rest_base
         end
       end
 
@@ -112,8 +143,8 @@ module Google
       # @return [Array] A list of {Google::APIClient::Resource} objects.
       def resources
         return @resources ||= (
-          (self.description['resources'] || []).inject([]) do |accu, (k, v)|
-            accu << ::Google::APIClient::Resource.new(self.base, k, v)
+          (@discovery_document['resources'] || []).inject([]) do |accu, (k, v)|
+            accu << ::Google::APIClient::Resource.new(self.rest_base, k, v)
             accu
           end
         )
@@ -126,8 +157,8 @@ module Google
       # @return [Array] A list of {Google::APIClient::Method} objects.
       def methods
         return @methods ||= (
-          (self.description['methods'] || []).inject([]) do |accu, (k, v)|
-            accu << ::Google::APIClient::Method.new(self.base, k, v)
+          (@discovery_document['methods'] || []).inject([]) do |accu, (k, v)|
+            accu << ::Google::APIClient::Method.new(self.rest_base, k, v)
             accu
           end
         )
@@ -140,60 +171,18 @@ module Google
       #
       # @example
       #   # Discover available methods
-      #   method_names = client.discovered_service('buzz').to_h.keys
+      #   method_names = client.discovered_api('buzz').to_h.keys
       def to_h
         return @hash ||= (begin
           methods_hash = {}
           self.methods.each do |method|
-            methods_hash[method.rpc_name] = method
+            methods_hash[method.rpc_method] = method
           end
           self.resources.each do |resource|
             methods_hash.merge!(resource.to_h)
           end
           methods_hash
         end)
-      end
-
-      ##
-      # Compares two versions of a service.
-      #
-      # @param [Object] other The service to compare.
-      #
-      # @return [Integer]
-      #   <code>-1</code> if the service is older than <code>other</code>.
-      #   <code>0</code> if the service is the same as <code>other</code>.
-      #   <code>1</code> if the service is newer than <code>other</code>.
-      #   <code>nil</code> if the service cannot be compared to
-      #   <code>other</code>.
-      def <=>(other)
-        # We can only compare versions of the same service
-        if other.kind_of?(self.class) && self.name == other.name
-          split_version = lambda do |version|
-            dotted_version = version[/^v?(\d+(.\d+)*)-?(.*?)?$/, 1]
-            suffix = version[/^v?(\d+(.\d+)*)-?(.*?)?$/, 3]
-            if dotted_version && suffix
-              [dotted_version.split('.').map { |v| v.to_i }, suffix]
-            else
-              [[-1], version]
-            end
-          end
-          self_sortable, self_suffix = split_version.call(self.version)
-          other_sortable, other_suffix = split_version.call(other.version)
-          result = self_sortable <=> other_sortable
-          if result != 0
-            return result
-          # If the dotted versions are equal, check the suffix.
-          # An omitted suffix should be sorted after an included suffix.
-          elsif self_suffix == ''
-            return 1
-          elsif other_suffix == ''
-            return -1
-          else
-            return self_suffix <=> other_suffix
-          end
-        else
-          return nil
-        end
       end
 
       ##
@@ -222,10 +211,10 @@ module Google
       #   The section of the discovery document that applies to this resource.
       #
       # @return [Google::APIClient::Resource] The constructed resource object.
-      def initialize(base, resource_name, resource_description)
-        @base = base
+      def initialize(rest_base, resource_name, discovery_document)
+        @rest_base = rest_base
         @name = resource_name
-        @description = resource_description
+        @discovery_document = discovery_document
         metaclass = (class <<self; self; end)
         self.resources.each do |resource|
           method_name = Google::INFLECTOR.underscore(resource.name).to_sym
@@ -258,20 +247,20 @@ module Google
       # Returns the base URI for this resource.
       #
       # @return [Addressable::URI] The base URI that methods are joined to.
-      attr_reader :base
+      attr_reader :rest_base
 
       ##
       # Updates the hierarchy of resources and methods with the new base.
       #
       # @param [Addressable::URI, #to_str, String] new_base
       #   The new base URI to use for the resource.
-      def base=(new_base)
-        @base = Addressable::URI.parse(new_base)
+      def rest_base=(new_rest_base)
+        @rest_base = Addressable::URI.parse(new_rest_base)
         self.resources.each do |resource|
-          resource.base = @base
+          resource.rest_base = @rest_base
         end
         self.methods.each do |method|
-          method.base = @base
+          method.rest_base = @rest_base
         end
       end
 
@@ -281,8 +270,8 @@ module Google
       # @return [Array] A list of {Google::APIClient::Resource} objects.
       def resources
         return @resources ||= (
-          (self.description['resources'] || []).inject([]) do |accu, (k, v)|
-            accu << ::Google::APIClient::Resource.new(self.base, k, v)
+          (@discovery_document['resources'] || []).inject([]) do |accu, (k, v)|
+            accu << ::Google::APIClient::Resource.new(self.rest_base, k, v)
             accu
           end
         )
@@ -294,8 +283,8 @@ module Google
       # @return [Array] A list of {Google::APIClient::Method} objects.
       def methods
         return @methods ||= (
-          (self.description['methods'] || []).inject([]) do |accu, (k, v)|
-            accu << ::Google::APIClient::Method.new(self.base, k, v)
+          (@discovery_document['methods'] || []).inject([]) do |accu, (k, v)|
+            accu << ::Google::APIClient::Method.new(self.rest_base, k, v)
             accu
           end
         )
@@ -310,7 +299,7 @@ module Google
         return @hash ||= (begin
           methods_hash = {}
           self.methods.each do |method|
-            methods_hash[method.rpc_name] = method
+            methods_hash[method.rpc_method] = method
           end
           self.resources.each do |resource|
             methods_hash.merge!(resource.to_h)
@@ -337,7 +326,7 @@ module Google
       ##
       # Creates a description of a particular method.
       #
-      # @param [Addressable::URI] base
+      # @param [Addressable::URI] rest_base
       #   The base URI for the service.
       # @param [String] method_name
       #   The identifier for the method.
@@ -345,10 +334,10 @@ module Google
       #   The section of the discovery document that applies to this method.
       #
       # @return [Google::APIClient::Method] The constructed method object.
-      def initialize(base, method_name, method_description)
-        @base = base
+      def initialize(rest_base, method_name, discovery_document)
+        @rest_base = rest_base
         @name = method_name
-        @description = method_description
+        @discovery_document = discovery_document
       end
 
       ##
@@ -369,15 +358,15 @@ module Google
       #
       # @return [Addressable::URI]
       #   The base URI that this method will be joined to.
-      attr_reader :base
+      attr_reader :rest_base
 
       ##
       # Updates the method with the new base.
       #
       # @param [Addressable::URI, #to_str, String] new_base
       #   The new base URI to use for the method.
-      def base=(new_base)
-        @base = Addressable::URI.parse(new_base)
+      def rest_base=(new_rest_base)
+        @rest_base = Addressable::URI.parse(new_rest_base)
         @uri_template = nil
       end
 
@@ -385,8 +374,8 @@ module Google
       # Returns the RPC name for the method.
       #
       # @return [String] The RPC name.
-      def rpc_name
-        return self.description['rpcName']
+      def rpc_method
+        return @discovery_document['rpcMethod']
       end
 
       ##
@@ -399,8 +388,9 @@ module Google
         # a join operation on a URI, but we have to treat these as Strings
         # because of the way the discovery document provides the URIs.
         # This should be fixed soon.
-        return @uri_template ||=
-          Addressable::Template.new(base.to_s + self.description['pathUrl'])
+        return @uri_template ||= Addressable::Template.new(
+          self.rest_base + @discovery_document['restPath']
+        )
       end
 
       ##
@@ -475,7 +465,7 @@ module Google
         if !headers.kind_of?(Array) && !headers.kind_of?(Hash)
           raise TypeError, "Expected Hash or Array, got #{headers.class}."
         end
-        method = self.description['httpMethod'] || 'GET'
+        method = @discovery_document['httpMethod'] || 'GET'
         uri = self.generate_uri(parameters)
         headers = headers.to_a if headers.kind_of?(Hash)
         return [method, uri.to_str, headers, [body]]
@@ -488,7 +478,7 @@ module Google
       # @return [Hash] The parameter descriptions.
       def parameter_descriptions
         @parameter_descriptions ||= (
-          self.description['parameters'] || {}
+          @discovery_document['parameters'] || {}
         ).inject({}) { |h,(k,v)| h[k]=v; h }
       end
 
@@ -498,7 +488,7 @@ module Google
       # @return [Array] The parameters.
       def parameters
         @parameters ||= ((
-          self.description['parameters'] || {}
+          @discovery_document['parameters'] || {}
         ).inject({}) { |h,(k,v)| h[k]=v; h }).keys
       end
 
@@ -552,6 +542,12 @@ module Google
         end
         parameters.each do |k, v|
           if self.parameter_descriptions[k]
+            enum = self.parameter_descriptions[k]['enum']
+            if enum && !enum.include?(v)
+              raise ArgumentError,
+                "Parameter '#{k}' has an invalid value: #{v}. " +
+                "Must be one of #{enum.inspect}."
+            end
             pattern = self.parameter_descriptions[k]['pattern']
             if pattern
               regexp = Regexp.new("^#{pattern}$")
@@ -572,7 +568,8 @@ module Google
       # @return [String] The method's state, as a <code>String</code>.
       def inspect
         sprintf(
-          "#<%s:%#0x NAME:%s>", self.class.to_s, self.object_id, self.rpc_name
+          "#<%s:%#0x NAME:%s>",
+          self.class.to_s, self.object_id, self.rpc_method
         )
       end
     end

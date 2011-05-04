@@ -14,10 +14,17 @@
 
 
 module Google
-  if defined?(ActiveSupport::Inflector)
-    INFLECTOR = ActiveSupport::Inflector
-  else
-    require 'extlib/inflection'
-    INFLECTOR = Extlib::Inflection
+  class APIClient
+    ##
+    # An error which is raised when there is an unexpected response or other
+    # transport error that prevents an operation from succeeding.
+    class TransmissionError < StandardError
+    end
+
+    ##
+    # An exception that is raised if a method is called with missing or
+    # invalid parameter values.
+    class ValidationError < StandardError
+    end
   end
 end
