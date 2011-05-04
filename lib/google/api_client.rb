@@ -18,6 +18,7 @@ require 'json'
 require 'stringio'
 
 require 'google/api_client/errors'
+require 'google/api_client/environment'
 require 'google/api_client/discovery'
 
 module Google
@@ -54,10 +55,13 @@ module Google
       end
       # Almost all API usage will have a host of 'www.googleapis.com'.
       self.host = options["host"] || 'www.googleapis.com'
-      # Most developers will want to leave this value alone.
+      # Most developers will want to leave this value alone and use the
+      # application_name option.
       self.user_agent = options["user_agent"] || (
-        'google-api-ruby-client/' + Google::APIClient::VERSION::STRING
-      )
+        (options["application_name"] || '')
+        'google-api-ruby-client/' + VERSION::STRING +
+        ' ' + ENV::OS_VERSION
+      ).strip
       # This is mostly a default for the sake of convenience.
       # Unlike most other options, this one may be nil, so we check for
       # the presence of the key rather than checking the value.
