@@ -43,10 +43,13 @@ module Google
     #   </ul>
     # @option options [String] :host ("www.googleapis.com")
     #   The API hostname used by the client.  This rarely needs to be changed.
-    # @option options [String] :user_agent ("google-api-ruby-client/{version}")
+    # @option options [String] :application_name
+    #   The name and version of the application using the client. This should
+    #   be given in the form `"{name}/{version}"`.
+    # @option options [String] :user_agent
+    #   ("{app_name} google-api-ruby-client/{version} {os_name}/{os_version}")
     #   The user agent used by the client.  Most developers will want to
-    #   leave this value alone — the API key is the primary mechanism used to
-    #   identify an application.
+    #   leave this value alone and use the `:application_name` option instead.
     def initialize(options={})
       # Normalize key to String to allow indifferent access.
       options = options.inject({}) do |accu, (key, value)|
