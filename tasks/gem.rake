@@ -30,7 +30,7 @@ namespace :gem do
     s.add_runtime_dependency('launchy', '>= 0.3.2')
 
     # Dependencies used in the examples
-    s.add_runtime_dependency('liquid', '>= 2.2.2')
+    s.add_development_dependency('sinatra', '>= 1.2.0')
 
     s.add_development_dependency('rake', '>= 0.7.3')
     s.add_development_dependency('rspec', '~> 1.2.9')
