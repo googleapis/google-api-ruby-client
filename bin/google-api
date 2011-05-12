@@ -401,7 +401,7 @@ HTML
       def list
         api = options[:api]
         unless api
-          STDERR.puts('No service name supplied.')
+          STDERR.puts('No API name supplied.')
           exit(1)
         end
         client = Google::APIClient.new(:authorization => nil)

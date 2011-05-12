@@ -70,7 +70,7 @@ describe Google::APIClient do
 
     it 'should correctly determine the discovery URI' do
       @client.discovery_uri('prediction').should ===
-        'https://www.googleapis.com/discovery/v0.3/describe/prediction/v1'
+        'https://www.googleapis.com/discovery/v1/apis/prediction/v1/rest'
     end
 
     it 'should correctly generate API objects' do
@@ -157,7 +157,7 @@ describe Google::APIClient do
 
     it 'should allow modification to the base URIs for testing purposes' do
       prediction = @client.discovered_api('prediction', 'v1')
-      prediction.rest_base =
+      prediction.method_base =
         'https://testing-domain.googleapis.com/prediction/v1/'
       request = @client.generate_request(
         prediction.training.insert,
@@ -227,7 +227,7 @@ describe Google::APIClient do
 
     it 'should correctly determine the discovery URI' do
       @client.discovery_uri('buzz').should ===
-        'https://www.googleapis.com/discovery/v0.3/describe/buzz/v1'
+        'https://www.googleapis.com/discovery/v1/apis/buzz/v1/rest'
     end
 
     it 'should find APIs that are in the discovery document' do
@@ -318,7 +318,7 @@ describe Google::APIClient do
 
     it 'should correctly determine the discovery URI' do
       @client.discovery_uri('latitude').should ===
-        'https://www.googleapis.com/discovery/v0.3/describe/latitude/v1'
+        'https://www.googleapis.com/discovery/v1/apis/latitude/v1/rest'
     end
 
     it 'should find APIs that are in the discovery document' do
@@ -383,7 +383,7 @@ describe Google::APIClient do
 
     it 'should correctly determine the discovery URI' do
       @client.discovery_uri('moderator').should ===
-        'https://www.googleapis.com/discovery/v0.3/describe/moderator/v1'
+        'https://www.googleapis.com/discovery/v1/apis/moderator/v1/rest'
     end
 
     it 'should find APIs that are in the discovery document' do

@@ -219,11 +219,9 @@ module Google
     # @return [Addressable::URI] The URI of the directory document.
     def directory_uri
       template = Addressable::Template.new(
-        "https://{host}/discovery/v0.3/directory"
+        "https://{host}/discovery/v1/apis"
       )
-      return template.expand({
-        "host" => self.host
-      })
+      return template.expand({"host" => self.host})
     end
 
     ##
@@ -250,8 +248,8 @@ module Google
       version = version || 'v1'
       return @discovery_uris["#{api}:#{version}"] ||= (begin
         template = Addressable::Template.new(
-          "https://{host}/discovery/v0.3/describe/" +
-          "{api}/{version}"
+          "https://{host}/discovery/v1/apis/" +
+          "{api}/{version}/rest"
         )
         template.expand({
           "host" => self.host,

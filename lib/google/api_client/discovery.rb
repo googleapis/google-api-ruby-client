@@ -101,20 +101,20 @@ module Google
       end
 
       ##
-      # Returns the base URI for this version of the service.
+      # Returns the base URI for the discovery document.
       #
-      # @return [Addressable::URI] The base URI that methods are joined to.
+      # @return [Addressable::URI] The base URI.
       attr_reader :document_base
 
       ##
       # Returns the base URI for this version of the service.
       #
       # @return [Addressable::URI] The base URI that methods are joined to.
-      def rest_base
-        if @discovery_document['restBasePath']
-          return @rest_base ||= (
+      def method_base
+        if @discovery_document['basePath']
+          return @method_base ||= (
             self.document_base +
-            Addressable::URI.parse(@discovery_document['restBasePath'])
+            Addressable::URI.parse(@discovery_document['basePath'])
           ).normalize
         else
           return nil
@@ -126,13 +126,13 @@ module Google
       #
       # @param [Addressable::URI, #to_str, String] new_base
       #   The new base URI to use for the service.
-      def rest_base=(new_rest_base)
-        @rest_base = Addressable::URI.parse(new_rest_base)
+      def method_base=(new_method_base)
+        @method_base = Addressable::URI.parse(new_method_base)
         self.resources.each do |resource|
-          resource.rest_base = @rest_base
+          resource.method_base = @method_base
         end
         self.methods.each do |method|
-          method.rest_base = @rest_base
+          method.method_base = @method_base
         end
       end
 
@@ -144,7 +144,7 @@ module Google
       def resources
         return @resources ||= (
           (@discovery_document['resources'] || []).inject([]) do |accu, (k, v)|
-            accu << ::Google::APIClient::Resource.new(self.rest_base, k, v)
+            accu << ::Google::APIClient::Resource.new(self.method_base, k, v)
             accu
           end
         )
@@ -158,7 +158,7 @@ module Google
       def methods
         return @methods ||= (
           (@discovery_document['methods'] || []).inject([]) do |accu, (k, v)|
-            accu << ::Google::APIClient::Method.new(self.rest_base, k, v)
+            accu << ::Google::APIClient::Method.new(self.method_base, k, v)
             accu
           end
         )
@@ -176,7 +176,7 @@ module Google
         return @hash ||= (begin
           methods_hash = {}
           self.methods.each do |method|
-            methods_hash[method.rpc_method] = method
+            methods_hash[method.id] = method
           end
           self.resources.each do |resource|
             methods_hash.merge!(resource.to_h)
@@ -191,7 +191,7 @@ module Google
       # @return [String] The service's state, as a <code>String</code>.
       def inspect
         sprintf(
-          "#<%s:%#0x NAME:%s>", self.class.to_s, self.object_id, self.name
+          "#<%s:%#0x ID:%s>", self.class.to_s, self.object_id, self.id
         )
       end
     end
@@ -211,8 +211,8 @@ module Google
       #   The section of the discovery document that applies to this resource.
       #
       # @return [Google::APIClient::Resource] The constructed resource object.
-      def initialize(rest_base, resource_name, discovery_document)
-        @rest_base = rest_base
+      def initialize(method_base, resource_name, discovery_document)
+        @method_base = method_base
         @name = resource_name
         @discovery_document = discovery_document
         metaclass = (class <<self; self; end)
@@ -247,20 +247,20 @@ module Google
       # Returns the base URI for this resource.
       #
       # @return [Addressable::URI] The base URI that methods are joined to.
-      attr_reader :rest_base
+      attr_reader :method_base
 
       ##
       # Updates the hierarchy of resources and methods with the new base.
       #
       # @param [Addressable::URI, #to_str, String] new_base
       #   The new base URI to use for the resource.
-      def rest_base=(new_rest_base)
-        @rest_base = Addressable::URI.parse(new_rest_base)
+      def method_base=(new_method_base)
+        @method_base = Addressable::URI.parse(new_method_base)
         self.resources.each do |resource|
-          resource.rest_base = @rest_base
+          resource.method_base = @method_base
         end
         self.methods.each do |method|
-          method.rest_base = @rest_base
+          method.method_base = @method_base
         end
       end
 
@@ -271,7 +271,7 @@ module Google
       def resources
         return @resources ||= (
           (@discovery_document['resources'] || []).inject([]) do |accu, (k, v)|
-            accu << ::Google::APIClient::Resource.new(self.rest_base, k, v)
+            accu << ::Google::APIClient::Resource.new(self.method_base, k, v)
             accu
           end
         )
@@ -284,7 +284,7 @@ module Google
       def methods
         return @methods ||= (
           (@discovery_document['methods'] || []).inject([]) do |accu, (k, v)|
-            accu << ::Google::APIClient::Method.new(self.rest_base, k, v)
+            accu << ::Google::APIClient::Method.new(self.method_base, k, v)
             accu
           end
         )
@@ -299,7 +299,7 @@ module Google
         return @hash ||= (begin
           methods_hash = {}
           self.methods.each do |method|
-            methods_hash[method.rpc_method] = method
+            methods_hash[method.id] = method
           end
           self.resources.each do |resource|
             methods_hash.merge!(resource.to_h)
@@ -326,7 +326,7 @@ module Google
       ##
       # Creates a description of a particular method.
       #
-      # @param [Addressable::URI] rest_base
+      # @param [Addressable::URI] method_base
       #   The base URI for the service.
       # @param [String] method_name
       #   The identifier for the method.
@@ -334,8 +334,8 @@ module Google
       #   The section of the discovery document that applies to this method.
       #
       # @return [Google::APIClient::Method] The constructed method object.
-      def initialize(rest_base, method_name, discovery_document)
-        @rest_base = rest_base
+      def initialize(method_base, method_name, discovery_document)
+        @method_base = method_base
         @name = method_name
         @discovery_document = discovery_document
       end
@@ -358,24 +358,24 @@ module Google
       #
       # @return [Addressable::URI]
       #   The base URI that this method will be joined to.
-      attr_reader :rest_base
+      attr_reader :method_base
 
       ##
       # Updates the method with the new base.
       #
       # @param [Addressable::URI, #to_str, String] new_base
       #   The new base URI to use for the method.
-      def rest_base=(new_rest_base)
-        @rest_base = Addressable::URI.parse(new_rest_base)
+      def method_base=(new_method_base)
+        @method_base = Addressable::URI.parse(new_method_base)
         @uri_template = nil
       end
 
       ##
-      # Returns the RPC name for the method.
+      # Returns the method ID.
       #
-      # @return [String] The RPC name.
-      def rpc_method
-        return @discovery_document['rpcMethod']
+      # @return [String] The method identifier.
+      def id
+        return @discovery_document['id']
       end
 
       ##
@@ -389,7 +389,7 @@ module Google
         # because of the way the discovery document provides the URIs.
         # This should be fixed soon.
         return @uri_template ||= Addressable::Template.new(
-          self.rest_base + @discovery_document['restPath']
+          self.method_base + @discovery_document['path']
         )
       end
 
@@ -568,8 +568,8 @@ module Google
       # @return [String] The method's state, as a <code>String</code>.
       def inspect
         sprintf(
-          "#<%s:%#0x NAME:%s>",
-          self.class.to_s, self.object_id, self.rpc_method
+          "#<%s:%#0x ID:%s>",
+          self.class.to_s, self.object_id, self.id
         )
       end
     end
