@@ -1,6 +1,6 @@
 == 0.2.0
 
-* updated to use v0.3 of the discovery API
+* updated to use v1 of the discovery API
 * updated to use httpadapter 1.0.0
 * added OAuth 2 support to the command line tool
 * renamed some switches in the command line tool
