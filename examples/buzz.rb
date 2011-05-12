@@ -1,29 +1,78 @@
-#!/usr/bin/env ruby
-
-# RUN
-#   ruby examples/buzz.rb
-
-root_dir = File.expand_path("../../..", __FILE__)
-lib_dir = File.expand_path("./lib", root_dir)
-
-$LOAD_PATH.unshift(lib_dir)
-$LOAD_PATH.uniq!
-
+$:.unshift('lib')
 require 'rubygems'
-begin
-  require 'signet/oauth_1/client'
-  require 'google/api_client'
-rescue LoadError
-  STDERR.puts "Missing dependencies."
-  STDERR.puts "sudo gem install signet google-api-client"
-  exit(1)
+require 'sinatra'
+require 'datamapper'
+require 'google/api_client'
+
+use Rack::Session::Pool, :expire_after => 86400 # 1 day
+
+# Set up our token store
+DataMapper.setup(:default, 'sqlite::memory:')
+class TokenPair
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :refresh_token, String
+  property :access_token, String
+  property :expires_at, Integer
+
+  def update_token!(object)
+    self.refresh_token = object.refresh_token
+    self.access_token = object.access_token
+    self.expires_at = object.expires_at
+  end
+
+  def to_hash
+    return {
+      :refresh_token => refresh_token,
+      :access_token => access_token,
+      :expires_at => expires_at
+    }
+  end
+end
+TokenPair.auto_migrate!
+
+before do
+  @client = Google::APIClient.new
+  @client.authorization.client_id = '245083617981.apps.googleusercontent.com'
+  @client.authorization.client_secret = 'pYelZCRjSa+iMezYENVScXFk'
+  @client.authorization.scope = 'https://www.googleapis.com/auth/buzz'
+  @client.authorization.redirect_uri = to('/oauth2callback')
+  @client.authorization.code = params[:code] if params[:code]
+  if session[:token_id]
+    # Load the access token here if it's available
+    token_pair = TokenPair.get(session[:token_id])
+    @client.authorization.update_token!(token_pair.to_hash)
+  end
+  @buzz = @client.discovered_api('buzz')
+  unless @client.authorization.access_token || request.path_info =~ /^\/oauth2/
+    redirect to('/oauth2authorize')
+  end
 end
 
-client = Google::APIClient.new(:service => 'buzz')
-response = client.execute(
-  'chili.activities.list',
-  'userId' => 'googlebuzz', 'scope' => '@public', 'alt' => 'json', 'pp' => '1'
-)
-status, headers, body = response
-puts body
-exit(0)
+get '/oauth2authorize' do
+  redirect @client.authorization.authorization_uri.to_s, 303
+end
+
+get '/oauth2callback' do
+  @client.authorization.fetch_access_token!
+  # Persist the token here
+  token_pair = if session[:token_id]
+    TokenPair.get(session[:token_id])
+  else
+    TokenPair.new
+  end
+  token_pair.update_token!(@client.authorization)
+  token_pair.save()
+  session[:token_id] = token_pair.id
+  redirect to('/')
+end
+
+get '/' do
+  response = @client.execute(
+    @buzz.activities.list,
+    'userId' => '@me', 'scope' => '@consumption', 'alt'=> 'json'
+  )
+  status, headers, body = response
+  [status, {'Content-Type' => 'application/json'}, body]
+end
