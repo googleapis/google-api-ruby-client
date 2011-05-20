@@ -44,6 +44,7 @@ before do
     token_pair = TokenPair.get(session[:token_id])
     @client.authorization.update_token!(token_pair.to_hash)
   end
+  @client.authorization.fetch_access_token! if @client.authorization.expired?
   @buzz = @client.discovered_api('buzz')
   unless @client.authorization.access_token || request.path_info =~ /^\/oauth2/
     redirect to('/oauth2authorize')
