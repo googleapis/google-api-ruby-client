@@ -17,6 +17,7 @@ namespace :spec do
       t.rcov = false
     end
     t.rcov_opts = [
+      '--exclude', 'lib\\/google\\/api_client\\/environment.rb',
       '--exclude', 'lib\\/compat',
       '--exclude', 'spec',
       '--exclude', '\\.rvm\\/gems',
