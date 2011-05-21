@@ -14,19 +14,22 @@ class TokenPair
   property :id, Serial
   property :refresh_token, String
   property :access_token, String
-  property :expires_at, Integer
+  property :expires_in, Integer
+  property :issued_at, Integer
 
   def update_token!(object)
     self.refresh_token = object.refresh_token
     self.access_token = object.access_token
-    self.expires_at = object.expires_at
+    self.expires_in = object.expires_in
+    self.issued_at = object.issued_at
   end
 
   def to_hash
     return {
       :refresh_token => refresh_token,
       :access_token => access_token,
-      :expires_at => expires_at
+      :expires_in => expires_in,
+      :issued_at => Time.at(issued_at)
     }
   end
 end
@@ -44,7 +47,9 @@ before do
     token_pair = TokenPair.get(session[:token_id])
     @client.authorization.update_token!(token_pair.to_hash)
   end
-  @client.authorization.fetch_access_token! if @client.authorization.expired?
+  if @client.authorization.refresh_token && @client.authorization.expired?
+    @client.authorization.fetch_access_token!
+  end
   @buzz = @client.discovered_api('buzz')
   unless @client.authorization.access_token || request.path_info =~ /^\/oauth2/
     redirect to('/oauth2authorize')
