@@ -75,10 +75,10 @@ get '/oauth2callback' do
 end
 
 get '/' do
-  response = @client.execute(
+  result = @client.execute(
     @buzz.activities.list,
-    'userId' => '@me', 'scope' => '@consumption', 'alt'=> 'json'
+    {'userId' => '@me', 'scope' => '@consumption', 'alt'=> 'json'}
   )
-  status, headers, body = response
-  [status, {'Content-Type' => 'application/json'}, body]
+  status, _, _ = result.response
+  [status, {'Content-Type' => 'application/json'}, JSON.generate(result.data)]
 end

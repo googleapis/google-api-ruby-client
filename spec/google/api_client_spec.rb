@@ -36,7 +36,7 @@ shared_examples_for 'configurable user agent' do
   it 'should not allow the user agent to be used with bogus values' do
     (lambda do
       @client.user_agent = 42
-      @client.transmit_request(
+      @client.transmit(
         ['GET', 'http://www.google.com/', [], []]
       )
     end).should raise_error(TypeError)
@@ -53,7 +53,7 @@ shared_examples_for 'configurable user agent' do
       end
       [200, [], ['']]
     end
-    @client.transmit_request(request, adapter)
+    @client.transmit(request, adapter)
   end
 end
 
@@ -63,11 +63,7 @@ describe Google::APIClient do
   end
 
   it 'should make its version number available' do
-    ::Google::APIClient::VERSION::STRING.should be_instance_of(String)
-  end
-
-  it 'should use the default JSON parser' do
-    @client.parser.should be(Google::APIClient::JSONParser)
+    Google::APIClient::VERSION::STRING.should be_instance_of(String)
   end
 
   it 'should default to OAuth 2' do
@@ -102,28 +98,6 @@ describe Google::APIClient do
     end
 
     # TODO
-    it_should_behave_like 'configurable user agent'
-  end
-
-  describe 'with custom pluggable parser' do
-    before do
-      class FakeJsonParser
-        def serialize(value)
-          return "42"
-        end
-
-        def parse(value)
-          return 42
-        end
-      end
-
-      @client.parser = FakeJsonParser.new
-    end
-
-    it 'should use the custom parser' do
-      @client.parser.should be_instance_of(FakeJsonParser)
-    end
-
     it_should_behave_like 'configurable user agent'
   end
 end

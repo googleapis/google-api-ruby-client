@@ -13,28 +13,22 @@
 # limitations under the License.
 
 
+require 'google/api_client/parsers/json_parser'
+
 module Google
   class APIClient
-    ##
-    # An error which is raised when there is an unexpected response or other
-    # transport error that prevents an operation from succeeding.
-    class TransmissionError < StandardError
-    end
+    module JSON
+      ##
+      # A module which provides a parser for error responses.
+      class ErrorParser
+        include Google::APIClient::JSONParser
 
-    ##
-    # An exception that is raised if a method is called with missing or
-    # invalid parameter values.
-    class ValidationError < StandardError
-    end
+        matches_fields 'error'
 
-    ##
-    # A 4xx class HTTP error occurred.
-    class ClientError < TransmissionError
-    end
-
-    ##
-    # A 5xx class HTTP error occurred.
-    class ServerError < TransmissionError
+        def error
+          return self['error']['message']
+        end
+      end
     end
   end
 end

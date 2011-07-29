@@ -447,7 +447,7 @@ HTML
           method.upcase!
           request = [method, uri.to_str, headers, [request_body]]
           request = client.generate_authenticated_request(:request => request)
-          response = client.transmit_request(request)
+          response = client.transmit(request)
           status, headers, body = response
           puts body
           exit(0)
@@ -477,10 +477,13 @@ HTML
             parameters['xoauth_requestor_id'] = options[:requestor_id]
           end
           begin
-            response = client.execute(
-              method, parameters, request_body, headers
+            result = client.execute(
+              :api_method => method,
+              :parameters => parameters,
+              :merged_body => request_body,
+              :headers => headers
             )
-            status, headers, body = response
+            status, headers, body = result.response
             puts body
             exit(0)
           rescue ArgumentError => e

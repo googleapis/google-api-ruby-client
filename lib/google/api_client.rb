@@ -20,6 +20,8 @@ require 'stringio'
 require 'google/api_client/errors'
 require 'google/api_client/environment'
 require 'google/api_client/discovery'
+require 'google/api_client/reference'
+require 'google/api_client/result'
 
 module Google
   # TODO(bobaman): Document all this stuff.
@@ -65,16 +67,6 @@ module Google
         'google-api-ruby-client/' + VERSION::STRING +
         ' ' + ENV::OS_VERSION
       ).strip
-      # This is mostly a default for the sake of convenience.
-      # Unlike most other options, this one may be nil, so we check for
-      # the presence of the key rather than checking the value.
-      if options.has_key?("parser")
-        self.parser = options["parser"]
-      else
-        require 'google/api_client/parsers/json_parser'
-        # NOTE: Do not rely on this default value, as it may change
-        self.parser = Google::APIClient::JSONParser
-      end
       # The writer method understands a few Symbols and will generate useful
       # default authentication mechanisms.
       self.authorization = options["authorization"] || :oauth_2
@@ -92,33 +84,6 @@ module Google
       @discovery_documents = {}
       @discovered_apis = {}
       return self
-    end
-
-
-    ##
-    # Returns the parser used by the client.
-    #
-    # @return [#serialize, #parse]
-    #   The parser used by the client.  Any object that implements both a
-    #   <code>#serialize</code> and a <code>#parse</code> method may be used.
-    #   If <code>nil</code>, no parsing will be done.
-    attr_reader :parser
-
-    ##
-    # Sets the parser used by the client.
-    #
-    # @param [#serialize, #parse] new_parser
-    #   The parser used by the client.  Any object that implements both a
-    #   <code>#serialize</code> and a <code>#parse</code> method may be used.
-    #   If <code>nil</code>, no parsing will be done.
-    def parser=(new_parser)
-      if new_parser &&
-          !new_parser.respond_to?(:serialize) &&
-          !new_parser.respond_to?(:parse)
-        raise TypeError,
-          'Expected parser object to respond to #serialize and #parse.'
-      end
-      @parser = new_parser
     end
 
     ##
@@ -280,7 +245,7 @@ module Google
           "Expected String or StringIO, got #{discovery_document.class}."
       end
       @discovery_documents["#{api}:#{version}"] =
-        JSON.parse(discovery_document)
+        ::JSON.parse(discovery_document)
     end
 
     ##
@@ -291,16 +256,21 @@ module Google
       return @directory_document ||= (begin
         request_uri = self.directory_uri
         request = ['GET', request_uri, [], []]
-        response = self.transmit_request(request)
+        response = self.transmit(request)
         status, headers, body = response
         if status == 200 # TODO(bobaman) Better status code handling?
-          merged_body = StringIO.new
-          body.each do |chunk|
-            merged_body.write(chunk)
+          merged_body = body.inject(StringIO.new) do |accu, chunk|
+            accu.write(chunk)
+            accu
           end
-          merged_body.rewind
-          JSON.parse(merged_body.string)
-        else
+          ::JSON.parse(merged_body.string)
+        elsif status >= 400 && status < 500
+          raise ClientError,
+            "Could not retrieve discovery document at: #{request_uri}"
+        elsif status >= 500 && status < 600
+          raise ServerError,
+            "Could not retrieve discovery document at: #{request_uri}"
+        elsif status > 600
           raise TransmissionError,
             "Could not retrieve discovery document at: #{request_uri}"
         end
@@ -319,16 +289,21 @@ module Google
       return @discovery_documents["#{api}:#{version}"] ||= (begin
         request_uri = self.discovery_uri(api, version)
         request = ['GET', request_uri, [], []]
-        response = self.transmit_request(request)
+        response = self.transmit(request)
         status, headers, body = response
         if status == 200 # TODO(bobaman) Better status code handling?
-          merged_body = StringIO.new
-          body.each do |chunk|
-            merged_body.write(chunk)
+          merged_body = body.inject(StringIO.new) do |accu, chunk|
+            accu.write(chunk)
+            accu
           end
-          merged_body.rewind
-          JSON.parse(merged_body.string)
-        else
+          ::JSON.parse(merged_body.string)
+        elsif status >= 400 && status < 500
+          raise ClientError,
+            "Could not retrieve discovery document at: #{request_uri}"
+        elsif status >= 500 && status < 600
+          raise ServerError,
+            "Could not retrieve discovery document at: #{request_uri}"
+        elsif status > 600
           raise TransmissionError,
             "Could not retrieve discovery document at: #{request_uri}"
         end
@@ -344,7 +319,7 @@ module Google
         document_base = self.directory_uri
         if self.directory_document && self.directory_document['items']
           self.directory_document['items'].map do |discovery_document|
-            ::Google::APIClient::API.new(
+            Google::APIClient::API.new(
               document_base,
               discovery_document
             )
@@ -373,7 +348,7 @@ module Google
         document_base = self.discovery_uri(api, version)
         discovery_document = self.discovery_document(api, version)
         if document_base && discovery_document
-          ::Google::APIClient::API.new(
+          Google::APIClient::API.new(
             document_base,
             discovery_document
           )
@@ -442,8 +417,6 @@ module Google
     #   - <code>:version</code> — 
     #     The service version.  Only used if <code>api_method</code> is a
     #     <code>String</code>.  Defaults to <code>'v1'</code>.
-    #   - <code>:parser</code> — 
-    #     The parser for the response.
     #   - <code>:authorization</code> — 
     #     The authorization mechanism for the response.  Used only if
     #     <code>:authenticated</code> is <code>true</code>.
@@ -457,17 +430,20 @@ module Google
     #
     # @example
     #   request = client.generate_request(
-    #     'chili.activities.list',
-    #     {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'}
+    #     :api_method => 'chili.activities.list',
+    #     :parameters =>
+    #       {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'}
     #   )
     #   method, uri, headers, body = request
-    def generate_request(
-        api_method, parameters={}, body='', headers=[], options={})
+    def generate_request(options={})
+      # Note: The merge method on a Hash object will coerce an API Reference
+      # object into a Hash and merge with the default options.
       options={
-        :parser => self.parser,
         :version => 'v1',
         :authorization => self.authorization
       }.merge(options)
+      # The Reference object is going to need this to do method ID lookups.
+      options[:client] = self
       # The default value for the :authenticated option depends on whether an
       # authorization mechanism has been set.
       if options[:authorization]
@@ -475,27 +451,8 @@ module Google
       else
         options = {:authenticated => false}.merge(options)
       end
-      if api_method.kind_of?(String) || api_method.kind_of?(Symbol)
-        api_method = api_method.to_s
-        # This method of guessing the API is unreliable. This will fail for
-        # APIs where the first segment of the RPC name does not match the
-        # service name. However, this is a fallback mechanism anyway.
-        # Developers should be passing in a reference to the method, rather
-        # than passing in a string or symbol. This should raise an error
-        # in the case of a mismatch.
-        api = api_method[/^([^.]+)\./, 1]
-        api_method = self.discovered_method(
-          api_method, api, options[:version]
-        )
-      elsif !api_method.kind_of?(::Google::APIClient::Method)
-        raise TypeError,
-          "Expected String, Symbol, or Google::APIClient::Method, " +
-          "got #{api_method.class}."
-      end
-      unless api_method
-        raise ArgumentError, "API method could not be found."
-      end
-      request = api_method.generate_request(parameters, body, headers)
+      reference = Google::APIClient::Reference.new(options)
+      request = reference.to_request
       if options[:authenticated]
         request = self.generate_authenticated_request(:request => request)
       end
@@ -503,47 +460,13 @@ module Google
     end
 
     ##
-    # Generates a request and transmits it.
+    # Signs a request using the current authorization mechanism.
     #
-    # @param [Google::APIClient::Method, String] api_method
-    #   The method object or the RPC name of the method being executed.
-    # @param [Hash, Array] parameters
-    #   The parameters to send to the method.
-    # @param [String] body The body of the request.
-    # @param [Hash, Array] headers The HTTP headers for the request.
-    # @param [Hash] options
-    #   The configuration parameters for the request.
-    #   - <code>:version</code> — 
-    #     The service version.  Only used if <code>api_method</code> is a
-    #     <code>String</code>.  Defaults to <code>'v1'</code>.
-    #   - <code>:adapter</code> — 
-    #     The HTTP adapter.
-    #   - <code>:parser</code> — 
-    #     The parser for the response.
-    #   - <code>:authorization</code> — 
-    #     The authorization mechanism for the response.  Used only if
-    #     <code>:authenticated</code> is <code>true</code>.
-    #   - <code>:authenticated</code> — 
-    #     <code>true</code> if the request must be signed or otherwise
-    #     authenticated, <code>false</code>
-    #     otherwise.  Defaults to <code>true</code>.
+    # @param [Hash] options The options to pass through.
     #
-    # @return [Array] The response from the API.
-    #
-    # @example
-    #   response = client.execute(
-    #     'chili.activities.list',
-    #     {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'}
-    #   )
-    #   status, headers, body = response
-    def execute(api_method, parameters={}, body='', headers=[], options={})
-      request = self.generate_request(
-        api_method, parameters, body, headers, options
-      )
-      return self.transmit_request(
-        request,
-        options[:adapter] || self.http_adapter
-      )
+    # @return [Array] The signed or otherwise authenticated request.
+    def generate_authenticated_request(options={})
+      return authorization.generate_authenticated_request(options)
     end
 
     ##
@@ -553,7 +476,7 @@ module Google
     # @param [#transmit] adapter The HTTP adapter.
     #
     # @return [Array] The response from the server.
-    def transmit_request(request, adapter=self.http_adapter)
+    def transmit(request, adapter=self.http_adapter)
       if self.user_agent != nil
         # If there's no User-Agent header, set one.
         method, uri, headers, body = request
@@ -577,13 +500,90 @@ module Google
     end
 
     ##
-    # Signs a request using the current authorization mechanism.
+    # Executes a request, wrapping it in a Result object.
     #
-    # @param [Hash] options The options to pass through.
+    # @param [Google::APIClient::Method, String] api_method
+    #   The method object or the RPC name of the method being executed.
+    # @param [Hash, Array] parameters
+    #   The parameters to send to the method.
+    # @param [String] body The body of the request.
+    # @param [Hash, Array] headers The HTTP headers for the request.
+    # @param [Hash] options
+    #   The configuration parameters for the request.
+    #   - <code>:version</code> — 
+    #     The service version.  Only used if <code>api_method</code> is a
+    #     <code>String</code>.  Defaults to <code>'v1'</code>.
+    #   - <code>:adapter</code> — 
+    #     The HTTP adapter.
+    #   - <code>:authorization</code> — 
+    #     The authorization mechanism for the response.  Used only if
+    #     <code>:authenticated</code> is <code>true</code>.
+    #   - <code>:authenticated</code> — 
+    #     <code>true</code> if the request must be signed or otherwise
+    #     authenticated, <code>false</code>
+    #     otherwise.  Defaults to <code>true</code>.
     #
-    # @return [Array] The signed or otherwise authenticated request.
-    def generate_authenticated_request(options={})
-      return authorization.generate_authenticated_request(options)
+    # @return [Array] The response from the API.
+    #
+    # @example
+    #   request = client.generate_request(
+    #     :api_method => 'chili.activities.list',
+    #     :parameters =>
+    #       {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'}
+    #   )
+    def execute(*params)
+      # This block of code allows us to accept multiple parameter passing
+      # styles, and maintaining backwards compatibility.
+      if params.last.respond_to?(:to_hash) && params.size != 2
+        # Hash options are tricky. If we get two arguments, it's ambiguous
+        # whether to treat them as API parameters or Hash options, but since
+        # it's rare to need to pass in options, we must assume that the
+        # developer wanted to pass API parameters. Prefer using named
+        # parameters to avoid this issue. Unnamed parameters should be
+        # considered syntactic sugar.
+        options = params.pop
+      else
+        options = {}
+      end
+      options[:api_method] = params.shift if params.size > 0
+      options[:parameters] = params.shift if params.size > 0
+      options[:merged_body] = params.shift if params.size > 0
+      options[:headers] = params.shift if params.size > 0
+      options[:client] = self
+
+      reference = Google::APIClient::Reference.new(options)
+      request = self.generate_request(reference)
+      response = self.transmit(
+        request,
+        options[:adapter] || self.http_adapter
+      )
+      return Google::APIClient::Result.new(reference, request, response)
+    end
+
+    ##
+    # Same as Google::APIClient#execute, but raises an exception if there was
+    # an error.
+    #
+    # @see Google::APIClient#execute
+    def execute!(*params)
+      result = self.execute(*params)
+      status, _, _ = result.response
+      if result.data.respond_to?(:error)
+        # You're going to get a terrible error message if the response isn't
+        # parsed successfully as an error.
+        error_message = result.data.error
+      end
+      if status >= 400 && status < 500
+        raise ClientError,
+          error_message || "A client error has occurred."
+      elsif status >= 500 && status < 600
+        raise ServerError,
+          error_message || "A server error has occurred."
+      elsif status > 600
+        raise TransmissionError,
+          error_message || "A transmission error has occurred."
+      end
+      return result
     end
   end
 end

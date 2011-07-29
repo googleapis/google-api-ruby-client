@@ -144,7 +144,7 @@ module Google
       def resources
         return @resources ||= (
           (@discovery_document['resources'] || []).inject([]) do |accu, (k, v)|
-            accu << ::Google::APIClient::Resource.new(self.method_base, k, v)
+            accu << Google::APIClient::Resource.new(self.method_base, k, v)
             accu
           end
         )
@@ -158,7 +158,7 @@ module Google
       def methods
         return @methods ||= (
           (@discovery_document['methods'] || []).inject([]) do |accu, (k, v)|
-            accu << ::Google::APIClient::Method.new(self.method_base, k, v)
+            accu << Google::APIClient::Method.new(self.method_base, k, v)
             accu
           end
         )
@@ -271,7 +271,7 @@ module Google
       def resources
         return @resources ||= (
           (@discovery_document['resources'] || []).inject([]) do |accu, (k, v)|
-            accu << ::Google::APIClient::Resource.new(self.method_base, k, v)
+            accu << Google::APIClient::Resource.new(self.method_base, k, v)
             accu
           end
         )
@@ -284,7 +284,7 @@ module Google
       def methods
         return @methods ||= (
           (@discovery_document['methods'] || []).inject([]) do |accu, (k, v)|
-            accu << ::Google::APIClient::Method.new(self.method_base, k, v)
+            accu << Google::APIClient::Method.new(self.method_base, k, v)
             accu
           end
         )
@@ -379,6 +379,14 @@ module Google
       end
 
       ##
+      # Returns the HTTP method or 'GET' if none is specified.
+      #
+      # @return [String] The HTTP method that will be used in the request.
+      def http_method
+        return @discovery_document['httpMethod'] || 'GET'
+      end
+
+      ##
       # Returns the URI template for the method.  A parameter list can be
       # used to expand this into a URI.
       #
@@ -465,7 +473,7 @@ module Google
         if !headers.kind_of?(Array) && !headers.kind_of?(Hash)
           raise TypeError, "Expected Hash or Array, got #{headers.class}."
         end
-        method = @discovery_document['httpMethod'] || 'GET'
+        method = self.http_method
         uri = self.generate_uri(parameters)
         headers = headers.to_a if headers.kind_of?(Hash)
         return [method, uri.to_str, headers, [body]]

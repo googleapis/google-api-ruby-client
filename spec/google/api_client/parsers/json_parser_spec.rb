@@ -16,36 +16,40 @@ require 'spec_helper'
 
 require 'json'
 require 'google/api_client/parsers/json_parser'
+require 'google/api_client/parsers/json/error_parser'
+require 'google/api_client/parsers/json/pagination'
 
-describe Google::APIClient::JSONParser, 'generates json from hash' do
+describe Google::APIClient::JSONParser, 'with error data' do
   before do
-    @parser = Google::APIClient::JSONParser
-  end
-
-  it 'should translate simple hash to JSON string' do
-    @parser.serialize('test' => 23).should == '{"test":23}'
-  end
-
-  it 'should translate simple nested into to nested JSON string' do
-    @parser.serialize({
-      'test' => 23, 'test2' => {'foo' => 'baz', 12 => 3.14 }
-    }).should ==
-      '{"test2":{"12":3.14,"foo":"baz"},"test":23}'
-  end
-end
-
-describe Google::APIClient::JSONParser, 'parses json string into hash' do
-  before do
-    @parser = Google::APIClient::JSONParser
-  end
-
-  it 'should parse simple json string into hash' do
-    @parser.parse('{"test":23}').should == {'test' => 23}
-  end
-
-  it 'should parse nested json object into hash' do
-    @parser.parse('{"test":23, "test2":{"bar":"baz", "foo":3.14}}').should == {
-      'test' => 23, 'test2' => {'bar' => 'baz', 'foo' => 3.14}
+    @data = {
+      'error' => {
+        'code' => 401,
+        'message' => 'Token invalid - Invalid AuthSub token.',
+        'errors' => [
+          {
+            'location' => 'Authorization',
+            'domain' => 'global',
+            'locationType' => 'header',
+            'reason' => 'authError',
+            'message' => 'Token invalid - Invalid AuthSub token.'
+          }
+        ]
+      }
     }
+  end
+
+  it 'should correctly match as an error' do
+    parser = Google::APIClient::JSONParser.match(@data)
+    parser.should == Google::APIClient::JSON::ErrorParser
+  end
+
+  it 'should be automatically handled as an error when parsed' do
+    data = Google::APIClient::JSONParser.parse(@data)
+    data.should be_kind_of(Google::APIClient::JSON::ErrorParser)
+  end
+
+  it 'should correctly expose error message' do
+    data = Google::APIClient::JSONParser.parse(@data)
+    data.error.should == 'Token invalid - Invalid AuthSub token.'
   end
 end

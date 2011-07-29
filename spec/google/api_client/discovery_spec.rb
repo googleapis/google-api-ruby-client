@@ -66,6 +66,9 @@ describe Google::APIClient do
   describe 'with the prediction API' do
     before do
       @client.authorization = nil
+      # The prediction API no longer exposes a v1, so we have to be
+      # careful about looking up the wrong API version.
+      @prediction = @client.discovered_api('prediction', 'v1.2')
     end
 
     it 'should correctly determine the discovery URI' do
@@ -74,45 +77,39 @@ describe Google::APIClient do
     end
 
     it 'should correctly generate API objects' do
-      @client.discovered_api('prediction').name.should == 'prediction'
-      @client.discovered_api('prediction').version.should == 'v1'
-      @client.discovered_api(:prediction).name.should == 'prediction'
-      @client.discovered_api(:prediction).version.should == 'v1'
+      @client.discovered_api('prediction', 'v1.2').name.should == 'prediction'
+      @client.discovered_api('prediction', 'v1.2').version.should == 'v1.2'
+      @client.discovered_api(:prediction, 'v1.2').name.should == 'prediction'
+      @client.discovered_api(:prediction, 'v1.2').version.should == 'v1.2'
     end
 
     it 'should discover methods' do
       @client.discovered_method(
-        'prediction.training.insert', 'prediction'
+        'prediction.training.insert', 'prediction', 'v1.2'
       ).name.should == 'insert'
       @client.discovered_method(
-        :'prediction.training.insert', :prediction
+        :'prediction.training.insert', :prediction, 'v1.2'
       ).name.should == 'insert'
-    end
-
-    it 'should discover methods' do
       @client.discovered_method(
-        'prediction.training.delete', 'prediction', 'v1.1'
+        'prediction.training.delete', 'prediction', 'v1.2'
       ).name.should == 'delete'
     end
 
     it 'should not find methods that are not in the discovery document' do
       @client.discovered_method(
-        'prediction.training.delete', 'prediction', 'v1'
-      ).should == nil
-      @client.discovered_method(
-        'prediction.bogus', 'prediction', 'v1'
+        'prediction.bogus', 'prediction', 'v1.2'
       ).should == nil
     end
 
     it 'should raise an error for bogus methods' do
       (lambda do
-        @client.discovered_method(42, 'prediction', 'v1')
+        @client.discovered_method(42, 'prediction', 'v1.2')
       end).should raise_error(TypeError)
     end
 
     it 'should raise an error for bogus methods' do
       (lambda do
-        @client.generate_request(@client.discovered_api('prediction'))
+        @client.generate_request(@client.discovered_api('prediction', 'v1.2'))
       end).should raise_error(TypeError)
     end
 
@@ -123,49 +120,50 @@ describe Google::APIClient do
 
     it 'should generate valid requests' do
       request = @client.generate_request(
-        'prediction.training.insert',
-        {'data' => '12345', }
+        :api_method => @prediction.training.insert,
+        :parameters => {'data' => '12345', }
       )
       method, uri, headers, body = request
       method.should == 'POST'
       uri.should ==
-        'https://www.googleapis.com/prediction/v1/training?data=12345'
+        'https://www.googleapis.com/prediction/v1.2/training?data=12345'
       (headers.inject({}) { |h,(k,v)| h[k]=v; h }).should == {}
       body.should respond_to(:each)
     end
 
     it 'should generate requests against the correct URIs' do
       request = @client.generate_request(
-        :'prediction.training.insert',
-        {'data' => '12345'}
+        :api_method => @prediction.training.insert,
+        :parameters => {'data' => '12345'}
       )
       method, uri, headers, body = request
       uri.should ==
-        'https://www.googleapis.com/prediction/v1/training?data=12345'
+        'https://www.googleapis.com/prediction/v1.2/training?data=12345'
     end
 
     it 'should generate requests against the correct URIs' do
-      prediction = @client.discovered_api('prediction', 'v1')
       request = @client.generate_request(
-        prediction.training.insert,
-        {'data' => '12345'}
+        :api_method => @prediction.training.insert,
+        :parameters => {'data' => '12345'}
       )
       method, uri, headers, body = request
       uri.should ==
-        'https://www.googleapis.com/prediction/v1/training?data=12345'
+        'https://www.googleapis.com/prediction/v1.2/training?data=12345'
     end
 
     it 'should allow modification to the base URIs for testing purposes' do
-      prediction = @client.discovered_api('prediction', 'v1')
+      prediction = @client.discovered_api('prediction', 'v1.2')
       prediction.method_base =
-        'https://testing-domain.googleapis.com/prediction/v1/'
+        'https://testing-domain.googleapis.com/prediction/v1.2/'
       request = @client.generate_request(
-        prediction.training.insert,
-        {'data' => '123'}
+        :api_method => prediction.training.insert,
+        :parameters => {'data' => '123'}
       )
       method, uri, headers, body = request
-      uri.should ==
-        'https://testing-domain.googleapis.com/prediction/v1/training?data=123'
+      uri.should == (
+        'https://testing-domain.googleapis.com/' +
+        'prediction/v1.2/training?data=123'
+      )
     end
 
     it 'should generate OAuth 1 requests' do
@@ -173,8 +171,8 @@ describe Google::APIClient do
       @client.authorization.token_credential_key = '12345'
       @client.authorization.token_credential_secret = '12345'
       request = @client.generate_request(
-        'prediction.training.insert',
-        {'data' => '12345'}
+        :api_method => @prediction.training.insert,
+        :parameters => {'data' => '12345'}
       )
       method, uri, headers, body = request
       headers = headers.inject({}) { |h,(k,v)| h[k]=v; h }
@@ -186,8 +184,8 @@ describe Google::APIClient do
       @client.authorization = :oauth_2
       @client.authorization.access_token = '12345'
       request = @client.generate_request(
-        'prediction.training.insert',
-        {'data' => '12345'}
+        :api_method => @prediction.training.insert,
+        :parameters => {'data' => '12345'}
       )
       method, uri, headers, body = request
       headers = headers.inject({}) { |h,(k,v)| h[k]=v; h }
@@ -199,23 +197,46 @@ describe Google::APIClient do
       @client.authorization = :oauth_1
       @client.authorization.token_credential_key = '12345'
       @client.authorization.token_credential_secret = '12345'
-      response = @client.execute(
-        'prediction.training.insert',
+      result = @client.execute(
+        @prediction.training.insert,
         {'data' => '12345'}
       )
-      status, headers, body = response
+      status, headers, body = result.response
       status.should == 401
     end
 
     it 'should not be able to execute improperly authorized requests' do
       @client.authorization = :oauth_2
       @client.authorization.access_token = '12345'
-      response = @client.execute(
-        'prediction.training.insert',
+      result = @client.execute(
+        @prediction.training.insert,
         {'data' => '12345'}
       )
-      status, headers, body = response
+      status, headers, body = result.response
       status.should == 401
+    end
+
+    it 'should not be able to execute improperly authorized requests' do
+      (lambda do
+        @client.authorization = :oauth_1
+        @client.authorization.token_credential_key = '12345'
+        @client.authorization.token_credential_secret = '12345'
+        result = @client.execute!(
+          @prediction.training.insert,
+          {'data' => '12345'}
+        )
+      end).should raise_error(Google::APIClient::ClientError)
+    end
+
+    it 'should not be able to execute improperly authorized requests' do
+      (lambda do
+        @client.authorization = :oauth_2
+        @client.authorization.access_token = '12345'
+        result = @client.execute!(
+          @prediction.training.insert,
+          {'data' => '12345'}
+        )
+      end).should raise_error(Google::APIClient::ClientError)
     end
   end
 
@@ -251,22 +272,18 @@ describe Google::APIClient do
     it 'should fail for string RPC names that do not match API name' do
       (lambda do
         @client.generate_request(
-          'chili.activities.list',
-          {'alt' => 'json'},
-          '',
-          [],
-          {:signed => false}
+          :api_method => 'chili.activities.list',
+          :parameters => {'alt' => 'json'},
+          :authenticated => false
         )
       end).should raise_error(Google::APIClient::TransmissionError)
     end
 
     it 'should generate requests against the correct URIs' do
       request = @client.generate_request(
-        @buzz.activities.list,
-        {'userId' => 'hikingfan', 'scope' => '@public'},
-        '',
-        [],
-        {:signed => false}
+        :api_method => @buzz.activities.list,
+        :parameters => {'userId' => 'hikingfan', 'scope' => '@public'},
+        :authenticated => false
       )
       method, uri, headers, body = request
       uri.should ==
@@ -276,11 +293,9 @@ describe Google::APIClient do
     it 'should correctly validate parameters' do
       (lambda do
         @client.generate_request(
-          @buzz.activities.list,
-          {'alt' => 'json'},
-          '',
-          [],
-          {:signed => false}
+          :api_method => @buzz.activities.list,
+          :parameters => {'alt' => 'json'},
+          :authenticated => false
         )
       end).should raise_error(ArgumentError)
     end
@@ -288,25 +303,32 @@ describe Google::APIClient do
     it 'should correctly validate parameters' do
       (lambda do
         @client.generate_request(
-          @buzz.activities.list,
-          {'userId' => 'hikingfan', 'scope' => '@bogus'},
-          '',
-          [],
-          {:signed => false}
+          :api_method => @buzz.activities.list,
+          :parameters => {'userId' => 'hikingfan', 'scope' => '@bogus'},
+          :authenticated => false
         )
       end).should raise_error(ArgumentError)
     end
 
     it 'should be able to execute requests without authorization' do
-      response = @client.execute(
+      result = @client.execute(
         @buzz.activities.list,
         {'alt' => 'json', 'userId' => 'hikingfan', 'scope' => '@public'},
         '',
         [],
-        {:signed => false}
+        :authenticated => false
       )
-      status, headers, body = response
+      status, headers, body = result.response
       status.should == 200
+    end
+
+    it 'should not be able to execute requests without authorization' do
+      result = @client.execute(
+        @buzz.activities.list,
+        'alt' => 'json', 'userId' => '@me', 'scope' => '@self'
+      )
+      status, headers, body = result.response
+      status.should == 401
     end
   end
 
@@ -338,11 +360,8 @@ describe Google::APIClient do
 
     it 'should generate requests against the correct URIs' do
       request = @client.generate_request(
-        'latitude.currentLocation.get',
-        {},
-        '',
-        [],
-        {:signed => false}
+        :api_method => 'latitude.currentLocation.get',
+        :authenticated => false
       )
       method, uri, headers, body = request
       uri.should ==
@@ -351,11 +370,8 @@ describe Google::APIClient do
 
     it 'should generate requests against the correct URIs' do
       request = @client.generate_request(
-        @latitude.current_location.get,
-        {},
-        '',
-        [],
-        {:signed => false}
+        :api_method => @latitude.current_location.get,
+        :authenticated => false
       )
       method, uri, headers, body = request
       uri.should ==
@@ -363,14 +379,11 @@ describe Google::APIClient do
     end
 
     it 'should not be able to execute requests without authorization' do
-      response = @client.execute(
-        'latitude.currentLocation.get',
-        {},
-        '',
-        [],
-        {:signed => false}
+      result = @client.execute(
+        :api_method => 'latitude.currentLocation.get',
+        :authenticated => false
       )
-      status, headers, body = response
+      status, headers, body = result.response
       status.should == 401
     end
   end
@@ -403,11 +416,8 @@ describe Google::APIClient do
 
     it 'should generate requests against the correct URIs' do
       request = @client.generate_request(
-        'moderator.profiles.get',
-        {},
-        '',
-        [],
-        {:signed => false}
+        :api_method => 'moderator.profiles.get',
+        :authenticated => false
       )
       method, uri, headers, body = request
       uri.should ==
@@ -416,11 +426,8 @@ describe Google::APIClient do
 
     it 'should generate requests against the correct URIs' do
       request = @client.generate_request(
-        @moderator.profiles.get,
-        {},
-        '',
-        [],
-        {:signed => false}
+        :api_method => @moderator.profiles.get,
+        :authenticated => false
       )
       method, uri, headers, body = request
       uri.should ==
@@ -428,14 +435,14 @@ describe Google::APIClient do
     end
 
     it 'should not be able to execute requests without authorization' do
-      response = @client.execute(
+      result = @client.execute(
         'moderator.profiles.get',
         {},
         '',
         [],
-        {:signed => false}
+        {:authenticated => false}
       )
-      status, headers, body = response
+      status, headers, body = result.response
       status.should == 401
     end
   end

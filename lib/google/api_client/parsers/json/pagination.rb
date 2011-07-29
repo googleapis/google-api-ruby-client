@@ -13,28 +13,28 @@
 # limitations under the License.
 
 
+require 'google/api_client/parsers/json_parser'
+
 module Google
   class APIClient
-    ##
-    # An error which is raised when there is an unexpected response or other
-    # transport error that prevents an operation from succeeding.
-    class TransmissionError < StandardError
-    end
+    module JSON
+      ##
+      # A module which provides a paginated parser.
+      module Pagination
+        def self.included(parser)
+          parser.class_eval do
+            include Google::APIClient::JSONParser
+          end
+        end
 
-    ##
-    # An exception that is raised if a method is called with missing or
-    # invalid parameter values.
-    class ValidationError < StandardError
-    end
+        def next_page_token
+          return self["nextPageToken"]
+        end
 
-    ##
-    # A 4xx class HTTP error occurred.
-    class ClientError < TransmissionError
-    end
-
-    ##
-    # A 5xx class HTTP error occurred.
-    class ServerError < TransmissionError
+        def prev_page_token
+          return self["prevPageToken"]
+        end
+      end
     end
   end
 end
