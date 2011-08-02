@@ -6,7 +6,6 @@
 # Original Author:: Bob Aman, Winton Davies, Robert Kaplow
 # Maintainer:: Robert Kaplow (mailto:rkaplow@google.com)
 
-$:.unshift('lib')
 require 'rubygems'
 require 'sinatra'
 require 'datamapper'
@@ -61,7 +60,7 @@ before do
   @client.authorization.redirect_uri = to('/oauth2callback')
 
   # Workaround for now as expires_in may be nil, but when converted to int it becomes 0.
-  @client.authorization.expires_in = Time.now + 1800 if @client.authorization.expires_in.to_i == 0
+  @client.authorization.expires_in = 1800 if @client.authorization.expires_in.to_i == 0
 
   if session[:token_id]
     # Load the access token here if it's available
@@ -109,6 +108,7 @@ get '/' do
     # Do a prediction.
     # FILL IN DESIRED INPUT:
     # -------------------------------------------------------------------------------
+    # Note, the input features should match the features of the dataset.
     prediction,score = get_prediction(datafile, ["Alice noticed with some surprise."])
     # -------------------------------------------------------------------------------
 
@@ -127,10 +127,11 @@ end
 def train(datafile)
   input = "{\"id\" : \"#{datafile}\"}"
   puts "training input: #{input}"
-  status, headers, body = @client.execute(@prediction.training.insert,
-                                          {},
-                                          input,
-                                          {'Content-Type' => 'application/json'})
+  result = @client.execute(:api_method => @prediction.training.insert,
+                           :merged_body => input,
+                           :headers => {'Content-Type' => 'application/json'}
+                           )
+  status, headers, body = result.response
 end
 
 ##
@@ -141,8 +142,9 @@ end
 #                 then the correct string is "bucket/object"
 # @return [Integer] status The HTTP status code of the training job.
 def get_training_status(datafile)
-  status, headers, body = @client.execute(@prediction.training.get,
-                                          {'data' => datafile})
+  result = @client.execute(:api_method => @prediction.training.get,
+                           :parameters => {'data' => datafile})
+  status, headers, body = result.response
   return status
 end
 
@@ -157,11 +159,14 @@ end
 
 def is_done?(datafile)
   status = get_training_status(datafile)
-  while true do
+  # We use an exponential backoff approach here.
+  test_counter = 0
+  while test_counter < 10 do
     puts "Attempting to check model #{datafile} - Status: #{status} "
     return true if status == 200
-    sleep 10
+    sleep 5 * (test_counter + 1)
     status = get_training_status(datafile)
+    test_counter += 1
   end
   return false
 end
@@ -184,12 +189,15 @@ def get_prediction(datafile,input_features)
   # We take the input features and put it in the right input (json) format.
   input="{\"input\" : { \"csvInstance\" :  #{input_features}}}"
   puts "Prediction Input: #{input}"
-  status, headers, body = @client.execute(@prediction.training.predict,
-                                                     {'data' => datafile},
-                                                     input,
-                                                     {'Content-Type' => 'application/json'})
-  prediction_data = JSON.parse(body[0])
-  
+  result = @client.execute(:api_method => @prediction.training.predict,
+                           :parameters => {'data' => datafile},
+                           :merged_body => input,
+                           :headers => {'Content-Type' => 'application/json'})
+  status, headers, body = result.response
+  prediction_data = result.data
+  puts status
+  puts body
+  puts prediction_data
   # Categorical
   if prediction_data["outputLabel"] != nil
     # Pull the most likely label.
