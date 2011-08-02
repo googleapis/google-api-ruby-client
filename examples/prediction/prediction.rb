@@ -6,7 +6,7 @@
 # Original Author:: Bob Aman, Winton Davies, Robert Kaplow
 # Maintainer:: Robert Kaplow (mailto:rkaplow@google.com)
 
-$:.unshift('lib')
+$LOAD_PATH:.unshift File.dirname('lib')
 require 'rubygems'
 require 'sinatra'
 require 'datamapper'
@@ -61,7 +61,7 @@ before do
   @client.authorization.redirect_uri = to('/oauth2callback')
 
   # Workaround for now as expires_in may be nil, but when converted to int it becomes 0.
-  @client.authorization.expires_in = Time.now + 1800 if @client.authorization.expires_in.to_i == 0
+  @client.authorization.expires_in = 1800 if @client.authorization.expires_in.to_i == 0
 
   if session[:token_id]
     # Load the access token here if it's available
