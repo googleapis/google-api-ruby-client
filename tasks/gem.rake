@@ -9,6 +9,8 @@ namespace :gem do
 
     s.name = PKG_NAME
     s.version = PKG_VERSION
+    s.author = PKG_AUTHOR
+    s.email = PKG_AUTHOR_EMAIL
     s.summary = PKG_SUMMARY
     s.description = PKG_DESCRIPTION
 

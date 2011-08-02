@@ -9,6 +9,7 @@ require 'rake/rdoctask'
 require 'rake/packagetask'
 require 'rake/gempackagetask'
 
+gem 'rspec', '~> 1.2.9'
 begin
   require 'spec/rake/spectask'
 rescue LoadError
@@ -27,6 +28,8 @@ PKG_HOMEPAGE       = 'http://code.google.com/p/google-api-ruby-client/'
 
 RELEASE_NAME       = "REL #{PKG_VERSION}"
 
+PKG_AUTHOR         = "Bob Aman"
+PKG_AUTHOR_EMAIL   = "bobaman@google.com"
 PKG_SUMMARY        = 'Package Summary'
 PKG_DESCRIPTION    = <<-TEXT
 The Google API Ruby Client makes it trivial to discover and access supported
