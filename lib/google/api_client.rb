@@ -533,14 +533,10 @@ module Google
     #   )
     def execute(*params)
       # This block of code allows us to accept multiple parameter passing
-      # styles, and maintaining backwards compatibility.
-      if params.last.respond_to?(:to_hash) && params.size != 2
-        # Hash options are tricky. If we get two arguments, it's ambiguous
-        # whether to treat them as API parameters or Hash options, but since
-        # it's rare to need to pass in options, we must assume that the
-        # developer wanted to pass API parameters. Prefer using named
-        # parameters to avoid this issue. Unnamed parameters should be
-        # considered syntactic sugar.
+      # styles, and maintaining some backwards compatibility.
+      #
+      # Note: I'm extremely tempted to deprecate this style of execute call.
+      if params.last.respond_to?(:to_hash) && params.size == 1
         options = params.pop
       else
         options = {}
