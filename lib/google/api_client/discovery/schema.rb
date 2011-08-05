@@ -13,6 +13,7 @@
 # limitations under the License.
 
 
+require 'time'
 require 'json'
 require 'addressable/uri'
 require 'addressable/template'
@@ -48,40 +49,29 @@ module Google
         if @api_version.const_defined?(@schema_name)
           @schema_class = @api_version.const_get(@schema_name)
         else
+          schema = self
           @schema_class = @api_version.const_set(
             @schema_name,
             Class.new(APIObject) do |klass|
               discovery_document['properties'].each do |(k, v)|
                 property_name = Google::INFLECTOR.underscore(k)
+                define_method(:schema) { schema }
                 define_method(property_name + '_property') do
                   v
                 end
                 case v['type']
                 when 'string'
-                  define_method(property_name) do
-                    self[k] || v['default']
-                  end
-                  define_method(property_name + '=') do |value|
-                    if value.respond_to?(:to_str)
-                      self[k] = value.to_str
-                    elsif value.kind_of?(Symbol)
-                      self[k] = value.to_s
-                    else
-                      raise TypeError,
-                        "Expected String or Symbol, got #{value.class}."
-                    end
-                  end
+                  define_string_property(property_name, k, v)
+                when 'boolean'
+                  define_boolean_property(property_name, k, v)
+                when 'number'
+                  define_number_property(property_name, k, v)
+                when 'object'
+                  define_object_property(property_name, k, v)
                 else
-                  # TODO(bobaman):
-                  # Implement the remainder of the types.
-
-                  # Don't know what this is, default to anything goes.
-                  define_method(property_name) do
-                    self[k] || v['default']
-                  end
-                  define_method(property_name + '=') do |value|
-                    self[k] = value
-                  end
+                  # Either type 'any' or we don't know what this is,
+                  # default to anything goes.
+                  define_any_property(property_name, k, v)
                 end
               end
             end
@@ -110,6 +100,119 @@ module Google
     end
 
     class APIObject
+      def self.define_string_property(property_name, key, schema)
+        define_method(property_name) do
+          self[key] ||= schema['default']
+          if schema['format'] == 'byte' && self[key] != nil
+            Base64.decode64(self[key])
+          elsif schema['format'] == 'date-time' && self[key] != nil
+            Time.parse(self[key])
+          elsif schema['format'] =~ /^u?int(32|64)$/ && self[key] != nil
+            self[key].to_i
+          else
+            self[key]
+          end
+        end
+        define_method(property_name + '=') do |value|
+          if schema['format'] == 'byte'
+            self[key] = Base64.encode64(value)
+          elsif schema['format'] == 'date-time'
+            if value.respond_to?(:to_str)
+              value = Time.parse(value.to_str)
+            elsif !value.respond_to?(:xmlschema)
+              raise TypeError,
+                "Could not obtain RFC 3339 timestamp from #{value.class}."
+            end
+            self[key] = value.xmlschema
+          elsif schema['format'] =~ /^u?int(32|64)$/
+            self[key] = value.to_s
+          elsif value.respond_to?(:to_str)
+            self[key] = value.to_str
+          elsif value.kind_of?(Symbol)
+            self[key] = value.to_s
+          else
+            raise TypeError,
+              "Expected String or Symbol, got #{value.class}."
+          end
+        end
+      end
+
+      def self.define_boolean_property(property_name, key, schema)
+        define_method(property_name) do
+          self[key] ||= schema['default']
+          case self[key].to_s.downcase
+          when 'true', 'yes', 'y', 'on', '1'
+            true
+          when 'false', 'no', 'n', 'off', '0'
+            false
+          when 'nil', 'null'
+            nil
+          else
+            raise TypeError,
+              "Expected boolean, got #{self[key].class}."
+          end
+        end
+        define_method(property_name + '=') do |value|
+          case value.to_s.downcase
+          when 'true', 'yes', 'y', 'on', '1'
+            self[key] = true
+          when 'false', 'no', 'n', 'off', '0'
+            self[key] = false
+          when 'nil', 'null'
+            self[key] = nil
+          else
+            raise TypeError, "Expected boolean, got #{value.class}."
+          end
+        end
+      end
+
+      def self.define_number_property(property_name, key, schema)
+        define_method(property_name) do
+          self[key] ||= schema['default']
+          if self[key] != nil && !self[key].respond_to?(:to_f)
+            raise TypeError,
+              "Expected Float, got #{self[key].class}."
+          elsif self[key] != nil && self[key].respond_to?(:to_f)
+            self[key].to_f
+          else
+            self[key]
+          end
+        end
+        define_method(property_name + '=') do |value|
+          if value == nil
+            self[key] = value
+          else
+            case schema['format']
+            when 'double', 'float'
+              if value.respond_to?(:to_f)
+                self[key] = value.to_f
+              else
+                raise TypeError,
+                  "Expected String or Symbol, got #{value.class}."
+              end
+            else
+              raise TypeError,
+                "Unexpected type format for number: #{schema['format']}."
+            end
+          end
+        end
+      end
+
+      def self.define_object_property(property_name, key, schema)
+        # TODO(bobaman):
+        # Do we treat this differently from any?
+        self.define_any_property(property_name, key, schema)
+      end
+
+      def self.define_any_property(property_name, key, schema)
+        define_method(property_name) do
+          self[k] || v['default']
+        end
+        define_method(property_name + '=') do |value|
+          self[k] = value
+        end
+      end
+
       def initialize(data)
         @data = data
       end
