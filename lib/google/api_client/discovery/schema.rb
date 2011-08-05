@@ -15,6 +15,7 @@
 
 require 'time'
 require 'json'
+require 'base64'
 require 'addressable/uri'
 require 'addressable/template'
 
