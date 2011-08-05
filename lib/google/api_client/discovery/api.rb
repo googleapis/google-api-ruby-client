@@ -151,6 +151,23 @@ module Google
       end
 
       ##
+      # Returns a schema for a kind value.
+      #
+      # @return [Google::APIClient::Schema] The associated Schema object.
+      def schema_for_kind(kind)
+        api_name, schema_name = kind.split('#', 2)
+        if api_name != self.name
+          raise ArgumentError,
+            "The kind does not match this API. " +
+            "Expected '#{self.name}', got '#{api_name}'."
+        end
+        for k, v in self.schemas
+          return v if k.downcase == schema_name.downcase
+        end
+        return nil
+      end
+
+      ##
       # A list of resources available at the root level of this version of the
       # API.
       #
