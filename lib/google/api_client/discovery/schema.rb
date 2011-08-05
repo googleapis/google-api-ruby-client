@@ -59,7 +59,7 @@ module Google
                 case v['type']
                 when 'string'
                   define_method(property_name) do
-                    self[k]
+                    self[k] || v['default']
                   end
                   define_method(property_name + '=') do |value|
                     if value.respond_to?(:to_str)
@@ -77,7 +77,7 @@ module Google
 
                   # Don't know what this is, default to anything goes.
                   define_method(property_name) do
-                    self[k]
+                    self[k] || v['default']
                   end
                   define_method(property_name + '=') do |value|
                     self[k] = value
