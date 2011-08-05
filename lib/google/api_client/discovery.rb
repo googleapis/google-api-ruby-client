@@ -16,3 +16,4 @@
 require 'google/api_client/discovery/api'
 require 'google/api_client/discovery/resource'
 require 'google/api_client/discovery/method'
+require 'google/api_client/discovery/schema'
