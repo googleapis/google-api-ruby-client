@@ -96,7 +96,25 @@ module Google
       # @return [TrueClass, FalseClass]
       #   Whether or not this is the preferred version of this API.
       def preferred
-        return @discovery_document['preferred']
+        return !!@discovery_document['preferred']
+      end
+
+      ##
+      # Returns the list of API features.
+      #
+      # @return [Array]
+      #   The features supported by this API.
+      def features
+        return @discovery_document['features'] || []
+      end
+
+      ##
+      # Returns true if this API uses a data wrapper.
+      #
+      # @return [TrueClass, FalseClass]
+      #   Whether or not this API uses a data wrapper.
+      def data_wrapper?
+        return self.features.include?('dataWrapper')
       end
 
       ##
