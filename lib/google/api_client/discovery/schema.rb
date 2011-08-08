@@ -60,6 +60,9 @@ module Google
                 define_method(property_name + '_property') do
                   v
                 end
+                define_method(property_name + '_description') do
+                  v['description']
+                end
                 case v['type']
                 when 'string'
                   define_string_property(property_name, k, v)
