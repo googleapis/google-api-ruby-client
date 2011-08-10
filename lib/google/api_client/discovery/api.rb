@@ -62,7 +62,10 @@ module Google
       #
       # @return [String] The service id.
       def id
-        return @discovery_document['id']
+        return (
+          @discovery_document['id'] ||
+          "#{self.name}:#{self.version}"
+        )
       end
 
       ##
@@ -160,9 +163,7 @@ module Google
       def schemas
         return @schemas ||= (
           (@discovery_document['schemas'] || []).inject({}) do |accu, (k, v)|
-            accu[k] = Google::APIClient::Schema.new(
-              self, self.name, self.version, v
-            )
+            accu[k] = Google::APIClient::Schema.parse(self, v)
             accu
           end
         )

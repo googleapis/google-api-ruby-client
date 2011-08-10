@@ -24,103 +24,102 @@ require 'google/api_client/errors'
 
 module Google
   class APIClient
-    class Schema
-      def initialize(api, api_name, api_version, discovery_document)
-        # This constructor is super-long, but hard to break up due to the
+    module Schema
+      def self.parse(api, schema_data)
+        # This method is super-long, but hard to break up due to the
         # unavoidable dependence on closures and execution context.
-        @api = api
-        @discovery_document = discovery_document
-        api_name_string =
-          Google::INFLECTOR.camelize(api_name)
-        api_version_string =
-          Google::INFLECTOR.camelize(api_version).gsub('.', '_')
-        @schema_name = @discovery_document['id']
-        if Google::APIClient::Schema.const_defined?(api_name_string)
-          @api_name = Google::APIClient::Schema.const_get(api_name_string)
-        else
-          @api_name = Google::APIClient::Schema.const_set(
-            api_name_string, Class.new
-          )
+        schema_name = schema_data['id']
+
+        if schema_name
+          api_name_string =
+            Google::INFLECTOR.camelize(api.name)
+          api_version_string =
+            Google::INFLECTOR.camelize(api.version).gsub('.', '_')
+          if Google::APIClient::Schema.const_defined?(api_name_string)
+            api_name = Google::APIClient::Schema.const_get(api_name_string)
+          else
+            api_name = Google::APIClient::Schema.const_set(
+              api_name_string, Module.new
+            )
+          end
+          if api_name.const_defined?(api_version_string)
+            api_version = api_name.const_get(api_version_string)
+          else
+            api_version = api_name.const_set(api_version_string, Module.new)
+          end
+          if api_version.const_defined?(schema_name)
+            schema_class = api_version.const_get(schema_name)
+          end
         end
-        if @api_name.const_defined?(api_version_string)
-          @api_version = @api_name.const_get(api_version_string)
-        else
-          @api_version = @api_name.const_set(api_version_string, Class.new)
-        end
-        if @api_version.const_defined?(@schema_name)
-          @schema_class = @api_version.const_get(@schema_name)
-        else
+
+        # It's possible the schema has already been defined. If so, don't
+        # redefine it. This means that reloading a schema which has already
+        # been loaded into memory is not possible.
+        unless schema_class
           schema = self
-          @schema_class = @api_version.const_set(
-            @schema_name,
-            Class.new(APIObject) do |klass|
-              discovery_document['properties'].each do |(k, v)|
-                property_name = Google::INFLECTOR.underscore(k)
-                define_method(:schema) { schema }
-                define_method(property_name + '_property') do
-                  v
-                end
-                define_method(property_name + '_description') do
-                  v['description']
-                end
-                case v['type']
-                when 'string'
-                  define_string_property(property_name, k, v)
-                when 'boolean'
-                  define_boolean_property(property_name, k, v)
-                when 'number'
-                  define_number_property(property_name, k, v)
-                when 'object'
-                  define_object_property(property_name, k, v)
-                else
-                  # Either type 'any' or we don't know what this is,
-                  # default to anything goes.
-                  define_any_property(property_name, k, v)
-                end
+          schema_class = Class.new(APIObject) do |klass|
+            properties = []
+            define_method('schema') do
+              schema_data
+            end
+            (schema_data['properties'] || []).each do |(k, v)|
+              property_name = Google::INFLECTOR.underscore(k)
+              properties << property_name.to_sym
+              define_method(:schema) { schema }
+              define_method(property_name + '_schema') do
+                v
+              end
+              define_method(property_name + '_description') do
+                v['description']
+              end
+              case v['type']
+              when 'string'
+                define_string_property(api, property_name, k, v)
+              when 'boolean'
+                define_boolean_property(api, property_name, k, v)
+              when 'number'
+                define_number_property(api, property_name, k, v)
+              when 'array'
+                define_array_property(api, property_name, k, v)
+              when 'object'
+                define_object_property(api, property_name, k, v)
+              else
+                # Either type 'any' or we don't know what this is,
+                # default to anything goes.
+                define_any_property(api, property_name, k, v)
               end
             end
-          )
+
+            define_method('properties') do
+              properties
+            end
+          end
+          if schema_name
+            api_version.const_set(schema_name, schema_class)
+          end
         end
-      end
-
-      def schema_name
-        return @schema_name
-      end
-
-      def schema_class
-        return @schema_class
-      end
-
-      ##
-      # Returns a <code>String</code> representation of the resource's state.
-      #
-      # @return [String] The resource's state, as a <code>String</code>.
-      def inspect
-        sprintf(
-          "#<%s:%#0x CLASS:%s>",
-          self.class.to_s, self.object_id, self.schema_class.name
-        )
+        return schema_class
       end
     end
 
     class APIObject
-      def self.define_string_property(property_name, key, schema)
+      def self.define_string_property(api, property_name, key, schema_data)
         define_method(property_name) do
-          self[key] ||= schema['default']
-          if schema['format'] == 'byte' && self[key] != nil
+          self[key] ||= schema_data['default']
+          if schema_data['format'] == 'byte' && self[key] != nil
             Base64.decode64(self[key])
-          elsif schema['format'] == 'date-time' && self[key] != nil
+          elsif schema_data['format'] == 'date-time' && self[key] != nil
             Time.parse(self[key])
-          elsif schema['format'] =~ /^u?int(32|64)$/ && self[key] != nil
+          elsif schema_data['format'] =~ /^u?int(32|64)$/ && self[key] != nil
             self[key].to_i
           else
             self[key]
           end
         end
         define_method(property_name + '=') do |value|
-          if schema['format'] == 'byte'
+          if schema_data['format'] == 'byte'
             self[key] = Base64.encode64(value)
-          elsif schema['format'] == 'date-time'
+          elsif schema_data['format'] == 'date-time'
             if value.respond_to?(:to_str)
               value = Time.parse(value.to_str)
             elsif !value.respond_to?(:xmlschema)
@@ -128,7 +127,7 @@ module Google
                 "Could not obtain RFC 3339 timestamp from #{value.class}."
             end
             self[key] = value.xmlschema
-          elsif schema['format'] =~ /^u?int(32|64)$/
+          elsif schema_data['format'] =~ /^u?int(32|64)$/
             self[key] = value.to_s
           elsif value.respond_to?(:to_str)
             self[key] = value.to_str
@@ -141,9 +140,9 @@ module Google
         end
       end
 
-      def self.define_boolean_property(property_name, key, schema)
+      def self.define_boolean_property(api, property_name, key, schema_data)
         define_method(property_name) do
-          self[key] ||= schema['default']
+          self[key] ||= schema_data['default']
           case self[key].to_s.downcase
           when 'true', 'yes', 'y', 'on', '1'
             true
@@ -170,9 +169,9 @@ module Google
         end
       end
 
-      def self.define_number_property(property_name, key, schema)
+      def self.define_number_property(api, property_name, key, schema_data)
         define_method(property_name) do
-          self[key] ||= schema['default']
+          self[key] ||= schema_data['default']
           if self[key] != nil && !self[key].respond_to?(:to_f)
             raise TypeError,
               "Expected Float, got #{self[key].class}."
@@ -186,7 +185,7 @@ module Google
           if value == nil
             self[key] = value
           else
-            case schema['format']
+            case schema_data['format']
             when 'double', 'float'
               if value.respond_to?(:to_f)
                 self[key] = value.to_f
@@ -196,24 +195,53 @@ module Google
               end
             else
               raise TypeError,
-                "Unexpected type format for number: #{schema['format']}."
+                "Unexpected type format for number: #{schema_data['format']}."
             end
           end
         end
       end
 
-      def self.define_object_property(property_name, key, schema)
-        # TODO(bobaman):
-        # Do we treat this differently from any?
-        self.define_any_property(property_name, key, schema)
+      def self.define_array_property(api, property_name, key, schema_data)
+        define_method(property_name) do
+          # The default value of an empty Array obviates a mutator method.
+          self[key] ||= []
+          array = if self[key] != nil && !self[key].respond_to?(:to_ary)
+            raise TypeError,
+              "Expected Array, got #{self[key].class}."
+          else
+            self[key].to_ary
+          end
+          if schema_data['items'] && schema_data['items']['$ref']
+            schema_name = schema_data['items']['$ref']
+            if api.schemas[schema_name]
+              schema_class = api.schemas[schema_name]
+              array.map! do |item|
+                schema_class.new(item)
+              end
+            else
+              raise ArgumentError,
+                "Could not find schema '#{schema_name}' in API '#{api.id}'."
+            end
+          end
+          array
+        end
       end
 
-      def self.define_any_property(property_name, key, schema)
+      def self.define_object_property(api, property_name, key, schema_data)
+        # TODO finish this up...
+        schema = Schema.parse(api, schema_data)
         define_method(property_name) do
-          self[k] || v['default']
+          self[key] ||= v['default']
+          schema.new(self[key])
+        end
+      end
+
+      def self.define_any_property(api, property_name, key, schema_data)
+        define_method(property_name) do
+          self[key] ||= v['default']
         end
         define_method(property_name + '=') do |value|
-          self[k] = value
+          self[key] = value
         end
       end
 
