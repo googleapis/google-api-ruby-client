@@ -231,14 +231,14 @@ module Google
         # TODO finish this up...
         schema = Schema.parse(api, schema_data)
         define_method(property_name) do
-          self[key] ||= v['default']
+          self[key] ||= schema_data['default']
           schema.new(self[key])
         end
       end
 
       def self.define_any_property(api, property_name, key, schema_data)
         define_method(property_name) do
-          self[key] ||= v['default']
+          self[key] ||= schema_data['default']
         end
         define_method(property_name + '=') do |value|
           self[key] = value
