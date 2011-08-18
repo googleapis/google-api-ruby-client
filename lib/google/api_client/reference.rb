@@ -13,6 +13,7 @@
 # limitations under the License.
 
 require 'stringio'
+require 'json'
 require 'addressable/uri'
 require 'google/api_client/discovery'
 
@@ -33,6 +34,17 @@ module Google
           self.body = options[:body]
         elsif options[:merged_body]
           self.merged_body = options[:merged_body]
+        elsif options[:body_object]
+          if options[:body_object].respond_to?(:to_json)
+            serialized_body = options[:body_object].to_json
+          elsif options[:body_object].respond_to?(:to_hash)
+            serialized_body = JSON.generate(options[:body_object].to_hash)
+          else
+            raise TypeError,
+              'Could not convert body object to JSON.' +
+              'Must respond to :to_json or :to_hash.'
+          end
+          self.merged_body = serialized_body
         else
           self.merged_body = ''
         end
