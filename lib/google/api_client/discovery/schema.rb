@@ -256,6 +256,14 @@ module Google
       def []=(key, value)
         return @data[key] = value
       end
+
+      def to_hash
+        return @data
+      end
+
+      def to_json
+        return JSON.generate(@data)
+      end
     end
   end
 end
