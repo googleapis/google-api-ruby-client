@@ -70,6 +70,8 @@ module Google
       # The writer method understands a few Symbols and will generate useful
       # default authentication mechanisms.
       self.authorization = options["authorization"] || :oauth_2
+      self.key = options["key"]
+      self.user_ip = options["user_ip"]
       # The HTTP adapter controls all of the HTTP traffic the client generates.
       # By default, Net::HTTP is used, but adding support for other clients
       # is trivial.
@@ -141,6 +143,18 @@ module Google
       @authorization = new_authorization
       return @authorization
     end
+
+    ##
+    # The application's API key issued by the API console.
+    #
+    # @return [String] The API key..
+    attr_accessor :key
+
+    ##
+    # The IP address of the user this request is being performed on behalf of.
+    #
+    # @return [String] The user's IP address.
+    attr_accessor :user_ip
 
     ##
     # Returns the HTTP adapter used by the client.
@@ -440,7 +454,9 @@ module Google
       # object into a Hash and merge with the default options.
       options={
         :version => 'v1',
-        :authorization => self.authorization
+        :authorization => self.authorization,
+        :key => self.key,
+        :user_ip => self.user_ip
       }.merge(options)
       # The Reference object is going to need this to do method ID lookups.
       options[:client] = self
