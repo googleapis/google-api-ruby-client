@@ -29,6 +29,10 @@ module Google
 
         self.api_method = options[:api_method]
         self.parameters = options[:parameters] || {}
+        # These parameters are handled differently because they're not
+        # parameters to the API method, but rather to the API system.
+        self.parameters['key'] ||= options[:key] if options[:key]
+        self.parameters['user_ip'] ||= options[:user_ip] if options[:user_ip]
         self.headers = options[:headers] || []
         if options[:body]
           self.body = options[:body]
