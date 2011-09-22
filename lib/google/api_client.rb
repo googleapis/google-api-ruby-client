@@ -594,10 +594,13 @@ module Google
     def execute!(*params)
       result = self.execute(*params)
       status, _, _ = result.response
-      if result.data.respond_to?(:error)
+      if result.data.respond_to?(:error) &&
+          result.data.error.respond_to?(:message)
         # You're going to get a terrible error message if the response isn't
         # parsed successfully as an error.
-        error_message = result.data.error
+        error_message = result.data.error.message
+      elsif result.data['error'] && result.data['error']['message']
+        error_message = result.data['error']['message']
       end
       if status >= 400 && status < 500
         raise ClientError,
