@@ -32,7 +32,7 @@ module Google
         # These parameters are handled differently because they're not
         # parameters to the API method, but rather to the API system.
         self.parameters['key'] ||= options[:key] if options[:key]
-        self.parameters['user_ip'] ||= options[:user_ip] if options[:user_ip]
+        self.parameters['userIp'] ||= options[:user_ip] if options[:user_ip]
         self.headers = options[:headers] || []
         if options[:body]
           self.body = options[:body]
@@ -55,6 +55,10 @@ module Google
         unless self.api_method
           self.http_method = options[:http_method] || 'GET'
           self.uri = options[:uri]
+          unless self.parameters.empty?
+            self.uri.query_values =
+              (self.uri.query_values || {}).merge(self.parameters)
+          end
         end
       end
 

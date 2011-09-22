@@ -77,6 +77,49 @@ describe Google::APIClient do
         'https://www.googleapis.com/discovery/v1/apis/prediction/v1/rest'
     end
 
+    it 'should correctly determine the discovery URI if :user_ip is set' do
+      @client.user_ip = '127.0.0.1'
+      request = @client.generate_request(
+        :http_method => 'GET',
+        :uri => @client.discovery_uri('prediction', 'v1.2'),
+        :authenticated => false
+      )
+      http_method, uri, headers, body = request
+      uri.should === (
+        'https://www.googleapis.com/discovery/v1/apis/prediction/v1.2/rest' +
+        '?userIp=127.0.0.1'
+      )
+    end
+
+    it 'should correctly determine the discovery URI if :key is set' do
+      @client.key = 'qwerty'
+      request = @client.generate_request(
+        :http_method => 'GET',
+        :uri => @client.discovery_uri('prediction', 'v1.2'),
+        :authenticated => false
+      )
+      http_method, uri, headers, body = request
+      uri.should === (
+        'https://www.googleapis.com/discovery/v1/apis/prediction/v1.2/rest' +
+        '?key=qwerty'
+      )
+    end
+
+    it 'should correctly determine the discovery URI if both are set' do
+      @client.key = 'qwerty'
+      @client.user_ip = '127.0.0.1'
+      request = @client.generate_request(
+        :http_method => 'GET',
+        :uri => @client.discovery_uri('prediction', 'v1.2'),
+        :authenticated => false
+      )
+      http_method, uri, headers, body = request
+      uri.should === (
+        'https://www.googleapis.com/discovery/v1/apis/prediction/v1.2/rest' +
+        '?key=qwerty&userIp=127.0.0.1'
+      )
+    end
+
     it 'should correctly generate API objects' do
       @client.discovered_api('prediction', 'v1.2').name.should == 'prediction'
       @client.discovered_api('prediction', 'v1.2').version.should == 'v1.2'
