@@ -268,23 +268,30 @@ module Google
     # @return [Hash] The parsed JSON from the directory document.
     def directory_document
       return @directory_document ||= (begin
-        request_uri = self.directory_uri
-        request = ['GET', request_uri, [], []]
+        request = self.generate_request(
+          :http_method => 'GET',
+          :uri => self.directory_uri,
+          :authenticated => false
+        )
         response = self.transmit(request)
         status, headers, body = response
-        if status == 200 # TODO(bobaman) Better status code handling?
+        if status >= 200 && status < 300
+          # TODO(bobaman) Better status code handling?
           merged_body = body.inject(StringIO.new) do |accu, chunk|
             accu.write(chunk)
             accu
           end
           ::JSON.parse(merged_body.string)
         elsif status >= 400 && status < 500
+          _, request_uri, _, _ = request
           raise ClientError,
             "Could not retrieve discovery document at: #{request_uri}"
         elsif status >= 500 && status < 600
+          _, request_uri, _, _ = request
           raise ServerError,
             "Could not retrieve discovery document at: #{request_uri}"
         elsif status > 600
+          _, request_uri, _, _ = request
           raise TransmissionError,
             "Could not retrieve discovery document at: #{request_uri}"
         end
@@ -301,23 +308,30 @@ module Google
       api = api.to_s
       version = version || 'v1'
       return @discovery_documents["#{api}:#{version}"] ||= (begin
-        request_uri = self.discovery_uri(api, version)
-        request = ['GET', request_uri, [], []]
+        request = self.generate_request(
+          :http_method => 'GET',
+          :uri => self.discovery_uri(api, version),
+          :authenticated => false
+        )
         response = self.transmit(request)
         status, headers, body = response
-        if status == 200 # TODO(bobaman) Better status code handling?
+        if status >= 200 && status < 300
+          # TODO(bobaman) Better status code handling?
           merged_body = body.inject(StringIO.new) do |accu, chunk|
             accu.write(chunk)
             accu
           end
           ::JSON.parse(merged_body.string)
         elsif status >= 400 && status < 500
+          _, request_uri, _, _ = request
           raise ClientError,
             "Could not retrieve discovery document at: #{request_uri}"
         elsif status >= 500 && status < 600
+          _, request_uri, _, _ = request
           raise ServerError,
             "Could not retrieve discovery document at: #{request_uri}"
         elsif status > 600
+          _, request_uri, _, _ = request
           raise TransmissionError,
             "Could not retrieve discovery document at: #{request_uri}"
         end
