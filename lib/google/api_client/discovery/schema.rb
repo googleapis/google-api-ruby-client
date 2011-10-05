@@ -31,6 +31,43 @@ module Google
         # unavoidable dependence on closures and execution context.
         schema_name = schema_data['id']
 
+        # Due to an oversight, schema IDs may not be URI references.
+        # TODO(bobaman): Remove this code once this has been resolved.
+        schema_uri = (
+          api.document_base +
+          (schema_name[0..0] != '#' ? '#' + schema_name : schema_name)
+        )
+        # puts schema_uri
+
+        # Due to an oversight, schema IDs may not be URI references.
+        # TODO(bobaman): Remove this whole lambda once this has been resolved.
+        reformat_references = lambda do |data|
+          # This code is not particularly efficient due to recursive traversal
+          # and excess object creation, but this hopefully shouldn't be an
+          # issue since it should only be called only once per schema per
+          # process.
+          if data.kind_of?(Hash) && data['$ref']
+            reference = data['$ref']
+            reference = '#' + reference if reference[0..0] != '#'
+            data.merge({
+              '$ref' => reference
+            })
+          elsif data.kind_of?(Hash)
+            data.inject({}) do |accu, (key, value)|
+              if value.kind_of?(Hash)
+                accu[key] = reformat_references.call(value)
+              else
+                accu[key] = value
+              end
+              accu
+            end
+          else
+            data
+          end
+        end
+        schema_data = reformat_references.call(schema_data)
+        # puts schema_data.inspect
+
         if schema_name
           api_name_string =
             Google::INFLECTOR.camelize(api.name)
@@ -57,7 +94,7 @@ module Google
         # redefine it. This means that reloading a schema which has already
         # been loaded into memory is not possible.
         unless schema_class
-          schema_class = AutoParse.generate(schema_data)
+          schema_class = AutoParse.generate(schema_data, schema_uri)
           if schema_name
             api_version.const_set(schema_name, schema_class)
           end

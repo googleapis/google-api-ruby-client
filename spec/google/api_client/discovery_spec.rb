@@ -379,6 +379,18 @@ describe Google::APIClient do
       status.should == 200
     end
 
+    it 'should correctly handle nested schema objects' do
+      result = @client.execute(
+        @buzz.activities.list,
+        {'alt' => 'json', 'userId' => 'hikingfan', 'scope' => '@public'},
+        '',
+        [],
+        :authenticated => false
+      )
+      feed = result.data
+      puts feed.inspect
+    end
+
     it 'should not be able to execute requests without authorization' do
       result = @client.execute(
         @buzz.activities.list,
