@@ -51,7 +51,7 @@ directory. If not check out the code to a local directory.
 
 1. Start up the embedded Sinatra web server
 
-    $ ruby buzz.rb
+        $ ruby buzz.rb
 
 2. Open your web browser and see your activities! Go to `http://localhost:4567/`
 
