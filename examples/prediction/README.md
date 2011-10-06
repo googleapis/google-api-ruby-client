@@ -1,5 +1,5 @@
-APIs Console Project Setup:
-------------
+APIs Console Project Setup
+--------------------------
 If you have not yet, you must set your APIs Console project to enable Prediction
 API and Google Storage. Go to APIs Console https://code.google.com/apis/console/
 and select the project you want to use. Next, go to Services, and enable both
@@ -7,7 +7,7 @@ Prediction API and Google Storage. You may also need to enable Billing (Billing)
 in the left menu.
 
 
-Data Setup:
+Data Setup
 ----------
 Before you can run the prediction sample prediction.rb, you must load some csv
 formatted data into Google Storage. 
@@ -15,7 +15,7 @@ formatted data into Google Storage.
 1 - You must first create the bucket you want to use. This can be done 
 with the gsutil function or via the web UI (Storage Access) in the Google 
 APIs Console. i.e. 
-# gsutil mb gs://BUCKET
+`$ gsutil mb gs://BUCKET`
 
 OR
 
@@ -25,12 +25,12 @@ and create your bucket there.
 2 - We now load the data you want to use to Google Storage. We have supplied a
 basic language identification dataset in the sample for testing.
 
-# chmod 744 setup.sh
-# ./setup.sh BUCKET/OBJECT
+`$ chmod 744 setup.sh`
+`$ ./setup.sh BUCKET/OBJECT`
 Note you need gsutil in your path for this to work.
 
 If you have your own dataset, you can do this manually as well.
-gsutil cp your_dataset.csv gs://BUCKET/your_dataset.csv
+`$ gsutil cp your_dataset.csv gs://BUCKET/your_dataset.csv`
 
 
 In the script, you must then modify the datafile string. This must correspond with the
@@ -38,7 +38,7 @@ bucket/object of your dataset (if you are using your own dataset). We have
 provided a setup.sh which will upload some basic sample data. The section is
 near the bottom of the script, under 'FILL IN DATAFILE'
 
-API setup:
+API Setup
 ---------
 We need to allow the application to use your API access. Go to APIs Console
 https://code.google.com/apis/console, and select the project you want, go to API
@@ -51,8 +51,8 @@ API. You can also set it up so the user can grant access.
 
 First, run the google-api script to generate access and refresh tokens. Ex.
 
-# cd google-api-ruby-client
-# ruby bin/google-api oauth-2-login --scope=https://www.googleapis.com/auth/prediction --client-id=NUMBER.apps.googleusercontent.com --client-secret=CLIENT_SECRET
+`$ cd google-api-ruby-client`
+`$ ruby bin/google-api oauth-2-login --scope=https://www.googleapis.com/auth/prediction --client-id=NUMBER.apps.googleusercontent.com --client-secret=CLIENT_SECRET`
 
 Fill in your client-id and client-secret from the API Access page. You will
 probably have to set a redirect URI in your client ID
@@ -70,8 +70,8 @@ you are loading it as a yaml, ensure you rename/move the file, as the
 move the .google-api.yaml file to the sample directory.
 
 
-Usage :
--------
+Usage
+-----
 At this, point, you should have 
  - Enabled your APIs Console account
  - Created a storage bucket, if required
@@ -81,19 +81,14 @@ At this, point, you should have
    loading the generated .yaml file
  
 We can now run the service! 
-# ruby prediction.rb
+`$ ruby prediction.rb`
 
-This should start a service on http://localhost:4567. When you hit the service,
+This should start a service on `http://localhost:4567`. When you hit the service,
 your ruby logs should show the Prediction API calls, and print the prediction
 output in the debug. 
-
-
 
 This sample currently does not cover some newer features of Prediction API such
 as streaming training, hosted models or class weights. If there are any
 questions or suggestions to improve the script please email us at
 prediction-api-discuss@googlegroups.com.
-
-
-
 
