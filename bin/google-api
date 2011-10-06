@@ -108,8 +108,8 @@ HTML
             options[:api] = s
           end
           opts.on(
-              "--service-version <id>", String,
-              "Select service version") do |id|
+              "--api-version <id>", String,
+              "Select api version") do |id|
             options[:version] = id
           end
           opts.on(
@@ -165,7 +165,7 @@ HTML
             "\nAvailable commands:\n" +
             "    oauth-1-login   Log a user into an API with OAuth 1.0a\n" +
             "    oauth-2-login   Log a user into an API with OAuth 2.0 d10\n" +
-            "    list            List the methods available for a service\n" +
+            "    list            List the methods available for an API\n" +
             "    execute         Execute a method on the API\n" +
             "    irb             Start an interactive client session"
           )
@@ -238,17 +238,27 @@ HTML
         end
 
         if options[:discovery_uri]
-          client.discovery_uri = options[:discovery_uri]
+          if options[:api] && options[:version]
+            client.register_discovery_uri(
+              options[:api], options[:version], options[:discovery_uri]
+            )
+          else
+            STDERR.puts(
+              'Cannot register a discovery URI without ' +
+              'specifying an API and version.'
+            )
+            exit(1)
+          end
         end
 
         return client
       end
 
-      def api_version(api, version)
+      def api_version(api_name, version)
         v = version
         if !version
-          if client.preferred_version(api)
-            v = client.preferred_version(api).version
+          if client.preferred_version(api_name)
+            v = client.preferred_version(api_name).version
           else
             v = 'v1'
           end
@@ -399,8 +409,8 @@ HTML
       end
 
       def list
-        api = options[:api]
-        unless api
+        api_name = options[:api]
+        unless api_name
           STDERR.puts('No API name supplied.')
           exit(1)
         end
@@ -408,9 +418,9 @@ HTML
         if options[:discovery_uri]
           client.discovery_uri = options[:discovery_uri]
         end
-        version = api_version(api, options[:version])
-        service = client.discovered_api(api, version)
-        rpcnames = service.to_h.keys
+        version = api_version(api_name, options[:version])
+        api = client.discovered_api(api_name, version)
+        rpcnames = api.to_h.keys
         puts rpcnames.sort.join("\n")
         exit(0)
       end
@@ -457,14 +467,14 @@ HTML
             STDERR.puts('No rpcname supplied.')
             exit(1)
           end
-          api = options[:api] || self.rpcname[/^([^\.]+)\./, 1]
-          version = api_version(api, options[:version])
-          service = client.discovered_api(api, version)
-          method = service.to_h[self.rpcname]
+          api_name = options[:api] || self.rpcname[/^([^\.]+)\./, 1]
+          version = api_version(api_name, options[:version])
+          api = client.discovered_api(api_name, version)
+          method = api.to_h[self.rpcname]
           if !method
             STDERR.puts(
               "Method #{self.rpcname} does not exist for " +
-              "#{api}-#{version}."
+              "#{api_name}-#{version}."
             )
             exit(1)
           end
