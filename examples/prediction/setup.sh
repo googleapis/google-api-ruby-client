@@ -13,4 +13,4 @@
 #   gsutil - a client application for interacting with Google Storage. It
 #     can be downloaded from https://code.google.com/apis/storage/docs/gsutil.html
 OBJECT_NAME=$1
-gsutil cp language_id.txt gs://$OBJECT_NAME
+gsutil cp data/language_id.txt gs://$OBJECT_NAME
