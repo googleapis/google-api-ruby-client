@@ -416,7 +416,17 @@ HTML
         end
         client = Google::APIClient.new(:authorization => nil)
         if options[:discovery_uri]
-          client.discovery_uri = options[:discovery_uri]
+          if options[:api] && options[:version]
+            client.register_discovery_uri(
+              options[:api], options[:version], options[:discovery_uri]
+            )
+          else
+            STDERR.puts(
+              'Cannot register a discovery URI without ' +
+              'specifying an API and version.'
+            )
+            exit(1)
+          end
         end
         version = api_version(api_name, options[:version])
         api = client.discovered_api(api_name, version)
