@@ -1,8 +1,8 @@
-#!/usr/bin/ruby1.8 
+#!/usr/bin/ruby1.8
 # -*- coding: utf-8 -*-
 
 # Copyright:: Copyright 2011 Google Inc.
-# License:: All Rights Reserved.
+# License:: Apache 2.0
 # Original Author:: Bob Aman, Winton Davies, Robert Kaplow
 # Maintainer:: Robert Kaplow (mailto:rkaplow@google.com)
 
@@ -12,7 +12,7 @@ require 'datamapper'
 require 'google/api_client'
 require 'yaml'
 
-use Rack::Session::Pool, :expire_after => 86400 # 1 day
+enable :sessions
 
 # Set up our token store
 DataMapper.setup(:default, 'sqlite::memory:')
@@ -20,8 +20,8 @@ class TokenPair
   include DataMapper::Resource
 
   property :id, Serial
-  property :refresh_token, String
-  property :access_token, String
+  property :refresh_token, String, :length => 255
+  property :access_token, String, :length => 255
   property :expires_in, Integer
   property :issued_at, Integer
 
@@ -43,10 +43,32 @@ class TokenPair
 end
 TokenPair.auto_migrate!
 
-before do
+def save_token_pair(session, client)
+  token_pair = if session[:token_id]
+    TokenPair.first_or_create(:id => session[:token_id])
+  else
+    TokenPair.new
+  end
+  token_pair.update_token!(client.authorization)
+  if token_pair.save
+    session[:token_id] = token_pair.id
+  else
+    token_pair.errors.each do |e|
+      raise e
+    end
+  end
+end
 
+# FILL IN THIS SECTION
+# This is the name of the {bucket}/{object} you are using for the language
+# file.
+# ------------------------
+DATA_OBJECT = "bucket/object"
+# ------------------------
+
+before do
   # FILL IN THIS SECTION
-  # This will work if your yaml file is stored as ./google-api.yaml
+  # This will work if your yaml file is stored as .google-api.yaml
   # ------------------------
   oauth_yaml = YAML.load_file('.google-api.yaml')
   @client = Google::APIClient.new
@@ -59,20 +81,17 @@ before do
 
   @client.authorization.redirect_uri = to('/oauth2callback')
 
-  # Workaround for now as expires_in may be nil, but when converted to int it becomes 0.
-  @client.authorization.expires_in = 1800 if @client.authorization.expires_in.to_i == 0
-
   if session[:token_id]
     # Load the access token here if it's available
     token_pair = TokenPair.get(session[:token_id])
-    @client.authorization.update_token!(token_pair.to_hash)
+    @client.authorization.update_token!(token_pair.to_hash) if token_pair
   end
   if @client.authorization.refresh_token && @client.authorization.expired?
     @client.authorization.fetch_access_token!
+    save_token_pair(session, @client)
   end
 
-
-  @prediction = @client.discovered_api('prediction', 'v1.3')
+  @prediction = @client.discovered_api('prediction', 'v1.4')
   unless @client.authorization.access_token || request.path_info =~ /^\/oauth2/
     redirect to('/oauth2authorize')
   end
@@ -84,144 +103,80 @@ end
 
 get '/oauth2callback' do
   @client.authorization.fetch_access_token!
-  # Persist the token here
-  token_pair = if session[:token_id]
-    TokenPair.get(session[:token_id])
-  else
-    TokenPair.new
-  end
-  token_pair.update_token!(@client.authorization)
-  token_pair.save()
-  session[:token_id] = token_pair.id
+  save_token_pair(session, @client)
   redirect to('/')
 end
 
 get '/' do
-  # FILL IN DATAFILE:
-  # ----------------------------------------
-  datafile = "BUCKET/OBJECT"
-  # ----------------------------------------
-  # Train a predictive model.
-  train(datafile)
-  # Check to make sure the training has completed.
-  if (is_done?(datafile))
-    # Do a prediction.
-    # FILL IN DESIRED INPUT:
-    # -------------------------------------------------------------------------------
-    # Note, the input features should match the features of the dataset.
-    prediction,score = get_prediction(datafile, ["Alice noticed with some surprise."])
-    # -------------------------------------------------------------------------------
-
-    # We currently just dump the results to output, but you can display them on the page if desired.
-    puts prediction
-    puts score    
-  end
+  erb :index
 end
 
-##
-# Trains a predictive model.
-#
-# @param [String] filename The name of the file in Google Storage. NOTE: this do *not*
-#                 include the gs:// part. If the Google Storage path is gs://bucket/object,
-#                 then the correct string is "bucket/object"
-def train(datafile)
-  input = "{\"id\" : \"#{datafile}\"}"
-  puts "training input: #{input}"
-  result = @client.execute(:api_method => @prediction.training.insert,
-                           :merged_body => input,
-                           :headers => {'Content-Type' => 'application/json'}
-                           )
-  status, headers, body = result.response
+get '/train' do
+  training = @prediction.trainedmodels.insert.request_schema.new
+  training.id = 'language-sample'
+  training.storage_data_location = DATA_OBJECT
+  result = @client.execute(
+    :api_method => @prediction.trainedmodels.insert,
+    :headers => {'Content-Type' => 'application/json'},
+    :body_object => training
+  )
 end
 
-##
-# Returns the current training status
-#
-# @param [String] filename The name of the file in Google Storage. NOTE: this do *not*
-#                 include the gs:// part. If the Google Storage path is gs://bucket/object,
-#                 then the correct string is "bucket/object"
-# @return [Integer] status The HTTP status code of the training job.
-def get_training_status(datafile)
-  result = @client.execute(:api_method => @prediction.training.get,
-                           :parameters => {'data' => datafile})
-  status, headers, body = result.response
-  return status
-end
+get '/checkStatus' do
+  result = @client.execute(
+    :api_method => @prediction.trainedmodels.get,
+    :parameters => {'id' => 'language-sample'}
+  )
 
-
-##
-# Checks the training status until a model exists (will loop forever).
-#
-# @param [String] filename The name of the file in Google Storage. NOTE: this do *not*
-#                 include the gs:// part. If the Google Storage path is gs://bucket/object,
-#                 then the correct string is "bucket/object"
-# @return [Bool] exists True if model exists and can be used for predictions.
-
-def is_done?(datafile)
-  status = get_training_status(datafile)
-  # We use an exponential backoff approach here.
-  test_counter = 0
-  while test_counter < 10 do
-    puts "Attempting to check model #{datafile} - Status: #{status} "
-    return true if status == 200
-    sleep 5 * (test_counter + 1)
-    status = get_training_status(datafile)
-    test_counter += 1
-  end
-  return false
-end
-
-
-
-##
-# Returns the prediction and most most likely class score if categorization.
-#
-# @param [String] filename The name of the file in Google Storage. NOTE: this do *not*
-#                 include the gs:// part. If the Google Storage path is gs://bucket/object,
-#                 then the correct string is "bucket/object"
-# @param [List] input_features A list of input features.
-#
-# @return [String or Double] prediction The returned prediction, String if categorization,
-#                            Double if regression
-# @return [Double] trueclass_score The numeric score of the most likely label. (Categorical only).
-
-def get_prediction(datafile,input_features)
-  # We take the input features and put it in the right input (json) format.
-  input="{\"input\" : { \"csvInstance\" :  #{input_features}}}"
-  puts "Prediction Input: #{input}"
-  result = @client.execute(:api_method => @prediction.training.predict,
-                           :parameters => {'data' => datafile},
-                           :merged_body => input,
-                           :headers => {'Content-Type' => 'application/json'})
-  status, headers, body = result.response
-  prediction_data = result.data
-  puts status
-  puts body
-  puts prediction_data
-  # Categorical
-  if prediction_data["outputLabel"] != nil
-    # Pull the most likely label.
-    prediction = prediction_data["outputLabel"]
-    # Pull the class probabilities.
-    probs = prediction_data["outputMulti"]
-    puts probs
-    # Verify we are getting a value result.
-    puts ["ERROR", input_features].join("\t")  if probs.nil?
-    return "error", -1.0 if probs.nil?
-
-    # Extract the score for the most likely class.
-    trueclass_score = probs.select{|hash|
-      hash["label"] ==  prediction
-    }[0]["score"]
-
-    # Regression.
+  # Assemble some JSON our client-side code can work with.
+  json = {}
+  if result.status != 200
+    if result.data["error"]
+      message = result.data["error"]["errors"].first["message"]
+      json["message"] = "#{message} [#{result.status}]"
+    else
+      json["message"] = "Error. [#{result.status}]"
+    end
+    json["response"] = ::JSON.parse(result.body)
+    json["status"] = "error"
   else
-    prediction = prediction_data["outputValue"]
-    # Class core unused.
-    trueclass_score = -1
+    json["response"] = ::JSON.parse(result.body)
+    json["status"] = "success"
   end
-
-  puts [prediction,trueclass_score,input_features].join("\t") 
-  return prediction,trueclass_score
+  return [
+    200,
+    [["Content-Type", "application/json"]],
+    ::JSON.generate(json)
+  ]
 end
 
+post '/predict' do
+  input = @prediction.trainedmodels.predict.request_schema.new
+  input.input = {}
+  input.input.csv_instance = [params["input"]]
+  result = @client.execute(
+    :api_method => @prediction.trainedmodels.predict,
+    :parameters => {'id' => 'language-sample'},
+    :headers => {'Content-Type' => 'application/json'},
+    :body_object => input
+  )
+  json = {}
+  if result.status != 200
+    if result.data["error"]
+      message = result.data["error"]["errors"].first["message"]
+      json["message"] = "#{message} [#{result.status}]"
+    else
+      json["message"] = "Error. [#{result.status}]"
+    end
+    json["response"] = ::JSON.parse(result.body)
+    json["status"] = "error"
+  else
+    json["response"] = ::JSON.parse(result.body)
+    json["status"] = "success"
+  end
+  return [
+    200,
+    [["Content-Type", "application/json"]],
+    ::JSON.generate(json)
+  ]
+end

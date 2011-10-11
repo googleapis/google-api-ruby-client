@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Prediction API</title>
+    <style type="text/css">
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      #log {
+        font-family: monospace;
+        background-color: #eee;
+        padding: 1em;
+      }
+      #log p {
+        margin: 0;
+      }
+      #predict {
+        display: none;
+      }
+      #predict label, #predict textarea, #predict button {
+        margin: 1em 0;
+        font-size: 1em;
+        display: block;
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Prediction API: Language Sample</h1>
+    <div id="log">
+    </div>
+    <div id="predict">
+      <label for="input">Input</label>
+      <textarea id="input" placeholder="Généralement, les gens qui savant peu parlent beaucoup, et les gens qui savant beaucoup parlent peu."></textarea>
+      <button id="go">Submit</button>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      function logMessage(message) {
+        $("#log").append("<p>" + message + "</p>");
+      }
+      $(document).ready(function(e) {
+        $.getJSON("/train", function (data) {
+          logMessage("Training started...");
+          var delay = 1000;
+          var checkStatus = function () {
+            logMessage("Checking training status...");
+            $.getJSON("/checkStatus", function(data) {
+              if (data && data.status == 'success') {
+                logMessage("Training complete.");
+                $("#predict").show();
+                $("#go").click(function () {
+                  var input = $("#input").val();
+                  $.ajax({
+                    type: "POST",
+                    url: "/predict",
+                    data: {"input": input},
+                    success: function(data) {
+                      if (data && data.status == 'success') {
+                        logMessage("Predicted label: " + data.response.outputLabel);
+                      } else if (data && data.message) {
+                        logMessage(data.message);
+                      }
+                    }
+                  });
+                });
+                return;
+              } else if (data && data.message) {
+                logMessage(data.message);
+              }
+              delay = delay * 2;
+              if (delay > 30000) {
+                // Upper maximum delay.
+                delay = 30000;
+              }
+              logMessage("Checking again in " + (delay / 1000) + " seconds.");
+              setTimeout(checkStatus, delay);
+            });
+          };
+          setTimeout(checkStatus, delay);
+        });
+      })
+    </script>
+  </body>
+</html>
