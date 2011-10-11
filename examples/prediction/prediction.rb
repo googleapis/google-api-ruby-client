@@ -120,6 +120,12 @@ get '/train' do
     :headers => {'Content-Type' => 'application/json'},
     :body_object => training
   )
+
+  return [
+    200,
+    [["Content-Type", "application/json"]],
+    ::JSON.generate({"status": "success"})
+  ]
 end
 
 get '/checkStatus' do
@@ -128,6 +134,32 @@ get '/checkStatus' do
     :parameters => {'id' => 'language-sample'}
   )
 
+  return [
+    200,
+    [["Content-Type", "application/json"]],
+    assemble_json_body(result)
+  ]
+end
+
+post '/predict' do
+  input = @prediction.trainedmodels.predict.request_schema.new
+  input.input = {}
+  input.input.csv_instance = [params["input"]]
+  result = @client.execute(
+    :api_method => @prediction.trainedmodels.predict,
+    :parameters => {'id' => 'language-sample'},
+    :headers => {'Content-Type' => 'application/json'},
+    :body_object => input
+  )
+
+  return [
+    200,
+    [["Content-Type", "application/json"]],
+    assemble_json_body(result)
+  ]
+end
+
+def assemble_json_body(result)
   # Assemble some JSON our client-side code can work with.
   json = {}
   if result.status != 200
@@ -143,40 +175,5 @@ get '/checkStatus' do
     json["response"] = ::JSON.parse(result.body)
     json["status"] = "success"
   end
-  return [
-    200,
-    [["Content-Type", "application/json"]],
-    ::JSON.generate(json)
-  ]
-end
-
-post '/predict' do
-  input = @prediction.trainedmodels.predict.request_schema.new
-  input.input = {}
-  input.input.csv_instance = [params["input"]]
-  result = @client.execute(
-    :api_method => @prediction.trainedmodels.predict,
-    :parameters => {'id' => 'language-sample'},
-    :headers => {'Content-Type' => 'application/json'},
-    :body_object => input
-  )
-  json = {}
-  if result.status != 200
-    if result.data["error"]
-      message = result.data["error"]["errors"].first["message"]
-      json["message"] = "#{message} [#{result.status}]"
-    else
-      json["message"] = "Error. [#{result.status}]"
-    end
-    json["response"] = ::JSON.parse(result.body)
-    json["status"] = "error"
-  else
-    json["response"] = ::JSON.parse(result.body)
-    json["status"] = "success"
-  end
-  return [
-    200,
-    [["Content-Type", "application/json"]],
-    ::JSON.generate(json)
-  ]
+  return ::JSON.generate(json)
 end
