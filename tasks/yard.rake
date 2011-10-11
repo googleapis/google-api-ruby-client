@@ -10,7 +10,7 @@ begin
       yardoc.name = 'yard'
       yardoc.options = ['--verbose']
       yardoc.files = [
-        'lib/**/*.rb', 'ext/**/*.c', 'README', 'CHANGELOG', 'LICENSE'
+        'lib/**/*.rb', 'ext/**/*.c', 'README.md', 'CHANGELOG', 'LICENSE'
       ]
     end
   end

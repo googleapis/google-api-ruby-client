@@ -18,8 +18,8 @@ namespace :gem do
     s.executables << 'google-api'
 
     s.has_rdoc = true
-    s.extra_rdoc_files = %w( README )
-    s.rdoc_options.concat ['--main',  'README']
+    s.extra_rdoc_files = %w( README.md )
+    s.rdoc_options.concat ['--main',  'README.md']
 
     # Dependencies used in the main library
     s.add_runtime_dependency('signet', '~> 0.2.2')
