@@ -54,7 +54,7 @@ API. You can also set it up so the user can grant access.
 First, run the google-api script to generate access and refresh tokens. Ex.
 
     $ cd google-api-ruby-client
-    $ ruby bin/google-api oauth-2-login --scope=https://www.googleapis.com/auth/prediction --client-id=NUMBER.apps.googleusercontent.com --client-secret=CLIENT_SECRET
+    $ google-api oauth-2-login --scope=https://www.googleapis.com/auth/prediction --client-id=NUMBER.apps.googleusercontent.com --client-secret=CLIENT_SECRET
 
 Fill in your client-id and client-secret from the API Access page. You will
 probably have to set a redirect URI in your client ID
@@ -78,7 +78,7 @@ At this, point, you should have
  - Enabled your APIs Console account
  - Created a storage bucket, if required
  - Uploaded some data to Google Storage
- - Modified the script to point the 'datafile' variable to the BUCKET/OBJECT  name
+ - Modified the script to point the 'datafile' variable to the BUCKET/OBJECT name
  - Modified the script to put your credentials in, either in the code or by
    loading the generated .yaml file
  

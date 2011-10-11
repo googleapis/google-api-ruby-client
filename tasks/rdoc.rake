@@ -8,7 +8,7 @@ namespace :doc do
     rdoc.options << '--line-numbers' << '--inline-source' <<
       '--accessor' << 'cattr_accessor=object' << '--charset' << 'utf-8'
     rdoc.template = "#{ENV['template']}.rb" if ENV['template']
-    rdoc.rdoc_files.include('README', 'CHANGELOG', 'LICENSE')
+    rdoc.rdoc_files.include('README.md', 'CHANGELOG', 'LICENSE')
     rdoc.rdoc_files.include('lib/**/*.rb')
   end
 
