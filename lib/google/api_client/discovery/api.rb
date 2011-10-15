@@ -82,12 +82,27 @@ module Google
       end
 
       ##
-      # Returns the parsed section of the discovery document that applies to
-      # this version of the service.
+      # Returns a human-readable title for the API.
       #
-      # @return [Hash] The service description.
+      # @return [Hash] The API title.
+      def title
+        return @discovery_document['title']
+      end
+
+      ##
+      # Returns a human-readable description of the API.
+      #
+      # @return [Hash] The API description.
       def description
         return @discovery_document['description']
+      end
+
+      ##
+      # Returns a URI for the API documentation.
+      #
+      # @return [Hash] The API documentation.
+      def documentation
+        return Addressable::URI.parse(@discovery_document['documentationLink'])
       end
 
       ##
@@ -179,6 +194,12 @@ module Google
             accu
           end
         )
+      end
+
+      ##
+      # Allows deep inspection of the discovery document.
+      def [](key)
+        return @discovery_document[key]
       end
 
       ##
