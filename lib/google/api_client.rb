@@ -17,6 +17,7 @@ require 'httpadapter'
 require 'json'
 require 'stringio'
 
+require 'google/api_client/version'
 require 'google/api_client/errors'
 require 'google/api_client/environment'
 require 'google/api_client/discovery'

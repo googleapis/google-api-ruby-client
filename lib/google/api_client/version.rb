@@ -13,14 +13,17 @@
 # limitations under the License.
 
 
-module Google
-  class APIClient
-    module VERSION
-      MAJOR = 1
-      MINOR = 0
-      TINY  = 0
+# Used to prevent the class/module from being loaded more than once
+if !defined?(::Google::APIClient::VERSION)
+  module Google
+    class APIClient
+      module VERSION
+        MAJOR = 0
+        MINOR = 3
+        TINY  = 0
 
-      STRING = [MAJOR, MINOR, TINY].join('.')
+        STRING = [MAJOR, MINOR, TINY].join('.')
+      end
     end
   end
 end
