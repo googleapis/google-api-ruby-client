@@ -94,7 +94,7 @@ module Google
         # redefine it. This means that reloading a schema which has already
         # been loaded into memory is not possible.
         unless schema_class
-          schema_class = AutoParse.generate(schema_data, schema_uri)
+          schema_class = AutoParse.generate(schema_data, :uri => schema_uri)
           if schema_name
             api_version.const_set(schema_name, schema_class)
           end
