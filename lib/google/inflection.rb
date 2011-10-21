@@ -17,7 +17,12 @@ module Google
   if defined?(ActiveSupport::Inflector)
     INFLECTOR = ActiveSupport::Inflector
   else
-    require 'extlib/inflection'
-    INFLECTOR = Extlib::Inflection
+    begin
+      require 'extlib/inflection'
+      INFLECTOR = Extlib::Inflection
+    rescue LoadError
+      require 'active_support/inflector'
+      INFLECTOR = ActiveSupport::Inflector
+    end
   end
 end
