@@ -112,16 +112,14 @@ module Google
       def normalize_parameters(parameters={})
         # Convert keys to Strings when appropriate
         if parameters.kind_of?(Hash) || parameters.kind_of?(Array)
-          # Is a Hash or an Array a better return type?  Do we ever need to
-          # worry about the same parameter being sent twice with different
-          # values?
-          parameters = parameters.inject({}) do |accu, (k, v)|
+          # Returning an array since parameters can be repeated (ie, Adsense Management API)
+          parameters = parameters.inject([]) do |accu, (k, v)|
             k = k.to_s if k.kind_of?(Symbol)
             k = k.to_str if k.respond_to?(:to_str)
             unless k.kind_of?(String)
               raise TypeError, "Expected String, got #{k.class}."
             end
-            accu[k] = v
+            accu << [k,v]
             accu
           end
         else
@@ -147,7 +145,7 @@ module Google
           template_variables.include?(k)
         end
         if query_parameters.size > 0
-          uri.query_values = (uri.query_values || {}).merge(query_parameters)
+          uri.query_values = (uri.query_values || []) + query_parameters
         end
         # Normalization is necessary because of undesirable percent-escaping
         # during URI template expansion
@@ -244,7 +242,7 @@ module Google
         required_variables = ((self.parameter_descriptions.select do |k, v|
           v['required']
         end).inject({}) { |h,(k,v)| h[k]=v; h }).keys
-        missing_variables = required_variables - parameters.keys
+        missing_variables = required_variables - parameters.map(&:first)
         if missing_variables.size > 0
           raise ArgumentError,
             "Missing required parameters: #{missing_variables.join(', ')}."
