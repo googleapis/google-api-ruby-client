@@ -294,13 +294,12 @@ HTML
           exit(0)
         else
           $verifier = nil
-          # TODO(bobaman): Cross-platform?
-          logger = WEBrick::Log.new('/dev/null')
           server = WEBrick::HTTPServer.new(
             :Port => OAUTH_SERVER_PORT,
-            :Logger => logger,
-            :AccessLog => logger
+            :Logger => WEBrick::Log.new,
+            :AccessLog => WEBrick::Log.new
           )
+          server.logger.level = 0
           trap("INT") { server.shutdown }
 
           server.mount("/", OAuthVerifierServlet)
@@ -389,7 +388,7 @@ HTML
           )
 
           # Launch browser
-          Launchy::Browser.run(oauth_client.authorization_uri.to_s)
+          Launchy.open(oauth_client.authorization_uri.to_s)
 
           server.start
           oauth_client.code = $verifier
