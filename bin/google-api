@@ -365,8 +365,8 @@ HTML
           exit(0)
         else
           $verifier = nil
-          # TODO(bobaman): Cross-platform?
-          logger = WEBrick::Log.new('/dev/null')
+          logger = WEBrick::Log.new
+          logger.level = 0
           server = WEBrick::HTTPServer.new(
             :Port => OAUTH_SERVER_PORT,
             :Logger => logger,
