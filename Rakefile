@@ -4,10 +4,6 @@ $LOAD_PATH.uniq!
 
 require 'rubygems'
 require 'rake'
-require 'rake/testtask'
-require 'rake/rdoctask'
-require 'rake/packagetask'
-require 'rake/gempackagetask'
 
 gem 'rspec', '~> 1.2.9'
 begin
