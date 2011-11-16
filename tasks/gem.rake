@@ -24,6 +24,7 @@ namespace :gem do
     s.add_runtime_dependency('signet', '~> 0.2.2')
     s.add_runtime_dependency('addressable', '~> 2.2.2')
     s.add_runtime_dependency('httpadapter', '~> 1.0.0')
+    s.add_runtime_dependency('autoparse', '~> 0.2.0')
     s.add_runtime_dependency('json', '>= 1.4.6')
     s.add_runtime_dependency('extlib', '>= 0.9.15')
 

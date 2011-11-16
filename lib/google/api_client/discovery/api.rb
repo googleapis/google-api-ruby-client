@@ -62,7 +62,10 @@ module Google
       #
       # @return [String] The service id.
       def id
-        return @discovery_document['id']
+        return (
+          @discovery_document['id'] ||
+          "#{self.name}:#{self.version}"
+        )
       end
 
       ##
@@ -169,14 +172,46 @@ module Google
       end
 
       ##
+      # A list of schemas available for this version of the API.
+      #
+      # @return [Hash] A list of {Google::APIClient::Schema} objects.
+      def schemas
+        return @schemas ||= (
+          (@discovery_document['schemas'] || []).inject({}) do |accu, (k, v)|
+            accu[k] = Google::APIClient::Schema.parse(self, v)
+            accu
+          end
+        )
+      end
+
+      ##
+      # Returns a schema for a kind value.
+      #
+      # @return [Google::APIClient::Schema] The associated Schema object.
+      def schema_for_kind(kind)
+        api_name, schema_name = kind.split('#', 2)
+        if api_name != self.name
+          raise ArgumentError,
+            "The kind does not match this API. " +
+            "Expected '#{self.name}', got '#{api_name}'."
+        end
+        for k, v in self.schemas
+          return v if k.downcase == schema_name.downcase
+        end
+        return nil
+      end
+
+      ##
       # A list of resources available at the root level of this version of the
-      # service.
+      # API.
       #
       # @return [Array] A list of {Google::APIClient::Resource} objects.
       def resources
         return @resources ||= (
           (@discovery_document['resources'] || []).inject([]) do |accu, (k, v)|
-            accu << Google::APIClient::Resource.new(self.method_base, k, v)
+            accu << Google::APIClient::Resource.new(
+              self, self.method_base, k, v
+            )
             accu
           end
         )
@@ -184,13 +219,13 @@ module Google
 
       ##
       # A list of methods available at the root level of this version of the
-      # service.
+      # API.
       #
       # @return [Array] A list of {Google::APIClient::Method} objects.
       def methods
         return @methods ||= (
           (@discovery_document['methods'] || []).inject([]) do |accu, (k, v)|
-            accu << Google::APIClient::Method.new(self.method_base, k, v)
+            accu << Google::APIClient::Method.new(self, self.method_base, k, v)
             accu
           end
         )
