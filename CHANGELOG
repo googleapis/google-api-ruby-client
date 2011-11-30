@@ -5,6 +5,8 @@
 * added OAuth 2 support to the command line tool
 * renamed some switches in the command line tool
 * added additional configuration capabilities
+* fixed a few deprecation warnings from dependencies
+* added gemspec to source control
 
 == 0.2.0
 

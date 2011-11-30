@@ -1,4 +1,4 @@
-require 'rake/gempackagetask'
+require 'rubygems/package_task'
 
 namespace :gem do
   GEM_SPEC = Gem::Specification.new do |s|
@@ -17,24 +17,24 @@ namespace :gem do
     s.files = PKG_FILES.to_a
     s.executables << 'google-api'
 
-    s.has_rdoc = true
     s.extra_rdoc_files = %w( README.md )
     s.rdoc_options.concat ['--main',  'README.md']
 
     # Dependencies used in the main library
     s.add_runtime_dependency('signet', '~> 0.2.2')
     s.add_runtime_dependency('addressable', '~> 2.2.2')
-    s.add_runtime_dependency('httpadapter', '~> 1.0.0')
+    s.add_runtime_dependency('httpadapter', '~> 1.0.1')
+    s.add_runtime_dependency('autoparse', '~> 0.2.0')
     s.add_runtime_dependency('json', '>= 1.4.6')
     s.add_runtime_dependency('extlib', '>= 0.9.15')
 
     # Dependencies used in the CLI
-    s.add_runtime_dependency('launchy', '>= 0.3.2')
+    s.add_runtime_dependency('launchy', '>= 2.0.0')
 
     # Dependencies used in the examples
     s.add_development_dependency('sinatra', '>= 1.2.0')
 
-    s.add_development_dependency('rake', '>= 0.7.3')
+    s.add_development_dependency('rake', '>= 0.9.0')
     s.add_development_dependency('rspec', '~> 1.2.9')
     s.add_development_dependency('rcov', '>= 0.9.9')
     s.add_development_dependency('diff-lcs', '>= 1.1.2')
@@ -44,7 +44,7 @@ namespace :gem do
     s.homepage = PKG_HOMEPAGE
   end
 
-  Rake::GemPackageTask.new(GEM_SPEC) do |p|
+  Gem::PackageTask.new(GEM_SPEC) do |p|
     p.gem_spec = GEM_SPEC
     p.need_tar = true
     p.need_zip = true
@@ -53,6 +53,21 @@ namespace :gem do
   desc 'Show information about the gem'
   task :debug do
     puts GEM_SPEC.to_ruby
+  end
+
+  desc "Generates .gemspec file"
+  task :gemspec do
+    spec_string = GEM_SPEC.to_ruby
+
+    begin
+      Thread.new { eval("$SAFE = 3\n#{spec_string}", binding) }.join
+    rescue
+      abort "unsafe gemspec: #{$!}"
+    else
+      File.open("#{GEM_SPEC.name}.gemspec", 'w') do |file|
+        file.write spec_string
+      end
+    end
   end
 
   desc 'Install the gem'

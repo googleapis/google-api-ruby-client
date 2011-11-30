@@ -35,7 +35,8 @@ module Google
       #   The section of the discovery document that applies to this method.
       #
       # @return [Google::APIClient::Method] The constructed method object.
-      def initialize(method_base, method_name, discovery_document)
+      def initialize(api, method_base, method_name, discovery_document)
+        @api = api
         @method_base = method_base
         @name = method_name
         @discovery_document = discovery_document
@@ -100,6 +101,32 @@ module Google
         return @uri_template ||= Addressable::Template.new(
           self.method_base + @discovery_document['path']
         )
+      end
+
+      ##
+      # Returns the Schema object for the method's request, if any.
+      #
+      # @return [Google::APIClient::Schema] The request schema.
+      def request_schema
+        if @discovery_document['request']
+          schema_name = @discovery_document['request']['$ref']
+          return @api.schemas[schema_name]
+        else
+          return nil
+        end
+      end
+
+      ##
+      # Returns the Schema object for the method's response, if any.
+      #
+      # @return [Google::APIClient::Schema] The response schema.
+      def response_schema
+        if @discovery_document['response']
+          schema_name = @discovery_document['response']['$ref']
+          return @api.schemas[schema_name]
+        else
+          return nil
+        end
       end
 
       ##

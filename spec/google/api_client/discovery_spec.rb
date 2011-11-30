@@ -297,60 +297,54 @@ describe Google::APIClient do
     end
   end
 
-  describe 'with the buzz API' do
+  describe 'with the plus API' do
     before do
       @client.authorization = nil
-      @buzz = @client.discovered_api('buzz')
+      @plus = @client.discovered_api('plus')
     end
 
     it 'should correctly determine the discovery URI' do
-      @client.discovery_uri('buzz').should ===
-        'https://www.googleapis.com/discovery/v1/apis/buzz/v1/rest'
+      @client.discovery_uri('plus').should ===
+        'https://www.googleapis.com/discovery/v1/apis/plus/v1/rest'
     end
 
     it 'should find APIs that are in the discovery document' do
-      @client.discovered_api('buzz').name.should == 'buzz'
-      @client.discovered_api('buzz').version.should == 'v1'
-      @client.discovered_api(:buzz).name.should == 'buzz'
-      @client.discovered_api(:buzz).version.should == 'v1'
+      @client.discovered_api('plus').name.should == 'plus'
+      @client.discovered_api('plus').version.should == 'v1'
+      @client.discovered_api(:plus).name.should == 'plus'
+      @client.discovered_api(:plus).version.should == 'v1'
     end
 
     it 'should find methods that are in the discovery document' do
       # TODO(bobaman) Fix this when the RPC names are correct
       @client.discovered_method(
-        'chili.activities.list', 'buzz'
+        'plus.activities.list', 'plus'
       ).name.should == 'list'
     end
 
     it 'should not find methods that are not in the discovery document' do
-      @client.discovered_method('buzz.bogus', 'buzz').should == nil
-    end
-
-    it 'should fail for string RPC names that do not match API name' do
-      (lambda do
-        @client.generate_request(
-          :api_method => 'chili.activities.list',
-          :parameters => {'alt' => 'json'},
-          :authenticated => false
-        )
-      end).should raise_error(Google::APIClient::TransmissionError)
+      @client.discovered_method('plus.bogus', 'plus').should == nil
     end
 
     it 'should generate requests against the correct URIs' do
       request = @client.generate_request(
-        :api_method => @buzz.activities.list,
-        :parameters => {'userId' => 'hikingfan', 'scope' => '@public'},
+        :api_method => @plus.activities.list,
+        :parameters => {
+          'userId' => '107807692475771887386', 'collection' => 'public'
+        },
         :authenticated => false
       )
       method, uri, headers, body = request
-      uri.should ==
-        'https://www.googleapis.com/buzz/v1/activities/hikingfan/@public'
+      uri.should == (
+        'https://www.googleapis.com/plus/v1/' +
+        'people/107807692475771887386/activities/public'
+      )
     end
 
     it 'should correctly validate parameters' do
       (lambda do
         @client.generate_request(
-          :api_method => @buzz.activities.list,
+          :api_method => @plus.activities.list,
           :parameters => {'alt' => 'json'},
           :authenticated => false
         )
@@ -360,32 +354,13 @@ describe Google::APIClient do
     it 'should correctly validate parameters' do
       (lambda do
         @client.generate_request(
-          :api_method => @buzz.activities.list,
-          :parameters => {'userId' => 'hikingfan', 'scope' => '@bogus'},
+          :api_method => @plus.activities.list,
+          :parameters => {
+            'userId' => '107807692475771887386', 'collection' => 'bogus'
+          },
           :authenticated => false
         )
       end).should raise_error(ArgumentError)
-    end
-
-    it 'should be able to execute requests without authorization' do
-      result = @client.execute(
-        @buzz.activities.list,
-        {'alt' => 'json', 'userId' => 'hikingfan', 'scope' => '@public'},
-        '',
-        [],
-        :authenticated => false
-      )
-      status, headers, body = result.response
-      status.should == 200
-    end
-
-    it 'should not be able to execute requests without authorization' do
-      result = @client.execute(
-        @buzz.activities.list,
-        'alt' => 'json', 'userId' => '@me', 'scope' => '@self'
-      )
-      status, headers, body = result.response
-      status.should == 401
     end
   end
 
