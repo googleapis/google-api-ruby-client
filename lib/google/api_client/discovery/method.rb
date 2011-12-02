@@ -18,6 +18,7 @@ require 'addressable/template'
 
 require 'google/api_client/errors'
 
+
 module Google
   class APIClient
     ##

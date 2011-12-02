@@ -12,10 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 require 'stringio'
 require 'json'
 require 'addressable/uri'
 require 'google/api_client/discovery'
+
 
 module Google
   class APIClient

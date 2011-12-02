@@ -23,6 +23,7 @@ require 'addressable/template'
 require 'google/inflection'
 require 'google/api_client/errors'
 
+
 module Google
   class APIClient
     module Schema

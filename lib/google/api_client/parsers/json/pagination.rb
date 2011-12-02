@@ -15,6 +15,7 @@
 
 require 'google/api_client/parsers/json_parser'
 
+
 module Google
   class APIClient
     module JSON

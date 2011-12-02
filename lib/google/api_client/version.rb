@@ -15,6 +15,8 @@
 
 # Used to prevent the class/module from being loaded more than once
 if !defined?(::Google::APIClient::VERSION)
+
+
   module Google
     class APIClient
       module VERSION

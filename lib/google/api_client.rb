@@ -24,6 +24,7 @@ require 'google/api_client/discovery'
 require 'google/api_client/reference'
 require 'google/api_client/result'
 
+
 module Google
   # TODO(bobaman): Document all this stuff.
 
@@ -47,8 +48,9 @@ module Google
     # @option options [String] :host ("www.googleapis.com")
     #   The API hostname used by the client.  This rarely needs to be changed.
     # @option options [String] :application_name
-    #   The name and version of the application using the client. This should
-    #   be given in the form `"{name}/{version}"`.
+    #   The name of the application using the client.
+    # @option options [String] :application_version
+    #   The version number of the application using the client.
     # @option options [String] :user_agent
     #   ("{app_name} google-api-ruby-client/{version} {os_name}/{os_version}")
     #   The user agent used by the client.  Most developers will want to
@@ -63,10 +65,16 @@ module Google
       self.host = options["host"] || 'www.googleapis.com'
       # Most developers will want to leave this value alone and use the
       # application_name option.
+      application_string = (
+        options["application_name"] ? (
+          "#{options["application_name"]}/" +
+          "#{options["application_version"] || '0.0.0'}"
+        ) : ""
+      )
       self.user_agent = options["user_agent"] || (
-        (options["application_name"] || '')
-        'google-api-ruby-client/' + VERSION::STRING +
-        ' ' + ENV::OS_VERSION
+        "#{application_string} " +
+        "google-api-ruby-client/#{VERSION::STRING} " +
+         ENV::OS_VERSION
       ).strip
       # The writer method understands a few Symbols and will generate useful
       # default authentication mechanisms.
@@ -148,7 +156,7 @@ module Google
     ##
     # The application's API key issued by the API console.
     #
-    # @return [String] The API key..
+    # @return [String] The API key.
     attr_accessor :key
 
     ##

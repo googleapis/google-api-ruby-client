@@ -18,6 +18,7 @@ require 'addressable/uri'
 require 'google/inflection'
 require 'google/api_client/discovery/method'
 
+
 module Google
   class APIClient
     ##
