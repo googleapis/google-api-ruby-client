@@ -1,4 +1,4 @@
-== 0.3.0
+# 0.3.0
 
 * updated to use v1 of the discovery API
 * updated to use httpadapter 1.0.0
@@ -8,7 +8,7 @@
 * fixed a few deprecation warnings from dependencies
 * added gemspec to source control
 
-== 0.2.0
+# 0.2.0
 
 * updated to use v1 of the discovery API
 * updated to use httpadapter 1.0.0
@@ -16,21 +16,21 @@
 * renamed some switches in the command line tool
 * added additional configuration capabilities
 
-== 0.1.3
+# 0.1.3
 
 * added support for manual overrides of the discovery URI
 * added support for manual overrides of the API base
 * added support for xoauth_requestor_id
 
-== 0.1.2
+# 0.1.2
 
 * added support for two-legged OAuth
 * moved some development dependencies into runtime
 
-== 0.1.1
+# 0.1.1
 
 * substantial improvements to the command line interface
 
-== 0.1.0
+# 0.1.0
 
 * initial release

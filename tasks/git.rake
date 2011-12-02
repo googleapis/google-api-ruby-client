@@ -10,7 +10,7 @@ namespace :git do
 
     desc 'Create a new tag in the Git repository'
     task :create do
-      changelog = File.open('CHANGELOG', 'r') { |file| file.read }
+      changelog = File.open('CHANGELOG.md', 'r') { |file| file.read }
       puts '-' * 80
       puts changelog
       puts '-' * 80
