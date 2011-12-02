@@ -174,7 +174,16 @@ describe Google::APIClient do
       (headers.inject({}) { |h,(k,v)| h[k]=v; h }).should == {}
       body.should respond_to(:each)
     end
-
+    it 'should generate valid requests when repeated parameters are passed' do
+      request = @client.generate_request(
+        :api_method => @prediction.training.insert,
+        :parameters => [['data', '1'],['data','2']]
+      )
+      method, uri, headers, body = request
+      method.should == 'POST'
+      uri.should ==
+        'https://www.googleapis.com/prediction/v1.2/training?data=1&data=2'
+    end
     it 'should generate requests against the correct URIs' do
       request = @client.generate_request(
         :api_method => @prediction.training.insert,
