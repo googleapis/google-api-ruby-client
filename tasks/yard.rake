@@ -1,4 +1,8 @@
 require 'rake'
+require 'rake/clean'
+
+CLOBBER.include('doc', '.yardoc')
+CLOBBER.uniq!
 
 begin
   require 'yard'
@@ -10,12 +14,11 @@ begin
       yardoc.name = 'yard'
       yardoc.options = ['--verbose']
       yardoc.files = [
-        'lib/**/*.rb', 'ext/**/*.c', '-', 'README.md', 'CHANGELOG', 'LICENSE'
+        'lib/**/*.rb', 'ext/**/*.c', '-',
+        'README.md', 'CHANGELOG.md', 'LICENSE'
       ]
     end
   end
-
-  task 'clobber' => ['doc:clobber_yard']
 
   desc 'Alias to doc:yard'
   task 'doc' => 'doc:yard'

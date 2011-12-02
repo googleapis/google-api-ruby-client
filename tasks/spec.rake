@@ -1,4 +1,7 @@
 require 'spec/rake/verify_rcov'
+require 'rake/clean'
+
+CLOBBER.include('coverage', 'specdoc')
 
 namespace :spec do
   Spec::Rake::SpecTask.new(:rcov) do |t|
@@ -79,5 +82,3 @@ else
   desc 'Alias to spec:all'
   task 'spec' => 'spec:all'
 end
-
-task 'clobber' => ['spec:clobber_rcov']

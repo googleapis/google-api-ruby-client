@@ -1,4 +1,7 @@
 require 'rubygems/package_task'
+require 'rake/clean'
+
+CLOBBER.include('pkg')
 
 namespace :gem do
   GEM_SPEC = Gem::Specification.new do |s|
@@ -93,5 +96,3 @@ end
 
 desc 'Alias to gem:package'
 task 'gem' => 'gem:package'
-
-task 'clobber' => ['gem:clobber_package']
