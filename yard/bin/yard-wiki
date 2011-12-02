@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift(
+  File.expand_path(File.join(File.dirname(__FILE__), '../lib'))
+)
+$LOAD_PATH.uniq!
+
+require 'yard/cli/wiki'
+
+YARD::CLI::Wiki.run(*ARGV)
