@@ -174,16 +174,17 @@ module Google
     # @return [String]
     #   The user agent string used in the User-Agent header.
     attr_accessor :user_agent
+    
+    def relative_uri(path, expand={})
+      Addressable::Template.new(baseURI+path).expand(expand)
+    end
 
     ##
     # Returns the URI for the directory document.
     #
     # @return [Addressable::URI] The URI of the directory document.
     def directory_uri
-      template = Addressable::Template.new(
-        "https://{host}/discovery/v1/apis"
-      )
-      return template.expand({"host" => self.host})
+      relative_uri('/apis')
     end
 
     ##
@@ -209,15 +210,7 @@ module Google
       api = api.to_s
       version = version || 'v1'
       return @discovery_uris["#{api}:#{version}"] ||= (begin
-        template = Addressable::Template.new(
-          "https://{host}/discovery/v1/apis/" +
-          "{api}/{version}/rest"
-        )
-        template.expand({
-          "host" => self.host,
-          "api" => api,
-          "version" => version
-        })
+        relative_uri("/apis/{api}/{version}/rest", 'api' => api, 'version' => version)
       end)
     end
 
