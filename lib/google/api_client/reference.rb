@@ -14,7 +14,7 @@
 
 
 require 'stringio'
-require 'json'
+require 'multi_json'
 require 'addressable/uri'
 require 'google/api_client/discovery'
 
@@ -44,7 +44,7 @@ module Google
           if options[:body_object].respond_to?(:to_json)
             serialized_body = options[:body_object].to_json
           elsif options[:body_object].respond_to?(:to_hash)
-            serialized_body = JSON.generate(options[:body_object].to_hash)
+            serialized_body = MultiJson.encode(options[:body_object].to_hash)
           else
             raise TypeError,
               'Could not convert body object to JSON.' +

@@ -14,7 +14,7 @@
 
 require 'spec_helper'
 
-require 'json'
+require 'multi_json'
 require 'signet/oauth_1/client'
 require 'httpadapter/adapters/net_http'
 
@@ -298,7 +298,7 @@ describe Google::APIClient do
       result = @client.execute(
         @prediction.training.insert,
         {},
-        JSON.generate({"id" => "bucket/object"}),
+        MultiJson.encode({"id" => "bucket/object"}),
         {'Content-Type' => 'application/json'}
       )
       method, uri, headers, body = result.request

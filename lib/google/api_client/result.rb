@@ -57,7 +57,7 @@ module Google
           data = self.body
           case media_type
           when 'application/json'
-            data = ::JSON.parse(data)
+            data = MultiJson.decode(data)
             # Strip data wrapper, if present
             data = data['data'] if data.has_key?('data')
           else

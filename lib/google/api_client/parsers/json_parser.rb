@@ -13,7 +13,7 @@
 # limitations under the License.
 
 
-require 'json'
+require 'multi_json'
 require 'google/api_client/parser'
 
 
@@ -55,7 +55,7 @@ module Google
       end
 
       def initialize(data)
-        @data = data.kind_of?(Hash) ? data : ::JSON.parse(data)
+        @data = data.kind_of?(Hash) ? data : MultiJson.decode(data)
       end
 
       def [](key)
@@ -107,7 +107,7 @@ module Google
       end
 
       def self.parse(json)
-        data = json.kind_of?(Hash) ? json : ::JSON.parse(json)
+        data = json.kind_of?(Hash) ? json : MultiJson.decode(json)
         parser = self.match(data)
         if parser
           return parser.new(data)

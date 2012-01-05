@@ -14,7 +14,7 @@
 
 
 require 'httpadapter'
-require 'json'
+require 'multi_json'
 require 'stringio'
 
 require 'google/api_client/version'
@@ -268,7 +268,7 @@ module Google
           "Expected String or StringIO, got #{discovery_document.class}."
       end
       @discovery_documents["#{api}:#{version}"] =
-        ::JSON.parse(discovery_document)
+        MultiJson.decode(discovery_document)
     end
 
     ##
@@ -290,7 +290,7 @@ module Google
             accu.write(chunk)
             accu
           end
-          ::JSON.parse(merged_body.string)
+          MultiJson.decode(merged_body.string)
         elsif status >= 400 && status < 500
           _, request_uri, _, _ = request
           raise ClientError,
@@ -330,7 +330,7 @@ module Google
             accu.write(chunk)
             accu
           end
-          ::JSON.parse(merged_body.string)
+          MultiJson.decode(merged_body.string)
         elsif status >= 400 && status < 500
           _, request_uri, _, _ = request
           raise ClientError,

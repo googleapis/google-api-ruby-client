@@ -14,7 +14,7 @@
 
 require 'spec_helper'
 
-require 'json'
+require 'multi_json'
 require 'google/api_client/parsers/json_parser'
 require 'google/api_client/parsers/json/error_parser'
 require 'google/api_client/parsers/json/pagination'

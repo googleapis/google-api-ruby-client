@@ -13,7 +13,7 @@
 # limitations under the License.
 
 
-require 'json'
+require 'multi_json'
 
 
 module Google
