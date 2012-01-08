@@ -47,7 +47,7 @@ module Google
           # and excess object creation, but this hopefully shouldn't be an
           # issue since it should only be called only once per schema per
           # process.
-          if data.kind_of?(Hash) && data['$ref']
+          if data.kind_of?(Hash) && data['$ref'].is_a?(String)
             reference = data['$ref']
             reference = '#' + reference if reference[0..0] != '#'
             data.merge({
