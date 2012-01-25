@@ -81,7 +81,7 @@ module Google
       ).strip
       # The writer method understands a few Symbols and will generate useful
       # default authentication mechanisms.
-      self.authorization = options["authorization"] || :oauth_2
+      self.authorization = options.key?("authorization") ? options["authorization"] : :oauth_2
       self.key = options["key"]
       self.user_ip = options["user_ip"]
       @discovery_uris = {}
