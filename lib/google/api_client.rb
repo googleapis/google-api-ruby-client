@@ -47,8 +47,8 @@ module Google
     #     <li><code>:oauth_1</code></li>
     #     <li><code>:oauth_2</code></li>
     #   </ul>
-    # @option options [String] :host ("www.googleapis.com")
-    #   The API hostname used by the client.  This rarely needs to be changed.
+    # @option options [String] :baseURI ("https://www.googleapis.com/discovery/v1")
+    #   The base API URI used by the client.  This rarely needs to be changed.
     # @option options [String] :application_name
     #   The name of the application using the client.
     # @option options [String] :application_version
@@ -63,8 +63,9 @@ module Google
         accu[key.to_s] = value
         accu
       end
-      # Almost all API usage will have a host of 'www.googleapis.com'.
-      self.host = options["host"] || 'www.googleapis.com'
+      # Almost all API usage will have this base URI 
+      self.baseURI = options["baseURI"] || "https://www.googleapis.com/discovery/v1"
+
       # Most developers will want to leave this value alone and use the
       # application_name option.
       application_string = (
@@ -165,7 +166,7 @@ module Google
     #
     # @return [String]
     #   The API hostname.  Should almost always be 'www.googleapis.com'.
-    attr_accessor :host
+    attr_accessor :baseURI
 
     ##
     # The user agent used by the client.
