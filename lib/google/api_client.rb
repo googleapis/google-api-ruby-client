@@ -590,7 +590,7 @@ module Google
         unless headers.kind_of?(Enumerable)
           # We need to use some Enumerable methods, relying on the presence of
           # the #each method.
-          class <<headers
+          class << headers
             include Enumerable
           end
         end
