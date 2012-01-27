@@ -12,7 +12,7 @@ begin
     desc 'Generate Yardoc documentation'
     YARD::Rake::YardocTask.new do |yardoc|
       yardoc.name = 'yard'
-      yardoc.options = ['--verbose']
+      yardoc.options = ['--verbose', '--markup', 'markdown']
       yardoc.files = [
         'lib/**/*.rb', 'ext/**/*.c', '-',
         'README.md', 'CHANGELOG.md', 'LICENSE'

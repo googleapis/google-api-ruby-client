@@ -13,7 +13,9 @@
 # limitations under the License.
 
 
-require 'httpadapter'
+gem 'faraday', '~> 0.7.0'
+require 'faraday'
+require 'faraday/utils'
 require 'multi_json'
 require 'stringio'
 
@@ -81,16 +83,6 @@ module Google
       self.authorization = options["authorization"] || :oauth_2
       self.key = options["key"]
       self.user_ip = options["user_ip"]
-      # The HTTP adapter controls all of the HTTP traffic the client generates.
-      # By default, Net::HTTP is used, but adding support for other clients
-      # is trivial.
-      if options["http_adapter"]
-        self.http_adapter = options["http_adapter"]
-      else
-        require 'httpadapter/adapters/net_http'
-        # NOTE: Do not rely on this default value, as it may change
-        self.http_adapter = HTTPAdapter::NetHTTPAdapter.new
-      end
       @discovery_uris = {}
       @discovery_documents = {}
       @discovered_apis = {}
@@ -111,6 +103,7 @@ module Google
     def authorization=(new_authorization)
       case new_authorization
       when :oauth_1, :oauth
+        gem 'signet', '~> 0.3.0'
         require 'signet/oauth_1/client'
         # NOTE: Do not rely on this default value, as it may change
         new_authorization = Signet::OAuth1::Client.new(
@@ -124,6 +117,7 @@ module Google
           :client_credential_secret => 'anonymous'
         )
       when :two_legged_oauth_1, :two_legged_oauth
+        gem 'signet', '~> 0.3.0'
         require 'signet/oauth_1/client'
         # NOTE: Do not rely on this default value, as it may change
         new_authorization = Signet::OAuth1::Client.new(
@@ -132,6 +126,7 @@ module Google
           :two_legged => true
         )
       when :oauth_2
+        gem 'signet', '~> 0.3.0'
         require 'signet/oauth_2/client'
         # NOTE: Do not rely on this default value, as it may change
         new_authorization = Signet::OAuth2::Client.new(
@@ -166,28 +161,6 @@ module Google
     attr_accessor :user_ip
 
     ##
-    # Returns the HTTP adapter used by the client.
-    #
-    # @return [HTTPAdapter]
-    #   The HTTP adapter object.  The object must include the
-    #   HTTPAdapter module and conform to its interface.
-    attr_reader :http_adapter
-
-    ##
-    # Returns the HTTP adapter used by the client.
-    #
-    # @return [HTTPAdapter]
-    #   The HTTP adapter object.  The object must include the
-    #   HTTPAdapter module and conform to its interface.
-    def http_adapter=(new_http_adapter)
-      if new_http_adapter.kind_of?(HTTPAdapter)
-        @http_adapter = new_http_adapter
-      else
-        raise TypeError, "Expected HTTPAdapter, got #{new_http_adapter.class}."
-      end
-    end
-
-    ##
     # The API hostname used by the client.
     #
     # @return [String]
@@ -216,8 +189,8 @@ module Google
     # Manually registers a URI as a discovery document for a specific version
     # of an API.
     #
-    # @param [String, Symbol] api The service name.
-    # @param [String] version The desired version of the service.
+    # @param [String, Symbol] api The API name.
+    # @param [String] version The desired version of the API.
     # @param [Addressable::URI] uri The URI of the discovery document.
     def register_discovery_uri(api, version, uri)
       api = api.to_s
@@ -228,8 +201,8 @@ module Google
     ##
     # Returns the URI for the discovery document.
     #
-    # @param [String, Symbol] api The service name.
-    # @param [String] version The desired version of the service.
+    # @param [String, Symbol] api The API name.
+    # @param [String] version The desired version of the API.
     # @return [Addressable::URI] The URI of the discovery document.
     def discovery_uri(api, version=nil)
       api = api.to_s
@@ -251,8 +224,8 @@ module Google
     # Manually registers a pre-loaded discovery document for a specific version
     # of an API.
     #
-    # @param [String, Symbol] api The service name.
-    # @param [String] version The desired version of the service.
+    # @param [String, Symbol] api The API name.
+    # @param [String] version The desired version of the API.
     # @param [String, StringIO] discovery_document
     #   The contents of the discovery document.
     def register_discovery_document(api, version, discovery_document)
@@ -278,31 +251,25 @@ module Google
     def directory_document
       return @directory_document ||= (begin
         request = self.generate_request(
-          :http_method => 'GET',
+          :http_method => :get,
           :uri => self.directory_uri,
           :authenticated => false
         )
-        response = self.transmit(request)
-        status, headers, body = response
-        if status >= 200 && status < 300
-          # TODO(bobaman) Better status code handling?
-          merged_body = body.inject(StringIO.new) do |accu, chunk|
-            accu.write(chunk)
-            accu
+        response = self.transmit(:request => request)
+        if response.status >= 200 && response.status < 300
+          MultiJson.decode(response.body)
+        elsif response.status >= 400
+          case response.status
+          when 400...500
+            exception_type = ClientError
+          when 500...600
+            exception_type = ServerError
+          else
+            exception_type = TransmissionError
           end
-          MultiJson.decode(merged_body.string)
-        elsif status >= 400 && status < 500
-          _, request_uri, _, _ = request
-          raise ClientError,
-            "Could not retrieve discovery document at: #{request_uri}"
-        elsif status >= 500 && status < 600
-          _, request_uri, _, _ = request
-          raise ServerError,
-            "Could not retrieve discovery document at: #{request_uri}"
-        elsif status > 600
-          _, request_uri, _, _ = request
-          raise TransmissionError,
-            "Could not retrieve discovery document at: #{request_uri}"
+          url = request.to_env(Faraday.default_connection)[:url]
+          raise exception_type,
+            "Could not retrieve directory document at: #{url}"
         end
       end)
     end
@@ -310,39 +277,33 @@ module Google
     ##
     # Returns the parsed discovery document.
     #
-    # @param [String, Symbol] api The service name.
-    # @param [String] version The desired version of the service.
+    # @param [String, Symbol] api The API name.
+    # @param [String] version The desired version of the API.
     # @return [Hash] The parsed JSON from the discovery document.
     def discovery_document(api, version=nil)
       api = api.to_s
       version = version || 'v1'
       return @discovery_documents["#{api}:#{version}"] ||= (begin
         request = self.generate_request(
-          :http_method => 'GET',
+          :http_method => :get,
           :uri => self.discovery_uri(api, version),
           :authenticated => false
         )
-        response = self.transmit(request)
-        status, headers, body = response
-        if status >= 200 && status < 300
-          # TODO(bobaman) Better status code handling?
-          merged_body = body.inject(StringIO.new) do |accu, chunk|
-            accu.write(chunk)
-            accu
+        response = self.transmit(:request => request)
+        if response.status >= 200 && response.status < 300
+          MultiJson.decode(response.body)
+        elsif response.status >= 400
+          case response.status
+          when 400...500
+            exception_type = ClientError
+          when 500...600
+            exception_type = ServerError
+          else
+            exception_type = TransmissionError
           end
-          MultiJson.decode(merged_body.string)
-        elsif status >= 400 && status < 500
-          _, request_uri, _, _ = request
-          raise ClientError,
-            "Could not retrieve discovery document at: #{request_uri}"
-        elsif status >= 500 && status < 600
-          _, request_uri, _, _ = request
-          raise ServerError,
-            "Could not retrieve discovery document at: #{request_uri}"
-        elsif status > 600
-          _, request_uri, _, _ = request
-          raise TransmissionError,
-            "Could not retrieve discovery document at: #{request_uri}"
+          url = request.to_env(Faraday.default_connection)[:url]
+          raise exception_type,
+            "Could not retrieve discovery document at: #{url}"
         end
       end)
     end
@@ -370,8 +331,8 @@ module Google
     ##
     # Returns the service object for a given service name and service version.
     #
-    # @param [String, Symbol] api The service name.
-    # @param [String] version The desired version of the service.
+    # @param [String, Symbol] api The API name.
+    # @param [String] version The desired version of the API.
     #
     # @return [Google::APIClient::API] The service object.
     def discovered_api(api, version=nil)
@@ -399,7 +360,8 @@ module Google
     # Returns the method object for a given RPC name and service version.
     #
     # @param [String, Symbol] rpc_name The RPC name of the desired method.
-    # @param [String] version The desired version of the service.
+    # @param [String, Symbol] rpc_name The API the method is within.
+    # @param [String] version The desired version of the API.
     #
     # @return [Google::APIClient::Method] The method object.
     def discovered_method(rpc_name, api, version=nil)
@@ -434,7 +396,6 @@ module Google
           "Expected String or Symbol, got #{api.class}."
       end
       api = api.to_s
-      # TODO(bobaman): Update to use directory API.
       return self.discovered_apis.detect do |a|
         a.name == api && a.preferred == true
       end
@@ -443,35 +404,29 @@ module Google
     ##
     # Generates a request.
     #
-    # @param [Google::APIClient::Method, String] api_method
+    # @option options [Google::APIClient::Method, String] :api_method
     #   The method object or the RPC name of the method being executed.
-    # @param [Hash, Array] parameters
+    # @option options [Hash, Array] :parameters
     #   The parameters to send to the method.
-    # @param [String] body The body of the request.
-    # @param [Hash, Array] headers The HTTP headers for the request.
-    # @param [Hash] options
-    #   The configuration parameters for the request.
-    #   - <code>:version</code> — 
-    #     The service version.  Only used if <code>api_method</code> is a
-    #     <code>String</code>.  Defaults to <code>'v1'</code>.
-    #   - <code>:authorization</code> — 
-    #     The authorization mechanism for the response.  Used only if
-    #     <code>:authenticated</code> is <code>true</code>.
-    #   - <code>:authenticated</code> — 
-    #     <code>true</code> if the request must be signed or otherwise
-    #     authenticated, <code>false</code>
-    #     otherwise.  Defaults to <code>true</code> if an authorization
-    #     mechanism has been set, <code>false</code> otherwise.
+    # @option options [Hash, Array] :headers The HTTP headers for the request.
+    # @option options [String] :body The body of the request.
+    # @option options [String] :version ("v1")
+    #   The service version. Only used if `api_method` is a `String`.
+    # @option options [#generate_authenticated_request] :authorization
+    #   The authorization mechanism for the response. Used only if
+    #   `:authenticated` is `true`.
+    # @option options [TrueClass, FalseClass] :authenticated (true)
+    #   `true` if the request must be signed or somehow
+    #   authenticated, `false` otherwise.
     #
-    # @return [Array] The generated request.
+    # @return [Faraday::Request] The generated request.
     #
     # @example
     #   request = client.generate_request(
-    #     :api_method => 'chili.activities.list',
+    #     :api_method => 'plus.activities.list',
     #     :parameters =>
-    #       {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'}
+    #       {'collection' => 'public', 'userId' => 'me'}
     #   )
-    #   method, uri, headers, body = request
     def generate_request(options={})
       # Note: The merge method on a Hash object will coerce an API Reference
       # object into a Hash and merge with the default options.
@@ -479,7 +434,8 @@ module Google
         :version => 'v1',
         :authorization => self.authorization,
         :key => self.key,
-        :user_ip => self.user_ip
+        :user_ip => self.user_ip,
+        :connection => Faraday.default_connection
       }.merge(options)
       # The Reference object is going to need this to do method ID lookups.
       options[:client] = self
@@ -493,7 +449,10 @@ module Google
       reference = Google::APIClient::Reference.new(options)
       request = reference.to_request
       if options[:authenticated]
-        request = self.generate_authenticated_request(:request => request)
+        request = self.generate_authenticated_request(
+          :request => request,
+          :connection => options[:connection]
+        )
       end
       return request
     end
@@ -501,9 +460,9 @@ module Google
     ##
     # Signs a request using the current authorization mechanism.
     #
-    # @param [Hash] options The options to pass through.
+    # @param [Hash] options a customizable set of options
     #
-    # @return [Array] The signed or otherwise authenticated request.
+    # @return [Faraday::Request] The signed or otherwise authenticated request.
     def generate_authenticated_request(options={})
       return authorization.generate_authenticated_request(options)
     end
@@ -511,14 +470,59 @@ module Google
     ##
     # Transmits the request using the current HTTP adapter.
     #
-    # @param [Array] request The request to transmit.
-    # @param [#transmit] adapter The HTTP adapter.
+    # @option options [Array, Faraday::Request] :request
+    #   The HTTP request to transmit.
+    # @option options [String, Symbol] :method
+    #   The method for the HTTP request.
+    # @option options [String, Addressable::URI] :uri
+    #   The URI for the HTTP request.
+    # @option options [Array, Hash] :headers
+    #   The headers for the HTTP request.
+    # @option options [String] :body
+    #   The body for the HTTP request.
+    # @option options [Faraday::Connection] :connection
+    #   The HTTP connection to use.
     #
-    # @return [Array] The response from the server.
-    def transmit(request, adapter=self.http_adapter)
+    # @return [Faraday::Response] The response from the server.
+    def transmit(options={})
+      options[:connection] ||= Faraday.default_connection
+      if options[:request]
+        if options[:request].kind_of?(Array)
+          method, uri, headers, body = options[:request]
+        elsif options[:request].kind_of?(Faraday::Request)
+          unless options[:connection]
+            raise ArgumentError,
+              "Faraday::Request used, requires a connection to be provided."
+          end
+          method = options[:request].method.to_s.downcase.to_sym
+          uri = options[:connection].build_url(
+            options[:request].path, options[:request].params
+          )
+          headers = options[:request].headers || {}
+          body = options[:request].body || ''
+        end
+      else
+        method = options[:method] || :get
+        uri = options[:uri]
+        headers = options[:headers] || []
+        body = options[:body] || ''
+      end
+      headers = headers.to_a if headers.kind_of?(Hash)
+      request_components = {
+        :method => method,
+        :uri => uri,
+        :headers => headers,
+        :body => body
+      }
+      # Verify that we have all pieces required to transmit an HTTP request
+      request_components.each do |(key, value)|
+        unless value
+          raise ArgumentError, "Missing :#{key} parameter."
+        end
+      end
+
       if self.user_agent != nil
         # If there's no User-Agent header, set one.
-        method, uri, headers, body = request
         unless headers.kind_of?(Enumerable)
           # We need to use some Enumerable methods, relying on the presence of
           # the #each method.
@@ -535,7 +539,15 @@ module Google
             "Expected User-Agent to be String, got #{self.user_agent.class}"
         end
       end
-      adapter.transmit([method, uri, headers, body])
+
+      request = Faraday::Request.create(method.to_s.downcase.to_sym) do |req|
+        req.url(Addressable::URI.parse(uri))
+        req.headers = Faraday::Utils::Headers.new(headers)
+        req.body = body
+      end
+      request_env = request.to_env(options[:connection])
+      response = options[:connection].app.call(request_env)
+      return response
     end
 
     ##
@@ -547,29 +559,24 @@ module Google
     #   The parameters to send to the method.
     # @param [String] body The body of the request.
     # @param [Hash, Array] headers The HTTP headers for the request.
-    # @param [Hash] options
-    #   The configuration parameters for the request.
-    #   - <code>:version</code> — 
-    #     The service version.  Only used if <code>api_method</code> is a
-    #     <code>String</code>.  Defaults to <code>'v1'</code>.
-    #   - <code>:adapter</code> — 
-    #     The HTTP adapter.
-    #   - <code>:authorization</code> — 
-    #     The authorization mechanism for the response.  Used only if
-    #     <code>:authenticated</code> is <code>true</code>.
-    #   - <code>:authenticated</code> — 
-    #     <code>true</code> if the request must be signed or otherwise
-    #     authenticated, <code>false</code>
-    #     otherwise.  Defaults to <code>true</code>.
+    # @option options [String] :version ("v1")
+    #   The service version. Only used if `api_method` is a `String`.
+    # @option options [#generate_authenticated_request] :authorization
+    #   The authorization mechanism for the response. Used only if
+    #   `:authenticated` is `true`.
+    # @option options [TrueClass, FalseClass] :authenticated (true)
+    #   `true` if the request must be signed or somehow
+    #   authenticated, `false` otherwise.
     #
-    # @return [Array] The response from the API.
+    # @return [Google::APIClient::Result] The result from the API.
     #
     # @example
-    #   request = client.generate_request(
-    #     :api_method => 'chili.activities.list',
-    #     :parameters =>
-    #       {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'}
+    #   result = client.execute(
+    #     :api_method => 'plus.activities.list',
+    #     :parameters => {'collection' => 'public', 'userId' => 'me'}
     #   )
+    #
+    # @see Google::APIClient#generate_request
     def execute(*params)
       # This block of code allows us to accept multiple parameter passing
       # styles, and maintaining some backwards compatibility.
@@ -582,15 +589,15 @@ module Google
       end
       options[:api_method] = params.shift if params.size > 0
       options[:parameters] = params.shift if params.size > 0
-      options[:merged_body] = params.shift if params.size > 0
+      options[:body] = params.shift if params.size > 0
       options[:headers] = params.shift if params.size > 0
       options[:client] = self
 
       reference = Google::APIClient::Reference.new(options)
       request = self.generate_request(reference)
       response = self.transmit(
-        request,
-        options[:adapter] || self.http_adapter
+        :request => request,
+        :connection => options[:connection]
       )
       return Google::APIClient::Result.new(reference, request, response)
     end
@@ -602,7 +609,6 @@ module Google
     # @see Google::APIClient#execute
     def execute!(*params)
       result = self.execute(*params)
-      status, _, _ = result.response
       if result.data.respond_to?(:error) &&
           result.data.error.respond_to?(:message)
         # You're going to get a terrible error message if the response isn't
@@ -611,15 +617,19 @@ module Google
       elsif result.data['error'] && result.data['error']['message']
         error_message = result.data['error']['message']
       end
-      if status >= 400 && status < 500
-        raise ClientError,
-          error_message || "A client error has occurred."
-      elsif status >= 500 && status < 600
-        raise ServerError,
-          error_message || "A server error has occurred."
-      elsif status > 600
-        raise TransmissionError,
-          error_message || "A transmission error has occurred."
+      if result.response.status >= 400
+        case result.response.status
+        when 400...500
+          exception_type = ClientError
+          error_message ||= "A client error has occurred."
+        when 500...600
+          exception_type = ServerError
+          error_message ||= "A server error has occurred."
+        else
+          exception_type = TransmissionError
+          error_message ||= "A transmission error has occurred."
+        end
+        raise exception_type, error_message
       end
       return result
     end

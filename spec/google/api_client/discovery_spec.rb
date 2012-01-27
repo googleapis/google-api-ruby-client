@@ -14,9 +14,13 @@
 
 require 'spec_helper'
 
+gem 'faraday', '~> 0.7.0'
+require 'faraday'
+require 'faraday/utils'
 require 'multi_json'
+
+gem 'signet', '~> 0.3.0'
 require 'signet/oauth_1/client'
-require 'httpadapter/adapters/net_http'
 
 require 'google/api_client'
 require 'google/api_client/version'
@@ -84,8 +88,7 @@ describe Google::APIClient do
         :uri => @client.discovery_uri('prediction', 'v1.2'),
         :authenticated => false
       )
-      http_method, uri, headers, body = request
-      uri.should === (
+      request.to_env(Faraday.default_connection)[:url].should === (
         'https://www.googleapis.com/discovery/v1/apis/prediction/v1.2/rest' +
         '?userIp=127.0.0.1'
       )
@@ -98,8 +101,7 @@ describe Google::APIClient do
         :uri => @client.discovery_uri('prediction', 'v1.2'),
         :authenticated => false
       )
-      http_method, uri, headers, body = request
-      uri.should === (
+      request.to_env(Faraday.default_connection)[:url].should === (
         'https://www.googleapis.com/discovery/v1/apis/prediction/v1.2/rest' +
         '?key=qwerty'
       )
@@ -113,11 +115,10 @@ describe Google::APIClient do
         :uri => @client.discovery_uri('prediction', 'v1.2'),
         :authenticated => false
       )
-      http_method, uri, headers, body = request
-      uri.should === (
-        'https://www.googleapis.com/discovery/v1/apis/prediction/v1.2/rest' +
-        '?key=qwerty&userIp=127.0.0.1'
-      )
+      request.to_env(Faraday.default_connection)[:url].query_values.should == {
+        'key' => 'qwerty',
+        'userIp' => '127.0.0.1'
+      }
     end
 
     it 'should correctly generate API objects' do
@@ -167,30 +168,29 @@ describe Google::APIClient do
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345', }
       )
-      method, uri, headers, body = request
-      method.should == 'POST'
-      uri.should ==
+      request.method.should == :post
+      request.to_env(Faraday.default_connection)[:url].should ===
         'https://www.googleapis.com/prediction/v1.2/training?data=12345'
-      (headers.inject({}) { |h,(k,v)| h[k]=v; h }).should == {}
-      body.should respond_to(:each)
+      request.headers.should be_empty
+      request.body.should == ''
     end
+
     it 'should generate valid requests when repeated parameters are passed' do
       request = @client.generate_request(
         :api_method => @prediction.training.insert,
         :parameters => [['data', '1'],['data','2']]
       )
-      method, uri, headers, body = request
-      method.should == 'POST'
-      uri.should ==
+      request.method.should == :post
+      request.to_env(Faraday.default_connection)[:url].should ===
         'https://www.googleapis.com/prediction/v1.2/training?data=1&data=2'
     end
+
     it 'should generate requests against the correct URIs' do
       request = @client.generate_request(
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'}
       )
-      method, uri, headers, body = request
-      uri.should ==
+      request.to_env(Faraday.default_connection)[:url].should ===
         'https://www.googleapis.com/prediction/v1.2/training?data=12345'
     end
 
@@ -199,8 +199,7 @@ describe Google::APIClient do
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'}
       )
-      method, uri, headers, body = request
-      uri.should ==
+      request.to_env(Faraday.default_connection)[:url].should ===
         'https://www.googleapis.com/prediction/v1.2/training?data=12345'
     end
 
@@ -212,8 +211,7 @@ describe Google::APIClient do
         :api_method => prediction.training.insert,
         :parameters => {'data' => '123'}
       )
-      method, uri, headers, body = request
-      uri.should == (
+      request.to_env(Faraday.default_connection)[:url].should === (
         'https://testing-domain.googleapis.com/' +
         'prediction/v1.2/training?data=123'
       )
@@ -227,10 +225,8 @@ describe Google::APIClient do
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'}
       )
-      method, uri, headers, body = request
-      headers = headers.inject({}) { |h,(k,v)| h[k]=v; h }
-      headers.keys.should include('Authorization')
-      headers['Authorization'].should =~ /^OAuth/
+      request.headers.should have_key('Authorization')
+      request.headers['Authorization'].should =~ /^OAuth/
     end
 
     it 'should generate OAuth 2 requests' do
@@ -240,10 +236,8 @@ describe Google::APIClient do
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'}
       )
-      method, uri, headers, body = request
-      headers = headers.inject({}) { |h,(k,v)| h[k]=v; h }
-      headers.keys.should include('Authorization')
-      headers['Authorization'].should =~ /^OAuth/
+      request.headers.should have_key('Authorization')
+      request.headers['Authorization'].should =~ /^Bearer/
     end
 
     it 'should not be able to execute improperly authorized requests' do
@@ -254,8 +248,7 @@ describe Google::APIClient do
         @prediction.training.insert,
         {'data' => '12345'}
       )
-      status, headers, body = result.response
-      status.should == 401
+      result.response.status.should == 401
     end
 
     it 'should not be able to execute improperly authorized requests' do
@@ -265,8 +258,7 @@ describe Google::APIClient do
         @prediction.training.insert,
         {'data' => '12345'}
       )
-      status, headers, body = result.response
-      status.should == 401
+      result.response.status.should == 401
     end
 
     it 'should not be able to execute improperly authorized requests' do
@@ -301,8 +293,7 @@ describe Google::APIClient do
         MultiJson.encode({"id" => "bucket/object"}),
         {'Content-Type' => 'application/json'}
       )
-      method, uri, headers, body = result.request
-      Hash[headers]['Content-Type'].should == 'application/json'
+      result.request.headers['Content-Type'].should == 'application/json'
     end
   end
 
@@ -343,8 +334,7 @@ describe Google::APIClient do
         },
         :authenticated => false
       )
-      method, uri, headers, body = request
-      uri.should == (
+      request.to_env(Faraday.default_connection)[:url].should === (
         'https://www.googleapis.com/plus/v1/' +
         'people/107807692475771887386/activities/public'
       )
@@ -404,8 +394,7 @@ describe Google::APIClient do
         :api_method => 'latitude.currentLocation.get',
         :authenticated => false
       )
-      method, uri, headers, body = request
-      uri.should ==
+      request.to_env(Faraday.default_connection)[:url].should ===
         'https://www.googleapis.com/latitude/v1/currentLocation'
     end
 
@@ -414,8 +403,7 @@ describe Google::APIClient do
         :api_method => @latitude.current_location.get,
         :authenticated => false
       )
-      method, uri, headers, body = request
-      uri.should ==
+      request.to_env(Faraday.default_connection)[:url].should ===
         'https://www.googleapis.com/latitude/v1/currentLocation'
     end
 
@@ -424,8 +412,7 @@ describe Google::APIClient do
         :api_method => 'latitude.currentLocation.get',
         :authenticated => false
       )
-      status, headers, body = result.response
-      status.should == 401
+      result.response.status.should == 401
     end
   end
 
@@ -460,8 +447,7 @@ describe Google::APIClient do
         :api_method => 'moderator.profiles.get',
         :authenticated => false
       )
-      method, uri, headers, body = request
-      uri.should ==
+      request.to_env(Faraday.default_connection)[:url].should ===
         'https://www.googleapis.com/moderator/v1/profiles/@me'
     end
 
@@ -470,8 +456,7 @@ describe Google::APIClient do
         :api_method => @moderator.profiles.get,
         :authenticated => false
       )
-      method, uri, headers, body = request
-      uri.should ==
+      request.to_env(Faraday.default_connection)[:url].should ===
         'https://www.googleapis.com/moderator/v1/profiles/@me'
     end
 
@@ -483,8 +468,7 @@ describe Google::APIClient do
         [],
         {:authenticated => false}
       )
-      status, headers, body = result.response
-      status.should == 401
+      result.response.status.should == 401
     end
   end
 end

@@ -1,36 +1,43 @@
+# 0.4.0
+
+* Replaced httpadapter gem dependency with faraday
+* Replaced json gem dependency with multi_json
+* Fixed /dev/null issues on Windows
+* Repeated parameters now work
+
 # 0.3.0
 
-* updated to use v1 of the discovery API
-* updated to use httpadapter 1.0.0
-* added OAuth 2 support to the command line tool
-* renamed some switches in the command line tool
-* added additional configuration capabilities
-* fixed a few deprecation warnings from dependencies
-* added gemspec to source control
+* Updated to use v1 of the discovery API
+* Updated to use httpadapter 1.0.0
+* Added OAuth 2 support to the command line tool
+* Renamed some switches in the command line tool
+* Added additional configuration capabilities
+* Fixed a few deprecation warnings from dependencies
+* Added gemspec to source control
 
 # 0.2.0
 
-* updated to use v1 of the discovery API
-* updated to use httpadapter 1.0.0
-* added OAuth 2 support to the command line tool
-* renamed some switches in the command line tool
-* added additional configuration capabilities
+* Updated to use v1 of the discovery API
+* Updated to use httpadapter 1.0.0
+* Added OAuth 2 support to the command line tool
+* Renamed some switches in the command line tool
+* Added additional configuration capabilities
 
 # 0.1.3
 
-* added support for manual overrides of the discovery URI
-* added support for manual overrides of the API base
-* added support for xoauth_requestor_id
+* Added support for manual overrides of the discovery URI
+* Added support for manual overrides of the API base
+* Added support for xoauth_requestor_id
 
 # 0.1.2
 
-* added support for two-legged OAuth
-* moved some development dependencies into runtime
+* Added support for two-legged OAuth
+* Moved some development dependencies into runtime
 
 # 0.1.1
 
-* substantial improvements to the command line interface
+* Substantial improvements to the command line interface
 
 # 0.1.0
 
-* initial release
+* Initial release

@@ -13,9 +13,12 @@
 # limitations under the License.
 
 
-require 'stringio'
+gem 'faraday', '~> 0.7.0'
+require 'faraday'
+require 'faraday/utils'
 require 'multi_json'
 require 'addressable/uri'
+require 'stringio'
 require 'google/api_client/discovery'
 
 
@@ -29,6 +32,7 @@ module Google
         @client = options[:client]
         @version = options[:version] || 'v1'
 
+        self.connection = options[:connection] || Faraday.default_connection
         self.api_method = options[:api_method]
         self.parameters = options[:parameters] || {}
         # These parameters are handled differently because they're not
@@ -38,8 +42,6 @@ module Google
         self.headers = options[:headers] || []
         if options[:body]
           self.body = options[:body]
-        elsif options[:merged_body]
-          self.merged_body = options[:merged_body]
         elsif options[:body_object]
           if options[:body_object].respond_to?(:to_json)
             serialized_body = options[:body_object].to_json
@@ -50,9 +52,9 @@ module Google
               'Could not convert body object to JSON.' +
               'Must respond to :to_json or :to_hash.'
           end
-          self.merged_body = serialized_body
+          self.body = serialized_body
         else
-          self.merged_body = ''
+          self.body = ''
         end
         unless self.api_method
           self.http_method = options[:http_method] || 'GET'
@@ -61,6 +63,19 @@ module Google
             self.uri.query_values =
               (self.uri.query_values || {}).merge(self.parameters)
           end
+        end
+      end
+
+      def connection
+        return @connection
+      end
+
+      def connection=(new_connection)
+        if new_connection.kind_of?(Faraday::Connection)
+          @connection = new_connection
+        else
+          raise TypeError,
+            "Expected Faraday::Connection, got #{new_connection.class}."
         end
       end
 
@@ -115,30 +130,16 @@ module Google
       end
 
       def body=(new_body)
-        if new_body.respond_to?(:each)
-          @body = new_body
+        if new_body.respond_to?(:to_str)
+          @body = new_body.to_str
+        elsif new_body.respond_to?(:inject)
+          @body = (new_body.inject(StringIO.new) do |accu, chunk|
+            accu.write(chunk)
+            accu
+          end).string
         else
-          raise TypeError, "Expected body to respond to :each."
+          raise TypeError, "Expected body to be String or Enumerable chunks."
         end
-      end
-
-      def merged_body
-        return (self.body.inject(StringIO.new) do |accu, chunk|
-          accu.write(chunk)
-          accu
-        end).string
-      end
-
-      def merged_body=(new_merged_body)
-        if new_merged_body.respond_to?(:string)
-          new_merged_body = new_merged_body.string
-        elsif new_merged_body.respond_to?(:to_str)
-          new_merged_body = new_merged_body.to_str
-        else
-          raise TypeError,
-            "Expected String or StringIO, got #{new_merged_body.class}."
-        end
-        self.body = [new_merged_body]
       end
 
       def headers
@@ -179,10 +180,16 @@ module Google
       def to_request
         if self.api_method
           return self.api_method.generate_request(
-            self.parameters, self.merged_body, self.headers
+            self.parameters, self.body, self.headers
           )
         else
-          return [self.http_method, self.uri, self.headers, self.body]
+          return Faraday::Request.create(
+            self.http_method.to_s.downcase.to_sym
+          ) do |req|
+            req.url(Addressable::URI.parse(self.uri))
+            req.headers = Faraday::Utils::Headers.new(self.headers)
+            req.body = self.body
+          end
         end
       end
 
@@ -197,6 +204,7 @@ module Google
         end
         options[:headers] = self.headers
         options[:body] = self.body
+        options[:connection] = self.connection
         return options
       end
     end

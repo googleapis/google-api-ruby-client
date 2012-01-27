@@ -10,7 +10,11 @@ OAUTH_SERVER_PORT = 12736
 
 require 'rubygems'
 require 'optparse'
-require 'httpadapter'
+
+gem 'faraday', '~> 0.7.0'
+require 'faraday'
+require 'faraday/utils'
+
 require 'webrick'
 require 'google/api_client/version'
 require 'google/api_client'
@@ -183,6 +187,7 @@ HTML
       end
 
       def client
+        gem 'signet', '~> 0.3.0'
         require 'signet/oauth_1/client'
         require 'yaml'
         require 'irb'
@@ -276,6 +281,7 @@ HTML
       ]
 
       def oauth_1_login
+        gem 'signet', '~> 0.3.0'
         require 'signet/oauth_1/client'
         require 'launchy'
         require 'yaml'
@@ -343,6 +349,7 @@ HTML
       end
 
       def oauth_2_login
+        gem 'signet', '~> 0.3.0'
         require 'signet/oauth_2/client'
         require 'launchy'
         require 'yaml'
@@ -467,8 +474,7 @@ HTML
           request = [method, uri.to_str, headers, [request_body]]
           request = client.generate_authenticated_request(:request => request)
           response = client.transmit(request)
-          status, headers, body = response
-          puts body
+          puts response.body
           exit(0)
         else
           # Make request with URI generated from template and parameters
@@ -502,8 +508,7 @@ HTML
               :merged_body => request_body,
               :headers => headers
             )
-            status, headers, body = result.response
-            puts body
+            puts result.response.body
             exit(0)
           rescue ArgumentError => e
             puts e.message

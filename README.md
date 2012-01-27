@@ -46,14 +46,13 @@ APIs.
     client.authorization.fetch_token_credential!(:verifier => '12345')
     
     # Discover available methods
-    method_names = client.discovered_api('buzz').to_h.keys
+    method_names = client.discovered_api('plus').to_h.keys
     
     # Make an API call
-    response = client.execute(
-      'chili.activities.list',
-      {'scope' => '@self', 'userId' => '@me', 'alt' => 'json'}
+    result = client.execute(
+      'plus.activities.list',
+      {'collection' => 'public', 'userId' => 'me'}
     )
-    status, headers, body = response
 
 # Install
 

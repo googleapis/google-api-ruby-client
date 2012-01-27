@@ -1,9 +1,3 @@
-$LOAD_PATH.unshift(
-  File.expand_path(File.join(File.dirname(__FILE__), '../yard/lib'))
-)
-$LOAD_PATH.unshift(File.expand_path('.'))
-$LOAD_PATH.uniq!
-
 require 'google/api_client'
 require 'rake'
 require 'rake/clean'
@@ -54,6 +48,12 @@ WIKI
 end
 
 begin
+  $LOAD_PATH.unshift(
+    File.expand_path(File.join(File.dirname(__FILE__), '../yard/lib'))
+  )
+  $LOAD_PATH.unshift(File.expand_path('.'))
+  $LOAD_PATH.uniq!
+
   require 'yard'
   require 'yard/rake/wikidoc_task'
 
@@ -63,6 +63,7 @@ begin
       yardoc.name = 'reference'
       yardoc.options = [
         '--verbose',
+        '--markup', 'markdown',
         '-e', 'yard/lib/yard-google-code.rb',
         '-p', 'yard/templates',
         '-f', 'wiki',

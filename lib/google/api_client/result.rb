@@ -31,21 +31,15 @@ module Google
       attr_reader :response
 
       def status
-        return @response[0]
+        return @response.status
       end
 
       def headers
-        return @response[1]
+        return @response.headers
       end
 
       def body
-        return @body ||= (begin
-          response_body = @response[2]
-          merged_body = (response_body.inject(StringIO.new) do |accu, chunk|
-            accu.write(chunk)
-            accu
-          end).string
-        end)
+        return @response.body
       end
 
       def data

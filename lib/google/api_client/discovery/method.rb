@@ -203,7 +203,11 @@ module Google
         method = self.http_method
         uri = self.generate_uri(parameters)
         headers = headers.to_a if headers.kind_of?(Hash)
-        return [method, uri.to_str, headers, [body]]
+        return Faraday::Request.create(method.to_s.downcase.to_sym) do |req|
+          req.url(Addressable::URI.parse(uri))
+          req.headers = Faraday::Utils::Headers.new(headers)
+          req.body = body
+        end
       end
 
       ##

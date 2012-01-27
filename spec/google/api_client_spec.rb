@@ -14,9 +14,12 @@
 
 require 'spec_helper'
 
+gem 'faraday', '~> 0.7.0'
+require 'faraday'
+require 'faraday/utils'
+
+gem 'signet', '~> 0.3.0'
 require 'signet/oauth_1/client'
-require 'httpadapter/adapters/net_http'
-require 'httpadapter/adapters/mock'
 
 require 'google/api_client'
 require 'google/api_client/version'
@@ -44,16 +47,22 @@ shared_examples_for 'configurable user agent' do
 
   it 'should transmit a User-Agent header when sending requests' do
     @client.user_agent = 'Custom User Agent/1.2.3'
-    request = ['GET', 'http://www.google.com/', [], []]
-    adapter = HTTPAdapter::MockAdapter.create do |request_ary, connection|
-      method, uri, headers, body = request_ary
-      headers.should be_any { |k, v| k.downcase == 'user-agent' }
-      headers.each do |k, v|
-        v.should == @client.user_agent if k.downcase == 'user-agent'
-      end
-      [200, [], ['']]
+    request = Faraday::Request.new(:get) do |req|
+      req.url('http://www.google.com/')
     end
-    @client.transmit(request, adapter)
+    stubs = Faraday::Adapter::Test::Stubs.new do |stub|
+      stub.get('/') do |env|
+        headers = env[:request_headers]
+        headers.should have_key('User-Agent')
+        headers['User-Agent'].should == @client.user_agent
+        [200, {}, ['']]
+      end
+    end
+    connection = Faraday.new(:url => 'https://www.google.com') do |builder|
+      builder.adapter(:test, stubs)
+    end
+    @client.transmit(:request => request, :connection => connection)
+    stubs.verify_stubbed_calls
   end
 end
 
