@@ -75,7 +75,9 @@ module Google
           api_version_string =
             Google::INFLECTOR.camelize(api.version).gsub('.', '_')
           if Google::APIClient::Schema.const_defined?(api_name_string, false)
-            api_name = Google::APIClient::Schema.const_get(api_name_string, false)
+            api_name = Google::APIClient::Schema.const_get(
+              api_name_string, false
+            )
           else
             api_name = Google::APIClient::Schema.const_set(
               api_name_string, Module.new

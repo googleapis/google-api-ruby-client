@@ -48,7 +48,7 @@ module Google
             metaclass.send(:define_method, method_name) { resource }
           end
         end
-        self.methods.each do |method|
+        self.discovered_methods.each do |method|
           method_name = Google::INFLECTOR.underscore(method.name).to_sym
           if !self.respond_to?(method_name)
             metaclass.send(:define_method, method_name) { method }
@@ -85,7 +85,7 @@ module Google
         self.discovered_resources.each do |resource|
           resource.method_base = @method_base
         end
-        self.methods.each do |method|
+        self.discovered_methods.each do |method|
           method.method_base = @method_base
         end
       end
@@ -95,7 +95,7 @@ module Google
       #
       # @return [Array] A list of {Google::APIClient::Resource} objects.
       def discovered_resources
-        return @resources ||= (
+        return @discovered_resources ||= (
           (@discovery_document['resources'] || []).inject([]) do |accu, (k, v)|
             accu << Google::APIClient::Resource.new(
               @api, self.method_base, k, v
@@ -109,8 +109,8 @@ module Google
       # A list of methods available on this resource.
       #
       # @return [Array] A list of {Google::APIClient::Method} objects.
-      def methods
-        return @methods ||= (
+      def discovered_methods
+        return @discovered_methods ||= (
           (@discovery_document['methods'] || []).inject([]) do |accu, (k, v)|
             accu << Google::APIClient::Method.new(@api, self.method_base, k, v)
             accu
@@ -126,7 +126,7 @@ module Google
       def to_h
         return @hash ||= (begin
           methods_hash = {}
-          self.methods.each do |method|
+          self.discovered_methods.each do |method|
             methods_hash[method.id] = method
           end
           self.discovered_resources.each do |resource|
