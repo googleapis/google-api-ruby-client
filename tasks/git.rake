@@ -3,9 +3,9 @@ namespace :git do
     desc 'List tags from the Git repository'
     task :list do
       tags = `git tag -l`
-      tags.gsub!('\r', '')
-      tags = tags.split('\n').sort {|a, b| b <=> a }
-      puts tags.join('\n')
+      tags.gsub!("\r", '')
+      tags = tags.split("\n").sort {|a, b| b <=> a }
+      puts tags.join("\n")
     end
 
     desc 'Create a new tag in the Git repository'
@@ -18,6 +18,11 @@ namespace :git do
 
       v = ENV['VERSION'] or abort 'Must supply VERSION=x.y.z'
       abort "Versions don't match #{v} vs #{PKG_VERSION}" if v != PKG_VERSION
+
+      git_status = `git status`
+      if git_status !~ /nothing to commit \(working directory clean\)/
+        abort "Working directory isn't clean."
+      end
 
       tag = "#{PKG_NAME}-#{PKG_VERSION}"
       msg = "Release #{PKG_NAME}-#{PKG_VERSION}"
