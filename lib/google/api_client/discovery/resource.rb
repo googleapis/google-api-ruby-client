@@ -42,7 +42,7 @@ module Google
         @name = resource_name
         @discovery_document = discovery_document
         metaclass = (class <<self; self; end)
-        self.resources.each do |resource|
+        self.discovered_resources.each do |resource|
           method_name = Google::INFLECTOR.underscore(resource.name).to_sym
           if !self.respond_to?(method_name)
             metaclass.send(:define_method, method_name) { resource }
@@ -82,7 +82,7 @@ module Google
       #   The new base URI to use for the resource.
       def method_base=(new_method_base)
         @method_base = Addressable::URI.parse(new_method_base)
-        self.resources.each do |resource|
+        self.discovered_resources.each do |resource|
           resource.method_base = @method_base
         end
         self.methods.each do |method|
@@ -94,7 +94,7 @@ module Google
       # A list of sub-resources available on this resource.
       #
       # @return [Array] A list of {Google::APIClient::Resource} objects.
-      def resources
+      def discovered_resources
         return @resources ||= (
           (@discovery_document['resources'] || []).inject([]) do |accu, (k, v)|
             accu << Google::APIClient::Resource.new(
@@ -129,7 +129,7 @@ module Google
           self.methods.each do |method|
             methods_hash[method.id] = method
           end
-          self.resources.each do |resource|
+          self.discovered_resources.each do |resource|
             methods_hash.merge!(resource.to_h)
           end
           methods_hash

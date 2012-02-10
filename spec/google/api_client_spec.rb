@@ -23,7 +23,6 @@ require 'signet/oauth_1/client'
 
 require 'google/api_client'
 require 'google/api_client/version'
-require 'google/api_client/parsers/json_parser'
 
 shared_examples_for 'configurable user agent' do
   it 'should allow the user agent to be modified' do

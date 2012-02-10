@@ -74,20 +74,20 @@ module Google
             Google::INFLECTOR.camelize(api.name)
           api_version_string =
             Google::INFLECTOR.camelize(api.version).gsub('.', '_')
-          if Google::APIClient::Schema.const_defined?(api_name_string)
-            api_name = Google::APIClient::Schema.const_get(api_name_string)
+          if Google::APIClient::Schema.const_defined?(api_name_string, false)
+            api_name = Google::APIClient::Schema.const_get(api_name_string, false)
           else
             api_name = Google::APIClient::Schema.const_set(
               api_name_string, Module.new
             )
           end
-          if api_name.const_defined?(api_version_string)
-            api_version = api_name.const_get(api_version_string)
+          if api_name.const_defined?(api_version_string, false)
+            api_version = api_name.const_get(api_version_string, false)
           else
             api_version = api_name.const_set(api_version_string, Module.new)
           end
-          if api_version.const_defined?(schema_name)
-            schema_class = api_version.const_get(schema_name)
+          if api_version.const_defined?(schema_name, false)
+            schema_class = api_version.const_get(schema_name, false)
           end
         end
 

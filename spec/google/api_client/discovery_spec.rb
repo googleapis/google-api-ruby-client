@@ -24,7 +24,6 @@ require 'signet/oauth_1/client'
 
 require 'google/api_client'
 require 'google/api_client/version'
-require 'google/api_client/parsers/json_parser'
 
 describe Google::APIClient do
   before do
