@@ -1,3 +1,9 @@
+# 0.4.1
+
+* Fixed ancestor checking issue when assigning Autoparse identifiers
+* Renamed discovery methods to avoid collisions with some APIs
+* Updated autoparse dependency to avoid JSON bug
+
 # 0.4.0
 
 * Replaced httpadapter gem dependency with faraday
