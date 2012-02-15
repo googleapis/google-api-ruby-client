@@ -36,5 +36,10 @@ module Google
     # A 5xx class HTTP error occurred.
     class ServerError < TransmissionError
     end
+
+    ##
+    # An exception that is raised if an ID token could not be validated.
+    class InvalidIDTokenError < StandardError
+    end
   end
 end

@@ -402,6 +402,76 @@ module Google
     end
 
     ##
+    # Verifies an ID token against a server certificate. Used to ensure that
+    # an ID token supplied by an untrusted client-side mechanism is valid.
+    # Raises an error if the token is invalid or missing.
+    def verify_id_token!
+      gem 'jwt', '~> 0.1.4'
+      require 'jwt'
+      require 'openssl'
+      @certificates ||= {}
+      if !self.authorization.respond_to?(:id_token)
+        raise ArgumentError, (
+          "Current authorization mechanism does not support ID tokens: " +
+          "#{self.authorization.class.to_s}"
+        )
+      elsif !self.authorization.id_token
+        raise ArgumentError, (
+          "Could not verify ID token, ID token missing. " +
+          "Scopes were: #{self.authorization.scope.inspect}"
+        )
+      else
+        check_cached_certs = lambda do
+          valid = false
+          for key, cert in @certificates
+            begin
+              self.authorization.decoded_id_token(cert.public_key)
+              valid = true
+            rescue JWT::DecodeError, Signet::UnsafeOperationError
+              # Expected exception. Ignore, ID token has not been validated.
+            end
+          end
+          valid
+        end
+        if check_cached_certs.call()
+          return true
+        end
+        request = self.generate_request(
+          :http_method => :get,
+          :uri => 'https://www.googleapis.com/oauth2/v1/certs',
+          :authenticated => false
+        )
+        response = self.transmit(:request => request)
+        if response.status >= 200 && response.status < 300
+          @certificates.merge!(
+            Hash[MultiJson.decode(response.body).map do |key, cert|
+              [key, OpenSSL::X509::Certificate.new(cert)]
+            end]
+          )
+        elsif response.status >= 400
+          case response.status
+          when 400...500
+            exception_type = ClientError
+          when 500...600
+            exception_type = ServerError
+          else
+            exception_type = TransmissionError
+          end
+          url = request.to_env(Faraday.default_connection)[:url]
+          raise exception_type,
+            "Could not retrieve certificates from: #{url}"
+        end
+        if check_cached_certs.call()
+          return true
+        else
+          raise InvalidIDTokenError,
+            "Could not verify ID token against any available certificate."
+        end
+      end
+      return nil
+    end
+
+    ##
     # Generates a request.
     #
     # @option options [Google::APIClient::Method, String] :api_method
