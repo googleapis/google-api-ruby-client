@@ -47,8 +47,6 @@ module Google
     #     <li><code>:oauth_1</code></li>
     #     <li><code>:oauth_2</code></li>
     #   </ul>
-    # @option options [String] :baseURI ("https://www.googleapis.com/discovery/v1")
-    #   The base API URI used by the client.  This rarely needs to be changed.
     # @option options [String] :application_name
     #   The name of the application using the client.
     # @option options [String] :application_version
@@ -57,14 +55,22 @@ module Google
     #   ("{app_name} google-api-ruby-client/{version} {os_name}/{os_version}")
     #   The user agent used by the client.  Most developers will want to
     #   leave this value alone and use the `:application_name` option instead.
+    # @option options [String] :host ("www.googleapis.com")
+    #   The API hostname used by the client. This rarely needs to be changed.
+    # @option options [String] :port (443)
+    #   The port number used by the client. This rarely needs to be changed.
+    # @option options [String] :discovery_path ("/discovery/v1")
+    #   The discovery base path. This rarely needs to be changed.
     def initialize(options={})
       # Normalize key to String to allow indifferent access.
       options = options.inject({}) do |accu, (key, value)|
         accu[key.to_s] = value
         accu
       end
-      # Almost all API usage will have this base URI 
-      self.baseURI = options["baseURI"] || "https://www.googleapis.com/discovery/v1"
+      # Almost all API usage will have a host of 'www.googleapis.com'.
+      self.host = options["host"] || 'www.googleapis.com'
+      self.port = options["port"] || 443
+      self.discovery_path = options["discovery_path"] || '/discovery/v1'
 
       # Most developers will want to leave this value alone and use the
       # application_name option.
@@ -162,21 +168,56 @@ module Google
     attr_accessor :user_ip
 
     ##
-    # The API hostname used by the client.
-    #
-    # @return [String]
-    #   The API hostname.  Should almost always be 'www.googleapis.com'.
-    attr_accessor :baseURI
-
-    ##
     # The user agent used by the client.
     #
     # @return [String]
     #   The user agent string used in the User-Agent header.
     attr_accessor :user_agent
-    
-    def relative_uri(path, expand={})
-      Addressable::Template.new(baseURI+path).expand(expand)
+
+    ##
+    # The API hostname used by the client.
+    #
+    # @return [String]
+    #   The API hostname. Should almost always be 'www.googleapis.com'.
+    attr_accessor :host
+
+    ##
+    # The port number used by the client.
+    #
+    # @return [String]
+    #   The port number. Should almost always be 443.
+    attr_accessor :port
+
+    ##
+    # The base path used by the client for discovery.
+    #
+    # @return [String]
+    #   The base path. Should almost always be '/discovery/v1'.
+    attr_accessor :discovery_path
+
+    ##
+    # Resolves a URI template against the client's configured base.
+    #
+    # @param [String, Addressable::URI, Addressable::Template] template
+    #   The template to resolve.
+    # @param [Hash] mapping The mapping that corresponds to the template.
+    # @return [Addressable::URI] The expanded URI.
+    def resolve_uri(template, mapping={})
+      @base_uri ||= Addressable::URI.new(
+        :scheme => 'https',
+        :host => self.host,
+        :port => self.port
+      ).normalize
+      template = if template.kind_of?(Addressable::Template)
+        template.pattern
+      elsif template.respond_to?(:to_str)
+        template.to_str
+      else
+        raise TypeError,
+          "Expected String, Addressable::URI, or Addressable::Template, " +
+          "got #{template.class}."
+      end
+      return Addressable::Template.new(@base_uri + template).expand(mapping)
     end
 
     ##
@@ -184,7 +225,7 @@ module Google
     #
     # @return [Addressable::URI] The URI of the directory document.
     def directory_uri
-      relative_uri('/apis')
+      return resolve_uri(self.discovery_path + '/apis')
     end
 
     ##
@@ -209,9 +250,13 @@ module Google
     def discovery_uri(api, version=nil)
       api = api.to_s
       version = version || 'v1'
-      return @discovery_uris["#{api}:#{version}"] ||= (begin
-        relative_uri("/apis/{api}/{version}/rest", 'api' => api, 'version' => version)
-      end)
+      return @discovery_uris["#{api}:#{version}"] ||= (
+        resolve_uri(
+          self.discovery_path + '/apis/{api}/{version}/rest',
+          'api' => api,
+          'version' => version
+        )
+      )
     end
 
     ##
