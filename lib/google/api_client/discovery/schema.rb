@@ -47,7 +47,8 @@ module Google
           # and excess object creation, but this hopefully shouldn't be an
           # issue since it should only be called only once per schema per
           # process.
-          if data.kind_of?(Hash) && data['$ref']
+          if data.kind_of?(Hash) &&
+              data['$ref'] && !data['$ref'].kind_of?(Hash)
             if data['$ref'].respond_to?(:to_str)
               reference = data['$ref'].to_str
             else
