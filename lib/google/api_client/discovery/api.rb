@@ -18,7 +18,7 @@ require 'addressable/uri'
 require 'google/inflection'
 require 'google/api_client/discovery/resource'
 require 'google/api_client/discovery/method'
-
+require 'google/api_client/discovery/media'
 
 module Google
   class APIClient
@@ -149,8 +149,7 @@ module Google
       def method_base
         if @discovery_document['basePath']
           return @method_base ||= (
-            self.document_base +
-            Addressable::URI.parse(@discovery_document['basePath'])
+            self.document_base.join(Addressable::URI.parse(@discovery_document['basePath']))
           ).normalize
         else
           return nil

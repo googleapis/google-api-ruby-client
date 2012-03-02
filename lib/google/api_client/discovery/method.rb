@@ -95,15 +95,23 @@ module Google
       #
       # @return [Addressable::Template] The URI template.
       def uri_template
-        # TODO(bobaman) We shouldn't be calling #to_s here, this should be
-        # a join operation on a URI, but we have to treat these as Strings
-        # because of the way the discovery document provides the URIs.
-        # This should be fixed soon.
         return @uri_template ||= Addressable::Template.new(
-          self.method_base + @discovery_document['path']
+          self.method_base.join(Addressable::URI.parse(@discovery_document['path']))
         )
       end
 
+      ##
+      # Returns media upload information for this method, if supported
+      #
+      # @return [Google::APIClient::MediaUpload] Description of upload endpoints
+      def media_upload
+        if @discovery_document['mediaUpload']
+          return @media_upload ||= Google::APIClient::MediaUpload.new(self, self.method_base, @discovery_document['mediaUpload'])
+        else
+          return nil
+        end
+      end
+      
       ##
       # Returns the Schema object for the method's request, if any.
       #
@@ -168,7 +176,20 @@ module Google
         parameters = self.normalize_parameters(parameters)
         self.validate_parameters(parameters)
         template_variables = self.uri_template.variables
-        uri = self.uri_template.expand(parameters)
+        upload_type = parameters.assoc('uploadType') || parameters.assoc('upload_type')
+        if upload_type
+          unless self.media_upload
+            raise ArgumentException, "Media upload not supported for this method"
+          end
+          case upload_type.last
+          when 'media', 'multipart', 'resumable'
+            uri = self.media_upload.uri_template.expand(parameters)            
+          else
+            raise ArgumentException, "Invalid uploadType '#{upload_type}'"
+          end
+        else
+          uri = self.uri_template.expand(parameters)
+        end
         query_parameters = parameters.reject do |k, v|
           template_variables.include?(k)
         end
@@ -211,6 +232,7 @@ module Google
           req.body = body
         end
       end
+      
 
       ##
       # Returns a <code>Hash</code> of the parameter descriptions for

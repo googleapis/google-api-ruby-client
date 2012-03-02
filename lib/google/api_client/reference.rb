@@ -25,6 +25,8 @@ require 'google/api_client/discovery'
 module Google
   class APIClient
     class Reference
+      
+      MULTIPART_BOUNDARY = "-----------RubyApiMultipartPost".freeze
       def initialize(options={})
         # We only need this to do lookups on method ID String values
         # It's optional, but method ID lookups will fail if the client is
@@ -39,20 +41,53 @@ module Google
         # parameters to the API method, but rather to the API system.
         self.parameters['key'] ||= options[:key] if options[:key]
         self.parameters['userIp'] ||= options[:user_ip] if options[:user_ip]
-        self.headers = options[:headers] || []
-        if options[:body]
+        self.headers = options[:headers] || {}
+
+        if options[:media]
+          self.media = options[:media]
+          upload_type = parameters['uploadType'] || parameters['upload_type'] 
+          case upload_type
+          when "media"
+            if options[:body] || options[:body_object] 
+              raise ArgumentError, "Can not specify body & body object for simple uploads"
+            end
+            self.headers['Content-Type'] ||= self.media.content_type
+            self.body = self.media
+          when "multipart"
+            unless options[:body_object] 
+              raise ArgumentError, "Multipart requested but no body object"              
+            end
+            # This is all a bit of a hack due to signet requiring body to be a string
+            # Ideally, update signet to delay serialization so we can just pass
+            # streams all the way down through to the HTTP lib
+            metadata = StringIO.new(serialize_body(options[:body_object]))
+            env = {
+              :request_headers => {'Content-Type' => "multipart/related;boundary=#{MULTIPART_BOUNDARY}"},
+              :request => { :boundary => MULTIPART_BOUNDARY }
+            }
+            multipart = Faraday::Request::Multipart.new
+            self.body = multipart.create_multipart(env, {
+              :metadata => Faraday::UploadIO.new(metadata, 'application/json'),
+              :content => self.media})
+            self.headers.update(env[:request_headers])
+          when "resumable"
+            file_length = self.media.length
+            self.headers['X-Upload-Content-Type'] = self.media.content_type
+            self.headers['X-Upload-Content-Length'] = file_length.to_s            
+            if options[:body_object]
+              self.headers['Content-Type'] ||= 'application/json'
+              self.body = serialize_body(options[:body_object])  
+            else
+              self.body = ''
+            end
+          else
+            raise ArgumentError, "Invalid uploadType for media"
+          end 
+        elsif options[:body]
           self.body = options[:body]
         elsif options[:body_object]
-          if options[:body_object].respond_to?(:to_json)
-            serialized_body = options[:body_object].to_json
-          elsif options[:body_object].respond_to?(:to_hash)
-            serialized_body = MultiJson.encode(options[:body_object].to_hash)
-          else
-            raise TypeError,
-              'Could not convert body object to JSON.' +
-              'Must respond to :to_json or :to_hash.'
-          end
-          self.body = serialized_body
+          self.headers['Content-Type'] ||= 'application/json'
+          self.body = serialize_body(options[:body_object])
         else
           self.body = ''
         end
@@ -65,7 +100,22 @@ module Google
           end
         end
       end
-
+      
+      def serialize_body(body)
+        return body.to_json if body.respond_to?(:to_json)
+        return MultiJson.encode(options[:body_object].to_hash) if body.respond_to?(:to_hash)
+        raise TypeError, 'Could not convert body object to JSON.' +
+                         'Must respond to :to_json or :to_hash.'
+      end
+      
+      def media
+        return @media
+      end
+      
+      def media=(media)
+        @media = (media)
+      end
+      
       def connection
         return @connection
       end
@@ -132,18 +182,20 @@ module Google
       def body=(new_body)
         if new_body.respond_to?(:to_str)
           @body = new_body.to_str
+        elsif new_body.respond_to?(:read)
+          @body = new_body.read()
         elsif new_body.respond_to?(:inject)
           @body = (new_body.inject(StringIO.new) do |accu, chunk|
             accu.write(chunk)
             accu
           end).string
         else
-          raise TypeError, "Expected body to be String or Enumerable chunks."
+          raise TypeError, "Expected body to be String, IO, or Enumerable chunks."
         end
       end
 
       def headers
-        return @headers ||= []
+        return @headers ||= {}
       end
 
       def headers=(new_headers)
