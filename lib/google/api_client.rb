@@ -47,8 +47,6 @@ module Google
     #     <li><code>:oauth_1</code></li>
     #     <li><code>:oauth_2</code></li>
     #   </ul>
-    # @option options [String] :host ("www.googleapis.com")
-    #   The API hostname used by the client.  This rarely needs to be changed.
     # @option options [String] :application_name
     #   The name of the application using the client.
     # @option options [String] :application_version
@@ -57,6 +55,12 @@ module Google
     #   ("{app_name} google-api-ruby-client/{version} {os_name}/{os_version}")
     #   The user agent used by the client.  Most developers will want to
     #   leave this value alone and use the `:application_name` option instead.
+    # @option options [String] :host ("www.googleapis.com")
+    #   The API hostname used by the client. This rarely needs to be changed.
+    # @option options [String] :port (443)
+    #   The port number used by the client. This rarely needs to be changed.
+    # @option options [String] :discovery_path ("/discovery/v1")
+    #   The discovery base path. This rarely needs to be changed.
     def initialize(options={})
       # Normalize key to String to allow indifferent access.
       options = options.inject({}) do |accu, (key, value)|
@@ -65,6 +69,9 @@ module Google
       end
       # Almost all API usage will have a host of 'www.googleapis.com'.
       self.host = options["host"] || 'www.googleapis.com'
+      self.port = options["port"] || 443
+      self.discovery_path = options["discovery_path"] || '/discovery/v1'
+
       # Most developers will want to leave this value alone and use the
       # application_name option.
       application_string = (
@@ -80,7 +87,7 @@ module Google
       ).strip
       # The writer method understands a few Symbols and will generate useful
       # default authentication mechanisms.
-      self.authorization = options["authorization"] || :oauth_2
+      self.authorization = options.key?("authorization") ? options["authorization"] : :oauth_2
       self.key = options["key"]
       self.user_ip = options["user_ip"]
       @discovery_uris = {}
@@ -161,13 +168,6 @@ module Google
     attr_accessor :user_ip
 
     ##
-    # The API hostname used by the client.
-    #
-    # @return [String]
-    #   The API hostname.  Should almost always be 'www.googleapis.com'.
-    attr_accessor :host
-
-    ##
     # The user agent used by the client.
     #
     # @return [String]
@@ -175,14 +175,57 @@ module Google
     attr_accessor :user_agent
 
     ##
+    # The API hostname used by the client.
+    #
+    # @return [String]
+    #   The API hostname. Should almost always be 'www.googleapis.com'.
+    attr_accessor :host
+
+    ##
+    # The port number used by the client.
+    #
+    # @return [String]
+    #   The port number. Should almost always be 443.
+    attr_accessor :port
+
+    ##
+    # The base path used by the client for discovery.
+    #
+    # @return [String]
+    #   The base path. Should almost always be '/discovery/v1'.
+    attr_accessor :discovery_path
+
+    ##
+    # Resolves a URI template against the client's configured base.
+    #
+    # @param [String, Addressable::URI, Addressable::Template] template
+    #   The template to resolve.
+    # @param [Hash] mapping The mapping that corresponds to the template.
+    # @return [Addressable::URI] The expanded URI.
+    def resolve_uri(template, mapping={})
+      @base_uri ||= Addressable::URI.new(
+        :scheme => 'https',
+        :host => self.host,
+        :port => self.port
+      ).normalize
+      template = if template.kind_of?(Addressable::Template)
+        template.pattern
+      elsif template.respond_to?(:to_str)
+        template.to_str
+      else
+        raise TypeError,
+          "Expected String, Addressable::URI, or Addressable::Template, " +
+          "got #{template.class}."
+      end
+      return Addressable::Template.new(@base_uri + template).expand(mapping)
+    end
+
+    ##
     # Returns the URI for the directory document.
     #
     # @return [Addressable::URI] The URI of the directory document.
     def directory_uri
-      template = Addressable::Template.new(
-        "https://{host}/discovery/v1/apis"
-      )
-      return template.expand({"host" => self.host})
+      return resolve_uri(self.discovery_path + '/apis')
     end
 
     ##
@@ -207,17 +250,13 @@ module Google
     def discovery_uri(api, version=nil)
       api = api.to_s
       version = version || 'v1'
-      return @discovery_uris["#{api}:#{version}"] ||= (begin
-        template = Addressable::Template.new(
-          "https://{host}/discovery/v1/apis/" +
-          "{api}/{version}/rest"
+      return @discovery_uris["#{api}:#{version}"] ||= (
+        resolve_uri(
+          self.discovery_path + '/apis/{api}/{version}/rest',
+          'api' => api,
+          'version' => version
         )
-        template.expand({
-          "host" => self.host,
-          "api" => api,
-          "version" => version
-        })
-      end)
+      )
     end
 
     ##
@@ -596,7 +635,7 @@ module Google
         unless headers.kind_of?(Enumerable)
           # We need to use some Enumerable methods, relying on the presence of
           # the #each method.
-          class <<headers
+          class << headers
             include Enumerable
           end
         end

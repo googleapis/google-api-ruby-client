@@ -43,7 +43,7 @@ module Google
       def initialize(document_base, discovery_document)
         @document_base = Addressable::URI.parse(document_base)
         @discovery_document = discovery_document
-        metaclass = (class <<self; self; end)
+        metaclass = (class << self; self; end)
         self.discovered_resources.each do |resource|
           method_name = Google::INFLECTOR.underscore(resource.name).to_sym
           if !self.respond_to?(method_name)

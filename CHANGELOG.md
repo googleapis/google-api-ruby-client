@@ -1,3 +1,7 @@
+# 0.4.2
+
+* Fixed incompatibility with Ruby 1.8.7
+
 # 0.4.1
 
 * Fixed ancestor checking issue when assigning Autoparse identifiers
