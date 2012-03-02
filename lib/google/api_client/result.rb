@@ -42,12 +42,24 @@ module Google
         return @response.body
       end
 
+      def resumable_upload
+        @media_upload ||= Google::APIClient::ResumableUpload.new(self, reference.media, self.headers['location'])
+      end
+      
+      def media_type
+        _, content_type = self.headers.detect do |h, v|
+          h.downcase == 'Content-Type'.downcase
+        end
+        content_type[/^([^;]*);?.*$/, 1].strip.downcase
+      end
+      
+      def data?
+        self.media_type == 'application/json'
+      end
+      
       def data
         return @data ||= (begin
-          _, content_type = self.headers.detect do |h, v|
-            h.downcase == 'Content-Type'.downcase
-          end
-          media_type = content_type[/^([^;]*);?.*$/, 1].strip.downcase
+          media_type = self.media_type
           data = self.body
           case media_type
           when 'application/json'
