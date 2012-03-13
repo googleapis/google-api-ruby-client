@@ -24,6 +24,13 @@ module Google
           `ver`.sub(/\s*\[Version\s*/, '/').sub(']', '').strip
         elsif RUBY_PLATFORM =~ /darwin/i
           "Mac OS X/#{`sw_vers -productVersion`}"
+        elsif RUBY_PLATFORM == 'java'
+          # Get the information from java system properties to avoid spawning a
+          # sub-process, which is not friendly in some contexts (web servers).
+          require 'java'
+          name = java.lang.System.getProperty('os.name')
+          version = java.lang.System.getProperty('os.version')
+          "#{name} #{version}"
         else
           `uname -sr`.sub(' ', '/')
         end
