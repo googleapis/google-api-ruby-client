@@ -66,17 +66,17 @@ module Google
               :request => { :boundary => MULTIPART_BOUNDARY }
             }
             multipart = Faraday::Request::Multipart.new
-            self.body = multipart.create_multipart(env, {
-              :metadata => Faraday::UploadIO.new(metadata, 'application/json'),
-              :content => self.media})
+            self.body = multipart.create_multipart(env, [
+              [nil,Faraday::UploadIO.new(metadata, 'application/json', 'file.json')], 
+              [nil, self.media]])
             self.headers.update(env[:request_headers])
           when "resumable"
             file_length = self.media.length
             self.headers['X-Upload-Content-Type'] = self.media.content_type
-            self.headers['X-Upload-Content-Length'] = file_length.to_s            
+            self.headers['X-Upload-Content-Length'] = file_length.to_s
             if options[:body_object]
               self.headers['Content-Type'] ||= 'application/json'
-              self.body = serialize_body(options[:body_object])  
+              self.body = serialize_body(options[:body_object]) 
             else
               self.body = ''
             end
