@@ -30,7 +30,7 @@ module Google
           require 'java'
           name = java.lang.System.getProperty('os.name')
           version = java.lang.System.getProperty('os.version')
-          "#{name} #{version}"
+          "#{name}/#{version}"
         else
           `uname -sr`.sub(' ', '/')
         end
