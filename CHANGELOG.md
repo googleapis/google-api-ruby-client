@@ -1,3 +1,8 @@
+# 0.4.3
+* Added media upload capabilities
+* Support serializing OAuth credentials to client_secrets.json
+* Fix OS name/version string on JRuby
+
 # 0.4.2
 
 * Fixed incompatibility with Ruby 1.8.7
