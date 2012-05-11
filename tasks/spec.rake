@@ -47,7 +47,7 @@ namespace :spec do
 
   if RCOV_ENABLED
     RCov::VerifyTask.new(:verify) do |t|
-      t.threshold = 60.0
+      t.threshold = 65.0
       t.index_html = 'coverage/index.html'
     end
 
