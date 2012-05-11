@@ -6,6 +6,7 @@ gem 'autoparse', '>= 0.3.1'
 gem 'faraday', '~> 0.7.0'
 gem 'multi_json', '>= 1.3.0'
 gem 'extlib', '>= 0.9.15'
+gem 'jruby-openssl', :platforms => :jruby
 
 group :development do
   gem 'launchy'
