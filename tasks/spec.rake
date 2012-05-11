@@ -76,8 +76,8 @@ namespace :spec do
 end
 
 if RCOV_ENABLED
-  desc 'Alias to spec:verify'
-  task 'spec' => 'spec:verify'
+  desc 'Alias to spec:rcov'
+  task 'spec' => 'spec:rcov'
 else
   desc 'Alias to spec:all'
   task 'spec' => 'spec:all'
