@@ -7,6 +7,9 @@
   <dt>License</dt><dd>Apache 2.0</dd>
 </dl>
 
+[![Build Status](https://secure.travis-ci.org/google/google-api-ruby-client.png)](http://travis-ci.org/google/google-api-ruby-client)
+[![Dependency Status](https://gemnasium.com/google/google-api-ruby-client.png)](https://gemnasium.com/google/google-api-ruby-client)
+
 # Description
 
 The Google API Ruby Client makes it trivial to discover and access supported
