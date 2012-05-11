@@ -304,20 +304,36 @@ module Google
             "Missing required parameters: #{missing_variables.join(', ')}."
         end
         parameters.each do |k, v|
-          if self.parameter_descriptions[k]
-            enum = self.parameter_descriptions[k]['enum']
-            if enum && !enum.include?(v)
-              raise ArgumentError,
-                "Parameter '#{k}' has an invalid value: #{v}. " +
-                "Must be one of #{enum.inspect}."
-            end
-            pattern = self.parameter_descriptions[k]['pattern']
-            if pattern
-              regexp = Regexp.new("^#{pattern}$")
-              if v !~ regexp
+          # Handle repeated parameters.
+          if self.parameter_descriptions[k] &&
+              self.parameter_descriptions[k]['repeated'] &&
+              v.kind_of?(Array)
+            # If this is a repeated parameter and we've got an array as a
+            # value, just provide the whole array to the loop below.
+            items = v
+          else
+            # If this is not a repeated parameter, or if it is but we're
+            # being given a single value, wrap the value in an array, so that
+            # the loop below still works for the single element.
+            items = [v]
+          end
+
+          items.each do |item|
+            if self.parameter_descriptions[k]
+              enum = self.parameter_descriptions[k]['enum']
+              if enum && !enum.include?(item)
                 raise ArgumentError,
-                  "Parameter '#{k}' has an invalid value: #{v}. " +
-                  "Must match: /^#{pattern}$/."
+                  "Parameter '#{k}' has an invalid value: #{item}. " +
+                  "Must be one of #{enum.inspect}."
+              end
+              pattern = self.parameter_descriptions[k]['pattern']
+              if pattern
+                regexp = Regexp.new("^#{pattern}$")
+                if item !~ regexp
+                  raise ArgumentError,
+                    "Parameter '#{k}' has an invalid value: #{item}. " +
+                    "Must match: /^#{pattern}$/."
+                end
               end
             end
           end

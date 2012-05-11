@@ -470,4 +470,126 @@ describe Google::APIClient do
       result.response.status.should == 401
     end
   end
+
+  describe 'with the adsense API' do
+    before do
+      @client.authorization = nil
+      @adsense = @client.discovered_api('adsense', 'v1')
+    end
+
+    it 'should correctly determine the discovery URI' do
+      @client.discovery_uri('adsense').should ===
+        'https://www.googleapis.com/discovery/v1/apis/adsense/v1/rest'
+    end
+
+    it 'should find APIs that are in the discovery document' do
+      @client.discovered_api('adsense').name.should == 'adsense'
+      @client.discovered_api('adsense').version.should == 'v1'
+    end
+
+    it 'should find methods that are in the discovery document' do
+      @client.discovered_method(
+        'adsense.reports.generate', 'adsense'
+      ).name.should == 'generate'
+    end
+
+    it 'should not find methods that are not in the discovery document' do
+      @client.discovered_method('adsense.bogus', 'adsense').should == nil
+    end
+
+    it 'should generate requests against the correct URIs' do
+      request = @client.generate_request(
+        :api_method => 'adsense.adclients.list',
+        :authenticated => false
+      )
+      request.to_env(Faraday.default_connection)[:url].should ===
+        'https://www.googleapis.com/adsense/v1/adclients'
+    end
+
+    it 'should generate requests against the correct URIs' do
+      request = @client.generate_request(
+        :api_method => @adsense.adclients.list,
+        :authenticated => false
+      )
+      request.to_env(Faraday.default_connection)[:url].should ===
+        'https://www.googleapis.com/adsense/v1/adclients'
+    end
+
+    it 'should not be able to execute requests without authorization' do
+      result = @client.execute(
+        :api_method => 'adsense.adclients.list',
+        :authenticated => false
+      )
+      result.response.status.should == 401
+    end
+
+    it 'should fail when validating missing required parameters' do
+      (lambda do
+        @client.generate_request(
+          :api_method => @adsense.reports.generate,
+          :authenticated => false
+        )
+      end).should raise_error(ArgumentError)
+    end
+
+    it 'should succeed when validating parameters in a correct call' do
+      (lambda do
+        @client.generate_request(
+          :api_method => @adsense.reports.generate,
+          :parameters => {
+            'startDate' => '2000-01-01',
+            'endDate' => '2010-01-01',
+            'dimension' => 'DATE',
+            'metric' => 'PAGE_VIEWS'
+          },
+          :authenticated => false
+        )
+      end).should_not raise_error
+    end
+
+    it 'should fail when validating parameters with invalid values' do
+      (lambda do
+        @client.generate_request(
+          :api_method => @adsense.reports.generate,
+          :parameters => {
+            'startDate' => '2000-01-01',
+            'endDate' => '2010-01-01',
+            'dimension' => 'BAD_CHARACTERS=-&*(£&',
+            'metric' => 'PAGE_VIEWS'
+          },
+          :authenticated => false
+        )
+      end).should raise_error(ArgumentError)
+    end
+
+    it 'should succeed when validating repeated parameters in a correct call' do
+      (lambda do
+        @client.generate_request(
+          :api_method => @adsense.reports.generate,
+          :parameters => {
+            'startDate' => '2000-01-01',
+            'endDate' => '2010-01-01',
+            'dimension' => ['DATE', 'PRODUCT_CODE'],
+            'metric' => ['PAGE_VIEWS', 'CLICKS']
+          },
+          :authenticated => false
+        )
+      end).should_not raise_error
+    end
+
+    it 'should fail when validating incorrect repeated parameters' do
+      (lambda do
+        @client.generate_request(
+          :api_method => @adsense.reports.generate,
+          :parameters => {
+            'startDate' => '2000-01-01',
+            'endDate' => '2010-01-01',
+            'dimension' => ['DATE', 'BAD_CHARACTERS=-&*(£&'],
+            'metric' => ['PAGE_VIEWS', 'CLICKS']
+          },
+          :authenticated => false
+        )
+      end).should raise_error(ArgumentError)
+    end
+  end
 end
