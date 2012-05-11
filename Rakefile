@@ -40,7 +40,7 @@ PKG_FILES = FileList[
 
 RCOV_ENABLED = (RUBY_PLATFORM != 'java' && RUBY_VERSION =~ /^1\.8/)
 if RCOV_ENABLED
-  task :default => 'spec:verify'
+  task :default => 'spec:rcov'
 else
   task :default => 'spec'
 end
