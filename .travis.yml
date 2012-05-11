@@ -9,3 +9,10 @@ script: "bundle exec rake"
 before_install:
  - sudo apt-get update
  - sudo apt-get install idn
+notifications:
+  email:
+    recipients:
+      - bobaman@google.com
+      - sbazyl@google.com
+    on_success: change
+    on_failure: change
