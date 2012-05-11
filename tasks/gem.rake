@@ -40,7 +40,6 @@ namespace :gem do
     s.add_development_dependency('rake', '>= 0.9.0')
     s.add_development_dependency('rspec', '~> 1.2.9')
     s.add_development_dependency('rcov', '>= 0.9.9')
-    s.add_development_dependency('diff-lcs', '>= 1.1.2')
 
     s.require_path = 'lib'
 
