@@ -26,6 +26,7 @@ require 'google/api_client/discovery'
 require 'google/api_client/reference'
 require 'google/api_client/result'
 require 'google/api_client/media'
+require 'google/api_client/batch'
 
 module Google
   # TODO(bobaman): Document all this stuff.
@@ -663,22 +664,34 @@ module Google
     ##
     # Executes a request, wrapping it in a Result object.
     #
-    # @param [Google::APIClient::Method, String] api_method
-    #   The method object or the RPC name of the method being executed.
-    # @param [Hash, Array] parameters
-    #   The parameters to send to the method.
-    # @param [String] body The body of the request.
-    # @param [Hash, Array] headers The HTTP headers for the request.
-    # @option options [String] :version ("v1")
-    #   The service version. Only used if `api_method` is a `String`.
-    # @option options [#generate_authenticated_request] :authorization
-    #   The authorization mechanism for the response. Used only if
-    #   `:authenticated` is `true`.
-    # @option options [TrueClass, FalseClass] :authenticated (true)
-    #   `true` if the request must be signed or somehow
-    #   authenticated, `false` otherwise.
+    # @param [Google::APIClient::BatchRequest, Hash, Array] params
+    #   Either a Google::APIClient::BatchRequest, a Hash, or an Array.
     #
-    # @return [Google::APIClient::Result] The result from the API.
+    #   If a Google::APIClient::BatchRequest, no other parameters are expected.
+    #
+    #   If a Hash, the below parameters are handled. If an Array, the
+    #   parameters are assumed to be in the below order:
+    #
+    #   - (Google::APIClient::Method, String) api_method:
+    #     The method object or the RPC name of the method being executed.
+    #   - (Hash, Array) parameters:
+    #     The parameters to send to the method.
+    #   - (String) body: The body of the request.
+    #   - (Hash, Array) headers: The HTTP headers for the request.
+    #   - (Hash) options: A set of options for the request, of which:
+    #     - (String) :version (default: "v1") -
+    #       The service version. Only used if `api_method` is a `String`.
+    #     - (#generate_authenticated_request) :authorization (default: true) -
+    #       The authorization mechanism for the response. Used only if
+    #       `:authenticated` is `true`.
+    #     - (TrueClass, FalseClass) :authenticated (default: true) -
+    #       `true` if the request must be signed or somehow
+    #       authenticated, `false` otherwise.
+    #
+    # @return [Google::APIClient::Result] The result from the API, nil if batch.
+    #
+    # @example
+    #   result = client.execute(batch_request)
     #
     # @example
     #   result = client.execute(
@@ -688,28 +701,64 @@ module Google
     #
     # @see Google::APIClient#generate_request
     def execute(*params)
-      # This block of code allows us to accept multiple parameter passing
-      # styles, and maintaining some backwards compatibility.
-      #
-      # Note: I'm extremely tempted to deprecate this style of execute call.
-      if params.last.respond_to?(:to_hash) && params.size == 1
-        options = params.pop
-      else
-        options = {}
-      end
-      options[:api_method] = params.shift if params.size > 0
-      options[:parameters] = params.shift if params.size > 0
-      options[:body] = params.shift if params.size > 0
-      options[:headers] = params.shift if params.size > 0
-      options[:client] = self
+      if params.last.kind_of?(Google::APIClient::BatchRequest) &&
+          params.size == 1
+        batch = params.pop
+        options = batch.options
+        http_request = batch.to_http_request
+        request = nil
 
-      reference = Google::APIClient::Reference.new(options)
-      request = self.generate_request(reference)
-      response = self.transmit(
-        :request => request,
-        :connection => options[:connection]
-      )
-      return Google::APIClient::Result.new(reference, request, response)
+        if @authorization
+          method, uri, headers, body = http_request
+          method = method.to_s.downcase.to_sym
+
+          faraday_request = Faraday::Request.create(method) do |req|
+            req.url(uri.to_s)
+            req.headers = Faraday::Utils::Headers.new(headers)
+            req.body = body
+          end
+
+          request = {
+            :request => self.generate_authenticated_request(
+              :request => faraday_request,
+              :connection => options[:connection]
+            ),
+            :connection => options[:connection]
+          }
+        else
+          request = {
+            :request => http_request,
+            :connection => options[:connection]
+          }
+        end
+
+        response = self.transmit(request)
+        batch.process_response(response)
+        return nil
+      else
+        # This block of code allows us to accept multiple parameter passing
+        # styles, and maintaining some backwards compatibility.
+        #
+        # Note: I'm extremely tempted to deprecate this style of execute call.
+        if params.last.respond_to?(:to_hash) && params.size == 1
+          options = params.pop
+        else
+          options = {}
+        end
+
+        options[:api_method] = params.shift if params.size > 0
+        options[:parameters] = params.shift if params.size > 0
+        options[:body] = params.shift if params.size > 0
+        options[:headers] = params.shift if params.size > 0
+        options[:client] = self
+        reference = Google::APIClient::Reference.new(options)
+        request = self.generate_request(reference)
+        response = self.transmit(
+          :request => request,
+          :connection => options[:connection]
+        )
+        return Google::APIClient::Result.new(reference, request, response)
+      end
     end
 
     ##
