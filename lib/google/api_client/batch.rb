@@ -18,10 +18,6 @@ require 'uuidtools'
 module Google
   class APIClient
 
-    # Error class for problems in batch requests.
-    class BatchError < StandardError
-    end
-
     # Helper class to contain a response to an individual batched call.
     class BatchedCallResponse
       attr_reader :call_id
