@@ -172,6 +172,21 @@ module Google
       end
 
       ##
+      # Returns the base URI for batch calls to this service.
+      #
+      # @return [Addressable::URI] The base URI that methods are joined to.
+      def batch_path
+        if @discovery_document['batchPath']
+          return @batch_path ||= (
+            self.document_base.join(Addressable::URI.parse('/' +
+                @discovery_document['batchPath']))
+          ).normalize
+        else
+          return nil
+        end
+      end
+
+      ##
       # A list of schemas available for this version of the API.
       #
       # @return [Hash] A list of {Google::APIClient::Schema} objects.
