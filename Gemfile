@@ -2,6 +2,7 @@ source :rubygems
 
 gem 'signet', '>= 0.3.1'
 gem 'addressable', '>= 2.2.3'
+gem 'uuidtools', '>= 2.1.0'
 gem 'autoparse', '>= 0.3.1'
 gem 'faraday', '~> 0.7.0'
 gem 'multi_json', '>= 1.3.0'
