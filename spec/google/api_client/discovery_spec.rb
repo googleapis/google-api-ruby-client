@@ -595,4 +595,27 @@ describe Google::APIClient do
       end).should raise_error(ArgumentError)
     end
   end
+  
+  describe 'with the Drive API' do
+    before do
+      @client.authorization = nil
+      @drive = @client.discovered_api('drive', 'v1')
+    end
+    
+    it 'should include media upload info methods' do
+      @drive.files.insert.media_upload.should_not == nil
+    end
+    
+    it 'should include accepted media types' do
+      @drive.files.insert.media_upload.accepted_types.should_not be_empty
+    end
+    
+    it 'should have an upload path' do
+      @drive.files.insert.media_upload.uri_template.should_not == nil
+    end
+    
+    it 'should have a max file size' do
+      @drive.files.insert.media_upload.max_size.should_not == nil
+    end
+  end
 end
