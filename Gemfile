@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'signet', '>= 0.3.1'
+gem 'signet', '>= 0.3.4'
 gem 'addressable', '>= 2.2.3'
 gem 'autoparse', '>= 0.3.1'
 gem 'faraday', '~> 0.7.0'
