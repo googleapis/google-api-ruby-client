@@ -24,12 +24,13 @@ namespace :gem do
     s.rdoc_options.concat ['--main',  'README.md']
 
     # Dependencies used in the main library
-    s.add_runtime_dependency('signet', '>= 0.3.1')
+    s.add_runtime_dependency('signet', '>= 0.3.4')
     s.add_runtime_dependency('addressable', '>= 2.2.3')
     s.add_runtime_dependency('autoparse', '>= 0.3.1')
     s.add_runtime_dependency('faraday', '~> 0.7.0')
     s.add_runtime_dependency('multi_json', '>= 1.3.0')
     s.add_runtime_dependency('extlib', '>= 0.9.15')
+    s.add_runtime_dependency('uuidtools', '>= 2.1.0')
 
     # Dependencies used in the CLI
     s.add_runtime_dependency('launchy', '>= 2.0.0')
