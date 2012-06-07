@@ -108,4 +108,34 @@ describe Google::APIClient do
     # TODO
     it_should_behave_like 'configurable user agent'
   end
+  
+  describe 'when executing requests' do
+    before do
+      @client.authorization = :oauth_2
+      @connection = Faraday.new(:url => 'https://www.googleapis.com') do |builder|
+        stubs = Faraday::Adapter::Test::Stubs.new do |stub|
+          stub.get('/test') do |env|
+            env[:request_headers]['Authorization'].should == 'Bearer 12345'
+          end
+        end
+        builder.adapter(:test, stubs)
+      end
+    end
+     
+    it 'should use default authorization' do
+      @client.authorization.access_token = "12345"
+      @client.execute(:http_method => :get, 
+                      :uri => 'https://www.googleapis.com/test',
+                      :connection => @connection)
+    end
+
+    it 'should use request scoped authorization when provided' do
+      @client.authorization.access_token = "abcdef"
+      new_auth = Signet::OAuth2::Client.new(:access_token => '12345')
+      @client.execute(:http_method => :get, 
+                      :uri => 'https://www.googleapis.com/test',
+                      :connection => @connection,
+                      :authorization => new_auth)
+    end
+  end  
 end

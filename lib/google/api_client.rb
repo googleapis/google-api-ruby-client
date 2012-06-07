@@ -26,6 +26,7 @@ require 'google/api_client/discovery'
 require 'google/api_client/reference'
 require 'google/api_client/result'
 require 'google/api_client/media'
+require 'google/api_client/service_account'
 
 module Google
   # TODO(bobaman): Document all this stuff.
@@ -540,6 +541,7 @@ module Google
     def generate_request(options={})
       # Note: The merge method on a Hash object will coerce an API Reference
       # object into a Hash and merge with the default options.
+      
       options={
         :version => 'v1',
         :authorization => self.authorization,
@@ -547,6 +549,7 @@ module Google
         :user_ip => self.user_ip,
         :connection => Faraday.default_connection
       }.merge(options)
+      
       # The Reference object is going to need this to do method ID lookups.
       options[:client] = self
       # The default value for the :authenticated option depends on whether an
@@ -559,7 +562,7 @@ module Google
       reference = Google::APIClient::Reference.new(options)
       request = reference.to_request
       if options[:authenticated]
-        request = self.generate_authenticated_request(
+        request = options[:authorization].generate_authenticated_request(
           :request => request,
           :connection => options[:connection]
         )
@@ -573,6 +576,7 @@ module Google
     # @param [Hash] options a customizable set of options
     #
     # @return [Faraday::Request] The signed or otherwise authenticated request.
+    # @deprecated No longer used internally
     def generate_authenticated_request(options={})
       return authorization.generate_authenticated_request(options)
     end

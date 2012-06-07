@@ -21,6 +21,7 @@ require 'addressable/uri'
 require 'stringio'
 require 'google/api_client/discovery'
 
+# TODO - needs some serious cleanup
 
 module Google
   class APIClient
@@ -35,6 +36,7 @@ module Google
         @version = options[:version] || 'v1'
 
         self.connection = options[:connection] || Faraday.default_connection
+        self.authorization = options[:authorization]
         self.api_method = options[:api_method]
         self.parameters = options[:parameters] || {}
         # These parameters are handled differently because they're not
@@ -42,7 +44,6 @@ module Google
         self.parameters['key'] ||= options[:key] if options[:key]
         self.parameters['userIp'] ||= options[:user_ip] if options[:user_ip]
         self.headers = options[:headers] || {}
-
         if options[:media]
           self.media = options[:media]
           upload_type = parameters['uploadType'] || parameters['upload_type'] 
@@ -114,6 +115,14 @@ module Google
       
       def media=(media)
         @media = (media)
+      end
+      
+      def authorization
+        return @authorization
+      end
+      
+      def authorization=(new_authorization)
+        @authorization = new_authorization
       end
       
       def connection
@@ -257,6 +266,7 @@ module Google
         options[:headers] = self.headers
         options[:body] = self.body
         options[:connection] = self.connection
+        options[:authorization] = self.authorization unless self.authorization.nil?
         return options
       end
     end
