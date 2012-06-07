@@ -44,7 +44,7 @@ describe Google::APIClient::UploadIO do
   describe 'with StringIO' do
     before do
       @content = "hello world"
-      @media = Google::APIClient::UploadIO.new(StringIO.new(@content), 'text/plain')
+      @media = Google::APIClient::UploadIO.new(StringIO.new(@content), 'text/plain', 'test.txt')
     end
 
     it 'should report the correct file length' do
