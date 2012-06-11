@@ -1,3 +1,9 @@
+# 0.4.4
+
+* Added batch execution
+* Added service accounts
+* Can now supply authorization on a per-request basis.
+
 # 0.4.3
 
 * Added media upload capabilities
