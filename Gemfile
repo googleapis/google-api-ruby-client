@@ -1,5 +1,7 @@
 source :rubygems
 
+gemspec
+
 gem 'signet', '>= 0.3.4'
 gem 'addressable', '>= 2.2.3'
 gem 'uuidtools', '>= 2.1.0'
@@ -21,7 +23,6 @@ end
 
 group :test, :development do
   gem 'rake', '>= 0.9.0'
-  gem 'rspec', '~> 2.10.0'
   gem 'rcov', '>= 0.9.9', :platform => :mri_18
 end
 

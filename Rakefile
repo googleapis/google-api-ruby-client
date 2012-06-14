@@ -5,15 +5,6 @@ $LOAD_PATH.uniq!
 require 'rubygems'
 require 'rake'
 
-gem 'rspec', '~> 2.10.0'
-begin
-  require 'rspec/core/rake_task'
-rescue LoadError
-  STDERR.puts "Please install rspec:"
-  STDERR.puts "sudo gem install rspec"
-  exit(1)
-end
-
 require File.join(File.dirname(__FILE__), 'lib/google/api_client', 'version')
 
 PKG_DISPLAY_NAME   = 'Google API Client'
