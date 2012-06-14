@@ -9,7 +9,6 @@ namespace :spec do
   desc 'Generate HTML Specdocs for all specs.'
   RSpec::Core::RakeTask.new(:specdoc) do |t|
     specdoc_path = File.expand_path('../../specdoc', __FILE__)
-    Dir.mkdir(specdoc_path) if !File.exist?(specdoc_path)
 
     t.rspec_opts = %W( --format html --out #{File.join(specdoc_path, 'index.html')} )
     t.fail_on_error = false
