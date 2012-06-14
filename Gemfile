@@ -21,7 +21,7 @@ end
 
 group :test, :development do
   gem 'rake', '>= 0.9.0'
-  gem 'rspec', '~> 1.2.9'
+  gem 'rspec', '~> 2.10.0'
   gem 'rcov', '>= 0.9.9', :platform => :mri_18
 end
 

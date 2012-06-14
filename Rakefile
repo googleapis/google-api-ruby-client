@@ -5,9 +5,9 @@ $LOAD_PATH.uniq!
 require 'rubygems'
 require 'rake'
 
-gem 'rspec', '~> 1.2.9'
+gem 'rspec', '~> 2.10.0'
 begin
-  require 'spec/rake/spectask'
+  require 'rspec/core/rake_task'
 rescue LoadError
   STDERR.puts "Please install rspec:"
   STDERR.puts "sudo gem install rspec"

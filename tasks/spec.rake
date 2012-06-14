@@ -1,16 +1,31 @@
-require 'spec/rake/verify_rcov'
 require 'rake/clean'
 
 CLOBBER.include('coverage', 'specdoc')
 
 namespace :spec do
-  Spec::Rake::SpecTask.new(:rcov) do |t|
-    t.spec_files = FileList['spec/**/*_spec.rb']
-    t.spec_opts = ['--require', 'rubygems', '--color', '--format', 'specdoc']
+  RSpec::Core::RakeTask.new(:all) do |t|
+  end
+
+  RSpec::Core::RakeTask.new(:fast) do |t|
+    t.pattern = FileList['spec/**/*_spec.rb'].exclude(
+      'spec/**/*_slow_spec.rb'
+    )
+  end
+
+  desc 'Generate HTML Specdocs for all specs.'
+  RSpec::Core::RakeTask.new(:specdoc) do |t|
+    specdoc_path = File.expand_path('../../specdoc', __FILE__)
+    Dir.mkdir(specdoc_path) if !File.exist?(specdoc_path)
+
+    t.rspec_opts = %W( --format html --out #{File.join(specdoc_path, 'index.html')} )
+    t.fail_on_error = false
+  end
+
+  RSpec::Core::RakeTask.new(:rcov) do |t|
     if RCOV_ENABLED
       if `which rcov`.strip == ""
         STDERR.puts(
-          "Please install rcov and ensure that its binary is in the PATH:"
+            "Please install rcov and ensure that its binary is in the PATH:"
         )
         STDERR.puts("sudo gem install rcov")
         exit(1)
@@ -19,30 +34,16 @@ namespace :spec do
     else
       t.rcov = false
     end
-    t.rcov_opts = [
-      '--exclude', 'lib\\/google\\/api_client\\/environment.rb',
-      '--exclude', 'lib\\/compat',
-      '--exclude', 'spec',
-      '--exclude', '\\.rvm\\/gems',
-      '--exclude', '1\\.8\\/gems',
-      '--exclude', '1\\.9\\/gems',
-      '--exclude', '\\.rvm',
-      '--exclude', '\\/Library\\/Ruby',
-    ]
-  end
-
-  Spec::Rake::SpecTask.new(:all) do |t|
-    t.spec_files = FileList['spec/**/*_spec.rb']
-    t.spec_opts = ['--require', 'rubygems', '--color', '--format', 'specdoc']
-    t.rcov = false
-  end
-
-  Spec::Rake::SpecTask.new(:fast) do |t|
-    t.spec_files = FileList['spec/**/*_spec.rb'].exclude(
-      'spec/**/*_slow_spec.rb'
+    t.rcov_opts = %w(
+        --exclude lib/google/api_client/environment.rb,
+                  lib/compat,
+                  spec,
+                  .rvm/gems,
+                  1.8/gems,
+                  1.9/gems,
+                  .rvm,
+                  /Library/Ruby
     )
-    t.spec_opts = ['--require', 'rubygems', '--color', '--format', 'specdoc']
-    t.rcov = false
   end
 
   if RCOV_ENABLED
@@ -52,18 +53,6 @@ namespace :spec do
     end
 
     task :verify => :rcov
-  end
-
-  desc 'Generate HTML Specdocs for all specs'
-  Spec::Rake::SpecTask.new(:specdoc) do |t|
-    specdoc_path = File.expand_path(
-      File.join(File.dirname(__FILE__), '../specdoc/'))
-    Dir.mkdir(specdoc_path) if !File.exist?(specdoc_path)
-
-    output_file = File.join(specdoc_path, 'index.html')
-    t.spec_files = FileList['spec/**/*_spec.rb']
-    t.spec_opts = ['--format', "\"html:#{output_file}\"", '--diff']
-    t.fail_on_error = false
   end
 
   namespace :rcov do
