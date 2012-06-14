@@ -3,3 +3,6 @@ lib_dir = File.expand_path("../lib", spec_dir)
 
 $LOAD_PATH.unshift(lib_dir)
 $LOAD_PATH.uniq!
+
+RSpec.configure do |config|
+end

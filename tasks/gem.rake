@@ -39,8 +39,7 @@ namespace :gem do
     s.add_development_dependency('sinatra', '>= 1.2.0')
 
     s.add_development_dependency('rake', '>= 0.9.0')
-    s.add_development_dependency('rspec', '~> 1.2.9')
-    s.add_development_dependency('rcov', '>= 0.9.9')
+    s.add_development_dependency('rspec', '~> 2.10.0')
 
     s.require_path = 'lib'
 
