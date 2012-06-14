@@ -6,12 +6,6 @@ namespace :spec do
   RSpec::Core::RakeTask.new(:all) do |t|
   end
 
-  RSpec::Core::RakeTask.new(:fast) do |t|
-    t.pattern = FileList['spec/**/*_spec.rb'].exclude(
-      'spec/**/*_slow_spec.rb'
-    )
-  end
-
   desc 'Generate HTML Specdocs for all specs.'
   RSpec::Core::RakeTask.new(:specdoc) do |t|
     specdoc_path = File.expand_path('../../specdoc', __FILE__)
