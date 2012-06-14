@@ -31,6 +31,8 @@ namespace :spec do
     t.rcov_opts = %w(
          --exclude gems/
          --exclude spec/
+         --exclude lib/google/api_client/environment.rb
+         --exclude lib/compat
     )
   end
 
