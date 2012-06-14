@@ -34,15 +34,6 @@ namespace :spec do
     )
   end
 
-  if RCOV_ENABLED
-    RCov::VerifyTask.new(:verify) do |t|
-      t.threshold = 65.0
-      t.index_html = 'coverage/index.html'
-    end
-
-    task :verify => :rcov
-  end
-
   namespace :rcov do
     desc 'Browse the code coverage report.'
     task :browse => 'spec:rcov' do
