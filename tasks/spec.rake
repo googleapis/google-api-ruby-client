@@ -29,24 +29,11 @@ namespace :spec do
       t.rcov = false
     end
     t.rcov_opts = %w(
-        --exclude lib/google/api_client/environment.rb,
-                  lib/compat,
-                  spec,
-                  .rvm/gems,
-                  1.8/gems,
-                  1.9/gems,
-                  .rvm,
-                  /Library/Ruby
+         --exclude gems/
+         --exclude spec/
+         --exclude lib/google/api_client/environment.rb
+         --exclude lib/compat
     )
-  end
-
-  if RCOV_ENABLED
-    RCov::VerifyTask.new(:verify) do |t|
-      t.threshold = 65.0
-      t.index_html = 'coverage/index.html'
-    end
-
-    task :verify => :rcov
   end
 
   namespace :rcov do
