@@ -218,9 +218,12 @@ module Google
       #   The parameters to send.
       # @param [String, StringIO] body The body for the HTTP request.
       # @param [Hash, Array] headers The HTTP headers for the request.
+      # @option options [Faraday::Connection] :connection
+      #   The HTTP connection to use.
       #
       # @return [Array] The generated HTTP request.
-      def generate_request(parameters={}, body='', headers=[])
+      def generate_request(parameters={}, body='', headers=[], options={})
+        options[:connection] ||= Faraday.default_connection
         if body.respond_to?(:string)
           body = body.string
         elsif body.respond_to?(:to_str)
@@ -234,8 +237,10 @@ module Google
         method = self.http_method
         uri = self.generate_uri(parameters)
         headers = headers.to_a if headers.kind_of?(Hash)
-        return Faraday::Request.create(method.to_s.downcase.to_sym) do |req|
-          req.url(Addressable::URI.parse(uri))
+        return options[:connection].build_request(
+          method.to_s.downcase.to_sym
+        ) do |req|
+          req.url(Addressable::URI.parse(uri).normalize.to_s)
           req.headers = Faraday::Utils::Headers.new(headers)
           req.body = body
         end

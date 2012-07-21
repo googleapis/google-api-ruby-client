@@ -28,7 +28,7 @@ namespace :gem do
     s.add_runtime_dependency('addressable', '>= 2.2.3')
     s.add_runtime_dependency('autoparse', '>= 0.3.1')
     s.add_runtime_dependency('faraday', '~> 0.8.1')
-    s.add_runtime_dependency('multi_json', '>= 1.3.0')
+    s.add_runtime_dependency('multi_json', '>= 1.0.0')
     s.add_runtime_dependency('extlib', '>= 0.9.15')
     s.add_runtime_dependency('uuidtools', '>= 2.1.0')
 
@@ -39,7 +39,7 @@ namespace :gem do
     s.add_development_dependency('sinatra', '>= 1.2.0')
 
     s.add_development_dependency('rake', '>= 0.9.0')
-    s.add_development_dependency('rspec', '~> 2.10.0')
+    s.add_development_dependency('rspec', '>= 2.11.0')
 
     s.require_path = 'lib'
 

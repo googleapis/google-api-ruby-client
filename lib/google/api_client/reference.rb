@@ -26,8 +26,8 @@ require 'google/api_client/discovery'
 module Google
   class APIClient
     class Reference
-      
       MULTIPART_BOUNDARY = "-----------RubyApiMultipartPost".freeze
+
       def initialize(options={})
         # We only need this to do lookups on method ID String values
         # It's optional, but method ID lookups will fail if the client is
@@ -46,17 +46,17 @@ module Google
         self.headers = options[:headers] || {}
         if options[:media]
           self.media = options[:media]
-          upload_type = parameters['uploadType'] || parameters['upload_type'] 
+          upload_type = parameters['uploadType'] || parameters['upload_type']
           case upload_type
           when "media"
-            if options[:body] || options[:body_object] 
+            if options[:body] || options[:body_object]
               raise ArgumentError, "Can not specify body & body object for simple uploads"
             end
             self.headers['Content-Type'] ||= self.media.content_type
             self.body = self.media
           when "multipart"
-            unless options[:body_object] 
-              raise ArgumentError, "Multipart requested but no body object"              
+            unless options[:body_object]
+              raise ArgumentError, "Multipart requested but no body object"
             end
             # This is all a bit of a hack due to signet requiring body to be a string
             # Ideally, update signet to delay serialization so we can just pass
@@ -68,7 +68,7 @@ module Google
             }
             multipart = Faraday::Request::Multipart.new
             self.body = multipart.create_multipart(env, [
-              [nil,Faraday::UploadIO.new(metadata, 'application/json', 'file.json')], 
+              [nil,Faraday::UploadIO.new(metadata, 'application/json', 'file.json')],
               [nil, self.media]])
             self.headers.update(env[:request_headers])
           when "resumable"
@@ -77,13 +77,13 @@ module Google
             self.headers['X-Upload-Content-Length'] = file_length.to_s
             if options[:body_object]
               self.headers['Content-Type'] ||= 'application/json'
-              self.body = serialize_body(options[:body_object]) 
+              self.body = serialize_body(options[:body_object])
             else
               self.body = ''
             end
           else
             raise ArgumentError, "Invalid uploadType for media"
-          end 
+          end
         elsif options[:body]
           self.body = options[:body]
         elsif options[:body_object]
@@ -101,30 +101,30 @@ module Google
           end
         end
       end
-      
+
       def serialize_body(body)
         return body.to_json if body.respond_to?(:to_json)
         return MultiJson.dump(options[:body_object].to_hash) if body.respond_to?(:to_hash)
         raise TypeError, 'Could not convert body object to JSON.' +
                          'Must respond to :to_json or :to_hash.'
       end
-      
+
       def media
         return @media
       end
-      
+
       def media=(media)
         @media = (media)
       end
-      
+
       def authorization
         return @authorization
       end
-      
+
       def authorization=(new_authorization)
         @authorization = new_authorization
       end
-      
+
       def connection
         return @connection
       end
@@ -241,13 +241,14 @@ module Google
       def to_request
         if self.api_method
           return self.api_method.generate_request(
-            self.parameters, self.body, self.headers
+            self.parameters, self.body, self.headers,
+            :connection => self.connection
           )
         else
-          return Faraday::Request.create(
+          return self.connection.build_request(
             self.http_method.to_s.downcase.to_sym
           ) do |req|
-            req.url(Addressable::URI.parse(self.uri))
+            req.url(Addressable::URI.parse(self.uri).normalize.to_s)
             req.headers = Faraday::Utils::Headers.new(self.headers)
             req.body = self.body
           end

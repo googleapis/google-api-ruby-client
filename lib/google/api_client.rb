@@ -542,7 +542,7 @@ module Google
     def generate_request(options={})
       # Note: The merge method on a Hash object will coerce an API Reference
       # object into a Hash and merge with the default options.
-      
+
       options={
         :version => 'v1',
         :authorization => self.authorization,
@@ -550,7 +550,7 @@ module Google
         :user_ip => self.user_ip,
         :connection => Faraday.default_connection
       }.merge(options)
-      
+
       # The Reference object is going to need this to do method ID lookups.
       options[:client] = self
       # The default value for the :authenticated option depends on whether an
@@ -655,8 +655,10 @@ module Google
         end
       end
 
-      request = Faraday::Request.create(method.to_s.downcase.to_sym) do |req|
-        req.url(Addressable::URI.parse(uri))
+      request = options[:connection].build_request(
+        method.to_s.downcase.to_sym
+      ) do |req|
+        req.url(Addressable::URI.parse(uri).normalize.to_s)
         req.headers = Faraday::Utils::Headers.new(headers)
         req.body = body
       end
@@ -709,6 +711,7 @@ module Google
           params.size == 1
         batch = params.pop
         options = batch.options
+        options[:connection] ||= Faraday.default_connection
         http_request = batch.to_http_request
         request = nil
 
@@ -716,8 +719,10 @@ module Google
           method, uri, headers, body = http_request
           method = method.to_s.downcase.to_sym
 
-          faraday_request = Faraday::Request.create(method) do |req|
-            req.url(uri.to_s)
+          faraday_request = options[:connection].build_request(
+            method.to_s.downcase.to_sym
+          ) do |req|
+            req.url(Addressable::URI.parse(uri).normalize.to_s)
             req.headers = Faraday::Utils::Headers.new(headers)
             req.body = body
           end
@@ -755,6 +760,7 @@ module Google
         options[:body] = params.shift if params.size > 0
         options[:headers] = params.shift if params.size > 0
         options[:client] = self
+        options[:connection] ||= Faraday.default_connection
         reference = Google::APIClient::Reference.new(options)
         request = self.generate_request(reference)
         response = self.transmit(
