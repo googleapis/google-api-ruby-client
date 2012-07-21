@@ -5,6 +5,9 @@ CLOBBER.include('coverage', 'specdoc')
 
 namespace :spec do
   RSpec::Core::RakeTask.new(:all) do |t|
+    t.pattern = FileList['spec/**/*_spec.rb']
+    t.rspec_opts = ['--color', '--format', 'documentation']
+    t.rcov = false
   end
 
   desc 'Generate HTML Specdocs for all specs.'

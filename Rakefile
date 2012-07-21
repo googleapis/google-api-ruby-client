@@ -29,7 +29,7 @@ PKG_FILES = FileList[
     '[A-Z]*', 'Rakefile'
 ].exclude(/database\.yml/).exclude(/[_\.]git$/)
 
-RCOV_ENABLED = (RUBY_PLATFORM != 'java' && RUBY_VERSION =~ /^1\.8/)
+RCOV_ENABLED = !!(RUBY_PLATFORM != 'java' && RUBY_VERSION =~ /^1\.8/)
 if RCOV_ENABLED
   task :default => 'spec:rcov'
 else

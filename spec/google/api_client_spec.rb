@@ -14,11 +14,11 @@
 
 require 'spec_helper'
 
-gem 'faraday', '~> 0.7.0'
+gem 'faraday', '~> 0.8.1'
 require 'faraday'
 require 'faraday/utils'
 
-gem 'signet', '~> 0.3.0'
+gem 'signet', '~> 0.4.0'
 require 'signet/oauth_1/client'
 
 require 'google/api_client'

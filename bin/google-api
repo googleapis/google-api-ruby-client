@@ -11,7 +11,7 @@ OAUTH_SERVER_PORT = 12736
 require 'rubygems'
 require 'optparse'
 
-gem 'faraday', '~> 0.7.0'
+gem 'faraday', '~> 0.8.1'
 require 'faraday'
 require 'faraday/utils'
 
@@ -187,7 +187,7 @@ HTML
       end
 
       def client
-        gem 'signet', '~> 0.3.0'
+        gem 'signet', '~> 0.4.0'
         require 'signet/oauth_1/client'
         require 'yaml'
         require 'irb'
@@ -281,7 +281,7 @@ HTML
       ]
 
       def oauth_1_login
-        gem 'signet', '~> 0.3.0'
+        gem 'signet', '~> 0.4.0'
         require 'signet/oauth_1/client'
         require 'launchy'
         require 'yaml'
@@ -349,7 +349,7 @@ HTML
       end
 
       def oauth_2_login
-        gem 'signet', '~> 0.3.0'
+        gem 'signet', '~> 0.4.0'
         require 'signet/oauth_2/client'
         require 'launchy'
         require 'yaml'
