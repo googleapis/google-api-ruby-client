@@ -778,27 +778,18 @@ module Google
     # @see Google::APIClient#execute
     def execute!(*params)
       result = self.execute(*params)
-      if result.data?
-        if result.data.respond_to?(:error) &&
-             result.data.error.respond_to?(:message)
-          # You're going to get a terrible error message if the response isn't
-          # parsed successfully as an error.
-          error_message = result.data.error.message
-        elsif result.data['error'] && result.data['error']['message']
-          error_message = result.data['error']['message']
-        end
-      end
-      if result.response.status >= 400
+      if result.error?
+        error_message = result.error_message
         case result.response.status
-        when 400...500
-          exception_type = ClientError
-          error_message ||= "A client error has occurred."
-        when 500...600
-          exception_type = ServerError
-          error_message ||= "A server error has occurred."
-        else
-          exception_type = TransmissionError
-          error_message ||= "A transmission error has occurred."
+          when 400...500
+            exception_type = ClientError
+            error_message ||= "A client error has occurred."
+          when 500...600
+            exception_type = ServerError
+            error_message ||= "A server error has occurred."
+          else
+            exception_type = TransmissionError
+            error_message ||= "A transmission error has occurred."
         end
         raise exception_type, error_message
       end

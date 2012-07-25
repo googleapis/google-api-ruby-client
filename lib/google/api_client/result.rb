@@ -53,6 +53,28 @@ module Google
         content_type[/^([^;]*);?.*$/, 1].strip.downcase
       end
       
+      def error?
+        return self.response.status >= 400
+      end
+
+      def success?
+        return !self.error?
+      end
+      
+      def error_message
+        if self.data?
+          if self.data.respond_to?(:error) &&
+             self.data.error.respond_to?(:message)
+            # You're going to get a terrible error message if the response isn't
+            # parsed successfully as an error.
+            return self.data.error.message
+          elsif self.data['error'] && self.data['error']['message']
+            return self.data['error']['message']
+          end
+        end
+        return self.body
+      end
+      
       def data?
         self.media_type == 'application/json'
       end
