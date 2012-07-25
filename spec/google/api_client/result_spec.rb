@@ -71,6 +71,10 @@ describe Google::APIClient::Result do
         @result = Google::APIClient::Result.new(@reference, @request, @response)
       end
 
+      it 'should indicate a successful response' do
+        @result.error?.should be_false
+      end
+
       it 'should return the correct next page token' do
         @result.next_page_token.should == 'NEXT+PAGE+TOKEN'
       end
@@ -145,6 +149,39 @@ describe Google::APIClient::Result do
             'tag:google.com,2010:/plus/people/foo/activities/public'
         @result.data.items.should be_empty
       end
+    end
+    
+    describe 'with JSON error response' do
+      before do
+        @response.stub(:body).and_return(
+         <<-END_OF_STRING
+         {
+          "error": {
+           "errors": [
+            {
+             "domain": "global",
+             "reason": "parseError",
+             "message": "Parse Error"
+            }
+           ],
+           "code": 400,
+           "message": "Parse Error"
+          }
+         }
+         END_OF_STRING
+        )
+        @response.stub(:status).and_return(400)
+        @result = Google::APIClient::Result.new(@reference, @request, @response)
+      end
+      
+      it 'should return error status correctly' do
+        @result.error?.should be_true
+      end
+
+      it 'should return the correct error message' do
+        @result.error_message.should == 'Parse Error'
+      end
+
     end
   end
 end
