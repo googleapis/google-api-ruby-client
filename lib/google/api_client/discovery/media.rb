@@ -24,7 +24,7 @@ module Google
     ##
     # Media upload elements for discovered methods
     class MediaUpload
-    
+
       ##
       # Creates a description of a particular method.
       #
@@ -45,17 +45,17 @@ module Google
       ##
       # List of acceptable mime types
       #
-      # @return [Array] 
+      # @return [Array]
       #   List of acceptable mime types for uploaded content
       def accepted_types
         @discovery_document['accept']
       end
-      
+
       ##
       # Maximum size of an uplad
       # TODO: Parse & convert to numeric value
       #
-      # @return [String]  
+      # @return [String]
       def max_size
         @discovery_document['maxSize']
       end
@@ -72,6 +72,6 @@ module Google
       end
 
     end
-    
+
   end
 end
