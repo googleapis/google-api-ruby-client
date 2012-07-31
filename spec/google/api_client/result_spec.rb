@@ -18,12 +18,12 @@ require 'google/api_client'
 require 'google/api_client/version'
 
 describe Google::APIClient::Result do
-  let(:client) { Google::APIClient.new }
+  CLIENT = Google::APIClient.new
 
   describe 'with the plus API' do
     before do
-      client.authorization = nil
-      @plus = client.discovered_api('plus', 'v1')
+      CLIENT.authorization = nil
+      @plus = CLIENT.discovered_api('plus', 'v1')
       @reference = Google::APIClient::Reference.new({
         :api_method => @plus.activities.list,
         :parameters => {

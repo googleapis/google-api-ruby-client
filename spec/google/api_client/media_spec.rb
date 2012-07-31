@@ -58,10 +58,16 @@ describe Google::APIClient::UploadIO do
 end
 
 describe Google::APIClient::ResumableUpload do
-  let(:client) { Google::APIClient.new }
+  CLIENT = Google::APIClient.new
+
+  after do
+    # Reset client to not-quite-pristine state
+    CLIENT.key = nil
+    CLIENT.user_ip = nil
+  end
 
   before do
-    @drive = client.discovered_api('drive', 'v1')
+    @drive = CLIENT.discovered_api('drive', 'v1')
     @file = File.expand_path('files/sample.txt', fixtures_path)
     @media = Google::APIClient::UploadIO.new(@file, 'text/plain')
     @uploader = Google::APIClient::ResumableUpload.new(
