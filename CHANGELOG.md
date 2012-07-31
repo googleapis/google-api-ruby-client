@@ -1,3 +1,12 @@
+# 0.4.5
+
+* Updated Launchy dependency
+* Updated Faraday dependency
+* Updated Addressable dependency
+* Updated Autoparse dependency
+* Removed Sinatra development dependency
+* Fixed issues with repeated parameters
+
 # 0.4.4
 
 * Added batch execution

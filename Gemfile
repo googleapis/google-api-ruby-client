@@ -2,17 +2,17 @@ source :rubygems
 
 gemspec
 
-gem 'signet', '>= 0.4.0'
-gem 'addressable', '>= 2.2.3'
+gem 'signet', '>= 0.4.1'
+gem 'addressable', '>= 2.3.2'
 gem 'uuidtools', '>= 2.1.0'
-gem 'autoparse', '>= 0.3.1'
+gem 'autoparse', '>= 0.3.2'
 gem 'faraday', '~> 0.8.1'
 gem 'multi_json', '>= 1.0.0'
 gem 'extlib', '>= 0.9.15'
 gem 'jruby-openssl', :platforms => :jruby
 
 group :development do
-  gem 'launchy', '>= 2.0.0'
+  gem 'launchy', '>= 2.1.1'
   gem 'yard'
   gem 'redcarpet'
 end
