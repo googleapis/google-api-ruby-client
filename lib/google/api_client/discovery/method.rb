@@ -163,7 +163,7 @@ module Google
             unless k.kind_of?(String)
               raise TypeError, "Expected String, got #{k.class}."
             end
-            accu << [k,v]
+            accu << [k, v]
             accu
           end
         else
@@ -204,7 +204,7 @@ module Google
         # encode all non-template parameters
         params = ""
         unless query_parameters.empty?
-          params = "?" + Addressable::URI.form_encode(query_parameters)
+          params = "?" + Addressable::URI.form_encode(query_parameters.sort)
         end
         # Normalization is necessary because of undesirable percent-escaping
         # during URI template expansion
@@ -311,7 +311,7 @@ module Google
         required_variables = ((self.parameter_descriptions.select do |k, v|
           v['required']
         end).inject({}) { |h,(k,v)| h[k]=v; h }).keys
-        missing_variables = required_variables - parameters.map(&:first)
+        missing_variables = required_variables - parameters.map { |(k, _)| k }
         if missing_variables.size > 0
           raise ArgumentError,
             "Missing required parameters: #{missing_variables.join(', ')}."

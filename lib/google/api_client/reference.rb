@@ -41,8 +41,25 @@ module Google
         self.parameters = options[:parameters] || {}
         # These parameters are handled differently because they're not
         # parameters to the API method, but rather to the API system.
-        self.parameters['key'] ||= options[:key] if options[:key]
-        self.parameters['userIp'] ||= options[:user_ip] if options[:user_ip]
+        if self.parameters.kind_of?(Array)
+          if options[:key]
+            self.parameters.reject! { |k, _| k == 'key' }
+            self.parameters << ['key', options[:key]]
+          end
+          if options[:user_ip]
+            self.parameters.reject! { |k, _| k == 'userIp' }
+            self.parameters << ['userIp', options[:user_ip]]
+          end
+        elsif self.parameters.kind_of?(Hash)
+          self.parameters['key'] ||= options[:key] if options[:key]
+          self.parameters['userIp'] ||= options[:user_ip] if options[:user_ip]
+          # Convert to Array, because they're easier to work with when
+          # repeated parameters are an issue.
+          self.parameters = self.parameters.to_a
+        else
+          raise TypeError,
+            "Expected Array or Hash, got #{self.parameters.class}."
+        end
         self.headers = options[:headers] || {}
         if options[:media]
           self.media = options[:media]
@@ -50,25 +67,31 @@ module Google
           case upload_type
           when "media"
             if options[:body] || options[:body_object]
-              raise ArgumentError, "Can not specify body & body object for simple uploads"
+              raise ArgumentError,
+                "Can not specify body & body object for simple uploads."
             end
             self.headers['Content-Type'] ||= self.media.content_type
             self.body = self.media
           when "multipart"
             unless options[:body_object]
-              raise ArgumentError, "Multipart requested but no body object"
+              raise ArgumentError, "Multipart requested but no body object."
             end
-            # This is all a bit of a hack due to signet requiring body to be a string
-            # Ideally, update signet to delay serialization so we can just pass
-            # streams all the way down through to the HTTP lib
+            # This is all a bit of a hack due to Signet requiring body to be a
+            # string. Ideally, update Signet to delay serialization so we can
+            # just pass streams all the way down through to the HTTP library.
             metadata = StringIO.new(serialize_body(options[:body_object]))
             env = {
-              :request_headers => {'Content-Type' => "multipart/related;boundary=#{MULTIPART_BOUNDARY}"},
-              :request => { :boundary => MULTIPART_BOUNDARY }
+              :request_headers => {
+                'Content-Type' =>
+                  "multipart/related;boundary=#{MULTIPART_BOUNDARY}"
+              },
+              :request => {:boundary => MULTIPART_BOUNDARY}
             }
             multipart = Faraday::Request::Multipart.new
             self.body = multipart.create_multipart(env, [
-              [nil,Faraday::UploadIO.new(metadata, 'application/json', 'file.json')],
+              [nil, Faraday::UploadIO.new(
+                metadata, 'application/json', 'file.json'
+              )],
               [nil, self.media]])
             self.headers.update(env[:request_headers])
           when "resumable"
@@ -82,7 +105,7 @@ module Google
               self.body = ''
             end
           else
-            raise ArgumentError, "Invalid uploadType for media"
+            raise ArgumentError, "Invalid uploadType for media."
           end
         elsif options[:body]
           self.body = options[:body]
@@ -96,8 +119,12 @@ module Google
           self.http_method = options[:http_method] || 'GET'
           self.uri = options[:uri]
           unless self.parameters.empty?
-            self.uri.query_values =
-              (self.uri.query_values || {}).merge(self.parameters)
+            query_values = (self.uri.query_values(Array) || [])
+            self.uri.query = Addressable::URI.form_encode(
+              (query_values + self.parameters).sort
+            )
+            self.uri.query = nil if self.uri.query == ""
+            puts "reference: " + self.uri.to_s
           end
         end
       end
@@ -199,7 +226,8 @@ module Google
             accu
           end).string
         else
-          raise TypeError, "Expected body to be String, IO, or Enumerable chunks."
+          raise TypeError,
+            "Expected body to be String, IO, or Enumerable chunks."
         end
       end
 
@@ -248,6 +276,7 @@ module Google
           return self.connection.build_request(
             self.http_method.to_s.downcase.to_sym
           ) do |req|
+            puts "request: " + Addressable::URI.parse(self.uri).normalize.to_s
             req.url(Addressable::URI.parse(self.uri).normalize.to_s)
             req.headers = Faraday::Utils::Headers.new(self.headers)
             req.body = self.body
@@ -267,7 +296,9 @@ module Google
         options[:headers] = self.headers
         options[:body] = self.body
         options[:connection] = self.connection
-        options[:authorization] = self.authorization unless self.authorization.nil?
+        unless self.authorization.nil?
+          options[:authorization] = self.authorization
+        end
         return options
       end
     end
