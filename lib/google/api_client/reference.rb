@@ -124,7 +124,6 @@ module Google
               (query_values + self.parameters).sort
             )
             self.uri.query = nil if self.uri.query == ""
-            puts "reference: " + self.uri.to_s
           end
         end
       end
@@ -276,7 +275,6 @@ module Google
           return self.connection.build_request(
             self.http_method.to_s.downcase.to_sym
           ) do |req|
-            puts "request: " + Addressable::URI.parse(self.uri).normalize.to_s
             req.url(Addressable::URI.parse(self.uri).normalize.to_s)
             req.headers = Faraday::Utils::Headers.new(self.headers)
             req.body = self.body
