@@ -18,22 +18,20 @@ require 'google/api_client'
 require 'google/api_client/version'
 
 describe Google::APIClient::BatchRequest do
-  before do
-    @client = Google::APIClient.new
-  end
+  let(:client) { Google::APIClient.new }
 
   it 'should raise an error if making an empty batch request' do
     batch = Google::APIClient::BatchRequest.new
 
     (lambda do
-      @client.execute(batch)
+      client.execute(batch)
     end).should raise_error(Google::APIClient::BatchError)
   end
 
   describe 'with the discovery API' do
     before do
-      @client.authorization = nil
-      @discovery = @client.discovered_api('discovery', 'v1')
+      client.authorization = nil
+      @discovery = client.discovered_api('discovery', 'v1')
     end
 
     describe 'with two valid requests' do
@@ -69,7 +67,7 @@ describe Google::APIClient::BatchRequest do
         batch.add(@call1, ids[0])
         batch.add(@call2, ids[1])
 
-        @client.execute(batch)
+        client.execute(batch)
         block_called.should == 2
       end
 
@@ -86,7 +84,7 @@ describe Google::APIClient::BatchRequest do
           result.status.should == 200
         end
 
-        @client.execute(batch)
+        client.execute(batch)
         call1_returned.should == true
         call2_returned.should == true
       end
@@ -139,7 +137,7 @@ describe Google::APIClient::BatchRequest do
         batch.add(@call1, ids[0])
         batch.add(@call2, ids[1])
 
-        @client.execute(batch)
+        client.execute(batch)
         block_called.should == 2
       end
 
@@ -157,7 +155,7 @@ describe Google::APIClient::BatchRequest do
           result.status.should < 500
         end
 
-        @client.execute(batch)
+        client.execute(batch)
         call1_returned.should == true
         call2_returned.should == true
       end
@@ -166,8 +164,8 @@ describe Google::APIClient::BatchRequest do
 
   describe 'with the calendar API' do
     before do
-      @client.authorization = nil
-      @calendar = @client.discovered_api('calendar', 'v3')
+      client.authorization = nil
+      @calendar = client.discovered_api('calendar', 'v3')
     end
 
     describe 'with two valid requests' do

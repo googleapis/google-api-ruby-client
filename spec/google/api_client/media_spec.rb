@@ -25,22 +25,22 @@ describe Google::APIClient::UploadIO do
       media = Google::APIClient::UploadIO.new('doesnotexist', 'text/plain')
     end).should raise_error
   end
-  
+
   describe 'with a file' do
     before do
       @file = File.expand_path('files/sample.txt', fixtures_path)
       @media = Google::APIClient::UploadIO.new(@file, 'text/plain')
     end
-    
+
     it 'should report the correct file length' do
       @media.length.should == File.size(@file)
     end
-    
+
     it 'should have a mime type' do
       @media.content_type.should == 'text/plain'
     end
   end
-  
+
   describe 'with StringIO' do
     before do
       @content = "hello world"
@@ -50,7 +50,7 @@ describe Google::APIClient::UploadIO do
     it 'should report the correct file length' do
       @media.length.should == @content.length
     end
-    
+
     it 'should have a mime type' do
       @media.content_type.should == 'text/plain'
     end
@@ -58,9 +58,10 @@ describe Google::APIClient::UploadIO do
 end
 
 describe Google::APIClient::ResumableUpload do
+  let(:client) { Google::APIClient.new }
+
   before do
-    @client = Google::APIClient.new
-    @drive = @client.discovered_api('drive', 'v1')
+    @drive = client.discovered_api('drive', 'v1')
     @file = File.expand_path('files/sample.txt', fixtures_path)
     @media = Google::APIClient::UploadIO.new(@file, 'text/plain')
     @uploader = Google::APIClient::ResumableUpload.new(
@@ -68,7 +69,7 @@ describe Google::APIClient::ResumableUpload do
       @media,
       'https://www.googleapis.com/upload/drive/v1/files/12345')
   end
-  
+
   it 'should consider 20x status as complete' do
     api_client = stub('api', :execute => mock_result(200))
     @uploader.send_chunk(api_client)
@@ -93,8 +94,8 @@ describe Google::APIClient::ResumableUpload do
     @uploader.send_chunk(api_client)
     @uploader.location.should == 'https://www.googleapis.com/upload/drive/v1/files/abcdef'
   end
-  
-  it 'should resume from the saved range reported by the server' do 
+
+  it 'should resume from the saved range reported by the server' do
     api_client = mock('api')
     api_client.should_receive(:execute).and_return(mock_result(308, 'range' => '0-99'))
     api_client.should_receive(:execute).with(
@@ -107,7 +108,7 @@ describe Google::APIClient::ResumableUpload do
     @uploader.send_chunk(api_client) # Send bytes 0-199, only 0-99 saved
     @uploader.send_chunk(api_client) # Send bytes 100-299
   end
-  
+
   it 'should resync the offset after 5xx errors' do
     api_client = mock('api')
     api_client.should_receive(:execute).and_return(mock_result(500))
@@ -132,5 +133,5 @@ describe Google::APIClient::ResumableUpload do
     reference = Google::APIClient::Reference.new(:api_method => @drive.files.insert)
     stub('result', :status => status, :headers => headers, :reference => reference)
   end
-  
+
 end

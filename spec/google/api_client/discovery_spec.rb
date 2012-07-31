@@ -29,9 +29,7 @@ require 'google/api_client'
 require 'google/api_client/version'
 
 describe Google::APIClient do
-  before do
-    @client = Google::APIClient.new
-  end
+  let(:client) { Google::APIClient.new }
 
   it 'should raise a type error for bogus authorization' do
     (lambda do
@@ -41,53 +39,53 @@ describe Google::APIClient do
 
   it 'should not be able to retrieve the discovery document for a bogus API' do
     (lambda do
-      @client.discovery_document('bogus')
+      client.discovery_document('bogus')
     end).should raise_error(Google::APIClient::TransmissionError)
     (lambda do
-      @client.discovered_api('bogus')
+      client.discovered_api('bogus')
     end).should raise_error(Google::APIClient::TransmissionError)
   end
 
   it 'should raise an error for bogus services' do
     (lambda do
-      @client.discovered_api(42)
+      client.discovered_api(42)
     end).should raise_error(TypeError)
   end
 
   it 'should raise an error for bogus services' do
     (lambda do
-      @client.preferred_version(42)
+      client.preferred_version(42)
     end).should raise_error(TypeError)
   end
 
   it 'should raise an error for bogus methods' do
     (lambda do
-      @client.generate_request(42)
+      client.generate_request(42)
     end).should raise_error(TypeError)
   end
 
   it 'should not return a preferred version for bogus service names' do
-    @client.preferred_version('bogus').should == nil
+    client.preferred_version('bogus').should == nil
   end
 
   describe 'with the prediction API' do
     before do
-      @client.authorization = nil
+      client.authorization = nil
       # The prediction API no longer exposes a v1, so we have to be
       # careful about looking up the wrong API version.
-      @prediction = @client.discovered_api('prediction', 'v1.2')
+      @prediction = client.discovered_api('prediction', 'v1.2')
     end
 
     it 'should correctly determine the discovery URI' do
-      @client.discovery_uri('prediction').should ===
+      client.discovery_uri('prediction').should ===
         'https://www.googleapis.com/discovery/v1/apis/prediction/v1/rest'
     end
 
     it 'should correctly determine the discovery URI if :user_ip is set' do
-      @client.user_ip = '127.0.0.1'
-      request = @client.generate_request(
+      client.user_ip = '127.0.0.1'
+      request = client.generate_request(
         :http_method => 'GET',
-        :uri => @client.discovery_uri('prediction', 'v1.2'),
+        :uri => client.discovery_uri('prediction', 'v1.2'),
         :authenticated => false
       )
       request.to_env(Faraday.default_connection)[:url].to_s.should === (
@@ -97,10 +95,10 @@ describe Google::APIClient do
     end
 
     it 'should correctly determine the discovery URI if :key is set' do
-      @client.key = 'qwerty'
-      request = @client.generate_request(
+      client.key = 'qwerty'
+      request = client.generate_request(
         :http_method => 'GET',
-        :uri => @client.discovery_uri('prediction', 'v1.2'),
+        :uri => client.discovery_uri('prediction', 'v1.2'),
         :authenticated => false
       )
       request.to_env(Faraday.default_connection)[:url].to_s.should === (
@@ -110,11 +108,11 @@ describe Google::APIClient do
     end
 
     it 'should correctly determine the discovery URI if both are set' do
-      @client.key = 'qwerty'
-      @client.user_ip = '127.0.0.1'
-      request = @client.generate_request(
+      client.key = 'qwerty'
+      client.user_ip = '127.0.0.1'
+      request = client.generate_request(
         :http_method => 'GET',
-        :uri => @client.discovery_uri('prediction', 'v1.2'),
+        :uri => client.discovery_uri('prediction', 'v1.2'),
         :authenticated => false
       )
       Addressable::URI.parse(
@@ -126,59 +124,59 @@ describe Google::APIClient do
     end
 
     it 'should correctly generate API objects' do
-      @client.discovered_api('prediction', 'v1.2').name.should == 'prediction'
-      @client.discovered_api('prediction', 'v1.2').version.should == 'v1.2'
-      @client.discovered_api(:prediction, 'v1.2').name.should == 'prediction'
-      @client.discovered_api(:prediction, 'v1.2').version.should == 'v1.2'
+      client.discovered_api('prediction', 'v1.2').name.should == 'prediction'
+      client.discovered_api('prediction', 'v1.2').version.should == 'v1.2'
+      client.discovered_api(:prediction, 'v1.2').name.should == 'prediction'
+      client.discovered_api(:prediction, 'v1.2').version.should == 'v1.2'
     end
 
     it 'should discover methods' do
-      @client.discovered_method(
+      client.discovered_method(
         'prediction.training.insert', 'prediction', 'v1.2'
       ).name.should == 'insert'
-      @client.discovered_method(
+      client.discovered_method(
         :'prediction.training.insert', :prediction, 'v1.2'
       ).name.should == 'insert'
-      @client.discovered_method(
+      client.discovered_method(
         'prediction.training.delete', 'prediction', 'v1.2'
       ).name.should == 'delete'
     end
 
     it 'should define the origin API in discovered methods' do
-      @client.discovered_method(
+      client.discovered_method(
         'prediction.training.insert', 'prediction', 'v1.2'
       ).api.name.should == 'prediction'
     end
 
     it 'should not find methods that are not in the discovery document' do
-      @client.discovered_method(
+      client.discovered_method(
         'prediction.bogus', 'prediction', 'v1.2'
       ).should == nil
     end
 
     it 'should raise an error for bogus methods' do
       (lambda do
-        @client.discovered_method(42, 'prediction', 'v1.2')
+        client.discovered_method(42, 'prediction', 'v1.2')
       end).should raise_error(TypeError)
     end
 
     it 'should raise an error for bogus methods' do
       (lambda do
-        @client.generate_request(@client.discovered_api('prediction', 'v1.2'))
+        client.generate_request(client.discovered_api('prediction', 'v1.2'))
       end).should raise_error(TypeError)
     end
 
     it 'should correctly determine the preferred version' do
-      @client.preferred_version('prediction').version.should_not == 'v1'
-      @client.preferred_version(:prediction).version.should_not == 'v1'
+      client.preferred_version('prediction').version.should_not == 'v1'
+      client.preferred_version(:prediction).version.should_not == 'v1'
     end
 
     it 'should return a batch path' do
-      @client.discovered_api('prediction', 'v1.2').batch_path.should_not be_nil
+      client.discovered_api('prediction', 'v1.2').batch_path.should_not be_nil
     end
 
     it 'should generate valid requests' do
-      request = @client.generate_request(
+      request = client.generate_request(
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'}
       )
@@ -190,7 +188,7 @@ describe Google::APIClient do
     end
 
     it 'should generate valid requests when repeated parameters are passed' do
-      request = @client.generate_request(
+      request = client.generate_request(
         :api_method => @prediction.training.insert,
         :parameters => [['data', '1'], ['data','2']]
       )
@@ -200,7 +198,7 @@ describe Google::APIClient do
     end
 
     it 'should generate requests against the correct URIs' do
-      request = @client.generate_request(
+      request = client.generate_request(
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'}
       )
@@ -209,7 +207,7 @@ describe Google::APIClient do
     end
 
     it 'should generate requests against the correct URIs' do
-      request = @client.generate_request(
+      request = client.generate_request(
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'}
       )
@@ -218,10 +216,10 @@ describe Google::APIClient do
     end
 
     it 'should allow modification to the base URIs for testing purposes' do
-      prediction = @client.discovered_api('prediction', 'v1.2')
+      prediction = client.discovered_api('prediction', 'v1.2')
       prediction.method_base =
         'https://testing-domain.googleapis.com/prediction/v1.2/'
-      request = @client.generate_request(
+      request = client.generate_request(
         :api_method => prediction.training.insert,
         :parameters => {'data' => '123'}
       )
@@ -232,10 +230,10 @@ describe Google::APIClient do
     end
 
     it 'should generate OAuth 1 requests' do
-      @client.authorization = :oauth_1
-      @client.authorization.token_credential_key = '12345'
-      @client.authorization.token_credential_secret = '12345'
-      request = @client.generate_request(
+      client.authorization = :oauth_1
+      client.authorization.token_credential_key = '12345'
+      client.authorization.token_credential_secret = '12345'
+      request = client.generate_request(
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'}
       )
@@ -244,9 +242,9 @@ describe Google::APIClient do
     end
 
     it 'should generate OAuth 2 requests' do
-      @client.authorization = :oauth_2
-      @client.authorization.access_token = '12345'
-      request = @client.generate_request(
+      client.authorization = :oauth_2
+      client.authorization.access_token = '12345'
+      request = client.generate_request(
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'}
       )
@@ -255,10 +253,10 @@ describe Google::APIClient do
     end
 
     it 'should not be able to execute improperly authorized requests' do
-      @client.authorization = :oauth_1
-      @client.authorization.token_credential_key = '12345'
-      @client.authorization.token_credential_secret = '12345'
-      result = @client.execute(
+      client.authorization = :oauth_1
+      client.authorization.token_credential_key = '12345'
+      client.authorization.token_credential_secret = '12345'
+      result = client.execute(
         @prediction.training.insert,
         {'data' => '12345'}
       )
@@ -266,9 +264,9 @@ describe Google::APIClient do
     end
 
     it 'should not be able to execute improperly authorized requests' do
-      @client.authorization = :oauth_2
-      @client.authorization.access_token = '12345'
-      result = @client.execute(
+      client.authorization = :oauth_2
+      client.authorization.access_token = '12345'
+      result = client.execute(
         @prediction.training.insert,
         {'data' => '12345'}
       )
@@ -277,10 +275,10 @@ describe Google::APIClient do
 
     it 'should not be able to execute improperly authorized requests' do
       (lambda do
-        @client.authorization = :oauth_1
-        @client.authorization.token_credential_key = '12345'
-        @client.authorization.token_credential_secret = '12345'
-        result = @client.execute!(
+        client.authorization = :oauth_1
+        client.authorization.token_credential_key = '12345'
+        client.authorization.token_credential_secret = '12345'
+        result = client.execute!(
           @prediction.training.insert,
           {'data' => '12345'}
         )
@@ -289,9 +287,9 @@ describe Google::APIClient do
 
     it 'should not be able to execute improperly authorized requests' do
       (lambda do
-        @client.authorization = :oauth_2
-        @client.authorization.access_token = '12345'
-        result = @client.execute!(
+        client.authorization = :oauth_2
+        client.authorization.access_token = '12345'
+        result = client.execute!(
           @prediction.training.insert,
           {'data' => '12345'}
         )
@@ -299,9 +297,9 @@ describe Google::APIClient do
     end
 
     it 'should correctly handle unnamed parameters' do
-      @client.authorization = :oauth_2
-      @client.authorization.access_token = '12345'
-      result = @client.execute(
+      client.authorization = :oauth_2
+      client.authorization.access_token = '12345'
+      result = client.execute(
         @prediction.training.insert,
         {},
         MultiJson.dump({"id" => "bucket/object"}),
@@ -313,41 +311,41 @@ describe Google::APIClient do
 
   describe 'with the plus API' do
     before do
-      @client.authorization = nil
-      @plus = @client.discovered_api('plus')
+      client.authorization = nil
+      @plus = client.discovered_api('plus')
     end
 
     it 'should correctly determine the discovery URI' do
-      @client.discovery_uri('plus').should ===
+      client.discovery_uri('plus').should ===
         'https://www.googleapis.com/discovery/v1/apis/plus/v1/rest'
     end
 
     it 'should find APIs that are in the discovery document' do
-      @client.discovered_api('plus').name.should == 'plus'
-      @client.discovered_api('plus').version.should == 'v1'
-      @client.discovered_api(:plus).name.should == 'plus'
-      @client.discovered_api(:plus).version.should == 'v1'
+      client.discovered_api('plus').name.should == 'plus'
+      client.discovered_api('plus').version.should == 'v1'
+      client.discovered_api(:plus).name.should == 'plus'
+      client.discovered_api(:plus).version.should == 'v1'
     end
 
     it 'should find methods that are in the discovery document' do
       # TODO(bobaman) Fix this when the RPC names are correct
-      @client.discovered_method(
+      client.discovered_method(
         'plus.activities.list', 'plus'
       ).name.should == 'list'
     end
 
     it 'should define the origin API in discovered methods' do
-      @client.discovered_method(
+      client.discovered_method(
         'plus.activities.list', 'plus'
       ).api.name.should == 'plus'
     end
 
     it 'should not find methods that are not in the discovery document' do
-      @client.discovered_method('plus.bogus', 'plus').should == nil
+      client.discovered_method('plus.bogus', 'plus').should == nil
     end
 
     it 'should generate requests against the correct URIs' do
-      request = @client.generate_request(
+      request = client.generate_request(
         :api_method => @plus.activities.list,
         :parameters => {
           'userId' => '107807692475771887386', 'collection' => 'public'
@@ -362,7 +360,7 @@ describe Google::APIClient do
 
     it 'should correctly validate parameters' do
       (lambda do
-        @client.generate_request(
+        client.generate_request(
           :api_method => @plus.activities.list,
           :parameters => {'alt' => 'json'},
           :authenticated => false
@@ -372,7 +370,7 @@ describe Google::APIClient do
 
     it 'should correctly validate parameters' do
       (lambda do
-        @client.generate_request(
+        client.generate_request(
           :api_method => @plus.activities.list,
           :parameters => {
             'userId' => '107807692475771887386', 'collection' => 'bogus'
@@ -385,42 +383,42 @@ describe Google::APIClient do
 
   describe 'with the latitude API' do
     before do
-      @client.authorization = nil
-      @latitude = @client.discovered_api('latitude')
+      client.authorization = nil
+      @latitude = client.discovered_api('latitude')
     end
 
     it 'should correctly determine the discovery URI' do
-      @client.discovery_uri('latitude').should ===
+      client.discovery_uri('latitude').should ===
         'https://www.googleapis.com/discovery/v1/apis/latitude/v1/rest'
     end
 
     it 'should find APIs that are in the discovery document' do
-      @client.discovered_api('latitude').name.should == 'latitude'
-      @client.discovered_api('latitude').version.should == 'v1'
+      client.discovered_api('latitude').name.should == 'latitude'
+      client.discovered_api('latitude').version.should == 'v1'
     end
 
     it 'should return a batch path' do
-      @client.discovered_api('latitude').batch_path.should_not be_nil
+      client.discovered_api('latitude').batch_path.should_not be_nil
     end
 
     it 'should find methods that are in the discovery document' do
-      @client.discovered_method(
+      client.discovered_method(
         'latitude.currentLocation.get', 'latitude'
       ).name.should == 'get'
     end
 
     it 'should define the origin API in discovered methods' do
-      @client.discovered_method(
+      client.discovered_method(
         'latitude.currentLocation.get', 'latitude'
       ).api.name.should == 'latitude'
     end
 
     it 'should not find methods that are not in the discovery document' do
-      @client.discovered_method('latitude.bogus', 'latitude').should == nil
+      client.discovered_method('latitude.bogus', 'latitude').should == nil
     end
 
     it 'should generate requests against the correct URIs' do
-      request = @client.generate_request(
+      request = client.generate_request(
         :api_method => 'latitude.currentLocation.get',
         :authenticated => false
       )
@@ -429,7 +427,7 @@ describe Google::APIClient do
     end
 
     it 'should generate requests against the correct URIs' do
-      request = @client.generate_request(
+      request = client.generate_request(
         :api_method => @latitude.current_location.get,
         :authenticated => false
       )
@@ -438,7 +436,7 @@ describe Google::APIClient do
     end
 
     it 'should not be able to execute requests without authorization' do
-      result = @client.execute(
+      result = client.execute(
         :api_method => 'latitude.currentLocation.get',
         :authenticated => false
       )
@@ -448,42 +446,42 @@ describe Google::APIClient do
 
   describe 'with the moderator API' do
     before do
-      @client.authorization = nil
-      @moderator = @client.discovered_api('moderator')
+      client.authorization = nil
+      @moderator = client.discovered_api('moderator')
     end
 
     it 'should correctly determine the discovery URI' do
-      @client.discovery_uri('moderator').should ===
+      client.discovery_uri('moderator').should ===
         'https://www.googleapis.com/discovery/v1/apis/moderator/v1/rest'
     end
 
     it 'should find APIs that are in the discovery document' do
-      @client.discovered_api('moderator').name.should == 'moderator'
-      @client.discovered_api('moderator').version.should == 'v1'
+      client.discovered_api('moderator').name.should == 'moderator'
+      client.discovered_api('moderator').version.should == 'v1'
     end
 
     it 'should find methods that are in the discovery document' do
-      @client.discovered_method(
+      client.discovered_method(
         'moderator.profiles.get', 'moderator'
       ).name.should == 'get'
     end
 
     it 'should define the origin API in discovered methods' do
-      @client.discovered_method(
+      client.discovered_method(
         'moderator.profiles.get', 'moderator'
       ).api.name.should == 'moderator'
     end
 
     it 'should not find methods that are not in the discovery document' do
-      @client.discovered_method('moderator.bogus', 'moderator').should == nil
+      client.discovered_method('moderator.bogus', 'moderator').should == nil
     end
 
     it 'should return a batch path' do
-      @client.discovered_api('moderator').batch_path.should_not be_nil
+      client.discovered_api('moderator').batch_path.should_not be_nil
     end
 
     it 'should generate requests against the correct URIs' do
-      request = @client.generate_request(
+      request = client.generate_request(
         :api_method => 'moderator.profiles.get',
         :authenticated => false
       )
@@ -492,7 +490,7 @@ describe Google::APIClient do
     end
 
     it 'should generate requests against the correct URIs' do
-      request = @client.generate_request(
+      request = client.generate_request(
         :api_method => @moderator.profiles.get,
         :authenticated => false
       )
@@ -501,7 +499,7 @@ describe Google::APIClient do
     end
 
     it 'should not be able to execute requests without authorization' do
-      result = @client.execute(
+      result = client.execute(
         'moderator.profiles.get',
         {},
         '',
@@ -514,36 +512,36 @@ describe Google::APIClient do
 
   describe 'with the adsense API' do
     before do
-      @client.authorization = nil
-      @adsense = @client.discovered_api('adsense', 'v1')
+      client.authorization = nil
+      @adsense = client.discovered_api('adsense', 'v1')
     end
 
     it 'should correctly determine the discovery URI' do
-      @client.discovery_uri('adsense').should ===
+      client.discovery_uri('adsense').should ===
         'https://www.googleapis.com/discovery/v1/apis/adsense/v1/rest'
     end
 
     it 'should find APIs that are in the discovery document' do
-      @client.discovered_api('adsense').name.should == 'adsense'
-      @client.discovered_api('adsense').version.should == 'v1'
+      client.discovered_api('adsense').name.should == 'adsense'
+      client.discovered_api('adsense').version.should == 'v1'
     end
 
     it 'should return a batch path' do
-      @client.discovered_api('adsense').batch_path.should_not be_nil
+      client.discovered_api('adsense').batch_path.should_not be_nil
     end
 
     it 'should find methods that are in the discovery document' do
-      @client.discovered_method(
+      client.discovered_method(
         'adsense.reports.generate', 'adsense'
       ).name.should == 'generate'
     end
 
     it 'should not find methods that are not in the discovery document' do
-      @client.discovered_method('adsense.bogus', 'adsense').should == nil
+      client.discovered_method('adsense.bogus', 'adsense').should == nil
     end
 
     it 'should generate requests against the correct URIs' do
-      request = @client.generate_request(
+      request = client.generate_request(
         :api_method => 'adsense.adclients.list',
         :authenticated => false
       )
@@ -552,7 +550,7 @@ describe Google::APIClient do
     end
 
     it 'should generate requests against the correct URIs' do
-      request = @client.generate_request(
+      request = client.generate_request(
         :api_method => @adsense.adclients.list,
         :authenticated => false
       )
@@ -561,7 +559,7 @@ describe Google::APIClient do
     end
 
     it 'should not be able to execute requests without authorization' do
-      result = @client.execute(
+      result = client.execute(
         :api_method => 'adsense.adclients.list',
         :authenticated => false
       )
@@ -570,7 +568,7 @@ describe Google::APIClient do
 
     it 'should fail when validating missing required parameters' do
       (lambda do
-        @client.generate_request(
+        client.generate_request(
           :api_method => @adsense.reports.generate,
           :authenticated => false
         )
@@ -579,7 +577,7 @@ describe Google::APIClient do
 
     it 'should succeed when validating parameters in a correct call' do
       (lambda do
-        @client.generate_request(
+        client.generate_request(
           :api_method => @adsense.reports.generate,
           :parameters => {
             'startDate' => '2000-01-01',
@@ -594,7 +592,7 @@ describe Google::APIClient do
 
     it 'should fail when validating parameters with invalid values' do
       (lambda do
-        @client.generate_request(
+        client.generate_request(
           :api_method => @adsense.reports.generate,
           :parameters => {
             'startDate' => '2000-01-01',
@@ -609,7 +607,7 @@ describe Google::APIClient do
 
     it 'should succeed when validating repeated parameters in a correct call' do
       (lambda do
-        @client.generate_request(
+        client.generate_request(
           :api_method => @adsense.reports.generate,
           :parameters => {
             'startDate' => '2000-01-01',
@@ -624,7 +622,7 @@ describe Google::APIClient do
 
     it 'should fail when validating incorrect repeated parameters' do
       (lambda do
-        @client.generate_request(
+        client.generate_request(
           :api_method => @adsense.reports.generate,
           :parameters => {
             'startDate' => '2000-01-01',
@@ -637,25 +635,25 @@ describe Google::APIClient do
       end).should raise_error(ArgumentError)
     end
   end
-  
+
   describe 'with the Drive API' do
     before do
-      @client.authorization = nil
-      @drive = @client.discovered_api('drive', 'v1')
+      client.authorization = nil
+      @drive = client.discovered_api('drive', 'v1')
     end
-    
+
     it 'should include media upload info methods' do
       @drive.files.insert.media_upload.should_not == nil
     end
-    
+
     it 'should include accepted media types' do
       @drive.files.insert.media_upload.accepted_types.should_not be_empty
     end
-    
+
     it 'should have an upload path' do
       @drive.files.insert.media_upload.uri_template.should_not == nil
     end
-    
+
     it 'should have a max file size' do
       @drive.files.insert.media_upload.max_size.should_not == nil
     end

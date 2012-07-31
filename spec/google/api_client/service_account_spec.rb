@@ -17,21 +17,21 @@ require 'spec_helper'
 require 'google/api_client'
 
 describe Google::APIClient::JWTAsserter do
-  
+
   before do
     @key = OpenSSL::PKey::RSA.new 2048
   end
-  
+
   it 'should generate valid JWTs' do
     asserter = Google::APIClient::JWTAsserter.new('client1', 'scope1 scope2', @key)
     jwt = asserter.to_jwt
-    jwt.should_not == nil  
-    
+    jwt.should_not == nil
+
     claim = JWT.decode(jwt, @key.public_key, true)
     claim["iss"].should == 'client1'
     claim["scope"].should == 'scope1 scope2'
   end
-  
+
   it 'should send valid access token request' do
     stubs = Faraday::Adapter::Test::Stubs.new do |stub|
       stub.post('/o/oauth2/token') do |env|
@@ -48,7 +48,7 @@ describe Google::APIClient::JWTAsserter do
     connection = Faraday.new(:url => 'https://accounts.google.com') do |builder|
       builder.adapter(:test, stubs)
     end
-  
+
     asserter = Google::APIClient::JWTAsserter.new('client1', 'scope1 scope2', @key)
     auth = asserter.authorize(nil, { :connection => connection})
     auth.should_not == nil?

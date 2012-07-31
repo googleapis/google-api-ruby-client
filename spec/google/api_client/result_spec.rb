@@ -18,14 +18,12 @@ require 'google/api_client'
 require 'google/api_client/version'
 
 describe Google::APIClient::Result do
-  before do
-    @client = Google::APIClient.new
-  end
+  let(:client) { Google::APIClient.new }
 
   describe 'with the plus API' do
     before do
-      @client.authorization = nil
-      @plus = @client.discovered_api('plus', 'v1')
+      client.authorization = nil
+      @plus = client.discovered_api('plus', 'v1')
       @reference = Google::APIClient::Reference.new({
         :api_method => @plus.activities.list,
         :parameters => {
@@ -77,10 +75,10 @@ describe Google::APIClient::Result do
 
       it 'should escape the next page token when calling next_page' do
         reference = @result.next_page
-        reference.parameters.should include('pageToken')
-        reference.parameters['pageToken'].should == 'NEXT+PAGE+TOKEN'
-        path = reference.to_request.path.to_s
-        path.should include 'pageToken=NEXT%2BPAGE%2BTOKEN'
+        Hash[reference.parameters].should include('pageToken')
+        Hash[reference.parameters]['pageToken'].should == 'NEXT+PAGE+TOKEN'
+        url = reference.to_request.to_env(Faraday.default_connection)[:url]
+        url.to_s.should include('pageToken=NEXT%2BPAGE%2BTOKEN')
       end
 
       it 'should return content type correctly' do
