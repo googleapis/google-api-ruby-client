@@ -46,7 +46,7 @@ module Google
           self.parameters['userIp'] ||= options[:user_ip] if options[:user_ip]
         else
           raise TypeError,
-            "Expected Array or Hash, got #{self.parameters.class}."
+            "Expected Hash, got #{self.parameters.class}."
         end
         self.headers = options[:headers] || {}
         if options[:media]
