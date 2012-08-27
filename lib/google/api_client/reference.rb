@@ -41,21 +41,9 @@ module Google
         self.parameters = options[:parameters] || {}
         # These parameters are handled differently because they're not
         # parameters to the API method, but rather to the API system.
-        if self.parameters.kind_of?(Array)
-          if options[:key]
-            self.parameters.reject! { |k, _| k == 'key' }
-            self.parameters << ['key', options[:key]]
-          end
-          if options[:user_ip]
-            self.parameters.reject! { |k, _| k == 'userIp' }
-            self.parameters << ['userIp', options[:user_ip]]
-          end
-        elsif self.parameters.kind_of?(Hash)
+        if self.parameters.kind_of?(Hash)
           self.parameters['key'] ||= options[:key] if options[:key]
           self.parameters['userIp'] ||= options[:user_ip] if options[:user_ip]
-          # Convert to Array, because they're easier to work with when
-          # repeated parameters are an issue.
-          self.parameters = self.parameters.to_a
         else
           raise TypeError,
             "Expected Array or Hash, got #{self.parameters.class}."
