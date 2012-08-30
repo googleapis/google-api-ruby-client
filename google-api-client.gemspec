@@ -2,16 +2,16 @@
 
 Gem::Specification.new do |s|
   s.name = "google-api-client"
-  s.version = "0.4.5"
+  s.version = "0.4.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bob Aman"]
-  s.date = "2012-07-31"
+  s.date = "2012-08-30"
   s.description = "The Google API Ruby Client makes it trivial to discover and access supported\nAPIs.\n"
   s.email = "bobaman@google.com"
   s.executables = ["google-api"]
   s.extra_rdoc_files = ["README.md"]
-  s.files = ["lib/google", "lib/google/api_client", "lib/google/api_client/batch.rb", "lib/google/api_client/client_secrets.rb", "lib/google/api_client/discovery", "lib/google/api_client/discovery/api.rb", "lib/google/api_client/discovery/media.rb", "lib/google/api_client/discovery/method.rb", "lib/google/api_client/discovery/resource.rb", "lib/google/api_client/discovery/schema.rb", "lib/google/api_client/discovery.rb", "lib/google/api_client/environment.rb", "lib/google/api_client/errors.rb", "lib/google/api_client/media.rb", "lib/google/api_client/reference.rb", "lib/google/api_client/result.rb", "lib/google/api_client/service_account.rb", "lib/google/api_client/version.rb", "lib/google/api_client.rb", "lib/google/inflection.rb", "spec/fixtures", "spec/fixtures/files", "spec/fixtures/files/sample.txt", "spec/google", "spec/google/api_client", "spec/google/api_client/batch_spec.rb", "spec/google/api_client/discovery_spec.rb", "spec/google/api_client/media_spec.rb", "spec/google/api_client/result_spec.rb", "spec/google/api_client/service_account_spec.rb", "spec/google/api_client_spec.rb", "spec/spec_helper.rb", "tasks/gem.rake", "tasks/git.rake", "tasks/metrics.rake", "tasks/spec.rake", "tasks/wiki.rake", "tasks/yard.rake", "CHANGELOG.md", "Gemfile", "Gemfile.lock", "LICENSE", "Rakefile", "README.md", "bin/google-api"]
+  s.files = ["lib/compat", "lib/compat/multi_json.rb", "lib/google", "lib/google/api_client", "lib/google/api_client/batch.rb", "lib/google/api_client/client_secrets.rb", "lib/google/api_client/discovery", "lib/google/api_client/discovery/api.rb", "lib/google/api_client/discovery/media.rb", "lib/google/api_client/discovery/method.rb", "lib/google/api_client/discovery/resource.rb", "lib/google/api_client/discovery/schema.rb", "lib/google/api_client/discovery.rb", "lib/google/api_client/environment.rb", "lib/google/api_client/errors.rb", "lib/google/api_client/media.rb", "lib/google/api_client/reference.rb", "lib/google/api_client/result.rb", "lib/google/api_client/service_account.rb", "lib/google/api_client/version.rb", "lib/google/api_client.rb", "lib/google/inflection.rb", "spec/fixtures", "spec/fixtures/files", "spec/fixtures/files/sample.txt", "spec/google", "spec/google/api_client", "spec/google/api_client/batch_spec.rb", "spec/google/api_client/discovery_spec.rb", "spec/google/api_client/media_spec.rb", "spec/google/api_client/result_spec.rb", "spec/google/api_client/service_account_spec.rb", "spec/google/api_client_spec.rb", "spec/spec_helper.rb", "tasks/gem.rake", "tasks/git.rake", "tasks/metrics.rake", "tasks/spec.rake", "tasks/wiki.rake", "tasks/yard.rake", "CHANGELOG.md", "Gemfile", "Gemfile.lock", "LICENSE", "Rakefile", "README.md", "bin/google-api"]
   s.homepage = "http://code.google.com/p/google-api-ruby-client/"
   s.rdoc_options = ["--main", "README.md"]
   s.require_paths = ["lib"]

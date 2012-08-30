@@ -15,6 +15,7 @@
 
 require 'time'
 require 'multi_json'
+require 'compat/multi_json'
 require 'base64'
 require 'autoparse'
 require 'addressable/uri'

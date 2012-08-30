@@ -14,6 +14,7 @@
 
 
 require 'multi_json'
+require 'compat/multi_json'
 
 
 module Google

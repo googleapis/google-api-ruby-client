@@ -1,3 +1,7 @@
+# 0.4.6
+
+* Backwards compatibility for MultiJson
+
 # 0.4.5
 
 * Updated Launchy dependency

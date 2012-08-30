@@ -17,6 +17,7 @@ gem 'faraday', '~> 0.8.1'
 require 'faraday'
 require 'faraday/utils'
 require 'multi_json'
+require 'compat/multi_json'
 require 'stringio'
 
 require 'google/api_client/version'
