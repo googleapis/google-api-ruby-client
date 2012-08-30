@@ -64,7 +64,7 @@ module Google
         self.headers = options[:headers] || {}
         if options[:media]
           self.media = options[:media]
-          upload_type = parameters['uploadType'] || parameters['upload_type']
+          upload_type = self.parameters.find { |(k, _)| ['uploadType', 'upload_type'].include?(k) }.last
           case upload_type
           when "media"
             if options[:body] || options[:body_object]
