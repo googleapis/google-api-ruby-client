@@ -91,7 +91,7 @@ describe Google::APIClient do
         :uri => CLIENT.discovery_uri('prediction', 'v1.2'),
         :authenticated => false
       )
-      request.to_env(Faraday.default_connection)[:url].to_s.should === (
+      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should === (
         'https://www.googleapis.com/discovery/v1/apis/prediction/v1.2/rest' +
         '?userIp=127.0.0.1'
       )
@@ -104,7 +104,7 @@ describe Google::APIClient do
         :uri => CLIENT.discovery_uri('prediction', 'v1.2'),
         :authenticated => false
       )
-      request.to_env(Faraday.default_connection)[:url].to_s.should === (
+      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should === (
         'https://www.googleapis.com/discovery/v1/apis/prediction/v1.2/rest' +
         '?key=qwerty'
       )
@@ -119,7 +119,7 @@ describe Google::APIClient do
         :authenticated => false
       )
       Addressable::URI.parse(
-        request.to_env(Faraday.default_connection)[:url]
+        request.to_http_request.to_env(Faraday.default_connection)[:url]
       ).query_values.should == {
         'key' => 'qwerty',
         'userIp' => '127.0.0.1'
@@ -183,8 +183,8 @@ describe Google::APIClient do
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'}
       )
-      request.method.should == :post
-      request.to_env(Faraday.default_connection)[:url].to_s.should ===
+      request.to_http_request.method.should == :post
+      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
         'https://www.googleapis.com/prediction/v1.2/training?data=12345'
       request.headers.should be_empty
       request.body.should == ''
@@ -195,8 +195,8 @@ describe Google::APIClient do
         :api_method => @prediction.training.insert,
         :parameters => [['data', '1'], ['data','2']]
       )
-      request.method.should == :post
-      request.to_env(Faraday.default_connection)[:url].to_s.should ===
+      request.to_http_request.method.should == :post
+      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
         'https://www.googleapis.com/prediction/v1.2/training?data=1&data=2'
     end
 
@@ -205,7 +205,7 @@ describe Google::APIClient do
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'}
       )
-      request.to_env(Faraday.default_connection)[:url].to_s.should ===
+      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
         'https://www.googleapis.com/prediction/v1.2/training?data=12345'
     end
 
@@ -214,7 +214,7 @@ describe Google::APIClient do
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'}
       )
-      request.to_env(Faraday.default_connection)[:url].to_s.should ===
+      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
         'https://www.googleapis.com/prediction/v1.2/training?data=12345'
     end
 
@@ -228,7 +228,7 @@ describe Google::APIClient do
         :api_method => prediction_rebase.training.insert,
         :parameters => {'data' => '123'}
       )
-      request.to_env(Faraday.default_connection)[:url].to_s.should === (
+      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should === (
         'https://testing-domain.example.com/' +
         'prediction/v1.2/training?data=123'
       )
@@ -242,8 +242,9 @@ describe Google::APIClient do
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'}
       )
-      request.headers.should have_key('Authorization')
-      request.headers['Authorization'].should =~ /^OAuth/
+      http_request = request.to_http_request
+      http_request.headers.should have_key('Authorization')
+      http_request.headers['Authorization'].should =~ /^OAuth/
     end
 
     it 'should generate OAuth 2 requests' do
@@ -253,8 +254,9 @@ describe Google::APIClient do
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'}
       )
-      request.headers.should have_key('Authorization')
-      request.headers['Authorization'].should =~ /^Bearer/
+      http_request = request.to_http_request
+      http_request.headers.should have_key('Authorization')
+      http_request.headers['Authorization'].should =~ /^Bearer/
     end
 
     it 'should not be able to execute improperly authorized requests' do
@@ -310,7 +312,7 @@ describe Google::APIClient do
         MultiJson.dump({"id" => "bucket/object"}),
         {'Content-Type' => 'application/json'}
       )
-      result.request.headers['Content-Type'].should == 'application/json'
+      result.reference.to_http_request.headers['Content-Type'].should == 'application/json'
     end
   end
 
@@ -357,7 +359,7 @@ describe Google::APIClient do
         },
         :authenticated => false
       )
-      request.to_env(Faraday.default_connection)[:url].to_s.should === (
+      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should === (
         'https://www.googleapis.com/plus/v1/' +
         'people/107807692475771887386/activities/public'
       )
@@ -369,7 +371,7 @@ describe Google::APIClient do
           :api_method => @plus.activities.list,
           :parameters => {'alt' => 'json'},
           :authenticated => false
-        )
+        ).to_http_request
       end).should raise_error(ArgumentError)
     end
 
@@ -381,7 +383,7 @@ describe Google::APIClient do
             'userId' => '107807692475771887386', 'collection' => 'bogus'
           },
           :authenticated => false
-        )
+        ).to_http_request
       end).should raise_error(ArgumentError)
     end
   end
@@ -428,7 +430,7 @@ describe Google::APIClient do
         :api_method => 'latitude.currentLocation.get',
         :authenticated => false
       )
-      request.to_env(Faraday.default_connection)[:url].to_s.should ===
+      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
         'https://www.googleapis.com/latitude/v1/currentLocation'
     end
 
@@ -437,7 +439,7 @@ describe Google::APIClient do
         :api_method => @latitude.current_location.get,
         :authenticated => false
       )
-      request.to_env(Faraday.default_connection)[:url].to_s.should ===
+      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
         'https://www.googleapis.com/latitude/v1/currentLocation'
     end
 
@@ -492,7 +494,7 @@ describe Google::APIClient do
         :api_method => 'moderator.profiles.get',
         :authenticated => false
       )
-      request.to_env(Faraday.default_connection)[:url].to_s.should ===
+      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
         'https://www.googleapis.com/moderator/v1/profiles/@me'
     end
 
@@ -501,7 +503,7 @@ describe Google::APIClient do
         :api_method => @moderator.profiles.get,
         :authenticated => false
       )
-      request.to_env(Faraday.default_connection)[:url].to_s.should ===
+      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
         'https://www.googleapis.com/moderator/v1/profiles/@me'
     end
 
@@ -552,7 +554,7 @@ describe Google::APIClient do
         :api_method => 'adsense.adclients.list',
         :authenticated => false
       )
-      request.to_env(Faraday.default_connection)[:url].to_s.should ===
+      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
         'https://www.googleapis.com/adsense/v1/adclients'
     end
 
@@ -561,7 +563,7 @@ describe Google::APIClient do
         :api_method => @adsense.adclients.list,
         :authenticated => false
       )
-      request.to_env(Faraday.default_connection)[:url].to_s.should ===
+      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
         'https://www.googleapis.com/adsense/v1/adclients'
     end
 
@@ -578,7 +580,7 @@ describe Google::APIClient do
         CLIENT.generate_request(
           :api_method => @adsense.reports.generate,
           :authenticated => false
-        )
+        ).to_http_request
       end).should raise_error(ArgumentError)
     end
 
@@ -593,7 +595,7 @@ describe Google::APIClient do
             'metric' => 'PAGE_VIEWS'
           },
           :authenticated => false
-        )
+        ).to_http_request
       end).should_not raise_error
     end
 
@@ -608,7 +610,7 @@ describe Google::APIClient do
             'metric' => 'PAGE_VIEWS'
           },
           :authenticated => false
-        )
+        ).to_http_request
       end).should raise_error(ArgumentError)
     end
 
@@ -638,7 +640,7 @@ describe Google::APIClient do
             'metric' => ['PAGE_VIEWS', 'CLICKS']
           },
           :authenticated => false
-        )
+        ).to_http_request
       end).should raise_error(ArgumentError)
     end
   end

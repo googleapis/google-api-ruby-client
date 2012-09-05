@@ -121,7 +121,7 @@ module Google
           call_response = deserialize_call_response(part)
           callback = @callbacks[call_response.call_id]
           call = @calls[call_response.call_id]
-          result = Google::APIClient::Result.new(call, nil, call_response)
+          result = Google::APIClient::Result.new(call, call_response)
           callback.call(result) if callback
         end
       end
@@ -196,7 +196,7 @@ module Google
       #
       # @return [String] The request as a string in application/http format.
       def serialize_call(call)
-        http_request = call.to_request
+        http_request = call.to_http_request
         method = http_request.method.to_s.upcase
         path = http_request.path.to_s
         status_line = method + " " + path + " HTTP/1.1"
