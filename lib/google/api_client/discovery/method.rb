@@ -224,13 +224,6 @@ module Google
       # @return [Array] The generated HTTP request.
       def generate_request(parameters={}, body='', headers=[], options={})
         options[:connection] ||= Faraday.default_connection
-        if body.respond_to?(:string)
-          body = body.string
-        elsif body.respond_to?(:to_str)
-          body = body.to_str
-        else
-          raise TypeError, "Expected String or StringIO, got #{body.class}."
-        end
         if !headers.kind_of?(Array) && !headers.kind_of?(Hash)
           raise TypeError, "Expected Hash or Array, got #{headers.class}."
         end

@@ -18,15 +18,12 @@ module Google
     ##
     # This class wraps a result returned by an API call.
     class Result
-      def initialize(reference, request, response)
+      def initialize(reference, response)
         @reference = reference
-        @request = request
         @response = response
       end
 
       attr_reader :reference
-
-      attr_reader :request
 
       attr_reader :response
 

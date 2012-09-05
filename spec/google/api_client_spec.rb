@@ -42,9 +42,7 @@ shared_examples_for 'configurable user agent' do
 
   it 'should transmit a User-Agent header when sending requests' do
     client.user_agent = 'Custom User Agent/1.2.3'
-    request = Faraday::Request.new(:get) do |req|
-      req.url('http://www.google.com/')
-    end
+
     stubs = Faraday::Adapter::Test::Stubs.new do |stub|
       stub.get('/') do |env|
         headers = env[:request_headers]
@@ -55,6 +53,9 @@ shared_examples_for 'configurable user agent' do
     end
     connection = Faraday.new(:url => 'https://www.google.com') do |builder|
       builder.adapter(:test, stubs)
+    end
+    request = connection.build_request(:get) do |req|
+      req.url('http://www.google.com/')
     end
     client.transmit(:request => request, :connection => connection)
     stubs.verify_stubbed_calls

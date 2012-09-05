@@ -464,6 +464,31 @@ module Google
       return nil
     end
 
+    def normalize_api_method(options)
+      method = options[:api_method]
+      version = options[:version]
+      if method.kind_of?(Google::APIClient::Method) || method == nil
+        return method
+      elsif method.respond_to?(:to_str) || method.kind_of?(Symbol)
+        # This method of guessing the API is unreliable. This will fail for
+        # APIs where the first segment of the RPC name does not match the
+        # service name. However, this is a fallback mechanism anyway.
+        # Developers should be passing in a reference to the method, rather
+        # than passing in a string or symbol. This should raise an error
+        # in the case of a mismatch.
+        method = method.to_s        
+        api = method[/^([^.]+)\./, 1]
+        api_method = self.discovered_method(method, api, version)
+        if api_method.nil?
+          raise ArgumentError, "API method could not be found."
+        end
+        return api_method
+      else
+        raise TypeError,
+          "Expected Google::APIClient::Method, got #{new_api_method.class}."
+      end
+    end
+
     ##
     # Generates a request.
     #
@@ -482,7 +507,7 @@ module Google
     #   `true` if the request must be signed or somehow
     #   authenticated, `false` otherwise.
     #
-    # @return [Faraday::Request] The generated request.
+    # @return [Google::APIClient::Reference] The generated request.
     #
     # @example
     #   request = client.generate_request(
@@ -501,36 +526,9 @@ module Google
         :user_ip => self.user_ip,
         :connection => Faraday.default_connection
       }.merge(options)
-
-      # The Reference object is going to need this to do method ID lookups.
-      options[:client] = self
-      # The default value for the :authenticated option depends on whether an
-      # authorization mechanism has been set.
-      if options[:authorization]
-        options = {:authenticated => true}.merge(options)
-      else
-        options = {:authenticated => false}.merge(options)
-      end
-      reference = Google::APIClient::Reference.new(options)
-      request = reference.to_request
-      if options[:authenticated] && options[:authorization].respond_to?(:generate_authenticated_request)
-        request = options[:authorization].generate_authenticated_request(
-          :request => request,
-          :connection => options[:connection]
-        )
-      end
-      return request
-    end
-
-    ##
-    # Signs a request using the current authorization mechanism.
-    #
-    # @param [Hash] options a customizable set of options
-    #
-    # @return [Faraday::Request] The signed or otherwise authenticated request.
-    # @deprecated No longer used internally
-    def generate_authenticated_request(options={})
-      return authorization.generate_authenticated_request(options)
+      
+      options[:api_method] = self.normalize_api_method(options)
+      return Google::APIClient::Reference.new(options)
     end
 
     ##
@@ -538,81 +536,14 @@ module Google
     #
     # @option options [Array, Faraday::Request] :request
     #   The HTTP request to transmit.
-    # @option options [String, Symbol] :method
-    #   The method for the HTTP request.
-    # @option options [String, Addressable::URI] :uri
-    #   The URI for the HTTP request.
-    # @option options [Array, Hash] :headers
-    #   The headers for the HTTP request.
-    # @option options [String] :body
-    #   The body for the HTTP request.
     # @option options [Faraday::Connection] :connection
     #   The HTTP connection to use.
     #
     # @return [Faraday::Response] The response from the server.
     def transmit(options={})
       options[:connection] ||= Faraday.default_connection
-      if options[:request]
-        if options[:request].kind_of?(Array)
-          method, uri, headers, body = options[:request]
-        elsif options[:request].kind_of?(Faraday::Request)
-          unless options[:connection]
-            raise ArgumentError,
-              "Faraday::Request used, requires a connection to be provided."
-          end
-          method = options[:request].method.to_s.downcase.to_sym
-          uri = options[:connection].build_url(
-            options[:request].path, options[:request].params
-          )
-          headers = options[:request].headers || {}
-          body = options[:request].body || ''
-        end
-      else
-        method = options[:method] || :get
-        uri = options[:uri]
-        headers = options[:headers] || []
-        body = options[:body] || ''
-      end
-      headers = headers.to_a if headers.kind_of?(Hash)
-      request_components = {
-        :method => method,
-        :uri => uri,
-        :headers => headers,
-        :body => body
-      }
-      # Verify that we have all pieces required to transmit an HTTP request
-      request_components.each do |(key, value)|
-        unless value
-          raise ArgumentError, "Missing :#{key} parameter."
-        end
-      end
-
-      if self.user_agent != nil
-        # If there's no User-Agent header, set one.
-        unless headers.kind_of?(Enumerable)
-          # We need to use some Enumerable methods, relying on the presence of
-          # the #each method.
-          class << headers
-            include Enumerable
-          end
-        end
-        if self.user_agent.kind_of?(String)
-          unless headers.any? { |k, v| k.downcase == 'User-Agent'.downcase }
-            headers = headers.to_a.insert(0, ['User-Agent', self.user_agent])
-          end
-        elsif self.user_agent != nil
-          raise TypeError,
-            "Expected User-Agent to be String, got #{self.user_agent.class}"
-        end
-      end
-
-      request = options[:connection].build_request(
-        method.to_s.downcase.to_sym
-      ) do |req|
-        req.url(Addressable::URI.parse(uri).normalize.to_s)
-        req.headers = Faraday::Utils::Headers.new(headers)
-        req.body = body
-      end
+      request = options[:request]
+      request['User-Agent'] ||= '' + self.user_agent unless self.user_agent.nil?
       request_env = request.to_env(options[:connection])
       response = options[:connection].app.call(request_env)
       return response
@@ -662,37 +593,14 @@ module Google
           params.size == 1
         batch = params.pop
         options = batch.options
-        options[:connection] ||= Faraday.default_connection
-        http_request = batch.to_http_request
-        request = nil
-
-        if @authorization
-          method, uri, headers, body = http_request
-          method = method.to_s.downcase.to_sym
-
-          faraday_request = options[:connection].build_request(
-            method.to_s.downcase.to_sym
-          ) do |req|
-            req.url(Addressable::URI.parse(uri).normalize.to_s)
-            req.headers = Faraday::Utils::Headers.new(headers)
-            req.body = body
-          end
-
-          request = {
-            :request => self.generate_authenticated_request(
-              :request => faraday_request,
-              :connection => options[:connection]
-            ),
-            :connection => options[:connection]
-          }
-        else
-          request = {
-            :request => http_request,
-            :connection => options[:connection]
-          }
-        end
-
-        response = self.transmit(request)
+        method, uri, headers, body = batch.to_http_request
+        reference = self.generate_request({
+          :uri => uri,
+          :http_method => method,
+          :headers => headers,
+          :body => body
+        }.merge(options))        
+        response = self.transmit(:request => reference.to_http_request, :connection => options[:connection])
         batch.process_response(response)
         return nil
       else
@@ -711,14 +619,13 @@ module Google
         options[:body] = params.shift if params.size > 0
         options[:headers] = params.shift if params.size > 0
         options[:client] = self
-        options[:connection] ||= Faraday.default_connection
-        reference = Google::APIClient::Reference.new(options)
-        request = self.generate_request(reference)
+        reference = self.generate_request(options)
         response = self.transmit(
-          :request => request,
+          :request => reference.to_http_request,
           :connection => options[:connection]
         )
-        return Google::APIClient::Result.new(reference, request, response)
+        result = Google::APIClient::Result.new(reference, response)
+        return result
       end
     end
 

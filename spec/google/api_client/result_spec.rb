@@ -32,7 +32,7 @@ describe Google::APIClient::Result do
           'maxResults' => 20
         }
       })
-      @request = @reference.to_request
+      @request = @reference.to_http_request
 
       # Response stub
       @response = stub("response")
@@ -66,7 +66,7 @@ describe Google::APIClient::Result do
           }
           END_OF_STRING
         )
-        @result = Google::APIClient::Result.new(@reference, @request, @response)
+        @result = Google::APIClient::Result.new(@reference, @response)
       end
 
       it 'should indicate a successful response' do
@@ -82,7 +82,7 @@ describe Google::APIClient::Result do
         reference = @result.next_page
         Hash[reference.parameters].should include('pageToken')
         Hash[reference.parameters]['pageToken'].should == 'NEXT+PAGE+TOKEN'
-        url = reference.to_request.to_env(Faraday.default_connection)[:url]
+        url = reference.to_http_request.to_env(Faraday.default_connection)[:url]
         url.to_s.should include('pageToken=NEXT%2BPAGE%2BTOKEN')
       end
 
@@ -124,7 +124,7 @@ describe Google::APIClient::Result do
           }
           END_OF_STRING
         )
-        @result = Google::APIClient::Result.new(@reference, @request, @response)
+        @result = Google::APIClient::Result.new(@reference, @response)
       end
 
       it 'should not return a next page token' do
@@ -170,7 +170,7 @@ describe Google::APIClient::Result do
          END_OF_STRING
         )
         @response.stub(:status).and_return(400)
-        @result = Google::APIClient::Result.new(@reference, @request, @response)
+        @result = Google::APIClient::Result.new(@reference, @response)
       end
       
       it 'should return error status correctly' do
