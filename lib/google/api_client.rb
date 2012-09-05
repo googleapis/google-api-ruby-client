@@ -289,27 +289,12 @@ module Google
     # @return [Hash] The parsed JSON from the directory document.
     def directory_document
       return @directory_document ||= (begin
-        request = self.generate_request(
+        response = self.execute!(
           :http_method => :get,
           :uri => self.directory_uri,
-          :authenticated => false
+          :authorization => :none
         )
-        response = self.transmit(:request => request)
-        if response.status >= 200 && response.status < 300
-          MultiJson.load(response.body)
-        elsif response.status >= 400
-          case response.status
-          when 400...500
-            exception_type = ClientError
-          when 500...600
-            exception_type = ServerError
-          else
-            exception_type = TransmissionError
-          end
-          url = request.to_env(Faraday.default_connection)[:url]
-          raise exception_type,
-            "Could not retrieve directory document at: #{url}"
-        end
+        response.data
       end)
     end
 
@@ -323,27 +308,12 @@ module Google
       api = api.to_s
       version = version || 'v1'
       return @discovery_documents["#{api}:#{version}"] ||= (begin
-        request = self.generate_request(
+        response = self.execute!(
           :http_method => :get,
           :uri => self.discovery_uri(api, version),
-          :authenticated => false
+          :authorization => :none
         )
-        response = self.transmit(:request => request)
-        if response.status >= 200 && response.status < 300
-          MultiJson.load(response.body)
-        elsif response.status >= 400
-          case response.status
-          when 400...500
-            exception_type = ClientError
-          when 500...600
-            exception_type = ServerError
-          else
-            exception_type = TransmissionError
-          end
-          url = request.to_env(Faraday.default_connection)[:url]
-          raise exception_type,
-            "Could not retrieve discovery document at: #{url}"
-        end
+        response.data
       end)
     end
 
@@ -474,31 +444,16 @@ module Google
         if check_cached_certs.call()
           return true
         end
-        request = self.generate_request(
+        response = self.execute!(
           :http_method => :get,
           :uri => 'https://www.googleapis.com/oauth2/v1/certs',
-          :authenticated => false
+          :authorization => :none
         )
-        response = self.transmit(:request => request)
-        if response.status >= 200 && response.status < 300
-          @certificates.merge!(
-            Hash[MultiJson.load(response.body).map do |key, cert|
-              [key, OpenSSL::X509::Certificate.new(cert)]
-            end]
-          )
-        elsif response.status >= 400
-          case response.status
-          when 400...500
-            exception_type = ClientError
-          when 500...600
-            exception_type = ServerError
-          else
-            exception_type = TransmissionError
-          end
-          url = request.to_env(Faraday.default_connection)[:url]
-          raise exception_type,
-            "Could not retrieve certificates from: #{url}"
-        end
+        @certificates.merge!(
+          Hash[MultiJson.load(response.body).map do |key, cert|
+            [key, OpenSSL::X509::Certificate.new(cert)]
+          end]
+        )
         if check_cached_certs.call()
           return true
         else
@@ -558,7 +513,7 @@ module Google
       end
       reference = Google::APIClient::Reference.new(options)
       request = reference.to_request
-      if options[:authenticated]
+      if options[:authenticated] && options[:authorization].respond_to?(:generate_authenticated_request)
         request = options[:authorization].generate_authenticated_request(
           :request => request,
           :connection => options[:connection]
