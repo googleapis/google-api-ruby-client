@@ -1,4 +1,3 @@
-gem 'multi_json', '>= 1.0.0'
 require 'multi_json'
 
 unless MultiJson.respond_to?(:load)
