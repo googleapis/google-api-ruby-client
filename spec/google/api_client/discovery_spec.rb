@@ -17,15 +17,11 @@
 
 require 'spec_helper'
 
-gem 'faraday', '~> 0.8.1'
 require 'faraday'
 require 'faraday/utils'
 require 'multi_json'
 require 'compat/multi_json'
-
-gem 'signet', '~> 0.4.0'
 require 'signet/oauth_1/client'
-
 require 'google/api_client'
 require 'google/api_client/version'
 

@@ -13,7 +13,6 @@
 # limitations under the License.
 
 
-gem 'faraday', '~> 0.8.1'
 require 'faraday'
 require 'faraday/utils'
 require 'multi_json'
@@ -114,7 +113,6 @@ module Google
     def authorization=(new_authorization)
       case new_authorization
       when :oauth_1, :oauth
-        gem 'signet', '~> 0.4.0'
         require 'signet/oauth_1/client'
         # NOTE: Do not rely on this default value, as it may change
         new_authorization = Signet::OAuth1::Client.new(
@@ -128,7 +126,6 @@ module Google
           :client_credential_secret => 'anonymous'
         )
       when :two_legged_oauth_1, :two_legged_oauth
-        gem 'signet', '~> 0.4.0'
         require 'signet/oauth_1/client'
         # NOTE: Do not rely on this default value, as it may change
         new_authorization = Signet::OAuth1::Client.new(
@@ -137,7 +134,6 @@ module Google
           :two_legged => true
         )
       when :oauth_2
-        gem 'signet', '~> 0.4.0'
         require 'signet/oauth_2/client'
         # NOTE: Do not rely on this default value, as it may change
         new_authorization = Signet::OAuth2::Client.new(
@@ -449,7 +445,6 @@ module Google
     # an ID token supplied by an untrusted client-side mechanism is valid.
     # Raises an error if the token is invalid or missing.
     def verify_id_token!
-      gem 'jwt', '~> 0.1.4'
       require 'jwt'
       require 'openssl'
       @certificates ||= {}

@@ -10,11 +10,8 @@ OAUTH_SERVER_PORT = 12736
 
 require 'rubygems'
 require 'optparse'
-
-gem 'faraday', '~> 0.8.1'
 require 'faraday'
 require 'faraday/utils'
-
 require 'webrick'
 require 'google/api_client/version'
 require 'google/api_client'
@@ -187,7 +184,6 @@ HTML
       end
 
       def client
-        gem 'signet', '~> 0.4.0'
         require 'signet/oauth_1/client'
         require 'yaml'
         require 'irb'
@@ -281,7 +277,6 @@ HTML
       ]
 
       def oauth_1_login
-        gem 'signet', '~> 0.4.0'
         require 'signet/oauth_1/client'
         require 'launchy'
         require 'yaml'
@@ -349,7 +344,6 @@ HTML
       end
 
       def oauth_2_login
-        gem 'signet', '~> 0.4.0'
         require 'signet/oauth_2/client'
         require 'launchy'
         require 'yaml'
@@ -471,9 +465,8 @@ HTML
           method = options[:http_method]
           method ||= request_body == '' ? 'GET' : 'POST'
           method.upcase!
-          request = [method, uri.to_str, headers, [request_body]]
-          request = client.generate_authenticated_request(:request => request)
-          response = client.transmit(request)
+          response = client.execute(:http_method => method, :uri => uri.to_str, 
+            :headers => headers, :body => request_body)
           puts response.body
           exit(0)
         else
