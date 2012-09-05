@@ -390,7 +390,8 @@ describe Google::APIClient do
       end).should raise_error(ArgumentError)
     end
   end
-
+  
+=begin
   describe 'with the latitude API' do
     before do
       CLIENT.authorization = nil
@@ -453,6 +454,7 @@ describe Google::APIClient do
       result.response.status.should == 401
     end
   end
+=end
 
   describe 'with the moderator API' do
     before do
