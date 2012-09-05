@@ -240,7 +240,7 @@ module Google
         return options[:connection].build_request(
           method.to_s.downcase.to_sym
         ) do |req|
-          req.url(Addressable::URI.parse(uri).normalize.to_s)
+          req.url(Addressable::URI.parse(uri).to_s)
           req.headers = Faraday::Utils::Headers.new(headers)
           req.body = body
         end
