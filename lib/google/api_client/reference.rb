@@ -20,28 +20,32 @@ require 'addressable/uri'
 require 'stringio'
 require 'google/api_client/discovery'
 
-# TODO - needs some serious cleanup
-
 module Google
   class APIClient
-    class Reference
-      MULTIPART_BOUNDARY = "-----------RubyApiMultipartPost".freeze
 
+    class Request
+      MULTIPART_BOUNDARY = "-----------RubyApiMultipartPost".freeze
+      
+      attr_reader :connection, :parameters,  :api_method, :headers
+      attr_accessor :media, :authorization, :body
+      
       def initialize(options={})
 
         self.connection = options[:connection] || Faraday.default_connection
         self.authorization = options[:authorization]
         self.api_method = options[:api_method]
         
-        self.parameters = options[:parameters] || {}
+        @parameters = Hash[options[:parameters] || {}]
         # These parameters are handled differently because they're not
         # parameters to the API method, but rather to the API system.
         self.parameters['key'] ||= options[:key] if options[:key]
         self.parameters['userIp'] ||= options[:user_ip] if options[:user_ip]
 
-        self.headers = options[:headers] || {}
+        @headers = Faraday::Utils::Headers.new
+        self.headers.merge!(options[:headers]) if options[:headers]
+        
         if options[:media]
-          self.initialize_media_upload
+          self.initialize_media_upload(options)
         elsif options[:body]
           self.body = options[:body]
         elsif options[:body_object]
@@ -50,6 +54,7 @@ module Google
         else
           self.body = ''
         end
+        
         unless self.api_method
           self.http_method = options[:http_method] || 'GET'
           self.uri = options[:uri]
@@ -59,7 +64,7 @@ module Google
         end
       end
 
-      def initialize_media_upload
+      def initialize_media_upload(options)
         self.media = options[:media]
         case self.upload_type
         when "media"
@@ -73,15 +78,7 @@ module Google
             raise ArgumentError, "Multipart requested but no body object"              
           end
           metadata = StringIO.new(serialize_body(options[:body_object]))
-          env = {
-            :request_headers => {'Content-Type' => "multipart/related;boundary=#{MULTIPART_BOUNDARY}"},
-            :request => { :boundary => MULTIPART_BOUNDARY }
-          }
-          multipart = Faraday::Request::Multipart.new
-          self.body = multipart.create_multipart(env, [
-            [nil,Faraday::UploadIO.new(metadata, 'application/json', 'file.json')], 
-            [nil, self.media]])
-          self.headers.update(env[:request_headers])
+          build_multipart([Faraday::UploadIO.new(metadata, 'application/json', 'file.json'), self.media])
         when "resumable"
           file_length = self.media.length
           self.headers['X-Upload-Content-Type'] = self.media.content_type
@@ -92,11 +89,19 @@ module Google
           else
             self.body = ''
           end
-        else
-          raise ArgumentError, "Invalid uploadType for media"
         end
       end
-
+      
+      def build_multipart(parts, mime_type = 'multipart/related', boundary = MULTIPART_BOUNDARY) 
+        env = {
+          :request_headers => {'Content-Type' => "#{mime_type};boundary=#{boundary}"},
+          :request => { :boundary => boundary }
+        }
+        multipart = Faraday::Request::Multipart.new
+        self.body = multipart.create_multipart(env, parts.map {|part| [nil, part]})
+        self.headers.update(env[:request_headers])
+      end
+      
       def serialize_body(body)
         return body.to_json if body.respond_to?(:to_json)
         return MultiJson.dump(options[:body_object].to_hash) if body.respond_to?(:to_hash)
@@ -104,28 +109,8 @@ module Google
                          'Must respond to :to_json or :to_hash.'
       end
 
-      def media
-        return @media
-      end
-
-      def media=(media)
-        @media = (media)
-      end
-      
       def upload_type
         return self.parameters['uploadType'] || self.parameters['upload_type']
-      end
-
-      def authorization
-        return @authorization
-      end
-
-      def authorization=(new_authorization)
-        @authorization = new_authorization
-      end
-
-      def connection
-        return @connection
       end
 
       def connection=(new_connection)
@@ -135,10 +120,6 @@ module Google
           raise TypeError,
             "Expected Faraday::Connection, got #{new_connection.class}."
         end
-      end
-
-      def api_method
-        return @api_method
       end
 
       def api_method=(new_api_method)
@@ -151,36 +132,8 @@ module Google
         end
       end
 
-      def parameters
-        return @parameters
-      end
-
-      def parameters=(new_parameters)
-        @parameters = Hash[new_parameters]
-      end
-
-      def body
-        return @body
-      end
-
-      def body=(new_body)
-        @body = new_body
-      end
-
-      def headers
-        return @headers ||= {}
-      end
-
-      def headers=(new_headers)
-        if new_headers.kind_of?(Array) || new_headers.kind_of?(Hash)
-          @headers = new_headers
-        else
-          raise TypeError, "Expected Hash or Array, got #{new_headers.class}."
-        end
-      end
-
       def http_method
-        return @http_method ||= self.api_method.http_method
+        return @http_method ||= self.api_method.http_method.to_s.downcase.to_sym
       end
 
       def http_method=(new_http_method)
@@ -204,16 +157,16 @@ module Google
 
       def to_http_request
         request = ( 
-          if self.api_method
-            self.api_method.generate_request(
-              self.parameters, self.body, self.headers, :connection => self.connection
-            )
-          else
+          if self.uri
             self.connection.build_request(self.http_method) do |req|
               req.url(self.uri.to_str)
               req.headers.update(self.headers)
               req.body = self.body
             end
+          else
+            self.api_method.generate_request(
+              self.parameters, self.body, self.headers, :connection => self.connection
+            )
           end)
         
         if self.authorization.respond_to?(:generate_authenticated_request)
@@ -237,11 +190,19 @@ module Google
         options[:headers] = self.headers
         options[:body] = self.body
         options[:connection] = self.connection
+        options[:media] = self.media
         unless self.authorization.nil?
           options[:authorization] = self.authorization
         end
         return options
       end
+      
+      def process_response(response)
+        Result.new(self, response)
+      end
+    end
+  
+    class Reference < Request
     end
   end
 end

@@ -527,7 +527,7 @@ module Google
         :connection => Faraday.default_connection
       }.merge(options)
       
-      options[:api_method] = self.normalize_api_method(options)
+      options[:api_method] = self.normalize_api_method(options) unless options[:api_method].nil?
       return Google::APIClient::Reference.new(options)
     end
 
@@ -589,20 +589,9 @@ module Google
     #
     # @see Google::APIClient#generate_request
     def execute(*params)
-      if params.last.kind_of?(Google::APIClient::BatchRequest) &&
+      if params.last.kind_of?(Google::APIClient::Request) &&
           params.size == 1
-        batch = params.pop
-        options = batch.options
-        method, uri, headers, body = batch.to_http_request
-        reference = self.generate_request({
-          :uri => uri,
-          :http_method => method,
-          :headers => headers,
-          :body => body
-        }.merge(options))        
-        response = self.transmit(:request => reference.to_http_request, :connection => options[:connection])
-        batch.process_response(response)
-        return nil
+        request = params.pop
       else
         # This block of code allows us to accept multiple parameter passing
         # styles, and maintaining some backwards compatibility.
@@ -619,14 +608,18 @@ module Google
         options[:body] = params.shift if params.size > 0
         options[:headers] = params.shift if params.size > 0
         options[:client] = self
-        reference = self.generate_request(options)
-        response = self.transmit(
-          :request => reference.to_http_request,
-          :connection => options[:connection]
-        )
-        result = Google::APIClient::Result.new(reference, response)
-        return result
+        request = self.generate_request(options)
       end
+      response = self.transmit(:request => request.to_http_request, :connection => Faraday.default_connection)
+      result = request.process_response(response)
+      if request.upload_type == 'resumable'
+        upload =  result.resumable_upload
+        unless upload.complete?
+          response = self.transmit(:request => upload.to_http_request, :connection => Faraday.default_connection)
+          result = upload.process_response(response)
+        end
+      end
+      return result
     end
 
     ##
