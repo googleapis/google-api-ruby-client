@@ -21,6 +21,7 @@ module Google
       def initialize(reference, response)
         @reference = reference
         @response = response
+        @media_upload = reference if reference.kind_of?(ResumableUpload)
       end
 
       attr_reader :reference
@@ -39,8 +40,14 @@ module Google
         return @response.body
       end
 
-      def resumable_upload
-        @media_upload ||= Google::APIClient::ResumableUpload.new(self, reference.media, self.headers['location'])
+      def resumable_upload        
+        @media_upload ||= (
+          options = self.reference.to_hash.merge(
+            :uri => self.headers['location'],
+            :media => self.reference.media
+          )
+          Google::APIClient::ResumableUpload.new(options)
+        )
       end
       
       def media_type
@@ -124,10 +131,10 @@ module Google
         merged_parameters = Hash[self.reference.parameters].merge({
           self.page_token_param => self.next_page_token
         })
-        # Because References can be coerced to Hashes, we can merge them,
+        # Because Requests can be coerced to Hashes, we can merge them,
         # preserving all context except the API method parameters that we're
         # using for pagination.
-        return Google::APIClient::Reference.new(
+        return Google::APIClient::Request.new(
           Hash[self.reference].merge(:parameters => merged_parameters)
         )
       end
@@ -146,10 +153,10 @@ module Google
         merged_parameters = Hash[self.reference.parameters].merge({
           self.page_token_param => self.prev_page_token
         })
-        # Because References can be coerced to Hashes, we can merge them,
+        # Because Requests can be coerced to Hashes, we can merge them,
         # preserving all context except the API method parameters that we're
         # using for pagination.
-        return Google::APIClient::Reference.new(
+        return Google::APIClient::Request.new(
           Hash[self.reference].merge(:parameters => merged_parameters)
         )
       end
