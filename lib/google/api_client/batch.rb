@@ -40,8 +40,7 @@ module Google
       # Creates a new batch request.
       #
       # @param [Hash] options
-      #   Set of options for this request, the only important one being
-      #   :connection, which specifies an HTTP connection to use.
+      #   Set of options for this request
       # @param [Proc] block
       #   Callback for every call's response. Won't be called if a call defined
       #   a callback of its own.
@@ -67,7 +66,7 @@ module Google
       # automatically be generated, avoiding collisions. If duplicate call IDs
       # are provided, an error will be thrown.
       #
-      # @param [Hash, Google::APIClient::Reference] call: the call to be added.
+      # @param [Hash, Google::APIClient::Request] call: the call to be added.
       # @param [String] call_id: the ID to be used for this call. Must be unique
       # @param [Proc] block: callback for this call's response.
       #
@@ -90,7 +89,7 @@ module Google
       # Processes the HTTP response to the batch request, issuing callbacks.
       #
       # @param [Faraday::Response] response: the HTTP response.
-      def process_response(response)
+      def process_http_response(response)
         content_type = find_header('Content-Type', response.headers)
         boundary = /.*boundary=(.+)/.match(content_type)[1]
         parts = response.body.split(/--#{Regexp.escape(boundary)}/)
@@ -212,21 +211,22 @@ module Google
       #
       # @return [StringIO] The request as a string in application/http format.
       def serialize_call(call_id, call)
-        http_request = call.to_http_request
-        body = "#{http_request.method.to_s.upcase} #{http_request.path} HTTP/1.1"
-        http_request.headers.each do |header, value|
-          body << "\r\n%s: %s" % [header, value]
+        call.api_client = self.api_client
+        method, uri, headers, body = call.to_http_request
+        request = "#{method.to_s.upcase} #{Addressable::URI.parse(uri).path} HTTP/1.1"
+        headers.each do |header, value|
+          request << "\r\n%s: %s" % [header, value]
         end
-        if http_request.body
+        if body
           # TODO - CompositeIO if body is a stream 
-          body << "\r\n\r\n"
-          if http_request.body.respond_to?(:read)
-            body << http_request.body.read
+          request << "\r\n\r\n"
+          if body.respond_to?(:read)
+            request << body.read
           else
-            body << http_request.body.to_s
+            request << body.to_s
           end
         end
-        Faraday::UploadIO.new(StringIO.new(body), 'application/http', 'ruby-api-request', 'Content-ID' => id_to_header(call_id))
+        Faraday::UploadIO.new(StringIO.new(request), 'application/http', 'ruby-api-request', 'Content-ID' => id_to_header(call_id))
       end
       
       ##

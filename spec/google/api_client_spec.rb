@@ -21,6 +21,8 @@ require 'google/api_client'
 require 'google/api_client/version'
 
 shared_examples_for 'configurable user agent' do
+  include ConnectionHelpers
+  
   it 'should allow the user agent to be modified' do
     client.user_agent = 'Custom User Agent/1.2.3'
     client.user_agent.should == 'Custom User Agent/1.2.3'
@@ -34,16 +36,14 @@ shared_examples_for 'configurable user agent' do
   it 'should not allow the user agent to be used with bogus values' do
     (lambda do
       client.user_agent = 42
-      client.transmit(
-        ['GET', 'http://www.google.com/', [], []]
-      )
+      client.execute(:uri=>'http://www.google.com/')
     end).should raise_error(TypeError)
   end
 
   it 'should transmit a User-Agent header when sending requests' do
     client.user_agent = 'Custom User Agent/1.2.3'
 
-    stubs = Faraday::Adapter::Test::Stubs.new do |stub|
+    conn = stub_connection do |stub|
       stub.get('/') do |env|
         headers = env[:request_headers]
         headers.should have_key('User-Agent')
@@ -51,18 +51,14 @@ shared_examples_for 'configurable user agent' do
         [200, {}, ['']]
       end
     end
-    connection = Faraday.new(:url => 'https://www.google.com') do |builder|
-      builder.adapter(:test, stubs)
-    end
-    request = connection.build_request(:get) do |req|
-      req.url('http://www.google.com/')
-    end
-    client.transmit(:request => request, :connection => connection)
-    stubs.verify_stubbed_calls
+    client.execute(:uri=>'http://www.google.com/', :connection => conn)
+    conn.verify
   end
 end
 
 describe Google::APIClient do
+  include ConnectionHelpers
+
   let(:client) { Google::APIClient.new }
 
   it 'should make its version number available' do
@@ -73,11 +69,18 @@ describe Google::APIClient do
     Signet::OAuth2::Client.should === client.authorization
   end
 
-  it_should_behave_like 'configurable user agent'
-
+  describe 'configure for no authentication' do
+    before do
+      client.authorization = nil
+    end
+    it_should_behave_like 'configurable user agent'
+  end
+    
   describe 'configured for OAuth 1' do
     before do
       client.authorization = :oauth_1
+      client.authorization.token_credential_key = 'abc'
+      client.authorization.token_credential_secret = '123'
     end
 
     it 'should use the default OAuth1 client configuration' do
@@ -98,6 +101,7 @@ describe Google::APIClient do
   describe 'configured for OAuth 2' do
     before do
       client.authorization = :oauth_2
+      client.authorization.access_token = '12345'
     end
 
     # TODO
@@ -107,13 +111,10 @@ describe Google::APIClient do
   describe 'when executing requests' do
     before do
       client.authorization = :oauth_2
-      @connection = Faraday.new(:url => 'https://www.googleapis.com') do |builder|
-        stubs = Faraday::Adapter::Test::Stubs.new do |stub|
-          stub.get('/test') do |env|
-            env[:request_headers]['Authorization'].should == 'Bearer 12345'
-          end
+      @connection = stub_connection do |stub|
+        stub.get('/test') do |env|
+          env[:request_headers]['Authorization'].should == 'Bearer 12345'
         end
-        builder.adapter(:test, stubs)
       end
     end
      

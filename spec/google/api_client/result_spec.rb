@@ -82,7 +82,7 @@ describe Google::APIClient::Result do
         reference = @result.next_page
         Hash[reference.parameters].should include('pageToken')
         Hash[reference.parameters]['pageToken'].should == 'NEXT+PAGE+TOKEN'
-        url = reference.to_http_request.to_env(Faraday.default_connection)[:url]
+        url = reference.to_env(Faraday.default_connection)[:url]
         url.to_s.should include('pageToken=NEXT%2BPAGE%2BTOKEN')
       end
 

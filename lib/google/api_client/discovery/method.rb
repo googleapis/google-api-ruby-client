@@ -222,21 +222,14 @@ module Google
       #   The HTTP connection to use.
       #
       # @return [Array] The generated HTTP request.
-      def generate_request(parameters={}, body='', headers=[], options={})
-        options[:connection] ||= Faraday.default_connection
+      def generate_request(parameters={}, body='', headers={}, options={})
         if !headers.kind_of?(Array) && !headers.kind_of?(Hash)
           raise TypeError, "Expected Hash or Array, got #{headers.class}."
         end
-        method = self.http_method
+        method = self.http_method.to_s.downcase.to_sym
         uri = self.generate_uri(parameters)
-        headers = headers.to_a if headers.kind_of?(Hash)
-        return options[:connection].build_request(
-          method.to_s.downcase.to_sym
-        ) do |req|
-          req.url(Addressable::URI.parse(uri).to_s)
-          req.headers = Faraday::Utils::Headers.new(headers)
-          req.body = body
-        end
+        headers = Faraday::Utils::Headers.new(headers)
+        return [method, uri, headers, body]
       end
 
 
