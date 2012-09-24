@@ -17,46 +17,31 @@ APIs.
 
 # Example Usage
 
-    # Initialize the client
+    # Initialize the client & Google+ API
     require 'google/api_client'
-    require 'signet/oauth_1/client'
-    client = Google::APIClient.new(
-      :service => 'buzz',
-      # Buzz has API-specific endpoints
-      :authorization => Signet::OAuth1::Client.new(
-        :temporary_credential_uri =>
-          'https://www.google.com/accounts/OAuthGetRequestToken',
-        :authorization_uri =>
-          'https://www.google.com/buzz/api/auth/OAuthAuthorizeToken',
-        :token_credential_uri =>
-          'https://www.google.com/accounts/OAuthGetAccessToken',
-        :client_credential_key => 'anonymous',
-        :client_credential_secret => 'anonymous'
-      )
-    )
-    client.authorization.fetch_temporary_credential!(
-      :additional_parameters => {
-        'scope' => 'https://www.googleapis.com/auth/buzz'
-      }
-    )
-    redirect_uri = client.authorization.authorization_uri(
-      :additional_parameters => {
-        'domain' => client.authorization.client_credential_key,
-        'scope' => 'https://www.googleapis.com/auth/buzz'
-      }
-    )
-    # Redirect user here
-    client.authorization.fetch_token_credential!(:verifier => '12345')
+    client = Google::APIClient.new
+    plus = client.discovered_api('plus')
+
+    # Initialize OAuth 2.0 client    
+    client.authorization.client_id = '<CLIENT_ID_FROM_API_CONSOLE>'
+    client.authorization.client_secret = '<CLIENT_SECRET>'
+    client.authorization.scope = 'https://www.googleapis.com/auth/plus.me'
     
-    # Discover available methods
-    method_names = client.discovered_api('plus').to_h.keys
+    # Request authorization
+    redirect_uri = client.authorization.authorization_uri
+
+    # Wait for authorization code then exchange for token
+    client.authorization.code = '....'
+    client.authorization.fetch_access_token!
     
     # Make an API call
     result = client.execute(
-      'plus.activities.list',
-      {'collection' => 'public', 'userId' => 'me'}
+      :api_method => plus.activities.list'
+      :parameters => {'collection' => 'public', 'userId' => 'me'}
     )
 
+    puts result.data
+    
 # Install
 
 Be sure `http://rubygems.org/` is in your gem sources.
