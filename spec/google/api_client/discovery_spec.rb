@@ -25,7 +25,24 @@ require 'signet/oauth_1/client'
 require 'google/api_client'
 require 'google/api_client/version'
 
+def TestHandler
+  def initialize(&block)
+    @block = block
+  end
+  
+  def call(env)
+    @block.call(env)
+  end
+end
+
+def mock_connection(&block)
+    connection = Faraday.new do |builder|
+      use TestHandler block
+  end
+end
+
 describe Google::APIClient do
+  include ConnectionHelpers
   CLIENT ||= Google::APIClient.new
 
   after do
@@ -63,7 +80,7 @@ describe Google::APIClient do
 
   it 'should raise an error for bogus methods' do
     (lambda do
-      CLIENT.generate_request(42)
+      CLIENT.execute(42)
     end).should raise_error(TypeError)
   end
 
@@ -86,44 +103,49 @@ describe Google::APIClient do
 
     it 'should correctly determine the discovery URI if :user_ip is set' do
       CLIENT.user_ip = '127.0.0.1'
-      request = CLIENT.generate_request(
+      
+      conn = stub_connection do |stub|
+        stub.get('/discovery/v1/apis/prediction/v1.2/rest?userIp=127.0.0.1') do |env|
+        end
+      end
+      CLIENT.execute(
         :http_method => 'GET',
         :uri => CLIENT.discovery_uri('prediction', 'v1.2'),
-        :authenticated => false
+        :authenticated => false,
+        :connection => conn
       )
-      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should === (
-        'https://www.googleapis.com/discovery/v1/apis/prediction/v1.2/rest' +
-        '?userIp=127.0.0.1'
-      )
+      conn.verify
     end
 
     it 'should correctly determine the discovery URI if :key is set' do
       CLIENT.key = 'qwerty'
-      request = CLIENT.generate_request(
+      conn = stub_connection do |stub|
+        stub.get('/discovery/v1/apis/prediction/v1.2/rest?key=qwerty') do |env|
+        end
+      end
+      request = CLIENT.execute(
         :http_method => 'GET',
         :uri => CLIENT.discovery_uri('prediction', 'v1.2'),
-        :authenticated => false
-      )
-      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should === (
-        'https://www.googleapis.com/discovery/v1/apis/prediction/v1.2/rest' +
-        '?key=qwerty'
-      )
+        :authenticated => false,
+        :connection => conn
+        )
+        conn.verify
     end
 
     it 'should correctly determine the discovery URI if both are set' do
       CLIENT.key = 'qwerty'
       CLIENT.user_ip = '127.0.0.1'
-      request = CLIENT.generate_request(
+      conn = stub_connection do |stub|
+        stub.get('/discovery/v1/apis/prediction/v1.2/rest?key=qwerty&userIp=127.0.0.1') do |env|
+        end
+      end
+      request = CLIENT.execute(
         :http_method => 'GET',
         :uri => CLIENT.discovery_uri('prediction', 'v1.2'),
-        :authenticated => false
-      )
-      Addressable::URI.parse(
-        request.to_http_request.to_env(Faraday.default_connection)[:url]
-      ).query_values.should == {
-        'key' => 'qwerty',
-        'userIp' => '127.0.0.1'
-      }
+        :authenticated => false,
+        :connection => conn
+        )
+        conn.verify
     end
 
     it 'should correctly generate API objects' do
@@ -165,7 +187,7 @@ describe Google::APIClient do
 
     it 'should raise an error for bogus methods' do
       (lambda do
-        CLIENT.generate_request(CLIENT.discovered_api('prediction', 'v1.2'))
+        CLIENT.execute(:api_method => CLIENT.discovered_api('prediction', 'v1.2'))
       end).should raise_error(TypeError)
     end
 
@@ -179,43 +201,57 @@ describe Google::APIClient do
     end
 
     it 'should generate valid requests' do
-      request = CLIENT.generate_request(
+      conn = stub_connection do |stub|
+        stub.post('/prediction/v1.2/training?data=12345') do |env|
+          env[:body].should == ''
+        end
+      end
+      request = CLIENT.execute(
         :api_method => @prediction.training.insert,
-        :parameters => {'data' => '12345'}
+        :parameters => {'data' => '12345'},
+        :connection => conn
       )
-      request.to_http_request.method.should == :post
-      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
-        'https://www.googleapis.com/prediction/v1.2/training?data=12345'
-      request.headers.should be_empty
-      request.body.should == ''
+      conn.verify
     end
 
     it 'should generate valid requests when repeated parameters are passed' do
-      request = CLIENT.generate_request(
+      conn = stub_connection do |stub|
+         stub.post('/prediction/v1.2/training?data=1&data=2') do |env|
+           env[:params]['data'].should include('1', '2')
+         end
+       end
+      request = CLIENT.execute(
         :api_method => @prediction.training.insert,
-        :parameters => [['data', '1'], ['data','2']]
+        :parameters => [['data', '1'], ['data','2']],
+        :connection => conn
       )
-      request.to_http_request.method.should == :post
-      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
-        'https://www.googleapis.com/prediction/v1.2/training?data=1&data=2'
+      conn.verify
     end
 
     it 'should generate requests against the correct URIs' do
-      request = CLIENT.generate_request(
+      conn = stub_connection do |stub|
+         stub.post('/prediction/v1.2/training?data=12345') do |env|
+         end
+       end
+      request = CLIENT.execute(
         :api_method => @prediction.training.insert,
-        :parameters => {'data' => '12345'}
+        :parameters => {'data' => '12345'},
+        :connection => conn
       )
-      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
-        'https://www.googleapis.com/prediction/v1.2/training?data=12345'
+      conn.verify
     end
 
     it 'should generate requests against the correct URIs' do
-      request = CLIENT.generate_request(
+      conn = stub_connection do |stub|
+        stub.post('/prediction/v1.2/training?data=12345') do |env|
+        end
+      end
+      request = CLIENT.execute(
         :api_method => @prediction.training.insert,
-        :parameters => {'data' => '12345'}
+        :parameters => {'data' => '12345'},
+        :connection => conn
       )
-      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
-        'https://www.googleapis.com/prediction/v1.2/training?data=12345'
+      conn.verify
     end
 
     it 'should allow modification to the base URIs for testing purposes' do
@@ -224,39 +260,58 @@ describe Google::APIClient do
         Google::APIClient.new.discovered_api('prediction', 'v1.2')
       prediction_rebase.method_base =
         'https://testing-domain.example.com/prediction/v1.2/'
-      request = CLIENT.generate_request(
+
+      conn = stub_connection do |stub|
+        stub.post('/prediction/v1.2/training') do |env|
+          env[:url].host.should == 'testing-domain.example.com'
+        end
+      end
+        
+      request = CLIENT.execute(
         :api_method => prediction_rebase.training.insert,
-        :parameters => {'data' => '123'}
+        :parameters => {'data' => '123'},
+        :connection => conn
       )
-      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should === (
-        'https://testing-domain.example.com/' +
-        'prediction/v1.2/training?data=123'
-      )
+      conn.verify
     end
 
     it 'should generate OAuth 1 requests' do
       CLIENT.authorization = :oauth_1
       CLIENT.authorization.token_credential_key = '12345'
       CLIENT.authorization.token_credential_secret = '12345'
-      request = CLIENT.generate_request(
+
+      conn = stub_connection do |stub|
+        stub.post('/prediction/v1.2/training?data=12345') do |env|
+          env[:request_headers].should have_key('Authorization')
+          env[:request_headers]['Authorization'].should =~ /^OAuth/
+        end
+      end
+
+      request = CLIENT.execute(
         :api_method => @prediction.training.insert,
-        :parameters => {'data' => '12345'}
+        :parameters => {'data' => '12345'},
+        :connection => conn
       )
-      http_request = request.to_http_request
-      http_request.headers.should have_key('Authorization')
-      http_request.headers['Authorization'].should =~ /^OAuth/
+      conn.verify
     end
 
     it 'should generate OAuth 2 requests' do
       CLIENT.authorization = :oauth_2
       CLIENT.authorization.access_token = '12345'
-      request = CLIENT.generate_request(
+
+      conn = stub_connection do |stub|
+        stub.post('/prediction/v1.2/training?data=12345') do |env|
+          env[:request_headers].should have_key('Authorization')
+          env[:request_headers]['Authorization'].should =~ /^Bearer/
+        end
+      end
+
+      request = CLIENT.execute(
         :api_method => @prediction.training.insert,
-        :parameters => {'data' => '12345'}
+        :parameters => {'data' => '12345'},
+        :connection => conn
       )
-      http_request = request.to_http_request
-      http_request.headers.should have_key('Authorization')
-      http_request.headers['Authorization'].should =~ /^Bearer/
+      conn.verify
     end
 
     it 'should not be able to execute improperly authorized requests' do
@@ -304,15 +359,21 @@ describe Google::APIClient do
     end
 
     it 'should correctly handle unnamed parameters' do
+      conn = stub_connection do |stub|
+        stub.post('/prediction/v1.2/training') do |env|
+          env[:request_headers].should have_key('Content-Type')
+          env[:request_headers]['Content-Type'].should == 'application/json'
+        end
+      end
       CLIENT.authorization = :oauth_2
       CLIENT.authorization.access_token = '12345'
-      result = CLIENT.execute(
-        @prediction.training.insert,
-        {},
-        MultiJson.dump({"id" => "bucket/object"}),
-        {'Content-Type' => 'application/json'}
+      CLIENT.execute(
+        :api_method => @prediction.training.insert,
+        :body => MultiJson.dump({"id" => "bucket/object"}),
+        :headers => {'Content-Type' => 'application/json'},
+        :connection => conn
       )
-      result.reference.to_http_request.headers['Content-Type'].should == 'application/json'
+      conn.verify
     end
   end
 
@@ -352,38 +413,42 @@ describe Google::APIClient do
     end
 
     it 'should generate requests against the correct URIs' do
-      request = CLIENT.generate_request(
+      conn = stub_connection do |stub|
+        stub.get('/plus/v1/people/107807692475771887386/activities/public' +
+                  '?collection=public&userId=107807692475771887386') do |env|
+        end
+      end
+      
+      request = CLIENT.execute(
         :api_method => @plus.activities.list,
         :parameters => {
           'userId' => '107807692475771887386', 'collection' => 'public'
         },
-        :authenticated => false
+        :authenticated => false,
+        :connection => conn
       )
-      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should === (
-        'https://www.googleapis.com/plus/v1/' +
-        'people/107807692475771887386/activities/public'
-      )
+      conn.verify
     end
 
     it 'should correctly validate parameters' do
       (lambda do
-        CLIENT.generate_request(
+        CLIENT.execute(
           :api_method => @plus.activities.list,
           :parameters => {'alt' => 'json'},
           :authenticated => false
-        ).to_http_request
+        )
       end).should raise_error(ArgumentError)
     end
 
     it 'should correctly validate parameters' do
       (lambda do
-        CLIENT.generate_request(
+        CLIENT.execute(
           :api_method => @plus.activities.list,
           :parameters => {
             'userId' => '107807692475771887386', 'collection' => 'bogus'
           },
           :authenticated => false
-        ).to_http_request
+        ).to_env(Faraday.default_connection)
       end).should raise_error(ArgumentError)
     end
   end
@@ -430,7 +495,7 @@ describe Google::APIClient do
         :api_method => 'latitude.currentLocation.get',
         :authenticated => false
       )
-      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
+      request.to_env(Faraday.default_connection)[:url].to_s.should ===
         'https://www.googleapis.com/latitude/v1/currentLocation'
     end
 
@@ -439,7 +504,7 @@ describe Google::APIClient do
         :api_method => @latitude.current_location.get,
         :authenticated => false
       )
-      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
+      request.to_env(Faraday.default_connection)[:url].to_s.should ===
         'https://www.googleapis.com/latitude/v1/currentLocation'
     end
 
@@ -490,21 +555,29 @@ describe Google::APIClient do
     end
 
     it 'should generate requests against the correct URIs' do
-      request = CLIENT.generate_request(
+      conn = stub_connection do |stub|
+        stub.get('/moderator/v1/profiles/@me') do |env|
+        end
+      end
+      request = CLIENT.execute(
         :api_method => 'moderator.profiles.get',
-        :authenticated => false
+        :authenticated => false,
+        :connection => conn
       )
-      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
-        'https://www.googleapis.com/moderator/v1/profiles/@me'
+      conn.verify
     end
 
     it 'should generate requests against the correct URIs' do
-      request = CLIENT.generate_request(
+      conn = stub_connection do |stub|
+        stub.get('/moderator/v1/profiles/@me') do |env|
+        end
+      end
+      request = CLIENT.execute(
         :api_method => @moderator.profiles.get,
-        :authenticated => false
+        :authenticated => false,
+        :connection => conn
       )
-      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
-        'https://www.googleapis.com/moderator/v1/profiles/@me'
+      conn.verify
     end
 
     it 'should not be able to execute requests without authorization' do
@@ -550,21 +623,29 @@ describe Google::APIClient do
     end
 
     it 'should generate requests against the correct URIs' do
-      request = CLIENT.generate_request(
+      conn = stub_connection do |stub|
+        stub.get('/adsense/v1/adclients') do |env|
+        end
+      end
+      request = CLIENT.execute(
         :api_method => 'adsense.adclients.list',
-        :authenticated => false
+        :authenticated => false,
+        :connection => conn
       )
-      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
-        'https://www.googleapis.com/adsense/v1/adclients'
+      conn.verify
     end
 
     it 'should generate requests against the correct URIs' do
-      request = CLIENT.generate_request(
+      conn = stub_connection do |stub|
+        stub.get('/adsense/v1/adclients') do |env|
+        end
+      end
+      request = CLIENT.execute(
         :api_method => @adsense.adclients.list,
-        :authenticated => false
+        :authenticated => false,
+        :connection => conn
       )
-      request.to_http_request.to_env(Faraday.default_connection)[:url].to_s.should ===
-        'https://www.googleapis.com/adsense/v1/adclients'
+      conn.verify
     end
 
     it 'should not be able to execute requests without authorization' do
@@ -577,16 +658,20 @@ describe Google::APIClient do
 
     it 'should fail when validating missing required parameters' do
       (lambda do
-        CLIENT.generate_request(
+        CLIENT.execute(
           :api_method => @adsense.reports.generate,
           :authenticated => false
-        ).to_http_request
+        )
       end).should raise_error(ArgumentError)
     end
 
     it 'should succeed when validating parameters in a correct call' do
+      conn = stub_connection do |stub|
+        stub.get('/adsense/v1/reports?dimension=DATE&endDate=2010-01-01&metric=PAGE_VIEWS&startDate=2000-01-01') do |env|
+        end
+      end
       (lambda do
-        CLIENT.generate_request(
+        CLIENT.execute(
           :api_method => @adsense.reports.generate,
           :parameters => {
             'startDate' => '2000-01-01',
@@ -594,14 +679,16 @@ describe Google::APIClient do
             'dimension' => 'DATE',
             'metric' => 'PAGE_VIEWS'
           },
-          :authenticated => false
-        ).to_http_request
+          :authenticated => false,
+          :connection => conn
+        )
       end).should_not raise_error
+      conn.verify
     end
 
     it 'should fail when validating parameters with invalid values' do
       (lambda do
-        CLIENT.generate_request(
+        CLIENT.execute(
           :api_method => @adsense.reports.generate,
           :parameters => {
             'startDate' => '2000-01-01',
@@ -610,13 +697,19 @@ describe Google::APIClient do
             'metric' => 'PAGE_VIEWS'
           },
           :authenticated => false
-        ).to_http_request
+        )
       end).should raise_error(ArgumentError)
     end
 
     it 'should succeed when validating repeated parameters in a correct call' do
+      conn = stub_connection do |stub|
+        stub.get('/adsense/v1/reports?dimension%5B%5D=DATE&dimension%5B%5D=PRODUCT_CODE'+
+                 '&endDate=2010-01-01&metric%5B%5D=CLICKS&metric%5B%5D=PAGE_VIEWS&'+
+                 'startDate=2000-01-01') do |env|
+        end
+      end
       (lambda do
-        CLIENT.generate_request(
+        CLIENT.execute(
           :api_method => @adsense.reports.generate,
           :parameters => {
             'startDate' => '2000-01-01',
@@ -624,14 +717,16 @@ describe Google::APIClient do
             'dimension' => ['DATE', 'PRODUCT_CODE'],
             'metric' => ['PAGE_VIEWS', 'CLICKS']
           },
-          :authenticated => false
+          :authenticated => false,
+          :connection => conn
         )
       end).should_not raise_error
+      conn.verify
     end
 
     it 'should fail when validating incorrect repeated parameters' do
       (lambda do
-        CLIENT.generate_request(
+        CLIENT.execute(
           :api_method => @adsense.reports.generate,
           :parameters => {
             'startDate' => '2000-01-01',
@@ -640,7 +735,7 @@ describe Google::APIClient do
             'metric' => ['PAGE_VIEWS', 'CLICKS']
           },
           :authenticated => false
-        ).to_http_request
+        )
       end).should raise_error(ArgumentError)
     end
   end

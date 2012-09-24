@@ -131,7 +131,7 @@ module Google
       #
       # @param [Faraday::Response] r
       #  Result of a chunk upload or range query
-      def process_response(response)
+      def process_http_response(response)
         case response.status
         when 200...299
           @complete = true

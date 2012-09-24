@@ -30,9 +30,6 @@ require 'google/api_client/service_account'
 require 'google/api_client/batch'
 
 module Google
-  # TODO(bobaman): Document all this stuff.
-
-
   ##
   # This class manages APIs communication.
   class APIClient
@@ -66,23 +63,23 @@ module Google
     def initialize(options={})
       # Normalize key to String to allow indifferent access.
       options = options.inject({}) do |accu, (key, value)|
-        accu[key.to_s] = value
+        accu[key.to_sym] = value
         accu
       end
       # Almost all API usage will have a host of 'www.googleapis.com'.
-      self.host = options["host"] || 'www.googleapis.com'
-      self.port = options["port"] || 443
-      self.discovery_path = options["discovery_path"] || '/discovery/v1'
+      self.host = options[:host] || 'www.googleapis.com'
+      self.port = options[:port] || 443
+      self.discovery_path = options[:discovery_path] || '/discovery/v1'
 
       # Most developers will want to leave this value alone and use the
       # application_name option.
       application_string = (
-        options["application_name"] ? (
-          "#{options["application_name"]}/" +
-          "#{options["application_version"] || '0.0.0'}"
+        options[:application_name] ? (
+          "#{options[:application_name]}/" +
+          "#{options[:application_version] || '0.0.0'}"
         ) : ""
       )
-      self.user_agent = options["user_agent"] || (
+      self.user_agent = options[:user_agent] || (
         "#{application_string} " +
         "google-api-ruby-client/#{VERSION::STRING} " +
          ENV::OS_VERSION
@@ -90,9 +87,9 @@ module Google
       # The writer method understands a few Symbols and will generate useful
       # default authentication mechanisms.
       self.authorization =
-        options.key?("authorization") ? options["authorization"] : :oauth_2
-      self.key = options["key"]
-      self.user_ip = options["user_ip"]
+        options.key?(:authorization) ? options[:authorization] : :oauth_2
+      self.key = options[:key]
+      self.user_ip = options[:user_ip]
       @discovery_uris = {}
       @discovery_documents = {}
       @discovered_apis = {}
@@ -196,31 +193,6 @@ module Google
     attr_accessor :discovery_path
 
     ##
-    # Resolves a URI template against the client's configured base.
-    #
-    # @param [String, Addressable::URI, Addressable::Template] template
-    #   The template to resolve.
-    # @param [Hash] mapping The mapping that corresponds to the template.
-    # @return [Addressable::URI] The expanded URI.
-    def resolve_uri(template, mapping={})
-      @base_uri ||= Addressable::URI.new(
-        :scheme => 'https',
-        :host => self.host,
-        :port => self.port
-      ).normalize
-      template = if template.kind_of?(Addressable::Template)
-        template.pattern
-      elsif template.respond_to?(:to_str)
-        template.to_str
-      else
-        raise TypeError,
-          "Expected String, Addressable::URI, or Addressable::Template, " +
-          "got #{template.class}."
-      end
-      return Addressable::Template.new(@base_uri + template).expand(mapping)
-    end
-
-    ##
     # Returns the URI for the directory document.
     #
     # @return [Addressable::URI] The URI of the directory document.
@@ -292,7 +264,7 @@ module Google
         response = self.execute!(
           :http_method => :get,
           :uri => self.directory_uri,
-          :authorization => :none
+          :authenticated => false
         )
         response.data
       end)
@@ -311,7 +283,7 @@ module Google
         response = self.execute!(
           :http_method => :get,
           :uri => self.discovery_uri(api, version),
-          :authorization => :none
+          :authenticated => false
         )
         response.data
       end)
@@ -447,7 +419,7 @@ module Google
         response = self.execute!(
           :http_method => :get,
           :uri => 'https://www.googleapis.com/oauth2/v1/certs',
-          :authorization => :none
+          :authenticated => false
         )
         @certificates.merge!(
           Hash[MultiJson.load(response.body).map do |key, cert|
@@ -462,31 +434,6 @@ module Google
         end
       end
       return nil
-    end
-
-    def normalize_api_method(options)
-      method = options[:api_method]
-      version = options[:version]
-      if method.kind_of?(Google::APIClient::Method) || method == nil
-        return method
-      elsif method.respond_to?(:to_str) || method.kind_of?(Symbol)
-        # This method of guessing the API is unreliable. This will fail for
-        # APIs where the first segment of the RPC name does not match the
-        # service name. However, this is a fallback mechanism anyway.
-        # Developers should be passing in a reference to the method, rather
-        # than passing in a string or symbol. This should raise an error
-        # in the case of a mismatch.
-        method = method.to_s        
-        api = method[/^([^.]+)\./, 1]
-        api_method = self.discovered_method(method, api, version)
-        if api_method.nil?
-          raise ArgumentError, "API method could not be found."
-        end
-        return api_method
-      else
-        raise TypeError,
-          "Expected Google::APIClient::Method, got #{new_api_method.class}."
-      end
     end
 
     ##
@@ -516,46 +463,19 @@ module Google
     #       {'collection' => 'public', 'userId' => 'me'}
     #   )
     def generate_request(options={})
-      # Note: The merge method on a Hash object will coerce an API Reference
-      # object into a Hash and merge with the default options.
-
-      options={
-        :version => 'v1',
-        :authorization => self.authorization,
-        :key => self.key,
-        :user_ip => self.user_ip,
-        :connection => Faraday.default_connection
+      options = {
+        :api_client => self
       }.merge(options)
-      
-      options[:api_method] = self.normalize_api_method(options) unless options[:api_method].nil?
-      return Google::APIClient::Reference.new(options)
-    end
-
-    ##
-    # Transmits the request using the current HTTP adapter.
-    #
-    # @option options [Array, Faraday::Request] :request
-    #   The HTTP request to transmit.
-    # @option options [Faraday::Connection] :connection
-    #   The HTTP connection to use.
-    #
-    # @return [Faraday::Response] The response from the server.
-    def transmit(options={})
-      options[:connection] ||= Faraday.default_connection
-      request = options[:request]
-      request['User-Agent'] ||= '' + self.user_agent unless self.user_agent.nil?
-      request_env = request.to_env(options[:connection])
-      response = options[:connection].app.call(request_env)
-      return response
+      return Google::APIClient::Request.new(options)
     end
 
     ##
     # Executes a request, wrapping it in a Result object.
     #
-    # @param [Google::APIClient::BatchRequest, Hash, Array] params
-    #   Either a Google::APIClient::BatchRequest, a Hash, or an Array.
+    # @param [Google::APIClient::Request, Hash, Array] params
+    #   Either a Google::APIClient::Request, a Hash, or an Array.
     #
-    #   If a Google::APIClient::BatchRequest, no other parameters are expected.
+    #   If a Google::APIClient::Request, no other parameters are expected.
     #
     #   If a Hash, the below parameters are handled. If an Array, the
     #   parameters are assumed to be in the below order:
@@ -592,6 +512,7 @@ module Google
       if params.last.kind_of?(Google::APIClient::Request) &&
           params.size == 1
         request = params.pop
+        options = {}
       else
         # This block of code allows us to accept multiple parameter passing
         # styles, and maintaining some backwards compatibility.
@@ -610,13 +531,16 @@ module Google
         options[:client] = self
         request = self.generate_request(options)
       end
-      response = self.transmit(:request => request.to_http_request, :connection => Faraday.default_connection)
-      result = request.process_response(response)
+      
+      connection = options[:connection] || Faraday.default_connection
+      request.authorization = options[:authorization] || self.authorization unless options[:authenticated] == false
+
+      result = request.send(connection)
+
       if request.upload_type == 'resumable'
         upload =  result.resumable_upload
         unless upload.complete?
-          response = self.transmit(:request => upload.to_http_request, :connection => Faraday.default_connection)
-          result = upload.process_response(response)
+          result = upload.send(connection)
         end
       end
       return result
@@ -646,6 +570,61 @@ module Google
       end
       return result
     end
+    
+    ##
+    # Ensures API method names specified as strings resolve to 
+    # discovered method instances
+    def resolve_method(method, version)
+      version ||= 'v1'
+      if method.kind_of?(Google::APIClient::Method) || method == nil
+        return method
+      elsif method.respond_to?(:to_str) || method.kind_of?(Symbol)
+        # This method of guessing the API is unreliable. This will fail for
+        # APIs where the first segment of the RPC name does not match the
+        # service name. However, this is a fallback mechanism anyway.
+        # Developers should be passing in a reference to the method, rather
+        # than passing in a string or symbol. This should raise an error
+        # in the case of a mismatch.
+        method = method.to_s        
+        api = method[/^([^.]+)\./, 1]
+        api_method = self.discovered_method(method, api, version)
+        if api_method.nil?
+          raise ArgumentError, "API method could not be found."
+        end
+        return api_method
+      else
+        raise TypeError,
+          "Expected Google::APIClient::Method, got #{method.class}."
+      end
+    end
+    
+    protected
+    
+    ##
+    # Resolves a URI template against the client's configured base.
+    #
+    # @param [String, Addressable::URI, Addressable::Template] template
+    #   The template to resolve.
+    # @param [Hash] mapping The mapping that corresponds to the template.
+    # @return [Addressable::URI] The expanded URI.
+    def resolve_uri(template, mapping={})
+      @base_uri ||= Addressable::URI.new(
+        :scheme => 'https',
+        :host => self.host,
+        :port => self.port
+      ).normalize
+      template = if template.kind_of?(Addressable::Template)
+        template.pattern
+      elsif template.respond_to?(:to_str)
+        template.to_str
+      else
+        raise TypeError,
+          "Expected String, Addressable::URI, or Addressable::Template, " +
+          "got #{template.class}."
+      end
+      return Addressable::Template.new(@base_uri + template).expand(mapping)
+    end
+    
   end
 end
 

@@ -26,23 +26,23 @@ module Google
     class Request
       MULTIPART_BOUNDARY = "-----------RubyApiMultipartPost".freeze
       
-      attr_reader :connection, :parameters,  :api_method, :headers
-      attr_accessor :media, :authorization, :body
+      attr_reader :parameters, :headers
+      attr_accessor :api_client, :connection, :api_method, :version ,:media, :authorization, :authenticated, :body
       
       def initialize(options={})
-
-        self.connection = options[:connection] || Faraday.default_connection
-        self.authorization = options[:authorization]
-        self.api_method = options[:api_method]
-        
         @parameters = Hash[options[:parameters] || {}]
+        @headers = Faraday::Utils::Headers.new
+        self.api_client = options[:api_client]
+        self.headers.merge!(options[:headers]) unless options[:headers].nil?
+        self.api_method = options[:api_method]
+        self.version = options[:version]
+        self.authenticated = options[:authenticated]
+        self.authorization = options[:authorization]
+        
         # These parameters are handled differently because they're not
         # parameters to the API method, but rather to the API system.
         self.parameters['key'] ||= options[:key] if options[:key]
         self.parameters['userIp'] ||= options[:user_ip] if options[:user_ip]
-
-        @headers = Faraday::Utils::Headers.new
-        self.headers.merge!(options[:headers]) if options[:headers]
         
         if options[:media]
           self.initialize_media_upload(options)
@@ -58,12 +58,102 @@ module Google
         unless self.api_method
           self.http_method = options[:http_method] || 'GET'
           self.uri = options[:uri]
-          unless self.parameters.empty?
-            self.uri.query = Addressable::URI.form_encode(self.parameters)
-          end
         end
       end
 
+      def upload_type
+        return self.parameters['uploadType'] || self.parameters['upload_type']
+      end
+
+      def http_method
+        return @http_method ||= self.api_method.http_method.to_s.downcase.to_sym
+      end
+
+      def http_method=(new_http_method)
+        if new_http_method.kind_of?(Symbol)
+          @http_method = new_http_method.to_s.downcase.to_sym
+        elsif new_http_method.respond_to?(:to_str)
+          @http_method = new_http_method.to_s.downcase.to_sym
+        else
+          raise TypeError,
+            "Expected String or Symbol, got #{new_http_method.class}."
+        end
+      end
+
+      def uri
+        return @uri ||= self.api_method.generate_uri(self.parameters)
+      end
+
+      def uri=(new_uri)
+        @uri = Addressable::URI.parse(new_uri)
+        @parameters.update(@uri.query_values) unless @uri.query_values.nil?
+      end
+
+      def send(connection)
+        response = connection.app.call(self.to_env(connection))        
+        self.process_http_response(response)
+      end
+      
+      def to_http_request
+        if self.api_client
+          self.headers['User-Agent'] ||= '' + self.api_client.user_agent unless self.api_client.user_agent.nil?
+          self.parameters['key'] ||= self.api_client.key unless self.api_client.key.nil?
+          self.parameters['userIp'] ||= self.api_client.user_ip unless self.api_client.user_ip.nil?
+          self.api_method = self.api_client.resolve_method(self.api_method, self.version) unless self.api_method.nil?
+        end
+        request = ( 
+          if self.uri
+            unless self.parameters.empty?
+              self.uri.query = Addressable::URI.form_encode(self.parameters)
+            end
+            [self.http_method, self.uri.to_s, self.headers, self.body]
+          else
+            self.api_method.generate_request(self.parameters, self.body, self.headers)
+          end)
+      end
+
+      def to_hash
+        options = {}
+        if self.api_method
+          options[:api_method] = self.api_method
+          options[:parameters] = self.parameters
+        else
+          options[:http_method] = self.http_method
+          options[:uri] = self.uri
+        end
+        options[:headers] = self.headers
+        options[:body] = self.body
+        options[:media] = self.media
+        unless self.authorization.nil?
+          options[:authorization] = self.authorization
+        end
+        return options
+      end
+      
+      def to_env(connection)
+        method, uri, headers, body = self.to_http_request
+        http_request = connection.build_request(method) do |req|
+          req.url(uri)
+          req.headers.update(headers)
+          req.body = body
+        end
+
+        if self.authorization.respond_to?(:generate_authenticated_request)
+          http_request = self.authorization.generate_authenticated_request(
+            :request => http_request,
+            :connection => connection
+          )
+        end
+
+        request_env = http_request.to_env(connection)
+      end
+      
+      def process_http_response(response)
+        Result.new(self, response)
+      end
+      
+      protected
+      
       def initialize_media_upload(options)
         self.media = options[:media]
         case self.upload_type
@@ -109,97 +199,6 @@ module Google
                          'Must respond to :to_json or :to_hash.'
       end
 
-      def upload_type
-        return self.parameters['uploadType'] || self.parameters['upload_type']
-      end
-
-      def connection=(new_connection)
-        if new_connection.kind_of?(Faraday::Connection)
-          @connection = new_connection
-        else
-          raise TypeError,
-            "Expected Faraday::Connection, got #{new_connection.class}."
-        end
-      end
-
-      def api_method=(new_api_method)
-        if new_api_method.kind_of?(Google::APIClient::Method) ||
-            new_api_method == nil
-          @api_method = new_api_method
-        else
-          raise TypeError,
-            "Expected Google::APIClient::Method, got #{new_api_method.class}."
-        end
-      end
-
-      def http_method
-        return @http_method ||= self.api_method.http_method.to_s.downcase.to_sym
-      end
-
-      def http_method=(new_http_method)
-        if new_http_method.kind_of?(Symbol)
-          @http_method = new_http_method.to_s.downcase.to_sym
-        elsif new_http_method.respond_to?(:to_str)
-          @http_method = new_http_method.to_s.downcase.to_sym
-        else
-          raise TypeError,
-            "Expected String or Symbol, got #{new_http_method.class}."
-        end
-      end
-
-      def uri
-        return @uri ||= self.api_method.generate_uri(self.parameters)
-      end
-
-      def uri=(new_uri)
-        @uri = Addressable::URI.parse(new_uri)
-      end
-
-      def to_http_request
-        request = ( 
-          if self.uri
-            self.connection.build_request(self.http_method) do |req|
-              req.url(self.uri.to_str)
-              req.headers.update(self.headers)
-              req.body = self.body
-            end
-          else
-            self.api_method.generate_request(
-              self.parameters, self.body, self.headers, :connection => self.connection
-            )
-          end)
-        
-        if self.authorization.respond_to?(:generate_authenticated_request)
-          request = self.authorization.generate_authenticated_request(
-            :request => request,
-            :connection => self.connection
-          )
-        end
-        return request
-      end
-
-      def to_hash
-        options = {}
-        if self.api_method
-          options[:api_method] = self.api_method
-          options[:parameters] = self.parameters
-        else
-          options[:http_method] = self.http_method
-          options[:uri] = self.uri
-        end
-        options[:headers] = self.headers
-        options[:body] = self.body
-        options[:connection] = self.connection
-        options[:media] = self.media
-        unless self.authorization.nil?
-          options[:authorization] = self.authorization
-        end
-        return options
-      end
-      
-      def process_response(response)
-        Result.new(self, response)
-      end
     end
   
     class Reference < Request

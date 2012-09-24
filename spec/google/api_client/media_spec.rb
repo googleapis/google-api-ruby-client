@@ -78,49 +78,49 @@ describe Google::APIClient::ResumableUpload do
 
   it 'should consider 20x status as complete' do
     request = @uploader.to_http_request
-    @uploader.process_response(mock_result(200))
+    @uploader.process_http_response(mock_result(200))
     @uploader.complete?.should == true
   end
 
   it 'should consider 30x status as incomplete' do
     request = @uploader.to_http_request
-    @uploader.process_response(mock_result(308))
+    @uploader.process_http_response(mock_result(308))
     @uploader.complete?.should == false
     @uploader.expired?.should == false
   end
 
   it 'should consider 40x status as fatal' do
     request = @uploader.to_http_request
-    @uploader.process_response(mock_result(404))
+    @uploader.process_http_response(mock_result(404))
     @uploader.expired?.should == true
   end
 
   it 'should detect changes to location' do
     request = @uploader.to_http_request
-    @uploader.process_response(mock_result(308, 'location' => 'https://www.googleapis.com/upload/drive/v1/files/abcdef'))
+    @uploader.process_http_response(mock_result(308, 'location' => 'https://www.googleapis.com/upload/drive/v1/files/abcdef'))
     @uploader.uri.to_s.should == 'https://www.googleapis.com/upload/drive/v1/files/abcdef'
   end
 
   it 'should resume from the saved range reported by the server' do    
     @uploader.chunk_size = 200
-    request = @uploader.to_http_request # Send bytes 0-199, only 0-99 saved
-    @uploader.process_response(mock_result(308, 'range' => '0-99'))
-    request = @uploader.to_http_request # Send bytes 100-299
-    request.headers['Content-Range'].should == "bytes 100-299/#{@media.length}"
-    request.headers['Content-length'].should == "200"
+    @uploader.to_http_request # Send bytes 0-199, only 0-99 saved
+    @uploader.process_http_response(mock_result(308, 'range' => '0-99'))
+    method, url, headers, body = @uploader.to_http_request # Send bytes 100-299
+    headers['Content-Range'].should == "bytes 100-299/#{@media.length}"
+    headers['Content-length'].should == "200"
   end
 
   it 'should resync the offset after 5xx errors' do
     @uploader.chunk_size = 200
-    request = @uploader.to_http_request
-    @uploader.process_response(mock_result(500)) # Invalidates range
-    request = @uploader.to_http_request # Resync
-    request.headers['Content-Range'].should == "bytes */#{@media.length}"
-    request.headers['Content-length'].should == "0"
-    @uploader.process_response(mock_result(308, 'range' => '0-99'))
-    request = @uploader.to_http_request # Send next chunk at correct range
-    request.headers['Content-Range'].should == "bytes 100-299/#{@media.length}"
-    request.headers['Content-length'].should == "200"
+    @uploader.to_http_request
+    @uploader.process_http_response(mock_result(500)) # Invalidates range
+    method, url, headers, body = @uploader.to_http_request # Resync
+    headers['Content-Range'].should == "bytes */#{@media.length}"
+    headers['Content-length'].should == "0"
+    @uploader.process_http_response(mock_result(308, 'range' => '0-99'))
+    method, url, headers, body = @uploader.to_http_request # Send next chunk at correct range
+    headers['Content-Range'].should == "bytes 100-299/#{@media.length}"
+    headers['Content-length'].should == "200"
   end
 
   def mock_result(status, headers = {})
