@@ -25,7 +25,7 @@ module Google
       ##
       # Get the length of the stream
       #
-      # @return [Integer]
+      # @return [Fixnum]
       #   Length of stream, in bytes
       def length
         io.respond_to?(:length) ? io.length : File.size(local_path)
