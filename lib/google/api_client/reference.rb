@@ -28,8 +28,20 @@ module Google
     class Request
       MULTIPART_BOUNDARY = "-----------RubyApiMultipartPost".freeze
       
-      attr_reader :parameters, :headers, :api_method
-      attr_accessor :connection, :media, :authorization, :authenticated, :body
+      # @return [Hash] Request parameters
+      attr_reader :parameters
+      # @return [Hash] Additional HTTP headers
+      attr_reader :headers
+      # @return [Google::APIClient::Method] API method to invoke
+      attr_reader :api_method
+      # @return [Google::APIClient::UploadIO] File to upload
+      attr_accessor :media
+      # @return [#generated_authenticated_request] User credentials
+      attr_accessor :authorization
+      # @return [TrueClass,FalseClass] True if request should include credentials
+      attr_accessor :authenticated
+      # @return [#read, #to_str] Request body
+      attr_accessor :body
       
       ##
       # Build a request
@@ -84,11 +96,15 @@ module Google
           self.uri = options[:uri]
         end
       end
-
+      
+      # @!attribute [r] upload_type
+      # @return [String] protocol used for upload
       def upload_type
         return self.parameters['uploadType'] || self.parameters['upload_type']
       end
 
+      # @!attribute http_method
+      # @return [Symbol] HTTP method if invoking a URI
       def http_method
         return @http_method ||= self.api_method.http_method.to_s.downcase.to_sym
       end
@@ -113,6 +129,8 @@ module Google
         end
       end
       
+      # @!attribute uri
+      # @return [Addressable::URI] URI to send request
       def uri
         return @uri ||= self.api_method.generate_uri(self.parameters)
       end
@@ -121,6 +139,7 @@ module Google
         @uri = Addressable::URI.parse(new_uri)
         @parameters.update(@uri.query_values) unless @uri.query_values.nil?
       end
+
 
       # Transmits the request with the given connection
       #
@@ -313,7 +332,12 @@ module Google
       end
 
     end
-  
+    
+    ##
+    # Subclass of Request for backwards compatibility with pre-0.5.0 versions of the library
+    # 
+    # @deprecated
+    #   use {Google::APIClient::Request} instead
     class Reference < Request
     end
   end

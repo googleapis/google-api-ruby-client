@@ -36,6 +36,7 @@ module Google
     # Resumable uploader.
     #
     class ResumableUpload < Request
+      # @return [Fixnum] Max bytes to send in a single request
       attr_accessor :chunk_size
   
       ##
@@ -162,6 +163,10 @@ module Google
         return Google::APIClient::Result.new(self, response)
       end
       
+      ##
+      # Hashified verison of the API request
+      #
+      # @return [Hash]
       def to_hash
         super.merge(:offset => @offset)
       end

@@ -33,8 +33,13 @@ module Google
         @media_upload = reference if reference.kind_of?(ResumableUpload)
       end
 
+      # @return [Google::APIClient::Request] Original request object
       attr_reader :request
+      # @return [Faraday::Response] HTTP response
       attr_reader :response
+      # @!attribute [r] reference
+      #   @return [Google::APIClient::Request] Original request object
+      #   @deprecated See {#request}
       alias_method :reference, :request # For compatibility with pre-beta clients
 
       # @!attribute [r] status
@@ -45,6 +50,8 @@ module Google
       #   @return [String] HTTP response body
       def_delegators :@response, :status, :headers, :body
 
+      # @!attribute [r] resumable_upload
+      # @return [Google::APIClient::ResumableUpload] For resuming media uploads
       def resumable_upload        
         @media_upload ||= (
           options = self.reference.to_hash.merge(
@@ -57,7 +64,7 @@ module Google
       
       ##
       # Get the content type of the response
-      #
+      # @!attribute [r] media_type
       # @return [String]
       #  Value of content-type header
       def media_type
@@ -70,6 +77,7 @@ module Google
       ##
       # Check if request failed
       #
+      # @!attribute [r] error?
       # @return [TrueClass, FalseClass]
       #   true if result of operation is an error
       def error?
@@ -79,6 +87,7 @@ module Google
       ##
       # Check if request was successful
       #
+      # @!attribute [r] success?
       # @return [TrueClass, FalseClass]
       #   true if result of operation was successful
       def success?
@@ -88,6 +97,7 @@ module Google
       ##
       # Extracts error messages from the response body
       #
+      # @!attribute [r] error_message
       # @return [String]
       #   error message, if available
       def error_message
@@ -107,6 +117,7 @@ module Google
       ##
       # Check for parsable data in response
       #
+      # @!attribute [r] data?
       # @return [TrueClass, FalseClass]
       #   true if body can be parsed
       def data?
@@ -116,6 +127,7 @@ module Google
       ##
       # Return parsed version of the response body.
       #
+      # @!attribute [r] data
       # @return [Object, Hash, String]
       #   Object if body parsable from API schema, Hash if JSON, raw body if unable to parse
       def data
@@ -147,6 +159,7 @@ module Google
       ##
       # Get the token used for requesting the next page of data
       #
+      # @!attribute [r] next_page_token
       # @return [String]
       #   next page token
       def next_page_token
@@ -179,6 +192,7 @@ module Google
       ##
       # Get the token used for requesting the previous page of data
       #
+      # @!attribute [r] prev_page_token
       # @return [String]
       #   previous page token
       def prev_page_token
@@ -208,10 +222,22 @@ module Google
         )
       end
       
+      ##
+      # Pagination scheme used by this request/response
+      #
+      # @!attribute [r] pagination_type
+      # @return [Symbol]
+      #  currently always :token
       def pagination_type
         return :token
       end
 
+      ##
+      # Name of the field that contains the pagination token
+      #
+      # @!attribute [r] page_token_param
+      # @return [String]
+      #  currently always 'pageToken'
       def page_token_param
         return "pageToken"
       end
