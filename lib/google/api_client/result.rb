@@ -43,7 +43,7 @@ module Google
       alias_method :reference, :request # For compatibility with pre-beta clients
 
       # @!attribute [r] status
-      #   @return [Integer] HTTP status code
+      #   @return [Fixnum] HTTP status code
       # @!attribute [r] headers
       #   @return [Hash] HTTP response headers
       # @!attribute [r] body

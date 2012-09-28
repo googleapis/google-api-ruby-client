@@ -26,7 +26,7 @@ module Google
     class BatchedCallResponse
       # @return [String] UUID of the call
       attr_reader :call_id
-      # @return [Integer] HTTP status code
+      # @return [Fixnum] HTTP status code
       attr_accessor :status
       # @return [Hash] HTTP response headers
       attr_accessor :headers
@@ -38,7 +38,7 @@ module Google
       # 
       # @param [String] call_id
       #   UUID of the original call
-      # @param [Integer] status
+      # @param [Fixnum] status
       #   HTTP status
       # @param [Hash] headers
       #   HTTP response headers
