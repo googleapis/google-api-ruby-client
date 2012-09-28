@@ -341,7 +341,7 @@ module Google
     # Returns the method object for a given RPC name and service version.
     #
     # @param [String, Symbol] rpc_name The RPC name of the desired method.
-    # @param [String, Symbol] rpc_name The API the method is within.
+    # @param [String, Symbol] api The API the method is within.
     # @param [String] version The desired version of the API.
     #
     # @return [Google::APIClient::Method] The method object.
@@ -439,7 +439,7 @@ module Google
     ##
     # Generates a request.
     #
-    # @option options [Google::APIClient::Method, String] :api_method
+    # @option options [Google::APIClient::Method] :api_method
     #   The method object or the RPC name of the method being executed.
     # @option options [Hash, Array] :parameters
     #   The parameters to send to the method.
@@ -480,7 +480,7 @@ module Google
     #   If a Hash, the below parameters are handled. If an Array, the
     #   parameters are assumed to be in the below order:
     #
-    #   - (Google::APIClient::Method, String) api_method:
+    #   - (Google::APIClient::Method) api_method:
     #     The method object or the RPC name of the method being executed.
     #   - (Hash, Array) parameters:
     #     The parameters to send to the method.
@@ -502,8 +502,9 @@ module Google
     #   result = client.execute(batch_request)
     #
     # @example
+    #   plus = client.discovered_api('plus')
     #   result = client.execute(
-    #     :api_method => 'plus.activities.list',
+    #     :api_method => plus.activities.list,
     #     :parameters => {'collection' => 'public', 'userId' => 'me'}
     #   )
     #
@@ -532,17 +533,14 @@ module Google
         request = self.generate_request(options)
       end
       
+      request.headers['User-Agent'] ||= '' + self.user_agent unless self.user_agent.nil?
+      request.parameters['key'] ||= self.key unless self.key.nil?
+      request.parameters['userIp'] ||= self.user_ip unless self.user_ip.nil?
+
       connection = options[:connection] || Faraday.default_connection
       request.authorization = options[:authorization] || self.authorization unless options[:authenticated] == false
 
       result = request.send(connection)
-
-      if request.upload_type == 'resumable'
-        upload =  result.resumable_upload
-        unless upload.complete?
-          result = upload.send(connection)
-        end
-      end
       return result
     end
 
@@ -571,38 +569,12 @@ module Google
       return result
     end
     
-    ##
-    # Ensures API method names specified as strings resolve to 
-    # discovered method instances
-    def resolve_method(method, version)
-      version ||= 'v1'
-      if method.kind_of?(Google::APIClient::Method) || method == nil
-        return method
-      elsif method.respond_to?(:to_str) || method.kind_of?(Symbol)
-        # This method of guessing the API is unreliable. This will fail for
-        # APIs where the first segment of the RPC name does not match the
-        # service name. However, this is a fallback mechanism anyway.
-        # Developers should be passing in a reference to the method, rather
-        # than passing in a string or symbol. This should raise an error
-        # in the case of a mismatch.
-        method = method.to_s        
-        api = method[/^([^.]+)\./, 1]
-        api_method = self.discovered_method(method, api, version)
-        if api_method.nil?
-          raise ArgumentError, "API method could not be found."
-        end
-        return api_method
-      else
-        raise TypeError,
-          "Expected Google::APIClient::Method, got #{method.class}."
-      end
-    end
-    
     protected
     
     ##
     # Resolves a URI template against the client's configured base.
     #
+    # @api private
     # @param [String, Addressable::URI, Addressable::Template] template
     #   The template to resolve.
     # @param [Hash] mapping The mapping that corresponds to the template.

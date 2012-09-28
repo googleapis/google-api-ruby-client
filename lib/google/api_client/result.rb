@@ -18,27 +18,32 @@ module Google
     ##
     # This class wraps a result returned by an API call.
     class Result
-      def initialize(reference, response)
-        @reference = reference
+      extend Forwardable
+      
+      ##
+      # Init the result
+      #
+      # @param [Google::APIClient::Request] request
+      #   The original request
+      # @param [Faraday::Response] response
+      #   Raw HTTP Response
+      def initialize(request, response)
+        @request = request
         @response = response
         @media_upload = reference if reference.kind_of?(ResumableUpload)
       end
 
-      attr_reader :reference
-
+      attr_reader :request
       attr_reader :response
+      alias_method :reference, :request # For compatibility with pre-beta clients
 
-      def status
-        return @response.status
-      end
-
-      def headers
-        return @response.headers
-      end
-
-      def body
-        return @response.body
-      end
+      # @!attribute [r] status
+      #   @return [Integer] HTTP status code
+      # @!attribute [r] headers
+      #   @return [Hash] HTTP response headers
+      # @!attribute [r] body
+      #   @return [String] HTTP response body
+      def_delegators :@response, :status, :headers, :body
 
       def resumable_upload        
         @media_upload ||= (
@@ -50,6 +55,11 @@ module Google
         )
       end
       
+      ##
+      # Get the content type of the response
+      #
+      # @return [String]
+      #  Value of content-type header
       def media_type
         _, content_type = self.headers.detect do |h, v|
           h.downcase == 'Content-Type'.downcase
@@ -57,14 +67,29 @@ module Google
         content_type[/^([^;]*);?.*$/, 1].strip.downcase
       end
       
+      ##
+      # Check if request failed
+      #
+      # @return [TrueClass, FalseClass]
+      #   true if result of operation is an error
       def error?
         return self.response.status >= 400
       end
 
+      ##
+      # Check if request was successful
+      #
+      # @return [TrueClass, FalseClass]
+      #   true if result of operation was successful
       def success?
         return !self.error?
       end
       
+      ##
+      # Extracts error messages from the response body
+      #
+      # @return [String]
+      #   error message, if available
       def error_message
         if self.data?
           if self.data.respond_to?(:error) &&
@@ -78,11 +103,21 @@ module Google
         end
         return self.body
       end
-      
+
+      ##
+      # Check for parsable data in response
+      #
+      # @return [TrueClass, FalseClass]
+      #   true if body can be parsed
       def data?
         self.media_type == 'application/json'
       end
       
+      ##
+      # Return parsed version of the response body.
+      #
+      # @return [Object, Hash, String]
+      #   Object if body parsable from API schema, Hash if JSON, raw body if unable to parse
       def data
         return @data ||= (begin
           media_type = self.media_type
@@ -96,10 +131,10 @@ module Google
             raise ArgumentError,
               "Content-Type not supported for parsing: #{media_type}"
           end
-          if @reference.api_method && @reference.api_method.response_schema
+          if @request.api_method && @request.api_method.response_schema
             # Automatically parse using the schema designated for the
             # response of this API method.
-            data = @reference.api_method.response_schema.new(data)
+            data = @request.api_method.response_schema.new(data)
             data
           else
             # Otherwise, return the raw unparsed value.
@@ -109,14 +144,11 @@ module Google
         end)
       end
 
-      def pagination_type
-        return :token
-      end
-
-      def page_token_param
-        return "pageToken"
-      end
-
+      ##
+      # Get the token used for requesting the next page of data
+      #
+      # @return [String]
+      #   next page token
       def next_page_token
         if self.data.respond_to?(:next_page_token)
           return self.data.next_page_token
@@ -127,6 +159,11 @@ module Google
         end
       end
 
+      ##
+      # Build a request for fetching the next page of data
+      # 
+      # @return [Google::APIClient::Request]
+      #   API request for retrieving next page
       def next_page
         merged_parameters = Hash[self.reference.parameters].merge({
           self.page_token_param => self.next_page_token
@@ -139,6 +176,11 @@ module Google
         )
       end
 
+      ##
+      # Get the token used for requesting the previous page of data
+      #
+      # @return [String]
+      #   previous page token
       def prev_page_token
         if self.data.respond_to?(:prev_page_token)
           return self.data.prev_page_token
@@ -149,6 +191,11 @@ module Google
         end
       end
 
+      ##
+      # Build a request for fetching the previous page of data
+      # 
+      # @return [Google::APIClient::Request]
+      #   API request for retrieving previous page
       def prev_page
         merged_parameters = Hash[self.reference.parameters].merge({
           self.page_token_param => self.prev_page_token
@@ -160,6 +207,15 @@ module Google
           Hash[self.reference].merge(:parameters => merged_parameters)
         )
       end
+      
+      def pagination_type
+        return :token
+      end
+
+      def page_token_param
+        return "pageToken"
+      end
+
     end
   end
 end

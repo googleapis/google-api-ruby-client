@@ -34,7 +34,7 @@ module Google
       #   The base URI for the service.
       # @param [String] method_name
       #   The identifier for the method.
-      # @param [Hash] method_description
+      # @param [Hash] discovery_document
       #   The section of the discovery document that applies to this method.
       #
       # @return [Google::APIClient::Method] The constructed method object.
@@ -74,7 +74,7 @@ module Google
       ##
       # Updates the method with the new base.
       #
-      # @param [Addressable::URI, #to_str, String] new_base
+      # @param [Addressable::URI, #to_str, String] new_method_base
       #   The new base URI to use for the method.
       def method_base=(new_method_base)
         @method_base = Addressable::URI.parse(new_method_base)
@@ -176,6 +176,7 @@ module Google
       ##
       # Expands the method's URI template using a parameter list.
       #
+      # @api private
       # @param [Hash, Array] parameters
       #   The parameter list to use.
       #
@@ -214,6 +215,7 @@ module Google
       ##
       # Generates an HTTP request for this method.
       #
+      # @api private
       # @param [Hash, Array] parameters
       #   The parameters to send.
       # @param [String, StringIO] body The body for the HTTP request.
@@ -288,6 +290,7 @@ module Google
       # Verifies that the parameters are valid for this method.  Raises an
       # exception if validation fails.
       #
+      # @api private
       # @param [Hash, Array] parameters
       #   The parameters to verify.
       #
