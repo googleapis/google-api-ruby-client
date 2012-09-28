@@ -19,18 +19,48 @@ require 'uuidtools'
 module Google
   class APIClient
 
+    ##
     # Helper class to contain a response to an individual batched call.
+    #
+    # @api private
     class BatchedCallResponse
       attr_reader :call_id
-      attr_accessor :status, :headers, :body
+      attr_accessor :status 
+      attr_accessor :headers
+      attr_accessor :body
 
+      ##
+      # Initialize the call response
+      # 
+      # @param [String] call_id
+      #   UUID of the original call
+      # @param [Integer] status
+      #   HTTP status
+      # @param [Hash] headers
+      #   HTTP response headers
+      # @param [#read, #to_str] body
+      #   Response body
       def initialize(call_id, status = nil, headers = nil, body = nil)
         @call_id, @status, @headers, @body = call_id, status, headers, body
       end
     end
     
-    ##
     # Wraps multiple API calls into a single over-the-wire HTTP request.
+    #
+    # @example
+    #
+    #     client = Google::APIClient.new
+    #     urlshortener = client.discovered_api('urlshortner')
+    #     batch = Google::APIClient::BatchRequest.new do |result|
+    #        puts result.data
+    #     end
+    # 
+    #     batch.add(:api_method=>urlshortener.url.insert, :body_object => { 'longUrl' => 'http://example.com/foo' })
+    #     batch.add(:api_method=>urlshortener.url.insert, :body_object => { 'longUrl' => 'http://example.com/bar' })
+    #
+    #     client.execute(batch)
+    #
+    
     class BatchRequest < Request
       BATCH_BOUNDARY = "-----------RubyApiBatchRequest".freeze
 
@@ -40,12 +70,16 @@ module Google
       # Creates a new batch request.
       #
       # @param [Hash] options
-      #   Set of options for this request
+      #   Set of options for this request.
       # @param [Proc] block
       #   Callback for every call's response. Won't be called if a call defined
       #   a callback of its own.
       #
-      # @return [Google::APIClient::BatchRequest] The constructed object.
+      # @return [Google::APIClient::BatchRequest] 
+      #   The constructed object.
+      #
+      # @yield [Google::APIClient::Result]
+      #   block to be called when result ready
       def initialize(options = {}, &block)
         @calls = []
         @global_callback = block if block_given?
@@ -66,11 +100,18 @@ module Google
       # automatically be generated, avoiding collisions. If duplicate call IDs
       # are provided, an error will be thrown.
       #
-      # @param [Hash, Google::APIClient::Request] call: the call to be added.
-      # @param [String] call_id: the ID to be used for this call. Must be unique
-      # @param [Proc] block: callback for this call's response.
+      # @param [Hash, Google::APIClient::Request] call 
+      #   the call to be added.
+      # @param [String] call_id
+      #   the ID to be used for this call. Must be unique
+      # @param [Proc] block
+      #   callback for this call's response.
       #
-      # @return [Google::APIClient::BatchRequest] The BatchRequest, for chaining
+      # @return [Google::APIClient::BatchRequest]
+      #   the BatchRequest, for chaining
+      #
+      # @yield [Google::APIClient::Result]
+      #   block to be called when result ready
       def add(call, call_id = nil, &block)
         unless call.kind_of?(Google::APIClient::Reference)
           call = Google::APIClient::Reference.new(call)
@@ -88,7 +129,10 @@ module Google
       ##
       # Processes the HTTP response to the batch request, issuing callbacks.
       #
-      # @param [Faraday::Response] response: the HTTP response.
+      # @api private
+      #
+      # @param [Faraday::Response] response
+      #   the HTTP response.
       def process_http_response(response)
         content_type = find_header('Content-Type', response.headers)
         boundary = /.*boundary=(.+)/.match(content_type)[1]
@@ -105,7 +149,10 @@ module Google
       ##
       # Return the request body for the BatchRequest's HTTP request.
       #
-      # @return [String] The request body.
+      # @api private
+      #
+      # @return [String]
+      #   the request body.
       def to_http_request
         if @calls.nil? || @calls.empty?
           raise BatchError, 'Cannot make an empty batch request'
@@ -121,10 +168,15 @@ module Google
       ##
       # Helper method to find a header from its name, regardless of case.
       #
-      # @param [String] name: The name of the header to find.
-      # @param [Hash] headers: The hash of headers and their values.
+      # @api private
       #
-      # @return [String] The value of the desired header.
+      # @param [String] name
+      #   the name of the header to find.
+      # @param [Hash] headers
+      #   the hash of headers and their values.
+      #
+      # @return [String] 
+      #   the value of the desired header.
       def find_header(name, headers)
         _, header = headers.detect do |h, v|
           h.downcase == name.downcase
@@ -135,7 +187,10 @@ module Google
       ##
       # Create a new call ID. Uses an auto-incrementing, conflict-avoiding ID.
       #
-      # @return [String] the new, unique ID.
+      # @api private
+      #
+      # @return [String] 
+      #  the new, unique ID.
       def new_id
         @last_auto_id += 1
         while @calls.assoc(@last_auto_id)
@@ -144,15 +199,17 @@ module Google
         return @last_auto_id.to_s
       end
 
-  
-
       ##
       # Convert a Content-ID header value to an id. Presumes the Content-ID
       # header conforms to the format that id_to_header() returns.
       #
-      # @param [String] header: Content-ID header value.
+      # @api private
       #
-      # @return [String] The extracted ID value.
+      # @param [String] header
+      #   Content-ID header value.
+      #
+      # @return [String] 
+      #   The extracted ID value.
       def header_to_id(header)
         if !header.start_with?('<') || !header.end_with?('>') ||
             !header.include?('+')
@@ -166,9 +223,13 @@ module Google
       ##
       # Auxiliary method to split the headers from the body in an HTTP response.
       #
-      # @param [String] response: the response to parse.
+      # @api private
       #
-      # @return [Array<Hash>, String] The headers and the body, separately.
+      # @param [String] response
+      #   the response to parse.
+      #
+      # @return [Array<Hash>, String] 
+      #   the headers and the body, separately.
       def split_headers_and_body(response)
         headers = {}
         payload = response.lstrip
@@ -189,10 +250,13 @@ module Google
       ##
       # Convert a single batched response into a BatchedCallResponse object.
       #
-      # @param [Google::APIClient::Reference] response:
+      # @api private
+      #
+      # @param [String] call_response
       #   the request to deserialize.
       #
-      # @return [BatchedCallResponse] The parsed and converted response.
+      # @return [Google::APIClient::BatchedCallResponse] 
+      #   the parsed and converted response.
       def deserialize_call_response(call_response)
         outer_headers, outer_body = split_headers_and_body(call_response)
         status_line, payload = outer_body.split("\n", 2)
@@ -205,13 +269,16 @@ module Google
       end
 
       ##
-      # Convert a single batched call into a string.
+      # Serialize a single batched call for assembling the multipart message
       #
-      # @param [Google::APIClient::Reference] call: the call to serialize.
+      # @api private
       #
-      # @return [StringIO] The request as a string in application/http format.
+      # @param [Google::APIClient::Request] call
+      #   the call to serialize.
+      #
+      # @return [Faraday::UploadIO] 
+      #   the serialized request
       def serialize_call(call_id, call)
-        call.api_client = self.api_client
         method, uri, headers, body = call.to_http_request
         request = "#{method.to_s.upcase} #{Addressable::URI.parse(uri).path} HTTP/1.1"
         headers.each do |header, value|
@@ -232,7 +299,10 @@ module Google
       ##
       # Convert an id to a Content-ID header value.
       #
-      # @param [String] call_id: identifier of individual call.
+      # @api private
+      #
+      # @param [String] call_id
+      #   identifier of individual call.
       #
       # @return [String]
       #   A Content-ID header with the call_id encoded into it. A UUID is

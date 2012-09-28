@@ -561,19 +561,6 @@ describe Google::APIClient do
         end
       end
       request = CLIENT.execute(
-        :api_method => 'moderator.profiles.get',
-        :authenticated => false,
-        :connection => conn
-      )
-      conn.verify
-    end
-
-    it 'should generate requests against the correct URIs' do
-      conn = stub_connection do |stub|
-        stub.get('/moderator/v1/profiles/@me') do |env|
-        end
-      end
-      request = CLIENT.execute(
         :api_method => @moderator.profiles.get,
         :authenticated => false,
         :connection => conn
@@ -583,7 +570,7 @@ describe Google::APIClient do
 
     it 'should not be able to execute requests without authorization' do
       result = CLIENT.execute(
-        'moderator.profiles.get',
+        @moderator.profiles.get,
         {},
         '',
         [],
@@ -629,19 +616,6 @@ describe Google::APIClient do
         end
       end
       request = CLIENT.execute(
-        :api_method => 'adsense.adclients.list',
-        :authenticated => false,
-        :connection => conn
-      )
-      conn.verify
-    end
-
-    it 'should generate requests against the correct URIs' do
-      conn = stub_connection do |stub|
-        stub.get('/adsense/v1/adclients') do |env|
-        end
-      end
-      request = CLIENT.execute(
         :api_method => @adsense.adclients.list,
         :authenticated => false,
         :connection => conn
@@ -651,7 +625,7 @@ describe Google::APIClient do
 
     it 'should not be able to execute requests without authorization' do
       result = CLIENT.execute(
-        :api_method => 'adsense.adclients.list',
+        :api_method => @adsense.adclients.list,
         :authenticated => false
       )
       result.response.status.should == 401

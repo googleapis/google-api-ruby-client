@@ -24,6 +24,7 @@ module Google
     class UploadIO < Faraday::UploadIO      
       ##
       # Get the length of the stream
+      #
       # @return [Integer]
       #   Length of stream, in bytes
       def length
@@ -40,12 +41,8 @@ module Google
       ##
       # Creates a new uploader.
       #
-      # @param [Google::APIClient::Result] result
-      #   Result of the initial request that started the upload
-      # @param [Google::APIClient::UploadIO] media
-      #   Media to upload
-      # @param [String] location
-      #  URL to upload to    
+      # @param [Hash] options
+      #   Request options
       def initialize(options={})
         super options
         self.uri = options[:uri]
@@ -57,6 +54,8 @@ module Google
       
       ##
       # Sends all remaining chunks to the server
+      #
+      # @deprecated Pass the instance to {Google::APIClient#execute} instead
       #
       # @param [Google::APIClient] api_client
       #   API Client instance to use for sending
@@ -72,6 +71,8 @@ module Google
       
       ##
       # Sends the next chunk to the server
+      #
+      # @deprecated Pass the instance to {Google::APIClient#execute} instead
       #
       # @param [Google::APIClient] api_client
       #   API Client instance to use for sending
@@ -98,6 +99,13 @@ module Google
         return @expired
       end
       
+      ##
+      # Convert to an HTTP request. Returns components in order of method, URI,
+      # request headers, and body
+      #
+      # @api private
+      #
+      # @return [Array<(Symbol, Addressable::URI, Hash, [#read,#to_str])>]
       def to_http_request
         if @complete
           raise Google::APIClient::ClientError, "Upload already complete"
@@ -121,16 +129,17 @@ module Google
         super
       end
       
-      def to_hash
-        super.merge(:offset => @offset)
-      end
-      
       ##
       # Check the result from the server, updating the offset and/or location
       # if available.
       #
-      # @param [Faraday::Response] r
-      #  Result of a chunk upload or range query
+      # @api private
+      #
+      # @param [Faraday::Response] response
+      #   HTTP response
+      #
+      # @return [Google::APIClient::Result]
+      #   Processed API response
       def process_http_response(response)
         case response.status
         when 200...299
@@ -151,7 +160,12 @@ module Google
           @offset = nil
         end
         return Google::APIClient::Result.new(self, response)
-      end      
+      end
+      
+      def to_hash
+        super.merge(:offset => @offset)
+      end
+      
     end
   end
 end

@@ -23,19 +23,43 @@ require 'google/api_client/discovery'
 module Google
   class APIClient
 
+    ##
+    # Represents an API request.
     class Request
       MULTIPART_BOUNDARY = "-----------RubyApiMultipartPost".freeze
       
-      attr_reader :parameters, :headers
-      attr_accessor :api_client, :connection, :api_method, :version ,:media, :authorization, :authenticated, :body
+      attr_reader :parameters, :headers, :api_method
+      attr_accessor :connection, :media, :authorization, :authenticated, :body
       
+      ##
+      # Build a request
+      #
+      # @param [Hash] options
+      # @option options [Hash, Array] :parameters
+      #   Request parameters for the API method.
+      # @option options [Google::APIClient::Method] :api_method
+      #   API method to invoke. Either :api_method or :uri must be specified
+      # @option options [TrueClass, FalseClass] :authenticated
+      #   True if request should include credentials. Implicitly true if 
+      #   unspecified and :authorization present
+      # @option options [#generate_signed_request] :authorization
+      #   OAuth credentials
+      # @option options [Google::APIClient::UploadIO] :media
+      #   File to upload, if media upload request
+      # @option options [#to_json, #to_hash] :body_object
+      #   Main body of the API request. Typically hash or object that can
+      #   be serialized to JSON
+      # @option options [#read, #to_str] :body
+      #   Raw body to send in POST/PUT requests
+      # @option options [String, Addressable::URI] :uri
+      #   URI to request. Either :api_method or :uri must be specified
+      # @option options [String, Symbol] :http_method
+      #   HTTP method when requesting a URI
       def initialize(options={})
         @parameters = Hash[options[:parameters] || {}]
         @headers = Faraday::Utils::Headers.new
-        self.api_client = options[:api_client]
         self.headers.merge!(options[:headers]) unless options[:headers].nil?
         self.api_method = options[:api_method]
-        self.version = options[:version]
         self.authenticated = options[:authenticated]
         self.authorization = options[:authorization]
         
@@ -80,6 +104,15 @@ module Google
         end
       end
 
+      def api_method=(new_api_method)
+        if new_api_method.nil? || new_api_method.kind_of?(Google::APIClient::Method)
+          @api_method = new_api_method
+        else
+          raise TypeError,
+            "Expected Google::APIClient::Method, got #{new_api_method.class}."
+        end
+      end
+      
       def uri
         return @uri ||= self.api_method.generate_uri(self.parameters)
       end
@@ -89,18 +122,37 @@ module Google
         @parameters.update(@uri.query_values) unless @uri.query_values.nil?
       end
 
+      # Transmits the request with the given connection
+      #
+      # @api private
+      #
+      # @param [Faraday::Connection] connection 
+      #   the connection to transmit with
+      # 
+      # @return [Google::APIClient::Result] 
+      #   result of API request
       def send(connection)
-        response = connection.app.call(self.to_env(connection))        
-        self.process_http_response(response)
+        http_response = connection.app.call(self.to_env(connection))        
+        result = self.process_http_response(http_response)
+        
+        # Resumamble slightly different than other upload protocols in that it requires at least
+        # 2 requests.
+        if self.upload_type == 'resumable'
+          upload =  result.resumable_upload
+          unless upload.complete?
+            result = upload.send(connection)
+          end
+        end
+        return result
       end
       
+      # Convert to an HTTP request. Returns components in order of method, URI,
+      # request headers, and body
+      #
+      # @api private
+      #
+      # @return [Array<(Symbol, Addressable::URI, Hash, [#read,#to_str])>]
       def to_http_request
-        if self.api_client
-          self.headers['User-Agent'] ||= '' + self.api_client.user_agent unless self.api_client.user_agent.nil?
-          self.parameters['key'] ||= self.api_client.key unless self.api_client.key.nil?
-          self.parameters['userIp'] ||= self.api_client.user_ip unless self.api_client.user_ip.nil?
-          self.api_method = self.api_client.resolve_method(self.api_method, self.version) unless self.api_method.nil?
-        end
         request = ( 
           if self.uri
             unless self.parameters.empty?
@@ -112,6 +164,10 @@ module Google
           end)
       end
 
+      ##
+      # Hashified verison of the API request
+      #
+      # @return [Hash]
       def to_hash
         options = {}
         if self.api_method
@@ -130,6 +186,17 @@ module Google
         return options
       end
       
+      ##
+      # Prepares the request for execution, building a hash of parts
+      # suitable for sending to Faraday::Connection.
+      #
+      # @api private
+      #
+      # @param [Faraday::Connection] connection
+      #   Connection for building the request
+      #
+      # @return [Hash]
+      #   Encoded request
       def to_env(connection)
         method, uri, headers, body = self.to_http_request
         http_request = connection.build_request(method) do |req|
@@ -148,12 +215,37 @@ module Google
         request_env = http_request.to_env(connection)
       end
       
+      ##
+      # Convert HTTP response to an API Result
+      #
+      # @api private
+      #
+      # @param [Faraday::Response] response
+      #   HTTP response
+      #
+      # @return [Google::APIClient::Result]
+      #   Processed API response
       def process_http_response(response)
         Result.new(self, response)
       end
       
       protected
       
+      ##
+      # Adjust headers & body for media uploads
+      #
+      # @api private
+      #
+      # @param [Hash] options
+      # @option options [Hash, Array] :parameters
+      #   Request parameters for the API method.
+      # @option options [Google::APIClient::UploadIO] :media
+      #   File to upload, if media upload request
+      # @option options [#to_json, #to_hash] :body_object
+      #   Main body of the API request. Typically hash or object that can
+      #   be serialized to JSON
+      # @option options [#read, #to_str] :body
+      #   Raw body to send in POST/PUT requests
       def initialize_media_upload(options)
         self.media = options[:media]
         case self.upload_type
@@ -182,6 +274,17 @@ module Google
         end
       end
       
+      ##
+      # Assemble a multipart message from a set of parts
+      #
+      # @api private
+      #
+      # @param [Array<[#read,#to_str]>] parts
+      #   Array of parts to encode.
+      # @param [String] mime_type
+      #   MIME type of the message
+      # @param [String] boundary
+      #   Boundary for separating each part of the message
       def build_multipart(parts, mime_type = 'multipart/related', boundary = MULTIPART_BOUNDARY) 
         env = {
           :request_headers => {'Content-Type' => "#{mime_type};boundary=#{boundary}"},
@@ -192,6 +295,16 @@ module Google
         self.headers.update(env[:request_headers])
       end
       
+      ##
+      # Serialize body object to JSON
+      # 
+      # @api private
+      #
+      # @param [#to_json,#to_hash] body
+      #   object to serialize
+      #
+      # @return [String]
+      #   JSON
       def serialize_body(body)
         return body.to_json if body.respond_to?(:to_json)
         return MultiJson.dump(options[:body_object].to_hash) if body.respond_to?(:to_hash)

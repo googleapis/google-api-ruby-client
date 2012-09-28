@@ -20,8 +20,42 @@ require 'compat/multi_json'
 module Google
   class APIClient
     ##
-    # Manages the persistence of client configuration data and secrets.
+    # Manages the persistence of client configuration data and secrets. Format
+    # inspired by the Google API Python client.
+    #
+    # @see https://developers.google.com/api-client-library/python/guide/aaa_client_secrets
+    #
+    # @example
+    #   {
+    #     "web": {
+    #       "client_id": "asdfjasdljfasdkjf",
+    #       "client_secret": "1912308409123890",
+    #       "redirect_uris": ["https://www.example.com/oauth2callback"],
+    #       "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    #       "token_uri": "https://accounts.google.com/o/oauth2/token"
+    #     }
+    #   }
+    #
+    # @example
+    #   {
+    #     "installed": {
+    #       "client_id": "837647042410-75ifg...usercontent.com",
+    #       "client_secret":"asdlkfjaskd",
+    #       "redirect_uris": ["http://localhost", "urn:ietf:oauth:2.0:oob"],
+    #       "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    #       "token_uri": "https://accounts.google.com/o/oauth2/token"
+    #     }
+    #   }
     class ClientSecrets
+      
+      ##
+      # Reads client configuration from a file
+      #
+      # @param [String] filename
+      #   Path to file to load
+      #
+      # @return [Google::APIClient::ClientSecrets]
+      #   OAuth client settings
       def self.load(filename=nil)
         if filename && File.directory?(filename)
           search_path = File.expand_path(filename)
@@ -44,6 +78,11 @@ module Google
         return self.new(data)
       end
 
+      ##
+      # Intialize OAuth client settings.
+      #
+      # @param [Hash] options
+      #   Parsed client secrets files
       def initialize(options={})
         # Client auth configuration
         @flow = options[:flow] || options.keys.first.to_s || 'web'
@@ -77,6 +116,11 @@ module Google
         :refresh_token, :id_token, :expires_in, :expires_at, :issued_at
       )
 
+      ##
+      # Serialize back to the original JSON form
+      #
+      # @return [String]
+      #   JSON
       def to_json
         return MultiJson.dump({
           self.flow => ({
