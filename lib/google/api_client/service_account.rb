@@ -65,8 +65,15 @@ module Google
     #    client.authorization = service_account.authorize
     #    client.execute(...)
     class JWTAsserter
-      attr_accessor :issuer, :expiry, :skew
+      # @return [String] ID/email of the issuing party
+      attr_accessor :issuer
+      # @return [Fixnum] How long, in seconds, the assertion is valid for
+      attr_accessor :expiry
+      # @return [Fixnum] Seconds to expand the issued at/expiry window to account for clock skew
+      attr_accessor :skew
+      # @return [String] Scopes to authorize
       attr_reader :scope
+      # @return [OpenSSL::PKey] key for signing assertions
       attr_writer :key
 
       ##
@@ -74,7 +81,7 @@ module Google
       #
       # @param [String] issuer
       #    Name/ID of the client issuing the assertion
-      # @param [String or Array] scope
+      # @param [String, Array] scope
       #   Scopes to authorize. May be a space delimited string or array of strings
       # @param [OpenSSL::PKey] key
       #   RSA private key for signing assertions

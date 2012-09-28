@@ -24,9 +24,13 @@ module Google
     #
     # @api private
     class BatchedCallResponse
+      # @return [String] UUID of the call
       attr_reader :call_id
-      attr_accessor :status 
+      # @return [Integer] HTTP status code
+      attr_accessor :status
+      # @return [Hash] HTTP response headers
       attr_accessor :headers
+      # @return [String] HTTP response body
       attr_accessor :body
 
       ##
@@ -64,7 +68,9 @@ module Google
     class BatchRequest < Request
       BATCH_BOUNDARY = "-----------RubyApiBatchRequest".freeze
 
-      attr_reader :calls, :callbacks
+      # @api private
+      # @return [Array<(String,Google::APIClient::Request,Proc)] List of API calls in the batch
+      attr_reader :calls
 
       ##
       # Creates a new batch request.
