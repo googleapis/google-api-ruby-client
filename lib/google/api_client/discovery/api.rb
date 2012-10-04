@@ -53,6 +53,9 @@ module Google
           end
         end
       end
+      
+      # @return [String] unparsed discovery document for the API
+      attr_reader :discovery_document
 
       ##
       # Returns the id of the service.
