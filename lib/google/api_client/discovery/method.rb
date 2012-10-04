@@ -45,6 +45,9 @@ module Google
         @discovery_document = discovery_document
       end
 
+      # @return [String] unparsed discovery document for the method
+      attr_reader :discovery_document
+
       ##
       # Returns the API this method belongs to.
       #
@@ -56,13 +59,6 @@ module Google
       #
       # @return [String] The method identifier.
       attr_reader :name
-
-      ##
-      # Returns the parsed section of the discovery document that applies to
-      # this method.
-      #
-      # @return [Hash] The method description.
-      attr_reader :description
 
       ##
       # Returns the base URI for the method.
@@ -81,6 +77,14 @@ module Google
         @uri_template = nil
       end
 
+      ##
+      # Returns a human-readable description of the method.
+      #
+      # @return [Hash] The API description.
+      def description
+        return @discovery_document['description']
+      end
+      
       ##
       # Returns the method ID.
       #

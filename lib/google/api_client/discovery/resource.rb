@@ -58,6 +58,9 @@ module Google
         end
       end
 
+      # @return [String] unparsed discovery document for the resource
+      attr_reader :discovery_document
+
       ##
       # Returns the identifier for the resource.
       #
@@ -65,17 +68,18 @@ module Google
       attr_reader :name
 
       ##
-      # Returns the parsed section of the discovery document that applies to
-      # this resource.
-      #
-      # @return [Hash] The resource description.
-      attr_reader :description
-
-      ##
       # Returns the base URI for this resource.
       #
       # @return [Addressable::URI] The base URI that methods are joined to.
       attr_reader :method_base
+
+      ##
+      # Returns a human-readable description of the resource.
+      #
+      # @return [Hash] The API description.
+      def description
+        return @discovery_document['description']
+      end
 
       ##
       # Updates the hierarchy of resources and methods with the new base.
