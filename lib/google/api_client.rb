@@ -487,8 +487,6 @@ module Google
     #   - (String) body: The body of the request.
     #   - (Hash, Array) headers: The HTTP headers for the request.
     #   - (Hash) options: A set of options for the request, of which:
-    #     - (String) :version (default: "v1") -
-    #       The service version. Only used if `api_method` is a `String`.
     #     - (#generate_authenticated_request) :authorization (default: true) -
     #       The authorization mechanism for the response. Used only if
     #       `:authenticated` is `true`.
@@ -529,7 +527,7 @@ module Google
         options[:parameters] = params.shift if params.size > 0
         options[:body] = params.shift if params.size > 0
         options[:headers] = params.shift if params.size > 0
-        options[:client] = self
+        options.update(params.shift) if params.size > 0
         request = self.generate_request(options)
       end
       
