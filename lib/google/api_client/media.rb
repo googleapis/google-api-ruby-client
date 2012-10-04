@@ -101,6 +101,14 @@ module Google
       end
       
       ##
+      # Check if upload is resumable. That is, neither complete nor expired
+      #
+      # @return [TrueClass, FalseClass] True if upload can be resumed
+      def resumable?
+        return !(self.complete? or self.expired?)
+      end
+      
+      ##
       # Convert to an HTTP request. Returns components in order of method, URI,
       # request headers, and body
       #
