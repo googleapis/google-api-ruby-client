@@ -54,7 +54,7 @@ module Google
     # @example
     #
     #     client = Google::APIClient.new
-    #     urlshortener = client.discovered_api('urlshortner')
+    #     urlshortener = client.discovered_api('urlshortener')
     #     batch = Google::APIClient::BatchRequest.new do |result|
     #        puts result.data
     #     end
@@ -150,6 +150,7 @@ module Google
           result = Google::APIClient::Result.new(call, call_response)
           callback.call(result) if callback
         end
+        Google::APIClient::Result.new(self, response)
       end
 
       ##

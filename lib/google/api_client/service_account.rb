@@ -64,6 +64,8 @@ module Google
     #        key)
     #    client.authorization = service_account.authorize
     #    client.execute(...)
+    #
+    # @see https://developers.google.com/accounts/docs/OAuth2ServiceAccount
     class JWTAsserter
       # @return [String] ID/email of the issuing party
       attr_accessor :issuer
