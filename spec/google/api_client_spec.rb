@@ -110,28 +110,46 @@ describe Google::APIClient do
   
   describe 'when executing requests' do
     before do
+      @prediction = client.discovered_api('prediction', 'v1.2')
       client.authorization = :oauth_2
       @connection = stub_connection do |stub|
-        stub.get('/test') do |env|
+        stub.post('/prediction/v1.2/training?data=12345') do |env|
           env[:request_headers]['Authorization'].should == 'Bearer 12345'
         end
       end
     end
-     
+
+    after do
+      @connection.verify
+    end
+    
     it 'should use default authorization' do
       client.authorization.access_token = "12345"
-      client.execute(:http_method => :get, 
-                      :uri => 'https://www.googleapis.com/test',
-                      :connection => @connection)
+      client.execute(  
+        :api_method => @prediction.training.insert,
+        :parameters => {'data' => '12345'},
+        :connection => @connection
+      )
     end
 
     it 'should use request scoped authorization when provided' do
       client.authorization.access_token = "abcdef"
       new_auth = Signet::OAuth2::Client.new(:access_token => '12345')
-      client.execute(:http_method => :get, 
-                      :uri => 'https://www.googleapis.com/test',
-                      :connection => @connection,
-                      :authorization => new_auth)
+      client.execute(  
+        :api_method => @prediction.training.insert,
+        :parameters => {'data' => '12345'},
+        :authorization => new_auth,
+        :connection => @connection
+      )
     end
+    
+    it 'should accept options in array style execute' do
+       client.authorization.access_token = "abcdef"
+       new_auth = Signet::OAuth2::Client.new(:access_token => '12345')
+       client.execute(  
+         @prediction.training.insert, {'data' => '12345'}, '', {},
+         { :authorization => new_auth, :connection => @connection }         
+       )
+     end
   end  
 end
