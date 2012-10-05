@@ -180,7 +180,27 @@ describe Google::APIClient::Result do
       it 'should return the correct error message' do
         @result.error_message.should == 'Parse Error'
       end
+    end
+    
+    describe 'with 204 No Content response' do
+      before do
+        @response.stub(:body).and_return('')
+        @response.stub(:status).and_return(204)
+        @response.stub(:headers).and_return({})
+        @result = Google::APIClient::Result.new(@reference, @response)
+      end
 
+      it 'should indicate no data is available' do
+        @result.data?.should be_false
+      end
+      
+      it 'should return nil for data' do
+        @result.data.should == nil
+      end
+      
+      it 'should return nil for media_type' do
+        @result.media_type.should == nil
+      end
     end
   end
 end
