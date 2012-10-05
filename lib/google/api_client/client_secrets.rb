@@ -101,6 +101,33 @@ module Google
           end
         })
       end
+      
+      def to_authorization
+        gem 'signet', '~> 0.4.0'
+        require 'signet/oauth_2/client'
+        # NOTE: Do not rely on this default value, as it may change
+        new_authorization = Signet::OAuth2::Client.new
+        new_authorization.client_id = self.client_id
+        new_authorization.client_secret = self.client_secret
+        new_authorization.authorization_uri = (
+          self.authorization_uri ||
+          'https://accounts.google.com/o/oauth2/auth'
+        )
+        new_authorization.token_credential_uri = (
+          self.token_credential_uri ||
+          'https://accounts.google.com/o/oauth2/token'
+        )
+        new_authorization.redirect_uri = self.redirect_uris.first
+
+        # These are supported, but unlikely.
+        new_authorization.access_token = self.access_token
+        new_authorization.refresh_token = self.refresh_token
+        new_authorization.id_token = self.id_token
+        new_authorization.expires_in = self.expires_in
+        new_authorization.issued_at = self.issued_at if self.issued_at
+        new_authorization.expires_at = self.expires_at if self.expires_at
+        return new_authorization
+      end
     end
   end
 end

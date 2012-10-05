@@ -1,3 +1,7 @@
+# 0.4.7
+
+* Added the ability to convert client secrets to an authorization object
+
 # 0.4.6
 
 * Backwards compatibility for MultiJson
