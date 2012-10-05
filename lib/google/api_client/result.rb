@@ -71,7 +71,11 @@ module Google
         _, content_type = self.headers.detect do |h, v|
           h.downcase == 'Content-Type'.downcase
         end
-        content_type[/^([^;]*);?.*$/, 1].strip.downcase
+        if content_type
+          return content_type[/^([^;]*);?.*$/, 1].strip.downcase
+        else
+          return nil
+        end
       end
       
       ##
@@ -121,7 +125,7 @@ module Google
       # @return [TrueClass, FalseClass]
       #   true if body can be parsed
       def data?
-        self.media_type == 'application/json'
+        !(self.body.nil? || self.body.empty? || self.media_type != 'application/json')
       end
       
       ##
@@ -132,26 +136,28 @@ module Google
       #   Object if body parsable from API schema, Hash if JSON, raw body if unable to parse
       def data
         return @data ||= (begin
-          media_type = self.media_type
-          data = self.body
-          case media_type
-          when 'application/json'
-            data = MultiJson.load(data)
-            # Strip data wrapper, if present
-            data = data['data'] if data.has_key?('data')
-          else
-            raise ArgumentError,
-              "Content-Type not supported for parsing: #{media_type}"
-          end
-          if @request.api_method && @request.api_method.response_schema
-            # Automatically parse using the schema designated for the
-            # response of this API method.
-            data = @request.api_method.response_schema.new(data)
-            data
-          else
-            # Otherwise, return the raw unparsed value.
-            # This value must be indexable like a Hash.
-            data
+          if self.data?
+            media_type = self.media_type
+            data = self.body
+            case media_type
+            when 'application/json'
+              data = MultiJson.load(data)
+              # Strip data wrapper, if present
+              data = data['data'] if data.has_key?('data')
+            else
+              raise ArgumentError,
+                "Content-Type not supported for parsing: #{media_type}"
+            end
+            if @request.api_method && @request.api_method.response_schema
+              # Automatically parse using the schema designated for the
+              # response of this API method.
+              data = @request.api_method.response_schema.new(data)
+              data
+            else
+              # Otherwise, return the raw unparsed value.
+              # This value must be indexable like a Hash.
+              data
+            end
           end
         end)
       end
