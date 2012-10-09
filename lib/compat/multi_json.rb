@@ -1,7 +1,7 @@
 gem 'multi_json', '>= 1.0.0'
 require 'multi_json'
 
-unless MultiJson.respond_to?(:load)
+unless MultiJson.respond_to?(:adaptor)
   module MultiJson
     class <<self
       alias :load :decode
