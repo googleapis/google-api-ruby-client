@@ -30,7 +30,7 @@ require 'google/api_client'
 require 'google/api_client/version'
 
 describe Google::APIClient do
-  CLIENT ||= Google::APIClient.new
+  CLIENT = Google::APIClient.new unless defined?(CLIENT)
 
   after do
     # Reset client to not-quite-pristine state
