@@ -1,7 +1,7 @@
 gem 'multi_json', '>= 1.0.0'
 require 'multi_json'
 
-if !MultiJson.respond_to?(:load) || MultiJson.method(:load).owner == Kernel
+if !MultiJson.respond_to?(:load) || [Kernel, ActiveSupport::Dependencies::Loadable].include?(MultiJson.method(:load).owner)
   module MultiJson
     class <<self
       alias :load :decode
