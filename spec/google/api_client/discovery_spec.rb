@@ -737,4 +737,16 @@ describe Google::APIClient do
       @drive.files.insert.media_upload.max_size.should_not == nil
     end
   end
+
+  describe 'with the Analytics API' do
+    before do
+      CLIENT.authorization = nil
+      @analytics = CLIENT.discovered_api('analytics', 'v3')
+    end
+
+    it 'should correctly determine the discovery URI' do
+      CLIENT.discovery_uri('analytics', 'v3').should ===
+        'https://www.googleapis.com/discovery/v1/apis/analytics/v3/rest'
+    end
+  end
 end
