@@ -748,5 +748,26 @@ describe Google::APIClient do
       CLIENT.discovery_uri('analytics', 'v3').should ===
         'https://www.googleapis.com/discovery/v1/apis/analytics/v3/rest'
     end
+
+    it 'should succeed when validating parameters in a correct call' do
+      conn = stub_connection do |stub|
+        stub.get('/analytics/v3/data/ga?end-date=2010-01-01&ids=ga%3A0&metrics=ga%3ASOMETHING&start-date=2000-01-01') do |env|
+        end
+      end
+      (lambda do
+        CLIENT.execute(
+          :api_method => @analytics.data.ga.get,
+          :parameters => {
+            'ids' => 'ga:0',
+            'start-date' => '2000-01-01',
+            'end-date' => '2010-01-01',
+            'metrics' => 'ga:SOMETHING'
+          },
+          :authenticated => false,
+          :connection => conn
+        )
+      end).should_not raise_error
+      conn.verify
+    end
   end
 end
