@@ -5,14 +5,13 @@ rvm:
   - 1.9.3
   - jruby
   - ree
-script: "bundle exec rake"
+script: "bundle exec rake spec:all"
 before_install:
  - sudo apt-get update
  - sudo apt-get install idn
 notifications:
   email:
     recipients:
-      - bobaman@google.com
       - sbazyl@google.com
     on_success: change
     on_failure: change
