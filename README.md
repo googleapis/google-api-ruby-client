@@ -146,4 +146,26 @@ and continue if necessary, check `result.resumable_upload`.
     if upload.resumable?
         client.execute(upload)
     end
-    
+
+## Command Line
+
+Included with the gem is a command line interface for working with Google APIs.
+
+    # Log in
+    google-api oauth-2-login --client-id='...' --client-secret='...' --scope="https://www.googleapis.com/auth/plus.me"
+
+    # List the signed-in user's activities
+    google-api execute plus.activities.list --api=plus -- userId="me" collection="public"
+
+    # Start an interactive API session
+    google-api irb
+    >> plus = $client.discovered_api('plus')
+    >> $client.execute(plus.activities.list, {'userId' => 'me', 'collection' => 'public'})
+    => # returns a response from the API
+
+For more information, use `google-api --help`
+
+## Samples
+
+See the full list of [samples on Google Code](http://code.google.com/p/google-api-ruby-client/source/browse?repo=samples).
+
