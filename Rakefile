@@ -15,8 +15,8 @@ PKG_HOMEPAGE       = 'http://code.google.com/p/google-api-ruby-client/'
 
 RELEASE_NAME       = "REL #{PKG_VERSION}"
 
-PKG_AUTHOR         = "Bob Aman"
-PKG_AUTHOR_EMAIL   = "bobaman@google.com"
+PKG_AUTHOR         = ["Bob Aman", "Steve Bazyl"]
+PKG_AUTHOR_EMAIL   = "sbazyl@google.com"
 PKG_SUMMARY        = 'Package Summary'
 PKG_DESCRIPTION    = <<-TEXT
 The Google API Ruby Client makes it trivial to discover and access supported

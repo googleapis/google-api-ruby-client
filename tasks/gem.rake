@@ -31,6 +31,7 @@ namespace :gem do
     s.add_runtime_dependency('faraday', '~> 0.8.1')
     s.add_runtime_dependency('multi_json', '>= 1.0.0')
     s.add_runtime_dependency('extlib', '>= 0.9.15')
+    s.add_runtime_dependency('jwt', '>= 0.1.5')
 
     # Dependencies used in the CLI
     s.add_runtime_dependency('launchy', '>= 2.1.1')
