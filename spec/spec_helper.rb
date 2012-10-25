@@ -3,7 +3,6 @@ $LOAD_PATH.uniq!
 
 require 'rspec'
 require 'faraday'
-require 'faraday/adapter/test'
 
 module Faraday
   class Connection

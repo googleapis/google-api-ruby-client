@@ -61,7 +61,7 @@ describe Google::APIClient::Result do
             "nextLink": "https://www.googleapis.com/plus/v1/people/foo/activities/public?maxResults=20&pageToken=NEXT%2BPAGE%2BTOKEN",
             "title": "Plus Public Activity Feed for ",
             "updated": "2012-04-23T00:00:00.000Z",
-            "id": "tag:google.com,2010:/plus/people/foo/activities/public",
+            "id": "123456790",
             "items": []
           }
           END_OF_STRING
@@ -103,8 +103,7 @@ describe Google::APIClient::Result do
             'https://www.googleapis.com/plus/v1/people/foo/activities/public?' +
             'maxResults=20&pageToken=NEXT%2BPAGE%2BTOKEN'
         @result.data.title.should == 'Plus Public Activity Feed for '
-        @result.data.id.should ==
-            'tag:google.com,2010:/plus/people/foo/activities/public'
+        @result.data.id.should == 123456790
         @result.data.items.should be_empty
       end
     end
@@ -119,7 +118,7 @@ describe Google::APIClient::Result do
             "selfLink": "https://www.googleapis.com/plus/v1/people/foo/activities/public?",
             "title": "Plus Public Activity Feed for ",
             "updated": "2012-04-23T00:00:00.000Z",
-            "id": "tag:google.com,2010:/plus/people/foo/activities/public",
+            "id": "123456790",
             "items": []
           }
           END_OF_STRING
@@ -144,8 +143,7 @@ describe Google::APIClient::Result do
         @result.data.selfLink.should ==
             'https://www.googleapis.com/plus/v1/people/foo/activities/public?'
         @result.data.title.should == 'Plus Public Activity Feed for '
-        @result.data.id.should ==
-            'tag:google.com,2010:/plus/people/foo/activities/public'
+        @result.data.id.should == 123456790
         @result.data.items.should be_empty
       end
     end
