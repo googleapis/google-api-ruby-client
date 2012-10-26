@@ -169,3 +169,10 @@ For more information, use `google-api --help`
 
 See the full list of [samples on Google Code](http://code.google.com/p/google-api-ruby-client/source/browse?repo=samples).
 
+
+## Support
+
+Please [report bugs at the project on Google Code](http://code.google.com/p/google-api-ruby-client/issues/entry). Don't hesitate to [ask questions](http://stackoverflow.com/questions/tagged/google-api) about the client or APIs on [StackOverflow](http://stackoverflow.com).
+
+
+
