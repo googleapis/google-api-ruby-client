@@ -103,7 +103,7 @@ describe Google::APIClient::Result do
             'https://www.googleapis.com/plus/v1/people/foo/activities/public?' +
             'maxResults=20&pageToken=NEXT%2BPAGE%2BTOKEN'
         @result.data.title.should == 'Plus Public Activity Feed for '
-        @result.data.id.should == 123456790
+        @result.data.id.should == "123456790"
         @result.data.items.should be_empty
       end
     end
@@ -143,7 +143,7 @@ describe Google::APIClient::Result do
         @result.data.selfLink.should ==
             'https://www.googleapis.com/plus/v1/people/foo/activities/public?'
         @result.data.title.should == 'Plus Public Activity Feed for '
-        @result.data.id.should == 123456790
+        @result.data.id.should == "123456790"
         @result.data.items.should be_empty
       end
     end
