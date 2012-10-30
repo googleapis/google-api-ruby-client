@@ -52,5 +52,39 @@ describe Google::APIClient::JWTAsserter do
     auth.access_token.should == "1/abcdef1234567890"
     conn.verify
   end
+  
+  it 'should be refreshable' do
+    conn = stub_connection do |stub|
+      stub.post('/o/oauth2/token') do |env|
+        params = Addressable::URI.form_unencode(env[:body])
+        JWT.decode(params.assoc("assertion").last, @key.public_key)
+        params.assoc("grant_type").should == ['grant_type','urn:ietf:params:oauth:grant-type:jwt-bearer']
+        [200, {}, '{
+          "access_token" : "1/abcdef1234567890",
+          "token_type" : "Bearer",
+          "expires_in" : 3600
+        }']
+      end
+      stub.post('/o/oauth2/token') do |env|
+        params = Addressable::URI.form_unencode(env[:body])
+        JWT.decode(params.assoc("assertion").last, @key.public_key)
+        params.assoc("grant_type").should == ['grant_type','urn:ietf:params:oauth:grant-type:jwt-bearer']
+        [200, {}, '{
+          "access_token" : "1/0987654321fedcba",
+          "token_type" : "Bearer",
+          "expires_in" : 3600
+        }']
+      end
+    end
+    asserter = Google::APIClient::JWTAsserter.new('client1', 'scope1 scope2', @key)
+    auth = asserter.authorize(nil, { :connection => conn })
+    auth.should_not == nil?
+    auth.access_token.should == "1/abcdef1234567890"
+    
+    auth.fetch_access_token!(:connection => conn)
+    auth.access_token.should == "1/0987654321fedcba"
+    
+    conn.verify
+  end    
 end
 

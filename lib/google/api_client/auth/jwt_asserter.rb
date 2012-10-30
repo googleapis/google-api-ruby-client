@@ -14,6 +14,7 @@
 
 require 'jwt'
 require 'signet/oauth_2/client'
+require 'delegate'
 
 module Google
   class APIClient
@@ -117,7 +118,21 @@ module Google
         authorization.grant_type = 'urn:ietf:params:oauth:grant-type:jwt-bearer'
         authorization.extension_parameters = { :assertion => assertion }
         authorization.fetch_access_token!(options)
-        return authorization
+        return JWTAuthorization.new(authorization, self, person)
+      end
+    end
+    
+    class JWTAuthorization < DelegateClass(Signet::OAuth2::Client)
+      def initialize(authorization, asserter, person = nil)
+        @asserter = asserter
+        @person = person
+        super(authorization)
+      end
+      
+      def fetch_access_token!(options={})
+        new_authorization = @asserter.authorize(@person, options)
+        __setobj__(new_authorization)
+        self
       end
     end
   end

@@ -540,6 +540,15 @@ module Google
       request.authorization = options[:authorization] || self.authorization unless options[:authenticated] == false
 
       result = request.send(connection)
+      if result.status == 401 && authorization.respond_to?(:refresh_token) 
+        begin
+          authorization.fetch_access_token!
+          result = request.send(connection)
+        rescue Signet::AuthorizationError
+           # Ignore since we want the original error
+        end
+      end
+      
       return result
     end
 

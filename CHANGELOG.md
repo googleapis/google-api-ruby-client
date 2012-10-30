@@ -5,6 +5,8 @@
     * :api_method in request can no longer be a string
     * Deprecated ResumableUpload.send_* methods.
 * Reduce memory utilization when uploading large files
+* Automatic refresh of OAuth 2 credentials & retry of request when 401 errors
+  are returned
 * Simplify internal request processing.
 
 # 0.4.7
