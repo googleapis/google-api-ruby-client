@@ -26,7 +26,7 @@ module Google
     #
     #    client = Google::APIClient.new
     #    key = Google::APIClient::PKCS12.load_key('client.p12', 'notasecret')
-    #    service_account = Google::APIClient::JWTAsserter(
+    #    service_account = Google::APIClient::JWTAsserter.new(
     #        '123456-abcdef@developer.gserviceaccount.com',
     #        'https://www.googleapis.com/auth/prediction',
     #        key)
@@ -109,7 +109,7 @@ module Google
       #   Pass through to Signet::OAuth2::Client.fetch_access_token
       # @return [Signet::OAuth2::Client] Access token 
       #
-      # @see Signet::OAuth2::Client.fetch_access_token
+      # @see Signet::OAuth2::Client.fetch_access_token!
       def authorize(person = nil, options={})
         assertion = self.to_jwt(person)
         authorization = Signet::OAuth2::Client.new(
@@ -122,13 +122,27 @@ module Google
       end
     end
     
+    ##
+    # Proxy for authorization that allows refreshing the access token
+    # using assertions instead of refresh tokens.
     class JWTAuthorization < DelegateClass(Signet::OAuth2::Client)
+      ##
+      # Initialize the proxy
+      #
+      # @param [Signet::OAuth2::Client] authorization
+      #   Original authorization instance
+      # @param [Google::APIClient::JWTAsserter]
+      #   Asserter for generating new access tokens
+      # @param [String] person
+      #   Optional target user if impersonating.
       def initialize(authorization, asserter, person = nil)
         @asserter = asserter
         @person = person
         super(authorization)
       end
-      
+
+      ##
+      # @see Signet::OAuth2::Client#fetch_access_token!
       def fetch_access_token!(options={})
         new_authorization = @asserter.authorize(@person, options)
         __setobj__(new_authorization)

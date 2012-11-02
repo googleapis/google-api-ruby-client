@@ -84,7 +84,7 @@ For server-to-server interactions, like those between a web application and Goog
 
     client = Google::APIClient.new
     key = Google::APIClient::PKCS12.load_key('client.p12', 'notasecret')
-    service_account = Google::APIClient::JWTAsserter(
+    service_account = Google::APIClient::JWTAsserter.new(
         '123456-abcdef@developer.gserviceaccount.com',
         'https://www.googleapis.com/auth/prediction',
         key)
