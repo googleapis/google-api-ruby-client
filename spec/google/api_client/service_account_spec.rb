@@ -16,6 +16,37 @@ require 'spec_helper'
 
 require 'google/api_client'
 
+fixtures_path = File.expand_path('../../../fixtures', __FILE__)
+
+describe Google::APIClient::KeyUtils do  
+  it 'should read PKCS12 files from the filesystem' do
+    path =  File.expand_path('files/privatekey.p12', fixtures_path)
+    key = Google::APIClient::KeyUtils.load_from_pkcs12(path, 'notasecret')
+    key.should_not == nil
+  end
+
+  it 'should read PKCS12 files from loaded files' do
+    path =  File.expand_path('files/privatekey.p12', fixtures_path)
+    content = File.read(path)
+    key = Google::APIClient::KeyUtils.load_from_pkcs12(content, 'notasecret')
+    key.should_not == nil
+  end
+
+  it 'should read PEM files from the filesystem' do
+    path =  File.expand_path('files/secret.pem', fixtures_path)
+    key = Google::APIClient::KeyUtils.load_from_pem(path, 'notasecret')
+    key.should_not == nil
+  end
+
+  it 'should read PEM files from loaded files' do
+    path =  File.expand_path('files/secret.pem', fixtures_path)
+    content = File.read(path)
+    key = Google::APIClient::KeyUtils.load_from_pem(content, 'notasecret')
+    key.should_not == nil
+  end
+
+end
+
 describe Google::APIClient::JWTAsserter do
   include ConnectionHelpers
 

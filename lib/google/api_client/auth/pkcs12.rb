@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+require 'google/api_client/auth/key_utils'
 module Google
   class APIClient
     ##
@@ -30,18 +31,10 @@ module Google
       #   Passphrase for unlocking the private key
       #
       # @return [OpenSSL::PKey] The private key for signing assertions.
+      # @deprecated 
+      #  Use {Google::APIClient::KeyUtils} instead
       def self.load_key(keyfile, passphrase)
-        begin
-          if File.exists?(keyfile)
-            content = File.read(keyfile)
-          else
-            content = keyfile
-          end  
-          pkcs12 = OpenSSL::PKCS12.new(content, passphrase)
-          return pkcs12.key
-        rescue OpenSSL::PKCS12::PKCS12Error
-          raise ArgumentError.new("Invalid keyfile or passphrase")
-        end
+        KeyUtils.load_from_pkcs12(keyfile, passphrase)
       end
     end
   end

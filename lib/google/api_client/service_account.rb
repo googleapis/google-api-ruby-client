@@ -14,3 +14,4 @@
 
 require 'google/api_client/auth/pkcs12'
 require 'google/api_client/auth/jwt_asserter'
+require 'google/api_client/auth/key_utils'
