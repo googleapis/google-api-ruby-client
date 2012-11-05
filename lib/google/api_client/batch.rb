@@ -59,12 +59,11 @@ module Google
     #        puts result.data
     #     end
     # 
-    #     batch.add(:api_method=>urlshortener.url.insert, :body_object => { 'longUrl' => 'http://example.com/foo' })
-    #     batch.add(:api_method=>urlshortener.url.insert, :body_object => { 'longUrl' => 'http://example.com/bar' })
+    #     batch.add(:api_method => urlshortener.url.insert, :body_object => { 'longUrl' => 'http://example.com/foo' })
+    #     batch.add(:api_method => urlshortener.url.insert, :body_object => { 'longUrl' => 'http://example.com/bar' })
     #
     #     client.execute(batch)
     #
-    
     class BatchRequest < Request
       BATCH_BOUNDARY = "-----------RubyApiBatchRequest".freeze
 

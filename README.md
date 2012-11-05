@@ -104,9 +104,9 @@ Example:
         puts result.data
     end
     
-    batch.add(:api_method=>urlshortener.url.insert, 
+    batch.add(:api_method => urlshortener.url.insert, 
               :body_object => { 'longUrl' => 'http://example.com/foo' })
-    batch.add(:api_method=>urlshortener.url.insert, 
+    batch.add(:api_method => urlshortener.url.insert, 
               :body_object => { 'longUrl' => 'http://example.com/bar' })
     client.execute(batch)
     
@@ -172,7 +172,7 @@ See the full list of [samples on Google Code](http://code.google.com/p/google-ap
 
 ## Support
 
-Please [report bugs at the project on Google Code](http://code.google.com/p/google-api-ruby-client/issues/entry). Don't hesitate to [ask questions](http://stackoverflow.com/questions/tagged/google-api) about the client or APIs on [StackOverflow](http://stackoverflow.com).
+Please [report bugs at the project on Google Code](http://code.google.com/p/google-api-ruby-client/issues/entry). Don't hesitate to [ask questions](http://stackoverflow.com/questions/tagged/google-api-ruby-client) about the client or APIs on [StackOverflow](http://stackoverflow.com).
 
 
 
