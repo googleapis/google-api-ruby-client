@@ -27,7 +27,7 @@ list = FileList[
     'lib/**/*', 'spec/**/*', 'vendor/**/*',
     'tasks/**/*', 'website/**/*',
     '[A-Z]*', 'Rakefile'
-]
+].exclude(/[_\.]git$/)
 (open(".gitignore") { |file| file.read }).split("\n").each do |pattern|
   list.exclude(pattern)
 end
