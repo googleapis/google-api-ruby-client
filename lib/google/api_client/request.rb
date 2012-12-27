@@ -27,7 +27,7 @@ module Google
     # Represents an API request.
     class Request
       MULTIPART_BOUNDARY = "-----------RubyApiMultipartPost".freeze
-      
+
       # @return [Hash] Request parameters
       attr_reader :parameters
       # @return [Hash] Additional HTTP headers
@@ -42,7 +42,7 @@ module Google
       attr_accessor :authenticated
       # @return [#read, #to_str] Request body
       attr_accessor :body
-      
+
       ##
       # Build a request
       #
@@ -52,7 +52,7 @@ module Google
       # @option options [Google::APIClient::Method] :api_method
       #   API method to invoke. Either :api_method or :uri must be specified
       # @option options [TrueClass, FalseClass] :authenticated
-      #   True if request should include credentials. Implicitly true if 
+      #   True if request should include credentials. Implicitly true if
       #   unspecified and :authorization present
       # @option options [#generate_signed_request] :authorization
       #   OAuth credentials
@@ -74,12 +74,12 @@ module Google
         self.api_method = options[:api_method]
         self.authenticated = options[:authenticated]
         self.authorization = options[:authorization]
-        
+
         # These parameters are handled differently because they're not
         # parameters to the API method, but rather to the API system.
         self.parameters['key'] ||= options[:key] if options[:key]
         self.parameters['userIp'] ||= options[:user_ip] if options[:user_ip]
-        
+
         if options[:media]
           self.initialize_media_upload(options)
         elsif options[:body]
@@ -90,13 +90,13 @@ module Google
         else
           self.body = ''
         end
-        
+
         unless self.api_method
           self.http_method = options[:http_method] || 'GET'
           self.uri = options[:uri]
         end
       end
-      
+
       # @!attribute [r] upload_type
       # @return [String] protocol used for upload
       def upload_type
@@ -128,7 +128,7 @@ module Google
             "Expected Google::APIClient::Method, got #{new_api_method.class}."
         end
       end
-      
+
       # @!attribute uri
       # @return [Addressable::URI] URI to send request
       def uri
@@ -145,15 +145,15 @@ module Google
       #
       # @api private
       #
-      # @param [Faraday::Connection] connection 
+      # @param [Faraday::Connection] connection
       #   the connection to transmit with
-      # 
-      # @return [Google::APIClient::Result] 
+      #
+      # @return [Google::APIClient::Result]
       #   result of API request
       def send(connection)
-        http_response = connection.app.call(self.to_env(connection))        
+        http_response = connection.app.call(self.to_env(connection))
         result = self.process_http_response(http_response)
-        
+
         # Resumamble slightly different than other upload protocols in that it requires at least
         # 2 requests.
         if self.upload_type == 'resumable'
@@ -164,7 +164,7 @@ module Google
         end
         return result
       end
-      
+
       # Convert to an HTTP request. Returns components in order of method, URI,
       # request headers, and body
       #
@@ -172,7 +172,7 @@ module Google
       #
       # @return [Array<(Symbol, Addressable::URI, Hash, [#read,#to_str])>]
       def to_http_request
-        request = ( 
+        request = (
           if self.uri
             unless self.parameters.empty?
               self.uri.query = Addressable::URI.form_encode(self.parameters)
@@ -204,7 +204,7 @@ module Google
         end
         return options
       end
-      
+
       ##
       # Prepares the request for execution, building a hash of parts
       # suitable for sending to Faraday::Connection.
@@ -233,7 +233,7 @@ module Google
 
         request_env = http_request.to_env(connection)
       end
-      
+
       ##
       # Convert HTTP response to an API Result
       #
@@ -247,9 +247,9 @@ module Google
       def process_http_response(response)
         Result.new(self, response)
       end
-      
+
       protected
-      
+
       ##
       # Adjust headers & body for media uploads
       #
@@ -269,14 +269,14 @@ module Google
         self.media = options[:media]
         case self.upload_type
         when "media"
-          if options[:body] || options[:body_object] 
+          if options[:body] || options[:body_object]
             raise ArgumentError, "Can not specify body & body object for simple uploads"
           end
           self.headers['Content-Type'] ||= self.media.content_type
           self.body = self.media
         when "multipart"
-          unless options[:body_object] 
-            raise ArgumentError, "Multipart requested but no body object"              
+          unless options[:body_object]
+            raise ArgumentError, "Multipart requested but no body object"
           end
           metadata = StringIO.new(serialize_body(options[:body_object]))
           build_multipart([Faraday::UploadIO.new(metadata, 'application/json', 'file.json'), self.media])
@@ -286,13 +286,13 @@ module Google
           self.headers['X-Upload-Content-Length'] = file_length.to_s
           if options[:body_object]
             self.headers['Content-Type'] ||= 'application/json'
-            self.body = serialize_body(options[:body_object]) 
+            self.body = serialize_body(options[:body_object])
           else
             self.body = ''
           end
         end
       end
-      
+
       ##
       # Assemble a multipart message from a set of parts
       #
@@ -304,7 +304,7 @@ module Google
       #   MIME type of the message
       # @param [String] boundary
       #   Boundary for separating each part of the message
-      def build_multipart(parts, mime_type = 'multipart/related', boundary = MULTIPART_BOUNDARY) 
+      def build_multipart(parts, mime_type = 'multipart/related', boundary = MULTIPART_BOUNDARY)
         env = {
           :request_headers => {'Content-Type' => "#{mime_type};boundary=#{boundary}"},
           :request => { :boundary => boundary }
@@ -313,10 +313,10 @@ module Google
         self.body = multipart.create_multipart(env, parts.map {|part| [nil, part]})
         self.headers.update(env[:request_headers])
       end
-      
+
       ##
       # Serialize body object to JSON
-      # 
+      #
       # @api private
       #
       # @param [#to_json,#to_hash] body
@@ -326,7 +326,7 @@ module Google
       #   JSON
       def serialize_body(body)
         return body.to_json if body.respond_to?(:to_json)
-        return MultiJson.dump(options[:body_object].to_hash) if body.respond_to?(:to_hash)
+        return MultiJson.dump(body.to_hash) if body.respond_to?(:to_hash)
         raise TypeError, 'Could not convert body object to JSON.' +
                          'Must respond to :to_json or :to_hash.'
       end
