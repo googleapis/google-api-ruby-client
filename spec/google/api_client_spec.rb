@@ -59,7 +59,7 @@ end
 describe Google::APIClient do
   include ConnectionHelpers
 
-  let(:client) { Google::APIClient.new }
+  let(:client) { Google::APIClient.new(:application_name => 'API Client Tests') }
 
   it 'should make its version number available' do
     Google::APIClient::VERSION::STRING.should be_instance_of(String)

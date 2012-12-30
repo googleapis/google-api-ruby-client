@@ -58,7 +58,7 @@ describe Google::APIClient::UploadIO do
 end
 
 describe Google::APIClient::ResumableUpload do
-  CLIENT ||= Google::APIClient.new
+  CLIENT = Google::APIClient.new(:application_name => 'API Client Tests') unless defined?(CLIENT)
 
   after do
     # Reset client to not-quite-pristine state

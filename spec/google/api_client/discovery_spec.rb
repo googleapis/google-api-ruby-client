@@ -43,7 +43,7 @@ end
 
 describe Google::APIClient do
   include ConnectionHelpers
-  CLIENT = Google::APIClient.new unless defined?(CLIENT)
+  CLIENT = Google::APIClient.new(:application_name => 'API Client Tests') unless defined?(CLIENT)
 
   after do
     # Reset client to not-quite-pristine state
@@ -53,7 +53,7 @@ describe Google::APIClient do
 
   it 'should raise a type error for bogus authorization' do
     (lambda do
-      Google::APIClient.new(:authorization => 42)
+      Google::APIClient.new(:application_name => 'API Client Tests', :authorization => 42)
     end).should raise_error(TypeError)
   end
 
@@ -258,7 +258,7 @@ describe Google::APIClient do
     it 'should allow modification to the base URIs for testing purposes' do
       # Using a new client instance here to avoid caching rebased discovery doc
       prediction_rebase =
-        Google::APIClient.new.discovered_api('prediction', 'v1.2')
+        Google::APIClient.new(:application_name => 'API Client Tests').discovered_api('prediction', 'v1.2')
       prediction_rebase.method_base =
         'https://testing-domain.example.com/prediction/v1.2/'
 
