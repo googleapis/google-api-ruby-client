@@ -19,6 +19,7 @@ require 'multi_json'
 require 'compat/multi_json'
 require 'stringio'
 
+require 'google/api_client/logging'
 require 'google/api_client/version'
 require 'google/api_client/errors'
 require 'google/api_client/environment'
@@ -29,11 +30,15 @@ require 'google/api_client/result'
 require 'google/api_client/media'
 require 'google/api_client/service_account'
 require 'google/api_client/batch'
+require 'google/api_client/railtie' if defined?(Rails)
 
 module Google
+
   ##
   # This class manages APIs communication.
   class APIClient
+    include Google::Logging
+    
     ##
     # Creates a new Google API client.
     #
@@ -74,12 +79,13 @@ module Google
 
       # Most developers will want to leave this value alone and use the
       # application_name option.
-      application_string = (
-        options[:application_name] ? (
-          "#{options[:application_name]}/" +
-          "#{options[:application_version] || '0.0.0'}"
-        ) : ""
-      )
+      if options[:application_name]
+        app_name = options[:application_name]
+        app_version = options[:application_version]
+        application_string = "#{app_name}/#{app_version || '0.0.0'}"
+      else
+        logger.warn("Please provide :application_name and :application_version when initializing the APIClient") 
+      end
       self.user_agent = options[:user_agent] || (
         "#{application_string} " +
         "google-api-ruby-client/#{VERSION::STRING} " +
