@@ -20,12 +20,14 @@ fixtures_path = File.expand_path('../../../fixtures', __FILE__)
 
 describe Google::APIClient::KeyUtils do  
   it 'should read PKCS12 files from the filesystem' do
+    pending "Reading from PKCS12 not supported on jruby" if RUBY_PLATFORM == 'java'
     path =  File.expand_path('files/privatekey.p12', fixtures_path)
     key = Google::APIClient::KeyUtils.load_from_pkcs12(path, 'notasecret')
     key.should_not == nil
   end
 
   it 'should read PKCS12 files from loaded files' do
+    pending "Reading from PKCS12 not supported on jruby" if RUBY_PLATFORM == 'java'
     path =  File.expand_path('files/privatekey.p12', fixtures_path)
     content = File.read(path)
     key = Google::APIClient::KeyUtils.load_from_pkcs12(content, 'notasecret')
@@ -56,7 +58,7 @@ describe Google::APIClient::JWTAsserter do
 
   it 'should generate valid JWTs' do
     asserter = Google::APIClient::JWTAsserter.new('client1', 'scope1 scope2', @key)
-    jwt = asserter.to_jwt
+    jwt = asserter.to_authorization.to_jwt
     jwt.should_not == nil
 
     claim = JWT.decode(jwt, @key.public_key, true)
