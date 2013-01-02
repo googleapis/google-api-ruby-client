@@ -52,6 +52,10 @@ module Google
     #     <li><code>:oauth_1</code></li>
     #     <li><code>:oauth_2</code></li>
     #   </ul>
+    # @option options [Boolean] :auto_refresh_token (true)
+    #   The setting that controls whether or not the api client attempts to
+    #   refresh authorization when a 401 is hit in #execute. If the token does 
+    #   not support it, this option is ignored.
     # @option options [String] :application_name
     #   The name of the application using the client.
     # @option options [String] :application_version
@@ -95,6 +99,7 @@ module Google
       # default authentication mechanisms.
       self.authorization =
         options.key?(:authorization) ? options[:authorization] : :oauth_2
+      self.auto_refresh_token = options.fetch(:auto_refresh_token){ true }
       self.key = options[:key]
       self.user_ip = options[:user_ip]
       @discovery_uris = {}
@@ -164,6 +169,13 @@ module Google
     #
     # @return [String] The API key.
     attr_accessor :key
+
+    ##
+    # The setting that controls whether or not the api client attempts to
+    # refresh authorization when a 401 is hit in #execute. 
+    #
+    # @return [Boolean]
+    attr_accessor :auto_refresh_token
 
     ##
     # The IP address of the user this request is being performed on behalf of.
@@ -546,7 +558,7 @@ module Google
       request.authorization = options[:authorization] || self.authorization unless options[:authenticated] == false
 
       result = request.send(connection)
-      if result.status == 401 && authorization.respond_to?(:refresh_token) 
+      if result.status == 401 && authorization.respond_to?(:refresh_token) && auto_refresh_token
         begin
           authorization.fetch_access_token!
           result = request.send(connection)

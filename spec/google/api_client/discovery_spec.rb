@@ -214,6 +214,23 @@ describe Google::APIClient do
       conn.verify
     end
 
+    it 'should generate valid requests when parameter value includes semicolon' do
+      conn = stub_connection do |stub|
+        # semicolon (;) in parameter value was being converted to 
+        # bare ampersand (&) in 0.4.7. ensure that it gets converted 
+        # to a CGI-escaped semicolon (%3B) instead.
+        stub.post('/prediction/v1.2/training?data=12345%3B67890') do |env|
+          env[:body].should == ''
+        end
+      end
+      request = CLIENT.execute(
+        :api_method => @prediction.training.insert,
+        :parameters => {'data' => '12345;67890'},
+        :connection => conn
+      )
+      conn.verify
+    end
+
     it 'should generate valid requests when repeated parameters are passed' do
       pending("This is caused by Faraday's encoding of query parameters.")
       conn = stub_connection do |stub|

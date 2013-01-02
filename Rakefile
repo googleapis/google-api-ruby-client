@@ -23,11 +23,15 @@ The Google API Ruby Client makes it trivial to discover and access supported
 APIs.
 TEXT
 
-PKG_FILES = FileList[
+list = FileList[
     'lib/**/*', 'spec/**/*', 'vendor/**/*',
     'tasks/**/*', 'website/**/*',
     '[A-Z]*', 'Rakefile'
-].exclude(/database\.yml/).exclude(/[_\.]git$/)
+].exclude(/[_\.]git$/)
+(open(".gitignore") { |file| file.read }).split("\n").each do |pattern|
+  list.exclude(pattern)
+end
+PKG_FILES = list
 
 RCOV_ENABLED = !!(RUBY_PLATFORM != 'java' && RUBY_VERSION =~ /^1\.8/)
 if RCOV_ENABLED
