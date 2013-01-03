@@ -28,8 +28,8 @@ module Google
     #   client.authorization = Signet::OAuth2::Client.new(
     #     :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
     #     :audience => 'https://accounts.google.com/o/oauth2/token',
-    #     :scope => https://www.googleapis.com/auth/prediction',,
-    #     :issuer => 123456-abcdef@developer.gserviceaccount.com',
+    #     :scope => 'https://www.googleapis.com/auth/prediction',
+    #     :issuer => '123456-abcdef@developer.gserviceaccount.com',
     #     :signing_key => key)
     #   client.authorization.fetch_access_token!
     #   client.execute(...)
