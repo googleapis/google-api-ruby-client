@@ -14,7 +14,7 @@
 
 
 require 'addressable/uri'
-
+require 'multi_json'
 require 'google/inflection'
 require 'google/api_client/discovery/resource'
 require 'google/api_client/discovery/method'
@@ -281,6 +281,20 @@ module Google
           "#<%s:%#0x ID:%s>", self.class.to_s, self.object_id, self.id
         )
       end
+      
+      ##
+      # Marshalling support - serialize the API to a string (doc base + original 
+      # discovery document).
+      def _dump(level)
+        MultiJson.dump([@document_base.to_s, @discovery_document])
+      end
+      
+      ##
+      # Marshalling support - Restore an API instance from serialized form
+      def self._load(obj)
+        new(*MultiJson.load(obj)) 
+      end
+
     end
   end
 end
