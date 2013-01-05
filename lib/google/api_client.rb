@@ -101,7 +101,7 @@ module Google
       # default authentication mechanisms.
       self.authorization =
         options.key?(:authorization) ? options[:authorization] : :oauth_2
-      self.auto_refresh_token = options.fetch(:auto_refresh_token){ true }
+      self.auto_refresh_token = options.fetch(:auto_refresh_token) { true }
       self.key = options[:key]
       self.user_ip = options[:user_ip]
       @discovery_uris = {}
@@ -168,17 +168,17 @@ module Google
     end
 
     ##
-    # The application's API key issued by the API console.
-    #
-    # @return [String] The API key.
-    attr_accessor :key
-
-    ##
     # The setting that controls whether or not the api client attempts to
     # refresh authorization when a 401 is hit in #execute. 
     #
     # @return [Boolean]
     attr_accessor :auto_refresh_token
+
+    ##
+    # The application's API key issued by the API console.
+    #
+    # @return [String] The API key.
+    attr_accessor :key
 
     ##
     # The IP address of the user this request is being performed on behalf of.
