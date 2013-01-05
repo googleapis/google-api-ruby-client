@@ -19,6 +19,7 @@ require 'compat/multi_json'
 require 'addressable/uri'
 require 'stringio'
 require 'google/api_client/discovery'
+require 'google/api_client/logging'
 
 module Google
   class APIClient
@@ -26,6 +27,8 @@ module Google
     ##
     # Represents an API request.
     class Request
+      include Google::APIClient::Logging
+      
       MULTIPART_BOUNDARY = "-----------RubyApiMultipartPost".freeze
 
       # @return [Hash] Request parameters
@@ -151,14 +154,19 @@ module Google
       # @return [Google::APIClient::Result]
       #   result of API request
       def send(connection)
-        http_response = connection.app.call(self.to_env(connection))
+        env = self.to_env(connection)
+        logger.debug  { "#{self.class} Sending API request #{env[:method]} #{env[:url].to_s} #{env[:request_headers]}" }
+        http_response = connection.app.call(env)
         result = self.process_http_response(http_response)
+
+        logger.debug { "#{self.class} Result: #{result.status} #{result.headers}" }
 
         # Resumamble slightly different than other upload protocols in that it requires at least
         # 2 requests.
         if self.upload_type == 'resumable'
           upload =  result.resumable_upload
           unless upload.complete?
+            logger.debug { "#{self.class} Sending upload body" }
             result = upload.send(connection)
           end
         end

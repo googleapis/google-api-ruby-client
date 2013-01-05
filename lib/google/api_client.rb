@@ -37,7 +37,7 @@ module Google
   ##
   # This class manages APIs communication.
   class APIClient
-    include Google::Logging
+    include Google::APIClient::Logging
     
     ##
     # Creates a new Google API client.
@@ -71,6 +71,8 @@ module Google
     # @option options [String] :discovery_path ("/discovery/v1")
     #   The discovery base path. This rarely needs to be changed.
     def initialize(options={})
+      logger.debug { "#{self.class} - Initializing client with options #{options}" }
+      
       # Normalize key to String to allow indifferent access.
       options = options.inject({}) do |accu, (key, value)|
         accu[key.to_sym] = value
@@ -88,7 +90,7 @@ module Google
         app_version = options[:application_version]
         application_string = "#{app_name}/#{app_version || '0.0.0'}"
       else
-        logger.warn("Please provide :application_name and :application_version when initializing the APIClient") 
+        logger.warn { "#{self.class} - Please provide :application_name and :application_version when initializing the client" }
       end
       self.user_agent = options[:user_agent] || (
         "#{application_string} " +
@@ -105,6 +107,7 @@ module Google
       @discovery_uris = {}
       @discovery_documents = {}
       @discovered_apis = {}
+            
       return self
     end
 
@@ -560,6 +563,7 @@ module Google
       result = request.send(connection)
       if result.status == 401 && authorization.respond_to?(:refresh_token) && auto_refresh_token
         begin
+          logger.debug("Attempting refresh of access token & retry of request")
           authorization.fetch_access_token!
           result = request.send(connection)
         rescue Signet::AuthorizationError
