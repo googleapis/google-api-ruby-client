@@ -1,3 +1,14 @@
+# 0.5.1
+
+* Apps strongly encouraged to set :application_name & :application_version when
+  initializing a client
+* JWT/service accounts moved to signet
+* Initial logging support for client
+* Fix PKCS12 loading on windows
+* Allow disabling auto-refresh of OAuth 2 access tokens
+* Compatibility with MultiJson >= 1.0.0 & Rails 3.2.8
+* Fix for body serialization when body doesn't respond to to_json
+
 # 0.5.0
 
 * Beta candidate, potential incompatible changes with how requests are processed. 
