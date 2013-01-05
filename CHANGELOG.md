@@ -1,13 +1,16 @@
-# 0.5.1
+# 0.6
 
 * Apps strongly encouraged to set :application_name & :application_version when
   initializing a client
 * JWT/service accounts moved to signet
+* Added helper class for installed app OAuth flows, updated samples & CLI
 * Initial logging support for client
 * Fix PKCS12 loading on windows
 * Allow disabling auto-refresh of OAuth 2 access tokens
 * Compatibility with MultiJson >= 1.0.0 & Rails 3.2.8
 * Fix for body serialization when body doesn't respond to to_json
+* Remove OAuth 1.0 logins from CLI
+
 
 # 0.5.0
 
