@@ -19,8 +19,8 @@ require 'multi_json'
 require 'compat/multi_json'
 require 'stringio'
 
-require 'google/api_client/logging'
 require 'google/api_client/version'
+require 'google/api_client/logging'
 require 'google/api_client/errors'
 require 'google/api_client/environment'
 require 'google/api_client/discovery'
@@ -94,7 +94,7 @@ module Google
       end
       self.user_agent = options[:user_agent] || (
         "#{application_string} " +
-        "google-api-ruby-client/#{VERSION::STRING} " +
+        "google-api-ruby-client/#{Google::APIClient::VERSION::STRING} " +
          ENV::OS_VERSION
       ).strip
       # The writer method understands a few Symbols and will generate useful
