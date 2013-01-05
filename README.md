@@ -80,16 +80,19 @@ Most interactions with Google APIs require users to authorize applications via O
 
 Credentials can be managed at the connection level, as shown, or supplied on a per-request basis when calling `execute`.
     
-For server-to-server interactions, like those between a web application and Google Cloud Storage, Prediction, or BigQuery APIs, use service accounts. Assertions for service accounts are made with `Google::APIClient::JWTAsserter`.
+For server-to-server interactions, like those between a web application and Google Cloud Storage, Prediction, or BigQuery APIs, use service accounts.
 
-    client = Google::APIClient.new
-    key = Google::APIClient::PKCS12.load_key('client.p12', 'notasecret')
-    service_account = Google::APIClient::JWTAsserter.new(
-        '123456-abcdef@developer.gserviceaccount.com',
-        'https://www.googleapis.com/auth/prediction',
-        key)
-    client.authorization = service_account.authorize
-
+    key = Google::APIClient::KeyUtils.load_from_pkcs12('client.p12', 'notasecret')
+    client.authorization = Signet::OAuth2::Client.new(
+      :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
+      :audience => 'https://accounts.google.com/o/oauth2/token',
+      :scope => 'https://www.googleapis.com/auth/prediction',
+      :issuer => '123456-abcdef@developer.gserviceaccount.com',
+      :signing_key => key)
+    client.authorization.fetch_access_token!
+    client.execute(...)
+    
+    
 ### Batching Requests
 
 Some Google APIs support batching requests into a single HTTP request. Use `Google::APIClient::BatchRequest`
