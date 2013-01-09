@@ -471,7 +471,6 @@ describe Google::APIClient do
     end
   end
   
-=begin
   describe 'with the latitude API' do
     before do
       CLIENT.authorization = nil
@@ -510,7 +509,7 @@ describe Google::APIClient do
 
     it 'should generate requests against the correct URIs' do
       request = CLIENT.generate_request(
-        :api_method => 'latitude.currentLocation.get',
+        :api_method => @latitude.current_location.get,
         :authenticated => false
       )
       request.to_env(Faraday.default_connection)[:url].to_s.should ===
@@ -528,70 +527,8 @@ describe Google::APIClient do
 
     it 'should not be able to execute requests without authorization' do
       result = CLIENT.execute(
-        :api_method => 'latitude.currentLocation.get',
+        :api_method => @latitude.current_location.get,
         :authenticated => false
-      )
-      result.response.status.should == 401
-    end
-  end
-=end
-
-  describe 'with the moderator API' do
-    before do
-      CLIENT.authorization = nil
-      @moderator = CLIENT.discovered_api('moderator')
-    end
-
-    it 'should correctly determine the discovery URI' do
-      CLIENT.discovery_uri('moderator').should ===
-        'https://www.googleapis.com/discovery/v1/apis/moderator/v1/rest'
-    end
-
-    it 'should find APIs that are in the discovery document' do
-      CLIENT.discovered_api('moderator').name.should == 'moderator'
-      CLIENT.discovered_api('moderator').version.should == 'v1'
-    end
-
-    it 'should find methods that are in the discovery document' do
-      CLIENT.discovered_method(
-        'moderator.profiles.get', 'moderator'
-      ).name.should == 'get'
-    end
-
-    it 'should define the origin API in discovered methods' do
-      CLIENT.discovered_method(
-        'moderator.profiles.get', 'moderator'
-      ).api.name.should == 'moderator'
-    end
-
-    it 'should not find methods that are not in the discovery document' do
-      CLIENT.discovered_method('moderator.bogus', 'moderator').should == nil
-    end
-
-    it 'should return a batch path' do
-      CLIENT.discovered_api('moderator').batch_path.should_not be_nil
-    end
-
-    it 'should generate requests against the correct URIs' do
-      conn = stub_connection do |stub|
-        stub.get('/moderator/v1/profiles/@me') do |env|
-        end
-      end
-      request = CLIENT.execute(
-        :api_method => @moderator.profiles.get,
-        :authenticated => false,
-        :connection => conn
-      )
-      conn.verify
-    end
-
-    it 'should not be able to execute requests without authorization' do
-      result = CLIENT.execute(
-        @moderator.profiles.get,
-        {},
-        '',
-        [],
-        {:authenticated => false}
       )
       result.response.status.should == 401
     end
