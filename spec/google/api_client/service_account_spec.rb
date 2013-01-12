@@ -66,6 +66,26 @@ describe Google::APIClient::JWTAsserter do
     claim["scope"].should == 'scope1 scope2'
   end
 
+  it 'should allow impersonation' do
+    conn = stub_connection do |stub|
+      stub.post('/o/oauth2/token') do |env|
+        params = Addressable::URI.form_unencode(env[:body])
+        JWT.decode(params.assoc("assertion").last, @key.public_key)
+        params.assoc("grant_type").should == ['grant_type','urn:ietf:params:oauth:grant-type:jwt-bearer']
+        [200, {}, '{
+          "access_token" : "1/abcdef1234567890",
+          "token_type" : "Bearer",
+          "expires_in" : 3600
+        }']
+      end
+    end
+    asserter = Google::APIClient::JWTAsserter.new('client1', 'scope1 scope2', @key)
+    auth = asserter.authorize('user1@email.com', { :connection => conn })
+    auth.should_not == nil?
+    auth.person.should == 'user1@email.com'
+    conn.verify
+  end
+
   it 'should send valid access token request' do
     conn = stub_connection do |stub|
       stub.post('/o/oauth2/token') do |env|
