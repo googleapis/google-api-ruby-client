@@ -112,7 +112,7 @@ module Google
       #
       # @see Signet::OAuth2::Client.fetch_access_token!
       def authorize(person = nil, options={})
-        authorization = self.to_authorization
+        authorization = self.to_authorization(person)
         authorization.fetch_access_token!(options)
         return authorization
       end
