@@ -1,3 +1,7 @@
+# 0.6.1
+
+* Fix impersonation with service accounts
+
 # 0.6
 
 * Apps strongly encouraged to set :application_name & :application_version when
