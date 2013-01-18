@@ -2,7 +2,7 @@ source :rubygems
 
 gemspec
 
-gem 'signet', '>= 0.4.4'
+gem 'signet', '>= 0.4.5'
 gem 'addressable', '>= 2.3.2'
 gem 'uuidtools', '>= 2.1.0'
 gem 'autoparse', '>= 0.3.2'
@@ -15,11 +15,7 @@ gem 'jruby-openssl', :platforms => :jruby
 group :development do
   gem 'launchy', '>= 2.1.1'
   gem 'yard'
-  if File.exist?('/usr/bin/gcc-4.2')
-    # Not a critically important gem to have around.
-    # If it's not going to build, skip it.
-    gem 'redcarpet'
-  end
+  gem 'kramdown'
 end
 
 group :examples do

@@ -2,7 +2,7 @@
 
 <dl>
   <dt>Homepage</dt><dd><a href="http://code.google.com/p/google-api-ruby-client">http://code.google.com/p/google-api-ruby-client</a></dd>
-  <dt>Authoris</dt><dd>Bob Aman, <a href="mailto:sbazyl@google.com">Steven Bazyl</a></dd>
+  <dt>Authors</dt><dd>Bob Aman, <a href="mailto:sbazyl@google.com">Steven Bazyl</a></dd>
   <dt>Copyright</dt><dd>Copyright © 2011 Google, Inc.</dd>
   <dt>License</dt><dd>Apache 2.0</dd>
 </dl>

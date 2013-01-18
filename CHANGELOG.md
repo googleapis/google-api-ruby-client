@@ -1,3 +1,8 @@
+# 0.6.2
+
+* Update signet to 0.4.6 to support server side continuation of postmessage
+  auth flows.
+
 # 0.6.1
 
 * Fix impersonation with service accounts
