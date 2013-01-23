@@ -432,8 +432,7 @@ describe Google::APIClient do
 
     it 'should generate requests against the correct URIs' do
       conn = stub_connection do |stub|
-        stub.get('/plus/v1/people/107807692475771887386/activities/public' +
-                  '?collection=public&userId=107807692475771887386') do |env|
+        stub.get('/plus/v1/people/107807692475771887386/activities/public') do |env|
         end
       end
       

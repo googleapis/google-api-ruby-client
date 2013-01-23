@@ -181,14 +181,15 @@ module Google
       # @return [Array<(Symbol, Addressable::URI, Hash, [#read,#to_str])>]
       def to_http_request
         request = (
-          if self.uri
+          if self.api_method
+            self.api_method.generate_request(self.parameters, self.body, self.headers)
+          elsif self.uri
             unless self.parameters.empty?
               self.uri.query = Addressable::URI.form_encode(self.parameters)
             end
             [self.http_method, self.uri.to_s, self.headers, self.body]
-          else
-            self.api_method.generate_request(self.parameters, self.body, self.headers)
           end)
+        return request
       end
 
       ##
@@ -227,7 +228,7 @@ module Google
       def to_env(connection)
         method, uri, headers, body = self.to_http_request
         http_request = connection.build_request(method) do |req|
-          req.url(uri)
+          req.url(uri.to_s)
           req.headers.update(headers)
           req.body = body
         end
