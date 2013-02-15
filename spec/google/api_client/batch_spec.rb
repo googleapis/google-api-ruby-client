@@ -33,6 +33,15 @@ describe Google::APIClient::BatchRequest do
     end).should raise_error(Google::APIClient::BatchError)
   end
 
+  it 'should allow query parameters in batch requests' do
+    batch = Google::APIClient::BatchRequest.new
+    batch.add(:uri => 'https://example.com', :parameters => {
+      'a' => '12345'
+    })
+    method, uri, headers, body = batch.to_http_request
+    body.read.should include("/?a=12345")
+  end
+
   describe 'with the discovery API' do
     before do
       CLIENT.authorization = nil

@@ -286,7 +286,7 @@ module Google
       #   the serialized request
       def serialize_call(call_id, call)
         method, uri, headers, body = call.to_http_request
-        request = "#{method.to_s.upcase} #{Addressable::URI.parse(uri).path} HTTP/1.1"
+        request = "#{method.to_s.upcase} #{Addressable::URI.parse(uri).request_uri} HTTP/1.1"
         headers.each do |header, value|
           request << "\r\n%s: %s" % [header, value]
         end
