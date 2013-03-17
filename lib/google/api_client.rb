@@ -30,6 +30,7 @@ require 'google/api_client/result'
 require 'google/api_client/media'
 require 'google/api_client/service_account'
 require 'google/api_client/batch'
+require 'google/api_client/push'
 require 'google/api_client/railtie' if defined?(Rails)
 
 module Google
@@ -561,10 +562,10 @@ module Google
       request.authorization = options[:authorization] || self.authorization unless options[:authenticated] == false
 
       result = request.send(connection)
-      if result.status == 401 && authorization.respond_to?(:refresh_token) && auto_refresh_token
+      if result.status == 401 && request.authorization.respond_to?(:refresh_token) && auto_refresh_token
         begin
           logger.debug("Attempting refresh of access token & retry of request")
-          authorization.fetch_access_token!
+          request.authorization.fetch_access_token!
           result = request.send(connection)
         rescue Signet::AuthorizationError
            # Ignore since we want the original error
