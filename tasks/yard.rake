@@ -15,7 +15,7 @@ begin
       yardoc.options = ['--verbose', '--markup', 'markdown']
       yardoc.files = [
         'lib/**/*.rb', 'ext/**/*.c', '-',
-        'README.md', 'CHANGELOG.md', 'LICENSE'
+        'README.md', 'CONTRIB.md', 'CHANGELOG.md', 'LICENSE'
       ]
     end
   end
