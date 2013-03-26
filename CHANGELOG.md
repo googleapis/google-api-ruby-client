@@ -1,3 +1,10 @@
+# 0.6.3
+
+* Update autoparse to 0.3.3 to fix cases where results aren't correctly parsed.
+* Fix railtie loading for compatibility with rails < 3.0
+* Fix refresh of access token when passing credentials as parameter to execute
+* Fix URI processing in batch requests to allow query parameters
+
 # 0.6.2
 
 * Update signet to 0.4.6 to support server side continuation of postmessage
