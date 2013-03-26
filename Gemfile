@@ -5,7 +5,7 @@ gemspec
 gem 'signet', '>= 0.4.5'
 gem 'addressable', '>= 2.3.2'
 gem 'uuidtools', '>= 2.1.0'
-gem 'autoparse', '>= 0.3.2'
+gem 'autoparse', '>= 0.3.3'
 gem 'faraday', '~> 0.8.4'
 gem 'multi_json', '>= 1.0.0'
 gem 'extlib', '>= 0.9.15'

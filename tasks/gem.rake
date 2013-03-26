@@ -27,7 +27,7 @@ namespace :gem do
     s.add_runtime_dependency('signet', '>= 0.4.4')
     s.add_runtime_dependency('addressable', '>= 2.3.2')
     s.add_runtime_dependency('uuidtools', '>= 2.1.0')
-    s.add_runtime_dependency('autoparse', '>= 0.3.2')
+    s.add_runtime_dependency('autoparse', '>= 0.3.3')
     s.add_runtime_dependency('faraday', '~> 0.8.4')
     s.add_runtime_dependency('multi_json', '>= 1.0.0')
     s.add_runtime_dependency('extlib', '>= 0.9.15')
