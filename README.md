@@ -23,11 +23,6 @@ For normal client usage, this is sufficient:
 
     $ sudo gem install google-api-client
 
-The command line interface, the example applications, and the test suite
-require additional dependencies. These may be obtained with:
-
-    $ sudo gem install google-api-client --development --force --no-rdoc --no-ri
-
 ## Example Usage
 
     # Initialize the client & Google+ API
