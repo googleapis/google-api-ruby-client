@@ -21,7 +21,7 @@ Be sure `http://rubygems.org/` is in your gem sources.
 
 For normal client usage, this is sufficient:
 
-    $ sudo gem install google-api-client
+    $ gem install google-api-client
 
 ## Example Usage
 
