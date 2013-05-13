@@ -143,6 +143,21 @@ describe Google::APIClient do
       )
     end
     
+    it 'should accept options with batch/request style execute' do
+      client.authorization.access_token = "abcdef"
+      new_auth = Signet::OAuth2::Client.new(:access_token => '12345')
+      request = client.generate_request(
+        :api_method => @prediction.training.insert,
+        :parameters => {'data' => '12345'}
+      )
+      client.execute(
+        request,
+        :authorization => new_auth,
+        :connection => @connection
+      )
+    end
+    
+    
     it 'should accept options in array style execute' do
        client.authorization.access_token = "abcdef"
        new_auth = Signet::OAuth2::Client.new(:access_token => '12345')

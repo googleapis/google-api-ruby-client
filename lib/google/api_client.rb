@@ -542,10 +542,9 @@ module Google
     #
     # @see Google::APIClient#generate_request
     def execute(*params)
-      if params.last.kind_of?(Google::APIClient::Request) &&
-          params.size == 1
-        request = params.pop
-        options = {}
+      if params.first.kind_of?(Google::APIClient::Request)
+        request = params.shift
+        options = params.shift || {}
       else
         # This block of code allows us to accept multiple parameter passing
         # styles, and maintaining some backwards compatibility.
