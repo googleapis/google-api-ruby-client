@@ -234,7 +234,7 @@ describe Google::APIClient::BatchRequest do
       it 'should convert to a correct HTTP request' do
         batch = Google::APIClient::BatchRequest.new { |result| }
         batch.add(@call1, '1').add(@call2, '2')
-        request = batch.to_env(Faraday.default_connection)
+        request = batch.to_env(CLIENT.connection)
         boundary = Google::APIClient::BatchRequest::BATCH_BOUNDARY
         request[:method].to_s.downcase.should == 'post'
         request[:url].to_s.should == 'https://www.googleapis.com/batch'

@@ -78,11 +78,10 @@ describe Google::APIClient::Result do
       end
 
       it 'should escape the next page token when calling next_page' do
-        pending("This is caused by Faraday's encoding of query parameters.")
         reference = @result.next_page
         Hash[reference.parameters].should include('pageToken')
         Hash[reference.parameters]['pageToken'].should == 'NEXT+PAGE+TOKEN'
-        url = reference.to_env(Faraday.default_connection)[:url]
+        url = reference.to_env(CLIENT.connection)[:url]
         url.to_s.should include('pageToken=NEXT%2BPAGE%2BTOKEN')
       end
 

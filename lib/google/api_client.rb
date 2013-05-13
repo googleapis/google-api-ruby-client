@@ -107,7 +107,12 @@ module Google
       @discovery_uris = {}
       @discovery_documents = {}
       @discovered_apis = {}
-            
+      
+      self.connection = Faraday.new do |faraday|
+        faraday.adapter  Faraday.default_adapter
+        faraday.options.params_encoder = Faraday::FlatParamsEncoder
+      end      
+
       return self
     end
 
@@ -166,6 +171,13 @@ module Google
       @authorization = new_authorization
       return @authorization
     end
+
+
+    ##
+    # Default Faraday/HTTP connection.
+    #
+    # @return [Faraday::Connection]
+    attr_accessor :connection
 
     ##
     # The setting that controls whether or not the api client attempts to
@@ -557,7 +569,7 @@ module Google
       request.parameters['key'] ||= self.key unless self.key.nil?
       request.parameters['userIp'] ||= self.user_ip unless self.user_ip.nil?
 
-      connection = options[:connection] || Faraday.default_connection
+      connection = options[:connection] || self.connection
       request.authorization = options[:authorization] || self.authorization unless options[:authenticated] == false
 
       result = request.send(connection)

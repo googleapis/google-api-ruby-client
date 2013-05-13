@@ -14,6 +14,8 @@
 
 require 'faraday'
 require 'faraday/utils'
+require 'faraday/options'
+require 'faraday/request/multipart'
 require 'multi_json'
 require 'compat/multi_json'
 require 'addressable/uri'
@@ -71,7 +73,7 @@ module Google
       # @option options [String, Symbol] :http_method
       #   HTTP method when requesting a URI
       def initialize(options={})
-        @parameters = Hash[options[:parameters] || {}]
+        @parameters = Faraday::Utils::ParamsHash[options[:parameters] || {}]
         @headers = Faraday::Utils::Headers.new
         self.headers.merge!(options[:headers]) unless options[:headers].nil?
         self.api_method = options[:api_method]
@@ -314,10 +316,10 @@ module Google
       # @param [String] boundary
       #   Boundary for separating each part of the message
       def build_multipart(parts, mime_type = 'multipart/related', boundary = MULTIPART_BOUNDARY)
-        env = {
-          :request_headers => {'Content-Type' => "#{mime_type};boundary=#{boundary}"},
-          :request => { :boundary => boundary }
-        }
+        env = Faraday::Env.new
+        env.request = Faraday::RequestOptions.new
+        env.request.boundary = boundary
+        env.request_headers = {'Content-Type' => "#{mime_type};boundary=#{boundary}"}
         multipart = Faraday::Request::Multipart.new
         self.body = multipart.create_multipart(env, parts.map {|part| [nil, part]})
         self.headers.update(env[:request_headers])

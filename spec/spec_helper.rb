@@ -4,6 +4,8 @@ $LOAD_PATH.uniq!
 require 'rspec'
 require 'faraday'
 
+Faraday::Adapter.load_middleware(:test)
+
 module Faraday
   class Connection
     def verify
@@ -22,6 +24,7 @@ module ConnectionHelpers
       block.call(stub)
     end
     connection = Faraday.new do |builder|
+      builder.options.params_encoder = Faraday::FlatParamsEncoder
       builder.adapter(:test, stubs)
     end
   end
