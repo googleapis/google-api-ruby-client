@@ -77,9 +77,13 @@ module Google
       ##
       # Request authorization. Opens a browser and waits for response.
       #
+      # @param [Google::APIClient::FileStorage] storage
+      #  Optional object that responds to :write_credentials, used to serialize
+      #  the OAuth 2 credentials after completing the flow.
+      #
       # @return [Signet::OAuth2::Client]
       #  Authorization instance, nil if user cancelled.
-      def authorize
+      def authorize(storage=nil)
         auth = @authorization
     
         server = WEBrick::HTTPServer.new(
@@ -103,6 +107,9 @@ module Google
         Launchy.open(auth.authorization_uri.to_s)
         server.start
         if @authorization.access_token
+          if storage.respond_to?(:write_credentials)
+            storage.write_credentials(@authorization)
+          end
           return @authorization
         else
           return nil
