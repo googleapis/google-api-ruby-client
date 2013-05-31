@@ -218,10 +218,7 @@ describe Google::APIClient do
     it 'should generate valid requests when multivalued parameters are passed' do
       conn = stub_connection do |stub|
          stub.post('/prediction/v1.2/training?data=1&data=2') do |env|
-           # Test is now passing with Faraday 0.9.0.rc1, but small bug in test adapter
-           #params = env[:params]
-           params = Faraday::FlatParamsEncoder.decode(env.url.query)
-           params['data'].should include('1', '2')
+           env.params['data'].should include('1', '2')
          end
        end
       request = CLIENT.execute(

@@ -36,7 +36,7 @@ shared_examples_for 'configurable user agent' do
   it 'should not allow the user agent to be used with bogus values' do
     (lambda do
       client.user_agent = 42
-      client.execute(:uri=>'http://www.google.com/')
+      client.execute(:uri=>'https://www.google.com/')
     end).should raise_error(TypeError)
   end
 
@@ -51,7 +51,7 @@ shared_examples_for 'configurable user agent' do
         [200, {}, ['']]
       end
     end
-    client.execute(:uri=>'http://www.google.com/', :connection => conn)
+    client.execute(:uri=>'https://www.google.com/', :connection => conn)
     conn.verify
   end
 end
