@@ -109,8 +109,10 @@ module Google
       @discovered_apis = {}
       
       self.connection = Faraday.new do |faraday|
-        faraday.adapter  Faraday.default_adapter
         faraday.options.params_encoder = Faraday::FlatParamsEncoder
+        faraday.ssl.ca_file = File.expand_path('../../cacerts.pem', __FILE__)
+        faraday.ssl.verify = true
+        faraday.adapter Faraday.default_adapter
       end      
 
       return self
