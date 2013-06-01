@@ -14,7 +14,6 @@
 
 require 'faraday'
 require 'faraday/utils'
-require 'faraday/options'
 require 'faraday/request/multipart'
 require 'multi_json'
 require 'compat/multi_json'
