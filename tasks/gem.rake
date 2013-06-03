@@ -28,7 +28,7 @@ namespace :gem do
     s.add_runtime_dependency('addressable', '>= 2.3.2')
     s.add_runtime_dependency('uuidtools', '>= 2.1.0')
     s.add_runtime_dependency('autoparse', '>= 0.3.3')
-    s.add_runtime_dependency('faraday', '>= 0.9.0.rc1')
+    s.add_runtime_dependency('faraday', '>= 0.9.0.rc5')
     s.add_runtime_dependency('multi_json', '>= 1.0.0')
     s.add_runtime_dependency('extlib', '>= 0.9.15')
     s.add_runtime_dependency('jwt', '>= 0.1.5')
