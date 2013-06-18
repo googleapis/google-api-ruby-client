@@ -153,10 +153,13 @@ module Google
       #
       # @param [Faraday::Connection] connection
       #   the connection to transmit with
+      # @param [TrueValue,FalseValue] is_retry
+      #   True if request has been previous sent
       #
       # @return [Google::APIClient::Result]
       #   result of API request
-      def send(connection)
+      def send(connection, is_retry = false)
+        self.body.rewind if is_retry && self.body.respond_to?(:rewind)          
         env = self.to_env(connection)
         logger.debug  { "#{self.class} Sending API request #{env[:method]} #{env[:url].to_s} #{env[:request_headers]}" }
         http_response = connection.app.call(env)
