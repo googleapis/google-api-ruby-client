@@ -70,6 +70,9 @@ module Google
     #   The port number used by the client. This rarely needs to be changed.
     # @option options [String] :discovery_path ("/discovery/v1")
     #   The discovery base path. This rarely needs to be changed.
+    # @option options [String] :ca_file
+    #   Optional set of root certificates to use when validating SSL connections.
+    #   By default, a bundled set of trusted roots will be used.
     def initialize(options={})
       logger.debug { "#{self.class} - Initializing client with options #{options}" }
       
@@ -107,14 +110,13 @@ module Google
       @discovery_uris = {}
       @discovery_documents = {}
       @discovered_apis = {}
-      
+      ca_file = options[:ca_file] || File.expand_path('../../cacerts.pem', __FILE__)
       self.connection = Faraday.new do |faraday|
         faraday.options.params_encoder = Faraday::FlatParamsEncoder
-        faraday.ssl.ca_file = File.expand_path('../../cacerts.pem', __FILE__)
+        faraday.ssl.ca_file = ca_file
         faraday.ssl.verify = true
         faraday.adapter Faraday.default_adapter
       end      
-
       return self
     end
 
