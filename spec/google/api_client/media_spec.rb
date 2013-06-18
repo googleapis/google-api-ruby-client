@@ -57,6 +57,54 @@ describe Google::APIClient::UploadIO do
   end
 end
 
+describe Google::APIClient::RangedIO do
+  before do
+    @source = StringIO.new("1234567890abcdef")
+    @io = Google::APIClient::RangedIO.new(@source, 1, 5)
+  end
+  
+  it 'should return the correct range when read entirely' do
+    @io.read.should == "23456"
+  end
+  
+  it 'should maintain position' do
+    @io.read(1).should == '2'
+    @io.read(2).should == '34'
+    @io.read(2).should == '56'
+  end
+  
+  it 'should allow rewinds' do
+    @io.read(2).should == '23'
+    @io.rewind()
+    @io.read(2).should == '23'
+  end
+  
+  it 'should allow setting position' do
+    @io.pos = 3
+    @io.read.should == '56'
+  end
+  
+  it 'should not allow position to be set beyond range' do
+    @io.pos = 10
+    @io.read.should == ''
+  end
+  
+  it 'should return empty string when read amount is zero' do
+    @io.read(0).should == ''
+  end
+  
+  it 'should return empty string at EOF if amount is nil' do
+    @io.read
+    @io.read.should == ''
+  end
+  
+  it 'should return nil at EOF if amount is positive int' do
+    @io.read
+    @io.read(1).should == nil
+  end
+    
+end
+
 describe Google::APIClient::ResumableUpload do
   CLIENT = Google::APIClient.new(:application_name => 'API Client Tests') unless defined?(CLIENT)
 

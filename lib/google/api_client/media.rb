@@ -21,7 +21,11 @@ module Google
     # @see Faraday::UploadIO
     # @example
     #   media = Google::APIClient::UploadIO.new('mymovie.m4v', 'video/mp4')
-    class UploadIO < Faraday::UploadIO      
+    class UploadIO < Faraday::UploadIO
+      
+      # @return [Fixnum] Size of chunks to upload. Default is nil, meaning upload the entire file in a single request
+      attr_accessor :chunk_size
+            
       ##
       # Get the length of the stream
       #
@@ -29,6 +33,77 @@ module Google
       #   Length of stream, in bytes
       def length
         io.respond_to?(:length) ? io.length : File.size(local_path)
+      end
+    end
+    
+    ##
+    # Wraps an input stream and limits data to a given range
+    #
+    # @example
+    #   chunk = Google::APIClient::RangedIO.new(io, 0, 1000)
+    class RangedIO 
+      ##
+      # Bind an input stream to a specific range.
+      #
+      # @param [IO] io
+      #   Source input stream
+      # @param [Fixnum] offset
+      #   Starting offset of the range
+      # @param [Fixnum] length
+      #   Length of range
+      def initialize(io, offset, length)
+        @io = io
+        @offset = offset
+        @length = length
+        self.rewind
+      end
+      
+      ##
+      # @see IO#read
+      def read(amount = nil, buf = nil)
+        buffer = buf || ''
+        if amount.nil?
+          size = @length - @pos
+          done = ''
+        elsif amount == 0
+          size = 0
+          done = ''
+        else 
+          size = [@length - @pos, amount].min
+          done = nil
+        end
+
+        if size > 0
+          result = @io.read(size)
+          result.force_encoding("BINARY") if result.respond_to?(:force_encoding)
+          buffer << result if result
+          @pos = @pos + size
+        end
+
+        if buffer.length > 0
+          buffer
+        else
+          done
+        end
+      end
+
+      ##
+      # @see IO#rewind
+      def rewind
+        self.pos = 0
+      end
+
+      ##
+      # @see IO#pos
+      def pos
+        @pos
+      end
+
+      ##
+      # @see IO#pos=
+      def pos=(pos)
+        @pos = pos
+        @io.pos = @offset + pos
       end
     end
     
@@ -124,11 +199,11 @@ module Google
             'Content-Range' => "bytes */#{media.length}" })
         else
           start_offset = @offset
-          self.media.io.pos = start_offset
-          chunk = self.media.io.read(chunk_size)
-          content_length = chunk.bytesize
+          remaining = self.media.length - start_offset
+          chunk_size = self.media.chunk_size || self.chunk_size || self.media.length
+          content_length = [remaining, chunk_size].min
+          chunk = RangedIO.new(self.media.io, start_offset, content_length)
           end_offset = start_offset + content_length - 1
-          
           self.headers.update({
             'Content-Length' => "#{content_length}",
             'Content-Type' => self.media.content_type, 
