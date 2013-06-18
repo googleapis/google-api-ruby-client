@@ -72,8 +72,10 @@ module Google
       # @option options [String, Symbol] :http_method
       #   HTTP method when requesting a URI
       def initialize(options={})
-        @parameters = Faraday::Utils::ParamsHash[options[:parameters] || {}]
+        @parameters = Faraday::Utils::ParamsHash.new
         @headers = Faraday::Utils::Headers.new
+
+        self.parameters.merge!(options[:parameters]) unless options[:parameters].nil?
         self.headers.merge!(options[:headers]) unless options[:headers].nil?
         self.api_method = options[:api_method]
         self.authenticated = options[:authenticated]
