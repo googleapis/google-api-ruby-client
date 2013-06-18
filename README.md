@@ -33,11 +33,11 @@ require 'google/api_client'
 client = Google::APIClient.new
 plus = client.discovered_api('plus')
 
-# Initialize OAuth 2.0 client    
+# Initialize OAuth 2.0 client
 client.authorization.client_id = '<CLIENT_ID_FROM_API_CONSOLE>'
 client.authorization.client_secret = '<CLIENT_SECRET>'
 client.authorization.redirect_uri = '<YOUR_REDIRECT_URI>'
-    
+
 client.authorization.scope = 'https://www.googleapis.com/auth/plus.me'
 
 # Request authorization
@@ -81,10 +81,10 @@ my_api = client.register_discovery_document('myapi', 'v1', doc)
 
 ### Authorization
 
-Most interactions with Google APIs require users to authorize applications via OAuth 2.0. The client library uses [Signet](https://github.com/google/signet) to handle most aspects of authorization. For additional details about Google's OAuth support, see [Google Developers](https://developers.google.com/accounts/docs/OAuth2). 
+Most interactions with Google APIs require users to authorize applications via OAuth 2.0. The client library uses [Signet](https://github.com/google/signet) to handle most aspects of authorization. For additional details about Google's OAuth support, see [Google Developers](https://developers.google.com/accounts/docs/OAuth2).
 
 Credentials can be managed at the connection level, as shown, or supplied on a per-request basis when calling `execute`.
-    
+
 For server-to-server interactions, like those between a web application and Google Cloud Storage, Prediction, or BigQuery APIs, use service accounts.
 
 ```ruby
@@ -97,8 +97,8 @@ client.authorization = Signet::OAuth2::Client.new(
   :signing_key => key)
 client.authorization.fetch_access_token!
 client.execute(...)
-```    
-    
+```
+
 ### Batching Requests
 
 Some Google APIs support batching requests into a single HTTP request. Use `Google::APIClient::BatchRequest`
@@ -109,18 +109,18 @@ Example:
 ```ruby
 client = Google::APIClient.new
 urlshortener = client.discovered_api('urlshortner')
-    
+
 batch = Google::APIClient::BatchRequest.new do |result|
     puts result.data
 end
-    
-batch.add(:api_method => urlshortener.url.insert, 
+
+batch.add(:api_method => urlshortener.url.insert,
           :body_object => { 'longUrl' => 'http://example.com/foo' })
-batch.add(:api_method => urlshortener.url.insert, 
+batch.add(:api_method => urlshortener.url.insert,
           :body_object => { 'longUrl' => 'http://example.com/bar' })
 client.execute(batch)
 ```
-    
+
 Blocks for handling responses can be specified either at the batch level or when adding an individual API call. For example:
 
 ```ruby
@@ -136,7 +136,7 @@ uploads can be used. For example, to upload a file to Google Drive using multipa
 
 ```ruby
 drive = client.discovered_api('drive', 'v2')
-   
+
 media = Google::APIClient::UploadIO.new('mymovie.m4v', 'video/mp4')
 metadata = {
     'title' => 'My movie',
@@ -147,7 +147,7 @@ client.execute(:api_method => drive.files.insert,
                :body_object => metadata,
                :media => media )
 ```
-   
+
 To use resumable uploads, change the `uploadType` parameter to `resumable`. To check the status of the upload
 and continue if necessary, check `result.resumable_upload`.
 
@@ -191,4 +191,4 @@ See the full list of [samples on Google Code](http://code.google.com/p/google-ap
 
 ## Support
 
-Please [report bugs at the project on Google Code](http://code.google.com/p/google-api-ruby-client/issues/entry). Don't hesitate to [ask questions](http://stackoverflow.com/questions/tagged/google-api-ruby-client) about the client or APIs on [StackOverflow](http://stackoverflow.com).
+Please [report bugs at the project on Github](https://github.com/google/google-api-ruby-client/issues). Don't hesitate to [ask questions](http://stackoverflow.com/questions/tagged/google-api-ruby-client) about the client or APIs on [StackOverflow](http://stackoverflow.com).
