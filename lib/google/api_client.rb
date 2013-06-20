@@ -30,6 +30,7 @@ require 'google/api_client/result'
 require 'google/api_client/media'
 require 'google/api_client/service_account'
 require 'google/api_client/batch'
+require 'google/api_client/gzip'
 require 'google/api_client/railtie' if defined?(Rails::Railtie)
 
 module Google
@@ -97,8 +98,7 @@ module Google
       end
       self.user_agent = options[:user_agent] || (
         "#{application_string} " +
-        "google-api-ruby-client/#{Google::APIClient::VERSION::STRING} " +
-         ENV::OS_VERSION
+        "google-api-ruby-client/#{Google::APIClient::VERSION::STRING} #{ENV::OS_VERSION} (gzip)"
       ).strip
       # The writer method understands a few Symbols and will generate useful
       # default authentication mechanisms.
@@ -112,6 +112,7 @@ module Google
       @discovered_apis = {}
       ca_file = options[:ca_file] || File.expand_path('../../cacerts.pem', __FILE__)
       self.connection = Faraday.new do |faraday|
+        faraday.response :gzip
         faraday.options.params_encoder = Faraday::FlatParamsEncoder
         faraday.ssl.ca_file = ca_file
         faraday.ssl.verify = true
@@ -175,7 +176,6 @@ module Google
       @authorization = new_authorization
       return @authorization
     end
-
 
     ##
     # Default Faraday/HTTP connection.
@@ -531,6 +531,8 @@ module Google
     #     - (TrueClass, FalseClass) :authenticated (default: true) -
     #       `true` if the request must be signed or somehow
     #       authenticated, `false` otherwise.
+    #     - (TrueClass, FalseClass) :gzip (default: true) - 
+    #       `true` if gzip enabled, `false` otherwise.
     #
     # @return [Google::APIClient::Result] The result from the API, nil if batch.
     #
@@ -569,6 +571,7 @@ module Google
       end
       
       request.headers['User-Agent'] ||= '' + self.user_agent unless self.user_agent.nil?
+      request.headers['Accept-Encoding'] ||= 'gzip' unless options[:gzip] == false
       request.parameters['key'] ||= self.key unless self.key.nil?
       request.parameters['userIp'] ||= self.user_ip unless self.user_ip.nil?
 
