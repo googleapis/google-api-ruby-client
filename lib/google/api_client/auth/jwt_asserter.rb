@@ -34,17 +34,6 @@ module Google
     #   client.authorization.fetch_access_token!
     #   client.execute(...)
     #
-    # @example Deprecated version
-    #
-    #    client = Google::APIClient.new
-    #    key = Google::APIClient::PKCS12.load_key('client.p12', 'notasecret')
-    #    service_account = Google::APIClient::JWTAsserter.new(
-    #     '123456-abcdef@developer.gserviceaccount.com',
-    #     'https://www.googleapis.com/auth/prediction',
-    #     key)
-    #    client.authorization = service_account.authorize
-    #    client.execute(...)
-    #
     # @deprecated
     #  Service accounts are now supported directly in Signet
     # @see https://developers.google.com/accounts/docs/OAuth2ServiceAccount
