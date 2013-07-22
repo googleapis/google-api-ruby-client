@@ -158,7 +158,13 @@ client.execute(:api_method => drive.files.insert,
            :media => media )
 upload = result.resumable_upload
 
-### Server-to-server scenario for domain account
+# Resume if needed
+if upload.resumable?
+    client.execute(upload)
+end
+```
+
+## Server-to-server scenario for domain account
 Here is required setup to use google admin SDK for server-to-server scenario (without involving 3-rd party user for authorization) for domain account.
 It's most common case for enterprise users
 
@@ -203,12 +209,6 @@ It's most common case for enterprise users
       :parameters => {groupKey: 'api_admin@backops.co'},
       :body_object => {email: 'newperson@yourcompany.co'})
     result.data
-
-# Resume if needed
-if upload.resumable?
-    client.execute(upload)
-end
-```
 
 ## Command Line
 
