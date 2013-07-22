@@ -164,14 +164,14 @@ if upload.resumable?
 end
 ```
 
-## Server-to-server scenario for domain account
+### Server-to-server scenario for domain account
 Here is required setup to use google admin SDK for server-to-server scenario (without involving 3-rd party user for authorization) for domain account.
 It's most common case for enterprise users
 
 #### Steps within google
 1. Go to https://code.google.com/apis/console ([screenshot](http://monosnap.com/image/ztpKjmmAl7Nc5Zgk8oLpvWkG9))
   * click "API Access" on the left menu
-  * click button that says "Create another client ID" [(screenshot)](http://monosnap.com/image/G30mxsPfwfOUaZmnlRMW0AFtJ) or [(screenshot)](http://monosnap.com/image/FCEYuVS8ekzuQQCZRmQUZ2OnO)
+  * click button that says "Create client ID" [(screenshot)](http://monosnap.com/image/FCEYuVS8ekzuQQCZRmQUZ2OnO)
   * choose "service account" radio button [(screenshot)](http://monosnap.com/image/YIhIwTTgeSd36Tn3SCFlsQ8Pd)
   * click "create"
   * download private key and SAVE it.  (We will refer this as "PRIVATE_KEY") [(screenshot)](http://monosnap.com/image/gtAgswPpUuPpn3QVk5U5LaCR9)  
@@ -188,28 +188,27 @@ It's most common case for enterprise users
     * click authorize [(screenshot)](http://monosnap.com/image/uG5sbINQIxTE41OFJep5v0Xli)
 
 #### Sample application:
+```ruby
+require 'google/api_client'
+client = Google::APIClient.new
+key = Google::APIClient::KeyUtils.load_from_pkcs12('YOUR_DOWNLOADED_PRIVATE_KEY.p12', 'notasecret')
 
-    require 'google/api_client'
-    client = Google::APIClient.new
-    key = Google::APIClient::KeyUtils.load_from_pkcs12('test2-privatekey.p12', 'notasecret')
+client.authorization = Signet::OAuth2::Client.new(
+  token_credential_uri: 'https://accounts.google.com/o/oauth2/token',
+  audience:             'https://accounts.google.com/o/oauth2/token',
+  scope:                'https://www.googleapis.com/auth/admin.directory.group',
+  issuer:               'service_account_email@developer.gserviceaccount.com',
+  signing_key:          key,
+  person:               'administrator_email@yourcompany.com')
 
-    client.authorization = Signet::OAuth2::Client.new(
-      :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
-      :audience => 'https://accounts.google.com/o/oauth2/token',
-      :scope => 'https://www.googleapis.com/auth/admin.directory.group',
-      :issuer => 'XXXXXXXXXservice_account_emailXXXXXXXX@developer.gserviceaccount.com',
-      :signing_key => key,
-      :person => 'person@yourcompany.co')
-  
-    client.authorization.fetch_access_token!
-    directory = client.discovered_api('admin', 'directory_v1')
+client.authorization.fetch_access_token!
+directory = client.discovered_api('admin', 'directory_v1')
 
-    result = client.execute!(
-      :api_method => directory.groups.insert,
-      :parameters => {groupKey: 'api_admin@backops.co'},
-      :body_object => {email: 'newperson@yourcompany.co'})
-    result.data
-
+result = client.execute!(
+  api_method:   directory.groups.insert,
+  body_object:  {email: 'new_group_email@yourcompany.com'})
+result.data
+```
 ## Command Line
 
 Included with the gem is a command line interface for working with Google APIs.
