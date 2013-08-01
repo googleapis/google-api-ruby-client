@@ -17,7 +17,7 @@ APIs.
 
 ## Install
 
-Be sure `http://rubygems.org/` is in your gem sources.
+Be sure `https://rubygems.org/` is in your gem sources.
 
 For normal client usage, this is sufficient:
 
