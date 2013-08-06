@@ -31,6 +31,7 @@ require 'google/api_client/media'
 require 'google/api_client/service_account'
 require 'google/api_client/batch'
 require 'google/api_client/gzip'
+require 'google/api_client/client_secrets'
 require 'google/api_client/railtie' if defined?(Rails::Railtie)
 
 module Google
