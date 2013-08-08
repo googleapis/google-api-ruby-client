@@ -146,7 +146,7 @@ module Google
       end
       
       def to_authorization
-        gem 'signet', '~> 0.4.0'
+        gem 'signet', '>= 0.4.0'
         require 'signet/oauth_2/client'
         # NOTE: Do not rely on this default value, as it may change
         new_authorization = Signet::OAuth2::Client.new
