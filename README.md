@@ -52,7 +52,7 @@ flow = Google::APIClient::InstalledAppFlow.new(
   :client_secret => client_secrets.client_secret,
   :scope => ['https://www.googleapis.com/auth/plus.me']
 )
-client.authorization = flow.authorize(file_storage)
+client.authorization = flow.authorize
 
 # Make an API call.
 result = client.execute(
