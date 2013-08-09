@@ -28,26 +28,33 @@ $ gem install google-api-client
 ## Example Usage
 
 ```ruby
-# Initialize the client & Google+ API
 require 'google/api_client'
-client = Google::APIClient.new
+require 'google/api_client/client_secrets'
+
+# Initialize the client.
+client = Google::APIClient.new(
+  :application_name => 'Example Ruby application',
+  :application_version => '1.0.0'
+)
+
+# Initialize Google+ API. Note this will make a request to the
+# discovery service every time, so be sure to use serialization
+# in your production code. Check the samples for more details.
 plus = client.discovered_api('plus')
 
-# Initialize OAuth 2.0 client
-client.authorization.client_id = '<CLIENT_ID_FROM_API_CONSOLE>'
-client.authorization.client_secret = '<CLIENT_SECRET>'
-client.authorization.redirect_uri = '<YOUR_REDIRECT_URI>'
+# Load client secrets from your client_secrets.json.
+client_secrets = Google::APIClient::ClientSecrets.load
 
-client.authorization.scope = 'https://www.googleapis.com/auth/plus.me'
+# Run installed application flow. Check the samples for a more
+# complete example that saves the credentials between runs.
+flow = Google::APIClient::InstalledAppFlow.new(
+  :client_id => client_secrets.client_id,
+  :client_secret => client_secrets.client_secret,
+  :scope => ['https://www.googleapis.com/auth/plus.me']
+)
+client.authorization = flow.authorize(file_storage)
 
-# Request authorization
-redirect_uri = client.authorization.authorization_uri
-
-# Wait for authorization code then exchange for token
-client.authorization.code = '....'
-client.authorization.fetch_access_token!
-
-# Make an API call
+# Make an API call.
 result = client.execute(
   :api_method => plus.activities.list,
   :parameters => {'collection' => 'public', 'userId' => 'me'}
