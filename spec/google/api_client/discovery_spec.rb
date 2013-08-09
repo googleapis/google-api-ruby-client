@@ -452,69 +452,6 @@ describe Google::APIClient do
       end).should raise_error(ArgumentError)
     end
   end
-  
-  describe 'with the latitude API' do
-    before do
-      CLIENT.authorization = nil
-      @latitude = CLIENT.discovered_api('latitude')
-    end
-
-    it 'should correctly determine the discovery URI' do
-      CLIENT.discovery_uri('latitude').should ===
-        'https://www.googleapis.com/discovery/v1/apis/latitude/v1/rest'
-    end
-
-    it 'should find APIs that are in the discovery document' do
-      CLIENT.discovered_api('latitude').name.should == 'latitude'
-      CLIENT.discovered_api('latitude').version.should == 'v1'
-    end
-
-    it 'should return a batch path' do
-      CLIENT.discovered_api('latitude').batch_path.should_not be_nil
-    end
-
-    it 'should find methods that are in the discovery document' do
-      CLIENT.discovered_method(
-        'latitude.currentLocation.get', 'latitude'
-      ).name.should == 'get'
-    end
-
-    it 'should define the origin API in discovered methods' do
-      CLIENT.discovered_method(
-        'latitude.currentLocation.get', 'latitude'
-      ).api.name.should == 'latitude'
-    end
-
-    it 'should not find methods that are not in the discovery document' do
-      CLIENT.discovered_method('latitude.bogus', 'latitude').should == nil
-    end
-
-    it 'should generate requests against the correct URIs' do
-      request = CLIENT.generate_request(
-        :api_method => @latitude.current_location.get,
-        :authenticated => false
-      )
-      request.to_env(CLIENT.connection)[:url].to_s.should ===
-        'https://www.googleapis.com/latitude/v1/currentLocation'
-    end
-
-    it 'should generate requests against the correct URIs' do
-      request = CLIENT.generate_request(
-        :api_method => @latitude.current_location.get,
-        :authenticated => false
-      )
-      request.to_env(CLIENT.connection)[:url].to_s.should ===
-        'https://www.googleapis.com/latitude/v1/currentLocation'
-    end
-
-    it 'should not be able to execute requests without authorization' do
-      result = CLIENT.execute(
-        :api_method => @latitude.current_location.get,
-        :authenticated => false
-      )
-      result.response.status.should == 401
-    end
-  end
 
   describe 'with the adsense API' do
     before do
