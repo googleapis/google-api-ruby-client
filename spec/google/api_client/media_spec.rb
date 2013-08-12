@@ -173,7 +173,7 @@ describe Google::APIClient::ResumableUpload do
 
   def mock_result(status, headers = {})
     reference = Google::APIClient::Reference.new(:api_method => @drive.files.insert)
-    stub('result', :status => status, :headers => headers, :reference => reference)
+    double('result', :status => status, :headers => headers, :reference => reference)
   end
 
 end

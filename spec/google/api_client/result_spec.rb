@@ -34,8 +34,8 @@ describe Google::APIClient::Result do
       })
       @request = @reference.to_http_request
 
-      # Response stub
-      @response = stub("response")
+      # Response double
+      @response = double("response")
       @response.stub(:status).and_return(200)
       @response.stub(:headers).and_return({
         'etag' => '12345',
