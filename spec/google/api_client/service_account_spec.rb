@@ -141,3 +141,24 @@ describe Google::APIClient::JWTAsserter do
   end    
 end
 
+describe Google::APIClient::ComputeServiceAccount do
+  include ConnectionHelpers
+
+  it 'should query metadata server' do
+    conn = stub_connection do |stub|
+      stub.get('/computeMetadata/v1beta1/instance/service-accounts/default/token') do |env|
+        env.url.host.should == 'metadata'
+        [200, {}, '{
+          "access_token" : "1/abcdef1234567890",
+          "token_type" : "Bearer",
+          "expires_in" : 3600
+        }']
+      end
+    end
+    service_account = Google::APIClient::ComputeServiceAccount.new
+    auth = service_account.fetch_access_token!({ :connection => conn })
+    auth.should_not == nil?
+    auth["access_token"].should == "1/abcdef1234567890"
+    conn.verify
+  end
+end
