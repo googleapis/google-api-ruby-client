@@ -19,8 +19,8 @@ module Google
   class APIClient
     class ComputeServiceAccount < Signet::OAuth2::Client
       def fetch_access_token(options={})
-        options[:connection] ||= Faraday.default_connection
-        response = options[:connection].get 'http://metadata/computeMetadata/v1beta1/instance/service-accounts/default/token'
+        connection = options[:connection] || Faraday.default_connection
+        response = connection.get 'http://metadata/computeMetadata/v1beta1/instance/service-accounts/default/token'
         Signet::OAuth2.parse_json_credentials(response.body)
       end
     end
