@@ -456,21 +456,21 @@ describe Google::APIClient do
   describe 'with the adsense API' do
     before do
       CLIENT.authorization = nil
-      @adsense = CLIENT.discovered_api('adsense', 'v1')
+      @adsense = CLIENT.discovered_api('adsense', 'v1.3')
     end
 
     it 'should correctly determine the discovery URI' do
-      CLIENT.discovery_uri('adsense').should ===
-        'https://www.googleapis.com/discovery/v1/apis/adsense/v1/rest'
+      CLIENT.discovery_uri('adsense', 'v1.3').to_s.should ===
+        'https://www.googleapis.com/discovery/v1/apis/adsense/v1.3/rest'
     end
 
     it 'should find APIs that are in the discovery document' do
-      CLIENT.discovered_api('adsense').name.should == 'adsense'
-      CLIENT.discovered_api('adsense').version.should == 'v1'
+      CLIENT.discovered_api('adsense', 'v1.3').name.should == 'adsense'
+      CLIENT.discovered_api('adsense', 'v1.3').version.should == 'v1.3'
     end
 
     it 'should return a batch path' do
-      CLIENT.discovered_api('adsense').batch_path.should_not be_nil
+      CLIENT.discovered_api('adsense', 'v1.3').batch_path.should_not be_nil
     end
 
     it 'should find methods that are in the discovery document' do
@@ -485,7 +485,7 @@ describe Google::APIClient do
 
     it 'should generate requests against the correct URIs' do
       conn = stub_connection do |stub|
-        stub.get('/adsense/v1/adclients') do |env|
+        stub.get('/adsense/v1.3/adclients') do |env|
         end
       end
       request = CLIENT.execute(
@@ -515,7 +515,7 @@ describe Google::APIClient do
 
     it 'should succeed when validating parameters in a correct call' do
       conn = stub_connection do |stub|
-        stub.get('/adsense/v1/reports?dimension=DATE&endDate=2010-01-01&metric=PAGE_VIEWS&startDate=2000-01-01') do |env|
+        stub.get('/adsense/v1.3/reports?dimension=DATE&endDate=2010-01-01&metric=PAGE_VIEWS&startDate=2000-01-01') do |env|
         end
       end
       (lambda do
@@ -552,7 +552,7 @@ describe Google::APIClient do
     it 'should succeed when validating repeated parameters in a correct call' do
 #      pending("This is caused by Faraday's encoding of query parameters.")
       conn = stub_connection do |stub|
-        stub.get('/adsense/v1/reports?dimension=DATE&dimension=PRODUCT_CODE'+
+        stub.get('/adsense/v1.3/reports?dimension=DATE&dimension=PRODUCT_CODE'+
                  '&endDate=2010-01-01&metric=CLICKS&metric=PAGE_VIEWS&'+
                  'startDate=2000-01-01') do |env|
         end
