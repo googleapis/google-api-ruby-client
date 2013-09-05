@@ -550,7 +550,6 @@ describe Google::APIClient do
     end
 
     it 'should succeed when validating repeated parameters in a correct call' do
-#      pending("This is caused by Faraday's encoding of query parameters.")
       conn = stub_connection do |stub|
         stub.get('/adsense/v1.3/reports?dimension=DATE&dimension=PRODUCT_CODE'+
                  '&endDate=2010-01-01&metric=CLICKS&metric=PAGE_VIEWS&'+
@@ -586,6 +585,29 @@ describe Google::APIClient do
           :authenticated => false
         )
       end).should raise_error(ArgumentError)
+    end
+
+    it 'should generate valid requests when multivalued parameters are passed' do
+      conn = stub_connection do |stub|
+         stub.get('/adsense/v1.3/reports?dimension=DATE&dimension=PRODUCT_CODE'+
+                 '&endDate=2010-01-01&metric=CLICKS&metric=PAGE_VIEWS&'+
+                 'startDate=2000-01-01') do |env|
+           env.params['dimension'].should include('DATE', 'PRODUCT_CODE')
+           env.params['metric'].should include('CLICKS', 'PAGE_VIEWS')
+         end
+       end
+      request = CLIENT.execute(
+        :api_method => @adsense.reports.generate,
+          :parameters => {
+            'startDate' => '2000-01-01',
+            'endDate' => '2010-01-01',
+            'dimension' => ['DATE', 'PRODUCT_CODE'],
+            'metric' => ['PAGE_VIEWS', 'CLICKS']
+          },
+          :authenticated => false,
+          :connection => conn
+      )
+      conn.verify
     end
   end
 
