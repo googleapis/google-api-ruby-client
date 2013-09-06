@@ -15,7 +15,6 @@
 require 'spec_helper'
 
 require 'faraday'
-require 'faraday/utils'
 require 'signet/oauth_1/client'
 require 'google/api_client'
 require 'google/api_client/version'
