@@ -1,3 +1,14 @@
+# 0.7.0.rc1
+* Fix warnings when using Faraday separately
+* Support Google Compute Engine service accounts
+* Enable gzip compression for responses
+* Upgrade to Faraday 0.9.x. Resolves multiple issues with query parameter encodings.
+* Use bundled root certificates for verifying SSL certificates
+* Rewind media when retrying uploads
+
+# 0.6.4
+* Pin signet version to 0.4.x
+
 # 0.6.3
 
 * Update autoparse to 0.3.3 to fix cases where results aren't correctly parsed.
