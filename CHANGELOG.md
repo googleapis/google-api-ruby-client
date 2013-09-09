@@ -1,4 +1,4 @@
-# 0.7.0.rc1
+# 0.7.0.rc2
 * Fix warnings when using Faraday separately
 * Support Google Compute Engine service accounts
 * Enable gzip compression for responses

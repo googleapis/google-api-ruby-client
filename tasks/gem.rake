@@ -16,7 +16,7 @@ namespace :gem do
     s.email = PKG_AUTHOR_EMAIL
     s.summary = PKG_SUMMARY
     s.description = PKG_DESCRIPTION
-
+    s.license = 'Apache 2.0'
     s.files = PKG_FILES.to_a
     s.executables << 'google-api'
 
