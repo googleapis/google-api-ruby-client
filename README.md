@@ -107,6 +107,10 @@ client.authorization.fetch_access_token!
 client.execute(...)
 ```
 
+Service accounts are also used for delegation in Google Apps domains. The target user for impersonation is specified by setting the `:person` parameter to the user's email address
+in the credentials. Detailed instructions on how to enable delegation for your domain can be found at [developers.google.com](https://developers.google.com/drive/delegation).
+
+
 ### Batching Requests
 
 Some Google APIs support batching requests into a single HTTP request. Use `Google::APIClient::BatchRequest`
