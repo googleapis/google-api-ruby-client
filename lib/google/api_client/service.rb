@@ -30,52 +30,56 @@ module Google
     #   result = calendar.events.list('calendarId' => 'primary').execute()
     class Service
       include Google::APIClient::Service::StubGenerator
+      extend Forwardable
 
-    ##
-    # Creates a new Service.
-    #
-    # @param [String, Symbol] api_name
-    #   The name of the API this service will access.
-    # @param [String, Symbol] api_version
-    #   The version of the API this service will access.
-    # @param [Hash] options
-    #   The configuration parameters for the service.
-    # @option options [Symbol, #generate_authenticated_request] :authorization
-    #   (:oauth_1)
-    #   The authorization mechanism used by the client.  The following
-    #   mechanisms are supported out-of-the-box:
-    #   <ul>
-    #     <li><code>:two_legged_oauth_1</code></li>
-    #     <li><code>:oauth_1</code></li>
-    #     <li><code>:oauth_2</code></li>
-    #   </ul>
-    # @option options [Boolean] :auto_refresh_token (true)
-    #   The setting that controls whether or not the api client attempts to
-    #   refresh authorization when a 401 is hit in #execute. If the token does
-    #   not support it, this option is ignored.
-    # @option options [String] :application_name
-    #   The name of the application using the client.
-    # @option options [String] :application_version
-    #   The version number of the application using the client.
-    # @option options [String] :host ("www.googleapis.com")
-    #   The API hostname used by the client. This rarely needs to be changed.
-    # @option options [String] :port (443)
-    #   The port number used by the client. This rarely needs to be changed.
-    # @option options [String] :discovery_path ("/discovery/v1")
-    #   The discovery base path. This rarely needs to be changed.
-    # @option options [String] :ca_file
-    #   Optional set of root certificates to use when validating SSL connections.
-    #   By default, a bundled set of trusted roots will be used.
-    # @option options [#generate_authenticated_request] :authorization
-    #   The authorization mechanism for requests. Used only if
-    #   `:authenticated` is `true`.
-    # @option options [TrueClass, FalseClass] :authenticated (default: true)
-    #   `true` if requests must be signed or somehow
-    #   authenticated, `false` otherwise.
-    # @option options [TrueClass, FalseClass] :gzip (default: true)
-    #   `true` if gzip enabled, `false` otherwise.
-    # @option options [Faraday] :connection
-    #   A custom connection to be used for all requests.
+      # Cache for discovered APIs.
+      @@discovered = {}
+
+      ##
+      # Creates a new Service.
+      #
+      # @param [String, Symbol] api_name
+      #   The name of the API this service will access.
+      # @param [String, Symbol] api_version
+      #   The version of the API this service will access.
+      # @param [Hash] options
+      #   The configuration parameters for the service.
+      # @option options [Symbol, #generate_authenticated_request] :authorization
+      #   (:oauth_1)
+      #   The authorization mechanism used by the client.  The following
+      #   mechanisms are supported out-of-the-box:
+      #   <ul>
+      #     <li><code>:two_legged_oauth_1</code></li>
+      #     <li><code>:oauth_1</code></li>
+      #     <li><code>:oauth_2</code></li>
+      #   </ul>
+      # @option options [Boolean] :auto_refresh_token (true)
+      #   The setting that controls whether or not the api client attempts to
+      #   refresh authorization when a 401 is hit in #execute. If the token does
+      #   not support it, this option is ignored.
+      # @option options [String] :application_name
+      #   The name of the application using the client.
+      # @option options [String] :application_version
+      #   The version number of the application using the client.
+      # @option options [String] :host ("www.googleapis.com")
+      #   The API hostname used by the client. This rarely needs to be changed.
+      # @option options [String] :port (443)
+      #   The port number used by the client. This rarely needs to be changed.
+      # @option options [String] :discovery_path ("/discovery/v1")
+      #   The discovery base path. This rarely needs to be changed.
+      # @option options [String] :ca_file
+      #   Optional set of root certificates to use when validating SSL connections.
+      #   By default, a bundled set of trusted roots will be used.
+      # @option options [#generate_authenticated_request] :authorization
+      #   The authorization mechanism for requests. Used only if
+      #   `:authenticated` is `true`.
+      # @option options [TrueClass, FalseClass] :authenticated (default: true)
+      #   `true` if requests must be signed or somehow
+      #   authenticated, `false` otherwise.
+      # @option options [TrueClass, FalseClass] :gzip (default: true)
+      #   `true` if gzip enabled, `false` otherwise.
+      # @option options [Faraday::Connection] :connection
+      #   A custom connection to be used for all requests.
       def initialize(api_name, api_version, options = {})
         @api_name = api_name.to_s
         if api_version.nil?
@@ -98,35 +102,65 @@ module Google
         end
 
         @client = Google::APIClient.new(params)
+        @client.logger = options[:logger] if options.include? :logger
+
+        @connection = options[:connection] || @client.connection
 
         @options = options
-        @api = @client.discovered_api(api_name, api_version)
+
+        # Cache discovered APIs in memory.
+        # Not thread-safe, but the worst that can happen is a cache miss.
+        unless @api = @@discovered[[api_name, api_version]]
+          @@discovered[[api_name, api_version]] = @api = @client.discovered_api(
+            api_name, api_version)
+        end
+
         generate_call_stubs(self, @api)
       end
 
       ##
       # Logger for the Service.
       #
-      # @return [Logger] logger instance.
-      def logger
-        @client.logger
-      end
+      # @return [Logger]
+      #  The logger instance.
+      def_delegators :@client, :logger, :logger=
 
       ##
-      # Set the Logger for the Service.
-      def logger=(obj)
-        @client.logger = obj
-      end
+      # Returns the authorization mechanism used by the service.
+      #
+      # @return [#generate_authenticated_request] The authorization mechanism.
+      def_delegators :@client, :authorization, :authorization=
+
+      ##
+      # The setting that controls whether or not the service attempts to
+      # refresh authorization when a 401 is hit during an API call.
+      #
+      # @return [Boolean]
+      def_delegators :@client, :auto_refresh_token, :auto_refresh_token=
+
+      ##
+      # The application's API key issued by the API console.
+      #
+      # @return [String] The API key.
+      def_delegators :@client, :key, :key=
+
+      ##
+      # The Faraday/HTTP connection used by this service.
+      #
+      # @return [Faraday::Connection]
+      attr_accessor :connection
 
       ##
       # Executes an API request.
       # Do not call directly; this method is only used by Request objects when
       # executing.
+      #
       # @param [Google::APIClient::Service::Request] request
       #   The request to be executed.
       def execute(request)
         params = {:api_method => request.method,
-          :parameters => request.parameters}
+          :parameters => request.parameters,
+          :connection => @connection}
         if request.respond_to? :body
           if request.body.respond_to? :to_hash
             params[:body_object] = request.body
@@ -137,13 +171,13 @@ module Google
         if request.respond_to? :media
           params[:media] = request.media
         end
-        [:connection, :authenticated, :gzip].each do |option|
+        [:authenticated, :gzip].each do |option|
           if @options.include? option
             params[option] = @options[option]
           end
         end
         result = @client.execute(params)
-        return Google::APIClient::Result.new(request, result)
+        return Google::APIClient::Service::Result.new(request, result)
       end
     end
   end

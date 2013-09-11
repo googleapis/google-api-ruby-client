@@ -261,6 +261,17 @@ describe Google::APIClient::Service do
       end
     end
   end
+
+  describe 'with the Discovery API' do
+    it 'should make a valid end-to-end request' do
+      discovery = Google::APIClient::Service.new('discovery', 'v1',
+          {:application_name => APPLICATION_NAME, :authenticated => false})
+      result = discovery.apis.get_rest(:api => 'discovery', :version => 'v1').execute
+      result.should_not be_nil
+      result.data.name.should == 'discovery'
+      result.data.version.should == 'v1'
+    end
+  end
 end
 
 
