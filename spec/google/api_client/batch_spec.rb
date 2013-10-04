@@ -53,7 +53,7 @@ describe Google::APIClient::BatchRequest do
         @call1 = {
           :api_method => @discovery.apis.get_rest,
           :parameters => {
-            'api' => 'adsense',
+            'api' => 'plus',
             'version' => 'v1'
           }
         }
@@ -118,7 +118,7 @@ describe Google::APIClient::BatchRequest do
         @call1 = {
           :api_method => @discovery.apis.get_rest,
           :parameters => {
-            'api' => 'adsense',
+            'api' => 'plus',
             'version' => 'v1'
           }
         }
@@ -244,6 +244,6 @@ describe Google::APIClient::BatchRequest do
         #request[:body].read.gsub("\r", "").should =~ expected_body
       end
     end
-    
+
   end
 end
