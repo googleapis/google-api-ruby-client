@@ -473,3 +473,100 @@ describe Google::APIClient::Service::Result do
     end
   end
 end
+
+describe Google::APIClient::Service::BatchRequest do
+  describe 'with the discovery API' do
+    before do
+      @discovery = Google::APIClient::Service.new('discovery', 'v1',
+          {:application_name => APPLICATION_NAME, :authorization => nil})
+    end
+
+    describe 'with two valid requests' do
+      before do
+        @calls = [
+          @discovery.apis.get_rest(:api => 'plus', :version => 'v1'),
+          @discovery.apis.get_rest(:api => 'discovery', :version => 'v1')
+        ]
+      end
+
+      it 'should execute both when using a global callback' do
+        block_called = 0
+        batch = @discovery.batch(@calls) do |result|
+          block_called += 1
+          result.status.should == 200
+        end
+
+        batch.execute
+        block_called.should == 2
+      end
+
+      it 'should execute both when using individual callbacks' do
+        call1_returned, call2_returned = false, false
+        batch = @discovery.batch
+
+        batch.add(@calls[0]) do |result|
+          call1_returned = true
+          result.status.should == 200
+          result.call_index.should == 0
+        end
+
+        batch.add(@calls[1]) do |result|
+          call2_returned = true
+          result.status.should == 200
+          result.call_index.should == 1
+        end
+
+        batch.execute
+        call1_returned.should == true
+        call2_returned.should == true
+      end
+    end
+
+    describe 'with a valid request and an invalid one' do
+      before do
+        @calls = [
+          @discovery.apis.get_rest(:api => 'plus', :version => 'v1'),
+          @discovery.apis.get_rest(:api => 'invalid', :version => 'invalid')
+        ]
+      end
+
+      it 'should execute both when using a global callback' do
+        block_called = 0
+        batch = @discovery.batch(@calls) do |result|
+          block_called += 1
+          if result.call_index == 0
+            result.status.should == 200
+          else
+            result.status.should >= 400
+            result.status.should < 500
+          end
+        end
+
+        batch.execute
+        block_called.should == 2
+      end
+
+      it 'should execute both when using individual callbacks' do
+        call1_returned, call2_returned = false, false
+        batch = @discovery.batch
+
+        batch.add(@calls[0]) do |result|
+          call1_returned = true
+          result.status.should == 200
+          result.call_index.should == 0
+        end
+
+        batch.add(@calls[1]) do |result|
+          call2_returned = true
+          result.status.should >= 400
+          result.status.should < 500
+          result.call_index.should == 1
+        end
+
+        batch.execute
+        call1_returned.should == true
+        call2_returned.should == true
+      end
+    end
+  end
+end

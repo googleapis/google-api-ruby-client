@@ -17,6 +17,7 @@ require 'google/api_client/service/stub_generator'
 require 'google/api_client/service/resource'
 require 'google/api_client/service/request'
 require 'google/api_client/service/result'
+require 'google/api_client/service/batch'
 
 module Google
   class APIClient
@@ -151,33 +152,53 @@ module Google
       attr_accessor :connection
 
       ##
+      # Prepares a Google::APIClient::BatchRequest object to make batched calls.
+      # @param [Array] calls
+      #   Optional array of Google::APIClient::Service::Request to initialize
+      #   the batch request with.
+      # @param [Proc] block
+      #   Callback for every call's response. Won't be called if a call defined
+      #   a callback of its own.
+      #
+      # @yield [Google::APIClient::Service::Result]
+      #   block to be called when result ready
+      def batch(calls = nil, &block)
+        Google::APIClient::Service::BatchRequest.new(self, calls, &block)
+      end
+
+      ##
       # Executes an API request.
       # Do not call directly; this method is only used by Request objects when
       # executing.
       #
-      # @param [Google::APIClient::Service::Request] request
+      # @param [Google::APIClient::Service::Request,
+      #         Google::APIClient::Service::BatchCall] request
       #   The request to be executed.
       def execute(request)
-        params = {:api_method => request.method,
-          :parameters => request.parameters,
-          :connection => @connection}
-        if request.respond_to? :body
-          if request.body.respond_to? :to_hash
-            params[:body_object] = request.body
-          else
-            params[:body] = request.body
+        if request.instance_of? Google::APIClient::Service::Request
+          params = {:api_method => request.method,
+            :parameters => request.parameters,
+            :connection => @connection}
+          if request.respond_to? :body
+            if request.body.respond_to? :to_hash
+              params[:body_object] = request.body
+            else
+              params[:body] = request.body
+            end
           end
-        end
-        if request.respond_to? :media
-          params[:media] = request.media
-        end
-        [:authenticated, :gzip].each do |option|
-          if @options.include? option
-            params[option] = @options[option]
+          if request.respond_to? :media
+            params[:media] = request.media
           end
+          [:authenticated, :gzip].each do |option|
+            if @options.include? option
+              params[option] = @options[option]
+            end
+          end
+          result = @client.execute(params)
+          return Google::APIClient::Service::Result.new(request, result)
+        elsif request.instance_of? Google::APIClient::Service::BatchRequest
+          @client.execute(request.base_batch)
         end
-        result = @client.execute(params)
-        return Google::APIClient::Service::Result.new(request, result)
       end
     end
   end
