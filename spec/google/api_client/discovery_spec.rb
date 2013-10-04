@@ -86,7 +86,7 @@ describe Google::APIClient do
 
     it 'should correctly determine the discovery URI if :user_ip is set' do
       CLIENT.user_ip = '127.0.0.1'
-      
+
       conn = stub_connection do |stub|
         stub.get('/discovery/v1/apis/prediction/v1.2/rest?userIp=127.0.0.1') do |env|
         end
@@ -199,8 +199,8 @@ describe Google::APIClient do
 
     it 'should generate valid requests when parameter value includes semicolon' do
       conn = stub_connection do |stub|
-        # semicolon (;) in parameter value was being converted to 
-        # bare ampersand (&) in 0.4.7. ensure that it gets converted 
+        # semicolon (;) in parameter value was being converted to
+        # bare ampersand (&) in 0.4.7. ensure that it gets converted
         # to a CGI-escaped semicolon (%3B) instead.
         stub.post('/prediction/v1.2/training?data=12345%3B67890') do |env|
           env[:body].should == ''
@@ -266,7 +266,7 @@ describe Google::APIClient do
           env[:url].host.should == 'testing-domain.example.com'
         end
       end
-        
+
       request = CLIENT.execute(
         :api_method => prediction_rebase.training.insert,
         :parameters => {'data' => '123'},
@@ -417,7 +417,7 @@ describe Google::APIClient do
         stub.get('/plus/v1/people/107807692475771887386/activities/public') do |env|
         end
       end
-      
+
       request = CLIENT.execute(
         :api_method => @plus.activities.list,
         :parameters => {
@@ -474,12 +474,12 @@ describe Google::APIClient do
 
     it 'should find methods that are in the discovery document' do
       CLIENT.discovered_method(
-        'adsense.reports.generate', 'adsense'
+        'adsense.reports.generate', 'adsense', 'v1.3'
       ).name.should == 'generate'
     end
 
     it 'should not find methods that are not in the discovery document' do
-      CLIENT.discovered_method('adsense.bogus', 'adsense').should == nil
+      CLIENT.discovered_method('adsense.bogus', 'adsense', 'v1.3').should == nil
     end
 
     it 'should generate requests against the correct URIs' do
