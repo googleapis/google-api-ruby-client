@@ -23,7 +23,7 @@ module Google
       # Helper class to contain the result of an individual batched call.
       #
       class BatchedCallResult < Result
-        # @return [String] UUID of the call
+        # @return [Fixnum] Index of the call
         def call_index
           return @base_result.response.call_id.to_i - 1
         end
