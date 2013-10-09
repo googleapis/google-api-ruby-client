@@ -198,7 +198,7 @@ For more information, use `google-api --help`
 
 ## Samples
 
-See the full list of [samples on Google Code](http://code.google.com/p/google-api-ruby-client/source/browse?repo=samples).
+See the full list of [samples on Github](https://github.com/google/google-api-ruby-client-samples).
 
 
 ## Support
