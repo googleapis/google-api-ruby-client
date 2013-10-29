@@ -173,8 +173,6 @@ module Google
 
       ##
       # The cache store used for storing discovery documents.
-      # If the user requested :default, use SimpleFileStore with default file
-      # name.
       #
       # @return [ActiveSupport::Cache::Store,
       #          Google::APIClient::Service::SimpleFileStore,
