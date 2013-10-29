@@ -18,6 +18,7 @@ require 'google/api_client/service/resource'
 require 'google/api_client/service/request'
 require 'google/api_client/service/result'
 require 'google/api_client/service/batch'
+require 'google/api_client/service/simple_file_store'
 
 module Google
   class APIClient
@@ -32,6 +33,8 @@ module Google
     class Service
       include Google::APIClient::Service::StubGenerator
       extend Forwardable
+
+      DEFAULT_CACHE_FILE = 'discovery.cache'
 
       # Cache for discovered APIs.
       @@discovered = {}
@@ -81,6 +84,10 @@ module Google
       #   `true` if gzip enabled, `false` otherwise.
       # @option options [Faraday::Connection] :connection
       #   A custom connection to be used for all requests.
+      # @option options [ActiveSupport::Cache::Store, :default] :discovery_cache
+      #   A cache store to place the discovery documents for loaded APIs.
+      #   Avoids unnecessary roundtrips to the discovery service.
+      #   :default loads the default local file cache store.
       def initialize(api_name, api_version, options = {})
         @api_name = api_name.to_s
         if api_version.nil?
@@ -109,11 +116,32 @@ module Google
 
         @options = options
 
-        # Cache discovered APIs in memory.
+        # Initialize cache store. Default to SimpleFileStore if :cache_store
+        # is not provided and we have write permissions.
+        if options.include? :cache_store
+          @cache_store = options[:cache_store]
+        else
+          cache_exists = File.exist?(DEFAULT_CACHE_FILE)
+          if (cache_exists && File.writable?(DEFAULT_CACHE_FILE)) ||
+             (!cache_exists && File.writable?(Dir.pwd))
+            @cache_store = Google::APIClient::Service::SimpleFileStore.new(
+              DEFAULT_CACHE_FILE)
+          end
+        end
+
+        # Attempt to read API definition from memory cache.
         # Not thread-safe, but the worst that can happen is a cache miss.
         unless @api = @@discovered[[api_name, api_version]]
-          @@discovered[[api_name, api_version]] = @api = @client.discovered_api(
-            api_name, api_version)
+          # Attempt to read API definition from cache store, if there is one.
+          # If there's a miss or no cache store, call discovery service.
+          if !@cache_store.nil?
+            @api = @cache_store.fetch("%s/%s" % [api_name, api_version]) do
+              @client.discovered_api(api_name, api_version)
+            end
+          else
+            @api = @client.discovered_api(api_name, api_version)
+          end
+          @@discovered[[api_name, api_version]] = @api
         end
 
         generate_call_stubs(self, @api)
@@ -150,6 +178,16 @@ module Google
       #
       # @return [Faraday::Connection]
       attr_accessor :connection
+
+      ##
+      # The cache store used for storing discovery documents.
+      # If the user requested :default, use SimpleFileStore with default file
+      # name.
+      #
+      # @return [ActiveSupport::Cache::Store,
+      #          Google::APIClient::Service::SimpleFileStore,
+      #          nil]
+      attr_reader :cache_store
 
       ##
       # Prepares a Google::APIClient::BatchRequest object to make batched calls.

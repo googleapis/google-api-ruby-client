@@ -57,7 +57,8 @@ describe Google::APIClient::Service do
         {
           :application_name => APPLICATION_NAME,
           :authenticated => false,
-          :connection => conn
+          :connection => conn,
+          :cache_store => nil
         }
       )
 
@@ -76,7 +77,8 @@ describe Google::APIClient::Service do
         {
           :application_name => APPLICATION_NAME,
           :authenticated => false,
-          :connection => conn
+          :connection => conn,
+          :cache_store => nil
         }
       )
       req = adsense.adunits.list(:adClientId => '1').execute()
@@ -93,7 +95,8 @@ describe Google::APIClient::Service do
         {
           :application_name => APPLICATION_NAME,
           :authenticated => false,
-          :connection => conn
+          :connection => conn,
+          :cache_store => nil
         }
       )
       req = adsense.accounts.adclients.list(:accountId => '1').execute()
@@ -102,7 +105,7 @@ describe Google::APIClient::Service do
     describe 'with no connection' do
       before do
         @adsense = Google::APIClient::Service.new('adsense', 'v1.3',
-          {:application_name => APPLICATION_NAME})
+          {:application_name => APPLICATION_NAME, :cache_store => nil})
       end
 
       it 'should return a resource when using a valid resource name' do
@@ -152,7 +155,8 @@ describe Google::APIClient::Service do
         {
           :application_name => APPLICATION_NAME,
           :authenticated => false,
-          :connection => conn
+          :connection => conn,
+          :cache_store => nil
         }
       )
       req = prediction.trainedmodels.insert(:project => '1').body({'id' => '1'}).execute()
@@ -171,7 +175,8 @@ describe Google::APIClient::Service do
         {
           :application_name => APPLICATION_NAME,
           :authenticated => false,
-          :connection => conn
+          :connection => conn,
+          :cache_store => nil
         }
       )
       req = prediction.trainedmodels.insert(:project => '1').body('{"id":"1"}').execute()
@@ -181,7 +186,7 @@ describe Google::APIClient::Service do
     describe 'with no connection' do
       before do
         @prediction = Google::APIClient::Service.new('prediction', 'v1.5',
-          {:application_name => APPLICATION_NAME})
+          {:application_name => APPLICATION_NAME, :cache_store => nil})
       end
 
       it 'should return a valid request with a body' do
@@ -227,7 +232,8 @@ describe Google::APIClient::Service do
         {
           :application_name => APPLICATION_NAME,
           :authenticated => false,
-          :connection => conn
+          :connection => conn,
+          :cache_store => nil
         }
       )
       req = drive.files.insert(:uploadType => 'multipart').body(@metadata).media(@media).execute()
@@ -237,7 +243,7 @@ describe Google::APIClient::Service do
     describe 'with no connection' do
       before do
         @drive = Google::APIClient::Service.new('drive', 'v1',
-          {:application_name => APPLICATION_NAME})
+          {:application_name => APPLICATION_NAME, :cache_store => nil})
       end
 
       it 'should return a valid request with a body and media upload' do
@@ -265,7 +271,8 @@ describe Google::APIClient::Service do
   describe 'with the Discovery API' do
     it 'should make a valid end-to-end request' do
       discovery = Google::APIClient::Service.new('discovery', 'v1',
-          {:application_name => APPLICATION_NAME, :authenticated => false})
+          {:application_name => APPLICATION_NAME, :authenticated => false,
+           :cache_store => nil})
       result = discovery.apis.get_rest(:api => 'discovery', :version => 'v1').execute
       result.should_not be_nil
       result.data.name.should == 'discovery'
@@ -280,7 +287,7 @@ describe Google::APIClient::Service::Result do
   describe 'with the plus API' do
     before do
       @plus = Google::APIClient::Service.new('plus', 'v1',
-          {:application_name => APPLICATION_NAME})
+          {:application_name => APPLICATION_NAME, :cache_store => nil})
       @reference = Google::APIClient::Reference.new({
         :api_method => @plus.activities.list.method,
         :parameters => {
@@ -478,7 +485,8 @@ describe Google::APIClient::Service::BatchRequest do
   describe 'with the discovery API' do
     before do
       @discovery = Google::APIClient::Service.new('discovery', 'v1',
-          {:application_name => APPLICATION_NAME, :authorization => nil})
+          {:application_name => APPLICATION_NAME, :authorization => nil,
+           :cache_store => nil})
     end
 
     describe 'with two valid requests' do
