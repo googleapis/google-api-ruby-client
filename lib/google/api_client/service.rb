@@ -110,7 +110,6 @@ module Google
         end
 
         @client = Google::APIClient.new(params)
-        @client.logger = options[:logger] if options.include? :logger
 
         @connection = options[:connection] || @client.connection
 
@@ -146,13 +145,6 @@ module Google
 
         generate_call_stubs(self, @api)
       end
-
-      ##
-      # Logger for the Service.
-      #
-      # @return [Logger]
-      #  The logger instance.
-      def_delegators :@client, :logger, :logger=
 
       ##
       # Returns the authorization mechanism used by the service.
