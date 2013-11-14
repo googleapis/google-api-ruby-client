@@ -24,7 +24,7 @@ module Google
     #
     class FileStorage
       # @return [String] Path to the credentials file.
-      attr_accessor :path
+      attr_reader :path
 
       # @return [Signet::OAuth2::Client] Path to the credentials file.
       attr_reader :authorization
@@ -41,15 +41,16 @@ module Google
 
       ##
       # Attempt to read in credentials from the specified file.
-      # TODO: add methods to:
-      #         check if file exists
-      #         check if file is writeable
-      #         check json structure is valid
       def load_credentials
-        cached_credentials = JSON.load(self.path)
+        cached_credentials = JSON.load(path)
         @authorization = Signet::OAuth2::Client.new(cached_credentials)
         @authorization.issued_at = Time.at(cached_credentials['issued_at'])
         self.refresh_authorization if @authorization.expired?
+      end
+
+      def path=(value)
+        @path=value
+        raise "Credentials on path #{path} not accessible" unless File.exists?(@path) && File.readable?(@path) && File.writable?(@path)
       end
 
       ##
