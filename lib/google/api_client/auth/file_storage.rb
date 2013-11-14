@@ -41,18 +41,22 @@ module Google
 
       ##
       # Attempt to read in credentials from the specified file.
+      # TODO: add methods to:
+      #         check if file exists
+      #         check if file is writeable
+      #         check json structure is valid
       def load_credentials
-        if File.exist? self.path
-          File.open(self.path, 'r') do |file|
-            cached_credentials = JSON.load(file)
-            @authorization = Signet::OAuth2::Client.new(cached_credentials)
-            @authorization.issued_at = Time.at(cached_credentials['issued_at'])
-            if @authorization.expired?
-              @authorization.fetch_access_token!
-              self.write_credentials
-            end
-          end
-        end
+        cached_credentials = JSON.load(self.path)
+        @authorization = Signet::OAuth2::Client.new(cached_credentials)
+        @authorization.issued_at = Time.at(cached_credentials['issued_at'])
+        self.refresh_authorization if @authorization.expired?
+      end
+
+      ##
+      # refresh credentials and save them to file
+      def refresh_authorization
+        @authorization.refresh!
+        self.write_credentials(@authorization)
       end
 
       ##
@@ -62,23 +66,21 @@ module Google
       #    Optional authorization instance. If not provided, the authorization
       #    already associated with this instance will be written.
       def write_credentials(authorization=nil)
-        @authorization = authorization unless authorization.nil?
+        @authorization = authorization if authorization
+        if @authorization.refresh_token
 
-        unless @authorization.refresh_token.nil?
-          hash = {}
-          %w'access_token
-           authorization_uri
-           client_id
-           client_secret
-           expires_in
-           refresh_token
-           token_credential_uri'.each do |var|
-            hash[var] = @authorization.instance_variable_get("@#{var}")
-          end
-          hash['issued_at'] = @authorization.issued_at.to_i
+          credentials_hash = {
+            'access_token'          => @authorization.access_token,
+            'authorization_uri'     => @authorization.authorization_uri,
+            'client_id'             => @authorization.client_id,
+            'client_secret'         => @authorization.client_secret,
+            'expires_in'            => @authorization.expires_in,
+            'refresh_token'         => @authorization.refresh_token,
+            'token_credential_uri'  => @authorization.token_credential_uri
+          }
 
           File.open(self.path, 'w', 0600) do |file|
-            file.write(hash.to_json)
+            file.write(credentials_hash.to_json)
           end
         end
       end
