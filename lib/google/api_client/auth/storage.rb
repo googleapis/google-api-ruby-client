@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'json'
 require 'signet/oauth_2/client'
 
 module Google
@@ -22,34 +21,31 @@ module Google
     # JSON serialized file. Meant to resemble the serialized format
     # http://google-api-python-client.googlecode.com/hg/docs/epy/oauth2client.file.Storage-class.html
     #
-    class FileStorage
+    class Storage
 
       AUTHORIZATION_URI = 'https://accounts.google.com/o/oauth2/auth'
       TOKEN_CREDENTIAL_URI = 'https://accounts.google.com/o/oauth2/token'
 
-      # @return [String] Path to the credentials file.
-      attr_accessor :path
+      # @return [Object] Storage object.
+      attr_accessor :store
 
-      # @return [Signet::OAuth2::Client] Path to the credentials file.
+
+      # @return [Signet::OAuth2::Client]
       attr_reader :authorization
 
       ##
-      # Initializes the FileStorage object.
+      # Initializes the Storage object.
       #
-      # @param [String] path
-      #    Path to the credentials file.
-      def initialize(path)
-        @path= path
+      # @params [Object] Storage object
+      def initialize(store)
+        @store= store
         self.authorize
       end
 
       ##
-      # Attempt to read in credentials from the specified file.
+      # Attempt to read in credentials from the specified store.
       def load_credentials
-        if File.exists?(@path) && File.readable?(@path) && File.writable?(@path)
-          credentials = File.open(path, 'r') { |f| JSON.parse(f.read) }
-        end
-        credentials
+        store.load_credentials
       end
 
       def authorize
@@ -62,12 +58,14 @@ module Google
       end
 
       ##
-      # refresh credentials and save them to file
+      # refresh credentials and save them to store
       def refresh_authorization
         @authorization.refresh!
-        self.write_credentials(@authorization)
+        self.write_credentials
       end
 
+      ##
+      # @return [Hash] with credentials
       def credentials_hash
         {
           :access_token          => @authorization.access_token,
@@ -82,17 +80,15 @@ module Google
       end
 
       ##
-      # Write the credentials to the specified file.
+      # Write the credentials to the specified store.
       #
-      # @param [Signet::OAuth2::Client] authorization
+      # @params [Signet::OAuth2::Client] authorization
       #    Optional authorization instance. If not provided, the authorization
       #    already associated with this instance will be written.
       def write_credentials(authorization=nil)
         @authorization = authorization if authorization
         if @authorization.refresh_token
-          File.open(self.path, 'w') do |file|
-            file.write(credentials_hash.to_json)
-          end
+          store.write_credentials(credentials_hash)
         end
       end
     end
