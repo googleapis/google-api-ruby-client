@@ -23,8 +23,12 @@ module Google
     # http://google-api-python-client.googlecode.com/hg/docs/epy/oauth2client.file.Storage-class.html
     #
     class FileStorage
+
+      AUTHORIZATION_URI = 'https://accounts.google.com/o/oauth2/auth'
+      TOKEN_CREDENTIAL_URI = 'https://accounts.google.com/o/oauth2/token'
+
       # @return [String] Path to the credentials file.
-      attr_reader :path
+      attr_accessor :path
 
       # @return [Signet::OAuth2::Client] Path to the credentials file.
       attr_reader :authorization
@@ -35,22 +39,26 @@ module Google
       # @param [String] path
       #    Path to the credentials file.
       def initialize(path)
-        self.path= path
-        self.load_credentials
+        @path= path
+        self.authorize
       end
 
       ##
       # Attempt to read in credentials from the specified file.
       def load_credentials
-        cached_credentials = JSON.load(path)
-        @authorization = Signet::OAuth2::Client.new(cached_credentials)
-        @authorization.issued_at = Time.at(cached_credentials['issued_at'])
-        self.refresh_authorization if @authorization.expired?
+        if File.exists?(@path) && File.readable?(@path) && File.writable?(@path)
+          credentials = File.open(path, 'r') { |f| JSON.parse(f.read) }
+        end
+        credentials
       end
 
-      def path=(value)
-        @path=value
-        raise "Credentials on path #{path} not accessible" unless File.exists?(@path) && File.readable?(@path) && File.writable?(@path)
+      def authorize
+        if load_credentials
+          cached_credentials = load_credentials
+          @authorization = Signet::OAuth2::Client.new(cached_credentials)
+          @authorization.issued_at = Time.at(cached_credentials['issued_at'].to_i)
+          self.refresh_authorization if @authorization.expired?
+        end
       end
 
       ##
@@ -58,6 +66,19 @@ module Google
       def refresh_authorization
         @authorization.refresh!
         self.write_credentials(@authorization)
+      end
+
+      def credentials_hash
+        {
+          :access_token          => @authorization.access_token,
+          :authorization_uri     => AUTHORIZATION_URI,
+          :client_id             => @authorization.client_id,
+          :client_secret         => @authorization.client_secret,
+          :expires_in            => @authorization.expires_in,
+          :refresh_token         => @authorization.refresh_token,
+          :token_credential_uri  => TOKEN_CREDENTIAL_URI,
+          :issued_at             => @authorization.issued_at.to_i
+        }
       end
 
       ##
@@ -69,18 +90,7 @@ module Google
       def write_credentials(authorization=nil)
         @authorization = authorization if authorization
         if @authorization.refresh_token
-
-          credentials_hash = {
-            :access_token          => @authorization.access_token,
-            :authorization_uri     => @authorization.authorization_uri,
-            :client_id             => @authorization.client_id,
-            :client_secret         => @authorization.client_secret,
-            :expires_in            => @authorization.expires_in,
-            :refresh_token         => @authorization.refresh_token,
-            :token_credential_uri  => @authorization.token_credential_uri
-          }
-
-          File.open(self.path, 'w', 0600) do |file|
+          File.open(self.path, 'w') do |file|
             file.write(credentials_hash.to_json)
           end
         end
