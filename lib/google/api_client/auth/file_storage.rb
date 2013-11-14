@@ -70,13 +70,13 @@ module Google
         if @authorization.refresh_token
 
           credentials_hash = {
-            'access_token'          => @authorization.access_token,
-            'authorization_uri'     => @authorization.authorization_uri,
-            'client_id'             => @authorization.client_id,
-            'client_secret'         => @authorization.client_secret,
-            'expires_in'            => @authorization.expires_in,
-            'refresh_token'         => @authorization.refresh_token,
-            'token_credential_uri'  => @authorization.token_credential_uri
+            :access_token          => @authorization.access_token,
+            :authorization_uri     => @authorization.authorization_uri,
+            :client_id             => @authorization.client_id,
+            :client_secret         => @authorization.client_secret,
+            :expires_in            => @authorization.expires_in,
+            :refresh_token         => @authorization.refresh_token,
+            :token_credential_uri  => @authorization.token_credential_uri
           }
 
           File.open(self.path, 'w', 0600) do |file|
