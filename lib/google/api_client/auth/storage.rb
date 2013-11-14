@@ -29,7 +29,6 @@ module Google
       # @return [Object] Storage object.
       attr_accessor :store
 
-
       # @return [Signet::OAuth2::Client]
       attr_reader :authorization
 
@@ -43,9 +42,16 @@ module Google
       end
 
       ##
-      # Attempt to read in credentials from the specified store.
-      def load_credentials
-        store.load_credentials
+      # Write the credentials to the specified store.
+      #
+      # @params [Signet::OAuth2::Client] authorization
+      #    Optional authorization instance. If not provided, the authorization
+      #    already associated with this instance will be written.
+      def write_credentials(authorization=nil)
+        @authorization = authorization if authorization
+        if @authorization.refresh_token
+          store.write_credentials(credentials_hash)
+        end
       end
 
       def authorize
@@ -64,6 +70,14 @@ module Google
         self.write_credentials
       end
 
+      private
+
+      ##
+      # Attempt to read in credentials from the specified store.
+      def load_credentials
+        store.load_credentials
+      end
+
       ##
       # @return [Hash] with credentials
       def credentials_hash
@@ -77,19 +91,6 @@ module Google
           :token_credential_uri  => TOKEN_CREDENTIAL_URI,
           :issued_at             => @authorization.issued_at.to_i
         }
-      end
-
-      ##
-      # Write the credentials to the specified store.
-      #
-      # @params [Signet::OAuth2::Client] authorization
-      #    Optional authorization instance. If not provided, the authorization
-      #    already associated with this instance will be written.
-      def write_credentials(authorization=nil)
-        @authorization = authorization if authorization
-        if @authorization.refresh_token
-          store.write_credentials(credentials_hash)
-        end
       end
     end
   end
