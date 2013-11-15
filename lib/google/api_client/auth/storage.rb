@@ -54,6 +54,9 @@ module Google
         end
       end
 
+      ##
+      # Loads credentials and authorizes an client.
+      # @return [Object] Signet::OAuth2::Client or NIL
       def authorize
         if load_credentials
           cached_credentials = load_credentials
