@@ -38,7 +38,6 @@ module Google
       # @params [Object] Storage object
       def initialize(store)
         @store= store
-        self.authorize
       end
 
       ##
@@ -58,18 +57,20 @@ module Google
       # Loads credentials and authorizes an client.
       # @return [Object] Signet::OAuth2::Client or NIL
       def authorize
-        if load_credentials
-          cached_credentials = load_credentials
+        @authorization = false
+        cached_credentials = load_credentials
+        if cached_credentials && cached_credentials.size > 0
           @authorization = Signet::OAuth2::Client.new(cached_credentials)
           @authorization.issued_at = Time.at(cached_credentials['issued_at'].to_i)
           self.refresh_authorization if @authorization.expired?
         end
+        return @authorization
       end
 
       ##
       # refresh credentials and save them to store
       def refresh_authorization
-        @authorization.refresh!
+        authorization.refresh!
         self.write_credentials
       end
 
@@ -85,14 +86,14 @@ module Google
       # @return [Hash] with credentials
       def credentials_hash
         {
-          :access_token          => @authorization.access_token,
+          :access_token          => authorization.access_token,
           :authorization_uri     => AUTHORIZATION_URI,
-          :client_id             => @authorization.client_id,
-          :client_secret         => @authorization.client_secret,
-          :expires_in            => @authorization.expires_in,
-          :refresh_token         => @authorization.refresh_token,
+          :client_id             => authorization.client_id,
+          :client_secret         => authorization.client_secret,
+          :expires_in            => authorization.expires_in,
+          :refresh_token         => authorization.refresh_token,
           :token_credential_uri  => TOKEN_CREDENTIAL_URI,
-          :issued_at             => @authorization.issued_at.to_i
+          :issued_at             => authorization.issued_at.to_i
         }
       end
     end
