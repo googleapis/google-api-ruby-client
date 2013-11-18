@@ -38,6 +38,7 @@ module Google
         @path = path
         store = Google::APIClient::FileStore.new(@path)
         @storage = Google::APIClient::Storage.new(store)
+        @storage.authorize
       end
 
       def load_credentials
