@@ -242,6 +242,7 @@ module Google
             "access_token" => options[:access_token],
             "refresh_token" => options[:refresh_token]
           }
+          puts "Writing oauth_2 tokens to ~/.google-api.yaml"
           config_file = File.expand_path('~/.google-api.yaml')
           open(config_file, 'w') { |file| file.write(YAML.dump(config)) }
           exit(0)
@@ -263,6 +264,7 @@ module Google
               "access_token" => oauth_client.access_token,
               "refresh_token" => oauth_client.refresh_token
             }
+            puts "Writing oauth_2 tokens to ~/.google-api.yaml"
             config_file = File.expand_path('~/.google-api.yaml')
             open(config_file, 'w') { |file| file.write(YAML.dump(config)) }
           end
