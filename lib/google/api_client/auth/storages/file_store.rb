@@ -37,10 +37,9 @@ module Google
       ##
       # Attempt to read in credentials from the specified file.
       def load_credentials
-        if File.exists?(path) && File.readable?(path) && File.writable?(path)
-          credentials = File.open(path, 'r') { |f| JSON.parse(f.read) }
-        end
-        credentials
+        File.open(path, 'r') { |f| JSON.parse(f.read) }
+      rescue
+        nil
       end
 
       ##
