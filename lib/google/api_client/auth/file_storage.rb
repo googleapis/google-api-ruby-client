@@ -34,7 +34,6 @@ module Google
                     :path
 
       def initialize(path)
-        Google::APIClient.logger("DEPRECATED: Please use Storage Class instead.")
         @path = path
         store = Google::APIClient::FileStore.new(@path)
         @storage = Google::APIClient::Storage.new(store)
@@ -42,7 +41,6 @@ module Google
       end
 
       def load_credentials
-        Google::APIClient.logger("DEPRECATED: Please use Storage Class instead.")
         storage.authorize
       end
 
