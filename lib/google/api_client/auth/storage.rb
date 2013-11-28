@@ -48,7 +48,7 @@ module Google
       #    already associated with this instance will be written.
       def write_credentials(authorization=nil)
         @authorization = authorization if authorization
-        if @authorization.refresh_token
+        if @authorization.respond_to?(:refresh_token) && @authorization.refresh_token
           store.write_credentials(credentials_hash)
         end
       end
