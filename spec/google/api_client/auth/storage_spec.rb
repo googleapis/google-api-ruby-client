@@ -11,8 +11,6 @@ describe Google::APIClient::Storage do
   let(:client_stub) { double }
   subject { Google::APIClient::Storage.new(store) }
 
-  it 'should initialize'
-
   describe 'authorize' do
     it 'should authorize' do
       subject.should respond_to(:authorization)
