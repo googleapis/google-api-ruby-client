@@ -37,7 +37,7 @@ module Google
       ##
       # Attempt to read in credentials from the specified file.
       def load_credentials
-        File.open(path, 'r') { |f| JSON.parse(f.read) }
+        open(path, 'r') { |f| JSON.parse(f.read) }
       rescue
         nil
       end
@@ -49,8 +49,8 @@ module Google
       #    Optional authorization instance. If not provided, the authorization
       #    already associated with this instance will be written.
       def write_credentials(credentials_hash)
-        File.open(self.path, 'w') do |file|
-          file.write(credentials_hash.to_json)
+        open(self.path, 'w+') do |f|
+          f.write(credentials_hash.to_json)
         end
       end
     end

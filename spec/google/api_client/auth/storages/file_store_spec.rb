@@ -2,13 +2,37 @@ require 'spec_helper'
 require_relative '../../../../../lib/google/api_client/auth/storages/file_store'
 
 describe Google::APIClient::FileStore do
-  let(:root_path) { File.expand_path(File.join(__FILE__, '..', '..', '..')) }
+  let(:root_path) { File.expand_path(File.join(__FILE__, '..','..','..', '..','..')) }
   let(:json_file) { File.expand_path(File.join(root_path, 'fixtures', 'files', 'auth_stored_credentials.json')) }
 
-  it 'should initialize'
+  let(:credentials_hash) {{
+      "access_token"=>"my_access_token",
+      "authorization_uri"=>"https://accounts.google.com/o/oauth2/auth",
+      "client_id"=>"123456_test_client_id@.apps.googleusercontent.com",
+      "client_secret"=>"123456_client_secret",
+      "expires_in"=>3600,
+      "refresh_token"=>"my_refresh_token",
+      "token_credential_uri"=>"https://accounts.google.com/o/oauth2/token",
+      "issued_at"=>1384440275
+  }}
 
-  it 'should load credentials'
+  subject{Google::APIClient::FileStore.new('a file path')}
 
-  it 'should write credentials'
+  it 'should have a path' do
+    subject.path.should == 'a file path'
+    subject.path = 'an other file path'
+    subject.path.should == 'an other file path'
+  end
 
+  it 'should load credentials' do
+    subject.path = json_file
+    credentials = subject.load_credentials
+    credentials.should include('access_token', 'authorization_uri', 'refresh_token')
+  end
+
+  it 'should write credentials' do
+    io_stub = StringIO.new
+    subject.should_receive(:open).and_return(io_stub)
+    subject.write_credentials(credentials_hash)
+  end
 end
