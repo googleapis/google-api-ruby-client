@@ -1,6 +1,7 @@
 require 'spec_helper'
-require_relative '../../../../lib/google/api_client'
-require_relative '../../../../lib/google/api_client/auth/storage'
+
+require 'google/api_client'
+require 'google/api_client/version'
 
 describe Google::APIClient::Storage do
   let(:client) { Google::APIClient.new(:application_name => 'API Client Tests') }
