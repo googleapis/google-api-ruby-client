@@ -38,15 +38,19 @@ describe Google::APIClient::Storage do
         client_stub.stub(:expired?).and_return(true)
         Signet::OAuth2::Client.should_receive(:new).and_return(client_stub)
         subject.should_receive(:refresh_authorization)
-        subject.authorize
+        auth = subject.authorize
+        auth.should == subject.authorization
+        auth.should_not be_nil
       end
     end
 
     describe 'without credentials' do
 
-      it 'should return false' do
+      it 'should return nil' do
+        subject.authorization.should be_nil
         subject.should_receive(:load_credentials).and_return({})
-        subject.authorize.should be_false
+        subject.authorize.should be_nil
+        subject.authorization.should be_nil
       end
     end
   end

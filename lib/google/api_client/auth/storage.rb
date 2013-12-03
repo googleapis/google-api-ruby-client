@@ -57,7 +57,7 @@ module Google
       # Loads credentials and authorizes an client.
       # @return [Object] Signet::OAuth2::Client or NIL
       def authorize
-        @authorization = false
+        @authorization = nil
         cached_credentials = load_credentials
         if cached_credentials && cached_credentials.size > 0
           @authorization = Signet::OAuth2::Client.new(cached_credentials)
