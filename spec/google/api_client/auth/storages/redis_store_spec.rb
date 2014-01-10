@@ -43,6 +43,21 @@ describe Google::APIClient::RedisStore do
     end
   end
 
+  describe 'redis_credentials_key' do
+    context 'without given key' do
+      it 'should return default key' do
+        subject.redis_credentials_key.should == "google_api_credentials"
+      end
+    end
+    context 'with given key' do
+      let(:redis_store) { Google::APIClient::RedisStore.new('a redis instance', 'another_google_api_credentials') }
+      it 'should use given key' do
+        redis_store.redis_credentials_key.should == "another_google_api_credentials"
+      end
+    end
+
+  end
+
   describe 'write credentials' do
 
     it 'should write credentials' do

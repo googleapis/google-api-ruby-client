@@ -24,8 +24,9 @@ module Google
       # Initializes the RedisStore object.
       #
       # @params [Object] Redis instance
-      def initialize(redis)
+      def initialize(redis, key = nil)
         @redis= redis
+        @redis_credentials_key = key
       end
 
       ##
@@ -36,7 +37,7 @@ module Google
       end
 
       def redis_credentials_key
-        "google_api_credentials"
+        @redis_credentials_key || "google_api_credentials"
       end
 
       ##
