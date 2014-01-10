@@ -18,6 +18,8 @@ module Google
   class APIClient
     class RedisStore
 
+      DEFAULT_REDIS_CREDENTIALS_KEY = "google_api_credentials"
+
       attr_accessor :redis
 
       ##
@@ -37,7 +39,7 @@ module Google
       end
 
       def redis_credentials_key
-        @redis_credentials_key || "google_api_credentials"
+        @redis_credentials_key || DEFAULT_REDIS_CREDENTIALS_KEY
       end
 
       ##
