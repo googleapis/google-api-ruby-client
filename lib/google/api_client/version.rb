@@ -23,7 +23,7 @@ if !defined?(::Google::APIClient::VERSION)
         MAJOR = 0
         MINOR = 7
         TINY  = 0
-        PATCH = 'rc2'
+        PATCH = nil
         STRING = [MAJOR, MINOR, TINY, PATCH].compact.join('.')
       end
     end
