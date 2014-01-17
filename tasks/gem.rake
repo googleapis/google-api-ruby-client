@@ -18,7 +18,6 @@ namespace :gem do
     s.description = PKG_DESCRIPTION
     s.license = 'Apache 2.0'
     s.files = PKG_FILES.to_a
-    s.executables << 'google-api'
 
     s.extra_rdoc_files = %w( README.md )
     s.rdoc_options.concat ['--main',  'README.md']
@@ -28,7 +27,7 @@ namespace :gem do
     s.add_runtime_dependency('addressable', '>= 2.3.2')
     s.add_runtime_dependency('uuidtools', '>= 2.1.0')
     s.add_runtime_dependency('autoparse', '>= 0.3.3')
-    s.add_runtime_dependency('faraday', '>= 0.9.0.rc5')
+    s.add_runtime_dependency('faraday', '>= 0.9.0')
     s.add_runtime_dependency('multi_json', '>= 1.0.0')
     s.add_runtime_dependency('extlib', '>= 0.9.15')
     s.add_runtime_dependency('jwt', '>= 0.1.5')
