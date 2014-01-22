@@ -594,7 +594,7 @@ module Google
       tries = 1 + (options[:retries] || self.retries)
       Retriable.retriable :tries => tries, 
                           :on => [TransmissionError], 
-                          :interval => lambda {|attempts| (2 ** attempts) + Random.rand} do
+                          :interval => lambda {|attempts| (2 ** attempts) + rand} do
         result = request.send(connection, true)
 
         case result.status
