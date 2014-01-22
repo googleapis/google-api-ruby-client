@@ -89,6 +89,7 @@ describe Google::APIClient do
 
       conn = stub_connection do |stub|
         stub.get('/discovery/v1/apis/prediction/v1.2/rest?userIp=127.0.0.1') do |env|
+          [200, {}, '{}']
         end
       end
       CLIENT.execute(
@@ -104,6 +105,7 @@ describe Google::APIClient do
       CLIENT.key = 'qwerty'
       conn = stub_connection do |stub|
         stub.get('/discovery/v1/apis/prediction/v1.2/rest?key=qwerty') do |env|
+          [200, {}, '{}']
         end
       end
       request = CLIENT.execute(
@@ -120,6 +122,7 @@ describe Google::APIClient do
       CLIENT.user_ip = '127.0.0.1'
       conn = stub_connection do |stub|
         stub.get('/discovery/v1/apis/prediction/v1.2/rest?key=qwerty&userIp=127.0.0.1') do |env|
+          [200, {}, '{}']
         end
       end
       request = CLIENT.execute(
@@ -187,6 +190,7 @@ describe Google::APIClient do
       conn = stub_connection do |stub|
         stub.post('/prediction/v1.2/training?data=12345') do |env|
           env[:body].should == ''
+          [200, {}, '{}']
         end
       end
       request = CLIENT.execute(
@@ -204,6 +208,7 @@ describe Google::APIClient do
         # to a CGI-escaped semicolon (%3B) instead.
         stub.post('/prediction/v1.2/training?data=12345%3B67890') do |env|
           env[:body].should == ''
+          [200, {}, '{}']
         end
       end
       request = CLIENT.execute(
@@ -218,6 +223,7 @@ describe Google::APIClient do
       conn = stub_connection do |stub|
          stub.post('/prediction/v1.2/training?data=1&data=2') do |env|
            env.params['data'].should include('1', '2')
+          [200, {}, '{}']
          end
        end
       request = CLIENT.execute(
@@ -231,6 +237,7 @@ describe Google::APIClient do
     it 'should generate requests against the correct URIs' do
       conn = stub_connection do |stub|
          stub.post('/prediction/v1.2/training?data=12345') do |env|
+          [200, {}, '{}']
          end
        end
       request = CLIENT.execute(
@@ -244,6 +251,7 @@ describe Google::APIClient do
     it 'should generate requests against the correct URIs' do
       conn = stub_connection do |stub|
         stub.post('/prediction/v1.2/training?data=12345') do |env|
+          [200, {}, '{}']
         end
       end
       request = CLIENT.execute(
@@ -264,6 +272,7 @@ describe Google::APIClient do
       conn = stub_connection do |stub|
         stub.post('/prediction/v1.2/training') do |env|
           env[:url].host.should == 'testing-domain.example.com'
+          [200, {}, '{}']          
         end
       end
 
@@ -284,6 +293,7 @@ describe Google::APIClient do
         stub.post('/prediction/v1.2/training?data=12345') do |env|
           env[:request_headers].should have_key('Authorization')
           env[:request_headers]['Authorization'].should =~ /^OAuth/
+          [200, {}, '{}']
         end
       end
 
@@ -303,6 +313,7 @@ describe Google::APIClient do
         stub.post('/prediction/v1.2/training?data=12345') do |env|
           env[:request_headers].should have_key('Authorization')
           env[:request_headers]['Authorization'].should =~ /^Bearer/
+          [200, {}, '{}']          
         end
       end
 
@@ -363,6 +374,7 @@ describe Google::APIClient do
         stub.post('/prediction/v1.2/training') do |env|
           env[:request_headers].should have_key('Content-Type')
           env[:request_headers]['Content-Type'].should == 'application/json'
+          [200, {}, '{}']
         end
       end
       CLIENT.authorization = :oauth_2
@@ -415,6 +427,7 @@ describe Google::APIClient do
     it 'should generate requests against the correct URIs' do
       conn = stub_connection do |stub|
         stub.get('/plus/v1/people/107807692475771887386/activities/public') do |env|
+          [200, {}, '{}']
         end
       end
 
@@ -485,6 +498,7 @@ describe Google::APIClient do
     it 'should generate requests against the correct URIs' do
       conn = stub_connection do |stub|
         stub.get('/adsense/v1.3/adclients') do |env|
+          [200, {}, '{}']
         end
       end
       request = CLIENT.execute(
@@ -515,6 +529,7 @@ describe Google::APIClient do
     it 'should succeed when validating parameters in a correct call' do
       conn = stub_connection do |stub|
         stub.get('/adsense/v1.3/reports?dimension=DATE&endDate=2010-01-01&metric=PAGE_VIEWS&startDate=2000-01-01') do |env|
+          [200, {}, '{}']
         end
       end
       (lambda do
@@ -553,6 +568,7 @@ describe Google::APIClient do
         stub.get('/adsense/v1.3/reports?dimension=DATE&dimension=PRODUCT_CODE'+
                  '&endDate=2010-01-01&metric=CLICKS&metric=PAGE_VIEWS&'+
                  'startDate=2000-01-01') do |env|
+          [200, {}, '{}']
         end
       end
       (lambda do
@@ -593,6 +609,7 @@ describe Google::APIClient do
                  'startDate=2000-01-01') do |env|
            env.params['dimension'].should include('DATE', 'PRODUCT_CODE')
            env.params['metric'].should include('CLICKS', 'PAGE_VIEWS')
+          [200, {}, '{}']
          end
        end
       request = CLIENT.execute(

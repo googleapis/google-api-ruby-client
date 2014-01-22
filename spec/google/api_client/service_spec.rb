@@ -49,6 +49,7 @@ describe Google::APIClient::Service do
     it 'should make a valid call for a method with no parameters' do
       conn = stub_connection do |stub|
         stub.get('/adsense/v1.3/adclients') do |env|
+          [200, {}, '{}']
         end
       end
       adsense = Google::APIClient::Service.new(
@@ -69,6 +70,7 @@ describe Google::APIClient::Service do
     it 'should make a valid call for a method with parameters' do
       conn = stub_connection do |stub|
         stub.get('/adsense/v1.3/adclients/1/adunits') do |env|
+          [200, {}, '{}']
         end
       end
       adsense = Google::APIClient::Service.new(
@@ -87,6 +89,7 @@ describe Google::APIClient::Service do
     it 'should make a valid call for a deep method' do
       conn = stub_connection do |stub|
         stub.get('/adsense/v1.3/accounts/1/adclients') do |env|
+          [200, {}, '{}']
         end
       end
       adsense = Google::APIClient::Service.new(
@@ -147,6 +150,7 @@ describe Google::APIClient::Service do
       conn = stub_connection do |stub|
         stub.post('/prediction/v1.5/trainedmodels?project=1') do |env|
           env.body.should == '{"id":"1"}'
+          [200, {}, '{}']
         end
       end
       prediction = Google::APIClient::Service.new(
@@ -167,6 +171,7 @@ describe Google::APIClient::Service do
       conn = stub_connection do |stub|
         stub.post('/prediction/v1.5/trainedmodels?project=1') do |env|
           env.body.should == '{"id":"1"}'
+          [200, {}, '{}']
         end
       end
       prediction = Google::APIClient::Service.new(
@@ -224,6 +229,7 @@ describe Google::APIClient::Service do
       conn = stub_connection do |stub|
         stub.post('/upload/drive/v1/files?uploadType=multipart') do |env|
           env.body.should be_a Faraday::CompositeReadIO
+          [200, {}, '{}']
         end
       end
       drive = Google::APIClient::Service.new(

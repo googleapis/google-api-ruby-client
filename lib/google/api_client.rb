@@ -17,6 +17,7 @@ require 'faraday'
 require 'multi_json'
 require 'compat/multi_json'
 require 'stringio'
+require 'retriable'
 
 require 'google/api_client/version'
 require 'google/api_client/logging'
@@ -107,6 +108,7 @@ module Google
       self.auto_refresh_token = options.fetch(:auto_refresh_token) { true }
       self.key = options[:key]
       self.user_ip = options[:user_ip]
+      self.retries = options.fetch(:retries) { 0 }
       @discovery_uris = {}
       @discovery_documents = {}
       @discovered_apis = {}
@@ -229,6 +231,13 @@ module Google
     # @return [String]
     #   The base path. Should almost always be '/discovery/v1'.
     attr_accessor :discovery_path
+
+    ##
+    # Number of times to retry on recoverable errors
+    # 
+    # @return [FixNum]
+    #  Number of retries
+    attr_accessor :retries
 
     ##
     # Returns the URI for the directory document.
@@ -424,6 +433,8 @@ module Google
     # Verifies an ID token against a server certificate. Used to ensure that
     # an ID token supplied by an untrusted client-side mechanism is valid.
     # Raises an error if the token is invalid or missing.
+    # 
+    # @deprecated Use the google-id-token gem for verifying JWTs
     def verify_id_token!
       require 'jwt'
       require 'openssl'
@@ -533,6 +544,8 @@ module Google
     #       authenticated, `false` otherwise.
     #     - (TrueClass, FalseClass) :gzip (default: true) - 
     #       `true` if gzip enabled, `false` otherwise.
+    #     - (FixNum) :retries -
+    #       # of times to retry on recoverable errors
     #
     # @return [Google::APIClient::Result] The result from the API, nil if batch.
     #
@@ -547,7 +560,7 @@ module Google
     #   )
     #
     # @see Google::APIClient#generate_request
-    def execute(*params)
+    def execute!(*params)
       if params.first.kind_of?(Google::APIClient::Request)
         request = params.shift
         options = params.shift || {}
@@ -572,53 +585,60 @@ module Google
       
       request.headers['User-Agent'] ||= '' + self.user_agent unless self.user_agent.nil?
       request.headers['Accept-Encoding'] ||= 'gzip' unless options[:gzip] == false
+      request.headers['Content-Type'] ||= ''
       request.parameters['key'] ||= self.key unless self.key.nil?
       request.parameters['userIp'] ||= self.user_ip unless self.user_ip.nil?
 
       connection = options[:connection] || self.connection
       request.authorization = options[:authorization] || self.authorization unless options[:authenticated] == false
+      tries = 1 + (options[:retries] || self.retries)
+      Retriable.retriable :tries => tries, 
+                          :on => [TransmissionError], 
+                          :interval => lambda {|attempts| (2 ** attempts) + Random.rand} do
+        result = request.send(connection, true)
 
-      result = request.send(connection)
-      if result.status == 401 && request.authorization.respond_to?(:refresh_token) && auto_refresh_token
-        begin
-          logger.debug("Attempting refresh of access token & retry of request")
-          request.authorization.fetch_access_token!
-          result = request.send(connection, true)
-        rescue Signet::AuthorizationError
-           # Ignore since we want the original error
+        case result.status
+          when 200...300
+            result
+          when 301, 302, 303, 307
+            request = generate_request(request.to_hash.merge({
+              :uri => result.headers['location'],
+              :api_method => nil
+            }))
+            raise RedirectError.new(result.headers['location'], result)
+          when 400...500
+            if result.status == 401 && request.authorization.respond_to?(:refresh_token) && auto_refresh_token
+              begin
+                logger.debug("Attempting refresh of access token & retry of request")
+                request.authorization.fetch_access_token!
+              rescue Signet::AuthorizationError
+                 # Ignore since we want the original error
+              end
+            end
+            raise ClientError.new(result.error_message || "A client error has occurred", result)
+          when 500...600
+            raise ServerError.new(result.error_message || "A server error has occurred", result)
+          else
+            raise TransmissionError.new(result.error_message || "A transmission error has occurred", result)
         end
       end
-      
-      return result
     end
 
     ##
-    # Same as Google::APIClient#execute, but raises an exception if there was
-    # an error.
+    # Same as Google::APIClient#execute!, but does not raise an exception for
+    # normal API errros.
     #
     # @see Google::APIClient#execute
-    def execute!(*params)
-      result = self.execute(*params)
-      if result.error?
-        error_message = result.error_message
-        case result.response.status
-          when 400...500
-            exception_type = ClientError
-            error_message ||= "A client error has occurred."
-          when 500...600
-            exception_type = ServerError
-            error_message ||= "A server error has occurred."
-          else
-            exception_type = TransmissionError
-            error_message ||= "A transmission error has occurred."
-        end
-        raise exception_type, error_message
+    def execute(*params)
+      begin
+        return self.execute!(*params)
+      rescue TransmissionError => e
+        return e.result
       end
-      return result
     end
-    
+
     protected
-    
+
     ##
     # Resolves a URI template against the client's configured base.
     #
@@ -646,6 +666,7 @@ module Google
     end
     
   end
+
 end
 
 require 'google/api_client/version'
