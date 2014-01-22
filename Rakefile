@@ -11,7 +11,7 @@ PKG_DISPLAY_NAME   = 'Google API Client'
 PKG_NAME           = PKG_DISPLAY_NAME.downcase.gsub(/\s/, '-')
 PKG_VERSION        = Google::APIClient::VERSION::STRING
 PKG_FILE_NAME      = "#{PKG_NAME}-#{PKG_VERSION}"
-PKG_HOMEPAGE       = 'http://code.google.com/p/google-api-ruby-client/'
+PKG_HOMEPAGE       = 'https://github.com/google/google-api-ruby-client'
 
 RELEASE_NAME       = "REL #{PKG_VERSION}"
 
