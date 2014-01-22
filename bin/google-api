@@ -58,7 +58,7 @@ module Google
           opts.separator "\nAvailable options:"
 
           opts.on(
-              "--scope <scope>", String, "Set the OAuth scope") do |s|
+              "--scope <scope>", String, "Set the OAuth scope(s), separated by spaces") do |s|
             options[:scope] = s
           end
           opts.on(
