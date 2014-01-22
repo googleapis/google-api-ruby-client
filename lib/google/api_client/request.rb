@@ -287,6 +287,7 @@ module Google
             raise ArgumentError, "Can not specify body & body object for simple uploads"
           end
           self.headers['Content-Type'] ||= self.media.content_type
+          self.headers['Content-Length'] ||= self.media.length.to_s
           self.body = self.media
         when "multipart"
           unless options[:body_object]
