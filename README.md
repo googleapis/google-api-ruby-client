@@ -181,10 +181,10 @@ end
 Included with the gem is a command line interface for working with Google APIs.
 
 ```bash
-# Log in
+# Log in, storing auth tokens in ~/.google-api.yaml
 google-api oauth-2-login --client-id='...' --client-secret='...' --scope="https://www.googleapis.com/auth/plus.me"
 
-# List the signed-in user's activities
+# List the signed-in user's activities, using auth tokens in ~/.google-api.yaml
 google-api execute plus.activities.list --api=plus -- userId="me" collection="public"
 
 # Start an interactive API session
