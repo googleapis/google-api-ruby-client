@@ -110,6 +110,12 @@ client.execute(...)
 Service accounts are also used for delegation in Google Apps domains. The target user for impersonation is specified by setting the `:person` parameter to the user's email address
 in the credentials. Detailed instructions on how to enable delegation for your domain can be found at [developers.google.com](https://developers.google.com/drive/delegation).
 
+### Automatic Retries & Backoff
+
+The API client can automatically retry requests for recoverable errors. To enable retries, set the `client.retries` property to
+the number of additional attempts. To avoid flooding servers, retries invovle a 1 second delay that increases on each subsequent retry.
+
+The default value for retries is 0, but will be enabled by default in future releases.
 
 ### Batching Requests
 
