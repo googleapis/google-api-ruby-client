@@ -1,8 +1,11 @@
-# 0.7.0.rc2
+# 0.7.0
+* Remove CLI
+* SUpport for automatic retires & backoff. Off by default, enable by setting `retries` on `APIClient`
+* Experimental new interface (see `Google::APIClient::Service`)
 * Fix warnings when using Faraday separately
 * Support Google Compute Engine service accounts
 * Enable gzip compression for responses
-* Upgrade to Faraday 0.9.x. Resolves multiple issues with query parameter encodings.
+* Upgrade to Faraday 0.9.0. Resolves multiple issues with query parameter encodings.
 * Use bundled root certificates for verifying SSL certificates
 * Rewind media when retrying uploads
 

@@ -19,6 +19,17 @@ module Google
     # An error which is raised when there is an unexpected response or other
     # transport error that prevents an operation from succeeding.
     class TransmissionError < StandardError
+      attr_reader :result
+      def initialize(message = nil, result = nil)
+        super(message)
+        @result = result
+      end
+    end
+
+    ##
+    # An exception that is raised if a redirect is required
+    #
+    class RedirectError < TransmissionError
     end
 
     ##

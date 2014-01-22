@@ -114,6 +114,7 @@ describe Google::APIClient do
       @connection = stub_connection do |stub|
         stub.post('/prediction/v1.2/training?data=12345') do |env|
           env[:request_headers]['Authorization'].should == 'Bearer 12345'
+          [200, {}, '{}']
         end
       end
     end
@@ -165,5 +166,88 @@ describe Google::APIClient do
          { :authorization => new_auth, :connection => @connection }         
        )
      end
+  end  
+
+  describe 'when retiries enabled' do
+    before do
+      client.retries = 2
+    end
+
+    after do
+      @connection.verify
+    end
+    
+    it 'should follow redirects' do
+      client.authorization = nil
+      @connection = stub_connection do |stub|
+        stub.get('/foo') do |env|
+          [302, {'location' => 'https://www.google.com/bar'}, '{}']
+        end
+        stub.get('/bar') do |env|
+          [200, {}, '{}']
+        end
+      end
+
+      client.execute(  
+        :uri => 'https://www.gogole.com/foo',
+        :connection => @connection
+      )
+    end
+
+    it 'should refresh tokens on 401 tokens' do
+      client.authorization.access_token = '12345'
+      expect(client.authorization).to receive(:fetch_access_token!)
+
+      @connection = stub_connection do |stub|
+        stub.get('/foo') do |env|
+          [401, {}, '{}']
+        end
+        stub.get('/foo') do |env|
+          [200, {}, '{}']
+        end
+      end
+
+      client.execute(  
+        :uri => 'https://www.gogole.com/foo',
+        :connection => @connection
+      )
+    end
+
+    it 'should retry on 500 errors' do
+      client.authorization = nil
+
+      @connection = stub_connection do |stub|
+        stub.get('/foo') do |env|
+          [500, {}, '{}']
+        end
+        stub.get('/foo') do |env|
+          [200, {}, '{}']
+        end
+      end
+
+      client.execute(  
+        :uri => 'https://www.gogole.com/foo',
+        :connection => @connection
+      ).status.should == 200
+
+    end
+
+    it 'should fail after max retries' do
+      client.authorization = nil
+      count = 0
+      @connection = stub_connection do |stub|
+        stub.get('/foo') do |env|
+          count += 1
+          [500, {}, '{}']
+        end
+      end
+
+      client.execute(  
+        :uri => 'https://www.gogole.com/foo',
+        :connection => @connection
+      ).status.should == 500
+      count.should == 3
+    end
+
   end  
 end
