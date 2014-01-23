@@ -22,7 +22,7 @@ if !defined?(::Google::APIClient::VERSION)
       module VERSION
         MAJOR = 0
         MINOR = 7
-        TINY  = 0
+        TINY  = 1
         PATCH = nil
         STRING = [MAJOR, MINOR, TINY, PATCH].compact.join('.')
       end
