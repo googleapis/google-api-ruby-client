@@ -1,3 +1,6 @@
+# 0.7.1
+* Minor fix to update gem dependencies
+
 # 0.7.0
 * Remove CLI
 * SUpport for automatic retires & backoff. Off by default, enable by setting `retries` on `APIClient`
