@@ -119,7 +119,7 @@ module Google
         faraday.ssl.ca_file = ca_file
         faraday.ssl.verify = true
         faraday.adapter Faraday.default_adapter
-      end      
+      end
       return self
     end
 
@@ -591,9 +591,12 @@ module Google
 
       connection = options[:connection] || self.connection
       request.authorization = options[:authorization] || self.authorization unless options[:authenticated] == false
+      
       tries = 1 + (options[:retries] || self.retries)
+
       Retriable.retriable :tries => tries, 
-                          :on => [TransmissionError], 
+                          :on => [TransmissionError],
+                          :on_retry => client_error_handler(request.authorization),
                           :interval => lambda {|attempts| (2 ** attempts) + rand} do
         result = request.send(connection, true)
 
@@ -607,14 +610,6 @@ module Google
             }))
             raise RedirectError.new(result.headers['location'], result)
           when 400...500
-            if result.status == 401 && request.authorization.respond_to?(:refresh_token) && auto_refresh_token
-              begin
-                logger.debug("Attempting refresh of access token & retry of request")
-                request.authorization.fetch_access_token!
-              rescue Signet::AuthorizationError
-                 # Ignore since we want the original error
-              end
-            end
             raise ClientError.new(result.error_message || "A client error has occurred", result)
           when 500...600
             raise ServerError.new(result.error_message || "A server error has occurred", result)
@@ -665,6 +660,31 @@ module Google
       return Addressable::Template.new(@base_uri + template).expand(mapping)
     end
     
+
+    ##
+    # Returns on proc for special processing of retries as not all client errors
+    # are recoverable. Only 401s should be retried and only if the credentials
+    # are refreshable
+    #
+    # @param [#fetch_access_token!] authorization
+    #   OAuth 2 credentials
+    # @return [Proc] 
+    def client_error_handler(authorization)  
+      can_refresh = authorization.respond_to?(:refresh_token) && auto_refresh_token 
+      Proc.new do |exception, tries|
+        next unless exception.kind_of?(ClientError)
+        if exception.result.status == 401 && can_refresh && tries == 1
+          begin
+            logger.debug("Attempting refresh of access token & retry of request")
+            authorization.fetch_access_token!
+            next
+          rescue Signet::AuthorizationError
+          end
+        end
+        raise exception
+      end
+    end
+
   end
 
 end

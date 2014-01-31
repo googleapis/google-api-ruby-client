@@ -168,7 +168,7 @@ describe Google::APIClient do
      end
   end  
 
-  describe 'when retiries enabled' do
+  describe 'when retries enabled' do
     before do
       client.retries = 2
     end
@@ -210,6 +210,40 @@ describe Google::APIClient do
       client.execute(  
         :uri => 'https://www.gogole.com/foo',
         :connection => @connection
+      )
+    end
+
+
+    it 'should not attempt multiple token refreshes' do
+      client.authorization.access_token = '12345'
+      expect(client.authorization).to receive(:fetch_access_token!).once
+
+      @connection = stub_connection do |stub|
+        stub.get('/foo') do |env|
+          [401, {}, '{}']
+        end
+      end
+
+      client.execute(  
+        :uri => 'https://www.gogole.com/foo',
+        :connection => @connection
+      )
+    end
+
+    it 'should not retry on client errors' do
+      count = 0
+      @connection = stub_connection do |stub|
+        stub.get('/foo') do |env|
+          count.should == 0
+          count += 1
+          [403, {}, '{}']
+        end
+      end
+
+      client.execute(  
+        :uri => 'https://www.gogole.com/foo',
+        :connection => @connection,
+        :authenticated => false
       )
     end
 
