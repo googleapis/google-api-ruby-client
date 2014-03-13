@@ -194,7 +194,7 @@ describe Google::APIClient do
       )
     end
 
-    it 'should refresh tokens on 401 tokens' do
+    it 'should refresh tokens on 401 errors' do
       client.authorization.access_token = '12345'
       expect(client.authorization).to receive(:fetch_access_token!)
 
@@ -283,5 +283,64 @@ describe Google::APIClient do
       count.should == 3
     end
 
-  end  
+  end
+
+  describe 'when retries disabled and expired_auth_retry on (default)' do
+    before do
+      client.retries = 0
+    end
+
+    after do
+      @connection.verify
+    end
+
+    it 'should refresh tokens on 401 errors' do
+      client.authorization.access_token = '12345'
+      expect(client.authorization).to receive(:fetch_access_token!)
+
+      @connection = stub_connection do |stub|
+        stub.get('/foo') do |env|
+          [401, {}, '{}']
+        end
+        stub.get('/foo') do |env|
+          [200, {}, '{}']
+        end
+      end
+
+      client.execute(
+        :uri => 'https://www.gogole.com/foo',
+        :connection => @connection
+      )
+    end
+
+  end
+
+  describe 'when retries disabled and expired_auth_retry off' do
+    before do
+      client.retries = 0
+      client.expired_auth_retry = false
+    end
+
+    it 'should not refresh tokens on 401 errors' do
+      client.authorization.access_token = '12345'
+      expect(client.authorization).not_to receive(:fetch_access_token!)
+
+      @connection = stub_connection do |stub|
+        stub.get('/foo') do |env|
+          [401, {}, '{}']
+        end
+        stub.get('/foo') do |env|
+          [200, {}, '{}']
+        end
+      end
+
+      resp = client.execute(
+        :uri => 'https://www.gogole.com/foo',
+        :connection => @connection
+      )
+
+      resp.response.status.should == 401
+    end
+
+  end
 end
