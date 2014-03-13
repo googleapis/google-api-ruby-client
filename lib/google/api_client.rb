@@ -596,25 +596,34 @@ module Google
 
       Retriable.retriable :tries => tries, 
                           :on => [TransmissionError],
-                          :on_retry => client_error_handler(request.authorization),
                           :interval => lambda {|attempts| (2 ** attempts) + rand} do
-        result = request.send(connection, true)
+        # This 2nd level retriable only catches auth errors, and supports 1 retry, which allows
+        # auth to be re-attempted without having to retry all sorts of other failures like
+        # NotFound, etc
+        Retriable.retriable :tries => 2, 
+                            :on => [AuthorizationError],
+                            :on_retry => client_error_handler(request.authorization),
+                            :interval => lambda {|attempts| (2 ** attempts) + rand} do
+          result = request.send(connection, true)
 
-        case result.status
-          when 200...300
-            result
-          when 301, 302, 303, 307
-            request = generate_request(request.to_hash.merge({
-              :uri => result.headers['location'],
-              :api_method => nil
-            }))
-            raise RedirectError.new(result.headers['location'], result)
-          when 400...500
-            raise ClientError.new(result.error_message || "A client error has occurred", result)
-          when 500...600
-            raise ServerError.new(result.error_message || "A server error has occurred", result)
-          else
-            raise TransmissionError.new(result.error_message || "A transmission error has occurred", result)
+          case result.status
+            when 200...300
+              result
+            when 301, 302, 303, 307
+              request = generate_request(request.to_hash.merge({
+                :uri => result.headers['location'],
+                :api_method => nil
+              }))
+              raise RedirectError.new(result.headers['location'], result)
+            when 401
+              raise AuthorizationError.new(result.error_message || 'Invalid/Expired Authentication', result)
+            when 400, 402...500
+              raise ClientError.new(result.error_message || "A client error has occurred", result)
+            when 500...600
+              raise ServerError.new(result.error_message || "A server error has occurred", result)
+            else
+              raise TransmissionError.new(result.error_message || "A transmission error has occurred", result)
+          end
         end
       end
     end
