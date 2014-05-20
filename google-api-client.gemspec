@@ -32,8 +32,8 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<jwt>, [">= 0.1.5"])
       s.add_runtime_dependency(%q<retriable>, [">= 1.4"])
       s.add_runtime_dependency(%q<launchy>, [">= 2.1.1"])
-      s.add_development_dependency(%q<rake>, [">= 0.9.0"])
-      s.add_development_dependency(%q<rspec>, [">= 2.11.0"])
+      s.add_development_dependency(%q<rake>, ["~> 10.3.0"])
+      s.add_development_dependency(%q<rspec>, ["~> 2.14.0"])
     else
       s.add_dependency(%q<signet>, [">= 0.5.0"])
       s.add_dependency(%q<addressable>, [">= 2.3.2"])
@@ -45,8 +45,8 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<jwt>, [">= 0.1.5"])
       s.add_dependency(%q<retriable>, [">= 1.4"])
       s.add_dependency(%q<launchy>, [">= 2.1.1"])
-      s.add_dependency(%q<rake>, [">= 0.9.0"])
-      s.add_dependency(%q<rspec>, [">= 2.11.0"])
+      s.add_dependency(%q<rake>, ["~> 10.3.0"])
+      s.add_dependency(%q<rspec>, ["~> 2.14.0"])
     end
   else
     s.add_dependency(%q<signet>, [">= 0.5.0"])
@@ -59,7 +59,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<jwt>, [">= 0.1.5"])
     s.add_dependency(%q<retriable>, [">= 1.4"])
     s.add_dependency(%q<launchy>, [">= 2.1.1"])
-    s.add_dependency(%q<rake>, [">= 0.9.0"])
-    s.add_dependency(%q<rspec>, [">= 2.11.0"])
+    s.add_dependency(%q<rake>, ["~> 10.3.0"])
+    s.add_dependency(%q<rspec>, ["~> 2.14.0"])
   end
 end
