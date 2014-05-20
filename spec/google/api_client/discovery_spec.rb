@@ -34,41 +34,41 @@ describe Google::APIClient do
     CLIENT.user_ip = nil
   end
 
-  it 'should raise a type error for bogus authorization' do
-    (lambda do
+  it 'raises a type error for bogus authorization' do
+    expect(lambda do
       Google::APIClient.new(:application_name => 'API Client Tests', :authorization => 42)
-    end).should raise_error(TypeError)
+    end).to raise_error(TypeError)
   end
 
-  it 'should not be able to retrieve the discovery document for a bogus API' do
-    (lambda do
+  it 'does not be able to retrieve the discovery document for a bogus API' do
+    expect(lambda do
       CLIENT.discovery_document('bogus')
-    end).should raise_error(Google::APIClient::TransmissionError)
-    (lambda do
+    end).to raise_error(Google::APIClient::TransmissionError)
+    expect(lambda do
       CLIENT.discovered_api('bogus')
-    end).should raise_error(Google::APIClient::TransmissionError)
+    end).to raise_error(Google::APIClient::TransmissionError)
   end
 
-  it 'should raise an error for bogus services' do
-    (lambda do
+  it 'raises an error for bogus services' do
+    expect(lambda do
       CLIENT.discovered_api(42)
-    end).should raise_error(TypeError)
+    end).to raise_error(TypeError)
   end
 
-  it 'should raise an error for bogus services' do
-    (lambda do
+  it 'raises an error for bogus services' do
+    expect(lambda do
       CLIENT.preferred_version(42)
-    end).should raise_error(TypeError)
+    end).to raise_error(TypeError)
   end
 
-  it 'should raise an error for bogus methods' do
-    (lambda do
+  it 'raises an error for bogus methods' do
+    expect(lambda do
       CLIENT.execute(42)
-    end).should raise_error(TypeError)
+    end).to raise_error(TypeError)
   end
 
-  it 'should not return a preferred version for bogus service names' do
-    CLIENT.preferred_version('bogus').should == nil
+  it 'does not return a preferred version for bogus service names' do
+    expect(CLIENT.preferred_version('bogus')).to be_nil
   end
 
   describe 'with the prediction API' do
@@ -79,12 +79,12 @@ describe Google::APIClient do
       @prediction = CLIENT.discovered_api('prediction', 'v1.2')
     end
 
-    it 'should correctly determine the discovery URI' do
-      CLIENT.discovery_uri('prediction').should ===
+    it 'correctly determines the discovery URI' do
+      expect(CLIENT.discovery_uri('prediction')).to be ===
         'https://www.googleapis.com/discovery/v1/apis/prediction/v1/rest'
     end
 
-    it 'should correctly determine the discovery URI if :user_ip is set' do
+    it 'correctly determines the discovery URI if :user_ip is set' do
       CLIENT.user_ip = '127.0.0.1'
 
       conn = stub_connection do |stub|
@@ -101,7 +101,7 @@ describe Google::APIClient do
       conn.verify
     end
 
-    it 'should correctly determine the discovery URI if :key is set' do
+    it 'correctly determines the discovery URI if :key is set' do
       CLIENT.key = 'qwerty'
       conn = stub_connection do |stub|
         stub.get('/discovery/v1/apis/prediction/v1.2/rest?key=qwerty') do |env|
@@ -117,7 +117,7 @@ describe Google::APIClient do
         conn.verify
     end
 
-    it 'should correctly determine the discovery URI if both are set' do
+    it 'correctly determines the discovery URI if both are set' do
       CLIENT.key = 'qwerty'
       CLIENT.user_ip = '127.0.0.1'
       conn = stub_connection do |stub|
@@ -134,62 +134,62 @@ describe Google::APIClient do
         conn.verify
     end
 
-    it 'should correctly generate API objects' do
-      CLIENT.discovered_api('prediction', 'v1.2').name.should == 'prediction'
-      CLIENT.discovered_api('prediction', 'v1.2').version.should == 'v1.2'
-      CLIENT.discovered_api(:prediction, 'v1.2').name.should == 'prediction'
-      CLIENT.discovered_api(:prediction, 'v1.2').version.should == 'v1.2'
+    it 'correctly generates API objects' do
+      expect(CLIENT.discovered_api('prediction', 'v1.2').name).to eq('prediction')
+      expect(CLIENT.discovered_api('prediction', 'v1.2').version).to eq('v1.2')
+      expect(CLIENT.discovered_api(:prediction, 'v1.2').name).to eq('prediction')
+      expect(CLIENT.discovered_api(:prediction, 'v1.2').version).to eq('v1.2')
     end
 
-    it 'should discover methods' do
-      CLIENT.discovered_method(
+    it 'discovers methods' do
+      expect(CLIENT.discovered_method(
         'prediction.training.insert', 'prediction', 'v1.2'
-      ).name.should == 'insert'
-      CLIENT.discovered_method(
+      ).name).to eq('insert')
+      expect(CLIENT.discovered_method(
         :'prediction.training.insert', :prediction, 'v1.2'
-      ).name.should == 'insert'
-      CLIENT.discovered_method(
+      ).name).to eq('insert')
+      expect(CLIENT.discovered_method(
         'prediction.training.delete', 'prediction', 'v1.2'
-      ).name.should == 'delete'
+      ).name).to eq('delete')
     end
 
-    it 'should define the origin API in discovered methods' do
-      CLIENT.discovered_method(
+    it 'defines the origin API in discovered methods' do
+      expect(CLIENT.discovered_method(
         'prediction.training.insert', 'prediction', 'v1.2'
-      ).api.name.should == 'prediction'
+      ).api.name).to eq('prediction')
     end
 
-    it 'should not find methods that are not in the discovery document' do
-      CLIENT.discovered_method(
+    it 'does not find methods that are not in the discovery document' do
+      expect(CLIENT.discovered_method(
         'prediction.bogus', 'prediction', 'v1.2'
-      ).should == nil
+      )).to be_nil
     end
 
-    it 'should raise an error for bogus methods' do
-      (lambda do
+    it 'raises an error for bogus methods' do
+      expect(lambda do
         CLIENT.discovered_method(42, 'prediction', 'v1.2')
-      end).should raise_error(TypeError)
+      end).to raise_error(TypeError)
     end
 
-    it 'should raise an error for bogus methods' do
-      (lambda do
+    it 'raises an error for bogus methods' do
+      expect(lambda do
         CLIENT.execute(:api_method => CLIENT.discovered_api('prediction', 'v1.2'))
-      end).should raise_error(TypeError)
+      end).to raise_error(TypeError)
     end
 
-    it 'should correctly determine the preferred version' do
-      CLIENT.preferred_version('prediction').version.should_not == 'v1'
-      CLIENT.preferred_version(:prediction).version.should_not == 'v1'
+    it 'correctly determines the preferred version' do
+      expect(CLIENT.preferred_version('prediction').version).not_to eq('v1')
+      expect(CLIENT.preferred_version(:prediction).version).not_to eq('v1')
     end
 
-    it 'should return a batch path' do
-      CLIENT.discovered_api('prediction', 'v1.2').batch_path.should_not be_nil
+    it 'returns a batch path' do
+      expect(CLIENT.discovered_api('prediction', 'v1.2').batch_path).not_to be_nil
     end
 
-    it 'should generate valid requests' do
+    it 'generates valid requests' do
       conn = stub_connection do |stub|
         stub.post('/prediction/v1.2/training?data=12345') do |env|
-          env[:body].should == ''
+          expect(env[:body]).to eq('')
           [200, {}, '{}']
         end
       end
@@ -201,13 +201,13 @@ describe Google::APIClient do
       conn.verify
     end
 
-    it 'should generate valid requests when parameter value includes semicolon' do
+    it 'generates valid requests when parameter value includes semicolon' do
       conn = stub_connection do |stub|
         # semicolon (;) in parameter value was being converted to
         # bare ampersand (&) in 0.4.7. ensure that it gets converted
         # to a CGI-escaped semicolon (%3B) instead.
         stub.post('/prediction/v1.2/training?data=12345%3B67890') do |env|
-          env[:body].should == ''
+          expect(env[:body]).to eq('')
           [200, {}, '{}']
         end
       end
@@ -219,10 +219,10 @@ describe Google::APIClient do
       conn.verify
     end
 
-    it 'should generate valid requests when multivalued parameters are passed' do
+    it 'generates valid requests when multivalued parameters are passed' do
       conn = stub_connection do |stub|
          stub.post('/prediction/v1.2/training?data=1&data=2') do |env|
-           env.params['data'].should include('1', '2')
+           expect(env.params['data']).to include('1', '2')
           [200, {}, '{}']
          end
        end
@@ -234,7 +234,7 @@ describe Google::APIClient do
       conn.verify
     end
 
-    it 'should generate requests against the correct URIs' do
+    it 'generates requests against the correct URIs' do
       conn = stub_connection do |stub|
          stub.post('/prediction/v1.2/training?data=12345') do |env|
           [200, {}, '{}']
@@ -248,7 +248,7 @@ describe Google::APIClient do
       conn.verify
     end
 
-    it 'should generate requests against the correct URIs' do
+    it 'generates requests against the correct URIs' do
       conn = stub_connection do |stub|
         stub.post('/prediction/v1.2/training?data=12345') do |env|
           [200, {}, '{}']
@@ -262,7 +262,7 @@ describe Google::APIClient do
       conn.verify
     end
 
-    it 'should allow modification to the base URIs for testing purposes' do
+    it 'allows modification to the base URIs for testing purposes' do
       # Using a new client instance here to avoid caching rebased discovery doc
       prediction_rebase =
         Google::APIClient.new(:application_name => 'API Client Tests').discovered_api('prediction', 'v1.2')
@@ -271,8 +271,8 @@ describe Google::APIClient do
 
       conn = stub_connection do |stub|
         stub.post('/prediction/v1.2/training') do |env|
-          env[:url].host.should == 'testing-domain.example.com'
-          [200, {}, '{}']          
+          expect(env[:url].host).to eq('testing-domain.example.com')
+          [200, {}, '{}']
         end
       end
 
@@ -284,15 +284,15 @@ describe Google::APIClient do
       conn.verify
     end
 
-    it 'should generate OAuth 1 requests' do
+    it 'generates OAuth 1 requests' do
       CLIENT.authorization = :oauth_1
       CLIENT.authorization.token_credential_key = '12345'
       CLIENT.authorization.token_credential_secret = '12345'
 
       conn = stub_connection do |stub|
         stub.post('/prediction/v1.2/training?data=12345') do |env|
-          env[:request_headers].should have_key('Authorization')
-          env[:request_headers]['Authorization'].should =~ /^OAuth/
+          expect(env[:request_headers]).to have_key('Authorization')
+          expect(env[:request_headers]['Authorization']).to match(/^OAuth/)
           [200, {}, '{}']
         end
       end
@@ -305,15 +305,15 @@ describe Google::APIClient do
       conn.verify
     end
 
-    it 'should generate OAuth 2 requests' do
+    it 'generates OAuth 2 requests' do
       CLIENT.authorization = :oauth_2
       CLIENT.authorization.access_token = '12345'
 
       conn = stub_connection do |stub|
         stub.post('/prediction/v1.2/training?data=12345') do |env|
-          env[:request_headers].should have_key('Authorization')
-          env[:request_headers]['Authorization'].should =~ /^Bearer/
-          [200, {}, '{}']          
+          expect(env[:request_headers]).to have_key('Authorization')
+          expect(env[:request_headers]['Authorization']).to match(/^Bearer/)
+          [200, {}, '{}']
         end
       end
 
@@ -325,7 +325,7 @@ describe Google::APIClient do
       conn.verify
     end
 
-    it 'should not be able to execute improperly authorized requests' do
+    it 'does not be able to execute improperly authorized requests' do
       CLIENT.authorization = :oauth_1
       CLIENT.authorization.token_credential_key = '12345'
       CLIENT.authorization.token_credential_secret = '12345'
@@ -333,21 +333,21 @@ describe Google::APIClient do
         @prediction.training.insert,
         {'data' => '12345'}
       )
-      result.response.status.should == 401
+      expect(result.response.status).to eq(401)
     end
 
-    it 'should not be able to execute improperly authorized requests' do
+    it 'does not be able to execute improperly authorized requests' do
       CLIENT.authorization = :oauth_2
       CLIENT.authorization.access_token = '12345'
       result = CLIENT.execute(
         @prediction.training.insert,
         {'data' => '12345'}
       )
-      result.response.status.should == 401
+      expect(result.response.status).to eq(401)
     end
 
-    it 'should not be able to execute improperly authorized requests' do
-      (lambda do
+    it 'does not be able to execute improperly authorized requests' do
+      expect(lambda do
         CLIENT.authorization = :oauth_1
         CLIENT.authorization.token_credential_key = '12345'
         CLIENT.authorization.token_credential_secret = '12345'
@@ -355,25 +355,25 @@ describe Google::APIClient do
           @prediction.training.insert,
           {'data' => '12345'}
         )
-      end).should raise_error(Google::APIClient::ClientError)
+      end).to raise_error(Google::APIClient::ClientError)
     end
 
-    it 'should not be able to execute improperly authorized requests' do
-      (lambda do
+    it 'does not be able to execute improperly authorized requests' do
+      expect(lambda do
         CLIENT.authorization = :oauth_2
         CLIENT.authorization.access_token = '12345'
         result = CLIENT.execute!(
           @prediction.training.insert,
           {'data' => '12345'}
         )
-      end).should raise_error(Google::APIClient::ClientError)
+      end).to raise_error(Google::APIClient::ClientError)
     end
 
-    it 'should correctly handle unnamed parameters' do
+    it 'correctly handles unnamed parameters' do
       conn = stub_connection do |stub|
         stub.post('/prediction/v1.2/training') do |env|
-          env[:request_headers].should have_key('Content-Type')
-          env[:request_headers]['Content-Type'].should == 'application/json'
+          expect(env[:request_headers]).to have_key('Content-Type')
+          expect(env[:request_headers]['Content-Type']).to eq('application/json')
           [200, {}, '{}']
         end
       end
@@ -395,36 +395,36 @@ describe Google::APIClient do
       @plus = CLIENT.discovered_api('plus')
     end
 
-    it 'should correctly determine the discovery URI' do
-      CLIENT.discovery_uri('plus').should ===
+    it 'correctly determines the discovery URI' do
+      expect(CLIENT.discovery_uri('plus')).to be ===
         'https://www.googleapis.com/discovery/v1/apis/plus/v1/rest'
     end
 
-    it 'should find APIs that are in the discovery document' do
-      CLIENT.discovered_api('plus').name.should == 'plus'
-      CLIENT.discovered_api('plus').version.should == 'v1'
-      CLIENT.discovered_api(:plus).name.should == 'plus'
-      CLIENT.discovered_api(:plus).version.should == 'v1'
+    it 'finds APIs that are in the discovery document' do
+      expect(CLIENT.discovered_api('plus').name).to eq('plus')
+      expect(CLIENT.discovered_api('plus').version).to eq('v1')
+      expect(CLIENT.discovered_api(:plus).name).to eq('plus')
+      expect(CLIENT.discovered_api(:plus).version).to eq('v1')
     end
 
-    it 'should find methods that are in the discovery document' do
+    it 'finds methods that are in the discovery document' do
       # TODO(bobaman) Fix this when the RPC names are correct
-      CLIENT.discovered_method(
+      expect(CLIENT.discovered_method(
         'plus.activities.list', 'plus'
-      ).name.should == 'list'
+      ).name).to eq('list')
     end
 
-    it 'should define the origin API in discovered methods' do
-      CLIENT.discovered_method(
+    it 'defines the origin API in discovered methods' do
+      expect(CLIENT.discovered_method(
         'plus.activities.list', 'plus'
-      ).api.name.should == 'plus'
+      ).api.name).to eq('plus')
     end
 
-    it 'should not find methods that are not in the discovery document' do
-      CLIENT.discovered_method('plus.bogus', 'plus').should == nil
+    it 'does not find methods that are not in the discovery document' do
+      expect(CLIENT.discovered_method('plus.bogus', 'plus')).to be_nil
     end
 
-    it 'should generate requests against the correct URIs' do
+    it 'generates requests against the correct URIs' do
       conn = stub_connection do |stub|
         stub.get('/plus/v1/people/107807692475771887386/activities/public') do |env|
           [200, {}, '{}']
@@ -442,18 +442,18 @@ describe Google::APIClient do
       conn.verify
     end
 
-    it 'should correctly validate parameters' do
-      (lambda do
+    it 'correctly validates parameters' do
+      expect(lambda do
         CLIENT.execute(
           :api_method => @plus.activities.list,
           :parameters => {'alt' => 'json'},
           :authenticated => false
         )
-      end).should raise_error(ArgumentError)
+      end).to raise_error(ArgumentError)
     end
 
-    it 'should correctly validate parameters' do
-      (lambda do
+    it 'correctly validates parameters' do
+      expect(lambda do
         CLIENT.execute(
           :api_method => @plus.activities.list,
           :parameters => {
@@ -461,7 +461,7 @@ describe Google::APIClient do
           },
           :authenticated => false
         ).to_env(CLIENT.connection)
-      end).should raise_error(ArgumentError)
+      end).to raise_error(ArgumentError)
     end
   end
 
@@ -471,31 +471,31 @@ describe Google::APIClient do
       @adsense = CLIENT.discovered_api('adsense', 'v1.3')
     end
 
-    it 'should correctly determine the discovery URI' do
-      CLIENT.discovery_uri('adsense', 'v1.3').to_s.should ===
+    it 'correctly determines the discovery URI' do
+      expect(CLIENT.discovery_uri('adsense', 'v1.3').to_s).to be ===
         'https://www.googleapis.com/discovery/v1/apis/adsense/v1.3/rest'
     end
 
-    it 'should find APIs that are in the discovery document' do
-      CLIENT.discovered_api('adsense', 'v1.3').name.should == 'adsense'
-      CLIENT.discovered_api('adsense', 'v1.3').version.should == 'v1.3'
+    it 'finds APIs that are in the discovery document' do
+      expect(CLIENT.discovered_api('adsense', 'v1.3').name).to eq('adsense')
+      expect(CLIENT.discovered_api('adsense', 'v1.3').version).to eq('v1.3')
     end
 
-    it 'should return a batch path' do
-      CLIENT.discovered_api('adsense', 'v1.3').batch_path.should_not be_nil
+    it 'returns a batch path' do
+      expect(CLIENT.discovered_api('adsense', 'v1.3').batch_path).not_to be_nil
     end
 
-    it 'should find methods that are in the discovery document' do
-      CLIENT.discovered_method(
+    it 'finds methods that are in the discovery document' do
+      expect(CLIENT.discovered_method(
         'adsense.reports.generate', 'adsense', 'v1.3'
-      ).name.should == 'generate'
+      ).name).to eq('generate')
     end
 
-    it 'should not find methods that are not in the discovery document' do
-      CLIENT.discovered_method('adsense.bogus', 'adsense', 'v1.3').should == nil
+    it 'does not find methods that are not in the discovery document' do
+      expect(CLIENT.discovered_method('adsense.bogus', 'adsense', 'v1.3')).to eq(nil)
     end
 
-    it 'should generate requests against the correct URIs' do
+    it 'generates requests against the correct URIs' do
       conn = stub_connection do |stub|
         stub.get('/adsense/v1.3/adclients') do |env|
           [200, {}, '{}']
@@ -509,30 +509,30 @@ describe Google::APIClient do
       conn.verify
     end
 
-    it 'should not be able to execute requests without authorization' do
+    it 'does not be able to execute requests without authorization' do
       result = CLIENT.execute(
         :api_method => @adsense.adclients.list,
         :authenticated => false
       )
-      result.response.status.should == 401
+      expect(result.response.status).to eq(401)
     end
 
-    it 'should fail when validating missing required parameters' do
-      (lambda do
+    it 'fails when validating missing required parameters' do
+      expect(lambda do
         CLIENT.execute(
           :api_method => @adsense.reports.generate,
           :authenticated => false
         )
-      end).should raise_error(ArgumentError)
+      end).to raise_error(ArgumentError)
     end
 
-    it 'should succeed when validating parameters in a correct call' do
+    it 'succeeds when validating parameters in a correct call' do
       conn = stub_connection do |stub|
         stub.get('/adsense/v1.3/reports?dimension=DATE&endDate=2010-01-01&metric=PAGE_VIEWS&startDate=2000-01-01') do |env|
           [200, {}, '{}']
         end
       end
-      (lambda do
+      expect(lambda do
         CLIENT.execute(
           :api_method => @adsense.reports.generate,
           :parameters => {
@@ -544,12 +544,12 @@ describe Google::APIClient do
           :authenticated => false,
           :connection => conn
         )
-      end).should_not raise_error
+      end).not_to raise_error
       conn.verify
     end
 
-    it 'should fail when validating parameters with invalid values' do
-      (lambda do
+    it 'fails when validating parameters with invalid values' do
+      expect(lambda do
         CLIENT.execute(
           :api_method => @adsense.reports.generate,
           :parameters => {
@@ -560,10 +560,10 @@ describe Google::APIClient do
           },
           :authenticated => false
         )
-      end).should raise_error(ArgumentError)
+      end).to raise_error(ArgumentError)
     end
 
-    it 'should succeed when validating repeated parameters in a correct call' do
+    it 'succeeds when validating repeated parameters in a correct call' do
       conn = stub_connection do |stub|
         stub.get('/adsense/v1.3/reports?dimension=DATE&dimension=PRODUCT_CODE'+
                  '&endDate=2010-01-01&metric=CLICKS&metric=PAGE_VIEWS&'+
@@ -571,7 +571,7 @@ describe Google::APIClient do
           [200, {}, '{}']
         end
       end
-      (lambda do
+      expect(lambda do
         CLIENT.execute(
           :api_method => @adsense.reports.generate,
           :parameters => {
@@ -583,12 +583,12 @@ describe Google::APIClient do
           :authenticated => false,
           :connection => conn
         )
-      end).should_not raise_error
+      end).not_to raise_error
       conn.verify
     end
 
-    it 'should fail when validating incorrect repeated parameters' do
-      (lambda do
+    it 'fails when validating incorrect repeated parameters' do
+      expect(lambda do
         CLIENT.execute(
           :api_method => @adsense.reports.generate,
           :parameters => {
@@ -599,16 +599,16 @@ describe Google::APIClient do
           },
           :authenticated => false
         )
-      end).should raise_error(ArgumentError)
+      end).to raise_error(ArgumentError)
     end
 
-    it 'should generate valid requests when multivalued parameters are passed' do
+    it 'generates valid requests when multivalued parameters are passed' do
       conn = stub_connection do |stub|
          stub.get('/adsense/v1.3/reports?dimension=DATE&dimension=PRODUCT_CODE'+
                  '&endDate=2010-01-01&metric=CLICKS&metric=PAGE_VIEWS&'+
                  'startDate=2000-01-01') do |env|
-           env.params['dimension'].should include('DATE', 'PRODUCT_CODE')
-           env.params['metric'].should include('CLICKS', 'PAGE_VIEWS')
+           expect(env.params['dimension']).to include('DATE', 'PRODUCT_CODE')
+           expect(env.params['metric']).to include('CLICKS', 'PAGE_VIEWS')
           [200, {}, '{}']
          end
        end
@@ -633,20 +633,20 @@ describe Google::APIClient do
       @drive = CLIENT.discovered_api('drive', 'v1')
     end
 
-    it 'should include media upload info methods' do
-      @drive.files.insert.media_upload.should_not == nil
+    it 'includes media upload info methods' do
+      expect(@drive.files.insert.media_upload).not_to be_nil
     end
 
-    it 'should include accepted media types' do
-      @drive.files.insert.media_upload.accepted_types.should_not be_empty
+    it 'includes accepted media types' do
+      expect(@drive.files.insert.media_upload.accepted_types).not_to be_empty
     end
 
-    it 'should have an upload path' do
-      @drive.files.insert.media_upload.uri_template.should_not == nil
+    it 'has an upload path' do
+      expect(@drive.files.insert.media_upload.uri_template).not_to be_nil
     end
 
-    it 'should have a max file size' do
-      @drive.files.insert.media_upload.max_size.should_not == nil
+    it 'has a max file size' do
+      expect(@drive.files.insert.media_upload.max_size).not_to be_nil
     end
   end
 end

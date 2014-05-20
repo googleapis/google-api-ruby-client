@@ -32,36 +32,36 @@ describe Google::APIClient::Service::SimpleFileStore do
       @cache = Google::APIClient::Service::SimpleFileStore.new(FILE_NAME)
     end
 
-    it 'should return nil when asked if a key exists' do
-      @cache.exist?('invalid').should be_nil
-      File.exists?(FILE_NAME).should be_false
+    it 'returns nil when asked if a key exists' do
+      expect(@cache.exist?('invalid')).to be_nil
+      expect(File.exists?(FILE_NAME)).to be_false
     end
 
-    it 'should return nil when asked to read a key' do
-      @cache.read('invalid').should be_nil
-      File.exists?(FILE_NAME).should be_false
+    it 'returns nil when asked to read a key' do
+      expect(@cache.read('invalid')).to be_nil
+      expect(File.exists?(FILE_NAME)).to be_false
     end
 
-    it 'should return nil when asked to fetch a key' do
-      @cache.fetch('invalid').should be_nil
-      File.exists?(FILE_NAME).should be_false
+    it 'returns nil when asked to fetch a key' do
+      expect(@cache.fetch('invalid')).to be_nil
+      expect(File.exists?(FILE_NAME)).to be_false
     end
 
-    it 'should create a cache file when asked to fetch a key with a default' do
-      @cache.fetch('new_key') do
+    it 'creates a cache file when asked to fetch a key with a default' do
+      expect(@cache.fetch('new_key') do
         'value'
-      end.should == 'value'
-      File.exists?(FILE_NAME).should be_true
+      end).to eq('value')
+      expect(File.exists?(FILE_NAME)).to be_true
     end
 
-    it 'should create a cache file when asked to write a key' do
+    it 'creates a cache file when asked to write a key' do
       @cache.write('new_key', 'value')
-      File.exists?(FILE_NAME).should be_true
+      expect(File.exists?(FILE_NAME)).to be_true
     end
 
-    it 'should return nil when asked to delete a key' do
-      @cache.delete('invalid').should be_nil
-      File.exists?(FILE_NAME).should be_false
+    it 'returns nil when asked to delete a key' do
+      expect(@cache.delete('invalid')).to be_nil
+      expect(File.exists?(FILE_NAME)).to be_false
     end
   end
 
@@ -72,62 +72,62 @@ describe Google::APIClient::Service::SimpleFileStore do
       @cache.write('existing_key', 'existing_value')
     end
 
-    it 'should return true when asked if an existing key exists' do
-      @cache.exist?('existing_key').should be_true
+    it 'returns true when asked if an existing key exists' do
+      expect(@cache.exist?('existing_key')).to be_true
     end
 
-    it 'should return false when asked if a nonexistent key exists' do
-      @cache.exist?('invalid').should be_false
+    it 'returns false when asked if a nonexistent key exists' do
+      expect(@cache.exist?('invalid')).to be_false
     end
 
-    it 'should return the value for an existing key when asked to read it' do
-      @cache.read('existing_key').should == 'existing_value'
+    it 'returns the value for an existing key when asked to read it' do
+      expect(@cache.read('existing_key')).to eq('existing_value')
     end
 
-    it 'should return nil for a nonexistent key when asked to read it' do
-      @cache.read('invalid').should be_nil
+    it 'returns nil for a nonexistent key when asked to read it' do
+      expect(@cache.read('invalid')).to be_nil
     end
 
-    it 'should return the value for an existing key when asked to read it' do
-      @cache.read('existing_key').should == 'existing_value'
+    it 'returns the value for an existing key when asked to read it' do
+      expect(@cache.read('existing_key')).to eq('existing_value')
     end
 
-    it 'should return nil for a nonexistent key when asked to fetch it' do
-      @cache.fetch('invalid').should be_nil
+    it 'returns nil for a nonexistent key when asked to fetch it' do
+      expect(@cache.fetch('invalid')).to be_nil
     end
 
-    it 'should return and save the default value for a nonexistent key when asked to fetch it with a default' do
-      @cache.fetch('new_key') do
+    it 'returns and save the default value for a nonexistent key when asked to fetch it with a default' do
+      expect(@cache.fetch('new_key') do
         'value'
-      end.should == 'value'
-      @cache.read('new_key').should == 'value'
+      end).to eq('value')
+      expect(@cache.read('new_key')).to eq('value')
     end
 
-    it 'should remove an existing value and return true when asked to delete it' do
-      @cache.delete('existing_key').should be_true
-      @cache.read('existing_key').should be_nil
+    it 'removes an existing value and return true when asked to delete it' do
+      expect(@cache.delete('existing_key')).to be_true
+      expect(@cache.read('existing_key')).to be_nil
     end
 
-    it 'should return false when asked to delete a nonexistent key' do
-      @cache.delete('invalid').should be_false
+    it 'returns false when asked to delete a nonexistent key' do
+      expect(@cache.delete('invalid')).to be_false
     end
 
-    it 'should convert keys to strings when storing them' do
+    it 'converts keys to strings when storing them' do
       @cache.write(:symbol_key, 'value')
-      @cache.read('symbol_key').should == 'value'
+      expect(@cache.read('symbol_key')).to eq('value')
     end
 
-    it 'should convert keys to strings when reading them' do
-      @cache.read(:existing_key).should == 'existing_value'
+    it 'converts keys to strings when reading them' do
+      expect(@cache.read(:existing_key)).to eq('existing_value')
     end
 
-    it 'should convert keys to strings when fetching them' do
-      @cache.fetch(:existing_key).should == 'existing_value'
+    it 'converts keys to strings when fetching them' do
+      expect(@cache.fetch(:existing_key)).to eq('existing_value')
     end
 
-    it 'should convert keys to strings when deleting them' do
-      @cache.delete(:existing_key).should be_true
-      @cache.read('existing_key').should be_nil
+    it 'converts keys to strings when deleting them' do
+      expect(@cache.delete(:existing_key)).to be_true
+      expect(@cache.read('existing_key')).to be_nil
     end
   end
 
