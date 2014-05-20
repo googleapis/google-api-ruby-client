@@ -67,7 +67,7 @@ describe Google::APIClient::BatchRequest do
         }
       end
 
-      it 'executee both when using a global callback' do
+      it 'executes both when using a global callback' do
         block_called = 0
         ids = ['first_call', 'second_call']
         expected_ids = ids.clone
