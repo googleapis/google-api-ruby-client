@@ -26,61 +26,58 @@ describe Google::APIClient::Gzip do
         stub.get '/', &block
       end
     end
-  end  
+  end
 
-  it 'should ignore non-zipped content' do
+  it 'ignores non-zipped content' do
     conn = create_connection do |env|
       [200, {}, 'Hello world']
     end
     result = conn.get('/')
-    result.body.should == "Hello world"
+    expect(result.body).to eq("Hello world")
   end
 
-  it 'should decompress gziped content' do
+  it 'decompresses gziped content' do
     conn = create_connection do |env|
       [200, { 'Content-Encoding' => 'gzip'}, Base64.decode64('H4sICLVGwlEAA3RtcADzSM3JyVcozy/KSeECANXgObcMAAAA')]
     end
     result = conn.get('/')
-    result.body.should == "Hello world\n"
+    expect(result.body).to eq("Hello world\n")
   end
-  
-  describe 'with API Client' do
 
+  describe 'with API Client' do
     before do
       @client = Google::APIClient.new(:application_name => 'test')
       @client.authorization = nil
     end
-    
-    
-    it 'should send gzip in user agent' do
+
+    it 'sends gzip in user agent' do
       conn = create_connection do |env|
         agent = env[:request_headers]['User-Agent']
-        agent.should_not be_nil
-        agent.should include 'gzip'
+        expect(agent).not_to be_nil
+        expect(agent).to include 'gzip'
         [200, {}, 'Hello world']
       end
       @client.execute(:uri => 'http://www.example.com/', :connection => conn)
     end
 
-    it 'should send gzip in accept-encoding' do
+    it 'sends gzip in accept-encoding' do
       conn = create_connection do |env|
         encoding = env[:request_headers]['Accept-Encoding']
-        encoding.should_not be_nil
-        encoding.should include 'gzip'
+        expect(encoding).not_to be_nil
+        expect(encoding).to include 'gzip'
         [200, {}, 'Hello world']
       end
       @client.execute(:uri => 'http://www.example.com/', :connection => conn)
     end
-    
-    it 'should not send gzip in accept-encoding if disabled for request' do
+
+    it 'does not send gzip in accept-encoding if disabled for request' do
       conn = create_connection do |env|
         encoding = env[:request_headers]['Accept-Encoding']
-        encoding.should_not include('gzip') unless encoding.nil?
+        expect(encoding).not_to include('gzip') unless encoding.nil?
         [200, {}, 'Hello world']
       end
       response = @client.execute(:uri => 'http://www.example.com/', :gzip => false, :connection => conn)
       puts response.status
     end
-    
   end
 end

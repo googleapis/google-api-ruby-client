@@ -19,23 +19,21 @@ group :development do
   gem 'kramdown'
 end
 
-
-platforms :rbx do
-  gem 'rubysl', '~> 2.0'
-  gem 'psych'
-end
-
-
 group :examples do
   gem 'sinatra'
 end
 
 group :test, :development do
   gem 'json', '~> 1.7.7'
-  gem 'rake', '>= 0.9.0'
-  gem 'rspec', '>= 2.11.0'
+  gem 'rake', '~> 10.3.0'
+  gem 'rspec', '~> 2.14.0'
   gem 'rcov', '>= 0.9.9', :platform => :mri_18
 end
 
-
 gem 'idn', :platform => :mri_18
+
+platforms :rbx do
+  gem 'racc'
+  gem 'rubysl', '~> 2.0'
+  gem 'psych'
+end

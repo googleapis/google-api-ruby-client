@@ -7,8 +7,10 @@
   <dt>License</dt><dd>Apache 2.0</dd>
 </dl>
 
+[![Gem Version](https://badge.fury.io/rb/google-api-client.svg)](http://badge.fury.io/rb/google-api-client)
 [![Build Status](https://secure.travis-ci.org/google/google-api-ruby-client.png)](http://travis-ci.org/google/google-api-ruby-client)
 [![Dependency Status](https://gemnasium.com/google/google-api-ruby-client.png)](https://gemnasium.com/google/google-api-ruby-client)
+[![Code Climate](https://codeclimate.com/github/google/google-api-ruby-client.png)](https://codeclimate.com/github/google/google-api-ruby-client)
 
 ## Description
 

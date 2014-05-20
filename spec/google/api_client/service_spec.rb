@@ -26,27 +26,27 @@ describe Google::APIClient::Service do
 
   APPLICATION_NAME = 'API Client Tests'
 
-  it 'should error out when called without an API name or version' do
-    (lambda do
+  it 'errors out when called without an API name or version' do
+    expect(lambda do
       Google::APIClient::Service.new
-    end).should raise_error(ArgumentError)
+    end).to raise_error(ArgumentError)
   end
 
-  it 'should error out when called without an API version' do
-    (lambda do
+  it 'errors out when called without an API version' do
+    expect(lambda do
       Google::APIClient::Service.new('foo')
-    end).should raise_error(ArgumentError)
+    end).to raise_error(ArgumentError)
   end
 
-  it 'should error out when the options hash is not a hash' do
-    (lambda do
+  it 'errors out when the options hash is not a hash' do
+    expect(lambda do
       Google::APIClient::Service.new('foo', 'v1', 42)
-    end).should raise_error(ArgumentError)
+    end).to raise_error(ArgumentError)
   end
 
   describe 'with the AdSense Management API' do
 
-    it 'should make a valid call for a method with no parameters' do
+    it 'makes a valid call for a method with no parameters' do
       conn = stub_connection do |stub|
         stub.get('/adsense/v1.3/adclients') do |env|
           [200, {}, '{}']
@@ -67,7 +67,7 @@ describe Google::APIClient::Service do
       conn.verify
     end
 
-    it 'should make a valid call for a method with parameters' do
+    it 'makes a valid call for a method with parameters' do
       conn = stub_connection do |stub|
         stub.get('/adsense/v1.3/adclients/1/adunits') do |env|
           [200, {}, '{}']
@@ -86,7 +86,7 @@ describe Google::APIClient::Service do
       req = adsense.adunits.list(:adClientId => '1').execute()
     end
 
-    it 'should make a valid call for a deep method' do
+    it 'makes a valid call for a deep method' do
       conn = stub_connection do |stub|
         stub.get('/adsense/v1.3/accounts/1/adclients') do |env|
           [200, {}, '{}']
@@ -111,45 +111,45 @@ describe Google::APIClient::Service do
           {:application_name => APPLICATION_NAME, :cache_store => nil})
       end
 
-      it 'should return a resource when using a valid resource name' do
-        @adsense.accounts.should be_a(Google::APIClient::Service::Resource)
+      it 'returns a resource when using a valid resource name' do
+        expect(@adsense.accounts).to be_a(Google::APIClient::Service::Resource)
       end
 
-      it 'should throw an error when using an invalid resource name' do
-        (lambda do
+      it 'throws an error when using an invalid resource name' do
+        expect(lambda do
            @adsense.invalid_resource
-        end).should raise_error
+        end).to raise_error
       end
 
-      it 'should return a request when using a valid method name' do
+      it 'returns a request when using a valid method name' do
         req = @adsense.adclients.list
-        req.should be_a(Google::APIClient::Service::Request)
-        req.method.id.should == 'adsense.adclients.list'
-        req.parameters.should be_nil
+        expect(req).to be_a(Google::APIClient::Service::Request)
+        expect(req.method.id).to eq('adsense.adclients.list')
+        expect(req.parameters).to be_nil
       end
 
-      it 'should throw an error when using an invalid method name' do
-        (lambda do
+      it 'throws an error when using an invalid method name' do
+        expect(lambda do
            @adsense.adclients.invalid_method
-        end).should raise_error
+        end).to raise_error
       end
 
-      it 'should return a valid request with parameters' do
+      it 'returns a valid request with parameters' do
         req = @adsense.adunits.list(:adClientId => '1')
-        req.should be_a(Google::APIClient::Service::Request)
-        req.method.id.should == 'adsense.adunits.list'
-        req.parameters.should_not be_nil
-        req.parameters[:adClientId].should == '1'
+        expect(req).to be_a(Google::APIClient::Service::Request)
+        expect(req.method.id).to eq('adsense.adunits.list')
+        expect(req.parameters).not_to be_nil
+        expect(req.parameters[:adClientId]).to eq('1')
       end
     end
   end
 
   describe 'with the Prediction API' do
 
-    it 'should make a valid call with an object body' do
+    it 'makes a valid call with an object body' do
       conn = stub_connection do |stub|
         stub.post('/prediction/v1.5/trainedmodels?project=1') do |env|
-          env.body.should == '{"id":"1"}'
+          expect(env.body).to eq('{"id":"1"}')
           [200, {}, '{}']
         end
       end
@@ -167,10 +167,10 @@ describe Google::APIClient::Service do
       conn.verify
     end
 
-    it 'should make a valid call with a text body' do
+    it 'makes a valid call with a text body' do
       conn = stub_connection do |stub|
         stub.post('/prediction/v1.5/trainedmodels?project=1') do |env|
-          env.body.should == '{"id":"1"}'
+          expect(env.body).to eq('{"id":"1"}')
           [200, {}, '{}']
         end
       end
@@ -194,28 +194,27 @@ describe Google::APIClient::Service do
           {:application_name => APPLICATION_NAME, :cache_store => nil})
       end
 
-      it 'should return a valid request with a body' do
+      it 'returns a valid request with a body' do
         req = @prediction.trainedmodels.insert(:project => '1').body({'id' => '1'})
-        req.should be_a(Google::APIClient::Service::Request)
-        req.method.id.should == 'prediction.trainedmodels.insert'
-        req.body.should == {'id' => '1'}
-        req.parameters.should_not be_nil
-        req.parameters[:project].should == '1'
+        expect(req).to be_a(Google::APIClient::Service::Request)
+        expect(req.method.id).to eq('prediction.trainedmodels.insert')
+        expect(req.body).to eq({'id' => '1'})
+        expect(req.parameters).not_to be_nil
+        expect(req.parameters[:project]).to eq('1')
       end
 
-      it 'should return a valid request with a body when using resource name' do
+      it 'returns a valid request with a body when using resource name' do
         req = @prediction.trainedmodels.insert(:project => '1').training({'id' => '1'})
-        req.should be_a(Google::APIClient::Service::Request)
-        req.method.id.should == 'prediction.trainedmodels.insert'
-        req.training.should == {'id' => '1'}
-        req.parameters.should_not be_nil
-        req.parameters[:project].should == '1'
+        expect(req).to be_a(Google::APIClient::Service::Request)
+        expect(req.method.id).to eq('prediction.trainedmodels.insert')
+        expect(req.training).to eq({'id' => '1'})
+        expect(req.parameters).not_to be_nil
+        expect(req.parameters[:project]).to eq('1')
       end
     end
   end
 
   describe 'with the Drive API' do
-
     before do
       @metadata = {
         'title' => 'My movie',
@@ -225,10 +224,10 @@ describe Google::APIClient::Service do
       @media = Google::APIClient::UploadIO.new(@file, 'text/plain')
     end
 
-    it 'should make a valid call with an object body and media upload' do
+    it 'makes a valid call with an object body and media upload' do
       conn = stub_connection do |stub|
         stub.post('/upload/drive/v1/files?uploadType=multipart') do |env|
-          env.body.should be_a Faraday::CompositeReadIO
+          expect(env.body).to be_a Faraday::CompositeReadIO
           [200, {}, '{}']
         end
       end
@@ -252,44 +251,42 @@ describe Google::APIClient::Service do
           {:application_name => APPLICATION_NAME, :cache_store => nil})
       end
 
-      it 'should return a valid request with a body and media upload' do
+      it 'returns a valid request with a body and media upload' do
         req = @drive.files.insert(:uploadType => 'multipart').body(@metadata).media(@media)
-        req.should be_a(Google::APIClient::Service::Request)
-        req.method.id.should == 'drive.files.insert'
-        req.body.should == @metadata
-        req.media.should == @media
-        req.parameters.should_not be_nil
-        req.parameters[:uploadType].should == 'multipart'
+        expect(req).to be_a(Google::APIClient::Service::Request)
+        expect(req.method.id).to eq('drive.files.insert')
+        expect(req.body).to eq(@metadata)
+        expect(req.media).to eq(@media)
+        expect(req.parameters).not_to be_nil
+        expect(req.parameters[:uploadType]).to eq('multipart')
       end
 
-      it 'should return a valid request with a body and media upload when using resource name' do
+      it 'returns a valid request with a body and media upload when using resource name' do
         req = @drive.files.insert(:uploadType => 'multipart').file(@metadata).media(@media)
-        req.should be_a(Google::APIClient::Service::Request)
-        req.method.id.should == 'drive.files.insert'
-        req.file.should == @metadata
-        req.media.should == @media
-        req.parameters.should_not be_nil
-        req.parameters[:uploadType].should == 'multipart'
+        expect(req).to be_a(Google::APIClient::Service::Request)
+        expect(req.method.id).to eq('drive.files.insert')
+        expect(req.file).to eq(@metadata)
+        expect(req.media).to eq(@media)
+        expect(req.parameters).not_to be_nil
+        expect(req.parameters[:uploadType]).to eq('multipart')
       end
     end
   end
 
   describe 'with the Discovery API' do
-    it 'should make a valid end-to-end request' do
+    it 'makes a valid end-to-end request' do
       discovery = Google::APIClient::Service.new('discovery', 'v1',
           {:application_name => APPLICATION_NAME, :authenticated => false,
            :cache_store => nil})
       result = discovery.apis.get_rest(:api => 'discovery', :version => 'v1').execute
-      result.should_not be_nil
-      result.data.name.should == 'discovery'
-      result.data.version.should == 'v1'
+      expect(result).not_to be_nil
+      expect(result.data.name).to eq('discovery')
+      expect(result.data.version).to eq('v1')
     end
   end
 end
 
-
 describe Google::APIClient::Service::Result do
-
   describe 'with the plus API' do
     before do
       @plus = Google::APIClient::Service.new('plus', 'v1',
@@ -307,8 +304,8 @@ describe Google::APIClient::Service::Result do
 
       # Response double
       @response = double("response")
-      @response.stub(:status).and_return(200)
-      @response.stub(:headers).and_return({
+      allow(@response).to receive(:status).and_return(200)
+      allow(@response).to receive(:headers).and_return({
         'etag' => '12345',
         'x-google-apiary-auth-scopes' =>
           'https://www.googleapis.com/auth/plus.me',
@@ -335,51 +332,54 @@ describe Google::APIClient::Service::Result do
             "items": []
           }
           END_OF_STRING
-        @response.stub(:body).and_return(@body)
+        allow(@response).to receive(:body).and_return(@body)
         base_result = Google::APIClient::Result.new(@reference, @response)
         @result = Google::APIClient::Service::Result.new(@request, base_result)
       end
 
-      it 'should indicate a successful response' do
-        @result.error?.should be_false
+      it 'indicates a successful response' do
+        expect(@result.error?).to be_false
       end
 
-      it 'should return the correct next page token' do
-        @result.next_page_token.should == 'NEXT+PAGE+TOKEN'
+      it 'returns the correct next page token' do
+        expect(@result.next_page_token).to eq('NEXT+PAGE+TOKEN')
       end
 
-      it 'generate a correct request when calling next_page' do
+      it 'generates a correct request when calling next_page' do
         next_page_request = @result.next_page
-        next_page_request.parameters.should include('pageToken')
-        next_page_request.parameters['pageToken'].should == 'NEXT+PAGE+TOKEN'
+        expect(next_page_request.parameters).to include('pageToken')
+        expect(next_page_request.parameters['pageToken']).to eq('NEXT+PAGE+TOKEN')
         @request.parameters.each_pair do |param, value|
-          next_page_request.parameters[param].should == value
+          expect(next_page_request.parameters[param]).to eq(value)
         end
       end
 
-      it 'should return content type correctly' do
-        @result.media_type.should == 'application/json'
+      it 'returns content type correctly' do
+        expect(@result.media_type).to eq('application/json')
       end
 
-      it 'should return the body correctly' do
-        @result.body.should == @body
+      it 'returns the body correctly' do
+        expect(@result.body).to eq(@body)
       end
 
-      it 'should return the result data correctly' do
-        @result.data?.should be_true
-        @result.data.class.to_s.should ==
+      it 'returns the result data correctly' do
+        expect(@result.data?).to be_true
+        expect(@result.data.class.to_s).to eq(
             'Google::APIClient::Schema::Plus::V1::ActivityFeed'
-        @result.data.kind.should == 'plus#activityFeed'
-        @result.data.etag.should == 'FOO'
-        @result.data.nextPageToken.should == 'NEXT+PAGE+TOKEN'
-        @result.data.selfLink.should ==
+        )
+        expect(@result.data.kind).to eq('plus#activityFeed')
+        expect(@result.data.etag).to eq('FOO')
+        expect(@result.data.nextPageToken).to eq('NEXT+PAGE+TOKEN')
+        expect(@result.data.selfLink).to eq(
             'https://www.googleapis.com/plus/v1/people/foo/activities/public?'
-        @result.data.nextLink.should ==
+        )
+        expect(@result.data.nextLink).to eq(
             'https://www.googleapis.com/plus/v1/people/foo/activities/public?' +
             'maxResults=20&pageToken=NEXT%2BPAGE%2BTOKEN'
-        @result.data.title.should == 'Plus Public Activity Feed for '
-        @result.data.id.should == "123456790"
-        @result.data.items.should be_empty
+        )
+        expect(@result.data.title).to eq('Plus Public Activity Feed for ')
+        expect(@result.data.id).to eq("123456790")
+        expect(@result.data.items).to be_empty
       end
     end
 
@@ -396,34 +396,36 @@ describe Google::APIClient::Service::Result do
             "items": []
           }
           END_OF_STRING
-        @response.stub(:body).and_return(@body)
+        allow(@response).to receive(:body).and_return(@body)
         base_result = Google::APIClient::Result.new(@reference, @response)
         @result = Google::APIClient::Service::Result.new(@request, base_result)
       end
 
-      it 'should not return a next page token' do
-        @result.next_page_token.should == nil
+      it 'does not return a next page token' do
+        expect(@result.next_page_token).to be_nil
       end
 
-      it 'should return content type correctly' do
-        @result.media_type.should == 'application/json'
+      it 'returns content type correctly' do
+        expect(@result.media_type).to eq('application/json')
       end
 
-      it 'should return the body correctly' do
-        @result.body.should == @body
+      it 'returns the body correctly' do
+        expect(@result.body).to eq(@body)
       end
 
-      it 'should return the result data correctly' do
-        @result.data?.should be_true
-        @result.data.class.to_s.should ==
+      it 'returns the result data correctly' do
+        expect(@result.data?).to be_true
+        expect(@result.data.class.to_s).to eq(
             'Google::APIClient::Schema::Plus::V1::ActivityFeed'
-        @result.data.kind.should == 'plus#activityFeed'
-        @result.data.etag.should == 'FOO'
-        @result.data.selfLink.should ==
+        )
+        expect(@result.data.kind).to eq('plus#activityFeed')
+        expect(@result.data.etag).to eq('FOO')
+        expect(@result.data.selfLink).to eq(
             'https://www.googleapis.com/plus/v1/people/foo/activities/public?'
-        @result.data.title.should == 'Plus Public Activity Feed for '
-        @result.data.id.should == "123456790"
-        @result.data.items.should be_empty
+        )
+        expect(@result.data.title).to eq('Plus Public Activity Feed for ')
+        expect(@result.data.id).to eq("123456790")
+        expect(@result.data.items).to be_empty
       end
     end
 
@@ -444,44 +446,44 @@ describe Google::APIClient::Service::Result do
           }
          }
          END_OF_STRING
-        @response.stub(:body).and_return(@body)
-        @response.stub(:status).and_return(400)
+        allow(@response).to receive(:body).and_return(@body)
+        allow(@response).to receive(:status).and_return(400)
         base_result = Google::APIClient::Result.new(@reference, @response)
         @result = Google::APIClient::Service::Result.new(@request, base_result)
       end
 
-      it 'should return error status correctly' do
-        @result.error?.should be_true
+      it 'returns error status correctly' do
+        expect(@result.error?).to be_true
       end
 
-      it 'should return the correct error message' do
-        @result.error_message.should == 'Parse Error'
+      it 'returns the correct error message' do
+        expect(@result.error_message).to eq('Parse Error')
       end
 
-      it 'should return the body correctly' do
-        @result.body.should == @body
+      it 'returns the body correctly' do
+        expect(@result.body).to eq(@body)
       end
     end
 
     describe 'with 204 No Content response' do
       before do
-        @response.stub(:body).and_return('')
-        @response.stub(:status).and_return(204)
-        @response.stub(:headers).and_return({})
+        allow(@response).to receive(:body).and_return('')
+        allow(@response).to receive(:status).and_return(204)
+        allow(@response).to receive(:headers).and_return({})
         base_result = Google::APIClient::Result.new(@reference, @response)
         @result = Google::APIClient::Service::Result.new(@request, base_result)
       end
 
-      it 'should indicate no data is available' do
-        @result.data?.should be_false
+      it 'indicates no data is available' do
+        expect(@result.data?).to be_false
       end
 
-      it 'should return nil for data' do
-        @result.data.should == nil
+      it 'returns nil for data' do
+        expect(@result.data).to be_nil
       end
 
-      it 'should return nil for media_type' do
-        @result.media_type.should == nil
+      it 'returns nil for media_type' do
+        expect(@result.media_type).to be_nil
       end
     end
   end
@@ -503,36 +505,36 @@ describe Google::APIClient::Service::BatchRequest do
         ]
       end
 
-      it 'should execute both when using a global callback' do
+      it 'executes both when using a global callback' do
         block_called = 0
         batch = @discovery.batch(@calls) do |result|
           block_called += 1
-          result.status.should == 200
+          expect(result.status).to eq(200)
         end
 
         batch.execute
-        block_called.should == 2
+        expect(block_called).to eq(2)
       end
 
-      it 'should execute both when using individual callbacks' do
+      it 'executes both when using individual callbacks' do
         call1_returned, call2_returned = false, false
         batch = @discovery.batch
 
         batch.add(@calls[0]) do |result|
           call1_returned = true
-          result.status.should == 200
-          result.call_index.should == 0
+          expect(result.status).to eq(200)
+          expect(result.call_index).to eq(0)
         end
 
         batch.add(@calls[1]) do |result|
           call2_returned = true
-          result.status.should == 200
-          result.call_index.should == 1
+          expect(result.status).to eq(200)
+          expect(result.call_index).to eq(1)
         end
 
         batch.execute
-        call1_returned.should == true
-        call2_returned.should == true
+        expect(call1_returned).to be_true
+        expect(call2_returned).to be_true
       end
     end
 
@@ -544,42 +546,42 @@ describe Google::APIClient::Service::BatchRequest do
         ]
       end
 
-      it 'should execute both when using a global callback' do
+      it 'executes both when using a global callback' do
         block_called = 0
         batch = @discovery.batch(@calls) do |result|
           block_called += 1
           if result.call_index == 0
-            result.status.should == 200
+            expect(result.status).to eq(200)
           else
-            result.status.should >= 400
-            result.status.should < 500
+            expect(result.status).to be >= 400
+            expect(result.status).to be < 500
           end
         end
 
         batch.execute
-        block_called.should == 2
+        expect(block_called).to eq(2)
       end
 
-      it 'should execute both when using individual callbacks' do
+      it 'executes both when using individual callbacks' do
         call1_returned, call2_returned = false, false
         batch = @discovery.batch
 
         batch.add(@calls[0]) do |result|
           call1_returned = true
-          result.status.should == 200
-          result.call_index.should == 0
+          expect(result.status).to eq(200)
+          expect(result.call_index).to eq(0)
         end
 
         batch.add(@calls[1]) do |result|
           call2_returned = true
-          result.status.should >= 400
-          result.status.should < 500
-          result.call_index.should == 1
+          expect(result.status).to be >= 400
+          expect(result.status).to be < 500
+          expect(result.call_index).to eq(1)
         end
 
         batch.execute
-        call1_returned.should == true
-        call2_returned.should == true
+        expect(call1_returned).to eq(true)
+        expect(call2_returned).to eq(true)
       end
     end
   end

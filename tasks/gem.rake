@@ -36,8 +36,8 @@ namespace :gem do
     s.add_runtime_dependency('launchy', '>= 2.1.1')
 
     # Dependencies used in the examples
-    s.add_development_dependency('rake', '>= 0.9.0')
-    s.add_development_dependency('rspec', '>= 2.11.0')
+    s.add_development_dependency('rake', '~> 10.3.0')
+    s.add_development_dependency('rspec', '~> 2.14.0')
 
     s.require_path = 'lib'
 

@@ -20,11 +20,11 @@ require 'google/api_client/version'
 describe Google::APIClient::Request do
   CLIENT = Google::APIClient.new(:application_name => 'API Client Tests') unless defined?(CLIENT)
 
-  it 'should normalize parameter names to strings' do
+  it 'normalizes parameter names to strings' do
     request = Google::APIClient::Request.new(:uri => 'https://www.google.com', :parameters => {
       :a => '1', 'b' => '2'
     })
-    request.parameters['a'].should == '1'
-    request.parameters['b'].should == '2'
+    expect(request.parameters['a']).to eq('1')
+    expect(request.parameters['b']).to eq('2')
   end
 end

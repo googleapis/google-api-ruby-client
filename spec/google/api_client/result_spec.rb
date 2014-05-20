@@ -36,8 +36,8 @@ describe Google::APIClient::Result do
 
       # Response double
       @response = double("response")
-      @response.stub(:status).and_return(200)
-      @response.stub(:headers).and_return({
+      allow(@response).to receive(:status).and_return(200)
+      allow(@response).to receive(:headers).and_return({
         'etag' => '12345',
         'x-google-apiary-auth-scopes' =>
           'https://www.googleapis.com/auth/plus.me',
@@ -51,7 +51,7 @@ describe Google::APIClient::Result do
 
     describe 'with a next page token' do
       before do
-        @response.stub(:body).and_return(
+        allow(@response).to receive(:body).and_return(
           <<-END_OF_STRING
           {
             "kind": "plus#activityFeed",
@@ -69,47 +69,50 @@ describe Google::APIClient::Result do
         @result = Google::APIClient::Result.new(@reference, @response)
       end
 
-      it 'should indicate a successful response' do
-        @result.error?.should be_false
+      it 'indicates a successful response' do
+        expect(@result.error?).to be_false
       end
 
-      it 'should return the correct next page token' do
-        @result.next_page_token.should == 'NEXT+PAGE+TOKEN'
+      it 'returns the correct next page token' do
+        expect(@result.next_page_token).to eq('NEXT+PAGE+TOKEN')
       end
 
-      it 'should escape the next page token when calling next_page' do
+      it 'escapes the next page token when calling next_page' do
         reference = @result.next_page
-        Hash[reference.parameters].should include('pageToken')
-        Hash[reference.parameters]['pageToken'].should == 'NEXT+PAGE+TOKEN'
+        expect(Hash[reference.parameters]).to include('pageToken')
+        expect(Hash[reference.parameters]['pageToken']).to eq('NEXT+PAGE+TOKEN')
         url = reference.to_env(CLIENT.connection)[:url]
-        url.to_s.should include('pageToken=NEXT%2BPAGE%2BTOKEN')
+        expect(url.to_s).to include('pageToken=NEXT%2BPAGE%2BTOKEN')
       end
 
-      it 'should return content type correctly' do
-        @result.media_type.should == 'application/json'
+      it 'returns content type correctly' do
+        expect(@result.media_type).to eq('application/json')
       end
 
-      it 'should return the result data correctly' do
-        @result.data?.should be_true
-        @result.data.class.to_s.should ==
+      it 'returns the result data correctly' do
+        expect(@result.data?).to be_true
+        expect(@result.data.class.to_s).to eq(
             'Google::APIClient::Schema::Plus::V1::ActivityFeed'
-        @result.data.kind.should == 'plus#activityFeed'
-        @result.data.etag.should == 'FOO'
-        @result.data.nextPageToken.should == 'NEXT+PAGE+TOKEN'
-        @result.data.selfLink.should ==
+        )
+        expect(@result.data.kind).to eq('plus#activityFeed')
+        expect(@result.data.etag).to eq('FOO')
+        expect(@result.data.nextPageToken).to eq('NEXT+PAGE+TOKEN')
+        expect(@result.data.selfLink).to eq(
             'https://www.googleapis.com/plus/v1/people/foo/activities/public?'
-        @result.data.nextLink.should ==
+        )
+        expect(@result.data.nextLink).to eq(
             'https://www.googleapis.com/plus/v1/people/foo/activities/public?' +
             'maxResults=20&pageToken=NEXT%2BPAGE%2BTOKEN'
-        @result.data.title.should == 'Plus Public Activity Feed for '
-        @result.data.id.should == "123456790"
-        @result.data.items.should be_empty
+        )
+        expect(@result.data.title).to eq('Plus Public Activity Feed for ')
+        expect(@result.data.id).to eq("123456790")
+        expect(@result.data.items).to be_empty
       end
     end
 
     describe 'without a next page token' do
       before do
-        @response.stub(:body).and_return(
+        allow(@response).to receive(:body).and_return(
           <<-END_OF_STRING
           {
             "kind": "plus#activityFeed",
@@ -125,31 +128,33 @@ describe Google::APIClient::Result do
         @result = Google::APIClient::Result.new(@reference, @response)
       end
 
-      it 'should not return a next page token' do
-        @result.next_page_token.should == nil
+      it 'does not return a next page token' do
+        expect(@result.next_page_token).to be_nil
       end
 
-      it 'should return content type correctly' do
-        @result.media_type.should == 'application/json'
+      it 'returns content type correctly' do
+        expect(@result.media_type).to eq('application/json')
       end
 
-      it 'should return the result data correctly' do
-        @result.data?.should be_true
-        @result.data.class.to_s.should ==
+      it 'returns the result data correctly' do
+        expect(@result.data?).to be_true
+        expect(@result.data.class.to_s).to eq(
             'Google::APIClient::Schema::Plus::V1::ActivityFeed'
-        @result.data.kind.should == 'plus#activityFeed'
-        @result.data.etag.should == 'FOO'
-        @result.data.selfLink.should ==
+        )
+        expect(@result.data.kind).to eq('plus#activityFeed')
+        expect(@result.data.etag).to eq('FOO')
+        expect(@result.data.selfLink).to eq(
             'https://www.googleapis.com/plus/v1/people/foo/activities/public?'
-        @result.data.title.should == 'Plus Public Activity Feed for '
-        @result.data.id.should == "123456790"
-        @result.data.items.should be_empty
+        )
+        expect(@result.data.title).to eq('Plus Public Activity Feed for ')
+        expect(@result.data.id).to eq("123456790")
+        expect(@result.data.items).to be_empty
       end
     end
-    
+
     describe 'with JSON error response' do
       before do
-        @response.stub(:body).and_return(
+        allow(@response).to receive(:body).and_return(
          <<-END_OF_STRING
          {
           "error": {
@@ -166,37 +171,37 @@ describe Google::APIClient::Result do
          }
          END_OF_STRING
         )
-        @response.stub(:status).and_return(400)
+        allow(@response).to receive(:status).and_return(400)
         @result = Google::APIClient::Result.new(@reference, @response)
       end
-      
-      it 'should return error status correctly' do
-        @result.error?.should be_true
+
+      it 'returns error status correctly' do
+        expect(@result.error?).to be_true
       end
 
-      it 'should return the correct error message' do
-        @result.error_message.should == 'Parse Error'
+      it 'returns the correct error message' do
+        expect(@result.error_message).to eq('Parse Error')
       end
     end
-    
+
     describe 'with 204 No Content response' do
       before do
-        @response.stub(:body).and_return('')
-        @response.stub(:status).and_return(204)
-        @response.stub(:headers).and_return({})
+        allow(@response).to receive(:body).and_return('')
+        allow(@response).to receive(:status).and_return(204)
+        allow(@response).to receive(:headers).and_return({})
         @result = Google::APIClient::Result.new(@reference, @response)
       end
 
-      it 'should indicate no data is available' do
-        @result.data?.should be_false
+      it 'indicates no data is available' do
+        expect(@result.data?).to be_false
       end
-      
-      it 'should return nil for data' do
-        @result.data.should == nil
+
+      it 'returns nil for data' do
+        expect(@result.data).to be_nil
       end
-      
-      it 'should return nil for media_type' do
-        @result.media_type.should == nil
+
+      it 'returns nil for media_type' do
+        expect(@result.media_type).to be_nil
       end
     end
   end
