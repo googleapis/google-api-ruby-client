@@ -33,6 +33,7 @@ end
 gem 'idn', :platform => :mri_18
 
 platforms :rbx do
+  gem 'racc'
   gem 'rubysl', '~> 2.0'
   gem 'psych'
 end
