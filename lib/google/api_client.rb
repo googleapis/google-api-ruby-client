@@ -586,6 +586,9 @@ module Google
       request.headers['User-Agent'] ||= '' + self.user_agent unless self.user_agent.nil?
       request.headers['Accept-Encoding'] ||= 'gzip' unless options[:gzip] == false
       request.headers['Content-Type'] ||= ''
+      options[:headers].each do |header|
+        request.headers[header.first] = header.last
+      end
       request.parameters['key'] ||= self.key unless self.key.nil?
       request.parameters['userIp'] ||= self.user_ip unless self.user_ip.nil?
 
