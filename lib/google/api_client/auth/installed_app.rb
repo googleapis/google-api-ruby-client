@@ -104,7 +104,7 @@ module Google
             server.stop
         end
 
-        Launchy.open(auth.authorization_uri(approval_prompt: "force").to_s)
+        Launchy.open(auth.authorization_uri(:approval_prompt => "force").to_s)
         server.start
         if @authorization.access_token
           if storage.respond_to?(:write_credentials)
