@@ -21,7 +21,7 @@ require 'google/api_client/version'
 
 shared_examples_for 'configurable user agent' do
   include ConnectionHelpers
-  
+
   it 'should allow the user agent to be modified' do
     client.user_agent = 'Custom User Agent/1.2.3'
     client.user_agent.should == 'Custom User Agent/1.2.3'
@@ -60,6 +60,11 @@ describe Google::APIClient do
 
   let(:client) { Google::APIClient.new(:application_name => 'API Client Tests') }
 
+  it "should pass the faraday options provided on initialization to FaraDay configuration block" do
+    client = Google::APIClient.new(faraday_option: {timeout: 999})
+    client.connection.options.timeout.should == 999
+  end
+
   it 'should make its version number available' do
     Google::APIClient::VERSION::STRING.should be_instance_of(String)
   end
@@ -74,7 +79,7 @@ describe Google::APIClient do
     end
     it_should_behave_like 'configurable user agent'
   end
-    
+
   describe 'configured for OAuth 1' do
     before do
       client.authorization = :oauth_1
@@ -106,7 +111,7 @@ describe Google::APIClient do
     # TODO
     it_should_behave_like 'configurable user agent'
   end
-  
+
   describe 'when executing requests' do
     before do
       @prediction = client.discovered_api('prediction', 'v1.2')
@@ -122,10 +127,10 @@ describe Google::APIClient do
     after do
       @connection.verify
     end
-    
+
     it 'should use default authorization' do
       client.authorization.access_token = "12345"
-      client.execute(  
+      client.execute(
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'},
         :connection => @connection
@@ -135,14 +140,14 @@ describe Google::APIClient do
     it 'should use request scoped authorization when provided' do
       client.authorization.access_token = "abcdef"
       new_auth = Signet::OAuth2::Client.new(:access_token => '12345')
-      client.execute(  
+      client.execute(
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'},
         :authorization => new_auth,
         :connection => @connection
       )
     end
-    
+
     it 'should accept options with batch/request style execute' do
       client.authorization.access_token = "abcdef"
       new_auth = Signet::OAuth2::Client.new(:access_token => '12345')
@@ -156,17 +161,17 @@ describe Google::APIClient do
         :connection => @connection
       )
     end
-    
-    
+
+
     it 'should accept options in array style execute' do
        client.authorization.access_token = "abcdef"
        new_auth = Signet::OAuth2::Client.new(:access_token => '12345')
-       client.execute(  
+       client.execute(
          @prediction.training.insert, {'data' => '12345'}, '', {},
-         { :authorization => new_auth, :connection => @connection }         
+         { :authorization => new_auth, :connection => @connection }
        )
      end
-  end  
+  end
 
   describe 'when retries enabled' do
     before do
@@ -176,7 +181,7 @@ describe Google::APIClient do
     after do
       @connection.verify
     end
-    
+
     it 'should follow redirects' do
       client.authorization = nil
       @connection = stub_connection do |stub|
@@ -188,7 +193,7 @@ describe Google::APIClient do
         end
       end
 
-      client.execute(  
+      client.execute(
         :uri => 'https://www.gogole.com/foo',
         :connection => @connection
       )
@@ -207,7 +212,7 @@ describe Google::APIClient do
         end
       end
 
-      client.execute(  
+      client.execute(
         :uri => 'https://www.gogole.com/foo',
         :connection => @connection
       )
@@ -224,7 +229,7 @@ describe Google::APIClient do
         end
       end
 
-      client.execute(  
+      client.execute(
         :uri => 'https://www.gogole.com/foo',
         :connection => @connection
       )
@@ -240,7 +245,7 @@ describe Google::APIClient do
         end
       end
 
-      client.execute(  
+      client.execute(
         :uri => 'https://www.gogole.com/foo',
         :connection => @connection,
         :authenticated => false
@@ -259,7 +264,7 @@ describe Google::APIClient do
         end
       end
 
-      client.execute(  
+      client.execute(
         :uri => 'https://www.gogole.com/foo',
         :connection => @connection
       ).status.should == 200
@@ -276,12 +281,12 @@ describe Google::APIClient do
         end
       end
 
-      client.execute(  
+      client.execute(
         :uri => 'https://www.gogole.com/foo',
         :connection => @connection
       ).status.should == 500
       count.should == 3
     end
 
-  end  
+  end
 end

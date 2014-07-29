@@ -119,6 +119,11 @@ module Google
         faraday.ssl.ca_file = ca_file
         faraday.ssl.verify = true
         faraday.adapter Faraday.default_adapter
+        if options[:faraday_option].is_a?(Hash)
+          options[:faraday_option].each_pair do |option, value|
+            faraday.options.send("#{option}=", value)
+          end
+        end
       end
       return self
     end
