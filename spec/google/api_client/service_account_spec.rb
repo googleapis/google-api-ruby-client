@@ -62,7 +62,7 @@ describe Google::APIClient::JWTAsserter do
     expect(jwt).not_to eq(nil)
 
     claim = JWT.decode(jwt, @key.public_key, true)
-    claim = claim.first if claim.respond_to? :first
+    claim = claim[0] if claim[0]
     expect(claim["iss"]).to eq('client1')
     expect(claim["scope"]).to eq('scope1 scope2')
   end
