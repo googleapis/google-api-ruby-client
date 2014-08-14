@@ -28,9 +28,9 @@ describe Google::APIClient::BatchRequest do
   it 'should raise an error if making an empty batch request' do
     batch = Google::APIClient::BatchRequest.new
 
-    (lambda do
+    expect(lambda do
       CLIENT.execute(batch)
-    end).should raise_error(Google::APIClient::BatchError)
+    end).to raise_error(Google::APIClient::BatchError)
   end
 
   it 'should allow query parameters in batch requests' do
@@ -39,7 +39,7 @@ describe Google::APIClient::BatchRequest do
       'a' => '12345'
     })
     method, uri, headers, body = batch.to_http_request
-    body.read.should include("/?a=12345")
+    expect(body.read).to include("/?a=12345")
   end
 
   describe 'with the discovery API' do
@@ -73,8 +73,8 @@ describe Google::APIClient::BatchRequest do
         expected_ids = ids.clone
         batch = Google::APIClient::BatchRequest.new do |result|
           block_called += 1
-          result.status.should == 200
-          expected_ids.should include(result.response.call_id)
+          expect(result.status).to eq(200)
+          expect(expected_ids).to include(result.response.call_id)
           expected_ids.delete(result.response.call_id)
         end
 
@@ -82,7 +82,7 @@ describe Google::APIClient::BatchRequest do
         batch.add(@call2, ids[1])
 
         CLIENT.execute(batch)
-        block_called.should == 2
+        expect(block_called).to eq(2)
       end
 
       it 'should execute both when using individual callbacks' do
@@ -91,25 +91,25 @@ describe Google::APIClient::BatchRequest do
         call1_returned, call2_returned = false, false
         batch.add(@call1) do |result|
           call1_returned = true
-          result.status.should == 200
+          expect(result.status).to eq(200)
         end
         batch.add(@call2) do |result|
           call2_returned = true
-          result.status.should == 200
+          expect(result.status).to eq(200)
         end
 
         CLIENT.execute(batch)
-        call1_returned.should == true
-        call2_returned.should == true
+        expect(call1_returned).to be_truthy
+        expect(call2_returned).to be_truthy
       end
 
       it 'should raise an error if using the same call ID more than once' do
         batch = Google::APIClient::BatchRequest.new
 
-        (lambda do
+        expect(lambda do
           batch.add(@call1, 'my_id')
           batch.add(@call2, 'my_id')
-        end).should raise_error(Google::APIClient::BatchError)
+        end).to raise_error(Google::APIClient::BatchError)
       end
     end
 
@@ -138,13 +138,13 @@ describe Google::APIClient::BatchRequest do
         expected_ids = ids.clone
         batch = Google::APIClient::BatchRequest.new do |result|
           block_called += 1
-          expected_ids.should include(result.response.call_id)
+          expect(expected_ids).to include(result.response.call_id)
           expected_ids.delete(result.response.call_id)
           if result.response.call_id == ids[0]
-            result.status.should == 200
+            expect(result.status).to eq(200)
           else
-            result.status.should >= 400
-            result.status.should < 500
+            expect(result.status).to be >= 400
+            expect(result.status).to be < 500
           end
         end
 
@@ -152,7 +152,7 @@ describe Google::APIClient::BatchRequest do
         batch.add(@call2, ids[1])
 
         CLIENT.execute(batch)
-        block_called.should == 2
+        expect(block_called).to eq(2)
       end
 
       it 'should execute both when using individual callbacks' do
@@ -161,17 +161,17 @@ describe Google::APIClient::BatchRequest do
         call1_returned, call2_returned = false, false
         batch.add(@call1) do |result|
           call1_returned = true
-          result.status.should == 200
+          expect(result.status).to eq(200)
         end
         batch.add(@call2) do |result|
           call2_returned = true
-          result.status.should >= 400
-          result.status.should < 500
+          expect(result.status).to be >= 400
+          expect(result.status).to be < 500
         end
 
         CLIENT.execute(batch)
-        call1_returned.should == true
-        call2_returned.should == true
+        expect(call1_returned).to be_truthy
+        expect(call2_returned).to be_truthy
       end
     end
   end
@@ -236,12 +236,12 @@ describe Google::APIClient::BatchRequest do
         batch.add(@call1, '1').add(@call2, '2')
         request = batch.to_env(CLIENT.connection)
         boundary = Google::APIClient::BatchRequest::BATCH_BOUNDARY
-        request[:method].to_s.downcase.should == 'post'
-        request[:url].to_s.should == 'https://www.googleapis.com/batch'
-        request[:request_headers]['Content-Type'].should == "multipart/mixed;boundary=#{boundary}"
-        # TODO - Fix headers
-        #expected_body = /--#{Regexp.escape(boundary)}\nContent-Type: +application\/http\nContent-ID: +<[\w-]+\+1>\n\nPOST +https:\/\/www.googleapis.com\/calendar\/v3\/calendars\/myemail@mydomain.tld\/events +HTTP\/1.1\nContent-Type: +application\/json\n\n#{Regexp.escape(@call1[:body])}\n\n--#{boundary}\nContent-Type: +application\/http\nContent-ID: +<[\w-]+\+2>\n\nPOST +https:\/\/www.googleapis.com\/calendar\/v3\/calendars\/myemail@mydomain.tld\/events HTTP\/1.1\nContent-Type: +application\/json\n\n#{Regexp.escape(@call2[:body])}\n\n--#{Regexp.escape(boundary)}--/
-        #request[:body].read.gsub("\r", "").should =~ expected_body
+        expect(request[:method].to_s.downcase).to eq('post')
+        expect(request[:url].to_s).to eq('https://www.googleapis.com/batch')
+        expect(request[:request_headers]['Content-Type']).to eq("multipart/mixed;boundary=#{boundary}")
+        body = request[:body].read
+        expect(body).to include(@call1[:body])
+        expect(body).to include(@call2[:body])
       end
     end
 

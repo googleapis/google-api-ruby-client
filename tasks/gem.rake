@@ -37,7 +37,7 @@ namespace :gem do
 
     # Dependencies used in the examples
     s.add_development_dependency('rake', '>= 0.9.0')
-    s.add_development_dependency('rspec', '>= 2.11.0')
+    s.add_development_dependency('rspec', '~> 3.0')
 
     s.require_path = 'lib'
 

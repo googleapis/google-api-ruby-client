@@ -4,6 +4,14 @@ $LOAD_PATH.uniq!
 require 'rspec'
 require 'faraday'
 
+begin
+  require 'simplecov'
+
+  SimpleCov.start
+rescue LoadError
+  # SimpleCov missing, so just run specs with no coverage.
+end
+
 Faraday::Adapter.load_middleware(:test)
 
 module Faraday
@@ -46,7 +54,7 @@ module JSONMatchers
       "expected #{@target.inspect} not to be #{@expected}"
     end
   end
-  
+
   def be_json(expected)
     EqualsJson.new(expected)
   end

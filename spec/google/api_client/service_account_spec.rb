@@ -18,12 +18,12 @@ require 'google/api_client'
 
 fixtures_path = File.expand_path('../../../fixtures', __FILE__)
 
-describe Google::APIClient::KeyUtils do  
+describe Google::APIClient::KeyUtils do
   it 'should read PKCS12 files from the filesystem' do
     pending "Reading from PKCS12 not supported on jruby" if RUBY_PLATFORM == 'java'
     path =  File.expand_path('files/privatekey.p12', fixtures_path)
     key = Google::APIClient::KeyUtils.load_from_pkcs12(path, 'notasecret')
-    key.should_not == nil
+    expect(key).not_to eq(nil)
   end
 
   it 'should read PKCS12 files from loaded files' do
@@ -31,20 +31,20 @@ describe Google::APIClient::KeyUtils do
     path =  File.expand_path('files/privatekey.p12', fixtures_path)
     content = File.read(path)
     key = Google::APIClient::KeyUtils.load_from_pkcs12(content, 'notasecret')
-    key.should_not == nil
+    expect(key).not_to eq(nil)
   end
 
   it 'should read PEM files from the filesystem' do
     path =  File.expand_path('files/secret.pem', fixtures_path)
     key = Google::APIClient::KeyUtils.load_from_pem(path, 'notasecret')
-    key.should_not == nil
+    expect(key).not_to eq(nil)
   end
 
   it 'should read PEM files from loaded files' do
     path =  File.expand_path('files/secret.pem', fixtures_path)
     content = File.read(path)
     key = Google::APIClient::KeyUtils.load_from_pem(content, 'notasecret')
-    key.should_not == nil
+    expect(key).not_to eq(nil)
   end
 
 end
@@ -59,11 +59,12 @@ describe Google::APIClient::JWTAsserter do
   it 'should generate valid JWTs' do
     asserter = Google::APIClient::JWTAsserter.new('client1', 'scope1 scope2', @key)
     jwt = asserter.to_authorization.to_jwt
-    jwt.should_not == nil
+    expect(jwt).not_to eq(nil)
 
     claim = JWT.decode(jwt, @key.public_key, true)
-    claim["iss"].should == 'client1'
-    claim["scope"].should == 'scope1 scope2'
+    claim = claim.first if claim.respond_to? :first
+    expect(claim["iss"]).to eq('client1')
+    expect(claim["scope"]).to eq('scope1 scope2')
   end
 
   it 'should allow impersonation' do
@@ -71,7 +72,7 @@ describe Google::APIClient::JWTAsserter do
       stub.post('/o/oauth2/token') do |env|
         params = Addressable::URI.form_unencode(env[:body])
         JWT.decode(params.assoc("assertion").last, @key.public_key)
-        params.assoc("grant_type").should == ['grant_type','urn:ietf:params:oauth:grant-type:jwt-bearer']
+        expect(params.assoc("grant_type")).to eq(['grant_type','urn:ietf:params:oauth:grant-type:jwt-bearer'])
         [200, {}, '{
           "access_token" : "1/abcdef1234567890",
           "token_type" : "Bearer",
@@ -81,8 +82,8 @@ describe Google::APIClient::JWTAsserter do
     end
     asserter = Google::APIClient::JWTAsserter.new('client1', 'scope1 scope2', @key)
     auth = asserter.authorize('user1@email.com', { :connection => conn })
-    auth.should_not == nil?
-    auth.person.should == 'user1@email.com'
+    expect(auth).not_to eq(nil?)
+    expect(auth.person).to eq('user1@email.com')
     conn.verify
   end
 
@@ -91,7 +92,7 @@ describe Google::APIClient::JWTAsserter do
       stub.post('/o/oauth2/token') do |env|
         params = Addressable::URI.form_unencode(env[:body])
         JWT.decode(params.assoc("assertion").last, @key.public_key)
-        params.assoc("grant_type").should == ['grant_type','urn:ietf:params:oauth:grant-type:jwt-bearer']
+        expect(params.assoc("grant_type")).to eq(['grant_type','urn:ietf:params:oauth:grant-type:jwt-bearer'])
         [200, {}, '{
           "access_token" : "1/abcdef1234567890",
           "token_type" : "Bearer",
@@ -101,17 +102,17 @@ describe Google::APIClient::JWTAsserter do
     end
     asserter = Google::APIClient::JWTAsserter.new('client1', 'scope1 scope2', @key)
     auth = asserter.authorize(nil, { :connection => conn })
-    auth.should_not == nil?
-    auth.access_token.should == "1/abcdef1234567890"
+    expect(auth).not_to eq(nil?)
+    expect(auth.access_token).to eq("1/abcdef1234567890")
     conn.verify
   end
-  
+
   it 'should be refreshable' do
     conn = stub_connection do |stub|
       stub.post('/o/oauth2/token') do |env|
         params = Addressable::URI.form_unencode(env[:body])
         JWT.decode(params.assoc("assertion").last, @key.public_key)
-        params.assoc("grant_type").should == ['grant_type','urn:ietf:params:oauth:grant-type:jwt-bearer']
+        expect(params.assoc("grant_type")).to eq(['grant_type','urn:ietf:params:oauth:grant-type:jwt-bearer'])
         [200, {}, '{
           "access_token" : "1/abcdef1234567890",
           "token_type" : "Bearer",
@@ -121,7 +122,7 @@ describe Google::APIClient::JWTAsserter do
       stub.post('/o/oauth2/token') do |env|
         params = Addressable::URI.form_unencode(env[:body])
         JWT.decode(params.assoc("assertion").last, @key.public_key)
-        params.assoc("grant_type").should == ['grant_type','urn:ietf:params:oauth:grant-type:jwt-bearer']
+        expect(params.assoc("grant_type")).to eq(['grant_type','urn:ietf:params:oauth:grant-type:jwt-bearer'])
         [200, {}, '{
           "access_token" : "1/0987654321fedcba",
           "token_type" : "Bearer",
@@ -131,14 +132,14 @@ describe Google::APIClient::JWTAsserter do
     end
     asserter = Google::APIClient::JWTAsserter.new('client1', 'scope1 scope2', @key)
     auth = asserter.authorize(nil, { :connection => conn })
-    auth.should_not == nil?
-    auth.access_token.should == "1/abcdef1234567890"
-    
+    expect(auth).not_to eq(nil?)
+    expect(auth.access_token).to eq("1/abcdef1234567890")
+
     auth.fetch_access_token!(:connection => conn)
-    auth.access_token.should == "1/0987654321fedcba"
-    
+    expect(auth.access_token).to eq("1/0987654321fedcba")
+
     conn.verify
-  end    
+  end
 end
 
 describe Google::APIClient::ComputeServiceAccount do
@@ -147,7 +148,7 @@ describe Google::APIClient::ComputeServiceAccount do
   it 'should query metadata server' do
     conn = stub_connection do |stub|
       stub.get('/computeMetadata/v1beta1/instance/service-accounts/default/token') do |env|
-        env.url.host.should == 'metadata'
+        expect(env.url.host).to eq('metadata')
         [200, {}, '{
           "access_token" : "1/abcdef1234567890",
           "token_type" : "Bearer",
@@ -157,8 +158,8 @@ describe Google::APIClient::ComputeServiceAccount do
     end
     service_account = Google::APIClient::ComputeServiceAccount.new
     auth = service_account.fetch_access_token!({ :connection => conn })
-    auth.should_not == nil?
-    auth["access_token"].should == "1/abcdef1234567890"
+    expect(auth).not_to eq(nil?)
+    expect(auth["access_token"]).to eq("1/abcdef1234567890")
     conn.verify
   end
 end
