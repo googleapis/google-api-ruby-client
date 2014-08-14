@@ -20,14 +20,18 @@ fixtures_path = File.expand_path('../../../fixtures', __FILE__)
 
 describe Google::APIClient::KeyUtils do
   it 'should read PKCS12 files from the filesystem' do
-    pending "Reading from PKCS12 not supported on jruby" if RUBY_PLATFORM == 'java'
+    if RUBY_PLATFORM == 'java' && RUBY_VERSION.start_with?('1.8')
+      pending "Reading from PKCS12 not supported on jruby 1.8.x"
+    end
     path =  File.expand_path('files/privatekey.p12', fixtures_path)
     key = Google::APIClient::KeyUtils.load_from_pkcs12(path, 'notasecret')
     expect(key).not_to eq(nil)
   end
 
   it 'should read PKCS12 files from loaded files' do
-    pending "Reading from PKCS12 not supported on jruby" if RUBY_PLATFORM == 'java'
+    if RUBY_PLATFORM == 'java' && RUBY_VERSION.start_with?('1.8')
+      pending "Reading from PKCS12 not supported on jruby 1.8.x"
+    end
     path =  File.expand_path('files/privatekey.p12', fixtures_path)
     content = File.read(path)
     key = Google::APIClient::KeyUtils.load_from_pkcs12(content, 'notasecret')
