@@ -33,12 +33,7 @@ list = FileList[
 end
 PKG_FILES = list
 
-RCOV_ENABLED = !!(RUBY_PLATFORM != 'java' && RUBY_VERSION =~ /^1\.8/)
-if RCOV_ENABLED
-  task :default => 'spec:rcov'
-else
-  task :default => 'spec'
-end
+task :default => 'spec'
 
 WINDOWS = (RUBY_PLATFORM =~ /mswin|win32|mingw|bccwin|cygwin/) rescue false
 SUDO = WINDOWS ? '' : ('sudo' unless ENV['SUDOLESS'])
