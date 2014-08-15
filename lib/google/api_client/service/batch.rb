@@ -80,6 +80,13 @@ module Google
             :api_method => call.method,
             :parameters => call.parameters
           }
+          if call.respond_to? :body
+            if call.body.respond_to? :to_hash
+              base_call[:body_object] = call.body
+            else
+              base_call[:body] = call.body
+            end
+          end
           @base_batch.add(base_call) do |base_result|
             result = Google::APIClient::Service::BatchedCallResult.new(
                 call, base_result)
