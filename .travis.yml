@@ -8,7 +8,6 @@ rvm:
   - rbx
   - jruby-18mode
   - jruby-19mode
-  - jruby-20mode
   - ree
 script: "bundle exec rake spec:all"
 before_install:
