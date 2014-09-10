@@ -19,20 +19,12 @@ group :development do
   gem 'kramdown'
 end
 
-
-platforms :rbx do
-  gem 'rubysl', '~> 2.0'
-  gem 'psych'
-end
-
-
 group :examples do
   gem 'sinatra'
 end
 
 group :test, :development do
   gem 'json', '~> 1.7.7'
-  gem 'rake', '>= 0.9.0'
   gem 'rspec', '~> 3.0'
   gem 'simplecov', :platforms => [:ruby_19, :ruby_20], :require => false
 end
