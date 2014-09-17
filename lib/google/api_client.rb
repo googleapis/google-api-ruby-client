@@ -688,5 +688,3 @@ module Google
   end
 
 end
-
-require 'google/api_client/version'

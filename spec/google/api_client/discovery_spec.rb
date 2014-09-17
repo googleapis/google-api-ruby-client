@@ -22,7 +22,6 @@ require 'multi_json'
 require 'compat/multi_json'
 require 'signet/oauth_1/client'
 require 'google/api_client'
-require 'google/api_client/version'
 
 describe Google::APIClient do
   include ConnectionHelpers

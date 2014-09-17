@@ -15,7 +15,6 @@
 require 'spec_helper'
 
 require 'google/api_client'
-require 'google/api_client/version'
 
 describe Google::APIClient::Gzip do
 

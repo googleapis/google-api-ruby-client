@@ -15,7 +15,6 @@
 require 'spec_helper'
 
 require 'google/api_client'
-require 'google/api_client/version'
 
 fixtures_path = File.expand_path('../../../fixtures', __FILE__)
 
