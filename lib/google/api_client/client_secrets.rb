@@ -63,7 +63,7 @@ module Google
         end
         while filename == nil
           search_path ||= File.expand_path('.')
-          if File.exist?(File.join(search_path, 'client_secrets.json'))
+          if File.exists?(File.join(search_path, 'client_secrets.json'))
             filename = File.join(search_path, 'client_secrets.json')
           elsif search_path == '/' || search_path =~ /[a-zA-Z]:[\/\\]/
             raise ArgumentError,

@@ -42,7 +42,7 @@ module Google
       ##
       # Attempt to read in credentials from the specified file.
       def load_credentials
-        if File.exist? self.path
+        if File.exists? self.path
           File.open(self.path, 'r') do |file|
             cached_credentials = JSON.load(file)
             @authorization = Signet::OAuth2::Client.new(cached_credentials)

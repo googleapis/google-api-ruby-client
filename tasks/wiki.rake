@@ -38,7 +38,7 @@ WIKI
     output.gsub!(/-32\./, "-16.")
     wiki_path = File.expand_path(
       File.join(File.dirname(__FILE__), '../wiki/'))
-    Dir.mkdir(wiki_path) if !File.exist?(wiki_path)
+    Dir.mkdir(wiki_path) unless File.exists?(wiki_path)
     File.open(File.join(wiki_path, 'SupportedAPIs.wiki'), 'w') do |file|
       file.write(output)
     end

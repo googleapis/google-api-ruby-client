@@ -120,7 +120,7 @@ module Google
         if options.include? :cache_store
           @cache_store = options[:cache_store]
         else
-          cache_exists = File.exist?(DEFAULT_CACHE_FILE)
+          cache_exists = File.exists?(DEFAULT_CACHE_FILE)
           if (cache_exists && File.writable?(DEFAULT_CACHE_FILE)) ||
              (!cache_exists && File.writable?(Dir.pwd))
             @cache_store = Google::APIClient::Service::SimpleFileStore.new(
