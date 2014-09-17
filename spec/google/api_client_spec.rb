@@ -17,7 +17,6 @@ require 'spec_helper'
 require 'faraday'
 require 'signet/oauth_1/client'
 require 'google/api_client'
-require 'google/api_client/version'
 
 shared_examples_for 'configurable user agent' do
   include ConnectionHelpers
