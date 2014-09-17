@@ -15,7 +15,7 @@
 require 'spec_helper'
 require 'google/api_client'
 
-describe Google::APIClient::BatchRequest do
+RSpec.describe Google::APIClient::BatchRequest do
   CLIENT = Google::APIClient.new(:application_name => 'API Client Tests') unless defined?(CLIENT)
 
   after do

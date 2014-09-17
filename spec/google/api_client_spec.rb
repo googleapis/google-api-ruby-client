@@ -54,7 +54,7 @@ shared_examples_for 'configurable user agent' do
   end
 end
 
-describe Google::APIClient do
+RSpec.describe Google::APIClient do
   include ConnectionHelpers
 
   let(:client) { Google::APIClient.new(:application_name => 'API Client Tests') }

@@ -21,7 +21,7 @@ require 'google/api_client/service'
 
 fixtures_path = File.expand_path('../../../fixtures', __FILE__)
 
-describe Google::APIClient::Service do
+RSpec.describe Google::APIClient::Service do
   include ConnectionHelpers
 
   APPLICATION_NAME = 'API Client Tests'
@@ -288,7 +288,7 @@ describe Google::APIClient::Service do
 end
 
 
-describe Google::APIClient::Service::Result do
+RSpec.describe Google::APIClient::Service::Result do
 
   describe 'with the plus API' do
     before do
@@ -492,7 +492,7 @@ describe Google::APIClient::Service::Result do
   end
 end
 
-describe Google::APIClient::Service::BatchRequest do
+RSpec.describe Google::APIClient::Service::BatchRequest do
   describe 'with the discovery API' do
     before do
       @discovery = Google::APIClient::Service.new('discovery', 'v1',

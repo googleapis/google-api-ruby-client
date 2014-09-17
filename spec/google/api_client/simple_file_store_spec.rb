@@ -18,7 +18,7 @@ require 'spec_helper'
 
 require 'google/api_client/service/simple_file_store'
 
-describe Google::APIClient::Service::SimpleFileStore do
+RSpec.describe Google::APIClient::Service::SimpleFileStore do
 
   FILE_NAME = 'test.cache'
 

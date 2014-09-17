@@ -23,7 +23,7 @@ require 'compat/multi_json'
 require 'signet/oauth_1/client'
 require 'google/api_client'
 
-describe Google::APIClient do
+RSpec.describe Google::APIClient do
   include ConnectionHelpers
   CLIENT = Google::APIClient.new(:application_name => 'API Client Tests') unless defined?(CLIENT)
 
