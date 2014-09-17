@@ -190,7 +190,7 @@ describe Google::APIClient do
       end
 
       client.execute(  
-        :uri => 'https://www.gogole.com/foo',
+        :uri => 'https://www.google.com/foo',
         :connection => @connection
       )
     end
@@ -209,7 +209,7 @@ describe Google::APIClient do
       end
 
       client.execute(  
-        :uri => 'https://www.gogole.com/foo',
+        :uri => 'https://www.google.com/foo',
         :connection => @connection
       )
     end
@@ -226,7 +226,7 @@ describe Google::APIClient do
       end
 
       client.execute(  
-        :uri => 'https://www.gogole.com/foo',
+        :uri => 'https://www.google.com/foo',
         :connection => @connection
       )
     end
@@ -242,7 +242,7 @@ describe Google::APIClient do
       end
 
       client.execute(  
-        :uri => 'https://www.gogole.com/foo',
+        :uri => 'https://www.google.com/foo',
         :connection => @connection,
         :authenticated => false
       )
@@ -261,7 +261,7 @@ describe Google::APIClient do
       end
 
       expect(client.execute(  
-        :uri => 'https://www.gogole.com/foo',
+        :uri => 'https://www.google.com/foo',
         :connection => @connection
       ).status).to eq(200)
 
@@ -278,7 +278,7 @@ describe Google::APIClient do
       end
 
       expect(client.execute(  
-        :uri => 'https://www.gogole.com/foo',
+        :uri => 'https://www.google.com/foo',
         :connection => @connection
       ).status).to eq(500)
       expect(count).to eq(3)
