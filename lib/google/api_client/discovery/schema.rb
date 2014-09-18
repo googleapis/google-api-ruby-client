@@ -21,7 +21,7 @@ require 'autoparse'
 require 'addressable/uri'
 require 'addressable/template'
 
-require 'google/inflection'
+require 'active_support/inflector'
 require 'google/api_client/errors'
 
 
@@ -78,10 +78,8 @@ module Google
         # puts schema_data.inspect
 
         if schema_name
-          api_name_string =
-            Google::INFLECTOR.camelize(api.name)
-          api_version_string =
-            Google::INFLECTOR.camelize(api.version).gsub('.', '_')
+          api_name_string = ActiveSupport::Inflector.camelize(api.name)
+          api_version_string = ActiveSupport::Inflector.camelize(api.version).gsub('.', '_')
           # This is for compatibility with Ruby 1.8.7.
           # TODO(bobaman) Remove this when we eventually stop supporting 1.8.7.
           args = []

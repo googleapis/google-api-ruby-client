@@ -15,7 +15,7 @@
 
 require 'addressable/uri'
 
-require 'google/inflection'
+require 'active_support/inflector'
 require 'google/api_client/discovery/method'
 
 
@@ -45,13 +45,13 @@ module Google
         @discovery_document = discovery_document
         metaclass = (class <<self; self; end)
         self.discovered_resources.each do |resource|
-          method_name = Google::INFLECTOR.underscore(resource.name).to_sym
+          method_name = ActiveSupport::Inflector.underscore(resource.name).to_sym
           if !self.respond_to?(method_name)
             metaclass.send(:define_method, method_name) { resource }
           end
         end
         self.discovered_methods.each do |method|
-          method_name = Google::INFLECTOR.underscore(method.name).to_sym
+          method_name = ActiveSupport::Inflector.underscore(method.name).to_sym
           if !self.respond_to?(method_name)
             metaclass.send(:define_method, method_name) { method }
           end

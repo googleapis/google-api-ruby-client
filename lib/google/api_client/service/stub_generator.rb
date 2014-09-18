@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+require 'active_support/inflector'
+
 module Google
   class APIClient
     class Service
@@ -25,7 +27,7 @@ module Google
 
           # Handle resources.
           root.discovered_resources.each do |resource|
-            method_name = Google::INFLECTOR.underscore(resource.name).to_sym
+            method_name = ActiveSupport::Inflector.underscore(resource.name).to_sym
             if !self.respond_to?(method_name)
               metaclass.send(:define_method, method_name) do
                 Google::APIClient::Service::Resource.new(service, resource)
@@ -35,7 +37,7 @@ module Google
 
           # Handle methods.
           root.discovered_methods.each do |method|
-            method_name = Google::INFLECTOR.underscore(method.name).to_sym
+            method_name = ActiveSupport::Inflector.underscore(method.name).to_sym
             if !self.respond_to?(method_name)
               metaclass.send(:define_method, method_name) do |*args|
                 if args.length > 1
