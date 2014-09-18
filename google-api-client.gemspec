@@ -17,19 +17,19 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubygems_version = "2.0.7"
   s.summary = "Package Summary"
-  s.required_ruby_version = '>= 1.8.7'
+  s.required_ruby_version = '>= 1.9.3'
 
-  s.add_runtime_dependency(%q<signet>, '>= 0.5.0')
-  s.add_runtime_dependency(%q<addressable>, '>= 2.3.2')
-  s.add_runtime_dependency(%q<uuidtools>, '>= 2.1.0')
-  s.add_runtime_dependency(%q<autoparse>, '>= 0.3.3')
-  s.add_runtime_dependency(%q<faraday>, '>= 0.9.0')
-  s.add_runtime_dependency(%q<multi_json>, '>= 1.0.0')
-  s.add_runtime_dependency(%q<extlib>, '>= 0.9.15')
-  s.add_runtime_dependency(%q<jwt>, '>= 0.1.5')
-  s.add_runtime_dependency(%q<retriable>, '~> 1.4')
-  s.add_runtime_dependency(%q<launchy>, '>= 2.1.1')
-  s.add_development_dependency(%q<rake>, '>= 0.9.0')
-  s.add_development_dependency(%q<rspec>, '>= 2.11.0')
+  s.add_runtime_dependency('signet', '>= 0.5.0')
+  s.add_runtime_dependency('addressable', '>= 2.3.2')
+  s.add_runtime_dependency('uuidtools', '>= 2.1.0')
+  s.add_runtime_dependency('autoparse', '>= 0.3.3')
+  s.add_runtime_dependency('faraday', '>= 0.9.0')
+  s.add_runtime_dependency('multi_json', '>= 1.0.0')
+  s.add_runtime_dependency('extlib', '>= 0.9.15')
+  s.add_runtime_dependency('jwt', '>= 0.1.5')
+  s.add_runtime_dependency('retriable', '~> 1.4')
+  s.add_runtime_dependency('launchy', '>= 2.1.1')
+  s.add_development_dependency('rake', '>= 10.0.0')
+  s.add_development_dependency('rspec', '>= 3.1.0')
 
 end
