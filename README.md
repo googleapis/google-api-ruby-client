@@ -83,8 +83,13 @@ drive = client.discovered_api('drive', 'v2')
 Locally cached discovery documents may be used as well. To load an API from a local file:
 
 ```ruby
+# Output discovery document to JSON
+File.open('my-api.json', 'w') do |f| f.puts MultiJson.dump(client.discovery_document('myapi', 'v1')) end
+
+# Read discovery document and load API
 doc = File.read('my-api.json')
-my_api = client.register_discovery_document('myapi', 'v1', doc)
+client.register_discovery_document('myapi', 'v1', doc)
+my_api = client.discovered_api('myapi', 'v1')
 ```
 
 ### Authorization
