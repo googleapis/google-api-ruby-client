@@ -15,6 +15,10 @@
 The Google API Ruby Client makes it trivial to discover and access supported
 APIs.
 
+## Alpha
+
+This library is in Alpha. Some advanced features may not work. Please file bugs if any problems are found.
+
 ## Install
 
 Be sure `https://rubygems.org/` is in your gem sources.
