@@ -17,7 +17,7 @@ APIs.
 
 ## Alpha
 
-This library is in Alpha. Some advanced features may not work. Please file bugs if any problems are found.
+This library is in Alpha. We will make an effort to support the library, but we reserve the right to make incompatible changes when necessary.
 
 ## Install
 
