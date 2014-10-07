@@ -10,7 +10,7 @@ gem 'faraday', '>= 0.9.0'
 gem 'multi_json', '>= 1.0.0'
 gem 'extlib', '>= 0.9.15'
 gem 'jwt', '~> 0.1.5'
-gem 'retriable', '>= 1.4'
+gem 'retriable', '~> 1.4'
 gem 'jruby-openssl', :platforms => :jruby
 
 group :development do
