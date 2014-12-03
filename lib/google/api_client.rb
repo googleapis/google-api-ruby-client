@@ -97,6 +97,9 @@ module Google
       else
         logger.warn { "#{self.class} - Please provide :application_name and :application_version when initializing the client" }
       end
+
+      proxy = options[:proxy] || Object::ENV["http_proxy"]
+
       self.user_agent = options[:user_agent] || (
         "#{application_string} " +
         "google-api-ruby-client/#{Google::APIClient::VERSION::STRING} #{ENV::OS_VERSION} (gzip)"
@@ -118,6 +121,7 @@ module Google
         faraday.options.params_encoder = Faraday::FlatParamsEncoder
         faraday.ssl.ca_file = ca_file
         faraday.ssl.verify = true
+        faraday.proxy proxy
         faraday.adapter Faraday.default_adapter
       end
       return self
