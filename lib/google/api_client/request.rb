@@ -168,7 +168,7 @@ module Google
 
         # Resumamble slightly different than other upload protocols in that it requires at least
         # 2 requests.
-        if result.status == 200 && self.upload_type == 'resumable'
+        if result.status == 200 && self.upload_type == 'resumable' && self.media
           upload = result.resumable_upload
           unless upload.complete?
             logger.debug { "#{self.class} Sending upload body" }
