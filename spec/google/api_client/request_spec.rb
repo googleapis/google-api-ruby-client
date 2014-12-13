@@ -24,7 +24,7 @@ describe Google::APIClient::Request do
     request = Google::APIClient::Request.new(:uri => 'https://www.google.com', :parameters => {
       :a => '1', 'b' => '2'
     })
-    request.parameters['a'].should == '1'
-    request.parameters['b'].should == '2'
+    expect(request.parameters['a']).to eq '1'
+    expect(request.parameters['b']).to eq '2'
   end
 end

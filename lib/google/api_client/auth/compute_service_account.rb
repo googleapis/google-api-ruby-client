@@ -21,7 +21,7 @@ module Google
       def fetch_access_token(options={})
         connection = options[:connection] || Faraday.default_connection
         response = connection.get 'http://metadata/computeMetadata/v1beta1/instance/service-accounts/default/token'
-        Signet::OAuth2.parse_json_credentials(response.body)
+        Signet::OAuth2.parse_credentials(response.body, response.headers['content-type'])
       end
     end
   end

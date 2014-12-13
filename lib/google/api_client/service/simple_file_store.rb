@@ -115,7 +115,7 @@ module Google
             write_file
             return true
           else
-            return nil
+            return false
           end
         end
 
