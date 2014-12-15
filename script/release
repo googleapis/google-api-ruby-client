@@ -1,0 +1,14 @@
+age: script/release
+# Build the package, tag a commit, push it to origin, and then release the
+# package publicly.
+
+set -e
+
+version="$(script/package | grep Version: | awk '{print $2}')"
+[ -n "$version" ] || exit 1
+
+git commit --allow-empty -a -m "Release $version"
+git tag "$version"
+git push --tags origin
+gem push pkg/*-${version}.gem
+

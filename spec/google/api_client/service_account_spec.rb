@@ -77,7 +77,7 @@ describe Google::APIClient::JWTAsserter do
         params = Addressable::URI.form_unencode(env[:body])
         JWT.decode(params.assoc("assertion").last, @key.public_key)
         expect(params.assoc("grant_type")).to eq(['grant_type','urn:ietf:params:oauth:grant-type:jwt-bearer'])
-        [200, {}, '{
+        [200, {'content-type' => 'application/json'}, '{
           "access_token" : "1/abcdef1234567890",
           "token_type" : "Bearer",
           "expires_in" : 3600
@@ -97,7 +97,7 @@ describe Google::APIClient::JWTAsserter do
         params = Addressable::URI.form_unencode(env[:body])
         JWT.decode(params.assoc("assertion").last, @key.public_key)
         expect(params.assoc("grant_type")).to eq(['grant_type','urn:ietf:params:oauth:grant-type:jwt-bearer'])
-        [200, {}, '{
+        [200, {'content-type' => 'application/json'}, '{
           "access_token" : "1/abcdef1234567890",
           "token_type" : "Bearer",
           "expires_in" : 3600
@@ -117,7 +117,7 @@ describe Google::APIClient::JWTAsserter do
         params = Addressable::URI.form_unencode(env[:body])
         JWT.decode(params.assoc("assertion").last, @key.public_key)
         expect(params.assoc("grant_type")).to eq(['grant_type','urn:ietf:params:oauth:grant-type:jwt-bearer'])
-        [200, {}, '{
+        [200, {'content-type' => 'application/json'}, '{
           "access_token" : "1/abcdef1234567890",
           "token_type" : "Bearer",
           "expires_in" : 3600
@@ -127,7 +127,7 @@ describe Google::APIClient::JWTAsserter do
         params = Addressable::URI.form_unencode(env[:body])
         JWT.decode(params.assoc("assertion").last, @key.public_key)
         expect(params.assoc("grant_type")).to eq(['grant_type','urn:ietf:params:oauth:grant-type:jwt-bearer'])
-        [200, {}, '{
+        [200, {'content-type' => 'application/json'}, '{
           "access_token" : "1/0987654321fedcba",
           "token_type" : "Bearer",
           "expires_in" : 3600
@@ -153,7 +153,7 @@ describe Google::APIClient::ComputeServiceAccount do
     conn = stub_connection do |stub|
       stub.get('/computeMetadata/v1beta1/instance/service-accounts/default/token') do |env|
         expect(env.url.host).to eq('metadata')
-        [200, {}, '{
+        [200, {'content-type' => 'application/json'}, '{
           "access_token" : "1/abcdef1234567890",
           "token_type" : "Bearer",
           "expires_in" : 3600
