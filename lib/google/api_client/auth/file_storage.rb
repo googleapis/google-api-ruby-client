@@ -44,9 +44,9 @@ module Google
       def load_credentials
         if File.exists? self.path
           File.open(self.path, 'r') do |file|
-            cached_credentials = JSON.load(file)
+            cached_credentials = JSON.parse(file.read, symbolize_names: true)
             @authorization = Signet::OAuth2::Client.new(cached_credentials)
-            @authorization.issued_at = Time.at(cached_credentials['issued_at'])
+            @authorization.issued_at = Time.at(cached_credentials[:issued_at])
             if @authorization.expired?
               @authorization.fetch_access_token!
               self.write_credentials
