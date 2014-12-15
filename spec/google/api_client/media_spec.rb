@@ -15,11 +15,10 @@
 require 'spec_helper'
 
 require 'google/api_client'
-require 'google/api_client/version'
 
 fixtures_path = File.expand_path('../../../fixtures', __FILE__)
 
-describe Google::APIClient::UploadIO do
+RSpec.describe Google::APIClient::UploadIO do
   it 'should reject invalid file paths' do
     expect(lambda do
       media = Google::APIClient::UploadIO.new('doesnotexist', 'text/plain')
@@ -57,7 +56,7 @@ describe Google::APIClient::UploadIO do
   end
 end
 
-describe Google::APIClient::RangedIO do
+RSpec.describe Google::APIClient::RangedIO do
   before do
     @source = StringIO.new("1234567890abcdef")
     @io = Google::APIClient::RangedIO.new(@source, 1, 5)
@@ -105,7 +104,7 @@ describe Google::APIClient::RangedIO do
     
 end
 
-describe Google::APIClient::ResumableUpload do
+RSpec.describe Google::APIClient::ResumableUpload do
   CLIENT = Google::APIClient.new(:application_name => 'API Client Tests') unless defined?(CLIENT)
 
   after do

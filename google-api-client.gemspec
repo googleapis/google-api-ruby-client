@@ -26,12 +26,12 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'signet', '~> 0.6'
   s.add_runtime_dependency 'faraday', '~> 0.9'
   s.add_runtime_dependency 'multi_json', '~> 1.10'
-  s.add_runtime_dependency 'uuidtools', "~> 2.1"
   s.add_runtime_dependency 'autoparse', "~> 0.3"
   s.add_runtime_dependency 'extlib', '~> 0.9'
   s.add_runtime_dependency 'launchy', '~> 2.4'
   s.add_runtime_dependency 'retriable', '~> 1.4'
-
+  s.add_runtime_dependency 'activesupport', '~> 3.2'
+  
   s.add_development_dependency 'rake', '~> 10.0'
   s.add_development_dependency 'yard', '~> 0.8'
   s.add_development_dependency 'rspec', '~> 3.1'

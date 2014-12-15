@@ -15,9 +15,8 @@
 require 'spec_helper'
 
 require 'google/api_client'
-require 'google/api_client/version'
 
-describe Google::APIClient::Result do
+RSpec.describe Google::APIClient::Result do
   CLIENT = Google::APIClient.new(:application_name => 'API Client Tests') unless defined?(CLIENT)
 
   describe 'with the plus API' do
