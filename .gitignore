@@ -11,3 +11,10 @@ pkg
 specdoc
 wiki
 .google-api.yaml
+*.log
+
+#IntelliJ
+.idea
+*.iml
+atlassian*
+
