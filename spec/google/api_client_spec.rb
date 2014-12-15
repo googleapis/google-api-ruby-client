@@ -20,7 +20,7 @@ require 'google/api_client'
 
 shared_examples_for 'configurable user agent' do
   include ConnectionHelpers
-  
+
   it 'should allow the user agent to be modified' do
     client.user_agent = 'Custom User Agent/1.2.3'
     expect(client.user_agent).to eq('Custom User Agent/1.2.3')
@@ -59,6 +59,11 @@ RSpec.describe Google::APIClient do
 
   let(:client) { Google::APIClient.new(:application_name => 'API Client Tests') }
 
+  it "should pass the faraday options provided on initialization to FaraDay configuration block" do
+    client = Google::APIClient.new(faraday_option: {timeout: 999})
+    expect(client.connection.options.timeout).to be == 999
+  end
+
   it 'should make its version number available' do
     expect(Google::APIClient::VERSION::STRING).to be_instance_of(String)
   end
@@ -73,7 +78,7 @@ RSpec.describe Google::APIClient do
     end
     it_should_behave_like 'configurable user agent'
   end
-    
+
   describe 'configured for OAuth 1' do
     before do
       client.authorization = :oauth_1
@@ -107,7 +112,7 @@ RSpec.describe Google::APIClient do
     # TODO
     it_should_behave_like 'configurable user agent'
   end
-  
+
   describe 'when executing requests' do
     before do
       @prediction = client.discovered_api('prediction', 'v1.2')
@@ -123,10 +128,10 @@ RSpec.describe Google::APIClient do
     after do
       @connection.verify
     end
-    
+
     it 'should use default authorization' do
       client.authorization.access_token = "12345"
-      client.execute(  
+      client.execute(
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'},
         :connection => @connection
@@ -136,14 +141,14 @@ RSpec.describe Google::APIClient do
     it 'should use request scoped authorization when provided' do
       client.authorization.access_token = "abcdef"
       new_auth = Signet::OAuth2::Client.new(:access_token => '12345')
-      client.execute(  
+      client.execute(
         :api_method => @prediction.training.insert,
         :parameters => {'data' => '12345'},
         :authorization => new_auth,
         :connection => @connection
       )
     end
-    
+
     it 'should accept options with batch/request style execute' do
       client.authorization.access_token = "abcdef"
       new_auth = Signet::OAuth2::Client.new(:access_token => '12345')
@@ -157,17 +162,17 @@ RSpec.describe Google::APIClient do
         :connection => @connection
       )
     end
-    
-    
+
+
     it 'should accept options in array style execute' do
        client.authorization.access_token = "abcdef"
        new_auth = Signet::OAuth2::Client.new(:access_token => '12345')
-       client.execute(  
+       client.execute(
          @prediction.training.insert, {'data' => '12345'}, '', {},
-         { :authorization => new_auth, :connection => @connection }         
+         { :authorization => new_auth, :connection => @connection }
        )
      end
-  end  
+  end
 
   describe 'when retries enabled' do
     before do
@@ -177,7 +182,7 @@ RSpec.describe Google::APIClient do
     after do
       @connection.verify
     end
-    
+
     it 'should follow redirects' do
       client.authorization = nil
       @connection = stub_connection do |stub|
@@ -284,5 +289,5 @@ RSpec.describe Google::APIClient do
       expect(count).to eq(3)
     end
 
-  end  
+  end
 end

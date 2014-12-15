@@ -75,6 +75,8 @@ module Google
     # @option options [String] :ca_file
     #   Optional set of root certificates to use when validating SSL connections.
     #   By default, a bundled set of trusted roots will be used.
+    # @options options[Hash] :faraday_options
+    #   Pass through of options to set on the Faraday connection
     def initialize(options={})
       logger.debug { "#{self.class} - Initializing client with options #{options}" }
       
@@ -123,6 +125,11 @@ module Google
         faraday.ssl.verify = true
         faraday.proxy proxy
         faraday.adapter Faraday.default_adapter
+        if options[:faraday_option].is_a?(Hash)
+          options[:faraday_option].each_pair do |option, value|
+            faraday.options.send("#{option}=", value)
+          end
+        end
       end
       return self
     end
