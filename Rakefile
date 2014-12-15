@@ -37,5 +37,3 @@ task :default => 'spec'
 
 WINDOWS = (RUBY_PLATFORM =~ /mswin|win32|mingw|bccwin|cygwin/) rescue false
 SUDO = WINDOWS ? '' : ('sudo' unless ENV['SUDOLESS'])
-
-Dir['tasks/**/*.rake'].each { |rake| load rake }
