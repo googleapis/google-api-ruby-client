@@ -26,7 +26,7 @@ module Google
     #    client = Google::APIClient.new
     #    flow = Google::APIClient::InstalledAppFlow.new(
     #      :client_id => '691380668085.apps.googleusercontent.com',
-    #      :client_secret => '...,
+    #      :client_secret => '...',
     #      :scope => 'https://www.googleapis.com/auth/drive'
     #    )
     #    client.authorization = flow.authorize
