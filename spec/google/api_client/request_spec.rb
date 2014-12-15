@@ -15,9 +15,8 @@
 require 'spec_helper'
 
 require 'google/api_client'
-require 'google/api_client/version'
 
-describe Google::APIClient::Request do
+RSpec.describe Google::APIClient::Request do
   CLIENT = Google::APIClient.new(:application_name => 'API Client Tests') unless defined?(CLIENT)
 
   it 'should normalize parameter names to strings' do

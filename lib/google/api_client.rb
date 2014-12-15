@@ -32,7 +32,7 @@ require 'google/api_client/service_account'
 require 'google/api_client/batch'
 require 'google/api_client/gzip'
 require 'google/api_client/client_secrets'
-require 'google/api_client/railtie' if defined?(Rails::Railtie)
+require 'google/api_client/railtie' if defined?(Rails)
 
 module Google
 
@@ -692,5 +692,3 @@ module Google
   end
 
 end
-
-require 'google/api_client/version'
