@@ -1,3 +1,4 @@
+# Encoding: utf-8
 # Copyright 2012 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,6 +21,7 @@ RSpec.describe Google::APIClient::Gzip do
 
   def create_connection(&block)
     Faraday.new do |b|
+      b.response :charset
       b.response :gzip
       b.adapter :test do |stub|
         stub.get '/', &block
@@ -43,6 +45,17 @@ RSpec.describe Google::APIClient::Gzip do
     expect(result.body).to eq("Hello world\n")
   end
   
+  it 'should inflate with the correct charset encoding' do
+    conn = create_connection do |env|
+      [200, 
+        { 'Content-Encoding' => 'deflate', 'Content-Type' => 'application/json;charset=BIG5'}, 
+        Base64.decode64('eJxb8nLp7t2VAA8fBCI=')]
+    end
+    result = conn.get('/')
+    expect(result.body.encoding).to eq(Encoding::BIG5)
+    expect(result.body).to eq('日本語'.encode("BIG5"))
+  end
+
   describe 'with API Client' do
 
     before do

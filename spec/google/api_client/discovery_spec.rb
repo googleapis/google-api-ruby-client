@@ -23,6 +23,8 @@ require 'compat/multi_json'
 require 'signet/oauth_1/client'
 require 'google/api_client'
 
+fixtures_path = File.expand_path('../../../fixtures', __FILE__)
+
 RSpec.describe Google::APIClient do
   include ConnectionHelpers
   CLIENT = Google::APIClient.new(:application_name => 'API Client Tests') unless defined?(CLIENT)
@@ -70,6 +72,15 @@ RSpec.describe Google::APIClient do
     expect(CLIENT.preferred_version('bogus')).to eq(nil)
   end
 
+  describe 'with zoo API' do
+    it 'should return API instance registered from file' do
+      zoo_json = File.join(fixtures_path, 'files', 'zoo.json')
+      contents = File.open(zoo_json, 'rb') { |io| io.read }
+      api = CLIENT.register_discovery_document('zoo', 'v1', contents)
+      expect(api).to be_kind_of(Google::APIClient::API)
+    end
+  end
+  
   describe 'with the prediction API' do
     before do
       CLIENT.authorization = nil

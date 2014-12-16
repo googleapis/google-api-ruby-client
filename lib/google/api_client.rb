@@ -31,6 +31,7 @@ require 'google/api_client/media'
 require 'google/api_client/service_account'
 require 'google/api_client/batch'
 require 'google/api_client/gzip'
+require 'google/api_client/charset'
 require 'google/api_client/client_secrets'
 require 'google/api_client/railtie' if defined?(Rails)
 
@@ -75,6 +76,9 @@ module Google
     # @option options [String] :ca_file
     #   Optional set of root certificates to use when validating SSL connections.
     #   By default, a bundled set of trusted roots will be used.
+    # @options options[Hash] :force_encoding
+    #   Experimental option. True if response body should be force encoded into the charset
+    #   specified in the Content-Type header. Mostly intended for compressed content.
     # @options options[Hash] :faraday_options
     #   Pass through of options to set on the Faraday connection
     def initialize(options={})
@@ -119,6 +123,7 @@ module Google
       @discovered_apis = {}
       ca_file = options[:ca_file] || File.expand_path('../../cacerts.pem', __FILE__)
       self.connection = Faraday.new do |faraday|
+        faraday.response :charset if options[:force_encoding]
         faraday.response :gzip
         faraday.options.params_encoder = Faraday::FlatParamsEncoder
         faraday.ssl.ca_file = ca_file
@@ -265,10 +270,12 @@ module Google
     # @param [String, Symbol] api The API name.
     # @param [String] version The desired version of the API.
     # @param [Addressable::URI] uri The URI of the discovery document.
+    # @return [Google::APIClient::API] The service object.
     def register_discovery_uri(api, version, uri)
       api = api.to_s
       version = version || 'v1'
       @discovery_uris["#{api}:#{version}"] = uri
+      discovered_api(api, version)
     end
 
     ##
@@ -297,6 +304,7 @@ module Google
     # @param [String] version The desired version of the API.
     # @param [String, StringIO] discovery_document
     #   The contents of the discovery document.
+    # @return [Google::APIClient::API] The service object.
     def register_discovery_document(api, version, discovery_document)
       api = api.to_s
       version = version || 'v1'
@@ -311,6 +319,7 @@ module Google
       end
       @discovery_documents["#{api}:#{version}"] =
         MultiJson.load(discovery_document)
+      discovered_api(api, version)
     end
 
     ##
