@@ -88,12 +88,12 @@ module Google
         @client_id = fdata[:client_id] || fdata["client_id"]
         @client_secret = fdata[:client_secret] || fdata["client_secret"]
         @redirect_uris = fdata[:redirect_uris] || fdata["redirect_uris"]
-        @redirect_uris ||= [fdata[:redirect_uri]]
+        @redirect_uris ||= [fdata[:redirect_uri] || fdata["redirect_uri"]].compact
         @javascript_origins = (
           fdata[:javascript_origins] ||
           fdata["javascript_origins"]
         )
-        @javascript_origins ||= [fdata[:javascript_origin]]
+        @javascript_origins ||= [fdata[:javascript_origin] || fdata["javascript_origin"]].compact
         @authorization_uri = fdata[:auth_uri] || fdata["auth_uri"]
         @authorization_uri ||= fdata[:authorization_uri]
         @token_credential_uri = fdata[:token_uri] || fdata["token_uri"]
@@ -120,7 +120,11 @@ module Google
       # @return [String]
       #   JSON
       def to_json
-        return MultiJson.dump({
+        return MultiJson.dump(to_hash)
+      end
+      
+      def to_hash
+        {
           self.flow => ({
             'client_id' => self.client_id,
             'client_secret' => self.client_secret,
@@ -141,7 +145,7 @@ module Google
             end
             accu
           end
-        })
+        }
       end
       
       def to_authorization
