@@ -1,3 +1,14 @@
+# 0.8.0
+* Refactored credential storage, added support for redis
+* Update gem depdendencies
+* Fixed retry logic to allow for auth retries independent of the overall number of retries
+* Added `:force_encoding` option to set body content encoding based on the Content-Type header
+* Batch requests with the service interface now inherit the service's connection
+* `register_discover_document` now returns the API instance
+* Added `:proxy` option to set Faraday's HTTP proxy setting
+* Drop 1.8.x support
+* Added `:faraday_options` option to allow passthrough settings to Faraday connection
+ 
 # 0.7.1
 * Minor fix to update gem dependencies
 
