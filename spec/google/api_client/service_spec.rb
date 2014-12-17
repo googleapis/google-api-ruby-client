@@ -493,6 +493,33 @@ RSpec.describe Google::APIClient::Service::Result do
 end
 
 RSpec.describe Google::APIClient::Service::BatchRequest do
+  
+  include ConnectionHelpers
+  
+  context 'with a service connection' do
+    before do
+      @conn = stub_connection do |stub|
+        stub.post('/batch') do |env|
+          [500, {'Content-Type' => 'application/json'}, '{}']
+        end
+      end
+      @discovery = Google::APIClient::Service.new('discovery', 'v1',
+          {:application_name => APPLICATION_NAME, :authorization => nil,
+           :cache_store => nil, :connection => @conn})
+      @calls = [
+        @discovery.apis.get_rest(:api => 'plus', :version => 'v1'),
+        @discovery.apis.get_rest(:api => 'discovery', :version => 'v1')
+      ]
+    end
+
+    it 'should use the service connection' do
+      batch = @discovery.batch(@calls) do
+      end
+      batch.execute
+      @conn.verify
+    end  
+  end
+  
   describe 'with the discovery API' do
     before do
       @discovery = Google::APIClient::Service.new('discovery', 'v1',
@@ -585,7 +612,7 @@ RSpec.describe Google::APIClient::Service::BatchRequest do
         batch.execute
         expect(call1_returned).to eq(true)
         expect(call2_returned).to eq(true)
-      end
+      end      
     end
   end
 end

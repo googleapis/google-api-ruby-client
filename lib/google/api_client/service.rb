@@ -225,7 +225,7 @@ module Google
           result = @client.execute(params)
           return Google::APIClient::Service::Result.new(request, result)
         elsif request.instance_of? Google::APIClient::Service::BatchRequest
-          @client.execute(request.base_batch)
+          @client.execute(request.base_batch, {:connection => @connection})
         end
       end
     end
