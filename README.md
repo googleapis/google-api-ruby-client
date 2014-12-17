@@ -123,6 +123,8 @@ in the credentials. Detailed instructions on how to enable delegation for your d
 
 The API client can automatically retry requests for recoverable errors. To enable retries, set the `client.retries` property to
 the number of additional attempts. To avoid flooding servers, retries invovle a 1 second delay that increases on each subsequent retry.
+In the case of authentication token expiry, the API client will attempt to refresh the token and retry the failed operation - this
+is a specific exception to the retry rules.
 
 The default value for retries is 0, but will be enabled by default in future releases.
 
