@@ -182,8 +182,9 @@ module Google
       # Build a request for fetching the next page of data
       # 
       # @return [Google::APIClient::Request]
-      #   API request for retrieving next page
+      #   API request for retrieving next page, nil if no page token available
       def next_page
+        return nil unless self.next_page_token
         merged_parameters = Hash[self.reference.parameters].merge({
           self.page_token_param => self.next_page_token
         })
@@ -215,8 +216,9 @@ module Google
       # Build a request for fetching the previous page of data
       # 
       # @return [Google::APIClient::Request]
-      #   API request for retrieving previous page
+      #   API request for retrieving previous page, nil if no page token available
       def prev_page
+        return nil unless self.prev_page_token
         merged_parameters = Hash[self.reference.parameters].merge({
           self.page_token_param => self.prev_page_token
         })
