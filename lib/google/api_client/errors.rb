@@ -44,6 +44,11 @@ module Google
     end
 
     ##
+    # A 401 HTTP error occurred.
+    class AuthorizationError < ClientError
+    end
+
+    ##
     # A 5xx class HTTP error occurred.
     class ServerError < TransmissionError
     end
