@@ -1,3 +1,6 @@
+# 0.8.1
+* Fix logger in rails
+
 # 0.8.0
 * Refactored credential storage, added support for redis
 * Update gem depdendencies
@@ -6,15 +9,16 @@
 * Batch requests with the service interface now inherit the service's connection
 * `register_discover_document` now returns the API instance
 * Added `:proxy` option to set Faraday's HTTP proxy setting
-* Drop 1.8.x support
 * Added `:faraday_options` option to allow passthrough settings to Faraday connection
+* Drop 1.8.x support
+* This will be the last release with 1.9.x support
  
 # 0.7.1
 * Minor fix to update gem dependencies
 
 # 0.7.0
 * Remove CLI
-* SUpport for automatic retires & backoff. Off by default, enable by setting `retries` on `APIClient`
+* Support for automatic retires & backoff. Off by default, enable by setting `retries` on `APIClient`
 * Experimental new interface (see `Google::APIClient::Service`)
 * Fix warnings when using Faraday separately
 * Support Google Compute Engine service accounts
