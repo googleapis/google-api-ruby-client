@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README.md"]
   s.files = %w(google-api-client.gemspec Rakefile LICENSE CHANGELOG.md README.md Gemfile)
   s.files += Dir.glob("lib/**/*.rb")
+  s.files += Dir.glob("lib/cacerts.pem")
   s.files += Dir.glob("spec/**/*.{rb,opts}")
   s.files += Dir.glob("vendor/**/*.rb")
   s.files += Dir.glob("tasks/**/*")
@@ -31,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'launchy', '~> 2.4'
   s.add_runtime_dependency 'retriable', '~> 1.4'
   s.add_runtime_dependency 'activesupport', '>= 3.2'
-  
+
   s.add_development_dependency 'rake', '~> 10.0'
   s.add_development_dependency 'yard', '~> 0.8'
   s.add_development_dependency 'rspec', '~> 3.1'
