@@ -137,7 +137,7 @@ Example:
 
 ```ruby
 client = Google::APIClient.new
-urlshortener = client.discovered_api('urlshortner')
+urlshortener = client.discovered_api('urlshortener')
 
 batch = Google::APIClient::BatchRequest.new do |result|
     puts result.data
