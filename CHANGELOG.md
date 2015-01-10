@@ -1,3 +1,6 @@
+# 0.8.2
+* Fixes for file storage and missing cacerts file
+
 # 0.8.1
 * Fix logger in rails
 
@@ -12,7 +15,7 @@
 * Added `:faraday_options` option to allow passthrough settings to Faraday connection
 * Drop 1.8.x support
 * This will be the last release with 1.9.x support
- 
+
 # 0.7.1
 * Minor fix to update gem dependencies
 
@@ -62,7 +65,7 @@
 
 # 0.5.0
 
-* Beta candidate, potential incompatible changes with how requests are processed. 
+* Beta candidate, potential incompatible changes with how requests are processed.
     * All requests should be made using execute() or execute!()
     * :api_method in request can no longer be a string
     * Deprecated ResumableUpload.send_* methods.
