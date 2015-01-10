@@ -32,12 +32,12 @@ module Google
     #    client.authorization = flow.authorize
     #
     class InstalledAppFlow
-      
+
       RESPONSE_BODY = <<-HTML
         <html>
           <head>
             <script>
-              function closeWindow() { 
+              function closeWindow() {
                 window.open('', '_self', '');
                 window.close();
               }
@@ -47,14 +47,14 @@ module Google
           <body>You may close this window.</body>
         </html>
       HTML
-      
+
       ##
       # Configure the flow
       #
       # @param [Hash] options The configuration parameters for the client.
       # @option options [Fixnum] :port
       #   Port to run the embedded server on. Defaults to 9292
-      # @option options [String] :client_id 
+      # @option options [String] :client_id
       #   A unique identifier issued to the client to identify itself to the
       #   authorization server.
       # @option options [String] :client_secret
@@ -73,11 +73,11 @@ module Google
           :redirect_uri => "http://localhost:#{@port}/"}.update(options)
         )
       end
-      
+
       ##
       # Request authorization. Opens a browser and waits for response.
       #
-      # @param [Google::APIClient::FileStorage] storage
+      # @param [Google::APIClient::Storage] storage
       #  Optional object that responds to :write_credentials, used to serialize
       #  the OAuth 2 credentials after completing the flow.
       #
@@ -85,7 +85,7 @@ module Google
       #  Authorization instance, nil if user cancelled.
       def authorize(storage=nil)
         auth = @authorization
-    
+
         server = WEBrick::HTTPServer.new(
           :Port => @port,
           :BindAddress =>"localhost",

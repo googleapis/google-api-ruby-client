@@ -29,12 +29,10 @@ module Google
     #
     class FileStorage
 
-      attr_accessor :storage,
-                    :path
+      attr_accessor :storage
 
       def initialize(path)
-        @path = path
-        store = Google::APIClient::FileStore.new(@path)
+        store = Google::APIClient::FileStore.new(path)
         @storage = Google::APIClient::Storage.new(store)
         @storage.authorize
       end
@@ -54,8 +52,7 @@ module Google
       #    Optional authorization instance. If not provided, the authorization
       #    already associated with this instance will be written.
       def write_credentials(auth=nil)
-        self.authorization = auth unless auth.nil?
-        storage.write_credentials(self.authorization)
+        storage.write_credentials(auth)
       end
     end
   end
