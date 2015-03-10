@@ -54,6 +54,7 @@ module Google
     #     <li><code>:two_legged_oauth_1</code></li>
     #     <li><code>:oauth_1</code></li>
     #     <li><code>:oauth_2</code></li>
+    #     <li><code>:google_app_default</code></li>
     #   </ul>
     # @option options [Boolean] :auto_refresh_token (true)
     #   The setting that controls whether or not the api client attempts to
@@ -61,6 +62,8 @@ module Google
     #   not support it, this option is ignored.
     # @option options [String] :application_name
     #   The name of the application using the client.
+    # @option options [String | Array | nil] :scope
+    #   The scope(s) used when using google application default credentials
     # @option options [String] :application_version
     #   The version number of the application using the client.
     # @option options [String] :user_agent
@@ -114,6 +117,9 @@ module Google
       # default authentication mechanisms.
       self.authorization =
         options.key?(:authorization) ? options[:authorization] : :oauth_2
+      if !options['scope'].nil? and self.authorization.respond_to?(:scope=)
+        self.authorization.scope = options['scope']
+      end
       self.auto_refresh_token = options.fetch(:auto_refresh_token) { true }
       self.key = options[:key]
       self.user_ip = options[:user_ip]
@@ -174,6 +180,10 @@ module Google
           :client_credential_secret => nil,
           :two_legged => true
         )
+      when :google_app_default
+        require 'googleauth'
+        new_authorization = Google::Auth.get_application_default(nil)
+
       when :oauth_2
         require 'signet/oauth_2/client'
         # NOTE: Do not rely on this default value, as it may change
