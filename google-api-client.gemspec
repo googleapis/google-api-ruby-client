@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'addressable', '~> 2.3'
   s.add_runtime_dependency 'signet', '~> 0.6'
   s.add_runtime_dependency 'faraday', '~> 0.9'
-  s.add_runtime_dependency 'googleauth', '~> 0.1'
+  s.add_runtime_dependency 'googleauth', '~> 0.3'
   s.add_runtime_dependency 'multi_json', '~> 1.10'
   s.add_runtime_dependency 'autoparse', "~> 0.3"
   s.add_runtime_dependency 'extlib', '~> 0.9'
