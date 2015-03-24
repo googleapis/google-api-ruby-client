@@ -104,6 +104,19 @@ Credentials can be managed at the connection level, as shown, or supplied on a p
 
 For server-to-server interactions, like those between a web application and Google Cloud Storage, Prediction, or BigQuery APIs, use service accounts.
 
+As of version 0.8.3, service accounts can be configured using
+[Application Default Credentials][1], which rely on the credentials being
+available in a well-known location.  If the credentials are not present
+and it's being used on a Compute Engine VM,  it will use the VM's default credentials.
+
+```ruby
+client.authorization = :google_app_default  # in a later version, this will become the default
+client.authorization.fetch_access_token!
+client.execute(...)
+```
+
+This is simpler API to use than in previous versions, although that is still available:
+
 ```ruby
 key = Google::APIClient::KeyUtils.load_from_pkcs12('client.p12', 'notasecret')
 client.authorization = Signet::OAuth2::Client.new(
@@ -201,3 +214,5 @@ See the full list of [samples on Github](https://github.com/google/google-api-ru
 ## Support
 
 Please [report bugs at the project on Github](https://github.com/google/google-api-ruby-client/issues). Don't hesitate to [ask questions](http://stackoverflow.com/questions/tagged/google-api-ruby-client) about the client or APIs on [StackOverflow](http://stackoverflow.com).
+
+[1]: https://developers.google.com/accounts/docs/application-default-credentials

@@ -1,3 +1,7 @@
+# 0.8.3
+* Adds support for authorization via Application Default Credentials.
+# Adds support for tracking coverage on coveralls.io
+
 # 0.8.2
 * Fixes for file storage and missing cacerts file
 

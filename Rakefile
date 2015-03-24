@@ -1,7 +1,9 @@
+# -*- ruby -*-
 lib_dir = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib_dir)
 $LOAD_PATH.uniq!
 
+require 'bundler/gem_tasks'
 require 'rubygems'
 require 'rake'
 

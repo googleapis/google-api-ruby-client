@@ -6,7 +6,9 @@ require 'faraday'
 
 begin
   require 'simplecov'
+  require 'coveralls'
 
+  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
   SimpleCov.start
 rescue LoadError
   # SimpleCov missing, so just run specs with no coverage.

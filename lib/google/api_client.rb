@@ -41,7 +41,7 @@ module Google
   # This class manages APIs communication.
   class APIClient
     include Google::APIClient::Logging
-    
+
     ##
     # Creates a new Google API client.
     #
@@ -58,7 +58,7 @@ module Google
     #   </ul>
     # @option options [Boolean] :auto_refresh_token (true)
     #   The setting that controls whether or not the api client attempts to
-    #   refresh authorization when a 401 is hit in #execute. If the token does 
+    #   refresh authorization when a 401 is hit in #execute. If the token does
     #   not support it, this option is ignored.
     # @option options [String] :application_name
     #   The name of the application using the client.
@@ -86,7 +86,7 @@ module Google
     #   Pass through of options to set on the Faraday connection
     def initialize(options={})
       logger.debug { "#{self.class} - Initializing client with options #{options}" }
-      
+
       # Normalize key to String to allow indifferent access.
       options = options.inject({}) do |accu, (key, value)|
         accu[key.to_sym] = value
@@ -182,7 +182,7 @@ module Google
         )
       when :google_app_default
         require 'googleauth'
-        new_authorization = Google::Auth.get_application_default(nil)
+        new_authorization = Google::Auth.get_application_default
 
       when :oauth_2
         require 'signet/oauth_2/client'
@@ -214,7 +214,7 @@ module Google
 
     ##
     # The setting that controls whether or not the api client attempts to
-    # refresh authorization when a 401 is hit in #execute. 
+    # refresh authorization when a 401 is hit in #execute.
     #
     # @return [Boolean]
     attr_accessor :auto_refresh_token
@@ -261,7 +261,7 @@ module Google
 
     ##
     # Number of times to retry on recoverable errors
-    # 
+    #
     # @return [FixNum]
     #  Number of retries
     attr_accessor :retries
@@ -471,7 +471,7 @@ module Google
     # Verifies an ID token against a server certificate. Used to ensure that
     # an ID token supplied by an untrusted client-side mechanism is valid.
     # Raises an error if the token is invalid or missing.
-    # 
+    #
     # @deprecated Use the google-id-token gem for verifying JWTs
     def verify_id_token!
       require 'jwt'
@@ -580,7 +580,7 @@ module Google
     #     - (TrueClass, FalseClass) :authenticated (default: true) -
     #       `true` if the request must be signed or somehow
     #       authenticated, `false` otherwise.
-    #     - (TrueClass, FalseClass) :gzip (default: true) - 
+    #     - (TrueClass, FalseClass) :gzip (default: true) -
     #       `true` if gzip enabled, `false` otherwise.
     #     - (FixNum) :retries -
     #       # of times to retry on recoverable errors
@@ -620,7 +620,7 @@ module Google
         options.update(params.shift) if params.size > 0
         request = self.generate_request(options)
       end
-      
+
       request.headers['User-Agent'] ||= '' + self.user_agent unless self.user_agent.nil?
       request.headers['Accept-Encoding'] ||= 'gzip' unless options[:gzip] == false
       request.headers['Content-Type'] ||= ''
@@ -629,11 +629,11 @@ module Google
 
       connection = options[:connection] || self.connection
       request.authorization = options[:authorization] || self.authorization unless options[:authenticated] == false
-      
+
       tries = 1 + (options[:retries] || self.retries)
       attempt = 0
 
-      Retriable.retriable :tries => tries, 
+      Retriable.retriable :tries => tries,
                           :on => [TransmissionError],
                           :on_retry => client_error_handler,
                           :interval => lambda {|attempts| (2 ** attempts) + rand} do
@@ -642,7 +642,7 @@ module Google
         # This 2nd level retriable only catches auth errors, and supports 1 retry, which allows
         # auth to be re-attempted without having to retry all sorts of other failures like
         # NotFound, etc
-        Retriable.retriable :tries => ((expired_auth_retry || tries > 1) && attempt == 1) ? 2 : 1, 
+        Retriable.retriable :tries => ((expired_auth_retry || tries > 1) && attempt == 1) ? 2 : 1,
                             :on => [AuthorizationError],
                             :on_retry => authorization_error_handler(request.authorization) do
           result = request.send(connection, true)
@@ -709,7 +709,7 @@ module Google
       end
       return Addressable::Template.new(@base_uri + template).expand(mapping)
     end
-    
+
 
     ##
     # Returns on proc for special processing of retries for authorization errors
@@ -719,7 +719,7 @@ module Google
     #   OAuth 2 credentials
     # @return [Proc]
     def authorization_error_handler(authorization)
-      can_refresh = authorization.respond_to?(:refresh_token) && auto_refresh_token 
+      can_refresh = authorization.respond_to?(:refresh_token) && auto_refresh_token
       Proc.new do |exception, tries|
         next unless exception.kind_of?(AuthorizationError)
         if can_refresh
