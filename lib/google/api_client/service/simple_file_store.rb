@@ -124,7 +124,7 @@ module Google
         # Read the entire cache file from disk.
         # Will avoid reading if there have been no changes.
         def read_file
-          if !File.exists? @file_path
+          if !File.exist? @file_path
             @cache = nil
           else
             # Check for changes after our last read or write.
