@@ -35,7 +35,7 @@ module Google
 
       ##
       # Initialize the call response
-      # 
+      #
       # @param [String] call_id
       #   UUID of the original call
       # @param [Fixnum] status
@@ -48,7 +48,7 @@ module Google
         @call_id, @status, @headers, @body = call_id, status, headers, body
       end
     end
-    
+
     # Wraps multiple API calls into a single over-the-wire HTTP request.
     #
     # @example
@@ -58,7 +58,7 @@ module Google
     #     batch = Google::APIClient::BatchRequest.new do |result|
     #        puts result.data
     #     end
-    # 
+    #
     #     batch.add(:api_method => urlshortener.url.insert, :body_object => { 'longUrl' => 'http://example.com/foo' })
     #     batch.add(:api_method => urlshortener.url.insert, :body_object => { 'longUrl' => 'http://example.com/bar' })
     #
@@ -80,7 +80,7 @@ module Google
       #   Callback for every call's response. Won't be called if a call defined
       #   a callback of its own.
       #
-      # @return [Google::APIClient::BatchRequest] 
+      # @return [Google::APIClient::BatchRequest]
       #   The constructed object.
       #
       # @yield [Google::APIClient::Result]
@@ -89,7 +89,7 @@ module Google
         @calls = []
         @global_callback = block if block_given?
         @last_auto_id = 0
-        
+
         @base_id = SecureRandom.uuid
 
         options[:uri] ||= 'https://www.googleapis.com/batch'
@@ -104,7 +104,7 @@ module Google
       # automatically be generated, avoiding collisions. If duplicate call IDs
       # are provided, an error will be thrown.
       #
-      # @param [Hash, Google::APIClient::Request] call 
+      # @param [Hash, Google::APIClient::Request] call
       #   the call to be added.
       # @param [String] call_id
       #   the ID to be used for this call. Must be unique
@@ -126,7 +126,7 @@ module Google
               'A call with this ID already exists: %s' % call_id
         end
         callback = block_given? ? block : @global_callback
-        @calls << [call_id, call, callback]        
+        @calls << [call_id, call, callback]
         return self
       end
 
@@ -165,12 +165,12 @@ module Google
         if @calls.nil? || @calls.empty?
           raise BatchError, 'Cannot make an empty batch request'
         end
-        parts = @calls.map {|(call_id, call, callback)| serialize_call(call_id, call)}
+        parts = @calls.map {|(call_id, call, _callback)| serialize_call(call_id, call)}
         build_multipart(parts, 'multipart/mixed', BATCH_BOUNDARY)
         super
       end
-      
-      
+
+
       protected
 
       ##
@@ -183,7 +183,7 @@ module Google
       # @param [Hash] headers
       #   the hash of headers and their values.
       #
-      # @return [String] 
+      # @return [String]
       #   the value of the desired header.
       def find_header(name, headers)
         _, header = headers.detect do |h, v|
@@ -197,7 +197,7 @@ module Google
       #
       # @api private
       #
-      # @return [String] 
+      # @return [String]
       #  the new, unique ID.
       def new_id
         @last_auto_id += 1
@@ -216,7 +216,7 @@ module Google
       # @param [String] header
       #   Content-ID header value.
       #
-      # @return [String] 
+      # @return [String]
       #   The extracted ID value.
       def header_to_id(header)
         if !header.start_with?('<') || !header.end_with?('>') ||
@@ -224,7 +224,7 @@ module Google
           raise BatchError, 'Invalid value for Content-ID: "%s"' % header
         end
 
-        base, call_id = header[1...-1].split('+')
+        _base, call_id = header[1...-1].split('+')
         return Addressable::URI.unencode(call_id)
       end
 
@@ -236,7 +236,7 @@ module Google
       # @param [String] response
       #   the response to parse.
       #
-      # @return [Array<Hash>, String] 
+      # @return [Array<Hash>, String]
       #   the headers and the body, separately.
       def split_headers_and_body(response)
         headers = {}
@@ -263,12 +263,12 @@ module Google
       # @param [String] call_response
       #   the request to deserialize.
       #
-      # @return [Google::APIClient::BatchedCallResponse] 
+      # @return [Google::APIClient::BatchedCallResponse]
       #   the parsed and converted response.
       def deserialize_call_response(call_response)
         outer_headers, outer_body = split_headers_and_body(call_response)
         status_line, payload = outer_body.split("\n", 2)
-        protocol, status, reason = status_line.split(' ', 3)
+        _protocol, status, _reason = status_line.split(' ', 3)
 
         headers, body = split_headers_and_body(payload)
         content_id = find_header('Content-ID', outer_headers)
@@ -284,7 +284,7 @@ module Google
       # @param [Google::APIClient::Request] call
       #   the call to serialize.
       #
-      # @return [Faraday::UploadIO] 
+      # @return [Faraday::UploadIO]
       #   the serialized request
       def serialize_call(call_id, call)
         method, uri, headers, body = call.to_http_request
@@ -293,7 +293,7 @@ module Google
           request << "\r\n%s: %s" % [header, value]
         end
         if body
-          # TODO - CompositeIO if body is a stream 
+          # TODO - CompositeIO if body is a stream
           request << "\r\n\r\n"
           if body.respond_to?(:read)
             request << body.read
@@ -303,7 +303,7 @@ module Google
         end
         Faraday::UploadIO.new(StringIO.new(request), 'application/http', 'ruby-api-request', 'Content-ID' => id_to_header(call_id))
       end
-      
+
       ##
       # Convert an id to a Content-ID header value.
       #
@@ -319,7 +319,7 @@ module Google
       def id_to_header(call_id)
         return '<%s+%s>' % [@base_id, Addressable::URI.encode(call_id)]
       end
-      
+
     end
   end
 end

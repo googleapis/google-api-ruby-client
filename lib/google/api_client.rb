@@ -490,7 +490,7 @@ module Google
       else
         check_cached_certs = lambda do
           valid = false
-          for key, cert in @certificates
+          for _key, cert in @certificates
             begin
               self.authorization.decoded_id_token(cert.public_key)
               valid = true

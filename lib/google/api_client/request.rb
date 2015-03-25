@@ -27,7 +27,7 @@ module Google
     # Represents an API request.
     class Request
       include Google::APIClient::Logging
-      
+
       MULTIPART_BOUNDARY = "-----------RubyApiMultipartPost".freeze
 
       # @return [Hash] Request parameters
@@ -157,7 +157,7 @@ module Google
       # @return [Google::APIClient::Result]
       #   result of API request
       def send(connection, is_retry = false)
-        self.body.rewind if is_retry && self.body.respond_to?(:rewind)          
+        self.body.rewind if is_retry && self.body.respond_to?(:rewind)
         env = self.to_env(connection)
         logger.debug  { "#{self.class} Sending API request #{env[:method]} #{env[:url].to_s} #{env[:request_headers]}" }
         http_response = connection.app.call(env)
@@ -244,7 +244,7 @@ module Google
           )
         end
 
-        request_env = http_request.to_env(connection)
+        http_request.to_env(connection)
       end
 
       ##
