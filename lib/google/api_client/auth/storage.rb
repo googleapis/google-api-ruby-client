@@ -38,6 +38,7 @@ module Google
       # @params [Object] Storage object
       def initialize(store)
         @store= store
+        @authorization = nil
       end
 
       ##

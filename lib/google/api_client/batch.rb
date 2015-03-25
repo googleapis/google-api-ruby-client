@@ -87,6 +87,7 @@ module Google
       #   block to be called when result ready
       def initialize(options = {}, &block)
         @calls = []
+        @global_callback = nil
         @global_callback = block if block_given?
         @last_auto_id = 0
 
