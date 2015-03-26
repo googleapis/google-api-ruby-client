@@ -25,44 +25,44 @@ module Google
       #
       # @param [String] keyfile
       #    Path of the PKCS12 file to load. If not a path to an actual file,
-      #    assumes the string is the content of the file itself. 
+      #    assumes the string is the content of the file itself.
       # @param [String] passphrase
       #   Passphrase for unlocking the private key
       #
       # @return [OpenSSL::PKey] The private key for signing assertions.
       def self.load_from_pkcs12(keyfile, passphrase)
-        load_key(keyfile, passphrase) do |content, passphrase| 
-          OpenSSL::PKCS12.new(content, passphrase).key
+        load_key(keyfile, passphrase) do |content, pass_phrase|
+          OpenSSL::PKCS12.new(content, pass_phrase).key
         end
       end
-      
+
 
       ##
       # Loads a key from a PEM file.
       #
       # @param [String] keyfile
       #    Path of the PEM file to load. If not a path to an actual file,
-      #    assumes the string is the content of the file itself. 
+      #    assumes the string is the content of the file itself.
       # @param [String] passphrase
       #   Passphrase for unlocking the private key
       #
       # @return [OpenSSL::PKey] The private key for signing assertions.
       #
       def self.load_from_pem(keyfile, passphrase)
-        load_key(keyfile, passphrase) do | content, passphrase|
-          OpenSSL::PKey::RSA.new(content, passphrase)
+        load_key(keyfile, passphrase) do | content, pass_phrase|
+          OpenSSL::PKey::RSA.new(content, pass_phrase)
         end
       end
 
       private
-      
+
       ##
       # Helper for loading keys from file or memory. Accepts a block
       # to handle the specific file format.
       #
       # @param [String] keyfile
       #    Path of thefile to load. If not a path to an actual file,
-      #    assumes the string is the content of the file itself. 
+      #    assumes the string is the content of the file itself.
       # @param [String] passphrase
       #   Passphrase for unlocking the private key
       #
@@ -86,8 +86,8 @@ module Google
           block.call(content, passphrase)
         rescue OpenSSL::OpenSSLError
           raise ArgumentError.new("Invalid keyfile or passphrase")
-        end        
-      end  
+        end
+      end
     end
   end
 end
