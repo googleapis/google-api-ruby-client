@@ -1,3 +1,7 @@
+# 0.8.4
+* Fixes a file permission issues with the 0.8.3 release
+* Fixes warnings when the library is used
+
 # 0.8.3
 * Adds support for authorization via Application Default Credentials.
 # Adds support for tracking coverage on coveralls.io
