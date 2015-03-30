@@ -6,6 +6,11 @@ rvm:
   - 1.9.3
   - rbx-2
   - jruby
+env:
+  - RAILS_VERSION="~>3.2"
+  - RAILS_VERSION="~>4.0.0"
+  - RAILS_VERSION="~>4.1.0"
+  - RAILS_VERSION="~>4.2.0"
 script: "bundle exec rake spec:all"
 before_install:
  - sudo apt-get update
