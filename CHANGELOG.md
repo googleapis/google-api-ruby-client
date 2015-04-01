@@ -1,3 +1,6 @@
+# 0.8.5
+* Corrects the regression Rails 4 support in the 0.8.4 release.
+
 # 0.8.4
 * Fixes a file permission issues with the 0.8.3 release
 * Fixes warnings when the library is used
