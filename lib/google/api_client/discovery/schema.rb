@@ -41,7 +41,6 @@ module Google
           api.document_base +
           (schema_name[0..0] != '#' ? '#' + schema_name : schema_name)
         )
-        # puts schema_uri
 
         # Due to an oversight, schema IDs may not be URI references.
         # TODO(bobaman): Remove this whole lambda once this has been resolved.
@@ -75,7 +74,6 @@ module Google
           end
         end
         schema_data = reformat_references.call(schema_data)
-        # puts schema_data.inspect
 
         if schema_name
           api_name_string = ActiveSupport::Inflector.camelize(api.name)
