@@ -473,6 +473,10 @@ RSpec.describe Google::APIClient do
         ).to_env(CLIENT.connection)
       end).to raise_error(ArgumentError)
     end
+
+    it 'should correctly determine the service root_uri' do
+      expect(@plus.root_uri.to_s).to eq('https://www.googleapis.com/')
+    end
   end
 
   describe 'with the adsense API' do
@@ -657,6 +661,32 @@ RSpec.describe Google::APIClient do
 
     it 'should have a max file size' do
       expect(@drive.files.insert.media_upload.max_size).not_to eq(nil)
+    end
+  end
+
+  describe 'with the Pub/Sub API' do
+    before do
+      CLIENT.authorization = nil
+      @pubsub = CLIENT.discovered_api('pubsub', 'v1beta2')
+    end
+
+    it 'should generate requests against the correct URIs' do
+      conn = stub_connection do |stub|
+        stub.get('/v1beta2/projects/12345/topics') do |env|
+          expect(env[:url].host).to eq('pubsub.googleapis.com')
+          [200, {}, '{}']
+        end
+      end
+      request = CLIENT.execute(
+        :api_method => @pubsub.projects.topics.list,
+        :parameters => {'project' => 'projects/12345'},
+        :connection => conn
+      )
+      conn.verify
+    end
+
+    it 'should correctly determine the service root_uri' do
+      expect(@pubsub.root_uri.to_s).to eq('https://pubsub.googleapis.com/')
     end
   end
 end
