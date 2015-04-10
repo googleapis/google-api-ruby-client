@@ -79,13 +79,13 @@ module Google
       end
       
       ##
-      # Check if request failed
+      # Check if request failed - which is anything other than 200/201 OK
       #
       # @!attribute [r] error?
       # @return [TrueClass, FalseClass]
       #   true if result of operation is an error
       def error?
-        return self.response.status >= 400
+        return !self.success?
       end
 
       ##
@@ -95,7 +95,11 @@ module Google
       # @return [TrueClass, FalseClass]
       #   true if result of operation was successful
       def success?
-        return !self.error?
+        if self.response.status == 200 || self.response.status == 201
+          return true
+        else
+          return false
+        end
       end
       
       ##
