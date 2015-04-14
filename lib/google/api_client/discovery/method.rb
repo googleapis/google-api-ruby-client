@@ -108,7 +108,7 @@ module Google
       # @return [Addressable::Template] The URI template.
       def uri_template
         return @uri_template ||= Addressable::Template.new(
-          self.method_base.join(Addressable::URI.parse(@discovery_document['path']))
+          self.method_base.join(Addressable::URI.parse("./" + @discovery_document['path']))
         )
       end
 

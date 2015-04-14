@@ -688,5 +688,21 @@ RSpec.describe Google::APIClient do
     it 'should correctly determine the service root_uri' do
       expect(@pubsub.root_uri.to_s).to eq('https://pubsub.googleapis.com/')
     end
+
+    it 'should discover correct method URIs' do
+      list = CLIENT.discovered_method(
+        "pubsub.projects.topics.list", "pubsub", "v1beta2"
+      )
+      expect(list.uri_template.pattern).to eq(
+        "https://pubsub.googleapis.com/v1beta2/{+project}/topics"
+      )
+
+      publish = CLIENT.discovered_method(
+        "pubsub.projects.topics.publish", "pubsub", "v1beta2"
+      )
+      expect(publish.uri_template.pattern).to eq(
+        "https://pubsub.googleapis.com/v1beta2/{+topic}:publish"
+      )
+    end
   end
 end
