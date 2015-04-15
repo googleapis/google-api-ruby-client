@@ -18,7 +18,7 @@ module Google
     module VERSION
       MAJOR = 0
       MINOR = 8
-      TINY  = 5
+      TINY  = 6
       PATCH = nil
       STRING = [MAJOR, MINOR, TINY, PATCH].compact.join('.')
     end
