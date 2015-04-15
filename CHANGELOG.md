@@ -1,3 +1,7 @@
+# 0.8.6
+* Use discovered 'rootUrl' as base URI for services
+* Respect discovered methods with colons in path
+
 # 0.8.5
 * Corrects the regression Rails 4 support in the 0.8.4 release.
 
