@@ -137,6 +137,7 @@ module Google
         # @return [Google::APIClient::Service::Request]
         #   API request for retrieving next page
         def next_page
+          return nil unless self.next_page_token
           request = @request.clone
           # Make a deep copy of the parameters.
           request.parameters = Marshal.load(Marshal.dump(request.parameters))
@@ -150,6 +151,7 @@ module Google
         # @return [Google::APIClient::Service::Request]
         #   API request for retrieving previous page
         def prev_page
+          return nil unless self.prev_page_token
           request = @request.clone
           # Make a deep copy of the parameters.
           request.parameters = Marshal.load(Marshal.dump(request.parameters))
