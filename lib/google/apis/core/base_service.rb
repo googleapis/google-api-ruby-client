@@ -66,8 +66,8 @@ module Google
         def initialize(root_url, base_path)
           self.root_url = Addressable::URI.parse(root_url)
           self.base_path = Addressable::URI.parse(base_path)
-          self.upload_path = Addressable::URI.parse("/upload#{base_path}")
-          self.batch_path = Addressable::URI.parse('/batch')
+          self.upload_path = Addressable::URI.parse("/upload/#{base_path}")
+          self.batch_path = Addressable::URI.parse('batch')
           self.client_options = Google::Apis::ClientOptions.default.dup
           self.request_options = Google::Apis::RequestOptions.default.dup
         end

@@ -193,6 +193,7 @@ module Google
         # @return [Hurley::Response]
         # @raise [Google::Apis::ServerError] Unable to send the request
         def send_start_command(client)
+          logger.debug { sprintf('Sending upload start command to %s', url) }
           client.send(method, url, body) do |req|
             apply_request_options(req)
             req.header[UPLOAD_PROTOCOL_HEADER] = RESUMABLE
@@ -246,7 +247,6 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def execute_once(client, &block)
           if @state == :start
-            logger.debug 'Sending upload start command'
             response = send_start_command(client)
           else
             logger.debug 'Sending upload query command'

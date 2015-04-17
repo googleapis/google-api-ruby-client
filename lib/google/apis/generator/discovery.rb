@@ -201,8 +201,8 @@ module Google
           api.revision = @discovery['revision']
           api.module_name = api.name + api.version
           api.qualified_name = sprintf('Google::Apis::%s', api.module_name)
-          api.root_url = @discovery['rootUrl'] || @discovery['baseUrl']
-          api.base_path = @discovery['servicePath'] || @discovery['basePath']
+          api.root_url = @discovery['rootUrl']
+          api.base_path = @discovery['servicePath']
           class_name = (@discovery['canonicalName'] || @discovery['name']).gsub(/\W/, '')
           api.service_name = ActiveSupport::Inflector.camelize(sprintf('%sService', class_name))
           api.data_wrap = (@discovery['features'] || []).include?('dataWrapper')
