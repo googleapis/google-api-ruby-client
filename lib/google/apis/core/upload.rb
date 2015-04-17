@@ -43,7 +43,7 @@ module Google
             type = MIME::Types.of(file_name)
             content_type = type.first.content_type unless type.nil? || type.empty?
           end
-          new(file_name, content_type)
+          new(file_name, content_type || OCTET_STREAM_CONTENT_TYPE)
         end
 
         # Wraps an IO stream in UploadIO

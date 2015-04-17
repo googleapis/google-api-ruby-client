@@ -20,16 +20,17 @@ RSpec.describe Google::Apis::Generator do
   let(:generator) { Google::Apis::Generator.new }
 
   context 'with zoo API' do
-    let(:json) { File.read(File.join(SPEC_DIR, 'fixtures', 'files', 'zoo.json')) }
+    let(:json) { File.read(File.join(FIXTURES_DIR, 'files', 'zoo.json')) }
     let(:files) do
       generator.render(json)
     end
 
     it 'should generate files' do
-      files.each do |key, value|
-        puts key
-        puts value
-      end
+# TODO: Make a meaningful test
+#      files.each do |key, value|
+#        puts key
+#        puts value
+#      end
     end
 
   end
