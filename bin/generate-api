@@ -49,7 +49,7 @@ module Google
         open(DISCOVERY_URL) do |f|
           apis = MultiJson.load(f.read)
           apis['items'].each do |api|
-            if (id.nil? && preferred_only && api['preferred']) || id.include?(api['id'])
+            if (id.empty? && preferred_only && api['preferred']) || id.include?(api['id'])
               say sprintf("Loading %s, version %s from %s", api['name'], api['version'], api['discoveryRestUrl'])
               generate_from_url(api['discoveryRestUrl'])
             end
