@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/fitness/v1/users/')
+          super('https://www.googleapis.com/', 'fitness/v1/users/')
         end
 
         # Creates a new data source that is unique across all data sources belonging to

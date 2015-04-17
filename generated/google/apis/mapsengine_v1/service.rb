@@ -51,7 +51,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/mapsengine/v1/')
+          super('https://www.googleapis.com/', 'mapsengine/v1/')
         end
 
         # Return metadata for a particular asset.

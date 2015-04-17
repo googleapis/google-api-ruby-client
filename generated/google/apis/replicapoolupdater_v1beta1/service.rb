@@ -51,7 +51,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/replicapoolupdater/v1beta1/projects/')
+          super('https://www.googleapis.com/', 'replicapoolupdater/v1beta1/projects/')
         end
 
         # Cancels an update. The update must be PAUSED before it can be cancelled. This
@@ -194,7 +194,8 @@ module Google
         # @param [String] filter
         #   Optional. Filter expression for filtering listed resources.
         # @param [String] instance_group_manager
-        #   The name of the instance group manager used for filtering.
+        #   The name of the instance group manager. Use this parameter to return only
+        #   updates to instances that are part of a specific instance group.
         # @param [Fixnum] max_results
         #   Optional. Maximum count of results to be returned. Maximum value is 500 and
         #   default value is 500.

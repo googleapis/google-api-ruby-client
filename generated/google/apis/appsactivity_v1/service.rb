@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/appsactivity/v1/')
+          super('https://www.googleapis.com/', 'appsactivity/v1/')
         end
 
         # Returns a list of activities visible to the current logged in user. Visible

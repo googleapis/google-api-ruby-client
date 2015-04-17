@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/language/translate/')
+          super('https://www.googleapis.com/', 'language/translate/')
         end
 
         # Detect the language of text.

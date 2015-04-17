@@ -51,7 +51,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/autoscaler/v1beta2/')
+          super('https://www.googleapis.com/', 'autoscaler/v1beta2/')
         end
 
         # Deletes the specified Autoscaler resource.

@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://pubsub.googleapis.com/', '/v1beta2/')
+          super('https://pubsub.googleapis.com/', 'v1beta2/')
         end
 
         # Acknowledges the messages associated with the ack tokens in the

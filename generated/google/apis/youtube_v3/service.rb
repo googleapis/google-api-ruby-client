@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/youtube/v3/')
+          super('https://www.googleapis.com/', 'youtube/v3/')
         end
 
         # Posts a bulletin for a specific channel. (The user submitting the request must
@@ -3385,6 +3385,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
 
+        # Returns a list of abuse reasons that can be used for reporting abusive videos.
+        # @param [String] hl
+        #   The hl parameter specifies the language that should be used for text values in
+        #   the API response.
+        # @param [String] part
+        #   The part parameter specifies the videoCategory resource parts that the API
+        #   response will include. Supported values are id and snippet.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Api::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::VideoAbuseReportReasonListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::VideoAbuseReportReasonListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_video_abuse_report_reasons(hl: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = 'videoAbuseReportReasons'
+          command =  make_simple_command(:get, path, options)
+          command.response_representation = Google::Apis::YoutubeV3::VideoAbuseReportReasonListResponseRepresentation
+          command.response_class = Google::Apis::YoutubeV3::VideoAbuseReportReasonListResponse
+          command.query['hl'] = hl unless hl.nil?
+          command.query['part'] = part unless part.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+
         # Returns a list of categories that can be associated with YouTube videos.
         # @param [String] hl
         #   The hl parameter specifies the language that should be used for text values in
@@ -3785,6 +3826,53 @@ module Google
           command.query['id'] = id unless id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['rating'] = rating unless rating.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        
+        # Report abuse for a video.
+        # @param [Google::Apis::YoutubeV3::VideoAbuseReport] video_abuse_report_obj
+        #   
+        # @param [String] on_behalf_of_content_owner
+        #   Note: This parameter is intended exclusively for YouTube content partners.
+        #   The onBehalfOfContentOwner parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Api::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def report_abuse(video_abuse_report_obj, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = 'videos/reportAbuse'
+          command =  make_simple_command(:post, path, options)
+          command.request_representation = Google::Apis::YoutubeV3::VideoAbuseReportRepresentation
+          command.request_object = video_abuse_report_obj
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

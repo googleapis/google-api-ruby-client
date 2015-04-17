@@ -57,6 +57,7 @@ module Google
       class ChannelSectionListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
       class ChannelSectionLocalizationRepresentation < Google::Apis::Core::JsonRepresentation; end
       class ChannelSectionSnippetRepresentation < Google::Apis::Core::JsonRepresentation; end
+      class ChannelSectionTargetingRepresentation < Google::Apis::Core::JsonRepresentation; end
       class ChannelSettingsRepresentation < Google::Apis::Core::JsonRepresentation; end
       class ChannelSnippetRepresentation < Google::Apis::Core::JsonRepresentation; end
       class ChannelStatisticsRepresentation < Google::Apis::Core::JsonRepresentation; end
@@ -130,6 +131,12 @@ module Google
       class ThumbnailSetResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
       class TokenPaginationRepresentation < Google::Apis::Core::JsonRepresentation; end
       class VideoRepresentation < Google::Apis::Core::JsonRepresentation; end
+      class VideoAbuseReportRepresentation < Google::Apis::Core::JsonRepresentation; end
+      class VideoAbuseReportReasonRepresentation < Google::Apis::Core::JsonRepresentation; end
+      class VideoAbuseReportReasonIdRepresentation < Google::Apis::Core::JsonRepresentation; end
+      class VideoAbuseReportReasonListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
+      class VideoAbuseReportReasonSnippetRepresentation < Google::Apis::Core::JsonRepresentation; end
+      class VideoAbuseReportSecondaryReasonRepresentation < Google::Apis::Core::JsonRepresentation; end
       class VideoAgeGatingRepresentation < Google::Apis::Core::JsonRepresentation; end
       class VideoCategoryRepresentation < Google::Apis::Core::JsonRepresentation; end
       class VideoCategoryListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
@@ -475,6 +482,8 @@ module Google
         
         
         property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::ChannelSectionSnippet, decorator: Google::Apis::YoutubeV3::ChannelSectionSnippetRepresentation
+        
+        property :targeting, as: 'targeting', class: Google::Apis::YoutubeV3::ChannelSectionTargeting, decorator: Google::Apis::YoutubeV3::ChannelSectionTargetingRepresentation
       end
 
       # @private
@@ -510,6 +519,15 @@ module Google
         property :style, as: 'style'
         property :title, as: 'title'
         property :type, as: 'type'
+      end
+
+      # @private
+      class ChannelSectionTargetingRepresentation < Google::Apis::Core::JsonRepresentation
+        collection :countrys, as: 'countrys'
+        
+        collection :languages, as: 'languages'
+        
+        collection :regions, as: 'regions'
       end
 
       # @private
@@ -1354,6 +1372,55 @@ module Google
         property :suggestions, as: 'suggestions', class: Google::Apis::YoutubeV3::VideoSuggestions, decorator: Google::Apis::YoutubeV3::VideoSuggestionsRepresentation
         
         property :topic_details, as: 'topicDetails', class: Google::Apis::YoutubeV3::VideoTopicDetails, decorator: Google::Apis::YoutubeV3::VideoTopicDetailsRepresentation
+      end
+
+      # @private
+      class VideoAbuseReportRepresentation < Google::Apis::Core::JsonRepresentation
+        property :comments, as: 'comments'
+        property :language, as: 'language', class: Google::Apis::YoutubeV3::LanguageTag, decorator: Google::Apis::YoutubeV3::LanguageTagRepresentation
+        
+        property :reason_id, as: 'reasonId', class: Google::Apis::YoutubeV3::VideoAbuseReportReasonId, decorator: Google::Apis::YoutubeV3::VideoAbuseReportReasonIdRepresentation
+        
+        property :secondary_reason_id, as: 'secondaryReasonId', class: Google::Apis::YoutubeV3::VideoAbuseReportReasonId, decorator: Google::Apis::YoutubeV3::VideoAbuseReportReasonIdRepresentation
+        
+        property :video_id, as: 'videoId'
+      end
+
+      # @private
+      class VideoAbuseReportReasonRepresentation < Google::Apis::Core::JsonRepresentation
+        property :etag, as: 'etag'
+        property :id, as: 'id'
+        property :kind, as: 'kind'
+        property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::VideoAbuseReportReasonSnippet, decorator: Google::Apis::YoutubeV3::VideoAbuseReportReasonSnippetRepresentation
+      end
+
+      # @private
+      class VideoAbuseReportReasonIdRepresentation < Google::Apis::Core::JsonRepresentation
+        property :value, as: 'value'
+      end
+
+      # @private
+      class VideoAbuseReportReasonListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        property :etag, as: 'etag'
+        property :event_id, as: 'eventId'
+        collection :items, as: 'items', class: Google::Apis::YoutubeV3::VideoAbuseReportReason, decorator: Google::Apis::YoutubeV3::VideoAbuseReportReasonRepresentation
+        
+        
+        property :kind, as: 'kind'
+        property :visitor_id, as: 'visitorId'
+      end
+
+      # @private
+      class VideoAbuseReportReasonSnippetRepresentation < Google::Apis::Core::JsonRepresentation
+        property :label, as: 'label'
+        collection :secondary_reasons, as: 'secondaryReasons', class: Google::Apis::YoutubeV3::VideoAbuseReportSecondaryReason, decorator: Google::Apis::YoutubeV3::VideoAbuseReportSecondaryReasonRepresentation
+      end
+
+      # @private
+      class VideoAbuseReportSecondaryReasonRepresentation < Google::Apis::Core::JsonRepresentation
+        property :id, as: 'id', class: Google::Apis::YoutubeV3::VideoAbuseReportReasonId, decorator: Google::Apis::YoutubeV3::VideoAbuseReportReasonIdRepresentation
+        
+        property :label, as: 'label'
       end
 
       # @private

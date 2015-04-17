@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/taskqueue/v1beta2/projects/')
+          super('https://www.googleapis.com/', 'taskqueue/v1beta2/projects/')
         end
 
         # Get detailed information about a TaskQueue.

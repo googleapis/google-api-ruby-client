@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/dataflow/v1b3/projects/')
+          super('https://www.googleapis.com/', 'dataflow/v1b3/projects/')
         end
 
         # Creates a dataflow job.

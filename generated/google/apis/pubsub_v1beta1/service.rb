@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/pubsub/v1beta1/')
+          super('https://www.googleapis.com/', 'pubsub/v1beta1/')
         end
 
         # Acknowledges a particular received message: the Pub/Sub system can remove the

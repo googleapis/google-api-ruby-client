@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/compute/v1/projects/')
+          super('https://www.googleapis.com/', 'compute/v1/projects/')
         end
 
         # Retrieves the list of addresses grouped by scope.

@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/tasks/v1/')
+          super('https://www.googleapis.com/', 'tasks/v1/')
         end
 
         # Deletes the authenticated user's specified task list.

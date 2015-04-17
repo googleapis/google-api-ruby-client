@@ -51,7 +51,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/adexchangebuyer/v1.3/')
+          super('https://www.googleapis.com/', 'adexchangebuyer/v1.3/')
         end
 
         # Gets one account by ID.

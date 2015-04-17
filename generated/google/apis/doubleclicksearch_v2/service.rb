@@ -51,7 +51,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/doubleclicksearch/v2/')
+          super('https://www.googleapis.com/', 'doubleclicksearch/v2/')
         end
 
         # Retrieves a list of conversions from a DoubleClick Search engine account.

@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/storage/v1/')
+          super('https://www.googleapis.com/', 'storage/v1/')
         end
 
         # Permanently deletes the ACL entry for the specified entity on the specified

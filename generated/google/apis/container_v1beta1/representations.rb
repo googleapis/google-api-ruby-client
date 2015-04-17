@@ -83,6 +83,7 @@ module Google
 
       # @private
       class MasterAuthRepresentation < Google::Apis::Core::JsonRepresentation
+        property :bearer_token, as: 'bearerToken'
         property :password, as: 'password'
         property :user, as: 'user'
       end

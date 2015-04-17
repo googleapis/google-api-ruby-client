@@ -51,7 +51,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/prediction/v1.6/projects/')
+          super('https://www.googleapis.com/', 'prediction/v1.6/projects/')
         end
 
         # Submit input and request an output against a hosted model.

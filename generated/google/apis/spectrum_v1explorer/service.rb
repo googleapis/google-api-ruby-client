@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/spectrum/v1explorer/paws/')
+          super('https://www.googleapis.com/', 'spectrum/v1explorer/paws/')
         end
 
         # Requests information about the available spectrum for a device at a location.

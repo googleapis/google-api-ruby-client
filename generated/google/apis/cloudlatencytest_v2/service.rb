@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://cloudlatencytest-pa.googleapis.com/', '/v2/statscollection/')
+          super('https://cloudlatencytest-pa.googleapis.com/', 'v2/statscollection/')
         end
 
         # RPC to update the new TCP stats.

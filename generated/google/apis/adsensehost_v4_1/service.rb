@@ -51,7 +51,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/adsensehost/v4.1/')
+          super('https://www.googleapis.com/', 'adsensehost/v4.1/')
         end
 
         # Get information about the selected associated AdSense account.

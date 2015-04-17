@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/apps/reseller/v1/')
+          super('https://www.googleapis.com/', 'apps/reseller/v1/')
         end
 
         # Gets a customer resource if one exists and is owned by the reseller.

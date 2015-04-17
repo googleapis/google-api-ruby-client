@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/civicinfo/v2/')
+          super('https://www.googleapis.com/', 'civicinfo/v2/')
         end
 
         # Searches for political divisions by their natural name or OCD ID.

@@ -51,7 +51,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/adexchangeseller/v2.0/')
+          super('https://www.googleapis.com/', 'adexchangeseller/v2.0/')
         end
 
         # Get information about the selected Ad Exchange account.

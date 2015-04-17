@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/games/v1/')
+          super('https://www.googleapis.com/', 'games/v1/')
         end
 
         # Lists all the achievement definitions for your application.

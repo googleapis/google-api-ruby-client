@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/books/v1/')
+          super('https://www.googleapis.com/', 'books/v1/')
         end
 
         # Retrieves metadata for a specific bookshelf for the specified user.
@@ -902,8 +902,9 @@ module Google
         end
         
         
-        # Sets the settings for the user. Unspecified sub-objects will retain the
-        # existing value.
+        # Sets the settings for the user. If a sub-object is specified, it will
+        # overwrite the existing sub-object stored in the server. Unspecified sub-
+        # objects will retain the existing value.
         # @param [Google::Apis::BooksV1::Usersettings] usersettings_obj
         #   
         # @param [String] fields

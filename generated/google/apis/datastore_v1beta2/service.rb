@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/datastore/v1beta2/datasets/')
+          super('https://www.googleapis.com/', 'datastore/v1beta2/datasets/')
         end
 
         # Allocate IDs for incomplete keys (useful for referencing an entity before it

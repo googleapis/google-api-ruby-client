@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/siteVerification/v1/')
+          super('https://www.googleapis.com/', 'siteVerification/v1/')
         end
 
         # Relinquish ownership of a website or domain.

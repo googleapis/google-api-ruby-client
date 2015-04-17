@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/tagmanager/v1/')
+          super('https://www.googleapis.com/', 'tagmanager/v1/')
         end
 
         # Gets a GTM Account.

@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/analytics/v3/')
+          super('https://www.googleapis.com/', 'analytics/v3/')
         end
 
         # Returns Analytics data for a view (profile).

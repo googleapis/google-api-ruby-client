@@ -51,7 +51,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/androidenterprise/v1/')
+          super('https://www.googleapis.com/', 'androidenterprise/v1/')
         end
 
         # Deletes a collection.

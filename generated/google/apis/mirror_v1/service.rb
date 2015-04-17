@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/mirror/v1/')
+          super('https://www.googleapis.com/', 'mirror/v1/')
         end
 
         # Inserts a new account for a user

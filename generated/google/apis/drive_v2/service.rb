@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/drive/v2/')
+          super('https://www.googleapis.com/', 'drive/v2/')
         end
 
         # Gets the information about the current user along with Drive API settings

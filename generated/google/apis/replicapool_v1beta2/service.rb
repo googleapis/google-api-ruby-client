@@ -51,7 +51,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/replicapool/v1beta2/projects/')
+          super('https://www.googleapis.com/', 'replicapool/v1beta2/projects/')
         end
 
         # Removes the specified instances from the managed instance group, and from any

@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/androidpublisher/v2/applications/')
+          super('https://www.googleapis.com/', 'androidpublisher/v2/applications/')
         end
 
         # Commits/applies the changes made in this edit back to the app.

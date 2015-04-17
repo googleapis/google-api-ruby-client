@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/dfareporting/v2.1/')
+          super('https://www.googleapis.com/', 'dfareporting/v2.1/')
         end
 
         # Gets the account's active ad summary by account ID.

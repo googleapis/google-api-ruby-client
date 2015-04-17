@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/appstate/v1/')
+          super('https://www.googleapis.com/', 'appstate/v1/')
         end
 
         # Clears (sets to empty) the data for the passed key if and only if the passed

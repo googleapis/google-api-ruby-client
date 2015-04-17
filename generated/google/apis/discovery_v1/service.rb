@@ -51,7 +51,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/discovery/v1/')
+          super('https://www.googleapis.com/', 'discovery/v1/')
         end
 
         # Retrieve the description of a particular version of an api.

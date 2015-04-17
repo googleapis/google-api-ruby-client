@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/sql/v1beta4/')
+          super('https://www.googleapis.com/', 'sql/v1beta4/')
         end
 
         # Retrieves a resource containing information about a backup run.

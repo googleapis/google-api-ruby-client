@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/identitytoolkit/v3/relyingparty/')
+          super('https://www.googleapis.com/', 'identitytoolkit/v3/relyingparty/')
         end
 
         # Creates the URI used by the IdP to authenticate the user.

@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/gmail/v1/users/')
+          super('https://www.googleapis.com/', 'gmail/v1/users/')
         end
 
         # Gets the current user's Gmail profile.

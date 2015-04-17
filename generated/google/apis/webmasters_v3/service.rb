@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/webmasters/v3/')
+          super('https://www.googleapis.com/', 'webmasters/v3/')
         end
 
         # Deletes a sitemap from this site.

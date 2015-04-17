@@ -1261,6 +1261,12 @@ module Google
         # @return [Google::Apis::YoutubeV3::ChannelSectionSnippet]
         attr_accessor :snippet
       
+        # The targeting object contains basic targeting settings about the channel
+        # section.
+        # Corresponds to the JSON property `targeting`
+        # @return [Google::Apis::YoutubeV3::ChannelSectionTargeting]
+        attr_accessor :targeting
+      
         def initialize(**args)
           @content_details = args[:content_details] unless args[:content_details].nil?
           @etag = args[:etag] unless args[:etag].nil?
@@ -1268,6 +1274,7 @@ module Google
           @kind = args[:kind] unless args[:kind].nil?
           @localizations = args[:localizations] unless args[:localizations].nil?
           @snippet = args[:snippet] unless args[:snippet].nil?
+          @targeting = args[:targeting] unless args[:targeting].nil?
         end
       end
 
@@ -1393,6 +1400,32 @@ module Google
           @style = args[:style] unless args[:style].nil?
           @title = args[:title] unless args[:title].nil?
           @type = args[:type] unless args[:type].nil?
+        end
+      end
+
+      # ChannelSection targeting setting.
+      class ChannelSectionTargeting
+        include Google::Apis::Core::Hashable
+      
+        # The country the channel section is targeting.
+        # Corresponds to the JSON property `countrys`
+        # @return [Array<String>]
+        attr_accessor :countrys
+      
+        # The language the channel section is targeting.
+        # Corresponds to the JSON property `languages`
+        # @return [Array<String>]
+        attr_accessor :languages
+      
+        # The region the channel section is targeting.
+        # Corresponds to the JSON property `regions`
+        # @return [Array<String>]
+        attr_accessor :regions
+      
+        def initialize(**args)
+          @countrys = args[:countrys] unless args[:countrys].nil?
+          @languages = args[:languages] unless args[:languages].nil?
+          @regions = args[:regions] unless args[:regions].nil?
         end
       end
 
@@ -4981,6 +5014,176 @@ module Google
           @status = args[:status] unless args[:status].nil?
           @suggestions = args[:suggestions] unless args[:suggestions].nil?
           @topic_details = args[:topic_details] unless args[:topic_details].nil?
+        end
+      end
+
+      # 
+      class VideoAbuseReport
+        include Google::Apis::Core::Hashable
+      
+        # Additional comments regarding the abuse report.
+        # Corresponds to the JSON property `comments`
+        # @return [String]
+        attr_accessor :comments
+      
+        # The language that the content was viewed in.
+        # Corresponds to the JSON property `language`
+        # @return [Google::Apis::YoutubeV3::LanguageTag]
+        attr_accessor :language
+      
+        # The high-level, or primary, reason that the content is abusive. The value is
+        # an abuse report reason ID.
+        # Corresponds to the JSON property `reasonId`
+        # @return [Google::Apis::YoutubeV3::VideoAbuseReportReasonId]
+        attr_accessor :reason_id
+      
+        # The specific, or secondary, reason that this content is abusive (if available).
+        # The value is an abuse report reason ID that is a valid secondary reason for
+        # the primary reason.
+        # Corresponds to the JSON property `secondaryReasonId`
+        # @return [Google::Apis::YoutubeV3::VideoAbuseReportReasonId]
+        attr_accessor :secondary_reason_id
+      
+        # The ID that YouTube uses to uniquely identify the video.
+        # Corresponds to the JSON property `videoId`
+        # @return [String]
+        attr_accessor :video_id
+      
+        def initialize(**args)
+          @comments = args[:comments] unless args[:comments].nil?
+          @language = args[:language] unless args[:language].nil?
+          @reason_id = args[:reason_id] unless args[:reason_id].nil?
+          @secondary_reason_id = args[:secondary_reason_id] unless args[:secondary_reason_id].nil?
+          @video_id = args[:video_id] unless args[:video_id].nil?
+        end
+      end
+
+      # A videoAbuseReportReason resource identifies a reason that a video could be
+      # reported as abusive. Video abuse report reasons are used with video.
+      # ReportAbuse.
+      class VideoAbuseReportReason
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The ID of this abuse report reason.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # videoAbuseReportReason".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The snippet object contains basic details about the abuse report reason.
+        # Corresponds to the JSON property `snippet`
+        # @return [Google::Apis::YoutubeV3::VideoAbuseReportReasonSnippet]
+        attr_accessor :snippet
+      
+        def initialize(**args)
+          @etag = args[:etag] unless args[:etag].nil?
+          @id = args[:id] unless args[:id].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @snippet = args[:snippet] unless args[:snippet].nil?
+        end
+      end
+
+      # 
+      class VideoAbuseReportReasonId
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+          @value = args[:value] unless args[:value].nil?
+        end
+      end
+
+      # 
+      class VideoAbuseReportReasonListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Serialized EventId of the request which produced this response.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # A list of valid abuse reasons that are used with video.ReportAbuse.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubeV3::VideoAbuseReportReason>]
+        attr_accessor :items
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # videoAbuseReportReasonListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The visitorId identifies the visitor.
+        # Corresponds to the JSON property `visitorId`
+        # @return [String]
+        attr_accessor :visitor_id
+      
+        def initialize(**args)
+          @etag = args[:etag] unless args[:etag].nil?
+          @event_id = args[:event_id] unless args[:event_id].nil?
+          @items = args[:items] unless args[:items].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
+        end
+      end
+
+      # Basic details about a video category, such as its localized title.
+      class VideoAbuseReportReasonSnippet
+        include Google::Apis::Core::Hashable
+      
+        # The localized label belonging to this abuse report reason.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # The secondary reasons associated with this reason, if any are available. (
+        # There might be 0 or more.)
+        # Corresponds to the JSON property `secondaryReasons`
+        # @return [Array<Google::Apis::YoutubeV3::VideoAbuseReportSecondaryReason>]
+        attr_accessor :secondary_reasons
+      
+        def initialize(**args)
+          @label = args[:label] unless args[:label].nil?
+          @secondary_reasons = args[:secondary_reasons] unless args[:secondary_reasons].nil?
+        end
+      end
+
+      # 
+      class VideoAbuseReportSecondaryReason
+        include Google::Apis::Core::Hashable
+      
+        # The ID of this abuse report secondary reason.
+        # Corresponds to the JSON property `id`
+        # @return [Google::Apis::YoutubeV3::VideoAbuseReportReasonId]
+        attr_accessor :id
+      
+        # The localized label for this abuse report secondary reason.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        def initialize(**args)
+          @id = args[:id] unless args[:id].nil?
+          @label = args[:label] unless args[:label].nil?
         end
       end
 

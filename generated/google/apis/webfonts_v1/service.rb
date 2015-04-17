@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/webfonts/v1/')
+          super('https://www.googleapis.com/', 'webfonts/v1/')
         end
 
         # Retrieves the list of fonts currently served by the Google Fonts Developer API

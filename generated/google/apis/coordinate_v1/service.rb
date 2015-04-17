@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/coordinate/v1/')
+          super('https://www.googleapis.com/', 'coordinate/v1/')
         end
 
         # Retrieves a list of custom field definitions for a team.

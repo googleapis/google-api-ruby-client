@@ -51,7 +51,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/container/v1beta1/projects/')
+          super('https://www.googleapis.com/', 'container/v1beta1/projects/')
         end
 
         # Lists all clusters owned by a project across all zones.

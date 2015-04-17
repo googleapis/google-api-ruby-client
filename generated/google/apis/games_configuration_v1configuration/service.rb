@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/games/v1configuration/')
+          super('https://www.googleapis.com/', 'games/v1configuration/')
         end
 
         # Delete the achievement configuration with the given ID.

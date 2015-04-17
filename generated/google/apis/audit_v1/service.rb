@@ -51,7 +51,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/apps/reporting/audit/v1/')
+          super('https://www.googleapis.com/', 'apps/reporting/audit/v1/')
         end
 
         # Retrieves a list of activities for a specific customer and application.

@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/genomics/v1beta2/')
+          super('https://www.googleapis.com/', 'genomics/v1beta2/')
         end
 
         # Creates a new annotation set. Caller must have WRITE permission for the

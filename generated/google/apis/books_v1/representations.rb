@@ -623,6 +623,7 @@ module Google
           property :info_link, as: 'infoLink'
           property :language, as: 'language'
           property :main_category, as: 'mainCategory'
+          property :maturity_rating, as: 'maturityRating'
           property :page_count, as: 'pageCount'
           property :preview_link, as: 'previewLink'
           property :print_type, as: 'printType'

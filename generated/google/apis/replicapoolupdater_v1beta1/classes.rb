@@ -77,7 +77,7 @@ module Google
             # @return [String]
             attr_accessor :code
           
-            # [Output Only] Indicates the field in the request which caused the error. This
+            # [Output Only] Indicates the field in the request that caused the error. This
             # property is optional.
             # Corresponds to the JSON property `location`
             # @return [String]
@@ -138,7 +138,7 @@ module Google
         # @return [String]
         attr_accessor :client_operation_id
       
-        # [Output Only] Creation timestamp in RFC3339 text format (output only).
+        # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
         attr_accessor :creation_timestamp
@@ -181,7 +181,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] Name of the resource (output only).
+        # [Output Only] Name of the resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -196,7 +196,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :progress
       
-        # [Output Only] URL of the region where the operation resides (output only).
+        # [Output Only] URL of the region where the operation resides.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -230,7 +230,7 @@ module Google
         # @return [String]
         attr_accessor :target_id
       
-        # [Output Only] URL of the resource the operation is mutating (output only).
+        # [Output Only] URL of the resource the operation is mutating.
         # Corresponds to the JSON property `targetLink`
         # @return [String]
         attr_accessor :target_link
@@ -245,7 +245,7 @@ module Google
         # @return [Array<Google::Apis::ReplicapoolupdaterV1beta1::Operation::Warning>]
         attr_accessor :warnings
       
-        # [Output Only] URL of the zone where the operation resides (output only).
+        # [Output Only] URL of the zone where the operation resides.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -296,7 +296,7 @@ module Google
             # @return [String]
             attr_accessor :code
           
-            # [Output Only] Indicates the field in the request which caused the error. This
+            # [Output Only] Indicates the field in the request that caused the error. This
             # property is optional.
             # Corresponds to the JSON property `location`
             # @return [String]
@@ -369,7 +369,7 @@ module Google
         # can be RECREATE which will recreate each instance and is only available for
         # managed instance groups. It can also be REBOOT which performs a soft reboot
         # for each instance and is only available for regular (non-managed) instance
-        # groups and explicit lists of instances.
+        # groups.
         # Corresponds to the JSON property `actionType`
         # @return [String]
         attr_accessor :action_type
@@ -385,7 +385,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Errors that occurred during rolling update.
+        # [Output Only] Errors that occurred during the rolling update.
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdate::Error]
         attr_accessor :error
@@ -396,13 +396,13 @@ module Google
         attr_accessor :id
       
         # Fully-qualified URL of an instance group being updated. Exactly one of
-        # instanceGroupManager, instanceGroup and instance list must be set.
+        # instanceGroupManager and instanceGroup must be set.
         # Corresponds to the JSON property `instanceGroup`
         # @return [String]
         attr_accessor :instance_group
       
         # Fully-qualified URL of an instance group manager being updated. Exactly one of
-        # instanceGroupManager, instanceGroup and instance list must be set.
+        # instanceGroupManager and instanceGroup must be set.
         # Corresponds to the JSON property `instanceGroupManager`
         # @return [String]
         attr_accessor :instance_group_manager
@@ -411,12 +411,6 @@ module Google
         # Corresponds to the JSON property `instanceTemplate`
         # @return [String]
         attr_accessor :instance_template
-      
-        # List of fully-qualified URLs of instances to be updated. Exactly one of
-        # instanceGroupManager, instanceGroup and instance list must be set.
-        # Corresponds to the JSON property `instances`
-        # @return [Array<String>]
-        attr_accessor :instances
       
         # [Output Only] Type of the resource.
         # Corresponds to the JSON property `kind`
@@ -475,7 +469,6 @@ module Google
           @instance_group = args[:instance_group] unless args[:instance_group].nil?
           @instance_group_manager = args[:instance_group_manager] unless args[:instance_group_manager].nil?
           @instance_template = args[:instance_template] unless args[:instance_template].nil?
-          @instances = args[:instances] unless args[:instances].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @policy = args[:policy] unless args[:policy].nil?
           @progress = args[:progress] unless args[:progress].nil?
@@ -484,7 +477,7 @@ module Google
           @status_message = args[:status_message] unless args[:status_message].nil?
           @user = args[:user] unless args[:user].nil?
         end
-        # [Output Only] Errors that occurred during rolling update.
+        # [Output Only] Errors that occurred during the rolling update.
         class Error
           include Google::Apis::Core::Hashable
         
@@ -505,7 +498,7 @@ module Google
             # @return [String]
             attr_accessor :code
           
-            # [Output Only] Indicates the field in the request which caused the error. This
+            # [Output Only] Indicates the field in the request that caused the error. This
             # property is optional.
             # Corresponds to the JSON property `location`
             # @return [String]
@@ -527,50 +520,42 @@ module Google
         class Policy
           include Google::Apis::Core::Hashable
         
-          # Number of instances updated before the update gets automatically paused.
+          # Number of instances to update before the updater pauses the rolling update.
           # Corresponds to the JSON property `autoPauseAfterInstances`
           # @return [Fixnum]
           attr_accessor :auto_pause_after_instances
         
-          # Maximum amount of time we will wait after finishing all steps until we receive
-          # HEALTHY state for instance. If this deadline is exceeded instance update is
-          # considered as failed.
+          # The maximum amount of time that the updater waits for a HEALTHY state after
+          # all of the update steps are complete. If the HEALTHY state is not received
+          # before the deadline, the instance update is considered a failure.
           # Corresponds to the JSON property `instanceStartupTimeoutSec`
           # @return [Fixnum]
           attr_accessor :instance_startup_timeout_sec
         
-          # Maximum number of instances that can be updated simultaneously (concurrently).
-          # An update of an instance starts when the instance is about to be restarted and
-          # finishes after the instance has been restarted and the sleep period (defined
-          # by sleepAfterInstanceRestartSec) has passed.
+          # The maximum number of instances that can be updated simultaneously. An
+          # instance update is considered complete only after the instance is restarted
+          # and initialized.
           # Corresponds to the JSON property `maxNumConcurrentInstances`
           # @return [Fixnum]
           attr_accessor :max_num_concurrent_instances
         
-          # Maximum number of instance updates that can fail without failing the group
-          # update. Instance update is considered failed if any of it's update actions (e.
-          # g. Stop call on Instance resource in Rolling Reboot) failed with permanent
-          # failure, or if after finishing all update actions this instance is in
-          # UNHEALTHY state.
+          # The maximum number of instance updates that can fail before the group update
+          # is considered a failure. An instance update is considered failed if any of its
+          # update actions (e.g. Stop call on Instance resource in Rolling Reboot) failed
+          # with permanent failure, or if the instance is in an UNHEALTHY state after it
+          # finishes all of the update actions.
           # Corresponds to the JSON property `maxNumFailedInstances`
           # @return [Fixnum]
           attr_accessor :max_num_failed_instances
         
-          # Specifies minimum amount of time we will spend on updating single instance,
-          # measuring at the start of the first update action (e.g. Recreate call on
-          # Instance Group Manager or Stop call on Instance resource). If actual instance
-          # update takes less time we will simply sleep before proceeding with next
-          # instance.
+          # The minimum amount of time that the updater spends to update each instance.
+          # Update time is the time it takes to complete all update actions (e.g. Stop
+          # call on Instance resource in Rolling Reboot), reboot, and initialize. If the
+          # instance update finishes early, the updater pauses for the remainder of the
+          # time before it starts the next instance update.
           # Corresponds to the JSON property `minInstanceUpdateTimeSec`
           # @return [Fixnum]
           attr_accessor :min_instance_update_time_sec
-        
-          # Time period after the instance has been restarted but before marking the
-          # update of this instance as done. This field is deprecated and ignored by
-          # Rolling Updater.
-          # Corresponds to the JSON property `sleepAfterInstanceRestartSec`
-          # @return [Fixnum]
-          attr_accessor :sleep_after_instance_restart_sec
         
           def initialize(**args)
             @auto_pause_after_instances = args[:auto_pause_after_instances] unless args[:auto_pause_after_instances].nil?
@@ -578,7 +563,6 @@ module Google
             @max_num_concurrent_instances = args[:max_num_concurrent_instances] unless args[:max_num_concurrent_instances].nil?
             @max_num_failed_instances = args[:max_num_failed_instances] unless args[:max_num_failed_instances].nil?
             @min_instance_update_time_sec = args[:min_instance_update_time_sec] unless args[:min_instance_update_time_sec].nil?
-            @sleep_after_instance_restart_sec = args[:sleep_after_instance_restart_sec] unless args[:sleep_after_instance_restart_sec].nil?
           end
         end
       end

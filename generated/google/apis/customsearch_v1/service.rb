@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/customsearch/')
+          super('https://www.googleapis.com/', 'customsearch/')
         end
 
         # Returns metadata about the search performed, metadata about the custom search

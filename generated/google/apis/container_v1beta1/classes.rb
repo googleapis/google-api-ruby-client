@@ -67,9 +67,7 @@ module Google
         # @return [String]
         attr_accessor :endpoint
       
-        # The HTTP basic authentication information for accessing the master. Because
-        # the master endpoint is open to the internet, you should create a strong
-        # password.
+        # The authentication information for accessing the master.
         # Corresponds to the JSON property `masterAuth`
         # @return [Google::Apis::ContainerV1beta1::MasterAuth]
         attr_accessor :master_auth
@@ -229,21 +227,33 @@ module Google
         end
       end
 
-      # 
+      # The authentication information for accessing the master. Authentication is
+      # either done using HTTP basic authentication or using a bearer token.
       class MasterAuth
         include Google::Apis::Core::Hashable
       
-        # The password to use when accessing the Kubernetes master endpoint.
+        # The token used to authenticate API requests to the master. The token is be
+        # included in an HTTP Authorization Header included in all requests to the
+        # master endpoint. The format of the header is: "Authorization: Bearer ".
+        # Corresponds to the JSON property `bearerToken`
+        # @return [String]
+        attr_accessor :bearer_token
+      
+        # The password to use for HTTP basic authentication when accessing the
+        # Kubernetes master endpoint. Because the master endpoint is open to the
+        # internet, you should create a strong password.
         # Corresponds to the JSON property `password`
         # @return [String]
         attr_accessor :password
       
-        # The username to use when accessing the Kubernetes master endpoint.
+        # The username to use for HTTP basic authentication when accessing the
+        # Kubernetes master endpoint.
         # Corresponds to the JSON property `user`
         # @return [String]
         attr_accessor :user
       
         def initialize(**args)
+          @bearer_token = args[:bearer_token] unless args[:bearer_token].nil?
           @password = args[:password] unless args[:password].nil?
           @user = args[:user] unless args[:user].nil?
         end

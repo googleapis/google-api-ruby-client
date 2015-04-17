@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/gan/v1beta1/')
+          super('https://www.googleapis.com/', 'gan/v1beta1/')
         end
 
         # Retrieves data about a single advertiser if that the requesting advertiser/

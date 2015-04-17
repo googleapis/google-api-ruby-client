@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://dataflow.googleapis.com/', '/')
+          super('https://dataflow.googleapis.com/', '')
         end
 
         protected

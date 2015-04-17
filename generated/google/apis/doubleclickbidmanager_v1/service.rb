@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/doubleclickbidmanager/v1/')
+          super('https://www.googleapis.com/', 'doubleclickbidmanager/v1/')
         end
 
         # Retrieves line items in CSV format.

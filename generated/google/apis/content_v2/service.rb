@@ -51,7 +51,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/content/v2/')
+          super('https://www.googleapis.com/', 'content/v2/')
         end
 
         # Returns information about the authenticated user.

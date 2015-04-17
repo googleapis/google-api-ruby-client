@@ -51,7 +51,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/pagespeedonline/v2/')
+          super('https://www.googleapis.com/', 'pagespeedonline/v2/')
         end
 
         # Runs PageSpeed analysis on the page at the specified URL, and returns

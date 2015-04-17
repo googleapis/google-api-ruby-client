@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/qpxExpress/v1/trips/')
+          super('https://www.googleapis.com/', 'qpxExpress/v1/trips/')
         end
 
         # Returns a list of flights.

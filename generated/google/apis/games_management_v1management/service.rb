@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/games/v1management/')
+          super('https://www.googleapis.com/', 'games/v1management/')
         end
 
         # Resets the achievement with the given ID for the currently authenticated

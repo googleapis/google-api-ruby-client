@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/blogger/v3/')
+          super('https://www.googleapis.com/', 'blogger/v3/')
         end
 
         # Gets one blog and user info pair by blogId and userId.

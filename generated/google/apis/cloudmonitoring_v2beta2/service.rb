@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/cloudmonitoring/v2beta2/projects/')
+          super('https://www.googleapis.com/', 'cloudmonitoring/v2beta2/projects/')
         end
 
         # Create a new metric.

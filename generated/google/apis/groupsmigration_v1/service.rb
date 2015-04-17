@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/groups/v1/groups/')
+          super('https://www.googleapis.com/', 'groups/v1/groups/')
         end
 
         # Inserts a new mail into the archive of the Google group.

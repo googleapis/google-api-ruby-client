@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/urlshortener/v1/')
+          super('https://www.googleapis.com/', 'urlshortener/v1/')
         end
 
         # Expands a short URL or gets creation time and analytics.

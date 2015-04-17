@@ -2620,6 +2620,11 @@ module Google
           # @return [String]
           attr_accessor :main_category
         
+          # 
+          # Corresponds to the JSON property `maturityRating`
+          # @return [String]
+          attr_accessor :maturity_rating
+        
           # Total number of pages as per publisher metadata.
           # Corresponds to the JSON property `pageCount`
           # @return [Fixnum]
@@ -2688,6 +2693,7 @@ module Google
             @info_link = args[:info_link] unless args[:info_link].nil?
             @language = args[:language] unless args[:language].nil?
             @main_category = args[:main_category] unless args[:main_category].nil?
+            @maturity_rating = args[:maturity_rating] unless args[:maturity_rating].nil?
             @page_count = args[:page_count] unless args[:page_count].nil?
             @preview_link = args[:preview_link] unless args[:preview_link].nil?
             @print_type = args[:print_type] unless args[:print_type].nil?

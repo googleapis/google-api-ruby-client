@@ -112,8 +112,6 @@ module Google
         property :instance_group, as: 'instanceGroup'
         property :instance_group_manager, as: 'instanceGroupManager'
         property :instance_template, as: 'instanceTemplate'
-        collection :instances, as: 'instances'
-        
         property :kind, as: 'kind'
         property :policy, as: 'policy', class: Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdate::Policy do
           property :auto_pause_after_instances, as: 'autoPauseAfterInstances'
@@ -121,7 +119,6 @@ module Google
           property :max_num_concurrent_instances, as: 'maxNumConcurrentInstances'
           property :max_num_failed_instances, as: 'maxNumFailedInstances'
           property :min_instance_update_time_sec, as: 'minInstanceUpdateTimeSec'
-          property :sleep_after_instance_restart_sec, as: 'sleepAfterInstanceRestartSec'
         end
         
         property :progress, as: 'progress'

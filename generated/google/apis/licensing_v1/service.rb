@@ -50,7 +50,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/apps/licensing/v1/product/')
+          super('https://www.googleapis.com/', 'apps/licensing/v1/product/')
         end
 
         # Revoke License.

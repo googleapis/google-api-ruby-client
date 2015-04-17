@@ -51,7 +51,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/deploymentmanager/v2beta1/projects/')
+          super('https://www.googleapis.com/', 'deploymentmanager/v2beta1/projects/')
         end
 
         # ! Deletes a deployment and all of the resources in the deployment.
