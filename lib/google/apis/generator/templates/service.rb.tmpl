@@ -42,9 +42,9 @@ module Google
         def initialize
           super('<%= api.root_url %>', '<%= api.base_path %>')
         end
-<% for method in api.api_methods %>
+<% for api_method in api.api_methods %>
 
-        <%= indent(include('method', :method => method, :api => api), 8) %>
+        <%= indent(include('method', :api_method => api_method, :api => api), 8) %>
 <% end %>
 <% for resource in api.resources %>
 

@@ -17,8 +17,8 @@ class <%= cls.class_name %><% if cls.base_class %> < <%= cls.base_class.class_na
     @<%= property.name %> = args[:<%= property.name %>] unless args[:<%= property.name %>].nil?
 <% end %>
   end
-<% for cls in cls.classes %>
-  <%= indent(include('class', :cls => cls, :api => api), 2) %>
+<% for child_class in cls.classes %>
+  <%= indent(include('class', :cls => child_class, :api => api), 2) %>
 <% end %>
 end
 

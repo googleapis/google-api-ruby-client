@@ -14,6 +14,7 @@
 
 require 'active_support/inflector'
 require 'erb'
+require 'ostruct'
 
 module Google
   module Apis
@@ -63,11 +64,32 @@ module Google
           pre = ' ' * spaces
           str.split(/\n/).join("\n" + pre)
         end
+
+        # Include a partial inside a template.
+        #
+        # @private
+        # @param [String] partial
+        #  Name of the template
+        # @param [Hash] context
+        #  Context used to render
+        # @return [String] rendered content
+        def include(partial, context)
+          template = Template.new(sprintf('_%s.tmpl', partial))
+          template.render(context)
+        end
+      end
+
+      # Holds local vars/helpers for template rendering
+      class Context < OpenStruct
+        include TemplateHelpers
+
+        def get_binding
+          binding
+        end
       end
 
       # ERB template for the code generator
       class Template
-        include TemplateHelpers
 
         # Loads a template from the template dir. Automatically
         # appends the .tmpl suffix
@@ -85,30 +107,14 @@ module Google
           @erb = ERB.new(File.read(file), nil, '<>')
         end
 
-        # Include a partial inside a template.
-        #
-        # @private
-        # @param [String] partial
-        #  Name of the template
-        # @param [Hash] context
-        #  Context used to render
-        # @return [String] rendered content
-        def include(partial, context)
-          template = Template.new(sprintf('_%s.tmpl', partial))
-          template.render(context)
-        end
-
         # Render the template
         #
         # @param [Hash] context
         #  Variables to set when rendering the template
         # @return [String] rendered template
         def render(context)
-          b = binding
-          context.each do |key, value|
-            b.local_variable_set(key, value)
-          end
-          @erb.result(b)
+          ctx = Context.new(context)
+          @erb.result(ctx.get_binding)
         end
       end
     end
