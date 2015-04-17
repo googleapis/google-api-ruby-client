@@ -1,0 +1,80 @@
+# Copyright 2015 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+require 'date'
+require 'google/apis/core/base_service'
+require 'google/apis/core/json_representation'
+require 'google/apis/core/hashable'
+require 'google/apis/errors'
+
+module Google
+  module Apis
+    module TranslateV2
+      class DetectionsListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
+      class DetectionsResourceRepresentation < Google::Apis::Core::JsonRepresentation; end
+      class LanguagesListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
+      class LanguagesResourceRepresentation < Google::Apis::Core::JsonRepresentation; end
+      class TranslationsListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
+      class TranslationsResourceRepresentation < Google::Apis::Core::JsonRepresentation; end
+
+      # @private
+      class DetectionsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::DetectionsListResponse }
+        collection :detections, as: 'detections', :class => Array do
+          include Representable::JSON::Collection
+          items class: Google::Apis::TranslateV2::DetectionsResource do
+          property :confidence, as: 'confidence'
+          property :is_reliable, as: 'isReliable'
+          property :language, as: 'language'
+        end
+        
+        end
+      end
+
+      # @private
+      class DetectionsResourceRepresentation < Google::Apis::Core::JsonRepresentation
+        self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::DetectionsResource }
+        property :confidence, as: 'confidence'
+        property :is_reliable, as: 'isReliable'
+        property :language, as: 'language'
+      end
+
+      # @private
+      class LanguagesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::LanguagesListResponse }
+        collection :languages, as: 'languages', class: Google::Apis::TranslateV2::LanguagesResource, decorator: Google::Apis::TranslateV2::LanguagesResourceRepresentation
+      end
+
+      # @private
+      class LanguagesResourceRepresentation < Google::Apis::Core::JsonRepresentation
+        self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::LanguagesResource }
+        property :language, as: 'language'
+        property :name, as: 'name'
+      end
+
+      # @private
+      class TranslationsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::TranslationsListResponse }
+        collection :translations, as: 'translations', class: Google::Apis::TranslateV2::TranslationsResource, decorator: Google::Apis::TranslateV2::TranslationsResourceRepresentation
+      end
+
+      # @private
+      class TranslationsResourceRepresentation < Google::Apis::Core::JsonRepresentation
+        self.representation_wrap = lambda { |args| :data if args[:unwrap] == Google::Apis::TranslateV2::TranslationsResource }
+        property :detected_source_language, as: 'detectedSourceLanguage'
+        property :translated_text, as: 'translatedText'
+      end
+    end
+  end
+end

@@ -1,9 +1,4 @@
 source 'https://rubygems.org'
 
+# Specify your gem's dependencies in google-apis.gemspec
 gemspec
-
-gem 'jruby-openssl', :platforms => :jruby
-
-if ENV['RAILS_VERSION']
-  gem 'rails', ENV['RAILS_VERSION']
-end

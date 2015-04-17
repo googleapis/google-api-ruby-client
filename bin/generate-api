@@ -1,0 +1,75 @@
+#!/usr/bin/env ruby
+
+# TODO - Repeated params
+
+require 'thor'
+require 'open-uri'
+require 'google/apis'
+require 'google/apis/generator'
+require 'multi_json'
+require 'logger'
+
+module Google
+  class ApiGenerator < Thor
+    include Thor::Actions
+
+    DISCOVERY_URL = 'https://www.googleapis.com/discovery/v1/apis'
+
+    desc 'gen OUTDIR', 'Generate ruby API from an API description'
+    method_options url: :string, file: :string, id: :array, preferred_only: :boolean, verbose: :boolean
+    method_option :preferred_only, default: true
+    def gen(dir)
+      self.destination_root = dir
+      Google::Apis.logger.level = Logger::DEBUG if options[:verbose]
+      if options[:url]
+        generate_from_url(options[:url])
+      elsif options[:file]
+        generate_from_file(options[:file])
+      else
+        generate_from_discovery(preferred_only: options[:preferred_only], id: options[:id] )
+      end
+    end
+
+    no_commands do
+      def generate_from_url(url)
+        open(url) do |f|
+          generate_api(f.read)
+        end
+      end
+
+      def generate_from_file(file)
+        File.open(file) do |f|
+          generate_api(f.read)
+        end
+      end
+
+      def generate_from_discovery(preferred_only: false, id: nil)
+        say "Fetching API list from #{DISCOVERY_URL}"
+        id = Array(id)
+        open(DISCOVERY_URL) do |f|
+          apis = MultiJson.load(f.read)
+          apis['items'].each do |api|
+            if (id.nil? && preferred_only && api['preferred']) || id.include?(api['id'])
+              say sprintf("Loading %s, version %s from %s", api['name'], api['version'], api['discoveryRestUrl'])
+              generate_from_url(api['discoveryRestUrl'])
+            end
+          end
+        end
+      end
+
+      def generate_api(json)
+        files = generator.render(json)
+        files.each do |file, content|
+          create_file(file) { |*| content }
+        end
+      end
+
+      def generator
+        @generator ||= Google::Apis::Generator.new
+      end
+    end
+  end
+
+end
+
+Google::ApiGenerator.start(ARGV)

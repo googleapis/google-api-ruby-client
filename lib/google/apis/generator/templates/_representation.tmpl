@@ -1,0 +1,28 @@
+<% if cls.discriminant %>
+def from_hash(hash, *args)
+  case hash['<%= cls.discriminant %>']
+<% cls.variants.each do | key, type | %>
+  when '<%= key %>'
+    <%= type.name %>Representation.new(<%= type.name %>.new).from_hash(hash, *args)
+<% end %>
+  end
+end
+
+def to_hash(*args)
+  case represented
+<% cls.variants.each do | key, type | %>
+  when <%= type.name %>
+    <%= type.name %>Representation.new(represented).to_hash(*args)
+<% end %>
+  end
+end
+<% else %>
+<% for property in cls.properties.values %>
+<% if property.type.hash? %>
+hash :<%= property.name %>, as: '<%= property.original_name %>'<%= include('representation_type', :lead => ', ' , :type => property.type.item_type, :api => api) %>
+<% elsif property.type.array? %>
+collection :<%= property.name %>, as: '<%= property.original_name %>'<%= include('representation_type', :lead => ', ' , :type => property.type.item_type, :api => api) %>
+<% else %>
+property :<%= property.name %>, as: '<%= property.original_name %>'<%= include('representation_type', :lead => ', ' , :type => property.type, :api => api) %><% end %>
+<% end %>
+<% end %>

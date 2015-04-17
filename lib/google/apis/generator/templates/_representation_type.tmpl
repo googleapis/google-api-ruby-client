@@ -1,0 +1,18 @@
+<% if type.array? %>
+<%= lead %>
+:class => Array do
+  include Representable::JSON::Collection
+  items<%= include('representation_type', :lead => ' ' , :type => type.item_type, :api => api) %>
+end
+<% elsif type.basic? && ['Date', 'DateTime'].include?(type.name) %>
+<%= lead %>type: <%= type.name %>
+<% elsif type.schema_type %>
+<%= lead %>
+<% if type.anonymous? %>
+class: <%= type.name %> do
+  <%= indent(include('representation', :cls => type.schema_type, :api => api), 2) %>
+end
+<% else %>
+class: <%= type.name %>, decorator: <%= type.name %>Representation
+<% end %>
+<% end %>

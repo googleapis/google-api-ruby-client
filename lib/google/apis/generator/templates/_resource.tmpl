@@ -1,0 +1,7 @@
+<% for method in resource.api_methods %>
+<%= include('method', :method => method, :api =>api) %>
+<% end %>
+<% for resource in resource.resources %>
+<%= include('resource', :resource => resource, :api => api) %>
+<% end %>
+

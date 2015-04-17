@@ -1,0 +1,24 @@
+# <%= block_comment(cls.description, 0, 1) %>
+class <%= cls.class_name %><% if cls.base_class %> < <%= cls.base_class.class_name %><% end %>
+  include Google::Apis::Core::Hashable
+<% for property in cls.properties.values %>
+
+  # <%= block_comment(property.description, 2, 1) %>
+  # Corresponds to the JSON property `<%= property.original_name %>`
+  # @return [<%= property.type.name %>]
+  attr_accessor :<%= property.name %>
+<% if property.type.name == 'Boolean' %>
+  alias_method :<%= property.name %>?, :<%= property.name %>
+<% end %>
+<% end %>
+
+  def initialize(**args)
+<% for property in cls.properties.values %>
+    @<%= property.name %> = args[:<%= property.name %>] unless args[:<%= property.name %>].nil?
+<% end %>
+  end
+<% for cls in cls.classes %>
+  <%= indent(include('class', :cls => cls, :api => api), 2) %>
+<% end %>
+end
+

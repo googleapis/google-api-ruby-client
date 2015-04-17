@@ -1,0 +1,78 @@
+# <%= block_comment(method.description, 0, 1) %>
+<% for param in method.ordered_params %>
+# @param [<% if param.repeated? %>Array<<%= param.type.name %>>, <% end %><%= param.type.name %>] <%= param.name %>
+#   <%=  block_comment(param.description, 0, 3) %>
+<% end %>
+<% for param in api.method_params %>
+# @param [<% if param.repeated? %>Array<<%= param.type.name %>>, <% end %><%= param.type.name %>] <%= param.name %>
+#   <%= block_comment(param.description, 0, 3) %>
+<% end %>
+<% if method.upload? %>
+# @param [IO, String] upload_source
+#   IO stream or filename containing content to upload
+# @param [String] content_type
+#   Content type of the uploaded content.
+<% elsif method.download? %>
+# @param [IO, String] download_dest
+#   IO stream or filename to receive content download
+<% end %>
+# @param [Google::Api::RequestOptions] options
+#   Request-specific options
+#
+# @yield [result, err] Result & error if block supplied
+<% if method.response_type %>
+# @yieldparam result [<%= method.response_type.name %>] parsed result object
+# @yieldparam err [StandardError] error object if request failed
+#
+# @return [<%= method.response_type.name %>]
+<% else %>
+# @yieldparam result [NilClass] No result returned for this method
+# @yieldparam err [StandardError] error object if request failed
+#
+# @return [void]
+<% end %>
+#
+# @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+# @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+# @raise [Google::Apis::AuthorizationError] Authorization is required
+def <%= method.name %>(<% for param in method.ordered_params %><%= param.signature %>, <% end %><% for param in api.method_params %><%= param.signature %>, <% end %><% if method.upload? %>upload_source: nil, content_type: nil, <% elsif method.download? %>download_dest: nil, <%  end  %>options: nil, &block)
+  path = '<%= method.path %>'
+<% if method.upload? %>
+  if upload_source.nil?
+    command =  make_simple_command(:<%= method.http_method %>, path, options)
+  else
+    command = make_upload_command(:<%= method.http_method %>, path, options)
+    command.upload_source = upload_source
+    command.upload_content_type = content_type
+  end
+<% elsif method.download? %>
+  if download_dest.nil?
+    command =  make_simple_command(:<%= method.http_method %>, path, options)
+  else
+    command = make_download_command(:<%= method.http_method %>, path, options)
+    command.download_dest = download_dest
+  end
+<% else %>
+  command =  make_simple_command(:<%= method.http_method %>, path, options)
+<% end %>
+<% if method.request_body %>
+  command.request_representation = <%= method.request_body.type.name %>Representation
+  command.request_object = <%= method.request_body.signature %>
+<% end %>
+<% if method.response_type %>
+  command.response_representation = <%= method.response_type.name %>Representation
+  command.response_class = <%= method.response_type.name %>
+<% end %>
+<% for param in method.path_params %>
+  command.params['<%= param.original_name %>'] = <%= param.name %> unless <%= param.name %>.nil?
+<% end %>
+<% for param in method.query_params %>
+  command.query['<%= param.original_name %>'] = <%= param.name %> unless <%= param.name %>.nil?
+<% end %>
+<% for param in api.method_params %>
+  command.query['<%= param.original_name %>'] = <%= param.name %> unless <%= param.name %>.nil?
+<% end %>
+  execute_or_queue_command(command, &block)
+end
+
+
