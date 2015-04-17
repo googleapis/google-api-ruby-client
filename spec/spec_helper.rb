@@ -24,9 +24,16 @@ $LOAD_PATH.uniq!
 # set up coverage
 require 'simplecov'
 require 'coveralls'
-#
-SimpleCov.formatter = Coveralls::SimpleCov::Formatter
-SimpleCov.start
+
+SimpleCov.formatters = [
+  Coveralls::SimpleCov::Formatter,
+  SimpleCov::Formatter::HTMLFormatter
+]
+
+SimpleCov.start do
+  add_filter "/spec/"
+  add_filter "/generated/"
+end
 
 require 'rspec'
 require 'json_spec'
