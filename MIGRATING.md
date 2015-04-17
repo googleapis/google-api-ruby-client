@@ -152,3 +152,20 @@ urlshortener.batch do |urlshortener|
   urlshortner.insert_url({long_url: 'http://example.com/bar'}, &callback)
 end
 ```
+
+## JRuby
+
+Jruby 1.7.4 in 2.0 compatibility mode is supported. To enable for a specific script:
+
+```
+jruby --2.0 myscript.rb
+```
+
+Or set as the default:
+
+```
+export JRUBY_OPTS=--2.0
+```
+
+JRuby 9000 will be supported once released.
+
