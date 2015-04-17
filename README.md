@@ -5,12 +5,17 @@
 This library is in Alpha. We will make an effort to support the library, but we reserve the right to make incompatible
 changes when necessary.
 
+## Migrating from 0.8.x
+
+Version 1.x is not compatible with previous versions. See [MIGRATING](MIGRATING.md) for additional details on how to
+migrate to the latest version.
+
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'google-apis'
+gem 'google-api-client'
 ```
 
 And then execute:
@@ -19,7 +24,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install google-apis
+    $ gem install google-api-client
 
 ## Usage
 
