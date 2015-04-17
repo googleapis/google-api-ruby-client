@@ -41,8 +41,7 @@ module Google
         api = discovery.parse
         base_path = ActiveSupport::Inflector.underscore(api.qualified_name)
         context = {
-            'api' => api,
-            'classes' => api.classes
+            'api' => api
         }
         files = {}
         files[base_path + '.rb'] = @module_template.render(context)
