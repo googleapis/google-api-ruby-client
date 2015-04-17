@@ -1,0 +1,440 @@
+{
+  "kind": "discovery#describeItem",
+  "name": "test",
+  "version": "v1",
+  "id": "test:v1",
+  "description": "Discovery doc API used for testing the code generator",
+  "basePath": "/test/",
+  "rootUrl": "https://www.googleapis.com/",
+  "servicePath": "test/v1/",
+  "rpcPath": "/rpc",
+  "auth": {
+    "oauth2": {
+     "scopes": {
+      "https://www.googleapis.com/auth/test": {
+       "description": "View and manage things"
+      },
+      "https://www.googleapis.com/auth/test.readonly": {
+       "description": "View things"
+      }
+     }
+    }
+   },
+   "parameters": {
+    "alt": {
+      "type": "string",
+      "description": "Data format for the response.",
+      "default": "json",
+      "enum": [
+        "json"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json"
+      ],
+      "location": "query"
+    },
+    "fields": {
+      "type": "string",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "location": "query"
+    },
+    "key": {
+      "type": "string",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "location": "query"
+    },
+    "oauth_token": {
+      "type": "string",
+      "description": "OAuth 2.0 token for the current user.",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "type": "boolean",
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "location": "query"
+    },
+    "quotaUser": {
+      "type": "string",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+      "location": "query"
+    },
+    "userIp": {
+      "type": "string",
+      "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+      "location": "query"
+    }
+  },
+  "schemas": {
+    "Thing": {
+      "id": "Thing",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "etag": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "default": "test#thing"
+        },
+        "name": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "hat": {
+          "$ref": "Hat"
+        },
+        "properties": {
+          "$ref": "HashLikeThing"
+        },
+        "photo": {
+          "type": "object",
+          "properties": {
+            "filename": {
+              "type": "string"
+            },
+            "hash": {
+              "type": "string"
+            },
+            "hashAlgorithm": {
+              "type": "string"
+            },
+            "size": {
+              "type": "integer"
+            },
+            "type": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Hat": {
+      "type": "object",
+      "variant": {
+        "discriminant": "type",
+        "map": [
+          {
+            "type_value": "topHat",
+            "$ref": "TopHat"
+          },
+          {
+            "type_value": "baseballHat",
+            "$ref": "BaseballHat"
+          }
+        ]
+      }
+    },
+    "TopHat": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "height": {
+          "type": "number"
+        }
+      }
+    },
+    "BaseballHat": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        }
+      }
+    },
+    "HashLikeThing": {
+      "id": "HashLikeThing",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "description": "A mapping from export format to URL"
+      }
+    },
+    "TestThing": {
+      "id": "TestThing",
+      "type": "object",
+      "properties" :{}
+    },
+    "TestAnotherThing": {
+      "id": "TestAnotherThing",
+      "type": "object",
+      "properties" :{}
+    },
+    "ThingList": {
+      "id": "ThingList",
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "description": "The actual list of files.",
+          "items": {
+            "$ref": "Thing"
+          }
+        },
+        "kind": {
+          "type": "string",
+          "default": "test#thinglist"
+        }
+      }
+    },
+    "QueryResults": {
+      "id": "QueryResults",
+      "type": "object",
+      "properties": {
+        "rows": {
+          "$ref": "Rows"
+        }
+      }
+    },
+    "Rows": {
+      "id": "QueryResults",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "methods": {
+    "query": {
+      "path": "query",
+      "id": "test.query",
+      "httpMethod": "GET",
+      "response": {
+        "$ref": "QueryResults"
+        //"$ref": "Rows" TODO: Support naked collections as a return value
+      },
+      "parameters": {
+        "s": {
+          "type": "string",
+          "location": "query",
+          "required": false,
+          "repeated": false
+        },
+        "i": {
+          "type": "integer",
+          "location": "query",
+          "required": false,
+          "repeated": false,
+          "minimum": "0",
+          "maximum": "4294967295",
+          "default": "20"
+        },
+        "n": {
+          "type": "number",
+          "location": "query",
+          "required": false,
+          "repeated": false
+        },
+        "b": {
+          "type": "boolean",
+          "location": "query",
+          "required": false,
+          "repeated": false
+        },
+        "a": {
+          "type": "any",
+          "location": "query",
+          "required": false,
+          "repeated": false
+        },
+        "e": {
+          "type": "string",
+          "location": "query",
+          "required": false,
+          "repeated": false,
+          "enum": [
+            "foo",
+            "bar"
+          ]
+        },
+        "er": {
+          "type": "string",
+          "location": "query",
+          "required": false,
+          "repeated": true,
+          "enum": [
+            "one",
+            "two",
+            "three"
+          ]
+        },
+        "sr": {
+          "type": "string",
+          "location": "query",
+          "required": false,
+          "repeated": true,
+          "pattern": "[a-z]+"
+        },
+        "do": {
+          "type": "string",
+          "location": "query",
+          "required": false
+        }
+      }
+    }
+  },
+  "resources": {
+    "things": {
+      "resources": {
+        "subthings": {
+          "methods": {
+            "list": {
+              "path": "things",
+              "id": "test.things.subthings.list",
+              "httpMethod": "GET",
+              "parameters": {
+                "max-results": {
+                  "type": "number",
+                  "location": "query",
+                  "required": false
+                }
+              },
+              "response": {
+                "$ref": "ThingList"
+              }
+            }
+          }
+        }
+      },
+      "methods": {
+        "list": {
+          "path": "things",
+          "id": "test.things.list",
+          "httpMethod": "GET",
+          "parameters": {
+            "max-results": {
+              "type": "number",
+              "location": "query",
+              "required": false
+            }
+          },
+          "response": {
+            "$ref": "ThingList"
+          }
+        },
+        "delete": {
+          "path": "things/{id}",
+          "id": "test.things.delete",
+          "httpMethod": "DELETE",
+          "description": "Delete things",
+          "parameters": {
+            "id": {
+              "location": "path",
+              "required": true,
+              "description": "ID of the thing to delete",
+              "type": "string"
+            }
+          },
+          "parameterOrder": [
+            "id"
+          ]
+        },
+        "get": {
+          "path": "things/{id}",
+          "id": "test.things.get",
+          "httpMethod": "GET",
+          "description": "Get things",
+          "supportsMediaDownload": true,
+          "parameters": {
+            "id": {
+              "location": "path",
+              "required": true,
+              "description": "ID of the thing to get",
+              "type": "string"
+            }
+          },
+          "supportsMediaDownload": true,
+          "parameterOrder": [
+            "id"
+          ],
+          "response": {
+            "$ref": "Thing"
+          }
+        },
+        "create": {
+          "path": "things",
+          "id": "test.things.create",
+          "httpMethod": "POST",
+          "description": "Create things",
+          "request": {
+            "$ref": "Thing"
+          },
+          "response": {
+            "$ref": "Thing"
+          },
+          "supportsMediaUpload": true,
+          "mediaUpload": {
+            "accept": [
+              "*/*"
+            ],
+            "maxSize": "1KB",
+            "protocols": {
+              "simple": {
+                "multipart": true,
+                "path": "upload/things/{id}"
+              },
+              "resumable": {
+                "multipart": true,
+                "path": "/resumable/upload/things/{id}"
+              }
+            }
+          }
+        },
+        "update": {
+          "path": "things/{id}",
+          "id": "test.things.update",
+          "httpMethod": "PUT",
+          "description": "Update things",
+          "parameters": {
+            "id": {
+              "location": "path",
+              "description": "ID of the thing to update",
+              "type": "string"
+            }
+          },
+          "parameterOrder": [
+            "id"
+          ],
+          "request": {
+            "$ref": "Thing"
+          },
+          "response": {
+            "$ref": "Thing"
+          },
+          "supportsMediaUpload": true,
+          "mediaUpload": {
+            "accept": [
+              "*/*"
+            ],
+            "maxSize": "1KB",
+            "protocols": {
+              "simple": {
+                "multipart": true,
+                "path": "upload/things/{id}"
+              },
+              "resumable": {
+                "multipart": true,
+                "path": "/resumable/upload/things/{id}"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

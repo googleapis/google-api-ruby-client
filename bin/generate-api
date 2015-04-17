@@ -1,0 +1,93 @@
+#!/usr/bin/env ruby
+
+# TODO - Repeated params
+
+require 'thor'
+require 'open-uri'
+require 'google/apis/discovery_v1'
+require 'google/apis/generator'
+require 'multi_json'
+require 'logger'
+
+module Google
+  class ApiGenerator < Thor
+    include Thor::Actions
+
+    Google::Apis::ClientOptions.default.application_name = "generate-api"
+    Google::Apis::ClientOptions.default.application_version = Google::Apis::VERSION
+
+    Discovery = Google::Apis::DiscoveryV1
+
+    desc 'gen OUTDIR', 'Generate ruby API from an API description'
+    method_options url: :string, file: :string, id: :array, preferred_only: :boolean, verbose: :boolean, names: :string, names_out: :string
+    method_option :preferred_only, default: true
+    def gen(dir)
+      self.destination_root = dir
+      Google::Apis.logger.level = Logger::DEBUG if options[:verbose]
+      if options[:url]
+        generate_from_url(options[:url])
+      elsif options[:file]
+        generate_from_file(options[:file])
+      else
+        generate_from_discovery(preferred_only: options[:preferred_only], id: options[:id] )
+      end
+      create_file(options[:names_out]) { |*| generator.dump_api_names } if options[:names_out]
+    end
+
+    desc 'list', 'List public APIs'
+    method_options verbose: :boolean, preferred_only: :boolean
+    def list
+      Google::Apis.logger.level = Logger::DEBUG if options[:verbose]
+      discovery = Discovery::DiscoveryService.new
+      apis = discovery.list_apis
+      apis.items.each do |api|
+        say sprintf('%s - %s', api.id, api.description).strip unless options[:preferred_only] && !api.preferred?
+      end
+    end
+
+    no_commands do
+      def generate_from_url(url)
+        json = discovery.http(:get, url)
+        generate_api(json)
+      end
+
+      def generate_from_file(file)
+        File.open(file) do |f|
+          generate_api(f.read)
+        end
+      end
+
+      def generate_from_discovery(preferred_only: false, id: nil)
+        say 'Fetching API list'
+        id = Array(id)
+        apis = discovery.list_apis
+        apis.items.each do |api|
+          if (id.empty? && preferred_only && api.preferred?) || id.include?(api.id)
+            say sprintf('Loading %s, version %s from %s', api.name, api.version, api.discovery_rest_url)
+            generate_from_url(api.discovery_rest_url)
+          else
+            say sprintf('Ignoring disoverable API %s', api.id)
+          end
+        end
+      end
+
+      def generate_api(json)
+        files = generator.render(json)
+        files.each do |file, content|
+          create_file(file) { |*| content }
+        end
+      end
+
+      def discovery
+        @discovery ||= Discovery::DiscoveryService.new
+      end
+
+      def generator
+        @generator ||= Google::Apis::Generator.new(api_names: options[:names])
+      end
+    end
+  end
+
+end
+
+Google::ApiGenerator.start(ARGV)

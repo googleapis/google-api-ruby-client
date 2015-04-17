@@ -1,3 +1,9 @@
+# 0.9.0
+* WARNING: Please see [MIGRATING](MIGRATING.md) for important information.
+* API classes are now generated ahead of time instead of at runtime.
+* Drop support for Ruby versions < 2.0
+* Switch from Faraday to Hurley for HTTP client
+
 # 0.8.6
 * Use discovered 'rootUrl' as base URI for services
 * Respect discovered methods with colons in path
@@ -27,7 +33,7 @@
 * Batch requests with the service interface now inherit the service's connection
 * `register_discover_document` now returns the API instance
 * Added `:proxy` option to set Faraday's HTTP proxy setting
-* Added `:faraday_options` option to allow passthrough settings to Faraday connection
+* Added `:faraday_option` option to allow passthrough settings to Faraday connection
 * Drop 1.8.x support
 * This will be the last release with 1.9.x support
 
