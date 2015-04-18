@@ -61,5 +61,9 @@ EOF
       command.execute(client)
     end.to yield_successive_args(['Hello', nil], ['world', nil], [nil, an_instance_of(Google::Apis::ServerError)])
   end
+  
+  it 'should raise error if batch is empty' do
+    expect { command.execute(client) }.to raise_error(Google::Apis::BatchError)
+  end
 
 end
