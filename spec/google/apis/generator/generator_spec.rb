@@ -14,25 +14,110 @@
 
 require 'spec_helper'
 require 'google/apis/generator'
+require 'tmpdir'
+require 'fileutils'
 
 RSpec.describe Google::Apis::Generator do
+  include TestHelpers
 
-  let(:generator) { Google::Apis::Generator.new }
-
-  context 'with zoo API' do
-    let(:json) { File.read(File.join(FIXTURES_DIR, 'files', 'zoo.json')) }
-    let(:files) do
-      generator.render(json)
+  context 'with test API' do
+    before(:context) do
+      generator = Google::Apis::Generator.new
+      discovery = File.read(File.join(FIXTURES_DIR, 'files', 'test_api.json'))
+      generated_files = generator.render(discovery)
+      tempdir = Dir.mktmpdir
+      generated_files.each do |key, content|
+        path = File.join(tempdir, key)
+        FileUtils.mkdir_p(File.dirname(path))
+        File.open(path, 'w') do |f|
+          puts content
+          f.write(content)
+        end
+      end
+      $LOAD_PATH.unshift(tempdir)
+      require 'google/apis/test_v1'
     end
 
-    it 'should generate files' do
-# TODO: Make a meaningful test
-#      files.each do |key, value|
-#        puts key
-#        puts value
-#      end
-    end
+    let(:service) { Google::Apis::TestV1::TestService.new }
 
+    context 'with the generated service' do
+      it 'should set the base URL' do
+        expect(service.root_url.to_s).to eql('https://www.googleapis.com/')
+      end
+
+      it 'should define global methods from discovery' do
+        expect(service.method(:query)).to_not be_nil
+      end
+
+      it 'should define parameters on methods' do
+        parameters = service.method(:query).parameters.map { |(k,v)| v }
+        expect(parameters).to include(:s, :i, :n, :b, :a, :e, :er, :sr)
+      end
+
+      it 'should define global parameters on methods' do
+        parameters = service.method(:query).parameters.map { |(k,v)| v }
+        expect(parameters).to include(:fields, :quota_user, :user_ip)
+      end
+
+      it 'should include standard options & block' do
+        parameters = service.method(:query).parameters.map { |(k,v)| v }
+        expect(parameters).to include(:options, :block)
+      end
+
+      context 'with the Thing resource' do
+        it 'should define the create method`' do
+          expect(service.method(:create_thing)).to_not be_nil
+        end
+
+        it 'should define the list method`' do
+          expect(service.method(:list_things)).to_not be_nil
+        end
+
+        it 'should define the get method`' do
+          expect(service.method(:get_thing)).to_not be_nil
+        end
+
+        it 'should include the download_dest parameter for get_thing' do
+          parameters = service.method(:get_thing).parameters.map { |(k,v)| v }
+          expect(parameters).to include(:download_dest)
+        end
+
+        it 'should define the update method`' do
+          expect(service.method(:update_thing)).to_not be_nil
+        end
+
+        it 'should include the upload_source parameter for update_thing' do
+          parameters = service.method(:update_thing).parameters.map { |(k,v)| v }
+          expect(parameters).to include(:upload_source)
+        end
+      end
+
+      context 'with the query method' do
+        include_context 'HTTP client'
+
+        let(:http_responses) do
+          [ http_json_ok(%({"rows": [{"value": "hello"}, {"value": "world"}]})) ]
+        end
+
+        before(:example) { service.client = client }
+
+        it 'should return query results' do
+          results = service.query()
+          expect(results).to be_instance_of(Google::Apis::TestV1::QueryResults)
+        end
+
+        it 'should return items of type Row' do
+          results = service.query()
+          expect(results.rows.first).to be_instance_of(Google::Apis::TestV1::Row)
+        end
+
+        it 'should return values for rows' do
+          results = service.query()
+          expect(results.rows[1].value).to eql('world')
+        end
+
+      end
+    end
   end
 
 end
