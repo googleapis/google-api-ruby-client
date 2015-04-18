@@ -69,7 +69,7 @@ module Google
         # @param [String, #read] body
         #   Request body
         def initialize(method, url, body: nil)
-          self.options = Google::Apis::RequestOptions.default
+          self.options = Google::Apis::RequestOptions.default.dup
           self.url = url
           self.url = Addressable::Template.new(url) if url.is_a?(String)
           self.method = method
@@ -91,19 +91,23 @@ module Google
         def execute(client)
           prepare!
           proc = block_given? ? Proc.new : nil
-          Retriable.retriable tries: options.retries + 1,
+          begin
+            Retriable.retriable tries: options.retries + 1,
                               base_interval: 1,
                               multiplier: 2,
                               on: RETRIABLE_ERRORS do |try|
-            # This 2nd level retriable only catches auth errors, and supports 1 retry, which allows
-            # auth to be re-attempted without having to retry all sorts of other failures like
-            # NotFound, etc
-            auth_tries = (try == 1 ? 2 : 1)
-            Retriable.retriable tries: auth_tries,
-                                on: [Google::Apis::AuthorizationError],
-                                on_retry: Proc.new { |*| refresh_authorization } do
-              return execute_once(client, &proc)
+              # This 2nd level retriable only catches auth errors, and supports 1 retry, which allows
+              # auth to be re-attempted without having to retry all sorts of other failures like
+              # NotFound, etc
+              auth_tries = (try == 1 ? 2 : 1)
+              Retriable.retriable tries: auth_tries,
+                                  on: [Google::Apis::AuthorizationError],
+                                  on_retry: Proc.new { |*| refresh_authorization } do
+                return execute_once(client, &proc)
+              end
             end
+          rescue => e
+            fail e if proc.nil?
           end
         end
 
@@ -198,19 +202,20 @@ module Google
         # Process an error response
         # @param [StandardError] err
         #  Error object
+        # @param [Boolean] rethrow
+        #  True if error should be raised again after handling
         # @return [void]
         # @yield [nil, err] if block given
         # @raise [StandardError] if no block
-        def error(err, &block)
+        def error(err, rethrow: false, &block)
           logger.debug{ sprintf('Error - %s', err)}
           err = Google::Apis::TransmissionError.new(err) if err.is_a?(Hurley::ClientError)
           if block_given?
             block.call(nil, err)
-          else
-            fail err
-          end
+          end 
+          fail err if rethrow || block.nil?
         end
-
+        
         # Execute the command once.
         #
         # @private
@@ -228,11 +233,13 @@ module Google
             response = client.send(method, url, body) do |req|
               apply_request_options(req)
             end
+            logger.debug { response.status_code }
             logger.debug { response.inspect }
             response = process_response(response.status_code, response.header, response.body)
             success(response, &block)
           rescue => e
-            error(e, &block)
+            logger.debug { sprintf('Caught error %s', e) }
+            error(e, rethrow: true, &block)
           end
         end
 

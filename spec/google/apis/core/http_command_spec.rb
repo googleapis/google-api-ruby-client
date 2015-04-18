@@ -53,8 +53,64 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       command.options.retries = 1
       expect { command.execute(client) }.to raise_error(Google::Apis::ServerError)
     end
+    
+    context('with callbacks') do
+      it 'should return the response body after retries' do
+        expect { |b| command.execute(client, &b) }.to yield_successive_args(
+          [nil, an_instance_of(Google::Apis::ServerError)],
+          [nil, an_instance_of(Google::Apis::ServerError)],
+          ['Hello world', nil])
+      end
+    
+    end
+    
+  end
+  
+  context('with redirects') do
+    let(:command) do
+      Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    end
+
+    let(:http_responses) { [ http_redirect('https://zoo.googleapis.com/animals'), http_text_ok(%(Hello world))] }
+
+    it 'should return the response body' do
+      result = command.execute(client)
+      expect(result).to eql 'Hello world'
+    end
   end
 
+  context('with too many redirects') do
+    let(:command) do
+      Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    end
+
+    let(:http_responses) do
+      [http_redirect('https://zoo.googleapis.com/animals'),
+       http_redirect('https://zoo.googleapis.com/animals'),
+       http_redirect('https://zoo.googleapis.com/animals'),
+       http_redirect('https://zoo.googleapis.com/animals'),
+       http_redirect('https://zoo.googleapis.com/animals'),
+       http_redirect('https://zoo.googleapis.com/animals'),
+       http_redirect('https://zoo.googleapis.com/animals')]
+    end
+
+    it 'should raise error if retries exceeded' do
+      expect { command.execute(client) }.to raise_error(Google::Apis::RedirectError)
+    end
+  end
+  
+  context('with no server response') do
+    let(:command) do
+      Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    end
+
+    let(:http_responses) { [] }
+
+    it 'should raise transmission error' do
+      expect { command.execute(client) }.to raise_error(Google::Apis::TransmissionError)
+    end
+    
+  end
   context('with authorization errors') do
     let(:command) do
       command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')

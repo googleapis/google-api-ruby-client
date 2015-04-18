@@ -115,4 +115,8 @@ module TestHelpers
   def http_text_error(status)
     [status, {'Content-Type' => 'text/plain'}, sprintf('Status code: %s', status)]
   end
+  
+  def http_redirect(url)
+    [302, {'Location' => url}, '']
+  end
 end

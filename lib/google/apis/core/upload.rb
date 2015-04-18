@@ -261,7 +261,7 @@ module Google
 
           success(result, &block) if @state == :final
         rescue => e
-          error(e, &block)
+          error(e, rethrow: true, &block)
         end
       end
     end

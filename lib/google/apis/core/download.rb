@@ -82,7 +82,7 @@ module Google
           result = @download_io
           success(result, &block)
         rescue => e
-          error(e, &block)
+          error(e, rethrow: true, &block)
         end
       end
     end
