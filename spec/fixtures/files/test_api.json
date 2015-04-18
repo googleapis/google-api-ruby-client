@@ -7,7 +7,19 @@
   "rootUrl": "https://www.googleapis.com/",
   "servicePath": "test/v1/",
   "rpcPath": "/rpc",
-  "parameters": {
+  "auth": {
+    "oauth2": {
+     "scopes": {
+      "https://www.googleapis.com/auth/test": {
+       "description": "View and manage things"
+      },
+      "https://www.googleapis.com/auth/test.readonly": {
+       "description": "View things"
+      }
+     }
+    }
+   },
+   "parameters": {
     "alt": {
       "type": "string",
       "description": "Data format for the response.",

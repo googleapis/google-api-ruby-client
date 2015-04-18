@@ -36,6 +36,9 @@ RSpec.describe Google::Apis::Core::Hashable do
   let(:model) do
     obj = model_class.new
     obj.value = "hello"
+    obj.value2 = {
+      :a => 'a'
+    }
     child = child_class.new
     child.value = "goodbye"
     obj.children = [child]
@@ -43,6 +46,7 @@ RSpec.describe Google::Apis::Core::Hashable do
   end
 
   let(:hash) { model.to_h }
+
   it 'should serialize attributes' do
     expect(hash).to include(value: 'hello')
   end
@@ -51,4 +55,7 @@ RSpec.describe Google::Apis::Core::Hashable do
     expect(hash).to include(children: [ { value: 'goodbye'}])
   end
 
+  it 'should serialize hashes' do
+    expect(hash[:value2]).to include(:a => 'a')
+  end
 end

@@ -17,6 +17,11 @@ require 'google/apis/generator'
 require 'tmpdir'
 require 'fileutils'
 
+# TODO:
+# - Variant types
+# - Class name simplification
+# - Nested resources
+# - Hash types (additionalProperties)
 RSpec.describe Google::Apis::Generator do
   include TestHelpers
 
@@ -63,7 +68,15 @@ RSpec.describe Google::Apis::Generator do
         parameters = service.method(:query).parameters.map { |(k,v)| v }
         expect(parameters).to include(:options, :block)
       end
+      
+      it 'should define AUTH_TEST scope' do
+        expect(Google::Apis::TestV1::AUTH_TEST).to eql ('https://www.googleapis.com/auth/test')
+      end
 
+      it 'should define AUTH_TEST_READONLY scope' do
+        expect(Google::Apis::TestV1::AUTH_TEST_READONLY).to eql ('https://www.googleapis.com/auth/test.readonly')
+      end
+      
       context 'with the Thing resource' do
         it 'should define the create method`' do
           expect(service.method(:create_thing)).to_not be_nil
