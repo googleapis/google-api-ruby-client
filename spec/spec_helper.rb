@@ -39,17 +39,19 @@ SimpleCov.start do
 end
 
 require 'rspec'
+require 'webmock/rspec'
 require 'json_spec'
 require 'logging'
 require 'rspec/logging_helper'
 require 'google/apis'
-require 'hurley'
+require 'google/apis/core/base_service'
 
 # Configure RSpec to capture log messages for each test. The output from the
 # logs will be stored in the @log_output variable. It is a StringIO instance.
 RSpec.configure do |config|
   include RSpec::LoggingHelper
   config.include JsonSpec::Helpers
+  config.include WebMock
   config.capture_log_messages
 
   Google::Apis.logger.level = Logger::DEBUG
@@ -63,60 +65,47 @@ end
   klass.send(:alias_method, :===, :matches?)
 end
 
-class TestConnection
-  attr_reader :requests
-  def initialize(calls)
-    @responses = calls
-    @requests = []
-  end
-
-  def request
-    @requests.first
-  end
-
-  def call(request)
-    @requests << request
-    status, header, body = @responses.shift
-    Hurley::Response.new(request, status, Hurley::Header.new(header)) do |res|
-      Array(body).each do |chunk|
-        chunk.call(request, res) if chunk.respond_to?(:call)
-        res.receive_body(chunk)
-      end
-    end
-  end
-end
-
 RSpec.shared_context 'HTTP client' do
   let(:client) do
-    client = Hurley::Client.new
-    client.request_options.query_class = Hurley::Query::Flat
-    client.connection = connection
-    client
-  end
-
-  let(:connection) do
-    TestConnection.new(http_responses)
+    Google::Apis::Core::BaseService.new('','').client
   end
 end
 
 module TestHelpers
+  include WebMock::API
+  include WebMock::Matchers
+end
 
-  def http_json_ok(json)
-    [200, {'Content-Type' => 'application/json'}, json]
-  end
+# Temporarily patch WebMock to allow chunked responses for Net::HTTP
+module Net
+  module WebMockHTTPResponse
+    def eval_chunk(chunk)
+      puts chunk.is_a? Exception
+      chunk if chunk.is_a?(String)
+      chunk.read if chunk.is_a?(IO)
+      chunk.call if chunk.is_a?(Proc)
+      fail chunk if chunk.is_a?(Class)
+      chunk
+    end
+    
+    def read_body(dest = nil, &block)
+      if !(defined?(@__read_body_previously_called).nil?) && @__read_body_previously_called
+        return super
+      end
+      return @body if dest.nil? && block.nil?
+      raise ArgumentError.new("both arg and block given for HTTP method") if dest && block
+      return nil if @body.nil?
 
-  def http_json_error(status, json)
-    [status, {'Content-Type' => 'application/json'}, json]
-  end
-  def http_text_ok(text)
-    [200, {'Content-Type' => 'text/plain'}, text]
-  end
-
-  def http_text_error(status)
-    [status, {'Content-Type' => 'text/plain'}, sprintf('Status code: %s', status)]
-  end
-  
-  def http_redirect(url)
-    [302, {'Location' => url}, '']
+      dest ||= ::Net::ReadAdapter.new(block)
+      body_parts = Array(@body)
+      body_parts.each do |chunk|
+        chunk = eval_chunk(chunk)
+        dest << chunk
+      end
+      @body = dest
+    ensure
+      # allow subsequent calls to #read_body to proceed as normal, without our hack...
+      @__read_body_previously_called = true
+    end
   end
 end

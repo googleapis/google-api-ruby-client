@@ -29,17 +29,21 @@ RSpec.describe Google::Apis::Core::DownloadCommand do
   end
 
   context 'with successful response' do
-
-    let(:http_responses) { [ http_text_ok(%(Hello world)) ] }
+    before(:example) do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals?alt=media').
+        to_return(:headers => { 'Content-Type' => 'application/json'}, :body => %(Hello world))
+    end
 
     it 'should include the alt=media param' do
       command.execute(client)
-      expect(connection.request.query['alt']).to eql 'media'
+      expect(a_request(:get, 'https://www.googleapis.com/zoo/animals?alt=media')).to have_been_made
     end
 
     it 'should not include a range header' do
       command.execute(client)
-      expect(connection.request.query['range']).to be_nil
+      expect(a_request(:get, 'https://www.googleapis.com/zoo/animals?alt=media').
+        with { |req| !req.headers.key?('Range') }
+      ).to have_been_made
     end
 
     it 'should receive content' do
@@ -49,10 +53,10 @@ RSpec.describe Google::Apis::Core::DownloadCommand do
   end
 
   context 'with disconnects' do
-    let(:http_responses) do
-      [[ 200, {'Content-Type' => 'text/plain'}, [ 'Hello ', lambda { |*| fail Hurley::Timeout, 'timeout }'}] ],
-       [ 200, {'Content-Type' => 'text/plain'}, 'world']
-      ]
+    before(:example) do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals?alt=media').
+        to_return(:body => ['Hello ', Timeout::Error]).
+        to_return(:body => 'world')
     end
 
     it 'should receive entire content' do

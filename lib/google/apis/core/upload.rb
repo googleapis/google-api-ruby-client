@@ -169,9 +169,8 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def process_response(status, header, body)
-          new_offset = header[BYTES_RECEIVED_HEADER]
-          @offset = Integer(new_offset) unless new_offset.nil?
-          @upload_url = header[UPLOAD_URL_HEADER]
+          @offset = Integer(header[BYTES_RECEIVED_HEADER]) if header.key?(BYTES_RECEIVED_HEADER)
+          @upload_url = header[UPLOAD_URL_HEADER] if header.key?(UPLOAD_URL_HEADER)
 
           upload_status = header[UPLOAD_STATUS_HEADER]
           logger.debug { sprintf('Upload status %s', upload_status) }
@@ -212,6 +211,7 @@ module Google
         # @return [Hurley::Response]
         # @raise [Google::Apis::ServerError] Unable to send the request
         def send_query_command(client)
+          logger.debug { sprintf('Sending upload query command to %s', @upload_url) }
           client.post(@upload_url, nil) do |req|
             apply_request_options(req)
             req.header[UPLOAD_COMMAND_HEADER] = QUERY_COMMAND
@@ -225,6 +225,7 @@ module Google
         # @return [Hurley::Response]
         # @raise [Google::Apis::ServerError] Unable to send the request
         def send_upload_command(client)
+          logger.debug { sprintf('Sending upload command to %s', @upload_url) }
           content = upload_io
           content.pos = @offset
           client.post(@upload_url, content) do |req|
@@ -249,12 +250,10 @@ module Google
           if @state == :start
             response = send_start_command(client)
           else
-            logger.debug 'Sending upload query command'
             response = send_query_command(client)
           end
           result = process_response(response.status_code, response.header, response.body)
           if @state == :active
-            logger.debug 'Sending upload content'
             response = send_upload_command(client)
             result = process_response(response.status_code, response.header, response.body)
           end

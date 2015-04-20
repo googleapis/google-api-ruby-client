@@ -25,7 +25,9 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
     end
 
-    let(:http_responses) { [ http_text_ok(%(Hello world)) ] }
+    before(:example) do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(:body => %(Hello world))
+    end
 
     it 'should return the response body if block not present' do
       result = command.execute(client)
@@ -42,7 +44,11 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
     end
 
-    let(:http_responses) { [ http_text_error(500), http_text_error(500), http_text_ok(%(Hello world)) ] }
+    before(:example) do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
+        to_return(:status => [500, 'Server error']).times(2).
+        to_return(:body => %(Hello world))
+    end
 
     it 'should return the response body' do
       result = command.execute(client)
@@ -61,9 +67,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
           [nil, an_instance_of(Google::Apis::ServerError)],
           ['Hello world', nil])
       end
-    
     end
-    
   end
   
   context('with redirects') do
@@ -71,7 +75,12 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
     end
 
-    let(:http_responses) { [ http_redirect('https://zoo.googleapis.com/animals'), http_text_ok(%(Hello world))] }
+    before(:example) do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
+        to_return(:status => [302, 'Redirect'], :headers => {'Location' => 'https://zoo.googleapis.com/animals'})
+      stub_request(:get, 'https://zoo.googleapis.com/animals').
+        to_return(:body => %(Hello world))
+    end
 
     it 'should return the response body' do
       result = command.execute(client)
@@ -84,14 +93,9 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
     end
 
-    let(:http_responses) do
-      [http_redirect('https://zoo.googleapis.com/animals'),
-       http_redirect('https://zoo.googleapis.com/animals'),
-       http_redirect('https://zoo.googleapis.com/animals'),
-       http_redirect('https://zoo.googleapis.com/animals'),
-       http_redirect('https://zoo.googleapis.com/animals'),
-       http_redirect('https://zoo.googleapis.com/animals'),
-       http_redirect('https://zoo.googleapis.com/animals')]
+    before(:example) do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
+        to_return(:status => [302, 'Redirect'], :headers => {'Location' => 'https://www.googleapis.com/zoo/animals'}).times(6)
     end
 
     it 'should raise error if retries exceeded' do
@@ -104,13 +108,16 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
     end
 
-    let(:http_responses) { [] }
-
+    before(:example) do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
+        to_raise(OpenSSL::SSL::SSLError)
+    end
+    
     it 'should raise transmission error' do
       expect { command.execute(client) }.to raise_error(Google::Apis::TransmissionError)
     end
-    
   end
+  
   context('with authorization errors') do
     let(:command) do
       command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
@@ -118,8 +125,12 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       command
     end
 
-    let(:http_responses) { [ http_text_error(401), http_text_ok(%(Hello world)) ] }
-
+    before(:example) do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
+        to_return(:status => [401, 'Unauthorized']).
+        to_return(:body => %(Hello world))
+    end
+    
     it 'should always retry on authorization errors' do
       result = command.execute(client)
       expect(result).to eql 'Hello world'
@@ -131,7 +142,10 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
     end
 
-    let(:http_responses) { [ http_text_error(400) ] }
+    before(:example) do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
+        to_return(:status => [400, 'Invalid request'])
+    end
 
     it 'should raise error without retry' do
       command.options.retries = 1

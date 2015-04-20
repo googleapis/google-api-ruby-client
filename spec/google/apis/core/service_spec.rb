@@ -99,9 +99,7 @@ RSpec.describe Google::Apis::Core::BaseService do
   end
 
   context 'with batch' do
-    include_context 'HTTP client'
-
-    let(:http_responses) do
+    before(:example) do
       response = <<EOF
 --batch123
 Content-Type: application/http
@@ -112,11 +110,10 @@ Content-Type: text/plain; charset=UTF-8
 Hello
 --batch123--
 EOF
-      [ [200, {'Content-Type' => 'multipart/mixed; boundary=batch123'}, response ] ]
+      stub_request(:post, 'https://www.googleapis.com/batch').
+        to_return(:headers => {'Content-Type' => 'multipart/mixed; boundary=batch123'}, :body => response)
     end
-
-    before(:example) { service.client = client }
-
+    
     it 'should add commands to a batch' do
       expect do |b|
         service.batch do |service|
@@ -146,9 +143,7 @@ EOF
   end
 
   context 'with batch uploads' do
-    include_context 'HTTP client'
-
-    let(:http_responses) do
+    before(:example) do
       response = <<EOF
 --batch123
 Content-Type: application/http
@@ -159,11 +154,10 @@ Content-Type: text/plain; charset=UTF-8
 Hello
 --batch123--
 EOF
-      [ [200, {'Content-Type' => 'multipart/mixed; boundary=batch123'}, response ] ]
+      stub_request(:put, 'https://www.googleapis.com/upload/').
+        to_return(:headers => {'Content-Type' => 'multipart/mixed; boundary=batch123'}, :body => response)
     end
-
-    before(:example) { service.client = client }
-
+    
     it 'should add upload to a batch' do
       expect do |b|
         service.batch_upload do |service|

@@ -25,7 +25,8 @@ RSpec.describe Google::Apis::Core::BatchCommand do
     command = Google::Apis::Core::BatchCommand.new(:post, 'https://www.googleapis.com/batch')
   end
 
-  let(:http_responses) do
+
+  before(:example) do
     response = <<EOF
 --batch123
 Content-Type: application/http
@@ -50,7 +51,8 @@ Content-Type: text/plain; charset=UTF-8
 Error!
 --batch123--
 EOF
-    [ [200, {'Content-Type' => 'multipart/mixed; boundary=batch123'}, response ] ]
+    stub_request(:post, 'https://www.googleapis.com/batch').
+      to_return(:headers => { 'Content-Type' => 'multipart/mixed; boundary=batch123'}, :body => response)
   end
 
   it 'should send content' do

@@ -43,11 +43,16 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       command
     end
 
-    let(:http_responses) { [ http_json_ok(%()) ] }
-
+    before(:example) do
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals').
+        to_return(:headers => { 'Content-Type' => 'application/json'}, :body => %({}))
+    end
+    
     it 'should serialize the request object' do
       command.execute(client)
-      expect(connection.request.body).to be_json_eql(%({"value":"hello"}))
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').with do |req| 
+        be_json_eql(%({"value":"hello"})).matches?(req.body) 
+      end).to have_been_made
     end
   end
 
@@ -59,7 +64,10 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       command
     end
 
-    let(:http_responses) { [ http_json_ok(%({"value" : "hello"})) ] }
+    before(:example) do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
+        to_return(:headers => { 'Content-Type' => 'application/json'}, :body => %({"value" : "hello"}))
+    end
 
     it 'should return a model instance' do
       result = command.execute(client)
@@ -80,8 +88,11 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       command
     end
 
-    let(:http_responses) { [ http_text_ok(%w(ignore me)) ] }
-
+    before(:example) do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
+        to_return(:headers => { 'Content-Type' => 'text/plain'}, :body => %(Ignore me))
+    end
+    
     it 'should return nil' do
       result = command.execute(client)
       expect(result).to be_nil
@@ -96,11 +107,15 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       command
     end
 
-    let(:http_responses) { [ http_json_ok(%()) ] }
-
+    before(:example) do
+      stub_request(:get, /.*/).
+        to_return(:headers => { 'Content-Type' => 'application/json'}, :body => %({}))
+    end
+    
     it 'should normalize fields params' do
       command.execute(client)
-      expect(connection.request.query['fields']).to eql 'items(id, longName)'
+      expect(a_request(:get, 'https://www.googleapis.com/zoo/animals').
+        with(:query => {'fields' => 'items(id, longName)'})) .to have_been_made
     end
   end
 
@@ -109,7 +124,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
     end
 
-    let(:http_responses) do
+    before(:example) do
       json = <<EOF
 {
  "error": {
@@ -125,11 +140,14 @@ RSpec.describe Google::Apis::Core::HttpCommand do
  }
 }
 EOF
-      [ http_json_error(403, json), http_json_ok(%({}))]
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
+        to_return(:status => [403, 'Rate Limit Exceeded'], :headers => { 'Content-Type' => 'application/json'}, :body => json).
+        to_return(:headers => { 'Content-Type' => 'application/json'}, :body => %({}))
     end
 
     it 'should retry' do
       command.execute(client)
+      expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')).to have_been_made.times(2)
     end
   end
 end

@@ -106,13 +106,11 @@ RSpec.describe Google::Apis::Generator do
       end
 
       context 'with the query method' do
-        include_context 'HTTP client'
-
-        let(:http_responses) do
-          [ http_json_ok(%({"rows": [{"value": "hello"}, {"value": "world"}]})) ]
+        before(:example) do
+          body = %({"rows": [{"value": "hello"}, {"value": "world"}]})
+          stub_request(:get, 'https://www.googleapis.com/test/v1/query').
+            to_return(:headers => { 'Content-Type' => 'application/json'}, :body => body)
         end
-
-        before(:example) { service.client = client }
 
         it 'should return query results' do
           results = service.query()
