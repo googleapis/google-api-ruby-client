@@ -34,7 +34,6 @@ RSpec.describe Google::Apis::Core::UploadIO do
       io = Google::Apis::Core::UploadIO.from_file(file, content_type: 'application/json')
       expect(io.content_type).to eql('application/json')
     end
-
   end
 
   context 'with unknown type' do
@@ -56,28 +55,55 @@ RSpec.describe Google::Apis::Core::RawUploadCommand do
 
   let(:command) do
     command = Google::Apis::Core::RawUploadCommand.new(:post, 'https://www.googleapis.com/zoo/animals')
-    command.upload_source = StringIO.new('Hello world')
+    command.upload_source = file
     command.upload_content_type = 'text/plain'
     command
   end
-  
-  before(:example) do
-    stub_request(:post, 'https://www.googleapis.com/zoo/animals').to_return(:body => %(Hello world))
+
+  shared_examples 'should upload' do
+    before(:example) do
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals').to_return(:body => '')
+    end
+
+    it 'should send content' do
+      command.execute(client)
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
+        with(:body => "Hello world\n")).to have_been_made
+    end
+
+    it 'should send upload protocol' do
+      command.execute(client)
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
+        with {|req| req.headers['X-Goog-Upload-Protocol'] == 'raw'}).to have_been_made
+    end
   end
 
-  it 'should send content' do
-    command.execute(client)
-    expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
-      with(:body => 'Hello world')).to have_been_made
+  context('with StringIO input') do
+    let(:file) { StringIO.new("Hello world\n") }
+    include_examples 'should upload'
   end
 
-  it 'should send upload protocol' do
-    command.execute(client)
-    expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
-      with {|req| req.headers['X-Goog-Upload-Protocol'] == 'raw'}).to have_been_made
+  context('with IO input') do
+    let(:file) { File.open(File.join(FIXTURES_DIR, 'files', 'test.txt'), 'r') }
+    include_examples 'should upload'
+
+    it 'should not close stream' do
+      expect(file.closed?).to be false
+    end
+  end
+
+  context('with file path input') do
+    let(:file) { File.join(FIXTURES_DIR, 'files', 'test.txt') }
+    include_examples 'should upload'
+  end
+
+  context('with invalid input') do
+    let(:file) { lambda { } }
+    it 'should raise client error' do
+      expect{ command.execute(client) }.to raise_error(Google::Apis::ClientError)
+    end
   end
 end
-
 
 RSpec.describe Google::Apis::Core::MultipartUploadCommand do
   include TestHelpers
@@ -139,7 +165,7 @@ RSpec.describe Google::Apis::Core::ResumableUploadCommand do
         to_return(:headers => { 'X-Goog-Upload-Status' => 'active', 'X-Goog-Upload-URL' => 'https://www.googleapis.com/zoo/animals' }).
         to_return(:headers => { 'X-Goog-Upload-Status' => 'final' }, :body => %(OK))
     end
-    
+
     it 'should send upload protocol' do
       command.execute(client)
       expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
@@ -159,6 +185,22 @@ RSpec.describe Google::Apis::Core::ResumableUploadCommand do
     end
 
     it 'should send upload content' do
+      command.execute(client)
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
+        with(:body => 'Hello world')).to have_been_made
+    end
+  end
+
+  context 'with retriable error on start' do
+    before(:example) do
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals').
+        to_timeout.
+        to_return(:headers => { 'X-Goog-Upload-Status' => 'active', 'X-Goog-Upload-URL' => 'https://www.googleapis.com/zoo/animals' }).
+        to_return(:headers => { 'X-Goog-Upload-Status' => 'active', 'X-Goog-Upload-Size-Received' => '6'}).
+        to_return(:headers => { 'X-Goog-Upload-Status' => 'final' }, :body => %(OK))
+    end
+
+    it 'should retry start command and continue' do
       command.execute(client)
       expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
         with(:body => 'Hello world')).to have_been_made

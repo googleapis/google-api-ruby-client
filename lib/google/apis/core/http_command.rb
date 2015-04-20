@@ -109,6 +109,8 @@ module Google
           rescue => e
             fail e if proc.nil?
           end
+        ensure
+          release!
         end
 
         # Refresh the authorization authorization after a 401 error
@@ -128,6 +130,12 @@ module Google
           options.authorization.apply!(header) unless options.authorization.nil?
           self.url = url.expand(params) if url.is_a?(Addressable::Template)
           url.query_values = query
+        end
+
+        # Release any resources used by this command
+        # @private
+        # @return [void]
+        def release!
         end
 
         # Check the response and either decode body or raise error
@@ -212,10 +220,10 @@ module Google
           err = Google::Apis::TransmissionError.new(err) if err.is_a?(Hurley::ClientError)
           if block_given?
             block.call(nil, err)
-          end 
+          end
           fail err if rethrow || block.nil?
         end
-        
+
         # Execute the command once.
         #
         # @private

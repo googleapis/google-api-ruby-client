@@ -41,12 +41,21 @@ module Google
           query[ALT_PARAM] = ALT_MEDIA
           if download_dest.respond_to?(:write)
             @download_io = download_dest
+            @close_io_on_finish = false
           elsif download_dest.is_a?(String)
             @download_io = File.open(download_dest, 'wb')
+            @close_io_on_finish = true
           else
             @download_io = StringIO.new('', 'wb')
+            @close_io_on_finish = false
           end
           super
+        end
+
+
+        # Close IO stream when command done. Only closes the stream if it was opened by the command.
+        def release!
+          @download_io.close if @close_io_on_finish
         end
 
         # Execute the upload request once. Overrides the default implementation to handle streaming/chunking
@@ -79,7 +88,11 @@ module Google
               @download_io.flush
             end
           end
-          result = @download_io
+          if @close_io_on_finish
+            result = nil
+          else
+            result = @download_io
+          end
           success(result, &block)
         rescue => e
           error(e, rethrow: true, &block)

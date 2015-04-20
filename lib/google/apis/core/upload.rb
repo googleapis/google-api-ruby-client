@@ -84,11 +84,18 @@ module Google
           super
           if upload_source.is_a?(IO) || upload_source.is_a?(StringIO)
             self.upload_io = UploadIO.from_io(upload_source, content_type: upload_content_type)
+            @close_io_on_finish = false
           elsif upload_source.is_a?(String)
             self.upload_io = UploadIO.from_file(upload_source, content_type: upload_content_type)
+            @close_io_on_finish = true
           else
             fail Google::Apis::ClientError, 'Invalid upload source'
           end
+        end
+
+        # Close IO stream when command done. Only closes the stream if it was opened by the command.
+        def release!
+          self.upload_io.close if @close_io_on_finish
         end
       end
 
