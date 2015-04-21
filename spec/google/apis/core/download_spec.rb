@@ -16,54 +16,81 @@ require 'spec_helper'
 require 'google/apis/core/download'
 require 'google/apis/core/json_representation'
 require 'hurley/test'
-
-# TODO: File as download dest
-# TODO: IO as download dest
+require 'tempfile'
+require 'tmpdir'
 
 RSpec.describe Google::Apis::Core::DownloadCommand do
   include TestHelpers
   include_context 'HTTP client'
 
   let(:command) do
-    Google::Apis::Core::DownloadCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    command = Google::Apis::Core::DownloadCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    command.download_dest = dest
+    command
   end
 
-  context 'with successful response' do
-    before(:example) do
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals?alt=media').
-        to_return(:headers => { 'Content-Type' => 'application/json'}, :body => %(Hello world))
+  shared_examples 'should download' do
+
+    context 'with successful response' do
+      before(:example) do
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals?alt=media').
+          to_return(:headers => { 'Content-Type' => 'application/json'}, :body => %(Hello world))
+      end
+
+      it 'should include the alt=media param' do
+        command.execute(client)
+        expect(a_request(:get, 'https://www.googleapis.com/zoo/animals?alt=media')).to have_been_made
+      end
+
+      it 'should not include a range header' do
+        command.execute(client)
+        expect(a_request(:get, 'https://www.googleapis.com/zoo/animals?alt=media').
+          with { |req| !req.headers.key?('Range') }
+        ).to have_been_made
+      end
+
+      it 'should receive content' do
+        expect(received).to eql 'Hello world'
+      end
     end
 
-    it 'should include the alt=media param' do
+    context 'with disconnects' do
+      before(:example) do
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals?alt=media').
+          to_return(:body => ['Hello ', Timeout::Error]).
+          to_return(:body => 'world')
+      end
+
+      it 'should receive entire content' do
+        expect(received).to eql('Hello world')
+      end
+    end
+  end
+
+  context 'with default destination' do
+    let(:dest) { nil }
+    let(:received) { command.execute(client).string }
+    include_examples 'should download'
+  end
+
+  context 'with IO destination' do
+    let(:dest) { Tempfile.new('test') }
+    let(:received) do
       command.execute(client)
-      expect(a_request(:get, 'https://www.googleapis.com/zoo/animals?alt=media')).to have_been_made
+      dest.rewind
+      dest.read
     end
 
-    it 'should not include a range header' do
+    include_examples 'should download'
+  end
+
+  context 'with filename destination' do
+    let(:dest) { File.join(Dir.mktmpdir, 'test.txt') }
+    let(:received) do
       command.execute(client)
-      expect(a_request(:get, 'https://www.googleapis.com/zoo/animals?alt=media').
-        with { |req| !req.headers.key?('Range') }
-      ).to have_been_made
+      File.read(dest)
     end
 
-    it 'should receive content' do
-      str_io = command.execute(client)
-      expect(str_io.string).to eql 'Hello world'
-    end
+    include_examples 'should download'
   end
-
-  context 'with disconnects' do
-    before(:example) do
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals?alt=media').
-        to_return(:body => ['Hello ', Timeout::Error]).
-        to_return(:body => 'world')
-    end
-
-    it 'should receive entire content' do
-      str_io = command.execute(client)
-      expect(str_io.string).to eql('Hello world')
-    end
-
-  end
-
 end
