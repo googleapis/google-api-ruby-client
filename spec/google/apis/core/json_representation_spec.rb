@@ -25,8 +25,12 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
 
   let(:model_class) do
     Class.new do
-      attr_accessor :value
-      attr_accessor :date
+      attr_accessor :unset_value
+      attr_accessor :nil_value
+      attr_accessor :numeric_value
+      attr_accessor :string_value
+      attr_accessor :boolean_value
+      attr_accessor :date_value
       attr_accessor :items
       attr_accessor :child
       attr_accessor :children
@@ -36,8 +40,12 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
   let(:representer_class) do
     klass = child_class
     Class.new(Google::Apis::Core::JsonRepresentation) do
-      property :value
-      property :date, type: DateTime
+      property :unset_value, as: 'unsetValue'
+      property :nil_value, as: 'nilValue'
+      property :numeric_value, as: 'numericValue'
+      property :string_value, as: 'stringValue'
+      property :boolean_value, as: 'booleanValue'
+      property :date_value, as: 'dateValue', type: DateTime
       property :items
       property :child, class: klass do
         property :value
@@ -48,99 +56,130 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
     end
   end
 
-  context 'when serializing' do
-    let(:json) { representer_class.new(model).to_json(skip_undefined:true) }
-    let(:model) { model_class.new }
+  shared_examples 'it serializes' do
 
     it 'does not serialize unset values' do
-      expect(json).to be_json_eql(%({}))
+      expect(json).not_to have_json_path('unsetValue')
     end
 
     it 'serializes explicit nil values' do
-      model.value = nil
-      expect(json).to be_json_eql(%({"value": null}))
+      expect(json).to be_json_eql(%(null)).at_path('nilValue')
     end
 
     it 'serializes numeric values' do
-      model.value = 123
-      expect(json).to be_json_eql(%({"value": 123}))
+      expect(json).to be_json_eql(%(123)).at_path('numericValue')
     end
 
     it 'serializes string values' do
-      model.value = 'test'
-      expect(json).to be_json_eql(%({"value": "test"}))
+      expect(json).to be_json_eql(%("test")).at_path('stringValue')
     end
 
     it 'serializes boolean values' do
-      model.value = true
-      expect(json).to be_json_eql(%({"value": true}))
+      expect(json).to be_json_eql(%(true)).at_path('booleanValue')
     end
 
     it 'serializes date values' do
-      model.date = DateTime.new(2015,5,1,12)
-      expect(json).to be_json_eql(%({"date": "2015-05-01T12:00:00+00:00"}))
+      expect(json).to be_json_eql(%("2015-05-01T12:00:00+00:00")).at_path('dateValue')
     end
 
     it 'serializes basic collections' do
-      model.items = [1,2,3]
-      expect(json).to be_json_eql(%({"items": [1,2,3]}))
+      expect(json).to be_json_eql(%([1,2,3])).at_path('items')
     end
 
     it 'serializes nested objects' do
-      child = child_class.new
-      child.value = "child"
-      model.child = child
-      expect(json).to be_json_eql(%({"child": {"value" : "child"}}))
+      expect(json).to be_json_eql(%({"value" : "child"})).at_path('child')
     end
 
     it 'serializes object collections' do
-      child = child_class.new
-      child.value = "child"
-      model.children = [child]
-      expect(json).to be_json_eql(%({"children": [{"value" : "child"}]}))
+      expect(json).to be_json_eql(%([{"value" : "child"}])).at_path('children')
     end
   end
 
+  context 'with model object' do
+    let(:json) { representer_class.new(model).to_json(skip_undefined:true) }
+    let(:model) do
+      model = model_class.new
+      model.nil_value = nil
+      model.numeric_value = 123
+      model.string_value = 'test'
+      model.date_value = DateTime.new(2015,5,1,12)
+      model.boolean_value = true
+      model.items = [1,2,3]
+
+      model.child = child_class.new
+      model.child.value = "child"
+      model.children = [model.child]
+      model
+    end
+
+    include_examples 'it serializes'
+  end
+
+  context 'with hash' do
+    let(:json) { representer_class.new(model).to_json(skip_undefined:true) }
+    let(:model) do
+      {
+        nil_value: nil,
+        string_value: 'test',
+        numeric_value: 123,
+        date_value: DateTime.new(2015,5,1,12),
+        boolean_value: true,
+        items: [1,2,3],
+        child: {
+          value: 'child'
+        },
+        children: [{value: 'child'}]
+      }
+    end
+
+    include_examples 'it serializes'
+  end
+
   context 'when de-serializing' do
-    let(:model) { representer_class.new(model_class.new).from_json(@json) }
+    let(:model) { representer_class.new(model_class.new).from_json(json) }
+    let(:json) do
+      json = <<EOF
+{ "stringValue": "test",
+  "nilValue": null,
+  "booleanValue": true,
+  "numericValue": 123,
+  "dateValue": "2015-05-01T12:00:00+00:00",
+  "items": [1,2,3],
+  "child": {"value" : "hello"},
+  "children": [{"value" : "hello"}]
+}
+EOF
+    end
 
     it 'deserializes string values' do
-      @json = %({"value": "hello"})
-      expect(model.value).to eql 'hello'
+      expect(model.string_value).to eql 'test'
     end
 
     it 'deserializes null values' do
-      @json = %({"value": null})
-      expect(model.value).to be_nil
+      expect(model.nil_value).to be_nil
     end
 
     it 'deserializes numeric values' do
-      @json = %({"value": 123})
-      expect(model.value).to eql 123
+      expect(model.numeric_value).to eql 123
     end
 
     it 'deserializes boolean values' do
-      @json = %({"value": true})
-      expect(model.value).to be_truthy
+      expect(model.boolean_value).to be_truthy
     end
 
     it 'deserializes date values' do
-      @json = %({"date": "2015-05-01T12:00:00+00:00"})
-      expect(model.date).to eql DateTime.new(2015,5,1,12)
+      expect(model.date_value).to eql DateTime.new(2015,5,1,12)
     end
 
     it 'deserializes basic collections' do
-      @json = %({"value": [1,2,3]})
-      expect(model.value).to contain_exactly(1,2,3)
+      expect(model.items).to contain_exactly(1,2,3)
     end
 
     it 'deserializes nested objects' do
-      @json = %({"child": {"value" : "hello"}})
       expect(model.child.value).to eql "hello"
     end
 
     it 'serializes object collections' do
-      @json = %({"children": [{"value" : "hello"}]})
       expect(model.children[0].value).to eql "hello"
     end
   end

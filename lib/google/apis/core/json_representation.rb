@@ -19,85 +19,99 @@ require 'representable/coercion'
 module Google
   module Apis
     module Core
+
+      # Support for serializing hashes + propery value/nil/unset tracking
+      # To be included in representers as a feature.
+      # @private
+      module JsonRepresentationSupport
+        def self.included(base)
+          base.extend(JsonSupport)
+        end
+
+        # @private
+        module JsonSupport
+          # Returns a customized getter function for Representable. Allows
+          # indifferent hash/attribute access.
+          #
+          # @param [String] name Property name
+          # @return [Proc]
+          def getter_fn(name)
+            ivar_name = "@#{name}".to_sym
+            lambda do |_|
+              if respond_to?(:[])
+                self[name] || instance_variable_get(ivar_name)
+              else
+                instance_variable_get(ivar_name)
+              end
+            end
+          end
+
+          # Returns a customized function for Representable that checks whether or not
+          # an attribute should be serialized. Allows proper patch semantics by distinguishing
+          # between nil & unset values
+          #
+          # @param [String] name Property name
+          # @return [Proc]
+          def if_fn(name)
+            ivar_name = "@#{name}".to_sym
+            lambda do |opts|
+              if opts[:skip_undefined]
+                if respond_to?(:key?)
+                  self.key?(name) || instance_variable_defined?(ivar_name)
+                else
+                  instance_variable_defined?(ivar_name)
+                end
+              else
+                true
+              end
+            end
+          end
+
+          def set_default_options(name, options)
+            options[:render_nil] = true
+            options[:getter] = getter_fn(name)
+            options[:if] = if_fn(name)
+          end
+
+          # Define a single value property
+          #
+          # @param [String] name
+          #  Property name
+          # @param [Hash] options
+          def property(name, options = {})
+            set_default_options(name, options)
+            super(name, options)
+          end
+
+          # Define a collection property
+          #
+          # @param [String] name
+          #  Property name
+          # @param [Hash] options
+          def collection(name, options = {})
+            set_default_options(name, options)
+            super(name, options)
+          end
+
+          # Define a hash property
+          #
+          # @param [String] name
+          #  Property name
+          # @param [Hash] options
+          def hash(name, options)
+            set_default_options(name, options)
+            super(name, options)
+          end
+        end
+      end
+
       # Base decorator for JSON representers
       #
       # @see https://github.com/apotonick/representable
       class JsonRepresentation < Representable::Decorator
         include Representable::JSON
         include Representable::Coercion
-
-        # Returns a customized getter function for Representable. Allows
-        # indifferent hash/attribute access.
-        #
-        # @param [String] name Property name
-        # @return [Proc]
-        def self.getter_fn(name)
-          ivar_name = "@#{name}".to_sym
-          lambda do |_|
-            if respond_to?(:[])
-              self[name] || instance_variable_get(ivar_name)
-            else
-              instance_variable_get(ivar_name)
-            end
-          end
-        end
-
-        # Returns a customized function for Representable that checks whether or not
-        # an attribute should be serialized. Allows proper patch semantics by distinguishing
-        # between nil & unset values
-        #
-        # @param [String] name Property name
-        # @return [Proc]
-        def self.if_fn(name)
-          ivar_name = "@#{name}".to_sym
-          lambda do |opts|
-            if opts[:skip_undefined]
-              if respond_to?(:key?)
-                self.key?(name) || instance_variable_defined?(ivar_name)
-              else
-                instance_variable_defined?(ivar_name)
-              end
-            else
-              true
-            end
-          end
-        end
-
-        def self.set_default_options(name, options)
-          options[:render_nil] = true
-          options[:getter] = getter_fn(name)
-          options[:if] = if_fn(name)
-        end
-
-        # Define a single value property
-        #
-        # @param [String] name
-        #  Property name
-        # @param [Hash] options
-        def self.property(name, options = {})
-          set_default_options(name, options)
-          super(name, options)
-        end
-
-        # Define a collection property
-        #
-        # @param [String] name
-        #  Property name
-        # @param [Hash] options
-        def self.collection(name, options = {})
-          set_default_options(name, options)
-          super(name, options)
-        end
-
-        # Define a hash property
-        #
-        # @param [String] name
-        #  Property name
-        # @param [Hash] options
-        def self.hash(name, options)
-          set_default_options(name, options)
-          super(name, options)
-        end
+        feature JsonRepresentationSupport
       end
     end
   end
