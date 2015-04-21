@@ -47,11 +47,11 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       stub_request(:post, 'https://www.googleapis.com/zoo/animals').
         to_return(:headers => { 'Content-Type' => 'application/json'}, :body => %({}))
     end
-    
+
     it 'should serialize the request object' do
       command.execute(client)
-      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').with do |req| 
-        be_json_eql(%({"value":"hello"})).matches?(req.body) 
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').with do |req|
+        be_json_eql(%({"value":"hello"})).matches?(req.body)
       end).to have_been_made
     end
   end
@@ -92,7 +92,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       stub_request(:get, 'https://www.googleapis.com/zoo/animals').
         to_return(:headers => { 'Content-Type' => 'text/plain'}, :body => %(Ignore me))
     end
-    
+
     it 'should return nil' do
       result = command.execute(client)
       expect(result).to be_nil
@@ -111,7 +111,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       stub_request(:get, /.*/).
         to_return(:headers => { 'Content-Type' => 'application/json'}, :body => %({}))
     end
-    
+
     it 'should normalize fields params' do
       command.execute(client)
       expect(a_request(:get, 'https://www.googleapis.com/zoo/animals').
@@ -150,4 +150,22 @@ EOF
       expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')).to have_been_made.times(2)
     end
   end
+
+  context('with an empty error body') do
+    let(:command) do
+      Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    end
+
+    before(:example) do
+      json = %({})
+
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
+        to_return(:status => [403, 'Rate Limit Exceeded'], :headers => { 'Content-Type' => 'application/json'}, :body => json)
+    end
+
+    it 'should raise client error' do
+      expect { command.execute(client) }.to raise_error(Google::Apis::ClientError)
+    end
+  end
+
 end

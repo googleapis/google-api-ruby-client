@@ -22,7 +22,6 @@ module Google
     module Core
       # Streaming/resumable media download support
       class DownloadCommand < ApiCommand
-        CONTENT_LOCATION_HEADER = 'content-location'
         RANGE_HEADER = 'range'
         ALT_PARAM = 'alt'
         ALT_MEDIA = 'media'
@@ -78,10 +77,6 @@ module Google
             end
             req.on_body do |res, chunk|
               check_status(res.status_code, chunk) unless res.status_code.nil?
-              if res.header[CONTENT_LOCATION_HEADER]
-                @download_url = res.header[CONTENT_LOCATION_HEADER]
-                logger.debug { sprintf('Download URL changed: %s', @download_url) }
-              end
               logger.debug { sprintf('Writing chunk (%d bytes)', chunk.length) }
               @offset += chunk.length
               @download_io.write(chunk)

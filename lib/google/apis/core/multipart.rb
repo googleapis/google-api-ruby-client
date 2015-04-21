@@ -95,16 +95,9 @@ module Google
         # @param [Hash] header
         #  Headers for the part
         def build_head(boundary, type, content_len, header)
-          if header[:content_id]
-            content_id = sprintf(CID_FORMAT, header[:content_id])
-          else
-            content_id = nil
-          end
-
           sprintf(HEAD_FORMAT,
                   boundary,
                   content_len.to_i,
-                  content_id,
                   header[:content_type] || type,
                   header[:content_transfer_encoding] || DEFAULT_TR_ENCODING
           )
@@ -112,11 +105,10 @@ module Google
 
         DEFAULT_TR_ENCODING = 'binary'.freeze
         FOOT = "\r\n".freeze
-        CID_FORMAT = "Content-ID: %s\r\n"
         HEAD_FORMAT = <<-END
 --%s\r
 Content-Length: %d\r
-%sContent-Type: %s\r
+Content-Type: %s\r
 Content-Transfer-Encoding: %s\r
 \r
         END

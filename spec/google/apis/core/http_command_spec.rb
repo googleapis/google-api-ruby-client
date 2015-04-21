@@ -59,7 +59,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       command.options.retries = 1
       expect { command.execute(client) }.to raise_error(Google::Apis::ServerError)
     end
-    
+
     context('with callbacks') do
       it 'should return the response body after retries' do
         expect { |b| command.execute(client, &b) }.to yield_successive_args(
@@ -69,7 +69,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       end
     end
   end
-  
+
   context('with redirects') do
     let(:command) do
       Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
@@ -102,22 +102,36 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       expect { command.execute(client) }.to raise_error(Google::Apis::RedirectError)
     end
   end
-  
+
   context('with no server response') do
     let(:command) do
       Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
     end
 
     before(:example) do
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
-        to_raise(OpenSSL::SSL::SSLError)
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_timeout
     end
-    
+
     it 'should raise transmission error' do
       expect { command.execute(client) }.to raise_error(Google::Apis::TransmissionError)
     end
   end
-  
+
+  context('with invalid status code') do
+    let(:command) do
+      Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    end
+
+    before(:example) do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
+        to_return(:status => [0, 'Wat!?'])
+    end
+
+    it 'should raise transmission error' do
+      expect { command.execute(client) }.to raise_error(Google::Apis::TransmissionError)
+    end
+  end
+
   context('with authorization errors') do
     let(:command) do
       command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
@@ -130,7 +144,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         to_return(:status => [401, 'Unauthorized']).
         to_return(:body => %(Hello world))
     end
-    
+
     it 'should always retry on authorization errors' do
       result = command.execute(client)
       expect(result).to eql 'Hello world'
