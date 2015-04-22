@@ -122,7 +122,7 @@ RSpec.describe Google::Apis::Core::MultipartUploadCommand do
   end
 
   it 'should send content' do
-    body = <<EOF
+    expected_body = <<EOF.gsub(/\n/, "\r\n")
 --RubyApiClientUpload
 Content-Type: application/json
 
@@ -138,7 +138,7 @@ Hello world
 EOF
     command.execute(client)
     expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
-      with{ |req| req.body.gsub("\r", '') == body }).to have_been_made
+      with(:body => expected_body)).to have_been_made
   end
 
   it 'should send upload protocol' do

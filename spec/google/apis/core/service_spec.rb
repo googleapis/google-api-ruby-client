@@ -100,7 +100,7 @@ RSpec.describe Google::Apis::Core::BaseService do
 
   context 'with batch' do
     before(:example) do
-      response = <<EOF
+      response = <<EOF.gsub(/\n/, "\r\n")
 --batch123
 Content-Type: application/http
 
@@ -113,7 +113,7 @@ EOF
       stub_request(:post, 'https://www.googleapis.com/batch').
         to_return(:headers => {'Content-Type' => 'multipart/mixed; boundary=batch123'}, :body => response)
     end
-    
+
     it 'should add commands to a batch' do
       expect do |b|
         service.batch do |service|
@@ -144,7 +144,7 @@ EOF
 
   context 'with batch uploads' do
     before(:example) do
-      response = <<EOF
+      response = <<EOF.gsub(/\n/, "\r\n")
 --batch123
 Content-Type: application/http
 
@@ -157,7 +157,7 @@ EOF
       stub_request(:put, 'https://www.googleapis.com/upload/').
         to_return(:headers => {'Content-Type' => 'multipart/mixed; boundary=batch123'}, :body => response)
     end
-    
+
     it 'should add upload to a batch' do
       expect do |b|
         service.batch_upload do |service|

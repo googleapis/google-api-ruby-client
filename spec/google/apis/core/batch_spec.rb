@@ -25,6 +25,21 @@ RSpec.describe Google::Apis::Core::BatchCommand do
     command = Google::Apis::Core::BatchCommand.new(:post, 'https://www.googleapis.com/batch')
   end
 
+  let(:get_command) { Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals/1') }
+
+  let(:post_with_string_command) do
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals/2')
+    command.body = 'Hello world'
+    command.header[:content_type] = 'text/plain'
+    command
+  end
+
+  let(:post_with_io_command) do
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals/3')
+    command.body = StringIO.new('Goodbye!')
+    command.header[:content_type] = 'text/plain'
+    command
+  end
 
   before(:example) do
     response = <<EOF
@@ -56,14 +71,55 @@ EOF
   end
 
   it 'should send content' do
+    b = lambda { |res, err| }
+    command.add(get_command, &b)
+    command.add(post_with_string_command, &b)
+    command.add(post_with_io_command, &b)
+    command.execute(client)
+
+    expected_body = <<EOF.gsub(/\n/, "\r\n")
+--RubyApiBatchRequest
+Content-Length: 54
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+GET /zoo/animals/1? HTTP/1.1
+Host: www.googleapis.com
+--RubyApiBatchRequest
+Content-Length: 95
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+GET /zoo/animals/2? HTTP/1.1
+Content-Type: text/plain
+Host: www.googleapis.com
+
+Hello world
+--RubyApiBatchRequest
+Content-Length: 92
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+GET /zoo/animals/3? HTTP/1.1
+Content-Type: text/plain
+Host: www.googleapis.com
+
+Goodbye!
+--RubyApiBatchRequest--
+
+EOF
+    expect(a_request(:post, 'https://www.googleapis.com/batch').with(:body => expected_body)).to have_been_made
+  end
+
+  it 'should send decode responses' do
     expect do |b|
-      command.add(Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals/1'), &b)
-      command.add(Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals/2'), &b)
-      command.add(Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals/3'), &b)
+      command.add(get_command, &b)
+      command.add(post_with_string_command, &b)
+      command.add(post_with_io_command, &b)
       command.execute(client)
     end.to yield_successive_args(['Hello', nil], ['world', nil], [nil, an_instance_of(Google::Apis::ServerError)])
   end
-  
+
   it 'should raise error if batch is empty' do
     expect { command.execute(client) }.to raise_error(Google::Apis::BatchError)
   end
