@@ -37,6 +37,17 @@ RSpec.describe Google::Apis::Core::BaseService do
     expect(agent).to match /^test\/1.0/
   end
 
+  it 'should inherit authorization' do
+    Google::Apis::RequestOptions.default.authorization = 'a token'
+    expect(service.authorization).to eql 'a token'
+  end
+
+  it 'should allow overiding authorization' do
+    Google::Apis::RequestOptions.default.authorization = 'a token'
+    service.authorization = 'another token'
+    expect(service.authorization).to eql 'another token'
+  end
+
   shared_examples 'with options' do
     it 'should inherit service options' do
       service.request_options.retries = 2

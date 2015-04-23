@@ -51,7 +51,7 @@ require 'google/apis/core/base_service'
 RSpec.configure do |config|
   include RSpec::LoggingHelper
   config.include JsonSpec::Helpers
-  config.include WebMock
+  config.include WebMock::API
   config.capture_log_messages
 
   Google::Apis.logger.level = Logger::DEBUG
@@ -87,7 +87,7 @@ module Net
       fail chunk if chunk.is_a?(Class)
       chunk
     end
-    
+
     def read_body(dest = nil, &block)
       if !(defined?(@__read_body_previously_called).nil?) && @__read_body_previously_called
         return super

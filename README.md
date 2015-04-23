@@ -197,6 +197,7 @@ A URL can also be specified:
 *  Custom name overrides for code generation
 *  Auto-paging results (maybe)
 *  Caching
+*  Model validations
 
 ## License
 

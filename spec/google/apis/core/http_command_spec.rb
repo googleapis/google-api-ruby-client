@@ -20,6 +20,73 @@ RSpec.describe Google::Apis::Core::HttpCommand do
   include TestHelpers
   include_context 'HTTP client'
 
+  context('with credentials') do
+
+    let(:command) do
+      command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+      command.options.authorization = authorization
+      command
+    end
+
+    context('that are refreshable') do
+      let(:authorization) do
+        calls = 0
+        auth =  object_double(Signet::OAuth2::Client.new)
+        allow(auth).to receive(:apply!) do |header|
+          header['Authorization'] = sprintf('Bearer a_token_value_%d', calls)
+          calls += 1
+        end
+        auth
+      end
+
+      it 'should send credentials' do
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(:body => %(Hello world))
+        result = command.execute(client)
+        expect(a_request(:get, 'https://www.googleapis.com/zoo/animals').
+          with{ |req| req.headers['Authorization'] == 'Bearer a_token_value_0' }).to have_been_made
+      end
+
+      context('with authorizaton error') do
+        before(:example) do
+          stub_request(:get, 'https://www.googleapis.com/zoo/animals').
+            to_return(:status => [401, 'Unauthorized']).
+            to_return(:body => %(Hello world))
+        end
+
+        it 'should refresh if auth error received' do
+          result = command.execute(client)
+          expect(a_request(:get, 'https://www.googleapis.com/zoo/animals').
+            with{ |req| req.headers['Authorization'] == 'Bearer a_token_value_1' }).to have_been_made
+        end
+
+        it 'should ignore retry count' do
+          command.options.retries = 0
+          result = command.execute(client)
+          expect(a_request(:get, 'https://www.googleapis.com/zoo/animals').
+            with{ |req| req.headers['Authorization'] == 'Bearer a_token_value_1' }).to have_been_made
+        end
+      end
+
+    end
+
+    context('that are bare tokens`') do
+      let(:authorization) { 'a_token_value' }
+
+      it 'should send credentials' do
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(:body => %(Hello world))
+        result = command.execute(client)
+        expect(a_request(:get, 'https://www.googleapis.com/zoo/animals').
+          with{ |req| expect(req.headers['Authorization']).to eql 'Bearer a_token_value' }).to have_been_made
+      end
+
+      it 'should send not refresh' do
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(:status => [401, 'Unauthorized'])
+        expect { command.execute(client) }.to raise_error(Google::Apis::AuthorizationError)
+      end
+    end
+
+  end
+
   context('with a successful response') do
     let(:command) do
       Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
@@ -129,25 +196,6 @@ RSpec.describe Google::Apis::Core::HttpCommand do
 
     it 'should raise transmission error' do
       expect { command.execute(client) }.to raise_error(Google::Apis::TransmissionError)
-    end
-  end
-
-  context('with authorization errors') do
-    let(:command) do
-      command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
-      command.options.retries = 0
-      command
-    end
-
-    before(:example) do
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
-        to_return(:status => [401, 'Unauthorized']).
-        to_return(:body => %(Hello world))
-    end
-
-    it 'should always retry on authorization errors' do
-      result = command.execute(client)
-      expect(result).to eql 'Hello world'
     end
   end
 

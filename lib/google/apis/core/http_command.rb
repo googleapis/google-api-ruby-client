@@ -99,7 +99,7 @@ module Google
               # This 2nd level retriable only catches auth errors, and supports 1 retry, which allows
               # auth to be re-attempted without having to retry all sorts of other failures like
               # NotFound, etc
-              auth_tries = (try == 1 ? 2 : 1)
+              auth_tries = (try == 1 && authorization_refreshable? ? 2 : 1)
               Retriable.retriable tries: auth_tries,
                                   on: [Google::Apis::AuthorizationError],
                                   on_retry: Proc.new { |*| refresh_authorization } do
@@ -122,15 +122,21 @@ module Google
           logger.debug('Retrying after authentication failure')
         end
 
+        # Check if attached credentials can be automatically refreshed
+        # @return [Boolean]
+        def authorization_refreshable?
+          options.authorization.respond_to?(:apply!)
+        end
+
         # Prepare the request (e.g. calculate headers, serialize data, etc) before sending
         #
         # @private
         # @return [void]
         def prepare!
-          options.authorization.apply!(header) unless options.authorization.nil?
           self.url = url.expand(params) if url.is_a?(Addressable::Template)
           url.query_values = query
         end
+
 
         # Release any resources used by this command
         # @private
@@ -256,6 +262,11 @@ module Google
         #  HTTP request
         # @return [void]
         def apply_request_options(req)
+          if options.authorization.respond_to?(:apply!)
+            options.authorization.apply!(req.header)
+          elsif options.authorization.is_a?(String)
+            req.header[:authorization] = sprintf('Bearer %s', options.authorization)
+          end
           req.header.update(header)
           req.options.timeout = self.options.timeout_sec
         end
