@@ -281,12 +281,6 @@ module Google
           self.schema_type = other.schema_type
         end
 
-        # @!attribute [r] anonymous?
-        # @return [Boolean] True if an unnamed custom type
-        def anonymous?
-          ref.nil?
-        end
-
         # @!attribute [r] array?
         # @return [Boolean] True if this is a collection type
         def array?
@@ -325,7 +319,7 @@ module Google
           if type == 'string'
             return 'DateTime' if format == 'date-time'
             return 'Date' if format == 'date'
-            #return 'Array<Fixnum>' if format == 'byte'
+            # TODO: return 'Array<Fixnum>' if format == 'byte'
             'String'
           elsif type == 'hash'
             return sprintf('Hash<%s,%s>', key_type, item_type)
@@ -341,8 +335,6 @@ module Google
             return 'Object'
           elsif schema_type
             return schema_type.qualified_name
-          else
-            ref
           end
         end
       end

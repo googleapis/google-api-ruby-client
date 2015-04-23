@@ -56,6 +56,11 @@ RSpec.describe Google::Apis::Generator do
         expect(parameters).to include(:s, :i, :n, :b, :a, :e, :er, :sr)
       end
 
+      it 'should modify parameter names that are ruby keywords' do
+        parameters = service.method(:query).parameters.map { |(k,v)| v }
+        expect(parameters).to include(:do_)
+      end
+
       it 'should define global parameters on methods' do
         parameters = service.method(:query).parameters.map { |(k,v)| v }
         expect(parameters).to include(:fields, :quota_user, :user_ip)
