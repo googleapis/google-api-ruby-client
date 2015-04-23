@@ -21,7 +21,7 @@ Google::Apis.logger.level = Logger::DEBUG
 Translate = Google::Apis::TranslateV2
 
 translate = Translate::TranslateService.new
-translate.key = 'YOUR_API_KEY'
+translate.key = ARGV[0] || 'YOUR_API_KEY'
 
 result = translate.list_translations(source: 'en', target: 'es', q: 'Hello world!')
 puts result.translations.first.translated_text
