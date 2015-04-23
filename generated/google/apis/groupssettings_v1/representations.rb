@@ -21,10 +21,14 @@ require 'google/apis/errors'
 module Google
   module Apis
     module GroupssettingsV1
-      class GroupsRepresentation < Google::Apis::Core::JsonRepresentation; end
+      
+      class GroupsRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
 
       # @private
       class GroupsRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :allow_external_members, as: 'allowExternalMembers'
         property :allow_google_communication, as: 'allowGoogleCommunication'
         property :allow_web_posting, as: 'allowWebPosting'

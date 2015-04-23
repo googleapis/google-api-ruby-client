@@ -35,8 +35,9 @@ module Google
         # @return [String]
         attr_accessor :cluster_api_version
       
-        # [Output only] The IP addresses of the container pods in this cluster, in  CIDR
-        # notation (e.g. 1.2.3.4/29).
+        # The IP addresses of the container pods in this cluster, in  CIDR notation (e.g.
+        # 10.96.0.0/14). Leave blank to have one automatically chosen or specify a /14
+        # block in 10.0.0.0/8 or 172.16.0.0/12.
         # Corresponds to the JSON property `containerIpv4Cidr`
         # @return [String]
         attr_accessor :container_ipv4_cidr

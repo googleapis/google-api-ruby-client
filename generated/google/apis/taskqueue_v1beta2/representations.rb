@@ -21,13 +21,33 @@ require 'google/apis/errors'
 module Google
   module Apis
     module TaskqueueV1beta2
-      class TaskRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TaskQueueRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TasksRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class Tasks2Representation < Google::Apis::Core::JsonRepresentation; end
+      
+      class TaskRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TaskQueueRepresentation < Google::Apis::Core::JsonRepresentation
+        
+        class AclRepresentation < Google::Apis::Core::JsonRepresentation
+          
+        end
+        
+        class StatsRepresentation < Google::Apis::Core::JsonRepresentation
+          
+        end
+      end
+      
+      class TasksRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class Tasks2Representation < Google::Apis::Core::JsonRepresentation
+        
+      end
 
       # @private
       class TaskRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :enqueue_timestamp, as: 'enqueueTimestamp'
         property :id, as: 'id'
         property :kind, as: 'kind'
@@ -40,7 +60,21 @@ module Google
 
       # @private
       class TaskQueueRepresentation < Google::Apis::Core::JsonRepresentation
-        property :acl, as: 'acl', class: Google::Apis::TaskqueueV1beta2::TaskQueue::Acl do
+        class AclRepresentation < Google::Apis::Core::JsonRepresentation; end
+        class StatsRepresentation < Google::Apis::Core::JsonRepresentation; end
+        
+        property :acl, as: 'acl', class: Google::Apis::TaskqueueV1beta2::TaskQueue::Acl, decorator: Google::Apis::TaskqueueV1beta2::TaskQueueRepresentation::AclRepresentation
+        
+        property :id, as: 'id'
+        property :kind, as: 'kind'
+        property :max_leases, as: 'maxLeases'
+        property :stats, as: 'stats', class: Google::Apis::TaskqueueV1beta2::TaskQueue::Stats, decorator: Google::Apis::TaskqueueV1beta2::TaskQueueRepresentation::StatsRepresentation
+        
+        
+        
+        # @private
+        class AclRepresentation < Google::Apis::Core::JsonRepresentation
+          
           collection :admin_emails, as: 'adminEmails'
           
           collection :consumer_emails, as: 'consumerEmails'
@@ -48,10 +82,9 @@ module Google
           collection :producer_emails, as: 'producerEmails'
         end
         
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :max_leases, as: 'maxLeases'
-        property :stats, as: 'stats', class: Google::Apis::TaskqueueV1beta2::TaskQueue::Stats do
+        # @private
+        class StatsRepresentation < Google::Apis::Core::JsonRepresentation
+          
           property :leased_last_hour, as: 'leasedLastHour'
           property :leased_last_minute, as: 'leasedLastMinute'
           property :oldest_task, as: 'oldestTask'
@@ -61,6 +94,7 @@ module Google
 
       # @private
       class TasksRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :items, as: 'items', class: Google::Apis::TaskqueueV1beta2::Task, decorator: Google::Apis::TaskqueueV1beta2::TaskRepresentation
         
         
@@ -69,6 +103,7 @@ module Google
 
       # @private
       class Tasks2Representation < Google::Apis::Core::JsonRepresentation
+        
         collection :items, as: 'items', class: Google::Apis::TaskqueueV1beta2::Task, decorator: Google::Apis::TaskqueueV1beta2::TaskRepresentation
         
         

@@ -21,83 +21,309 @@ require 'google/apis/errors'
 module Google
   module Apis
     module MapsengineV1
-      class GeoJsonGeometryRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class MapItemRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class AcquisitionTimeRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class AssetRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class AssetsListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class BorderRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ColorRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class DatasourceRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class DisplayRuleRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class FeatureRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class FeatureInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class FeaturesBatchDeleteRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class FeaturesBatchInsertRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class FeaturesBatchPatchRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class FeaturesListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class FileRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class FilterRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class GeoJsonGeometryCollectionRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class GeoJsonLineStringRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class GeoJsonMultiLineStringRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class GeoJsonMultiPointRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class GeoJsonMultiPolygonRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class GeoJsonPointRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class GeoJsonPolygonRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class IconRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class IconStyleRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class IconsListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class LabelStyleRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class LayerRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class LayersListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class LineStyleRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class MapRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class MapFolderRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class MapKmlLinkRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class MapLayerRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class MapsListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ParentRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ParentsListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PermissionRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PermissionsBatchDeleteRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PermissionsBatchDeleteResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PermissionsBatchUpdateRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PermissionsBatchUpdateResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PermissionsListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PointStyleRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PolygonStyleRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ProcessResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ProjectRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ProjectsListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PublishResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PublishedLayerRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PublishedLayersListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PublishedMapRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PublishedMapsListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class RasterRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class RasterCollectionRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class RasterCollectionsListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class RasterCollectionsRasterRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class RasterCollectionsRasterBatchDeleteRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class RasterCollectionsRastersBatchDeleteResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class RasterCollectionsRastersBatchInsertRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class RasterCollectionsRastersBatchInsertResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class RasterCollectionsRastersListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class RastersListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ScaledShapeRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ScalingFunctionRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class SchemaRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class SizeRangeRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TableRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TableColumnRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TablesListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ValueRangeRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class VectorStyleRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ZoomLevelsRepresentation < Google::Apis::Core::JsonRepresentation; end
+      
+      class GeoJsonGeometryRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class MapItemRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class AcquisitionTimeRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class AssetRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class AssetsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class BorderRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ColorRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class DatasourceRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class DisplayRuleRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class FeatureRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class FeatureInfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class FeaturesBatchDeleteRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class FeaturesBatchInsertRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class FeaturesBatchPatchRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class FeaturesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class FileRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class FilterRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class GeoJsonGeometryCollectionRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class GeoJsonLineStringRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class GeoJsonMultiLineStringRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class GeoJsonMultiPointRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class GeoJsonMultiPolygonRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class GeoJsonPointRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class GeoJsonPolygonRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class IconRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class IconStyleRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class IconsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class LabelStyleRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class LayerRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class LayersListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class LineStyleRepresentation < Google::Apis::Core::JsonRepresentation
+        
+        class StrokeRepresentation < Google::Apis::Core::JsonRepresentation
+          
+        end
+      end
+      
+      class MapRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class MapFolderRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class MapKmlLinkRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class MapLayerRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class MapsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ParentRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ParentsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PermissionRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PermissionsBatchDeleteRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PermissionsBatchDeleteResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PermissionsBatchUpdateRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PermissionsBatchUpdateResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PermissionsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PointStyleRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PolygonStyleRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ProcessResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ProjectRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ProjectsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PublishResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PublishedLayerRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PublishedLayersListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PublishedMapRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PublishedMapsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class RasterRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class RasterCollectionRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class RasterCollectionsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class RasterCollectionsRasterRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class RasterCollectionsRasterBatchDeleteRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class RasterCollectionsRastersBatchDeleteResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class RasterCollectionsRastersBatchInsertRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class RasterCollectionsRastersBatchInsertResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class RasterCollectionsRastersListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class RastersListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ScaledShapeRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ScalingFunctionRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class SchemaRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class SizeRangeRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TableRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TableColumnRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TablesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ValueRangeRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class VectorStyleRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ZoomLevelsRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
 
       # @private
       class GeoJsonGeometryRepresentation < Google::Apis::Core::JsonRepresentation
+        
         def from_hash(hash, *args)
           case hash['type']
           when 'GeometryCollection'
@@ -139,6 +365,7 @@ module Google
 
       # @private
       class MapItemRepresentation < Google::Apis::Core::JsonRepresentation
+        
         def from_hash(hash, *args)
           case hash['type']
           when 'folder'
@@ -164,6 +391,7 @@ module Google
 
       # @private
       class AcquisitionTimeRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :end, as: 'end', type: DateTime
         property :precision, as: 'precision'
         property :start, as: 'start', type: DateTime
@@ -171,6 +399,7 @@ module Google
 
       # @private
       class AssetRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :bbox, as: 'bbox'
         
         property :creation_time, as: 'creationTime', type: DateTime
@@ -191,6 +420,7 @@ module Google
 
       # @private
       class AssetsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :assets, as: 'assets', class: Google::Apis::MapsengineV1::Asset, decorator: Google::Apis::MapsengineV1::AssetRepresentation
         
         
@@ -199,6 +429,7 @@ module Google
 
       # @private
       class BorderRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :color, as: 'color'
         property :opacity, as: 'opacity'
         property :width, as: 'width'
@@ -206,17 +437,20 @@ module Google
 
       # @private
       class ColorRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :color, as: 'color'
         property :opacity, as: 'opacity'
       end
 
       # @private
       class DatasourceRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :id, as: 'id'
       end
 
       # @private
       class DisplayRuleRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :filters, as: 'filters', class: Google::Apis::MapsengineV1::Filter, decorator: Google::Apis::MapsengineV1::FilterRepresentation
         
         
@@ -232,6 +466,7 @@ module Google
 
       # @private
       class FeatureRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :geometry, as: 'geometry', class: Google::Apis::MapsengineV1::GeoJsonGeometry, decorator: Google::Apis::MapsengineV1::GeoJsonGeometryRepresentation
         
         hash :properties, as: 'properties'
@@ -241,11 +476,13 @@ module Google
 
       # @private
       class FeatureInfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :content, as: 'content'
       end
 
       # @private
       class FeaturesBatchDeleteRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :gx_ids, as: 'gx_ids'
         
         collection :primary_keys, as: 'primaryKeys'
@@ -253,6 +490,7 @@ module Google
 
       # @private
       class FeaturesBatchInsertRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :features, as: 'features', class: Google::Apis::MapsengineV1::Feature, decorator: Google::Apis::MapsengineV1::FeatureRepresentation
         
         
@@ -261,6 +499,7 @@ module Google
 
       # @private
       class FeaturesBatchPatchRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :features, as: 'features', class: Google::Apis::MapsengineV1::Feature, decorator: Google::Apis::MapsengineV1::FeatureRepresentation
         
         
@@ -269,6 +508,7 @@ module Google
 
       # @private
       class FeaturesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :allowed_queries_per_second, as: 'allowedQueriesPerSecond'
         collection :features, as: 'features', class: Google::Apis::MapsengineV1::Feature, decorator: Google::Apis::MapsengineV1::FeatureRepresentation
         
@@ -281,6 +521,7 @@ module Google
 
       # @private
       class FileRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :filename, as: 'filename'
         property :size, as: 'size'
         property :upload_status, as: 'uploadStatus'
@@ -288,6 +529,7 @@ module Google
 
       # @private
       class FilterRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :column, as: 'column'
         property :operator, as: 'operator'
         property :value, as: 'value'
@@ -295,6 +537,7 @@ module Google
 
       # @private
       class GeoJsonGeometryCollectionRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :geometries, as: 'geometries', class: Google::Apis::MapsengineV1::GeoJsonGeometry, decorator: Google::Apis::MapsengineV1::GeoJsonGeometryRepresentation
         
         
@@ -303,6 +546,7 @@ module Google
 
       # @private
       class GeoJsonLineStringRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :coordinates, as: 'coordinates', :class => Array do
           include Representable::JSON::Collection
           items
@@ -314,6 +558,7 @@ module Google
 
       # @private
       class GeoJsonMultiLineStringRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :coordinates, as: 'coordinates', :class => Array do
           include Representable::JSON::Collection
           items :class => Array do
@@ -329,6 +574,7 @@ module Google
 
       # @private
       class GeoJsonMultiPointRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :coordinates, as: 'coordinates', :class => Array do
           include Representable::JSON::Collection
           items
@@ -340,6 +586,7 @@ module Google
 
       # @private
       class GeoJsonMultiPolygonRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :coordinates, as: 'coordinates', :class => Array do
           include Representable::JSON::Collection
           items :class => Array do
@@ -359,6 +606,7 @@ module Google
 
       # @private
       class GeoJsonPointRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :coordinates, as: 'coordinates'
         
         property :type, as: 'type'
@@ -366,6 +614,7 @@ module Google
 
       # @private
       class GeoJsonPolygonRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :coordinates, as: 'coordinates', :class => Array do
           include Representable::JSON::Collection
           items :class => Array do
@@ -381,6 +630,7 @@ module Google
 
       # @private
       class IconRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :description, as: 'description'
         property :id, as: 'id'
         property :name, as: 'name'
@@ -388,6 +638,7 @@ module Google
 
       # @private
       class IconStyleRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :id, as: 'id'
         property :name, as: 'name'
         property :scaled_shape, as: 'scaledShape', class: Google::Apis::MapsengineV1::ScaledShape, decorator: Google::Apis::MapsengineV1::ScaledShapeRepresentation
@@ -397,6 +648,7 @@ module Google
 
       # @private
       class IconsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :icons, as: 'icons', class: Google::Apis::MapsengineV1::Icon, decorator: Google::Apis::MapsengineV1::IconRepresentation
         
         
@@ -405,6 +657,7 @@ module Google
 
       # @private
       class LabelStyleRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :color, as: 'color'
         property :column, as: 'column'
         property :font_style, as: 'fontStyle'
@@ -417,6 +670,7 @@ module Google
 
       # @private
       class LayerRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :bbox, as: 'bbox'
         
         property :creation_time, as: 'creationTime', type: DateTime
@@ -446,6 +700,7 @@ module Google
 
       # @private
       class LayersListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :layers, as: 'layers', class: Google::Apis::MapsengineV1::Layer, decorator: Google::Apis::MapsengineV1::LayerRepresentation
         
         
@@ -454,13 +709,21 @@ module Google
 
       # @private
       class LineStyleRepresentation < Google::Apis::Core::JsonRepresentation
+        class StrokeRepresentation < Google::Apis::Core::JsonRepresentation; end
+        
         property :border, as: 'border', class: Google::Apis::MapsengineV1::Border, decorator: Google::Apis::MapsengineV1::BorderRepresentation
         
         collection :dash, as: 'dash'
         
         property :label, as: 'label', class: Google::Apis::MapsengineV1::LabelStyle, decorator: Google::Apis::MapsengineV1::LabelStyleRepresentation
         
-        property :stroke, as: 'stroke', class: Google::Apis::MapsengineV1::LineStyle::Stroke do
+        property :stroke, as: 'stroke', class: Google::Apis::MapsengineV1::LineStyle::Stroke, decorator: Google::Apis::MapsengineV1::LineStyleRepresentation::StrokeRepresentation
+        
+        
+        
+        # @private
+        class StrokeRepresentation < Google::Apis::Core::JsonRepresentation
+          
           property :color, as: 'color'
           property :opacity, as: 'opacity'
           property :width, as: 'width'
@@ -469,6 +732,7 @@ module Google
 
       # @private
       class MapRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :bbox, as: 'bbox'
         
         collection :contents, as: 'contents', class: Google::Apis::MapsengineV1::MapItem, decorator: Google::Apis::MapsengineV1::MapItemRepresentation
@@ -498,6 +762,7 @@ module Google
 
       # @private
       class MapFolderRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :contents, as: 'contents', class: Google::Apis::MapsengineV1::MapItem, decorator: Google::Apis::MapsengineV1::MapItemRepresentation
         
         
@@ -512,6 +777,7 @@ module Google
 
       # @private
       class MapKmlLinkRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :default_viewport, as: 'defaultViewport'
         
         property :kml_url, as: 'kmlUrl'
@@ -522,6 +788,7 @@ module Google
 
       # @private
       class MapLayerRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :default_viewport, as: 'defaultViewport'
         
         property :id, as: 'id'
@@ -533,6 +800,7 @@ module Google
 
       # @private
       class MapsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :maps, as: 'maps', class: Google::Apis::MapsengineV1::Map, decorator: Google::Apis::MapsengineV1::MapRepresentation
         
         
@@ -541,17 +809,20 @@ module Google
 
       # @private
       class ParentRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :id, as: 'id'
       end
 
       # @private
       class ParentsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :next_page_token, as: 'nextPageToken'
         collection :parents, as: 'parents', class: Google::Apis::MapsengineV1::Parent, decorator: Google::Apis::MapsengineV1::ParentRepresentation
       end
 
       # @private
       class PermissionRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :discoverable, as: 'discoverable'
         property :id, as: 'id'
         property :role, as: 'role'
@@ -560,6 +831,7 @@ module Google
 
       # @private
       class PermissionsBatchDeleteRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :ids, as: 'ids'
       end
 
@@ -570,6 +842,7 @@ module Google
 
       # @private
       class PermissionsBatchUpdateRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :permissions, as: 'permissions', class: Google::Apis::MapsengineV1::Permission, decorator: Google::Apis::MapsengineV1::PermissionRepresentation
       end
 
@@ -580,11 +853,13 @@ module Google
 
       # @private
       class PermissionsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :permissions, as: 'permissions', class: Google::Apis::MapsengineV1::Permission, decorator: Google::Apis::MapsengineV1::PermissionRepresentation
       end
 
       # @private
       class PointStyleRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :icon, as: 'icon', class: Google::Apis::MapsengineV1::IconStyle, decorator: Google::Apis::MapsengineV1::IconStyleRepresentation
         
         property :label, as: 'label', class: Google::Apis::MapsengineV1::LabelStyle, decorator: Google::Apis::MapsengineV1::LabelStyleRepresentation
@@ -592,6 +867,7 @@ module Google
 
       # @private
       class PolygonStyleRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :fill, as: 'fill', class: Google::Apis::MapsengineV1::Color, decorator: Google::Apis::MapsengineV1::ColorRepresentation
         
         property :label, as: 'label', class: Google::Apis::MapsengineV1::LabelStyle, decorator: Google::Apis::MapsengineV1::LabelStyleRepresentation
@@ -606,12 +882,14 @@ module Google
 
       # @private
       class ProjectRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :id, as: 'id'
         property :name, as: 'name'
       end
 
       # @private
       class ProjectsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :projects, as: 'projects', class: Google::Apis::MapsengineV1::Project, decorator: Google::Apis::MapsengineV1::ProjectRepresentation
       end
 
@@ -622,6 +900,7 @@ module Google
 
       # @private
       class PublishedLayerRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :description, as: 'description'
         property :id, as: 'id'
         property :layer_type, as: 'layerType'
@@ -631,6 +910,7 @@ module Google
 
       # @private
       class PublishedLayersListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :layers, as: 'layers', class: Google::Apis::MapsengineV1::PublishedLayer, decorator: Google::Apis::MapsengineV1::PublishedLayerRepresentation
         
         
@@ -639,6 +919,7 @@ module Google
 
       # @private
       class PublishedMapRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :contents, as: 'contents', class: Google::Apis::MapsengineV1::MapItem, decorator: Google::Apis::MapsengineV1::MapItemRepresentation
         
         
@@ -652,6 +933,7 @@ module Google
 
       # @private
       class PublishedMapsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :maps, as: 'maps', class: Google::Apis::MapsengineV1::PublishedMap, decorator: Google::Apis::MapsengineV1::PublishedMapRepresentation
         
         
@@ -660,6 +942,7 @@ module Google
 
       # @private
       class RasterRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :acquisition_time, as: 'acquisitionTime', class: Google::Apis::MapsengineV1::AcquisitionTime, decorator: Google::Apis::MapsengineV1::AcquisitionTimeRepresentation
         
         property :attribution, as: 'attribution'
@@ -688,6 +971,7 @@ module Google
 
       # @private
       class RasterCollectionRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :attribution, as: 'attribution'
         collection :bbox, as: 'bbox'
         
@@ -711,12 +995,14 @@ module Google
 
       # @private
       class RasterCollectionsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :next_page_token, as: 'nextPageToken'
         collection :raster_collections, as: 'rasterCollections', class: Google::Apis::MapsengineV1::RasterCollection, decorator: Google::Apis::MapsengineV1::RasterCollectionRepresentation
       end
 
       # @private
       class RasterCollectionsRasterRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :bbox, as: 'bbox'
         
         property :creation_time, as: 'creationTime', type: DateTime
@@ -731,6 +1017,7 @@ module Google
 
       # @private
       class RasterCollectionsRasterBatchDeleteRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :ids, as: 'ids'
       end
 
@@ -741,6 +1028,7 @@ module Google
 
       # @private
       class RasterCollectionsRastersBatchInsertRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :ids, as: 'ids'
       end
 
@@ -751,18 +1039,21 @@ module Google
 
       # @private
       class RasterCollectionsRastersListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :next_page_token, as: 'nextPageToken'
         collection :rasters, as: 'rasters', class: Google::Apis::MapsengineV1::RasterCollectionsRaster, decorator: Google::Apis::MapsengineV1::RasterCollectionsRasterRepresentation
       end
 
       # @private
       class RastersListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :next_page_token, as: 'nextPageToken'
         collection :rasters, as: 'rasters', class: Google::Apis::MapsengineV1::Raster, decorator: Google::Apis::MapsengineV1::RasterRepresentation
       end
 
       # @private
       class ScaledShapeRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :border, as: 'border', class: Google::Apis::MapsengineV1::Border, decorator: Google::Apis::MapsengineV1::BorderRepresentation
         
         property :fill, as: 'fill', class: Google::Apis::MapsengineV1::Color, decorator: Google::Apis::MapsengineV1::ColorRepresentation
@@ -772,6 +1063,7 @@ module Google
 
       # @private
       class ScalingFunctionRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :column, as: 'column'
         property :scaling_type, as: 'scalingType'
         property :size_range, as: 'sizeRange', class: Google::Apis::MapsengineV1::SizeRange, decorator: Google::Apis::MapsengineV1::SizeRangeRepresentation
@@ -781,6 +1073,7 @@ module Google
 
       # @private
       class SchemaRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :columns, as: 'columns', class: Google::Apis::MapsengineV1::TableColumn, decorator: Google::Apis::MapsengineV1::TableColumnRepresentation
         
         
@@ -790,12 +1083,14 @@ module Google
 
       # @private
       class SizeRangeRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :max, as: 'max'
         property :min, as: 'min'
       end
 
       # @private
       class TableRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :bbox, as: 'bbox'
         
         property :creation_time, as: 'creationTime', type: DateTime
@@ -823,24 +1118,28 @@ module Google
 
       # @private
       class TableColumnRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :name, as: 'name'
         property :type, as: 'type'
       end
 
       # @private
       class TablesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :next_page_token, as: 'nextPageToken'
         collection :tables, as: 'tables', class: Google::Apis::MapsengineV1::Table, decorator: Google::Apis::MapsengineV1::TableRepresentation
       end
 
       # @private
       class ValueRangeRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :max, as: 'max'
         property :min, as: 'min'
       end
 
       # @private
       class VectorStyleRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :display_rules, as: 'displayRules', class: Google::Apis::MapsengineV1::DisplayRule, decorator: Google::Apis::MapsengineV1::DisplayRuleRepresentation
         
         
@@ -851,6 +1150,7 @@ module Google
 
       # @private
       class ZoomLevelsRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :max, as: 'max'
         property :min, as: 'min'
       end

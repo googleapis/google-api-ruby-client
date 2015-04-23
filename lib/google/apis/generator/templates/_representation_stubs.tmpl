@@ -1,0 +1,6 @@
+<% for cls in classes %>
+
+class <%= cls.class_name %>Representation < Google::Apis::Core::JsonRepresentation
+  <%= indent(include('representation_stubs', :classes => cls.classes), 2) %>
+end
+<% end %>

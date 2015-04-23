@@ -427,21 +427,6 @@ module Google
         end
       end
 
-      # Holder object for the value of an entry in a map field of a data point.
-      # A map value supports a subset of the formats that the regular Value supports.
-      class MapValue
-        include Google::Apis::Core::Hashable
-      
-        # Floating point value.
-        # Corresponds to the JSON property `fpVal`
-        # @return [Float]
-        attr_accessor :fp_val
-      
-        def initialize(**args)
-          @fp_val = args[:fp_val] unless args[:fp_val].nil?
-        end
-      end
-
       # Sessions contain metadata, such as a user-friendly name and time interval
       # information.
       class Session
@@ -516,63 +501,19 @@ module Google
       class Value
         include Google::Apis::Core::Hashable
       
-        # Float list value. When this is set, other values must not be set.
-        # Corresponds to the JSON property `floatListVal`
-        # @return [Array<Float>]
-        attr_accessor :float_list_val
-      
         # Floating point value. When this is set, intVal must not be set.
         # Corresponds to the JSON property `fpVal`
         # @return [Float]
         attr_accessor :fp_val
-      
-        # Integer list value. When this is set, other values must not be set.
-        # Corresponds to the JSON property `intListVal`
-        # @return [Array<Fixnum>]
-        attr_accessor :int_list_val
       
         # Integer value. When this is set, fpVal must not be set.
         # Corresponds to the JSON property `intVal`
         # @return [Fixnum]
         attr_accessor :int_val
       
-        # 
-        # Corresponds to the JSON property `mapVal`
-        # @return [Array<Google::Apis::FitnessV1::ValueMapValEntry>]
-        attr_accessor :map_val
-      
-        # 
-        # Corresponds to the JSON property `stringVal`
-        # @return [String]
-        attr_accessor :string_val
-      
         def initialize(**args)
-          @float_list_val = args[:float_list_val] unless args[:float_list_val].nil?
           @fp_val = args[:fp_val] unless args[:fp_val].nil?
-          @int_list_val = args[:int_list_val] unless args[:int_list_val].nil?
           @int_val = args[:int_val] unless args[:int_val].nil?
-          @map_val = args[:map_val] unless args[:map_val].nil?
-          @string_val = args[:string_val] unless args[:string_val].nil?
-        end
-      end
-
-      # 
-      class ValueMapValEntry
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `key`
-        # @return [String]
-        attr_accessor :key
-      
-        # 
-        # Corresponds to the JSON property `value`
-        # @return [Google::Apis::FitnessV1::MapValue]
-        attr_accessor :value
-      
-        def initialize(**args)
-          @key = args[:key] unless args[:key].nil?
-          @value = args[:value] unless args[:value].nil?
         end
       end
     end

@@ -435,6 +435,11 @@ module Google
       class CommentList
         include Google::Apis::Core::Hashable
       
+        # Etag of the response.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # The List of Comments for a Post.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::BloggerV3::Comment>]
@@ -456,6 +461,7 @@ module Google
         attr_accessor :prev_page_token
       
         def initialize(**args)
+          @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
@@ -605,6 +611,11 @@ module Google
       class PageList
         include Google::Apis::Core::Hashable
       
+        # Etag of the response.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # The list of Pages for a Blog.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::BloggerV3::Page>]
@@ -621,6 +632,7 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+          @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
@@ -924,6 +936,11 @@ module Google
       class PostList
         include Google::Apis::Core::Hashable
       
+        # Etag of the response.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # The list of Posts for this Blog.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::BloggerV3::Post>]
@@ -940,6 +957,7 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+          @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?

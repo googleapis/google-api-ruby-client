@@ -12,26 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/dataflow_v1beta3/service.rb'
-require 'google/apis/dataflow_v1beta3/classes.rb'
-require 'google/apis/dataflow_v1beta3/representations.rb'
+require 'google/apis/pagespeedonline_v1/service.rb'
+require 'google/apis/pagespeedonline_v1/classes.rb'
+require 'google/apis/pagespeedonline_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Dataflow API
+    # PageSpeed Insights API
     #
-    # Google Dataflow API.
+    # Lets you analyze the performance of a web page and get tailored suggestions to
+    # make that page faster.
     #
-    # @see 
-    module DataflowV1beta3
-      VERSION = 'V1beta3'
-      REVISION = '20150322'
-
-      # View and manage your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # View your email address
-      AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
+    # @see https://developers.google.com/speed/docs/insights/v1/getting_started
+    module PagespeedonlineV1
+      VERSION = 'V1'
+      REVISION = '20150317'
     end
   end
 end

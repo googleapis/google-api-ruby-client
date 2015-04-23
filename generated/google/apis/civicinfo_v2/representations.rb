@@ -21,29 +21,90 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CivicinfoV2
-      class AdministrationRegionRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class AdministrativeBodyRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class CandidateRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ChannelRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ContestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class DivisionSearchResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class DivisionSearchResultRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ElectionRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ElectionOfficialRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ElectionsQueryResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ElectoralDistrictRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class GeographicDivisionRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class OfficeRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class OfficialRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PollingLocationRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class RepresentativeInfoDataRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class RepresentativeInfoResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class SimpleAddressTypeRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class SourceRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class VoterInfoResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
+      
+      class AdministrationRegionRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class AdministrativeBodyRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class CandidateRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ChannelRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ContestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class DivisionSearchResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class DivisionSearchResultRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ElectionRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ElectionOfficialRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ElectionsQueryResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ElectoralDistrictRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class GeographicDivisionRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class OfficeRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class OfficialRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PollingLocationRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class RepresentativeInfoDataRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class RepresentativeInfoResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class SimpleAddressTypeRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class SourceRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class VoterInfoResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
 
       # @private
       class AdministrationRegionRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :election_administration_body, as: 'electionAdministrationBody', class: Google::Apis::CivicinfoV2::AdministrativeBody, decorator: Google::Apis::CivicinfoV2::AdministrativeBodyRepresentation
         
         property :id, as: 'id'
@@ -55,6 +116,7 @@ module Google
 
       # @private
       class AdministrativeBodyRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :absentee_voting_info_url, as: 'absenteeVotingInfoUrl'
         property :ballot_info_url, as: 'ballotInfoUrl'
         property :correspondence_address, as: 'correspondenceAddress', class: Google::Apis::CivicinfoV2::SimpleAddressType, decorator: Google::Apis::CivicinfoV2::SimpleAddressTypeRepresentation
@@ -77,6 +139,7 @@ module Google
 
       # @private
       class CandidateRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :candidate_url, as: 'candidateUrl'
         collection :channels, as: 'channels', class: Google::Apis::CivicinfoV2::Channel, decorator: Google::Apis::CivicinfoV2::ChannelRepresentation
         
@@ -91,12 +154,14 @@ module Google
 
       # @private
       class ChannelRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :id, as: 'id'
         property :type, as: 'type'
       end
 
       # @private
       class ContestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :ballot_placement, as: 'ballotPlacement'
         collection :candidates, as: 'candidates', class: Google::Apis::CivicinfoV2::Candidate, decorator: Google::Apis::CivicinfoV2::CandidateRepresentation
         
@@ -125,12 +190,14 @@ module Google
 
       # @private
       class DivisionSearchResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :kind, as: 'kind'
         collection :results, as: 'results', class: Google::Apis::CivicinfoV2::DivisionSearchResult, decorator: Google::Apis::CivicinfoV2::DivisionSearchResultRepresentation
       end
 
       # @private
       class DivisionSearchResultRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :aliases, as: 'aliases'
         
         property :name, as: 'name'
@@ -139,6 +206,7 @@ module Google
 
       # @private
       class ElectionRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :election_day, as: 'electionDay'
         property :id, as: 'id'
         property :name, as: 'name'
@@ -146,6 +214,7 @@ module Google
 
       # @private
       class ElectionOfficialRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :email_address, as: 'emailAddress'
         property :fax_number, as: 'faxNumber'
         property :name, as: 'name'
@@ -155,6 +224,7 @@ module Google
 
       # @private
       class ElectionsQueryResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :elections, as: 'elections', class: Google::Apis::CivicinfoV2::Election, decorator: Google::Apis::CivicinfoV2::ElectionRepresentation
         
         
@@ -163,6 +233,7 @@ module Google
 
       # @private
       class ElectoralDistrictRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :id, as: 'id'
         property :name, as: 'name'
         property :scope, as: 'scope'
@@ -170,6 +241,7 @@ module Google
 
       # @private
       class GeographicDivisionRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :also_known_as, as: 'alsoKnownAs'
         
         property :name, as: 'name'
@@ -178,6 +250,7 @@ module Google
 
       # @private
       class OfficeRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :division_id, as: 'divisionId'
         collection :levels, as: 'levels'
         
@@ -191,6 +264,7 @@ module Google
 
       # @private
       class OfficialRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :address, as: 'address', class: Google::Apis::CivicinfoV2::SimpleAddressType, decorator: Google::Apis::CivicinfoV2::SimpleAddressTypeRepresentation
         
         
@@ -209,6 +283,7 @@ module Google
 
       # @private
       class PollingLocationRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :address, as: 'address', class: Google::Apis::CivicinfoV2::SimpleAddressType, decorator: Google::Apis::CivicinfoV2::SimpleAddressTypeRepresentation
         
         property :end_date, as: 'endDate'
@@ -225,6 +300,7 @@ module Google
 
       # @private
       class RepresentativeInfoDataRepresentation < Google::Apis::Core::JsonRepresentation
+        
         hash :divisions, as: 'divisions', class: Google::Apis::CivicinfoV2::GeographicDivision, decorator: Google::Apis::CivicinfoV2::GeographicDivisionRepresentation
         
         
@@ -236,6 +312,7 @@ module Google
 
       # @private
       class RepresentativeInfoResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         hash :divisions, as: 'divisions', class: Google::Apis::CivicinfoV2::GeographicDivision, decorator: Google::Apis::CivicinfoV2::GeographicDivisionRepresentation
         
         
@@ -250,6 +327,7 @@ module Google
 
       # @private
       class SimpleAddressTypeRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :city, as: 'city'
         property :line1, as: 'line1'
         property :line2, as: 'line2'
@@ -261,12 +339,14 @@ module Google
 
       # @private
       class SourceRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :name, as: 'name'
         property :official, as: 'official'
       end
 
       # @private
       class VoterInfoResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :contests, as: 'contests', class: Google::Apis::CivicinfoV2::Contest, decorator: Google::Apis::CivicinfoV2::ContestRepresentation
         
         

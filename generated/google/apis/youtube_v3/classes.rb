@@ -1213,7 +1213,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The localized strings for channel's title, read-only.
+        # The localized strings for channel's title.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -1408,9 +1408,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The country the channel section is targeting.
-        # Corresponds to the JSON property `countrys`
+        # Corresponds to the JSON property `countries`
         # @return [Array<String>]
-        attr_accessor :countrys
+        attr_accessor :countries
       
         # The language the channel section is targeting.
         # Corresponds to the JSON property `languages`
@@ -1423,7 +1423,7 @@ module Google
         attr_accessor :regions
       
         def initialize(**args)
-          @countrys = args[:countrys] unless args[:countrys].nil?
+          @countries = args[:countries] unless args[:countries].nil?
           @languages = args[:languages] unless args[:languages].nil?
           @regions = args[:regions] unless args[:regions].nil?
         end
@@ -1432,6 +1432,11 @@ module Google
       # Branding properties for the channel view.
       class ChannelSettings
         include Google::Apis::Core::Hashable
+      
+        # The country of the channel.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
       
         # 
         # Corresponds to the JSON property `defaultLanguage`
@@ -1504,6 +1509,7 @@ module Google
         attr_accessor :unsubscribed_trailer
       
         def initialize(**args)
+          @country = args[:country] unless args[:country].nil?
           @default_language = args[:default_language] unless args[:default_language].nil?
           @default_tab = args[:default_tab] unless args[:default_tab].nil?
           @description = args[:description] unless args[:description].nil?
@@ -1523,6 +1529,11 @@ module Google
       # Basic details about a channel, including title, description and thumbnails.
       class ChannelSnippet
         include Google::Apis::Core::Hashable
+      
+        # The country of the channel.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
       
         # The language of the channel's default title and description.
         # Corresponds to the JSON property `defaultLanguage`
@@ -1558,6 +1569,7 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+          @country = args[:country] unless args[:country].nil?
           @default_language = args[:default_language] unless args[:default_language].nil?
           @description = args[:description] unless args[:description].nil?
           @localized = args[:localized] unless args[:localized].nil?
@@ -3375,6 +3387,12 @@ module Google
       class LiveBroadcastStatus
         include Google::Apis::Core::Hashable
       
+        # Whether or not this broadcast is the default broadcast
+        # Corresponds to the JSON property `isDefaultBroadcast`
+        # @return [Boolean]
+        attr_accessor :is_default_broadcast
+        alias_method :is_default_broadcast?, :is_default_broadcast
+      
         # The broadcast's status. The status can be updated using the API's
         # liveBroadcasts.transition method.
         # Corresponds to the JSON property `lifeCycleStatus`
@@ -3401,6 +3419,7 @@ module Google
         attr_accessor :recording_status
       
         def initialize(**args)
+          @is_default_broadcast = args[:is_default_broadcast] unless args[:is_default_broadcast].nil?
           @life_cycle_status = args[:life_cycle_status] unless args[:life_cycle_status].nil?
           @live_broadcast_priority = args[:live_broadcast_priority] unless args[:live_broadcast_priority].nil?
           @privacy_status = args[:privacy_status] unless args[:privacy_status].nil?
@@ -3600,11 +3619,18 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `isDefaultStream`
+        # @return [Boolean]
+        attr_accessor :is_default_stream
+        alias_method :is_default_stream?, :is_default_stream
+      
+        # 
         # Corresponds to the JSON property `streamStatus`
         # @return [String]
         attr_accessor :stream_status
       
         def initialize(**args)
+          @is_default_stream = args[:is_default_stream] unless args[:is_default_stream].nil?
           @stream_status = args[:stream_status] unless args[:stream_status].nil?
         end
       end
@@ -5028,20 +5054,20 @@ module Google
       
         # The language that the content was viewed in.
         # Corresponds to the JSON property `language`
-        # @return [Google::Apis::YoutubeV3::LanguageTag]
+        # @return [String]
         attr_accessor :language
       
         # The high-level, or primary, reason that the content is abusive. The value is
         # an abuse report reason ID.
         # Corresponds to the JSON property `reasonId`
-        # @return [Google::Apis::YoutubeV3::VideoAbuseReportReasonId]
+        # @return [String]
         attr_accessor :reason_id
       
         # The specific, or secondary, reason that this content is abusive (if available).
         # The value is an abuse report reason ID that is a valid secondary reason for
         # the primary reason.
         # Corresponds to the JSON property `secondaryReasonId`
-        # @return [Google::Apis::YoutubeV3::VideoAbuseReportReasonId]
+        # @return [String]
         attr_accessor :secondary_reason_id
       
         # The ID that YouTube uses to uniquely identify the video.

@@ -21,13 +21,34 @@ require 'google/apis/errors'
 module Google
   module Apis
     module Oauth2V2
-      class JwkRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TokeninfoRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class UserinfoplusRepresentation < Google::Apis::Core::JsonRepresentation; end
+      
+      class JwkRepresentation < Google::Apis::Core::JsonRepresentation
+        
+        class KeyRepresentation < Google::Apis::Core::JsonRepresentation
+          
+        end
+      end
+      
+      class TokeninfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class UserinfoplusRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
 
       # @private
       class JwkRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :keys, as: 'keys', class: Google::Apis::Oauth2V2::Jwk::Key do
+        class KeyRepresentation < Google::Apis::Core::JsonRepresentation; end
+        
+        collection :keys, as: 'keys', class: Google::Apis::Oauth2V2::Jwk::Key, decorator: Google::Apis::Oauth2V2::JwkRepresentation::KeyRepresentation
+        
+        
+        
+        
+        # @private
+        class KeyRepresentation < Google::Apis::Core::JsonRepresentation
+          
           property :alg, as: 'alg'
           property :e, as: 'e'
           property :kid, as: 'kid'
@@ -39,6 +60,7 @@ module Google
 
       # @private
       class TokeninfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :access_type, as: 'access_type'
         property :audience, as: 'audience'
         property :email, as: 'email'
@@ -52,6 +74,7 @@ module Google
 
       # @private
       class UserinfoplusRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :email, as: 'email'
         property :family_name, as: 'family_name'
         property :gender, as: 'gender'

@@ -21,33 +21,106 @@ require 'google/apis/errors'
 module Google
   module Apis
     module QpxExpressV1
-      class AircraftDataRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class AirportDataRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class BagDescriptorRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class CarrierDataRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class CityDataRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class DataRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class FareInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class FlightInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class FreeBaggageAllowanceRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class LegInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PassengerCountsRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PricingInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class SegmentInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class SegmentPricingRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class SliceInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class SliceInputRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TaxDataRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TaxInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TimeOfDayRangeRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TripOptionRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TripOptionsRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TripOptionsResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class SearchRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class SearchResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
+      
+      class AircraftDataRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class AirportDataRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class BagDescriptorRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class CarrierDataRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class CityDataRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class DataRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class FareInfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class FlightInfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class FreeBaggageAllowanceRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class LegInfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PassengerCountsRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PricingInfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class SegmentInfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class SegmentPricingRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class SliceInfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class SliceInputRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TaxDataRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TaxInfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TimeOfDayRangeRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TripOptionRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TripOptionsRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TripOptionsResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class SearchRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class SearchResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
 
       # @private
       class AircraftDataRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :code, as: 'code'
         property :kind, as: 'kind'
         property :name, as: 'name'
@@ -55,6 +128,7 @@ module Google
 
       # @private
       class AirportDataRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :city, as: 'city'
         property :code, as: 'code'
         property :kind, as: 'kind'
@@ -63,6 +137,7 @@ module Google
 
       # @private
       class BagDescriptorRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :commercial_name, as: 'commercialName'
         property :count, as: 'count'
         collection :description, as: 'description'
@@ -73,6 +148,7 @@ module Google
 
       # @private
       class CarrierDataRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :code, as: 'code'
         property :kind, as: 'kind'
         property :name, as: 'name'
@@ -80,6 +156,7 @@ module Google
 
       # @private
       class CityDataRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :code, as: 'code'
         property :country, as: 'country'
         property :kind, as: 'kind'
@@ -88,6 +165,7 @@ module Google
 
       # @private
       class DataRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :aircraft, as: 'aircraft', class: Google::Apis::QpxExpressV1::AircraftData, decorator: Google::Apis::QpxExpressV1::AircraftDataRepresentation
         
         
@@ -106,6 +184,7 @@ module Google
 
       # @private
       class FareInfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :basis_code, as: 'basisCode'
         property :carrier, as: 'carrier'
         property :destination, as: 'destination'
@@ -117,12 +196,14 @@ module Google
 
       # @private
       class FlightInfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :carrier, as: 'carrier'
         property :number, as: 'number'
       end
 
       # @private
       class FreeBaggageAllowanceRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :bag_descriptor, as: 'bagDescriptor', class: Google::Apis::QpxExpressV1::BagDescriptor, decorator: Google::Apis::QpxExpressV1::BagDescriptorRepresentation
         
         
@@ -135,6 +216,7 @@ module Google
 
       # @private
       class LegInfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :aircraft, as: 'aircraft'
         property :arrival_time, as: 'arrivalTime'
         property :change_plane, as: 'changePlane'
@@ -156,6 +238,7 @@ module Google
 
       # @private
       class PassengerCountsRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :adult_count, as: 'adultCount'
         property :child_count, as: 'childCount'
         property :infant_in_lap_count, as: 'infantInLapCount'
@@ -166,6 +249,7 @@ module Google
 
       # @private
       class PricingInfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :base_fare_total, as: 'baseFareTotal'
         collection :fare, as: 'fare', class: Google::Apis::QpxExpressV1::FareInfo, decorator: Google::Apis::QpxExpressV1::FareInfoRepresentation
         
@@ -188,6 +272,7 @@ module Google
 
       # @private
       class SegmentInfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :booking_code, as: 'bookingCode'
         property :booking_code_count, as: 'bookingCodeCount'
         property :cabin, as: 'cabin'
@@ -206,6 +291,7 @@ module Google
 
       # @private
       class SegmentPricingRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :fare_id, as: 'fareId'
         collection :free_baggage_option, as: 'freeBaggageOption', class: Google::Apis::QpxExpressV1::FreeBaggageAllowance, decorator: Google::Apis::QpxExpressV1::FreeBaggageAllowanceRepresentation
         
@@ -216,6 +302,7 @@ module Google
 
       # @private
       class SliceInfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :duration, as: 'duration'
         property :kind, as: 'kind'
         collection :segment, as: 'segment', class: Google::Apis::QpxExpressV1::SegmentInfo, decorator: Google::Apis::QpxExpressV1::SegmentInfoRepresentation
@@ -223,6 +310,7 @@ module Google
 
       # @private
       class SliceInputRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :alliance, as: 'alliance'
         property :date, as: 'date'
         property :destination, as: 'destination'
@@ -240,6 +328,7 @@ module Google
 
       # @private
       class TaxDataRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :id, as: 'id'
         property :kind, as: 'kind'
         property :name, as: 'name'
@@ -247,6 +336,7 @@ module Google
 
       # @private
       class TaxInfoRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :charge_type, as: 'chargeType'
         property :code, as: 'code'
         property :country, as: 'country'
@@ -257,6 +347,7 @@ module Google
 
       # @private
       class TimeOfDayRangeRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :earliest_time, as: 'earliestTime'
         property :kind, as: 'kind'
         property :latest_time, as: 'latestTime'
@@ -264,6 +355,7 @@ module Google
 
       # @private
       class TripOptionRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :id, as: 'id'
         property :kind, as: 'kind'
         collection :pricing, as: 'pricing', class: Google::Apis::QpxExpressV1::PricingInfo, decorator: Google::Apis::QpxExpressV1::PricingInfoRepresentation
@@ -275,6 +367,7 @@ module Google
 
       # @private
       class TripOptionsRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :max_price, as: 'maxPrice'
         property :passengers, as: 'passengers', class: Google::Apis::QpxExpressV1::PassengerCounts, decorator: Google::Apis::QpxExpressV1::PassengerCountsRepresentation
         
@@ -288,6 +381,7 @@ module Google
 
       # @private
       class TripOptionsResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :data, as: 'data', class: Google::Apis::QpxExpressV1::Data, decorator: Google::Apis::QpxExpressV1::DataRepresentation
         
         property :kind, as: 'kind'
@@ -297,11 +391,13 @@ module Google
 
       # @private
       class SearchRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :request, as: 'request', class: Google::Apis::QpxExpressV1::TripOptionsRequest, decorator: Google::Apis::QpxExpressV1::TripOptionsRequestRepresentation
       end
 
       # @private
       class SearchResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :kind, as: 'kind'
         property :trips, as: 'trips', class: Google::Apis::QpxExpressV1::TripOptionsResponse, decorator: Google::Apis::QpxExpressV1::TripOptionsResponseRepresentation
       end

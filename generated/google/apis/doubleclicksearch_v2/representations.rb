@@ -21,21 +21,76 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DoubleclicksearchV2
-      class AvailabilityRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ConversionRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ConversionListRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class CustomDimensionRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class CustomMetricRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ReportRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ReportApiColumnSpecRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ReportRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class SavedColumnRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class SavedColumnListRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class UpdateAvailabilityRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class UpdateAvailabilityResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
+      
+      class AvailabilityRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ConversionRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ConversionListRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class CustomDimensionRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class CustomMetricRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ReportRepresentation < Google::Apis::Core::JsonRepresentation
+        
+        class FileRepresentation < Google::Apis::Core::JsonRepresentation
+          
+        end
+      end
+      
+      class ReportApiColumnSpecRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ReportRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+        class FilterRepresentation < Google::Apis::Core::JsonRepresentation
+          
+        end
+        
+        class OrderByRepresentation < Google::Apis::Core::JsonRepresentation
+          
+        end
+        
+        class ReportScopeRepresentation < Google::Apis::Core::JsonRepresentation
+          
+        end
+        
+        class TimeRangeRepresentation < Google::Apis::Core::JsonRepresentation
+          
+        end
+      end
+      
+      class SavedColumnRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class SavedColumnListRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class UpdateAvailabilityRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class UpdateAvailabilityResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
 
       # @private
       class AvailabilityRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :advertiser_id, as: 'advertiserId'
         property :agency_id, as: 'agencyId'
         property :availability_timestamp, as: 'availabilityTimestamp'
@@ -46,6 +101,7 @@ module Google
 
       # @private
       class ConversionRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :ad_group_id, as: 'adGroupId'
         property :ad_id, as: 'adId'
         property :advertiser_id, as: 'advertiserId'
@@ -79,6 +135,7 @@ module Google
 
       # @private
       class ConversionListRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :conversion, as: 'conversion', class: Google::Apis::DoubleclicksearchV2::Conversion, decorator: Google::Apis::DoubleclicksearchV2::ConversionRepresentation
         
         
@@ -87,22 +144,23 @@ module Google
 
       # @private
       class CustomDimensionRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :name, as: 'name'
         property :value, as: 'value'
       end
 
       # @private
       class CustomMetricRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :name, as: 'name'
         property :value, as: 'value'
       end
 
       # @private
       class ReportRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :files, as: 'files', class: Google::Apis::DoubleclicksearchV2::Report::File do
-          property :byte_count, as: 'byteCount'
-          property :url, as: 'url'
-        end
+        class FileRepresentation < Google::Apis::Core::JsonRepresentation; end
+        
+        collection :files, as: 'files', class: Google::Apis::DoubleclicksearchV2::Report::File, decorator: Google::Apis::DoubleclicksearchV2::ReportRepresentation::FileRepresentation
         
         
         property :id, as: 'id'
@@ -115,10 +173,19 @@ module Google
         
         property :statistics_currency_code, as: 'statisticsCurrencyCode'
         property :statistics_time_zone, as: 'statisticsTimeZone'
+        
+        
+        # @private
+        class FileRepresentation < Google::Apis::Core::JsonRepresentation
+          
+          property :byte_count, as: 'byteCount'
+          property :url, as: 'url'
+        end
       end
 
       # @private
       class ReportApiColumnSpecRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :column_name, as: 'columnName'
         property :custom_dimension_name, as: 'customDimensionName'
         property :custom_metric_name, as: 'customMetricName'
@@ -132,29 +199,55 @@ module Google
 
       # @private
       class ReportRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        class FilterRepresentation < Google::Apis::Core::JsonRepresentation; end
+        class OrderByRepresentation < Google::Apis::Core::JsonRepresentation; end
+        class ReportScopeRepresentation < Google::Apis::Core::JsonRepresentation; end
+        class TimeRangeRepresentation < Google::Apis::Core::JsonRepresentation; end
+        
         collection :columns, as: 'columns', class: Google::Apis::DoubleclicksearchV2::ReportApiColumnSpec, decorator: Google::Apis::DoubleclicksearchV2::ReportApiColumnSpecRepresentation
         
         
         property :download_format, as: 'downloadFormat'
-        collection :filters, as: 'filters', class: Google::Apis::DoubleclicksearchV2::ReportRequest::Filter do
+        collection :filters, as: 'filters', class: Google::Apis::DoubleclicksearchV2::ReportRequest::Filter, decorator: Google::Apis::DoubleclicksearchV2::ReportRequestRepresentation::FilterRepresentation
+        
+        
+        property :include_deleted_entities, as: 'includeDeletedEntities'
+        property :include_removed_entities, as: 'includeRemovedEntities'
+        property :max_rows_per_file, as: 'maxRowsPerFile'
+        collection :order_by, as: 'orderBy', class: Google::Apis::DoubleclicksearchV2::ReportRequest::OrderBy, decorator: Google::Apis::DoubleclicksearchV2::ReportRequestRepresentation::OrderByRepresentation
+        
+        
+        property :report_scope, as: 'reportScope', class: Google::Apis::DoubleclicksearchV2::ReportRequest::ReportScope, decorator: Google::Apis::DoubleclicksearchV2::ReportRequestRepresentation::ReportScopeRepresentation
+        
+        property :report_type, as: 'reportType'
+        property :row_count, as: 'rowCount'
+        property :start_row, as: 'startRow'
+        property :statistics_currency, as: 'statisticsCurrency'
+        property :time_range, as: 'timeRange', class: Google::Apis::DoubleclicksearchV2::ReportRequest::TimeRange, decorator: Google::Apis::DoubleclicksearchV2::ReportRequestRepresentation::TimeRangeRepresentation
+        
+        property :verify_single_time_zone, as: 'verifySingleTimeZone'
+        
+        
+        # @private
+        class FilterRepresentation < Google::Apis::Core::JsonRepresentation
+          
           property :column, as: 'column', class: Google::Apis::DoubleclicksearchV2::ReportApiColumnSpec, decorator: Google::Apis::DoubleclicksearchV2::ReportApiColumnSpecRepresentation
           
           property :operator, as: 'operator'
           collection :values, as: 'values'
         end
         
-        
-        property :include_deleted_entities, as: 'includeDeletedEntities'
-        property :include_removed_entities, as: 'includeRemovedEntities'
-        property :max_rows_per_file, as: 'maxRowsPerFile'
-        collection :order_by, as: 'orderBy', class: Google::Apis::DoubleclicksearchV2::ReportRequest::OrderBy do
+        # @private
+        class OrderByRepresentation < Google::Apis::Core::JsonRepresentation
+          
           property :column, as: 'column', class: Google::Apis::DoubleclicksearchV2::ReportApiColumnSpec, decorator: Google::Apis::DoubleclicksearchV2::ReportApiColumnSpecRepresentation
           
           property :sort_order, as: 'sortOrder'
         end
         
-        
-        property :report_scope, as: 'reportScope', class: Google::Apis::DoubleclicksearchV2::ReportRequest::ReportScope do
+        # @private
+        class ReportScopeRepresentation < Google::Apis::Core::JsonRepresentation
+          
           property :ad_group_id, as: 'adGroupId'
           property :ad_id, as: 'adId'
           property :advertiser_id, as: 'advertiserId'
@@ -164,22 +257,19 @@ module Google
           property :keyword_id, as: 'keywordId'
         end
         
-        property :report_type, as: 'reportType'
-        property :row_count, as: 'rowCount'
-        property :start_row, as: 'startRow'
-        property :statistics_currency, as: 'statisticsCurrency'
-        property :time_range, as: 'timeRange', class: Google::Apis::DoubleclicksearchV2::ReportRequest::TimeRange do
+        # @private
+        class TimeRangeRepresentation < Google::Apis::Core::JsonRepresentation
+          
           property :changed_attributes_since_timestamp, as: 'changedAttributesSinceTimestamp', type: DateTime
           property :changed_metrics_since_timestamp, as: 'changedMetricsSinceTimestamp', type: DateTime
           property :end_date, as: 'endDate'
           property :start_date, as: 'startDate'
         end
-        
-        property :verify_single_time_zone, as: 'verifySingleTimeZone'
       end
 
       # @private
       class SavedColumnRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :kind, as: 'kind'
         property :saved_column_name, as: 'savedColumnName'
         property :type, as: 'type'
@@ -187,6 +277,7 @@ module Google
 
       # @private
       class SavedColumnListRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :items, as: 'items', class: Google::Apis::DoubleclicksearchV2::SavedColumn, decorator: Google::Apis::DoubleclicksearchV2::SavedColumnRepresentation
         
         
@@ -195,11 +286,13 @@ module Google
 
       # @private
       class UpdateAvailabilityRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :availabilities, as: 'availabilities', class: Google::Apis::DoubleclicksearchV2::Availability, decorator: Google::Apis::DoubleclicksearchV2::AvailabilityRepresentation
       end
 
       # @private
       class UpdateAvailabilityResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :availabilities, as: 'availabilities', class: Google::Apis::DoubleclicksearchV2::Availability, decorator: Google::Apis::DoubleclicksearchV2::AvailabilityRepresentation
       end
     end

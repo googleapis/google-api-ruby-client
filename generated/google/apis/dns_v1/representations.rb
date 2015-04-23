@@ -21,17 +21,42 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DnsV1
-      class ChangeRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ChangesListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ManagedZoneRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ManagedZonesListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ProjectRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class QuotaRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ResourceRecordSetRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ResourceRecordSetsListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
+      
+      class ChangeRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ChangesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ManagedZoneRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ManagedZonesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ProjectRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class QuotaRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ResourceRecordSetRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ResourceRecordSetsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
 
       # @private
       class ChangeRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :additions, as: 'additions', class: Google::Apis::DnsV1::ResourceRecordSet, decorator: Google::Apis::DnsV1::ResourceRecordSetRepresentation
         
         
@@ -46,6 +71,7 @@ module Google
 
       # @private
       class ChangesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :changes, as: 'changes', class: Google::Apis::DnsV1::Change, decorator: Google::Apis::DnsV1::ChangeRepresentation
         
         
@@ -55,6 +81,7 @@ module Google
 
       # @private
       class ManagedZoneRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :creation_time, as: 'creationTime'
         property :description, as: 'description'
         property :dns_name, as: 'dnsName'
@@ -67,6 +94,7 @@ module Google
 
       # @private
       class ManagedZonesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :kind, as: 'kind'
         collection :managed_zones, as: 'managedZones', class: Google::Apis::DnsV1::ManagedZone, decorator: Google::Apis::DnsV1::ManagedZoneRepresentation
         
@@ -76,6 +104,7 @@ module Google
 
       # @private
       class ProjectRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :id, as: 'id'
         property :kind, as: 'kind'
         property :number, as: 'number'
@@ -84,6 +113,7 @@ module Google
 
       # @private
       class QuotaRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :kind, as: 'kind'
         property :managed_zones, as: 'managedZones'
         property :resource_records_per_rrset, as: 'resourceRecordsPerRrset'
@@ -95,6 +125,7 @@ module Google
 
       # @private
       class ResourceRecordSetRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :kind, as: 'kind'
         property :name, as: 'name'
         collection :rrdatas, as: 'rrdatas'
@@ -105,6 +136,7 @@ module Google
 
       # @private
       class ResourceRecordSetsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :kind, as: 'kind'
         property :next_page_token, as: 'nextPageToken'
         collection :rrsets, as: 'rrsets', class: Google::Apis::DnsV1::ResourceRecordSet, decorator: Google::Apis::DnsV1::ResourceRecordSetRepresentation

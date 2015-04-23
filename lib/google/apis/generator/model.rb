@@ -74,6 +74,10 @@ module Google
         def method_params
           parameters.values.reject { |param| param.name == 'key' }
         end
+
+        def qualified_name(suffix=nil)
+          @qualified_name
+        end
       end
 
       # An API scope - Used to define constants in the service
@@ -142,12 +146,6 @@ module Google
         def query_params
           parameters.values.select { |param| param.location == 'query' }
         end
-
-        # @!attribute [r] media?
-        # @return [Boolean] true if method supports media opterations
-        def media?
-          (upload || download)
-        end
       end
 
       # A method parameter
@@ -180,10 +178,6 @@ module Google
 
         def name
           @name || (ActiveSupport::Inflector.underscore(ActiveSupport::Inflector.demodulize(type.name)) + '_obj')
-        end
-
-        def to_s
-          name
         end
       end
 
@@ -243,8 +237,8 @@ module Google
           @variants = {}
         end
 
-        def qualified_name
-          sprintf('%s::%s', parent_module.qualified_name, class_name)
+        def qualified_name(suffix = nil)
+          sprintf('%s::%s%s', parent_module.qualified_name(suffix), class_name, suffix)
         end
 
       end
@@ -287,12 +281,6 @@ module Google
           self.schema_type = other.schema_type
         end
 
-        # @!attribute [r] description
-        # @return [String]
-        def description
-          schema_type.description unless schema_type.nil?
-        end
-
         # @!attribute [r] anonymous?
         # @return [Boolean] True if an unnamed custom type
         def anonymous?
@@ -323,16 +311,14 @@ module Google
           type == 'boolean'
         end
 
-        # @!attribute [r] qualified_name
-        # @return [String]
-        def qualified_name
-          schema_type.qualified_name unless schema_type.nil?
-        end
-
         # @!attribute [r] name
         # @return [String]
         def name
           to_s
+        end
+
+        def representation_class
+          schema_type.qualified_name('Representation')
         end
 
         def to_s

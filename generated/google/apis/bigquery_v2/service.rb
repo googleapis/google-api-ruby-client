@@ -30,7 +30,7 @@ module Google
       #    Bigquery = Google::Apis::BigqueryV2 # Alias the module
       #    service = Bigquery::BigqueryService.new
       #
-      # @see https://developers.google.com/bigquery/docs/overview
+      # @see https://cloud.google.com/bigquery/
       class BigqueryService < Google::Apis::Core::BaseService
 
         # @return [String]
@@ -179,9 +179,8 @@ module Google
         end
         
         
-        # Lists all the datasets in the specified project to which the caller has read
-        # access; however, a project owner can list (but not necessarily get) all
-        # datasets in his project.
+        # Lists all datasets in the specified project to which you have been granted the
+        # READER dataset role.
         # @param [String] project_id
         #   Project ID of the datasets to be listed
         # @param [Boolean] all
@@ -319,7 +318,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
 
-        # Retrieves the specified job by ID.
+        # Returns information about a specific job. Job information is available for a
+        # six month period after creation. Requires that you're the person who ran the
+        # job, or have the Is Owner project role.
         # @param [String] project_id
         #   Project ID of the requested job
         # @param [String] job_id
@@ -413,7 +414,7 @@ module Google
         end
         
         
-        # Starts a new asynchronous job.
+        # Starts a new asynchronous job. Requires the Can View project role.
         # @param [Google::Apis::BigqueryV2::Job] job_obj
         #   
         # @param [String] project_id
@@ -464,9 +465,10 @@ module Google
         end
         
         
-        # Lists all the Jobs in the specified project that were started by the user. The
-        # job list returns in reverse chronological order of when the jobs were created,
-        # starting with the most recent job created.
+        # Lists all jobs that you started in the specified project. The job list returns
+        # in reverse chronological order of when the jobs were created, starting with
+        # the most recent job created. Requires the Can View project role, or the Is
+        # Owner project role if you set the allUsers property.
         # @param [String] project_id
         #   Project ID of the jobs to list
         # @param [Boolean] all_users
@@ -559,7 +561,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
 
-        # Lists the projects to which you have at least read access.
+        # Lists all projects to which you have been granted any project role.
         # @param [Fixnum] max_results
         #   Maximum number of results to return
         # @param [String] page_token
@@ -599,7 +601,7 @@ module Google
         end
 
         # Streams data into BigQuery one record at a time without needing to run a load
-        # job.
+        # job. Requires the WRITER dataset role.
         # @param [Google::Apis::BigqueryV2::TableDataInsertAllRequest] table_data_insert_all_request_obj
         #   
         # @param [String] project_id
@@ -646,7 +648,8 @@ module Google
         end
         
         
-        # Retrieves table data from a specified set of rows.
+        # Retrieves table data from a specified set of rows. Requires the READER dataset
+        # role.
         # @param [String] project_id
         #   Project ID of the table to read
         # @param [String] dataset_id
@@ -828,7 +831,7 @@ module Google
         end
         
         
-        # Lists all tables in the specified dataset.
+        # Lists all tables in the specified dataset. Requires the READER dataset role.
         # @param [String] project_id
         #   Project ID of the tables to list
         # @param [String] dataset_id

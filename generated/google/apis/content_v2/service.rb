@@ -380,6 +380,8 @@ module Google
         # request.
         # @param [Google::Apis::ContentV2::AccountshippingCustomBatchRequest] accountshipping_custom_batch_request_obj
         #   
+        # @param [Boolean] dry_run
+        #   Flag to run the request in dry-run mode.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -401,13 +403,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def custombatch_accountshipping(accountshipping_custom_batch_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def custombatch_accountshipping(accountshipping_custom_batch_request_obj, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accountshipping/batch'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ContentV2::AccountshippingCustomBatchRequestRepresentation
           command.request_object = accountshipping_custom_batch_request_obj
           command.response_representation = Google::Apis::ContentV2::AccountshippingCustomBatchResponseRepresentation
           command.response_class = Google::Apis::ContentV2::AccountshippingCustomBatchResponse
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -508,6 +511,8 @@ module Google
         #   The ID of the managing account.
         # @param [String] account_id
         #   The ID of the account for which to get/update account shipping settings.
+        # @param [Boolean] dry_run
+        #   Flag to run the request in dry-run mode.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -529,7 +534,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_accountshipping(account_shipping_obj, merchant_id, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_accountshipping(account_shipping_obj, merchant_id, account_id, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{merchantId}/accountshipping/{accountId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::ContentV2::AccountShippingRepresentation
@@ -538,6 +543,7 @@ module Google
           command.response_class = Google::Apis::ContentV2::AccountShipping
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['accountId'] = account_id unless account_id.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -552,6 +558,8 @@ module Google
         #   The ID of the managing account.
         # @param [String] account_id
         #   The ID of the account for which to get/update account shipping settings.
+        # @param [Boolean] dry_run
+        #   Flag to run the request in dry-run mode.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -573,7 +581,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_accountshipping(account_shipping_obj, merchant_id, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_accountshipping(account_shipping_obj, merchant_id, account_id, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{merchantId}/accountshipping/{accountId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::ContentV2::AccountShippingRepresentation
@@ -582,6 +590,7 @@ module Google
           command.response_class = Google::Apis::ContentV2::AccountShipping
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['accountId'] = account_id unless account_id.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -712,6 +721,8 @@ module Google
         # Retrieves and updates tax settings of multiple accounts in a single request.
         # @param [Google::Apis::ContentV2::AccounttaxCustomBatchRequest] accounttax_custom_batch_request_obj
         #   
+        # @param [Boolean] dry_run
+        #   Flag to run the request in dry-run mode.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -733,13 +744,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def custombatch_accounttax(accounttax_custom_batch_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def custombatch_accounttax(accounttax_custom_batch_request_obj, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounttax/batch'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ContentV2::AccounttaxCustomBatchRequestRepresentation
           command.request_object = accounttax_custom_batch_request_obj
           command.response_representation = Google::Apis::ContentV2::AccounttaxCustomBatchResponseRepresentation
           command.response_class = Google::Apis::ContentV2::AccounttaxCustomBatchResponse
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -837,6 +849,8 @@ module Google
         #   The ID of the managing account.
         # @param [String] account_id
         #   The ID of the account for which to get/update account tax settings.
+        # @param [Boolean] dry_run
+        #   Flag to run the request in dry-run mode.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -858,7 +872,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_accounttax(account_tax_obj, merchant_id, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_accounttax(account_tax_obj, merchant_id, account_id, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{merchantId}/accounttax/{accountId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::ContentV2::AccountTaxRepresentation
@@ -867,6 +881,7 @@ module Google
           command.response_class = Google::Apis::ContentV2::AccountTax
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['accountId'] = account_id unless account_id.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -881,6 +896,8 @@ module Google
         #   The ID of the managing account.
         # @param [String] account_id
         #   The ID of the account for which to get/update account tax settings.
+        # @param [Boolean] dry_run
+        #   Flag to run the request in dry-run mode.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -902,7 +919,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_accounttax(account_tax_obj, merchant_id, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_accounttax(account_tax_obj, merchant_id, account_id, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{merchantId}/accounttax/{accountId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::ContentV2::AccountTaxRepresentation
@@ -911,6 +928,7 @@ module Google
           command.response_class = Google::Apis::ContentV2::AccountTax
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.params['accountId'] = account_id unless account_id.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

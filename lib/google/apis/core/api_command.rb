@@ -68,6 +68,7 @@ module Google
         # noinspection RubyUnusedLocalVariable
         def decode_response_body(content_type, body)
           return super unless response_representation
+          return nil if content_type.nil?
           return nil unless content_type.start_with?(JSON_CONTENT_TYPE)
           instance = response_class.new
           response_representation.new(instance).from_json(body, unwrap: response_class)

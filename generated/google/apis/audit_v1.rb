@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/google-apps/admin-audit/get_started
     module AuditV1
       VERSION = 'V1'
-      REVISION = '20130108'
+      REVISION = '20150419'
     end
   end
 end

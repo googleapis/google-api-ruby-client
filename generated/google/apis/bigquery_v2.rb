@@ -22,7 +22,7 @@ module Google
     #
     # A data platform for customers to create, manage, share and query data.
     #
-    # @see https://developers.google.com/bigquery/docs/overview
+    # @see https://cloud.google.com/bigquery/
     module BigqueryV2
       VERSION = 'V2'
       REVISION = '20150326'

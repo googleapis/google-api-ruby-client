@@ -21,13 +21,26 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AppstateV1
-      class GetResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class UpdateRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class WriteResultRepresentation < Google::Apis::Core::JsonRepresentation; end
+      
+      class GetResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class UpdateRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class WriteResultRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
 
       # @private
       class GetResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :current_state_version, as: 'currentStateVersion'
         property :data, as: 'data'
         property :kind, as: 'kind'
@@ -36,6 +49,7 @@ module Google
 
       # @private
       class ListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :items, as: 'items', class: Google::Apis::AppstateV1::GetResponse, decorator: Google::Apis::AppstateV1::GetResponseRepresentation
         
         
@@ -45,12 +59,14 @@ module Google
 
       # @private
       class UpdateRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :data, as: 'data'
         property :kind, as: 'kind'
       end
 
       # @private
       class WriteResultRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :current_state_version, as: 'currentStateVersion'
         property :kind, as: 'kind'
         property :state_key, as: 'stateKey'

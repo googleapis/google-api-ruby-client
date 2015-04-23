@@ -27,16 +27,7 @@ module Google
     # @see 
     module CloudsearchV1
       VERSION = 'V1'
-      REVISION = '20150309'
-
-      # View and manage your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # FOR TESTING ONLY
-      AUTH_CLOUDSEARCH = 'https://www.googleapis.com/auth/cloudsearch'
-
-      # View your email address
-      AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
+      REVISION = '20150416'
     end
   end
 end

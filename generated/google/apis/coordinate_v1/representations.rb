@@ -21,27 +21,82 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CoordinateV1
-      class CustomFieldRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class CustomFieldDefRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class CustomFieldDefListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class CustomFieldsRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class EnumItemDefRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class JobRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class JobChangeRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class JobListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class JobStateRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class LocationRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class LocationListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class LocationRecordRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ScheduleRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TeamRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TeamListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TokenPaginationRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class WorkerRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class WorkerListResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
+      
+      class CustomFieldRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class CustomFieldDefRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class CustomFieldDefListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class CustomFieldsRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class EnumItemDefRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class JobRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class JobChangeRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class JobListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class JobStateRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class LocationRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class LocationListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class LocationRecordRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ScheduleRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TeamRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TeamListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TokenPaginationRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class WorkerRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class WorkerListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
 
       # @private
       class CustomFieldRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :custom_field_id, as: 'customFieldId'
         property :kind, as: 'kind'
         property :value, as: 'value'
@@ -49,6 +104,7 @@ module Google
 
       # @private
       class CustomFieldDefRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :enabled, as: 'enabled'
         collection :enumitems, as: 'enumitems', class: Google::Apis::CoordinateV1::EnumItemDef, decorator: Google::Apis::CoordinateV1::EnumItemDefRepresentation
         
@@ -62,6 +118,7 @@ module Google
 
       # @private
       class CustomFieldDefListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :items, as: 'items', class: Google::Apis::CoordinateV1::CustomFieldDef, decorator: Google::Apis::CoordinateV1::CustomFieldDefRepresentation
         
         
@@ -70,6 +127,7 @@ module Google
 
       # @private
       class CustomFieldsRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :custom_field, as: 'customField', class: Google::Apis::CoordinateV1::CustomField, decorator: Google::Apis::CoordinateV1::CustomFieldRepresentation
         
         
@@ -78,6 +136,7 @@ module Google
 
       # @private
       class EnumItemDefRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :active, as: 'active'
         property :kind, as: 'kind'
         property :value, as: 'value'
@@ -85,6 +144,7 @@ module Google
 
       # @private
       class JobRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :id, as: 'id'
         collection :job_change, as: 'jobChange', class: Google::Apis::CoordinateV1::JobChange, decorator: Google::Apis::CoordinateV1::JobChangeRepresentation
         
@@ -95,6 +155,7 @@ module Google
 
       # @private
       class JobChangeRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :kind, as: 'kind'
         property :state, as: 'state', class: Google::Apis::CoordinateV1::JobState, decorator: Google::Apis::CoordinateV1::JobStateRepresentation
         
@@ -103,6 +164,7 @@ module Google
 
       # @private
       class JobListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :items, as: 'items', class: Google::Apis::CoordinateV1::Job, decorator: Google::Apis::CoordinateV1::JobRepresentation
         
         
@@ -112,6 +174,7 @@ module Google
 
       # @private
       class JobStateRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :assignee, as: 'assignee'
         property :custom_fields, as: 'customFields', class: Google::Apis::CoordinateV1::CustomFields, decorator: Google::Apis::CoordinateV1::CustomFieldsRepresentation
         
@@ -128,6 +191,7 @@ module Google
 
       # @private
       class LocationRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :address_line, as: 'addressLine'
         
         property :kind, as: 'kind'
@@ -137,6 +201,7 @@ module Google
 
       # @private
       class LocationListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :items, as: 'items', class: Google::Apis::CoordinateV1::LocationRecord, decorator: Google::Apis::CoordinateV1::LocationRecordRepresentation
         
         
@@ -147,6 +212,7 @@ module Google
 
       # @private
       class LocationRecordRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :collection_time, as: 'collectionTime'
         property :confidence_radius, as: 'confidenceRadius'
         property :kind, as: 'kind'
@@ -156,6 +222,7 @@ module Google
 
       # @private
       class ScheduleRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :all_day, as: 'allDay'
         property :duration, as: 'duration'
         property :end_time, as: 'endTime'
@@ -165,6 +232,7 @@ module Google
 
       # @private
       class TeamRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :id, as: 'id'
         property :kind, as: 'kind'
         property :name, as: 'name'
@@ -172,6 +240,7 @@ module Google
 
       # @private
       class TeamListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :items, as: 'items', class: Google::Apis::CoordinateV1::Team, decorator: Google::Apis::CoordinateV1::TeamRepresentation
         
         
@@ -180,6 +249,7 @@ module Google
 
       # @private
       class TokenPaginationRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :kind, as: 'kind'
         property :next_page_token, as: 'nextPageToken'
         property :previous_page_token, as: 'previousPageToken'
@@ -187,12 +257,14 @@ module Google
 
       # @private
       class WorkerRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :id, as: 'id'
         property :kind, as: 'kind'
       end
 
       # @private
       class WorkerListResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :items, as: 'items', class: Google::Apis::CoordinateV1::Worker, decorator: Google::Apis::CoordinateV1::WorkerRepresentation
         
         

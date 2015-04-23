@@ -51,7 +51,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', '/admin/directory/v1/')
+          super('https://www.googleapis.com/', 'admin/directory/v1/')
         end
 
         # Delete an ASP issued by a user.

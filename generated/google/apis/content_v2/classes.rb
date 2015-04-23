@@ -32,7 +32,10 @@ module Google
         attr_accessor :adult_content
         alias_method :adult_content?, :adult_content
       
-        # List of linked AdWords accounts.
+        # List of linked AdWords accounts, active or pending approval. To create a new
+        # link request, add a new link with status active to the list. It will remain is
+        # state pending until approved or rejected in the AdWords interface. To delete
+        # an active link or to cancel a link request, remove it from the list.
         # Corresponds to the JSON property `adwordsLinks`
         # @return [Array<Google::Apis::ContentV2::AccountAdwordsLink>]
         attr_accessor :adwords_links
@@ -97,7 +100,14 @@ module Google
         attr_accessor :adwords_id
       
         # Status of the link between this Merchant Center account and the AdWords
-        # account.
+        # account. Upon retrieval, it represents the actual status of the link and can
+        # be either active if it was approved in Google AdWords or pending if it's
+        # pending approval. Upon insertion, it represents the intended status of the
+        # link. Re-uploading a link with status active when it's still pending or with
+        # status pending when it's already active will have no effect: the status will
+        # remain unchanged. Re-uploading a link with deprecated status inactive is
+        # equivalent to not submitting the link at all and will delete the link if it
+        # was active or cancel the link request if it was pending.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status

@@ -21,18 +21,59 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ReplicapoolV1beta2
-      class InstanceGroupManagerRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class InstanceGroupManagerListRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class InstanceGroupManagersAbandonInstancesRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class InstanceGroupManagersDeleteInstancesRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class InstanceGroupManagersRecreateInstancesRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class InstanceGroupManagersSetInstanceTemplateRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class InstanceGroupManagersSetTargetPoolsRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class OperationRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class OperationListRepresentation < Google::Apis::Core::JsonRepresentation; end
+      
+      class InstanceGroupManagerRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class InstanceGroupManagerListRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class InstanceGroupManagersAbandonInstancesRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class InstanceGroupManagersDeleteInstancesRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class InstanceGroupManagersRecreateInstancesRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class InstanceGroupManagersSetInstanceTemplateRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class InstanceGroupManagersSetTargetPoolsRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class OperationRepresentation < Google::Apis::Core::JsonRepresentation
+        
+        class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
+          
+          class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
+            
+          end
+        end
+        
+        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
+          
+          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
+            
+          end
+        end
+      end
+      
+      class OperationListRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
 
       # @private
       class InstanceGroupManagerRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :base_instance_name, as: 'baseInstanceName'
         property :creation_timestamp, as: 'creationTimestamp'
         property :current_size, as: 'currentSize'
@@ -51,6 +92,7 @@ module Google
 
       # @private
       class InstanceGroupManagerListRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ReplicapoolV1beta2::InstanceGroupManager, decorator: Google::Apis::ReplicapoolV1beta2::InstanceGroupManagerRepresentation
         
@@ -62,42 +104,44 @@ module Google
 
       # @private
       class InstanceGroupManagersAbandonInstancesRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :instances, as: 'instances'
       end
 
       # @private
       class InstanceGroupManagersDeleteInstancesRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :instances, as: 'instances'
       end
 
       # @private
       class InstanceGroupManagersRecreateInstancesRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :instances, as: 'instances'
       end
 
       # @private
       class InstanceGroupManagersSetInstanceTemplateRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :instance_template, as: 'instanceTemplate'
       end
 
       # @private
       class InstanceGroupManagersSetTargetPoolsRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :fingerprint, as: 'fingerprint'
         collection :target_pools, as: 'targetPools'
       end
 
       # @private
       class OperationRepresentation < Google::Apis::Core::JsonRepresentation
+        class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
+        class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
+        
         property :client_operation_id, as: 'clientOperationId'
         property :creation_timestamp, as: 'creationTimestamp'
         property :end_time, as: 'endTime'
-        property :error, as: 'error', class: Google::Apis::ReplicapoolV1beta2::Operation::Error do
-          collection :errors, as: 'errors', class: Google::Apis::ReplicapoolV1beta2::Operation::Error::Error do
-            property :code, as: 'code'
-            property :location, as: 'location'
-            property :message, as: 'message'
-          end
-        end
+        property :error, as: 'error', class: Google::Apis::ReplicapoolV1beta2::Operation::Error, decorator: Google::Apis::ReplicapoolV1beta2::OperationRepresentation::ErrorRepresentation
         
         property :http_error_message, as: 'httpErrorMessage'
         property :http_error_status_code, as: 'httpErrorStatusCode'
@@ -115,23 +159,53 @@ module Google
         property :target_id, as: 'targetId'
         property :target_link, as: 'targetLink'
         property :user, as: 'user'
-        collection :warnings, as: 'warnings', class: Google::Apis::ReplicapoolV1beta2::Operation::Warning do
-          property :code, as: 'code'
-          collection :data, as: 'data', class: Google::Apis::ReplicapoolV1beta2::Operation::Warning::Datum do
-            property :key, as: 'key'
-            property :value, as: 'value'
-          end
-          
-          
-          property :message, as: 'message'
-        end
+        collection :warnings, as: 'warnings', class: Google::Apis::ReplicapoolV1beta2::Operation::Warning, decorator: Google::Apis::ReplicapoolV1beta2::OperationRepresentation::WarningRepresentation
         
         
         property :zone, as: 'zone'
+        
+        
+        # @private
+        class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
+          class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
+          
+          collection :errors, as: 'errors', class: Google::Apis::ReplicapoolV1beta2::Operation::Error::Error, decorator: Google::Apis::ReplicapoolV1beta2::OperationRepresentation::ErrorRepresentation::ErrorRepresentation
+          
+          
+          
+          
+          # @private
+          class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
+            
+            property :code, as: 'code'
+            property :location, as: 'location'
+            property :message, as: 'message'
+          end
+        end
+        
+        # @private
+        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
+          class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
+          
+          property :code, as: 'code'
+          collection :data, as: 'data', class: Google::Apis::ReplicapoolV1beta2::Operation::Warning::Datum, decorator: Google::Apis::ReplicapoolV1beta2::OperationRepresentation::WarningRepresentation::DatumRepresentation
+          
+          
+          property :message, as: 'message'
+          
+          
+          # @private
+          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
+            
+            property :key, as: 'key'
+            property :value, as: 'value'
+          end
+        end
       end
 
       # @private
       class OperationListRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ReplicapoolV1beta2::Operation, decorator: Google::Apis::ReplicapoolV1beta2::OperationRepresentation
         

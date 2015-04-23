@@ -21,45 +21,175 @@ require 'google/apis/errors'
 module Google
   module Apis
     module BigqueryV2
-      class CsvOptionsRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class DatasetRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class DatasetListRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class DatasetReferenceRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ErrorProtoRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ExternalDataConfigurationRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class GetQueryResultsResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class JobRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class JobConfigurationRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class JobConfigurationExtractRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class JobConfigurationLinkRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class JobConfigurationLoadRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class JobConfigurationQueryRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class JobConfigurationTableCopyRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class JobListRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class JobReferenceRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class JobStatisticsRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class JobStatistics2Representation < Google::Apis::Core::JsonRepresentation; end
-      class JobStatistics3Representation < Google::Apis::Core::JsonRepresentation; end
-      class JobStatistics4Representation < Google::Apis::Core::JsonRepresentation; end
-      class JobStatusRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ProjectListRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ProjectReferenceRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class QueryRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class QueryResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TableRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TableCellRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TableDataInsertAllRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TableDataInsertAllResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TableDataListRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TableFieldSchemaRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TableListRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TableReferenceRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TableRowRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TableSchemaRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ViewDefinitionRepresentation < Google::Apis::Core::JsonRepresentation; end
+      
+      class CsvOptionsRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class DatasetRepresentation < Google::Apis::Core::JsonRepresentation
+        
+        class AccesRepresentation < Google::Apis::Core::JsonRepresentation
+          
+        end
+      end
+      
+      class DatasetListRepresentation < Google::Apis::Core::JsonRepresentation
+        
+        class DatasetRepresentation < Google::Apis::Core::JsonRepresentation
+          
+        end
+      end
+      
+      class DatasetReferenceRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ErrorProtoRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ExternalDataConfigurationRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class GetQueryResultsResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class JobRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class JobConfigurationRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class JobConfigurationExtractRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class JobConfigurationLinkRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class JobConfigurationLoadRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class JobConfigurationQueryRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class JobConfigurationTableCopyRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class JobListRepresentation < Google::Apis::Core::JsonRepresentation
+        
+        class JobRepresentation < Google::Apis::Core::JsonRepresentation
+          
+        end
+      end
+      
+      class JobReferenceRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class JobStatisticsRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class JobStatistics2Representation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class JobStatistics3Representation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class JobStatistics4Representation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class JobStatusRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ProjectListRepresentation < Google::Apis::Core::JsonRepresentation
+        
+        class ProjectRepresentation < Google::Apis::Core::JsonRepresentation
+          
+        end
+      end
+      
+      class ProjectReferenceRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class QueryRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class QueryResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TableRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TableCellRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TableDataInsertAllRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+        class RowRepresentation < Google::Apis::Core::JsonRepresentation
+          
+        end
+      end
+      
+      class TableDataInsertAllResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+        class InsertErrorRepresentation < Google::Apis::Core::JsonRepresentation
+          
+        end
+      end
+      
+      class TableDataListRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TableFieldSchemaRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TableListRepresentation < Google::Apis::Core::JsonRepresentation
+        
+        class TableRepresentation < Google::Apis::Core::JsonRepresentation
+          
+        end
+      end
+      
+      class TableReferenceRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TableRowRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TableSchemaRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ViewDefinitionRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
 
       # @private
       class CsvOptionsRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :allow_jagged_rows, as: 'allowJaggedRows'
         property :allow_quoted_newlines, as: 'allowQuotedNewlines'
         property :encoding, as: 'encoding'
@@ -70,14 +200,9 @@ module Google
 
       # @private
       class DatasetRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :access, as: 'access', class: Google::Apis::BigqueryV2::Dataset::Access do
-          property :domain, as: 'domain'
-          property :group_by_email, as: 'groupByEmail'
-          property :role, as: 'role'
-          property :special_group, as: 'specialGroup'
-          property :user_by_email, as: 'userByEmail'
-          property :view, as: 'view', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReferenceRepresentation
-        end
+        class AccesRepresentation < Google::Apis::Core::JsonRepresentation; end
+        
+        collection :access, as: 'access', class: Google::Apis::BigqueryV2::Dataset::Acces, decorator: Google::Apis::BigqueryV2::DatasetRepresentation::AccesRepresentation
         
         
         property :creation_time, as: 'creationTime'
@@ -91,32 +216,53 @@ module Google
         property :kind, as: 'kind'
         property :last_modified_time, as: 'lastModifiedTime'
         property :self_link, as: 'selfLink'
+        
+        
+        # @private
+        class AccesRepresentation < Google::Apis::Core::JsonRepresentation
+          
+          property :domain, as: 'domain'
+          property :group_by_email, as: 'groupByEmail'
+          property :role, as: 'role'
+          property :special_group, as: 'specialGroup'
+          property :user_by_email, as: 'userByEmail'
+          property :view, as: 'view', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReferenceRepresentation
+        end
       end
 
       # @private
       class DatasetListRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :datasets, as: 'datasets', class: Google::Apis::BigqueryV2::DatasetList::Dataset do
+        class DatasetRepresentation < Google::Apis::Core::JsonRepresentation; end
+        
+        collection :datasets, as: 'datasets', class: Google::Apis::BigqueryV2::DatasetList::Dataset, decorator: Google::Apis::BigqueryV2::DatasetListRepresentation::DatasetRepresentation
+        
+        
+        property :etag, as: 'etag'
+        property :kind, as: 'kind'
+        property :next_page_token, as: 'nextPageToken'
+        
+        
+        # @private
+        class DatasetRepresentation < Google::Apis::Core::JsonRepresentation
+          
           property :dataset_reference, as: 'datasetReference', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReferenceRepresentation
           
           property :friendly_name, as: 'friendlyName'
           property :id, as: 'id'
           property :kind, as: 'kind'
         end
-        
-        
-        property :etag, as: 'etag'
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
       end
 
       # @private
       class DatasetReferenceRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :dataset_id, as: 'datasetId'
         property :project_id, as: 'projectId'
       end
 
       # @private
       class ErrorProtoRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :debug_info, as: 'debugInfo'
         property :location, as: 'location'
         property :message, as: 'message'
@@ -125,6 +271,7 @@ module Google
 
       # @private
       class ExternalDataConfigurationRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :compression, as: 'compression'
         property :csv_options, as: 'csvOptions', class: Google::Apis::BigqueryV2::CsvOptions, decorator: Google::Apis::BigqueryV2::CsvOptionsRepresentation
         
@@ -138,6 +285,7 @@ module Google
 
       # @private
       class GetQueryResultsResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :cache_hit, as: 'cacheHit'
         property :etag, as: 'etag'
         property :job_complete, as: 'jobComplete'
@@ -156,6 +304,7 @@ module Google
 
       # @private
       class JobRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :configuration, as: 'configuration', class: Google::Apis::BigqueryV2::JobConfiguration, decorator: Google::Apis::BigqueryV2::JobConfigurationRepresentation
         
         property :etag, as: 'etag'
@@ -173,6 +322,7 @@ module Google
 
       # @private
       class JobConfigurationRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :copy, as: 'copy', class: Google::Apis::BigqueryV2::JobConfigurationTableCopy, decorator: Google::Apis::BigqueryV2::JobConfigurationTableCopyRepresentation
         
         property :dry_run, as: 'dryRun'
@@ -187,6 +337,7 @@ module Google
 
       # @private
       class JobConfigurationExtractRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :compression, as: 'compression'
         property :destination_format, as: 'destinationFormat'
         property :destination_uri, as: 'destinationUri'
@@ -199,6 +350,7 @@ module Google
 
       # @private
       class JobConfigurationLinkRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :create_disposition, as: 'createDisposition'
         property :destination_table, as: 'destinationTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReferenceRepresentation
         
@@ -209,6 +361,7 @@ module Google
 
       # @private
       class JobConfigurationLoadRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :allow_jagged_rows, as: 'allowJaggedRows'
         property :allow_quoted_newlines, as: 'allowQuotedNewlines'
         property :create_disposition, as: 'createDisposition'
@@ -234,6 +387,7 @@ module Google
 
       # @private
       class JobConfigurationQueryRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :allow_large_results, as: 'allowLargeResults'
         property :create_disposition, as: 'createDisposition'
         property :default_dataset, as: 'defaultDataset', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReferenceRepresentation
@@ -253,6 +407,7 @@ module Google
 
       # @private
       class JobConfigurationTableCopyRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :create_disposition, as: 'createDisposition'
         property :destination_table, as: 'destinationTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReferenceRepresentation
         
@@ -266,8 +421,20 @@ module Google
 
       # @private
       class JobListRepresentation < Google::Apis::Core::JsonRepresentation
+        class JobRepresentation < Google::Apis::Core::JsonRepresentation; end
+        
         property :etag, as: 'etag'
-        collection :jobs, as: 'jobs', class: Google::Apis::BigqueryV2::JobList::Job do
+        collection :jobs, as: 'jobs', class: Google::Apis::BigqueryV2::JobList::Job, decorator: Google::Apis::BigqueryV2::JobListRepresentation::JobRepresentation
+        
+        
+        property :kind, as: 'kind'
+        property :next_page_token, as: 'nextPageToken'
+        property :total_items, as: 'totalItems'
+        
+        
+        # @private
+        class JobRepresentation < Google::Apis::Core::JsonRepresentation
+          
           property :configuration, as: 'configuration', class: Google::Apis::BigqueryV2::JobConfiguration, decorator: Google::Apis::BigqueryV2::JobConfigurationRepresentation
           
           property :error_result, as: 'errorResult', class: Google::Apis::BigqueryV2::ErrorProto, decorator: Google::Apis::BigqueryV2::ErrorProtoRepresentation
@@ -283,21 +450,18 @@ module Google
           
           property :user_email, as: 'user_email'
         end
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :total_items, as: 'totalItems'
       end
 
       # @private
       class JobReferenceRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :job_id, as: 'jobId'
         property :project_id, as: 'projectId'
       end
 
       # @private
       class JobStatisticsRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :creation_time, as: 'creationTime'
         property :end_time, as: 'endTime'
         property :extract, as: 'extract', class: Google::Apis::BigqueryV2::JobStatistics4, decorator: Google::Apis::BigqueryV2::JobStatistics4Representation
@@ -312,12 +476,14 @@ module Google
 
       # @private
       class JobStatistics2Representation < Google::Apis::Core::JsonRepresentation
+        
         property :cache_hit, as: 'cacheHit'
         property :total_bytes_processed, as: 'totalBytesProcessed'
       end
 
       # @private
       class JobStatistics3Representation < Google::Apis::Core::JsonRepresentation
+        
         property :input_file_bytes, as: 'inputFileBytes'
         property :input_files, as: 'inputFiles'
         property :output_bytes, as: 'outputBytes'
@@ -326,11 +492,13 @@ module Google
 
       # @private
       class JobStatistics4Representation < Google::Apis::Core::JsonRepresentation
+        
         collection :destination_uri_file_counts, as: 'destinationUriFileCounts'
       end
 
       # @private
       class JobStatusRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :error_result, as: 'errorResult', class: Google::Apis::BigqueryV2::ErrorProto, decorator: Google::Apis::BigqueryV2::ErrorProtoRepresentation
         
         collection :errors, as: 'errors', class: Google::Apis::BigqueryV2::ErrorProto, decorator: Google::Apis::BigqueryV2::ErrorProtoRepresentation
@@ -341,28 +509,37 @@ module Google
 
       # @private
       class ProjectListRepresentation < Google::Apis::Core::JsonRepresentation
+        class ProjectRepresentation < Google::Apis::Core::JsonRepresentation; end
+        
         property :etag, as: 'etag'
         property :kind, as: 'kind'
         property :next_page_token, as: 'nextPageToken'
-        collection :projects, as: 'projects', class: Google::Apis::BigqueryV2::ProjectList::Project do
+        collection :projects, as: 'projects', class: Google::Apis::BigqueryV2::ProjectList::Project, decorator: Google::Apis::BigqueryV2::ProjectListRepresentation::ProjectRepresentation
+        
+        
+        property :total_items, as: 'totalItems'
+        
+        
+        # @private
+        class ProjectRepresentation < Google::Apis::Core::JsonRepresentation
+          
           property :friendly_name, as: 'friendlyName'
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :numeric_id, as: 'numericId'
           property :project_reference, as: 'projectReference', class: Google::Apis::BigqueryV2::ProjectReference, decorator: Google::Apis::BigqueryV2::ProjectReferenceRepresentation
         end
-        
-        
-        property :total_items, as: 'totalItems'
       end
 
       # @private
       class ProjectReferenceRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :project_id, as: 'projectId'
       end
 
       # @private
       class QueryRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :default_dataset, as: 'defaultDataset', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReferenceRepresentation
         
         property :dry_run, as: 'dryRun'
@@ -376,6 +553,7 @@ module Google
 
       # @private
       class QueryResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :cache_hit, as: 'cacheHit'
         property :job_complete, as: 'jobComplete'
         property :job_reference, as: 'jobReference', class: Google::Apis::BigqueryV2::JobReference, decorator: Google::Apis::BigqueryV2::JobReferenceRepresentation
@@ -393,6 +571,7 @@ module Google
 
       # @private
       class TableRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :creation_time, as: 'creationTime'
         property :description, as: 'description'
         property :etag, as: 'etag'
@@ -414,37 +593,53 @@ module Google
 
       # @private
       class TableCellRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :v, as: 'v'
       end
 
       # @private
       class TableDataInsertAllRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        class RowRepresentation < Google::Apis::Core::JsonRepresentation; end
+        
         property :ignore_unknown_values, as: 'ignoreUnknownValues'
         property :kind, as: 'kind'
-        collection :rows, as: 'rows', class: Google::Apis::BigqueryV2::TableDataInsertAllRequest::Row do
-          property :insert_id, as: 'insertId'
-          hash :json, as: 'json'
-        end
+        collection :rows, as: 'rows', class: Google::Apis::BigqueryV2::TableDataInsertAllRequest::Row, decorator: Google::Apis::BigqueryV2::TableDataInsertAllRequestRepresentation::RowRepresentation
         
         
         property :skip_invalid_rows, as: 'skipInvalidRows'
+        
+        
+        # @private
+        class RowRepresentation < Google::Apis::Core::JsonRepresentation
+          
+          property :insert_id, as: 'insertId'
+          hash :json, as: 'json'
+        end
       end
 
       # @private
       class TableDataInsertAllResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :insert_errors, as: 'insertErrors', class: Google::Apis::BigqueryV2::TableDataInsertAllResponse::InsertError do
+        class InsertErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
+        
+        collection :insert_errors, as: 'insertErrors', class: Google::Apis::BigqueryV2::TableDataInsertAllResponse::InsertError, decorator: Google::Apis::BigqueryV2::TableDataInsertAllResponseRepresentation::InsertErrorRepresentation
+        
+        
+        property :kind, as: 'kind'
+        
+        
+        # @private
+        class InsertErrorRepresentation < Google::Apis::Core::JsonRepresentation
+          
           collection :errors, as: 'errors', class: Google::Apis::BigqueryV2::ErrorProto, decorator: Google::Apis::BigqueryV2::ErrorProtoRepresentation
           
           
           property :index, as: 'index'
         end
-        
-        
-        property :kind, as: 'kind'
       end
 
       # @private
       class TableDataListRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :etag, as: 'etag'
         property :kind, as: 'kind'
         property :page_token, as: 'pageToken'
@@ -456,6 +651,7 @@ module Google
 
       # @private
       class TableFieldSchemaRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :description, as: 'description'
         collection :fields, as: 'fields', class: Google::Apis::BigqueryV2::TableFieldSchema, decorator: Google::Apis::BigqueryV2::TableFieldSchemaRepresentation
         
@@ -467,10 +663,20 @@ module Google
 
       # @private
       class TableListRepresentation < Google::Apis::Core::JsonRepresentation
+        class TableRepresentation < Google::Apis::Core::JsonRepresentation; end
+        
         property :etag, as: 'etag'
         property :kind, as: 'kind'
         property :next_page_token, as: 'nextPageToken'
-        collection :tables, as: 'tables', class: Google::Apis::BigqueryV2::TableList::Table do
+        collection :tables, as: 'tables', class: Google::Apis::BigqueryV2::TableList::Table, decorator: Google::Apis::BigqueryV2::TableListRepresentation::TableRepresentation
+        
+        
+        property :total_items, as: 'totalItems'
+        
+        
+        # @private
+        class TableRepresentation < Google::Apis::Core::JsonRepresentation
+          
           property :friendly_name, as: 'friendlyName'
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -478,13 +684,11 @@ module Google
           
           property :type, as: 'type'
         end
-        
-        
-        property :total_items, as: 'totalItems'
       end
 
       # @private
       class TableReferenceRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :dataset_id, as: 'datasetId'
         property :project_id, as: 'projectId'
         property :table_id, as: 'tableId'
@@ -492,16 +696,19 @@ module Google
 
       # @private
       class TableRowRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :f, as: 'f', class: Google::Apis::BigqueryV2::TableCell, decorator: Google::Apis::BigqueryV2::TableCellRepresentation
       end
 
       # @private
       class TableSchemaRepresentation < Google::Apis::Core::JsonRepresentation
+        
         collection :fields, as: 'fields', class: Google::Apis::BigqueryV2::TableFieldSchema, decorator: Google::Apis::BigqueryV2::TableFieldSchemaRepresentation
       end
 
       # @private
       class ViewDefinitionRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :query, as: 'query'
       end
     end

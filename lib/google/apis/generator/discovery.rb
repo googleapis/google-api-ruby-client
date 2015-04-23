@@ -410,7 +410,7 @@ module Google
               item_type = parse_type(discovery['additionalProperties'], ActiveSupport::Inflector.singularize(container_name), parent_class)
               return Type.new('hash', key_type: Type.new('string'), item_type: item_type)
             else
-              type_name = ActiveSupport::Inflector.camelize(container_name)
+              type_name = ActiveSupport::Inflector.camelize(discovery['type_value'] || container_name)
               schema_type = parse_schema_class(type_name, discovery, parent_class)
               if discovery['variant']
                 schema_type.discriminant = discovery['variant']['discriminant']
@@ -453,13 +453,13 @@ module Google
             schema_class = type.schema_type
             suffixes.each do |suffix|
               alt_name = schema_class.class_name.gsub(/(?i:#{Regexp.quote(suffix)})$/, '')
-              alt_name = schema_class.class_name if alt_name.empty?
+              alt_name = schema_class.class_name if alt_name.empty? || alt_names.key?(alt_name)
               return if alt_names.key?(alt_name) # Abort if duplicate
               alt_names[alt_name] = schema_class
             end
             prefixes.each do |prefix|
               alt_name = schema_class.class_name.gsub(/^(?i:#{Regexp.quote(prefix)})(?=[A-Z]+)/, '')
-              alt_name = schema_class.class_name if alt_name.empty?
+              alt_name = schema_class.class_name if alt_name.empty? || alt_names.key?(alt_name)
               return if alt_names.key?(alt_name) # Abort if duplicate
               alt_names[alt_name] = schema_class
             end

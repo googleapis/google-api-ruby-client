@@ -101,7 +101,7 @@ module Google
         # access.role: OWNER; access.userByEmail: [dataset creator email]; access.role:
         # OWNER;
         # Corresponds to the JSON property `access`
-        # @return [Array<Google::Apis::BigqueryV2::Dataset::Access>]
+        # @return [Array<Google::Apis::BigqueryV2::Dataset::Acces>]
         attr_accessor :access
       
         # [Output-only] The time when this dataset was created, in milliseconds since
@@ -183,7 +183,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
         # 
-        class Access
+        class Acces
           include Google::Apis::Core::Hashable
         
           # [Pick one] A domain to grant access to. Any users signed in with the domain

@@ -17,11 +17,8 @@ require 'google/apis/generator'
 require 'tmpdir'
 require 'fileutils'
 
-# TODO:
-# - Variant types
-# - Class name simplification
-# - Nested resources
-# - Hash types (additionalProperties)
+# TODO - Naked arrays in method requests/responses
+
 RSpec.describe Google::Apis::Generator do
   include TestHelpers
 
@@ -68,7 +65,7 @@ RSpec.describe Google::Apis::Generator do
         parameters = service.method(:query).parameters.map { |(k,v)| v }
         expect(parameters).to include(:options, :block)
       end
-      
+
       it 'should define AUTH_TEST scope' do
         expect(Google::Apis::TestV1::AUTH_TEST).to eql ('https://www.googleapis.com/auth/test')
       end
@@ -76,7 +73,18 @@ RSpec.describe Google::Apis::Generator do
       it 'should define AUTH_TEST_READONLY scope' do
         expect(Google::Apis::TestV1::AUTH_TEST_READONLY).to eql ('https://www.googleapis.com/auth/test.readonly')
       end
-      
+
+      context 'when simplifying class names' do
+        it 'should simplify the TestAnotherThing name' do
+          expect{ Google::Apis::TestV1::AnotherThing.new }.not_to raise_error
+        end
+
+        it 'should not simplify the TestThing name' do
+          expect{ Google::Apis::TestV1::TestThing.new }.not_to raise_error
+        end
+      end
+
+
       context 'with the Thing resource' do
         it 'should define the create method`' do
           expect(service.method(:create_thing)).to_not be_nil
@@ -103,6 +111,129 @@ RSpec.describe Google::Apis::Generator do
           parameters = service.method(:update_thing).parameters.map { |(k,v)| v }
           expect(parameters).to include(:upload_source)
         end
+
+        it 'should define subresource methods' do
+          expect(service.method(:list_thing_subthings)).to_not be_nil
+        end
+
+      end
+
+      context 'with the get_thing method' do
+        before(:example) do
+          json = <<EOF
+{
+  "id" : "123",
+  "name" : "A thing",
+  "enabled": true,
+  "properties": {
+    "prop_a" : "value_a",
+    "prop_b" : "value_b"
+  },
+  "photo": {
+    "filename": "image.jpg"
+  },
+  "hat": {
+    "type": "baseballHat",
+    "color": "red"
+  }
+}
+EOF
+          stub_request(:get, 'https://www.googleapis.com/test/v1/things/123').
+            to_return(:headers => { 'Content-Type' => 'application/json'}, :body => json)
+        end
+
+        let(:thing) { service.get_thing('123') }
+
+        it 'should return a Thing' do
+          expect(thing).to be_instance_of(Google::Apis::TestV1::Thing)
+        end
+
+        it 'should set attributes' do
+          expect(thing.id).to eql '123'
+        end
+
+        it 'should alias boolean methods on Thing' do
+          expect(thing.enabled?).to be true
+        end
+
+        it 'should return a Hash for properties' do
+          expect(thing.properties).to be_instance_of(Hash)
+        end
+
+        it 'should set hash elements' do
+          expect(thing.properties).to include("prop_a" => "value_a")
+        end
+
+        it 'should return the correct variant type for hat' do
+          expect(thing.hat).to be_instance_of(Google::Apis::TestV1::Thing::BaseballHat)
+        end
+
+        it 'should return the correct variant properties for hat' do
+          expect(thing.hat.color).to eql 'red'
+        end
+
+        it 'should return a photo' do
+          expect(thing.photo).to be_instance_of(Google::Apis::TestV1::Thing::Photo)
+        end
+
+        it 'should return photo properties' do
+          expect(thing.photo.filename).to eql 'image.jpg'
+        end
+      end
+
+      context 'with the create_thing method' do
+        before(:example) do
+          json = <<EOF
+{
+  "id" : "123",
+  "name" : "A thing",
+  "properties": {
+    "prop_a" : "value_a"
+  },
+  "photo": {
+    "filename": "image.jpg"
+  },
+  "hat": {
+    "type": "topHat",
+    "height": 100
+  }
+}
+EOF
+          stub_request(:post, 'https://www.googleapis.com/test/v1/things').
+            to_return(:headers => { 'Content-Type' => 'application/json'}, :body => json)
+        end
+
+        let(:thing) do
+          thing = Google::Apis::TestV1::Thing.new(name: "A thing", properties: { "prop_a" => "value_a" })
+          thing.photo = Google::Apis::TestV1::Thing::Photo.new(filename: 'image.jpg')
+          thing.hat = Google::Apis::TestV1::Thing::TopHat.new(type: 'topHat', height: 100)
+          service.create_thing(thing)
+        end
+
+        it 'should serialize the thing' do
+          expected_body = <<EOF
+{
+  "name" : "A thing",
+  "properties": {
+    "prop_a" : "value_a"
+  },
+  "photo": {
+    "filename": "image.jpg"
+  },
+  "hat": {
+    "type": "topHat",
+    "height": 100
+  }
+}
+EOF
+          expect(thing).to be_instance_of(Google::Apis::TestV1::Thing)
+          expect(a_request(:post, 'https://www.googleapis.com/test/v1/things').
+            with{ |req| expect(req.body).to be_json_eql(expected_body) }).to have_been_made
+        end
+
+        it 'should an updated id' do
+          expect(thing.id).to eql '123'
+        end
       end
 
       context 'with the query method' do
@@ -117,6 +248,11 @@ RSpec.describe Google::Apis::Generator do
           expect(results).to be_instance_of(Google::Apis::TestV1::QueryResults)
         end
 
+        it 'should return an array for items' do
+          results = service.query()
+          expect(results.rows).to be_instance_of(Array)
+        end
+
         it 'should return items of type Row' do
           results = service.query()
           expect(results.rows.first).to be_instance_of(Google::Apis::TestV1::Row)
@@ -126,8 +262,8 @@ RSpec.describe Google::Apis::Generator do
           results = service.query()
           expect(results.rows[1].value).to eql('world')
         end
-
       end
+
     end
   end
 

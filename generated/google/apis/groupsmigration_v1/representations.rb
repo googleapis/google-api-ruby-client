@@ -21,10 +21,14 @@ require 'google/apis/errors'
 module Google
   module Apis
     module GroupsmigrationV1
-      class GroupsRepresentation < Google::Apis::Core::JsonRepresentation; end
+      
+      class GroupsRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
 
       # @private
       class GroupsRepresentation < Google::Apis::Core::JsonRepresentation
+        
         property :kind, as: 'kind'
         property :response_code, as: 'responseCode'
       end

@@ -8,11 +8,5 @@ end
 <%= lead %>type: <%= type.name %>
 <% elsif type.schema_type %>
 <%= lead %>
-<% if type.anonymous? %>
-class: <%= type.name %> do
-  <%= indent(include('representation', :cls => type.schema_type, :api => api), 2) %>
-end
-<% else %>
-class: <%= type.name %>, decorator: <%= type.name %>Representation
-<% end %>
+class: <%= type.name %>, decorator: <%= type.representation_class %>
 <% end %>

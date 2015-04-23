@@ -7,7 +7,7 @@ class <%= cls.class_name %><% if cls.base_class %> < <%= cls.base_class.class_na
   # Corresponds to the JSON property `<%= property.original_name %>`
   # @return [<%= property.type.name %>]
   attr_accessor :<%= property.name %>
-<% if property.type.name == 'Boolean' %>
+<% if property.type.boolean? %>
   alias_method :<%= property.name %>?, :<%= property.name %>
 <% end %>
 <% end %>

@@ -259,12 +259,13 @@ module Google
       class MetricDescriptorTypeDescriptor
         include Google::Apis::Core::Hashable
       
-        # The method of collecting data for the metric.
+        # The method of collecting data for the metric. See Metric types.
         # Corresponds to the JSON property `metricType`
         # @return [String]
         attr_accessor :metric_type
       
-        # The type of data that is written to a timeseries point for this metric.
+        # The data type of of individual points in the metric's time series. See Metric
+        # value types.
         # Corresponds to the JSON property `valueType`
         # @return [String]
         attr_accessor :value_type
