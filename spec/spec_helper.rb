@@ -24,18 +24,21 @@ $LOAD_PATH.unshift(GENERATED_DIR)
 $LOAD_PATH.uniq!
 
 
-# set up coverage
-require 'simplecov'
-require 'coveralls'
+if defined?(JRUBY_VERSION)
+  puts "Skipping coverage on JRuby"
+else
+  # set up coverage
+  require 'simplecov'
+  require 'coveralls'
 
-SimpleCov.formatters = [
-  Coveralls::SimpleCov::Formatter,
-  SimpleCov::Formatter::HTMLFormatter
-]
-
-SimpleCov.start do
-  add_filter "/spec/"
-  add_filter "/generated/"
+  SimpleCov.formatters = [
+    Coveralls::SimpleCov::Formatter,
+    SimpleCov::Formatter::HTMLFormatter
+  ]
+  SimpleCov.start do
+    add_filter "/spec/"
+    add_filter "/generated/"
+  end
 end
 
 require 'rspec'
