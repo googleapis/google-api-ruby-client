@@ -170,7 +170,7 @@ EOF
         end
 
         it 'should return the correct variant type for hat' do
-          expect(thing.hat).to be_instance_of(Google::Apis::TestV1::Thing::BaseballHat)
+          expect(thing.hat).to be_instance_of(Google::Apis::TestV1::BaseballHat)
         end
 
         it 'should return the correct variant properties for hat' do
@@ -211,7 +211,7 @@ EOF
         let(:thing) do
           thing = Google::Apis::TestV1::Thing.new(name: "A thing", properties: { "prop_a" => "value_a" })
           thing.photo = Google::Apis::TestV1::Thing::Photo.new(filename: 'image.jpg')
-          thing.hat = Google::Apis::TestV1::Thing::TopHat.new(type: 'topHat', height: 100)
+          thing.hat = Google::Apis::TestV1::TopHat.new(type: 'topHat', height: 100)
           service.create_thing(thing)
         end
 

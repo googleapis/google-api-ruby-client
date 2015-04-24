@@ -18,10 +18,12 @@ RSpec.describe Google::Apis do
 
   # Minimal test just to ensure no syntax errors in generated code
   it 'should load all APIs' do
-    Dir.glob(File.join(ROOT_DIR, 'generated', 'google', 'apis', '*.rb')) do | file |
-      base = File.basename(file, '.rb')
-      require sprintf('google/apis/%s', base)
-    end
+    expect do
+      Dir.glob(File.join(ROOT_DIR, 'generated', 'google', 'apis', '*.rb')) do |file|
+      	base = File.basename(file, '.rb')
+        require sprintf('google/apis/%s', base)
+      end
+    end.not_to raise_error
   end
 
 end

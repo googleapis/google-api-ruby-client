@@ -86,35 +86,7 @@
           "type": "boolean"
         },
         "hat": {
-          "type": "object",
-          "variant": {
-            "discriminant": "type",
-            "map": [
-              {
-                "type_value": "topHat",
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string"
-                  },
-                  "height": {
-                    "type": "number"
-                  }
-                }
-              }, {
-                "type_value": "baseballHat",
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string"
-                  },
-                  "color": {
-                    "type": "string"
-                  }
-                }
-              }
-            ]
-          }
+          "$ref": "Hat"
         },
         "properties": {
           "$ref": "HashLikeThing"
@@ -138,6 +110,44 @@
               "type": "string"
             }
           }
+        }
+      }
+    },
+    "Hat": {
+      "type": "object",
+      "variant": {
+        "discriminant": "type",
+        "map": [
+          {
+            "type_value": "topHat",
+            "$ref": "TopHat"
+          },
+          {
+            "type_value": "baseballHat",
+            "$ref": "BaseballHat"
+          }
+        ]
+      }
+    },
+    "TopHat": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "height": {
+          "type": "number"
+        }
+      }
+    },
+    "BaseballHat": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
         }
       }
     },
