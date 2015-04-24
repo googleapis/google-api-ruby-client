@@ -44,8 +44,8 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
 
     before(:example) do
-      stub_request(:post, 'https://www.googleapis.com/zoo/animals').
-        to_return(:headers => { 'Content-Type' => 'application/json'}, :body => %({}))
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals')
+        .to_return(headers: { 'Content-Type' => 'application/json' }, body: %({}))
     end
 
     it 'should serialize the request object' do
@@ -65,8 +65,8 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
 
     before(:example) do
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
-        to_return(:headers => { 'Content-Type' => 'application/json'}, :body => %({"value" : "hello"}))
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .to_return(headers: { 'Content-Type' => 'application/json' }, body: %({"value" : "hello"}))
     end
 
     it 'should return a model instance' do
@@ -89,8 +89,8 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
 
     before(:example) do
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
-        to_return(:headers => { 'Content-Type' => 'text/plain'}, :body => %(Ignore me))
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .to_return(headers: { 'Content-Type' => 'text/plain' }, body: %(Ignore me))
     end
 
     it 'should return nil' do
@@ -108,14 +108,14 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
 
     before(:example) do
-      stub_request(:get, /.*/).
-        to_return(:headers => { 'Content-Type' => 'application/json'}, :body => %({}))
+      stub_request(:get, /.*/)
+        .to_return(headers: { 'Content-Type' => 'application/json' }, body: %({}))
     end
 
     it 'should normalize fields params' do
       command.execute(client)
-      expect(a_request(:get, 'https://www.googleapis.com/zoo/animals').
-        with(:query => {'fields' => 'items(id, longName)'})) .to have_been_made
+      expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .with(query: { 'fields' => 'items(id, longName)' })) .to have_been_made
     end
   end
 
@@ -140,9 +140,9 @@ RSpec.describe Google::Apis::Core::HttpCommand do
  }
 }
 EOF
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
-        to_return(:status => [403, 'Rate Limit Exceeded'], :headers => { 'Content-Type' => 'application/json'}, :body => json).
-        to_return(:headers => { 'Content-Type' => 'application/json'}, :body => %({}))
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .to_return(status: [403, 'Rate Limit Exceeded'], headers: { 'Content-Type' => 'application/json' }, body: json)
+        .to_return(headers: { 'Content-Type' => 'application/json' }, body: %({}))
     end
 
     it 'should retry' do
@@ -159,13 +159,12 @@ EOF
     before(:example) do
       json = %({})
 
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
-        to_return(:status => [403, 'Rate Limit Exceeded'], :headers => { 'Content-Type' => 'application/json'}, :body => json)
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .to_return(status: [403, 'Rate Limit Exceeded'], headers: { 'Content-Type' => 'application/json' }, body: json)
     end
 
     it 'should raise client error' do
       expect { command.execute(client) }.to raise_error(Google::Apis::ClientError)
     end
   end
-
 end

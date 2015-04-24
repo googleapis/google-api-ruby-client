@@ -93,21 +93,21 @@ module Google
           proc = block_given? ? Proc.new : nil
           begin
             Retriable.retriable tries: options.retries + 1,
-                              base_interval: 1,
-                              multiplier: 2,
-                              on: RETRIABLE_ERRORS do |try|
+                                base_interval: 1,
+                                multiplier: 2,
+                                on: RETRIABLE_ERRORS do |try|
               # This 2nd level retriable only catches auth errors, and supports 1 retry, which allows
               # auth to be re-attempted without having to retry all sorts of other failures like
               # NotFound, etc
               auth_tries = (try == 1 && authorization_refreshable? ? 2 : 1)
               Retriable.retriable tries: auth_tries,
                                   on: [Google::Apis::AuthorizationError],
-                                  on_retry: Proc.new { |*| refresh_authorization } do
+                                  on_retry: proc { |*| refresh_authorization } do
                 return execute_once(client, &proc)
               end
             end
           rescue => e
-            fail e if proc.nil?
+            raise e if proc.nil?
           end
         ensure
           release!
@@ -208,7 +208,7 @@ module Google
         # @return [Object] result if no block given
         # @yield [result, nil] if block given
         def success(result, &block)
-          logger.debug{ sprintf('Success - %s', result.inspect)}
+          logger.debug { sprintf('Success - %s', result.inspect) }
           block.call(result, nil) if block_given?
           result
         end
@@ -222,11 +222,9 @@ module Google
         # @yield [nil, err] if block given
         # @raise [StandardError] if no block
         def error(err, rethrow: false, &block)
-          logger.debug{ sprintf('Error - %s', err)}
+          logger.debug { sprintf('Error - %s', err) }
           err = Google::Apis::TransmissionError.new(err) if err.is_a?(Hurley::ClientError)
-          if block_given?
-            block.call(nil, err)
-          end
+          block.call(nil, err) if block_given?
           fail err if rethrow || block.nil?
         end
 

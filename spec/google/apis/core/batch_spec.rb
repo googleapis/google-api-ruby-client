@@ -66,12 +66,12 @@ Content-Type: text/plain; charset=UTF-8
 Error!
 --batch123--
 EOF
-    stub_request(:post, 'https://www.googleapis.com/batch').
-      to_return(:headers => { 'Content-Type' => 'multipart/mixed; boundary=batch123'}, :body => response)
+    stub_request(:post, 'https://www.googleapis.com/batch')
+      .to_return(headers: { 'Content-Type' => 'multipart/mixed; boundary=batch123' }, body: response)
   end
 
   it 'should send content' do
-    b = lambda { |res, err| }
+    b = ->(_res, _err) {}
     command.add(get_command, &b)
     command.add(post_with_string_command, &b)
     command.add(post_with_io_command, &b)
@@ -108,7 +108,7 @@ Goodbye!
 --RubyApiBatchRequest--
 
 EOF
-    expect(a_request(:post, 'https://www.googleapis.com/batch').with(:body => expected_body)).to have_been_made
+    expect(a_request(:post, 'https://www.googleapis.com/batch').with(body: expected_body)).to have_been_made
   end
 
   it 'should send decode responses' do
@@ -123,5 +123,4 @@ EOF
   it 'should raise error if batch is empty' do
     expect { command.execute(client) }.to raise_error(Google::Apis::BatchError)
   end
-
 end

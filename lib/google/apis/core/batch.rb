@@ -99,9 +99,7 @@ module Google
         # @return [void]
         # @raise [Google::Apis::BatchError] if batch is empty
         def prepare!
-          if @calls.empty?
-            fail BatchError, 'Cannot make an empty batch request'
-          end
+          fail BatchError, 'Cannot make an empty batch request' if @calls.empty?
 
           serializer = CallSerializer.new
           multipart = Multipart.new(boundary: BATCH_BOUNDARY, content_type: MULTIPART_MIXED)
@@ -216,7 +214,6 @@ module Google
             fail BatchError, sprintf('Invalid header line in response: %s', line) if match.nil?
             header[match[1]] = match.post_match
           end
-          payload
           [header, payload]
         end
       end

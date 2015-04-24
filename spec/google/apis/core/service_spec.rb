@@ -65,7 +65,7 @@ RSpec.describe Google::Apis::Core::BaseService do
   end
 
   context 'when making simple commands' do
-    let(:command) { service.send(:make_simple_command, :get, 'zoo/animals', { authorization: 'foo' }) }
+    let(:command) { service.send(:make_simple_command, :get, 'zoo/animals', authorization: 'foo') }
 
     it 'should return the correct command type' do
       expect(command).to be_an_instance_of(Google::Apis::Core::ApiCommand)
@@ -80,7 +80,7 @@ RSpec.describe Google::Apis::Core::BaseService do
   end
 
   context 'when making download commands' do
-    let(:command) { service.send(:make_download_command, :get, 'zoo/animals', { authorization: 'foo' }) }
+    let(:command) { service.send(:make_download_command, :get, 'zoo/animals', authorization: 'foo') }
 
     it 'should return the correct command type' do
       expect(command).to be_an_instance_of(Google::Apis::Core::DownloadCommand)
@@ -95,7 +95,7 @@ RSpec.describe Google::Apis::Core::BaseService do
   end
 
   context 'when making upload commands' do
-    let(:command) { service.send(:make_upload_command, :post, 'zoo/animals', { authorization: 'foo' }) }
+    let(:command) { service.send(:make_upload_command, :post, 'zoo/animals', authorization: 'foo') }
 
     it 'should return the correct command type' do
       expect(command).to be_an_instance_of(Google::Apis::Core::ResumableUploadCommand)
@@ -121,8 +121,8 @@ Content-Type: text/plain; charset=UTF-8
 Hello
 --batch123--
 EOF
-      stub_request(:post, 'https://www.googleapis.com/batch').
-        to_return(:headers => {'Content-Type' => 'multipart/mixed; boundary=batch123'}, :body => response)
+      stub_request(:post, 'https://www.googleapis.com/batch')
+        .to_return(headers: { 'Content-Type' => 'multipart/mixed; boundary=batch123' }, body: response)
     end
 
     it 'should add commands to a batch' do
@@ -165,8 +165,8 @@ Content-Type: text/plain; charset=UTF-8
 Hello
 --batch123--
 EOF
-      stub_request(:put, 'https://www.googleapis.com/upload/').
-        to_return(:headers => {'Content-Type' => 'multipart/mixed; boundary=batch123'}, :body => response)
+      stub_request(:put, 'https://www.googleapis.com/upload/')
+        .to_return(headers: { 'Content-Type' => 'multipart/mixed; boundary=batch123' }, body: response)
     end
 
     it 'should add upload to a batch' do
@@ -209,6 +209,5 @@ EOF
         end
       end.to raise_error(Google::Apis::ClientError)
     end
-
   end
 end

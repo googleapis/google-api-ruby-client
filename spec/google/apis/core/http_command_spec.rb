@@ -21,7 +21,6 @@ RSpec.describe Google::Apis::Core::HttpCommand do
   include_context 'HTTP client'
 
   context('with credentials') do
-
     let(:command) do
       command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
       command.options.authorization = authorization
@@ -40,51 +39,49 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       end
 
       it 'should send credentials' do
-        stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(:body => %(Hello world))
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(body: %(Hello world))
         result = command.execute(client)
-        expect(a_request(:get, 'https://www.googleapis.com/zoo/animals').
-          with{ |req| req.headers['Authorization'] == 'Bearer a_token_value_0' }).to have_been_made
+        expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
+          .with { |req| req.headers['Authorization'] == 'Bearer a_token_value_0' }).to have_been_made
       end
 
       context('with authorizaton error') do
         before(:example) do
-          stub_request(:get, 'https://www.googleapis.com/zoo/animals').
-            to_return(:status => [401, 'Unauthorized']).
-            to_return(:body => %(Hello world))
+          stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+            .to_return(status: [401, 'Unauthorized'])
+            .to_return(body: %(Hello world))
         end
 
         it 'should refresh if auth error received' do
           result = command.execute(client)
-          expect(a_request(:get, 'https://www.googleapis.com/zoo/animals').
-            with{ |req| req.headers['Authorization'] == 'Bearer a_token_value_1' }).to have_been_made
+          expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
+            .with { |req| req.headers['Authorization'] == 'Bearer a_token_value_1' }).to have_been_made
         end
 
         it 'should ignore retry count' do
           command.options.retries = 0
           result = command.execute(client)
-          expect(a_request(:get, 'https://www.googleapis.com/zoo/animals').
-            with{ |req| req.headers['Authorization'] == 'Bearer a_token_value_1' }).to have_been_made
+          expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
+            .with { |req| req.headers['Authorization'] == 'Bearer a_token_value_1' }).to have_been_made
         end
       end
-
     end
 
     context('that are bare tokens`') do
       let(:authorization) { 'a_token_value' }
 
       it 'should send credentials' do
-        stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(:body => %(Hello world))
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(body: %(Hello world))
         result = command.execute(client)
-        expect(a_request(:get, 'https://www.googleapis.com/zoo/animals').
-          with{ |req| expect(req.headers['Authorization']).to eql 'Bearer a_token_value' }).to have_been_made
+        expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
+          .with { |req| expect(req.headers['Authorization']).to eql 'Bearer a_token_value' }).to have_been_made
       end
 
       it 'should send not refresh' do
-        stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(:status => [401, 'Unauthorized'])
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [401, 'Unauthorized'])
         expect { command.execute(client) }.to raise_error(Google::Apis::AuthorizationError)
       end
     end
-
   end
 
   context('with a successful response') do
@@ -93,7 +90,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
 
     before(:example) do
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(:body => %(Hello world))
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(body: %(Hello world))
     end
 
     it 'should return the response body if block not present' do
@@ -112,9 +109,9 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
 
     before(:example) do
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
-        to_return(:status => [500, 'Server error']).times(2).
-        to_return(:body => %(Hello world))
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .to_return(status: [500, 'Server error']).times(2)
+        .to_return(body: %(Hello world))
     end
 
     it 'should return the response body' do
@@ -143,10 +140,10 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
 
     before(:example) do
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
-        to_return(:status => [302, 'Redirect'], :headers => {'Location' => 'https://zoo.googleapis.com/animals'})
-      stub_request(:get, 'https://zoo.googleapis.com/animals').
-        to_return(:body => %(Hello world))
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .to_return(status: [302, 'Redirect'], headers: { 'Location' => 'https://zoo.googleapis.com/animals' })
+      stub_request(:get, 'https://zoo.googleapis.com/animals')
+        .to_return(body: %(Hello world))
     end
 
     it 'should return the response body' do
@@ -161,8 +158,8 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
 
     before(:example) do
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
-        to_return(:status => [302, 'Redirect'], :headers => {'Location' => 'https://www.googleapis.com/zoo/animals'}).times(6)
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .to_return(status: [302, 'Redirect'], headers: { 'Location' => 'https://www.googleapis.com/zoo/animals' }).times(6)
     end
 
     it 'should raise error if retries exceeded' do
@@ -190,8 +187,8 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
 
     before(:example) do
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
-        to_return(:status => [0, 'Wat!?'])
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .to_return(status: [0, 'Wat!?'])
     end
 
     it 'should raise transmission error' do
@@ -205,8 +202,8 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
 
     before(:example) do
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals').
-        to_return(:status => [400, 'Invalid request'])
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .to_return(status: [400, 'Invalid request'])
     end
 
     it 'should raise error without retry' do

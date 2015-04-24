@@ -71,7 +71,7 @@ module Google
           name = ActiveSupport::Inflector.underscore(name.gsub(/\W/, '_'))
           if reserved?(name)
             logger.warn { sprintf('Found reserved keyword \'%1$s\'', name) }
-            name = name + '_'
+            name += '_'
             logger.warn { sprintf('Changed to \'%1$s\'', name) }
           end
           name
@@ -84,7 +84,7 @@ module Google
           name = ActiveSupport::Inflector.underscore(name.gsub(/\W/, '_'))
           if object_method?(name)
             logger.warn { sprintf('Found reserved property \'%1$s\'', name) }
-            name = name + '_prop'
+            name += '_prop'
             logger.warn { sprintf('Changed to \'%1$s\'', name) }
           end
           name
@@ -99,7 +99,6 @@ module Google
           scope = 'AUTH_SCOPE' if scope.nil? || scope.empty?
           scope
         end
-
       end
 
       # Processes a discovery doc for generating ruby classes
@@ -153,9 +152,9 @@ module Google
           end
 
           @api.classes = @registered_types.values.map { |type| type.schema_type || (type.item_type && type.item_type.schema_type) }
-                             .compact
-                             .partition { |cls| cls.discriminant } # Ensure variant base classes defined first
-                             .flatten
+            .compact
+            .partition(&:discriminant) # Ensure variant base classes defined first
+            .flatten
 
           resolve_type_references
           resolve_variant_base_classes
@@ -191,7 +190,7 @@ module Google
         # Process the top-level API information
         #
         # @return [Google::Apis::Generator::Api]
-        def parse_api()
+        def parse_api
           api = Api.new
           api.title = @discovery['title']
           api.name = ActiveSupport::Inflector.camelize(@discovery['name'])
@@ -268,6 +267,7 @@ module Google
             name = ActiveSupport::Inflector.underscore(discovery['request']['$ref'])
             name = "#{name}_object" if m.parameters[name] # De-dupe
             param = Parameter.new
+            param.name = name
             param.location = 'body'
             param.type = parse_type(discovery['request'])
             m.request_body = param
@@ -471,7 +471,6 @@ module Google
               logger.warn do
                 sprintf('Simplified class name from \'%s\' to \'%s\'', schema_type.class_name, alt_name)
               end
-#              schema_type.qualified_name = schema_type.qualified_name.gsub(/#{Regexp.quote(schema_type.class_name)}/, alt_name)
               schema_type.class_name = alt_name
             end
           end

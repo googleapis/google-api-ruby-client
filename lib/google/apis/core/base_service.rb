@@ -231,7 +231,9 @@ module Google
           end
         end
 
-        def apply_command_defaults(command)
+        # Update commands with service-specific options. To be implemented by subclasses
+        # @param [Google::Apis::Core::HttpCommand] _command
+        def apply_command_defaults(_command)
         end
 
         private

@@ -16,7 +16,6 @@ require 'spec_helper'
 require 'google/apis/core/json_representation'
 
 RSpec.describe Google::Apis::Core::JsonRepresentation do
-
   let(:child_class) do
     Class.new do
       attr_accessor :value
@@ -57,7 +56,6 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
   end
 
   shared_examples 'it serializes' do
-
     it 'does not serialize unset values' do
       expect(json).not_to have_json_path('unsetValue')
     end
@@ -96,18 +94,18 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
   end
 
   context 'with model object' do
-    let(:json) { representer_class.new(model).to_json(skip_undefined:true) }
+    let(:json) { representer_class.new(model).to_json(skip_undefined: true) }
     let(:model) do
       model = model_class.new
       model.nil_value = nil
       model.numeric_value = 123
       model.string_value = 'test'
-      model.date_value = DateTime.new(2015,5,1,12)
+      model.date_value = DateTime.new(2015, 5, 1, 12)
       model.boolean_value = true
-      model.items = [1,2,3]
+      model.items = [1, 2, 3]
 
       model.child = child_class.new
-      model.child.value = "child"
+      model.child.value = 'child'
       model.children = [model.child]
       model
     end
@@ -116,19 +114,19 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
   end
 
   context 'with hash' do
-    let(:json) { representer_class.new(model).to_json(skip_undefined:true) }
+    let(:json) { representer_class.new(model).to_json(skip_undefined: true) }
     let(:model) do
       {
         nil_value: nil,
         string_value: 'test',
         numeric_value: 123,
-        date_value: DateTime.new(2015,5,1,12),
+        date_value: DateTime.new(2015, 5, 1, 12),
         boolean_value: true,
-        items: [1,2,3],
+        items: [1, 2, 3],
         child: {
           value: 'child'
         },
-        children: [{value: 'child'}]
+        children: [{ value: 'child' }]
       }
     end
 
@@ -168,19 +166,19 @@ EOF
     end
 
     it 'deserializes date values' do
-      expect(model.date_value).to eql DateTime.new(2015,5,1,12)
+      expect(model.date_value).to eql DateTime.new(2015, 5, 1, 12)
     end
 
     it 'deserializes basic collections' do
-      expect(model.items).to contain_exactly(1,2,3)
+      expect(model.items).to contain_exactly(1, 2, 3)
     end
 
     it 'deserializes nested objects' do
-      expect(model.child.value).to eql "hello"
+      expect(model.child.value).to eql 'hello'
     end
 
     it 'serializes object collections' do
-      expect(model.children[0].value).to eql "hello"
+      expect(model.children[0].value).to eql 'hello'
     end
   end
 end

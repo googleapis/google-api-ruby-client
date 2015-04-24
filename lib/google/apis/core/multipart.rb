@@ -99,8 +99,7 @@ module Google
                   boundary,
                   content_len.to_i,
                   header[:content_type] || type,
-                  header[:content_transfer_encoding] || DEFAULT_TR_ENCODING
-          )
+                  header[:content_transfer_encoding] || DEFAULT_TR_ENCODING)
         end
 
         DEFAULT_TR_ENCODING = 'binary'.freeze

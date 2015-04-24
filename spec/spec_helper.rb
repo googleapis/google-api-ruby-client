@@ -25,7 +25,7 @@ $LOAD_PATH.uniq!
 
 
 if defined?(JRUBY_VERSION)
-  puts "Skipping coverage on JRuby"
+  puts 'Skipping coverage on JRuby'
 else
   # set up coverage
   require 'simplecov'
@@ -36,8 +36,8 @@ else
     SimpleCov::Formatter::HTMLFormatter
   ]
   SimpleCov.start do
-    add_filter "/spec/"
-    add_filter "/generated/"
+    add_filter '/spec/'
+    add_filter '/generated/'
   end
 end
 
@@ -70,7 +70,7 @@ end
 
 RSpec.shared_context 'HTTP client' do
   let(:client) do
-    Google::Apis::Core::BaseService.new('','').client
+    Google::Apis::Core::BaseService.new('', '').client
   end
 end
 
@@ -96,7 +96,7 @@ module Net
         return super
       end
       return @body if dest.nil? && block.nil?
-      raise ArgumentError.new("both arg and block given for HTTP method") if dest && block
+      fail ArgumentError.new('both arg and block given for HTTP method') if dest && block
       return nil if @body.nil?
 
       dest ||= ::Net::ReadAdapter.new(block)

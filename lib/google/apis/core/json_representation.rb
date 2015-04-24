@@ -19,7 +19,6 @@ require 'representable/coercion'
 module Google
   module Apis
     module Core
-
       # Support for serializing hashes + propery value/nil/unset tracking
       # To be included in representers as a feature.
       # @private

@@ -75,7 +75,7 @@ module Google
           parameters.values.reject { |param| param.name == 'key' }
         end
 
-        def qualified_name(suffix=nil)
+        def qualified_name(_suffix = nil)
           @qualified_name
         end
       end

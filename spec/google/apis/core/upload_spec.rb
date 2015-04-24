@@ -62,19 +62,19 @@ RSpec.describe Google::Apis::Core::RawUploadCommand do
 
   shared_examples 'should upload' do
     before(:example) do
-      stub_request(:post, 'https://www.googleapis.com/zoo/animals').to_return(:body => '')
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals').to_return(body: '')
     end
 
     it 'should send content' do
       command.execute(client)
-      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
-        with(:body => "Hello world\n")).to have_been_made
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals')
+        .with(body: "Hello world\n")).to have_been_made
     end
 
     it 'should send upload protocol' do
       command.execute(client)
-      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
-        with {|req| req.headers['X-Goog-Upload-Protocol'] == 'raw'}).to have_been_made
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals')
+        .with { |req| req.headers['X-Goog-Upload-Protocol'] == 'raw' }).to have_been_made
     end
   end
 
@@ -98,9 +98,9 @@ RSpec.describe Google::Apis::Core::RawUploadCommand do
   end
 
   context('with invalid input') do
-    let(:file) { lambda { } }
+    let(:file) { -> {} }
     it 'should raise client error' do
-      expect{ command.execute(client) }.to raise_error(Google::Apis::ClientError)
+      expect { command.execute(client) }.to raise_error(Google::Apis::ClientError)
     end
   end
 end
@@ -118,7 +118,7 @@ RSpec.describe Google::Apis::Core::MultipartUploadCommand do
   end
 
   before(:example) do
-    stub_request(:post, 'https://www.googleapis.com/zoo/animals').to_return(:body => %(Hello world))
+    stub_request(:post, 'https://www.googleapis.com/zoo/animals').to_return(body: %(Hello world))
   end
 
   it 'should send content' do
@@ -137,14 +137,14 @@ Hello world
 
 EOF
     command.execute(client)
-    expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
-      with(:body => expected_body)).to have_been_made
+    expect(a_request(:post, 'https://www.googleapis.com/zoo/animals')
+      .with(body: expected_body)).to have_been_made
   end
 
   it 'should send upload protocol' do
     command.execute(client)
-    expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
-      with {|req| req.headers['X-Goog-Upload-Protocol'] == 'multipart'}).to have_been_made
+    expect(a_request(:post, 'https://www.googleapis.com/zoo/animals')
+      .with { |req| req.headers['X-Goog-Upload-Protocol'] == 'multipart' }).to have_been_made
   end
 end
 
@@ -161,74 +161,74 @@ RSpec.describe Google::Apis::Core::ResumableUploadCommand do
 
   context 'with uninterrupted upload' do
     before(:example) do
-      stub_request(:post, 'https://www.googleapis.com/zoo/animals').
-        to_return(:headers => { 'X-Goog-Upload-Status' => 'active', 'X-Goog-Upload-URL' => 'https://www.googleapis.com/zoo/animals' }).
-        to_return(:headers => { 'X-Goog-Upload-Status' => 'final' }, :body => %(OK))
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals')
+        .to_return(headers: { 'X-Goog-Upload-Status' => 'active', 'X-Goog-Upload-URL' => 'https://www.googleapis.com/zoo/animals' })
+        .to_return(headers: { 'X-Goog-Upload-Status' => 'final' }, body: %(OK))
     end
 
     it 'should send upload protocol' do
       command.execute(client)
-      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
-        with {|req| req.headers['X-Goog-Upload-Protocol'] == 'resumable'}).to have_been_made
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals')
+        .with { |req| req.headers['X-Goog-Upload-Protocol'] == 'resumable' }).to have_been_made
     end
 
     it 'should send start command' do
       command.execute(client)
-      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
-        with {|req| req.headers['X-Goog-Upload-Command'] == 'start'}).to have_been_made
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals')
+        .with { |req| req.headers['X-Goog-Upload-Command'] == 'start' }).to have_been_made
     end
 
     it 'should send upload command' do
       command.execute(client)
-      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
-        with {|req| req.headers['X-Goog-Upload-Command'].include?('upload') }).to have_been_made
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals')
+        .with { |req| req.headers['X-Goog-Upload-Command'].include?('upload') }).to have_been_made
     end
 
     it 'should send upload content' do
       command.execute(client)
-      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
-        with(:body => 'Hello world')).to have_been_made
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals')
+        .with(body: 'Hello world')).to have_been_made
     end
   end
 
   context 'with retriable error on start' do
     before(:example) do
-      stub_request(:post, 'https://www.googleapis.com/zoo/animals').
-        to_timeout.
-        to_return(:headers => { 'X-Goog-Upload-Status' => 'active', 'X-Goog-Upload-URL' => 'https://www.googleapis.com/zoo/animals' }).
-        to_return(:headers => { 'X-Goog-Upload-Status' => 'active', 'X-Goog-Upload-Size-Received' => '6'}).
-        to_return(:headers => { 'X-Goog-Upload-Status' => 'final' }, :body => %(OK))
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals')
+        .to_timeout
+        .to_return(headers: { 'X-Goog-Upload-Status' => 'active', 'X-Goog-Upload-URL' => 'https://www.googleapis.com/zoo/animals' })
+        .to_return(headers: { 'X-Goog-Upload-Status' => 'active', 'X-Goog-Upload-Size-Received' => '6' })
+        .to_return(headers: { 'X-Goog-Upload-Status' => 'final' }, body: %(OK))
     end
 
     it 'should retry start command and continue' do
       command.execute(client)
-      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
-        with(:body => 'Hello world')).to have_been_made
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals')
+        .with(body: 'Hello world')).to have_been_made
     end
   end
 
   context 'with interruption' do
     before(:example) do
-      stub_request(:post, 'https://www.googleapis.com/zoo/animals').
-        to_return(:headers => { 'X-Goog-Upload-Status' => 'active', 'X-Goog-Upload-URL' => 'https://www.googleapis.com/zoo/animals' }).
-        to_return(:status => [500, 'Server error']).
-        to_return(:headers => { 'X-Goog-Upload-Status' => 'active', 'X-Goog-Upload-Size-Received' => '6'}).
-        to_return(:headers => { 'X-Goog-Upload-Status' => 'final' }, :body => %(OK))
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals')
+        .to_return(headers: { 'X-Goog-Upload-Status' => 'active', 'X-Goog-Upload-URL' => 'https://www.googleapis.com/zoo/animals' })
+        .to_return(status: [500, 'Server error'])
+        .to_return(headers: { 'X-Goog-Upload-Status' => 'active', 'X-Goog-Upload-Size-Received' => '6' })
+        .to_return(headers: { 'X-Goog-Upload-Status' => 'final' }, body: %(OK))
     end
 
     it 'should send remaining upload content after failure' do
       command.execute(client)
-      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals').
-        with(:body => 'world')).to have_been_made
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals')
+        .with(body: 'world')).to have_been_made
     end
   end
 
   context 'with cancelled upload' do
     before(:example) do
-      stub_request(:post, 'https://www.googleapis.com/zoo/animals').
-        to_return(:headers => { 'X-Goog-Upload-Status' => 'active', 'X-Goog-Upload-URL' => 'https://www.googleapis.com/zoo/animals' }).
-        to_return(:status => [500, 'Server error']).
-        to_return(:headers => { 'X-Goog-Upload-Status' => 'cancelled' })
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals')
+        .to_return(headers: { 'X-Goog-Upload-Status' => 'active', 'X-Goog-Upload-URL' => 'https://www.googleapis.com/zoo/animals' })
+        .to_return(status: [500, 'Server error'])
+        .to_return(headers: { 'X-Goog-Upload-Status' => 'cancelled' })
     end
 
     it 'should raise error' do

@@ -17,15 +17,14 @@ require 'logger'
 
 module Google
   module Apis
-
     # @!attribute [rw] logger
     # @return [Logger] The logger.
     def self.logger
       @logger ||= rails_logger || default_logger
     end
 
-    def self.logger=(logger)
-      @logger = logger
+    class << self
+      attr_writer :logger
     end
 
     private
@@ -39,6 +38,5 @@ module Google
     def self.rails_logger
       ::Rails.logger if defined?(::Rails) && ::Rails.respond_to?(:logger) && ::Rails.logger
     end
-
   end
 end

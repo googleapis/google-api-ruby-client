@@ -16,7 +16,6 @@ require 'spec_helper'
 require 'google/apis/core/hashable'
 
 RSpec.describe Google::Apis::Core::Hashable do
-
   let(:child_class) do
     Class.new do
       include Google::Apis::Core::Hashable
@@ -35,12 +34,12 @@ RSpec.describe Google::Apis::Core::Hashable do
 
   let(:model) do
     obj = model_class.new
-    obj.value = "hello"
+    obj.value = 'hello'
     obj.value2 = {
-      :a => 'a'
+      a: 'a'
     }
     child = child_class.new
-    child.value = "goodbye"
+    child.value = 'goodbye'
     obj.children = [child]
     obj
   end
@@ -52,10 +51,10 @@ RSpec.describe Google::Apis::Core::Hashable do
   end
 
   it 'should serialize collections' do
-    expect(hash).to include(children: [ { value: 'goodbye'}])
+    expect(hash).to include(children: [{ value: 'goodbye' }])
   end
 
   it 'should serialize hashes' do
-    expect(hash[:value2]).to include(:a => 'a')
+    expect(hash[:value2]).to include(a: 'a')
   end
 end

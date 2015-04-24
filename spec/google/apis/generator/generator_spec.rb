@@ -52,22 +52,22 @@ RSpec.describe Google::Apis::Generator do
       end
 
       it 'should define parameters on methods' do
-        parameters = service.method(:query).parameters.map { |(k,v)| v }
+        parameters = service.method(:query).parameters.map { |(_k, v)| v }
         expect(parameters).to include(:s, :i, :n, :b, :a, :e, :er, :sr)
       end
 
       it 'should modify parameter names that are ruby keywords' do
-        parameters = service.method(:query).parameters.map { |(k,v)| v }
+        parameters = service.method(:query).parameters.map { |(_k, v)| v }
         expect(parameters).to include(:do_)
       end
 
       it 'should define global parameters on methods' do
-        parameters = service.method(:query).parameters.map { |(k,v)| v }
+        parameters = service.method(:query).parameters.map { |(_k, v)| v }
         expect(parameters).to include(:fields, :quota_user, :user_ip)
       end
 
       it 'should include standard options & block' do
-        parameters = service.method(:query).parameters.map { |(k,v)| v }
+        parameters = service.method(:query).parameters.map { |(_k, v)| v }
         expect(parameters).to include(:options, :block)
       end
 
@@ -81,11 +81,11 @@ RSpec.describe Google::Apis::Generator do
 
       context 'when simplifying class names' do
         it 'should simplify the TestAnotherThing name' do
-          expect{ Google::Apis::TestV1::AnotherThing.new }.not_to raise_error
+          expect { Google::Apis::TestV1::AnotherThing.new }.not_to raise_error
         end
 
         it 'should not simplify the TestThing name' do
-          expect{ Google::Apis::TestV1::TestThing.new }.not_to raise_error
+          expect { Google::Apis::TestV1::TestThing.new }.not_to raise_error
         end
       end
 
@@ -104,7 +104,7 @@ RSpec.describe Google::Apis::Generator do
         end
 
         it 'should include the download_dest parameter for get_thing' do
-          parameters = service.method(:get_thing).parameters.map { |(k,v)| v }
+          parameters = service.method(:get_thing).parameters.map { |(_k, v)| v }
           expect(parameters).to include(:download_dest)
         end
 
@@ -113,14 +113,13 @@ RSpec.describe Google::Apis::Generator do
         end
 
         it 'should include the upload_source parameter for update_thing' do
-          parameters = service.method(:update_thing).parameters.map { |(k,v)| v }
+          parameters = service.method(:update_thing).parameters.map { |(_k, v)| v }
           expect(parameters).to include(:upload_source)
         end
 
         it 'should define subresource methods' do
           expect(service.method(:list_thing_subthings)).to_not be_nil
         end
-
       end
 
       context 'with the get_thing method' do
@@ -143,8 +142,8 @@ RSpec.describe Google::Apis::Generator do
   }
 }
 EOF
-          stub_request(:get, 'https://www.googleapis.com/test/v1/things/123').
-            to_return(:headers => { 'Content-Type' => 'application/json'}, :body => json)
+          stub_request(:get, 'https://www.googleapis.com/test/v1/things/123')
+            .to_return(headers: { 'Content-Type' => 'application/json' }, body: json)
         end
 
         let(:thing) { service.get_thing('123') }
@@ -166,7 +165,7 @@ EOF
         end
 
         it 'should set hash elements' do
-          expect(thing.properties).to include("prop_a" => "value_a")
+          expect(thing.properties).to include('prop_a' => 'value_a')
         end
 
         it 'should return the correct variant type for hat' do
@@ -204,12 +203,12 @@ EOF
   }
 }
 EOF
-          stub_request(:post, 'https://www.googleapis.com/test/v1/things').
-            to_return(:headers => { 'Content-Type' => 'application/json'}, :body => json)
+          stub_request(:post, 'https://www.googleapis.com/test/v1/things')
+            .to_return(headers: { 'Content-Type' => 'application/json' }, body: json)
         end
 
         let(:thing) do
-          thing = Google::Apis::TestV1::Thing.new(name: "A thing", properties: { "prop_a" => "value_a" })
+          thing = Google::Apis::TestV1::Thing.new(name: 'A thing', properties: { 'prop_a' => 'value_a' })
           thing.photo = Google::Apis::TestV1::Thing::Photo.new(filename: 'image.jpg')
           thing.hat = Google::Apis::TestV1::TopHat.new(type: 'topHat', height: 100)
           service.create_thing(thing)
@@ -232,8 +231,8 @@ EOF
 }
 EOF
           expect(thing).to be_instance_of(Google::Apis::TestV1::Thing)
-          expect(a_request(:post, 'https://www.googleapis.com/test/v1/things').
-            with{ |req| expect(req.body).to be_json_eql(expected_body) }).to have_been_made
+          expect(a_request(:post, 'https://www.googleapis.com/test/v1/things')
+            .with { |req| expect(req.body).to be_json_eql(expected_body) }).to have_been_made
         end
 
         it 'should an updated id' do
@@ -244,32 +243,30 @@ EOF
       context 'with the query method' do
         before(:example) do
           body = %({"rows": [{"value": "hello"}, {"value": "world"}]})
-          stub_request(:get, 'https://www.googleapis.com/test/v1/query').
-            to_return(:headers => { 'Content-Type' => 'application/json'}, :body => body)
+          stub_request(:get, 'https://www.googleapis.com/test/v1/query')
+            .to_return(headers: { 'Content-Type' => 'application/json' }, body: body)
         end
 
         it 'should return query results' do
-          results = service.query()
+          results = service.query
           expect(results).to be_instance_of(Google::Apis::TestV1::QueryResults)
         end
 
         it 'should return an array for items' do
-          results = service.query()
+          results = service.query
           expect(results.rows).to be_instance_of(Array)
         end
 
         it 'should return items of type Row' do
-          results = service.query()
+          results = service.query
           expect(results.rows.first).to be_instance_of(Google::Apis::TestV1::Row)
         end
 
         it 'should return values for rows' do
-          results = service.query()
+          results = service.query
           expect(results.rows[1].value).to eql('world')
         end
       end
-
     end
   end
-
 end

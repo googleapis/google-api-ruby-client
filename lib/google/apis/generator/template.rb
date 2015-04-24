@@ -45,12 +45,11 @@ module Google
         #  Number of spaces to indent after the comment hash for subsequent lines
         # @return [String] formatted comment
         def block_comment(str, spaces_before = 0, spaces_after = 0)
-          unless str.nil?
-            pre = ' ' * spaces_before
-            post = ' ' * spaces_after
-            lines = str.gsub(/([{}])/, '`').scan(/.{1,78}(?:\W|$)/).map(&:strip)
-            lines.join("\n" + pre + '#' + post )
-          end
+          return '' if str.nil?
+          pre = ' ' * spaces_before
+          post = ' ' * spaces_after
+          lines = str.gsub(/([{}])/, '`').scan(/.{1,78}(?:\W|$)/).map(&:strip)
+          lines.join("\n" + pre + '#' + post)
         end
 
         # Indent a block of text
@@ -83,7 +82,7 @@ module Google
       class Context < OpenStruct
         include TemplateHelpers
 
-        def get_binding
+        def to_binding
           binding
         end
       end
@@ -114,7 +113,7 @@ module Google
         # @return [String] rendered template
         def render(context)
           ctx = Context.new(context)
-          @erb.result(ctx.get_binding)
+          @erb.result(ctx.to_binding)
         end
       end
     end

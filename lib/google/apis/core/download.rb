@@ -73,7 +73,7 @@ module Google
             apply_request_options(req)
             if @offset > 0
               logger.debug { sprintf('Resuming download from offset %d', @offset) }
-              req.header[RANGE_HEADER] = range = sprintf('bytes=%d-', @offset)
+              req.header[RANGE_HEADER] = sprintf('bytes=%d-', @offset)
             end
             req.on_body do |res, chunk|
               check_status(res.status_code, chunk) unless res.status_code.nil?

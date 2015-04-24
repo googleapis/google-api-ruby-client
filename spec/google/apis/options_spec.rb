@@ -16,7 +16,6 @@ require 'spec_helper'
 require 'google/apis/options'
 
 RSpec.describe Google::Apis::RequestOptions do
-
   let(:options) { Google::Apis::RequestOptions.new }
 
   it 'should not merge nil values' do

@@ -23,7 +23,7 @@ module Google
     # @private
     class Generator
       # Load templates
-      def initialize()
+      def initialize
         @module_template = Template.load('module.rb')
         @service_template = Template.load('service.rb')
         @classes_template = Template.load('classes.rb')
@@ -41,7 +41,7 @@ module Google
         api = discovery.parse
         base_path = ActiveSupport::Inflector.underscore(api.qualified_name)
         context = {
-            'api' => api
+          'api' => api
         }
         files = {}
         files[base_path + '.rb'] = @module_template.render(context)
