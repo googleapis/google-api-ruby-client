@@ -21,7 +21,7 @@ require 'hurley/test'
 RSpec.describe Google::Apis::Core::BaseService do
   include TestHelpers
 
-  let(:service) { Google::Apis::Core::BaseService.new('https://www.googleapis.com', '') }
+  let(:service) { Google::Apis::Core::BaseService.new('https://www.googleapis.com/', '') }
 
   before do
     Google::Apis::ClientOptions.default.application_name = 'test'

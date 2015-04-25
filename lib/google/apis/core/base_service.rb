@@ -64,10 +64,10 @@ module Google
         #   Additional path prefix for all API methods
         # @api private
         def initialize(root_url, base_path)
-          self.root_url = Addressable::URI.parse(root_url)
-          self.base_path = Addressable::URI.parse(base_path)
-          self.upload_path = Addressable::URI.parse("/upload/#{base_path}")
-          self.batch_path = Addressable::URI.parse('batch')
+          self.root_url = root_url
+          self.base_path = base_path
+          self.upload_path = "upload/#{base_path}"
+          self.batch_path = 'batch'
           self.client_options = Google::Apis::ClientOptions.default.dup
           self.request_options = Google::Apis::RequestOptions.default.dup
         end
@@ -104,7 +104,7 @@ module Google
         # @yield [self]
         # @return [void]
         def batch(options = nil)
-          batch_command = BatchCommand.new(:post, root_url.join(batch_path))
+          batch_command = BatchCommand.new(:post, Addressable::URI.parse(root_url + batch_path))
           batch_command.options = request_options.merge(options)
           apply_command_defaults(batch_command)
           begin
@@ -136,7 +136,7 @@ module Google
         # @yield [self]
         # @return [void]
         def batch_upload(options = nil)
-          batch_command = BatchUploadCommand.new(:put, root_url.join(upload_path))
+          batch_command = BatchUploadCommand.new(:put, Addressable::URI.parse(root_url + upload_path))
           batch_command.options = request_options.merge(options)
           apply_command_defaults(batch_command)
           begin
@@ -166,8 +166,7 @@ module Google
         #  Request-specific options
         # @return [Google::Apis::Core::UploadCommand]
         def make_upload_command(method, path, options)
-          path = Addressable::URI.parse(path)
-          template = Addressable::Template.new(root_url.join(upload_path).join(path))
+          template = Addressable::Template.new(root_url + upload_path + path)
           if batch?
             command = MultipartUploadCommand.new(method, template)
           else
@@ -188,7 +187,7 @@ module Google
         #  Request-specific options
         # @return [Google::Apis::Core::DownloadCommand]
         def make_download_command(method, path, options)
-          template = Addressable::Template.new(root_url.join(base_path).join(path))
+          template = Addressable::Template.new(root_url + base_path + path)
           command = DownloadCommand.new(method, template)
           command.options = request_options.merge(options)
           apply_command_defaults(command)
@@ -205,7 +204,7 @@ module Google
         #  Request-specific options
         # @return [Google::Apis::Core::DownloadCommand]
         def make_simple_command(method, path, options)
-          template = Addressable::Template.new(root_url.join(base_path).join(path))
+          template = Addressable::Template.new(root_url + base_path + path)
           command = ApiCommand.new(method, template)
           command.options = request_options.merge(options)
           apply_command_defaults(command)
