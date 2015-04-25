@@ -58,9 +58,9 @@ module Google
         # the subscription. Acknowledging a message whose ack deadline has expired may
         # succeed, but such a message may be redelivered later. Acknowledging a message
         # more than once will not result in an error.
-        # @param [Google::Apis::PubsubV1beta2::AcknowledgeRequest] acknowledge_request_obj
-        #   
         # @param [String] subscription
+        #   
+        # @param [Google::Apis::PubsubV1beta2::AcknowledgeRequest] acknowledge_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -83,11 +83,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def acknowledge_project_subscription(acknowledge_request_obj, subscription, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def acknowledge(subscription, acknowledge_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+subscription}:acknowledge'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PubsubV1beta2::AcknowledgeRequestRepresentation
-          command.request_object = acknowledge_request_obj
+          command.request_object = acknowledge_request
           command.response_representation = Google::Apis::PubsubV1beta2::EmptyRepresentation
           command.response_class = Google::Apis::PubsubV1beta2::Empty
           command.params['subscription'] = subscription unless subscription.nil?
@@ -103,9 +103,9 @@ module Google
         # topic doesn't exist, returns NOT_FOUND. If the name is not provided in the
         # request, the server will assign a random name for this subscription on the
         # same project as the topic.
-        # @param [Google::Apis::PubsubV1beta2::Subscription] subscription_obj
-        #   
         # @param [String] name
+        #   
+        # @param [Google::Apis::PubsubV1beta2::Subscription] subscription
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -128,11 +128,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_subscription(subscription_obj, name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_project_subscription(name, subscription = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+name}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::PubsubV1beta2::SubscriptionRepresentation
-          command.request_object = subscription_obj
+          command.request_object = subscription
           command.response_representation = Google::Apis::PubsubV1beta2::SubscriptionRepresentation
           command.response_class = Google::Apis::PubsubV1beta2::Subscription
           command.params['name'] = name unless name.nil?
@@ -249,7 +249,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_subscriptions(project, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_subscriptions(project, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+project}/subscriptions'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::PubsubV1beta2::ListSubscriptionsResponseRepresentation
@@ -267,9 +267,9 @@ module Google
         # Modifies the ack deadline for a specific message. This method is useful to
         # indicate that more time is needed to process a message by the subscriber, or
         # to make the message available for redelivery if the processing was interrupted.
-        # @param [Google::Apis::PubsubV1beta2::ModifyAckDeadlineRequest] modify_ack_deadline_request_obj
-        #   
         # @param [String] subscription
+        #   
+        # @param [Google::Apis::PubsubV1beta2::ModifyAckDeadlineRequest] modify_ack_deadline_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -292,11 +292,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def modify_ack_deadline(modify_ack_deadline_request_obj, subscription, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def modify_ack_deadline(subscription, modify_ack_deadline_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+subscription}:modifyAckDeadline'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PubsubV1beta2::ModifyAckDeadlineRequestRepresentation
-          command.request_object = modify_ack_deadline_request_obj
+          command.request_object = modify_ack_deadline_request
           command.response_representation = Google::Apis::PubsubV1beta2::EmptyRepresentation
           command.response_class = Google::Apis::PubsubV1beta2::Empty
           command.params['subscription'] = subscription unless subscription.nil?
@@ -312,9 +312,9 @@ module Google
         # vice versa, or change the endpoint URL and other attributes of a push
         # subscription. Messages will accumulate for delivery continuously through the
         # call regardless of changes to the PushConfig.
-        # @param [Google::Apis::PubsubV1beta2::ModifyPushConfigRequest] modify_push_config_request_obj
-        #   
         # @param [String] subscription
+        #   
+        # @param [Google::Apis::PubsubV1beta2::ModifyPushConfigRequest] modify_push_config_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -337,11 +337,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def modify_push_config(modify_push_config_request_obj, subscription, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def modify_push_config(subscription, modify_push_config_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+subscription}:modifyPushConfig'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PubsubV1beta2::ModifyPushConfigRequestRepresentation
-          command.request_object = modify_push_config_request_obj
+          command.request_object = modify_push_config_request
           command.response_representation = Google::Apis::PubsubV1beta2::EmptyRepresentation
           command.response_class = Google::Apis::PubsubV1beta2::Empty
           command.params['subscription'] = subscription unless subscription.nil?
@@ -355,9 +355,9 @@ module Google
         # Pulls messages from the server. Returns an empty list if there are no messages
         # available in the backlog. The server may return UNAVAILABLE if there are too
         # many concurrent pull requests pending for the given subscription.
-        # @param [Google::Apis::PubsubV1beta2::PullRequest] pull_request_obj
-        #   
         # @param [String] subscription
+        #   
+        # @param [Google::Apis::PubsubV1beta2::PullRequest] pull_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -380,11 +380,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def pull_project_subscription(pull_request_obj, subscription, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def pull(subscription, pull_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+subscription}:pull'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PubsubV1beta2::PullRequestRepresentation
-          command.request_object = pull_request_obj
+          command.request_object = pull_request
           command.response_representation = Google::Apis::PubsubV1beta2::PullResponseRepresentation
           command.response_class = Google::Apis::PubsubV1beta2::PullResponse
           command.params['subscription'] = subscription unless subscription.nil?
@@ -397,9 +397,9 @@ module Google
         
         
         # Creates the given topic with the given name.
-        # @param [Google::Apis::PubsubV1beta2::Topic] topic_obj
-        #   
         # @param [String] name
+        #   
+        # @param [Google::Apis::PubsubV1beta2::Topic] topic
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -422,11 +422,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_topic(topic_obj, name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_project_topic(name, topic = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+name}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::PubsubV1beta2::TopicRepresentation
-          command.request_object = topic_obj
+          command.request_object = topic
           command.response_representation = Google::Apis::PubsubV1beta2::TopicRepresentation
           command.response_class = Google::Apis::PubsubV1beta2::Topic
           command.params['name'] = name unless name.nil?
@@ -542,7 +542,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_topics(project, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_topics(project, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+project}/topics'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::PubsubV1beta2::ListTopicsResponseRepresentation
@@ -559,9 +559,9 @@ module Google
         
         # Adds one or more messages to the topic. Returns NOT_FOUND if the topic does
         # not exist.
-        # @param [Google::Apis::PubsubV1beta2::PublishRequest] publish_request_obj
-        #   
         # @param [String] topic
+        #   
+        # @param [Google::Apis::PubsubV1beta2::PublishRequest] publish_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -584,11 +584,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def publish_project_topic(publish_request_obj, topic, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def publish(topic, publish_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+topic}:publish'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PubsubV1beta2::PublishRequestRepresentation
-          command.request_object = publish_request_obj
+          command.request_object = publish_request
           command.response_representation = Google::Apis::PubsubV1beta2::PublishResponseRepresentation
           command.response_class = Google::Apis::PubsubV1beta2::PublishResponse
           command.params['topic'] = topic unless topic.nil?
@@ -627,7 +627,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_topic_subscriptions(topic, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_topic_subscriptions(topic, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+topic}/subscriptions'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::PubsubV1beta2::ListTopicSubscriptionsResponseRepresentation

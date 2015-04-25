@@ -141,12 +141,12 @@ module Google
         
         
         # Adds new Autoscaler resource.
-        # @param [Google::Apis::AutoscalerV1beta2::Autoscaler] autoscaler_obj
-        #   
         # @param [String] project
         #   Project ID of Autoscaler resource.
         # @param [String] zone
         #   Zone name of Autoscaler resource.
+        # @param [Google::Apis::AutoscalerV1beta2::Autoscaler] autoscaler
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -168,11 +168,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_autoscaler(autoscaler_obj, project, zone, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_autoscaler(project, zone, autoscaler = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/zones/{zone}/autoscalers'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AutoscalerV1beta2::AutoscalerRepresentation
-          command.request_object = autoscaler_obj
+          command.request_object = autoscaler
           command.response_representation = Google::Apis::AutoscalerV1beta2::OperationRepresentation
           command.response_class = Google::Apis::AutoscalerV1beta2::Operation
           command.params['project'] = project unless project.nil?
@@ -235,14 +235,14 @@ module Google
         
         # Update the entire content of the Autoscaler resource. This method supports
         # patch semantics.
-        # @param [Google::Apis::AutoscalerV1beta2::Autoscaler] autoscaler_obj
-        #   
         # @param [String] project
         #   Project ID of Autoscaler resource.
         # @param [String] zone
         #   Zone name of Autoscaler resource.
         # @param [String] autoscaler
         #   Name of the Autoscaler resource.
+        # @param [Google::Apis::AutoscalerV1beta2::Autoscaler] autoscaler_object
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -264,11 +264,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_autoscaler(autoscaler_obj, project, zone, autoscaler, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_autoscaler(project, zone, autoscaler, autoscaler_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/zones/{zone}/autoscalers/{autoscaler}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AutoscalerV1beta2::AutoscalerRepresentation
-          command.request_object = autoscaler_obj
+          command.request_object = autoscaler_object
           command.response_representation = Google::Apis::AutoscalerV1beta2::OperationRepresentation
           command.response_class = Google::Apis::AutoscalerV1beta2::Operation
           command.params['project'] = project unless project.nil?
@@ -282,14 +282,14 @@ module Google
         
         
         # Update the entire content of the Autoscaler resource.
-        # @param [Google::Apis::AutoscalerV1beta2::Autoscaler] autoscaler_obj
-        #   
         # @param [String] project
         #   Project ID of Autoscaler resource.
         # @param [String] zone
         #   Zone name of Autoscaler resource.
         # @param [String] autoscaler
         #   Name of the Autoscaler resource.
+        # @param [Google::Apis::AutoscalerV1beta2::Autoscaler] autoscaler_object
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -311,11 +311,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_autoscaler(autoscaler_obj, project, zone, autoscaler, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_autoscaler(project, zone, autoscaler, autoscaler_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/zones/{zone}/autoscalers/{autoscaler}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AutoscalerV1beta2::AutoscalerRepresentation
-          command.request_object = autoscaler_obj
+          command.request_object = autoscaler_object
           command.response_representation = Google::Apis::AutoscalerV1beta2::OperationRepresentation
           command.response_class = Google::Apis::AutoscalerV1beta2::Operation
           command.params['project'] = project unless project.nil?

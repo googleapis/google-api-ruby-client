@@ -269,7 +269,7 @@ module Google
         
         
         # 
-        # @param [Google::Apis::BooksV1::CloudloadingResource] cloudloading_resource_obj
+        # @param [Google::Apis::BooksV1::CloudloadingResource] books_cloudloading_resource
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -292,11 +292,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_book(cloudloading_resource_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_book(books_cloudloading_resource = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'cloudloading/updateBook'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::BooksV1::CloudloadingResourceRepresentation
-          command.request_object = cloudloading_resource_obj
+          command.request_object = books_cloudloading_resource
           command.response_representation = Google::Apis::BooksV1::CloudloadingResourceRepresentation
           command.response_class = Google::Apis::BooksV1::CloudloadingResource
           command.query['fields'] = fields unless fields.nil?
@@ -905,7 +905,7 @@ module Google
         # Sets the settings for the user. If a sub-object is specified, it will
         # overwrite the existing sub-object stored in the server. Unspecified sub-
         # objects will retain the existing value.
-        # @param [Google::Apis::BooksV1::Usersettings] usersettings_obj
+        # @param [Google::Apis::BooksV1::Usersettings] usersettings
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -928,11 +928,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user_settings(usersettings_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_user_settings(usersettings = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'myconfig/updateUserSettings'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::BooksV1::UsersettingsRepresentation
-          command.request_object = usersettings_obj
+          command.request_object = usersettings
           command.response_representation = Google::Apis::BooksV1::UsersettingsRepresentation
           command.response_class = Google::Apis::BooksV1::Usersettings
           command.query['fields'] = fields unless fields.nil?
@@ -980,7 +980,7 @@ module Google
         
         
         # Inserts a new annotation.
-        # @param [Google::Apis::BooksV1::Annotation] annotation_obj
+        # @param [Google::Apis::BooksV1::Annotation] annotation
         #   
         # @param [String] country
         #   ISO-3166-1 code to override the IP-based location.
@@ -1010,11 +1010,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_mylibrary_annotation(annotation_obj, country: nil, show_only_summary_in_response: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_mylibrary_annotation(annotation = nil, country: nil, show_only_summary_in_response: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'mylibrary/annotations'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::BooksV1::AnnotationRepresentation
-          command.request_object = annotation_obj
+          command.request_object = annotation
           command.response_representation = Google::Apis::BooksV1::AnnotationRepresentation
           command.response_class = Google::Apis::BooksV1::Annotation
           command.query['country'] = country unless country.nil?
@@ -1135,10 +1135,10 @@ module Google
         
         
         # Updates an existing annotation.
-        # @param [Google::Apis::BooksV1::Annotation] annotation_obj
-        #   
         # @param [String] annotation_id
         #   The ID for the annotation to update.
+        # @param [Google::Apis::BooksV1::Annotation] annotation
+        #   
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] fields
@@ -1162,11 +1162,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_mylibrary_annotation(annotation_obj, annotation_id, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_mylibrary_annotation(annotation_id, annotation = nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'mylibrary/annotations/{annotationId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::BooksV1::AnnotationRepresentation
-          command.request_object = annotation_obj
+          command.request_object = annotation
           command.response_representation = Google::Apis::BooksV1::AnnotationRepresentation
           command.response_class = Google::Apis::BooksV1::Annotation
           command.params['annotationId'] = annotation_id unless annotation_id.nil?

@@ -56,14 +56,14 @@ module Google
 
         # Removes the specified instances from the managed instance group, and from any
         # target pools of which they were members, without deleting the instances.
-        # @param [Google::Apis::ReplicapoolV1beta2::InstanceGroupManagersAbandonInstancesRequest] instance_group_managers_abandon_instances_request_obj
-        #   
         # @param [String] project
         #   The Google Developers Console project name.
         # @param [String] zone
         #   The name of the zone in which the instance group manager resides.
         # @param [String] instance_group_manager
         #   The name of the instance group manager.
+        # @param [Google::Apis::ReplicapoolV1beta2::InstanceGroupManagersAbandonInstancesRequest] instance_group_managers_abandon_instances_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -85,11 +85,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def abandon_instances(instance_group_managers_abandon_instances_request_obj, project, zone, instance_group_manager, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def abandon_instances(project, zone, instance_group_manager, instance_group_managers_abandon_instances_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/abandonInstances'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ReplicapoolV1beta2::InstanceGroupManagersAbandonInstancesRequestRepresentation
-          command.request_object = instance_group_managers_abandon_instances_request_obj
+          command.request_object = instance_group_managers_abandon_instances_request
           command.response_representation = Google::Apis::ReplicapoolV1beta2::OperationRepresentation
           command.response_class = Google::Apis::ReplicapoolV1beta2::Operation
           command.params['project'] = project unless project.nil?
@@ -151,14 +151,14 @@ module Google
         # the instance group and any target pools of which they were a member. The
         # targetSize of the instance group manager is reduced by the number of instances
         # deleted.
-        # @param [Google::Apis::ReplicapoolV1beta2::InstanceGroupManagersDeleteInstancesRequest] instance_group_managers_delete_instances_request_obj
-        #   
         # @param [String] project
         #   The Google Developers Console project name.
         # @param [String] zone
         #   The name of the zone in which the instance group manager resides.
         # @param [String] instance_group_manager
         #   The name of the instance group manager.
+        # @param [Google::Apis::ReplicapoolV1beta2::InstanceGroupManagersDeleteInstancesRequest] instance_group_managers_delete_instances_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -180,11 +180,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_instances(instance_group_managers_delete_instances_request_obj, project, zone, instance_group_manager, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_instances(project, zone, instance_group_manager, instance_group_managers_delete_instances_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/deleteInstances'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ReplicapoolV1beta2::InstanceGroupManagersDeleteInstancesRequestRepresentation
-          command.request_object = instance_group_managers_delete_instances_request_obj
+          command.request_object = instance_group_managers_delete_instances_request
           command.response_representation = Google::Apis::ReplicapoolV1beta2::OperationRepresentation
           command.response_class = Google::Apis::ReplicapoolV1beta2::Operation
           command.params['project'] = project unless project.nil?
@@ -242,12 +242,12 @@ module Google
         
         # Creates an instance group manager, as well as the instance group and the
         # specified number of instances.
-        # @param [Google::Apis::ReplicapoolV1beta2::InstanceGroupManager] instance_group_manager_obj
-        #   
         # @param [String] project
         #   The Google Developers Console project name.
         # @param [String] zone
         #   The name of the zone in which the instance group manager resides.
+        # @param [Google::Apis::ReplicapoolV1beta2::InstanceGroupManager] instance_group_manager
+        #   
         # @param [Fixnum] size
         #   Number of instances that should exist.
         # @param [String] fields
@@ -271,11 +271,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_instance_group_manager(instance_group_manager_obj, project, zone, size: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_instance_group_manager(project, zone, instance_group_manager = nil, size: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/instanceGroupManagers'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ReplicapoolV1beta2::InstanceGroupManagerRepresentation
-          command.request_object = instance_group_manager_obj
+          command.request_object = instance_group_manager
           command.response_representation = Google::Apis::ReplicapoolV1beta2::OperationRepresentation
           command.response_class = Google::Apis::ReplicapoolV1beta2::Operation
           command.params['project'] = project unless project.nil?
@@ -342,14 +342,14 @@ module Google
         
         # Recreates the specified instances. The instances are deleted, then recreated
         # using the instance group manager's current instance template.
-        # @param [Google::Apis::ReplicapoolV1beta2::InstanceGroupManagersRecreateInstancesRequest] instance_group_managers_recreate_instances_request_obj
-        #   
         # @param [String] project
         #   The Google Developers Console project name.
         # @param [String] zone
         #   The name of the zone in which the instance group manager resides.
         # @param [String] instance_group_manager
         #   The name of the instance group manager.
+        # @param [Google::Apis::ReplicapoolV1beta2::InstanceGroupManagersRecreateInstancesRequest] instance_group_managers_recreate_instances_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -371,11 +371,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def recreate_instances(instance_group_managers_recreate_instances_request_obj, project, zone, instance_group_manager, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def recreate_instances(project, zone, instance_group_manager, instance_group_managers_recreate_instances_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/recreateInstances'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ReplicapoolV1beta2::InstanceGroupManagersRecreateInstancesRequestRepresentation
-          command.request_object = instance_group_managers_recreate_instances_request_obj
+          command.request_object = instance_group_managers_recreate_instances_request
           command.response_representation = Google::Apis::ReplicapoolV1beta2::OperationRepresentation
           command.response_class = Google::Apis::ReplicapoolV1beta2::Operation
           command.params['project'] = project unless project.nil?
@@ -438,14 +438,14 @@ module Google
         
         # Sets the instance template to use when creating new instances in this group.
         # Existing instances are not affected.
-        # @param [Google::Apis::ReplicapoolV1beta2::InstanceGroupManagersSetInstanceTemplateRequest] instance_group_managers_set_instance_template_request_obj
-        #   
         # @param [String] project
         #   The Google Developers Console project name.
         # @param [String] zone
         #   The name of the zone in which the instance group manager resides.
         # @param [String] instance_group_manager
         #   The name of the instance group manager.
+        # @param [Google::Apis::ReplicapoolV1beta2::InstanceGroupManagersSetInstanceTemplateRequest] instance_group_managers_set_instance_template_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -467,11 +467,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_instance_template(instance_group_managers_set_instance_template_request_obj, project, zone, instance_group_manager, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_instance_template(project, zone, instance_group_manager, instance_group_managers_set_instance_template_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setInstanceTemplate'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ReplicapoolV1beta2::InstanceGroupManagersSetInstanceTemplateRequestRepresentation
-          command.request_object = instance_group_managers_set_instance_template_request_obj
+          command.request_object = instance_group_managers_set_instance_template_request
           command.response_representation = Google::Apis::ReplicapoolV1beta2::OperationRepresentation
           command.response_class = Google::Apis::ReplicapoolV1beta2::Operation
           command.params['project'] = project unless project.nil?
@@ -486,14 +486,14 @@ module Google
         
         # Modifies the target pools to which all new instances in this group are
         # assigned. Existing instances in the group are not affected.
-        # @param [Google::Apis::ReplicapoolV1beta2::InstanceGroupManagersSetTargetPoolsRequest] instance_group_managers_set_target_pools_request_obj
-        #   
         # @param [String] project
         #   The Google Developers Console project name.
         # @param [String] zone
         #   The name of the zone in which the instance group manager resides.
         # @param [String] instance_group_manager
         #   The name of the instance group manager.
+        # @param [Google::Apis::ReplicapoolV1beta2::InstanceGroupManagersSetTargetPoolsRequest] instance_group_managers_set_target_pools_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -515,11 +515,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_target_pools(instance_group_managers_set_target_pools_request_obj, project, zone, instance_group_manager, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_target_pools(project, zone, instance_group_manager, instance_group_managers_set_target_pools_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setTargetPools'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ReplicapoolV1beta2::InstanceGroupManagersSetTargetPoolsRequestRepresentation
-          command.request_object = instance_group_managers_set_target_pools_request_obj
+          command.request_object = instance_group_managers_set_target_pools_request
           command.response_representation = Google::Apis::ReplicapoolV1beta2::OperationRepresentation
           command.response_class = Google::Apis::ReplicapoolV1beta2::Operation
           command.params['project'] = project unless project.nil?

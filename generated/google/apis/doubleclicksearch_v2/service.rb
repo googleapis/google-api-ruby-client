@@ -122,7 +122,7 @@ module Google
         
         
         # Inserts a batch of new conversions into DoubleClick Search.
-        # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list_obj
+        # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -145,11 +145,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_conversion(conversion_list_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_conversion(conversion_list = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'conversion'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DoubleclicksearchV2::ConversionListRepresentation
-          command.request_object = conversion_list_obj
+          command.request_object = conversion_list
           command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionListRepresentation
           command.response_class = Google::Apis::DoubleclicksearchV2::ConversionList
           command.query['fields'] = fields unless fields.nil?
@@ -161,7 +161,7 @@ module Google
         
         # Updates a batch of conversions in DoubleClick Search. This method supports
         # patch semantics.
-        # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list_obj
+        # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list
         #   
         # @param [String] advertiser_id
         #   Numeric ID of the advertiser.
@@ -198,11 +198,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_conversion(conversion_list_obj, advertiser_id: nil, agency_id: nil, end_date: nil, engine_account_id: nil, row_count: nil, start_date: nil, start_row: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_conversion(conversion_list = nil, advertiser_id: nil, agency_id: nil, end_date: nil, engine_account_id: nil, row_count: nil, start_date: nil, start_row: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'conversion'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DoubleclicksearchV2::ConversionListRepresentation
-          command.request_object = conversion_list_obj
+          command.request_object = conversion_list
           command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionListRepresentation
           command.response_class = Google::Apis::DoubleclicksearchV2::ConversionList
           command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
@@ -220,7 +220,7 @@ module Google
         
         
         # Updates a batch of conversions in DoubleClick Search.
-        # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list_obj
+        # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -243,11 +243,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_conversion(conversion_list_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_conversion(conversion_list = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'conversion'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::DoubleclicksearchV2::ConversionListRepresentation
-          command.request_object = conversion_list_obj
+          command.request_object = conversion_list
           command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionListRepresentation
           command.response_class = Google::Apis::DoubleclicksearchV2::ConversionList
           command.query['fields'] = fields unless fields.nil?
@@ -259,7 +259,7 @@ module Google
         
         # Updates the availabilities of a batch of floodlight activities in DoubleClick
         # Search.
-        # @param [Google::Apis::DoubleclicksearchV2::UpdateAvailabilityRequest] update_availability_request_obj
+        # @param [Google::Apis::DoubleclicksearchV2::UpdateAvailabilityRequest] update_availability_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -282,11 +282,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_availability(update_availability_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_availability(update_availability_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'conversion/updateAvailability'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DoubleclicksearchV2::UpdateAvailabilityRequestRepresentation
-          command.request_object = update_availability_request_obj
+          command.request_object = update_availability_request
           command.response_representation = Google::Apis::DoubleclicksearchV2::UpdateAvailabilityResponseRepresentation
           command.response_class = Google::Apis::DoubleclicksearchV2::UpdateAvailabilityResponse
           command.query['fields'] = fields unless fields.nil?
@@ -296,7 +296,7 @@ module Google
         end
 
         # Generates and returns a report immediately.
-        # @param [Google::Apis::DoubleclicksearchV2::ReportRequest] report_request_obj
+        # @param [Google::Apis::DoubleclicksearchV2::ReportRequest] report_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -319,11 +319,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_report(report_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def generate_report(report_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'reports/generate'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DoubleclicksearchV2::ReportRequestRepresentation
-          command.request_object = report_request_obj
+          command.request_object = report_request
           command.response_representation = Google::Apis::DoubleclicksearchV2::ReportRepresentation
           command.response_class = Google::Apis::DoubleclicksearchV2::Report
           command.query['fields'] = fields unless fields.nil?
@@ -416,7 +416,7 @@ module Google
         
         
         # Inserts a report request into the reporting system.
-        # @param [Google::Apis::DoubleclicksearchV2::ReportRequest] report_request_obj
+        # @param [Google::Apis::DoubleclicksearchV2::ReportRequest] report_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -439,11 +439,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def request_report(report_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def request_report(report_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'reports'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DoubleclicksearchV2::ReportRequestRepresentation
-          command.request_object = report_request_obj
+          command.request_object = report_request
           command.response_representation = Google::Apis::DoubleclicksearchV2::ReportRepresentation
           command.response_class = Google::Apis::DoubleclicksearchV2::Report
           command.query['fields'] = fields unless fields.nil?

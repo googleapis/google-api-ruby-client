@@ -189,12 +189,12 @@ module Google
         
         # Creates an address resource in the specified project using the data included
         # in the request.
-        # @param [Google::Apis::ComputeV1::Address] address_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
         #   The name of the region for this request.
+        # @param [Google::Apis::ComputeV1::Address] address
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -216,11 +216,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_address(address_obj, project, region, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_address(project, region, address = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/regions/{region}/addresses'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::AddressRepresentation
-          command.request_object = address_obj
+          command.request_object = address
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -363,12 +363,12 @@ module Google
         
         
         # Gets the most recent health check results for this BackendService.
-        # @param [Google::Apis::ComputeV1::ResourceGroupReference] resource_group_reference_obj
-        #   
         # @param [String] project
         #   
         # @param [String] backend_service
         #   Name of the BackendService resource to which the queried instance belongs.
+        # @param [Google::Apis::ComputeV1::ResourceGroupReference] resource_group_reference
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -390,11 +390,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_health(resource_group_reference_obj, project, backend_service, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_health(project, backend_service, resource_group_reference = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/backendServices/{backendService}/getHealth'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::ResourceGroupReferenceRepresentation
-          command.request_object = resource_group_reference_obj
+          command.request_object = resource_group_reference
           command.response_representation = Google::Apis::ComputeV1::BackendServiceGroupHealthRepresentation
           command.response_class = Google::Apis::ComputeV1::BackendServiceGroupHealth
           command.params['project'] = project unless project.nil?
@@ -408,10 +408,10 @@ module Google
         
         # Creates a BackendService resource in the specified project using the data
         # included in the request.
-        # @param [Google::Apis::ComputeV1::BackendService] backend_service_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
+        # @param [Google::Apis::ComputeV1::BackendService] backend_service
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -433,11 +433,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_backend_service(backend_service_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_backend_service(project, backend_service = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/backendServices'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::BackendServiceRepresentation
-          command.request_object = backend_service_obj
+          command.request_object = backend_service
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -499,12 +499,12 @@ module Google
         
         # Update the entire content of the BackendService resource. This method supports
         # patch semantics.
-        # @param [Google::Apis::ComputeV1::BackendService] backend_service_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] backend_service
         #   Name of the BackendService resource to update.
+        # @param [Google::Apis::ComputeV1::BackendService] backend_service_object
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -526,11 +526,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_backend_service(backend_service_obj, project, backend_service, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_backend_service(project, backend_service, backend_service_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/backendServices/{backendService}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::ComputeV1::BackendServiceRepresentation
-          command.request_object = backend_service_obj
+          command.request_object = backend_service_object
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -543,12 +543,12 @@ module Google
         
         
         # Update the entire content of the BackendService resource.
-        # @param [Google::Apis::ComputeV1::BackendService] backend_service_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] backend_service
         #   Name of the BackendService resource to update.
+        # @param [Google::Apis::ComputeV1::BackendService] backend_service_object
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -570,11 +570,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_backend_service(backend_service_obj, project, backend_service, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_backend_service(project, backend_service, backend_service_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/backendServices/{backendService}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::ComputeV1::BackendServiceRepresentation
-          command.request_object = backend_service_obj
+          command.request_object = backend_service_object
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -775,14 +775,14 @@ module Google
         
         
         # Creates a snapshot of this disk.
-        # @param [Google::Apis::ComputeV1::Snapshot] snapshot_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] disk
         #   Name of the persistent disk to snapshot.
+        # @param [Google::Apis::ComputeV1::Snapshot] snapshot
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -804,11 +804,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_snapshot(snapshot_obj, project, zone, disk, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_snapshot(project, zone, disk, snapshot = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/disks/{disk}/createSnapshot'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::SnapshotRepresentation
-          command.request_object = snapshot_obj
+          command.request_object = snapshot
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -909,12 +909,12 @@ module Google
         
         # Creates a persistent disk in the specified project using the data included in
         # the request.
-        # @param [Google::Apis::ComputeV1::Disk] disk_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone for this request.
+        # @param [Google::Apis::ComputeV1::Disk] disk
+        #   
         # @param [String] source_image
         #   Optional. Source image to restore onto a disk.
         # @param [String] fields
@@ -938,11 +938,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_disk(disk_obj, project, zone, source_image: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_disk(project, zone, disk = nil, source_image: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/disks'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::DiskRepresentation
-          command.request_object = disk_obj
+          command.request_object = disk
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -1087,10 +1087,10 @@ module Google
         
         # Creates a firewall resource in the specified project using the data included
         # in the request.
-        # @param [Google::Apis::ComputeV1::Firewall] firewall_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
+        # @param [Google::Apis::ComputeV1::Firewall] firewall
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1112,11 +1112,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_firewall(firewall_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_firewall(project, firewall = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/firewalls'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::FirewallRepresentation
-          command.request_object = firewall_obj
+          command.request_object = firewall
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -1177,12 +1177,12 @@ module Google
         
         # Updates the specified firewall resource with the data included in the request.
         # This method supports patch semantics.
-        # @param [Google::Apis::ComputeV1::Firewall] firewall_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
         # @param [String] firewall
         #   Name of the firewall resource to update.
+        # @param [Google::Apis::ComputeV1::Firewall] firewall_object
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1204,11 +1204,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_firewall(firewall_obj, project, firewall, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_firewall(project, firewall, firewall_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/firewalls/{firewall}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::ComputeV1::FirewallRepresentation
-          command.request_object = firewall_obj
+          command.request_object = firewall_object
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -1221,12 +1221,12 @@ module Google
         
         
         # Updates the specified firewall resource with the data included in the request.
-        # @param [Google::Apis::ComputeV1::Firewall] firewall_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
         # @param [String] firewall
         #   Name of the firewall resource to update.
+        # @param [Google::Apis::ComputeV1::Firewall] firewall_object
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1248,11 +1248,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_firewall(firewall_obj, project, firewall, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_firewall(project, firewall, firewall_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/firewalls/{firewall}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::ComputeV1::FirewallRepresentation
-          command.request_object = firewall_obj
+          command.request_object = firewall_object
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -1399,12 +1399,12 @@ module Google
         
         # Creates a ForwardingRule resource in the specified project and region using
         # the data included in the request.
-        # @param [Google::Apis::ComputeV1::ForwardingRule] forwarding_rule_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] region
         #   Name of the region scoping this request.
+        # @param [Google::Apis::ComputeV1::ForwardingRule] forwarding_rule
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1426,11 +1426,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_forwarding_rule(forwarding_rule_obj, project, region, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_forwarding_rule(project, region, forwarding_rule = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/regions/{region}/forwardingRules'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::ForwardingRuleRepresentation
-          command.request_object = forwarding_rule_obj
+          command.request_object = forwarding_rule
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -1495,14 +1495,14 @@ module Google
         
         
         # Changes target url for forwarding rule.
-        # @param [Google::Apis::ComputeV1::TargetReference] target_reference_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] forwarding_rule
         #   Name of the ForwardingRule resource in which target is to be set.
+        # @param [Google::Apis::ComputeV1::TargetReference] target_reference
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1524,11 +1524,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_target(target_reference_obj, project, region, forwarding_rule, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_target(project, region, forwarding_rule, target_reference = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/regions/{region}/forwardingRules/{forwardingRule}/setTarget'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::TargetReferenceRepresentation
-          command.request_object = target_reference_obj
+          command.request_object = target_reference
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -1622,10 +1622,10 @@ module Google
         
         # Creates an address resource in the specified project using the data included
         # in the request.
-        # @param [Google::Apis::ComputeV1::Address] address_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
+        # @param [Google::Apis::ComputeV1::Address] address
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1647,11 +1647,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_global_address(address_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_global_address(project, address = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/addresses'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::AddressRepresentation
-          command.request_object = address_obj
+          command.request_object = address
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -1791,10 +1791,10 @@ module Google
         
         # Creates a ForwardingRule resource in the specified project and region using
         # the data included in the request.
-        # @param [Google::Apis::ComputeV1::ForwardingRule] forwarding_rule_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
+        # @param [Google::Apis::ComputeV1::ForwardingRule] forwarding_rule
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1816,11 +1816,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_global_forwarding_rule(forwarding_rule_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_global_forwarding_rule(project, forwarding_rule = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/forwardingRules'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::ForwardingRuleRepresentation
-          command.request_object = forwarding_rule_obj
+          command.request_object = forwarding_rule
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -1881,12 +1881,12 @@ module Google
         
         
         # Changes target url for forwarding rule.
-        # @param [Google::Apis::ComputeV1::TargetReference] target_reference_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] forwarding_rule
         #   Name of the ForwardingRule resource in which target is to be set.
+        # @param [Google::Apis::ComputeV1::TargetReference] target_reference
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1908,11 +1908,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_target(target_reference_obj, project, forwarding_rule, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_target(project, forwarding_rule, target_reference = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/forwardingRules/{forwardingRule}/setTarget'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::TargetReferenceRepresentation
-          command.request_object = target_reference_obj
+          command.request_object = target_reference
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -2179,10 +2179,10 @@ module Google
         
         # Creates a HttpHealthCheck resource in the specified project using the data
         # included in the request.
-        # @param [Google::Apis::ComputeV1::HttpHealthCheck] http_health_check_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
+        # @param [Google::Apis::ComputeV1::HttpHealthCheck] http_health_check
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2204,11 +2204,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_http_health_check(http_health_check_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_http_health_check(project, http_health_check = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/httpHealthChecks'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::HttpHealthCheckRepresentation
-          command.request_object = http_health_check_obj
+          command.request_object = http_health_check
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -2270,12 +2270,12 @@ module Google
         
         # Updates a HttpHealthCheck resource in the specified project using the data
         # included in the request. This method supports patch semantics.
-        # @param [Google::Apis::ComputeV1::HttpHealthCheck] http_health_check_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] http_health_check
         #   Name of the HttpHealthCheck resource to update.
+        # @param [Google::Apis::ComputeV1::HttpHealthCheck] http_health_check_object
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2297,11 +2297,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_http_health_check(http_health_check_obj, project, http_health_check, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_http_health_check(project, http_health_check, http_health_check_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/httpHealthChecks/{httpHealthCheck}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::ComputeV1::HttpHealthCheckRepresentation
-          command.request_object = http_health_check_obj
+          command.request_object = http_health_check_object
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -2315,12 +2315,12 @@ module Google
         
         # Updates a HttpHealthCheck resource in the specified project using the data
         # included in the request.
-        # @param [Google::Apis::ComputeV1::HttpHealthCheck] http_health_check_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] http_health_check
         #   Name of the HttpHealthCheck resource to update.
+        # @param [Google::Apis::ComputeV1::HttpHealthCheck] http_health_check_object
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2342,11 +2342,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_http_health_check(http_health_check_obj, project, http_health_check, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_http_health_check(project, http_health_check, http_health_check_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/httpHealthChecks/{httpHealthCheck}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::ComputeV1::HttpHealthCheckRepresentation
-          command.request_object = http_health_check_obj
+          command.request_object = http_health_check_object
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -2399,12 +2399,12 @@ module Google
         
         # Sets the deprecation status of an image.
         # If an empty request body is given, clears the deprecation status instead.
-        # @param [Google::Apis::ComputeV1::DeprecationStatus] deprecation_status_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
         # @param [String] image
         #   Image name.
+        # @param [Google::Apis::ComputeV1::DeprecationStatus] deprecation_status
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2426,11 +2426,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def deprecate_image(deprecation_status_obj, project, image, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def deprecate_image(project, image, deprecation_status = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/images/{image}/deprecate'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::DeprecationStatusRepresentation
-          command.request_object = deprecation_status_obj
+          command.request_object = deprecation_status
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -2484,10 +2484,10 @@ module Google
         
         # Creates an image resource in the specified project using the data included in
         # the request.
-        # @param [Google::Apis::ComputeV1::Image] image_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
+        # @param [Google::Apis::ComputeV1::Image] image
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2509,11 +2509,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_image(image_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_image(project, image = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/images'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::ImageRepresentation
-          command.request_object = image_obj
+          command.request_object = image
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -2653,10 +2653,10 @@ module Google
         
         # Creates an instance template resource in the specified project using the data
         # included in the request.
-        # @param [Google::Apis::ComputeV1::InstanceTemplate] instance_template_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
+        # @param [Google::Apis::ComputeV1::InstanceTemplate] instance_template
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2678,11 +2678,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_instance_template(instance_template_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_instance_template(project, instance_template = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/instanceTemplates'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::InstanceTemplateRepresentation
-          command.request_object = instance_template_obj
+          command.request_object = instance_template
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -2742,14 +2742,14 @@ module Google
         end
 
         # Adds an access config to an instance's network interface.
-        # @param [Google::Apis::ComputeV1::AccessConfig] access_config_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] instance
         #   The instance name for this request.
+        # @param [Google::Apis::ComputeV1::AccessConfig] access_config
+        #   
         # @param [String] network_interface
         #   The name of the network interface to add to this instance.
         # @param [String] fields
@@ -2773,11 +2773,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_access_config(access_config_obj, project, zone, instance, network_interface: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_access_config(project, zone, instance, access_config = nil, network_interface: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/instances/{instance}/addAccessConfig'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::AccessConfigRepresentation
-          command.request_object = access_config_obj
+          command.request_object = access_config
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -2840,14 +2840,14 @@ module Google
         
         
         # Attaches a Disk resource to an instance.
-        # @param [Google::Apis::ComputeV1::AttachedDisk] attached_disk_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] instance
         #   Instance name.
+        # @param [Google::Apis::ComputeV1::AttachedDisk] attached_disk
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2869,11 +2869,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def attach_disk(attached_disk_obj, project, zone, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def attach_disk(project, zone, instance, attached_disk = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/instances/{instance}/attachDisk'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::AttachedDiskRepresentation
-          command.request_object = attached_disk_obj
+          command.request_object = attached_disk
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -3116,12 +3116,12 @@ module Google
         
         # Creates an instance resource in the specified project using the data included
         # in the request.
-        # @param [Google::Apis::ComputeV1::Instance] instance_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone for this request.
+        # @param [Google::Apis::ComputeV1::Instance] instance
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3143,11 +3143,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_instance(instance_obj, project, zone, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_instance(project, zone, instance = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/instances'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::InstanceRepresentation
-          command.request_object = instance_obj
+          command.request_object = instance
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -3303,14 +3303,14 @@ module Google
         
         
         # Sets metadata for the specified instance to the data included in the request.
-        # @param [Google::Apis::ComputeV1::Metadata] metadata_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] instance
         #   Name of the instance scoping this request.
+        # @param [Google::Apis::ComputeV1::Metadata] metadata
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3332,11 +3332,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_metadata(metadata_obj, project, zone, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_metadata(project, zone, instance, metadata = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/instances/{instance}/setMetadata'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::MetadataRepresentation
-          command.request_object = metadata_obj
+          command.request_object = metadata
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -3350,14 +3350,14 @@ module Google
         
         
         # Sets an instance's scheduling options.
-        # @param [Google::Apis::ComputeV1::Scheduling] scheduling_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] instance
         #   Instance name.
+        # @param [Google::Apis::ComputeV1::Scheduling] scheduling
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3379,11 +3379,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_scheduling(scheduling_obj, project, zone, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_scheduling(project, zone, instance, scheduling = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/instances/{instance}/setScheduling'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::SchedulingRepresentation
-          command.request_object = scheduling_obj
+          command.request_object = scheduling
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -3397,14 +3397,14 @@ module Google
         
         
         # Sets tags for the specified instance to the data included in the request.
-        # @param [Google::Apis::ComputeV1::Tags] tags_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] instance
         #   Name of the instance scoping this request.
+        # @param [Google::Apis::ComputeV1::Tags] tags
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3426,11 +3426,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_tags(tags_obj, project, zone, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_tags(project, zone, instance, tags = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/instances/{instance}/setTags'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::TagsRepresentation
-          command.request_object = tags_obj
+          command.request_object = tags
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -3797,10 +3797,10 @@ module Google
         
         # Creates a network resource in the specified project using the data included in
         # the request.
-        # @param [Google::Apis::ComputeV1::Network] network_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
+        # @param [Google::Apis::ComputeV1::Network] network
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3822,11 +3822,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_network(network_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_network(project, network = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/networks'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::NetworkRepresentation
-          command.request_object = network_obj
+          command.request_object = network
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -3922,10 +3922,10 @@ module Google
         
         
         # Moves a persistent disk from one zone to another.
-        # @param [Google::Apis::ComputeV1::DiskMoveRequest] disk_move_request_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
+        # @param [Google::Apis::ComputeV1::DiskMoveRequest] disk_move_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3947,11 +3947,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def move_disk(disk_move_request_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def move_disk(project, disk_move_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/moveDisk'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::DiskMoveRequestRepresentation
-          command.request_object = disk_move_request_obj
+          command.request_object = disk_move_request
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -3963,10 +3963,10 @@ module Google
         
         
         # Moves an instance and its attached persistent disks from one zone to another.
-        # @param [Google::Apis::ComputeV1::InstanceMoveRequest] instance_move_request_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
+        # @param [Google::Apis::ComputeV1::InstanceMoveRequest] instance_move_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3988,11 +3988,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def move_instance(instance_move_request_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def move_instance(project, instance_move_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/moveInstance'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::InstanceMoveRequestRepresentation
-          command.request_object = instance_move_request_obj
+          command.request_object = instance_move_request
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -4005,10 +4005,10 @@ module Google
         
         # Sets metadata common to all instances within the specified project using the
         # data included in the request.
-        # @param [Google::Apis::ComputeV1::Metadata] metadata_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
+        # @param [Google::Apis::ComputeV1::Metadata] metadata
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4030,11 +4030,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_common_instance_metadata(metadata_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_common_instance_metadata(project, metadata = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/setCommonInstanceMetadata'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::MetadataRepresentation
-          command.request_object = metadata_obj
+          command.request_object = metadata
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -4048,10 +4048,10 @@ module Google
         # Enables the usage export feature and sets the usage export bucket where
         # reports are stored. If you provide an empty request body using this method,
         # the usage export feature will be disabled.
-        # @param [Google::Apis::ComputeV1::UsageExportLocation] usage_export_location_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
+        # @param [Google::Apis::ComputeV1::UsageExportLocation] usage_export_location
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4073,11 +4073,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_usage_export_bucket(usage_export_location_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_usage_export_bucket(project, usage_export_location = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/setUsageExportBucket'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::UsageExportLocationRepresentation
-          command.request_object = usage_export_location_obj
+          command.request_object = usage_export_location
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -4391,10 +4391,10 @@ module Google
         
         # Creates a route resource in the specified project using the data included in
         # the request.
-        # @param [Google::Apis::ComputeV1::Route] route_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
+        # @param [Google::Apis::ComputeV1::Route] route
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4416,11 +4416,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_route(route_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_route(project, route = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/routes'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::RouteRepresentation
-          command.request_object = route_obj
+          command.request_object = route
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -4688,10 +4688,10 @@ module Google
         
         # Creates a TargetHttpProxy resource in the specified project using the data
         # included in the request.
-        # @param [Google::Apis::ComputeV1::TargetHttpProxy] target_http_proxy_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
+        # @param [Google::Apis::ComputeV1::TargetHttpProxy] target_http_proxy
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4713,11 +4713,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_target_http_proxy(target_http_proxy_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_target_http_proxy(project, target_http_proxy = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/targetHttpProxies'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::TargetHttpProxyRepresentation
-          command.request_object = target_http_proxy_obj
+          command.request_object = target_http_proxy
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -4778,12 +4778,12 @@ module Google
         
         
         # Changes the URL map for TargetHttpProxy.
-        # @param [Google::Apis::ComputeV1::UrlMapReference] url_map_reference_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] target_http_proxy
         #   Name of the TargetHttpProxy resource whose URL map is to be set.
+        # @param [Google::Apis::ComputeV1::UrlMapReference] url_map_reference
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4805,11 +4805,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_url_map(url_map_reference_obj, project, target_http_proxy, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_url_map(project, target_http_proxy, url_map_reference = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/targetHttpProxies/{targetHttpProxy}/setUrlMap'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::UrlMapReferenceRepresentation
-          command.request_object = url_map_reference_obj
+          command.request_object = url_map_reference
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -4956,12 +4956,12 @@ module Google
         
         # Creates a TargetInstance resource in the specified project and zone using the
         # data included in the request.
-        # @param [Google::Apis::ComputeV1::TargetInstance] target_instance_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] zone
         #   Name of the zone scoping this request.
+        # @param [Google::Apis::ComputeV1::TargetInstance] target_instance
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4983,11 +4983,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_target_instance(target_instance_obj, project, zone, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_target_instance(project, zone, target_instance = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/targetInstances'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::TargetInstanceRepresentation
-          command.request_object = target_instance_obj
+          command.request_object = target_instance
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -5051,14 +5051,14 @@ module Google
         end
 
         # Adds health check URL to targetPool.
-        # @param [Google::Apis::ComputeV1::TargetPoolsAddHealthCheckRequest] target_pools_add_health_check_request_obj
-        #   
         # @param [String] project
         #   
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] target_pool
         #   Name of the TargetPool resource to which health_check_url is to be added.
+        # @param [Google::Apis::ComputeV1::TargetPoolsAddHealthCheckRequest] target_pools_add_health_check_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5080,11 +5080,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_health_check(target_pools_add_health_check_request_obj, project, region, target_pool, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_health_check(project, region, target_pool, target_pools_add_health_check_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/regions/{region}/targetPools/{targetPool}/addHealthCheck'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::TargetPoolsAddHealthCheckRequestRepresentation
-          command.request_object = target_pools_add_health_check_request_obj
+          command.request_object = target_pools_add_health_check_request
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -5098,14 +5098,14 @@ module Google
         
         
         # Adds instance url to targetPool.
-        # @param [Google::Apis::ComputeV1::TargetPoolsAddInstanceRequest] target_pools_add_instance_request_obj
-        #   
         # @param [String] project
         #   
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] target_pool
         #   Name of the TargetPool resource to which instance_url is to be added.
+        # @param [Google::Apis::ComputeV1::TargetPoolsAddInstanceRequest] target_pools_add_instance_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5127,11 +5127,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_instance(target_pools_add_instance_request_obj, project, region, target_pool, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_instance(project, region, target_pool, target_pools_add_instance_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/regions/{region}/targetPools/{targetPool}/addInstance'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::TargetPoolsAddInstanceRequestRepresentation
-          command.request_object = target_pools_add_instance_request_obj
+          command.request_object = target_pools_add_instance_request
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -5280,14 +5280,14 @@ module Google
         
         # Gets the most recent health check results for each IP for the given instance
         # that is referenced by given TargetPool.
-        # @param [Google::Apis::ComputeV1::InstanceReference] instance_reference_obj
-        #   
         # @param [String] project
         #   
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] target_pool
         #   Name of the TargetPool resource to which the queried instance belongs.
+        # @param [Google::Apis::ComputeV1::InstanceReference] instance_reference
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5309,11 +5309,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_health(instance_reference_obj, project, region, target_pool, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_health(project, region, target_pool, instance_reference = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/regions/{region}/targetPools/{targetPool}/getHealth'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::InstanceReferenceRepresentation
-          command.request_object = instance_reference_obj
+          command.request_object = instance_reference
           command.response_representation = Google::Apis::ComputeV1::TargetPoolInstanceHealthRepresentation
           command.response_class = Google::Apis::ComputeV1::TargetPoolInstanceHealth
           command.params['project'] = project unless project.nil?
@@ -5328,12 +5328,12 @@ module Google
         
         # Creates a TargetPool resource in the specified project and region using the
         # data included in the request.
-        # @param [Google::Apis::ComputeV1::TargetPool] target_pool_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] region
         #   Name of the region scoping this request.
+        # @param [Google::Apis::ComputeV1::TargetPool] target_pool
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5355,11 +5355,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_target_pool(target_pool_obj, project, region, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_target_pool(project, region, target_pool = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/regions/{region}/targetPools'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::TargetPoolRepresentation
-          command.request_object = target_pool_obj
+          command.request_object = target_pool
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -5424,14 +5424,14 @@ module Google
         
         
         # Removes health check URL from targetPool.
-        # @param [Google::Apis::ComputeV1::TargetPoolsRemoveHealthCheckRequest] target_pools_remove_health_check_request_obj
-        #   
         # @param [String] project
         #   
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] target_pool
         #   Name of the TargetPool resource to which health_check_url is to be removed.
+        # @param [Google::Apis::ComputeV1::TargetPoolsRemoveHealthCheckRequest] target_pools_remove_health_check_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5453,11 +5453,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_health_check(target_pools_remove_health_check_request_obj, project, region, target_pool, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def remove_health_check(project, region, target_pool, target_pools_remove_health_check_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/regions/{region}/targetPools/{targetPool}/removeHealthCheck'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::TargetPoolsRemoveHealthCheckRequestRepresentation
-          command.request_object = target_pools_remove_health_check_request_obj
+          command.request_object = target_pools_remove_health_check_request
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -5471,14 +5471,14 @@ module Google
         
         
         # Removes instance URL from targetPool.
-        # @param [Google::Apis::ComputeV1::TargetPoolsRemoveInstanceRequest] target_pools_remove_instance_request_obj
-        #   
         # @param [String] project
         #   
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] target_pool
         #   Name of the TargetPool resource to which instance_url is to be removed.
+        # @param [Google::Apis::ComputeV1::TargetPoolsRemoveInstanceRequest] target_pools_remove_instance_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5500,11 +5500,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_instance(target_pools_remove_instance_request_obj, project, region, target_pool, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def remove_instance(project, region, target_pool, target_pools_remove_instance_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/regions/{region}/targetPools/{targetPool}/removeInstance'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::TargetPoolsRemoveInstanceRequestRepresentation
-          command.request_object = target_pools_remove_instance_request_obj
+          command.request_object = target_pools_remove_instance_request
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -5518,14 +5518,14 @@ module Google
         
         
         # Changes backup pool configurations.
-        # @param [Google::Apis::ComputeV1::TargetReference] target_reference_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] target_pool
         #   Name of the TargetPool resource for which the backup is to be set.
+        # @param [Google::Apis::ComputeV1::TargetReference] target_reference
+        #   
         # @param [Float] failover_ratio
         #   New failoverRatio value for the containing target pool.
         # @param [String] fields
@@ -5549,11 +5549,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_backup(target_reference_obj, project, region, target_pool, failover_ratio: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_backup(project, region, target_pool, target_reference = nil, failover_ratio: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/regions/{region}/targetPools/{targetPool}/setBackup'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::TargetReferenceRepresentation
-          command.request_object = target_reference_obj
+          command.request_object = target_reference
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -5702,12 +5702,12 @@ module Google
         
         # Creates a TargetVpnGateway resource in the specified project and region using
         # the data included in the request.
-        # @param [Google::Apis::ComputeV1::TargetVpnGateway] target_vpn_gateway_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
         #   The name of the region for this request.
+        # @param [Google::Apis::ComputeV1::TargetVpnGateway] target_vpn_gateway
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5729,11 +5729,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_target_vpn_gateway(target_vpn_gateway_obj, project, region, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_target_vpn_gateway(project, region, target_vpn_gateway = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/regions/{region}/targetVpnGateways'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::TargetVpnGatewayRepresentation
-          command.request_object = target_vpn_gateway_obj
+          command.request_object = target_vpn_gateway
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -5878,10 +5878,10 @@ module Google
         
         # Creates a UrlMap resource in the specified project using the data included in
         # the request.
-        # @param [Google::Apis::ComputeV1::UrlMap] url_map_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
+        # @param [Google::Apis::ComputeV1::UrlMap] url_map
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5903,11 +5903,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_url_map(url_map_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_url_map(project, url_map = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/urlMaps'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::UrlMapRepresentation
-          command.request_object = url_map_obj
+          command.request_object = url_map
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -5968,12 +5968,12 @@ module Google
         
         # Update the entire content of the UrlMap resource. This method supports patch
         # semantics.
-        # @param [Google::Apis::ComputeV1::UrlMap] url_map_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] url_map
         #   Name of the UrlMap resource to update.
+        # @param [Google::Apis::ComputeV1::UrlMap] url_map_object
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5995,11 +5995,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_url_map(url_map_obj, project, url_map, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_url_map(project, url_map, url_map_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/urlMaps/{urlMap}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::ComputeV1::UrlMapRepresentation
-          command.request_object = url_map_obj
+          command.request_object = url_map_object
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -6012,12 +6012,12 @@ module Google
         
         
         # Update the entire content of the UrlMap resource.
-        # @param [Google::Apis::ComputeV1::UrlMap] url_map_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] url_map
         #   Name of the UrlMap resource to update.
+        # @param [Google::Apis::ComputeV1::UrlMap] url_map_object
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6039,11 +6039,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_url_map(url_map_obj, project, url_map, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_url_map(project, url_map, url_map_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/urlMaps/{urlMap}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::ComputeV1::UrlMapRepresentation
-          command.request_object = url_map_obj
+          command.request_object = url_map_object
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -6057,12 +6057,12 @@ module Google
         
         # Run static validation for the UrlMap. In particular, the tests of the provided
         # UrlMap will be run. Calling this method does NOT create the UrlMap.
-        # @param [Google::Apis::ComputeV1::UrlMapsValidateRequest] url_maps_validate_request_obj
-        #   
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] url_map
         #   Name of the UrlMap resource to be validated as.
+        # @param [Google::Apis::ComputeV1::UrlMapsValidateRequest] url_maps_validate_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6084,11 +6084,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def validate_url_map(url_maps_validate_request_obj, project, url_map, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def validate_url_map(project, url_map, url_maps_validate_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/urlMaps/{urlMap}/validate'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::UrlMapsValidateRequestRepresentation
-          command.request_object = url_maps_validate_request_obj
+          command.request_object = url_maps_validate_request
           command.response_representation = Google::Apis::ComputeV1::UrlMapsValidateResponseRepresentation
           command.response_class = Google::Apis::ComputeV1::UrlMapsValidateResponse
           command.params['project'] = project unless project.nil?
@@ -6235,12 +6235,12 @@ module Google
         
         # Creates a VpnTunnel resource in the specified project and region using the
         # data included in the request.
-        # @param [Google::Apis::ComputeV1::VpnTunnel] vpn_tunnel_obj
-        #   
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
         #   The name of the region for this request.
+        # @param [Google::Apis::ComputeV1::VpnTunnel] vpn_tunnel
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6262,11 +6262,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_vpn_tunnel(vpn_tunnel_obj, project, region, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_vpn_tunnel(project, region, vpn_tunnel = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/regions/{region}/vpnTunnels'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::VpnTunnelRepresentation
-          command.request_object = vpn_tunnel_obj
+          command.request_object = vpn_tunnel
           command.response_representation = Google::Apis::ComputeV1::OperationRepresentation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?

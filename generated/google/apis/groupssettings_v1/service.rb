@@ -91,10 +91,10 @@ module Google
         
         
         # Updates an existing resource. This method supports patch semantics.
-        # @param [Google::Apis::GroupssettingsV1::Groups] groups_obj
-        #   
         # @param [String] group_unique_id
         #   The resource ID
+        # @param [Google::Apis::GroupssettingsV1::Groups] groups
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -116,11 +116,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_group(groups_obj, group_unique_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_group(group_unique_id, groups = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{groupUniqueId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::GroupssettingsV1::GroupsRepresentation
-          command.request_object = groups_obj
+          command.request_object = groups
           command.response_representation = Google::Apis::GroupssettingsV1::GroupsRepresentation
           command.response_class = Google::Apis::GroupssettingsV1::Groups
           command.params['groupUniqueId'] = group_unique_id unless group_unique_id.nil?
@@ -132,10 +132,10 @@ module Google
         
         
         # Updates an existing resource.
-        # @param [Google::Apis::GroupssettingsV1::Groups] groups_obj
-        #   
         # @param [String] group_unique_id
         #   The resource ID
+        # @param [Google::Apis::GroupssettingsV1::Groups] groups
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -157,11 +157,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_group(groups_obj, group_unique_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_group(group_unique_id, groups = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{groupUniqueId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::GroupssettingsV1::GroupsRepresentation
-          command.request_object = groups_obj
+          command.request_object = groups
           command.response_representation = Google::Apis::GroupssettingsV1::GroupsRepresentation
           command.response_class = Google::Apis::GroupssettingsV1::Groups
           command.params['groupUniqueId'] = group_unique_id unless group_unique_id.nil?

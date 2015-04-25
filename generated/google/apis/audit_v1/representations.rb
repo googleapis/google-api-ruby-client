@@ -46,7 +46,6 @@ module Google
 
       # @private
       class ActivitiesRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::AuditV1::Activity, decorator: Google::Apis::AuditV1::ActivityRepresentation
         
         
@@ -59,7 +58,6 @@ module Google
         class ActorRepresentation < Google::Apis::Core::JsonRepresentation; end
         class EventRepresentation < Google::Apis::Core::JsonRepresentation; end
         class IdRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :actor, as: 'actor', class: Google::Apis::AuditV1::Activity::Actor, decorator: Google::Apis::AuditV1::ActivityRepresentation::ActorRepresentation
         
         collection :events, as: 'events', class: Google::Apis::AuditV1::Activity::Event, decorator: Google::Apis::AuditV1::ActivityRepresentation::EventRepresentation
@@ -71,10 +69,8 @@ module Google
         property :kind, as: 'kind'
         property :owner_domain, as: 'ownerDomain'
         
-        
         # @private
         class ActorRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :application_id, as: 'applicationId'
           property :caller_type, as: 'callerType'
           property :email, as: 'email'
@@ -84,17 +80,14 @@ module Google
         # @private
         class EventRepresentation < Google::Apis::Core::JsonRepresentation
           class ParameterRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :event_type, as: 'eventType'
           property :name, as: 'name'
           collection :parameters, as: 'parameters', class: Google::Apis::AuditV1::Activity::Event::Parameter, decorator: Google::Apis::AuditV1::ActivityRepresentation::EventRepresentation::ParameterRepresentation
           
           
           
-          
           # @private
           class ParameterRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :name, as: 'name'
             property :value, as: 'value'
           end
@@ -102,7 +95,6 @@ module Google
         
         # @private
         class IdRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :application_id, as: 'applicationId'
           property :customer_id, as: 'customerId'
           property :time, as: 'time', type: DateTime

@@ -66,7 +66,6 @@ module Google
 
       # @private
       class AddressRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :address_line1, as: 'addressLine1'
         property :address_line2, as: 'addressLine2'
         property :address_line3, as: 'addressLine3'
@@ -81,7 +80,6 @@ module Google
 
       # @private
       class ChangePlanRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :plan_name, as: 'planName'
         property :purchase_order_id, as: 'purchaseOrderId'
@@ -90,7 +88,6 @@ module Google
 
       # @private
       class CustomerRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :alternate_email, as: 'alternateEmail'
         property :customer_domain, as: 'customerDomain'
         property :customer_id, as: 'customerId'
@@ -103,14 +100,12 @@ module Google
 
       # @private
       class RenewalSettingsRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :renewal_type, as: 'renewalType'
       end
 
       # @private
       class SeatsRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :licensed_number_of_seats, as: 'licensedNumberOfSeats'
         property :maximum_number_of_seats, as: 'maximumNumberOfSeats'
@@ -122,7 +117,6 @@ module Google
         class PlanRepresentation < Google::Apis::Core::JsonRepresentation; end
         class TransferInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
         class TrialSettingsRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :billing_method, as: 'billingMethod'
         property :creation_time, as: 'creationTime'
         property :customer_id, as: 'customerId'
@@ -143,20 +137,16 @@ module Google
         property :trial_settings, as: 'trialSettings', class: Google::Apis::ResellerV1::Subscription::TrialSettings, decorator: Google::Apis::ResellerV1::SubscriptionRepresentation::TrialSettingsRepresentation
         
         
-        
         # @private
         class PlanRepresentation < Google::Apis::Core::JsonRepresentation
           class CommitmentIntervalRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :commitment_interval, as: 'commitmentInterval', class: Google::Apis::ResellerV1::Subscription::Plan::CommitmentInterval, decorator: Google::Apis::ResellerV1::SubscriptionRepresentation::PlanRepresentation::CommitmentIntervalRepresentation
           
           property :is_commitment_plan, as: 'isCommitmentPlan'
           property :plan_name, as: 'planName'
           
-          
           # @private
           class CommitmentIntervalRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :end_time, as: 'endTime'
             property :start_time, as: 'startTime'
           end
@@ -164,14 +154,12 @@ module Google
         
         # @private
         class TransferInfoRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :minimum_transferable_seats, as: 'minimumTransferableSeats'
           property :transferability_expiration_time, as: 'transferabilityExpirationTime'
         end
         
         # @private
         class TrialSettingsRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :is_in_trial, as: 'isInTrial'
           property :trial_end_time, as: 'trialEndTime'
         end
@@ -179,7 +167,6 @@ module Google
 
       # @private
       class SubscriptionsRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :next_page_token, as: 'nextPageToken'
         collection :subscriptions, as: 'subscriptions', class: Google::Apis::ResellerV1::Subscription, decorator: Google::Apis::ResellerV1::SubscriptionRepresentation

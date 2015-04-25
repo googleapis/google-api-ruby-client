@@ -84,7 +84,6 @@ module Google
 
       # @private
       class AutoscalerRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :autoscaling_policy, as: 'autoscalingPolicy', class: Google::Apis::AutoscalerV1beta2::AutoscalingPolicy, decorator: Google::Apis::AutoscalerV1beta2::AutoscalingPolicyRepresentation
         
         property :creation_timestamp, as: 'creationTimestamp'
@@ -98,7 +97,6 @@ module Google
 
       # @private
       class ListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::AutoscalerV1beta2::Autoscaler, decorator: Google::Apis::AutoscalerV1beta2::AutoscalerRepresentation
         
         
@@ -108,7 +106,6 @@ module Google
 
       # @private
       class AutoscalingPolicyRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :cool_down_period_sec, as: 'coolDownPeriodSec'
         property :cpu_utilization, as: 'cpuUtilization', class: Google::Apis::AutoscalerV1beta2::AutoscalingPolicyCpuUtilization, decorator: Google::Apis::AutoscalerV1beta2::AutoscalingPolicyCpuUtilizationRepresentation
         
@@ -123,13 +120,11 @@ module Google
 
       # @private
       class AutoscalingPolicyCpuUtilizationRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :utilization_target, as: 'utilizationTarget'
       end
 
       # @private
       class AutoscalingPolicyCustomMetricUtilizationRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :metric, as: 'metric'
         property :utilization_target, as: 'utilizationTarget'
         property :utilization_target_type, as: 'utilizationTargetType'
@@ -137,13 +132,11 @@ module Google
 
       # @private
       class AutoscalingPolicyLoadBalancingUtilizationRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :utilization_target, as: 'utilizationTarget'
       end
 
       # @private
       class DeprecationStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :deleted, as: 'deleted'
         property :deprecated, as: 'deprecated'
         property :obsolete, as: 'obsolete'
@@ -155,7 +148,6 @@ module Google
       class OperationRepresentation < Google::Apis::Core::JsonRepresentation
         class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :client_operation_id, as: 'clientOperationId'
         property :creation_timestamp, as: 'creationTimestamp'
         property :end_time, as: 'endTime'
@@ -182,19 +174,15 @@ module Google
         
         property :zone, as: 'zone'
         
-        
         # @private
         class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
           class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           collection :errors, as: 'errors', class: Google::Apis::AutoscalerV1beta2::Operation::Error::Error, decorator: Google::Apis::AutoscalerV1beta2::OperationRepresentation::ErrorRepresentation::ErrorRepresentation
-          
           
           
           
           # @private
           class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :code, as: 'code'
             property :location, as: 'location'
             property :message, as: 'message'
@@ -204,17 +192,14 @@ module Google
         # @private
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :code, as: 'code'
           collection :data, as: 'data', class: Google::Apis::AutoscalerV1beta2::Operation::Warning::Datum, decorator: Google::Apis::AutoscalerV1beta2::OperationRepresentation::WarningRepresentation::DatumRepresentation
           
           
           property :message, as: 'message'
           
-          
           # @private
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :key, as: 'key'
             property :value, as: 'value'
           end
@@ -223,7 +208,6 @@ module Google
 
       # @private
       class OperationListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::AutoscalerV1beta2::Operation, decorator: Google::Apis::AutoscalerV1beta2::OperationRepresentation
         
@@ -236,7 +220,6 @@ module Google
       # @private
       class ZoneRepresentation < Google::Apis::Core::JsonRepresentation
         class MaintenanceWindowRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :creation_timestamp, as: 'creationTimestamp'
         property :deprecated, as: 'deprecated', class: Google::Apis::AutoscalerV1beta2::DeprecationStatus, decorator: Google::Apis::AutoscalerV1beta2::DeprecationStatusRepresentation
         
@@ -251,10 +234,8 @@ module Google
         property :self_link, as: 'selfLink'
         property :status, as: 'status'
         
-        
         # @private
         class MaintenanceWindowRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :begin_time, as: 'beginTime'
           property :description, as: 'description'
           property :end_time, as: 'endTime'
@@ -264,7 +245,6 @@ module Google
 
       # @private
       class ZoneListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::AutoscalerV1beta2::Zone, decorator: Google::Apis::AutoscalerV1beta2::ZoneRepresentation
         

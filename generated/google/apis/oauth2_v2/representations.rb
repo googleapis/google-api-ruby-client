@@ -40,15 +40,12 @@ module Google
       # @private
       class JwkRepresentation < Google::Apis::Core::JsonRepresentation
         class KeyRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :keys, as: 'keys', class: Google::Apis::Oauth2V2::Jwk::Key, decorator: Google::Apis::Oauth2V2::JwkRepresentation::KeyRepresentation
-        
         
         
         
         # @private
         class KeyRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :alg, as: 'alg'
           property :e, as: 'e'
           property :kid, as: 'kid'
@@ -60,7 +57,6 @@ module Google
 
       # @private
       class TokeninfoRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :access_type, as: 'access_type'
         property :audience, as: 'audience'
         property :email, as: 'email'
@@ -74,7 +70,6 @@ module Google
 
       # @private
       class UserinfoplusRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :email, as: 'email'
         property :family_name, as: 'family_name'
         property :gender, as: 'gender'

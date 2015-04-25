@@ -213,10 +213,10 @@ module Google
         # Update the data associated with the input key if and only if the passed
         # version matches the currently stored version. This method is safe in the face
         # of concurrent writes. Maximum per-key size is 128KB.
-        # @param [Google::Apis::AppstateV1::UpdateRequest] update_request_obj
-        #   
         # @param [Fixnum] state_key
         #   The key for the data to be retrieved.
+        # @param [Google::Apis::AppstateV1::UpdateRequest] update_request
+        #   
         # @param [String] current_state_version
         #   The version of the app state your application is attempting to update. If this
         #   does not match the current version, this method will return a conflict error.
@@ -243,11 +243,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_state(update_request_obj, state_key, current_state_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_state(state_key, update_request = nil, current_state_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'states/{stateKey}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AppstateV1::UpdateRequestRepresentation
-          command.request_object = update_request_obj
+          command.request_object = update_request
           command.response_representation = Google::Apis::AppstateV1::WriteResultRepresentation
           command.response_class = Google::Apis::AppstateV1::WriteResult
           command.params['stateKey'] = state_key unless state_key.nil?

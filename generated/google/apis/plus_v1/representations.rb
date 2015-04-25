@@ -193,7 +193,6 @@ module Google
 
       # @private
       class AclRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :description, as: 'description'
         collection :items, as: 'items', class: Google::Apis::PlusV1::AclentryResource, decorator: Google::Apis::PlusV1::AclentryResourceRepresentation
         
@@ -206,7 +205,6 @@ module Google
         class ActorRepresentation < Google::Apis::Core::JsonRepresentation; end
         class ObjectRepresentation < Google::Apis::Core::JsonRepresentation; end
         class ProviderRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :access, as: 'access', class: Google::Apis::PlusV1::Acl, decorator: Google::Apis::PlusV1::AclRepresentation
         
         property :actor, as: 'actor', class: Google::Apis::PlusV1::Activity::Actor, decorator: Google::Apis::PlusV1::ActivityRepresentation::ActorRepresentation
@@ -233,12 +231,10 @@ module Google
         property :url, as: 'url'
         property :verb, as: 'verb'
         
-        
         # @private
         class ActorRepresentation < Google::Apis::Core::JsonRepresentation
           class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
           class NameRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :display_name, as: 'displayName'
           property :id, as: 'id'
           property :image, as: 'image', class: Google::Apis::PlusV1::Activity::Actor::Image, decorator: Google::Apis::PlusV1::ActivityRepresentation::ActorRepresentation::ImageRepresentation
@@ -247,16 +243,13 @@ module Google
           
           property :url, as: 'url'
           
-          
           # @private
           class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :url, as: 'url'
           end
           
           # @private
           class NameRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :family_name, as: 'familyName'
             property :given_name, as: 'givenName'
           end
@@ -269,7 +262,6 @@ module Google
           class PlusonersRepresentation < Google::Apis::Core::JsonRepresentation; end
           class RepliesRepresentation < Google::Apis::Core::JsonRepresentation; end
           class ResharersRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :actor, as: 'actor', class: Google::Apis::PlusV1::Activity::Object::Actor, decorator: Google::Apis::PlusV1::ActivityRepresentation::ObjectRepresentation::ActorRepresentation
           
           collection :attachments, as: 'attachments', class: Google::Apis::PlusV1::Activity::Object::Attachment, decorator: Google::Apis::PlusV1::ActivityRepresentation::ObjectRepresentation::AttachmentRepresentation
@@ -287,21 +279,17 @@ module Google
           
           property :url, as: 'url'
           
-          
           # @private
           class ActorRepresentation < Google::Apis::Core::JsonRepresentation
             class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
-            
             property :display_name, as: 'displayName'
             property :id, as: 'id'
             property :image, as: 'image', class: Google::Apis::PlusV1::Activity::Object::Actor::Image, decorator: Google::Apis::PlusV1::ActivityRepresentation::ObjectRepresentation::ActorRepresentation::ImageRepresentation
             
             property :url, as: 'url'
             
-            
             # @private
             class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-              
               property :url, as: 'url'
             end
           end
@@ -312,7 +300,6 @@ module Google
             class FullImageRepresentation < Google::Apis::Core::JsonRepresentation; end
             class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
             class ThumbnailRepresentation < Google::Apis::Core::JsonRepresentation; end
-            
             property :content, as: 'content'
             property :display_name, as: 'displayName'
             property :embed, as: 'embed', class: Google::Apis::PlusV1::Activity::Object::Attachment::Embed, decorator: Google::Apis::PlusV1::ActivityRepresentation::ObjectRepresentation::AttachmentRepresentation::EmbedRepresentation
@@ -328,17 +315,14 @@ module Google
             
             property :url, as: 'url'
             
-            
             # @private
             class EmbedRepresentation < Google::Apis::Core::JsonRepresentation
-              
               property :type, as: 'type'
               property :url, as: 'url'
             end
             
             # @private
             class FullImageRepresentation < Google::Apis::Core::JsonRepresentation
-              
               property :height, as: 'height'
               property :type, as: 'type'
               property :url, as: 'url'
@@ -347,7 +331,6 @@ module Google
             
             # @private
             class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-              
               property :height, as: 'height'
               property :type, as: 'type'
               property :url, as: 'url'
@@ -357,16 +340,13 @@ module Google
             # @private
             class ThumbnailRepresentation < Google::Apis::Core::JsonRepresentation
               class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
-              
               property :description, as: 'description'
               property :image, as: 'image', class: Google::Apis::PlusV1::Activity::Object::Attachment::Thumbnail::Image, decorator: Google::Apis::PlusV1::ActivityRepresentation::ObjectRepresentation::AttachmentRepresentation::ThumbnailRepresentation::ImageRepresentation
               
               property :url, as: 'url'
               
-              
               # @private
               class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-                
                 property :height, as: 'height'
                 property :type, as: 'type'
                 property :url, as: 'url'
@@ -377,21 +357,18 @@ module Google
           
           # @private
           class PlusonersRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :self_link, as: 'selfLink'
             property :total_items, as: 'totalItems'
           end
           
           # @private
           class RepliesRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :self_link, as: 'selfLink'
             property :total_items, as: 'totalItems'
           end
           
           # @private
           class ResharersRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :self_link, as: 'selfLink'
             property :total_items, as: 'totalItems'
           end
@@ -399,14 +376,12 @@ module Google
         
         # @private
         class ProviderRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :title, as: 'title'
         end
       end
 
       # @private
       class ActivityFeedRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :etag, as: 'etag'
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::PlusV1::Activity, decorator: Google::Apis::PlusV1::ActivityRepresentation
@@ -426,7 +401,6 @@ module Google
         class InReplyToRepresentation < Google::Apis::Core::JsonRepresentation; end
         class ObjectRepresentation < Google::Apis::Core::JsonRepresentation; end
         class PlusonersRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :actor, as: 'actor', class: Google::Apis::PlusV1::Comment::Actor, decorator: Google::Apis::PlusV1::CommentRepresentation::ActorRepresentation
         
         property :etag, as: 'etag'
@@ -444,35 +418,29 @@ module Google
         property :updated, as: 'updated', type: DateTime
         property :verb, as: 'verb'
         
-        
         # @private
         class ActorRepresentation < Google::Apis::Core::JsonRepresentation
           class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :display_name, as: 'displayName'
           property :id, as: 'id'
           property :image, as: 'image', class: Google::Apis::PlusV1::Comment::Actor::Image, decorator: Google::Apis::PlusV1::CommentRepresentation::ActorRepresentation::ImageRepresentation
           
           property :url, as: 'url'
           
-          
           # @private
           class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :url, as: 'url'
           end
         end
         
         # @private
         class InReplyToRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :id, as: 'id'
           property :url, as: 'url'
         end
         
         # @private
         class ObjectRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :content, as: 'content'
           property :object_type, as: 'objectType'
           property :original_content, as: 'originalContent'
@@ -480,14 +448,12 @@ module Google
         
         # @private
         class PlusonersRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :total_items, as: 'totalItems'
         end
       end
 
       # @private
       class CommentFeedRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :etag, as: 'etag'
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::PlusV1::Comment, decorator: Google::Apis::PlusV1::CommentRepresentation
@@ -502,7 +468,6 @@ module Google
 
       # @private
       class ItemScopeRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :about, as: 'about', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScopeRepresentation
         
         collection :additional_name, as: 'additionalName'
@@ -583,7 +548,6 @@ module Google
 
       # @private
       class MomentRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         property :kind, as: 'kind'
         property :object, as: 'object', class: Google::Apis::PlusV1::ItemScope, decorator: Google::Apis::PlusV1::ItemScopeRepresentation
@@ -598,7 +562,6 @@ module Google
 
       # @private
       class MomentsFeedRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :etag, as: 'etag'
         collection :items, as: 'items', class: Google::Apis::PlusV1::Moment, decorator: Google::Apis::PlusV1::MomentRepresentation
         
@@ -613,7 +576,6 @@ module Google
 
       # @private
       class PeopleFeedRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :etag, as: 'etag'
         collection :items, as: 'items', class: Google::Apis::PlusV1::Person, decorator: Google::Apis::PlusV1::PersonRepresentation
         
@@ -635,7 +597,6 @@ module Google
         class OrganizationRepresentation < Google::Apis::Core::JsonRepresentation; end
         class PlacesLivedRepresentation < Google::Apis::Core::JsonRepresentation; end
         class UrlRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :about_me, as: 'aboutMe'
         property :age_range, as: 'ageRange', class: Google::Apis::PlusV1::Person::AgeRange, decorator: Google::Apis::PlusV1::PersonRepresentation::AgeRangeRepresentation
         
@@ -679,10 +640,8 @@ module Google
         
         property :verified, as: 'verified'
         
-        
         # @private
         class AgeRangeRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :max, as: 'max'
           property :min, as: 'min'
         end
@@ -691,24 +650,20 @@ module Google
         class CoverRepresentation < Google::Apis::Core::JsonRepresentation
           class CoverInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
           class CoverPhotoRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :cover_info, as: 'coverInfo', class: Google::Apis::PlusV1::Person::Cover::CoverInfo, decorator: Google::Apis::PlusV1::PersonRepresentation::CoverRepresentation::CoverInfoRepresentation
           
           property :cover_photo, as: 'coverPhoto', class: Google::Apis::PlusV1::Person::Cover::CoverPhoto, decorator: Google::Apis::PlusV1::PersonRepresentation::CoverRepresentation::CoverPhotoRepresentation
           
           property :layout, as: 'layout'
           
-          
           # @private
           class CoverInfoRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :left_image_offset, as: 'leftImageOffset'
             property :top_image_offset, as: 'topImageOffset'
           end
           
           # @private
           class CoverPhotoRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :height, as: 'height'
             property :url, as: 'url'
             property :width, as: 'width'
@@ -717,21 +672,18 @@ module Google
         
         # @private
         class EmailRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :type, as: 'type'
           property :value, as: 'value'
         end
         
         # @private
         class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :is_default, as: 'isDefault'
           property :url, as: 'url'
         end
         
         # @private
         class NameRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :family_name, as: 'familyName'
           property :formatted, as: 'formatted'
           property :given_name, as: 'givenName'
@@ -742,7 +694,6 @@ module Google
         
         # @private
         class OrganizationRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :department, as: 'department'
           property :description, as: 'description'
           property :end_date, as: 'endDate'
@@ -756,14 +707,12 @@ module Google
         
         # @private
         class PlacesLivedRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :primary, as: 'primary'
           property :value, as: 'value'
         end
         
         # @private
         class UrlRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :label, as: 'label'
           property :type, as: 'type'
           property :value, as: 'value'
@@ -774,7 +723,6 @@ module Google
       class PlaceRepresentation < Google::Apis::Core::JsonRepresentation
         class AddressRepresentation < Google::Apis::Core::JsonRepresentation; end
         class PositionRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :address, as: 'address', class: Google::Apis::PlusV1::Place::Address, decorator: Google::Apis::PlusV1::PlaceRepresentation::AddressRepresentation
         
         property :display_name, as: 'displayName'
@@ -783,16 +731,13 @@ module Google
         property :position, as: 'position', class: Google::Apis::PlusV1::Place::Position, decorator: Google::Apis::PlusV1::PlaceRepresentation::PositionRepresentation
         
         
-        
         # @private
         class AddressRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :formatted, as: 'formatted'
         end
         
         # @private
         class PositionRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :latitude, as: 'latitude'
           property :longitude, as: 'longitude'
         end
@@ -800,7 +745,6 @@ module Google
 
       # @private
       class AclentryResourceRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :display_name, as: 'displayName'
         property :id, as: 'id'
         property :type, as: 'type'

@@ -139,11 +139,11 @@ module Google
         
         
         # 
-        # @param [Google::Apis::ManagerV1beta2::Deployment] deployment_obj
-        #   
         # @param [String] project_id
         #   
         # @param [String] region
+        #   
+        # @param [Google::Apis::ManagerV1beta2::Deployment] deployment
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -166,11 +166,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_deployment(deployment_obj, project_id, region, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_deployment(project_id, region, deployment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/regions/{region}/deployments'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ManagerV1beta2::DeploymentRepresentation
-          command.request_object = deployment_obj
+          command.request_object = deployment
           command.response_representation = Google::Apis::ManagerV1beta2::DeploymentRepresentation
           command.response_class = Google::Apis::ManagerV1beta2::Deployment
           command.params['projectId'] = project_id unless project_id.nil?
@@ -308,9 +308,9 @@ module Google
         
         
         # 
-        # @param [Google::Apis::ManagerV1beta2::Template] template_obj
-        #   
         # @param [String] project_id
+        #   
+        # @param [Google::Apis::ManagerV1beta2::Template] template
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -333,11 +333,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_template(template_obj, project_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_template(project_id, template = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/templates'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ManagerV1beta2::TemplateRepresentation
-          command.request_object = template_obj
+          command.request_object = template
           command.response_representation = Google::Apis::ManagerV1beta2::TemplateRepresentation
           command.response_class = Google::Apis::ManagerV1beta2::Template
           command.params['projectId'] = project_id unless project_id.nil?

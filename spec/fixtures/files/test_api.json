@@ -367,7 +367,7 @@
         },
         "create": {
           "path": "things",
-          "id": "test.things.update",
+          "id": "test.things.create",
           "httpMethod": "POST",
           "description": "Create things",
           "request": {

@@ -89,7 +89,6 @@ module Google
 
       # @private
       class AdvertiserRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :allow_publisher_created_links, as: 'allowPublisherCreatedLinks'
         property :category, as: 'category'
         property :commission_duration, as: 'commissionDuration'
@@ -120,7 +119,6 @@ module Google
 
       # @private
       class AdvertisersRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::GanV1beta1::Advertiser, decorator: Google::Apis::GanV1beta1::AdvertiserRepresentation
         
         
@@ -133,7 +131,6 @@ module Google
         class BonusRewardRepresentation < Google::Apis::Core::JsonRepresentation; end
         class DefaultFeeRepresentation < Google::Apis::Core::JsonRepresentation; end
         class RewardRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :additional_card_benefits, as: 'additionalCardBenefits'
         
         property :additional_card_holder_fee, as: 'additionalCardHolderFee'
@@ -208,17 +205,14 @@ module Google
         property :variable_rates_last_updated, as: 'variableRatesLastUpdated'
         property :variable_rates_update_frequency, as: 'variableRatesUpdateFrequency'
         
-        
         # @private
         class BonusRewardRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :amount, as: 'amount'
           property :details, as: 'details'
         end
         
         # @private
         class DefaultFeeRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :category, as: 'category'
           property :max_rate, as: 'maxRate'
           property :min_rate, as: 'minRate'
@@ -227,7 +221,6 @@ module Google
         
         # @private
         class RewardRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :additional_details, as: 'additionalDetails'
           property :amount, as: 'amount'
           property :category, as: 'category'
@@ -239,7 +232,6 @@ module Google
 
       # @private
       class CcOffersRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::GanV1beta1::CcOffer, decorator: Google::Apis::GanV1beta1::CcOfferRepresentation
         
         
@@ -249,7 +241,6 @@ module Google
       # @private
       class EventRepresentation < Google::Apis::Core::JsonRepresentation
         class ProductRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :advertiser_id, as: 'advertiserId'
         property :advertiser_name, as: 'advertiserName'
         property :charge_id, as: 'chargeId'
@@ -275,10 +266,8 @@ module Google
         property :status, as: 'status'
         property :type, as: 'type'
         
-        
         # @private
         class ProductRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :category_id, as: 'categoryId'
           property :category_name, as: 'categoryName'
           property :earnings, as: 'earnings', class: Google::Apis::GanV1beta1::Money, decorator: Google::Apis::GanV1beta1::MoneyRepresentation
@@ -296,7 +285,6 @@ module Google
 
       # @private
       class EventsRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::GanV1beta1::Event, decorator: Google::Apis::GanV1beta1::EventRepresentation
         
         
@@ -307,7 +295,6 @@ module Google
       # @private
       class LinkRepresentation < Google::Apis::Core::JsonRepresentation
         class SpecialOffersRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :advertiser_id, as: 'advertiserId'
         property :authorship, as: 'authorship'
         property :availability, as: 'availability'
@@ -333,10 +320,8 @@ module Google
         
         property :start_date, as: 'startDate', type: DateTime
         
-        
         # @private
         class SpecialOffersRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :free_gift, as: 'freeGift'
           property :free_shipping, as: 'freeShipping'
           property :free_shipping_min, as: 'freeShippingMin', class: Google::Apis::GanV1beta1::Money, decorator: Google::Apis::GanV1beta1::MoneyRepresentation
@@ -354,7 +339,6 @@ module Google
 
       # @private
       class LinksRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::GanV1beta1::Link, decorator: Google::Apis::GanV1beta1::LinkRepresentation
         
         
@@ -364,14 +348,12 @@ module Google
 
       # @private
       class MoneyRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :amount, as: 'amount'
         property :currency_code, as: 'currencyCode'
       end
 
       # @private
       class PublisherRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :classification, as: 'classification'
         property :epc_ninety_day_average, as: 'epcNinetyDayAverage', class: Google::Apis::GanV1beta1::Money, decorator: Google::Apis::GanV1beta1::MoneyRepresentation
         
@@ -391,7 +373,6 @@ module Google
 
       # @private
       class PublishersRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::GanV1beta1::Publisher, decorator: Google::Apis::GanV1beta1::PublisherRepresentation
         
         
@@ -401,7 +382,6 @@ module Google
 
       # @private
       class ReportRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :column_names, as: 'column_names'
         
         property :end_date, as: 'end_date'

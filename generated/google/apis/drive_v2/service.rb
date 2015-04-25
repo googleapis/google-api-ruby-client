@@ -274,7 +274,7 @@ module Google
         
         
         # Subscribe to changes for a user.
-        # @param [Google::Apis::DriveV2::Channel] channel_obj
+        # @param [Google::Apis::DriveV2::Channel] channel
         #   
         # @param [Boolean] include_deleted
         #   Whether to include deleted items.
@@ -309,11 +309,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_change(channel_obj, include_deleted: nil, include_subscribed: nil, max_results: nil, page_token: nil, start_change_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_change(channel = nil, include_deleted: nil, include_subscribed: nil, max_results: nil, page_token: nil, start_change_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'changes/watch'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DriveV2::ChannelRepresentation
-          command.request_object = channel_obj
+          command.request_object = channel
           command.response_representation = Google::Apis::DriveV2::ChannelRepresentation
           command.response_class = Google::Apis::DriveV2::Channel
           command.query['includeDeleted'] = include_deleted unless include_deleted.nil?
@@ -328,7 +328,7 @@ module Google
         end
 
         # Stop watching resources through this channel
-        # @param [Google::Apis::DriveV2::Channel] channel_obj
+        # @param [Google::Apis::DriveV2::Channel] channel
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -351,11 +351,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_channel(channel_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def stop_channel(channel = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'channels/stop'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DriveV2::ChannelRepresentation
-          command.request_object = channel_obj
+          command.request_object = channel
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -441,10 +441,10 @@ module Google
         
         
         # Inserts a file into a folder.
-        # @param [Google::Apis::DriveV2::ChildReference] child_reference_obj
-        #   
         # @param [String] folder_id
         #   The ID of the folder.
+        # @param [Google::Apis::DriveV2::ChildReference] child_reference
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -466,11 +466,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_child(child_reference_obj, folder_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_child(folder_id, child_reference = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{folderId}/children'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DriveV2::ChildReferenceRepresentation
-          command.request_object = child_reference_obj
+          command.request_object = child_reference
           command.response_representation = Google::Apis::DriveV2::ChildReferenceRepresentation
           command.response_class = Google::Apis::DriveV2::ChildReference
           command.params['folderId'] = folder_id unless folder_id.nil?
@@ -609,10 +609,10 @@ module Google
         
         
         # Creates a new comment on the given file.
-        # @param [Google::Apis::DriveV2::Comment] comment_obj
-        #   
         # @param [String] file_id
         #   The ID of the file.
+        # @param [Google::Apis::DriveV2::Comment] comment
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -634,11 +634,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_comment(comment_obj, file_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_comment(file_id, comment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/comments'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DriveV2::CommentRepresentation
-          command.request_object = comment_obj
+          command.request_object = comment
           command.response_representation = Google::Apis::DriveV2::CommentRepresentation
           command.response_class = Google::Apis::DriveV2::Comment
           command.params['fileId'] = file_id unless file_id.nil?
@@ -703,12 +703,12 @@ module Google
         
         
         # Updates an existing comment. This method supports patch semantics.
-        # @param [Google::Apis::DriveV2::Comment] comment_obj
-        #   
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
         #   The ID of the comment.
+        # @param [Google::Apis::DriveV2::Comment] comment
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -730,11 +730,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_comment(comment_obj, file_id, comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_comment(file_id, comment_id, comment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/comments/{commentId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DriveV2::CommentRepresentation
-          command.request_object = comment_obj
+          command.request_object = comment
           command.response_representation = Google::Apis::DriveV2::CommentRepresentation
           command.response_class = Google::Apis::DriveV2::Comment
           command.params['fileId'] = file_id unless file_id.nil?
@@ -747,12 +747,12 @@ module Google
         
         
         # Updates an existing comment.
-        # @param [Google::Apis::DriveV2::Comment] comment_obj
-        #   
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
         #   The ID of the comment.
+        # @param [Google::Apis::DriveV2::Comment] comment
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -774,11 +774,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_comment(comment_obj, file_id, comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_comment(file_id, comment_id, comment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/comments/{commentId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::DriveV2::CommentRepresentation
-          command.request_object = comment_obj
+          command.request_object = comment
           command.response_representation = Google::Apis::DriveV2::CommentRepresentation
           command.response_class = Google::Apis::DriveV2::Comment
           command.params['fileId'] = file_id unless file_id.nil?
@@ -790,10 +790,10 @@ module Google
         end
 
         # Creates a copy of the specified file.
-        # @param [Google::Apis::DriveV2::File] file_obj
-        #   
         # @param [String] file_id
         #   The ID of the file to copy.
+        # @param [Google::Apis::DriveV2::File] file
+        #   
         # @param [Boolean] convert
         #   Whether to convert this file to the corresponding Google Docs format.
         # @param [Boolean] ocr
@@ -831,11 +831,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def copy_file(file_obj, file_id, convert: nil, ocr: nil, ocr_language: nil, pinned: nil, timed_text_language: nil, timed_text_track_name: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def copy_file(file_id, file = nil, convert: nil, ocr: nil, ocr_language: nil, pinned: nil, timed_text_language: nil, timed_text_track_name: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/copy'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DriveV2::FileRepresentation
-          command.request_object = file_obj
+          command.request_object = file
           command.response_representation = Google::Apis::DriveV2::FileRepresentation
           command.response_class = Google::Apis::DriveV2::File
           command.params['fileId'] = file_id unless file_id.nil?
@@ -926,11 +926,7 @@ module Google
         #   The ID for the file in question.
         # @param [Boolean] acknowledge_abuse
         #   Whether the user is acknowledging the risk of downloading known malware or
-        #   other abusive files. Ignored unless alt=media is specified.
-        # @param [String] alt
-        #   Specifies the type of resource representation to return. The default is 'json'
-        #   to return file metadata. Specifying 'media' will cause the file content to be
-        #   returned.
+        #   other abusive files.
         # @param [String] projection
         #   This parameter is deprecated and has no function.
         # @param [String] revision_id
@@ -961,7 +957,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_file(file_id, acknowledge_abuse: nil, alt: nil, projection: nil, revision_id: nil, update_viewed_date: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def get_file(file_id, acknowledge_abuse: nil, projection: nil, revision_id: nil, update_viewed_date: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           path = 'files/{fileId}'
           if download_dest.nil?
             command =  make_simple_command(:get, path, options)
@@ -973,7 +969,6 @@ module Google
           command.response_class = Google::Apis::DriveV2::File
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['acknowledgeAbuse'] = acknowledge_abuse unless acknowledge_abuse.nil?
-          command.query['alt'] = alt unless alt.nil?
           command.query['projection'] = projection unless projection.nil?
           command.query['revisionId'] = revision_id unless revision_id.nil?
           command.query['updateViewedDate'] = update_viewed_date unless update_viewed_date.nil?
@@ -985,7 +980,7 @@ module Google
         
         
         # Insert a new file.
-        # @param [Google::Apis::DriveV2::File] file_obj
+        # @param [Google::Apis::DriveV2::File] file
         #   
         # @param [Boolean] convert
         #   Whether to convert this file to the corresponding Google Docs format.
@@ -1030,7 +1025,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_file(file_obj, convert: nil, ocr: nil, ocr_language: nil, pinned: nil, timed_text_language: nil, timed_text_track_name: nil, use_content_as_indexable_text: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_file(file = nil, convert: nil, ocr: nil, ocr_language: nil, pinned: nil, timed_text_language: nil, timed_text_track_name: nil, use_content_as_indexable_text: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'files'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -1040,7 +1035,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::DriveV2::FileRepresentation
-          command.request_object = file_obj
+          command.request_object = file
           command.response_representation = Google::Apis::DriveV2::FileRepresentation
           command.response_class = Google::Apis::DriveV2::File
           command.query['convert'] = convert unless convert.nil?
@@ -1108,10 +1103,10 @@ module Google
         
         
         # Updates file metadata and/or content. This method supports patch semantics.
-        # @param [Google::Apis::DriveV2::File] file_obj
-        #   
         # @param [String] file_id
         #   The ID of the file to update.
+        # @param [Google::Apis::DriveV2::File] file
+        #   
         # @param [String] add_parents
         #   Comma-separated list of parent IDs to add.
         # @param [Boolean] convert
@@ -1161,11 +1156,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_file(file_obj, file_id, add_parents: nil, convert: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_file(file_id, file = nil, add_parents: nil, convert: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DriveV2::FileRepresentation
-          command.request_object = file_obj
+          command.request_object = file
           command.response_representation = Google::Apis::DriveV2::FileRepresentation
           command.response_class = Google::Apis::DriveV2::File
           command.params['fileId'] = file_id unless file_id.nil?
@@ -1300,10 +1295,10 @@ module Google
         
         
         # Updates file metadata and/or content.
-        # @param [Google::Apis::DriveV2::File] file_obj
-        #   
         # @param [String] file_id
         #   The ID of the file to update.
+        # @param [Google::Apis::DriveV2::File] file
+        #   
         # @param [String] add_parents
         #   Comma-separated list of parent IDs to add.
         # @param [Boolean] convert
@@ -1357,7 +1352,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_file(file_obj, file_id, add_parents: nil, convert: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def update_file(file_id, file = nil, add_parents: nil, convert: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'files/{fileId}'
           if upload_source.nil?
             command =  make_simple_command(:put, path, options)
@@ -1367,7 +1362,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::DriveV2::FileRepresentation
-          command.request_object = file_obj
+          command.request_object = file
           command.response_representation = Google::Apis::DriveV2::FileRepresentation
           command.response_class = Google::Apis::DriveV2::File
           command.params['fileId'] = file_id unless file_id.nil?
@@ -1391,17 +1386,13 @@ module Google
         
         
         # Subscribe to changes on a file
-        # @param [Google::Apis::DriveV2::Channel] channel_obj
-        #   
         # @param [String] file_id
         #   The ID for the file in question.
+        # @param [Google::Apis::DriveV2::Channel] channel
+        #   
         # @param [Boolean] acknowledge_abuse
         #   Whether the user is acknowledging the risk of downloading known malware or
-        #   other abusive files. Ignored unless alt=media is specified.
-        # @param [String] alt
-        #   Specifies the type of resource representation to return. The default is 'json'
-        #   to return file metadata. Specifying 'media' will cause the file content to be
-        #   returned.
+        #   other abusive files.
         # @param [String] projection
         #   This parameter is deprecated and has no function.
         # @param [String] revision_id
@@ -1432,7 +1423,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_file(channel_obj, file_id, acknowledge_abuse: nil, alt: nil, projection: nil, revision_id: nil, update_viewed_date: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def watch_file(file_id, channel = nil, acknowledge_abuse: nil, projection: nil, revision_id: nil, update_viewed_date: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           path = 'files/{fileId}/watch'
           if download_dest.nil?
             command =  make_simple_command(:post, path, options)
@@ -1441,12 +1432,11 @@ module Google
             command.download_dest = download_dest
           end
           command.request_representation = Google::Apis::DriveV2::ChannelRepresentation
-          command.request_object = channel_obj
+          command.request_object = channel
           command.response_representation = Google::Apis::DriveV2::ChannelRepresentation
           command.response_class = Google::Apis::DriveV2::Channel
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['acknowledgeAbuse'] = acknowledge_abuse unless acknowledge_abuse.nil?
-          command.query['alt'] = alt unless alt.nil?
           command.query['projection'] = projection unless projection.nil?
           command.query['revisionId'] = revision_id unless revision_id.nil?
           command.query['updateViewedDate'] = update_viewed_date unless update_viewed_date.nil?
@@ -1535,10 +1525,10 @@ module Google
         
         
         # Adds a parent folder for a file.
-        # @param [Google::Apis::DriveV2::ParentReference] parent_reference_obj
-        #   
         # @param [String] file_id
         #   The ID of the file.
+        # @param [Google::Apis::DriveV2::ParentReference] parent_reference
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1560,11 +1550,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_parent(parent_reference_obj, file_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_parent(file_id, parent_reference = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/parents'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DriveV2::ParentReferenceRepresentation
-          command.request_object = parent_reference_obj
+          command.request_object = parent_reference
           command.response_representation = Google::Apis::DriveV2::ParentReferenceRepresentation
           command.response_class = Google::Apis::DriveV2::ParentReference
           command.params['fileId'] = file_id unless file_id.nil?
@@ -1727,10 +1717,10 @@ module Google
         
         
         # Inserts a permission for a file.
-        # @param [Google::Apis::DriveV2::Permission] permission_obj
-        #   
         # @param [String] file_id
         #   The ID for the file.
+        # @param [Google::Apis::DriveV2::Permission] permission
+        #   
         # @param [String] email_message
         #   A custom message to include in notification emails.
         # @param [Boolean] send_notification_emails
@@ -1757,11 +1747,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_permission(permission_obj, file_id, email_message: nil, send_notification_emails: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_permission(file_id, permission = nil, email_message: nil, send_notification_emails: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/permissions'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DriveV2::PermissionRepresentation
-          command.request_object = permission_obj
+          command.request_object = permission
           command.response_representation = Google::Apis::DriveV2::PermissionRepresentation
           command.response_class = Google::Apis::DriveV2::Permission
           command.params['fileId'] = file_id unless file_id.nil?
@@ -1812,12 +1802,12 @@ module Google
         
         
         # Updates a permission. This method supports patch semantics.
-        # @param [Google::Apis::DriveV2::Permission] permission_obj
-        #   
         # @param [String] file_id
         #   The ID for the file.
         # @param [String] permission_id
         #   The ID for the permission.
+        # @param [Google::Apis::DriveV2::Permission] permission
+        #   
         # @param [Boolean] transfer_ownership
         #   Whether changing a role to 'owner' downgrades the current owners to writers.
         #   Does nothing if the specified role is not 'owner'.
@@ -1842,11 +1832,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_permission(permission_obj, file_id, permission_id, transfer_ownership: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_permission(file_id, permission_id, permission = nil, transfer_ownership: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/permissions/{permissionId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DriveV2::PermissionRepresentation
-          command.request_object = permission_obj
+          command.request_object = permission
           command.response_representation = Google::Apis::DriveV2::PermissionRepresentation
           command.response_class = Google::Apis::DriveV2::Permission
           command.params['fileId'] = file_id unless file_id.nil?
@@ -1860,12 +1850,12 @@ module Google
         
         
         # Updates a permission.
-        # @param [Google::Apis::DriveV2::Permission] permission_obj
-        #   
         # @param [String] file_id
         #   The ID for the file.
         # @param [String] permission_id
         #   The ID for the permission.
+        # @param [Google::Apis::DriveV2::Permission] permission
+        #   
         # @param [Boolean] transfer_ownership
         #   Whether changing a role to 'owner' downgrades the current owners to writers.
         #   Does nothing if the specified role is not 'owner'.
@@ -1890,11 +1880,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_permission(permission_obj, file_id, permission_id, transfer_ownership: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_permission(file_id, permission_id, permission = nil, transfer_ownership: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/permissions/{permissionId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::DriveV2::PermissionRepresentation
-          command.request_object = permission_obj
+          command.request_object = permission
           command.response_representation = Google::Apis::DriveV2::PermissionRepresentation
           command.response_class = Google::Apis::DriveV2::Permission
           command.params['fileId'] = file_id unless file_id.nil?
@@ -1991,10 +1981,10 @@ module Google
         
         
         # Adds a property to a file.
-        # @param [Google::Apis::DriveV2::Property] property_obj
-        #   
         # @param [String] file_id
         #   The ID of the file.
+        # @param [Google::Apis::DriveV2::Property] property
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2016,11 +2006,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_property(property_obj, file_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_property(file_id, property = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/properties'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DriveV2::PropertyRepresentation
-          command.request_object = property_obj
+          command.request_object = property
           command.response_representation = Google::Apis::DriveV2::PropertyRepresentation
           command.response_class = Google::Apis::DriveV2::Property
           command.params['fileId'] = file_id unless file_id.nil?
@@ -2069,12 +2059,12 @@ module Google
         
         
         # Updates a property. This method supports patch semantics.
-        # @param [Google::Apis::DriveV2::Property] property_obj
-        #   
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] property_key
         #   The key of the property.
+        # @param [Google::Apis::DriveV2::Property] property
+        #   
         # @param [String] visibility
         #   The visibility of the property.
         # @param [String] fields
@@ -2098,11 +2088,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_property(property_obj, file_id, property_key, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_property(file_id, property_key, property = nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/properties/{propertyKey}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DriveV2::PropertyRepresentation
-          command.request_object = property_obj
+          command.request_object = property
           command.response_representation = Google::Apis::DriveV2::PropertyRepresentation
           command.response_class = Google::Apis::DriveV2::Property
           command.params['fileId'] = file_id unless file_id.nil?
@@ -2116,12 +2106,12 @@ module Google
         
         
         # Updates a property.
-        # @param [Google::Apis::DriveV2::Property] property_obj
-        #   
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] property_key
         #   The key of the property.
+        # @param [Google::Apis::DriveV2::Property] property
+        #   
         # @param [String] visibility
         #   The visibility of the property.
         # @param [String] fields
@@ -2145,11 +2135,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_property(property_obj, file_id, property_key, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_property(file_id, property_key, property = nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/properties/{propertyKey}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::DriveV2::PropertyRepresentation
-          command.request_object = property_obj
+          command.request_object = property
           command.response_representation = Google::Apis::DriveV2::PropertyRepresentation
           command.response_class = Google::Apis::DriveV2::Property
           command.params['fileId'] = file_id unless file_id.nil?
@@ -2348,12 +2338,12 @@ module Google
         
         
         # Creates a new reply to the given comment.
-        # @param [Google::Apis::DriveV2::CommentReply] comment_reply_obj
-        #   
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
         #   The ID of the comment.
+        # @param [Google::Apis::DriveV2::CommentReply] comment_reply
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2375,11 +2365,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_reply(comment_reply_obj, file_id, comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_reply(file_id, comment_id, comment_reply = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/comments/{commentId}/replies'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DriveV2::CommentReplyRepresentation
-          command.request_object = comment_reply_obj
+          command.request_object = comment_reply
           command.response_representation = Google::Apis::DriveV2::CommentReplyRepresentation
           command.response_class = Google::Apis::DriveV2::CommentReply
           command.params['fileId'] = file_id unless file_id.nil?
@@ -2444,14 +2434,14 @@ module Google
         
         
         # Updates an existing reply. This method supports patch semantics.
-        # @param [Google::Apis::DriveV2::CommentReply] comment_reply_obj
-        #   
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
         #   The ID of the comment.
         # @param [String] reply_id
         #   The ID of the reply.
+        # @param [Google::Apis::DriveV2::CommentReply] comment_reply
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2473,11 +2463,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_reply(comment_reply_obj, file_id, comment_id, reply_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_reply(file_id, comment_id, reply_id, comment_reply = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/comments/{commentId}/replies/{replyId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DriveV2::CommentReplyRepresentation
-          command.request_object = comment_reply_obj
+          command.request_object = comment_reply
           command.response_representation = Google::Apis::DriveV2::CommentReplyRepresentation
           command.response_class = Google::Apis::DriveV2::CommentReply
           command.params['fileId'] = file_id unless file_id.nil?
@@ -2491,14 +2481,14 @@ module Google
         
         
         # Updates an existing reply.
-        # @param [Google::Apis::DriveV2::CommentReply] comment_reply_obj
-        #   
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
         #   The ID of the comment.
         # @param [String] reply_id
         #   The ID of the reply.
+        # @param [Google::Apis::DriveV2::CommentReply] comment_reply
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2520,11 +2510,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_reply(comment_reply_obj, file_id, comment_id, reply_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_reply(file_id, comment_id, reply_id, comment_reply = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/comments/{commentId}/replies/{replyId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::DriveV2::CommentReplyRepresentation
-          command.request_object = comment_reply_obj
+          command.request_object = comment_reply
           command.response_representation = Google::Apis::DriveV2::CommentReplyRepresentation
           command.response_class = Google::Apis::DriveV2::CommentReply
           command.params['fileId'] = file_id unless file_id.nil?
@@ -2652,12 +2642,12 @@ module Google
         
         
         # Updates a revision. This method supports patch semantics.
-        # @param [Google::Apis::DriveV2::Revision] revision_obj
-        #   
         # @param [String] file_id
         #   The ID for the file.
         # @param [String] revision_id
         #   The ID for the revision.
+        # @param [Google::Apis::DriveV2::Revision] revision
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2679,11 +2669,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_revision(revision_obj, file_id, revision_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_revision(file_id, revision_id, revision = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/revisions/{revisionId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DriveV2::RevisionRepresentation
-          command.request_object = revision_obj
+          command.request_object = revision
           command.response_representation = Google::Apis::DriveV2::RevisionRepresentation
           command.response_class = Google::Apis::DriveV2::Revision
           command.params['fileId'] = file_id unless file_id.nil?
@@ -2696,12 +2686,12 @@ module Google
         
         
         # Updates a revision.
-        # @param [Google::Apis::DriveV2::Revision] revision_obj
-        #   
         # @param [String] file_id
         #   The ID for the file.
         # @param [String] revision_id
         #   The ID for the revision.
+        # @param [Google::Apis::DriveV2::Revision] revision
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2723,11 +2713,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_revision(revision_obj, file_id, revision_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_revision(file_id, revision_id, revision = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/revisions/{revisionId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::DriveV2::RevisionRepresentation
-          command.request_object = revision_obj
+          command.request_object = revision
           command.response_representation = Google::Apis::DriveV2::RevisionRepresentation
           command.response_class = Google::Apis::DriveV2::Revision
           command.params['fileId'] = file_id unless file_id.nil?

@@ -76,7 +76,6 @@ module Google
         class PageStatsRepresentation < Google::Apis::Core::JsonRepresentation; end
         class ScreenshotRepresentation < Google::Apis::Core::JsonRepresentation; end
         class VersionRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :formatted_results, as: 'formattedResults', class: Google::Apis::PagespeedonlineV1::Result::FormattedResults, decorator: Google::Apis::PagespeedonlineV1::ResultRepresentation::FormattedResultsRepresentation
         
         property :id, as: 'id'
@@ -93,25 +92,20 @@ module Google
         property :version, as: 'version', class: Google::Apis::PagespeedonlineV1::Result::Version, decorator: Google::Apis::PagespeedonlineV1::ResultRepresentation::VersionRepresentation
         
         
-        
         # @private
         class FormattedResultsRepresentation < Google::Apis::Core::JsonRepresentation
           class RuleResultRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :locale, as: 'locale'
           hash :rule_results, as: 'ruleResults', class: Google::Apis::PagespeedonlineV1::Result::FormattedResults::RuleResult, decorator: Google::Apis::PagespeedonlineV1::ResultRepresentation::FormattedResultsRepresentation::RuleResultRepresentation
-          
           
           
           
           # @private
           class RuleResultRepresentation < Google::Apis::Core::JsonRepresentation
             class UrlBlockRepresentation < Google::Apis::Core::JsonRepresentation; end
-            
             property :localized_rule_name, as: 'localizedRuleName'
             property :rule_impact, as: 'ruleImpact'
             collection :url_blocks, as: 'urlBlocks', class: Google::Apis::PagespeedonlineV1::Result::FormattedResults::RuleResult::UrlBlock, decorator: Google::Apis::PagespeedonlineV1::ResultRepresentation::FormattedResultsRepresentation::RuleResultRepresentation::UrlBlockRepresentation
-            
             
             
             
@@ -119,27 +113,22 @@ module Google
             class UrlBlockRepresentation < Google::Apis::Core::JsonRepresentation
               class HeaderRepresentation < Google::Apis::Core::JsonRepresentation; end
               class UrlRepresentation < Google::Apis::Core::JsonRepresentation; end
-              
               property :header, as: 'header', class: Google::Apis::PagespeedonlineV1::Result::FormattedResults::RuleResult::UrlBlock::Header, decorator: Google::Apis::PagespeedonlineV1::ResultRepresentation::FormattedResultsRepresentation::RuleResultRepresentation::UrlBlockRepresentation::HeaderRepresentation
               
               collection :urls, as: 'urls', class: Google::Apis::PagespeedonlineV1::Result::FormattedResults::RuleResult::UrlBlock::Url, decorator: Google::Apis::PagespeedonlineV1::ResultRepresentation::FormattedResultsRepresentation::RuleResultRepresentation::UrlBlockRepresentation::UrlRepresentation
               
               
               
-              
               # @private
               class HeaderRepresentation < Google::Apis::Core::JsonRepresentation
                 class ArgRepresentation < Google::Apis::Core::JsonRepresentation; end
-                
                 collection :args, as: 'args', class: Google::Apis::PagespeedonlineV1::Result::FormattedResults::RuleResult::UrlBlock::Header::Arg, decorator: Google::Apis::PagespeedonlineV1::ResultRepresentation::FormattedResultsRepresentation::RuleResultRepresentation::UrlBlockRepresentation::HeaderRepresentation::ArgRepresentation
                 
                 
                 property :format, as: 'format'
                 
-                
                 # @private
                 class ArgRepresentation < Google::Apis::Core::JsonRepresentation
-                  
                   property :type, as: 'type'
                   property :value, as: 'value'
                 end
@@ -149,27 +138,22 @@ module Google
               class UrlRepresentation < Google::Apis::Core::JsonRepresentation
                 class DetailRepresentation < Google::Apis::Core::JsonRepresentation; end
                 class ResultRepresentation < Google::Apis::Core::JsonRepresentation; end
-                
                 collection :details, as: 'details', class: Google::Apis::PagespeedonlineV1::Result::FormattedResults::RuleResult::UrlBlock::Url::Detail, decorator: Google::Apis::PagespeedonlineV1::ResultRepresentation::FormattedResultsRepresentation::RuleResultRepresentation::UrlBlockRepresentation::UrlRepresentation::DetailRepresentation
                 
                 
                 property :result, as: 'result', class: Google::Apis::PagespeedonlineV1::Result::FormattedResults::RuleResult::UrlBlock::Url::Result, decorator: Google::Apis::PagespeedonlineV1::ResultRepresentation::FormattedResultsRepresentation::RuleResultRepresentation::UrlBlockRepresentation::UrlRepresentation::ResultRepresentation
                 
                 
-                
                 # @private
                 class DetailRepresentation < Google::Apis::Core::JsonRepresentation
                   class ArgRepresentation < Google::Apis::Core::JsonRepresentation; end
-                  
                   collection :args, as: 'args', class: Google::Apis::PagespeedonlineV1::Result::FormattedResults::RuleResult::UrlBlock::Url::Detail::Arg, decorator: Google::Apis::PagespeedonlineV1::ResultRepresentation::FormattedResultsRepresentation::RuleResultRepresentation::UrlBlockRepresentation::UrlRepresentation::DetailRepresentation::ArgRepresentation
                   
                   
                   property :format, as: 'format'
                   
-                  
                   # @private
                   class ArgRepresentation < Google::Apis::Core::JsonRepresentation
-                    
                     property :type, as: 'type'
                     property :value, as: 'value'
                   end
@@ -178,16 +162,13 @@ module Google
                 # @private
                 class ResultRepresentation < Google::Apis::Core::JsonRepresentation
                   class ArgRepresentation < Google::Apis::Core::JsonRepresentation; end
-                  
                   collection :args, as: 'args', class: Google::Apis::PagespeedonlineV1::Result::FormattedResults::RuleResult::UrlBlock::Url::Result::Arg, decorator: Google::Apis::PagespeedonlineV1::ResultRepresentation::FormattedResultsRepresentation::RuleResultRepresentation::UrlBlockRepresentation::UrlRepresentation::ResultRepresentation::ArgRepresentation
                   
                   
                   property :format, as: 'format'
                   
-                  
                   # @private
                   class ArgRepresentation < Google::Apis::Core::JsonRepresentation
-                    
                     property :type, as: 'type'
                     property :value, as: 'value'
                   end
@@ -199,7 +180,6 @@ module Google
         
         # @private
         class PageStatsRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :css_response_bytes, as: 'cssResponseBytes'
           property :flash_response_bytes, as: 'flashResponseBytes'
           property :html_response_bytes, as: 'htmlResponseBytes'
@@ -217,7 +197,6 @@ module Google
         
         # @private
         class ScreenshotRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :data, as: 'data'
           property :height, as: 'height'
           property :mime_type, as: 'mime_type'
@@ -226,7 +205,6 @@ module Google
         
         # @private
         class VersionRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :major, as: 'major'
           property :minor, as: 'minor'
         end

@@ -28,7 +28,6 @@ module Google
 
       # @private
       class GroupsRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :response_code, as: 'responseCode'
       end

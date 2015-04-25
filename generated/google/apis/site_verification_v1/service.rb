@@ -126,7 +126,7 @@ module Google
         
         
         # Get a verification token for placing on a website or domain.
-        # @param [Google::Apis::SiteVerificationV1::GettokenRequest] gettoken_request_obj
+        # @param [Google::Apis::SiteVerificationV1::GettokenRequest] site_verification_web_resource_gettoken_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -149,11 +149,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_token(gettoken_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_token(site_verification_web_resource_gettoken_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'token'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::SiteVerificationV1::GettokenRequestRepresentation
-          command.request_object = gettoken_request_obj
+          command.request_object = site_verification_web_resource_gettoken_request
           command.response_representation = Google::Apis::SiteVerificationV1::GettokenResponseRepresentation
           command.response_class = Google::Apis::SiteVerificationV1::GettokenResponse
           command.query['fields'] = fields unless fields.nil?
@@ -164,7 +164,7 @@ module Google
         
         
         # Attempt verification of a website or domain.
-        # @param [Google::Apis::SiteVerificationV1::Resource] resource_obj
+        # @param [Google::Apis::SiteVerificationV1::Resource] site_verification_web_resource_resource
         #   
         # @param [String] verification_method
         #   The method to use for verifying a site or domain.
@@ -189,11 +189,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_web_resource(resource_obj, verification_method: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_web_resource(site_verification_web_resource_resource = nil, verification_method: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'webResource'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::SiteVerificationV1::ResourceRepresentation
-          command.request_object = resource_obj
+          command.request_object = site_verification_web_resource_resource
           command.response_representation = Google::Apis::SiteVerificationV1::ResourceRepresentation
           command.response_class = Google::Apis::SiteVerificationV1::Resource
           command.query['verificationMethod'] = verification_method unless verification_method.nil?
@@ -240,10 +240,10 @@ module Google
         
         # Modify the list of owners for your website or domain. This method supports
         # patch semantics.
-        # @param [Google::Apis::SiteVerificationV1::Resource] resource_obj
-        #   
         # @param [String] id
         #   The id of a verified site or domain.
+        # @param [Google::Apis::SiteVerificationV1::Resource] site_verification_web_resource_resource
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -265,11 +265,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_web_resource(resource_obj, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_web_resource(id, site_verification_web_resource_resource = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'webResource/{id}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::SiteVerificationV1::ResourceRepresentation
-          command.request_object = resource_obj
+          command.request_object = site_verification_web_resource_resource
           command.response_representation = Google::Apis::SiteVerificationV1::ResourceRepresentation
           command.response_class = Google::Apis::SiteVerificationV1::Resource
           command.params['id'] = id unless id.nil?
@@ -281,10 +281,10 @@ module Google
         
         
         # Modify the list of owners for your website or domain.
-        # @param [Google::Apis::SiteVerificationV1::Resource] resource_obj
-        #   
         # @param [String] id
         #   The id of a verified site or domain.
+        # @param [Google::Apis::SiteVerificationV1::Resource] site_verification_web_resource_resource
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -306,11 +306,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_web_resource(resource_obj, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_web_resource(id, site_verification_web_resource_resource = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'webResource/{id}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::SiteVerificationV1::ResourceRepresentation
-          command.request_object = resource_obj
+          command.request_object = site_verification_web_resource_resource
           command.response_representation = Google::Apis::SiteVerificationV1::ResourceRepresentation
           command.response_class = Google::Apis::SiteVerificationV1::Resource
           command.params['id'] = id unless id.nil?

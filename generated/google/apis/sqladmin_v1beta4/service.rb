@@ -233,12 +233,12 @@ module Google
         
         # Inserts a resource containing information about a database inside a Cloud SQL
         # instance.
-        # @param [Google::Apis::SqladminV1beta4::Database] database_obj
-        #   
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Database instance ID. This does not include the project ID.
+        # @param [Google::Apis::SqladminV1beta4::Database] database
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -260,11 +260,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_database(database_obj, project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_database(project, instance, database = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/databases'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::SqladminV1beta4::DatabaseRepresentation
-          command.request_object = database_obj
+          command.request_object = database
           command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -318,14 +318,14 @@ module Google
         
         # Updates a resource containing information about a database inside a Cloud SQL
         # instance. This method supports patch semantics.
-        # @param [Google::Apis::SqladminV1beta4::Database] database_obj
-        #   
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Database instance ID. This does not include the project ID.
         # @param [String] database
         #   Name of the database to be updated in the instance.
+        # @param [Google::Apis::SqladminV1beta4::Database] database_object
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -347,11 +347,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_database(database_obj, project, instance, database, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_database(project, instance, database, database_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/databases/{database}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::SqladminV1beta4::DatabaseRepresentation
-          command.request_object = database_obj
+          command.request_object = database_object
           command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -366,14 +366,14 @@ module Google
         
         # Updates a resource containing information about a database inside a Cloud SQL
         # instance.
-        # @param [Google::Apis::SqladminV1beta4::Database] database_obj
-        #   
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Database instance ID. This does not include the project ID.
         # @param [String] database
         #   Name of the database to be updated in the instance.
+        # @param [Google::Apis::SqladminV1beta4::Database] database_object
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -395,11 +395,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_database(database_obj, project, instance, database, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_database(project, instance, database, database_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/databases/{database}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::SqladminV1beta4::DatabaseRepresentation
-          command.request_object = database_obj
+          command.request_object = database_object
           command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -445,13 +445,13 @@ module Google
         end
 
         # Creates a Cloud SQL instance as a clone of the source instance.
-        # @param [Google::Apis::SqladminV1beta4::InstancesCloneRequest] instances_clone_request_obj
-        #   
         # @param [String] project
         #   Project ID of the source as well as the clone Cloud SQL instance.
         # @param [String] instance
         #   The ID of the Cloud SQL instance to be cloned (source). This does not include
         #   the project ID.
+        # @param [Google::Apis::SqladminV1beta4::InstancesCloneRequest] instances_clone_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -473,11 +473,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def clone_instance(instances_clone_request_obj, project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def clone_instance(project, instance, instances_clone_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/clone'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::SqladminV1beta4::InstancesCloneRequestRepresentation
-          command.request_object = instances_clone_request_obj
+          command.request_object = instances_clone_request
           command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -531,12 +531,12 @@ module Google
         
         # Exports data from a Cloud SQL instance to a Google Cloud Storage bucket as a
         # MySQL dump file.
-        # @param [Google::Apis::SqladminV1beta4::InstancesExportRequest] instances_export_request_obj
-        #   
         # @param [String] project
         #   Project ID of the project that contains the instance to be exported.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [Google::Apis::SqladminV1beta4::InstancesExportRequest] instances_export_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -558,11 +558,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def export_instance(instances_export_request_obj, project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def export_instance(project, instance, instances_export_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/export'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::SqladminV1beta4::InstancesExportRequestRepresentation
-          command.request_object = instances_export_request_obj
+          command.request_object = instances_export_request
           command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -616,12 +616,12 @@ module Google
         
         # Imports data into a Cloud SQL instance from a MySQL dump file in Google Cloud
         # Storage.
-        # @param [Google::Apis::SqladminV1beta4::InstancesImportRequest] instances_import_request_obj
-        #   
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [Google::Apis::SqladminV1beta4::InstancesImportRequest] instances_import_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -643,11 +643,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_instance(instances_import_request_obj, project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def import_instance(project, instance, instances_import_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/import'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::SqladminV1beta4::InstancesImportRequestRepresentation
-          command.request_object = instances_import_request_obj
+          command.request_object = instances_import_request
           command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -660,11 +660,11 @@ module Google
         
         
         # Creates a new Cloud SQL instance.
-        # @param [Google::Apis::SqladminV1beta4::DatabaseInstance] database_instance_obj
-        #   
         # @param [String] project
         #   Project ID of the project to which the newly created Cloud SQL instances
         #   should belong.
+        # @param [Google::Apis::SqladminV1beta4::DatabaseInstance] database_instance
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -686,11 +686,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_instance(database_instance_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_instance(project, database_instance = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::SqladminV1beta4::DatabaseInstanceRepresentation
-          command.request_object = database_instance_obj
+          command.request_object = database_instance
           command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -749,12 +749,12 @@ module Google
         # Updates settings of a Cloud SQL instance. Caution: This is not a partial
         # update, so you must include values for all the settings that you want to
         # retain. For partial updates, use patch.. This method supports patch semantics.
-        # @param [Google::Apis::SqladminV1beta4::DatabaseInstance] database_instance_obj
-        #   
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [Google::Apis::SqladminV1beta4::DatabaseInstance] database_instance
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -776,11 +776,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_instance(database_instance_obj, project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_instance(project, instance, database_instance = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::SqladminV1beta4::DatabaseInstanceRepresentation
-          command.request_object = database_instance_obj
+          command.request_object = database_instance
           command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -916,12 +916,12 @@ module Google
         
         
         # Restores a backup of a Cloud SQL instance.
-        # @param [Google::Apis::SqladminV1beta4::InstancesRestoreBackupRequest] instances_restore_backup_request_obj
-        #   
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [Google::Apis::SqladminV1beta4::InstancesRestoreBackupRequest] instances_restore_backup_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -943,11 +943,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def restore_backup(instances_restore_backup_request_obj, project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def restore_backup(project, instance, instances_restore_backup_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/restoreBackup'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::SqladminV1beta4::InstancesRestoreBackupRequestRepresentation
-          command.request_object = instances_restore_backup_request_obj
+          command.request_object = instances_restore_backup_request
           command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -1042,12 +1042,12 @@ module Google
         # Updates settings of a Cloud SQL instance. Caution: This is not a partial
         # update, so you must include values for all the settings that you want to
         # retain. For partial updates, use patch.
-        # @param [Google::Apis::SqladminV1beta4::DatabaseInstance] database_instance_obj
-        #   
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [Google::Apis::SqladminV1beta4::DatabaseInstance] database_instance
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1069,11 +1069,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_instance(database_instance_obj, project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_instance(project, instance, database_instance = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::SqladminV1beta4::DatabaseInstanceRepresentation
-          command.request_object = database_instance_obj
+          command.request_object = database_instance
           command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -1263,13 +1263,13 @@ module Google
         # Creates an SSL certificate and returns it along with the private key and
         # server certificate authority. The new certificate will not be usable until the
         # instance is restarted.
-        # @param [Google::Apis::SqladminV1beta4::SslCertsInsertRequest] ssl_certs_insert_request_obj
-        #   
         # @param [String] project
         #   Project ID of the project to which the newly created Cloud SQL instances
         #   should belong.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [Google::Apis::SqladminV1beta4::SslCertsInsertRequest] ssl_certs_insert_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1291,11 +1291,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_ssl_cert(ssl_certs_insert_request_obj, project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_ssl_cert(project, instance, ssl_certs_insert_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/sslCerts'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::SqladminV1beta4::SslCertsInsertRequestRepresentation
-          command.request_object = ssl_certs_insert_request_obj
+          command.request_object = ssl_certs_insert_request
           command.response_representation = Google::Apis::SqladminV1beta4::SslCertsInsertResponseRepresentation
           command.response_class = Google::Apis::SqladminV1beta4::SslCertsInsertResponse
           command.params['project'] = project unless project.nil?
@@ -1430,12 +1430,12 @@ module Google
         
         
         # Creates a new user in a Cloud SQL instance.
-        # @param [Google::Apis::SqladminV1beta4::User] user_obj
-        #   
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Database instance ID. This does not include the project ID.
+        # @param [Google::Apis::SqladminV1beta4::User] user
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1457,11 +1457,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_user(user_obj, project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_user(project, instance, user = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/users'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::SqladminV1beta4::UserRepresentation
-          command.request_object = user_obj
+          command.request_object = user
           command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -1514,12 +1514,12 @@ module Google
         
         
         # Updates an existing user in a Cloud SQL instance.
-        # @param [Google::Apis::SqladminV1beta4::User] user_obj
-        #   
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Database instance ID. This does not include the project ID.
+        # @param [Google::Apis::SqladminV1beta4::User] user
+        #   
         # @param [String] host
         #   Host of the user in the instance.
         # @param [String] name
@@ -1545,11 +1545,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user(user_obj, project, instance, host: nil, name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_user(project, instance, user = nil, host: nil, name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/users'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::SqladminV1beta4::UserRepresentation
-          command.request_object = user_obj
+          command.request_object = user
           command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?

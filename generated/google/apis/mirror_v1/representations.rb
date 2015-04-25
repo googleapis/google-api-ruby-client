@@ -104,7 +104,6 @@ module Google
 
       # @private
       class AccountRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :auth_tokens, as: 'authTokens', class: Google::Apis::MirrorV1::AuthToken, decorator: Google::Apis::MirrorV1::AuthTokenRepresentation
         
         
@@ -116,7 +115,6 @@ module Google
 
       # @private
       class AttachmentRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :content_type, as: 'contentType'
         property :content_url, as: 'contentUrl'
         property :id, as: 'id'
@@ -125,7 +123,6 @@ module Google
 
       # @private
       class AttachmentsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::MirrorV1::Attachment, decorator: Google::Apis::MirrorV1::AttachmentRepresentation
         
         
@@ -134,20 +131,17 @@ module Google
 
       # @private
       class AuthTokenRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :auth_token, as: 'authToken'
         property :type, as: 'type'
       end
 
       # @private
       class CommandRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :type, as: 'type'
       end
 
       # @private
       class ContactRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :accept_commands, as: 'acceptCommands', class: Google::Apis::MirrorV1::Command, decorator: Google::Apis::MirrorV1::CommandRepresentation
         
         
@@ -169,7 +163,6 @@ module Google
 
       # @private
       class ContactsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::MirrorV1::Contact, decorator: Google::Apis::MirrorV1::ContactRepresentation
         
         
@@ -178,7 +171,6 @@ module Google
 
       # @private
       class LocationRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :accuracy, as: 'accuracy'
         property :address, as: 'address'
         property :display_name, as: 'displayName'
@@ -191,7 +183,6 @@ module Google
 
       # @private
       class LocationsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::MirrorV1::Location, decorator: Google::Apis::MirrorV1::LocationRepresentation
         
         
@@ -200,7 +191,6 @@ module Google
 
       # @private
       class MenuItemRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :action, as: 'action'
         property :contextual_command, as: 'contextual_command'
         property :id, as: 'id'
@@ -211,7 +201,6 @@ module Google
 
       # @private
       class MenuValueRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :display_name, as: 'displayName'
         property :icon_url, as: 'iconUrl'
         property :state, as: 'state'
@@ -219,7 +208,6 @@ module Google
 
       # @private
       class NotificationRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :collection, as: 'collection'
         property :item_id, as: 'itemId'
         property :operation, as: 'operation'
@@ -232,14 +220,12 @@ module Google
 
       # @private
       class NotificationConfigRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :delivery_time, as: 'deliveryTime', type: DateTime
         property :level, as: 'level'
       end
 
       # @private
       class SettingRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         property :kind, as: 'kind'
         property :value, as: 'value'
@@ -247,7 +233,6 @@ module Google
 
       # @private
       class SubscriptionRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :callback_url, as: 'callbackUrl'
         property :collection, as: 'collection'
         property :id, as: 'id'
@@ -263,7 +248,6 @@ module Google
 
       # @private
       class SubscriptionsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::MirrorV1::Subscription, decorator: Google::Apis::MirrorV1::SubscriptionRepresentation
         
         
@@ -272,7 +256,6 @@ module Google
 
       # @private
       class TimelineItemRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :attachments, as: 'attachments', class: Google::Apis::MirrorV1::Attachment, decorator: Google::Apis::MirrorV1::AttachmentRepresentation
         
         
@@ -312,7 +295,6 @@ module Google
 
       # @private
       class TimelineListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::MirrorV1::TimelineItem, decorator: Google::Apis::MirrorV1::TimelineItemRepresentation
         
         
@@ -322,14 +304,12 @@ module Google
 
       # @private
       class UserActionRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :payload, as: 'payload'
         property :type, as: 'type'
       end
 
       # @private
       class UserDataRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :key, as: 'key'
         property :value, as: 'value'
       end

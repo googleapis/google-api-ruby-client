@@ -548,7 +548,6 @@ module Google
 
       # @private
       class AccessConfigRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :name, as: 'name'
         property :nat_ip, as: 'natIP'
@@ -557,7 +556,6 @@ module Google
 
       # @private
       class AddressRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :address, as: 'address'
         property :creation_timestamp, as: 'creationTimestamp'
         property :description, as: 'description'
@@ -572,7 +570,6 @@ module Google
 
       # @private
       class AddressAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         hash :items, as: 'items', class: Google::Apis::ComputeV1::AddressesScopedList, decorator: Google::Apis::ComputeV1::AddressesScopedListRepresentation
         
@@ -584,7 +581,6 @@ module Google
 
       # @private
       class AddressListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::Address, decorator: Google::Apis::ComputeV1::AddressRepresentation
         
@@ -597,28 +593,23 @@ module Google
       # @private
       class AddressesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :addresses, as: 'addresses', class: Google::Apis::ComputeV1::Address, decorator: Google::Apis::ComputeV1::AddressRepresentation
         
         
         property :warning, as: 'warning', class: Google::Apis::ComputeV1::AddressesScopedList::Warning, decorator: Google::Apis::ComputeV1::AddressesScopedListRepresentation::WarningRepresentation
         
         
-        
         # @private
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :code, as: 'code'
           collection :data, as: 'data', class: Google::Apis::ComputeV1::AddressesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::AddressesScopedListRepresentation::WarningRepresentation::DatumRepresentation
           
           
           property :message, as: 'message'
           
-          
           # @private
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :key, as: 'key'
             property :value, as: 'value'
           end
@@ -627,7 +618,6 @@ module Google
 
       # @private
       class AttachedDiskRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :auto_delete, as: 'autoDelete'
         property :boot, as: 'boot'
         property :device_name, as: 'deviceName'
@@ -645,7 +635,6 @@ module Google
 
       # @private
       class AttachedDiskInitializeParamsRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :disk_name, as: 'diskName'
         property :disk_size_gb, as: 'diskSizeGb'
         property :disk_type, as: 'diskType'
@@ -654,7 +643,6 @@ module Google
 
       # @private
       class BackendRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :balancing_mode, as: 'balancingMode'
         property :capacity_scaler, as: 'capacityScaler'
         property :description, as: 'description'
@@ -666,7 +654,6 @@ module Google
 
       # @private
       class BackendServiceRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :backends, as: 'backends', class: Google::Apis::ComputeV1::Backend, decorator: Google::Apis::ComputeV1::BackendRepresentation
         
         
@@ -687,7 +674,6 @@ module Google
 
       # @private
       class BackendServiceGroupHealthRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :health_status, as: 'healthStatus', class: Google::Apis::ComputeV1::HealthStatus, decorator: Google::Apis::ComputeV1::HealthStatusRepresentation
         
         
@@ -696,7 +682,6 @@ module Google
 
       # @private
       class BackendServiceListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::BackendService, decorator: Google::Apis::ComputeV1::BackendServiceRepresentation
         
@@ -708,7 +693,6 @@ module Google
 
       # @private
       class DeprecationStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :deleted, as: 'deleted'
         property :deprecated, as: 'deprecated'
         property :obsolete, as: 'obsolete'
@@ -718,7 +702,6 @@ module Google
 
       # @private
       class DiskRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :creation_timestamp, as: 'creationTimestamp'
         property :description, as: 'description'
         property :id, as: 'id'
@@ -740,7 +723,6 @@ module Google
 
       # @private
       class DiskAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         hash :items, as: 'items', class: Google::Apis::ComputeV1::DisksScopedList, decorator: Google::Apis::ComputeV1::DisksScopedListRepresentation
         
@@ -752,7 +734,6 @@ module Google
 
       # @private
       class DiskListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::Disk, decorator: Google::Apis::ComputeV1::DiskRepresentation
         
@@ -764,14 +745,12 @@ module Google
 
       # @private
       class DiskMoveRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :destination_zone, as: 'destinationZone'
         property :target_disk, as: 'targetDisk'
       end
 
       # @private
       class DiskTypeRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :creation_timestamp, as: 'creationTimestamp'
         property :default_disk_size_gb, as: 'defaultDiskSizeGb'
         property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatusRepresentation
@@ -787,7 +766,6 @@ module Google
 
       # @private
       class DiskTypeAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         hash :items, as: 'items', class: Google::Apis::ComputeV1::DiskTypesScopedList, decorator: Google::Apis::ComputeV1::DiskTypesScopedListRepresentation
         
@@ -799,7 +777,6 @@ module Google
 
       # @private
       class DiskTypeListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::DiskType, decorator: Google::Apis::ComputeV1::DiskTypeRepresentation
         
@@ -812,28 +789,23 @@ module Google
       # @private
       class DiskTypesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :disk_types, as: 'diskTypes', class: Google::Apis::ComputeV1::DiskType, decorator: Google::Apis::ComputeV1::DiskTypeRepresentation
         
         
         property :warning, as: 'warning', class: Google::Apis::ComputeV1::DiskTypesScopedList::Warning, decorator: Google::Apis::ComputeV1::DiskTypesScopedListRepresentation::WarningRepresentation
         
         
-        
         # @private
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :code, as: 'code'
           collection :data, as: 'data', class: Google::Apis::ComputeV1::DiskTypesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::DiskTypesScopedListRepresentation::WarningRepresentation::DatumRepresentation
           
           
           property :message, as: 'message'
           
-          
           # @private
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :key, as: 'key'
             property :value, as: 'value'
           end
@@ -843,28 +815,23 @@ module Google
       # @private
       class DisksScopedListRepresentation < Google::Apis::Core::JsonRepresentation
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :disks, as: 'disks', class: Google::Apis::ComputeV1::Disk, decorator: Google::Apis::ComputeV1::DiskRepresentation
         
         
         property :warning, as: 'warning', class: Google::Apis::ComputeV1::DisksScopedList::Warning, decorator: Google::Apis::ComputeV1::DisksScopedListRepresentation::WarningRepresentation
         
         
-        
         # @private
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :code, as: 'code'
           collection :data, as: 'data', class: Google::Apis::ComputeV1::DisksScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::DisksScopedListRepresentation::WarningRepresentation::DatumRepresentation
           
           
           property :message, as: 'message'
           
-          
           # @private
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :key, as: 'key'
             property :value, as: 'value'
           end
@@ -874,7 +841,6 @@ module Google
       # @private
       class FirewallRepresentation < Google::Apis::Core::JsonRepresentation
         class AllowedRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :allowed, as: 'allowed', class: Google::Apis::ComputeV1::Firewall::Allowed, decorator: Google::Apis::ComputeV1::FirewallRepresentation::AllowedRepresentation
         
         
@@ -892,10 +858,8 @@ module Google
         collection :target_tags, as: 'targetTags'
         
         
-        
         # @private
         class AllowedRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :ip_protocol, as: 'IPProtocol'
           collection :ports, as: 'ports'
         end
@@ -903,7 +867,6 @@ module Google
 
       # @private
       class FirewallListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::Firewall, decorator: Google::Apis::ComputeV1::FirewallRepresentation
         
@@ -915,7 +878,6 @@ module Google
 
       # @private
       class ForwardingRuleRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :ip_address, as: 'IPAddress'
         property :ip_protocol, as: 'IPProtocol'
         property :creation_timestamp, as: 'creationTimestamp'
@@ -931,7 +893,6 @@ module Google
 
       # @private
       class ForwardingRuleAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         hash :items, as: 'items', class: Google::Apis::ComputeV1::ForwardingRulesScopedList, decorator: Google::Apis::ComputeV1::ForwardingRulesScopedListRepresentation
         
@@ -943,7 +904,6 @@ module Google
 
       # @private
       class ForwardingRuleListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::ForwardingRule, decorator: Google::Apis::ComputeV1::ForwardingRuleRepresentation
         
@@ -956,28 +916,23 @@ module Google
       # @private
       class ForwardingRulesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :forwarding_rules, as: 'forwardingRules', class: Google::Apis::ComputeV1::ForwardingRule, decorator: Google::Apis::ComputeV1::ForwardingRuleRepresentation
         
         
         property :warning, as: 'warning', class: Google::Apis::ComputeV1::ForwardingRulesScopedList::Warning, decorator: Google::Apis::ComputeV1::ForwardingRulesScopedListRepresentation::WarningRepresentation
         
         
-        
         # @private
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :code, as: 'code'
           collection :data, as: 'data', class: Google::Apis::ComputeV1::ForwardingRulesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::ForwardingRulesScopedListRepresentation::WarningRepresentation::DatumRepresentation
           
           
           property :message, as: 'message'
           
-          
           # @private
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :key, as: 'key'
             property :value, as: 'value'
           end
@@ -986,13 +941,11 @@ module Google
 
       # @private
       class HealthCheckReferenceRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :health_check, as: 'healthCheck'
       end
 
       # @private
       class HealthStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :health_state, as: 'healthState'
         property :instance, as: 'instance'
         property :ip_address, as: 'ipAddress'
@@ -1001,7 +954,6 @@ module Google
 
       # @private
       class HostRuleRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :description, as: 'description'
         collection :hosts, as: 'hosts'
         
@@ -1010,7 +962,6 @@ module Google
 
       # @private
       class HttpHealthCheckRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :check_interval_sec, as: 'checkIntervalSec'
         property :creation_timestamp, as: 'creationTimestamp'
         property :description, as: 'description'
@@ -1028,7 +979,6 @@ module Google
 
       # @private
       class HttpHealthCheckListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::HttpHealthCheck, decorator: Google::Apis::ComputeV1::HttpHealthCheckRepresentation
         
@@ -1041,7 +991,6 @@ module Google
       # @private
       class ImageRepresentation < Google::Apis::Core::JsonRepresentation
         class RawDiskRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :archive_size_bytes, as: 'archiveSizeBytes'
         property :creation_timestamp, as: 'creationTimestamp'
         property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatusRepresentation
@@ -1061,10 +1010,8 @@ module Google
         property :source_type, as: 'sourceType'
         property :status, as: 'status'
         
-        
         # @private
         class RawDiskRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :container_type, as: 'containerType'
           property :sha1_checksum, as: 'sha1Checksum'
           property :source, as: 'source'
@@ -1073,7 +1020,6 @@ module Google
 
       # @private
       class ImageListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::Image, decorator: Google::Apis::ComputeV1::ImageRepresentation
         
@@ -1085,7 +1031,6 @@ module Google
 
       # @private
       class InstanceRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :can_ip_forward, as: 'canIpForward'
         property :cpu_platform, as: 'cpuPlatform'
         property :creation_timestamp, as: 'creationTimestamp'
@@ -1117,7 +1062,6 @@ module Google
 
       # @private
       class InstanceAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         hash :items, as: 'items', class: Google::Apis::ComputeV1::InstancesScopedList, decorator: Google::Apis::ComputeV1::InstancesScopedListRepresentation
         
@@ -1129,7 +1073,6 @@ module Google
 
       # @private
       class InstanceListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::Instance, decorator: Google::Apis::ComputeV1::InstanceRepresentation
         
@@ -1141,14 +1084,12 @@ module Google
 
       # @private
       class InstanceMoveRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :destination_zone, as: 'destinationZone'
         property :target_instance, as: 'targetInstance'
       end
 
       # @private
       class InstancePropertiesRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :can_ip_forward, as: 'canIpForward'
         property :description, as: 'description'
         collection :disks, as: 'disks', class: Google::Apis::ComputeV1::AttachedDisk, decorator: Google::Apis::ComputeV1::AttachedDiskRepresentation
@@ -1170,13 +1111,11 @@ module Google
 
       # @private
       class InstanceReferenceRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :instance, as: 'instance'
       end
 
       # @private
       class InstanceTemplateRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :creation_timestamp, as: 'creationTimestamp'
         property :description, as: 'description'
         property :id, as: 'id'
@@ -1189,7 +1128,6 @@ module Google
 
       # @private
       class InstanceTemplateListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::InstanceTemplate, decorator: Google::Apis::ComputeV1::InstanceTemplateRepresentation
         
@@ -1202,28 +1140,23 @@ module Google
       # @private
       class InstancesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :instances, as: 'instances', class: Google::Apis::ComputeV1::Instance, decorator: Google::Apis::ComputeV1::InstanceRepresentation
         
         
         property :warning, as: 'warning', class: Google::Apis::ComputeV1::InstancesScopedList::Warning, decorator: Google::Apis::ComputeV1::InstancesScopedListRepresentation::WarningRepresentation
         
         
-        
         # @private
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :code, as: 'code'
           collection :data, as: 'data', class: Google::Apis::ComputeV1::InstancesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::InstancesScopedListRepresentation::WarningRepresentation::DatumRepresentation
           
           
           property :message, as: 'message'
           
-          
           # @private
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :key, as: 'key'
             property :value, as: 'value'
           end
@@ -1232,7 +1165,6 @@ module Google
 
       # @private
       class LicenseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :charges_use_fee, as: 'chargesUseFee'
         property :kind, as: 'kind'
         property :name, as: 'name'
@@ -1242,7 +1174,6 @@ module Google
       # @private
       class MachineTypeRepresentation < Google::Apis::Core::JsonRepresentation
         class ScratchDiskRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :creation_timestamp, as: 'creationTimestamp'
         property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatusRepresentation
         
@@ -1261,17 +1192,14 @@ module Google
         property :self_link, as: 'selfLink'
         property :zone, as: 'zone'
         
-        
         # @private
         class ScratchDiskRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :disk_gb, as: 'diskGb'
         end
       end
 
       # @private
       class MachineTypeAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         hash :items, as: 'items', class: Google::Apis::ComputeV1::MachineTypesScopedList, decorator: Google::Apis::ComputeV1::MachineTypesScopedListRepresentation
         
@@ -1283,7 +1211,6 @@ module Google
 
       # @private
       class MachineTypeListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::MachineType, decorator: Google::Apis::ComputeV1::MachineTypeRepresentation
         
@@ -1296,28 +1223,23 @@ module Google
       # @private
       class MachineTypesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :machine_types, as: 'machineTypes', class: Google::Apis::ComputeV1::MachineType, decorator: Google::Apis::ComputeV1::MachineTypeRepresentation
         
         
         property :warning, as: 'warning', class: Google::Apis::ComputeV1::MachineTypesScopedList::Warning, decorator: Google::Apis::ComputeV1::MachineTypesScopedListRepresentation::WarningRepresentation
         
         
-        
         # @private
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :code, as: 'code'
           collection :data, as: 'data', class: Google::Apis::ComputeV1::MachineTypesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::MachineTypesScopedListRepresentation::WarningRepresentation::DatumRepresentation
           
           
           property :message, as: 'message'
           
-          
           # @private
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :key, as: 'key'
             property :value, as: 'value'
           end
@@ -1327,17 +1249,14 @@ module Google
       # @private
       class MetadataRepresentation < Google::Apis::Core::JsonRepresentation
         class ItemRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :fingerprint, as: 'fingerprint'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::Metadata::Item, decorator: Google::Apis::ComputeV1::MetadataRepresentation::ItemRepresentation
         
         
         property :kind, as: 'kind'
         
-        
         # @private
         class ItemRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :key, as: 'key'
           property :value, as: 'value'
         end
@@ -1345,7 +1264,6 @@ module Google
 
       # @private
       class NetworkRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :i_pv4_range, as: 'IPv4Range'
         property :creation_timestamp, as: 'creationTimestamp'
         property :description, as: 'description'
@@ -1358,7 +1276,6 @@ module Google
 
       # @private
       class NetworkInterfaceRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :access_configs, as: 'accessConfigs', class: Google::Apis::ComputeV1::AccessConfig, decorator: Google::Apis::ComputeV1::AccessConfigRepresentation
         
         
@@ -1369,7 +1286,6 @@ module Google
 
       # @private
       class NetworkListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::Network, decorator: Google::Apis::ComputeV1::NetworkRepresentation
         
@@ -1383,7 +1299,6 @@ module Google
       class OperationRepresentation < Google::Apis::Core::JsonRepresentation
         class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :client_operation_id, as: 'clientOperationId'
         property :creation_timestamp, as: 'creationTimestamp'
         property :end_time, as: 'endTime'
@@ -1410,19 +1325,15 @@ module Google
         
         property :zone, as: 'zone'
         
-        
         # @private
         class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
           class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           collection :errors, as: 'errors', class: Google::Apis::ComputeV1::Operation::Error::Error, decorator: Google::Apis::ComputeV1::OperationRepresentation::ErrorRepresentation::ErrorRepresentation
-          
           
           
           
           # @private
           class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :code, as: 'code'
             property :location, as: 'location'
             property :message, as: 'message'
@@ -1432,17 +1343,14 @@ module Google
         # @private
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :code, as: 'code'
           collection :data, as: 'data', class: Google::Apis::ComputeV1::Operation::Warning::Datum, decorator: Google::Apis::ComputeV1::OperationRepresentation::WarningRepresentation::DatumRepresentation
           
           
           property :message, as: 'message'
           
-          
           # @private
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :key, as: 'key'
             property :value, as: 'value'
           end
@@ -1451,7 +1359,6 @@ module Google
 
       # @private
       class OperationAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         hash :items, as: 'items', class: Google::Apis::ComputeV1::OperationsScopedList, decorator: Google::Apis::ComputeV1::OperationsScopedListRepresentation
         
@@ -1463,7 +1370,6 @@ module Google
 
       # @private
       class OperationListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::Operation, decorator: Google::Apis::ComputeV1::OperationRepresentation
         
@@ -1476,28 +1382,23 @@ module Google
       # @private
       class OperationsScopedListRepresentation < Google::Apis::Core::JsonRepresentation
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :operations, as: 'operations', class: Google::Apis::ComputeV1::Operation, decorator: Google::Apis::ComputeV1::OperationRepresentation
         
         
         property :warning, as: 'warning', class: Google::Apis::ComputeV1::OperationsScopedList::Warning, decorator: Google::Apis::ComputeV1::OperationsScopedListRepresentation::WarningRepresentation
         
         
-        
         # @private
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :code, as: 'code'
           collection :data, as: 'data', class: Google::Apis::ComputeV1::OperationsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::OperationsScopedListRepresentation::WarningRepresentation::DatumRepresentation
           
           
           property :message, as: 'message'
           
-          
           # @private
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :key, as: 'key'
             property :value, as: 'value'
           end
@@ -1506,7 +1407,6 @@ module Google
 
       # @private
       class PathMatcherRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :default_service, as: 'defaultService'
         property :description, as: 'description'
         property :name, as: 'name'
@@ -1515,7 +1415,6 @@ module Google
 
       # @private
       class PathRuleRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :paths, as: 'paths'
         
         property :service, as: 'service'
@@ -1523,7 +1422,6 @@ module Google
 
       # @private
       class ProjectRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :common_instance_metadata, as: 'commonInstanceMetadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::MetadataRepresentation
         
         property :creation_timestamp, as: 'creationTimestamp'
@@ -1540,7 +1438,6 @@ module Google
 
       # @private
       class QuotaRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :limit, as: 'limit'
         property :metric, as: 'metric'
         property :usage, as: 'usage'
@@ -1548,7 +1445,6 @@ module Google
 
       # @private
       class RegionRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :creation_timestamp, as: 'creationTimestamp'
         property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatusRepresentation
         
@@ -1566,7 +1462,6 @@ module Google
 
       # @private
       class RegionListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::Region, decorator: Google::Apis::ComputeV1::RegionRepresentation
         
@@ -1578,14 +1473,12 @@ module Google
 
       # @private
       class ResourceGroupReferenceRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :group, as: 'group'
       end
 
       # @private
       class RouteRepresentation < Google::Apis::Core::JsonRepresentation
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :creation_timestamp, as: 'creationTimestamp'
         property :description, as: 'description'
         property :dest_range, as: 'destRange'
@@ -1606,21 +1499,17 @@ module Google
         
         
         
-        
         # @private
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :code, as: 'code'
           collection :data, as: 'data', class: Google::Apis::ComputeV1::Route::Warning::Datum, decorator: Google::Apis::ComputeV1::RouteRepresentation::WarningRepresentation::DatumRepresentation
           
           
           property :message, as: 'message'
           
-          
           # @private
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :key, as: 'key'
             property :value, as: 'value'
           end
@@ -1629,7 +1518,6 @@ module Google
 
       # @private
       class RouteListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::Route, decorator: Google::Apis::ComputeV1::RouteRepresentation
         
@@ -1641,14 +1529,12 @@ module Google
 
       # @private
       class SchedulingRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :automatic_restart, as: 'automaticRestart'
         property :on_host_maintenance, as: 'onHostMaintenance'
       end
 
       # @private
       class SerialPortOutputRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :contents, as: 'contents'
         property :kind, as: 'kind'
         property :self_link, as: 'selfLink'
@@ -1656,14 +1542,12 @@ module Google
 
       # @private
       class ServiceAccountRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :email, as: 'email'
         collection :scopes, as: 'scopes'
       end
 
       # @private
       class SnapshotRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :creation_timestamp, as: 'creationTimestamp'
         property :description, as: 'description'
         property :disk_size_gb, as: 'diskSizeGb'
@@ -1682,7 +1566,6 @@ module Google
 
       # @private
       class SnapshotListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::Snapshot, decorator: Google::Apis::ComputeV1::SnapshotRepresentation
         
@@ -1694,14 +1577,12 @@ module Google
 
       # @private
       class TagsRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :fingerprint, as: 'fingerprint'
         collection :items, as: 'items'
       end
 
       # @private
       class TargetHttpProxyRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :creation_timestamp, as: 'creationTimestamp'
         property :description, as: 'description'
         property :id, as: 'id'
@@ -1713,7 +1594,6 @@ module Google
 
       # @private
       class TargetHttpProxyListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::TargetHttpProxy, decorator: Google::Apis::ComputeV1::TargetHttpProxyRepresentation
         
@@ -1725,7 +1605,6 @@ module Google
 
       # @private
       class TargetInstanceRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :creation_timestamp, as: 'creationTimestamp'
         property :description, as: 'description'
         property :id, as: 'id'
@@ -1739,7 +1618,6 @@ module Google
 
       # @private
       class TargetInstanceAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         hash :items, as: 'items', class: Google::Apis::ComputeV1::TargetInstancesScopedList, decorator: Google::Apis::ComputeV1::TargetInstancesScopedListRepresentation
         
@@ -1751,7 +1629,6 @@ module Google
 
       # @private
       class TargetInstanceListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::TargetInstance, decorator: Google::Apis::ComputeV1::TargetInstanceRepresentation
         
@@ -1764,28 +1641,23 @@ module Google
       # @private
       class TargetInstancesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :target_instances, as: 'targetInstances', class: Google::Apis::ComputeV1::TargetInstance, decorator: Google::Apis::ComputeV1::TargetInstanceRepresentation
         
         
         property :warning, as: 'warning', class: Google::Apis::ComputeV1::TargetInstancesScopedList::Warning, decorator: Google::Apis::ComputeV1::TargetInstancesScopedListRepresentation::WarningRepresentation
         
         
-        
         # @private
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :code, as: 'code'
           collection :data, as: 'data', class: Google::Apis::ComputeV1::TargetInstancesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::TargetInstancesScopedListRepresentation::WarningRepresentation::DatumRepresentation
           
           
           property :message, as: 'message'
           
-          
           # @private
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :key, as: 'key'
             property :value, as: 'value'
           end
@@ -1794,7 +1666,6 @@ module Google
 
       # @private
       class TargetPoolRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :backup_pool, as: 'backupPool'
         property :creation_timestamp, as: 'creationTimestamp'
         property :description, as: 'description'
@@ -1813,7 +1684,6 @@ module Google
 
       # @private
       class TargetPoolAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         hash :items, as: 'items', class: Google::Apis::ComputeV1::TargetPoolsScopedList, decorator: Google::Apis::ComputeV1::TargetPoolsScopedListRepresentation
         
@@ -1825,7 +1695,6 @@ module Google
 
       # @private
       class TargetPoolInstanceHealthRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :health_status, as: 'healthStatus', class: Google::Apis::ComputeV1::HealthStatus, decorator: Google::Apis::ComputeV1::HealthStatusRepresentation
         
         
@@ -1834,7 +1703,6 @@ module Google
 
       # @private
       class TargetPoolListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::TargetPool, decorator: Google::Apis::ComputeV1::TargetPoolRepresentation
         
@@ -1846,53 +1714,44 @@ module Google
 
       # @private
       class TargetPoolsAddHealthCheckRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :health_checks, as: 'healthChecks', class: Google::Apis::ComputeV1::HealthCheckReference, decorator: Google::Apis::ComputeV1::HealthCheckReferenceRepresentation
       end
 
       # @private
       class TargetPoolsAddInstanceRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :instances, as: 'instances', class: Google::Apis::ComputeV1::InstanceReference, decorator: Google::Apis::ComputeV1::InstanceReferenceRepresentation
       end
 
       # @private
       class TargetPoolsRemoveHealthCheckRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :health_checks, as: 'healthChecks', class: Google::Apis::ComputeV1::HealthCheckReference, decorator: Google::Apis::ComputeV1::HealthCheckReferenceRepresentation
       end
 
       # @private
       class TargetPoolsRemoveInstanceRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :instances, as: 'instances', class: Google::Apis::ComputeV1::InstanceReference, decorator: Google::Apis::ComputeV1::InstanceReferenceRepresentation
       end
 
       # @private
       class TargetPoolsScopedListRepresentation < Google::Apis::Core::JsonRepresentation
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :target_pools, as: 'targetPools', class: Google::Apis::ComputeV1::TargetPool, decorator: Google::Apis::ComputeV1::TargetPoolRepresentation
         
         
         property :warning, as: 'warning', class: Google::Apis::ComputeV1::TargetPoolsScopedList::Warning, decorator: Google::Apis::ComputeV1::TargetPoolsScopedListRepresentation::WarningRepresentation
         
         
-        
         # @private
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :code, as: 'code'
           collection :data, as: 'data', class: Google::Apis::ComputeV1::TargetPoolsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::TargetPoolsScopedListRepresentation::WarningRepresentation::DatumRepresentation
           
           
           property :message, as: 'message'
           
-          
           # @private
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :key, as: 'key'
             property :value, as: 'value'
           end
@@ -1901,13 +1760,11 @@ module Google
 
       # @private
       class TargetReferenceRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :target, as: 'target'
       end
 
       # @private
       class TargetVpnGatewayRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :creation_timestamp, as: 'creationTimestamp'
         property :description, as: 'description'
         collection :forwarding_rules, as: 'forwardingRules'
@@ -1924,7 +1781,6 @@ module Google
 
       # @private
       class TargetVpnGatewayAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         hash :items, as: 'items', class: Google::Apis::ComputeV1::TargetVpnGatewaysScopedList, decorator: Google::Apis::ComputeV1::TargetVpnGatewaysScopedListRepresentation
         
@@ -1936,7 +1792,6 @@ module Google
 
       # @private
       class TargetVpnGatewayListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::TargetVpnGateway, decorator: Google::Apis::ComputeV1::TargetVpnGatewayRepresentation
         
@@ -1949,28 +1804,23 @@ module Google
       # @private
       class TargetVpnGatewaysScopedListRepresentation < Google::Apis::Core::JsonRepresentation
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :target_vpn_gateways, as: 'targetVpnGateways', class: Google::Apis::ComputeV1::TargetVpnGateway, decorator: Google::Apis::ComputeV1::TargetVpnGatewayRepresentation
         
         
         property :warning, as: 'warning', class: Google::Apis::ComputeV1::TargetVpnGatewaysScopedList::Warning, decorator: Google::Apis::ComputeV1::TargetVpnGatewaysScopedListRepresentation::WarningRepresentation
         
         
-        
         # @private
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :code, as: 'code'
           collection :data, as: 'data', class: Google::Apis::ComputeV1::TargetVpnGatewaysScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::TargetVpnGatewaysScopedListRepresentation::WarningRepresentation::DatumRepresentation
           
           
           property :message, as: 'message'
           
-          
           # @private
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :key, as: 'key'
             property :value, as: 'value'
           end
@@ -1979,7 +1829,6 @@ module Google
 
       # @private
       class TestFailureRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :actual_service, as: 'actualService'
         property :expected_service, as: 'expectedService'
         property :host, as: 'host'
@@ -1988,7 +1837,6 @@ module Google
 
       # @private
       class UrlMapRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :creation_timestamp, as: 'creationTimestamp'
         property :default_service, as: 'defaultService'
         property :description, as: 'description'
@@ -2008,7 +1856,6 @@ module Google
 
       # @private
       class UrlMapListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::UrlMap, decorator: Google::Apis::ComputeV1::UrlMapRepresentation
         
@@ -2020,13 +1867,11 @@ module Google
 
       # @private
       class UrlMapReferenceRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :url_map, as: 'urlMap'
       end
 
       # @private
       class UrlMapTestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :description, as: 'description'
         property :host, as: 'host'
         property :path, as: 'path'
@@ -2035,7 +1880,6 @@ module Google
 
       # @private
       class UrlMapValidationResultRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :load_errors, as: 'loadErrors'
         
         property :load_succeeded, as: 'loadSucceeded'
@@ -2047,26 +1891,22 @@ module Google
 
       # @private
       class UrlMapsValidateRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :resource, as: 'resource', class: Google::Apis::ComputeV1::UrlMap, decorator: Google::Apis::ComputeV1::UrlMapRepresentation
       end
 
       # @private
       class UrlMapsValidateResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :result, as: 'result', class: Google::Apis::ComputeV1::UrlMapValidationResult, decorator: Google::Apis::ComputeV1::UrlMapValidationResultRepresentation
       end
 
       # @private
       class UsageExportLocationRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :bucket_name, as: 'bucketName'
         property :report_name_prefix, as: 'reportNamePrefix'
       end
 
       # @private
       class VpnTunnelRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :creation_timestamp, as: 'creationTimestamp'
         property :description, as: 'description'
         property :detailed_status, as: 'detailedStatus'
@@ -2087,7 +1927,6 @@ module Google
 
       # @private
       class VpnTunnelAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         hash :items, as: 'items', class: Google::Apis::ComputeV1::VpnTunnelsScopedList, decorator: Google::Apis::ComputeV1::VpnTunnelsScopedListRepresentation
         
@@ -2099,7 +1938,6 @@ module Google
 
       # @private
       class VpnTunnelListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::VpnTunnel, decorator: Google::Apis::ComputeV1::VpnTunnelRepresentation
         
@@ -2112,28 +1950,23 @@ module Google
       # @private
       class VpnTunnelsScopedListRepresentation < Google::Apis::Core::JsonRepresentation
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :vpn_tunnels, as: 'vpnTunnels', class: Google::Apis::ComputeV1::VpnTunnel, decorator: Google::Apis::ComputeV1::VpnTunnelRepresentation
         
         
         property :warning, as: 'warning', class: Google::Apis::ComputeV1::VpnTunnelsScopedList::Warning, decorator: Google::Apis::ComputeV1::VpnTunnelsScopedListRepresentation::WarningRepresentation
         
         
-        
         # @private
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :code, as: 'code'
           collection :data, as: 'data', class: Google::Apis::ComputeV1::VpnTunnelsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::VpnTunnelsScopedListRepresentation::WarningRepresentation::DatumRepresentation
           
           
           property :message, as: 'message'
           
-          
           # @private
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :key, as: 'key'
             property :value, as: 'value'
           end
@@ -2143,7 +1976,6 @@ module Google
       # @private
       class ZoneRepresentation < Google::Apis::Core::JsonRepresentation
         class MaintenanceWindowRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :creation_timestamp, as: 'creationTimestamp'
         property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatusRepresentation
         
@@ -2158,10 +1990,8 @@ module Google
         property :self_link, as: 'selfLink'
         property :status, as: 'status'
         
-        
         # @private
         class MaintenanceWindowRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :begin_time, as: 'beginTime'
           property :description, as: 'description'
           property :end_time, as: 'endTime'
@@ -2171,7 +2001,6 @@ module Google
 
       # @private
       class ZoneListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::Zone, decorator: Google::Apis::ComputeV1::ZoneRepresentation
         

@@ -136,6 +136,7 @@ module Google
 
           api_methods = @discovery['methods'] || {}
           api_methods.each do |name, discovery_fragment|
+            name = infer_method_name(discovery_fragment)
             @api.api_methods.push parse_method(name, discovery_fragment)
           end
 
@@ -236,6 +237,9 @@ module Google
           m = RestMethod.new
           m.name = ActiveSupport::Inflector.underscore(name)
 
+          alt_name = infer_method_name_for_rpc(discovery)
+          m.name = alt_name unless alt_name.nil?
+
           logger.info { sprintf('Generating method %s', m.name) }
 
           m.path = discovery['path']
@@ -267,7 +271,7 @@ module Google
             name = ActiveSupport::Inflector.underscore(discovery['request']['$ref'])
             name = "#{name}_object" if m.parameters[name] # De-dupe
             param = Parameter.new
-            param.name = name
+            param.name = normalize_param_name(name)
             param.location = 'body'
             param.type = parse_type(discovery['request'])
             m.request_body = param
@@ -275,6 +279,54 @@ module Google
 
           m.response_type = parse_type(discovery['response']) unless discovery['response'].nil?
           m
+        end
+
+        # Determine the ruby method name to generate for a given method in discovery.
+        # @param [Hash] discovery
+        #  Fragment of the discovery doc describing the method
+        def infer_method_name(discovery)
+          infer_method_name_for_rpc(discovery) || infer_method_name_from_id(discovery)
+        end
+
+        # For RPC style methods, pick a name based off the request/response objects. Only does
+        # so if either is in the form <verb><resource><reuest|response>.
+        # @param [Hash] discovery
+        #  Fragment of the discovery doc describing the method
+        def infer_method_name_for_rpc(discovery)
+          verb = discovery['id'].split('.').last
+          match = nil
+          if discovery['request']
+            req_name = discovery['request']['$ref']
+            match = req_name.match(/(.*)Request/)
+          elsif discovery['response']
+            res_name = discovery['response']['$ref']
+            match = res_name.match(/(.*)Response/)
+          end
+          return nil if match.nil?
+          name = ActiveSupport::Inflector.underscore(match[1])
+          return nil unless name.start_with?(verb+'_')
+          name
+        end
+
+        # For REST style methods, build a method name from the verb/resource(s) in the method
+        # id. IDs are in the form <api>.<resource>.<verb>
+        # @param [Hash] discovery
+        #  Fragment of the discovery doc describing the method
+        def infer_method_name_from_id(discovery)
+          parts = discovery['id'].split('.')
+          parts.shift
+          verb = parts.pop
+          return ActiveSupport::Inflector.underscore(verb) if ActiveSupport::Inflector.underscore(verb) != verb || parts.empty?
+          method_name = verb
+          resource_name = parts.pop
+          method_name = verb + '_'
+          method_name += parts.map { |p| ActiveSupport::Inflector.singularize(p) }.join('_') + '_' unless parts.empty?
+          if pluralize_method?(verb)
+            method_name += ActiveSupport::Inflector.pluralize(resource_name)
+          else
+            method_name += ActiveSupport::Inflector.singularize(resource_name)
+          end
+          ActiveSupport::Inflector.underscore(method_name)
         end
 
         # Process a resource (collection of methods)
@@ -299,20 +351,7 @@ module Google
 
           resource_methods = discovery['methods'] || {}
           resource_methods.each do |method, discovery_fragment|
-            method_name = method
-            if ActiveSupport::Inflector.underscore(method) == method
-              resource_name = ''
-              unless resource.parents.empty?
-                resource_name << (resource.parents.map { |p| ActiveSupport::Inflector.singularize(p.name) }.join('_'))
-                resource_name << '_'
-              end
-              if pluralize_method?(method)
-                resource_name << ActiveSupport::Inflector.pluralize(resource.name)
-              else
-                resource_name << ActiveSupport::Inflector.singularize(resource.name)
-              end
-              method_name = sprintf('%s_%s', method, resource_name)
-            end
+            method_name = infer_method_name(discovery_fragment)
             resource.api_methods.push parse_method(method_name, discovery_fragment)
           end
 

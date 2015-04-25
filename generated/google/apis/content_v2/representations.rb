@@ -396,7 +396,6 @@ module Google
 
       # @private
       class AccountRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :adult_content, as: 'adultContent'
         collection :adwords_links, as: 'adwordsLinks', class: Google::Apis::ContentV2::AccountAdwordsLink, decorator: Google::Apis::ContentV2::AccountAdwordsLinkRepresentation
         
@@ -414,21 +413,18 @@ module Google
 
       # @private
       class AccountAdwordsLinkRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :adwords_id, as: 'adwordsId'
         property :status, as: 'status'
       end
 
       # @private
       class AccountIdentifierRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :aggregator_id, as: 'aggregatorId'
         property :merchant_id, as: 'merchantId'
       end
 
       # @private
       class AccountShippingRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_id, as: 'accountId'
         collection :carrier_rates, as: 'carrierRates', class: Google::Apis::ContentV2::AccountShippingCarrierRate, decorator: Google::Apis::ContentV2::AccountShippingCarrierRateRepresentation
         
@@ -445,7 +441,6 @@ module Google
 
       # @private
       class AccountShippingCarrierRateRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :carrier, as: 'carrier'
         property :carrier_service, as: 'carrierService'
         property :modifier_flat_rate, as: 'modifierFlatRate', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::PriceRepresentation
@@ -458,7 +453,6 @@ module Google
 
       # @private
       class AccountShippingConditionRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :delivery_location_group, as: 'deliveryLocationGroup'
         property :delivery_location_id, as: 'deliveryLocationId'
         property :delivery_postal_code, as: 'deliveryPostalCode'
@@ -472,7 +466,6 @@ module Google
 
       # @private
       class AccountShippingLocationGroupRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :country, as: 'country'
         collection :location_ids, as: 'locationIds'
         
@@ -485,14 +478,12 @@ module Google
 
       # @private
       class AccountShippingPostalCodeRangeRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :end, as: 'end'
         property :start, as: 'start'
       end
 
       # @private
       class AccountShippingRateTableRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :content, as: 'content', class: Google::Apis::ContentV2::AccountShippingRateTableCell, decorator: Google::Apis::ContentV2::AccountShippingRateTableCellRepresentation
         
         
@@ -502,7 +493,6 @@ module Google
 
       # @private
       class AccountShippingRateTableCellRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :condition, as: 'condition', class: Google::Apis::ContentV2::AccountShippingCondition, decorator: Google::Apis::ContentV2::AccountShippingConditionRepresentation
         
         property :rate, as: 'rate', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::PriceRepresentation
@@ -510,7 +500,6 @@ module Google
 
       # @private
       class AccountShippingShippingServiceRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :active, as: 'active'
         property :calculation_method, as: 'calculationMethod', class: Google::Apis::ContentV2::AccountShippingShippingServiceCalculationMethod, decorator: Google::Apis::ContentV2::AccountShippingShippingServiceCalculationMethodRepresentation
         
@@ -522,7 +511,6 @@ module Google
 
       # @private
       class AccountShippingShippingServiceCalculationMethodRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :carrier_rate, as: 'carrierRate'
         property :excluded, as: 'excluded'
         property :flat_rate, as: 'flatRate', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::PriceRepresentation
@@ -533,7 +521,6 @@ module Google
 
       # @private
       class AccountShippingShippingServiceCostRuleRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :calculation_method, as: 'calculationMethod', class: Google::Apis::ContentV2::AccountShippingShippingServiceCalculationMethod, decorator: Google::Apis::ContentV2::AccountShippingShippingServiceCalculationMethodRepresentation
         
         collection :children, as: 'children', class: Google::Apis::ContentV2::AccountShippingShippingServiceCostRule, decorator: Google::Apis::ContentV2::AccountShippingShippingServiceCostRuleRepresentation
@@ -544,7 +531,6 @@ module Google
 
       # @private
       class AccountStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_id, as: 'accountId'
         collection :data_quality_issues, as: 'dataQualityIssues', class: Google::Apis::ContentV2::AccountStatusDataQualityIssue, decorator: Google::Apis::ContentV2::AccountStatusDataQualityIssueRepresentation
         
@@ -554,7 +540,6 @@ module Google
 
       # @private
       class AccountStatusDataQualityIssueRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :country, as: 'country'
         property :displayed_value, as: 'displayedValue'
         collection :example_items, as: 'exampleItems', class: Google::Apis::ContentV2::AccountStatusExampleItem, decorator: Google::Apis::ContentV2::AccountStatusExampleItemRepresentation
@@ -569,7 +554,6 @@ module Google
 
       # @private
       class AccountStatusExampleItemRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :item_id, as: 'itemId'
         property :link, as: 'link'
         property :submitted_value, as: 'submittedValue'
@@ -579,7 +563,6 @@ module Google
 
       # @private
       class AccountTaxRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_id, as: 'accountId'
         property :kind, as: 'kind'
         collection :rules, as: 'rules', class: Google::Apis::ContentV2::AccountTaxTaxRule, decorator: Google::Apis::ContentV2::AccountTaxTaxRuleRepresentation
@@ -587,7 +570,6 @@ module Google
 
       # @private
       class AccountTaxTaxRuleRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :country, as: 'country'
         property :location_id, as: 'locationId'
         property :rate_percent, as: 'ratePercent'
@@ -597,14 +579,12 @@ module Google
 
       # @private
       class AccountUserRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :admin, as: 'admin'
         property :email_address, as: 'emailAddress'
       end
 
       # @private
       class AccountsAuthInfoResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :account_identifiers, as: 'accountIdentifiers', class: Google::Apis::ContentV2::AccountIdentifier, decorator: Google::Apis::ContentV2::AccountIdentifierRepresentation
         
         
@@ -613,13 +593,11 @@ module Google
 
       # @private
       class AccountsCustomBatchRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::AccountsCustomBatchRequestEntry, decorator: Google::Apis::ContentV2::AccountsCustomBatchRequestEntryRepresentation
       end
 
       # @private
       class AccountsCustomBatchRequestEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account, as: 'account', class: Google::Apis::ContentV2::Account, decorator: Google::Apis::ContentV2::AccountRepresentation
         
         property :account_id, as: 'accountId'
@@ -630,7 +608,6 @@ module Google
 
       # @private
       class AccountsCustomBatchResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::AccountsCustomBatchResponseEntry, decorator: Google::Apis::ContentV2::AccountsCustomBatchResponseEntryRepresentation
         
         
@@ -639,7 +616,6 @@ module Google
 
       # @private
       class AccountsCustomBatchResponseEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account, as: 'account', class: Google::Apis::ContentV2::Account, decorator: Google::Apis::ContentV2::AccountRepresentation
         
         property :batch_id, as: 'batchId'
@@ -650,7 +626,6 @@ module Google
 
       # @private
       class AccountsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :next_page_token, as: 'nextPageToken'
         collection :resources, as: 'resources', class: Google::Apis::ContentV2::Account, decorator: Google::Apis::ContentV2::AccountRepresentation
@@ -658,13 +633,11 @@ module Google
 
       # @private
       class AccountshippingCustomBatchRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::AccountshippingCustomBatchRequestEntry, decorator: Google::Apis::ContentV2::AccountshippingCustomBatchRequestEntryRepresentation
       end
 
       # @private
       class AccountshippingCustomBatchRequestEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_id, as: 'accountId'
         property :account_shipping, as: 'accountShipping', class: Google::Apis::ContentV2::AccountShipping, decorator: Google::Apis::ContentV2::AccountShippingRepresentation
         
@@ -675,7 +648,6 @@ module Google
 
       # @private
       class AccountshippingCustomBatchResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::AccountshippingCustomBatchResponseEntry, decorator: Google::Apis::ContentV2::AccountshippingCustomBatchResponseEntryRepresentation
         
         
@@ -684,7 +656,6 @@ module Google
 
       # @private
       class AccountshippingCustomBatchResponseEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_shipping, as: 'accountShipping', class: Google::Apis::ContentV2::AccountShipping, decorator: Google::Apis::ContentV2::AccountShippingRepresentation
         
         property :batch_id, as: 'batchId'
@@ -695,7 +666,6 @@ module Google
 
       # @private
       class AccountshippingListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :next_page_token, as: 'nextPageToken'
         collection :resources, as: 'resources', class: Google::Apis::ContentV2::AccountShipping, decorator: Google::Apis::ContentV2::AccountShippingRepresentation
@@ -703,13 +673,11 @@ module Google
 
       # @private
       class AccountstatusesCustomBatchRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::AccountstatusesCustomBatchRequestEntry, decorator: Google::Apis::ContentV2::AccountstatusesCustomBatchRequestEntryRepresentation
       end
 
       # @private
       class AccountstatusesCustomBatchRequestEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_id, as: 'accountId'
         property :batch_id, as: 'batchId'
         property :merchant_id, as: 'merchantId'
@@ -718,7 +686,6 @@ module Google
 
       # @private
       class AccountstatusesCustomBatchResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::AccountstatusesCustomBatchResponseEntry, decorator: Google::Apis::ContentV2::AccountstatusesCustomBatchResponseEntryRepresentation
         
         
@@ -727,7 +694,6 @@ module Google
 
       # @private
       class AccountstatusesCustomBatchResponseEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_status, as: 'accountStatus', class: Google::Apis::ContentV2::AccountStatus, decorator: Google::Apis::ContentV2::AccountStatusRepresentation
         
         property :batch_id, as: 'batchId'
@@ -736,7 +702,6 @@ module Google
 
       # @private
       class AccountstatusesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :next_page_token, as: 'nextPageToken'
         collection :resources, as: 'resources', class: Google::Apis::ContentV2::AccountStatus, decorator: Google::Apis::ContentV2::AccountStatusRepresentation
@@ -744,13 +709,11 @@ module Google
 
       # @private
       class AccounttaxCustomBatchRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::AccounttaxCustomBatchRequestEntry, decorator: Google::Apis::ContentV2::AccounttaxCustomBatchRequestEntryRepresentation
       end
 
       # @private
       class AccounttaxCustomBatchRequestEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_id, as: 'accountId'
         property :account_tax, as: 'accountTax', class: Google::Apis::ContentV2::AccountTax, decorator: Google::Apis::ContentV2::AccountTaxRepresentation
         
@@ -761,7 +724,6 @@ module Google
 
       # @private
       class AccounttaxCustomBatchResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::AccounttaxCustomBatchResponseEntry, decorator: Google::Apis::ContentV2::AccounttaxCustomBatchResponseEntryRepresentation
         
         
@@ -770,7 +732,6 @@ module Google
 
       # @private
       class AccounttaxCustomBatchResponseEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_tax, as: 'accountTax', class: Google::Apis::ContentV2::AccountTax, decorator: Google::Apis::ContentV2::AccountTaxRepresentation
         
         property :batch_id, as: 'batchId'
@@ -781,7 +742,6 @@ module Google
 
       # @private
       class AccounttaxListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :next_page_token, as: 'nextPageToken'
         collection :resources, as: 'resources', class: Google::Apis::ContentV2::AccountTax, decorator: Google::Apis::ContentV2::AccountTaxRepresentation
@@ -789,7 +749,6 @@ module Google
 
       # @private
       class DatafeedRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :attribute_language, as: 'attributeLanguage'
         property :content_language, as: 'contentLanguage'
         property :content_type, as: 'contentType'
@@ -808,7 +767,6 @@ module Google
 
       # @private
       class DatafeedFetchScheduleRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :day_of_month, as: 'dayOfMonth'
         property :fetch_url, as: 'fetchUrl'
         property :hour, as: 'hour'
@@ -820,7 +778,6 @@ module Google
 
       # @private
       class DatafeedFormatRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :column_delimiter, as: 'columnDelimiter'
         property :file_encoding, as: 'fileEncoding'
         property :quoting_mode, as: 'quotingMode'
@@ -828,7 +785,6 @@ module Google
 
       # @private
       class DatafeedStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :datafeed_id, as: 'datafeedId'
         collection :errors, as: 'errors', class: Google::Apis::ContentV2::DatafeedStatusError, decorator: Google::Apis::ContentV2::DatafeedStatusErrorRepresentation
         
@@ -843,7 +799,6 @@ module Google
 
       # @private
       class DatafeedStatusErrorRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :code, as: 'code'
         property :count, as: 'count'
         collection :examples, as: 'examples', class: Google::Apis::ContentV2::DatafeedStatusExample, decorator: Google::Apis::ContentV2::DatafeedStatusExampleRepresentation
@@ -854,7 +809,6 @@ module Google
 
       # @private
       class DatafeedStatusExampleRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :item_id, as: 'itemId'
         property :line_number, as: 'lineNumber'
         property :value, as: 'value'
@@ -862,13 +816,11 @@ module Google
 
       # @private
       class DatafeedsCustomBatchRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::DatafeedsCustomBatchRequestEntry, decorator: Google::Apis::ContentV2::DatafeedsCustomBatchRequestEntryRepresentation
       end
 
       # @private
       class DatafeedsCustomBatchRequestEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :batch_id, as: 'batchId'
         property :datafeed, as: 'datafeed', class: Google::Apis::ContentV2::Datafeed, decorator: Google::Apis::ContentV2::DatafeedRepresentation
         
@@ -879,7 +831,6 @@ module Google
 
       # @private
       class DatafeedsCustomBatchResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::DatafeedsCustomBatchResponseEntry, decorator: Google::Apis::ContentV2::DatafeedsCustomBatchResponseEntryRepresentation
         
         
@@ -888,7 +839,6 @@ module Google
 
       # @private
       class DatafeedsCustomBatchResponseEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :batch_id, as: 'batchId'
         property :datafeed, as: 'datafeed', class: Google::Apis::ContentV2::Datafeed, decorator: Google::Apis::ContentV2::DatafeedRepresentation
         
@@ -897,7 +847,6 @@ module Google
 
       # @private
       class DatafeedsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :next_page_token, as: 'nextPageToken'
         collection :resources, as: 'resources', class: Google::Apis::ContentV2::Datafeed, decorator: Google::Apis::ContentV2::DatafeedRepresentation
@@ -905,13 +854,11 @@ module Google
 
       # @private
       class DatafeedstatusesCustomBatchRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::DatafeedstatusesCustomBatchRequestEntry, decorator: Google::Apis::ContentV2::DatafeedstatusesCustomBatchRequestEntryRepresentation
       end
 
       # @private
       class DatafeedstatusesCustomBatchRequestEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :batch_id, as: 'batchId'
         property :datafeed_id, as: 'datafeedId'
         property :merchant_id, as: 'merchantId'
@@ -920,7 +867,6 @@ module Google
 
       # @private
       class DatafeedstatusesCustomBatchResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::DatafeedstatusesCustomBatchResponseEntry, decorator: Google::Apis::ContentV2::DatafeedstatusesCustomBatchResponseEntryRepresentation
         
         
@@ -929,7 +875,6 @@ module Google
 
       # @private
       class DatafeedstatusesCustomBatchResponseEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :batch_id, as: 'batchId'
         property :datafeed_status, as: 'datafeedStatus', class: Google::Apis::ContentV2::DatafeedStatus, decorator: Google::Apis::ContentV2::DatafeedStatusRepresentation
         
@@ -938,7 +883,6 @@ module Google
 
       # @private
       class DatafeedstatusesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :next_page_token, as: 'nextPageToken'
         collection :resources, as: 'resources', class: Google::Apis::ContentV2::DatafeedStatus, decorator: Google::Apis::ContentV2::DatafeedStatusRepresentation
@@ -946,7 +890,6 @@ module Google
 
       # @private
       class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :domain, as: 'domain'
         property :message, as: 'message'
         property :reason, as: 'reason'
@@ -954,7 +897,6 @@ module Google
 
       # @private
       class ErrorsRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :code, as: 'code'
         collection :errors, as: 'errors', class: Google::Apis::ContentV2::Error, decorator: Google::Apis::ContentV2::ErrorRepresentation
         
@@ -964,7 +906,6 @@ module Google
 
       # @private
       class InventoryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :availability, as: 'availability'
         property :kind, as: 'kind'
         property :price, as: 'price', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::PriceRepresentation
@@ -977,13 +918,11 @@ module Google
 
       # @private
       class InventoryCustomBatchRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::InventoryCustomBatchRequestEntry, decorator: Google::Apis::ContentV2::InventoryCustomBatchRequestEntryRepresentation
       end
 
       # @private
       class InventoryCustomBatchRequestEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :batch_id, as: 'batchId'
         property :inventory, as: 'inventory', class: Google::Apis::ContentV2::Inventory, decorator: Google::Apis::ContentV2::InventoryRepresentation
         
@@ -994,7 +933,6 @@ module Google
 
       # @private
       class InventoryCustomBatchResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::InventoryCustomBatchResponseEntry, decorator: Google::Apis::ContentV2::InventoryCustomBatchResponseEntryRepresentation
         
         
@@ -1003,7 +941,6 @@ module Google
 
       # @private
       class InventoryCustomBatchResponseEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :batch_id, as: 'batchId'
         property :errors, as: 'errors', class: Google::Apis::ContentV2::Errors, decorator: Google::Apis::ContentV2::ErrorsRepresentation
         
@@ -1012,7 +949,6 @@ module Google
 
       # @private
       class InventorySetRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :availability, as: 'availability'
         property :price, as: 'price', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::PriceRepresentation
         
@@ -1024,13 +960,11 @@ module Google
 
       # @private
       class InventorySetResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
       end
 
       # @private
       class LoyaltyPointsRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :name, as: 'name'
         property :points_value, as: 'pointsValue'
         property :ratio, as: 'ratio'
@@ -1038,14 +972,12 @@ module Google
 
       # @private
       class PriceRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :currency, as: 'currency'
         property :value, as: 'value'
       end
 
       # @private
       class ProductRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :additional_image_links, as: 'additionalImageLinks'
         
         property :adult, as: 'adult'
@@ -1146,7 +1078,6 @@ module Google
 
       # @private
       class ProductAspectRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :aspect_name, as: 'aspectName'
         property :destination_name, as: 'destinationName'
         property :intention, as: 'intention'
@@ -1154,7 +1085,6 @@ module Google
 
       # @private
       class ProductCustomAttributeRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :name, as: 'name'
         property :type, as: 'type'
         property :unit, as: 'unit'
@@ -1163,7 +1093,6 @@ module Google
 
       # @private
       class ProductCustomGroupRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :attributes, as: 'attributes', class: Google::Apis::ContentV2::ProductCustomAttribute, decorator: Google::Apis::ContentV2::ProductCustomAttributeRepresentation
         
         
@@ -1172,14 +1101,12 @@ module Google
 
       # @private
       class ProductDestinationRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :destination_name, as: 'destinationName'
         property :intention, as: 'intention'
       end
 
       # @private
       class ProductInstallmentRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :amount, as: 'amount', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::PriceRepresentation
         
         property :months, as: 'months'
@@ -1187,7 +1114,6 @@ module Google
 
       # @private
       class ProductShippingRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :country, as: 'country'
         property :location_group_name, as: 'locationGroupName'
         property :location_id, as: 'locationId'
@@ -1200,21 +1126,18 @@ module Google
 
       # @private
       class ProductShippingDimensionRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :unit, as: 'unit'
         property :value, as: 'value'
       end
 
       # @private
       class ProductShippingWeightRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :unit, as: 'unit'
         property :value, as: 'value'
       end
 
       # @private
       class ProductStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :creation_date, as: 'creationDate'
         collection :data_quality_issues, as: 'dataQualityIssues', class: Google::Apis::ContentV2::ProductStatusDataQualityIssue, decorator: Google::Apis::ContentV2::ProductStatusDataQualityIssueRepresentation
         
@@ -1232,7 +1155,6 @@ module Google
 
       # @private
       class ProductStatusDataQualityIssueRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :detail, as: 'detail'
         property :fetch_status, as: 'fetchStatus'
         property :id, as: 'id'
@@ -1245,7 +1167,6 @@ module Google
 
       # @private
       class ProductStatusDestinationStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :approval_status, as: 'approvalStatus'
         property :destination, as: 'destination'
         property :intention, as: 'intention'
@@ -1253,7 +1174,6 @@ module Google
 
       # @private
       class ProductTaxRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :country, as: 'country'
         property :location_id, as: 'locationId'
         property :postal_code, as: 'postalCode'
@@ -1264,27 +1184,23 @@ module Google
 
       # @private
       class ProductUnitPricingBaseMeasureRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :unit, as: 'unit'
         property :value, as: 'value'
       end
 
       # @private
       class ProductUnitPricingMeasureRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :unit, as: 'unit'
         property :value, as: 'value'
       end
 
       # @private
       class ProductsCustomBatchRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::ProductsCustomBatchRequestEntry, decorator: Google::Apis::ContentV2::ProductsCustomBatchRequestEntryRepresentation
       end
 
       # @private
       class ProductsCustomBatchRequestEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :batch_id, as: 'batchId'
         property :merchant_id, as: 'merchantId'
         property :method_prop, as: 'method'
@@ -1295,7 +1211,6 @@ module Google
 
       # @private
       class ProductsCustomBatchResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::ProductsCustomBatchResponseEntry, decorator: Google::Apis::ContentV2::ProductsCustomBatchResponseEntryRepresentation
         
         
@@ -1304,7 +1219,6 @@ module Google
 
       # @private
       class ProductsCustomBatchResponseEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :batch_id, as: 'batchId'
         property :errors, as: 'errors', class: Google::Apis::ContentV2::Errors, decorator: Google::Apis::ContentV2::ErrorsRepresentation
         
@@ -1314,7 +1228,6 @@ module Google
 
       # @private
       class ProductsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :next_page_token, as: 'nextPageToken'
         collection :resources, as: 'resources', class: Google::Apis::ContentV2::Product, decorator: Google::Apis::ContentV2::ProductRepresentation
@@ -1322,13 +1235,11 @@ module Google
 
       # @private
       class ProductstatusesCustomBatchRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::ProductstatusesCustomBatchRequestEntry, decorator: Google::Apis::ContentV2::ProductstatusesCustomBatchRequestEntryRepresentation
       end
 
       # @private
       class ProductstatusesCustomBatchRequestEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :batch_id, as: 'batchId'
         property :merchant_id, as: 'merchantId'
         property :method_prop, as: 'method'
@@ -1337,7 +1248,6 @@ module Google
 
       # @private
       class ProductstatusesCustomBatchResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :entries, as: 'entries', class: Google::Apis::ContentV2::ProductstatusesCustomBatchResponseEntry, decorator: Google::Apis::ContentV2::ProductstatusesCustomBatchResponseEntryRepresentation
         
         
@@ -1346,7 +1256,6 @@ module Google
 
       # @private
       class ProductstatusesCustomBatchResponseEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :batch_id, as: 'batchId'
         property :errors, as: 'errors', class: Google::Apis::ContentV2::Errors, decorator: Google::Apis::ContentV2::ErrorsRepresentation
         
@@ -1356,7 +1265,6 @@ module Google
 
       # @private
       class ProductstatusesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :next_page_token, as: 'nextPageToken'
         collection :resources, as: 'resources', class: Google::Apis::ContentV2::ProductStatus, decorator: Google::Apis::ContentV2::ProductStatusRepresentation
@@ -1364,7 +1272,6 @@ module Google
 
       # @private
       class WeightRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :unit, as: 'unit'
         property :value, as: 'value'
       end

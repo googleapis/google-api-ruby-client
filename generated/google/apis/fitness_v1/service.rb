@@ -61,11 +61,11 @@ module Google
         # that is authenticated when creating the data source is included. This
         # developer project number is obfuscated when read by any other developer
         # reading public data types.
-        # @param [Google::Apis::FitnessV1::DataSource] data_source_obj
-        #   
         # @param [String] user_id
         #   Create the data source for the person identified. Use me to indicate the
         #   authenticated user. Only me is supported at this time.
+        # @param [Google::Apis::FitnessV1::DataSource] data_source
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -87,11 +87,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_user_data_source(data_source_obj, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_user_data_source(user_id, data_source = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/dataSources'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::FitnessV1::DataSourceRepresentation
-          command.request_object = data_source_obj
+          command.request_object = data_source
           command.response_representation = Google::Apis::FitnessV1::DataSourceRepresentation
           command.response_class = Google::Apis::FitnessV1::DataSource
           command.params['userId'] = user_id unless user_id.nil?
@@ -214,7 +214,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_user_data_sources(user_id, data_type_name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_data_sources(user_id, data_type_name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/dataSources'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::FitnessV1::ListDataSourcesResponseRepresentation
@@ -234,13 +234,13 @@ module Google
         # ID and separate data source.
         # Data sources are identified by their data stream ID. This method supports
         # patch semantics.
-        # @param [Google::Apis::FitnessV1::DataSource] data_source_obj
-        #   
         # @param [String] user_id
         #   Update the data source for the person identified. Use me to indicate the
         #   authenticated user. Only me is supported at this time.
         # @param [String] data_source_id
         #   The data stream ID of the data source to update.
+        # @param [Google::Apis::FitnessV1::DataSource] data_source
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -262,11 +262,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_user_data_source(data_source_obj, user_id, data_source_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_user_data_source(user_id, data_source_id, data_source = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/dataSources/{dataSourceId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::FitnessV1::DataSourceRepresentation
-          command.request_object = data_source_obj
+          command.request_object = data_source
           command.response_representation = Google::Apis::FitnessV1::DataSourceRepresentation
           command.response_class = Google::Apis::FitnessV1::DataSource
           command.params['userId'] = user_id unless user_id.nil?
@@ -283,13 +283,13 @@ module Google
         # device version. Changing these fields would require a new unique data stream
         # ID and separate data source.
         # Data sources are identified by their data stream ID.
-        # @param [Google::Apis::FitnessV1::DataSource] data_source_obj
-        #   
         # @param [String] user_id
         #   Update the data source for the person identified. Use me to indicate the
         #   authenticated user. Only me is supported at this time.
         # @param [String] data_source_id
         #   The data stream ID of the data source to update.
+        # @param [Google::Apis::FitnessV1::DataSource] data_source
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -311,11 +311,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user_data_source(data_source_obj, user_id, data_source_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_user_data_source(user_id, data_source_id, data_source = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/dataSources/{dataSourceId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::FitnessV1::DataSourceRepresentation
-          command.request_object = data_source_obj
+          command.request_object = data_source
           command.response_representation = Google::Apis::FitnessV1::DataSourceRepresentation
           command.response_class = Google::Apis::FitnessV1::DataSource
           command.params['userId'] = user_id unless user_id.nil?
@@ -450,8 +450,6 @@ module Google
         # points within the given dataset will be returned with subsquent calls to
         # retrieve this dataset. Data points can belong to more than one dataset. This
         # method does not use patch semantics.
-        # @param [Google::Apis::FitnessV1::Dataset] dataset_obj
-        #   
         # @param [String] user_id
         #   Patch a dataset for the person identified. Use me to indicate the
         #   authenticated user. Only me is supported at this time.
@@ -462,6 +460,8 @@ module Google
         #   and maximum data point end time represented as nanoseconds from the epoch. The
         #   ID is formatted like: "startTime-endTime" where startTime and endTime are 64
         #   bit integers.
+        # @param [Google::Apis::FitnessV1::Dataset] dataset
+        #   
         # @param [String] current_time_millis
         #   The client's current time in milliseconds since epoch. Note that the
         #   minStartTimeNs and maxEndTimeNs properties in the request body are in
@@ -487,11 +487,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_user_data_source_dataset(dataset_obj, user_id, data_source_id, dataset_id, current_time_millis: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_user_data_source_dataset(user_id, data_source_id, dataset_id, dataset = nil, current_time_millis: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/dataSources/{dataSourceId}/datasets/{datasetId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::FitnessV1::DatasetRepresentation
-          command.request_object = dataset_obj
+          command.request_object = dataset
           command.response_representation = Google::Apis::FitnessV1::DatasetRepresentation
           command.response_class = Google::Apis::FitnessV1::Dataset
           command.params['userId'] = user_id unless user_id.nil?
@@ -588,7 +588,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_user_sessions(user_id, end_time: nil, include_deleted: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_sessions(user_id, end_time: nil, include_deleted: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/sessions'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::FitnessV1::ListSessionsResponseRepresentation
@@ -606,13 +606,13 @@ module Google
         
         
         # Updates or insert a given session.
-        # @param [Google::Apis::FitnessV1::Session] session_obj
-        #   
         # @param [String] user_id
         #   Create sessions for the person identified. Use me to indicate the
         #   authenticated user. Only me is supported at this time.
         # @param [String] session_id
         #   The ID of the session to be created.
+        # @param [Google::Apis::FitnessV1::Session] session
+        #   
         # @param [String] current_time_millis
         #   The client's current time in milliseconds since epoch.
         # @param [String] fields
@@ -636,11 +636,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user_session(session_obj, user_id, session_id, current_time_millis: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_user_session(user_id, session_id, session = nil, current_time_millis: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/sessions/{sessionId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::FitnessV1::SessionRepresentation
-          command.request_object = session_obj
+          command.request_object = session
           command.response_representation = Google::Apis::FitnessV1::SessionRepresentation
           command.response_class = Google::Apis::FitnessV1::Session
           command.params['userId'] = user_id unless user_id.nil?

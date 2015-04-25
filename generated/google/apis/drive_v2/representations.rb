@@ -183,7 +183,6 @@ module Google
         class ImportFormatRepresentation < Google::Apis::Core::JsonRepresentation; end
         class MaxUploadSizeRepresentation < Google::Apis::Core::JsonRepresentation; end
         class QuotaBytesByServiceRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :additional_role_info, as: 'additionalRoleInfo', class: Google::Apis::DriveV2::About::AdditionalRoleInfo, decorator: Google::Apis::DriveV2::AboutRepresentation::AdditionalRoleInfoRepresentation
         
         
@@ -223,20 +222,16 @@ module Google
         property :user, as: 'user', class: Google::Apis::DriveV2::User, decorator: Google::Apis::DriveV2::UserRepresentation
         
         
-        
         # @private
         class AdditionalRoleInfoRepresentation < Google::Apis::Core::JsonRepresentation
           class RoleSetRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           collection :role_sets, as: 'roleSets', class: Google::Apis::DriveV2::About::AdditionalRoleInfo::RoleSet, decorator: Google::Apis::DriveV2::AboutRepresentation::AdditionalRoleInfoRepresentation::RoleSetRepresentation
           
           
           property :type, as: 'type'
           
-          
           # @private
           class RoleSetRepresentation < Google::Apis::Core::JsonRepresentation
-            
             collection :additional_roles, as: 'additionalRoles'
             
             property :primary_role, as: 'primaryRole'
@@ -245,35 +240,30 @@ module Google
         
         # @private
         class ExportFormatRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :source, as: 'source'
           collection :targets, as: 'targets'
         end
         
         # @private
         class FeatureRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :feature_name, as: 'featureName'
           property :feature_rate, as: 'featureRate'
         end
         
         # @private
         class ImportFormatRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :source, as: 'source'
           collection :targets, as: 'targets'
         end
         
         # @private
         class MaxUploadSizeRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :size, as: 'size'
           property :type, as: 'type'
         end
         
         # @private
         class QuotaBytesByServiceRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :bytes_used, as: 'bytesUsed'
           property :service_name, as: 'serviceName'
         end
@@ -282,7 +272,6 @@ module Google
       # @private
       class AppRepresentation < Google::Apis::Core::JsonRepresentation
         class IconRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :authorized, as: 'authorized'
         property :create_in_folder_template, as: 'createInFolderTemplate'
         property :create_url, as: 'createUrl'
@@ -314,10 +303,8 @@ module Google
         property :supports_offline_create, as: 'supportsOfflineCreate'
         property :use_by_default, as: 'useByDefault'
         
-        
         # @private
         class IconRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :category, as: 'category'
           property :icon_url, as: 'iconUrl'
           property :size, as: 'size'
@@ -326,7 +313,6 @@ module Google
 
       # @private
       class AppListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :default_app_ids, as: 'defaultAppIds'
         
         property :etag, as: 'etag'
@@ -339,7 +325,6 @@ module Google
 
       # @private
       class ChangeRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :deleted, as: 'deleted'
         property :file, as: 'file', class: Google::Apis::DriveV2::File, decorator: Google::Apis::DriveV2::FileRepresentation
         
@@ -352,7 +337,6 @@ module Google
 
       # @private
       class ChangeListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :etag, as: 'etag'
         collection :items, as: 'items', class: Google::Apis::DriveV2::Change, decorator: Google::Apis::DriveV2::ChangeRepresentation
         
@@ -366,7 +350,6 @@ module Google
 
       # @private
       class ChannelRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :address, as: 'address'
         property :expiration, as: 'expiration'
         property :id, as: 'id'
@@ -382,7 +365,6 @@ module Google
 
       # @private
       class ChildListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :etag, as: 'etag'
         collection :items, as: 'items', class: Google::Apis::DriveV2::ChildReference, decorator: Google::Apis::DriveV2::ChildReferenceRepresentation
         
@@ -395,7 +377,6 @@ module Google
 
       # @private
       class ChildReferenceRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :child_link, as: 'childLink'
         property :id, as: 'id'
         property :kind, as: 'kind'
@@ -405,7 +386,6 @@ module Google
       # @private
       class CommentRepresentation < Google::Apis::Core::JsonRepresentation
         class ContextRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :anchor, as: 'anchor'
         property :author, as: 'author', class: Google::Apis::DriveV2::User, decorator: Google::Apis::DriveV2::UserRepresentation
         
@@ -426,10 +406,8 @@ module Google
         property :self_link, as: 'selfLink'
         property :status, as: 'status'
         
-        
         # @private
         class ContextRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :type, as: 'type'
           property :value, as: 'value'
         end
@@ -437,7 +415,6 @@ module Google
 
       # @private
       class CommentListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::DriveV2::Comment, decorator: Google::Apis::DriveV2::CommentRepresentation
         
         
@@ -449,7 +426,6 @@ module Google
 
       # @private
       class CommentReplyRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :author, as: 'author', class: Google::Apis::DriveV2::User, decorator: Google::Apis::DriveV2::UserRepresentation
         
         property :content, as: 'content'
@@ -464,7 +440,6 @@ module Google
 
       # @private
       class CommentReplyListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::DriveV2::CommentReply, decorator: Google::Apis::DriveV2::CommentReplyRepresentation
         
         
@@ -481,7 +456,6 @@ module Google
         class LabelsRepresentation < Google::Apis::Core::JsonRepresentation; end
         class ThumbnailRepresentation < Google::Apis::Core::JsonRepresentation; end
         class VideoMediaMetadataRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :alternate_link, as: 'alternateLink'
         property :app_data_contents, as: 'appDataContents'
         property :copyable, as: 'copyable'
@@ -553,11 +527,9 @@ module Google
         property :web_view_link, as: 'webViewLink'
         property :writers_can_share, as: 'writersCanShare'
         
-        
         # @private
         class ImageMediaMetadataRepresentation < Google::Apis::Core::JsonRepresentation
           class LocationRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :aperture, as: 'aperture'
           property :camera_make, as: 'cameraMake'
           property :camera_model, as: 'cameraModel'
@@ -581,10 +553,8 @@ module Google
           property :white_balance, as: 'whiteBalance'
           property :width, as: 'width'
           
-          
           # @private
           class LocationRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :altitude, as: 'altitude'
             property :latitude, as: 'latitude'
             property :longitude, as: 'longitude'
@@ -593,13 +563,11 @@ module Google
         
         # @private
         class IndexableTextRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :text, as: 'text'
         end
         
         # @private
         class LabelsRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :hidden, as: 'hidden'
           property :restricted, as: 'restricted'
           property :starred, as: 'starred'
@@ -609,14 +577,12 @@ module Google
         
         # @private
         class ThumbnailRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :image, as: 'image'
           property :mime_type, as: 'mimeType'
         end
         
         # @private
         class VideoMediaMetadataRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :duration_millis, as: 'durationMillis'
           property :height, as: 'height'
           property :width, as: 'width'
@@ -625,7 +591,6 @@ module Google
 
       # @private
       class FileListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :etag, as: 'etag'
         collection :items, as: 'items', class: Google::Apis::DriveV2::File, decorator: Google::Apis::DriveV2::FileRepresentation
         
@@ -638,7 +603,6 @@ module Google
 
       # @private
       class ParentListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :etag, as: 'etag'
         collection :items, as: 'items', class: Google::Apis::DriveV2::ParentReference, decorator: Google::Apis::DriveV2::ParentReferenceRepresentation
         
@@ -649,7 +613,6 @@ module Google
 
       # @private
       class ParentReferenceRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         property :is_root, as: 'isRoot'
         property :kind, as: 'kind'
@@ -659,7 +622,6 @@ module Google
 
       # @private
       class PermissionRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :additional_roles, as: 'additionalRoles'
         
         property :auth_key, as: 'authKey'
@@ -679,14 +641,12 @@ module Google
 
       # @private
       class PermissionIdRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         property :kind, as: 'kind'
       end
 
       # @private
       class PermissionListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :etag, as: 'etag'
         collection :items, as: 'items', class: Google::Apis::DriveV2::Permission, decorator: Google::Apis::DriveV2::PermissionRepresentation
         
@@ -697,7 +657,6 @@ module Google
 
       # @private
       class PropertyRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :etag, as: 'etag'
         property :key, as: 'key'
         property :kind, as: 'kind'
@@ -708,7 +667,6 @@ module Google
 
       # @private
       class PropertyListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :etag, as: 'etag'
         collection :items, as: 'items', class: Google::Apis::DriveV2::Property, decorator: Google::Apis::DriveV2::PropertyRepresentation
         
@@ -719,7 +677,6 @@ module Google
 
       # @private
       class RevisionRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :download_url, as: 'downloadUrl'
         property :etag, as: 'etag'
         hash :export_links, as: 'exportLinks'
@@ -744,7 +701,6 @@ module Google
 
       # @private
       class RevisionListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :etag, as: 'etag'
         collection :items, as: 'items', class: Google::Apis::DriveV2::Revision, decorator: Google::Apis::DriveV2::RevisionRepresentation
         
@@ -756,7 +712,6 @@ module Google
       # @private
       class UserRepresentation < Google::Apis::Core::JsonRepresentation
         class PictureRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :display_name, as: 'displayName'
         property :email_address, as: 'emailAddress'
         property :is_authenticated_user, as: 'isAuthenticatedUser'
@@ -765,10 +720,8 @@ module Google
         property :picture, as: 'picture', class: Google::Apis::DriveV2::User::Picture, decorator: Google::Apis::DriveV2::UserRepresentation::PictureRepresentation
         
         
-        
         # @private
         class PictureRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :url, as: 'url'
         end
       end

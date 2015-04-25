@@ -57,7 +57,7 @@ def <%= api_method.name %>(<% for param in api_method.ordered_params %><%= param
 <% end %>
 <% if api_method.request_body %>
   command.request_representation = <%= api_method.request_body.type.name %>Representation
-  command.request_object = <%= api_method.request_body.signature %>
+  command.request_object = <%= api_method.request_body.name %>
 <% end %>
 <% if api_method.response_type %>
   command.response_representation = <%= api_method.response_type.name %>Representation

@@ -68,26 +68,22 @@ module Google
 
       # @private
       class SitemapsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :sitemap, as: 'sitemap', class: Google::Apis::WebmastersV3::WmxSitemap, decorator: Google::Apis::WebmastersV3::WmxSitemapRepresentation
       end
 
       # @private
       class SitesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :site_entry, as: 'siteEntry', class: Google::Apis::WebmastersV3::WmxSite, decorator: Google::Apis::WebmastersV3::WmxSiteRepresentation
       end
 
       # @private
       class UrlCrawlErrorCountRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :count, as: 'count'
         property :timestamp, as: 'timestamp', type: DateTime
       end
 
       # @private
       class UrlCrawlErrorCountsPerTypeRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :category, as: 'category'
         collection :entries, as: 'entries', class: Google::Apis::WebmastersV3::UrlCrawlErrorCount, decorator: Google::Apis::WebmastersV3::UrlCrawlErrorCountRepresentation
         
@@ -97,13 +93,11 @@ module Google
 
       # @private
       class UrlCrawlErrorsCountsQueryResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :count_per_types, as: 'countPerTypes', class: Google::Apis::WebmastersV3::UrlCrawlErrorCountsPerType, decorator: Google::Apis::WebmastersV3::UrlCrawlErrorCountsPerTypeRepresentation
       end
 
       # @private
       class UrlCrawlErrorsSampleRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :first_detected, as: 'first_detected', type: DateTime
         property :last_crawled, as: 'last_crawled', type: DateTime
         property :page_url, as: 'pageUrl'
@@ -113,13 +107,11 @@ module Google
 
       # @private
       class UrlCrawlErrorsSamplesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :url_crawl_error_sample, as: 'urlCrawlErrorSample', class: Google::Apis::WebmastersV3::UrlCrawlErrorsSample, decorator: Google::Apis::WebmastersV3::UrlCrawlErrorsSampleRepresentation
       end
 
       # @private
       class UrlSampleDetailsRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :containing_sitemaps, as: 'containingSitemaps'
         
         collection :linked_from_urls, as: 'linkedFromUrls'
@@ -127,14 +119,12 @@ module Google
 
       # @private
       class WmxSiteRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :permission_level, as: 'permissionLevel'
         property :site_url, as: 'siteUrl'
       end
 
       # @private
       class WmxSitemapRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :contents, as: 'contents', class: Google::Apis::WebmastersV3::WmxSitemapContent, decorator: Google::Apis::WebmastersV3::WmxSitemapContentRepresentation
         
         
@@ -150,7 +140,6 @@ module Google
 
       # @private
       class WmxSitemapContentRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :indexed, as: 'indexed'
         property :submitted, as: 'submitted'
         property :type, as: 'type'

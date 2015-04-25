@@ -68,7 +68,6 @@ module Google
 
       # @private
       class ClusterRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :cluster_api_version, as: 'clusterApiVersion'
         property :container_ipv4_cidr, as: 'containerIpv4Cidr'
         property :creation_timestamp, as: 'creationTimestamp'
@@ -92,37 +91,31 @@ module Google
 
       # @private
       class CreateClusterRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :cluster, as: 'cluster', class: Google::Apis::ContainerV1beta1::Cluster, decorator: Google::Apis::ContainerV1beta1::ClusterRepresentation
       end
 
       # @private
       class ListAggregatedClustersResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :clusters, as: 'clusters', class: Google::Apis::ContainerV1beta1::Cluster, decorator: Google::Apis::ContainerV1beta1::ClusterRepresentation
       end
 
       # @private
       class ListAggregatedOperationsResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :operations, as: 'operations', class: Google::Apis::ContainerV1beta1::Operation, decorator: Google::Apis::ContainerV1beta1::OperationRepresentation
       end
 
       # @private
       class ListClustersResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :clusters, as: 'clusters', class: Google::Apis::ContainerV1beta1::Cluster, decorator: Google::Apis::ContainerV1beta1::ClusterRepresentation
       end
 
       # @private
       class ListOperationsResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :operations, as: 'operations', class: Google::Apis::ContainerV1beta1::Operation, decorator: Google::Apis::ContainerV1beta1::OperationRepresentation
       end
 
       # @private
       class MasterAuthRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :bearer_token, as: 'bearerToken'
         property :password, as: 'password'
         property :user, as: 'user'
@@ -130,7 +123,6 @@ module Google
 
       # @private
       class NodeConfigRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :machine_type, as: 'machineType'
         collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ContainerV1beta1::ServiceAccount, decorator: Google::Apis::ContainerV1beta1::ServiceAccountRepresentation
         
@@ -140,7 +132,6 @@ module Google
 
       # @private
       class OperationRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :error_message, as: 'errorMessage'
         property :name, as: 'name'
         property :operation_type, as: 'operationType'
@@ -153,14 +144,12 @@ module Google
 
       # @private
       class ServiceAccountRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :email, as: 'email'
         collection :scopes, as: 'scopes'
       end
 
       # @private
       class TokenRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :access_token, as: 'accessToken'
         property :expiry_time_seconds, as: 'expiryTimeSeconds'
       end

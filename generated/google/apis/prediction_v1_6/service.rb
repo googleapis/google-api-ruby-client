@@ -55,12 +55,12 @@ module Google
         end
 
         # Submit input and request an output against a hosted model.
-        # @param [Google::Apis::PredictionV1_6::Input] input_obj
-        #   
         # @param [String] project
         #   The project associated with the model.
         # @param [String] hosted_model_name
         #   The name of a hosted model.
+        # @param [Google::Apis::PredictionV1_6::Input] input
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -82,11 +82,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def predict_hostedmodel(input_obj, project, hosted_model_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def predict_hostedmodel(project, hosted_model_name, input = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/hostedmodels/{hostedModelName}/predict'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PredictionV1_6::InputRepresentation
-          command.request_object = input_obj
+          command.request_object = input
           command.response_representation = Google::Apis::PredictionV1_6::OutputRepresentation
           command.response_class = Google::Apis::PredictionV1_6::Output
           command.params['project'] = project unless project.nil?
@@ -216,10 +216,10 @@ module Google
         
         
         # Train a Prediction API model.
-        # @param [Google::Apis::PredictionV1_6::Insert] insert_obj
-        #   
         # @param [String] project
         #   The project associated with the model.
+        # @param [Google::Apis::PredictionV1_6::Insert] insert
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -241,11 +241,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_trainedmodel(insert_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_trainedmodel(project, insert = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/trainedmodels'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PredictionV1_6::InsertRepresentation
-          command.request_object = insert_obj
+          command.request_object = insert
           command.response_representation = Google::Apis::PredictionV1_6::Insert2Representation
           command.response_class = Google::Apis::PredictionV1_6::Insert2
           command.params['project'] = project unless project.nil?
@@ -300,12 +300,12 @@ module Google
         
         
         # Submit model id and request a prediction.
-        # @param [Google::Apis::PredictionV1_6::Input] input_obj
-        #   
         # @param [String] project
         #   The project associated with the model.
         # @param [String] id
         #   The unique name for the predictive model.
+        # @param [Google::Apis::PredictionV1_6::Input] input
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -327,11 +327,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def predict_trainedmodel(input_obj, project, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def predict_trainedmodel(project, id, input = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/trainedmodels/{id}/predict'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PredictionV1_6::InputRepresentation
-          command.request_object = input_obj
+          command.request_object = input
           command.response_representation = Google::Apis::PredictionV1_6::OutputRepresentation
           command.response_class = Google::Apis::PredictionV1_6::Output
           command.params['project'] = project unless project.nil?
@@ -344,12 +344,12 @@ module Google
         
         
         # Add new data to a trained model.
-        # @param [Google::Apis::PredictionV1_6::Update] update_obj
-        #   
         # @param [String] project
         #   The project associated with the model.
         # @param [String] id
         #   The unique name for the predictive model.
+        # @param [Google::Apis::PredictionV1_6::Update] update
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -371,11 +371,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_trainedmodel(update_obj, project, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_trainedmodel(project, id, update = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/trainedmodels/{id}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::PredictionV1_6::UpdateRepresentation
-          command.request_object = update_obj
+          command.request_object = update
           command.response_representation = Google::Apis::PredictionV1_6::Insert2Representation
           command.response_class = Google::Apis::PredictionV1_6::Insert2
           command.params['project'] = project unless project.nil?

@@ -179,7 +179,7 @@ module Google
         
         
         # Creates a group item.
-        # @param [Google::Apis::YoutubeAnalyticsV1::GroupItem] group_item_obj
+        # @param [Google::Apis::YoutubeAnalyticsV1::GroupItem] group_item
         #   
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -212,11 +212,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_group_item(group_item_obj, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_group_item(group_item = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'groupItems'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeAnalyticsV1::GroupItemRepresentation
-          command.request_object = group_item_obj
+          command.request_object = group_item
           command.response_representation = Google::Apis::YoutubeAnalyticsV1::GroupItemRepresentation
           command.response_class = Google::Apis::YoutubeAnalyticsV1::GroupItem
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -323,7 +323,7 @@ module Google
         
         
         # Creates a group.
-        # @param [Google::Apis::YoutubeAnalyticsV1::Group] group_obj
+        # @param [Google::Apis::YoutubeAnalyticsV1::Group] group
         #   
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -356,11 +356,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_group(group_obj, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_group(group = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'groups'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeAnalyticsV1::GroupRepresentation
-          command.request_object = group_obj
+          command.request_object = group
           command.response_representation = Google::Apis::YoutubeAnalyticsV1::GroupRepresentation
           command.response_class = Google::Apis::YoutubeAnalyticsV1::Group
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -428,7 +428,7 @@ module Google
         
         
         # Modifies a group. For example, you could change a group's title.
-        # @param [Google::Apis::YoutubeAnalyticsV1::Group] group_obj
+        # @param [Google::Apis::YoutubeAnalyticsV1::Group] group
         #   
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -461,11 +461,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_group(group_obj, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_group(group = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'groups'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeAnalyticsV1::GroupRepresentation
-          command.request_object = group_obj
+          command.request_object = group
           command.response_representation = Google::Apis::YoutubeAnalyticsV1::GroupRepresentation
           command.response_class = Google::Apis::YoutubeAnalyticsV1::Group
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?

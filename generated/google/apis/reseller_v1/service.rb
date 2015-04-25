@@ -91,7 +91,7 @@ module Google
         
         
         # Creates a customer resource if one does not already exist.
-        # @param [Google::Apis::ResellerV1::Customer] customer_obj
+        # @param [Google::Apis::ResellerV1::Customer] customer
         #   
         # @param [String] customer_auth_token
         #   An auth token needed for inserting a customer for which domain already exists.
@@ -117,11 +117,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_customer(customer_obj, customer_auth_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_customer(customer = nil, customer_auth_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ResellerV1::CustomerRepresentation
-          command.request_object = customer_obj
+          command.request_object = customer
           command.response_representation = Google::Apis::ResellerV1::CustomerRepresentation
           command.response_class = Google::Apis::ResellerV1::Customer
           command.query['customerAuthToken'] = customer_auth_token unless customer_auth_token.nil?
@@ -134,10 +134,10 @@ module Google
         
         # Update a customer resource if one it exists and is owned by the reseller. This
         # method supports patch semantics.
-        # @param [Google::Apis::ResellerV1::Customer] customer_obj
-        #   
         # @param [String] customer_id
         #   Id of the Customer
+        # @param [Google::Apis::ResellerV1::Customer] customer
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -159,11 +159,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_customer(customer_obj, customer_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_customer(customer_id, customer = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::ResellerV1::CustomerRepresentation
-          command.request_object = customer_obj
+          command.request_object = customer
           command.response_representation = Google::Apis::ResellerV1::CustomerRepresentation
           command.response_class = Google::Apis::ResellerV1::Customer
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -175,10 +175,10 @@ module Google
         
         
         # Update a customer resource if one it exists and is owned by the reseller.
-        # @param [Google::Apis::ResellerV1::Customer] customer_obj
-        #   
         # @param [String] customer_id
         #   Id of the Customer
+        # @param [Google::Apis::ResellerV1::Customer] customer
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -200,11 +200,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_customer(customer_obj, customer_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_customer(customer_id, customer = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::ResellerV1::CustomerRepresentation
-          command.request_object = customer_obj
+          command.request_object = customer
           command.response_representation = Google::Apis::ResellerV1::CustomerRepresentation
           command.response_class = Google::Apis::ResellerV1::Customer
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -255,12 +255,12 @@ module Google
         
         
         # Changes the plan of a subscription
-        # @param [Google::Apis::ResellerV1::ChangePlanRequest] change_plan_request_obj
-        #   
         # @param [String] customer_id
         #   Id of the Customer
         # @param [String] subscription_id
         #   Id of the subscription, which is unique for a customer
+        # @param [Google::Apis::ResellerV1::ChangePlanRequest] change_plan_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -282,11 +282,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def change_plan(change_plan_request_obj, customer_id, subscription_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def change_plan(customer_id, subscription_id, change_plan_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}/subscriptions/{subscriptionId}/changePlan'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ResellerV1::ChangePlanRequestRepresentation
-          command.request_object = change_plan_request_obj
+          command.request_object = change_plan_request
           command.response_representation = Google::Apis::ResellerV1::SubscriptionRepresentation
           command.response_class = Google::Apis::ResellerV1::Subscription
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -299,12 +299,12 @@ module Google
         
         
         # Changes the renewal settings of a subscription
-        # @param [Google::Apis::ResellerV1::RenewalSettings] renewal_settings_obj
-        #   
         # @param [String] customer_id
         #   Id of the Customer
         # @param [String] subscription_id
         #   Id of the subscription, which is unique for a customer
+        # @param [Google::Apis::ResellerV1::RenewalSettings] renewal_settings
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -326,11 +326,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def change_renewal_settings(renewal_settings_obj, customer_id, subscription_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def change_renewal_settings(customer_id, subscription_id, renewal_settings = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ResellerV1::RenewalSettingsRepresentation
-          command.request_object = renewal_settings_obj
+          command.request_object = renewal_settings
           command.response_representation = Google::Apis::ResellerV1::SubscriptionRepresentation
           command.response_class = Google::Apis::ResellerV1::Subscription
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -343,12 +343,12 @@ module Google
         
         
         # Changes the seats configuration of a subscription
-        # @param [Google::Apis::ResellerV1::Seats] seats_obj
-        #   
         # @param [String] customer_id
         #   Id of the Customer
         # @param [String] subscription_id
         #   Id of the subscription, which is unique for a customer
+        # @param [Google::Apis::ResellerV1::Seats] seats
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -370,11 +370,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def change_seats(seats_obj, customer_id, subscription_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def change_seats(customer_id, subscription_id, seats = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}/subscriptions/{subscriptionId}/changeSeats'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ResellerV1::SeatsRepresentation
-          command.request_object = seats_obj
+          command.request_object = seats
           command.response_representation = Google::Apis::ResellerV1::SubscriptionRepresentation
           command.response_class = Google::Apis::ResellerV1::Subscription
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -468,10 +468,10 @@ module Google
         
         
         # Creates/Transfers a subscription for the customer.
-        # @param [Google::Apis::ResellerV1::Subscription] subscription_obj
-        #   
         # @param [String] customer_id
         #   Id of the Customer
+        # @param [Google::Apis::ResellerV1::Subscription] subscription
+        #   
         # @param [String] customer_auth_token
         #   An auth token needed for transferring a subscription. Can be generated at
         #   https://www.google.com/a/cpanel/customer-domain/TransferToken. Optional.
@@ -496,11 +496,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_subscription(subscription_obj, customer_id, customer_auth_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_subscription(customer_id, subscription = nil, customer_auth_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}/subscriptions'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ResellerV1::SubscriptionRepresentation
-          command.request_object = subscription_obj
+          command.request_object = subscription
           command.response_representation = Google::Apis::ResellerV1::SubscriptionRepresentation
           command.response_class = Google::Apis::ResellerV1::Subscription
           command.params['customerId'] = customer_id unless customer_id.nil?

@@ -364,12 +364,12 @@ module Google
         
         
         # Inserts a new link.
-        # @param [Google::Apis::GanV1beta1::Link] link_obj
-        #   
         # @param [String] role
         #   The role of the requester. Valid values: 'advertisers' or 'publishers'.
         # @param [String] role_id
         #   The ID of the requesting advertiser or publisher.
+        # @param [Google::Apis::GanV1beta1::Link] link
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -391,11 +391,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_link(link_obj, role, role_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_link(role, role_id, link = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{role}/{roleId}/link'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GanV1beta1::LinkRepresentation
-          command.request_object = link_obj
+          command.request_object = link
           command.response_representation = Google::Apis::GanV1beta1::LinkRepresentation
           command.response_class = Google::Apis::GanV1beta1::Link
           command.params['role'] = role unless role.nil?

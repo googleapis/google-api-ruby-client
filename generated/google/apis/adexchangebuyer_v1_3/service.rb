@@ -126,10 +126,10 @@ module Google
         
         
         # Updates an existing account. This method supports patch semantics.
-        # @param [Google::Apis::AdexchangebuyerV1_3::Account] account_obj
-        #   
         # @param [Fixnum] id
         #   The account id
+        # @param [Google::Apis::AdexchangebuyerV1_3::Account] account
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -151,11 +151,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_account(account_obj, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_account(id, account = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{id}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_3::AccountRepresentation
-          command.request_object = account_obj
+          command.request_object = account
           command.response_representation = Google::Apis::AdexchangebuyerV1_3::AccountRepresentation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::Account
           command.params['id'] = id unless id.nil?
@@ -167,10 +167,10 @@ module Google
         
         
         # Updates an existing account.
-        # @param [Google::Apis::AdexchangebuyerV1_3::Account] account_obj
-        #   
         # @param [Fixnum] id
         #   The account id
+        # @param [Google::Apis::AdexchangebuyerV1_3::Account] account
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -192,11 +192,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account(account_obj, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account(id, account = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{id}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_3::AccountRepresentation
-          command.request_object = account_obj
+          command.request_object = account
           command.response_representation = Google::Apis::AdexchangebuyerV1_3::AccountRepresentation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::Account
           command.params['id'] = id unless id.nil?
@@ -321,12 +321,12 @@ module Google
         # Updates the budget amount for the budget of the adgroup specified by the
         # accountId and billingId, with the budget amount in the request. This method
         # supports patch semantics.
-        # @param [Google::Apis::AdexchangebuyerV1_3::Budget] budget_obj
-        #   
         # @param [String] account_id
         #   The account id associated with the budget being updated.
         # @param [String] billing_id
         #   The billing id associated with the budget being updated.
+        # @param [Google::Apis::AdexchangebuyerV1_3::Budget] budget
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -348,11 +348,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_budget(budget_obj, account_id, billing_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_budget(account_id, billing_id, budget = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'billinginfo/{accountId}/{billingId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_3::BudgetRepresentation
-          command.request_object = budget_obj
+          command.request_object = budget
           command.response_representation = Google::Apis::AdexchangebuyerV1_3::BudgetRepresentation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::Budget
           command.params['accountId'] = account_id unless account_id.nil?
@@ -366,12 +366,12 @@ module Google
         
         # Updates the budget amount for the budget of the adgroup specified by the
         # accountId and billingId, with the budget amount in the request.
-        # @param [Google::Apis::AdexchangebuyerV1_3::Budget] budget_obj
-        #   
         # @param [String] account_id
         #   The account id associated with the budget being updated.
         # @param [String] billing_id
         #   The billing id associated with the budget being updated.
+        # @param [Google::Apis::AdexchangebuyerV1_3::Budget] budget
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -393,11 +393,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_budget(budget_obj, account_id, billing_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_budget(account_id, billing_id, budget = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'billinginfo/{accountId}/{billingId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_3::BudgetRepresentation
-          command.request_object = budget_obj
+          command.request_object = budget
           command.response_representation = Google::Apis::AdexchangebuyerV1_3::BudgetRepresentation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::Budget
           command.params['accountId'] = account_id unless account_id.nil?
@@ -450,7 +450,7 @@ module Google
         
         
         # Submit a new creative.
-        # @param [Google::Apis::AdexchangebuyerV1_3::Creative] creative_obj
+        # @param [Google::Apis::AdexchangebuyerV1_3::Creative] creative
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -473,11 +473,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_creative(creative_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_creative(creative = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'creatives'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_3::CreativeRepresentation
-          command.request_object = creative_obj
+          command.request_object = creative
           command.response_representation = Google::Apis::AdexchangebuyerV1_3::CreativeRepresentation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::Creative
           command.query['fields'] = fields unless fields.nil?
@@ -739,10 +739,10 @@ module Google
         
         
         # Inserts a new pretargeting configuration.
-        # @param [Google::Apis::AdexchangebuyerV1_3::PretargetingConfig] pretargeting_config_obj
-        #   
         # @param [String] account_id
         #   The account id to insert the pretargeting config for.
+        # @param [Google::Apis::AdexchangebuyerV1_3::PretargetingConfig] pretargeting_config
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -764,11 +764,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_pretargeting_config(pretargeting_config_obj, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_pretargeting_config(account_id, pretargeting_config = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'pretargetingconfigs/{accountId}'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfigRepresentation
-          command.request_object = pretargeting_config_obj
+          command.request_object = pretargeting_config
           command.response_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfigRepresentation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::PretargetingConfig
           command.params['accountId'] = account_id unless account_id.nil?
@@ -817,12 +817,12 @@ module Google
         
         
         # Updates an existing pretargeting config. This method supports patch semantics.
-        # @param [Google::Apis::AdexchangebuyerV1_3::PretargetingConfig] pretargeting_config_obj
-        #   
         # @param [String] account_id
         #   The account id to update the pretargeting config for.
         # @param [String] config_id
         #   The specific id of the configuration to update.
+        # @param [Google::Apis::AdexchangebuyerV1_3::PretargetingConfig] pretargeting_config
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -844,11 +844,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_pretargeting_config(pretargeting_config_obj, account_id, config_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_pretargeting_config(account_id, config_id, pretargeting_config = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'pretargetingconfigs/{accountId}/{configId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfigRepresentation
-          command.request_object = pretargeting_config_obj
+          command.request_object = pretargeting_config
           command.response_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfigRepresentation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::PretargetingConfig
           command.params['accountId'] = account_id unless account_id.nil?
@@ -861,12 +861,12 @@ module Google
         
         
         # Updates an existing pretargeting config.
-        # @param [Google::Apis::AdexchangebuyerV1_3::PretargetingConfig] pretargeting_config_obj
-        #   
         # @param [String] account_id
         #   The account id to update the pretargeting config for.
         # @param [String] config_id
         #   The specific id of the configuration to update.
+        # @param [Google::Apis::AdexchangebuyerV1_3::PretargetingConfig] pretargeting_config
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -888,11 +888,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_pretargeting_config(pretargeting_config_obj, account_id, config_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_pretargeting_config(account_id, config_id, pretargeting_config = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'pretargetingconfigs/{accountId}/{configId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfigRepresentation
-          command.request_object = pretargeting_config_obj
+          command.request_object = pretargeting_config
           command.response_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfigRepresentation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::PretargetingConfig
           command.params['accountId'] = account_id unless account_id.nil?

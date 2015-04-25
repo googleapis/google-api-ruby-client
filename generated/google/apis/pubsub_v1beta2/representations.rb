@@ -21,22 +21,70 @@ require 'google/apis/errors'
 module Google
   module Apis
     module PubsubV1beta2
-      class AcknowledgeRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class EmptyRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ListSubscriptionsResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ListTopicSubscriptionsResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ListTopicsResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ModifyAckDeadlineRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ModifyPushConfigRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PublishRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PublishResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class MessageRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PullRequestRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PullResponseRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class PushConfigRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class ReceivedMessageRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class SubscriptionRepresentation < Google::Apis::Core::JsonRepresentation; end
-      class TopicRepresentation < Google::Apis::Core::JsonRepresentation; end
+      
+      class AcknowledgeRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class EmptyRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ListSubscriptionsResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ListTopicSubscriptionsResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ListTopicsResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ModifyAckDeadlineRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ModifyPushConfigRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PublishRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PublishResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class MessageRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PullRequestRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PullResponseRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class PushConfigRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class ReceivedMessageRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class SubscriptionRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
+      
+      class TopicRepresentation < Google::Apis::Core::JsonRepresentation
+        
+      end
 
       # @private
       class AcknowledgeRequestRepresentation < Google::Apis::Core::JsonRepresentation

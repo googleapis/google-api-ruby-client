@@ -126,7 +126,7 @@ module Google
         
         
         # Creates a new task list and adds it to the authenticated user's task lists.
-        # @param [Google::Apis::TasksV1::TaskList] task_list_obj
+        # @param [Google::Apis::TasksV1::TaskList] task_list
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -149,11 +149,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_tasklist(task_list_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_tasklist(task_list = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/@me/lists'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::TasksV1::TaskListRepresentation
-          command.request_object = task_list_obj
+          command.request_object = task_list
           command.response_representation = Google::Apis::TasksV1::TaskListRepresentation
           command.response_class = Google::Apis::TasksV1::TaskList
           command.query['fields'] = fields unless fields.nil?
@@ -206,10 +206,10 @@ module Google
         
         # Updates the authenticated user's specified task list. This method supports
         # patch semantics.
-        # @param [Google::Apis::TasksV1::TaskList] task_list_obj
-        #   
         # @param [String] tasklist
         #   Task list identifier.
+        # @param [Google::Apis::TasksV1::TaskList] task_list
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -231,11 +231,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_tasklist(task_list_obj, tasklist, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_tasklist(tasklist, task_list = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/@me/lists/{tasklist}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::TasksV1::TaskListRepresentation
-          command.request_object = task_list_obj
+          command.request_object = task_list
           command.response_representation = Google::Apis::TasksV1::TaskListRepresentation
           command.response_class = Google::Apis::TasksV1::TaskList
           command.params['tasklist'] = tasklist unless tasklist.nil?
@@ -247,10 +247,10 @@ module Google
         
         
         # Updates the authenticated user's specified task list.
-        # @param [Google::Apis::TasksV1::TaskList] task_list_obj
-        #   
         # @param [String] tasklist
         #   Task list identifier.
+        # @param [Google::Apis::TasksV1::TaskList] task_list
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -272,11 +272,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_tasklist(task_list_obj, tasklist, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_tasklist(tasklist, task_list = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/@me/lists/{tasklist}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::TasksV1::TaskListRepresentation
-          command.request_object = task_list_obj
+          command.request_object = task_list
           command.response_representation = Google::Apis::TasksV1::TaskListRepresentation
           command.response_class = Google::Apis::TasksV1::TaskList
           command.params['tasklist'] = tasklist unless tasklist.nil?
@@ -402,10 +402,10 @@ module Google
         
         
         # Creates a new task on the specified task list.
-        # @param [Google::Apis::TasksV1::Task] task_obj
-        #   
         # @param [String] tasklist
         #   Task list identifier.
+        # @param [Google::Apis::TasksV1::Task] task
+        #   
         # @param [String] parent
         #   Parent task identifier. If the task is created at the top level, this
         #   parameter is omitted. Optional.
@@ -433,11 +433,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_task(task_obj, tasklist, parent: nil, previous: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_task(tasklist, task = nil, parent: nil, previous: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'lists/{tasklist}/tasks'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::TasksV1::TaskRepresentation
-          command.request_object = task_obj
+          command.request_object = task
           command.response_representation = Google::Apis::TasksV1::TaskRepresentation
           command.response_class = Google::Apis::TasksV1::Task
           command.params['tasklist'] = tasklist unless tasklist.nil?
@@ -577,12 +577,12 @@ module Google
         
         
         # Updates the specified task. This method supports patch semantics.
-        # @param [Google::Apis::TasksV1::Task] task_obj
-        #   
         # @param [String] tasklist
         #   Task list identifier.
         # @param [String] task
         #   Task identifier.
+        # @param [Google::Apis::TasksV1::Task] task_object
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -604,11 +604,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_task(task_obj, tasklist, task, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_task(tasklist, task, task_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'lists/{tasklist}/tasks/{task}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::TasksV1::TaskRepresentation
-          command.request_object = task_obj
+          command.request_object = task_object
           command.response_representation = Google::Apis::TasksV1::TaskRepresentation
           command.response_class = Google::Apis::TasksV1::Task
           command.params['tasklist'] = tasklist unless tasklist.nil?
@@ -621,12 +621,12 @@ module Google
         
         
         # Updates the specified task.
-        # @param [Google::Apis::TasksV1::Task] task_obj
-        #   
         # @param [String] tasklist
         #   Task list identifier.
         # @param [String] task
         #   Task identifier.
+        # @param [Google::Apis::TasksV1::Task] task_object
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -648,11 +648,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_task(task_obj, tasklist, task, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_task(tasklist, task, task_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'lists/{tasklist}/tasks/{task}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::TasksV1::TaskRepresentation
-          command.request_object = task_obj
+          command.request_object = task_object
           command.response_representation = Google::Apis::TasksV1::TaskRepresentation
           command.response_class = Google::Apis::TasksV1::Task
           command.params['tasklist'] = tasklist unless tasklist.nil?

@@ -54,7 +54,7 @@ module Google
         end
 
         # Retrieves line items in CSV format.
-        # @param [Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsRequest] download_line_items_request_obj
+        # @param [Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsRequest] download_line_items_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -77,11 +77,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def downloadlineitems_lineitem(download_line_items_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def downloadlineitems_lineitem(download_line_items_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'lineitems/downloadlineitems'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsRequestRepresentation
-          command.request_object = download_line_items_request_obj
+          command.request_object = download_line_items_request
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsResponseRepresentation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsResponse
           command.query['fields'] = fields unless fields.nil?
@@ -92,7 +92,7 @@ module Google
         
         
         # Uploads line items in CSV format.
-        # @param [Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsRequest] upload_line_items_request_obj
+        # @param [Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsRequest] upload_line_items_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -115,11 +115,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def uploadlineitems_lineitem(upload_line_items_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def uploadlineitems_lineitem(upload_line_items_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'lineitems/uploadlineitems'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsRequestRepresentation
-          command.request_object = upload_line_items_request_obj
+          command.request_object = upload_line_items_request
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsResponseRepresentation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsResponse
           command.query['fields'] = fields unless fields.nil?
@@ -129,7 +129,7 @@ module Google
         end
 
         # Creates a query.
-        # @param [Google::Apis::DoubleclickbidmanagerV1::Query] query_obj
+        # @param [Google::Apis::DoubleclickbidmanagerV1::Query] query
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -152,11 +152,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def createquery_query(query_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def createquery_query(query = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'query'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1::QueryRepresentation
-          command.request_object = query_obj
+          command.request_object = query
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1::QueryRepresentation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1::Query
           command.query['fields'] = fields unless fields.nil?
@@ -273,10 +273,10 @@ module Google
         
         
         # Runs a stored query to generate a report.
-        # @param [Google::Apis::DoubleclickbidmanagerV1::RunQueryRequest] run_query_request_obj
-        #   
         # @param [String] query_id
         #   Query ID to run.
+        # @param [Google::Apis::DoubleclickbidmanagerV1::RunQueryRequest] run_query_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -298,11 +298,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def runquery_query(run_query_request_obj, query_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def runquery_query(query_id, run_query_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'query/{queryId}'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1::RunQueryRequestRepresentation
-          command.request_object = run_query_request_obj
+          command.request_object = run_query_request
           command.params['queryId'] = query_id unless query_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

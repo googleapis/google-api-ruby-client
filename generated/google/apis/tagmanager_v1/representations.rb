@@ -128,7 +128,6 @@ module Google
 
       # @private
       class AccountRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_id, as: 'accountId'
         property :fingerprint, as: 'fingerprint'
         property :name, as: 'name'
@@ -137,13 +136,11 @@ module Google
 
       # @private
       class AccountAccessRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :permission, as: 'permission'
       end
 
       # @private
       class ConditionRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :parameter, as: 'parameter', class: Google::Apis::TagmanagerV1::Parameter, decorator: Google::Apis::TagmanagerV1::ParameterRepresentation
         
         
@@ -152,7 +149,6 @@ module Google
 
       # @private
       class ContainerRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_id, as: 'accountId'
         property :container_id, as: 'containerId'
         collection :domain_name, as: 'domainName'
@@ -170,14 +166,12 @@ module Google
 
       # @private
       class ContainerAccessRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :container_id, as: 'containerId'
         collection :permission, as: 'permission'
       end
 
       # @private
       class ContainerVersionRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_id, as: 'accountId'
         property :container, as: 'container', class: Google::Apis::TagmanagerV1::Container, decorator: Google::Apis::TagmanagerV1::ContainerRepresentation
         
@@ -204,7 +198,6 @@ module Google
 
       # @private
       class ContainerVersionHeaderRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_id, as: 'accountId'
         property :container_id, as: 'containerId'
         property :container_version_id, as: 'containerVersionId'
@@ -219,7 +212,6 @@ module Google
 
       # @private
       class CreateContainerVersionRequestVersionOptionsRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :name, as: 'name'
         property :notes, as: 'notes'
         property :quick_preview, as: 'quickPreview'
@@ -227,26 +219,22 @@ module Google
 
       # @private
       class CreateContainerVersionResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :compiler_error, as: 'compilerError'
         property :container_version, as: 'containerVersion', class: Google::Apis::TagmanagerV1::ContainerVersion, decorator: Google::Apis::TagmanagerV1::ContainerVersionRepresentation
       end
 
       # @private
       class ListAccountUsersResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :user_access, as: 'userAccess', class: Google::Apis::TagmanagerV1::UserAccess, decorator: Google::Apis::TagmanagerV1::UserAccessRepresentation
       end
 
       # @private
       class ListAccountsResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :accounts, as: 'accounts', class: Google::Apis::TagmanagerV1::Account, decorator: Google::Apis::TagmanagerV1::AccountRepresentation
       end
 
       # @private
       class ListContainerVersionsResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :container_version, as: 'containerVersion', class: Google::Apis::TagmanagerV1::ContainerVersion, decorator: Google::Apis::TagmanagerV1::ContainerVersionRepresentation
         
         
@@ -255,43 +243,36 @@ module Google
 
       # @private
       class ListContainersResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :containers, as: 'containers', class: Google::Apis::TagmanagerV1::Container, decorator: Google::Apis::TagmanagerV1::ContainerRepresentation
       end
 
       # @private
       class ListMacrosResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :macros, as: 'macros', class: Google::Apis::TagmanagerV1::Macro, decorator: Google::Apis::TagmanagerV1::MacroRepresentation
       end
 
       # @private
       class ListRulesResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :rules, as: 'rules', class: Google::Apis::TagmanagerV1::Rule, decorator: Google::Apis::TagmanagerV1::RuleRepresentation
       end
 
       # @private
       class ListTagsResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :tags, as: 'tags', class: Google::Apis::TagmanagerV1::Tag, decorator: Google::Apis::TagmanagerV1::TagRepresentation
       end
 
       # @private
       class ListTriggersResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :triggers, as: 'triggers', class: Google::Apis::TagmanagerV1::Trigger, decorator: Google::Apis::TagmanagerV1::TriggerRepresentation
       end
 
       # @private
       class ListVariablesResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :variables, as: 'variables', class: Google::Apis::TagmanagerV1::Variable, decorator: Google::Apis::TagmanagerV1::VariableRepresentation
       end
 
       # @private
       class MacroRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_id, as: 'accountId'
         property :container_id, as: 'containerId'
         collection :disabling_rule_id, as: 'disablingRuleId'
@@ -312,7 +293,6 @@ module Google
 
       # @private
       class ParameterRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :key, as: 'key'
         collection :list, as: 'list', class: Google::Apis::TagmanagerV1::Parameter, decorator: Google::Apis::TagmanagerV1::ParameterRepresentation
         
@@ -326,14 +306,12 @@ module Google
 
       # @private
       class PublishContainerVersionResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :compiler_error, as: 'compilerError'
         property :container_version, as: 'containerVersion', class: Google::Apis::TagmanagerV1::ContainerVersion, decorator: Google::Apis::TagmanagerV1::ContainerVersionRepresentation
       end
 
       # @private
       class RuleRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_id, as: 'accountId'
         collection :condition, as: 'condition', class: Google::Apis::TagmanagerV1::Condition, decorator: Google::Apis::TagmanagerV1::ConditionRepresentation
         
@@ -347,7 +325,6 @@ module Google
 
       # @private
       class TagRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_id, as: 'accountId'
         collection :blocking_rule_id, as: 'blockingRuleId'
         
@@ -375,7 +352,6 @@ module Google
 
       # @private
       class TriggerRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_id, as: 'accountId'
         collection :auto_event_filter, as: 'autoEventFilter', class: Google::Apis::TagmanagerV1::Condition, decorator: Google::Apis::TagmanagerV1::ConditionRepresentation
         
@@ -412,7 +388,6 @@ module Google
 
       # @private
       class UserAccessRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_access, as: 'accountAccess', class: Google::Apis::TagmanagerV1::AccountAccess, decorator: Google::Apis::TagmanagerV1::AccountAccessRepresentation
         
         property :account_id, as: 'accountId'
@@ -425,7 +400,6 @@ module Google
 
       # @private
       class VariableRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :account_id, as: 'accountId'
         property :container_id, as: 'containerId'
         collection :disabling_trigger_id, as: 'disablingTriggerId'

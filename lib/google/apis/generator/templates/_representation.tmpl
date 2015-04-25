@@ -1,7 +1,6 @@
 <% for child_class in cls.classes %>
 class <%= child_class.class_name %>Representation < Google::Apis::Core::JsonRepresentation; end
 <% end %>
-
 <% if cls.discriminant %>
 def from_hash(hash, *args)
   case hash['<%= cls.discriminant %>']
@@ -30,7 +29,6 @@ collection :<%= property.name %>, as: '<%= property.original_name %>'<%= include
 property :<%= property.name %>, as: '<%= property.original_name %>'<%= include('representation_type', :lead => ', ' , :type => property.type, :api => api) %><% end %>
 <% end %>
 <% end %>
-
 <% for child_class in cls.classes %>
 
 # @private

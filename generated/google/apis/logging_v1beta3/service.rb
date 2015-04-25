@@ -118,7 +118,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_logs(projects_id, service_name: nil, service_index_prefix: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def list_logs(projects_id, service_name: nil, service_index_prefix: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::ListLogsResponseRepresentation
@@ -196,13 +196,13 @@ module Google
         # commonLabels`, that supplies default (key, value) data for the `entries[].
         # metadata.labels` maps, saving you the trouble of creating identical copies for
         # each entry.
-        # @param [Google::Apis::LoggingV1beta3::WriteLogEntriesRequest] write_log_entries_request_obj
-        #   
         # @param [String] projects_id
         #   Part of `logName`. The name of the log resource into which to insert the log
         #   entries.
         # @param [String] logs_id
         #   Part of `logName`. See documentation of `projectsId`.
+        # @param [Google::Apis::LoggingV1beta3::WriteLogEntriesRequest] write_log_entries_request
+        #   
         # @param [String] access_token
         #   OAuth access token.
         # @param [String] bearer_token
@@ -230,11 +230,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def write_project_log_entry(write_log_entries_request_obj, projects_id, logs_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def write_log_entries(projects_id, logs_id, write_log_entries_request = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/entries:write'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::LoggingV1beta3::WriteLogEntriesRequestRepresentation
-          command.request_object = write_log_entries_request_obj
+          command.request_object = write_log_entries_request
           command.response_representation = Google::Apis::LoggingV1beta3::WriteLogEntriesResponseRepresentation
           command.response_class = Google::Apis::LoggingV1beta3::WriteLogEntriesResponse
           command.params['projectsId'] = projects_id unless projects_id.nil?
@@ -283,7 +283,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_log_sinks(projects_id, logs_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def list_log_sinks(projects_id, logs_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::ListLogSinksResponseRepresentation
@@ -355,12 +355,12 @@ module Google
         
         
         # Creates the specified log sink resource.
-        # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink_obj
-        #   
         # @param [String] projects_id
         #   Part of `logName`. The log in which to create a sink resource.
         # @param [String] logs_id
         #   Part of `logName`. See documentation of `projectsId`.
+        # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink
+        #   
         # @param [String] access_token
         #   OAuth access token.
         # @param [String] bearer_token
@@ -388,11 +388,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_log_sink(log_sink_obj, projects_id, logs_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def create_project_log_sink(projects_id, logs_id, log_sink = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
-          command.request_object = log_sink_obj
+          command.request_object = log_sink
           command.response_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
           command.response_class = Google::Apis::LoggingV1beta3::LogSink
           command.params['projectsId'] = projects_id unless projects_id.nil?
@@ -409,14 +409,14 @@ module Google
         
         
         # Creates or updates the specified log sink resource.
-        # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink_obj
-        #   
         # @param [String] projects_id
         #   Part of `sinkName`. The name of the sink to update.
         # @param [String] logs_id
         #   Part of `sinkName`. See documentation of `projectsId`.
         # @param [String] sinks_id
         #   Part of `sinkName`. See documentation of `projectsId`.
+        # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink
+        #   
         # @param [String] access_token
         #   OAuth access token.
         # @param [String] bearer_token
@@ -444,11 +444,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_log_sink(log_sink_obj, projects_id, logs_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def update_project_log_sink(projects_id, logs_id, sinks_id, log_sink = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks/{sinksId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
-          command.request_object = log_sink_obj
+          command.request_object = log_sink
           command.response_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
           command.response_class = Google::Apis::LoggingV1beta3::LogSink
           command.params['projectsId'] = projects_id unless projects_id.nil?
@@ -559,7 +559,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_log_services(projects_id, log: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def list_log_services(projects_id, log: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::ListLogServicesResponseRepresentation
@@ -637,7 +637,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_log_service_indexes(projects_id, log_services_id, index_prefix: nil, depth: nil, log: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def list_log_service_indexes(projects_id, log_services_id, index_prefix: nil, depth: nil, log: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/indexes'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::ListLogServiceIndexesResponseRepresentation
@@ -693,7 +693,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_log_service_sinks(projects_id, log_services_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def list_log_service_sinks(projects_id, log_services_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::ListLogServiceSinksResponseRepresentation
@@ -765,12 +765,12 @@ module Google
         
         
         # Creates the specified log service sink resource.
-        # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink_obj
-        #   
         # @param [String] projects_id
         #   Part of `serviceName`. The name of the service in which to create a sink.
         # @param [String] log_services_id
         #   Part of `serviceName`. See documentation of `projectsId`.
+        # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink
+        #   
         # @param [String] access_token
         #   OAuth access token.
         # @param [String] bearer_token
@@ -798,11 +798,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_log_service_sink(log_sink_obj, projects_id, log_services_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def create_project_log_service_sink(projects_id, log_services_id, log_sink = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
-          command.request_object = log_sink_obj
+          command.request_object = log_sink
           command.response_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
           command.response_class = Google::Apis::LoggingV1beta3::LogSink
           command.params['projectsId'] = projects_id unless projects_id.nil?
@@ -819,14 +819,14 @@ module Google
         
         
         # Creates or update the specified log service sink resource.
-        # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink_obj
-        #   
         # @param [String] projects_id
         #   Part of `sinkName`. The name of the sink to update.
         # @param [String] log_services_id
         #   Part of `sinkName`. See documentation of `projectsId`.
         # @param [String] sinks_id
         #   Part of `sinkName`. See documentation of `projectsId`.
+        # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink
+        #   
         # @param [String] access_token
         #   OAuth access token.
         # @param [String] bearer_token
@@ -854,11 +854,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_log_service_sink(log_sink_obj, projects_id, log_services_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def update_project_log_service_sink(projects_id, log_services_id, sinks_id, log_sink = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks/{sinksId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
-          command.request_object = log_sink_obj
+          command.request_object = log_sink
           command.response_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
           command.response_class = Google::Apis::LoggingV1beta3::LogSink
           command.params['projectsId'] = projects_id unless projects_id.nil?

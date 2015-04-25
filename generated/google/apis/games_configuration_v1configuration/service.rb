@@ -126,10 +126,10 @@ module Google
         
         
         # Insert a new achievement configuration in this application.
-        # @param [Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration] achievement_configuration_obj
-        #   
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
+        # @param [Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration] achievement_configuration
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -151,11 +151,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_achievement_configuration(achievement_configuration_obj, application_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_achievement_configuration(application_id, achievement_configuration = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'applications/{applicationId}/achievements'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationRepresentation
-          command.request_object = achievement_configuration_obj
+          command.request_object = achievement_configuration
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationRepresentation
           command.response_class = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration
           command.params['applicationId'] = application_id unless application_id.nil?
@@ -213,10 +213,10 @@ module Google
         
         # Update the metadata of the achievement configuration with the given ID. This
         # method supports patch semantics.
-        # @param [Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration] achievement_configuration_obj
-        #   
         # @param [String] achievement_id
         #   The ID of the achievement used by this method.
+        # @param [Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration] achievement_configuration
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -238,11 +238,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_achievement_configuration(achievement_configuration_obj, achievement_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_achievement_configuration(achievement_id, achievement_configuration = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'achievements/{achievementId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationRepresentation
-          command.request_object = achievement_configuration_obj
+          command.request_object = achievement_configuration
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationRepresentation
           command.response_class = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration
           command.params['achievementId'] = achievement_id unless achievement_id.nil?
@@ -254,10 +254,10 @@ module Google
         
         
         # Update the metadata of the achievement configuration with the given ID.
-        # @param [Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration] achievement_configuration_obj
-        #   
         # @param [String] achievement_id
         #   The ID of the achievement used by this method.
+        # @param [Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration] achievement_configuration
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -279,11 +279,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_achievement_configuration(achievement_configuration_obj, achievement_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_achievement_configuration(achievement_id, achievement_configuration = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'achievements/{achievementId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationRepresentation
-          command.request_object = achievement_configuration_obj
+          command.request_object = achievement_configuration
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationRepresentation
           command.response_class = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration
           command.params['achievementId'] = achievement_id unless achievement_id.nil?
@@ -415,10 +415,10 @@ module Google
         
         
         # Insert a new leaderboard configuration in this application.
-        # @param [Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration] leaderboard_configuration_obj
-        #   
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
+        # @param [Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration] leaderboard_configuration
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -440,11 +440,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_leaderboard_configuration(leaderboard_configuration_obj, application_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_leaderboard_configuration(application_id, leaderboard_configuration = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'applications/{applicationId}/leaderboards'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationRepresentation
-          command.request_object = leaderboard_configuration_obj
+          command.request_object = leaderboard_configuration
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationRepresentation
           command.response_class = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration
           command.params['applicationId'] = application_id unless application_id.nil?
@@ -502,10 +502,10 @@ module Google
         
         # Update the metadata of the leaderboard configuration with the given ID. This
         # method supports patch semantics.
-        # @param [Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration] leaderboard_configuration_obj
-        #   
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
+        # @param [Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration] leaderboard_configuration
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -527,11 +527,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_leaderboard_configuration(leaderboard_configuration_obj, leaderboard_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_leaderboard_configuration(leaderboard_id, leaderboard_configuration = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'leaderboards/{leaderboardId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationRepresentation
-          command.request_object = leaderboard_configuration_obj
+          command.request_object = leaderboard_configuration
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationRepresentation
           command.response_class = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration
           command.params['leaderboardId'] = leaderboard_id unless leaderboard_id.nil?
@@ -543,10 +543,10 @@ module Google
         
         
         # Update the metadata of the leaderboard configuration with the given ID.
-        # @param [Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration] leaderboard_configuration_obj
-        #   
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
+        # @param [Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration] leaderboard_configuration
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -568,11 +568,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_leaderboard_configuration(leaderboard_configuration_obj, leaderboard_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_leaderboard_configuration(leaderboard_id, leaderboard_configuration = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'leaderboards/{leaderboardId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationRepresentation
-          command.request_object = leaderboard_configuration_obj
+          command.request_object = leaderboard_configuration
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationRepresentation
           command.response_class = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration
           command.params['leaderboardId'] = leaderboard_id unless leaderboard_id.nil?

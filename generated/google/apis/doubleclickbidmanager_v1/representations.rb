@@ -100,7 +100,6 @@ module Google
 
       # @private
       class DownloadLineItemsRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :filter_ids, as: 'filterIds'
         
         property :filter_type, as: 'filterType'
@@ -109,34 +108,29 @@ module Google
 
       # @private
       class DownloadLineItemsResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :line_items, as: 'lineItems'
       end
 
       # @private
       class FilterPairRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :type, as: 'type'
         property :value, as: 'value'
       end
 
       # @private
       class ListQueriesResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         collection :queries, as: 'queries', class: Google::Apis::DoubleclickbidmanagerV1::Query, decorator: Google::Apis::DoubleclickbidmanagerV1::QueryRepresentation
       end
 
       # @private
       class ListReportsResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         collection :reports, as: 'reports', class: Google::Apis::DoubleclickbidmanagerV1::Report, decorator: Google::Apis::DoubleclickbidmanagerV1::ReportRepresentation
       end
 
       # @private
       class ParametersRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :filters, as: 'filters', class: Google::Apis::DoubleclickbidmanagerV1::FilterPair, decorator: Google::Apis::DoubleclickbidmanagerV1::FilterPairRepresentation
         
         
@@ -150,7 +144,6 @@ module Google
 
       # @private
       class QueryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :metadata, as: 'metadata', class: Google::Apis::DoubleclickbidmanagerV1::QueryMetadata, decorator: Google::Apis::DoubleclickbidmanagerV1::QueryMetadataRepresentation
         
@@ -166,7 +159,6 @@ module Google
 
       # @private
       class QueryMetadataRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :data_range, as: 'dataRange'
         property :format, as: 'format'
         property :google_cloud_storage_path_for_latest_report, as: 'googleCloudStoragePathForLatestReport'
@@ -183,7 +175,6 @@ module Google
 
       # @private
       class QueryScheduleRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :end_time_ms, as: 'endTimeMs'
         property :frequency, as: 'frequency'
         property :next_run_minute_of_day, as: 'nextRunMinuteOfDay'
@@ -192,7 +183,6 @@ module Google
 
       # @private
       class ReportRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :key, as: 'key', class: Google::Apis::DoubleclickbidmanagerV1::ReportKey, decorator: Google::Apis::DoubleclickbidmanagerV1::ReportKeyRepresentation
         
         property :metadata, as: 'metadata', class: Google::Apis::DoubleclickbidmanagerV1::ReportMetadata, decorator: Google::Apis::DoubleclickbidmanagerV1::ReportMetadataRepresentation
@@ -202,20 +192,17 @@ module Google
 
       # @private
       class ReportFailureRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :error_code, as: 'errorCode'
       end
 
       # @private
       class ReportKeyRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :query_id, as: 'queryId'
         property :report_id, as: 'reportId'
       end
 
       # @private
       class ReportMetadataRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :google_cloud_storage_path, as: 'googleCloudStoragePath'
         property :report_data_end_time_ms, as: 'reportDataEndTimeMs'
         property :report_data_start_time_ms, as: 'reportDataStartTimeMs'
@@ -224,7 +211,6 @@ module Google
 
       # @private
       class ReportStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :failure, as: 'failure', class: Google::Apis::DoubleclickbidmanagerV1::ReportFailure, decorator: Google::Apis::DoubleclickbidmanagerV1::ReportFailureRepresentation
         
         property :finish_time_ms, as: 'finishTimeMs'
@@ -234,7 +220,6 @@ module Google
 
       # @private
       class RowStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :changed, as: 'changed'
         property :entity_id, as: 'entityId'
         property :entity_name, as: 'entityName'
@@ -246,7 +231,6 @@ module Google
 
       # @private
       class RunQueryRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :data_range, as: 'dataRange'
         property :report_data_end_time_ms, as: 'reportDataEndTimeMs'
         property :report_data_start_time_ms, as: 'reportDataStartTimeMs'
@@ -255,7 +239,6 @@ module Google
 
       # @private
       class UploadLineItemsRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :dry_run, as: 'dryRun'
         property :format, as: 'format'
         property :line_items, as: 'lineItems'
@@ -263,13 +246,11 @@ module Google
 
       # @private
       class UploadLineItemsResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :upload_status, as: 'uploadStatus', class: Google::Apis::DoubleclickbidmanagerV1::UploadStatus, decorator: Google::Apis::DoubleclickbidmanagerV1::UploadStatusRepresentation
       end
 
       # @private
       class UploadStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :errors, as: 'errors'
         
         collection :row_status, as: 'rowStatus', class: Google::Apis::DoubleclickbidmanagerV1::RowStatus, decorator: Google::Apis::DoubleclickbidmanagerV1::RowStatusRepresentation

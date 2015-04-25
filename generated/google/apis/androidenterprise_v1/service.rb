@@ -133,10 +133,10 @@ module Google
         
         
         # Creates a new collection.
-        # @param [Google::Apis::AndroidenterpriseV1::Collection] collection_obj
-        #   
         # @param [String] enterprise_id
         #   The ID of the enterprise.
+        # @param [Google::Apis::AndroidenterpriseV1::Collection] collection
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -158,11 +158,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_collection(collection_obj, enterprise_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_collection(enterprise_id, collection = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/collections'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::CollectionRepresentation
-          command.request_object = collection_obj
+          command.request_object = collection
           command.response_representation = Google::Apis::AndroidenterpriseV1::CollectionRepresentation
           command.response_class = Google::Apis::AndroidenterpriseV1::Collection
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
@@ -211,12 +211,12 @@ module Google
         
         
         # Updates a collection. This method supports patch semantics.
-        # @param [Google::Apis::AndroidenterpriseV1::Collection] collection_obj
-        #   
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] collection_id
         #   The ID of the collection.
+        # @param [Google::Apis::AndroidenterpriseV1::Collection] collection
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -238,11 +238,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_collection(collection_obj, enterprise_id, collection_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_collection(enterprise_id, collection_id, collection = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/collections/{collectionId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::CollectionRepresentation
-          command.request_object = collection_obj
+          command.request_object = collection
           command.response_representation = Google::Apis::AndroidenterpriseV1::CollectionRepresentation
           command.response_class = Google::Apis::AndroidenterpriseV1::Collection
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
@@ -255,12 +255,12 @@ module Google
         
         
         # Updates a collection.
-        # @param [Google::Apis::AndroidenterpriseV1::Collection] collection_obj
-        #   
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] collection_id
         #   The ID of the collection.
+        # @param [Google::Apis::AndroidenterpriseV1::Collection] collection
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -282,11 +282,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_collection(collection_obj, enterprise_id, collection_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_collection(enterprise_id, collection_id, collection = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/collections/{collectionId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::CollectionRepresentation
-          command.request_object = collection_obj
+          command.request_object = collection
           command.response_representation = Google::Apis::AndroidenterpriseV1::CollectionRepresentation
           command.response_class = Google::Apis::AndroidenterpriseV1::Collection
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
@@ -430,14 +430,14 @@ module Google
         # Adds the user to the list of those specifically allowed to see the collection.
         # If the collection's visibility is set to viewersOnly then only such users will
         # see the collection. This method supports patch semantics.
-        # @param [Google::Apis::AndroidenterpriseV1::User] user_obj
-        #   
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] collection_id
         #   The ID of the collection.
         # @param [String] user_id
         #   The ID of the user.
+        # @param [Google::Apis::AndroidenterpriseV1::User] user
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -459,11 +459,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_collectionviewer(user_obj, enterprise_id, collection_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_collectionviewer(enterprise_id, collection_id, user_id, user = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/collections/{collectionId}/users/{userId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::UserRepresentation
-          command.request_object = user_obj
+          command.request_object = user
           command.response_representation = Google::Apis::AndroidenterpriseV1::UserRepresentation
           command.response_class = Google::Apis::AndroidenterpriseV1::User
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
@@ -479,14 +479,14 @@ module Google
         # Adds the user to the list of those specifically allowed to see the collection.
         # If the collection's visibility is set to viewersOnly then only such users will
         # see the collection.
-        # @param [Google::Apis::AndroidenterpriseV1::User] user_obj
-        #   
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] collection_id
         #   The ID of the collection.
         # @param [String] user_id
         #   The ID of the user.
+        # @param [Google::Apis::AndroidenterpriseV1::User] user
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -508,11 +508,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_collectionviewer(user_obj, enterprise_id, collection_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_collectionviewer(enterprise_id, collection_id, user_id, user = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/collections/{collectionId}/users/{userId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::UserRepresentation
-          command.request_object = user_obj
+          command.request_object = user
           command.response_representation = Google::Apis::AndroidenterpriseV1::UserRepresentation
           command.response_class = Google::Apis::AndroidenterpriseV1::User
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
@@ -657,14 +657,14 @@ module Google
         # services. The device state takes effect only if enforcing EMM policies on
         # Android devices is enabled in the Google Admin Console. Otherwise, the device
         # state is ignored and all devices are allowed access to Google services.
-        # @param [Google::Apis::AndroidenterpriseV1::DeviceState] device_state_obj
-        #   
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
         #   The ID of the user.
         # @param [String] device_id
         #   The ID of the device.
+        # @param [Google::Apis::AndroidenterpriseV1::DeviceState] device_state
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -686,11 +686,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_state(device_state_obj, enterprise_id, user_id, device_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_state(enterprise_id, user_id, device_id, device_state = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::DeviceStateRepresentation
-          command.request_object = device_state_obj
+          command.request_object = device_state
           command.response_representation = Google::Apis::AndroidenterpriseV1::DeviceStateRepresentation
           command.response_class = Google::Apis::AndroidenterpriseV1::DeviceState
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
@@ -740,7 +740,7 @@ module Google
         
         
         # Enrolls an enterprise with the calling MDM.
-        # @param [Google::Apis::AndroidenterpriseV1::Enterprise] enterprise_obj
+        # @param [Google::Apis::AndroidenterpriseV1::Enterprise] enterprise
         #   
         # @param [String] token
         #   The token provided by the enterprise to register the MDM.
@@ -765,11 +765,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def enroll_enterprise(enterprise_obj, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def enroll_enterprise(enterprise = nil, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/enroll'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::EnterpriseRepresentation
-          command.request_object = enterprise_obj
+          command.request_object = enterprise
           command.response_representation = Google::Apis::AndroidenterpriseV1::EnterpriseRepresentation
           command.response_class = Google::Apis::AndroidenterpriseV1::Enterprise
           command.query['token'] = token unless token.nil?
@@ -819,7 +819,7 @@ module Google
         
         # Establishes the binding between the MDM and an enterprise. This is now
         # deprecated; use enroll instead.
-        # @param [Google::Apis::AndroidenterpriseV1::Enterprise] enterprise_obj
+        # @param [Google::Apis::AndroidenterpriseV1::Enterprise] enterprise
         #   
         # @param [String] token
         #   The token provided by the enterprise to register the MDM.
@@ -844,11 +844,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_enterprise(enterprise_obj, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_enterprise(enterprise = nil, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::EnterpriseRepresentation
-          command.request_object = enterprise_obj
+          command.request_object = enterprise
           command.response_representation = Google::Apis::AndroidenterpriseV1::EnterpriseRepresentation
           command.response_class = Google::Apis::AndroidenterpriseV1::Enterprise
           command.query['token'] = token unless token.nil?
@@ -897,10 +897,10 @@ module Google
         
         
         # Set the account that will be used to authenticate to the API as the enterprise.
-        # @param [Google::Apis::AndroidenterpriseV1::EnterpriseAccount] enterprise_account_obj
-        #   
         # @param [String] enterprise_id
         #   The ID of the enterprise.
+        # @param [Google::Apis::AndroidenterpriseV1::EnterpriseAccount] enterprise_account
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -922,11 +922,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_account(enterprise_account_obj, enterprise_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_account(enterprise_id, enterprise_account = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/account'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::EnterpriseAccountRepresentation
-          command.request_object = enterprise_account_obj
+          command.request_object = enterprise_account
           command.response_representation = Google::Apis::AndroidenterpriseV1::EnterpriseAccountRepresentation
           command.response_class = Google::Apis::AndroidenterpriseV1::EnterpriseAccount
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
@@ -1097,14 +1097,14 @@ module Google
         
         # Adds or updates an entitlement to an app for a user. This method supports
         # patch semantics.
-        # @param [Google::Apis::AndroidenterpriseV1::Entitlement] entitlement_obj
-        #   
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
         #   The ID of the user.
         # @param [String] entitlement_id
         #   The ID of the entitlement, e.g. "app:com.google.android.gm".
+        # @param [Google::Apis::AndroidenterpriseV1::Entitlement] entitlement
+        #   
         # @param [Boolean] install
         #   Set to true to also install the product on all the user's devices where
         #   possible. Failure to install on one or more devices will not prevent this
@@ -1131,11 +1131,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_entitlement(entitlement_obj, enterprise_id, user_id, entitlement_id, install: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_entitlement(enterprise_id, user_id, entitlement_id, entitlement = nil, install: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::EntitlementRepresentation
-          command.request_object = entitlement_obj
+          command.request_object = entitlement
           command.response_representation = Google::Apis::AndroidenterpriseV1::EntitlementRepresentation
           command.response_class = Google::Apis::AndroidenterpriseV1::Entitlement
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
@@ -1150,14 +1150,14 @@ module Google
         
         
         # Adds or updates an entitlement to an app for a user.
-        # @param [Google::Apis::AndroidenterpriseV1::Entitlement] entitlement_obj
-        #   
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
         #   The ID of the user.
         # @param [String] entitlement_id
         #   The ID of the entitlement, e.g. "app:com.google.android.gm".
+        # @param [Google::Apis::AndroidenterpriseV1::Entitlement] entitlement
+        #   
         # @param [Boolean] install
         #   Set to true to also install the product on all the user's devices where
         #   possible. Failure to install on one or more devices will not prevent this
@@ -1184,11 +1184,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_entitlement(entitlement_obj, enterprise_id, user_id, entitlement_id, install: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_entitlement(enterprise_id, user_id, entitlement_id, entitlement = nil, install: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::EntitlementRepresentation
-          command.request_object = entitlement_obj
+          command.request_object = entitlement
           command.response_representation = Google::Apis::AndroidenterpriseV1::EntitlementRepresentation
           command.response_class = Google::Apis::AndroidenterpriseV1::Entitlement
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
@@ -1458,8 +1458,6 @@ module Google
         # Requests to install the latest version of an app to a device. If the app is
         # already installed then it is updated to the latest version if necessary. This
         # method supports patch semantics.
-        # @param [Google::Apis::AndroidenterpriseV1::Install] install_obj
-        #   
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -1469,6 +1467,8 @@ module Google
         # @param [String] install_id
         #   The ID of the product represented by the install, e.g. "app:com.google.android.
         #   gm".
+        # @param [Google::Apis::AndroidenterpriseV1::Install] install
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1490,11 +1490,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_install(install_obj, enterprise_id, user_id, device_id, install_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_install(enterprise_id, user_id, device_id, install_id, install = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::InstallRepresentation
-          command.request_object = install_obj
+          command.request_object = install
           command.response_representation = Google::Apis::AndroidenterpriseV1::InstallRepresentation
           command.response_class = Google::Apis::AndroidenterpriseV1::Install
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
@@ -1510,8 +1510,6 @@ module Google
         
         # Requests to install the latest version of an app to a device. If the app is
         # already installed then it is updated to the latest version if necessary.
-        # @param [Google::Apis::AndroidenterpriseV1::Install] install_obj
-        #   
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] user_id
@@ -1521,6 +1519,8 @@ module Google
         # @param [String] install_id
         #   The ID of the product represented by the install, e.g. "app:com.google.android.
         #   gm".
+        # @param [Google::Apis::AndroidenterpriseV1::Install] install
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1542,11 +1542,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_install(install_obj, enterprise_id, user_id, device_id, install_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_install(enterprise_id, user_id, device_id, install_id, install = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::InstallRepresentation
-          command.request_object = install_obj
+          command.request_object = install
           command.response_representation = Google::Apis::AndroidenterpriseV1::InstallRepresentation
           command.response_class = Google::Apis::AndroidenterpriseV1::Install
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
@@ -1729,12 +1729,12 @@ module Google
         
         # Updates the set of Android app permissions for this app that have been
         # accepted by the enterprise.
-        # @param [Google::Apis::AndroidenterpriseV1::ProductPermissions] product_permissions_obj
-        #   
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] product_id
         #   The ID of the product.
+        # @param [Google::Apis::AndroidenterpriseV1::ProductPermissions] product_permissions
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1756,11 +1756,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_permissions(product_permissions_obj, enterprise_id, product_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_permissions(enterprise_id, product_id, product_permissions = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/products/{productId}/permissions'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::ProductPermissionsRepresentation
-          command.request_object = product_permissions_obj
+          command.request_object = product_permissions
           command.response_representation = Google::Apis::AndroidenterpriseV1::ProductPermissionsRepresentation
           command.response_class = Google::Apis::AndroidenterpriseV1::ProductPermissions
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?

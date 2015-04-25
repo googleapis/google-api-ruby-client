@@ -142,12 +142,12 @@ module Google
         
         
         # Inserts and starts a new update.
-        # @param [Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdate] rolling_update_obj
-        #   
         # @param [String] project
         #   The Google Developers Console project name.
         # @param [String] zone
         #   The name of the zone in which the update's target resides.
+        # @param [Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdate] rolling_update
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -169,11 +169,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_rolling_update(rolling_update_obj, project, zone, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_rolling_update(project, zone, rolling_update = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/rollingUpdates'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdateRepresentation
-          command.request_object = rolling_update_obj
+          command.request_object = rolling_update
           command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::OperationRepresentation
           command.response_class = Google::Apis::ReplicapoolupdaterV1beta1::Operation
           command.params['project'] = project unless project.nil?

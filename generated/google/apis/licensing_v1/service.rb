@@ -138,12 +138,12 @@ module Google
         
         
         # Assign License.
-        # @param [Google::Apis::LicensingV1::LicenseAssignmentInsert] license_assignment_insert_obj
-        #   
         # @param [String] product_id
         #   Name for product
         # @param [String] sku_id
         #   Name for sku
+        # @param [Google::Apis::LicensingV1::LicenseAssignmentInsert] license_assignment_insert
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -165,11 +165,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_license_assignment(license_assignment_insert_obj, product_id, sku_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_license_assignment(product_id, sku_id, license_assignment_insert = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{productId}/sku/{skuId}/user'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::LicensingV1::LicenseAssignmentInsertRepresentation
-          command.request_object = license_assignment_insert_obj
+          command.request_object = license_assignment_insert
           command.response_representation = Google::Apis::LicensingV1::LicenseAssignmentRepresentation
           command.response_class = Google::Apis::LicensingV1::LicenseAssignment
           command.params['productId'] = product_id unless product_id.nil?
@@ -281,14 +281,14 @@ module Google
         
         
         # Assign License. This method supports patch semantics.
-        # @param [Google::Apis::LicensingV1::LicenseAssignment] license_assignment_obj
-        #   
         # @param [String] product_id
         #   Name for product
         # @param [String] sku_id
         #   Name for sku for which license would be revoked
         # @param [String] user_id
         #   email id or unique Id of the user
+        # @param [Google::Apis::LicensingV1::LicenseAssignment] license_assignment
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -310,11 +310,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_license_assignment(license_assignment_obj, product_id, sku_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_license_assignment(product_id, sku_id, user_id, license_assignment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{productId}/sku/{skuId}/user/{userId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::LicensingV1::LicenseAssignmentRepresentation
-          command.request_object = license_assignment_obj
+          command.request_object = license_assignment
           command.response_representation = Google::Apis::LicensingV1::LicenseAssignmentRepresentation
           command.response_class = Google::Apis::LicensingV1::LicenseAssignment
           command.params['productId'] = product_id unless product_id.nil?
@@ -328,14 +328,14 @@ module Google
         
         
         # Assign License.
-        # @param [Google::Apis::LicensingV1::LicenseAssignment] license_assignment_obj
-        #   
         # @param [String] product_id
         #   Name for product
         # @param [String] sku_id
         #   Name for sku for which license would be revoked
         # @param [String] user_id
         #   email id or unique Id of the user
+        # @param [Google::Apis::LicensingV1::LicenseAssignment] license_assignment
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -357,11 +357,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_license_assignment(license_assignment_obj, product_id, sku_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_license_assignment(product_id, sku_id, user_id, license_assignment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{productId}/sku/{skuId}/user/{userId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::LicensingV1::LicenseAssignmentRepresentation
-          command.request_object = license_assignment_obj
+          command.request_object = license_assignment
           command.response_representation = Google::Apis::LicensingV1::LicenseAssignmentRepresentation
           command.response_class = Google::Apis::LicensingV1::LicenseAssignment
           command.params['productId'] = product_id unless product_id.nil?

@@ -60,7 +60,7 @@ module Google
         # other API methods to generate those activity resources. For example, you would
         # use the API's videos.rate() method to rate a video and the playlistItems.
         # insert() method to mark a video as a favorite.
-        # @param [Google::Apis::YoutubeV3::Activity] activity_obj
+        # @param [Google::Apis::YoutubeV3::Activity] activity
         #   
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
@@ -89,11 +89,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_activity(activity_obj, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_activity(activity = nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activities'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::ActivityRepresentation
-          command.request_object = activity_obj
+          command.request_object = activity
           command.response_representation = Google::Apis::YoutubeV3::ActivityRepresentation
           command.response_class = Google::Apis::YoutubeV3::Activity
           command.query['part'] = part unless part.nil?
@@ -301,7 +301,7 @@ module Google
         
         
         # Uploads a caption track.
-        # @param [Google::Apis::YoutubeV3::Caption] caption_obj
+        # @param [Google::Apis::YoutubeV3::Caption] caption
         #   
         # @param [String] debug_project_id_override
         #   The debugProjectIdOverride parameter should be used for mimicking a request
@@ -344,7 +344,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_caption(caption_obj, debug_project_id_override: nil, on_behalf_of: nil, part: nil, sync: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_caption(caption = nil, debug_project_id_override: nil, on_behalf_of: nil, part: nil, sync: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'captions'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -354,7 +354,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::YoutubeV3::CaptionRepresentation
-          command.request_object = caption_obj
+          command.request_object = caption
           command.response_representation = Google::Apis::YoutubeV3::CaptionRepresentation
           command.response_class = Google::Apis::YoutubeV3::Caption
           command.query['debugProjectIdOverride'] = debug_project_id_override unless debug_project_id_override.nil?
@@ -427,7 +427,7 @@ module Google
         
         # Updates a caption track. When updating a caption track, you can change the
         # track's draft status, upload a new caption file for the track, or both.
-        # @param [Google::Apis::YoutubeV3::Caption] caption_obj
+        # @param [Google::Apis::YoutubeV3::Caption] caption
         #   
         # @param [String] debug_project_id_override
         #   The debugProjectIdOverride parameter should be used for mimicking a request
@@ -471,7 +471,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_caption(caption_obj, debug_project_id_override: nil, on_behalf_of: nil, part: nil, sync: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def update_caption(caption = nil, debug_project_id_override: nil, on_behalf_of: nil, part: nil, sync: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'captions'
           if upload_source.nil?
             command =  make_simple_command(:put, path, options)
@@ -481,7 +481,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::YoutubeV3::CaptionRepresentation
-          command.request_object = caption_obj
+          command.request_object = caption
           command.response_representation = Google::Apis::YoutubeV3::CaptionRepresentation
           command.response_class = Google::Apis::YoutubeV3::Caption
           command.query['debugProjectIdOverride'] = debug_project_id_override unless debug_project_id_override.nil?
@@ -504,7 +504,7 @@ module Google
         # - Call the channels.update method to update the channel's branding settings.
         # Set the brandingSettings.image.bannerExternalUrl property's value to the URL
         # obtained in step 2.
-        # @param [Google::Apis::YoutubeV3::ChannelBannerResource] channel_banner_resource_obj
+        # @param [Google::Apis::YoutubeV3::ChannelBannerResource] channel_banner_resource
         #   
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -541,7 +541,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_channel_banner(channel_banner_resource_obj, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_channel_banner(channel_banner_resource = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'channelBanners/insert'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -551,7 +551,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::YoutubeV3::ChannelBannerResourceRepresentation
-          command.request_object = channel_banner_resource_obj
+          command.request_object = channel_banner_resource
           command.response_representation = Google::Apis::YoutubeV3::ChannelBannerResourceRepresentation
           command.response_class = Google::Apis::YoutubeV3::ChannelBannerResource
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -610,7 +610,7 @@ module Google
         
         
         # Adds a channelSection for the authenticated user's channel.
-        # @param [Google::Apis::YoutubeV3::ChannelSection] channel_section_obj
+        # @param [Google::Apis::YoutubeV3::ChannelSection] channel_section
         #   
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -665,11 +665,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_channel_section(channel_section_obj, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_channel_section(channel_section = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'channelSections'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::ChannelSectionRepresentation
-          command.request_object = channel_section_obj
+          command.request_object = channel_section
           command.response_representation = Google::Apis::YoutubeV3::ChannelSectionRepresentation
           command.response_class = Google::Apis::YoutubeV3::ChannelSection
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -762,7 +762,7 @@ module Google
         
         
         # Update a channelSection.
-        # @param [Google::Apis::YoutubeV3::ChannelSection] channel_section_obj
+        # @param [Google::Apis::YoutubeV3::ChannelSection] channel_section
         #   
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -801,11 +801,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_channel_section(channel_section_obj, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_channel_section(channel_section = nil, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'channelSections'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::ChannelSectionRepresentation
-          command.request_object = channel_section_obj
+          command.request_object = channel_section
           command.response_representation = Google::Apis::YoutubeV3::ChannelSectionRepresentation
           command.response_class = Google::Apis::YoutubeV3::ChannelSection
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -913,7 +913,7 @@ module Google
         
         
         # Updates a channel's metadata.
-        # @param [Google::Apis::YoutubeV3::Channel] channel_obj
+        # @param [Google::Apis::YoutubeV3::Channel] channel
         #   
         # @param [String] on_behalf_of_content_owner
         #   The onBehalfOfContentOwner parameter indicates that the authenticated user is
@@ -953,11 +953,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_channel(channel_obj, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_channel(channel = nil, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'channels'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::ChannelRepresentation
-          command.request_object = channel_obj
+          command.request_object = channel
           command.response_representation = Google::Apis::YoutubeV3::ChannelRepresentation
           command.response_class = Google::Apis::YoutubeV3::Channel
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -969,7 +969,7 @@ module Google
         end
 
         # Creates a new comment thread and top level comment.
-        # @param [Google::Apis::YoutubeV3::CommentThread] comment_thread_obj
+        # @param [Google::Apis::YoutubeV3::CommentThread] comment_thread
         #   
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
@@ -1001,11 +1001,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_comment_thread(comment_thread_obj, part: nil, share_on_google_plus: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_comment_thread(comment_thread = nil, part: nil, share_on_google_plus: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'commentThreads'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::CommentThreadRepresentation
-          command.request_object = comment_thread_obj
+          command.request_object = comment_thread
           command.response_representation = Google::Apis::YoutubeV3::CommentThreadRepresentation
           command.response_class = Google::Apis::YoutubeV3::CommentThread
           command.query['part'] = part unless part.nil?
@@ -1101,7 +1101,7 @@ module Google
         
         
         # Modifies an existing comment.
-        # @param [Google::Apis::YoutubeV3::CommentThread] comment_thread_obj
+        # @param [Google::Apis::YoutubeV3::CommentThread] comment_thread
         #   
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
@@ -1130,11 +1130,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_comment_thread(comment_thread_obj, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_comment_thread(comment_thread = nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'commentThreads'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::CommentThreadRepresentation
-          command.request_object = comment_thread_obj
+          command.request_object = comment_thread
           command.response_representation = Google::Apis::YoutubeV3::CommentThreadRepresentation
           command.response_class = Google::Apis::YoutubeV3::CommentThread
           command.query['part'] = part unless part.nil?
@@ -1183,7 +1183,7 @@ module Google
         # Creates a new comment.
         # Note: to create a top level comment it is also necessary to create a comment
         # thread. Both are accomplished through the commentThreads resource.
-        # @param [Google::Apis::YoutubeV3::Comment] comment_obj
+        # @param [Google::Apis::YoutubeV3::Comment] comment
         #   
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
@@ -1212,11 +1212,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_comment(comment_obj, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_comment(comment = nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'comments'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::CommentRepresentation
-          command.request_object = comment_obj
+          command.request_object = comment
           command.response_representation = Google::Apis::YoutubeV3::CommentRepresentation
           command.response_class = Google::Apis::YoutubeV3::Comment
           command.query['part'] = part unless part.nil?
@@ -1375,7 +1375,7 @@ module Google
         
         
         # Modifies an existing comment.
-        # @param [Google::Apis::YoutubeV3::Comment] comment_obj
+        # @param [Google::Apis::YoutubeV3::Comment] comment
         #   
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
@@ -1404,11 +1404,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_comment(comment_obj, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_comment(comment = nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'comments'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::CommentRepresentation
-          command.request_object = comment_obj
+          command.request_object = comment
           command.response_representation = Google::Apis::YoutubeV3::CommentRepresentation
           command.response_class = Google::Apis::YoutubeV3::Comment
           command.query['part'] = part unless part.nil?
@@ -1797,7 +1797,7 @@ module Google
         
         
         # Creates a broadcast.
-        # @param [Google::Apis::YoutubeV3::LiveBroadcast] live_broadcast_obj
+        # @param [Google::Apis::YoutubeV3::LiveBroadcast] live_broadcast
         #   
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -1852,11 +1852,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_live_broadcast(live_broadcast_obj, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_live_broadcast(live_broadcast = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'liveBroadcasts'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::LiveBroadcastRepresentation
-          command.request_object = live_broadcast_obj
+          command.request_object = live_broadcast
           command.response_representation = Google::Apis::YoutubeV3::LiveBroadcastRepresentation
           command.response_class = Google::Apis::YoutubeV3::LiveBroadcast
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -2045,7 +2045,7 @@ module Google
         
         # Updates a broadcast. For example, you could modify the broadcast settings
         # defined in the liveBroadcast resource's contentDetails object.
-        # @param [Google::Apis::YoutubeV3::LiveBroadcast] live_broadcast_obj
+        # @param [Google::Apis::YoutubeV3::LiveBroadcast] live_broadcast
         #   
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -2108,11 +2108,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_live_broadcast(live_broadcast_obj, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_live_broadcast(live_broadcast = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'liveBroadcasts'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::LiveBroadcastRepresentation
-          command.request_object = live_broadcast_obj
+          command.request_object = live_broadcast
           command.response_representation = Google::Apis::YoutubeV3::LiveBroadcastRepresentation
           command.response_class = Google::Apis::YoutubeV3::LiveBroadcast
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -2190,7 +2190,7 @@ module Google
         
         # Creates a video stream. The stream enables you to send your video to YouTube,
         # which can then broadcast the video to your audience.
-        # @param [Google::Apis::YoutubeV3::LiveStream] live_stream_obj
+        # @param [Google::Apis::YoutubeV3::LiveStream] live_stream
         #   
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -2245,11 +2245,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_live_stream(live_stream_obj, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_live_stream(live_stream = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'liveStreams'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::LiveStreamRepresentation
-          command.request_object = live_stream_obj
+          command.request_object = live_stream
           command.response_representation = Google::Apis::YoutubeV3::LiveStreamRepresentation
           command.response_class = Google::Apis::YoutubeV3::LiveStream
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -2351,7 +2351,7 @@ module Google
         
         # Updates a video stream. If the properties that you want to change cannot be
         # updated, then you need to create a new stream with the proper settings.
-        # @param [Google::Apis::YoutubeV3::LiveStream] live_stream_obj
+        # @param [Google::Apis::YoutubeV3::LiveStream] live_stream
         #   
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -2410,11 +2410,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_live_stream(live_stream_obj, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_live_stream(live_stream = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'liveStreams'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::LiveStreamRepresentation
-          command.request_object = live_stream_obj
+          command.request_object = live_stream
           command.response_representation = Google::Apis::YoutubeV3::LiveStreamRepresentation
           command.response_class = Google::Apis::YoutubeV3::LiveStream
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -2464,7 +2464,7 @@ module Google
         
         
         # Adds a resource to a playlist.
-        # @param [Google::Apis::YoutubeV3::PlaylistItem] playlist_item_obj
+        # @param [Google::Apis::YoutubeV3::PlaylistItem] playlist_item
         #   
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -2503,11 +2503,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_playlist_item(playlist_item_obj, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_playlist_item(playlist_item = nil, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'playlistItems'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::PlaylistItemRepresentation
-          command.request_object = playlist_item_obj
+          command.request_object = playlist_item
           command.response_representation = Google::Apis::YoutubeV3::PlaylistItemRepresentation
           command.response_class = Google::Apis::YoutubeV3::PlaylistItem
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -2603,7 +2603,7 @@ module Google
         
         # Modifies a playlist item. For example, you could update the item's position in
         # the playlist.
-        # @param [Google::Apis::YoutubeV3::PlaylistItem] playlist_item_obj
+        # @param [Google::Apis::YoutubeV3::PlaylistItem] playlist_item
         #   
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
@@ -2642,11 +2642,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_playlist_item(playlist_item_obj, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_playlist_item(playlist_item = nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'playlistItems'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::PlaylistItemRepresentation
-          command.request_object = playlist_item_obj
+          command.request_object = playlist_item
           command.response_representation = Google::Apis::YoutubeV3::PlaylistItemRepresentation
           command.response_class = Google::Apis::YoutubeV3::PlaylistItem
           command.query['part'] = part unless part.nil?
@@ -2705,7 +2705,7 @@ module Google
         
         
         # Creates a playlist.
-        # @param [Google::Apis::YoutubeV3::Playlist] playlist_obj
+        # @param [Google::Apis::YoutubeV3::Playlist] playlist
         #   
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -2760,11 +2760,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_playlist(playlist_obj, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_playlist(playlist = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'playlists'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::PlaylistRepresentation
-          command.request_object = playlist_obj
+          command.request_object = playlist
           command.response_representation = Google::Apis::YoutubeV3::PlaylistRepresentation
           command.response_class = Google::Apis::YoutubeV3::Playlist
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -2880,7 +2880,7 @@ module Google
         
         # Modifies a playlist. For example, you could change a playlist's title,
         # description, or privacy status.
-        # @param [Google::Apis::YoutubeV3::Playlist] playlist_obj
+        # @param [Google::Apis::YoutubeV3::Playlist] playlist
         #   
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -2927,11 +2927,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_playlist(playlist_obj, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_playlist(playlist = nil, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'playlists'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::PlaylistRepresentation
-          command.request_object = playlist_obj
+          command.request_object = playlist
           command.response_representation = Google::Apis::YoutubeV3::PlaylistRepresentation
           command.response_class = Google::Apis::YoutubeV3::Playlist
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -3178,7 +3178,7 @@ module Google
         
         
         # Adds a subscription for the authenticated user's channel.
-        # @param [Google::Apis::YoutubeV3::Subscription] subscription_obj
+        # @param [Google::Apis::YoutubeV3::Subscription] subscription
         #   
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
@@ -3207,11 +3207,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_subscription(subscription_obj, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_subscription(subscription = nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'subscriptions'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::SubscriptionRepresentation
-          command.request_object = subscription_obj
+          command.request_object = subscription
           command.response_representation = Google::Apis::YoutubeV3::SubscriptionRepresentation
           command.response_class = Google::Apis::YoutubeV3::Subscription
           command.query['part'] = part unless part.nil?
@@ -3575,7 +3575,7 @@ module Google
         
         
         # Uploads a video to YouTube and optionally sets the video's metadata.
-        # @param [Google::Apis::YoutubeV3::Video] video_obj
+        # @param [Google::Apis::YoutubeV3::Video] video
         #   
         # @param [Boolean] auto_levels
         #   The autoLevels parameter indicates whether YouTube should automatically
@@ -3650,7 +3650,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_video(video_obj, auto_levels: nil, notify_subscribers: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, stabilize: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_video(video = nil, auto_levels: nil, notify_subscribers: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, stabilize: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'videos'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -3660,7 +3660,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::YoutubeV3::VideoRepresentation
-          command.request_object = video_obj
+          command.request_object = video
           command.response_representation = Google::Apis::YoutubeV3::VideoRepresentation
           command.response_class = Google::Apis::YoutubeV3::Video
           command.query['autoLevels'] = auto_levels unless auto_levels.nil?
@@ -3834,7 +3834,7 @@ module Google
         
         
         # Report abuse for a video.
-        # @param [Google::Apis::YoutubeV3::VideoAbuseReport] video_abuse_report_obj
+        # @param [Google::Apis::YoutubeV3::VideoAbuseReport] video_abuse_report
         #   
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -3867,11 +3867,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def report_abuse(video_abuse_report_obj, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def report_abuse(video_abuse_report = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'videos/reportAbuse'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::VideoAbuseReportRepresentation
-          command.request_object = video_abuse_report_obj
+          command.request_object = video_abuse_report
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -3881,7 +3881,7 @@ module Google
         
         
         # Updates a video's metadata.
-        # @param [Google::Apis::YoutubeV3::Video] video_obj
+        # @param [Google::Apis::YoutubeV3::Video] video
         #   
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -3936,11 +3936,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_video(video_obj, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_video(video = nil, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'videos'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::VideoRepresentation
-          command.request_object = video_obj
+          command.request_object = video
           command.response_representation = Google::Apis::YoutubeV3::VideoRepresentation
           command.response_class = Google::Apis::YoutubeV3::Video
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -3952,7 +3952,7 @@ module Google
         end
 
         # Uploads a watermark image to YouTube and sets it for a channel.
-        # @param [Google::Apis::YoutubeV3::InvideoBranding] invideo_branding_obj
+        # @param [Google::Apis::YoutubeV3::InvideoBranding] invideo_branding
         #   
         # @param [String] channel_id
         #   The channelId parameter specifies a YouTube channel ID for which the watermark
@@ -3991,7 +3991,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_watermark(invideo_branding_obj, channel_id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def set_watermark(invideo_branding = nil, channel_id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'watermarks/set'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -4001,7 +4001,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::YoutubeV3::InvideoBrandingRepresentation
-          command.request_object = invideo_branding_obj
+          command.request_object = invideo_branding
           command.query['channelId'] = channel_id unless channel_id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?

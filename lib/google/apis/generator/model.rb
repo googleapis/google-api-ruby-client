@@ -126,8 +126,8 @@ module Google
         # @return [Array<Google::Apis::Generator::Parameter>]
         def ordered_params
           params = []
-          params.push request_body unless request_body.nil?
           params.push(*path_params)
+          params.push request_body unless request_body.nil?
           params.push(*query_params)
 
           params
@@ -171,13 +171,15 @@ module Google
         def signature
           if location == 'query'
             "#{name}: nil"
+          elsif location == 'body'
+            "#{name} = nil"
           else
             name
           end
         end
 
         def name
-          @name || (ActiveSupport::Inflector.underscore(ActiveSupport::Inflector.demodulize(type.name)) + '_obj')
+          @name # || (ActiveSupport::Inflector.underscore(ActiveSupport::Inflector.demodulize(type.name)) + '_obj')
         end
       end
 

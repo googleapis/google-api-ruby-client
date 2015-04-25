@@ -172,7 +172,7 @@ module Google
         end
 
         # Stop watching resources through this channel
-        # @param [Google::Apis::AdminDirectoryV1::Channel] channel_obj
+        # @param [Google::Apis::AdminDirectoryV1::Channel] channel
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -195,11 +195,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_channel(channel_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def stop_channel(channel = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '/admin/directory_v1/channels/stop'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::ChannelRepresentation
-          command.request_object = channel_obj
+          command.request_object = channel
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -307,12 +307,12 @@ module Google
         
         
         # Update Chrome OS Device. This method supports patch semantics.
-        # @param [Google::Apis::AdminDirectoryV1::ChromeOsDevice] chrome_os_device_obj
-        #   
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
         # @param [String] device_id
         #   Immutable id of Chrome OS Device
+        # @param [Google::Apis::AdminDirectoryV1::ChromeOsDevice] chrome_os_device
+        #   
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
         # @param [String] fields
@@ -336,11 +336,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_chromeosdevice(chrome_os_device_obj, customer_id, device_id, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_chromeosdevice(customer_id, device_id, chrome_os_device = nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customer/{customerId}/devices/chromeos/{deviceId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::ChromeOsDeviceRepresentation
-          command.request_object = chrome_os_device_obj
+          command.request_object = chrome_os_device
           command.response_representation = Google::Apis::AdminDirectoryV1::ChromeOsDeviceRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::ChromeOsDevice
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -354,12 +354,12 @@ module Google
         
         
         # Update Chrome OS Device
-        # @param [Google::Apis::AdminDirectoryV1::ChromeOsDevice] chrome_os_device_obj
-        #   
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
         # @param [String] device_id
         #   Immutable id of Chrome OS Device
+        # @param [Google::Apis::AdminDirectoryV1::ChromeOsDevice] chrome_os_device
+        #   
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
         # @param [String] fields
@@ -383,11 +383,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_chromeosdevice(chrome_os_device_obj, customer_id, device_id, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_chromeosdevice(customer_id, device_id, chrome_os_device = nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customer/{customerId}/devices/chromeos/{deviceId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::ChromeOsDeviceRepresentation
-          command.request_object = chrome_os_device_obj
+          command.request_object = chrome_os_device
           command.response_representation = Google::Apis::AdminDirectoryV1::ChromeOsDeviceRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::ChromeOsDevice
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -472,7 +472,7 @@ module Google
         
         
         # Create Group
-        # @param [Google::Apis::AdminDirectoryV1::Group] group_obj
+        # @param [Google::Apis::AdminDirectoryV1::Group] group
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -495,11 +495,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_group(group_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_group(group = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'groups'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::GroupRepresentation
-          command.request_object = group_obj
+          command.request_object = group
           command.response_representation = Google::Apis::AdminDirectoryV1::GroupRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::Group
           command.query['fields'] = fields unless fields.nil?
@@ -562,11 +562,11 @@ module Google
         
         
         # Update Group. This method supports patch semantics.
-        # @param [Google::Apis::AdminDirectoryV1::Group] group_obj
-        #   
         # @param [String] group_key
         #   Email or immutable Id of the group. If Id, it should match with id of group
         #   object
+        # @param [Google::Apis::AdminDirectoryV1::Group] group
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -588,11 +588,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_group(group_obj, group_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_group(group_key, group = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'groups/{groupKey}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::GroupRepresentation
-          command.request_object = group_obj
+          command.request_object = group
           command.response_representation = Google::Apis::AdminDirectoryV1::GroupRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::Group
           command.params['groupKey'] = group_key unless group_key.nil?
@@ -604,11 +604,11 @@ module Google
         
         
         # Update Group
-        # @param [Google::Apis::AdminDirectoryV1::Group] group_obj
-        #   
         # @param [String] group_key
         #   Email or immutable Id of the group. If Id, it should match with id of group
         #   object
+        # @param [Google::Apis::AdminDirectoryV1::Group] group
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -630,11 +630,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_group(group_obj, group_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_group(group_key, group = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'groups/{groupKey}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::GroupRepresentation
-          command.request_object = group_obj
+          command.request_object = group
           command.response_representation = Google::Apis::AdminDirectoryV1::GroupRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::Group
           command.params['groupKey'] = group_key unless group_key.nil?
@@ -684,10 +684,10 @@ module Google
         
         
         # Add a alias for the group
-        # @param [Google::Apis::AdminDirectoryV1::Alias] alias_obj
-        #   
         # @param [String] group_key
         #   Email or immutable Id of the group
+        # @param [Google::Apis::AdminDirectoryV1::Alias] alias_
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -709,11 +709,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_group_alias(alias_obj, group_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_group_alias(group_key, alias_ = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'groups/{groupKey}/aliases'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::AliasRepresentation
-          command.request_object = alias_obj
+          command.request_object = alias_
           command.response_representation = Google::Apis::AdminDirectoryV1::AliasRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::Alias
           command.params['groupKey'] = group_key unless group_key.nil?
@@ -839,10 +839,10 @@ module Google
         
         
         # Add user to the specified group.
-        # @param [Google::Apis::AdminDirectoryV1::Member] member_obj
-        #   
         # @param [String] group_key
         #   Email or immutable Id of the group
+        # @param [Google::Apis::AdminDirectoryV1::Member] member
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -864,11 +864,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_member(member_obj, group_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_member(group_key, member = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'groups/{groupKey}/members'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::MemberRepresentation
-          command.request_object = member_obj
+          command.request_object = member
           command.response_representation = Google::Apis::AdminDirectoryV1::MemberRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::Member
           command.params['groupKey'] = group_key unless group_key.nil?
@@ -927,14 +927,14 @@ module Google
         
         # Update membership of a user in the specified group. This method supports patch
         # semantics.
-        # @param [Google::Apis::AdminDirectoryV1::Member] member_obj
-        #   
         # @param [String] group_key
         #   Email or immutable Id of the group. If Id, it should match with id of group
         #   object
         # @param [String] member_key
         #   Email or immutable Id of the user. If Id, it should match with id of member
         #   object
+        # @param [Google::Apis::AdminDirectoryV1::Member] member
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -956,11 +956,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_member(member_obj, group_key, member_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_member(group_key, member_key, member = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'groups/{groupKey}/members/{memberKey}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::MemberRepresentation
-          command.request_object = member_obj
+          command.request_object = member
           command.response_representation = Google::Apis::AdminDirectoryV1::MemberRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::Member
           command.params['groupKey'] = group_key unless group_key.nil?
@@ -973,14 +973,14 @@ module Google
         
         
         # Update membership of a user in the specified group.
-        # @param [Google::Apis::AdminDirectoryV1::Member] member_obj
-        #   
         # @param [String] group_key
         #   Email or immutable Id of the group. If Id, it should match with id of group
         #   object
         # @param [String] member_key
         #   Email or immutable Id of the user. If Id, it should match with id of member
         #   object
+        # @param [Google::Apis::AdminDirectoryV1::Member] member
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1002,11 +1002,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_member(member_obj, group_key, member_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_member(group_key, member_key, member = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'groups/{groupKey}/members/{memberKey}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::MemberRepresentation
-          command.request_object = member_obj
+          command.request_object = member
           command.response_representation = Google::Apis::AdminDirectoryV1::MemberRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::Member
           command.params['groupKey'] = group_key unless group_key.nil?
@@ -1018,12 +1018,12 @@ module Google
         end
 
         # Take action on Mobile Device
-        # @param [Google::Apis::AdminDirectoryV1::MobileDeviceAction] mobile_device_action_obj
-        #   
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
         # @param [String] resource_id
         #   Immutable id of Mobile Device
+        # @param [Google::Apis::AdminDirectoryV1::MobileDeviceAction] mobile_device_action
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1045,11 +1045,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def action_mobiledevice(mobile_device_action_obj, customer_id, resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def action_mobiledevice(customer_id, resource_id, mobile_device_action = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customer/{customerId}/devices/mobile/{resourceId}/action'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::MobileDeviceActionRepresentation
-          command.request_object = mobile_device_action_obj
+          command.request_object = mobile_device_action
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['resourceId'] = resource_id unless resource_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1324,12 +1324,12 @@ module Google
         
         
         # Updates a notification. This method supports patch semantics.
-        # @param [Google::Apis::AdminDirectoryV1::Notification] notification_obj
-        #   
         # @param [String] customer
         #   The unique ID for the customer's Google account.
         # @param [String] notification_id
         #   The unique ID of the notification.
+        # @param [Google::Apis::AdminDirectoryV1::Notification] notification
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1351,11 +1351,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_notification(notification_obj, customer, notification_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_notification(customer, notification_id, notification = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customer/{customer}/notifications/{notificationId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::NotificationRepresentation
-          command.request_object = notification_obj
+          command.request_object = notification
           command.response_representation = Google::Apis::AdminDirectoryV1::NotificationRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::Notification
           command.params['customer'] = customer unless customer.nil?
@@ -1368,12 +1368,12 @@ module Google
         
         
         # Updates a notification.
-        # @param [Google::Apis::AdminDirectoryV1::Notification] notification_obj
-        #   
         # @param [String] customer
         #   The unique ID for the customer's Google account.
         # @param [String] notification_id
         #   The unique ID of the notification.
+        # @param [Google::Apis::AdminDirectoryV1::Notification] notification
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1395,11 +1395,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_notification(notification_obj, customer, notification_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_notification(customer, notification_id, notification = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customer/{customer}/notifications/{notificationId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::NotificationRepresentation
-          command.request_object = notification_obj
+          command.request_object = notification
           command.response_representation = Google::Apis::AdminDirectoryV1::NotificationRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::Notification
           command.params['customer'] = customer unless customer.nil?
@@ -1489,10 +1489,10 @@ module Google
         
         
         # Add Organization Unit
-        # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_obj
-        #   
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
+        # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1514,11 +1514,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_orgunit(org_unit_obj, customer_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_orgunit(customer_id, org_unit = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customer/{customerId}/orgunits'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::OrgUnitRepresentation
-          command.request_object = org_unit_obj
+          command.request_object = org_unit
           command.response_representation = Google::Apis::AdminDirectoryV1::OrgUnitRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::OrgUnit
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -1573,12 +1573,12 @@ module Google
         
         
         # Update Organization Unit. This method supports patch semantics.
-        # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_obj
-        #   
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
         # @param [Array<String>, String] org_unit_path
         #   Full path of the organization unit or its Id
+        # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1600,11 +1600,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_orgunit(org_unit_obj, customer_id, org_unit_path, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_orgunit(customer_id, org_unit_path, org_unit = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customer/{customerId}/orgunits{/orgUnitPath*}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::OrgUnitRepresentation
-          command.request_object = org_unit_obj
+          command.request_object = org_unit
           command.response_representation = Google::Apis::AdminDirectoryV1::OrgUnitRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::OrgUnit
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -1617,12 +1617,12 @@ module Google
         
         
         # Update Organization Unit
-        # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit_obj
-        #   
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
         # @param [Array<String>, String] org_unit_path
         #   Full path of the organization unit or its Id
+        # @param [Google::Apis::AdminDirectoryV1::OrgUnit] org_unit
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1644,11 +1644,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_orgunit(org_unit_obj, customer_id, org_unit_path, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_orgunit(customer_id, org_unit_path, org_unit = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customer/{customerId}/orgunits{/orgUnitPath*}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::OrgUnitRepresentation
-          command.request_object = org_unit_obj
+          command.request_object = org_unit
           command.response_representation = Google::Apis::AdminDirectoryV1::OrgUnitRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::OrgUnit
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -1738,10 +1738,10 @@ module Google
         
         
         # Create schema.
-        # @param [Google::Apis::AdminDirectoryV1::Schema] schema_obj
-        #   
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
+        # @param [Google::Apis::AdminDirectoryV1::Schema] schema
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1763,11 +1763,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_schema(schema_obj, customer_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_schema(customer_id, schema = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customer/{customerId}/schemas'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::SchemaRepresentation
-          command.request_object = schema_obj
+          command.request_object = schema
           command.response_representation = Google::Apis::AdminDirectoryV1::SchemaRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::Schema
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -1816,12 +1816,12 @@ module Google
         
         
         # Update schema. This method supports patch semantics.
-        # @param [Google::Apis::AdminDirectoryV1::Schema] schema_obj
-        #   
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
         # @param [String] schema_key
         #   Name or immutable Id of the schema.
+        # @param [Google::Apis::AdminDirectoryV1::Schema] schema
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1843,11 +1843,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_schema(schema_obj, customer_id, schema_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_schema(customer_id, schema_key, schema = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customer/{customerId}/schemas/{schemaKey}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::SchemaRepresentation
-          command.request_object = schema_obj
+          command.request_object = schema
           command.response_representation = Google::Apis::AdminDirectoryV1::SchemaRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::Schema
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -1860,12 +1860,12 @@ module Google
         
         
         # Update schema
-        # @param [Google::Apis::AdminDirectoryV1::Schema] schema_obj
-        #   
         # @param [String] customer_id
         #   Immutable id of the Google Apps account
         # @param [String] schema_key
         #   Name or immutable Id of the schema.
+        # @param [Google::Apis::AdminDirectoryV1::Schema] schema
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1887,11 +1887,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_schema(schema_obj, customer_id, schema_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_schema(customer_id, schema_key, schema = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customer/{customerId}/schemas/{schemaKey}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::SchemaRepresentation
-          command.request_object = schema_obj
+          command.request_object = schema
           command.response_representation = Google::Apis::AdminDirectoryV1::SchemaRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::Schema
           command.params['customerId'] = customer_id unless customer_id.nil?
@@ -2102,7 +2102,7 @@ module Google
         
         
         # create user.
-        # @param [Google::Apis::AdminDirectoryV1::User] user_obj
+        # @param [Google::Apis::AdminDirectoryV1::User] user
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2125,11 +2125,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_user(user_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_user(user = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::UserRepresentation
-          command.request_object = user_obj
+          command.request_object = user
           command.response_representation = Google::Apis::AdminDirectoryV1::UserRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::User
           command.query['fields'] = fields unless fields.nil?
@@ -2214,10 +2214,10 @@ module Google
         
         
         # change admin status of a user
-        # @param [Google::Apis::AdminDirectoryV1::UserMakeAdmin] user_make_admin_obj
-        #   
         # @param [String] user_key
         #   Email or immutable Id of the user as admin
+        # @param [Google::Apis::AdminDirectoryV1::UserMakeAdmin] user_make_admin
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2239,11 +2239,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def make_admin(user_make_admin_obj, user_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def make_admin(user_key, user_make_admin = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/{userKey}/makeAdmin'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::UserMakeAdminRepresentation
-          command.request_object = user_make_admin_obj
+          command.request_object = user_make_admin
           command.params['userKey'] = user_key unless user_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2253,11 +2253,11 @@ module Google
         
         
         # update user. This method supports patch semantics.
-        # @param [Google::Apis::AdminDirectoryV1::User] user_obj
-        #   
         # @param [String] user_key
         #   Email or immutable Id of the user. If Id, it should match with id of user
         #   object
+        # @param [Google::Apis::AdminDirectoryV1::User] user
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2279,11 +2279,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_user(user_obj, user_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_user(user_key, user = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/{userKey}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::UserRepresentation
-          command.request_object = user_obj
+          command.request_object = user
           command.response_representation = Google::Apis::AdminDirectoryV1::UserRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::User
           command.params['userKey'] = user_key unless user_key.nil?
@@ -2295,10 +2295,10 @@ module Google
         
         
         # Undelete a deleted user
-        # @param [Google::Apis::AdminDirectoryV1::UserUndelete] user_undelete_obj
-        #   
         # @param [String] user_key
         #   The immutable id of the user
+        # @param [Google::Apis::AdminDirectoryV1::UserUndelete] user_undelete
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2320,11 +2320,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def undelete_user(user_undelete_obj, user_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def undelete_user(user_key, user_undelete = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/{userKey}/undelete'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::UserUndeleteRepresentation
-          command.request_object = user_undelete_obj
+          command.request_object = user_undelete
           command.params['userKey'] = user_key unless user_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2334,11 +2334,11 @@ module Google
         
         
         # update user
-        # @param [Google::Apis::AdminDirectoryV1::User] user_obj
-        #   
         # @param [String] user_key
         #   Email or immutable Id of the user. If Id, it should match with id of user
         #   object
+        # @param [Google::Apis::AdminDirectoryV1::User] user
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2360,11 +2360,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user(user_obj, user_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_user(user_key, user = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/{userKey}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::UserRepresentation
-          command.request_object = user_obj
+          command.request_object = user
           command.response_representation = Google::Apis::AdminDirectoryV1::UserRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::User
           command.params['userKey'] = user_key unless user_key.nil?
@@ -2376,7 +2376,7 @@ module Google
         
         
         # Watch for changes in users list
-        # @param [Google::Apis::AdminDirectoryV1::Channel] channel_obj
+        # @param [Google::Apis::AdminDirectoryV1::Channel] channel
         #   
         # @param [String] custom_field_mask
         #   Comma-separated list of schema names. All fields from these schemas are
@@ -2427,11 +2427,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_user(channel_obj, custom_field_mask: nil, customer: nil, domain: nil, event: nil, max_results: nil, order_by: nil, page_token: nil, projection: nil, query: nil, show_deleted: nil, sort_order: nil, view_type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_user(channel = nil, custom_field_mask: nil, customer: nil, domain: nil, event: nil, max_results: nil, order_by: nil, page_token: nil, projection: nil, query: nil, show_deleted: nil, sort_order: nil, view_type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/watch'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::ChannelRepresentation
-          command.request_object = channel_obj
+          command.request_object = channel
           command.response_representation = Google::Apis::AdminDirectoryV1::ChannelRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::Channel
           command.query['customFieldMask'] = custom_field_mask unless custom_field_mask.nil?
@@ -2492,10 +2492,10 @@ module Google
         
         
         # Add a alias for the user
-        # @param [Google::Apis::AdminDirectoryV1::Alias] alias_obj
-        #   
         # @param [String] user_key
         #   Email or immutable Id of the user
+        # @param [Google::Apis::AdminDirectoryV1::Alias] alias_
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2517,11 +2517,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_user_alias(alias_obj, user_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_user_alias(user_key, alias_ = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/{userKey}/aliases'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::AliasRepresentation
-          command.request_object = alias_obj
+          command.request_object = alias_
           command.response_representation = Google::Apis::AdminDirectoryV1::AliasRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::Alias
           command.params['userKey'] = user_key unless user_key.nil?
@@ -2573,10 +2573,10 @@ module Google
         
         
         # Watch for changes in user aliases list
-        # @param [Google::Apis::AdminDirectoryV1::Channel] channel_obj
-        #   
         # @param [String] user_key
         #   Email or immutable Id of the user
+        # @param [Google::Apis::AdminDirectoryV1::Channel] channel
+        #   
         # @param [String] event
         #   Event on which subscription is intended (if subscribing)
         # @param [String] fields
@@ -2600,11 +2600,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_user_alias(channel_obj, user_key, event: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_user_alias(user_key, channel = nil, event: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/{userKey}/aliases/watch'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::ChannelRepresentation
-          command.request_object = channel_obj
+          command.request_object = channel
           command.response_representation = Google::Apis::AdminDirectoryV1::ChannelRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::Channel
           command.params['userKey'] = user_key unless user_key.nil?
@@ -2690,10 +2690,10 @@ module Google
         
         
         # Add a photo for the user. This method supports patch semantics.
-        # @param [Google::Apis::AdminDirectoryV1::UserPhoto] user_photo_obj
-        #   
         # @param [String] user_key
         #   Email or immutable Id of the user
+        # @param [Google::Apis::AdminDirectoryV1::UserPhoto] user_photo
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2715,11 +2715,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_user_photo(user_photo_obj, user_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_user_photo(user_key, user_photo = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/{userKey}/photos/thumbnail'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::UserPhotoRepresentation
-          command.request_object = user_photo_obj
+          command.request_object = user_photo
           command.response_representation = Google::Apis::AdminDirectoryV1::UserPhotoRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::UserPhoto
           command.params['userKey'] = user_key unless user_key.nil?
@@ -2731,10 +2731,10 @@ module Google
         
         
         # Add a photo for the user
-        # @param [Google::Apis::AdminDirectoryV1::UserPhoto] user_photo_obj
-        #   
         # @param [String] user_key
         #   Email or immutable Id of the user
+        # @param [Google::Apis::AdminDirectoryV1::UserPhoto] user_photo
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2756,11 +2756,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user_photo(user_photo_obj, user_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_user_photo(user_key, user_photo = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/{userKey}/photos/thumbnail'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AdminDirectoryV1::UserPhotoRepresentation
-          command.request_object = user_photo_obj
+          command.request_object = user_photo
           command.response_representation = Google::Apis::AdminDirectoryV1::UserPhotoRepresentation
           command.response_class = Google::Apis::AdminDirectoryV1::UserPhoto
           command.params['userKey'] = user_key unless user_key.nil?

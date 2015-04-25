@@ -54,7 +54,7 @@ module Google
         end
 
         # Returns a list of flights.
-        # @param [Google::Apis::QpxExpressV1::SearchRequest] search_request_obj
+        # @param [Google::Apis::QpxExpressV1::SearchRequest] trips_search_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -77,11 +77,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_trips(search_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def search_trips(trips_search_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'search'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::QpxExpressV1::SearchRequestRepresentation
-          command.request_object = search_request_obj
+          command.request_object = trips_search_request
           command.response_representation = Google::Apis::QpxExpressV1::SearchResponseRepresentation
           command.response_class = Google::Apis::QpxExpressV1::SearchResponse
           command.query['fields'] = fields unless fields.nil?

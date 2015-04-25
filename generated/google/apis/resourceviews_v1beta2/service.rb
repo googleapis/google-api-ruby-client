@@ -148,14 +148,14 @@ module Google
         end
 
         # Add resources to the view.
-        # @param [Google::Apis::ResourceviewsV1beta2::ZoneViewsAddResourcesRequest] zone_views_add_resources_request_obj
-        #   
         # @param [String] project
         #   The project name of the resource view.
         # @param [String] zone
         #   The zone name of the resource view.
         # @param [String] resource_view
         #   The name of the resource view.
+        # @param [Google::Apis::ResourceviewsV1beta2::ZoneViewsAddResourcesRequest] zone_views_add_resources_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -177,11 +177,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_resources(zone_views_add_resources_request_obj, project, zone, resource_view, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_resources(project, zone, resource_view, zone_views_add_resources_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/resourceViews/{resourceView}/addResources'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ResourceviewsV1beta2::ZoneViewsAddResourcesRequestRepresentation
-          command.request_object = zone_views_add_resources_request_obj
+          command.request_object = zone_views_add_resources_request
           command.response_representation = Google::Apis::ResourceviewsV1beta2::OperationRepresentation
           command.response_class = Google::Apis::ResourceviewsV1beta2::Operation
           command.params['project'] = project unless project.nil?
@@ -328,12 +328,12 @@ module Google
         
         
         # Create a resource view.
-        # @param [Google::Apis::ResourceviewsV1beta2::ResourceView] resource_view_obj
-        #   
         # @param [String] project
         #   The project name of the resource view.
         # @param [String] zone
         #   The zone name of the resource view.
+        # @param [Google::Apis::ResourceviewsV1beta2::ResourceView] resource_view
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -355,11 +355,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_zone_view(resource_view_obj, project, zone, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_zone_view(project, zone, resource_view = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/resourceViews'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ResourceviewsV1beta2::ResourceViewRepresentation
-          command.request_object = resource_view_obj
+          command.request_object = resource_view
           command.response_representation = Google::Apis::ResourceviewsV1beta2::OperationRepresentation
           command.response_class = Google::Apis::ResourceviewsV1beta2::Operation
           command.params['project'] = project unless project.nil?
@@ -483,14 +483,14 @@ module Google
         
         
         # Remove resources from the view.
-        # @param [Google::Apis::ResourceviewsV1beta2::ZoneViewsRemoveResourcesRequest] zone_views_remove_resources_request_obj
-        #   
         # @param [String] project
         #   The project name of the resource view.
         # @param [String] zone
         #   The zone name of the resource view.
         # @param [String] resource_view
         #   The name of the resource view.
+        # @param [Google::Apis::ResourceviewsV1beta2::ZoneViewsRemoveResourcesRequest] zone_views_remove_resources_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -512,11 +512,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_resources(zone_views_remove_resources_request_obj, project, zone, resource_view, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def remove_resources(project, zone, resource_view, zone_views_remove_resources_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/resourceViews/{resourceView}/removeResources'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ResourceviewsV1beta2::ZoneViewsRemoveResourcesRequestRepresentation
-          command.request_object = zone_views_remove_resources_request_obj
+          command.request_object = zone_views_remove_resources_request
           command.response_representation = Google::Apis::ResourceviewsV1beta2::OperationRepresentation
           command.response_class = Google::Apis::ResourceviewsV1beta2::Operation
           command.params['project'] = project unless project.nil?
@@ -530,14 +530,14 @@ module Google
         
         
         # Update the service information of a resource view or a resource.
-        # @param [Google::Apis::ResourceviewsV1beta2::ZoneViewsSetServiceRequest] zone_views_set_service_request_obj
-        #   
         # @param [String] project
         #   The project name of the resource view.
         # @param [String] zone
         #   The zone name of the resource view.
         # @param [String] resource_view
         #   The name of the resource view.
+        # @param [Google::Apis::ResourceviewsV1beta2::ZoneViewsSetServiceRequest] zone_views_set_service_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -559,11 +559,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_service(zone_views_set_service_request_obj, project, zone, resource_view, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_service(project, zone, resource_view, zone_views_set_service_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/resourceViews/{resourceView}/setService'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ResourceviewsV1beta2::ZoneViewsSetServiceRequestRepresentation
-          command.request_object = zone_views_set_service_request_obj
+          command.request_object = zone_views_set_service_request
           command.response_representation = Google::Apis::ResourceviewsV1beta2::OperationRepresentation
           command.response_class = Google::Apis::ResourceviewsV1beta2::Operation
           command.params['project'] = project unless project.nil?

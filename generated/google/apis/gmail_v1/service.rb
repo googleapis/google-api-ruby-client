@@ -92,11 +92,11 @@ module Google
         
         
         # Creates a new draft with the DRAFT label.
-        # @param [Google::Apis::GmailV1::Draft] draft_obj
-        #   
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
+        # @param [Google::Apis::GmailV1::Draft] draft
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -122,7 +122,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_user_draft(draft_obj, user_id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def create_user_draft(user_id, draft = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = '{userId}/drafts'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -132,7 +132,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::GmailV1::DraftRepresentation
-          command.request_object = draft_obj
+          command.request_object = draft
           command.response_representation = Google::Apis::GmailV1::DraftRepresentation
           command.response_class = Google::Apis::GmailV1::Draft
           command.params['userId'] = user_id unless user_id.nil?
@@ -256,7 +256,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_user_drafts(user_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_drafts(user_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/drafts'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GmailV1::ListDraftsResponseRepresentation
@@ -273,11 +273,11 @@ module Google
         
         # Sends the specified, existing draft to the recipients in the To, Cc, and Bcc
         # headers.
-        # @param [Google::Apis::GmailV1::Draft] draft_obj
-        #   
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
+        # @param [Google::Apis::GmailV1::Draft] draft
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -303,7 +303,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def send_user_draft(draft_obj, user_id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def send_user_draft(user_id, draft = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = '{userId}/drafts/send'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -313,7 +313,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::GmailV1::DraftRepresentation
-          command.request_object = draft_obj
+          command.request_object = draft
           command.response_representation = Google::Apis::GmailV1::MessageRepresentation
           command.response_class = Google::Apis::GmailV1::Message
           command.params['userId'] = user_id unless user_id.nil?
@@ -325,13 +325,13 @@ module Google
         
         
         # Replaces a draft's content.
-        # @param [Google::Apis::GmailV1::Draft] draft_obj
-        #   
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
         # @param [String] id
         #   The ID of the draft to update.
+        # @param [Google::Apis::GmailV1::Draft] draft
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -357,7 +357,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user_draft(draft_obj, user_id, id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def update_user_draft(user_id, id, draft = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = '{userId}/drafts/{id}'
           if upload_source.nil?
             command =  make_simple_command(:put, path, options)
@@ -367,7 +367,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::GmailV1::DraftRepresentation
-          command.request_object = draft_obj
+          command.request_object = draft
           command.response_representation = Google::Apis::GmailV1::DraftRepresentation
           command.response_class = Google::Apis::GmailV1::Draft
           command.params['userId'] = user_id unless user_id.nil?
@@ -423,7 +423,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_user_histories(user_id, label_id: nil, max_results: nil, page_token: nil, start_history_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_history(user_id, label_id: nil, max_results: nil, page_token: nil, start_history_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/history'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GmailV1::ListHistoryResponseRepresentation
@@ -442,11 +442,11 @@ module Google
         
         
         # Creates a new label.
-        # @param [Google::Apis::GmailV1::Label] label_obj
-        #   
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
+        # @param [Google::Apis::GmailV1::Label] label
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -468,11 +468,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_user_label(label_obj, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_user_label(user_id, label = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/labels'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GmailV1::LabelRepresentation
-          command.request_object = label_obj
+          command.request_object = label
           command.response_representation = Google::Apis::GmailV1::LabelRepresentation
           command.response_class = Google::Apis::GmailV1::Label
           command.params['userId'] = user_id unless user_id.nil?
@@ -589,7 +589,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_user_labels(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_labels(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/labels'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GmailV1::ListLabelsResponseRepresentation
@@ -603,13 +603,13 @@ module Google
         
         
         # Updates the specified label. This method supports patch semantics.
-        # @param [Google::Apis::GmailV1::Label] label_obj
-        #   
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
         # @param [String] id
         #   The ID of the label to update.
+        # @param [Google::Apis::GmailV1::Label] label
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -631,11 +631,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_user_label(label_obj, user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_user_label(user_id, id, label = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/labels/{id}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::GmailV1::LabelRepresentation
-          command.request_object = label_obj
+          command.request_object = label
           command.response_representation = Google::Apis::GmailV1::LabelRepresentation
           command.response_class = Google::Apis::GmailV1::Label
           command.params['userId'] = user_id unless user_id.nil?
@@ -648,13 +648,13 @@ module Google
         
         
         # Updates the specified label.
-        # @param [Google::Apis::GmailV1::Label] label_obj
-        #   
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
         # @param [String] id
         #   The ID of the label to update.
+        # @param [Google::Apis::GmailV1::Label] label
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -676,11 +676,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user_label(label_obj, user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_user_label(user_id, id, label = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/labels/{id}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::GmailV1::LabelRepresentation
-          command.request_object = label_obj
+          command.request_object = label
           command.response_representation = Google::Apis::GmailV1::LabelRepresentation
           command.response_class = Google::Apis::GmailV1::Label
           command.params['userId'] = user_id unless user_id.nil?
@@ -783,11 +783,11 @@ module Google
         # Imports a message into only this user's mailbox, with standard email delivery
         # scanning and classification similar to receiving via SMTP. Does not send a
         # message.
-        # @param [Google::Apis::GmailV1::Message] message_obj
-        #   
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
+        # @param [Google::Apis::GmailV1::Message] message
+        #   
         # @param [Boolean] deleted
         #   Mark the email as permanently deleted (not TRASH) and only visible in Google
         #   Apps Vault to a Vault administrator. Only used for Google Apps for Work
@@ -825,7 +825,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_user_message(message_obj, user_id, deleted: nil, internal_date_source: nil, never_mark_spam: nil, process_for_calendar: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def import_user_message(user_id, message = nil, deleted: nil, internal_date_source: nil, never_mark_spam: nil, process_for_calendar: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = '{userId}/messages/import'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -835,7 +835,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::GmailV1::MessageRepresentation
-          command.request_object = message_obj
+          command.request_object = message
           command.response_representation = Google::Apis::GmailV1::MessageRepresentation
           command.response_class = Google::Apis::GmailV1::Message
           command.params['userId'] = user_id unless user_id.nil?
@@ -852,11 +852,11 @@ module Google
         
         # Directly inserts a message into only this user's mailbox similar to IMAP
         # APPEND, bypassing most scanning and classification. Does not send a message.
-        # @param [Google::Apis::GmailV1::Message] message_obj
-        #   
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
+        # @param [Google::Apis::GmailV1::Message] message
+        #   
         # @param [Boolean] deleted
         #   Mark the email as permanently deleted (not TRASH) and only visible in Google
         #   Apps Vault to a Vault administrator. Only used for Google Apps for Work
@@ -888,7 +888,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_user_message(message_obj, user_id, deleted: nil, internal_date_source: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_user_message(user_id, message = nil, deleted: nil, internal_date_source: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = '{userId}/messages'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -898,7 +898,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::GmailV1::MessageRepresentation
-          command.request_object = message_obj
+          command.request_object = message
           command.response_representation = Google::Apis::GmailV1::MessageRepresentation
           command.response_class = Google::Apis::GmailV1::Message
           command.params['userId'] = user_id unless user_id.nil?
@@ -948,7 +948,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_user_messages(user_id, include_spam_trash: nil, label_ids: nil, max_results: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_messages(user_id, include_spam_trash: nil, label_ids: nil, max_results: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/messages'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GmailV1::ListMessagesResponseRepresentation
@@ -967,13 +967,13 @@ module Google
         
         
         # Modifies the labels on the specified message.
-        # @param [Google::Apis::GmailV1::ModifyMessageRequest] modify_message_request_obj
-        #   
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
         # @param [String] id
         #   The ID of the message to modify.
+        # @param [Google::Apis::GmailV1::ModifyMessageRequest] modify_message_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -995,11 +995,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def modify_user_message(modify_message_request_obj, user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def modify_message(user_id, id, modify_message_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/messages/{id}/modify'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GmailV1::ModifyMessageRequestRepresentation
-          command.request_object = modify_message_request_obj
+          command.request_object = modify_message_request
           command.response_representation = Google::Apis::GmailV1::MessageRepresentation
           command.response_class = Google::Apis::GmailV1::Message
           command.params['userId'] = user_id unless user_id.nil?
@@ -1012,11 +1012,11 @@ module Google
         
         
         # Sends the specified message to the recipients in the To, Cc, and Bcc headers.
-        # @param [Google::Apis::GmailV1::Message] message_obj
-        #   
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
+        # @param [Google::Apis::GmailV1::Message] message
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1042,7 +1042,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def send_user_message(message_obj, user_id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def send_user_message(user_id, message = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = '{userId}/messages/send'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -1052,7 +1052,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::GmailV1::MessageRepresentation
-          command.request_object = message_obj
+          command.request_object = message
           command.response_representation = Google::Apis::GmailV1::MessageRepresentation
           command.response_class = Google::Apis::GmailV1::Message
           command.params['userId'] = user_id unless user_id.nil?
@@ -1315,7 +1315,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_user_threads(user_id, include_spam_trash: nil, label_ids: nil, max_results: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_threads(user_id, include_spam_trash: nil, label_ids: nil, max_results: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/threads'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GmailV1::ListThreadsResponseRepresentation
@@ -1335,13 +1335,13 @@ module Google
         
         # Modifies the labels applied to the thread. This applies to all messages in the
         # thread.
-        # @param [Google::Apis::GmailV1::ModifyThreadRequest] modify_thread_request_obj
-        #   
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
         # @param [String] id
         #   The ID of the thread to modify.
+        # @param [Google::Apis::GmailV1::ModifyThreadRequest] modify_thread_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1363,11 +1363,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def modify_user_thread(modify_thread_request_obj, user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def modify_thread(user_id, id, modify_thread_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/threads/{id}/modify'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GmailV1::ModifyThreadRequestRepresentation
-          command.request_object = modify_thread_request_obj
+          command.request_object = modify_thread_request
           command.response_representation = Google::Apis::GmailV1::ThreadRepresentation
           command.response_class = Google::Apis::GmailV1::Thread
           command.params['userId'] = user_id unless user_id.nil?

@@ -73,7 +73,6 @@ module Google
       # @private
       class ContextRepresentation < Google::Apis::Core::JsonRepresentation
         class FacetRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :facets, as: 'facets', :class => Array do
           include Representable::JSON::Collection
           items class: Google::Apis::CustomsearchV1::Context::Facet, decorator: Google::Apis::CustomsearchV1::ContextRepresentation::FacetRepresentation
@@ -83,10 +82,8 @@ module Google
         
         property :title, as: 'title'
         
-        
         # @private
         class FacetRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :anchor, as: 'anchor'
           property :label, as: 'label'
           property :label_with_op, as: 'label_with_op'
@@ -97,7 +94,6 @@ module Google
       class PromotionRepresentation < Google::Apis::Core::JsonRepresentation
         class BodyLineRepresentation < Google::Apis::Core::JsonRepresentation; end
         class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :body_lines, as: 'bodyLines', class: Google::Apis::CustomsearchV1::Promotion::BodyLine, decorator: Google::Apis::CustomsearchV1::PromotionRepresentation::BodyLineRepresentation
         
         
@@ -108,10 +104,8 @@ module Google
         property :link, as: 'link'
         property :title, as: 'title'
         
-        
         # @private
         class BodyLineRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :html_title, as: 'htmlTitle'
           property :link, as: 'link'
           property :title, as: 'title'
@@ -120,7 +114,6 @@ module Google
         
         # @private
         class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :height, as: 'height'
           property :source, as: 'source'
           property :width, as: 'width'
@@ -129,7 +122,6 @@ module Google
 
       # @private
       class QueryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :count, as: 'count'
         property :cr, as: 'cr'
         property :cref, as: 'cref'
@@ -173,7 +165,6 @@ module Google
       class ResultRepresentation < Google::Apis::Core::JsonRepresentation
         class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
         class LabelRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :cache_id, as: 'cacheId'
         property :display_link, as: 'displayLink'
         property :file_format, as: 'fileFormat'
@@ -198,10 +189,8 @@ module Google
         property :snippet, as: 'snippet'
         property :title, as: 'title'
         
-        
         # @private
         class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :byte_size, as: 'byteSize'
           property :context_link, as: 'contextLink'
           property :height, as: 'height'
@@ -213,7 +202,6 @@ module Google
         
         # @private
         class LabelRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :display_name, as: 'displayName'
           property :label_with_op, as: 'label_with_op'
           property :name, as: 'name'
@@ -225,7 +213,6 @@ module Google
         class SearchInformationRepresentation < Google::Apis::Core::JsonRepresentation; end
         class SpellingRepresentation < Google::Apis::Core::JsonRepresentation; end
         class UrlRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :context, as: 'context', class: Google::Apis::CustomsearchV1::Context, decorator: Google::Apis::CustomsearchV1::ContextRepresentation
         
         collection :items, as: 'items', class: Google::Apis::CustomsearchV1::Result, decorator: Google::Apis::CustomsearchV1::ResultRepresentation
@@ -249,10 +236,8 @@ module Google
         property :url, as: 'url', class: Google::Apis::CustomsearchV1::Search::Url, decorator: Google::Apis::CustomsearchV1::SearchRepresentation::UrlRepresentation
         
         
-        
         # @private
         class SearchInformationRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :formatted_search_time, as: 'formattedSearchTime'
           property :formatted_total_results, as: 'formattedTotalResults'
           property :search_time, as: 'searchTime'
@@ -261,14 +246,12 @@ module Google
         
         # @private
         class SpellingRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :corrected_query, as: 'correctedQuery'
           property :html_corrected_query, as: 'htmlCorrectedQuery'
         end
         
         # @private
         class UrlRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :template, as: 'template'
           property :type, as: 'type'
         end

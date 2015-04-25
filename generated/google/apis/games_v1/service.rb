@@ -316,7 +316,7 @@ module Google
         
         
         # Updates multiple achievements for the currently authenticated player.
-        # @param [Google::Apis::GamesV1::AchievementUpdateMultipleRequest] achievement_update_multiple_request_obj
+        # @param [Google::Apis::GamesV1::AchievementUpdateMultipleRequest] achievement_update_multiple_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -339,11 +339,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_multiple(achievement_update_multiple_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_multiple(achievement_update_multiple_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'achievements/updateMultiple'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesV1::AchievementUpdateMultipleRequestRepresentation
-          command.request_object = achievement_update_multiple_request_obj
+          command.request_object = achievement_update_multiple_request
           command.response_representation = Google::Apis::GamesV1::AchievementUpdateMultipleResponseRepresentation
           command.response_class = Google::Apis::GamesV1::AchievementUpdateMultipleResponse
           command.query['fields'] = fields unless fields.nil?
@@ -521,7 +521,7 @@ module Google
         
         # Records a batch of changes to the number of times events have occurred for the
         # currently authenticated user of this application.
-        # @param [Google::Apis::GamesV1::EventRecordRequest] event_record_request_obj
+        # @param [Google::Apis::GamesV1::EventRecordRequest] event_record_request
         #   
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -546,11 +546,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def record_event(event_record_request_obj, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def record_event(event_record_request = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'events'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesV1::EventRecordRequestRepresentation
-          command.request_object = event_record_request_obj
+          command.request_object = event_record_request
           command.response_representation = Google::Apis::GamesV1::EventUpdateResponseRepresentation
           command.response_class = Google::Apis::GamesV1::EventUpdateResponse
           command.query['language'] = language unless language.nil?
@@ -821,7 +821,7 @@ module Google
 
         # Removes a push token for the current user and application. Removing a non-
         # existent push token will report success.
-        # @param [Google::Apis::GamesV1::PushTokenId] push_token_id_obj
+        # @param [Google::Apis::GamesV1::PushTokenId] push_token_id
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -844,11 +844,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_pushtoken(push_token_id_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def remove_pushtoken(push_token_id = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'pushtokens/remove'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesV1::PushTokenIdRepresentation
-          command.request_object = push_token_id_obj
+          command.request_object = push_token_id
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -857,7 +857,7 @@ module Google
         
         
         # Registers a push token for the current user and application.
-        # @param [Google::Apis::GamesV1::PushToken] push_token_obj
+        # @param [Google::Apis::GamesV1::PushToken] push_token
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -880,11 +880,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_pushtoken(push_token_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_pushtoken(push_token = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'pushtokens'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::GamesV1::PushTokenRepresentation
-          command.request_object = push_token_obj
+          command.request_object = push_token
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1067,7 +1067,7 @@ module Google
 
         # Create a room. For internal use by the Games SDK only. Calling this method
         # directly is unsupported.
-        # @param [Google::Apis::GamesV1::RoomCreateRequest] room_create_request_obj
+        # @param [Google::Apis::GamesV1::RoomCreateRequest] room_create_request
         #   
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1092,11 +1092,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_room(room_create_request_obj, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_room(room_create_request = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rooms/create'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesV1::RoomCreateRequestRepresentation
-          command.request_object = room_create_request_obj
+          command.request_object = room_create_request
           command.response_representation = Google::Apis::GamesV1::RoomRepresentation
           command.response_class = Google::Apis::GamesV1::Room
           command.query['language'] = language unless language.nil?
@@ -1226,10 +1226,10 @@ module Google
         
         # Join a room. For internal use by the Games SDK only. Calling this method
         # directly is unsupported.
-        # @param [Google::Apis::GamesV1::RoomJoinRequest] room_join_request_obj
-        #   
         # @param [String] room_id
         #   The ID of the room.
+        # @param [Google::Apis::GamesV1::RoomJoinRequest] room_join_request
+        #   
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -1253,11 +1253,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def join_room(room_join_request_obj, room_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def join_room(room_id, room_join_request = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rooms/{roomId}/join'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesV1::RoomJoinRequestRepresentation
-          command.request_object = room_join_request_obj
+          command.request_object = room_join_request
           command.response_representation = Google::Apis::GamesV1::RoomRepresentation
           command.response_class = Google::Apis::GamesV1::Room
           command.params['roomId'] = room_id unless room_id.nil?
@@ -1271,10 +1271,10 @@ module Google
         
         # Leave a room. For internal use by the Games SDK only. Calling this method
         # directly is unsupported.
-        # @param [Google::Apis::GamesV1::RoomLeaveRequest] room_leave_request_obj
-        #   
         # @param [String] room_id
         #   The ID of the room.
+        # @param [Google::Apis::GamesV1::RoomLeaveRequest] room_leave_request
+        #   
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -1298,11 +1298,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def leave_room(room_leave_request_obj, room_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def leave_room(room_id, room_leave_request = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rooms/{roomId}/leave'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesV1::RoomLeaveRequestRepresentation
-          command.request_object = room_leave_request_obj
+          command.request_object = room_leave_request
           command.response_representation = Google::Apis::GamesV1::RoomRepresentation
           command.response_class = Google::Apis::GamesV1::Room
           command.params['roomId'] = room_id unless room_id.nil?
@@ -1361,10 +1361,10 @@ module Google
         
         # Updates sent by a client reporting the status of peers in a room. For internal
         # use by the Games SDK only. Calling this method directly is unsupported.
-        # @param [Google::Apis::GamesV1::RoomP2PStatuses] room_p2_p_statuses_obj
-        #   
         # @param [String] room_id
         #   The ID of the room.
+        # @param [Google::Apis::GamesV1::RoomP2PStatuses] room_p2_p_statuses
+        #   
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -1388,11 +1388,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def report_status(room_p2_p_statuses_obj, room_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def report_status(room_id, room_p2_p_statuses = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rooms/{roomId}/reportstatus'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesV1::RoomP2PStatusesRepresentation
-          command.request_object = room_p2_p_statuses_obj
+          command.request_object = room_p2_p_statuses
           command.response_representation = Google::Apis::GamesV1::RoomStatusRepresentation
           command.response_class = Google::Apis::GamesV1::RoomStatus
           command.params['roomId'] = room_id unless room_id.nil?
@@ -1638,7 +1638,7 @@ module Google
         
         
         # Submits multiple scores to leaderboards.
-        # @param [Google::Apis::GamesV1::PlayerScoreSubmissionList] player_score_submission_list_obj
+        # @param [Google::Apis::GamesV1::PlayerScoreSubmissionList] player_score_submission_list
         #   
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1663,11 +1663,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def submit_multiple(player_score_submission_list_obj, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def submit_multiple(player_score_submission_list = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'leaderboards/scores'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesV1::PlayerScoreSubmissionListRepresentation
-          command.request_object = player_score_submission_list_obj
+          command.request_object = player_score_submission_list
           command.response_representation = Google::Apis::GamesV1::PlayerScoreListResponseRepresentation
           command.response_class = Google::Apis::GamesV1::PlayerScoreListResponse
           command.query['language'] = language unless language.nil?
@@ -1802,7 +1802,7 @@ module Google
         
         
         # Create a turn-based match.
-        # @param [Google::Apis::GamesV1::TurnBasedMatchCreateRequest] turn_based_match_create_request_obj
+        # @param [Google::Apis::GamesV1::TurnBasedMatchCreateRequest] turn_based_match_create_request
         #   
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -1827,11 +1827,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_turn_based_match(turn_based_match_create_request_obj, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_turn_based_match(turn_based_match_create_request = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/create'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesV1::TurnBasedMatchCreateRequestRepresentation
-          command.request_object = turn_based_match_create_request_obj
+          command.request_object = turn_based_match_create_request
           command.response_representation = Google::Apis::GamesV1::TurnBasedMatchRepresentation
           command.response_class = Google::Apis::GamesV1::TurnBasedMatch
           command.query['language'] = language unless language.nil?
@@ -1921,10 +1921,10 @@ module Google
         # Finish a turn-based match. Each player should make this call once, after all
         # results are in. Only the player whose turn it is may make the first call to
         # Finish, and can pass in the final match state.
-        # @param [Google::Apis::GamesV1::TurnBasedMatchResults] turn_based_match_results_obj
-        #   
         # @param [String] match_id
         #   The ID of the match.
+        # @param [Google::Apis::GamesV1::TurnBasedMatchResults] turn_based_match_results
+        #   
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -1948,11 +1948,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def finish_turn_based_match(turn_based_match_results_obj, match_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def finish_turn_based_match(match_id, turn_based_match_results = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/{matchId}/finish'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::GamesV1::TurnBasedMatchResultsRepresentation
-          command.request_object = turn_based_match_results_obj
+          command.request_object = turn_based_match_results
           command.response_representation = Google::Apis::GamesV1::TurnBasedMatchRepresentation
           command.response_class = Google::Apis::GamesV1::TurnBasedMatch
           command.params['matchId'] = match_id unless match_id.nil?
@@ -2301,10 +2301,10 @@ module Google
         
         
         # Commit the results of a player turn.
-        # @param [Google::Apis::GamesV1::TurnBasedMatchTurn] turn_based_match_turn_obj
-        #   
         # @param [String] match_id
         #   The ID of the match.
+        # @param [Google::Apis::GamesV1::TurnBasedMatchTurn] turn_based_match_turn
+        #   
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -2328,11 +2328,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def take_turn(turn_based_match_turn_obj, match_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def take_turn(match_id, turn_based_match_turn = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/{matchId}/turn'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::GamesV1::TurnBasedMatchTurnRepresentation
-          command.request_object = turn_based_match_turn_obj
+          command.request_object = turn_based_match_turn
           command.response_representation = Google::Apis::GamesV1::TurnBasedMatchRepresentation
           command.response_class = Google::Apis::GamesV1::TurnBasedMatch
           command.params['matchId'] = match_id unless match_id.nil?

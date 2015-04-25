@@ -54,14 +54,14 @@ module Google
         end
 
         # Inserts a new account for a user
-        # @param [Google::Apis::MirrorV1::Account] account_obj
-        #   
         # @param [String] user_token
         #   The ID for the user.
         # @param [String] account_type
         #   Account type to be passed to Android Account Manager.
         # @param [String] account_name
         #   The name of the account to be passed to the Android Account Manager.
+        # @param [Google::Apis::MirrorV1::Account] account
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -83,11 +83,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_account(account_obj, user_token, account_type, account_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_account(user_token, account_type, account_name, account = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{userToken}/{accountType}/{accountName}'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MirrorV1::AccountRepresentation
-          command.request_object = account_obj
+          command.request_object = account
           command.response_representation = Google::Apis::MirrorV1::AccountRepresentation
           command.response_class = Google::Apis::MirrorV1::Account
           command.params['userToken'] = user_token unless user_token.nil?
@@ -172,7 +172,7 @@ module Google
         
         
         # Inserts a new contact.
-        # @param [Google::Apis::MirrorV1::Contact] contact_obj
+        # @param [Google::Apis::MirrorV1::Contact] contact
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -195,11 +195,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_contact(contact_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_contact(contact = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'contacts'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MirrorV1::ContactRepresentation
-          command.request_object = contact_obj
+          command.request_object = contact
           command.response_representation = Google::Apis::MirrorV1::ContactRepresentation
           command.response_class = Google::Apis::MirrorV1::Contact
           command.query['fields'] = fields unless fields.nil?
@@ -244,10 +244,10 @@ module Google
         
         
         # Updates a contact in place. This method supports patch semantics.
-        # @param [Google::Apis::MirrorV1::Contact] contact_obj
-        #   
         # @param [String] id
         #   The ID of the contact.
+        # @param [Google::Apis::MirrorV1::Contact] contact
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -269,11 +269,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_contact(contact_obj, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_contact(id, contact = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'contacts/{id}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::MirrorV1::ContactRepresentation
-          command.request_object = contact_obj
+          command.request_object = contact
           command.response_representation = Google::Apis::MirrorV1::ContactRepresentation
           command.response_class = Google::Apis::MirrorV1::Contact
           command.params['id'] = id unless id.nil?
@@ -285,10 +285,10 @@ module Google
         
         
         # Updates a contact in place.
-        # @param [Google::Apis::MirrorV1::Contact] contact_obj
-        #   
         # @param [String] id
         #   The ID of the contact.
+        # @param [Google::Apis::MirrorV1::Contact] contact
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -310,11 +310,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_contact(contact_obj, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_contact(id, contact = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'contacts/{id}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::MirrorV1::ContactRepresentation
-          command.request_object = contact_obj
+          command.request_object = contact
           command.response_representation = Google::Apis::MirrorV1::ContactRepresentation
           command.response_class = Google::Apis::MirrorV1::Contact
           command.params['id'] = id unless id.nil?
@@ -470,7 +470,7 @@ module Google
         
         
         # Creates a new subscription.
-        # @param [Google::Apis::MirrorV1::Subscription] subscription_obj
+        # @param [Google::Apis::MirrorV1::Subscription] subscription
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -493,11 +493,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_subscription(subscription_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_subscription(subscription = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'subscriptions'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MirrorV1::SubscriptionRepresentation
-          command.request_object = subscription_obj
+          command.request_object = subscription
           command.response_representation = Google::Apis::MirrorV1::SubscriptionRepresentation
           command.response_class = Google::Apis::MirrorV1::Subscription
           command.query['fields'] = fields unless fields.nil?
@@ -542,10 +542,10 @@ module Google
         
         
         # Updates an existing subscription in place.
-        # @param [Google::Apis::MirrorV1::Subscription] subscription_obj
-        #   
         # @param [String] id
         #   The ID of the subscription.
+        # @param [Google::Apis::MirrorV1::Subscription] subscription
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -567,11 +567,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_subscription(subscription_obj, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_subscription(id, subscription = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'subscriptions/{id}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::MirrorV1::SubscriptionRepresentation
-          command.request_object = subscription_obj
+          command.request_object = subscription
           command.response_representation = Google::Apis::MirrorV1::SubscriptionRepresentation
           command.response_class = Google::Apis::MirrorV1::Subscription
           command.params['id'] = id unless id.nil?
@@ -654,7 +654,7 @@ module Google
         
         
         # Inserts a new item into the timeline.
-        # @param [Google::Apis::MirrorV1::TimelineItem] timeline_item_obj
+        # @param [Google::Apis::MirrorV1::TimelineItem] timeline_item
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -681,7 +681,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_timeline(timeline_item_obj, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_timeline(timeline_item = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'timeline'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -691,7 +691,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::MirrorV1::TimelineItemRepresentation
-          command.request_object = timeline_item_obj
+          command.request_object = timeline_item
           command.response_representation = Google::Apis::MirrorV1::TimelineItemRepresentation
           command.response_class = Google::Apis::MirrorV1::TimelineItem
           command.query['fields'] = fields unless fields.nil?
@@ -757,10 +757,10 @@ module Google
         
         
         # Updates a timeline item in place. This method supports patch semantics.
-        # @param [Google::Apis::MirrorV1::TimelineItem] timeline_item_obj
-        #   
         # @param [String] id
         #   The ID of the timeline item.
+        # @param [Google::Apis::MirrorV1::TimelineItem] timeline_item
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -782,11 +782,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_timeline(timeline_item_obj, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_timeline(id, timeline_item = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'timeline/{id}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::MirrorV1::TimelineItemRepresentation
-          command.request_object = timeline_item_obj
+          command.request_object = timeline_item
           command.response_representation = Google::Apis::MirrorV1::TimelineItemRepresentation
           command.response_class = Google::Apis::MirrorV1::TimelineItem
           command.params['id'] = id unless id.nil?
@@ -798,10 +798,10 @@ module Google
         
         
         # Updates a timeline item in place.
-        # @param [Google::Apis::MirrorV1::TimelineItem] timeline_item_obj
-        #   
         # @param [String] id
         #   The ID of the timeline item.
+        # @param [Google::Apis::MirrorV1::TimelineItem] timeline_item
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -827,7 +827,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_timeline(timeline_item_obj, id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def update_timeline(id, timeline_item = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'timeline/{id}'
           if upload_source.nil?
             command =  make_simple_command(:put, path, options)
@@ -837,7 +837,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::MirrorV1::TimelineItemRepresentation
-          command.request_object = timeline_item_obj
+          command.request_object = timeline_item
           command.response_representation = Google::Apis::MirrorV1::TimelineItemRepresentation
           command.response_class = Google::Apis::MirrorV1::TimelineItem
           command.params['id'] = id unless id.nil?

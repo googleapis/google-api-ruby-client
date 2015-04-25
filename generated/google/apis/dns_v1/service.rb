@@ -55,13 +55,13 @@ module Google
         end
 
         # Atomically update the ResourceRecordSet collection.
-        # @param [Google::Apis::DnsV1::Change] change_obj
-        #   
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request. Can be the managed zone
         #   name or id.
+        # @param [Google::Apis::DnsV1::Change] change
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -83,11 +83,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_change(change_obj, project, managed_zone, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_change(project, managed_zone, change = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/managedZones/{managedZone}/changes'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DnsV1::ChangeRepresentation
-          command.request_object = change_obj
+          command.request_object = change
           command.response_representation = Google::Apis::DnsV1::ChangeRepresentation
           command.response_class = Google::Apis::DnsV1::Change
           command.params['project'] = project unless project.nil?
@@ -199,10 +199,10 @@ module Google
         end
 
         # Create a new ManagedZone.
-        # @param [Google::Apis::DnsV1::ManagedZone] managed_zone_obj
-        #   
         # @param [String] project
         #   Identifies the project addressed by this request.
+        # @param [Google::Apis::DnsV1::ManagedZone] managed_zone
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -224,11 +224,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_managed_zone(managed_zone_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_managed_zone(project, managed_zone = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/managedZones'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DnsV1::ManagedZoneRepresentation
-          command.request_object = managed_zone_obj
+          command.request_object = managed_zone
           command.response_representation = Google::Apis::DnsV1::ManagedZoneRepresentation
           command.response_class = Google::Apis::DnsV1::ManagedZone
           command.params['project'] = project unless project.nil?

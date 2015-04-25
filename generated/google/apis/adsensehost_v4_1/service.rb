@@ -349,12 +349,12 @@ module Google
         
         
         # Insert the supplied ad unit into the specified publisher AdSense account.
-        # @param [Google::Apis::AdsensehostV4_1::AdUnit] ad_unit_obj
-        #   
         # @param [String] account_id
         #   Account which will contain the ad unit.
         # @param [String] ad_client_id
         #   Ad client into which to insert the ad unit.
+        # @param [Google::Apis::AdsensehostV4_1::AdUnit] ad_unit
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -376,11 +376,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_account_adunit(ad_unit_obj, account_id, ad_client_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_account_adunit(account_id, ad_client_id, ad_unit = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/adunits'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdsensehostV4_1::AdUnitRepresentation
-          command.request_object = ad_unit_obj
+          command.request_object = ad_unit
           command.response_representation = Google::Apis::AdsensehostV4_1::AdUnitRepresentation
           command.response_class = Google::Apis::AdsensehostV4_1::AdUnit
           command.params['accountId'] = account_id unless account_id.nil?
@@ -444,12 +444,12 @@ module Google
         
         # Update the supplied ad unit in the specified publisher AdSense account. This
         # method supports patch semantics.
-        # @param [Google::Apis::AdsensehostV4_1::AdUnit] ad_unit_obj
-        #   
         # @param [String] account_id
         #   Account which contains the ad client.
         # @param [String] ad_client_id
         #   Ad client which contains the ad unit.
+        # @param [Google::Apis::AdsensehostV4_1::AdUnit] ad_unit
+        #   
         # @param [String] ad_unit_id
         #   Ad unit to get.
         # @param [String] fields
@@ -473,11 +473,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_account_adunit(ad_unit_obj, account_id, ad_client_id, ad_unit_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_account_adunit(account_id, ad_client_id, ad_unit = nil, ad_unit_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/adunits'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AdsensehostV4_1::AdUnitRepresentation
-          command.request_object = ad_unit_obj
+          command.request_object = ad_unit
           command.response_representation = Google::Apis::AdsensehostV4_1::AdUnitRepresentation
           command.response_class = Google::Apis::AdsensehostV4_1::AdUnit
           command.params['accountId'] = account_id unless account_id.nil?
@@ -491,12 +491,12 @@ module Google
         
         
         # Update the supplied ad unit in the specified publisher AdSense account.
-        # @param [Google::Apis::AdsensehostV4_1::AdUnit] ad_unit_obj
-        #   
         # @param [String] account_id
         #   Account which contains the ad client.
         # @param [String] ad_client_id
         #   Ad client which contains the ad unit.
+        # @param [Google::Apis::AdsensehostV4_1::AdUnit] ad_unit
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -518,11 +518,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_adunit(ad_unit_obj, account_id, ad_client_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account_adunit(account_id, ad_client_id, ad_unit = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/adunits'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AdsensehostV4_1::AdUnitRepresentation
-          command.request_object = ad_unit_obj
+          command.request_object = ad_unit
           command.response_representation = Google::Apis::AdsensehostV4_1::AdUnitRepresentation
           command.response_class = Google::Apis::AdsensehostV4_1::AdUnit
           command.params['accountId'] = account_id unless account_id.nil?
@@ -846,10 +846,10 @@ module Google
         
         
         # Add a new custom channel to the host AdSense account.
-        # @param [Google::Apis::AdsensehostV4_1::CustomChannel] custom_channel_obj
-        #   
         # @param [String] ad_client_id
         #   Ad client to which the new custom channel will be added.
+        # @param [Google::Apis::AdsensehostV4_1::CustomChannel] custom_channel
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -871,11 +871,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_customchannel(custom_channel_obj, ad_client_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_customchannel(ad_client_id, custom_channel = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/customchannels'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdsensehostV4_1::CustomChannelRepresentation
-          command.request_object = custom_channel_obj
+          command.request_object = custom_channel
           command.response_representation = Google::Apis::AdsensehostV4_1::CustomChannelRepresentation
           command.response_class = Google::Apis::AdsensehostV4_1::CustomChannel
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -934,10 +934,10 @@ module Google
         
         # Update a custom channel in the host AdSense account. This method supports
         # patch semantics.
-        # @param [Google::Apis::AdsensehostV4_1::CustomChannel] custom_channel_obj
-        #   
         # @param [String] ad_client_id
         #   Ad client in which the custom channel will be updated.
+        # @param [Google::Apis::AdsensehostV4_1::CustomChannel] custom_channel
+        #   
         # @param [String] custom_channel_id
         #   Custom channel to get.
         # @param [String] fields
@@ -961,11 +961,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_customchannel(custom_channel_obj, ad_client_id, custom_channel_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_customchannel(ad_client_id, custom_channel = nil, custom_channel_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/customchannels'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AdsensehostV4_1::CustomChannelRepresentation
-          command.request_object = custom_channel_obj
+          command.request_object = custom_channel
           command.response_representation = Google::Apis::AdsensehostV4_1::CustomChannelRepresentation
           command.response_class = Google::Apis::AdsensehostV4_1::CustomChannel
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -978,10 +978,10 @@ module Google
         
         
         # Update a custom channel in the host AdSense account.
-        # @param [Google::Apis::AdsensehostV4_1::CustomChannel] custom_channel_obj
-        #   
         # @param [String] ad_client_id
         #   Ad client in which the custom channel will be updated.
+        # @param [Google::Apis::AdsensehostV4_1::CustomChannel] custom_channel
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1003,11 +1003,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_customchannel(custom_channel_obj, ad_client_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_customchannel(ad_client_id, custom_channel = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/customchannels'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AdsensehostV4_1::CustomChannelRepresentation
-          command.request_object = custom_channel_obj
+          command.request_object = custom_channel
           command.response_representation = Google::Apis::AdsensehostV4_1::CustomChannelRepresentation
           command.response_class = Google::Apis::AdsensehostV4_1::CustomChannel
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -1123,10 +1123,10 @@ module Google
         
         
         # Add a new URL channel to the host AdSense account.
-        # @param [Google::Apis::AdsensehostV4_1::UrlChannel] url_channel_obj
-        #   
         # @param [String] ad_client_id
         #   Ad client to which the new URL channel will be added.
+        # @param [Google::Apis::AdsensehostV4_1::UrlChannel] url_channel
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1148,11 +1148,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_urlchannel(url_channel_obj, ad_client_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_urlchannel(ad_client_id, url_channel = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/urlchannels'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdsensehostV4_1::UrlChannelRepresentation
-          command.request_object = url_channel_obj
+          command.request_object = url_channel
           command.response_representation = Google::Apis::AdsensehostV4_1::UrlChannelRepresentation
           command.response_class = Google::Apis::AdsensehostV4_1::UrlChannel
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?

@@ -158,7 +158,6 @@ module Google
         class LocaleRepresentation < Google::Apis::Core::JsonRepresentation; end
         class PagesRepresentation < Google::Apis::Core::JsonRepresentation; end
         class PostsRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :custom_meta_data, as: 'customMetaData'
         property :description, as: 'description'
         property :id, as: 'id'
@@ -176,10 +175,8 @@ module Google
         property :updated, as: 'updated', type: DateTime
         property :url, as: 'url'
         
-        
         # @private
         class LocaleRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :country, as: 'country'
           property :language, as: 'language'
           property :variant, as: 'variant'
@@ -187,14 +184,12 @@ module Google
         
         # @private
         class PagesRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :self_link, as: 'selfLink'
           property :total_items, as: 'totalItems'
         end
         
         # @private
         class PostsRepresentation < Google::Apis::Core::JsonRepresentation
-          
           collection :items, as: 'items', class: Google::Apis::BloggerV3::Post, decorator: Google::Apis::BloggerV3::PostRepresentation
           
           
@@ -205,7 +200,6 @@ module Google
 
       # @private
       class BlogListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :blog_user_infos, as: 'blogUserInfos', class: Google::Apis::BloggerV3::BlogUserInfo, decorator: Google::Apis::BloggerV3::BlogUserInfoRepresentation
         
         
@@ -217,7 +211,6 @@ module Google
 
       # @private
       class BlogPerUserInfoRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :blog_id, as: 'blogId'
         property :has_admin_access, as: 'hasAdminAccess'
         property :kind, as: 'kind'
@@ -228,7 +221,6 @@ module Google
 
       # @private
       class BlogUserInfoRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :blog, as: 'blog', class: Google::Apis::BloggerV3::Blog, decorator: Google::Apis::BloggerV3::BlogRepresentation
         
         property :blog_user_info, as: 'blog_user_info', class: Google::Apis::BloggerV3::BlogPerUserInfo, decorator: Google::Apis::BloggerV3::BlogPerUserInfoRepresentation
@@ -242,7 +234,6 @@ module Google
         class BlogRepresentation < Google::Apis::Core::JsonRepresentation; end
         class InReplyToRepresentation < Google::Apis::Core::JsonRepresentation; end
         class PostRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :author, as: 'author', class: Google::Apis::BloggerV3::Comment::Author, decorator: Google::Apis::BloggerV3::CommentRepresentation::AuthorRepresentation
         
         property :blog, as: 'blog', class: Google::Apis::BloggerV3::Comment::Blog, decorator: Google::Apis::BloggerV3::CommentRepresentation::BlogRepresentation
@@ -259,47 +250,39 @@ module Google
         property :status, as: 'status'
         property :updated, as: 'updated', type: DateTime
         
-        
         # @private
         class AuthorRepresentation < Google::Apis::Core::JsonRepresentation
           class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :display_name, as: 'displayName'
           property :id, as: 'id'
           property :image, as: 'image', class: Google::Apis::BloggerV3::Comment::Author::Image, decorator: Google::Apis::BloggerV3::CommentRepresentation::AuthorRepresentation::ImageRepresentation
           
           property :url, as: 'url'
           
-          
           # @private
           class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :url, as: 'url'
           end
         end
         
         # @private
         class BlogRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :id, as: 'id'
         end
         
         # @private
         class InReplyToRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :id, as: 'id'
         end
         
         # @private
         class PostRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :id, as: 'id'
         end
       end
 
       # @private
       class CommentListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :etag, as: 'etag'
         collection :items, as: 'items', class: Google::Apis::BloggerV3::Comment, decorator: Google::Apis::BloggerV3::CommentRepresentation
         
@@ -313,7 +296,6 @@ module Google
       class PageRepresentation < Google::Apis::Core::JsonRepresentation
         class AuthorRepresentation < Google::Apis::Core::JsonRepresentation; end
         class BlogRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :author, as: 'author', class: Google::Apis::BloggerV3::Page::Author, decorator: Google::Apis::BloggerV3::PageRepresentation::AuthorRepresentation
         
         property :blog, as: 'blog', class: Google::Apis::BloggerV3::Page::Blog, decorator: Google::Apis::BloggerV3::PageRepresentation::BlogRepresentation
@@ -329,35 +311,29 @@ module Google
         property :updated, as: 'updated', type: DateTime
         property :url, as: 'url'
         
-        
         # @private
         class AuthorRepresentation < Google::Apis::Core::JsonRepresentation
           class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :display_name, as: 'displayName'
           property :id, as: 'id'
           property :image, as: 'image', class: Google::Apis::BloggerV3::Page::Author::Image, decorator: Google::Apis::BloggerV3::PageRepresentation::AuthorRepresentation::ImageRepresentation
           
           property :url, as: 'url'
           
-          
           # @private
           class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :url, as: 'url'
           end
         end
         
         # @private
         class BlogRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :id, as: 'id'
         end
       end
 
       # @private
       class PageListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :etag, as: 'etag'
         collection :items, as: 'items', class: Google::Apis::BloggerV3::Page, decorator: Google::Apis::BloggerV3::PageRepresentation
         
@@ -369,17 +345,14 @@ module Google
       # @private
       class PageviewsRepresentation < Google::Apis::Core::JsonRepresentation
         class CountRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :blog_id, as: 'blogId'
         collection :counts, as: 'counts', class: Google::Apis::BloggerV3::Pageviews::Count, decorator: Google::Apis::BloggerV3::PageviewsRepresentation::CountRepresentation
         
         
         property :kind, as: 'kind'
         
-        
         # @private
         class CountRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :count, as: 'count'
           property :time_range, as: 'timeRange'
         end
@@ -392,7 +365,6 @@ module Google
         class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
         class LocationRepresentation < Google::Apis::Core::JsonRepresentation; end
         class RepliesRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :author, as: 'author', class: Google::Apis::BloggerV3::Post::Author, decorator: Google::Apis::BloggerV3::PostRepresentation::AuthorRepresentation
         
         property :blog, as: 'blog', class: Google::Apis::BloggerV3::Post::Blog, decorator: Google::Apis::BloggerV3::PostRepresentation::BlogRepresentation
@@ -420,40 +392,33 @@ module Google
         property :updated, as: 'updated', type: DateTime
         property :url, as: 'url'
         
-        
         # @private
         class AuthorRepresentation < Google::Apis::Core::JsonRepresentation
           class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :display_name, as: 'displayName'
           property :id, as: 'id'
           property :image, as: 'image', class: Google::Apis::BloggerV3::Post::Author::Image, decorator: Google::Apis::BloggerV3::PostRepresentation::AuthorRepresentation::ImageRepresentation
           
           property :url, as: 'url'
           
-          
           # @private
           class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :url, as: 'url'
           end
         end
         
         # @private
         class BlogRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :id, as: 'id'
         end
         
         # @private
         class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :url, as: 'url'
         end
         
         # @private
         class LocationRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :lat, as: 'lat'
           property :lng, as: 'lng'
           property :name, as: 'name'
@@ -462,7 +427,6 @@ module Google
         
         # @private
         class RepliesRepresentation < Google::Apis::Core::JsonRepresentation
-          
           collection :items, as: 'items', class: Google::Apis::BloggerV3::Comment, decorator: Google::Apis::BloggerV3::CommentRepresentation
           
           
@@ -473,7 +437,6 @@ module Google
 
       # @private
       class PostListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :etag, as: 'etag'
         collection :items, as: 'items', class: Google::Apis::BloggerV3::Post, decorator: Google::Apis::BloggerV3::PostRepresentation
         
@@ -484,7 +447,6 @@ module Google
 
       # @private
       class PostPerUserInfoRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :blog_id, as: 'blogId'
         property :has_edit_access, as: 'hasEditAccess'
         property :kind, as: 'kind'
@@ -494,7 +456,6 @@ module Google
 
       # @private
       class PostUserInfoRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :post, as: 'post', class: Google::Apis::BloggerV3::Post, decorator: Google::Apis::BloggerV3::PostRepresentation
         
@@ -503,7 +464,6 @@ module Google
 
       # @private
       class PostUserInfosListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::BloggerV3::PostUserInfo, decorator: Google::Apis::BloggerV3::PostUserInfoRepresentation
         
         
@@ -515,7 +475,6 @@ module Google
       class UserRepresentation < Google::Apis::Core::JsonRepresentation
         class BlogsRepresentation < Google::Apis::Core::JsonRepresentation; end
         class LocaleRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :about, as: 'about'
         property :blogs, as: 'blogs', class: Google::Apis::BloggerV3::User::Blogs, decorator: Google::Apis::BloggerV3::UserRepresentation::BlogsRepresentation
         
@@ -528,16 +487,13 @@ module Google
         property :self_link, as: 'selfLink'
         property :url, as: 'url'
         
-        
         # @private
         class BlogsRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :self_link, as: 'selfLink'
         end
         
         # @private
         class LocaleRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :country, as: 'country'
           property :language, as: 'language'
           property :variant, as: 'variant'

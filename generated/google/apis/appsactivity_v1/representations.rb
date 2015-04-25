@@ -68,7 +68,6 @@ module Google
 
       # @private
       class ActivityRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :combined_event, as: 'combinedEvent', class: Google::Apis::AppsactivityV1::Event, decorator: Google::Apis::AppsactivityV1::EventRepresentation
         
         collection :single_events, as: 'singleEvents', class: Google::Apis::AppsactivityV1::Event, decorator: Google::Apis::AppsactivityV1::EventRepresentation
@@ -76,7 +75,6 @@ module Google
 
       # @private
       class EventRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :additional_event_types, as: 'additionalEventTypes'
         
         property :event_time_millis, as: 'eventTimeMillis'
@@ -96,7 +94,6 @@ module Google
 
       # @private
       class ListActivitiesResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :activities, as: 'activities', class: Google::Apis::AppsactivityV1::Activity, decorator: Google::Apis::AppsactivityV1::ActivityRepresentation
         
         
@@ -105,7 +102,6 @@ module Google
 
       # @private
       class MoveRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :added_parents, as: 'addedParents', class: Google::Apis::AppsactivityV1::Parent, decorator: Google::Apis::AppsactivityV1::ParentRepresentation
         
         
@@ -114,7 +110,6 @@ module Google
 
       # @private
       class ParentRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         property :is_root, as: 'isRoot'
         property :title, as: 'title'
@@ -122,7 +117,6 @@ module Google
 
       # @private
       class PermissionRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :name, as: 'name'
         property :permission_id, as: 'permissionId'
         property :role, as: 'role'
@@ -134,7 +128,6 @@ module Google
 
       # @private
       class PermissionChangeRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :added_permissions, as: 'addedPermissions', class: Google::Apis::AppsactivityV1::Permission, decorator: Google::Apis::AppsactivityV1::PermissionRepresentation
         
         
@@ -143,20 +136,17 @@ module Google
 
       # @private
       class PhotoRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :url, as: 'url'
       end
 
       # @private
       class RenameRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :new_title, as: 'newTitle'
         property :old_title, as: 'oldTitle'
       end
 
       # @private
       class TargetRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :id, as: 'id'
         property :mime_type, as: 'mimeType'
         property :name, as: 'name'
@@ -164,7 +154,6 @@ module Google
 
       # @private
       class UserRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :name, as: 'name'
         property :photo, as: 'photo', class: Google::Apis::AppsactivityV1::Photo, decorator: Google::Apis::AppsactivityV1::PhotoRepresentation
       end

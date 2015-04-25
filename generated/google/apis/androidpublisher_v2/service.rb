@@ -178,11 +178,11 @@ module Google
         
         
         # Creates a new edit for an app, populated with the app's current state.
-        # @param [Google::Apis::AndroidpublisherV2::AppEdit] app_edit_obj
-        #   
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
+        # @param [Google::Apis::AndroidpublisherV2::AppEdit] app_edit
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -204,11 +204,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_edit(app_edit_obj, package_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_edit(package_name, app_edit = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/edits'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::AppEditRepresentation
-          command.request_object = app_edit_obj
+          command.request_object = app_edit
           command.response_representation = Google::Apis::AndroidpublisherV2::AppEditRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::AppEdit
           command.params['packageName'] = package_name unless package_name.nil?
@@ -447,8 +447,6 @@ module Google
         
         # Updates or creates the APK-specific localized listing for a specified APK and
         # language code. This method supports patch semantics.
-        # @param [Google::Apis::AndroidpublisherV2::ApkListing] apk_listing_obj
-        #   
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
@@ -460,6 +458,8 @@ module Google
         #   The language code (a BCP-47 language tag) of the APK-specific localized
         #   listing to read or modify. For example, to select Austrian German, pass "de-AT"
         #   .
+        # @param [Google::Apis::AndroidpublisherV2::ApkListing] apk_listing
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -481,11 +481,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_edit_apklisting(apk_listing_obj, package_name, edit_id, apk_version_code, language, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_edit_apklisting(package_name, edit_id, apk_version_code, language, apk_listing = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings/{language}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::ApkListingRepresentation
-          command.request_object = apk_listing_obj
+          command.request_object = apk_listing
           command.response_representation = Google::Apis::AndroidpublisherV2::ApkListingRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::ApkListing
           command.params['packageName'] = package_name unless package_name.nil?
@@ -501,8 +501,6 @@ module Google
         
         # Updates or creates the APK-specific localized listing for a specified APK and
         # language code.
-        # @param [Google::Apis::AndroidpublisherV2::ApkListing] apk_listing_obj
-        #   
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
@@ -514,6 +512,8 @@ module Google
         #   The language code (a BCP-47 language tag) of the APK-specific localized
         #   listing to read or modify. For example, to select Austrian German, pass "de-AT"
         #   .
+        # @param [Google::Apis::AndroidpublisherV2::ApkListing] apk_listing
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -535,11 +535,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_edit_apklisting(apk_listing_obj, package_name, edit_id, apk_version_code, language, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_edit_apklisting(package_name, edit_id, apk_version_code, language, apk_listing = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings/{language}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::ApkListingRepresentation
-          command.request_object = apk_listing_obj
+          command.request_object = apk_listing
           command.response_representation = Google::Apis::AndroidpublisherV2::ApkListingRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::ApkListing
           command.params['packageName'] = package_name unless package_name.nil?
@@ -558,13 +558,13 @@ module Google
         # hosting the APK at a specified URL. This function is only available to
         # enterprises using Google Play for Work whose application is configured to
         # restrict distribution to the enterprise domain.
-        # @param [Google::Apis::AndroidpublisherV2::ApksAddExternallyHostedRequest] apks_add_externally_hosted_request_obj
-        #   
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
         # @param [String] edit_id
         #   Unique identifier for this edit.
+        # @param [Google::Apis::AndroidpublisherV2::ApksAddExternallyHostedRequest] apks_add_externally_hosted_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -586,11 +586,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def addexternallyhosted_edit_apk(apks_add_externally_hosted_request_obj, package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def addexternallyhosted_edit_apk(package_name, edit_id, apks_add_externally_hosted_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/edits/{editId}/apks/externallyHosted'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::ApksAddExternallyHostedRequestRepresentation
-          command.request_object = apks_add_externally_hosted_request_obj
+          command.request_object = apks_add_externally_hosted_request
           command.response_representation = Google::Apis::AndroidpublisherV2::ApksAddExternallyHostedResponseRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::ApksAddExternallyHostedResponse
           command.params['packageName'] = package_name unless package_name.nil?
@@ -738,13 +738,13 @@ module Google
         
         
         # Updates app details for this edit. This method supports patch semantics.
-        # @param [Google::Apis::AndroidpublisherV2::AppDetails] app_details_obj
-        #   
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
         # @param [String] edit_id
         #   Unique identifier for this edit.
+        # @param [Google::Apis::AndroidpublisherV2::AppDetails] app_details
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -766,11 +766,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_edit_detail(app_details_obj, package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_edit_detail(package_name, edit_id, app_details = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/edits/{editId}/details'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::AppDetailsRepresentation
-          command.request_object = app_details_obj
+          command.request_object = app_details
           command.response_representation = Google::Apis::AndroidpublisherV2::AppDetailsRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::AppDetails
           command.params['packageName'] = package_name unless package_name.nil?
@@ -783,13 +783,13 @@ module Google
         
         
         # Updates app details for this edit.
-        # @param [Google::Apis::AndroidpublisherV2::AppDetails] app_details_obj
-        #   
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
         # @param [String] edit_id
         #   Unique identifier for this edit.
+        # @param [Google::Apis::AndroidpublisherV2::AppDetails] app_details
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -811,11 +811,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_edit_detail(app_details_obj, package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_edit_detail(package_name, edit_id, app_details = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/edits/{editId}/details'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::AppDetailsRepresentation
-          command.request_object = app_details_obj
+          command.request_object = app_details
           command.response_representation = Google::Apis::AndroidpublisherV2::AppDetailsRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::AppDetails
           command.params['packageName'] = package_name unless package_name.nil?
@@ -879,8 +879,6 @@ module Google
         # Updates the APK's Expansion File configuration to reference another APK's
         # Expansion Files. To add a new Expansion File use the Upload method. This
         # method supports patch semantics.
-        # @param [Google::Apis::AndroidpublisherV2::ExpansionFile] expansion_file_obj
-        #   
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
@@ -890,6 +888,8 @@ module Google
         #   The version code of the APK whose Expansion File configuration is being read
         #   or modified.
         # @param [String] expansion_file_type
+        #   
+        # @param [Google::Apis::AndroidpublisherV2::ExpansionFile] expansion_file
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -912,11 +912,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_edit_expansionfile(expansion_file_obj, package_name, edit_id, apk_version_code, expansion_file_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_edit_expansionfile(package_name, edit_id, apk_version_code, expansion_file_type, expansion_file = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::ExpansionFileRepresentation
-          command.request_object = expansion_file_obj
+          command.request_object = expansion_file
           command.response_representation = Google::Apis::AndroidpublisherV2::ExpansionFileRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::ExpansionFile
           command.params['packageName'] = package_name unless package_name.nil?
@@ -932,8 +932,6 @@ module Google
         
         # Updates the APK's Expansion File configuration to reference another APK's
         # Expansion Files. To add a new Expansion File use the Upload method.
-        # @param [Google::Apis::AndroidpublisherV2::ExpansionFile] expansion_file_obj
-        #   
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
@@ -943,6 +941,8 @@ module Google
         #   The version code of the APK whose Expansion File configuration is being read
         #   or modified.
         # @param [String] expansion_file_type
+        #   
+        # @param [Google::Apis::AndroidpublisherV2::ExpansionFile] expansion_file
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -965,11 +965,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_edit_expansionfile(expansion_file_obj, package_name, edit_id, apk_version_code, expansion_file_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_edit_expansionfile(package_name, edit_id, apk_version_code, expansion_file_type, expansion_file = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::ExpansionFileRepresentation
-          command.request_object = expansion_file_obj
+          command.request_object = expansion_file
           command.response_representation = Google::Apis::AndroidpublisherV2::ExpansionFileRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::ExpansionFile
           command.params['packageName'] = package_name unless package_name.nil?
@@ -1421,8 +1421,6 @@ module Google
         
         # Creates or updates a localized store listing. This method supports patch
         # semantics.
-        # @param [Google::Apis::AndroidpublisherV2::Listing] listing_obj
-        #   
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
@@ -1431,6 +1429,8 @@ module Google
         # @param [String] language
         #   The language code (a BCP-47 language tag) of the localized listing to read or
         #   modify. For example, to select Austrian German, pass "de-AT".
+        # @param [Google::Apis::AndroidpublisherV2::Listing] listing
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1452,11 +1452,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_edit_listing(listing_obj, package_name, edit_id, language, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_edit_listing(package_name, edit_id, language, listing = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/edits/{editId}/listings/{language}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::ListingRepresentation
-          command.request_object = listing_obj
+          command.request_object = listing
           command.response_representation = Google::Apis::AndroidpublisherV2::ListingRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::Listing
           command.params['packageName'] = package_name unless package_name.nil?
@@ -1470,8 +1470,6 @@ module Google
         
         
         # Creates or updates a localized store listing.
-        # @param [Google::Apis::AndroidpublisherV2::Listing] listing_obj
-        #   
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
@@ -1480,6 +1478,8 @@ module Google
         # @param [String] language
         #   The language code (a BCP-47 language tag) of the localized listing to read or
         #   modify. For example, to select Austrian German, pass "de-AT".
+        # @param [Google::Apis::AndroidpublisherV2::Listing] listing
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1501,11 +1501,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_edit_listing(listing_obj, package_name, edit_id, language, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_edit_listing(package_name, edit_id, language, listing = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/edits/{editId}/listings/{language}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::ListingRepresentation
-          command.request_object = listing_obj
+          command.request_object = listing
           command.response_representation = Google::Apis::AndroidpublisherV2::ListingRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::Listing
           command.params['packageName'] = package_name unless package_name.nil?
@@ -1564,14 +1564,14 @@ module Google
         
         
         # 
-        # @param [Google::Apis::AndroidpublisherV2::Testers] testers_obj
-        #   
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
         # @param [String] edit_id
         #   Unique identifier for this edit.
         # @param [String] track
+        #   
+        # @param [Google::Apis::AndroidpublisherV2::Testers] testers
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1594,11 +1594,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_edit_tester(testers_obj, package_name, edit_id, track, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_edit_tester(package_name, edit_id, track, testers = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/edits/{editId}/testers/{track}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::TestersRepresentation
-          command.request_object = testers_obj
+          command.request_object = testers
           command.response_representation = Google::Apis::AndroidpublisherV2::TestersRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::Testers
           command.params['packageName'] = package_name unless package_name.nil?
@@ -1612,14 +1612,14 @@ module Google
         
         
         # 
-        # @param [Google::Apis::AndroidpublisherV2::Testers] testers_obj
-        #   
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
         # @param [String] edit_id
         #   Unique identifier for this edit.
         # @param [String] track
+        #   
+        # @param [Google::Apis::AndroidpublisherV2::Testers] testers
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1642,11 +1642,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_edit_tester(testers_obj, package_name, edit_id, track, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_edit_tester(package_name, edit_id, track, testers = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/edits/{editId}/testers/{track}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::TestersRepresentation
-          command.request_object = testers_obj
+          command.request_object = testers
           command.response_representation = Google::Apis::AndroidpublisherV2::TestersRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::Testers
           command.params['packageName'] = package_name unless package_name.nil?
@@ -1749,8 +1749,6 @@ module Google
         # Updates the track configuration for the specified track type. When halted, the
         # rollout track cannot be updated without adding new APKs, and adding new APKs
         # will cause it to resume. This method supports patch semantics.
-        # @param [Google::Apis::AndroidpublisherV2::Track] track_obj
-        #   
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
@@ -1758,6 +1756,8 @@ module Google
         #   Unique identifier for this edit.
         # @param [String] track
         #   The track type to read or modify.
+        # @param [Google::Apis::AndroidpublisherV2::Track] track_object
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1779,11 +1779,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_edit_track(track_obj, package_name, edit_id, track, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_edit_track(package_name, edit_id, track, track_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/edits/{editId}/tracks/{track}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::TrackRepresentation
-          command.request_object = track_obj
+          command.request_object = track_object
           command.response_representation = Google::Apis::AndroidpublisherV2::TrackRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::Track
           command.params['packageName'] = package_name unless package_name.nil?
@@ -1799,8 +1799,6 @@ module Google
         # Updates the track configuration for the specified track type. When halted, the
         # rollout track cannot be updated without adding new APKs, and adding new APKs
         # will cause it to resume.
-        # @param [Google::Apis::AndroidpublisherV2::Track] track_obj
-        #   
         # @param [String] package_name
         #   Unique identifier for the Android app that is being updated; for example, "com.
         #   spiffygame".
@@ -1808,6 +1806,8 @@ module Google
         #   Unique identifier for this edit.
         # @param [String] track
         #   The track type to read or modify.
+        # @param [Google::Apis::AndroidpublisherV2::Track] track_object
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1829,11 +1829,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_edit_track(track_obj, package_name, edit_id, track, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_edit_track(package_name, edit_id, track, track_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/edits/{editId}/tracks/{track}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::TrackRepresentation
-          command.request_object = track_obj
+          command.request_object = track_object
           command.response_representation = Google::Apis::AndroidpublisherV2::TrackRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::Track
           command.params['packageName'] = package_name unless package_name.nil?
@@ -1846,7 +1846,7 @@ module Google
         end
 
         # 
-        # @param [Google::Apis::AndroidpublisherV2::InappproductsBatchRequest] inappproducts_batch_request_obj
+        # @param [Google::Apis::AndroidpublisherV2::InappproductsBatchRequest] inappproducts_batch_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1869,11 +1869,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_inappproduct(inappproducts_batch_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_inappproduct(inappproducts_batch_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'inappproducts/batch'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::InappproductsBatchRequestRepresentation
-          command.request_object = inappproducts_batch_request_obj
+          command.request_object = inappproducts_batch_request
           command.response_representation = Google::Apis::AndroidpublisherV2::InappproductsBatchResponseRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::InappproductsBatchResponse
           command.query['fields'] = fields unless fields.nil?
@@ -1963,10 +1963,10 @@ module Google
         
         
         # Creates a new in-app product for an app.
-        # @param [Google::Apis::AndroidpublisherV2::InAppProduct] in_app_product_obj
-        #   
         # @param [String] package_name
         #   Unique identifier for the Android app; for example, "com.spiffygame".
+        # @param [Google::Apis::AndroidpublisherV2::InAppProduct] in_app_product
+        #   
         # @param [Boolean] auto_convert_missing_prices
         #   If true the prices for all regions targeted by the parent app that don't have
         #   a price specified for this in-app product will be auto converted to the target
@@ -1992,11 +1992,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_inappproduct(in_app_product_obj, package_name, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_inappproduct(package_name, in_app_product = nil, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/inappproducts'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::InAppProductRepresentation
-          command.request_object = in_app_product_obj
+          command.request_object = in_app_product
           command.response_representation = Google::Apis::AndroidpublisherV2::InAppProductRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::InAppProduct
           command.params['packageName'] = package_name unless package_name.nil?
@@ -2057,13 +2057,13 @@ module Google
         
         
         # Updates the details of an in-app product. This method supports patch semantics.
-        # @param [Google::Apis::AndroidpublisherV2::InAppProduct] in_app_product_obj
-        #   
         # @param [String] package_name
         #   Unique identifier for the Android app with the in-app product; for example, "
         #   com.spiffygame".
         # @param [String] sku
         #   Unique identifier for the in-app product.
+        # @param [Google::Apis::AndroidpublisherV2::InAppProduct] in_app_product
+        #   
         # @param [Boolean] auto_convert_missing_prices
         #   If true the prices for all regions targeted by the parent app that don't have
         #   a price specified for this in-app product will be auto converted to the target
@@ -2089,11 +2089,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_inappproduct(in_app_product_obj, package_name, sku, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_inappproduct(package_name, sku, in_app_product = nil, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/inappproducts/{sku}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::InAppProductRepresentation
-          command.request_object = in_app_product_obj
+          command.request_object = in_app_product
           command.response_representation = Google::Apis::AndroidpublisherV2::InAppProductRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::InAppProduct
           command.params['packageName'] = package_name unless package_name.nil?
@@ -2107,13 +2107,13 @@ module Google
         
         
         # Updates the details of an in-app product.
-        # @param [Google::Apis::AndroidpublisherV2::InAppProduct] in_app_product_obj
-        #   
         # @param [String] package_name
         #   Unique identifier for the Android app with the in-app product; for example, "
         #   com.spiffygame".
         # @param [String] sku
         #   Unique identifier for the in-app product.
+        # @param [Google::Apis::AndroidpublisherV2::InAppProduct] in_app_product
+        #   
         # @param [Boolean] auto_convert_missing_prices
         #   If true the prices for all regions targeted by the parent app that don't have
         #   a price specified for this in-app product will be auto converted to the target
@@ -2139,11 +2139,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_inappproduct(in_app_product_obj, package_name, sku, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_inappproduct(package_name, sku, in_app_product = nil, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/inappproducts/{sku}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::InAppProductRepresentation
-          command.request_object = in_app_product_obj
+          command.request_object = in_app_product
           command.response_representation = Google::Apis::AndroidpublisherV2::InAppProductRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::InAppProduct
           command.params['packageName'] = package_name unless package_name.nil?
@@ -2244,8 +2244,6 @@ module Google
         
         
         # Defers a user's subscription purchase until a specified future expiration time.
-        # @param [Google::Apis::AndroidpublisherV2::SubscriptionPurchasesDeferRequest] subscription_purchases_defer_request_obj
-        #   
         # @param [String] package_name
         #   The package name of the application for which this subscription was purchased (
         #   for example, 'com.some.thing').
@@ -2253,6 +2251,8 @@ module Google
         #   The purchased subscription ID (for example, 'monthly001').
         # @param [String] token
         #   The token provided to the user's device when the subscription was purchased.
+        # @param [Google::Apis::AndroidpublisherV2::SubscriptionPurchasesDeferRequest] subscription_purchases_defer_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2274,11 +2274,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def defer_purchase_subscription(subscription_purchases_defer_request_obj, package_name, subscription_id, token, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def defer_purchase_subscription(package_name, subscription_id, token, subscription_purchases_defer_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:defer'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::SubscriptionPurchasesDeferRequestRepresentation
-          command.request_object = subscription_purchases_defer_request_obj
+          command.request_object = subscription_purchases_defer_request
           command.response_representation = Google::Apis::AndroidpublisherV2::SubscriptionPurchasesDeferResponseRepresentation
           command.response_class = Google::Apis::AndroidpublisherV2::SubscriptionPurchasesDeferResponse
           command.params['packageName'] = package_name unless package_name.nil?

@@ -691,10 +691,10 @@ module Google
         
         
         # Add a page.
-        # @param [Google::Apis::BloggerV3::Page] page_obj
-        #   
         # @param [String] blog_id
         #   ID of the blog to add the page to.
+        # @param [Google::Apis::BloggerV3::Page] page
+        #   
         # @param [Boolean] is_draft
         #   Whether to create the page as a draft (default: false).
         # @param [String] fields
@@ -718,11 +718,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_page(page_obj, blog_id, is_draft: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_page(blog_id, page = nil, is_draft: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/pages'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::BloggerV3::PageRepresentation
-          command.request_object = page_obj
+          command.request_object = page
           command.response_representation = Google::Apis::BloggerV3::PageRepresentation
           command.response_class = Google::Apis::BloggerV3::Page
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -788,12 +788,12 @@ module Google
         
         
         # Update a page. This method supports patch semantics.
-        # @param [Google::Apis::BloggerV3::Page] page_obj
-        #   
         # @param [String] blog_id
         #   The ID of the Blog.
         # @param [String] page_id
         #   The ID of the Page.
+        # @param [Google::Apis::BloggerV3::Page] page
+        #   
         # @param [Boolean] publish
         #   Whether a publish action should be performed when the page is updated (default:
         #   false).
@@ -821,11 +821,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_page(page_obj, blog_id, page_id, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_page(blog_id, page_id, page = nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/pages/{pageId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::BloggerV3::PageRepresentation
-          command.request_object = page_obj
+          command.request_object = page
           command.response_representation = Google::Apis::BloggerV3::PageRepresentation
           command.response_class = Google::Apis::BloggerV3::Page
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -920,12 +920,12 @@ module Google
         
         
         # Update a page.
-        # @param [Google::Apis::BloggerV3::Page] page_obj
-        #   
         # @param [String] blog_id
         #   The ID of the Blog.
         # @param [String] page_id
         #   The ID of the Page.
+        # @param [Google::Apis::BloggerV3::Page] page
+        #   
         # @param [Boolean] publish
         #   Whether a publish action should be performed when the page is updated (default:
         #   false).
@@ -953,11 +953,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_page(page_obj, blog_id, page_id, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_page(blog_id, page_id, page = nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/pages/{pageId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::BloggerV3::PageRepresentation
-          command.request_object = page_obj
+          command.request_object = page
           command.response_representation = Google::Apis::BloggerV3::PageRepresentation
           command.response_class = Google::Apis::BloggerV3::Page
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -1230,10 +1230,10 @@ module Google
         
         
         # Add a post.
-        # @param [Google::Apis::BloggerV3::Post] post_obj
-        #   
         # @param [String] blog_id
         #   ID of the blog to add the post to.
+        # @param [Google::Apis::BloggerV3::Post] post
+        #   
         # @param [Boolean] fetch_body
         #   Whether the body content of the post is included with the result (default:
         #   true).
@@ -1263,11 +1263,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_post(post_obj, blog_id, fetch_body: nil, fetch_images: nil, is_draft: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_post(blog_id, post = nil, fetch_body: nil, fetch_images: nil, is_draft: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::BloggerV3::PostRepresentation
-          command.request_object = post_obj
+          command.request_object = post
           command.response_representation = Google::Apis::BloggerV3::PostRepresentation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -1351,12 +1351,12 @@ module Google
         
         
         # Update a post. This method supports patch semantics.
-        # @param [Google::Apis::BloggerV3::Post] post_obj
-        #   
         # @param [String] blog_id
         #   The ID of the Blog.
         # @param [String] post_id
         #   The ID of the Post.
+        # @param [Google::Apis::BloggerV3::Post] post
+        #   
         # @param [Boolean] fetch_body
         #   Whether the body content of the post is included with the result (default:
         #   true).
@@ -1392,11 +1392,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_post(post_obj, blog_id, post_id, fetch_body: nil, fetch_images: nil, max_comments: nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_post(blog_id, post_id, post = nil, fetch_body: nil, fetch_images: nil, max_comments: nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/{postId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::BloggerV3::PostRepresentation
-          command.request_object = post_obj
+          command.request_object = post
           command.response_representation = Google::Apis::BloggerV3::PostRepresentation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -1548,12 +1548,12 @@ module Google
         
         
         # Update a post.
-        # @param [Google::Apis::BloggerV3::Post] post_obj
-        #   
         # @param [String] blog_id
         #   The ID of the Blog.
         # @param [String] post_id
         #   The ID of the Post.
+        # @param [Google::Apis::BloggerV3::Post] post
+        #   
         # @param [Boolean] fetch_body
         #   Whether the body content of the post is included with the result (default:
         #   true).
@@ -1589,11 +1589,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_post(post_obj, blog_id, post_id, fetch_body: nil, fetch_images: nil, max_comments: nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_post(blog_id, post_id, post = nil, fetch_body: nil, fetch_images: nil, max_comments: nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/{postId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::BloggerV3::PostRepresentation
-          command.request_object = post_obj
+          command.request_object = post
           command.response_representation = Google::Apis::BloggerV3::PostRepresentation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?

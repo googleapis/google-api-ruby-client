@@ -136,10 +136,10 @@ module Google
         
         # ! Creates a deployment and all of the resources described by the ! deployment
         # manifest.
-        # @param [Google::Apis::DeploymentmanagerV2beta1::Deployment] deployment_obj
-        #   
         # @param [String] project
         #   ! The project ID for this request.
+        # @param [Google::Apis::DeploymentmanagerV2beta1::Deployment] deployment
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -161,11 +161,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_deployment(deployment_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_deployment(project, deployment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DeploymentmanagerV2beta1::DeploymentRepresentation
-          command.request_object = deployment_obj
+          command.request_object = deployment
           command.response_representation = Google::Apis::DeploymentmanagerV2beta1::OperationRepresentation
           command.response_class = Google::Apis::DeploymentmanagerV2beta1::Operation
           command.params['project'] = project unless project.nil?

@@ -54,11 +54,11 @@ module Google
         end
 
         # Create a new metric.
-        # @param [Google::Apis::CloudmonitoringV2beta2::MetricDescriptor] metric_descriptor_obj
-        #   
         # @param [String] project
         #   The project id. The value can be the numeric project ID or string-based
         #   project name.
+        # @param [Google::Apis::CloudmonitoringV2beta2::MetricDescriptor] metric_descriptor
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -80,11 +80,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_metric_descriptor(metric_descriptor_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_metric_descriptor(project, metric_descriptor = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/metricDescriptors'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::CloudmonitoringV2beta2::MetricDescriptorRepresentation
-          command.request_object = metric_descriptor_obj
+          command.request_object = metric_descriptor
           command.response_representation = Google::Apis::CloudmonitoringV2beta2::MetricDescriptorRepresentation
           command.response_class = Google::Apis::CloudmonitoringV2beta2::MetricDescriptor
           command.params['project'] = project unless project.nil?
@@ -140,11 +140,11 @@ module Google
         # paginated, use the nextPageToken returned in the response to request
         # subsequent pages of results by setting the pageToken query parameter to the
         # value of the nextPageToken.
-        # @param [Google::Apis::CloudmonitoringV2beta2::ListMetricDescriptorsRequest] list_metric_descriptors_request_obj
-        #   
         # @param [String] project
         #   The project id. The value can be the numeric project ID or string-based
         #   project name.
+        # @param [Google::Apis::CloudmonitoringV2beta2::ListMetricDescriptorsRequest] list_metric_descriptors_request
+        #   
         # @param [Fixnum] count
         #   Maximum number of metric descriptors per page. Used for pagination. If not
         #   specified, count = 100.
@@ -179,11 +179,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_metric_descriptors(list_metric_descriptors_request_obj, project, count: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_metric_descriptors(project, list_metric_descriptors_request = nil, count: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/metricDescriptors'
           command =  make_simple_command(:get, path, options)
           command.request_representation = Google::Apis::CloudmonitoringV2beta2::ListMetricDescriptorsRequestRepresentation
-          command.request_object = list_metric_descriptors_request_obj
+          command.request_object = list_metric_descriptors_request
           command.response_representation = Google::Apis::CloudmonitoringV2beta2::ListMetricDescriptorsResponseRepresentation
           command.response_class = Google::Apis::CloudmonitoringV2beta2::ListMetricDescriptorsResponse
           command.params['project'] = project unless project.nil?
@@ -201,14 +201,14 @@ module Google
         # paginated; use the nextPageToken returned in the response to request
         # subsequent pages of results by setting the pageToken query parameter to the
         # value of the nextPageToken.
-        # @param [Google::Apis::CloudmonitoringV2beta2::ListTimeseriesRequest] list_timeseries_request_obj
-        #   
         # @param [String] project
         #   The project ID to which this time series belongs. The value can be the numeric
         #   project ID or string-based project name.
         # @param [String] metric
         #   Metric names are protocol-free URLs as listed in the Supported Metrics page.
         #   For example, compute.googleapis.com/instance/disk/read_ops_count.
+        # @param [Google::Apis::CloudmonitoringV2beta2::ListTimeseriesRequest] list_timeseries_request
+        #   
         # @param [String] aggregator
         #   The aggregation function that will reduce the data points in each window to a
         #   single point. This parameter is only valid for non-cumulative metrics with a
@@ -278,11 +278,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_timeseries(list_timeseries_request_obj, project, metric, aggregator: nil, count: nil, labels: nil, oldest: nil, page_token: nil, timespan: nil, window: nil, youngest: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_timeseries(project, metric, list_timeseries_request = nil, aggregator: nil, count: nil, labels: nil, oldest: nil, page_token: nil, timespan: nil, window: nil, youngest: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/timeseries/{metric}'
           command =  make_simple_command(:get, path, options)
           command.request_representation = Google::Apis::CloudmonitoringV2beta2::ListTimeseriesRequestRepresentation
-          command.request_object = list_timeseries_request_obj
+          command.request_object = list_timeseries_request
           command.response_representation = Google::Apis::CloudmonitoringV2beta2::ListTimeseriesResponseRepresentation
           command.response_class = Google::Apis::CloudmonitoringV2beta2::ListTimeseriesResponse
           command.params['project'] = project unless project.nil?
@@ -309,11 +309,11 @@ module Google
         # that time series will be discarded silently. Therefore, users should make sure
         # that points of a time series are written sequentially in the order of their
         # end time.
-        # @param [Google::Apis::CloudmonitoringV2beta2::WriteTimeseriesRequest] write_timeseries_request_obj
-        #   
         # @param [String] project
         #   The project ID. The value can be the numeric project ID or string-based
         #   project name.
+        # @param [Google::Apis::CloudmonitoringV2beta2::WriteTimeseriesRequest] write_timeseries_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -335,11 +335,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def write_timeseries(write_timeseries_request_obj, project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def write_timeseries(project, write_timeseries_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/timeseries:write'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::CloudmonitoringV2beta2::WriteTimeseriesRequestRepresentation
-          command.request_object = write_timeseries_request_obj
+          command.request_object = write_timeseries_request
           command.response_representation = Google::Apis::CloudmonitoringV2beta2::WriteTimeseriesResponseRepresentation
           command.response_class = Google::Apis::CloudmonitoringV2beta2::WriteTimeseriesResponse
           command.params['project'] = project unless project.nil?
@@ -354,14 +354,14 @@ module Google
         # paginated; use the nextPageToken returned in the response to request
         # subsequent pages of results by setting the pageToken query parameter to the
         # value of the nextPageToken.
-        # @param [Google::Apis::CloudmonitoringV2beta2::ListTimeseriesDescriptorsRequest] list_timeseries_descriptors_request_obj
-        #   
         # @param [String] project
         #   The project ID to which this time series belongs. The value can be the numeric
         #   project ID or string-based project name.
         # @param [String] metric
         #   Metric names are protocol-free URLs as listed in the Supported Metrics page.
         #   For example, compute.googleapis.com/instance/disk/read_ops_count.
+        # @param [Google::Apis::CloudmonitoringV2beta2::ListTimeseriesDescriptorsRequest] list_timeseries_descriptors_request
+        #   
         # @param [String] aggregator
         #   The aggregation function that will reduce the data points in each window to a
         #   single point. This parameter is only valid for non-cumulative metrics with a
@@ -431,11 +431,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_timeseries_descriptors(list_timeseries_descriptors_request_obj, project, metric, aggregator: nil, count: nil, labels: nil, oldest: nil, page_token: nil, timespan: nil, window: nil, youngest: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_timeseries_descriptors(project, metric, list_timeseries_descriptors_request = nil, aggregator: nil, count: nil, labels: nil, oldest: nil, page_token: nil, timespan: nil, window: nil, youngest: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/timeseriesDescriptors/{metric}'
           command =  make_simple_command(:get, path, options)
           command.request_representation = Google::Apis::CloudmonitoringV2beta2::ListTimeseriesDescriptorsRequestRepresentation
-          command.request_object = list_timeseries_descriptors_request_obj
+          command.request_object = list_timeseries_descriptors_request
           command.response_representation = Google::Apis::CloudmonitoringV2beta2::ListTimeseriesDescriptorsResponseRepresentation
           command.response_class = Google::Apis::CloudmonitoringV2beta2::ListTimeseriesDescriptorsResponse
           command.params['project'] = project unless project.nil?

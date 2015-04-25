@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/pubsub/v1beta1
     module PubsubV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20141112'
+      REVISION = '20150223'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -123,14 +123,14 @@ module Google
         
         
         # Push changes to activities
-        # @param [Google::Apis::AdminReportsV1::Channel] channel_obj
-        #   
         # @param [String] user_key
         #   Represents the profile id or the user email for which the data should be
         #   filtered. When 'all' is specified as the userKey, it returns usageReports for
         #   all users.
         # @param [String] application_name
         #   Application name for which the events are to be retrieved.
+        # @param [Google::Apis::AdminReportsV1::Channel] channel
+        #   
         # @param [String] actor_ip_address
         #   IP Address of host where the event was performed. Supports both IPv4 and IPv6
         #   addresses.
@@ -170,11 +170,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_activity(channel_obj, user_key, application_name, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, max_results: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_activity(user_key, application_name, channel = nil, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, max_results: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activity/users/{userKey}/applications/{applicationName}/watch'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdminReportsV1::ChannelRepresentation
-          command.request_object = channel_obj
+          command.request_object = channel
           command.response_representation = Google::Apis::AdminReportsV1::ChannelRepresentation
           command.response_class = Google::Apis::AdminReportsV1::Channel
           command.params['userKey'] = user_key unless user_key.nil?
@@ -194,7 +194,7 @@ module Google
         end
 
         # Stop watching resources through this channel
-        # @param [Google::Apis::AdminReportsV1::Channel] channel_obj
+        # @param [Google::Apis::AdminReportsV1::Channel] channel
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -217,11 +217,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_channel(channel_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def stop_channel(channel = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '/admin/reports_v1/channels/stop'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdminReportsV1::ChannelRepresentation
-          command.request_object = channel_obj
+          command.request_object = channel
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

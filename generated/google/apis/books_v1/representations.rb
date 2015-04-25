@@ -343,7 +343,6 @@ module Google
         class ClientVersionRangesRepresentation < Google::Apis::Core::JsonRepresentation; end
         class CurrentVersionRangesRepresentation < Google::Apis::Core::JsonRepresentation; end
         class LayerSummaryRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :after_selected_text, as: 'afterSelectedText'
         property :before_selected_text, as: 'beforeSelectedText'
         property :client_version_ranges, as: 'clientVersionRanges', class: Google::Apis::BooksV1::Annotation::ClientVersionRanges, decorator: Google::Apis::BooksV1::AnnotationRepresentation::ClientVersionRangesRepresentation
@@ -366,10 +365,8 @@ module Google
         property :updated, as: 'updated', type: DateTime
         property :volume_id, as: 'volumeId'
         
-        
         # @private
         class ClientVersionRangesRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :cfi_range, as: 'cfiRange', class: Google::Apis::BooksV1::AnnotationsRange, decorator: Google::Apis::BooksV1::AnnotationsRangeRepresentation
           
           property :content_version, as: 'contentVersion'
@@ -382,7 +379,6 @@ module Google
         
         # @private
         class CurrentVersionRangesRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :cfi_range, as: 'cfiRange', class: Google::Apis::BooksV1::AnnotationsRange, decorator: Google::Apis::BooksV1::AnnotationsRangeRepresentation
           
           property :content_version, as: 'contentVersion'
@@ -395,7 +391,6 @@ module Google
         
         # @private
         class LayerSummaryRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :allowed_character_count, as: 'allowedCharacterCount'
           property :limit_type, as: 'limitType'
           property :remaining_character_count, as: 'remainingCharacterCount'
@@ -404,7 +399,6 @@ module Google
 
       # @private
       class AnnotationdataRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :annotation_type, as: 'annotationType'
         property :data, as: 'data'
         property :encoded_data, as: 'encoded_data'
@@ -418,7 +412,6 @@ module Google
 
       # @private
       class AnnotationsRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::BooksV1::Annotation, decorator: Google::Apis::BooksV1::AnnotationRepresentation
         
         
@@ -430,16 +423,13 @@ module Google
       # @private
       class AnnotationsSummaryRepresentation < Google::Apis::Core::JsonRepresentation
         class LayerRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :kind, as: 'kind'
         collection :layers, as: 'layers', class: Google::Apis::BooksV1::AnnotationsSummary::Layer, decorator: Google::Apis::BooksV1::AnnotationsSummaryRepresentation::LayerRepresentation
         
         
         
-        
         # @private
         class LayerRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :allowed_character_count, as: 'allowedCharacterCount'
           property :layer_id, as: 'layerId'
           property :limit_type, as: 'limitType'
@@ -450,7 +440,6 @@ module Google
 
       # @private
       class AnnotationsdataRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::BooksV1::Annotationdata, decorator: Google::Apis::BooksV1::AnnotationdataRepresentation
         
         
@@ -461,7 +450,6 @@ module Google
 
       # @private
       class AnnotationsRangeRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :end_offset, as: 'endOffset'
         property :end_position, as: 'endPosition'
         property :start_offset, as: 'startOffset'
@@ -470,7 +458,6 @@ module Google
 
       # @private
       class CloudloadingResourceRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :author, as: 'author'
         property :processing_state, as: 'processingState'
         property :title, as: 'title'
@@ -479,13 +466,11 @@ module Google
 
       # @private
       class VolumesRecommendedRateResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :consistency_token, as: 'consistency_token'
       end
 
       # @private
       class BookshelfRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :access, as: 'access'
         property :created, as: 'created', type: DateTime
         property :description, as: 'description'
@@ -500,7 +485,6 @@ module Google
 
       # @private
       class BookshelvesRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::BooksV1::Bookshelf, decorator: Google::Apis::BooksV1::BookshelfRepresentation
         
         
@@ -510,16 +494,13 @@ module Google
       # @private
       class CategoryRepresentation < Google::Apis::Core::JsonRepresentation
         class ItemRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :items, as: 'items', class: Google::Apis::BooksV1::Category::Item, decorator: Google::Apis::BooksV1::CategoryRepresentation::ItemRepresentation
         
         
         property :kind, as: 'kind'
         
-        
         # @private
         class ItemRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :badge_url, as: 'badgeUrl'
           property :category_id, as: 'categoryId'
           property :name, as: 'name'
@@ -528,7 +509,6 @@ module Google
 
       # @private
       class ConcurrentAccessRestrictionRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :device_allowed, as: 'deviceAllowed'
         property :kind, as: 'kind'
         property :max_concurrent_devices, as: 'maxConcurrentDevices'
@@ -546,17 +526,14 @@ module Google
       class DictlayerdataRepresentation < Google::Apis::Core::JsonRepresentation
         class CommonRepresentation < Google::Apis::Core::JsonRepresentation; end
         class DictRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :common, as: 'common', class: Google::Apis::BooksV1::Dictlayerdata::Common, decorator: Google::Apis::BooksV1::DictlayerdataRepresentation::CommonRepresentation
         
         property :dict, as: 'dict', class: Google::Apis::BooksV1::Dictlayerdata::Dict, decorator: Google::Apis::BooksV1::DictlayerdataRepresentation::DictRepresentation
         
         property :kind, as: 'kind'
         
-        
         # @private
         class CommonRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :title, as: 'title'
         end
         
@@ -564,17 +541,14 @@ module Google
         class DictRepresentation < Google::Apis::Core::JsonRepresentation
           class SourceRepresentation < Google::Apis::Core::JsonRepresentation; end
           class WordRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :source, as: 'source', class: Google::Apis::BooksV1::Dictlayerdata::Dict::Source, decorator: Google::Apis::BooksV1::DictlayerdataRepresentation::DictRepresentation::SourceRepresentation
           
           collection :words, as: 'words', class: Google::Apis::BooksV1::Dictlayerdata::Dict::Word, decorator: Google::Apis::BooksV1::DictlayerdataRepresentation::DictRepresentation::WordRepresentation
           
           
           
-          
           # @private
           class SourceRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :attribution, as: 'attribution'
             property :url, as: 'url'
           end
@@ -585,7 +559,6 @@ module Google
             class ExampleRepresentation < Google::Apis::Core::JsonRepresentation; end
             class SenseRepresentation < Google::Apis::Core::JsonRepresentation; end
             class SourceRepresentation < Google::Apis::Core::JsonRepresentation; end
-            
             collection :derivatives, as: 'derivatives', class: Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Derivative, decorator: Google::Apis::BooksV1::DictlayerdataRepresentation::DictRepresentation::WordRepresentation::DerivativeRepresentation
             
             
@@ -598,19 +571,15 @@ module Google
             property :source, as: 'source', class: Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Source, decorator: Google::Apis::BooksV1::DictlayerdataRepresentation::DictRepresentation::WordRepresentation::SourceRepresentation
             
             
-            
             # @private
             class DerivativeRepresentation < Google::Apis::Core::JsonRepresentation
               class SourceRepresentation < Google::Apis::Core::JsonRepresentation; end
-              
               property :source, as: 'source', class: Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Derivative::Source, decorator: Google::Apis::BooksV1::DictlayerdataRepresentation::DictRepresentation::WordRepresentation::DerivativeRepresentation::SourceRepresentation
               
               property :text, as: 'text'
               
-              
               # @private
               class SourceRepresentation < Google::Apis::Core::JsonRepresentation
-                
                 property :attribution, as: 'attribution'
                 property :url, as: 'url'
               end
@@ -619,15 +588,12 @@ module Google
             # @private
             class ExampleRepresentation < Google::Apis::Core::JsonRepresentation
               class SourceRepresentation < Google::Apis::Core::JsonRepresentation; end
-              
               property :source, as: 'source', class: Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Example::Source, decorator: Google::Apis::BooksV1::DictlayerdataRepresentation::DictRepresentation::WordRepresentation::ExampleRepresentation::SourceRepresentation
               
               property :text, as: 'text'
               
-              
               # @private
               class SourceRepresentation < Google::Apis::Core::JsonRepresentation
-                
                 property :attribution, as: 'attribution'
                 property :url, as: 'url'
               end
@@ -639,7 +605,6 @@ module Google
               class DefinitionRepresentation < Google::Apis::Core::JsonRepresentation; end
               class SourceRepresentation < Google::Apis::Core::JsonRepresentation; end
               class SynonymRepresentation < Google::Apis::Core::JsonRepresentation; end
-              
               collection :conjugations, as: 'conjugations', class: Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Sense::Conjugation, decorator: Google::Apis::BooksV1::DictlayerdataRepresentation::DictRepresentation::WordRepresentation::SenseRepresentation::ConjugationRepresentation
               
               
@@ -656,10 +621,8 @@ module Google
               
               
               
-              
               # @private
               class ConjugationRepresentation < Google::Apis::Core::JsonRepresentation
-                
                 property :type, as: 'type'
                 property :value, as: 'value'
               end
@@ -667,25 +630,20 @@ module Google
               # @private
               class DefinitionRepresentation < Google::Apis::Core::JsonRepresentation
                 class ExampleRepresentation < Google::Apis::Core::JsonRepresentation; end
-                
                 property :definition, as: 'definition'
                 collection :examples, as: 'examples', class: Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Sense::Definition::Example, decorator: Google::Apis::BooksV1::DictlayerdataRepresentation::DictRepresentation::WordRepresentation::SenseRepresentation::DefinitionRepresentation::ExampleRepresentation
-                
                 
                 
                 
                 # @private
                 class ExampleRepresentation < Google::Apis::Core::JsonRepresentation
                   class SourceRepresentation < Google::Apis::Core::JsonRepresentation; end
-                  
                   property :source, as: 'source', class: Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Sense::Definition::Example::Source, decorator: Google::Apis::BooksV1::DictlayerdataRepresentation::DictRepresentation::WordRepresentation::SenseRepresentation::DefinitionRepresentation::ExampleRepresentation::SourceRepresentation
                   
                   property :text, as: 'text'
                   
-                  
                   # @private
                   class SourceRepresentation < Google::Apis::Core::JsonRepresentation
-                    
                     property :attribution, as: 'attribution'
                     property :url, as: 'url'
                   end
@@ -694,7 +652,6 @@ module Google
               
               # @private
               class SourceRepresentation < Google::Apis::Core::JsonRepresentation
-                
                 property :attribution, as: 'attribution'
                 property :url, as: 'url'
               end
@@ -702,15 +659,12 @@ module Google
               # @private
               class SynonymRepresentation < Google::Apis::Core::JsonRepresentation
                 class SourceRepresentation < Google::Apis::Core::JsonRepresentation; end
-                
                 property :source, as: 'source', class: Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Sense::Synonym::Source, decorator: Google::Apis::BooksV1::DictlayerdataRepresentation::DictRepresentation::WordRepresentation::SenseRepresentation::SynonymRepresentation::SourceRepresentation
                 
                 property :text, as: 'text'
                 
-                
                 # @private
                 class SourceRepresentation < Google::Apis::Core::JsonRepresentation
-                  
                   property :attribution, as: 'attribution'
                   property :url, as: 'url'
                 end
@@ -719,7 +673,6 @@ module Google
             
             # @private
             class SourceRepresentation < Google::Apis::Core::JsonRepresentation
-              
               property :attribution, as: 'attribution'
               property :url, as: 'url'
             end
@@ -729,7 +682,6 @@ module Google
 
       # @private
       class DownloadAccessRestrictionRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :device_allowed, as: 'deviceAllowed'
         property :downloads_acquired, as: 'downloadsAcquired'
         property :just_acquired, as: 'justAcquired'
@@ -746,7 +698,6 @@ module Google
 
       # @private
       class DownloadAccessesRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :download_access_list, as: 'downloadAccessList', class: Google::Apis::BooksV1::DownloadAccessRestriction, decorator: Google::Apis::BooksV1::DownloadAccessRestrictionRepresentation
         
         
@@ -757,17 +708,14 @@ module Google
       class GeolayerdataRepresentation < Google::Apis::Core::JsonRepresentation
         class CommonRepresentation < Google::Apis::Core::JsonRepresentation; end
         class GeoRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :common, as: 'common', class: Google::Apis::BooksV1::Geolayerdata::Common, decorator: Google::Apis::BooksV1::GeolayerdataRepresentation::CommonRepresentation
         
         property :geo, as: 'geo', class: Google::Apis::BooksV1::Geolayerdata::Geo, decorator: Google::Apis::BooksV1::GeolayerdataRepresentation::GeoRepresentation
         
         property :kind, as: 'kind'
         
-        
         # @private
         class CommonRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :lang, as: 'lang'
           property :preview_image_url, as: 'previewImageUrl'
           property :snippet, as: 'snippet'
@@ -779,7 +727,6 @@ module Google
         class GeoRepresentation < Google::Apis::Core::JsonRepresentation
           class BoundaryRepresentation < Google::Apis::Core::JsonRepresentation; end
           class ViewportRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           collection :boundary, as: 'boundary', :class => Array do
             include Representable::JSON::Collection
             items class: Google::Apis::BooksV1::Geolayerdata::Geo::Boundary, decorator: Google::Apis::BooksV1::GeolayerdataRepresentation::GeoRepresentation::BoundaryRepresentation
@@ -796,10 +743,8 @@ module Google
           
           property :zoom, as: 'zoom'
           
-          
           # @private
           class BoundaryRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :latitude, as: 'latitude'
             property :longitude, as: 'longitude'
           end
@@ -808,23 +753,19 @@ module Google
           class ViewportRepresentation < Google::Apis::Core::JsonRepresentation
             class HiRepresentation < Google::Apis::Core::JsonRepresentation; end
             class LoRepresentation < Google::Apis::Core::JsonRepresentation; end
-            
             property :hi, as: 'hi', class: Google::Apis::BooksV1::Geolayerdata::Geo::Viewport::Hi, decorator: Google::Apis::BooksV1::GeolayerdataRepresentation::GeoRepresentation::ViewportRepresentation::HiRepresentation
             
             property :lo, as: 'lo', class: Google::Apis::BooksV1::Geolayerdata::Geo::Viewport::Lo, decorator: Google::Apis::BooksV1::GeolayerdataRepresentation::GeoRepresentation::ViewportRepresentation::LoRepresentation
             
             
-            
             # @private
             class HiRepresentation < Google::Apis::Core::JsonRepresentation
-              
               property :latitude, as: 'latitude'
               property :longitude, as: 'longitude'
             end
             
             # @private
             class LoRepresentation < Google::Apis::Core::JsonRepresentation
-              
               property :latitude, as: 'latitude'
               property :longitude, as: 'longitude'
             end
@@ -834,7 +775,6 @@ module Google
 
       # @private
       class LayersummariesRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::BooksV1::Layersummary, decorator: Google::Apis::BooksV1::LayersummaryRepresentation
         
         
@@ -844,7 +784,6 @@ module Google
 
       # @private
       class LayersummaryRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :annotation_count, as: 'annotationCount'
         collection :annotation_types, as: 'annotationTypes'
         
@@ -864,16 +803,13 @@ module Google
       # @private
       class MetadataRepresentation < Google::Apis::Core::JsonRepresentation
         class ItemRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :items, as: 'items', class: Google::Apis::BooksV1::Metadata::Item, decorator: Google::Apis::BooksV1::MetadataRepresentation::ItemRepresentation
         
         
         property :kind, as: 'kind'
         
-        
         # @private
         class ItemRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :download_url, as: 'download_url'
           property :encrypted_key, as: 'encrypted_key'
           property :language, as: 'language'
@@ -885,17 +821,14 @@ module Google
       # @private
       class OffersRepresentation < Google::Apis::Core::JsonRepresentation
         class ItemRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :items, as: 'items', class: Google::Apis::BooksV1::Offers::Item, decorator: Google::Apis::BooksV1::OffersRepresentation::ItemRepresentation
         
         
         property :kind, as: 'kind'
         
-        
         # @private
         class ItemRepresentation < Google::Apis::Core::JsonRepresentation
           class ItemRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :art_url, as: 'artUrl'
           property :gservices_key, as: 'gservicesKey'
           property :id, as: 'id'
@@ -903,10 +836,8 @@ module Google
           
           
           
-          
           # @private
           class ItemRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :author, as: 'author'
             property :canonical_volume_link, as: 'canonicalVolumeLink'
             property :cover_url, as: 'coverUrl'
@@ -919,7 +850,6 @@ module Google
 
       # @private
       class ReadingPositionRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :epub_cfi_position, as: 'epubCfiPosition'
         property :gb_image_position, as: 'gbImagePosition'
         property :gb_text_position, as: 'gbTextPosition'
@@ -931,7 +861,6 @@ module Google
 
       # @private
       class RequestAccessRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :concurrent_access, as: 'concurrentAccess', class: Google::Apis::BooksV1::ConcurrentAccessRestriction, decorator: Google::Apis::BooksV1::ConcurrentAccessRestrictionRepresentation
         
         property :download_access, as: 'downloadAccess', class: Google::Apis::BooksV1::DownloadAccessRestriction, decorator: Google::Apis::BooksV1::DownloadAccessRestrictionRepresentation
@@ -943,7 +872,6 @@ module Google
       class ReviewRepresentation < Google::Apis::Core::JsonRepresentation
         class AuthorRepresentation < Google::Apis::Core::JsonRepresentation; end
         class SourceRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :author, as: 'author', class: Google::Apis::BooksV1::Review::Author, decorator: Google::Apis::BooksV1::ReviewRepresentation::AuthorRepresentation
         
         property :content, as: 'content'
@@ -957,16 +885,13 @@ module Google
         property :type, as: 'type'
         property :volume_id, as: 'volumeId'
         
-        
         # @private
         class AuthorRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :display_name, as: 'displayName'
         end
         
         # @private
         class SourceRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :description, as: 'description'
           property :extra_description, as: 'extraDescription'
           property :url, as: 'url'
@@ -976,15 +901,12 @@ module Google
       # @private
       class UsersettingsRepresentation < Google::Apis::Core::JsonRepresentation
         class NotesExportRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :kind, as: 'kind'
         property :notes_export, as: 'notesExport', class: Google::Apis::BooksV1::Usersettings::NotesExport, decorator: Google::Apis::BooksV1::UsersettingsRepresentation::NotesExportRepresentation
         
         
-        
         # @private
         class NotesExportRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :folder_name, as: 'folderName'
           property :is_enabled, as: 'isEnabled'
         end
@@ -999,7 +921,6 @@ module Google
         class SearchInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
         class UserInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
         class VolumeInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :access_info, as: 'accessInfo', class: Google::Apis::BooksV1::Volume::AccessInfo, decorator: Google::Apis::BooksV1::VolumeRepresentation::AccessInfoRepresentation
         
         property :etag, as: 'etag'
@@ -1019,12 +940,10 @@ module Google
         property :volume_info, as: 'volumeInfo', class: Google::Apis::BooksV1::Volume::VolumeInfo, decorator: Google::Apis::BooksV1::VolumeRepresentation::VolumeInfoRepresentation
         
         
-        
         # @private
         class AccessInfoRepresentation < Google::Apis::Core::JsonRepresentation
           class EpubRepresentation < Google::Apis::Core::JsonRepresentation; end
           class PdfRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :access_view_status, as: 'accessViewStatus'
           property :country, as: 'country'
           property :download_access, as: 'downloadAccess', class: Google::Apis::BooksV1::DownloadAccessRestriction, decorator: Google::Apis::BooksV1::DownloadAccessRestrictionRepresentation
@@ -1043,10 +962,8 @@ module Google
           property :viewability, as: 'viewability'
           property :web_reader_link, as: 'webReaderLink'
           
-          
           # @private
           class EpubRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :acs_token_link, as: 'acsTokenLink'
             property :download_link, as: 'downloadLink'
             property :is_available, as: 'isAvailable'
@@ -1054,7 +971,6 @@ module Google
           
           # @private
           class PdfRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :acs_token_link, as: 'acsTokenLink'
             property :download_link, as: 'downloadLink'
             property :is_available, as: 'isAvailable'
@@ -1064,15 +980,12 @@ module Google
         # @private
         class LayerInfoRepresentation < Google::Apis::Core::JsonRepresentation
           class LayerRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           collection :layers, as: 'layers', class: Google::Apis::BooksV1::Volume::LayerInfo::Layer, decorator: Google::Apis::BooksV1::VolumeRepresentation::LayerInfoRepresentation::LayerRepresentation
-          
           
           
           
           # @private
           class LayerRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :layer_id, as: 'layerId'
             property :volume_annotations_version, as: 'volumeAnnotationsVersion'
           end
@@ -1080,7 +993,6 @@ module Google
         
         # @private
         class RecommendedInfoRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :explanation, as: 'explanation'
         end
         
@@ -1089,7 +1001,6 @@ module Google
           class ListPriceRepresentation < Google::Apis::Core::JsonRepresentation; end
           class OfferRepresentation < Google::Apis::Core::JsonRepresentation; end
           class RetailPriceRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :buy_link, as: 'buyLink'
           property :country, as: 'country'
           property :is_ebook, as: 'isEbook'
@@ -1103,10 +1014,8 @@ module Google
           
           property :saleability, as: 'saleability'
           
-          
           # @private
           class ListPriceRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :amount, as: 'amount'
             property :currency_code, as: 'currencyCode'
           end
@@ -1116,7 +1025,6 @@ module Google
             class ListPriceRepresentation < Google::Apis::Core::JsonRepresentation; end
             class RentalDurationRepresentation < Google::Apis::Core::JsonRepresentation; end
             class RetailPriceRepresentation < Google::Apis::Core::JsonRepresentation; end
-            
             property :finsky_offer_type, as: 'finskyOfferType'
             property :list_price, as: 'listPrice', class: Google::Apis::BooksV1::Volume::SaleInfo::Offer::ListPrice, decorator: Google::Apis::BooksV1::VolumeRepresentation::SaleInfoRepresentation::OfferRepresentation::ListPriceRepresentation
             
@@ -1125,24 +1033,20 @@ module Google
             property :retail_price, as: 'retailPrice', class: Google::Apis::BooksV1::Volume::SaleInfo::Offer::RetailPrice, decorator: Google::Apis::BooksV1::VolumeRepresentation::SaleInfoRepresentation::OfferRepresentation::RetailPriceRepresentation
             
             
-            
             # @private
             class ListPriceRepresentation < Google::Apis::Core::JsonRepresentation
-              
               property :amount_in_micros, as: 'amountInMicros'
               property :currency_code, as: 'currencyCode'
             end
             
             # @private
             class RentalDurationRepresentation < Google::Apis::Core::JsonRepresentation
-              
               property :count, as: 'count'
               property :unit, as: 'unit'
             end
             
             # @private
             class RetailPriceRepresentation < Google::Apis::Core::JsonRepresentation
-              
               property :amount_in_micros, as: 'amountInMicros'
               property :currency_code, as: 'currencyCode'
             end
@@ -1150,7 +1054,6 @@ module Google
           
           # @private
           class RetailPriceRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :amount, as: 'amount'
             property :currency_code, as: 'currencyCode'
           end
@@ -1158,7 +1061,6 @@ module Google
         
         # @private
         class SearchInfoRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :text_snippet, as: 'textSnippet'
         end
         
@@ -1167,7 +1069,6 @@ module Google
           class CopyRepresentation < Google::Apis::Core::JsonRepresentation; end
           class RentalPeriodRepresentation < Google::Apis::Core::JsonRepresentation; end
           class UserUploadedVolumeInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :copy, as: 'copy', class: Google::Apis::BooksV1::Volume::UserInfo::Copy, decorator: Google::Apis::BooksV1::VolumeRepresentation::UserInfoRepresentation::CopyRepresentation
           
           property :is_in_my_books, as: 'isInMyBooks'
@@ -1185,10 +1086,8 @@ module Google
           property :user_uploaded_volume_info, as: 'userUploadedVolumeInfo', class: Google::Apis::BooksV1::Volume::UserInfo::UserUploadedVolumeInfo, decorator: Google::Apis::BooksV1::VolumeRepresentation::UserInfoRepresentation::UserUploadedVolumeInfoRepresentation
           
           
-          
           # @private
           class CopyRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :allowed_character_count, as: 'allowedCharacterCount'
             property :limit_type, as: 'limitType'
             property :remaining_character_count, as: 'remainingCharacterCount'
@@ -1197,14 +1096,12 @@ module Google
           
           # @private
           class RentalPeriodRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :end_utc_sec, as: 'endUtcSec'
             property :start_utc_sec, as: 'startUtcSec'
           end
           
           # @private
           class UserUploadedVolumeInfoRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :processing_state, as: 'processingState'
           end
         end
@@ -1214,7 +1111,6 @@ module Google
           class DimensionsRepresentation < Google::Apis::Core::JsonRepresentation; end
           class ImageLinksRepresentation < Google::Apis::Core::JsonRepresentation; end
           class IndustryIdentifierRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           collection :authors, as: 'authors'
           
           property :average_rating, as: 'averageRating'
@@ -1246,10 +1142,8 @@ module Google
           property :subtitle, as: 'subtitle'
           property :title, as: 'title'
           
-          
           # @private
           class DimensionsRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :height, as: 'height'
             property :thickness, as: 'thickness'
             property :width, as: 'width'
@@ -1257,7 +1151,6 @@ module Google
           
           # @private
           class ImageLinksRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :extra_large, as: 'extraLarge'
             property :large, as: 'large'
             property :medium, as: 'medium'
@@ -1268,7 +1161,6 @@ module Google
           
           # @private
           class IndustryIdentifierRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :identifier, as: 'identifier'
             property :type, as: 'type'
           end
@@ -1277,7 +1169,6 @@ module Google
 
       # @private
       class Volume2Representation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::BooksV1::Volume, decorator: Google::Apis::BooksV1::VolumeRepresentation
         
         
@@ -1288,7 +1179,6 @@ module Google
       # @private
       class VolumeannotationRepresentation < Google::Apis::Core::JsonRepresentation
         class ContentRangesRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :annotation_data_id, as: 'annotationDataId'
         property :annotation_data_link, as: 'annotationDataLink'
         property :annotation_type, as: 'annotationType'
@@ -1306,10 +1196,8 @@ module Google
         property :updated, as: 'updated', type: DateTime
         property :volume_id, as: 'volumeId'
         
-        
         # @private
         class ContentRangesRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :cfi_range, as: 'cfiRange', class: Google::Apis::BooksV1::AnnotationsRange, decorator: Google::Apis::BooksV1::AnnotationsRangeRepresentation
           
           property :content_version, as: 'contentVersion'
@@ -1321,7 +1209,6 @@ module Google
 
       # @private
       class VolumeannotationsRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::BooksV1::Volumeannotation, decorator: Google::Apis::BooksV1::VolumeannotationRepresentation
         
         
@@ -1333,7 +1220,6 @@ module Google
 
       # @private
       class VolumesRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::BooksV1::Volume, decorator: Google::Apis::BooksV1::VolumeRepresentation
         
         

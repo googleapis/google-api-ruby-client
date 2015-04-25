@@ -127,7 +127,11 @@ module Google
       class ModifyAckDeadlineRequest
         include Google::Apis::Core::Hashable
       
-        # The new Ack deadline. Must be >= 0.
+        # The new ack deadline with respect to the time this request was sent to the Pub/
+        # Sub system. Must be >= 0. For example, if the value is 10, the new ack
+        # deadline will expire 10 seconds after the ModifyAckDeadline call was made.
+        # Specifying zero may immediately make the message available for another pull
+        # request.
         # Corresponds to the JSON property `ackDeadlineSeconds`
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds

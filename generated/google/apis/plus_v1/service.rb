@@ -282,13 +282,13 @@ module Google
 
         # Record a moment representing a user's action such as making a purchase or
         # commenting on a blog.
-        # @param [Google::Apis::PlusV1::Moment] moment_obj
-        #   
         # @param [String] user_id
         #   The ID of the user to record actions for. The only valid values are "me" and
         #   the ID of the authenticated user.
         # @param [String] collection
         #   The collection to which to write moments.
+        # @param [Google::Apis::PlusV1::Moment] moment
+        #   
         # @param [Boolean] debug
         #   Return the moment as written. Should be used only for debugging.
         # @param [String] fields
@@ -312,11 +312,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_moment(moment_obj, user_id, collection, debug: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_moment(user_id, collection, moment = nil, debug: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people/{userId}/moments/{collection}'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PlusV1::MomentRepresentation
-          command.request_object = moment_obj
+          command.request_object = moment
           command.response_representation = Google::Apis::PlusV1::MomentRepresentation
           command.response_class = Google::Apis::PlusV1::Moment
           command.params['userId'] = user_id unless user_id.nil?

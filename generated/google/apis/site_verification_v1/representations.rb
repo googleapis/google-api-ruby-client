@@ -47,15 +47,12 @@ module Google
       # @private
       class GettokenRequestRepresentation < Google::Apis::Core::JsonRepresentation
         class SiteRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :site, as: 'site', class: Google::Apis::SiteVerificationV1::GettokenRequest::Site, decorator: Google::Apis::SiteVerificationV1::GettokenRequestRepresentation::SiteRepresentation
         
         property :verification_method, as: 'verificationMethod'
         
-        
         # @private
         class SiteRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :identifier, as: 'identifier'
           property :type, as: 'type'
         end
@@ -63,31 +60,26 @@ module Google
 
       # @private
       class GettokenResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :method_prop, as: 'method'
         property :token, as: 'token'
       end
 
       # @private
       class ListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::SiteVerificationV1::Resource, decorator: Google::Apis::SiteVerificationV1::ResourceRepresentation
       end
 
       # @private
       class ResourceRepresentation < Google::Apis::Core::JsonRepresentation
         class SiteRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :id, as: 'id'
         collection :owners, as: 'owners'
         
         property :site, as: 'site', class: Google::Apis::SiteVerificationV1::Resource::Site, decorator: Google::Apis::SiteVerificationV1::ResourceRepresentation::SiteRepresentation
         
         
-        
         # @private
         class SiteRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :identifier, as: 'identifier'
           property :type, as: 'type'
         end

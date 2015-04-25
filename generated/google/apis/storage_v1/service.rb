@@ -135,10 +135,10 @@ module Google
         
         
         # Creates a new ACL entry on the specified bucket.
-        # @param [Google::Apis::StorageV1::BucketAccessControl] bucket_access_control_obj
-        #   
         # @param [String] bucket
         #   Name of a bucket.
+        # @param [Google::Apis::StorageV1::BucketAccessControl] bucket_access_control
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -160,11 +160,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_bucket_access_control(bucket_access_control_obj, bucket, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_bucket_access_control(bucket, bucket_access_control = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/acl'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::StorageV1::BucketAccessControlRepresentation
-          command.request_object = bucket_access_control_obj
+          command.request_object = bucket_access_control
           command.response_representation = Google::Apis::StorageV1::BucketAccessControlRepresentation
           command.response_class = Google::Apis::StorageV1::BucketAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
@@ -214,13 +214,13 @@ module Google
         
         # Updates an ACL entry on the specified bucket. This method supports patch
         # semantics.
-        # @param [Google::Apis::StorageV1::BucketAccessControl] bucket_access_control_obj
-        #   
         # @param [String] bucket
         #   Name of a bucket.
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
+        # @param [Google::Apis::StorageV1::BucketAccessControl] bucket_access_control
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -242,11 +242,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_bucket_access_control(bucket_access_control_obj, bucket, entity, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_bucket_access_control(bucket, entity, bucket_access_control = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/acl/{entity}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::StorageV1::BucketAccessControlRepresentation
-          command.request_object = bucket_access_control_obj
+          command.request_object = bucket_access_control
           command.response_representation = Google::Apis::StorageV1::BucketAccessControlRepresentation
           command.response_class = Google::Apis::StorageV1::BucketAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
@@ -259,13 +259,13 @@ module Google
         
         
         # Updates an ACL entry on the specified bucket.
-        # @param [Google::Apis::StorageV1::BucketAccessControl] bucket_access_control_obj
-        #   
         # @param [String] bucket
         #   Name of a bucket.
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
+        # @param [Google::Apis::StorageV1::BucketAccessControl] bucket_access_control
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -287,11 +287,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_bucket_access_control(bucket_access_control_obj, bucket, entity, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_bucket_access_control(bucket, entity, bucket_access_control = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/acl/{entity}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::StorageV1::BucketAccessControlRepresentation
-          command.request_object = bucket_access_control_obj
+          command.request_object = bucket_access_control
           command.response_representation = Google::Apis::StorageV1::BucketAccessControlRepresentation
           command.response_class = Google::Apis::StorageV1::BucketAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
@@ -393,7 +393,7 @@ module Google
         
         
         # Creates a new bucket.
-        # @param [Google::Apis::StorageV1::Bucket] bucket_obj
+        # @param [Google::Apis::StorageV1::Bucket] bucket
         #   
         # @param [String] predefined_acl
         #   Apply a predefined set of access controls to this bucket.
@@ -425,11 +425,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_bucket(bucket_obj, predefined_acl: nil, predefined_default_object_acl: nil, project: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_bucket(bucket = nil, predefined_acl: nil, predefined_default_object_acl: nil, project: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::StorageV1::BucketRepresentation
-          command.request_object = bucket_obj
+          command.request_object = bucket
           command.response_representation = Google::Apis::StorageV1::BucketRepresentation
           command.response_class = Google::Apis::StorageV1::Bucket
           command.query['predefinedAcl'] = predefined_acl unless predefined_acl.nil?
@@ -494,10 +494,10 @@ module Google
         
         
         # Updates a bucket. This method supports patch semantics.
-        # @param [Google::Apis::StorageV1::Bucket] bucket_obj
-        #   
         # @param [String] bucket
         #   Name of a bucket.
+        # @param [Google::Apis::StorageV1::Bucket] bucket_object
+        #   
         # @param [String] if_metageneration_match
         #   Makes the return of the bucket metadata conditional on whether the bucket's
         #   current metageneration matches the given value.
@@ -531,11 +531,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_bucket(bucket_obj, bucket, if_metageneration_match: nil, if_metageneration_not_match: nil, predefined_acl: nil, predefined_default_object_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_bucket(bucket, bucket_object = nil, if_metageneration_match: nil, if_metageneration_not_match: nil, predefined_acl: nil, predefined_default_object_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::StorageV1::BucketRepresentation
-          command.request_object = bucket_obj
+          command.request_object = bucket_object
           command.response_representation = Google::Apis::StorageV1::BucketRepresentation
           command.response_class = Google::Apis::StorageV1::Bucket
           command.params['bucket'] = bucket unless bucket.nil?
@@ -552,10 +552,10 @@ module Google
         
         
         # Updates a bucket.
-        # @param [Google::Apis::StorageV1::Bucket] bucket_obj
-        #   
         # @param [String] bucket
         #   Name of a bucket.
+        # @param [Google::Apis::StorageV1::Bucket] bucket_object
+        #   
         # @param [String] if_metageneration_match
         #   Makes the return of the bucket metadata conditional on whether the bucket's
         #   current metageneration matches the given value.
@@ -589,11 +589,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_bucket(bucket_obj, bucket, if_metageneration_match: nil, if_metageneration_not_match: nil, predefined_acl: nil, predefined_default_object_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_bucket(bucket, bucket_object = nil, if_metageneration_match: nil, if_metageneration_not_match: nil, predefined_acl: nil, predefined_default_object_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::StorageV1::BucketRepresentation
-          command.request_object = bucket_obj
+          command.request_object = bucket_object
           command.response_representation = Google::Apis::StorageV1::BucketRepresentation
           command.response_class = Google::Apis::StorageV1::Bucket
           command.params['bucket'] = bucket unless bucket.nil?
@@ -609,7 +609,7 @@ module Google
         end
 
         # Stop watching resources through this channel
-        # @param [Google::Apis::StorageV1::Channel] channel_obj
+        # @param [Google::Apis::StorageV1::Channel] channel
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -632,11 +632,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_channel(channel_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def stop_channel(channel = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'channels/stop'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::StorageV1::ChannelRepresentation
-          command.request_object = channel_obj
+          command.request_object = channel
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -726,10 +726,10 @@ module Google
         
         
         # Creates a new default object ACL entry on the specified bucket.
-        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_obj
-        #   
         # @param [String] bucket
         #   Name of a bucket.
+        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -751,11 +751,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_default_object_access_control(object_access_control_obj, bucket, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_default_object_access_control(bucket, object_access_control = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/defaultObjectAcl'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
-          command.request_object = object_access_control_obj
+          command.request_object = object_access_control
           command.response_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
           command.response_class = Google::Apis::StorageV1::ObjectAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
@@ -813,13 +813,13 @@ module Google
         
         # Updates a default object ACL entry on the specified bucket. This method
         # supports patch semantics.
-        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_obj
-        #   
         # @param [String] bucket
         #   Name of a bucket.
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
+        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -841,11 +841,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_default_object_access_control(object_access_control_obj, bucket, entity, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_default_object_access_control(bucket, entity, object_access_control = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/defaultObjectAcl/{entity}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
-          command.request_object = object_access_control_obj
+          command.request_object = object_access_control
           command.response_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
           command.response_class = Google::Apis::StorageV1::ObjectAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
@@ -858,13 +858,13 @@ module Google
         
         
         # Updates a default object ACL entry on the specified bucket.
-        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_obj
-        #   
         # @param [String] bucket
         #   Name of a bucket.
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
+        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -886,11 +886,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_default_object_access_control(object_access_control_obj, bucket, entity, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_default_object_access_control(bucket, entity, object_access_control = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/defaultObjectAcl/{entity}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
-          command.request_object = object_access_control_obj
+          command.request_object = object_access_control
           command.response_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
           command.response_class = Google::Apis::StorageV1::ObjectAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
@@ -997,12 +997,12 @@ module Google
         
         
         # Creates a new ACL entry on the specified object.
-        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_obj
-        #   
         # @param [String] bucket
         #   Name of a bucket.
         # @param [String] object
         #   Name of the object.
+        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control
+        #   
         # @param [String] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
@@ -1027,11 +1027,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_object_access_control(object_access_control_obj, bucket, object, generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_object_access_control(bucket, object, object_access_control = nil, generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/o/{object}/acl'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
-          command.request_object = object_access_control_obj
+          command.request_object = object_access_control
           command.response_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
           command.response_class = Google::Apis::StorageV1::ObjectAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
@@ -1090,8 +1090,6 @@ module Google
         
         # Updates an ACL entry on the specified object. This method supports patch
         # semantics.
-        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_obj
-        #   
         # @param [String] bucket
         #   Name of a bucket.
         # @param [String] object
@@ -1099,6 +1097,8 @@ module Google
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
+        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control
+        #   
         # @param [String] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
@@ -1123,11 +1123,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_object_access_control(object_access_control_obj, bucket, object, entity, generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_object_access_control(bucket, object, entity, object_access_control = nil, generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/o/{object}/acl/{entity}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
-          command.request_object = object_access_control_obj
+          command.request_object = object_access_control
           command.response_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
           command.response_class = Google::Apis::StorageV1::ObjectAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
@@ -1142,8 +1142,6 @@ module Google
         
         
         # Updates an ACL entry on the specified object.
-        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_obj
-        #   
         # @param [String] bucket
         #   Name of a bucket.
         # @param [String] object
@@ -1151,6 +1149,8 @@ module Google
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
+        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control
+        #   
         # @param [String] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
@@ -1175,11 +1175,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_object_access_control(object_access_control_obj, bucket, object, entity, generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_object_access_control(bucket, object, entity, object_access_control = nil, generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/o/{object}/acl/{entity}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
-          command.request_object = object_access_control_obj
+          command.request_object = object_access_control
           command.response_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
           command.response_class = Google::Apis::StorageV1::ObjectAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
@@ -1193,12 +1193,12 @@ module Google
         end
 
         # Concatenates a list of existing objects into a new object in the same bucket.
-        # @param [Google::Apis::StorageV1::ComposeRequest] compose_request_obj
-        #   
         # @param [String] destination_bucket
         #   Name of the bucket in which to store the new object.
         # @param [String] destination_object
         #   Name of the new object.
+        # @param [Google::Apis::StorageV1::ComposeRequest] compose_request
+        #   
         # @param [String] destination_predefined_acl
         #   Apply a predefined set of access controls to the destination object.
         # @param [String] if_generation_match
@@ -1230,7 +1230,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def compose_object(compose_request_obj, destination_bucket, destination_object, destination_predefined_acl: nil, if_generation_match: nil, if_metageneration_match: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def compose_object(destination_bucket, destination_object, compose_request = nil, destination_predefined_acl: nil, if_generation_match: nil, if_metageneration_match: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           path = 'b/{destinationBucket}/o/{destinationObject}/compose'
           if download_dest.nil?
             command =  make_simple_command(:post, path, options)
@@ -1239,7 +1239,7 @@ module Google
             command.download_dest = download_dest
           end
           command.request_representation = Google::Apis::StorageV1::ComposeRequestRepresentation
-          command.request_object = compose_request_obj
+          command.request_object = compose_request
           command.response_representation = Google::Apis::StorageV1::ObjectRepresentation
           command.response_class = Google::Apis::StorageV1::Object
           command.params['destinationBucket'] = destination_bucket unless destination_bucket.nil?
@@ -1255,8 +1255,6 @@ module Google
         
         
         # Copies an object to a specified location. Optionally overrides metadata.
-        # @param [Google::Apis::StorageV1::Object] object_obj
-        #   
         # @param [String] source_bucket
         #   Name of the bucket in which to find the source object.
         # @param [String] source_object
@@ -1267,6 +1265,8 @@ module Google
         # @param [String] destination_object
         #   Name of the new object. Required when the object metadata is not otherwise
         #   provided. Overrides the object metadata's name value, if any.
+        # @param [Google::Apis::StorageV1::Object] object
+        #   
         # @param [String] destination_predefined_acl
         #   Apply a predefined set of access controls to the destination object.
         # @param [String] if_generation_match
@@ -1322,7 +1322,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def copy_object(object_obj, source_bucket, source_object, destination_bucket, destination_object, destination_predefined_acl: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, if_source_generation_match: nil, if_source_generation_not_match: nil, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, projection: nil, source_generation: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def copy_object(source_bucket, source_object, destination_bucket, destination_object, object = nil, destination_predefined_acl: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, if_source_generation_match: nil, if_source_generation_not_match: nil, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, projection: nil, source_generation: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           path = 'b/{sourceBucket}/o/{sourceObject}/copyTo/b/{destinationBucket}/o/{destinationObject}'
           if download_dest.nil?
             command =  make_simple_command(:post, path, options)
@@ -1331,7 +1331,7 @@ module Google
             command.download_dest = download_dest
           end
           command.request_representation = Google::Apis::StorageV1::ObjectRepresentation
-          command.request_object = object_obj
+          command.request_object = object
           command.response_representation = Google::Apis::StorageV1::ObjectRepresentation
           command.response_class = Google::Apis::StorageV1::Object
           command.params['sourceBucket'] = source_bucket unless source_bucket.nil?
@@ -1486,11 +1486,11 @@ module Google
         
         
         # Stores a new object and metadata.
-        # @param [Google::Apis::StorageV1::Object] object_obj
-        #   
         # @param [String] bucket
         #   Name of the bucket in which to store the new object. Overrides the provided
         #   object metadata's bucket value, if any.
+        # @param [Google::Apis::StorageV1::Object] object
+        #   
         # @param [String] content_encoding
         #   If set, sets the contentEncoding property of the final object to this value.
         #   Setting this parameter is equivalent to setting the contentEncoding metadata
@@ -1541,7 +1541,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_object(object_obj, bucket, content_encoding: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, name: nil, predefined_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_object(bucket, object = nil, content_encoding: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, name: nil, predefined_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'b/{bucket}/o'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -1551,7 +1551,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::StorageV1::ObjectRepresentation
-          command.request_object = object_obj
+          command.request_object = object
           command.response_representation = Google::Apis::StorageV1::ObjectRepresentation
           command.response_class = Google::Apis::StorageV1::Object
           command.params['bucket'] = bucket unless bucket.nil?
@@ -1581,7 +1581,8 @@ module Google
         #   omitted.
         # @param [Fixnum] max_results
         #   Maximum number of items plus prefixes to return. As duplicate prefixes are
-        #   omitted, fewer total results may be returned than requested.
+        #   omitted, fewer total results may be returned than requested. The default value
+        #   of this parameter is 1,000 items.
         # @param [String] page_token
         #   A previously-returned page token representing part of the larger set of
         #   results to view.
@@ -1590,7 +1591,8 @@ module Google
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl.
         # @param [Boolean] versions
-        #   If true, lists all versions of a file as distinct results.
+        #   If true, lists all versions of an object as distinct results. The default is
+        #   false. For more information, see Object Versioning.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1632,12 +1634,12 @@ module Google
         
         
         # Updates an object's metadata. This method supports patch semantics.
-        # @param [Google::Apis::StorageV1::Object] object_obj
-        #   
         # @param [String] bucket
         #   Name of the bucket in which the object resides.
         # @param [String] object
         #   Name of the object.
+        # @param [Google::Apis::StorageV1::Object] object_object
+        #   
         # @param [String] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
@@ -1678,11 +1680,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_object(object_obj, bucket, object, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, predefined_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_object(bucket, object, object_object = nil, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, predefined_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/o/{object}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::StorageV1::ObjectRepresentation
-          command.request_object = object_obj
+          command.request_object = object_object
           command.response_representation = Google::Apis::StorageV1::ObjectRepresentation
           command.response_class = Google::Apis::StorageV1::Object
           command.params['bucket'] = bucket unless bucket.nil?
@@ -1703,8 +1705,6 @@ module Google
         
         # Rewrites a source object to a destination object. Optionally overrides
         # metadata.
-        # @param [Google::Apis::StorageV1::Object] object_obj
-        #   
         # @param [String] source_bucket
         #   Name of the bucket in which to find the source object.
         # @param [String] source_object
@@ -1715,6 +1715,8 @@ module Google
         # @param [String] destination_object
         #   Name of the new object. Required when the object metadata is not otherwise
         #   provided. Overrides the object metadata's name value, if any.
+        # @param [Google::Apis::StorageV1::Object] object
+        #   
         # @param [String] destination_predefined_acl
         #   Apply a predefined set of access controls to the destination object.
         # @param [String] if_generation_match
@@ -1782,11 +1784,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def rewrite_object(object_obj, source_bucket, source_object, destination_bucket, destination_object, destination_predefined_acl: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, if_source_generation_match: nil, if_source_generation_not_match: nil, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, max_bytes_rewritten_per_call: nil, projection: nil, rewrite_token: nil, source_generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def rewrite_object(source_bucket, source_object, destination_bucket, destination_object, object = nil, destination_predefined_acl: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, if_source_generation_match: nil, if_source_generation_not_match: nil, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, max_bytes_rewritten_per_call: nil, projection: nil, rewrite_token: nil, source_generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{sourceBucket}/o/{sourceObject}/rewriteTo/b/{destinationBucket}/o/{destinationObject}'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::StorageV1::ObjectRepresentation
-          command.request_object = object_obj
+          command.request_object = object
           command.response_representation = Google::Apis::StorageV1::RewriteResponseRepresentation
           command.response_class = Google::Apis::StorageV1::RewriteResponse
           command.params['sourceBucket'] = source_bucket unless source_bucket.nil?
@@ -1814,12 +1816,12 @@ module Google
         
         
         # Updates an object's metadata.
-        # @param [Google::Apis::StorageV1::Object] object_obj
-        #   
         # @param [String] bucket
         #   Name of the bucket in which the object resides.
         # @param [String] object
         #   Name of the object.
+        # @param [Google::Apis::StorageV1::Object] object_object
+        #   
         # @param [String] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
@@ -1862,7 +1864,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_object(object_obj, bucket, object, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, predefined_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def update_object(bucket, object, object_object = nil, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, predefined_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           path = 'b/{bucket}/o/{object}'
           if download_dest.nil?
             command =  make_simple_command(:put, path, options)
@@ -1871,7 +1873,7 @@ module Google
             command.download_dest = download_dest
           end
           command.request_representation = Google::Apis::StorageV1::ObjectRepresentation
-          command.request_object = object_obj
+          command.request_object = object_object
           command.response_representation = Google::Apis::StorageV1::ObjectRepresentation
           command.response_class = Google::Apis::StorageV1::Object
           command.params['bucket'] = bucket unless bucket.nil?
@@ -1891,10 +1893,10 @@ module Google
         
         
         # Watch for changes on all objects in a bucket.
-        # @param [Google::Apis::StorageV1::Channel] channel_obj
-        #   
         # @param [String] bucket
         #   Name of the bucket in which to look for objects.
+        # @param [Google::Apis::StorageV1::Channel] channel
+        #   
         # @param [String] delimiter
         #   Returns results in a directory-like mode. items will contain only objects
         #   whose names, aside from the prefix, do not contain delimiter. Objects whose
@@ -1903,7 +1905,8 @@ module Google
         #   omitted.
         # @param [Fixnum] max_results
         #   Maximum number of items plus prefixes to return. As duplicate prefixes are
-        #   omitted, fewer total results may be returned than requested.
+        #   omitted, fewer total results may be returned than requested. The default value
+        #   of this parameter is 1,000 items.
         # @param [String] page_token
         #   A previously-returned page token representing part of the larger set of
         #   results to view.
@@ -1912,7 +1915,8 @@ module Google
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl.
         # @param [Boolean] versions
-        #   If true, lists all versions of a file as distinct results.
+        #   If true, lists all versions of an object as distinct results. The default is
+        #   false. For more information, see Object Versioning.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1934,11 +1938,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_all(channel_obj, bucket, delimiter: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_all(bucket, channel = nil, delimiter: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/o/watch'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::StorageV1::ChannelRepresentation
-          command.request_object = channel_obj
+          command.request_object = channel
           command.response_representation = Google::Apis::StorageV1::ChannelRepresentation
           command.response_class = Google::Apis::StorageV1::Channel
           command.params['bucket'] = bucket unless bucket.nil?

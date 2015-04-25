@@ -180,12 +180,12 @@ module Google
         
         
         # Insert a new task in a TaskQueue
-        # @param [Google::Apis::TaskqueueV1beta2::Task] task_obj
-        #   
         # @param [String] project
         #   The project under which the queue lies
         # @param [String] taskqueue
         #   The taskqueue to insert the task into
+        # @param [Google::Apis::TaskqueueV1beta2::Task] task
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -207,11 +207,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_task(task_obj, project, taskqueue, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_task(project, taskqueue, task = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/taskqueues/{taskqueue}/tasks'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::TaskqueueV1beta2::TaskRepresentation
-          command.request_object = task_obj
+          command.request_object = task
           command.response_representation = Google::Apis::TaskqueueV1beta2::TaskRepresentation
           command.response_class = Google::Apis::TaskqueueV1beta2::Task
           command.params['project'] = project unless project.nil?
@@ -319,13 +319,13 @@ module Google
         
         # Update tasks that are leased out of a TaskQueue. This method supports patch
         # semantics.
-        # @param [Google::Apis::TaskqueueV1beta2::Task] task_obj
-        #   
         # @param [String] project
         #   The project under which the queue lies.
         # @param [String] taskqueue
         #   
         # @param [String] task
+        #   
+        # @param [Google::Apis::TaskqueueV1beta2::Task] task_object
         #   
         # @param [Fixnum] new_lease_seconds
         #   The new lease in seconds.
@@ -350,11 +350,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_task(task_obj, project, taskqueue, task, new_lease_seconds: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_task(project, taskqueue, task, task_object = nil, new_lease_seconds: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/taskqueues/{taskqueue}/tasks/{task}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::TaskqueueV1beta2::TaskRepresentation
-          command.request_object = task_obj
+          command.request_object = task_object
           command.response_representation = Google::Apis::TaskqueueV1beta2::TaskRepresentation
           command.response_class = Google::Apis::TaskqueueV1beta2::Task
           command.params['project'] = project unless project.nil?
@@ -369,13 +369,13 @@ module Google
         
         
         # Update tasks that are leased out of a TaskQueue.
-        # @param [Google::Apis::TaskqueueV1beta2::Task] task_obj
-        #   
         # @param [String] project
         #   The project under which the queue lies.
         # @param [String] taskqueue
         #   
         # @param [String] task
+        #   
+        # @param [Google::Apis::TaskqueueV1beta2::Task] task_object
         #   
         # @param [Fixnum] new_lease_seconds
         #   The new lease in seconds.
@@ -400,11 +400,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_task(task_obj, project, taskqueue, task, new_lease_seconds: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_task(project, taskqueue, task, task_object = nil, new_lease_seconds: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/taskqueues/{taskqueue}/tasks/{task}'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::TaskqueueV1beta2::TaskRepresentation
-          command.request_object = task_obj
+          command.request_object = task_object
           command.response_representation = Google::Apis::TaskqueueV1beta2::TaskRepresentation
           command.response_class = Google::Apis::TaskqueueV1beta2::Task
           command.params['project'] = project unless project.nil?

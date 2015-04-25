@@ -55,10 +55,10 @@ module Google
 
         # Allocate IDs for incomplete keys (useful for referencing an entity before it
         # is inserted).
-        # @param [Google::Apis::DatastoreV1beta2::AllocateIdsRequest] allocate_ids_request_obj
-        #   
         # @param [String] dataset_id
         #   Identifies the dataset.
+        # @param [Google::Apis::DatastoreV1beta2::AllocateIdsRequest] allocate_ids_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -80,11 +80,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def allocate_ids(allocate_ids_request_obj, dataset_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def allocate_ids(dataset_id, allocate_ids_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{datasetId}/allocateIds'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DatastoreV1beta2::AllocateIdsRequestRepresentation
-          command.request_object = allocate_ids_request_obj
+          command.request_object = allocate_ids_request
           command.response_representation = Google::Apis::DatastoreV1beta2::AllocateIdsResponseRepresentation
           command.response_class = Google::Apis::DatastoreV1beta2::AllocateIdsResponse
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
@@ -96,10 +96,10 @@ module Google
         
         
         # Begin a new transaction.
-        # @param [Google::Apis::DatastoreV1beta2::BeginTransactionRequest] begin_transaction_request_obj
-        #   
         # @param [String] dataset_id
         #   Identifies the dataset.
+        # @param [Google::Apis::DatastoreV1beta2::BeginTransactionRequest] begin_transaction_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -121,11 +121,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def begin_transaction(begin_transaction_request_obj, dataset_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def begin_transaction(dataset_id, begin_transaction_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{datasetId}/beginTransaction'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DatastoreV1beta2::BeginTransactionRequestRepresentation
-          command.request_object = begin_transaction_request_obj
+          command.request_object = begin_transaction_request
           command.response_representation = Google::Apis::DatastoreV1beta2::BeginTransactionResponseRepresentation
           command.response_class = Google::Apis::DatastoreV1beta2::BeginTransactionResponse
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
@@ -137,10 +137,10 @@ module Google
         
         
         # Commit a transaction, optionally creating, deleting or modifying some entities.
-        # @param [Google::Apis::DatastoreV1beta2::CommitRequest] commit_request_obj
-        #   
         # @param [String] dataset_id
         #   Identifies the dataset.
+        # @param [Google::Apis::DatastoreV1beta2::CommitRequest] commit_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -162,11 +162,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def commit_dataset(commit_request_obj, dataset_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def commit_dataset(dataset_id, commit_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{datasetId}/commit'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DatastoreV1beta2::CommitRequestRepresentation
-          command.request_object = commit_request_obj
+          command.request_object = commit_request
           command.response_representation = Google::Apis::DatastoreV1beta2::CommitResponseRepresentation
           command.response_class = Google::Apis::DatastoreV1beta2::CommitResponse
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
@@ -178,10 +178,10 @@ module Google
         
         
         # Look up some entities by key.
-        # @param [Google::Apis::DatastoreV1beta2::LookupRequest] lookup_request_obj
-        #   
         # @param [String] dataset_id
         #   Identifies the dataset.
+        # @param [Google::Apis::DatastoreV1beta2::LookupRequest] lookup_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -203,11 +203,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def lookup_dataset(lookup_request_obj, dataset_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def lookup_dataset(dataset_id, lookup_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{datasetId}/lookup'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DatastoreV1beta2::LookupRequestRepresentation
-          command.request_object = lookup_request_obj
+          command.request_object = lookup_request
           command.response_representation = Google::Apis::DatastoreV1beta2::LookupResponseRepresentation
           command.response_class = Google::Apis::DatastoreV1beta2::LookupResponse
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
@@ -219,10 +219,10 @@ module Google
         
         
         # Roll back a transaction.
-        # @param [Google::Apis::DatastoreV1beta2::RollbackRequest] rollback_request_obj
-        #   
         # @param [String] dataset_id
         #   Identifies the dataset.
+        # @param [Google::Apis::DatastoreV1beta2::RollbackRequest] rollback_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -244,11 +244,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def rollback_dataset(rollback_request_obj, dataset_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def rollback_dataset(dataset_id, rollback_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{datasetId}/rollback'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DatastoreV1beta2::RollbackRequestRepresentation
-          command.request_object = rollback_request_obj
+          command.request_object = rollback_request
           command.response_representation = Google::Apis::DatastoreV1beta2::RollbackResponseRepresentation
           command.response_class = Google::Apis::DatastoreV1beta2::RollbackResponse
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
@@ -260,10 +260,10 @@ module Google
         
         
         # Query for entities.
-        # @param [Google::Apis::DatastoreV1beta2::RunQueryRequest] run_query_request_obj
-        #   
         # @param [String] dataset_id
         #   Identifies the dataset.
+        # @param [Google::Apis::DatastoreV1beta2::RunQueryRequest] run_query_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -285,11 +285,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def run_query(run_query_request_obj, dataset_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def run_query(dataset_id, run_query_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{datasetId}/runQuery'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DatastoreV1beta2::RunQueryRequestRepresentation
-          command.request_object = run_query_request_obj
+          command.request_object = run_query_request
           command.response_representation = Google::Apis::DatastoreV1beta2::RunQueryResponseRepresentation
           command.response_class = Google::Apis::DatastoreV1beta2::RunQueryResponse
           command.params['datasetId'] = dataset_id unless dataset_id.nil?

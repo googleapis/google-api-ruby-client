@@ -91,11 +91,11 @@ module Google
         
         
         # Create a new activity for the authenticated user.
-        # @param [Google::Apis::PlusDomainsV1::Activity] activity_obj
-        #   
         # @param [String] user_id
         #   The ID of the user to create the activity on behalf of. Its value should be "
         #   me", to indicate the authenticated user.
+        # @param [Google::Apis::PlusDomainsV1::Activity] activity
+        #   
         # @param [Boolean] preview
         #   If "true", extract the potential media attachments for a URL. The response
         #   will include all possible attachments for a URL, including video, photos, and
@@ -121,11 +121,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_activity(activity_obj, user_id, preview: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_activity(user_id, activity = nil, preview: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people/{userId}/activities'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PlusDomainsV1::ActivityRepresentation
-          command.request_object = activity_obj
+          command.request_object = activity
           command.response_representation = Google::Apis::PlusDomainsV1::ActivityRepresentation
           command.response_class = Google::Apis::PlusDomainsV1::Activity
           command.params['userId'] = user_id unless user_id.nil?
@@ -316,11 +316,11 @@ module Google
         
         
         # Create a new circle for the authenticated user.
-        # @param [Google::Apis::PlusDomainsV1::Circle] circle_obj
-        #   
         # @param [String] user_id
         #   The ID of the user to create the circle on behalf of. The value "me" can be
         #   used to indicate the authenticated user.
+        # @param [Google::Apis::PlusDomainsV1::Circle] circle
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -342,11 +342,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_circle(circle_obj, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_circle(user_id, circle = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people/{userId}/circles'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PlusDomainsV1::CircleRepresentation
-          command.request_object = circle_obj
+          command.request_object = circle
           command.response_representation = Google::Apis::PlusDomainsV1::CircleRepresentation
           command.response_class = Google::Apis::PlusDomainsV1::Circle
           command.params['userId'] = user_id unless user_id.nil?
@@ -406,10 +406,10 @@ module Google
         
         
         # Update a circle's description. This method supports patch semantics.
-        # @param [Google::Apis::PlusDomainsV1::Circle] circle_obj
-        #   
         # @param [String] circle_id
         #   The ID of the circle to update.
+        # @param [Google::Apis::PlusDomainsV1::Circle] circle
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -431,11 +431,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_circle(circle_obj, circle_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_circle(circle_id, circle = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'circles/{circleId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::PlusDomainsV1::CircleRepresentation
-          command.request_object = circle_obj
+          command.request_object = circle
           command.response_representation = Google::Apis::PlusDomainsV1::CircleRepresentation
           command.response_class = Google::Apis::PlusDomainsV1::Circle
           command.params['circleId'] = circle_id unless circle_id.nil?
@@ -523,10 +523,10 @@ module Google
         
         
         # Update a circle's description.
-        # @param [Google::Apis::PlusDomainsV1::Circle] circle_obj
-        #   
         # @param [String] circle_id
         #   The ID of the circle to update.
+        # @param [Google::Apis::PlusDomainsV1::Circle] circle
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -548,11 +548,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_circle(circle_obj, circle_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_circle(circle_id, circle = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'circles/{circleId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::PlusDomainsV1::CircleRepresentation
-          command.request_object = circle_obj
+          command.request_object = circle
           command.response_representation = Google::Apis::PlusDomainsV1::CircleRepresentation
           command.response_class = Google::Apis::PlusDomainsV1::Circle
           command.params['circleId'] = circle_id unless circle_id.nil?
@@ -600,10 +600,10 @@ module Google
         
         
         # Create a new comment in reply to an activity.
-        # @param [Google::Apis::PlusDomainsV1::Comment] comment_obj
-        #   
         # @param [String] activity_id
         #   The ID of the activity to reply to.
+        # @param [Google::Apis::PlusDomainsV1::Comment] comment
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -625,11 +625,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_comment(comment_obj, activity_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_comment(activity_id, comment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activities/{activityId}/comments'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PlusDomainsV1::CommentRepresentation
-          command.request_object = comment_obj
+          command.request_object = comment
           command.response_representation = Google::Apis::PlusDomainsV1::CommentRepresentation
           command.response_class = Google::Apis::PlusDomainsV1::Comment
           command.params['activityId'] = activity_id unless activity_id.nil?
@@ -693,11 +693,11 @@ module Google
         # for a photo and 1GB for a video. Uploads do not count against quota if photos
         # are less than 2048 pixels on their longest side or videos are less than 15
         # minutes in length.
-        # @param [Google::Apis::PlusDomainsV1::Media] media_obj
-        #   
         # @param [String] user_id
         #   The ID of the user to create the activity on behalf of.
         # @param [String] collection
+        #   
+        # @param [Google::Apis::PlusDomainsV1::Media] media
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -724,7 +724,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_medium(media_obj, user_id, collection, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_medium(user_id, collection, media = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'people/{userId}/media/{collection}'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -734,7 +734,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::PlusDomainsV1::MediaRepresentation
-          command.request_object = media_obj
+          command.request_object = media
           command.response_representation = Google::Apis::PlusDomainsV1::MediaRepresentation
           command.response_class = Google::Apis::PlusDomainsV1::Media
           command.params['userId'] = user_id unless user_id.nil?

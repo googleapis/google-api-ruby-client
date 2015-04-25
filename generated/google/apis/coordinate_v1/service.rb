@@ -130,10 +130,10 @@ module Google
         
         
         # Inserts a new job. Only the state field of the job should be set.
-        # @param [Google::Apis::CoordinateV1::Job] job_obj
-        #   
         # @param [String] team_id
         #   Team ID
+        # @param [Google::Apis::CoordinateV1::Job] job
+        #   
         # @param [String] address
         #   Job address as newline (Unix) separated string
         # @param [String] assignee
@@ -178,11 +178,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_job(job_obj, team_id, address: nil, assignee: nil, custom_field: nil, customer_name: nil, customer_phone_number: nil, lat: nil, lng: nil, note: nil, title: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_job(team_id, job = nil, address: nil, assignee: nil, custom_field: nil, customer_name: nil, customer_phone_number: nil, lat: nil, lng: nil, note: nil, title: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/jobs'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::CoordinateV1::JobRepresentation
-          command.request_object = job_obj
+          command.request_object = job
           command.response_representation = Google::Apis::CoordinateV1::JobRepresentation
           command.response_class = Google::Apis::CoordinateV1::Job
           command.params['teamId'] = team_id unless team_id.nil?
@@ -250,12 +250,12 @@ module Google
         
         # Updates a job. Fields that are set in the job state will be updated. This
         # method supports patch semantics.
-        # @param [Google::Apis::CoordinateV1::Job] job_obj
-        #   
         # @param [String] team_id
         #   Team ID
         # @param [String] job_id
         #   Job number
+        # @param [Google::Apis::CoordinateV1::Job] job
+        #   
         # @param [String] address
         #   Job address as newline (Unix) separated string
         # @param [String] assignee
@@ -302,11 +302,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_job(job_obj, team_id, job_id, address: nil, assignee: nil, custom_field: nil, customer_name: nil, customer_phone_number: nil, lat: nil, lng: nil, note: nil, progress: nil, title: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_job(team_id, job_id, job = nil, address: nil, assignee: nil, custom_field: nil, customer_name: nil, customer_phone_number: nil, lat: nil, lng: nil, note: nil, progress: nil, title: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/jobs/{jobId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::CoordinateV1::JobRepresentation
-          command.request_object = job_obj
+          command.request_object = job
           command.response_representation = Google::Apis::CoordinateV1::JobRepresentation
           command.response_class = Google::Apis::CoordinateV1::Job
           command.params['teamId'] = team_id unless team_id.nil?
@@ -329,12 +329,12 @@ module Google
         
         
         # Updates a job. Fields that are set in the job state will be updated.
-        # @param [Google::Apis::CoordinateV1::Job] job_obj
-        #   
         # @param [String] team_id
         #   Team ID
         # @param [String] job_id
         #   Job number
+        # @param [Google::Apis::CoordinateV1::Job] job
+        #   
         # @param [String] address
         #   Job address as newline (Unix) separated string
         # @param [String] assignee
@@ -381,11 +381,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_job(job_obj, team_id, job_id, address: nil, assignee: nil, custom_field: nil, customer_name: nil, customer_phone_number: nil, lat: nil, lng: nil, note: nil, progress: nil, title: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_job(team_id, job_id, job = nil, address: nil, assignee: nil, custom_field: nil, customer_name: nil, customer_phone_number: nil, lat: nil, lng: nil, note: nil, progress: nil, title: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/jobs/{jobId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::CoordinateV1::JobRepresentation
-          command.request_object = job_obj
+          command.request_object = job
           command.response_representation = Google::Apis::CoordinateV1::JobRepresentation
           command.response_class = Google::Apis::CoordinateV1::Job
           command.params['teamId'] = team_id unless team_id.nil?
@@ -496,12 +496,12 @@ module Google
         
         # Replaces the schedule of a job with the provided schedule. This method
         # supports patch semantics.
-        # @param [Google::Apis::CoordinateV1::Schedule] schedule_obj
-        #   
         # @param [String] team_id
         #   Team ID
         # @param [String] job_id
         #   Job number
+        # @param [Google::Apis::CoordinateV1::Schedule] schedule
+        #   
         # @param [Boolean] all_day
         #   Whether the job is scheduled for the whole day. Time of day in start/end times
         #   is ignored if this is true.
@@ -532,11 +532,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_schedule(schedule_obj, team_id, job_id, all_day: nil, duration: nil, end_time: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_schedule(team_id, job_id, schedule = nil, all_day: nil, duration: nil, end_time: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/jobs/{jobId}/schedule'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::CoordinateV1::ScheduleRepresentation
-          command.request_object = schedule_obj
+          command.request_object = schedule
           command.response_representation = Google::Apis::CoordinateV1::ScheduleRepresentation
           command.response_class = Google::Apis::CoordinateV1::Schedule
           command.params['teamId'] = team_id unless team_id.nil?
@@ -553,12 +553,12 @@ module Google
         
         
         # Replaces the schedule of a job with the provided schedule.
-        # @param [Google::Apis::CoordinateV1::Schedule] schedule_obj
-        #   
         # @param [String] team_id
         #   Team ID
         # @param [String] job_id
         #   Job number
+        # @param [Google::Apis::CoordinateV1::Schedule] schedule
+        #   
         # @param [Boolean] all_day
         #   Whether the job is scheduled for the whole day. Time of day in start/end times
         #   is ignored if this is true.
@@ -589,11 +589,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_schedule(schedule_obj, team_id, job_id, all_day: nil, duration: nil, end_time: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_schedule(team_id, job_id, schedule = nil, all_day: nil, duration: nil, end_time: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/jobs/{jobId}/schedule'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::CoordinateV1::ScheduleRepresentation
-          command.request_object = schedule_obj
+          command.request_object = schedule
           command.response_representation = Google::Apis::CoordinateV1::ScheduleRepresentation
           command.response_class = Google::Apis::CoordinateV1::Schedule
           command.params['teamId'] = team_id unless team_id.nil?

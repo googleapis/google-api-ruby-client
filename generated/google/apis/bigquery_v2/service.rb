@@ -139,10 +139,10 @@ module Google
         
         
         # Creates a new empty dataset.
-        # @param [Google::Apis::BigqueryV2::Dataset] dataset_obj
-        #   
         # @param [String] project_id
         #   Project ID of the new dataset
+        # @param [Google::Apis::BigqueryV2::Dataset] dataset
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -164,11 +164,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_dataset(dataset_obj, project_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_dataset(project_id, dataset = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::BigqueryV2::DatasetRepresentation
-          command.request_object = dataset_obj
+          command.request_object = dataset
           command.response_representation = Google::Apis::BigqueryV2::DatasetRepresentation
           command.response_class = Google::Apis::BigqueryV2::Dataset
           command.params['projectId'] = project_id unless project_id.nil?
@@ -230,12 +230,12 @@ module Google
         # entire dataset resource, whereas the patch method only replaces fields that
         # are provided in the submitted dataset resource. This method supports patch
         # semantics.
-        # @param [Google::Apis::BigqueryV2::Dataset] dataset_obj
-        #   
         # @param [String] project_id
         #   Project ID of the dataset being updated
         # @param [String] dataset_id
         #   Dataset ID of the dataset being updated
+        # @param [Google::Apis::BigqueryV2::Dataset] dataset
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -257,11 +257,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_dataset(dataset_obj, project_id, dataset_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_dataset(project_id, dataset_id, dataset = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::BigqueryV2::DatasetRepresentation
-          command.request_object = dataset_obj
+          command.request_object = dataset
           command.response_representation = Google::Apis::BigqueryV2::DatasetRepresentation
           command.response_class = Google::Apis::BigqueryV2::Dataset
           command.params['projectId'] = project_id unless project_id.nil?
@@ -276,12 +276,12 @@ module Google
         # Updates information in an existing dataset. The update method replaces the
         # entire dataset resource, whereas the patch method only replaces fields that
         # are provided in the submitted dataset resource.
-        # @param [Google::Apis::BigqueryV2::Dataset] dataset_obj
-        #   
         # @param [String] project_id
         #   Project ID of the dataset being updated
         # @param [String] dataset_id
         #   Dataset ID of the dataset being updated
+        # @param [Google::Apis::BigqueryV2::Dataset] dataset
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -303,11 +303,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_dataset(dataset_obj, project_id, dataset_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_dataset(project_id, dataset_id, dataset = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::BigqueryV2::DatasetRepresentation
-          command.request_object = dataset_obj
+          command.request_object = dataset
           command.response_representation = Google::Apis::BigqueryV2::DatasetRepresentation
           command.response_class = Google::Apis::BigqueryV2::Dataset
           command.params['projectId'] = project_id unless project_id.nil?
@@ -415,10 +415,10 @@ module Google
         
         
         # Starts a new asynchronous job. Requires the Can View project role.
-        # @param [Google::Apis::BigqueryV2::Job] job_obj
-        #   
         # @param [String] project_id
         #   Project ID of the project that will be billed for the job
+        # @param [Google::Apis::BigqueryV2::Job] job
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -444,7 +444,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_job(job_obj, project_id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_job(project_id, job = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'projects/{projectId}/jobs'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -454,7 +454,7 @@ module Google
             command.upload_content_type = content_type
           end
           command.request_representation = Google::Apis::BigqueryV2::JobRepresentation
-          command.request_object = job_obj
+          command.request_object = job
           command.response_representation = Google::Apis::BigqueryV2::JobRepresentation
           command.response_class = Google::Apis::BigqueryV2::Job
           command.params['projectId'] = project_id unless project_id.nil?
@@ -522,10 +522,10 @@ module Google
         
         # Runs a BigQuery SQL query synchronously and returns query results if the query
         # completes within a specified timeout.
-        # @param [Google::Apis::BigqueryV2::QueryRequest] query_request_obj
-        #   
         # @param [String] project_id
         #   Project ID of the project billed for the query
+        # @param [Google::Apis::BigqueryV2::QueryRequest] query_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -547,11 +547,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def query_job(query_request_obj, project_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def query_job(project_id, query_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/queries'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::BigqueryV2::QueryRequestRepresentation
-          command.request_object = query_request_obj
+          command.request_object = query_request
           command.response_representation = Google::Apis::BigqueryV2::QueryResponseRepresentation
           command.response_class = Google::Apis::BigqueryV2::QueryResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -602,14 +602,14 @@ module Google
 
         # Streams data into BigQuery one record at a time without needing to run a load
         # job. Requires the WRITER dataset role.
-        # @param [Google::Apis::BigqueryV2::TableDataInsertAllRequest] table_data_insert_all_request_obj
-        #   
         # @param [String] project_id
         #   Project ID of the destination table.
         # @param [String] dataset_id
         #   Dataset ID of the destination table.
         # @param [String] table_id
         #   Table ID of the destination table.
+        # @param [Google::Apis::BigqueryV2::TableDataInsertAllRequest] table_data_insert_all_request
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -631,11 +631,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_all(table_data_insert_all_request_obj, project_id, dataset_id, table_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_all(project_id, dataset_id, table_id, table_data_insert_all_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}/insertAll'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::BigqueryV2::TableDataInsertAllRequestRepresentation
-          command.request_object = table_data_insert_all_request_obj
+          command.request_object = table_data_insert_all_request
           command.response_representation = Google::Apis::BigqueryV2::TableDataInsertAllResponseRepresentation
           command.response_class = Google::Apis::BigqueryV2::TableDataInsertAllResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -788,12 +788,12 @@ module Google
         
         
         # Creates a new, empty table in the dataset.
-        # @param [Google::Apis::BigqueryV2::Table] table_obj
-        #   
         # @param [String] project_id
         #   Project ID of the new table
         # @param [String] dataset_id
         #   Dataset ID of the new table
+        # @param [Google::Apis::BigqueryV2::Table] table
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -815,11 +815,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_table(table_obj, project_id, dataset_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_table(project_id, dataset_id, table = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}/tables'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::BigqueryV2::TableRepresentation
-          command.request_object = table_obj
+          command.request_object = table
           command.response_representation = Google::Apis::BigqueryV2::TableRepresentation
           command.response_class = Google::Apis::BigqueryV2::Table
           command.params['projectId'] = project_id unless project_id.nil?
@@ -880,14 +880,14 @@ module Google
         # Updates information in an existing table. The update method replaces the
         # entire table resource, whereas the patch method only replaces fields that are
         # provided in the submitted table resource. This method supports patch semantics.
-        # @param [Google::Apis::BigqueryV2::Table] table_obj
-        #   
         # @param [String] project_id
         #   Project ID of the table to update
         # @param [String] dataset_id
         #   Dataset ID of the table to update
         # @param [String] table_id
         #   Table ID of the table to update
+        # @param [Google::Apis::BigqueryV2::Table] table
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -909,11 +909,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_table(table_obj, project_id, dataset_id, table_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_table(project_id, dataset_id, table_id, table = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::BigqueryV2::TableRepresentation
-          command.request_object = table_obj
+          command.request_object = table
           command.response_representation = Google::Apis::BigqueryV2::TableRepresentation
           command.response_class = Google::Apis::BigqueryV2::Table
           command.params['projectId'] = project_id unless project_id.nil?
@@ -929,14 +929,14 @@ module Google
         # Updates information in an existing table. The update method replaces the
         # entire table resource, whereas the patch method only replaces fields that are
         # provided in the submitted table resource.
-        # @param [Google::Apis::BigqueryV2::Table] table_obj
-        #   
         # @param [String] project_id
         #   Project ID of the table to update
         # @param [String] dataset_id
         #   Dataset ID of the table to update
         # @param [String] table_id
         #   Table ID of the table to update
+        # @param [Google::Apis::BigqueryV2::Table] table
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -958,11 +958,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_table(table_obj, project_id, dataset_id, table_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_table(project_id, dataset_id, table_id, table = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::BigqueryV2::TableRepresentation
-          command.request_object = table_obj
+          command.request_object = table
           command.response_representation = Google::Apis::BigqueryV2::TableRepresentation
           command.response_class = Google::Apis::BigqueryV2::Table
           command.params['projectId'] = project_id unless project_id.nil?

@@ -74,25 +74,20 @@ module Google
       # @private
       class InstanceUpdateRepresentation < Google::Apis::Core::JsonRepresentation
         class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :error, as: 'error', class: Google::Apis::ReplicapoolupdaterV1beta1::InstanceUpdate::Error, decorator: Google::Apis::ReplicapoolupdaterV1beta1::InstanceUpdateRepresentation::ErrorRepresentation
         
         property :instance, as: 'instance'
         property :status, as: 'status'
         
-        
         # @private
         class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
           class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           collection :errors, as: 'errors', class: Google::Apis::ReplicapoolupdaterV1beta1::InstanceUpdate::Error::Error, decorator: Google::Apis::ReplicapoolupdaterV1beta1::InstanceUpdateRepresentation::ErrorRepresentation::ErrorRepresentation
-          
           
           
           
           # @private
           class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :code, as: 'code'
             property :location, as: 'location'
             property :message, as: 'message'
@@ -102,7 +97,6 @@ module Google
 
       # @private
       class InstanceUpdateListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::ReplicapoolupdaterV1beta1::InstanceUpdate, decorator: Google::Apis::ReplicapoolupdaterV1beta1::InstanceUpdateRepresentation
         
         
@@ -115,7 +109,6 @@ module Google
       class OperationRepresentation < Google::Apis::Core::JsonRepresentation
         class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :client_operation_id, as: 'clientOperationId'
         property :creation_timestamp, as: 'creationTimestamp'
         property :end_time, as: 'endTime'
@@ -142,19 +135,15 @@ module Google
         
         property :zone, as: 'zone'
         
-        
         # @private
         class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
           class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           collection :errors, as: 'errors', class: Google::Apis::ReplicapoolupdaterV1beta1::Operation::Error::Error, decorator: Google::Apis::ReplicapoolupdaterV1beta1::OperationRepresentation::ErrorRepresentation::ErrorRepresentation
-          
           
           
           
           # @private
           class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :code, as: 'code'
             property :location, as: 'location'
             property :message, as: 'message'
@@ -164,17 +153,14 @@ module Google
         # @private
         class WarningRepresentation < Google::Apis::Core::JsonRepresentation
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           property :code, as: 'code'
           collection :data, as: 'data', class: Google::Apis::ReplicapoolupdaterV1beta1::Operation::Warning::Datum, decorator: Google::Apis::ReplicapoolupdaterV1beta1::OperationRepresentation::WarningRepresentation::DatumRepresentation
           
           
           property :message, as: 'message'
           
-          
           # @private
           class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :key, as: 'key'
             property :value, as: 'value'
           end
@@ -185,7 +171,6 @@ module Google
       class RollingUpdateRepresentation < Google::Apis::Core::JsonRepresentation
         class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
         class PolicyRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :action_type, as: 'actionType'
         property :creation_timestamp, as: 'creationTimestamp'
         property :description, as: 'description'
@@ -204,19 +189,15 @@ module Google
         property :status_message, as: 'statusMessage'
         property :user, as: 'user'
         
-        
         # @private
         class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
           class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
-          
           collection :errors, as: 'errors', class: Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdate::Error::Error, decorator: Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdateRepresentation::ErrorRepresentation::ErrorRepresentation
-          
           
           
           
           # @private
           class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
-            
             property :code, as: 'code'
             property :location, as: 'location'
             property :message, as: 'message'
@@ -225,7 +206,6 @@ module Google
         
         # @private
         class PolicyRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :auto_pause_after_instances, as: 'autoPauseAfterInstances'
           property :instance_startup_timeout_sec, as: 'instanceStartupTimeoutSec'
           property :max_num_concurrent_instances, as: 'maxNumConcurrentInstances'
@@ -236,7 +216,6 @@ module Google
 
       # @private
       class RollingUpdateListRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :items, as: 'items', class: Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdate, decorator: Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdateRepresentation
         
         

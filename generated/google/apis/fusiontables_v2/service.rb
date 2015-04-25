@@ -132,10 +132,10 @@ module Google
         
         
         # Adds a new column to the table.
-        # @param [Google::Apis::FusiontablesV2::Column] column_obj
-        #   
         # @param [String] table_id
         #   Table for which a new column is being added.
+        # @param [Google::Apis::FusiontablesV2::Column] column
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -157,11 +157,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_column(column_obj, table_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_column(table_id, column = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}/columns'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::FusiontablesV2::ColumnRepresentation
-          command.request_object = column_obj
+          command.request_object = column
           command.response_representation = Google::Apis::FusiontablesV2::ColumnRepresentation
           command.response_class = Google::Apis::FusiontablesV2::Column
           command.params['tableId'] = table_id unless table_id.nil?
@@ -217,12 +217,12 @@ module Google
         
         # Updates the name or type of an existing column. This method supports patch
         # semantics.
-        # @param [Google::Apis::FusiontablesV2::Column] column_obj
-        #   
         # @param [String] table_id
         #   Table for which the column is being updated.
         # @param [String] column_id
         #   Name or identifier for the column that is being updated.
+        # @param [Google::Apis::FusiontablesV2::Column] column
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -244,11 +244,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_column(column_obj, table_id, column_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_column(table_id, column_id, column = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}/columns/{columnId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::FusiontablesV2::ColumnRepresentation
-          command.request_object = column_obj
+          command.request_object = column
           command.response_representation = Google::Apis::FusiontablesV2::ColumnRepresentation
           command.response_class = Google::Apis::FusiontablesV2::Column
           command.params['tableId'] = table_id unless table_id.nil?
@@ -261,12 +261,12 @@ module Google
         
         
         # Updates the name or type of an existing column.
-        # @param [Google::Apis::FusiontablesV2::Column] column_obj
-        #   
         # @param [String] table_id
         #   Table for which the column is being updated.
         # @param [String] column_id
         #   Name or identifier for the column that is being updated.
+        # @param [Google::Apis::FusiontablesV2::Column] column
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -288,11 +288,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_column(column_obj, table_id, column_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_column(table_id, column_id, column = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}/columns/{columnId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::FusiontablesV2::ColumnRepresentation
-          command.request_object = column_obj
+          command.request_object = column
           command.response_representation = Google::Apis::FusiontablesV2::ColumnRepresentation
           command.response_class = Google::Apis::FusiontablesV2::Column
           command.params['tableId'] = table_id unless table_id.nil?
@@ -503,10 +503,10 @@ module Google
         
         
         # Adds a new style for the table.
-        # @param [Google::Apis::FusiontablesV2::StyleSetting] style_setting_obj
-        #   
         # @param [String] table_id
         #   Table for which a new style is being added
+        # @param [Google::Apis::FusiontablesV2::StyleSetting] style_setting
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -528,11 +528,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_style(style_setting_obj, table_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_style(table_id, style_setting = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}/styles'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::FusiontablesV2::StyleSettingRepresentation
-          command.request_object = style_setting_obj
+          command.request_object = style_setting
           command.response_representation = Google::Apis::FusiontablesV2::StyleSettingRepresentation
           command.response_class = Google::Apis::FusiontablesV2::StyleSetting
           command.params['tableId'] = table_id unless table_id.nil?
@@ -587,12 +587,12 @@ module Google
         
         
         # Updates an existing style. This method supports patch semantics.
-        # @param [Google::Apis::FusiontablesV2::StyleSetting] style_setting_obj
-        #   
         # @param [String] table_id
         #   Table whose style is being updated.
         # @param [Fixnum] style_id
         #   Identifier (within a table) for the style being updated.
+        # @param [Google::Apis::FusiontablesV2::StyleSetting] style_setting
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -614,11 +614,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_style(style_setting_obj, table_id, style_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_style(table_id, style_id, style_setting = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}/styles/{styleId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::FusiontablesV2::StyleSettingRepresentation
-          command.request_object = style_setting_obj
+          command.request_object = style_setting
           command.response_representation = Google::Apis::FusiontablesV2::StyleSettingRepresentation
           command.response_class = Google::Apis::FusiontablesV2::StyleSetting
           command.params['tableId'] = table_id unless table_id.nil?
@@ -631,12 +631,12 @@ module Google
         
         
         # Updates an existing style.
-        # @param [Google::Apis::FusiontablesV2::StyleSetting] style_setting_obj
-        #   
         # @param [String] table_id
         #   Table whose style is being updated.
         # @param [Fixnum] style_id
         #   Identifier (within a table) for the style being updated.
+        # @param [Google::Apis::FusiontablesV2::StyleSetting] style_setting
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -658,11 +658,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_style(style_setting_obj, table_id, style_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_style(table_id, style_id, style_setting = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}/styles/{styleId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::FusiontablesV2::StyleSettingRepresentation
-          command.request_object = style_setting_obj
+          command.request_object = style_setting
           command.response_representation = Google::Apis::FusiontablesV2::StyleSettingRepresentation
           command.response_class = Google::Apis::FusiontablesV2::StyleSetting
           command.params['tableId'] = table_id unless table_id.nil?
@@ -910,7 +910,7 @@ module Google
         
         
         # Creates a new table.
-        # @param [Google::Apis::FusiontablesV2::Table] table_obj
+        # @param [Google::Apis::FusiontablesV2::Table] table
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -933,11 +933,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_table(table_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_table(table = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::FusiontablesV2::TableRepresentation
-          command.request_object = table_obj
+          command.request_object = table
           command.response_representation = Google::Apis::FusiontablesV2::TableRepresentation
           command.response_class = Google::Apis::FusiontablesV2::Table
           command.query['fields'] = fields unless fields.nil?
@@ -990,10 +990,10 @@ module Google
         # Updates an existing table. Unless explicitly requested, only the name,
         # description, and attribution will be updated. This method supports patch
         # semantics.
-        # @param [Google::Apis::FusiontablesV2::Table] table_obj
-        #   
         # @param [String] table_id
         #   ID of the table that is being updated.
+        # @param [Google::Apis::FusiontablesV2::Table] table
+        #   
         # @param [Boolean] replace_view_definition
         #   Whether the view definition is also updated. The specified view definition
         #   replaces the existing one. Only a view can be updated with a new definition.
@@ -1018,11 +1018,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_table(table_obj, table_id, replace_view_definition: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_table(table_id, table = nil, replace_view_definition: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::FusiontablesV2::TableRepresentation
-          command.request_object = table_obj
+          command.request_object = table
           command.response_representation = Google::Apis::FusiontablesV2::TableRepresentation
           command.response_class = Google::Apis::FusiontablesV2::Table
           command.params['tableId'] = table_id unless table_id.nil?
@@ -1107,10 +1107,10 @@ module Google
         
         # Updates an existing table. Unless explicitly requested, only the name,
         # description, and attribution will be updated.
-        # @param [Google::Apis::FusiontablesV2::Table] table_obj
-        #   
         # @param [String] table_id
         #   ID of the table that is being updated.
+        # @param [Google::Apis::FusiontablesV2::Table] table
+        #   
         # @param [Boolean] replace_view_definition
         #   Whether the view definition is also updated. The specified view definition
         #   replaces the existing one. Only a view can be updated with a new definition.
@@ -1135,11 +1135,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_table(table_obj, table_id, replace_view_definition: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_table(table_id, table = nil, replace_view_definition: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::FusiontablesV2::TableRepresentation
-          command.request_object = table_obj
+          command.request_object = table
           command.response_representation = Google::Apis::FusiontablesV2::TableRepresentation
           command.response_class = Google::Apis::FusiontablesV2::Table
           command.params['tableId'] = table_id unless table_id.nil?
@@ -1353,10 +1353,10 @@ module Google
         
         
         # Creates a new template for the table.
-        # @param [Google::Apis::FusiontablesV2::Template] template_obj
-        #   
         # @param [String] table_id
         #   Table for which a new template is being created
+        # @param [Google::Apis::FusiontablesV2::Template] template
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1378,11 +1378,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_template(template_obj, table_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_template(table_id, template = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}/templates'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::FusiontablesV2::TemplateRepresentation
-          command.request_object = template_obj
+          command.request_object = template
           command.response_representation = Google::Apis::FusiontablesV2::TemplateRepresentation
           command.response_class = Google::Apis::FusiontablesV2::Template
           command.params['tableId'] = table_id unless table_id.nil?
@@ -1437,12 +1437,12 @@ module Google
         
         
         # Updates an existing template. This method supports patch semantics.
-        # @param [Google::Apis::FusiontablesV2::Template] template_obj
-        #   
         # @param [String] table_id
         #   Table to which the updated template belongs
         # @param [Fixnum] template_id
         #   Identifier for the template that is being updated
+        # @param [Google::Apis::FusiontablesV2::Template] template
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1464,11 +1464,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_template(template_obj, table_id, template_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_template(table_id, template_id, template = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}/templates/{templateId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::FusiontablesV2::TemplateRepresentation
-          command.request_object = template_obj
+          command.request_object = template
           command.response_representation = Google::Apis::FusiontablesV2::TemplateRepresentation
           command.response_class = Google::Apis::FusiontablesV2::Template
           command.params['tableId'] = table_id unless table_id.nil?
@@ -1481,12 +1481,12 @@ module Google
         
         
         # Updates an existing template
-        # @param [Google::Apis::FusiontablesV2::Template] template_obj
-        #   
         # @param [String] table_id
         #   Table to which the updated template belongs
         # @param [Fixnum] template_id
         #   Identifier for the template that is being updated
+        # @param [Google::Apis::FusiontablesV2::Template] template
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1508,11 +1508,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_template(template_obj, table_id, template_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_template(table_id, template_id, template = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}/templates/{templateId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::FusiontablesV2::TemplateRepresentation
-          command.request_object = template_obj
+          command.request_object = template
           command.response_representation = Google::Apis::FusiontablesV2::TemplateRepresentation
           command.response_class = Google::Apis::FusiontablesV2::Template
           command.params['tableId'] = table_id unless table_id.nil?

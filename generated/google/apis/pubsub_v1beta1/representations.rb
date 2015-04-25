@@ -96,7 +96,6 @@ module Google
 
       # @private
       class AcknowledgeRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :ack_id, as: 'ackId'
         
         property :subscription, as: 'subscription'
@@ -104,7 +103,6 @@ module Google
 
       # @private
       class LabelRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :key, as: 'key'
         property :num_value, as: 'numValue'
         property :str_value, as: 'strValue'
@@ -112,21 +110,18 @@ module Google
 
       # @private
       class ListSubscriptionsResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :next_page_token, as: 'nextPageToken'
         collection :subscription, as: 'subscription', class: Google::Apis::PubsubV1beta1::Subscription, decorator: Google::Apis::PubsubV1beta1::SubscriptionRepresentation
       end
 
       # @private
       class ListTopicsResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :next_page_token, as: 'nextPageToken'
         collection :topic, as: 'topic', class: Google::Apis::PubsubV1beta1::Topic, decorator: Google::Apis::PubsubV1beta1::TopicRepresentation
       end
 
       # @private
       class ModifyAckDeadlineRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
         property :ack_id, as: 'ackId'
         property :subscription, as: 'subscription'
@@ -134,7 +129,6 @@ module Google
 
       # @private
       class ModifyPushConfigRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :push_config, as: 'pushConfig', class: Google::Apis::PubsubV1beta1::PushConfig, decorator: Google::Apis::PubsubV1beta1::PushConfigRepresentation
         
         property :subscription, as: 'subscription'
@@ -142,7 +136,6 @@ module Google
 
       # @private
       class PublishBatchRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :messages, as: 'messages', class: Google::Apis::PubsubV1beta1::Message, decorator: Google::Apis::PubsubV1beta1::MessageRepresentation
         
         
@@ -151,13 +144,11 @@ module Google
 
       # @private
       class PublishBatchResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :message_ids, as: 'messageIds'
       end
 
       # @private
       class PublishRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :message, as: 'message', class: Google::Apis::PubsubV1beta1::Message, decorator: Google::Apis::PubsubV1beta1::MessageRepresentation
         
         property :topic, as: 'topic'
@@ -165,7 +156,6 @@ module Google
 
       # @private
       class EventRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :deleted, as: 'deleted'
         property :message, as: 'message', class: Google::Apis::PubsubV1beta1::Message, decorator: Google::Apis::PubsubV1beta1::MessageRepresentation
         
@@ -175,7 +165,6 @@ module Google
 
       # @private
       class MessageRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :data, as: 'data'
         collection :label, as: 'label', class: Google::Apis::PubsubV1beta1::Label, decorator: Google::Apis::PubsubV1beta1::LabelRepresentation
         
@@ -185,7 +174,6 @@ module Google
 
       # @private
       class PullBatchRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :max_events, as: 'maxEvents'
         property :return_immediately, as: 'returnImmediately'
         property :subscription, as: 'subscription'
@@ -193,33 +181,28 @@ module Google
 
       # @private
       class PullBatchResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :pull_responses, as: 'pullResponses', class: Google::Apis::PubsubV1beta1::PullResponse, decorator: Google::Apis::PubsubV1beta1::PullResponseRepresentation
       end
 
       # @private
       class PullRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :return_immediately, as: 'returnImmediately'
         property :subscription, as: 'subscription'
       end
 
       # @private
       class PullResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :ack_id, as: 'ackId'
         property :pubsub_event, as: 'pubsubEvent', class: Google::Apis::PubsubV1beta1::Event, decorator: Google::Apis::PubsubV1beta1::EventRepresentation
       end
 
       # @private
       class PushConfigRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :push_endpoint, as: 'pushEndpoint'
       end
 
       # @private
       class SubscriptionRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
         property :name, as: 'name'
         property :push_config, as: 'pushConfig', class: Google::Apis::PubsubV1beta1::PushConfig, decorator: Google::Apis::PubsubV1beta1::PushConfigRepresentation
@@ -229,7 +212,6 @@ module Google
 
       # @private
       class TopicRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :name, as: 'name'
       end
     end

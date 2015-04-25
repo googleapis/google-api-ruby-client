@@ -58,7 +58,7 @@ module Google
         # deadline has expired may succeed, but the message could have been already
         # redelivered. Acknowledging a message more than once will not result in an
         # error. This is only used for messages received via pull.
-        # @param [Google::Apis::PubsubV1beta1::AcknowledgeRequest] acknowledge_request_obj
+        # @param [Google::Apis::PubsubV1beta1::AcknowledgeRequest] acknowledge_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -81,11 +81,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def acknowledge_subscription(acknowledge_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def acknowledge_subscription(acknowledge_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'subscriptions/acknowledge'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PubsubV1beta1::AcknowledgeRequestRepresentation
-          command.request_object = acknowledge_request_obj
+          command.request_object = acknowledge_request
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -98,7 +98,7 @@ module Google
         # topic doesn't exist, returns NOT_FOUND.
         # If the name is not provided in the request, the server will assign a random
         # name for this subscription on the same project as the topic.
-        # @param [Google::Apis::PubsubV1beta1::Subscription] subscription_obj
+        # @param [Google::Apis::PubsubV1beta1::Subscription] subscription
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -121,11 +121,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_subscription(subscription_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_subscription(subscription = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'subscriptions'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PubsubV1beta1::SubscriptionRepresentation
-          command.request_object = subscription_obj
+          command.request_object = subscription
           command.response_representation = Google::Apis::PubsubV1beta1::SubscriptionRepresentation
           command.response_class = Google::Apis::PubsubV1beta1::Subscription
           command.query['fields'] = fields unless fields.nil?
@@ -252,7 +252,7 @@ module Google
         
         
         # Modifies the Ack deadline for a message received from a pull request.
-        # @param [Google::Apis::PubsubV1beta1::ModifyAckDeadlineRequest] modify_ack_deadline_request_obj
+        # @param [Google::Apis::PubsubV1beta1::ModifyAckDeadlineRequest] modify_ack_deadline_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -275,11 +275,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def modify_ack_deadline(modify_ack_deadline_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def modify_ack_deadline(modify_ack_deadline_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'subscriptions/modifyAckDeadline'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PubsubV1beta1::ModifyAckDeadlineRequestRepresentation
-          command.request_object = modify_ack_deadline_request_obj
+          command.request_object = modify_ack_deadline_request
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -291,7 +291,7 @@ module Google
         # to suspend the flow of messages to an endpoint by clearing the PushConfig
         # field in the request. Messages will be accumulated for delivery even if no
         # push configuration is defined or while the configuration is modified.
-        # @param [Google::Apis::PubsubV1beta1::ModifyPushConfigRequest] modify_push_config_request_obj
+        # @param [Google::Apis::PubsubV1beta1::ModifyPushConfigRequest] modify_push_config_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -314,11 +314,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def modify_push_config(modify_push_config_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def modify_push_config(modify_push_config_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'subscriptions/modifyPushConfig'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PubsubV1beta1::ModifyPushConfigRequestRepresentation
-          command.request_object = modify_push_config_request_obj
+          command.request_object = modify_push_config_request
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -330,7 +330,7 @@ module Google
         # messages are available in the subscription, this method returns
         # FAILED_PRECONDITION. The system is free to return an UNAVAILABLE error if no
         # messages are available in a reasonable amount of time (to reduce system load).
-        # @param [Google::Apis::PubsubV1beta1::PullRequest] pull_request_obj
+        # @param [Google::Apis::PubsubV1beta1::PullRequest] pull_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -353,11 +353,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def pull_subscription(pull_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def pull_subscription(pull_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'subscriptions/pull'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PubsubV1beta1::PullRequestRepresentation
-          command.request_object = pull_request_obj
+          command.request_object = pull_request
           command.response_representation = Google::Apis::PubsubV1beta1::PullResponseRepresentation
           command.response_class = Google::Apis::PubsubV1beta1::PullResponse
           command.query['fields'] = fields unless fields.nil?
@@ -370,7 +370,7 @@ module Google
         # Pulls messages from the server. Returns an empty list if there are no messages
         # available in the backlog. The system is free to return UNAVAILABLE if there
         # are too many pull requests outstanding for the given subscription.
-        # @param [Google::Apis::PubsubV1beta1::PullBatchRequest] pull_batch_request_obj
+        # @param [Google::Apis::PubsubV1beta1::PullBatchRequest] pull_batch_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -393,11 +393,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def pull_batch(pull_batch_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def pull_batch(pull_batch_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'subscriptions/pullBatch'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PubsubV1beta1::PullBatchRequestRepresentation
-          command.request_object = pull_batch_request_obj
+          command.request_object = pull_batch_request
           command.response_representation = Google::Apis::PubsubV1beta1::PullBatchResponseRepresentation
           command.response_class = Google::Apis::PubsubV1beta1::PullBatchResponse
           command.query['fields'] = fields unless fields.nil?
@@ -407,7 +407,7 @@ module Google
         end
 
         # Creates the given topic with the given name.
-        # @param [Google::Apis::PubsubV1beta1::Topic] topic_obj
+        # @param [Google::Apis::PubsubV1beta1::Topic] topic
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -430,11 +430,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_topic(topic_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_topic(topic = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'topics'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PubsubV1beta1::TopicRepresentation
-          command.request_object = topic_obj
+          command.request_object = topic
           command.response_representation = Google::Apis::PubsubV1beta1::TopicRepresentation
           command.response_class = Google::Apis::PubsubV1beta1::Topic
           command.query['fields'] = fields unless fields.nil?
@@ -444,9 +444,8 @@ module Google
         end
         
         
-        # Deletes the topic with the given name. All subscriptions to this topic are
-        # also deleted. Returns NOT_FOUND if the topic does not exist. After a topic is
-        # deleted, a new topic may be created with the same name.
+        # Deletes the topic with the given name. Returns NOT_FOUND if the topic does not
+        # exist. After a topic is deleted, a new topic may be created with the same name.
         # @param [String] topic
         #   Name of the topic to delete.
         # @param [String] fields
@@ -564,7 +563,7 @@ module Google
         
         
         # Adds a message to the topic. Returns NOT_FOUND if the topic does not exist.
-        # @param [Google::Apis::PubsubV1beta1::PublishRequest] publish_request_obj
+        # @param [Google::Apis::PubsubV1beta1::PublishRequest] publish_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -587,11 +586,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def publish_topic(publish_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def publish_topic(publish_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'topics/publish'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PubsubV1beta1::PublishRequestRepresentation
-          command.request_object = publish_request_obj
+          command.request_object = publish_request
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -601,7 +600,7 @@ module Google
         
         # Adds one or more messages to the topic. Returns NOT_FOUND if the topic does
         # not exist.
-        # @param [Google::Apis::PubsubV1beta1::PublishBatchRequest] publish_batch_request_obj
+        # @param [Google::Apis::PubsubV1beta1::PublishBatchRequest] publish_batch_request
         #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -624,11 +623,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def publish_batch(publish_batch_request_obj, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def publish_batch(publish_batch_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'topics/publishBatch'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::PubsubV1beta1::PublishBatchRequestRepresentation
-          command.request_object = publish_batch_request_obj
+          command.request_object = publish_batch_request
           command.response_representation = Google::Apis::PubsubV1beta1::PublishBatchResponseRepresentation
           command.response_class = Google::Apis::PubsubV1beta1::PublishBatchResponse
           command.query['fields'] = fields unless fields.nil?

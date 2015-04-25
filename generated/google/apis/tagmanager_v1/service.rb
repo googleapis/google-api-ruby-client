@@ -125,10 +125,10 @@ module Google
         
         
         # Updates a GTM Account.
-        # @param [Google::Apis::TagmanagerV1::Account] account_obj
-        #   
         # @param [String] account_id
         #   The GTM Account ID.
+        # @param [Google::Apis::TagmanagerV1::Account] account
+        #   
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the account in
         #   storage.
@@ -153,11 +153,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account(account_obj, account_id, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account(account_id, account = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::TagmanagerV1::AccountRepresentation
-          command.request_object = account_obj
+          command.request_object = account
           command.response_representation = Google::Apis::TagmanagerV1::AccountRepresentation
           command.response_class = Google::Apis::TagmanagerV1::Account
           command.params['accountId'] = account_id unless account_id.nil?
@@ -170,10 +170,10 @@ module Google
         
         
         # Creates a Container.
-        # @param [Google::Apis::TagmanagerV1::Container] container_obj
-        #   
         # @param [String] account_id
         #   The GTM Account ID.
+        # @param [Google::Apis::TagmanagerV1::Container] container
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -195,11 +195,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_account_container(container_obj, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_account_container(account_id, container = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::TagmanagerV1::ContainerRepresentation
-          command.request_object = container_obj
+          command.request_object = container
           command.response_representation = Google::Apis::TagmanagerV1::ContainerRepresentation
           command.response_class = Google::Apis::TagmanagerV1::Container
           command.params['accountId'] = account_id unless account_id.nil?
@@ -312,7 +312,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_containers(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_containers(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::TagmanagerV1::ListContainersResponseRepresentation
@@ -326,12 +326,12 @@ module Google
         
         
         # Updates a Container.
-        # @param [Google::Apis::TagmanagerV1::Container] container_obj
-        #   
         # @param [String] account_id
         #   The GTM Account ID.
         # @param [String] container_id
         #   The GTM Container ID.
+        # @param [Google::Apis::TagmanagerV1::Container] container
+        #   
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the container in
         #   storage.
@@ -356,11 +356,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_container(container_obj, account_id, container_id, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account_container(account_id, container_id, container = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::TagmanagerV1::ContainerRepresentation
-          command.request_object = container_obj
+          command.request_object = container
           command.response_representation = Google::Apis::TagmanagerV1::ContainerRepresentation
           command.response_class = Google::Apis::TagmanagerV1::Container
           command.params['accountId'] = account_id unless account_id.nil?
@@ -374,12 +374,12 @@ module Google
         
         
         # Creates a GTM Macro.
-        # @param [Google::Apis::TagmanagerV1::Macro] macro_obj
-        #   
         # @param [String] account_id
         #   The GTM Account ID.
         # @param [String] container_id
         #   The GTM Container ID.
+        # @param [Google::Apis::TagmanagerV1::Macro] macro
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -401,11 +401,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_account_container_macro(macro_obj, account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_account_container_macro(account_id, container_id, macro = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/macros'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::TagmanagerV1::MacroRepresentation
-          command.request_object = macro_obj
+          command.request_object = macro
           command.response_representation = Google::Apis::TagmanagerV1::MacroRepresentation
           command.response_class = Google::Apis::TagmanagerV1::Macro
           command.params['accountId'] = account_id unless account_id.nil?
@@ -527,7 +527,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_container_macros(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_macros(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/macros'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::TagmanagerV1::ListMacrosResponseRepresentation
@@ -542,14 +542,14 @@ module Google
         
         
         # Updates a GTM Macro.
-        # @param [Google::Apis::TagmanagerV1::Macro] macro_obj
-        #   
         # @param [String] account_id
         #   The GTM Account ID.
         # @param [String] container_id
         #   The GTM Container ID.
         # @param [String] macro_id
         #   The GTM Macro ID.
+        # @param [Google::Apis::TagmanagerV1::Macro] macro
+        #   
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the macro in
         #   storage.
@@ -574,11 +574,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_container_macro(macro_obj, account_id, container_id, macro_id, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account_container_macro(account_id, container_id, macro_id, macro = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/macros/{macroId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::TagmanagerV1::MacroRepresentation
-          command.request_object = macro_obj
+          command.request_object = macro
           command.response_representation = Google::Apis::TagmanagerV1::MacroRepresentation
           command.response_class = Google::Apis::TagmanagerV1::Macro
           command.params['accountId'] = account_id unless account_id.nil?
@@ -594,12 +594,12 @@ module Google
         
         
         # Creates a GTM Rule.
-        # @param [Google::Apis::TagmanagerV1::Rule] rule_obj
-        #   
         # @param [String] account_id
         #   The GTM Account ID.
         # @param [String] container_id
         #   The GTM Container ID.
+        # @param [Google::Apis::TagmanagerV1::Rule] rule
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -621,11 +621,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_account_container_rule(rule_obj, account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_account_container_rule(account_id, container_id, rule = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/rules'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::TagmanagerV1::RuleRepresentation
-          command.request_object = rule_obj
+          command.request_object = rule
           command.response_representation = Google::Apis::TagmanagerV1::RuleRepresentation
           command.response_class = Google::Apis::TagmanagerV1::Rule
           command.params['accountId'] = account_id unless account_id.nil?
@@ -747,7 +747,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_container_rules(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_rules(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/rules'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::TagmanagerV1::ListRulesResponseRepresentation
@@ -762,14 +762,14 @@ module Google
         
         
         # Updates a GTM Rule.
-        # @param [Google::Apis::TagmanagerV1::Rule] rule_obj
-        #   
         # @param [String] account_id
         #   The GTM Account ID.
         # @param [String] container_id
         #   The GTM Container ID.
         # @param [String] rule_id
         #   The GTM Rule ID.
+        # @param [Google::Apis::TagmanagerV1::Rule] rule
+        #   
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the rule in
         #   storage.
@@ -794,11 +794,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_container_rule(rule_obj, account_id, container_id, rule_id, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account_container_rule(account_id, container_id, rule_id, rule = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/rules/{ruleId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::TagmanagerV1::RuleRepresentation
-          command.request_object = rule_obj
+          command.request_object = rule
           command.response_representation = Google::Apis::TagmanagerV1::RuleRepresentation
           command.response_class = Google::Apis::TagmanagerV1::Rule
           command.params['accountId'] = account_id unless account_id.nil?
@@ -814,12 +814,12 @@ module Google
         
         
         # Creates a GTM Tag.
-        # @param [Google::Apis::TagmanagerV1::Tag] tag_obj
-        #   
         # @param [String] account_id
         #   The GTM Account ID.
         # @param [String] container_id
         #   The GTM Container ID.
+        # @param [Google::Apis::TagmanagerV1::Tag] tag
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -841,11 +841,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_account_container_tag(tag_obj, account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_account_container_tag(account_id, container_id, tag = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/tags'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::TagmanagerV1::TagRepresentation
-          command.request_object = tag_obj
+          command.request_object = tag
           command.response_representation = Google::Apis::TagmanagerV1::TagRepresentation
           command.response_class = Google::Apis::TagmanagerV1::Tag
           command.params['accountId'] = account_id unless account_id.nil?
@@ -967,7 +967,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_container_tags(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_tags(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/tags'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::TagmanagerV1::ListTagsResponseRepresentation
@@ -982,14 +982,14 @@ module Google
         
         
         # Updates a GTM Tag.
-        # @param [Google::Apis::TagmanagerV1::Tag] tag_obj
-        #   
         # @param [String] account_id
         #   The GTM Account ID.
         # @param [String] container_id
         #   The GTM Container ID.
         # @param [String] tag_id
         #   The GTM Tag ID.
+        # @param [Google::Apis::TagmanagerV1::Tag] tag
+        #   
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the tag in
         #   storage.
@@ -1014,11 +1014,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_container_tag(tag_obj, account_id, container_id, tag_id, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account_container_tag(account_id, container_id, tag_id, tag = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/tags/{tagId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::TagmanagerV1::TagRepresentation
-          command.request_object = tag_obj
+          command.request_object = tag
           command.response_representation = Google::Apis::TagmanagerV1::TagRepresentation
           command.response_class = Google::Apis::TagmanagerV1::Tag
           command.params['accountId'] = account_id unless account_id.nil?
@@ -1034,12 +1034,12 @@ module Google
         
         
         # Creates a GTM Trigger.
-        # @param [Google::Apis::TagmanagerV1::Trigger] trigger_obj
-        #   
         # @param [String] account_id
         #   The GTM Account ID.
         # @param [String] container_id
         #   The GTM Container ID.
+        # @param [Google::Apis::TagmanagerV1::Trigger] trigger
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1061,11 +1061,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_account_container_trigger(trigger_obj, account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_account_container_trigger(account_id, container_id, trigger = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/triggers'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::TagmanagerV1::TriggerRepresentation
-          command.request_object = trigger_obj
+          command.request_object = trigger
           command.response_representation = Google::Apis::TagmanagerV1::TriggerRepresentation
           command.response_class = Google::Apis::TagmanagerV1::Trigger
           command.params['accountId'] = account_id unless account_id.nil?
@@ -1187,7 +1187,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_container_triggers(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_triggers(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/triggers'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::TagmanagerV1::ListTriggersResponseRepresentation
@@ -1202,14 +1202,14 @@ module Google
         
         
         # Updates a GTM Trigger.
-        # @param [Google::Apis::TagmanagerV1::Trigger] trigger_obj
-        #   
         # @param [String] account_id
         #   The GTM Account ID.
         # @param [String] container_id
         #   The GTM Container ID.
         # @param [String] trigger_id
         #   The GTM Trigger ID.
+        # @param [Google::Apis::TagmanagerV1::Trigger] trigger
+        #   
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the trigger in
         #   storage.
@@ -1234,11 +1234,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_container_trigger(trigger_obj, account_id, container_id, trigger_id, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account_container_trigger(account_id, container_id, trigger_id, trigger = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/triggers/{triggerId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::TagmanagerV1::TriggerRepresentation
-          command.request_object = trigger_obj
+          command.request_object = trigger
           command.response_representation = Google::Apis::TagmanagerV1::TriggerRepresentation
           command.response_class = Google::Apis::TagmanagerV1::Trigger
           command.params['accountId'] = account_id unless account_id.nil?
@@ -1254,12 +1254,12 @@ module Google
         
         
         # Creates a GTM Variable.
-        # @param [Google::Apis::TagmanagerV1::Variable] variable_obj
-        #   
         # @param [String] account_id
         #   The GTM Account ID.
         # @param [String] container_id
         #   The GTM Container ID.
+        # @param [Google::Apis::TagmanagerV1::Variable] variable
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1281,11 +1281,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_account_container_variable(variable_obj, account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_account_container_variable(account_id, container_id, variable = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/variables'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::TagmanagerV1::VariableRepresentation
-          command.request_object = variable_obj
+          command.request_object = variable
           command.response_representation = Google::Apis::TagmanagerV1::VariableRepresentation
           command.response_class = Google::Apis::TagmanagerV1::Variable
           command.params['accountId'] = account_id unless account_id.nil?
@@ -1407,7 +1407,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_container_variables(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_variables(account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/variables'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::TagmanagerV1::ListVariablesResponseRepresentation
@@ -1422,14 +1422,14 @@ module Google
         
         
         # Updates a GTM Variable.
-        # @param [Google::Apis::TagmanagerV1::Variable] variable_obj
-        #   
         # @param [String] account_id
         #   The GTM Account ID.
         # @param [String] container_id
         #   The GTM Container ID.
         # @param [String] variable_id
         #   The GTM Variable ID.
+        # @param [Google::Apis::TagmanagerV1::Variable] variable
+        #   
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the variable in
         #   storage.
@@ -1454,11 +1454,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_container_variable(variable_obj, account_id, container_id, variable_id, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account_container_variable(account_id, container_id, variable_id, variable = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/variables/{variableId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::TagmanagerV1::VariableRepresentation
-          command.request_object = variable_obj
+          command.request_object = variable
           command.response_representation = Google::Apis::TagmanagerV1::VariableRepresentation
           command.response_class = Google::Apis::TagmanagerV1::Variable
           command.params['accountId'] = account_id unless account_id.nil?
@@ -1474,12 +1474,12 @@ module Google
         
         
         # Creates a Container Version.
-        # @param [Google::Apis::TagmanagerV1::CreateContainerVersionRequestVersionOptions] create_container_version_request_version_options_obj
-        #   
         # @param [String] account_id
         #   The GTM Account ID.
         # @param [String] container_id
         #   The GTM Container ID.
+        # @param [Google::Apis::TagmanagerV1::CreateContainerVersionRequestVersionOptions] create_container_version_request_version_options
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1501,11 +1501,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_account_container_version(create_container_version_request_version_options_obj, account_id, container_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_container_version(account_id, container_id, create_container_version_request_version_options = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/versions'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::TagmanagerV1::CreateContainerVersionRequestVersionOptionsRepresentation
-          command.request_object = create_container_version_request_version_options_obj
+          command.request_object = create_container_version_request_version_options
           command.response_representation = Google::Apis::TagmanagerV1::CreateContainerVersionResponseRepresentation
           command.response_class = Google::Apis::TagmanagerV1::CreateContainerVersionResponse
           command.params['accountId'] = account_id unless account_id.nil?
@@ -1630,7 +1630,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_container_versions(account_id, container_id, headers: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_container_versions(account_id, container_id, headers: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/versions'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::TagmanagerV1::ListContainerVersionsResponseRepresentation
@@ -1676,7 +1676,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def publish_account_container_version(account_id, container_id, container_version_id, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def publish_container_version(account_id, container_id, container_version_id, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/publish'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::TagmanagerV1::PublishContainerVersionResponseRepresentation
@@ -1782,14 +1782,14 @@ module Google
         
         
         # Updates a Container Version.
-        # @param [Google::Apis::TagmanagerV1::ContainerVersion] container_version_obj
-        #   
         # @param [String] account_id
         #   The GTM Account ID.
         # @param [String] container_id
         #   The GTM Container ID.
         # @param [String] container_version_id
         #   The GTM Container Version ID.
+        # @param [Google::Apis::TagmanagerV1::ContainerVersion] container_version
+        #   
         # @param [String] fingerprint
         #   When provided, this fingerprint must match the fingerprint of the container
         #   version in storage.
@@ -1814,11 +1814,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_container_version(container_version_obj, account_id, container_id, container_version_id, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account_container_version(account_id, container_id, container_version_id, container_version = nil, fingerprint: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::TagmanagerV1::ContainerVersionRepresentation
-          command.request_object = container_version_obj
+          command.request_object = container_version
           command.response_representation = Google::Apis::TagmanagerV1::ContainerVersionRepresentation
           command.response_class = Google::Apis::TagmanagerV1::ContainerVersion
           command.params['accountId'] = account_id unless account_id.nil?
@@ -1835,10 +1835,10 @@ module Google
         
         
         # Creates a user's Account & Container Permissions.
-        # @param [Google::Apis::TagmanagerV1::UserAccess] user_access_obj
-        #   
         # @param [String] account_id
         #   The GTM Account ID.
+        # @param [Google::Apis::TagmanagerV1::UserAccess] user_access
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1860,11 +1860,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_account_permission(user_access_obj, account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_account_permission(account_id, user_access = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/permissions'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::TagmanagerV1::UserAccessRepresentation
-          command.request_object = user_access_obj
+          command.request_object = user_access
           command.response_representation = Google::Apis::TagmanagerV1::UserAccessRepresentation
           command.response_class = Google::Apis::TagmanagerV1::UserAccess
           command.params['accountId'] = account_id unless account_id.nil?
@@ -1979,7 +1979,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_permissions(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_users(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/permissions'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::TagmanagerV1::ListAccountUsersResponseRepresentation
@@ -1993,12 +1993,12 @@ module Google
         
         
         # Updates a user's Account & Container Permissions.
-        # @param [Google::Apis::TagmanagerV1::UserAccess] user_access_obj
-        #   
         # @param [String] account_id
         #   The GTM Account ID.
         # @param [String] permission_id
         #   The GTM User ID.
+        # @param [Google::Apis::TagmanagerV1::UserAccess] user_access
+        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2020,11 +2020,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account_permission(user_access_obj, account_id, permission_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account_permission(account_id, permission_id, user_access = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/permissions/{permissionId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::TagmanagerV1::UserAccessRepresentation
-          command.request_object = user_access_obj
+          command.request_object = user_access
           command.response_representation = Google::Apis::TagmanagerV1::UserAccessRepresentation
           command.response_class = Google::Apis::TagmanagerV1::UserAccess
           command.params['accountId'] = account_id unless account_id.nil?

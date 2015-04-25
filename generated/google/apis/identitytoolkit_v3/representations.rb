@@ -121,7 +121,6 @@ module Google
 
       # @private
       class CreateAuthUriResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :auth_uri, as: 'authUri'
         property :captcha_required, as: 'captchaRequired'
         property :for_existing_provider, as: 'forExistingProvider'
@@ -132,13 +131,11 @@ module Google
 
       # @private
       class DeleteAccountResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
       end
 
       # @private
       class DownloadAccountResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :next_page_token, as: 'nextPageToken'
         collection :users, as: 'users', class: Google::Apis::IdentitytoolkitV3::UserInfo, decorator: Google::Apis::IdentitytoolkitV3::UserInfoRepresentation
@@ -146,21 +143,18 @@ module Google
 
       # @private
       class GetAccountInfoResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         collection :users, as: 'users', class: Google::Apis::IdentitytoolkitV3::UserInfo, decorator: Google::Apis::IdentitytoolkitV3::UserInfoRepresentation
       end
 
       # @private
       class GetOobConfirmationCodeResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :oob_code, as: 'oobCode'
       end
 
       # @private
       class GetRecaptchaParamResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :kind, as: 'kind'
         property :recaptcha_site_key, as: 'recaptchaSiteKey'
         property :recaptcha_stoken, as: 'recaptchaStoken'
@@ -168,7 +162,6 @@ module Google
 
       # @private
       class CreateAuthUriRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :app_id, as: 'appId'
         property :client_id, as: 'clientId'
         property :context, as: 'context'
@@ -183,20 +176,17 @@ module Google
 
       # @private
       class DeleteAccountRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :local_id, as: 'localId'
       end
 
       # @private
       class DownloadAccountRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :max_results, as: 'maxResults'
         property :next_page_token, as: 'nextPageToken'
       end
 
       # @private
       class GetAccountInfoRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         collection :email, as: 'email'
         
         property :id_token, as: 'idToken'
@@ -205,7 +195,6 @@ module Google
 
       # @private
       class ResetPasswordRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :email, as: 'email'
         property :new_password, as: 'newPassword'
         property :old_password, as: 'oldPassword'
@@ -214,7 +203,6 @@ module Google
 
       # @private
       class SetAccountInfoRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :captcha_challenge, as: 'captchaChallenge'
         property :captcha_response, as: 'captchaResponse'
         property :display_name, as: 'displayName'
@@ -231,7 +219,6 @@ module Google
 
       # @private
       class UploadAccountRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :hash_algorithm, as: 'hashAlgorithm'
         property :memory_cost, as: 'memoryCost'
         property :rounds, as: 'rounds'
@@ -242,7 +229,6 @@ module Google
 
       # @private
       class VerifyAssertionRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :pending_id_token, as: 'pendingIdToken'
         property :post_body, as: 'postBody'
         property :request_uri, as: 'requestUri'
@@ -251,7 +237,6 @@ module Google
 
       # @private
       class VerifyPasswordRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :captcha_challenge, as: 'captchaChallenge'
         property :captcha_response, as: 'captchaResponse'
         property :email, as: 'email'
@@ -261,7 +246,6 @@ module Google
 
       # @private
       class RelyingpartyRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :captcha_resp, as: 'captchaResp'
         property :challenge, as: 'challenge'
         property :email, as: 'email'
@@ -274,7 +258,6 @@ module Google
 
       # @private
       class ResetPasswordResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :email, as: 'email'
         property :kind, as: 'kind'
       end
@@ -282,7 +265,6 @@ module Google
       # @private
       class SetAccountInfoResponseRepresentation < Google::Apis::Core::JsonRepresentation
         class ProviderUserInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :display_name, as: 'displayName'
         property :email, as: 'email'
         property :id_token, as: 'idToken'
@@ -291,10 +273,8 @@ module Google
         
         
         
-        
         # @private
         class ProviderUserInfoRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :display_name, as: 'displayName'
           property :photo_url, as: 'photoUrl'
           property :provider_id, as: 'providerId'
@@ -304,16 +284,13 @@ module Google
       # @private
       class UploadAccountResponseRepresentation < Google::Apis::Core::JsonRepresentation
         class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         collection :error, as: 'error', class: Google::Apis::IdentitytoolkitV3::UploadAccountResponse::Error, decorator: Google::Apis::IdentitytoolkitV3::UploadAccountResponseRepresentation::ErrorRepresentation
         
         
         property :kind, as: 'kind'
         
-        
         # @private
         class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :index, as: 'index'
           property :message, as: 'message'
         end
@@ -322,7 +299,6 @@ module Google
       # @private
       class UserInfoRepresentation < Google::Apis::Core::JsonRepresentation
         class ProviderUserInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
-        
         property :display_name, as: 'displayName'
         property :email, as: 'email'
         property :email_verified, as: 'emailVerified'
@@ -336,10 +312,8 @@ module Google
         property :salt, as: 'salt'
         property :version, as: 'version'
         
-        
         # @private
         class ProviderUserInfoRepresentation < Google::Apis::Core::JsonRepresentation
-          
           property :display_name, as: 'displayName'
           property :federated_id, as: 'federatedId'
           property :photo_url, as: 'photoUrl'
@@ -349,7 +323,6 @@ module Google
 
       # @private
       class VerifyAssertionResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :action, as: 'action'
         property :app_installation_url, as: 'appInstallationUrl'
         property :app_scheme, as: 'appScheme'
@@ -384,7 +357,6 @@ module Google
 
       # @private
       class VerifyPasswordResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
         property :display_name, as: 'displayName'
         property :email, as: 'email'
         property :id_token, as: 'idToken'
