@@ -72,6 +72,6 @@ module Google
     ClientOptions.default.application_name = 'unknown'
     ClientOptions.default.application_version = '0.0.0'
 
-    RequestOptions.default.retries = 5
+    RequestOptions.default.retries = 0
   end
 end

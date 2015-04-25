@@ -79,6 +79,9 @@ module TestHelpers
   include WebMock::Matchers
 end
 
+# Enable retries for tests
+Google::Apis::RequestOptions.default.retries = 5
+
 # Temporarily patch WebMock to allow chunked responses for Net::HTTP
 module Net
   module WebMockHTTPResponse

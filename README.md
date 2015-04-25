@@ -65,12 +65,27 @@ For downloads, the `download_dest` parameter can also be either a path to a file
 Both uploads & downloads are resumable. If an error occurs during transmission the request will be automatically
 retried from the last received byte.
 
-### Errors
+### Errors & Retries
 
-If a server or rate limit error occurs during a request it is automatically retried with an exponentially increasing
-delay on subsequent retries. The number of retries can be configured via `Google::Apis::RequestOptions`.
+Retries are disabled by default, but enabling retries is strongly encouraged. The number of retries can be configured
+via `Google::Apis::RequestOptions`. Any number greater than 0 will enable retries.
 
-If a request can not be retried or if the maximum number of retries is exceeded, an exception is thrown.
+To enable retries for all services:
+
+```ruby
+Google::Apis::RequestOptions.default.retries = 5
+```
+
+With retries enabled globally, retries can be disabled for specific calls by including a retry value of 0 in the
+request options:
+
+```ruby
+drive.insert_file(metadata, upload_source: 'test.txt', content_type: 'text/plain', options: { retries: 0 })
+```
+
+When retries are enabled, if a server or rate limit error occurs during a request it is automatically retried with
+an exponentially increasing delay on subsequent retries. If a request can not be retried or if the maximum number
+of retries is exceeded, an exception is thrown.
 
 ### Callbacks
 
