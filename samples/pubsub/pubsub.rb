@@ -26,17 +26,9 @@ project = ARGV[0] || 'YOUR_PROJECT_NAME'
 topic = "projects/#{project}/topics/foo"
 subscription = "projects/#{project}/subscriptions/bar"
 
-begin
-  # Create topic
-  pubsub.create_project_topic(topic)
-rescue Google::Apis::ClientError => e
-  # Probably didn't clean up after ourselves...
-end
-begin
-  pubsub.create_project_subscription(subscription, Pubsub::Subscription.new(topic: topic))
-rescue Google::Apis::ClientError => e
-  # Probably didn't clean up after ourselves...
-end
+# Create topic & subscription
+pubsub.create_project_topic(topic)
+pubsub.create_project_subscription(subscription, Pubsub::Subscription.new(topic: topic))
 
 # Publish messages
 request = Pubsub::PublishRequest.new(messages: [])
