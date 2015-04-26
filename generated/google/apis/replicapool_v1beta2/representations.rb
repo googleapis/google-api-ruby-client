@@ -77,7 +77,7 @@ module Google
         property :creation_timestamp, as: 'creationTimestamp'
         property :current_size, as: 'currentSize'
         property :description, as: 'description'
-        property :fingerprint, as: 'fingerprint'
+        property :fingerprint, :base64 => true, as: 'fingerprint'
         property :group, as: 'group'
         property :id, as: 'id'
         property :instance_template, as: 'instanceTemplate'
@@ -122,7 +122,7 @@ module Google
 
       # @private
       class InstanceGroupManagersSetTargetPoolsRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :fingerprint, as: 'fingerprint'
+        property :fingerprint, :base64 => true, as: 'fingerprint'
         collection :target_pools, as: 'targetPools'
       end
 

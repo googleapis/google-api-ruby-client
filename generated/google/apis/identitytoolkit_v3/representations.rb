@@ -222,8 +222,8 @@ module Google
         property :hash_algorithm, as: 'hashAlgorithm'
         property :memory_cost, as: 'memoryCost'
         property :rounds, as: 'rounds'
-        property :salt_separator, as: 'saltSeparator'
-        property :signer_key, as: 'signerKey'
+        property :salt_separator, :base64 => true, as: 'saltSeparator'
+        property :signer_key, :base64 => true, as: 'signerKey'
         collection :users, as: 'users', class: Google::Apis::IdentitytoolkitV3::UserInfo, decorator: Google::Apis::IdentitytoolkitV3::UserInfoRepresentation
       end
 
@@ -303,13 +303,13 @@ module Google
         property :email, as: 'email'
         property :email_verified, as: 'emailVerified'
         property :local_id, as: 'localId'
-        property :password_hash, as: 'passwordHash'
+        property :password_hash, :base64 => true, as: 'passwordHash'
         property :password_updated_at, as: 'passwordUpdatedAt'
         property :photo_url, as: 'photoUrl'
         collection :provider_user_info, as: 'providerUserInfo', class: Google::Apis::IdentitytoolkitV3::UserInfo::ProviderUserInfo, decorator: Google::Apis::IdentitytoolkitV3::UserInfoRepresentation::ProviderUserInfoRepresentation
         
         
-        property :salt, as: 'salt'
+        property :salt, :base64 => true, as: 'salt'
         property :version, as: 'version'
         
         # @private

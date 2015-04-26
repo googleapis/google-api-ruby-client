@@ -1230,7 +1230,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def compose_object(destination_bucket, destination_object, compose_request = nil, destination_predefined_acl: nil, if_generation_match: nil, if_metageneration_match: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def compose(destination_bucket, destination_object, compose_request = nil, destination_predefined_acl: nil, if_generation_match: nil, if_metageneration_match: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           path = 'b/{destinationBucket}/o/{destinationObject}/compose'
           if download_dest.nil?
             command =  make_simple_command(:post, path, options)
@@ -1938,7 +1938,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_all(bucket, channel = nil, delimiter: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_all_object(bucket, channel = nil, delimiter: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/o/watch'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::StorageV1::ChannelRepresentation

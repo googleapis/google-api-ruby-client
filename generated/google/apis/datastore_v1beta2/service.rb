@@ -162,7 +162,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def commit_dataset(dataset_id, commit_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def commit(dataset_id, commit_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{datasetId}/commit'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DatastoreV1beta2::CommitRequestRepresentation
@@ -203,7 +203,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def lookup_dataset(dataset_id, lookup_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def lookup(dataset_id, lookup_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{datasetId}/lookup'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DatastoreV1beta2::LookupRequestRepresentation
@@ -244,7 +244,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def rollback_dataset(dataset_id, rollback_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def rollback(dataset_id, rollback_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{datasetId}/rollback'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DatastoreV1beta2::RollbackRequestRepresentation

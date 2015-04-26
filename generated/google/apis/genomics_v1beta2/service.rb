@@ -323,7 +323,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_create(batch_create_annotations_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_create_annotations(batch_create_annotations_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'annotations:batchCreate'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GenomicsV1beta2::BatchCreateAnnotationsRequestRepresentation
@@ -1640,7 +1640,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_coverage_buckets(read_group_set_id, page_size: nil, page_token: nil, range_end: nil, range_reference_name: nil, range_start: nil, target_bucket_width: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_readgroupset_coveragebuckets(read_group_set_id, page_size: nil, page_token: nil, range_end: nil, range_reference_name: nil, range_start: nil, target_bucket_width: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'readgroupsets/{readGroupSetId}/coveragebuckets'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GenomicsV1beta2::ListCoverageBucketsResponseRepresentation
@@ -1818,7 +1818,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bases(reference_id, end_: nil, page_size: nil, page_token: nil, start: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_reference_bases(reference_id, end_: nil, page_size: nil, page_token: nil, start: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'references/{referenceId}/bases'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GenomicsV1beta2::ListBasesResponseRepresentation

@@ -51,11 +51,11 @@ APIS=(adexchangebuyer:v1.3 \
 	mapsengine:v1 \
 	mirror:v1 \
 	oauth2:v2 \
-	pagespeedonline:v1 \
+	pagespeedonline:v2 \
 	plus:v1 \
 	plusDomains:v1 \
 	prediction:v1.6 \
-	pubsub:v1beta1 \
+	pubsub:v1beta2 \
 	qpxExpress:v1 \
 	replicapool:v1beta2 \
 	replicapoolupdater:v1beta1 \

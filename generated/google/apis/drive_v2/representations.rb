@@ -577,7 +577,7 @@ module Google
         
         # @private
         class ThumbnailRepresentation < Google::Apis::Core::JsonRepresentation
-          property :image, as: 'image'
+          property :image, :base64 => true, as: 'image'
           property :mime_type, as: 'mimeType'
         end
         

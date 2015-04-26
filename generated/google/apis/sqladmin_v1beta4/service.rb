@@ -818,7 +818,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def promote_replica(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def promote_replica_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/promoteReplica'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
@@ -861,7 +861,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def reset_ssl_config(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def reset_ssl_config_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/resetSslConfig'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
@@ -943,7 +943,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def restore_backup(project, instance, instances_restore_backup_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def restore_backup_instance(project, instance, instances_restore_backup_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/restoreBackup'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::SqladminV1beta4::InstancesRestoreBackupRequestRepresentation
@@ -985,7 +985,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def start_replica(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def start_replica_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/startReplica'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
@@ -1025,7 +1025,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_replica(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def stop_replica_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/stopReplica'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation

@@ -326,7 +326,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def change_renewal_settings(customer_id, subscription_id, renewal_settings = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def change_renewal_settings_subscription(customer_id, subscription_id, renewal_settings = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ResellerV1::RenewalSettingsRepresentation
@@ -370,7 +370,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def change_seats(customer_id, subscription_id, seats = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def change_seats_subscription(customer_id, subscription_id, seats = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}/subscriptions/{subscriptionId}/changeSeats'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ResellerV1::SeatsRepresentation
@@ -591,7 +591,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def start_paid_service(customer_id, subscription_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def start_paid_service_subscription(customer_id, subscription_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}/subscriptions/{subscriptionId}/startPaidService'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::ResellerV1::SubscriptionRepresentation

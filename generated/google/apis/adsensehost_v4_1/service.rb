@@ -332,7 +332,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_ad_code(account_id, ad_client_id, ad_unit_id, host_custom_channel_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_ad_code_account_adunit(account_id, ad_client_id, ad_unit_id, host_custom_channel_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}/adcode'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdsensehostV4_1::AdCodeRepresentation

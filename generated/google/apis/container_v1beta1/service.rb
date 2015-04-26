@@ -78,7 +78,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_clusters(project_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_project_clusters(project_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/clusters'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::ContainerV1beta1::ListAggregatedClustersResponseRepresentation
@@ -116,7 +116,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_operations(project_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_project_operations(project_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/operations'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::ContainerV1beta1::ListAggregatedOperationsResponseRepresentation
@@ -294,7 +294,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_clusters(project_id, zone_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_project_zone_clusters(project_id, zone_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/zones/{zoneId}/clusters'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::ContainerV1beta1::ListClustersResponseRepresentation
@@ -380,7 +380,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(project_id, zone_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_project_zone_operations(project_id, zone_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/zones/{zoneId}/operations'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::ContainerV1beta1::ListOperationsResponseRepresentation

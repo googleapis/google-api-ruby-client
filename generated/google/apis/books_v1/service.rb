@@ -217,7 +217,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_book(drive_document_id: nil, mime_type: nil, name: nil, upload_client_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_book_cloudloading(drive_document_id: nil, mime_type: nil, name: nil, upload_client_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'cloudloading/addBook'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::BooksV1::CloudloadingResourceRepresentation
@@ -257,7 +257,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_book(volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_book_cloudloading(volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'cloudloading/deleteBook'
           command =  make_simple_command(:post, path, options)
           command.query['volumeId'] = volume_id unless volume_id.nil?
@@ -292,7 +292,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_book(books_cloudloading_resource = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_book_cloudloading(books_cloudloading_resource = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'cloudloading/updateBook'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::BooksV1::CloudloadingResourceRepresentation
@@ -329,7 +329,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_offline_metadata(cpksver: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_offline_metadata_dictionary(cpksver: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'dictionary/listOfflineMetadata'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::BooksV1::MetadataRepresentation
@@ -737,7 +737,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_user_settings(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_user_settings_myconfig(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'myconfig/getUserSettings'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::BooksV1::UsersettingsRepresentation
@@ -779,7 +779,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def release_download_access(cpksver: nil, locale: nil, source: nil, volume_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def release_download_access_myconfig(cpksver: nil, locale: nil, source: nil, volume_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'myconfig/releaseDownloadAccess'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::BooksV1::DownloadAccessesRepresentation
@@ -829,7 +829,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def request_access(cpksver: nil, license_types: nil, locale: nil, nonce: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def request_access_myconfig(cpksver: nil, license_types: nil, locale: nil, nonce: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'myconfig/requestAccess'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::BooksV1::RequestAccessRepresentation
@@ -883,7 +883,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def sync_volume_licenses(cpksver: nil, features: nil, locale: nil, nonce: nil, show_preorders: nil, source: nil, volume_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def sync_volume_licenses_myconfig(cpksver: nil, features: nil, locale: nil, nonce: nil, show_preorders: nil, source: nil, volume_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'myconfig/syncVolumeLicenses'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::BooksV1::VolumesRepresentation
@@ -928,7 +928,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user_settings(usersettings = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_user_settings_myconfig(usersettings = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'myconfig/updateUserSettings'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::BooksV1::UsersettingsRepresentation
@@ -1209,7 +1209,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_volume(shelf, reason: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_volume_mylibrary_bookshelf(shelf, reason: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'mylibrary/bookshelves/{shelf}/addVolume'
           command =  make_simple_command(:post, path, options)
           command.params['shelf'] = shelf unless shelf.nil?
@@ -1249,7 +1249,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def clear_volumes(shelf, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def clear_volumes_mylibrary_bookshelf(shelf, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'mylibrary/bookshelves/{shelf}/clearVolumes'
           command =  make_simple_command(:post, path, options)
           command.params['shelf'] = shelf unless shelf.nil?
@@ -1370,7 +1370,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def move_volume(shelf, source: nil, volume_id: nil, volume_position: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def move_volume_mylibrary_bookshelf(shelf, source: nil, volume_id: nil, volume_position: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'mylibrary/bookshelves/{shelf}/moveVolume'
           command =  make_simple_command(:post, path, options)
           command.params['shelf'] = shelf unless shelf.nil?
@@ -1414,7 +1414,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_volume(shelf, reason: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def remove_volume_mylibrary_bookshelf(shelf, reason: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'mylibrary/bookshelves/{shelf}/removeVolume'
           command =  make_simple_command(:post, path, options)
           command.params['shelf'] = shelf unless shelf.nil?
@@ -1567,7 +1567,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_position(volume_id, action: nil, content_version: nil, device_cookie: nil, position: nil, source: nil, timestamp: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_position_mylibrary_readingposition(volume_id, action: nil, content_version: nil, device_cookie: nil, position: nil, source: nil, timestamp: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'mylibrary/readingpositions/{volumeId}/setPosition'
           command =  make_simple_command(:post, path, options)
           command.params['volumeId'] = volume_id unless volume_id.nil?
@@ -1607,7 +1607,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_categories(locale: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_categories_onboarding(locale: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'onboarding/listCategories'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::BooksV1::CategoryRepresentation
@@ -1650,7 +1650,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_category_volumes(category_id: nil, locale: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_category_volumes_onboarding(category_id: nil, locale: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'onboarding/listCategoryVolumes'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::BooksV1::Volume2Representation

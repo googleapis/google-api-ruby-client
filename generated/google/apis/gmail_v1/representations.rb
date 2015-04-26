@@ -210,7 +210,7 @@ module Google
         
         property :payload, as: 'payload', class: Google::Apis::GmailV1::MessagePart, decorator: Google::Apis::GmailV1::MessagePartRepresentation
         
-        property :raw, as: 'raw'
+        property :raw, :base64 => true, as: 'raw'
         property :size_estimate, as: 'sizeEstimate'
         property :snippet, as: 'snippet'
         property :thread_id, as: 'threadId'
@@ -232,7 +232,7 @@ module Google
       # @private
       class MessagePartBodyRepresentation < Google::Apis::Core::JsonRepresentation
         property :attachment_id, as: 'attachmentId'
-        property :data, as: 'data'
+        property :data, :base64 => true, as: 'data'
         property :size, as: 'size'
       end
 

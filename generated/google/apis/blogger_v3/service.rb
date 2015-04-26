@@ -167,7 +167,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_by_url(url: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_by_url_blog(url: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/byurl'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::BloggerV3::BlogRepresentation
@@ -219,7 +219,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_by_user(user_id, fetch_user_info: nil, role: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_by_user_blog(user_id, fetch_user_info: nil, role: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/{userId}/blogs'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::BloggerV3::BlogListRepresentation
@@ -466,7 +466,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_by_blog(blog_id, end_date: nil, fetch_bodies: nil, max_results: nil, page_token: nil, start_date: nil, status: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_by_blog_comment(blog_id, end_date: nil, fetch_bodies: nil, max_results: nil, page_token: nil, start_date: nil, status: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/comments'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::BloggerV3::CommentListRepresentation
@@ -513,7 +513,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def mark_as_spam(blog_id, post_id, comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def mark_as_spam_comment(blog_id, post_id, comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/{postId}/comments/{commentId}/spam'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::BloggerV3::CommentRepresentation
@@ -556,7 +556,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_content(blog_id, post_id, comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def remove_content_comment(blog_id, post_id, comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/{postId}/comments/{commentId}/removecontent'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::BloggerV3::CommentRepresentation
@@ -1213,7 +1213,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_by_path(blog_id, max_comments: nil, path: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_by_path_post(blog_id, max_comments: nil, path: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/bypath'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::BloggerV3::PostRepresentation

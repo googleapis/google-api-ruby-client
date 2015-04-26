@@ -263,7 +263,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_people(circle_id, email: nil, user_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_people_circle(circle_id, email: nil, user_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'circles/{circleId}/people'
           command =  make_simple_command(:put, path, options)
           command.response_representation = Google::Apis::PlusDomainsV1::CircleRepresentation
@@ -509,7 +509,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_people(circle_id, email: nil, user_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def remove_people_circle(circle_id, email: nil, user_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'circles/{circleId}/people'
           command =  make_simple_command(:delete, path, options)
           command.params['circleId'] = circle_id unless circle_id.nil?
@@ -871,7 +871,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_by_activity(activity_id, collection, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_by_activity_person(activity_id, collection, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activities/{activityId}/people/{collection}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::PlusDomainsV1::PeopleFeedRepresentation
@@ -919,7 +919,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_by_circle(circle_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_by_circle_person(circle_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'circles/{circleId}/people'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::PlusDomainsV1::PeopleFeedRepresentation

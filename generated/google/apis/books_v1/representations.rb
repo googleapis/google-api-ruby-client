@@ -401,7 +401,7 @@ module Google
       class AnnotationdataRepresentation < Google::Apis::Core::JsonRepresentation
         property :annotation_type, as: 'annotationType'
         property :data, as: 'data'
-        property :encoded_data, as: 'encoded_data'
+        property :encoded_data, :base64 => true, as: 'encoded_data'
         property :id, as: 'id'
         property :kind, as: 'kind'
         property :layer_id, as: 'layerId'

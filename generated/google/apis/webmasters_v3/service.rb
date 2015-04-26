@@ -518,7 +518,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def mark_as_fixed(site_url, url, category: nil, platform: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def mark_as_fixed_urlcrawlerrorssample(site_url, url, category: nil, platform: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'sites/{siteUrl}/urlCrawlErrorsSamples/{url}'
           command =  make_simple_command(:delete, path, options)
           command.params['siteUrl'] = site_url unless site_url.nil?

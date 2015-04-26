@@ -149,7 +149,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_token(site_verification_web_resource_gettoken_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_token_web_resource(site_verification_web_resource_gettoken_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'token'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::SiteVerificationV1::GettokenRequestRepresentation

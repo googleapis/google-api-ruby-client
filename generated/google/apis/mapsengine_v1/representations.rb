@@ -419,7 +419,7 @@ module Google
         collection :assets, as: 'assets', class: Google::Apis::MapsengineV1::Asset, decorator: Google::Apis::MapsengineV1::AssetRepresentation
         
         
-        property :next_page_token, as: 'nextPageToken'
+        property :next_page_token, :base64 => true, as: 'nextPageToken'
       end
 
       # @private
@@ -674,7 +674,7 @@ module Google
         collection :layers, as: 'layers', class: Google::Apis::MapsengineV1::Layer, decorator: Google::Apis::MapsengineV1::LayerRepresentation
         
         
-        property :next_page_token, as: 'nextPageToken'
+        property :next_page_token, :base64 => true, as: 'nextPageToken'
       end
 
       # @private
@@ -766,7 +766,7 @@ module Google
         collection :maps, as: 'maps', class: Google::Apis::MapsengineV1::Map, decorator: Google::Apis::MapsengineV1::MapRepresentation
         
         
-        property :next_page_token, as: 'nextPageToken'
+        property :next_page_token, :base64 => true, as: 'nextPageToken'
       end
 
       # @private
@@ -864,7 +864,7 @@ module Google
         collection :layers, as: 'layers', class: Google::Apis::MapsengineV1::PublishedLayer, decorator: Google::Apis::MapsengineV1::PublishedLayerRepresentation
         
         
-        property :next_page_token, as: 'nextPageToken'
+        property :next_page_token, :base64 => true, as: 'nextPageToken'
       end
 
       # @private
@@ -885,7 +885,7 @@ module Google
         collection :maps, as: 'maps', class: Google::Apis::MapsengineV1::PublishedMap, decorator: Google::Apis::MapsengineV1::PublishedMapRepresentation
         
         
-        property :next_page_token, as: 'nextPageToken'
+        property :next_page_token, :base64 => true, as: 'nextPageToken'
       end
 
       # @private
@@ -941,7 +941,7 @@ module Google
 
       # @private
       class RasterCollectionsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :next_page_token, as: 'nextPageToken'
+        property :next_page_token, :base64 => true, as: 'nextPageToken'
         collection :raster_collections, as: 'rasterCollections', class: Google::Apis::MapsengineV1::RasterCollection, decorator: Google::Apis::MapsengineV1::RasterCollectionRepresentation
       end
 
@@ -1059,7 +1059,7 @@ module Google
 
       # @private
       class TablesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :next_page_token, as: 'nextPageToken'
+        property :next_page_token, :base64 => true, as: 'nextPageToken'
         collection :tables, as: 'tables', class: Google::Apis::MapsengineV1::Table, decorator: Google::Apis::MapsengineV1::TableRepresentation
       end
 

@@ -981,7 +981,7 @@ module Google
         
         # @private
         class IosRepresentation < Google::Apis::Core::JsonRepresentation
-          property :apns_device_token, as: 'apns_device_token'
+          property :apns_device_token, :base64 => true, as: 'apns_device_token'
           property :apns_environment, as: 'apns_environment'
         end
       end
@@ -1038,7 +1038,7 @@ module Google
 
       # @private
       class QuestMilestoneRepresentation < Google::Apis::Core::JsonRepresentation
-        property :completion_reward_data, as: 'completionRewardData'
+        property :completion_reward_data, :base64 => true, as: 'completionRewardData'
         collection :criteria, as: 'criteria', class: Google::Apis::GamesV1::QuestCriterion, decorator: Google::Apis::GamesV1::QuestCriterionRepresentation
         
         
@@ -1307,14 +1307,14 @@ module Google
 
       # @private
       class TurnBasedMatchDataRepresentation < Google::Apis::Core::JsonRepresentation
-        property :data, as: 'data'
+        property :data, :base64 => true, as: 'data'
         property :data_available, as: 'dataAvailable'
         property :kind, as: 'kind'
       end
 
       # @private
       class TurnBasedMatchDataRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :data, as: 'data'
+        property :data, :base64 => true, as: 'data'
         property :kind, as: 'kind'
       end
 

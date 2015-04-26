@@ -213,7 +213,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_for_product(product_id, customer_id: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_for_product_license_assignment(product_id, customer_id: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{productId}/users'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LicensingV1::LicenseAssignmentListRepresentation
@@ -263,7 +263,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_for_product_and_sku(product_id, sku_id, customer_id: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_for_product_and_sku_license_assignment(product_id, sku_id, customer_id: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{productId}/sku/{skuId}/users'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LicensingV1::LicenseAssignmentListRepresentation

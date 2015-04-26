@@ -659,7 +659,7 @@ module Google
         
         property :creation_timestamp, as: 'creationTimestamp'
         property :description, as: 'description'
-        property :fingerprint, as: 'fingerprint'
+        property :fingerprint, :base64 => true, as: 'fingerprint'
         collection :health_checks, as: 'healthChecks'
         
         property :id, as: 'id'
@@ -1249,7 +1249,7 @@ module Google
       # @private
       class MetadataRepresentation < Google::Apis::Core::JsonRepresentation
         class ItemRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :fingerprint, as: 'fingerprint'
+        property :fingerprint, :base64 => true, as: 'fingerprint'
         collection :items, as: 'items', class: Google::Apis::ComputeV1::Metadata::Item, decorator: Google::Apis::ComputeV1::MetadataRepresentation::ItemRepresentation
         
         
@@ -1577,7 +1577,7 @@ module Google
 
       # @private
       class TagsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :fingerprint, as: 'fingerprint'
+        property :fingerprint, :base64 => true, as: 'fingerprint'
         collection :items, as: 'items'
       end
 
@@ -1840,7 +1840,7 @@ module Google
         property :creation_timestamp, as: 'creationTimestamp'
         property :default_service, as: 'defaultService'
         property :description, as: 'description'
-        property :fingerprint, as: 'fingerprint'
+        property :fingerprint, :base64 => true, as: 'fingerprint'
         collection :host_rules, as: 'hostRules', class: Google::Apis::ComputeV1::HostRule, decorator: Google::Apis::ComputeV1::HostRuleRepresentation
         
         

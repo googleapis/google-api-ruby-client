@@ -2810,7 +2810,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_upload_data(account_id, web_property_id, custom_data_source_id, analytics_dataimport_delete_upload_data_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_upload_data_management_upload(account_id, web_property_id, custom_data_source_id, analytics_dataimport_delete_upload_data_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/deleteUploadData'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AnalyticsV3::DataimportDeleteUploadDataRequestRepresentation
@@ -2953,7 +2953,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_data(account_id, web_property_id, custom_data_source_id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def upload_data_management_upload(account_id, web_property_id, custom_data_source_id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -3704,7 +3704,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_account_ticket(account_ticket = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_account_ticket_provisioning(account_ticket = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'provisioning/createAccountTicket'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AnalyticsV3::AccountTicketRepresentation

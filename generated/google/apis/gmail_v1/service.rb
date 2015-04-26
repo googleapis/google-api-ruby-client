@@ -78,7 +78,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_profile(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_profile_user(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/profile'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GmailV1::ProfileRepresentation
@@ -256,7 +256,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_drafts(user_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_user_drafts(user_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/drafts'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GmailV1::ListDraftsResponseRepresentation
@@ -423,7 +423,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_history(user_id, label_id: nil, max_results: nil, page_token: nil, start_history_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_user_histories(user_id, label_id: nil, max_results: nil, page_token: nil, start_history_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/history'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GmailV1::ListHistoryResponseRepresentation
@@ -589,7 +589,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_labels(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_user_labels(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/labels'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GmailV1::ListLabelsResponseRepresentation
@@ -948,7 +948,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_messages(user_id, include_spam_trash: nil, label_ids: nil, max_results: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_user_messages(user_id, include_spam_trash: nil, label_ids: nil, max_results: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/messages'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GmailV1::ListMessagesResponseRepresentation
@@ -1315,7 +1315,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_threads(user_id, include_spam_trash: nil, label_ids: nil, max_results: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_user_threads(user_id, include_spam_trash: nil, label_ids: nil, max_results: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/threads'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GmailV1::ListThreadsResponseRepresentation

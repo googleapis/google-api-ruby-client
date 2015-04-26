@@ -139,7 +139,7 @@ module Google
       class MessageRepresentation < Google::Apis::Core::JsonRepresentation
         hash :attributes, as: 'attributes'
         
-        property :data, as: 'data'
+        property :data, :base64 => true, as: 'data'
         property :message_id, as: 'messageId'
       end
 

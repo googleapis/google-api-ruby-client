@@ -264,7 +264,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_steps_at_least(achievement_id, steps: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_steps_at_least_achievement(achievement_id, steps: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'achievements/{achievementId}/setStepsAtLeast'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::GamesV1::AchievementSetStepsAtLeastResponseRepresentation
@@ -339,7 +339,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_multiple(achievement_update_multiple_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_multiple_achievement(achievement_update_multiple_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'achievements/updateMultiple'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesV1::AchievementUpdateMultipleRequestRepresentation
@@ -459,7 +459,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_by_player(language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_by_player_event(language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'events'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GamesV1::PlayerEventListResponseRepresentation
@@ -504,7 +504,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_definitions(language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_definitions_event(language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'eventDefinitions'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GamesV1::EventDefinitionListResponseRepresentation
@@ -666,7 +666,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_metagame_config(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_metagame_config_metagame(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'metagameConfig'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GamesV1::MetagameConfigRepresentation
@@ -714,7 +714,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_categories_by_player(player_id, collection, language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_categories_by_player_metagame(player_id, collection, language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'players/{playerId}/categories/{collection}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GamesV1::CategoryListResponseRepresentation
@@ -1388,7 +1388,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def report_status(room_id, room_p2_p_statuses = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def report_status_room(room_id, room_p2_p_statuses = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rooms/{roomId}/reportstatus'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesV1::RoomP2PStatusesRepresentation
@@ -1565,7 +1565,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_window(leaderboard_id, collection, language: nil, max_results: nil, page_token: nil, results_above: nil, return_top_if_absent: nil, time_span: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_window_score(leaderboard_id, collection, language: nil, max_results: nil, page_token: nil, results_above: nil, return_top_if_absent: nil, time_span: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'leaderboards/{leaderboardId}/window/{collection}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GamesV1::LeaderboardScoresRepresentation
@@ -1663,7 +1663,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def submit_multiple(player_score_submission_list = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def submit_multiple_score(player_score_submission_list = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'leaderboards/scores'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesV1::PlayerScoreSubmissionListRepresentation
@@ -2122,7 +2122,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def leave_turn(match_id, language: nil, match_version: nil, pending_participant_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def leave_turn_turn_based_match(match_id, language: nil, match_version: nil, pending_participant_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/{matchId}/leaveTurn'
           command =  make_simple_command(:put, path, options)
           command.response_representation = Google::Apis::GamesV1::TurnBasedMatchRepresentation
@@ -2328,7 +2328,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def take_turn(match_id, turn_based_match_turn = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def take_turn_turn_based_match(match_id, turn_based_match_turn = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/{matchId}/turn'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::GamesV1::TurnBasedMatchTurnRepresentation

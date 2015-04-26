@@ -598,7 +598,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_state(enterprise_id, user_id, device_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_state_device(enterprise_id, user_id, device_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AndroidenterpriseV1::DeviceStateRepresentation
@@ -686,7 +686,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_state(enterprise_id, user_id, device_id, device_state = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_state_device(enterprise_id, user_id, device_id, device_state = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::DeviceStateRepresentation
@@ -922,7 +922,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_account(enterprise_id, enterprise_account = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_account_enterprise(enterprise_id, enterprise_account = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/account'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::EnterpriseAccountRepresentation
@@ -1672,7 +1672,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_app_restrictions_schema(enterprise_id, product_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_app_restrictions_schema_product(enterprise_id, product_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/products/{productId}/appRestrictionsSchema'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRepresentation
@@ -1713,7 +1713,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_permissions(enterprise_id, product_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_permissions_product(enterprise_id, product_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/products/{productId}/permissions'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AndroidenterpriseV1::ProductPermissionsRepresentation
@@ -1756,7 +1756,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_permissions(enterprise_id, product_id, product_permissions = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_permissions_product(enterprise_id, product_id, product_permissions = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/products/{productId}/permissions'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::ProductPermissionsRepresentation
@@ -1798,7 +1798,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_token(enterprise_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def generate_token_user(enterprise_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/users/{userId}/token'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::AndroidenterpriseV1::UserTokenRepresentation
@@ -1918,7 +1918,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def revoke_token(enterprise_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def revoke_token_user(enterprise_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/users/{userId}/token'
           command =  make_simple_command(:delete, path, options)
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?

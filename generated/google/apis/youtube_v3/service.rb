@@ -1317,7 +1317,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def mark_as_spam(id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def mark_as_spam_comment(id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'comments/markAsSpam'
           command =  make_simple_command(:post, path, options)
           command.query['id'] = id unless id.nil?
@@ -1361,7 +1361,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_moderation_status(ban_author: nil, id: nil, moderation_status: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_moderation_status_comment(ban_author: nil, id: nil, moderation_status: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'comments/setModerationStatus'
           command =  make_simple_command(:post, path, options)
           command.query['banAuthor'] = ban_author unless ban_author.nil?
@@ -3560,7 +3560,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_rating(id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_rating_video(id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'videos/getRating'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::VideoGetRatingResponseRepresentation
@@ -3867,7 +3867,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def report_abuse(video_abuse_report = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def report_abuse_video(video_abuse_report = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'videos/reportAbuse'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::VideoAbuseReportRepresentation

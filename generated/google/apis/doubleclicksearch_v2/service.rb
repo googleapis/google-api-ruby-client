@@ -398,7 +398,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_file(report_id, report_fragment, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def get_file_report(report_id, report_fragment, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           path = 'reports/{reportId}/files/{reportFragment}'
           if download_dest.nil?
             command =  make_simple_command(:get, path, options)

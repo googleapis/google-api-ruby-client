@@ -179,7 +179,7 @@ module Google
       class BeginTransactionResponseRepresentation < Google::Apis::Core::JsonRepresentation
         property :header, as: 'header', class: Google::Apis::DatastoreV1beta2::ResponseHeader, decorator: Google::Apis::DatastoreV1beta2::ResponseHeaderRepresentation
         
-        property :transaction, as: 'transaction'
+        property :transaction, :base64 => true, as: 'transaction'
       end
 
       # @private
@@ -188,7 +188,7 @@ module Google
         property :mode, as: 'mode'
         property :mutation, as: 'mutation', class: Google::Apis::DatastoreV1beta2::Mutation, decorator: Google::Apis::DatastoreV1beta2::MutationRepresentation
         
-        property :transaction, as: 'transaction'
+        property :transaction, :base64 => true, as: 'transaction'
       end
 
       # @private
@@ -239,7 +239,7 @@ module Google
 
       # @private
       class GqlQueryArgRepresentation < Google::Apis::Core::JsonRepresentation
-        property :cursor, as: 'cursor'
+        property :cursor, :base64 => true, as: 'cursor'
         property :name, as: 'name'
         property :value, as: 'value', class: Google::Apis::DatastoreV1beta2::Value, decorator: Google::Apis::DatastoreV1beta2::ValueRepresentation
       end
@@ -317,7 +317,7 @@ module Google
       # @private
       class PropertyRepresentation < Google::Apis::Core::JsonRepresentation
         property :blob_key_value, as: 'blobKeyValue'
-        property :blob_value, as: 'blobValue'
+        property :blob_value, :base64 => true, as: 'blobValue'
         property :boolean_value, as: 'booleanValue'
         property :date_time_value, as: 'dateTimeValue', type: DateTime
         property :double_value, as: 'doubleValue'
@@ -361,7 +361,7 @@ module Google
 
       # @private
       class QueryRepresentation < Google::Apis::Core::JsonRepresentation
-        property :end_cursor, as: 'endCursor'
+        property :end_cursor, :base64 => true, as: 'endCursor'
         property :filter, as: 'filter', class: Google::Apis::DatastoreV1beta2::Filter, decorator: Google::Apis::DatastoreV1beta2::FilterRepresentation
         
         collection :group_by, as: 'groupBy', class: Google::Apis::DatastoreV1beta2::PropertyReference, decorator: Google::Apis::DatastoreV1beta2::PropertyReferenceRepresentation
@@ -378,12 +378,12 @@ module Google
         collection :projection, as: 'projection', class: Google::Apis::DatastoreV1beta2::PropertyExpression, decorator: Google::Apis::DatastoreV1beta2::PropertyExpressionRepresentation
         
         
-        property :start_cursor, as: 'startCursor'
+        property :start_cursor, :base64 => true, as: 'startCursor'
       end
 
       # @private
       class QueryResultBatchRepresentation < Google::Apis::Core::JsonRepresentation
-        property :end_cursor, as: 'endCursor'
+        property :end_cursor, :base64 => true, as: 'endCursor'
         property :entity_result_type, as: 'entityResultType'
         collection :entity_results, as: 'entityResults', class: Google::Apis::DatastoreV1beta2::EntityResult, decorator: Google::Apis::DatastoreV1beta2::EntityResultRepresentation
         
@@ -395,7 +395,7 @@ module Google
       # @private
       class ReadOptionsRepresentation < Google::Apis::Core::JsonRepresentation
         property :read_consistency, as: 'readConsistency'
-        property :transaction, as: 'transaction'
+        property :transaction, :base64 => true, as: 'transaction'
       end
 
       # @private
@@ -405,7 +405,7 @@ module Google
 
       # @private
       class RollbackRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :transaction, as: 'transaction'
+        property :transaction, :base64 => true, as: 'transaction'
       end
 
       # @private
@@ -434,7 +434,7 @@ module Google
       # @private
       class ValueRepresentation < Google::Apis::Core::JsonRepresentation
         property :blob_key_value, as: 'blobKeyValue'
-        property :blob_value, as: 'blobValue'
+        property :blob_value, :base64 => true, as: 'blobValue'
         property :boolean_value, as: 'booleanValue'
         property :date_time_value, as: 'dateTimeValue', type: DateTime
         property :double_value, as: 'doubleValue'

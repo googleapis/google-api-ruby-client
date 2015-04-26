@@ -1310,7 +1310,7 @@ module Google
 
       # @private
       class InvideoBrandingRepresentation < Google::Apis::Core::JsonRepresentation
-        property :image_bytes, as: 'imageBytes'
+        property :image_bytes, :base64 => true, as: 'imageBytes'
         property :image_url, as: 'imageUrl'
         property :position, as: 'position', class: Google::Apis::YoutubeV3::InvideoPosition, decorator: Google::Apis::YoutubeV3::InvideoPositionRepresentation
         

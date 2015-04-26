@@ -396,7 +396,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_query_results(project_id, job_id, max_results: nil, page_token: nil, start_index: nil, timeout_ms: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_query_results_job(project_id, job_id, max_results: nil, page_token: nil, start_index: nil, timeout_ms: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/queries/{jobId}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::BigqueryV2::GetQueryResultsResponseRepresentation
@@ -547,7 +547,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def query_job(project_id, query_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def query(project_id, query_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/queries'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::BigqueryV2::QueryRequestRepresentation
@@ -631,7 +631,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_all(project_id, dataset_id, table_id, table_data_insert_all_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_all_tabledatum(project_id, dataset_id, table_id, table_data_insert_all_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}/insertAll'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::BigqueryV2::TableDataInsertAllRequestRepresentation

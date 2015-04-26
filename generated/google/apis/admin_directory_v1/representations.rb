@@ -646,7 +646,7 @@ module Google
         property :id, as: 'id'
         property :kind, as: 'kind'
         property :mime_type, as: 'mimeType'
-        property :photo_data, as: 'photoData'
+        property :photo_data, :base64 => true, as: 'photoData'
         property :primary_email, as: 'primaryEmail'
         property :width, as: 'width'
       end
