@@ -30,6 +30,7 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
       attr_accessor :string_value
       attr_accessor :boolean_value
       attr_accessor :date_value
+      attr_accessor :bytes_value
       attr_accessor :items
       attr_accessor :child
       attr_accessor :children
@@ -45,6 +46,7 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
       property :string_value, as: 'stringValue'
       property :boolean_value, as: 'booleanValue'
       property :date_value, as: 'dateValue', type: DateTime
+      property :bytes_value, as: 'bytesValue', base64: true
       property :items
       property :child, class: klass do
         property :value
@@ -80,6 +82,10 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
       expect(json).to be_json_eql(%("2015-05-01T12:00:00+00:00")).at_path('dateValue')
     end
 
+    it 'serializes byte values to base64' do
+      expect(json).to be_json_eql(%("SGVsbG8gd29ybGQ=")).at_path('bytesValue')
+    end
+
     it 'serializes basic collections' do
       expect(json).to be_json_eql(%([1,2,3])).at_path('items')
     end
@@ -102,8 +108,8 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
       model.string_value = 'test'
       model.date_value = DateTime.new(2015, 5, 1, 12)
       model.boolean_value = true
+      model.bytes_value = 'Hello world'
       model.items = [1, 2, 3]
-
       model.child = child_class.new
       model.child.value = 'child'
       model.children = [model.child]
@@ -122,6 +128,7 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
         numeric_value: 123,
         date_value: DateTime.new(2015, 5, 1, 12),
         boolean_value: true,
+        bytes_value: 'Hello world',
         items: [1, 2, 3],
         child: {
           value: 'child'
@@ -142,6 +149,7 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
   "booleanValue": true,
   "numericValue": 123,
   "dateValue": "2015-05-01T12:00:00+00:00",
+  "bytesValue": "SGVsbG8gd29ybGQ=",
   "items": [1,2,3],
   "child": {"value" : "hello"},
   "children": [{"value" : "hello"}]

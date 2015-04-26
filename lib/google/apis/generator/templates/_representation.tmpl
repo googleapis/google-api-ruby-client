@@ -26,7 +26,7 @@ hash :<%= property.name %>, as: '<%= property.original_name %>'<%= include('repr
 <% elsif property.type.array? %>
 collection :<%= property.name %>, as: '<%= property.original_name %>'<%= include('representation_type', :lead => ', ' , :type => property.type.item_type, :api => api) %>
 <% else %>
-property :<%= property.name %>, as: '<%= property.original_name %>'<%= include('representation_type', :lead => ', ' , :type => property.type, :api => api) %><% end %>
+property :<%= property.name %>,<% if property.type.format == 'byte' %> :base64 => true,<%end%> as: '<%= property.original_name %>'<%= include('representation_type', :lead => ', ' , :type => property.type, :api => api) %><% end %>
 <% end %>
 <% end %>
 <% for child_class in cls.classes %>

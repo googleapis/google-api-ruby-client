@@ -15,6 +15,7 @@
 require 'representable/json'
 require 'representable/json/hash'
 require 'representable/coercion'
+require 'base64'
 
 module Google
   module Apis
@@ -70,6 +71,10 @@ module Google
             options[:render_nil] = true
             options[:getter] = getter_fn(name)
             options[:if] = if_fn(name)
+            if options[:base64]
+              options[:render_filter] = lambda { |value, doc, *args| Base64.urlsafe_encode64(value) }
+              options[:parse_filter] = lambda { |fragment, doc, *args| Base64.urlsafe_decode64(fragment) }
+            end
           end
 
           # Define a single value property

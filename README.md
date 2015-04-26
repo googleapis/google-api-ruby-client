@@ -205,11 +205,8 @@ A URL can also be specified:
 
 ## TODO
 
-*  Byte array data types (automatic Base64 encode/decode)
-*  Tests for code generation
 *  Cleanup/refactor code generation
 *  ETag support (if-not-modified)
-*  Custom name overrides for code generation
 *  Auto-paging results (maybe)
 *  Caching
 *  Model validations

@@ -321,7 +321,6 @@ module Google
           if type == 'string'
             return 'DateTime' if format == 'date-time'
             return 'Date' if format == 'date'
-            # TODO: return 'Array<Fixnum>' if format == 'byte'
             'String'
           elsif type == 'hash'
             return sprintf('Hash<%s,%s>', key_type, item_type)

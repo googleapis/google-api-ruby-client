@@ -115,6 +115,7 @@ module Google
           @registered_types = {}
           @deferred_types = []
           @strip_prefixes = []
+          @all_methods = []
         end
 
         # Process the discovery doc, returning model classes suitable for template processing
@@ -285,26 +286,27 @@ module Google
         # @param [Hash] discovery
         #  Fragment of the discovery doc describing the method
         def infer_method_name(discovery)
-          infer_method_name_for_rpc(discovery) || infer_method_name_from_id(discovery)
+          name = infer_method_name_for_rpc(discovery) || infer_method_name_from_id(discovery)
+          check_duplicate_name(name)
+          name
         end
 
-        # For RPC style methods, pick a name based off the request/response objects. Only does
-        # so if either is in the form <verb><resource><reuest|response>.
+        def check_duplicate_name(name)
+          logger.error("Duplicate method #{name} generated") if @all_methods.include?(name)
+          @all_methods << name
+        end
+
+        # For RPC style methods, pick a name based off the request objects.
         # @param [Hash] discovery
         #  Fragment of the discovery doc describing the method
         def infer_method_name_for_rpc(discovery)
-          verb = discovery['id'].split('.').last
-          match = nil
-          if discovery['request']
-            req_name = discovery['request']['$ref']
-            match = req_name.match(/(.*)Request/)
-          elsif discovery['response']
-            res_name = discovery['response']['$ref']
-            match = res_name.match(/(.*)Response/)
-          end
+          verb = ActiveSupport::Inflector.underscore(discovery['id'].split('.').last)
+          return nil if discovery['request'].nil?
+          req_name = discovery['request']['$ref']
+          match = req_name.match(/(.*)(?i:request)/)
           return nil if match.nil?
           name = ActiveSupport::Inflector.underscore(match[1])
-          return nil unless name.start_with?(verb+'_')
+          return nil unless name == verb || name.start_with?(verb+'_')
           name
         end
 
@@ -316,7 +318,7 @@ module Google
           parts = discovery['id'].split('.')
           parts.shift
           verb = parts.pop
-          return ActiveSupport::Inflector.underscore(verb) if ActiveSupport::Inflector.underscore(verb) != verb || parts.empty?
+          return ActiveSupport::Inflector.underscore(verb) if parts.empty? # ActiveSupport::Inflector.underscore(verb) != verb || parts.empty?
           method_name = verb
           resource_name = parts.pop
           method_name = verb + '_'
@@ -507,7 +509,7 @@ module Google
           # Update the names
           alt_names.each do |alt_name, schema_type|
             if alt_name != schema_type.class_name
-              logger.warn do
+              logger.info do
                 sprintf('Simplified class name from \'%s\' to \'%s\'', schema_type.class_name, alt_name)
               end
               schema_type.class_name = alt_name

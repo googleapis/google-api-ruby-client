@@ -32,14 +32,14 @@ pubsub.create_project_subscription(subscription, Pubsub::Subscription.new(topic:
 
 # Publish messages
 request = Pubsub::PublishRequest.new(messages: [])
-request.messages << Pubsub::Message.new(attributes: { "language" => "en" }, data: Base64.urlsafe_encode64('Hello'))
-request.messages << Pubsub::Message.new(attributes: { "language" => "en" }, data: Base64.urlsafe_encode64('World'))
+request.messages << Pubsub::Message.new(attributes: { "language" => "en" }, data: 'Hello')
+request.messages << Pubsub::Message.new(attributes: { "language" => "en" }, data: 'World')
 pubsub.publish(topic, request)
 
 # Pull messages
 response = pubsub.pull(subscription, Pubsub::PullRequest.new(max_messages: 5))
 response.received_messages.each do |received_message|
-  data = Base64.urlsafe_decode64(received_message.message.data)
+  data = received_message.message.data
   puts "Received #{data}"
 end
 
