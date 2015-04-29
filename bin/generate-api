@@ -4,7 +4,7 @@
 
 require 'thor'
 require 'open-uri'
-require 'google/apis'
+require 'google/apis/discovery_v1'
 require 'google/apis/generator'
 require 'multi_json'
 require 'logger'
@@ -13,7 +13,10 @@ module Google
   class ApiGenerator < Thor
     include Thor::Actions
 
-    DISCOVERY_URL = 'https://www.googleapis.com/discovery/v1/apis'
+    Google::Apis::ClientOptions.default.application_name = "generate-api"
+    Google::Apis::ClientOptions.default.application_version = Google::Apis::VERSION
+
+    Discovery = Google::Apis::DiscoveryV1
 
     desc 'gen OUTDIR', 'Generate ruby API from an API description'
     method_options url: :string, file: :string, id: :array, preferred_only: :boolean, verbose: :boolean
@@ -44,15 +47,14 @@ module Google
       end
 
       def generate_from_discovery(preferred_only: false, id: nil)
-        say "Fetching API list from #{DISCOVERY_URL}"
+        say "Fetching API list"
         id = Array(id)
-        open(DISCOVERY_URL) do |f|
-          apis = MultiJson.load(f.read)
-          apis['items'].each do |api|
-            if (id.empty? && preferred_only && api['preferred']) || id.include?(api['id'])
-              say sprintf("Loading %s, version %s from %s", api['name'], api['version'], api['discoveryRestUrl'])
-              generate_from_url(api['discoveryRestUrl'])
-            end
+        discovery = Discovery::DiscoveryService.new
+        apis = discovery.list_apis
+        apis.items.each do |api|
+          if (id.empty? && preferred_only && api.preferred?) || id.include?(api.id)
+            say sprintf("Loading %s, version %s from %s", api.name, api.version, api.discovery_rest_url)
+            generate_from_url(api.discovery_rest_url)
           end
         end
       end

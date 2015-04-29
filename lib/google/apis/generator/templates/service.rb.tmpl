@@ -30,33 +30,27 @@ module Google
       #    <%= api.name %> = <%= api.qualified_name %> # Alias the module
       #    service = <%= api.name %>::<%= api.service_name %>.new
       #
-      # @see <%= api.documentation_url %>
+      # @see <%= api.documentation_link %>
       class <%= api.service_name %> < Google::Apis::Core::BaseService
-<% for param in api.service_params %>
-
-        # @return [<%= param.type.name %>]
+<% for param in api.parameters.values.reject {|p| p.name == 'fields'} -%>
+        # @return [<%= param.generated_type %>]
         #  <%= block_comment(param.description, 8, 2) %>
-        attr_accessor :<%= param.name %>
-<% end %>
+        attr_accessor :<%= param.generated_name %>
 
+<% end -%>
         def initialize
-          super('<%= api.root_url %>', '<%= api.base_path %>')
+          super('<%= api.root_url %>', '<%= api.service_path %>')
         end
-<% for api_method in api.api_methods %>
-
-        <%= indent(include('method', :api_method => api_method, :api => api), 8) %>
-<% end %>
-<% for resource in api.resources %>
-
-        <%= indent(include('resource', :resource => resource, :api => api), 8) %>
-<% end %>
+<% for api_method in api.all_methods -%>
+<%= indent(include('method', :api_method => api_method, :api => api), 8) -%>
+<% end -%>
 
         protected
 
         def apply_command_defaults(command)
-<% for param in api.service_params %>
-          command.query['<%= param.original_name %>'] = <%= param.name %> unless <%= param.name %>.nil?
-<% end %>
+<% for param in api.parameters.values.reject {|p| p.name == 'fields'} -%>
+          command.query['<%= param.name %>'] = <%= param.generated_name %> unless <%= param.generated_name %>.nil?
+<% end -%>
         end
       end
     end

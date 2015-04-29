@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DiscoveryV1
-
+      
       # 
       class DirectoryList
         include Google::Apis::Core::Hashable
@@ -42,10 +42,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @discovery_version = args[:discovery_version] unless args[:discovery_version].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
+        
         # 
         class Item
           include Google::Apis::Core::Hashable
@@ -112,6 +118,11 @@ module Google
           attr_accessor :version
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @description = args[:description] unless args[:description].nil?
             @discovery_link = args[:discovery_link] unless args[:discovery_link].nil?
             @discovery_rest_url = args[:discovery_rest_url] unless args[:discovery_rest_url].nil?
@@ -125,6 +136,7 @@ module Google
             @title = args[:title] unless args[:title].nil?
             @version = args[:version] unless args[:version].nil?
           end
+          
           # Links to 16x16 and 32x32 icons representing the API.
           class Icons
             include Google::Apis::Core::Hashable
@@ -140,13 +152,18 @@ module Google
             attr_accessor :x32
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @x16 = args[:x16] unless args[:x16].nil?
               @x32 = args[:x32] unless args[:x32].nil?
             end
           end
         end
       end
-
+      
       # 
       class JsonSchema
         include Google::Apis::Core::Hashable
@@ -268,6 +285,11 @@ module Google
         attr_accessor :variant
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @_ref = args[:_ref] unless args[:_ref].nil?
           @additional_properties = args[:additional_properties] unless args[:additional_properties].nil?
           @annotations = args[:annotations] unless args[:annotations].nil?
@@ -289,6 +311,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
           @variant = args[:variant] unless args[:variant].nil?
         end
+        
         # Additional information about this property.
         class Annotations
           include Google::Apis::Core::Hashable
@@ -299,9 +322,15 @@ module Google
           attr_accessor :required
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @required = args[:required] unless args[:required].nil?
           end
         end
+        
         # In a variant data type, the value of one property is used to determine how to
         # interpret the entire entity. Its value must exist in a map of descriminant
         # values to schema names.
@@ -319,9 +348,15 @@ module Google
           attr_accessor :map
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @discriminant = args[:discriminant] unless args[:discriminant].nil?
             @map = args[:map] unless args[:map].nil?
           end
+          
           # 
           class Map
             include Google::Apis::Core::Hashable
@@ -337,13 +372,18 @@ module Google
             attr_accessor :type_value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @_ref = args[:_ref] unless args[:_ref].nil?
               @type_value = args[:type_value] unless args[:type_value].nil?
             end
           end
         end
       end
-
+      
       # 
       class RestDescription
         include Google::Apis::Core::Hashable
@@ -492,6 +532,11 @@ module Google
         attr_accessor :version
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @auth = args[:auth] unless args[:auth].nil?
           @base_path = args[:base_path] unless args[:base_path].nil?
           @base_url = args[:base_url] unless args[:base_url].nil?
@@ -521,6 +566,7 @@ module Google
           @title = args[:title] unless args[:title].nil?
           @version = args[:version] unless args[:version].nil?
         end
+        
         # Authentication information.
         class Auth
           include Google::Apis::Core::Hashable
@@ -531,8 +577,14 @@ module Google
           attr_accessor :oauth2
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @oauth2 = args[:oauth2] unless args[:oauth2].nil?
           end
+          
           # OAuth 2.0 authentication information.
           class Oauth2
             include Google::Apis::Core::Hashable
@@ -543,8 +595,14 @@ module Google
             attr_accessor :scopes
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @scopes = args[:scopes] unless args[:scopes].nil?
             end
+            
             # The scope value.
             class Scope
               include Google::Apis::Core::Hashable
@@ -555,11 +613,17 @@ module Google
               attr_accessor :description
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @description = args[:description] unless args[:description].nil?
               end
             end
           end
         end
+        
         # Links to 16x16 and 32x32 icons representing the API.
         class Icons
           include Google::Apis::Core::Hashable
@@ -575,12 +639,17 @@ module Google
           attr_accessor :x32
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @x16 = args[:x16] unless args[:x16].nil?
             @x32 = args[:x32] unless args[:x32].nil?
           end
         end
       end
-
+      
       # 
       class RestMethod
         include Google::Apis::Core::Hashable
@@ -672,6 +741,11 @@ module Google
         alias_method :use_media_download_service?, :use_media_download_service
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @description = args[:description] unless args[:description].nil?
           @etag_required = args[:etag_required] unless args[:etag_required].nil?
           @http_method = args[:http_method] unless args[:http_method].nil?
@@ -688,6 +762,7 @@ module Google
           @supports_subscription = args[:supports_subscription] unless args[:supports_subscription].nil?
           @use_media_download_service = args[:use_media_download_service] unless args[:use_media_download_service].nil?
         end
+        
         # Media upload parameters.
         class MediaUpload
           include Google::Apis::Core::Hashable
@@ -708,10 +783,16 @@ module Google
           attr_accessor :protocols
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @accept = args[:accept] unless args[:accept].nil?
             @max_size = args[:max_size] unless args[:max_size].nil?
             @protocols = args[:protocols] unless args[:protocols].nil?
           end
+          
           # Supported upload protocols.
           class Protocols
             include Google::Apis::Core::Hashable
@@ -727,9 +808,15 @@ module Google
             attr_accessor :simple
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @resumable = args[:resumable] unless args[:resumable].nil?
               @simple = args[:simple] unless args[:simple].nil?
             end
+            
             # Supports the Resumable Media Upload protocol.
             class Resumable
               include Google::Apis::Core::Hashable
@@ -747,10 +834,16 @@ module Google
               attr_accessor :path
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @multipart = args[:multipart] unless args[:multipart].nil?
                 @path = args[:path] unless args[:path].nil?
               end
             end
+            
             # Supports uploading as a single HTTP request.
             class Simple
               include Google::Apis::Core::Hashable
@@ -768,12 +861,18 @@ module Google
               attr_accessor :path
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @multipart = args[:multipart] unless args[:multipart].nil?
                 @path = args[:path] unless args[:path].nil?
               end
             end
           end
         end
+        
         # The schema for the request.
         class Request
           include Google::Apis::Core::Hashable
@@ -789,10 +888,16 @@ module Google
           attr_accessor :parameter_name
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @_ref = args[:_ref] unless args[:_ref].nil?
             @parameter_name = args[:parameter_name] unless args[:parameter_name].nil?
           end
         end
+        
         # The schema for the response.
         class Response
           include Google::Apis::Core::Hashable
@@ -803,11 +908,16 @@ module Google
           attr_accessor :_ref
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @_ref = args[:_ref] unless args[:_ref].nil?
           end
         end
       end
-
+      
       # 
       class RestResource
         include Google::Apis::Core::Hashable
@@ -823,6 +933,11 @@ module Google
         attr_accessor :resources
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @methods_prop = args[:methods_prop] unless args[:methods_prop].nil?
           @resources = args[:resources] unless args[:resources].nil?
         end

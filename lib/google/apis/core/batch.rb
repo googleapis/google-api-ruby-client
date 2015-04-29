@@ -152,7 +152,7 @@ module Google
           parts = []
           parts << build_head(call)
           parts << build_body(call) unless call.body.nil?
-          length = parts.inject(0) { |len, part| len + part.length }
+          length = parts.inject(0) { |a, e| a + e.length }
           Hurley::UploadIO.new(Hurley::CompositeReadIO.new(length, *parts),
                                HTTP_CONTENT_TYPE,
                                'ruby-api-request')

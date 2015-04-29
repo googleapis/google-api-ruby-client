@@ -21,17 +21,12 @@ require 'google/apis/errors'
 module Google
   module Apis
     module <%= api.module_name %>
-      <%= indent(include('representation_stubs', :classes => api.classes), 6) %>
-<% for cls in api.classes %>
-
-      # @private
-      class <%= cls.class_name %>Representation < Google::Apis::Core::JsonRepresentation
-<% if api.data_wrap %>
-        self.representation_wrap = lambda { |args| :data if args[:unwrap] == <%= cls.qualified_name %> }
-<% end %>
-        <%= indent(include('representation', :cls => cls, :api => api), 8) %>
-      end
-<% end %>
+<% for cls in api.schemas.values -%>
+<%= indent(include('representation_stub', :cls => cls), 6) -%>
+<% end -%>
+<% for cls in api.schemas.values -%>
+<%= indent(include('representation', :cls => cls, :api => api), 6) -%>
+<% end -%>
     end
   end
 end

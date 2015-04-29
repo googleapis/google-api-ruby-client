@@ -22,15 +22,17 @@ module Google
     #
     # <%= block_comment(api.description, 4, 1) %>
     #
-    # @see <%= api.documentation_url %>
+    # @see <%= api.documentation_link %>
     module <%= api.module_name %>
       VERSION = '<%= api.version %>'
       REVISION = '<%= api.revision %>'
-<% for scope in api.scopes %>
+<% if api.auth && api.auth.oauth2 -%>
+<%   for scope_string, scope in api.auth.oauth2.scopes -%>
 
       # <%= scope.description %>
-      <%= scope.constant %> = '<%= scope.scope_string %>'
-<% end %>
+      <%= scope.constant %> = '<%= scope_string %>'
+<%   end -%>
+<% end -%>
     end
   end
 end

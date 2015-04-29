@@ -12,16 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/generator/discovery'
+require 'google/apis/discovery_v1'
+require 'google/apis/generator/annotator'
 require 'google/apis/generator/model'
 require 'google/apis/generator/template'
 require 'active_support/inflector'
+require 'yaml'
 
 module Google
   module Apis
     # Generates ruby classes for APIs from discovery documents
     # @private
     class Generator
+      Discovery = Google::Apis::DiscoveryV1
+
       # Load templates
       def initialize
         @module_template = Template.load('module.rb')
@@ -32,13 +36,13 @@ module Google
 
       # Generates ruby source for an API
       #
-      # @param [String] json
-      #   API discovery document
+      # @param [Google::Apis::DiscoveryV1::RestDescription] description
+      #  API Description
       # @return [Hash<String,String>]
       #  Hash of generated files keyed by path
       def render(json)
-        discovery = Discovery.new(json)
-        api = discovery.parse
+        api = parse_description(json)
+        Annotator.process(api)
         base_path = ActiveSupport::Inflector.underscore(api.qualified_name)
         context = {
           'api' => api
@@ -49,6 +53,10 @@ module Google
         files[File.join(base_path, 'classes.rb')] = @classes_template.render(context)
         files[File.join(base_path, 'representations.rb')] = @representations_template.render(context)
         files
+      end
+
+      def parse_description(json)
+        Discovery::RestDescription::Representation.new(Discovery::RestDescription.new).from_json(json)
       end
     end
   end

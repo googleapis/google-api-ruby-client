@@ -61,7 +61,9 @@ module Google
         # @return [String] formatted content
         def indent(str, spaces)
           pre = ' ' * spaces
-          str.split(/\n/).join("\n" + pre)
+          str = pre + str.split(/\n/).join("\n" + pre) + "\n"
+          return str unless str.strip.empty?
+          nil
         end
 
         # Include a partial inside a template.
@@ -103,7 +105,7 @@ module Google
         #  Name of the template file
         def initialize(template_name)
           file = File.join(TEMPLATE_DIR, template_name)
-          @erb = ERB.new(File.read(file), nil, '<>')
+          @erb = ERB.new(File.read(file), nil, '-')
         end
 
         # Render the template

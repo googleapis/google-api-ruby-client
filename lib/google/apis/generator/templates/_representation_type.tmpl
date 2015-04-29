@@ -1,12 +1,10 @@
-<% if type.array? %>
-<%= lead %>
-:class => Array do
+<% if type.type == 'array' -%>
+<%= lead %>:class => Array do
   include Representable::JSON::Collection
-  items<%= include('representation_type', :lead => ' ' , :type => type.item_type, :api => api) %>
+  items<%= include('representation_type', :lead => ' ' , :type => type.items, :api => api) %>
 end
-<% elsif type.basic? && ['Date', 'DateTime'].include?(type.name) %>
-<%= lead %>type: <%= type.name %>
-<% elsif type.schema_type %>
-<%= lead %>
-class: <%= type.name %>, decorator: <%= type.representation_class %>
-<% end %>
+<% elsif ['date', 'date-time'].include?(type.format) -%>
+<%= lead %>type: <%= type.generated_type %>
+<% elsif type.type == 'object' -%>
+<%= lead %>class: <%= type.generated_type %>, decorator: <%= type.generated_type %>::Representation
+<% end -%>

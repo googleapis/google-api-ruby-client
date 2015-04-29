@@ -33,7 +33,6 @@ module Google
       #
       # @see https://developers.google.com/discovery/
       class DiscoveryService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -53,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'discovery/v1/')
         end
-
+        
         # Retrieve the description of a particular version of an api.
         # @param [String] api
         #   The name of the API.
@@ -68,7 +67,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -83,7 +82,7 @@ module Google
         def get_rest_api(api, version, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'apis/{api}/{version}/rest'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DiscoveryV1::RestDescriptionRepresentation
+          command.response_representation = Google::Apis::DiscoveryV1::RestDescription::Representation
           command.response_class = Google::Apis::DiscoveryV1::RestDescription
           command.params['api'] = api unless api.nil?
           command.params['version'] = version unless version.nil?
@@ -92,7 +91,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieve the list of APIs supported at this endpoint.
         # @param [String] name
@@ -108,7 +106,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -123,7 +121,7 @@ module Google
         def list_apis(name: nil, preferred: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'apis'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DiscoveryV1::DirectoryListRepresentation
+          command.response_representation = Google::Apis::DiscoveryV1::DirectoryList::Representation
           command.response_class = Google::Apis::DiscoveryV1::DirectoryList
           command.query['name'] = name unless name.nil?
           command.query['preferred'] = preferred unless preferred.nil?
