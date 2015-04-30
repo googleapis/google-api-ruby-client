@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module YoutubeAnalyticsV1
-
+      
       # Contains single batchReport resource.
       class BatchReport
         include Google::Apis::Core::Hashable
@@ -59,6 +59,11 @@ module Google
         attr_accessor :time_updated
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @outputs = args[:outputs] unless args[:outputs].nil?
@@ -66,6 +71,7 @@ module Google
           @time_span = args[:time_span] unless args[:time_span].nil?
           @time_updated = args[:time_updated] unless args[:time_updated].nil?
         end
+        
         # 
         class Output
           include Google::Apis::Core::Hashable
@@ -86,11 +92,17 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @download_url = args[:download_url] unless args[:download_url].nil?
             @format = args[:format] unless args[:format].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
+        
         # Period included in the report. For reports containing all entities endTime is
         # not set. Both startTime and endTime are inclusive.
         class TimeSpan
@@ -108,12 +120,17 @@ module Google
           attr_accessor :start_time
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @end_time = args[:end_time] unless args[:end_time].nil?
             @start_time = args[:start_time] unless args[:start_time].nil?
           end
         end
       end
-
+      
       # Contains single batchReportDefinition resource.
       class BatchReportDefinition
         include Google::Apis::Core::Hashable
@@ -146,6 +163,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
@@ -153,7 +175,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # A paginated list of batchReportDefinition resources returned in response to a
       # youtubeAnalytics.batchReportDefinitions.list request.
       class BatchReportDefinitionList
@@ -172,11 +194,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A paginated list of batchReport resources returned in response to a
       # youtubeAnalytics.batchReport.list request.
       class BatchReportList
@@ -194,11 +221,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
       class Group
         include Google::Apis::Core::Hashable
@@ -229,12 +261,18 @@ module Google
         attr_accessor :snippet
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @content_details = args[:content_details] unless args[:content_details].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @snippet = args[:snippet] unless args[:snippet].nil?
         end
+        
         # 
         class ContentDetails
           include Google::Apis::Core::Hashable
@@ -250,10 +288,16 @@ module Google
           attr_accessor :item_type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @item_count = args[:item_count] unless args[:item_count].nil?
             @item_type = args[:item_type] unless args[:item_type].nil?
           end
         end
+        
         # 
         class Snippet
           include Google::Apis::Core::Hashable
@@ -269,12 +313,17 @@ module Google
           attr_accessor :title
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @published_at = args[:published_at] unless args[:published_at].nil?
             @title = args[:title] unless args[:title].nil?
           end
         end
       end
-
+      
       # 
       class GroupItem
         include Google::Apis::Core::Hashable
@@ -305,12 +354,18 @@ module Google
         attr_accessor :resource
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @group_id = args[:group_id] unless args[:group_id].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @resource = args[:resource] unless args[:resource].nil?
         end
+        
         # 
         class Resource
           include Google::Apis::Core::Hashable
@@ -326,12 +381,17 @@ module Google
           attr_accessor :kind
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @id = args[:id] unless args[:id].nil?
             @kind = args[:kind] unless args[:kind].nil?
           end
         end
       end
-
+      
       # A paginated list of grouList resources returned in response to a
       # youtubeAnalytics.groupApi.list request.
       class GroupItemListResponse
@@ -353,12 +413,17 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A paginated list of grouList resources returned in response to a
       # youtubeAnalytics.groupApi.list request.
       class GroupListResponse
@@ -380,12 +445,17 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Contains a single result table. The table is returned as an array of rows that
       # contain the values for the cells of the table. Depending on the metric or
       # dimension, the cell can contain a string (video ID, country code) or a number (
@@ -424,10 +494,16 @@ module Google
         attr_accessor :rows
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @column_headers = args[:column_headers] unless args[:column_headers].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @rows = args[:rows] unless args[:rows].nil?
         end
+        
         # 
         class ColumnHeader
           include Google::Apis::Core::Hashable
@@ -448,6 +524,11 @@ module Google
           attr_accessor :name
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @column_type = args[:column_type] unless args[:column_type].nil?
             @data_type = args[:data_type] unless args[:data_type].nil?
             @name = args[:name] unless args[:name].nil?

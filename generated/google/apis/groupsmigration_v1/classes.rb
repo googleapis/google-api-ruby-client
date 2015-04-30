@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module GroupsmigrationV1
-
+      
       # JSON response template for groups migration API.
       class Groups
         include Google::Apis::Core::Hashable
@@ -37,6 +37,11 @@ module Google
         attr_accessor :response_code
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @response_code = args[:response_code] unless args[:response_code].nil?
         end

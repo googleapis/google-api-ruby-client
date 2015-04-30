@@ -22,163 +22,198 @@ module Google
   module Apis
     module PubsubV1beta2
       
-      class AcknowledgeRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AcknowledgeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EmptyRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListSubscriptionsResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ListSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListTopicSubscriptionsResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ListTopicSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListTopicsResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ListTopicsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ModifyAckDeadlineRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ModifyAckDeadlineRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ModifyPushConfigRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ModifyPushConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PublishRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PublishRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PublishResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PublishResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class MessageRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Message
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PullRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PullRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PullResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PullResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PushConfigRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PushConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ReceivedMessageRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ReceivedMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SubscriptionRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Subscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TopicRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Topic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class AcknowledgeRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :ack_ids, as: 'ackIds'
+      class AcknowledgeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ack_ids, as: 'ackIds'
+        end
       end
-
+      
       # @private
-      class EmptyRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
-
+      
       # @private
-      class ListSubscriptionsResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :next_page_token, as: 'nextPageToken'
-        collection :subscriptions, as: 'subscriptions', class: Google::Apis::PubsubV1beta2::Subscription, decorator: Google::Apis::PubsubV1beta2::SubscriptionRepresentation
+      class ListSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :subscriptions, as: 'subscriptions', class: Google::Apis::PubsubV1beta2::Subscription, decorator: Google::Apis::PubsubV1beta2::Subscription::Representation
+      
+        end
       end
-
+      
       # @private
-      class ListTopicSubscriptionsResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :next_page_token, as: 'nextPageToken'
-        collection :subscriptions, as: 'subscriptions'
+      class ListTopicSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :subscriptions, as: 'subscriptions'
+        end
       end
-
+      
       # @private
-      class ListTopicsResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :next_page_token, as: 'nextPageToken'
-        collection :topics, as: 'topics', class: Google::Apis::PubsubV1beta2::Topic, decorator: Google::Apis::PubsubV1beta2::TopicRepresentation
+      class ListTopicsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :topics, as: 'topics', class: Google::Apis::PubsubV1beta2::Topic, decorator: Google::Apis::PubsubV1beta2::Topic::Representation
+      
+        end
       end
-
+      
       # @private
-      class ModifyAckDeadlineRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
-        property :ack_id, as: 'ackId'
+      class ModifyAckDeadlineRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
+          property :ack_id, as: 'ackId'
+        end
       end
-
+      
       # @private
-      class ModifyPushConfigRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :push_config, as: 'pushConfig', class: Google::Apis::PubsubV1beta2::PushConfig, decorator: Google::Apis::PubsubV1beta2::PushConfigRepresentation
+      class ModifyPushConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :push_config, as: 'pushConfig', class: Google::Apis::PubsubV1beta2::PushConfig, decorator: Google::Apis::PubsubV1beta2::PushConfig::Representation
+      
+        end
       end
-
+      
       # @private
-      class PublishRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :messages, as: 'messages', class: Google::Apis::PubsubV1beta2::Message, decorator: Google::Apis::PubsubV1beta2::MessageRepresentation
+      class PublishRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :messages, as: 'messages', class: Google::Apis::PubsubV1beta2::Message, decorator: Google::Apis::PubsubV1beta2::Message::Representation
+      
+        end
       end
-
+      
       # @private
-      class PublishResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :message_ids, as: 'messageIds'
+      class PublishResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :message_ids, as: 'messageIds'
+        end
       end
-
+      
       # @private
-      class MessageRepresentation < Google::Apis::Core::JsonRepresentation
-        hash :attributes, as: 'attributes'
-        
-        property :data, :base64 => true, as: 'data'
-        property :message_id, as: 'messageId'
+      class Message
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :attributes, as: 'attributes'
+          property :data, :base64 => true, as: 'data'
+          property :message_id, as: 'messageId'
+        end
       end
-
+      
       # @private
-      class PullRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :max_messages, as: 'maxMessages'
-        property :return_immediately, as: 'returnImmediately'
+      class PullRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_messages, as: 'maxMessages'
+          property :return_immediately, as: 'returnImmediately'
+        end
       end
-
+      
       # @private
-      class PullResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :received_messages, as: 'receivedMessages', class: Google::Apis::PubsubV1beta2::ReceivedMessage, decorator: Google::Apis::PubsubV1beta2::ReceivedMessageRepresentation
+      class PullResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :received_messages, as: 'receivedMessages', class: Google::Apis::PubsubV1beta2::ReceivedMessage, decorator: Google::Apis::PubsubV1beta2::ReceivedMessage::Representation
+      
+        end
       end
-
+      
       # @private
-      class PushConfigRepresentation < Google::Apis::Core::JsonRepresentation
-        hash :attributes, as: 'attributes'
-        
-        property :push_endpoint, as: 'pushEndpoint'
+      class PushConfig
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :attributes, as: 'attributes'
+          property :push_endpoint, as: 'pushEndpoint'
+        end
       end
-
+      
       # @private
-      class ReceivedMessageRepresentation < Google::Apis::Core::JsonRepresentation
-        property :ack_id, as: 'ackId'
-        property :message, as: 'message', class: Google::Apis::PubsubV1beta2::Message, decorator: Google::Apis::PubsubV1beta2::MessageRepresentation
+      class ReceivedMessage
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ack_id, as: 'ackId'
+          property :message, as: 'message', class: Google::Apis::PubsubV1beta2::Message, decorator: Google::Apis::PubsubV1beta2::Message::Representation
+      
+        end
       end
-
+      
       # @private
-      class SubscriptionRepresentation < Google::Apis::Core::JsonRepresentation
-        property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
-        property :name, as: 'name'
-        property :push_config, as: 'pushConfig', class: Google::Apis::PubsubV1beta2::PushConfig, decorator: Google::Apis::PubsubV1beta2::PushConfigRepresentation
-        
-        property :topic, as: 'topic'
+      class Subscription
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
+          property :name, as: 'name'
+          property :push_config, as: 'pushConfig', class: Google::Apis::PubsubV1beta2::PushConfig, decorator: Google::Apis::PubsubV1beta2::PushConfig::Representation
+      
+          property :topic, as: 'topic'
+        end
       end
-
+      
       # @private
-      class TopicRepresentation < Google::Apis::Core::JsonRepresentation
-        property :name, as: 'name'
+      class Topic
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
       end
     end
   end

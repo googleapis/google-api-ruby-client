@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CoordinateV1
-
+      
       # Custom field.
       class CustomField
         include Google::Apis::Core::Hashable
@@ -42,12 +42,17 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @custom_field_id = args[:custom_field_id] unless args[:custom_field_id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # Custom field definition.
       class CustomFieldDef
         include Google::Apis::Core::Hashable
@@ -91,6 +96,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @enabled = args[:enabled] unless args[:enabled].nil?
           @enumitems = args[:enumitems] unless args[:enumitems].nil?
           @id = args[:id] unless args[:id].nil?
@@ -100,9 +110,9 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Collection of custom field definitions for a team.
-      class CustomFieldDefListResponse
+      class ListResponse
         include Google::Apis::Core::Hashable
       
         # Collection of custom field definitions in a team.
@@ -116,11 +126,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Collection of custom fields.
       class CustomFields
         include Google::Apis::Core::Hashable
@@ -136,11 +151,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @custom_field = args[:custom_field] unless args[:custom_field].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Enum Item definition.
       class EnumItemDef
         include Google::Apis::Core::Hashable
@@ -164,12 +184,17 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @active = args[:active] unless args[:active].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # A job.
       class Job
         include Google::Apis::Core::Hashable
@@ -190,19 +215,24 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Current job state.
+        # Current state of a job.
         # Corresponds to the JSON property `state`
         # @return [Google::Apis::CoordinateV1::JobState]
         attr_accessor :state
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @job_change = args[:job_change] unless args[:job_change].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @state = args[:state] unless args[:state].nil?
         end
       end
-
+      
       # Change to a job. For example assigning the job to a different worker.
       class JobChange
         include Google::Apis::Core::Hashable
@@ -212,7 +242,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Change applied to the job. Only the fields that were changed are set.
+        # Current state of a job.
         # Corresponds to the JSON property `state`
         # @return [Google::Apis::CoordinateV1::JobState]
         attr_accessor :state
@@ -223,12 +253,17 @@ module Google
         attr_accessor :timestamp
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @state = args[:state] unless args[:state].nil?
           @timestamp = args[:timestamp] unless args[:timestamp].nil?
         end
       end
-
+      
       # Response from a List Jobs request.
       class JobListResponse
         include Google::Apis::Core::Hashable
@@ -249,12 +284,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Current state of a job.
       class JobState
         include Google::Apis::Core::Hashable
@@ -265,7 +305,7 @@ module Google
         # @return [String]
         attr_accessor :assignee
       
-        # Custom fields.
+        # Collection of custom fields.
         # Corresponds to the JSON property `customFields`
         # @return [Google::Apis::CoordinateV1::CustomFields]
         attr_accessor :custom_fields
@@ -285,7 +325,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Job location.
+        # Location of a job.
         # Corresponds to the JSON property `location`
         # @return [Google::Apis::CoordinateV1::Location]
         attr_accessor :location
@@ -306,6 +346,11 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @assignee = args[:assignee] unless args[:assignee].nil?
           @custom_fields = args[:custom_fields] unless args[:custom_fields].nil?
           @customer_name = args[:customer_name] unless args[:customer_name].nil?
@@ -317,7 +362,7 @@ module Google
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # Location of a job.
       class Location
         include Google::Apis::Core::Hashable
@@ -343,20 +388,25 @@ module Google
         attr_accessor :lng
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @address_line = args[:address_line] unless args[:address_line].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @lat = args[:lat] unless args[:lat].nil?
           @lng = args[:lng] unless args[:lng].nil?
         end
       end
-
+      
       # Response from a List Locations request.
       class LocationListResponse
         include Google::Apis::Core::Hashable
       
         # Locations in the collection.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::CoordinateV1::LocationRecord>]
+        # @return [Array<Google::Apis::CoordinateV1::Record>]
         attr_accessor :items
       
         # Identifies this object as a list of locations.
@@ -369,21 +419,26 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Pagination information for token pagination.
+        # Pagination information.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::CoordinateV1::TokenPagination]
         attr_accessor :token_pagination
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
         end
       end
-
+      
       # Recorded location of a worker.
-      class LocationRecord
+      class Record
         include Google::Apis::Core::Hashable
       
         # The collection time in milliseconds since the epoch.
@@ -413,6 +468,11 @@ module Google
         attr_accessor :longitude
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @collection_time = args[:collection_time] unless args[:collection_time].nil?
           @confidence_radius = args[:confidence_radius] unless args[:confidence_radius].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -420,7 +480,7 @@ module Google
           @longitude = args[:longitude] unless args[:longitude].nil?
         end
       end
-
+      
       # Job schedule.
       class Schedule
         include Google::Apis::Core::Hashable
@@ -453,6 +513,11 @@ module Google
         attr_accessor :start_time
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @all_day = args[:all_day] unless args[:all_day].nil?
           @duration = args[:duration] unless args[:duration].nil?
           @end_time = args[:end_time] unless args[:end_time].nil?
@@ -460,7 +525,7 @@ module Google
           @start_time = args[:start_time] unless args[:start_time].nil?
         end
       end
-
+      
       # A Coordinate team.
       class Team
         include Google::Apis::Core::Hashable
@@ -482,12 +547,17 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Response from a List Teams request.
       class TeamListResponse
         include Google::Apis::Core::Hashable
@@ -503,11 +573,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Pagination information.
       class TokenPagination
         include Google::Apis::Core::Hashable
@@ -528,12 +603,17 @@ module Google
         attr_accessor :previous_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @previous_page_token = args[:previous_page_token] unless args[:previous_page_token].nil?
         end
       end
-
+      
       # A worker in a Coordinate team.
       class Worker
         include Google::Apis::Core::Hashable
@@ -550,11 +630,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Response from a List Workers request.
       class WorkerListResponse
         include Google::Apis::Core::Hashable
@@ -570,6 +655,11 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end

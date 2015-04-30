@@ -22,127 +22,156 @@ module Google
   module Apis
     module WebmastersV3
       
-      class SitemapsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SitesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class SitesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UrlCrawlErrorCountRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class UrlCrawlErrorCount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UrlCrawlErrorCountsPerTypeRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class UrlCrawlErrorCountsPerType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UrlCrawlErrorsCountsQueryResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class QueryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UrlCrawlErrorsSampleRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class UrlCrawlErrorsSample
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UrlCrawlErrorsSamplesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class UrlCrawlErrorsSamplesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UrlSampleDetailsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class UrlSampleDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class WmxSiteRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class WmxSite
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class WmxSitemapRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class WmxSitemap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class WmxSitemapContentRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class WmxSitemapContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class SitemapsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :sitemap, as: 'sitemap', class: Google::Apis::WebmastersV3::WmxSitemap, decorator: Google::Apis::WebmastersV3::WmxSitemapRepresentation
+      class ListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sitemap, as: 'sitemap', class: Google::Apis::WebmastersV3::WmxSitemap, decorator: Google::Apis::WebmastersV3::WmxSitemap::Representation
+      
+        end
       end
-
+      
       # @private
-      class SitesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :site_entry, as: 'siteEntry', class: Google::Apis::WebmastersV3::WmxSite, decorator: Google::Apis::WebmastersV3::WmxSiteRepresentation
+      class SitesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :site_entry, as: 'siteEntry', class: Google::Apis::WebmastersV3::WmxSite, decorator: Google::Apis::WebmastersV3::WmxSite::Representation
+      
+        end
       end
-
+      
       # @private
-      class UrlCrawlErrorCountRepresentation < Google::Apis::Core::JsonRepresentation
-        property :count, as: 'count'
-        property :timestamp, as: 'timestamp', type: DateTime
+      class UrlCrawlErrorCount
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          property :timestamp, as: 'timestamp', type: DateTime
+      
+        end
       end
-
+      
       # @private
-      class UrlCrawlErrorCountsPerTypeRepresentation < Google::Apis::Core::JsonRepresentation
-        property :category, as: 'category'
-        collection :entries, as: 'entries', class: Google::Apis::WebmastersV3::UrlCrawlErrorCount, decorator: Google::Apis::WebmastersV3::UrlCrawlErrorCountRepresentation
-        
-        
-        property :platform, as: 'platform'
+      class UrlCrawlErrorCountsPerType
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          collection :entries, as: 'entries', class: Google::Apis::WebmastersV3::UrlCrawlErrorCount, decorator: Google::Apis::WebmastersV3::UrlCrawlErrorCount::Representation
+      
+          property :platform, as: 'platform'
+        end
       end
-
+      
       # @private
-      class UrlCrawlErrorsCountsQueryResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :count_per_types, as: 'countPerTypes', class: Google::Apis::WebmastersV3::UrlCrawlErrorCountsPerType, decorator: Google::Apis::WebmastersV3::UrlCrawlErrorCountsPerTypeRepresentation
+      class QueryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :count_per_types, as: 'countPerTypes', class: Google::Apis::WebmastersV3::UrlCrawlErrorCountsPerType, decorator: Google::Apis::WebmastersV3::UrlCrawlErrorCountsPerType::Representation
+      
+        end
       end
-
+      
       # @private
-      class UrlCrawlErrorsSampleRepresentation < Google::Apis::Core::JsonRepresentation
-        property :first_detected, as: 'first_detected', type: DateTime
-        property :last_crawled, as: 'last_crawled', type: DateTime
-        property :page_url, as: 'pageUrl'
-        property :response_code, as: 'responseCode'
-        property :url_details, as: 'urlDetails', class: Google::Apis::WebmastersV3::UrlSampleDetails, decorator: Google::Apis::WebmastersV3::UrlSampleDetailsRepresentation
+      class UrlCrawlErrorsSample
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first_detected, as: 'first_detected', type: DateTime
+      
+          property :last_crawled, as: 'last_crawled', type: DateTime
+      
+          property :page_url, as: 'pageUrl'
+          property :response_code, as: 'responseCode'
+          property :url_details, as: 'urlDetails', class: Google::Apis::WebmastersV3::UrlSampleDetails, decorator: Google::Apis::WebmastersV3::UrlSampleDetails::Representation
+      
+        end
       end
-
+      
       # @private
-      class UrlCrawlErrorsSamplesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :url_crawl_error_sample, as: 'urlCrawlErrorSample', class: Google::Apis::WebmastersV3::UrlCrawlErrorsSample, decorator: Google::Apis::WebmastersV3::UrlCrawlErrorsSampleRepresentation
+      class UrlCrawlErrorsSamplesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :url_crawl_error_sample, as: 'urlCrawlErrorSample', class: Google::Apis::WebmastersV3::UrlCrawlErrorsSample, decorator: Google::Apis::WebmastersV3::UrlCrawlErrorsSample::Representation
+      
+        end
       end
-
+      
       # @private
-      class UrlSampleDetailsRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :containing_sitemaps, as: 'containingSitemaps'
-        
-        collection :linked_from_urls, as: 'linkedFromUrls'
+      class UrlSampleDetails
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :containing_sitemaps, as: 'containingSitemaps'
+          collection :linked_from_urls, as: 'linkedFromUrls'
+        end
       end
-
+      
       # @private
-      class WmxSiteRepresentation < Google::Apis::Core::JsonRepresentation
-        property :permission_level, as: 'permissionLevel'
-        property :site_url, as: 'siteUrl'
+      class WmxSite
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :permission_level, as: 'permissionLevel'
+          property :site_url, as: 'siteUrl'
+        end
       end
-
+      
       # @private
-      class WmxSitemapRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :contents, as: 'contents', class: Google::Apis::WebmastersV3::WmxSitemapContent, decorator: Google::Apis::WebmastersV3::WmxSitemapContentRepresentation
-        
-        
-        property :errors, as: 'errors'
-        property :is_pending, as: 'isPending'
-        property :is_sitemaps_index, as: 'isSitemapsIndex'
-        property :last_downloaded, as: 'lastDownloaded', type: DateTime
-        property :last_submitted, as: 'lastSubmitted', type: DateTime
-        property :path, as: 'path'
-        property :type, as: 'type'
-        property :warnings, as: 'warnings'
+      class WmxSitemap
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :contents, as: 'contents', class: Google::Apis::WebmastersV3::WmxSitemapContent, decorator: Google::Apis::WebmastersV3::WmxSitemapContent::Representation
+      
+          property :errors, as: 'errors'
+          property :is_pending, as: 'isPending'
+          property :is_sitemaps_index, as: 'isSitemapsIndex'
+          property :last_downloaded, as: 'lastDownloaded', type: DateTime
+      
+          property :last_submitted, as: 'lastSubmitted', type: DateTime
+      
+          property :path, as: 'path'
+          property :type, as: 'type'
+          property :warnings, as: 'warnings'
+        end
       end
-
+      
       # @private
-      class WmxSitemapContentRepresentation < Google::Apis::Core::JsonRepresentation
-        property :indexed, as: 'indexed'
-        property :submitted, as: 'submitted'
-        property :type, as: 'type'
+      class WmxSitemapContent
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :indexed, as: 'indexed'
+          property :submitted, as: 'submitted'
+          property :type, as: 'type'
+        end
       end
     end
   end

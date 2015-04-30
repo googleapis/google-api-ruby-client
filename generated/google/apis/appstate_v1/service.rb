@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/games/services/web/api/states
       class AppStateService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'appstate/v1/')
         end
-
+        
         # Clears (sets to empty) the data for the passed key if and only if the passed
         # version matches the currently stored version. This method results in a
         # conflict error on version mismatch.
@@ -70,7 +69,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -85,7 +84,7 @@ module Google
         def clear_state(state_key, current_data_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'states/{stateKey}/clear'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::AppstateV1::WriteResultRepresentation
+          command.response_representation = Google::Apis::AppstateV1::WriteResult::Representation
           command.response_class = Google::Apis::AppstateV1::WriteResult
           command.params['stateKey'] = state_key unless state_key.nil?
           command.query['currentDataVersion'] = current_data_version unless current_data_version.nil?
@@ -94,7 +93,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Deletes a key and the data associated with it. The key is removed and no
         # longer counts against the key quota. Note that since this method is not safe
@@ -112,7 +110,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -134,7 +132,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Retrieves the data corresponding to the passed key. If the key does not exist
         # on the server, an HTTP 404 will be returned.
         # @param [Fixnum] state_key
@@ -148,7 +145,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -163,7 +160,7 @@ module Google
         def get_state(state_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'states/{stateKey}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AppstateV1::GetResponseRepresentation
+          command.response_representation = Google::Apis::AppstateV1::GetResponse::Representation
           command.response_class = Google::Apis::AppstateV1::GetResponse
           command.params['stateKey'] = state_key unless state_key.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -171,7 +168,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists all the states keys, and optionally the state data.
         # @param [Boolean] include_data
@@ -185,7 +181,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -200,7 +196,7 @@ module Google
         def list_states(include_data: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'states'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AppstateV1::ListResponseRepresentation
+          command.response_representation = Google::Apis::AppstateV1::ListResponse::Representation
           command.response_class = Google::Apis::AppstateV1::ListResponse
           command.query['includeData'] = include_data unless include_data.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -209,14 +205,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Update the data associated with the input key if and only if the passed
         # version matches the currently stored version. This method is safe in the face
         # of concurrent writes. Maximum per-key size is 128KB.
         # @param [Fixnum] state_key
         #   The key for the data to be retrieved.
-        # @param [Google::Apis::AppstateV1::UpdateRequest] update_request
-        #   
+        # @param [Google::Apis::AppstateV1::UpdateRequest] update_request_object
         # @param [String] current_state_version
         #   The version of the app state your application is attempting to update. If this
         #   does not match the current version, this method will return a conflict error.
@@ -231,7 +225,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -243,12 +237,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update(state_key, update_request = nil, current_state_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update(state_key, update_request_object = nil, current_state_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'states/{stateKey}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::AppstateV1::UpdateRequestRepresentation
-          command.request_object = update_request
-          command.response_representation = Google::Apis::AppstateV1::WriteResultRepresentation
+          command.request_representation = Google::Apis::AppstateV1::UpdateRequest::Representation
+          command.request_object = update_request_object
+          command.response_representation = Google::Apis::AppstateV1::WriteResult::Representation
           command.response_class = Google::Apis::AppstateV1::WriteResult
           command.params['stateKey'] = state_key unless state_key.nil?
           command.query['currentStateVersion'] = current_state_version unless current_state_version.nil?

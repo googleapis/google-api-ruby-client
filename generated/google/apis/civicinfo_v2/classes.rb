@@ -21,12 +21,13 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CivicinfoV2
-
+      
       # Describes information about a regional election administrative area.
       class AdministrationRegion
         include Google::Apis::Core::Hashable
       
-        # The election administration body for this area.
+        # Information about an election administrative body (e.g. County Board of
+        # Elections).
         # Corresponds to the JSON property `electionAdministrationBody`
         # @return [Google::Apis::CivicinfoV2::AdministrativeBody]
         attr_accessor :election_administration_body
@@ -38,8 +39,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The city or county that provides election information for this voter. This
-        # object can have the same elements as state.
+        # Describes information about a regional election administrative area.
         # Corresponds to the JSON property `local_jurisdiction`
         # @return [Google::Apis::CivicinfoV2::AdministrationRegion]
         attr_accessor :local_jurisdiction
@@ -56,6 +56,11 @@ module Google
         attr_accessor :sources
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @election_administration_body = args[:election_administration_body] unless args[:election_administration_body].nil?
           @id = args[:id] unless args[:id].nil?
           @local_jurisdiction = args[:local_jurisdiction] unless args[:local_jurisdiction].nil?
@@ -63,7 +68,7 @@ module Google
           @sources = args[:sources] unless args[:sources].nil?
         end
       end
-
+      
       # Information about an election administrative body (e.g. County Board of
       # Elections).
       class AdministrativeBody
@@ -80,7 +85,7 @@ module Google
         # @return [String]
         attr_accessor :ballot_info_url
       
-        # The mailing address of this administrative body.
+        # A simple representation of an address.
         # Corresponds to the JSON property `correspondenceAddress`
         # @return [Google::Apis::CivicinfoV2::SimpleAddressType]
         attr_accessor :correspondence_address
@@ -124,7 +129,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The physical address of this administrative body.
+        # A simple representation of an address.
         # Corresponds to the JSON property `physicalAddress`
         # @return [Google::Apis::CivicinfoV2::SimpleAddressType]
         attr_accessor :physical_address
@@ -140,6 +145,11 @@ module Google
         attr_accessor :voting_location_finder_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @absentee_voting_info_url = args[:absentee_voting_info_url] unless args[:absentee_voting_info_url].nil?
           @ballot_info_url = args[:ballot_info_url] unless args[:ballot_info_url].nil?
           @correspondence_address = args[:correspondence_address] unless args[:correspondence_address].nil?
@@ -155,7 +165,7 @@ module Google
           @voting_location_finder_url = args[:voting_location_finder_url] unless args[:voting_location_finder_url].nil?
         end
       end
-
+      
       # Information about a candidate running for elected office.
       class Candidate
         include Google::Apis::Core::Hashable
@@ -201,6 +211,11 @@ module Google
         attr_accessor :photo_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @candidate_url = args[:candidate_url] unless args[:candidate_url].nil?
           @channels = args[:channels] unless args[:channels].nil?
           @email = args[:email] unless args[:email].nil?
@@ -211,7 +226,7 @@ module Google
           @photo_url = args[:photo_url] unless args[:photo_url].nil?
         end
       end
-
+      
       # A social media or web channel for a candidate.
       class Channel
         include Google::Apis::Core::Hashable
@@ -229,11 +244,16 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Information about a contest that appears on a voter's ballot.
       class Contest
         include Google::Apis::Core::Hashable
@@ -248,7 +268,7 @@ module Google
         # @return [Array<Google::Apis::CivicinfoV2::Candidate>]
         attr_accessor :candidates
       
-        # Information about the electoral district that this contest is in.
+        # Describes the geographic scope of a contest.
         # Corresponds to the JSON property `district`
         # @return [Google::Apis::CivicinfoV2::ElectoralDistrict]
         attr_accessor :district
@@ -337,6 +357,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ballot_placement = args[:ballot_placement] unless args[:ballot_placement].nil?
           @candidates = args[:candidates] unless args[:candidates].nil?
           @district = args[:district] unless args[:district].nil?
@@ -356,7 +381,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # The result of a division search query.
       class DivisionSearchResponse
         include Google::Apis::Core::Hashable
@@ -373,11 +398,16 @@ module Google
         attr_accessor :results
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @results = args[:results] unless args[:results].nil?
         end
       end
-
+      
       # Represents a political geographic division that matches the requested query.
       class DivisionSearchResult
         include Google::Apis::Core::Hashable
@@ -402,12 +432,17 @@ module Google
         attr_accessor :ocd_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @aliases = args[:aliases] unless args[:aliases].nil?
           @name = args[:name] unless args[:name].nil?
           @ocd_id = args[:ocd_id] unless args[:ocd_id].nil?
         end
       end
-
+      
       # Information about the election that was queried.
       class Election
         include Google::Apis::Core::Hashable
@@ -428,12 +463,17 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @election_day = args[:election_day] unless args[:election_day].nil?
           @id = args[:id] unless args[:id].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Information about individual election officials.
       class ElectionOfficial
         include Google::Apis::Core::Hashable
@@ -464,6 +504,11 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @email_address = args[:email_address] unless args[:email_address].nil?
           @fax_number = args[:fax_number] unless args[:fax_number].nil?
           @name = args[:name] unless args[:name].nil?
@@ -471,9 +516,9 @@ module Google
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # The list of elections available for this version of the API.
-      class ElectionsQueryResponse
+      class QueryResponse
         include Google::Apis::Core::Hashable
       
         # A list of available elections
@@ -488,11 +533,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @elections = args[:elections] unless args[:elections].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Describes the geographic scope of a contest.
       class ElectoralDistrict
         include Google::Apis::Core::Hashable
@@ -517,12 +567,17 @@ module Google
         attr_accessor :scope
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @name = args[:name] unless args[:name].nil?
           @scope = args[:scope] unless args[:scope].nil?
         end
       end
-
+      
       # Describes a political geography.
       class GeographicDivision
         include Google::Apis::Core::Hashable
@@ -553,12 +608,17 @@ module Google
         attr_accessor :office_indices
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @also_known_as = args[:also_known_as] unless args[:also_known_as].nil?
           @name = args[:name] unless args[:name].nil?
           @office_indices = args[:office_indices] unless args[:office_indices].nil?
         end
       end
-
+      
       # Information about an Office held by one or more Officials.
       class Office
         include Google::Apis::Core::Hashable
@@ -603,6 +663,11 @@ module Google
         attr_accessor :sources
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @division_id = args[:division_id] unless args[:division_id].nil?
           @levels = args[:levels] unless args[:levels].nil?
           @name = args[:name] unless args[:name].nil?
@@ -611,7 +676,7 @@ module Google
           @sources = args[:sources] unless args[:sources].nil?
         end
       end
-
+      
       # Information about a person holding an elected office.
       class Official
         include Google::Apis::Core::Hashable
@@ -657,6 +722,11 @@ module Google
         attr_accessor :urls
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @address = args[:address] unless args[:address].nil?
           @channels = args[:channels] unless args[:channels].nil?
           @emails = args[:emails] unless args[:emails].nil?
@@ -667,13 +737,13 @@ module Google
           @urls = args[:urls] unless args[:urls].nil?
         end
       end
-
+      
       # A location where a voter can vote. This may be an early vote site, an election
       # day voting location, or a drop off location for a completed ballot.
       class PollingLocation
         include Google::Apis::Core::Hashable
       
-        # The address of the location.
+        # A simple representation of an address.
         # Corresponds to the JSON property `address`
         # @return [Google::Apis::CivicinfoV2::SimpleAddressType]
         attr_accessor :address
@@ -726,6 +796,11 @@ module Google
         attr_accessor :voter_services
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @address = args[:address] unless args[:address].nil?
           @end_date = args[:end_date] unless args[:end_date].nil?
           @id = args[:id] unless args[:id].nil?
@@ -737,7 +812,7 @@ module Google
           @voter_services = args[:voter_services] unless args[:voter_services].nil?
         end
       end
-
+      
       # 
       class RepresentativeInfoData
         include Google::Apis::Core::Hashable
@@ -760,12 +835,17 @@ module Google
         attr_accessor :officials
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @divisions = args[:divisions] unless args[:divisions].nil?
           @offices = args[:offices] unless args[:offices].nil?
           @officials = args[:officials] unless args[:officials].nil?
         end
       end
-
+      
       # The result of a representative info lookup query.
       class RepresentativeInfoResponse
         include Google::Apis::Core::Hashable
@@ -781,7 +861,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The normalized version of the requested address
+        # A simple representation of an address.
         # Corresponds to the JSON property `normalizedInput`
         # @return [Google::Apis::CivicinfoV2::SimpleAddressType]
         attr_accessor :normalized_input
@@ -799,6 +879,11 @@ module Google
         attr_accessor :officials
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @divisions = args[:divisions] unless args[:divisions].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @normalized_input = args[:normalized_input] unless args[:normalized_input].nil?
@@ -806,7 +891,7 @@ module Google
           @officials = args[:officials] unless args[:officials].nil?
         end
       end
-
+      
       # A simple representation of an address.
       class SimpleAddressType
         include Google::Apis::Core::Hashable
@@ -847,6 +932,11 @@ module Google
         attr_accessor :zip
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @city = args[:city] unless args[:city].nil?
           @line1 = args[:line1] unless args[:line1].nil?
           @line2 = args[:line2] unless args[:line2].nil?
@@ -856,7 +946,7 @@ module Google
           @zip = args[:zip] unless args[:zip].nil?
         end
       end
-
+      
       # Contains information about the data source for the element containing it.
       class Source
         include Google::Apis::Core::Hashable
@@ -873,11 +963,16 @@ module Google
         alias_method :official?, :official
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @official = args[:official] unless args[:official].nil?
         end
       end
-
+      
       # The result of a voter info lookup query.
       class VoterInfoResponse
         include Google::Apis::Core::Hashable
@@ -900,7 +995,7 @@ module Google
         # @return [Array<Google::Apis::CivicinfoV2::PollingLocation>]
         attr_accessor :early_vote_sites
       
-        # The election that was queried.
+        # Information about the election that was queried.
         # Corresponds to the JSON property `election`
         # @return [Google::Apis::CivicinfoV2::Election]
         attr_accessor :election
@@ -911,7 +1006,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The normalized version of the requested address
+        # A simple representation of an address.
         # Corresponds to the JSON property `normalizedInput`
         # @return [Google::Apis::CivicinfoV2::SimpleAddressType]
         attr_accessor :normalized_input
@@ -940,6 +1035,11 @@ module Google
         attr_accessor :state
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @contests = args[:contests] unless args[:contests].nil?
           @drop_off_locations = args[:drop_off_locations] unless args[:drop_off_locations].nil?
           @early_vote_sites = args[:early_vote_sites] unless args[:early_vote_sites].nil?

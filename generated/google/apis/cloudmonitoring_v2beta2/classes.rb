@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudmonitoringV2beta2
-
+      
       # The response of cloudmonitoring.metricDescriptors.delete.
       class DeleteMetricDescriptorResponse
         include Google::Apis::Core::Hashable
@@ -33,10 +33,15 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # The request of cloudmonitoring.metricDescriptors.list.
       class ListMetricDescriptorsRequest
         include Google::Apis::Core::Hashable
@@ -48,10 +53,15 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # The response of cloudmonitoring.metricDescriptors.list.
       class ListMetricDescriptorsResponse
         include Google::Apis::Core::Hashable
@@ -75,12 +85,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @metrics = args[:metrics] unless args[:metrics].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # The request of cloudmonitoring.timeseriesDescriptors.list
       class ListTimeseriesDescriptorsRequest
         include Google::Apis::Core::Hashable
@@ -92,10 +107,15 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # The response of cloudmonitoring.timeseriesDescriptors.list
       class ListTimeseriesDescriptorsResponse
         include Google::Apis::Core::Hashable
@@ -120,7 +140,7 @@ module Google
       
         # The returned time series descriptors.
         # Corresponds to the JSON property `timeseries`
-        # @return [Array<Google::Apis::CloudmonitoringV2beta2::TimeseriesDescriptor>]
+        # @return [Array<Google::Apis::CloudmonitoringV2beta2::Descriptor>]
         attr_accessor :timeseries
       
         # The youngest timestamp of the interval of this query, as an RFC 3339 string.
@@ -129,6 +149,11 @@ module Google
         attr_accessor :youngest
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @oldest = args[:oldest] unless args[:oldest].nil?
@@ -136,7 +161,7 @@ module Google
           @youngest = args[:youngest] unless args[:youngest].nil?
         end
       end
-
+      
       # The request of cloudmonitoring.timeseries.list
       class ListTimeseriesRequest
         include Google::Apis::Core::Hashable
@@ -148,10 +173,15 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # The response of cloudmonitoring.timeseries.list
       class ListTimeseriesResponse
         include Google::Apis::Core::Hashable
@@ -186,6 +216,11 @@ module Google
         attr_accessor :youngest
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @oldest = args[:oldest] unless args[:oldest].nil?
@@ -193,7 +228,7 @@ module Google
           @youngest = args[:youngest] unless args[:youngest].nil?
         end
       end
-
+      
       # A metricDescriptor defines the name, label keys, and data type of a particular
       # metric.
       class MetricDescriptor
@@ -219,12 +254,18 @@ module Google
         # @return [String]
         attr_accessor :project
       
-        # Type description for this metric.
+        # A type in a metric contains information about how the metric is collected and
+        # what its data points look like.
         # Corresponds to the JSON property `typeDescriptor`
         # @return [Google::Apis::CloudmonitoringV2beta2::MetricDescriptorTypeDescriptor]
         attr_accessor :type_descriptor
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @description = args[:description] unless args[:description].nil?
           @labels = args[:labels] unless args[:labels].nil?
           @name = args[:name] unless args[:name].nil?
@@ -232,7 +273,7 @@ module Google
           @type_descriptor = args[:type_descriptor] unless args[:type_descriptor].nil?
         end
       end
-
+      
       # A label in a metric is a description of this metric, including the key of this
       # description (what the description is), and the value for this description.
       class MetricDescriptorLabelDescriptor
@@ -249,11 +290,16 @@ module Google
         attr_accessor :key
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @description = args[:description] unless args[:description].nil?
           @key = args[:key] unless args[:key].nil?
         end
       end
-
+      
       # A type in a metric contains information about how the metric is collected and
       # what its data points look like.
       class MetricDescriptorTypeDescriptor
@@ -271,11 +317,16 @@ module Google
         attr_accessor :value_type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @metric_type = args[:metric_type] unless args[:metric_type].nil?
           @value_type = args[:value_type] unless args[:value_type].nil?
         end
       end
-
+      
       # Point is a single point in a time series. It consists of a start time, an end
       # time, and a value.
       class Point
@@ -287,9 +338,10 @@ module Google
         attr_accessor :bool_value
         alias_method :bool_value?, :bool_value
       
-        # The value of this data point as a distribution. A distribution value can
-        # contain a list of buckets and/or an underflowBucket and an overflowBucket. The
-        # values of these points can be used to create a histogram.
+        # Distribution data point value type. When writing distribution points, try to
+        # be consistent with the boundaries of your buckets. If you must modify the
+        # bucket boundaries, then do so by merging, partitioning, or appending rather
+        # than skewing them.
         # Corresponds to the JSON property `distributionValue`
         # @return [Google::Apis::CloudmonitoringV2beta2::PointDistribution]
         attr_accessor :distribution_value
@@ -328,6 +380,11 @@ module Google
         attr_accessor :string_value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bool_value = args[:bool_value] unless args[:bool_value].nil?
           @distribution_value = args[:distribution_value] unless args[:distribution_value].nil?
           @double_value = args[:double_value] unless args[:double_value].nil?
@@ -337,7 +394,7 @@ module Google
           @string_value = args[:string_value] unless args[:string_value].nil?
         end
       end
-
+      
       # Distribution data point value type. When writing distribution points, try to
       # be consistent with the boundaries of your buckets. If you must modify the
       # bucket boundaries, then do so by merging, partitioning, or appending rather
@@ -350,23 +407,30 @@ module Google
         # @return [Array<Google::Apis::CloudmonitoringV2beta2::PointDistributionBucket>]
         attr_accessor :buckets
       
-        # The overflow bucket.
+        # The overflow bucket is a special bucket that does not have the upperBound
+        # field; it includes all of the events that are no less than its lower bound.
         # Corresponds to the JSON property `overflowBucket`
         # @return [Google::Apis::CloudmonitoringV2beta2::PointDistributionOverflowBucket]
         attr_accessor :overflow_bucket
       
-        # The underflow bucket.
+        # The underflow bucket is a special bucket that does not have the lowerBound
+        # field; it includes all of the events that are less than its upper bound.
         # Corresponds to the JSON property `underflowBucket`
         # @return [Google::Apis::CloudmonitoringV2beta2::PointDistributionUnderflowBucket]
         attr_accessor :underflow_bucket
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @buckets = args[:buckets] unless args[:buckets].nil?
           @overflow_bucket = args[:overflow_bucket] unless args[:overflow_bucket].nil?
           @underflow_bucket = args[:underflow_bucket] unless args[:underflow_bucket].nil?
         end
       end
-
+      
       # The histogram's bucket. Buckets that form the histogram of a distribution
       # value. If the upper bound of a bucket, say U1, does not equal the lower bound
       # of the next bucket, say L2, this means that there is no event in [U1, L2).
@@ -389,12 +453,17 @@ module Google
         attr_accessor :upper_bound
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @count = args[:count] unless args[:count].nil?
           @lower_bound = args[:lower_bound] unless args[:lower_bound].nil?
           @upper_bound = args[:upper_bound] unless args[:upper_bound].nil?
         end
       end
-
+      
       # The overflow bucket is a special bucket that does not have the upperBound
       # field; it includes all of the events that are no less than its lower bound.
       class PointDistributionOverflowBucket
@@ -411,11 +480,16 @@ module Google
         attr_accessor :lower_bound
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @count = args[:count] unless args[:count].nil?
           @lower_bound = args[:lower_bound] unless args[:lower_bound].nil?
         end
       end
-
+      
       # The underflow bucket is a special bucket that does not have the lowerBound
       # field; it includes all of the events that are less than its upper bound.
       class PointDistributionUnderflowBucket
@@ -432,11 +506,16 @@ module Google
         attr_accessor :upper_bound
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @count = args[:count] unless args[:count].nil?
           @upper_bound = args[:upper_bound] unless args[:upper_bound].nil?
         end
       end
-
+      
       # The monitoring data is organized as metrics and stored as data points that are
       # recorded over time. Each data point represents information like the CPU
       # utilization of your virtual machine. A historical record of these data points
@@ -450,19 +529,24 @@ module Google
         # @return [Array<Google::Apis::CloudmonitoringV2beta2::Point>]
         attr_accessor :points
       
-        # The descriptor of this time series.
+        # TimeseriesDescriptor identifies a single time series.
         # Corresponds to the JSON property `timeseriesDesc`
-        # @return [Google::Apis::CloudmonitoringV2beta2::TimeseriesDescriptor]
+        # @return [Google::Apis::CloudmonitoringV2beta2::Descriptor]
         attr_accessor :timeseries_desc
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @points = args[:points] unless args[:points].nil?
           @timeseries_desc = args[:timeseries_desc] unless args[:timeseries_desc].nil?
         end
       end
-
+      
       # TimeseriesDescriptor identifies a single time series.
-      class TimeseriesDescriptor
+      class Descriptor
         include Google::Apis::Core::Hashable
       
         # The label's name.
@@ -481,14 +565,19 @@ module Google
         attr_accessor :project
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @labels = args[:labels] unless args[:labels].nil?
           @metric = args[:metric] unless args[:metric].nil?
           @project = args[:project] unless args[:project].nil?
         end
       end
-
+      
       # 
-      class TimeseriesDescriptorLabel
+      class DescriptorLabel
         include Google::Apis::Core::Hashable
       
         # The label's name.
@@ -502,32 +591,43 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @key = args[:key] unless args[:key].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # When writing time series, TimeseriesPoint should be used instead of Timeseries,
       # to enforce single point for each time series in the timeseries.write request.
       class TimeseriesPoint
         include Google::Apis::Core::Hashable
       
-        # The data point in this time series snapshot.
+        # Point is a single point in a time series. It consists of a start time, an end
+        # time, and a value.
         # Corresponds to the JSON property `point`
         # @return [Google::Apis::CloudmonitoringV2beta2::Point]
         attr_accessor :point
       
-        # The descriptor of this time series.
+        # TimeseriesDescriptor identifies a single time series.
         # Corresponds to the JSON property `timeseriesDesc`
-        # @return [Google::Apis::CloudmonitoringV2beta2::TimeseriesDescriptor]
+        # @return [Google::Apis::CloudmonitoringV2beta2::Descriptor]
         attr_accessor :timeseries_desc
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @point = args[:point] unless args[:point].nil?
           @timeseries_desc = args[:timeseries_desc] unless args[:timeseries_desc].nil?
         end
       end
-
+      
       # The request of cloudmonitoring.timeseries.write
       class WriteTimeseriesRequest
         include Google::Apis::Core::Hashable
@@ -545,11 +645,16 @@ module Google
         attr_accessor :timeseries
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @common_labels = args[:common_labels] unless args[:common_labels].nil?
           @timeseries = args[:timeseries] unless args[:timeseries].nil?
         end
       end
-
+      
       # The response of cloudmonitoring.timeseries.write
       class WriteTimeseriesResponse
         include Google::Apis::Core::Hashable
@@ -561,6 +666,11 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
         end
       end

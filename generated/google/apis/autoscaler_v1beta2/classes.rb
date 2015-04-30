@@ -21,12 +21,12 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AutoscalerV1beta2
-
+      
       # Cloud Autoscaler resource.
       class Autoscaler
         include Google::Apis::Core::Hashable
       
-        # Configuration parameters for autoscaling algorithm.
+        # Cloud Autoscaler policy.
         # Corresponds to the JSON property `autoscalingPolicy`
         # @return [Google::Apis::AutoscalerV1beta2::AutoscalingPolicy]
         attr_accessor :autoscaling_policy
@@ -69,6 +69,11 @@ module Google
         attr_accessor :target
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @autoscaling_policy = args[:autoscaling_policy] unless args[:autoscaling_policy].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
@@ -79,7 +84,7 @@ module Google
           @target = args[:target] unless args[:target].nil?
         end
       end
-
+      
       # 
       class ListResponse
         include Google::Apis::Core::Hashable
@@ -100,12 +105,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Cloud Autoscaler policy.
       class AutoscalingPolicy
         include Google::Apis::Core::Hashable
@@ -119,8 +129,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :cool_down_period_sec
       
-        # Exactly one utilization policy should be provided. Configuration parameters of
-        # CPU based autoscaling policy.
+        # CPU utilization policy.
         # Corresponds to the JSON property `cpuUtilization`
         # @return [Google::Apis::AutoscalerV1beta2::AutoscalingPolicyCpuUtilization]
         attr_accessor :cpu_utilization
@@ -130,7 +139,7 @@ module Google
         # @return [Array<Google::Apis::AutoscalerV1beta2::AutoscalingPolicyCustomMetricUtilization>]
         attr_accessor :custom_metric_utilizations
       
-        # Configuration parameters of autoscaling based on load balancer.
+        # Load balancing utilization policy.
         # Corresponds to the JSON property `loadBalancingUtilization`
         # @return [Google::Apis::AutoscalerV1beta2::AutoscalingPolicyLoadBalancingUtilization]
         attr_accessor :load_balancing_utilization
@@ -146,6 +155,11 @@ module Google
         attr_accessor :min_num_replicas
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cool_down_period_sec = args[:cool_down_period_sec] unless args[:cool_down_period_sec].nil?
           @cpu_utilization = args[:cpu_utilization] unless args[:cpu_utilization].nil?
           @custom_metric_utilizations = args[:custom_metric_utilizations] unless args[:custom_metric_utilizations].nil?
@@ -154,7 +168,7 @@ module Google
           @min_num_replicas = args[:min_num_replicas] unless args[:min_num_replicas].nil?
         end
       end
-
+      
       # CPU utilization policy.
       class AutoscalingPolicyCpuUtilization
         include Google::Apis::Core::Hashable
@@ -168,10 +182,15 @@ module Google
         attr_accessor :utilization_target
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @utilization_target = args[:utilization_target] unless args[:utilization_target].nil?
         end
       end
-
+      
       # Custom utilization metric policy.
       class AutoscalingPolicyCustomMetricUtilization
         include Google::Apis::Core::Hashable
@@ -197,12 +216,17 @@ module Google
         attr_accessor :utilization_target_type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @metric = args[:metric] unless args[:metric].nil?
           @utilization_target = args[:utilization_target] unless args[:utilization_target].nil?
           @utilization_target_type = args[:utilization_target_type] unless args[:utilization_target_type].nil?
         end
       end
-
+      
       # Load balancing utilization policy.
       class AutoscalingPolicyLoadBalancingUtilization
         include Google::Apis::Core::Hashable
@@ -218,10 +242,15 @@ module Google
         attr_accessor :utilization_target
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @utilization_target = args[:utilization_target] unless args[:utilization_target].nil?
         end
       end
-
+      
       # 
       class DeprecationStatus
         include Google::Apis::Core::Hashable
@@ -252,6 +281,11 @@ module Google
         attr_accessor :state
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @deleted = args[:deleted] unless args[:deleted].nil?
           @deprecated = args[:deprecated] unless args[:deprecated].nil?
           @obsolete = args[:obsolete] unless args[:obsolete].nil?
@@ -259,7 +293,7 @@ module Google
           @state = args[:state] unless args[:state].nil?
         end
       end
-
+      
       # 
       class Operation
         include Google::Apis::Core::Hashable
@@ -376,6 +410,11 @@ module Google
         attr_accessor :zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @client_operation_id = args[:client_operation_id] unless args[:client_operation_id].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @end_time = args[:end_time] unless args[:end_time].nil?
@@ -399,6 +438,7 @@ module Google
           @warnings = args[:warnings] unless args[:warnings].nil?
           @zone = args[:zone] unless args[:zone].nil?
         end
+        
         # 
         class Error
           include Google::Apis::Core::Hashable
@@ -409,8 +449,14 @@ module Google
           attr_accessor :errors
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @errors = args[:errors] unless args[:errors].nil?
           end
+          
           # 
           class Error
             include Google::Apis::Core::Hashable
@@ -431,12 +477,18 @@ module Google
             attr_accessor :message
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @code = args[:code] unless args[:code].nil?
               @location = args[:location] unless args[:location].nil?
               @message = args[:message] unless args[:message].nil?
             end
           end
         end
+        
         # 
         class Warning
           include Google::Apis::Core::Hashable
@@ -457,10 +509,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -476,13 +534,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # 
       class OperationList
         include Google::Apis::Core::Hashable
@@ -513,6 +576,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -520,7 +588,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
       class Zone
         include Google::Apis::Core::Hashable
@@ -576,6 +644,11 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @deprecated = args[:deprecated] unless args[:deprecated].nil?
           @description = args[:description] unless args[:description].nil?
@@ -587,6 +660,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
           @status = args[:status] unless args[:status].nil?
         end
+        
         # 
         class MaintenanceWindow
           include Google::Apis::Core::Hashable
@@ -612,6 +686,11 @@ module Google
           attr_accessor :name
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @begin_time = args[:begin_time] unless args[:begin_time].nil?
             @description = args[:description] unless args[:description].nil?
             @end_time = args[:end_time] unless args[:end_time].nil?
@@ -619,7 +698,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class ZoneList
         include Google::Apis::Core::Hashable
@@ -650,6 +729,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?

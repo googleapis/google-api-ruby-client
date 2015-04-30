@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AndroidenterpriseV1
-
+      
       # Represents the list of app restrictions available to be pre-configured for the
       # product.
       class AppRestrictionsSchema
@@ -33,16 +33,21 @@ module Google
         attr_accessor :restrictions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @restrictions = args[:restrictions] unless args[:restrictions].nil?
         end
       end
-
+      
       # A restriction in the App Restriction Schema represents a piece of
       # configuration that may be pre-applied.
       class AppRestrictionsSchemaRestriction
         include Google::Apis::Core::Hashable
       
-        # The default value of the restriction.
+        # A typed value for the restriction.
         # Corresponds to the JSON property `defaultValue`
         # @return [Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestrictionRestrictionValue]
         attr_accessor :default_value
@@ -81,6 +86,11 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @default_value = args[:default_value] unless args[:default_value].nil?
           @description = args[:description] unless args[:description].nil?
           @entry = args[:entry] unless args[:entry].nil?
@@ -90,7 +100,7 @@ module Google
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # A typed value for the restriction.
       class AppRestrictionsSchemaRestrictionRestrictionValue
         include Google::Apis::Core::Hashable
@@ -122,6 +132,11 @@ module Google
         attr_accessor :value_string
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @type = args[:type] unless args[:type].nil?
           @value_bool = args[:value_bool] unless args[:value_bool].nil?
           @value_integer = args[:value_integer] unless args[:value_integer].nil?
@@ -129,7 +144,7 @@ module Google
           @value_string = args[:value_string] unless args[:value_string].nil?
         end
       end
-
+      
       # A collection resource defines a named set of apps that is visible to a set of
       # users in the Google Play Store app running on those users' managed devices.
       # Those users can then install any of those apps if they wish (which will
@@ -177,6 +192,11 @@ module Google
         attr_accessor :visibility
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @collection_id = args[:collection_id] unless args[:collection_id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
@@ -184,7 +204,7 @@ module Google
           @visibility = args[:visibility] unless args[:visibility].nil?
         end
       end
-
+      
       # The user resources for the collection.
       class CollectionViewersListResponse
         include Google::Apis::Core::Hashable
@@ -201,13 +221,18 @@ module Google
         attr_accessor :user
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @user = args[:user] unless args[:user].nil?
         end
       end
-
+      
       # The collection resources for the enterprise.
-      class CollectionsListResponse
+      class ListResponse
         include Google::Apis::Core::Hashable
       
         # An ordered collection of products which can be made visible on the Google Play
@@ -223,11 +248,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @collection = args[:collection] unless args[:collection].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A device resource represents a mobile device managed by the MDM and belonging
       # to a specific enterprise user.
       # This collection cannot be modified via the API; it is automatically populated
@@ -248,11 +278,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @android_id = args[:android_id] unless args[:android_id].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # The state of a user's device, as accessed by the getState and setState methods
       # on device resources.
       class DeviceState
@@ -273,11 +308,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_state = args[:account_state] unless args[:account_state].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # The device resources for the user.
       class DevicesListResponse
         include Google::Apis::Core::Hashable
@@ -294,11 +334,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @device = args[:device] unless args[:device].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # An enterprise resource represents a binding between an organisation and their
       # MDM.
       # To create an enterprise, an admin of the enterprise must first go through a
@@ -348,13 +393,18 @@ module Google
         attr_accessor :primary_domain
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
           @primary_domain = args[:primary_domain] unless args[:primary_domain].nil?
         end
       end
-
+      
       # A service account that can be used to authenticate as the enterprise to API
       # calls that require such authentication.
       class EnterpriseAccount
@@ -372,11 +422,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_email = args[:account_email] unless args[:account_email].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # The matching enterprise resources.
       class EnterprisesListResponse
         include Google::Apis::Core::Hashable
@@ -393,11 +448,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @enterprise = args[:enterprise] unless args[:enterprise].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # The existence of an entitlement resource means that a user has the right to
       # use a particular app on any of their devices. This might be because the app is
       # free or because they have been allocated a license to the app from a group
@@ -444,12 +504,17 @@ module Google
         attr_accessor :reason
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @product_id = args[:product_id] unless args[:product_id].nil?
           @reason = args[:reason] unless args[:reason].nil?
         end
       end
-
+      
       # The entitlement resources for the user.
       class EntitlementsListResponse
         include Google::Apis::Core::Hashable
@@ -468,11 +533,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entitlement = args[:entitlement] unless args[:entitlement].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A group license object indicates a product that an enterprise admin has
       # approved for use in the enterprise. The product may be free or paid. For free
       # products, a group license object is created in these cases: if the enterprise
@@ -536,6 +606,11 @@ module Google
         attr_accessor :product_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @acquisition_kind = args[:acquisition_kind] unless args[:acquisition_kind].nil?
           @approval = args[:approval] unless args[:approval].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -544,7 +619,7 @@ module Google
           @product_id = args[:product_id] unless args[:product_id].nil?
         end
       end
-
+      
       # The user resources for the group license.
       class GroupLicenseUsersListResponse
         include Google::Apis::Core::Hashable
@@ -561,11 +636,16 @@ module Google
         attr_accessor :user
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @user = args[:user] unless args[:user].nil?
         end
       end
-
+      
       # The grouplicense resources for the enterprise.
       class GroupLicensesListResponse
         include Google::Apis::Core::Hashable
@@ -582,11 +662,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @group_license = args[:group_license] unless args[:group_license].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # The existence of an install resource indicates that an app is installed on a
       # particular device (or that an install is pending).
       # The API can be used to create an install resource using the update method.
@@ -636,13 +721,18 @@ module Google
         attr_accessor :version_code
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @install_state = args[:install_state] unless args[:install_state].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @product_id = args[:product_id] unless args[:product_id].nil?
           @version_code = args[:version_code] unless args[:version_code].nil?
         end
       end
-
+      
       # The install resources for the device.
       class InstallsListResponse
         include Google::Apis::Core::Hashable
@@ -660,11 +750,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @install = args[:install] unless args[:install].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A permission represents some extra capability, to be granted to an Android app,
       # which requires explicit consent. An enterprise admin must consent to these
       # permissions on behalf of their users before an entitlement for the app can be
@@ -697,13 +792,18 @@ module Google
         attr_accessor :permission_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @description = args[:description] unless args[:description].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
           @permission_id = args[:permission_id] unless args[:permission_id].nil?
         end
       end
-
+      
       # A product represents an app in the Google Play Store that is available to at
       # least some users in the enterprise. (Some apps are restricted to a single
       # enterprise, and no information about them is made available outside that
@@ -753,6 +853,11 @@ module Google
         attr_accessor :work_details_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @author_name = args[:author_name] unless args[:author_name].nil?
           @details_url = args[:details_url] unless args[:details_url].nil?
           @icon_url = args[:icon_url] unless args[:icon_url].nil?
@@ -762,7 +867,7 @@ module Google
           @work_details_url = args[:work_details_url] unless args[:work_details_url].nil?
         end
       end
-
+      
       # A product permissions resource represents the set of permissions required by a
       # specific app and whether or not they have been accepted by an enterprise admin.
       # The API can be used to read the set of permissions, and also to update the set
@@ -781,11 +886,16 @@ module Google
         attr_accessor :state
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @permission_id = args[:permission_id] unless args[:permission_id].nil?
           @state = args[:state] unless args[:state].nil?
         end
       end
-
+      
       # Information about the permissions required by a specific app and whether they
       # have been accepted by the enterprise.
       class ProductPermissions
@@ -809,12 +919,17 @@ module Google
         attr_accessor :product_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @permission = args[:permission] unless args[:permission].nil?
           @product_id = args[:product_id] unless args[:product_id].nil?
         end
       end
-
+      
       # A user resource represents an individual user within the enterprise's domain.
       # Note that each user is associated with a Google account based on the user's
       # corporate email address (which must be in one of the enterprise's domains). As
@@ -843,12 +958,17 @@ module Google
         attr_accessor :primary_email
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @primary_email = args[:primary_email] unless args[:primary_email].nil?
         end
       end
-
+      
       # A UserToken is used by a user when setting up a managed device or profile with
       # their work account on a device. When the user enters their email address and
       # token (activation code) the appropriate MDM app can be automatically
@@ -874,12 +994,17 @@ module Google
         attr_accessor :user_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @token = args[:token] unless args[:token].nil?
           @user_id = args[:user_id] unless args[:user_id].nil?
         end
       end
-
+      
       # The matching user resources.
       class UsersListResponse
         include Google::Apis::Core::Hashable
@@ -896,6 +1021,11 @@ module Google
         attr_accessor :user
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @user = args[:user] unless args[:user].nil?
         end

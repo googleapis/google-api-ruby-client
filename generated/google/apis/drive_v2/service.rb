@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/drive/
       class DriveService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'drive/v2/')
         end
-
+        
         # Gets the information about the current user along with Drive API settings
         # @param [Boolean] include_subscribed
         #   When calculating the number of remaining change IDs, whether to include public
@@ -73,7 +72,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -88,7 +87,7 @@ module Google
         def get_about(include_subscribed: nil, max_change_id_count: nil, start_change_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'about'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::AboutRepresentation
+          command.response_representation = Google::Apis::DriveV2::About::Representation
           command.response_class = Google::Apis::DriveV2::About
           command.query['includeSubscribed'] = include_subscribed unless include_subscribed.nil?
           command.query['maxChangeIdCount'] = max_change_id_count unless max_change_id_count.nil?
@@ -98,7 +97,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Gets a specific app.
         # @param [String] app_id
         #   The ID of the app.
@@ -111,7 +110,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -126,7 +125,7 @@ module Google
         def get_app(app_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'apps/{appId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::AppRepresentation
+          command.response_representation = Google::Apis::DriveV2::App::Representation
           command.response_class = Google::Apis::DriveV2::App
           command.params['appId'] = app_id unless app_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -134,7 +133,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists a user's installed apps.
         # @param [String] app_filter_extensions
@@ -159,7 +157,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -174,7 +172,7 @@ module Google
         def list_apps(app_filter_extensions: nil, app_filter_mime_types: nil, language_code: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'apps'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::AppListRepresentation
+          command.response_representation = Google::Apis::DriveV2::AppList::Representation
           command.response_class = Google::Apis::DriveV2::AppList
           command.query['appFilterExtensions'] = app_filter_extensions unless app_filter_extensions.nil?
           command.query['appFilterMimeTypes'] = app_filter_mime_types unless app_filter_mime_types.nil?
@@ -184,7 +182,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Gets a specific change.
         # @param [String] change_id
         #   The ID of the change.
@@ -197,7 +195,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -212,7 +210,7 @@ module Google
         def get_change(change_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'changes/{changeId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::ChangeRepresentation
+          command.response_representation = Google::Apis::DriveV2::Change::Representation
           command.response_class = Google::Apis::DriveV2::Change
           command.params['changeId'] = change_id unless change_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -220,7 +218,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists the changes for a user.
         # @param [Boolean] include_deleted
@@ -244,7 +241,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -259,7 +256,7 @@ module Google
         def list_changes(include_deleted: nil, include_subscribed: nil, max_results: nil, page_token: nil, start_change_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'changes'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::ChangeListRepresentation
+          command.response_representation = Google::Apis::DriveV2::ChangeList::Representation
           command.response_class = Google::Apis::DriveV2::ChangeList
           command.query['includeDeleted'] = include_deleted unless include_deleted.nil?
           command.query['includeSubscribed'] = include_subscribed unless include_subscribed.nil?
@@ -272,10 +269,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Subscribe to changes for a user.
-        # @param [Google::Apis::DriveV2::Channel] channel
-        #   
+        # @param [Google::Apis::DriveV2::Channel] channel_object
         # @param [Boolean] include_deleted
         #   Whether to include deleted items.
         # @param [Boolean] include_subscribed
@@ -297,7 +292,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -309,12 +304,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_change(channel = nil, include_deleted: nil, include_subscribed: nil, max_results: nil, page_token: nil, start_change_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_change(channel_object = nil, include_deleted: nil, include_subscribed: nil, max_results: nil, page_token: nil, start_change_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'changes/watch'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DriveV2::ChannelRepresentation
-          command.request_object = channel
-          command.response_representation = Google::Apis::DriveV2::ChannelRepresentation
+          command.request_representation = Google::Apis::DriveV2::Channel::Representation
+          command.request_object = channel_object
+          command.response_representation = Google::Apis::DriveV2::Channel::Representation
           command.response_class = Google::Apis::DriveV2::Channel
           command.query['includeDeleted'] = include_deleted unless include_deleted.nil?
           command.query['includeSubscribed'] = include_subscribed unless include_subscribed.nil?
@@ -326,10 +321,9 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Stop watching resources through this channel
-        # @param [Google::Apis::DriveV2::Channel] channel
-        #   
+        # @param [Google::Apis::DriveV2::Channel] channel_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -339,7 +333,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -351,17 +345,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_channel(channel = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def stop_channel(channel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'channels/stop'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DriveV2::ChannelRepresentation
-          command.request_object = channel
+          command.request_representation = Google::Apis::DriveV2::Channel::Representation
+          command.request_object = channel_object
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Removes a child from a folder.
         # @param [String] folder_id
         #   The ID of the folder.
@@ -376,7 +370,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -399,7 +393,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets a specific child reference.
         # @param [String] folder_id
         #   The ID of the folder.
@@ -414,7 +407,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -429,7 +422,7 @@ module Google
         def get_child(folder_id, child_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{folderId}/children/{childId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::ChildReferenceRepresentation
+          command.response_representation = Google::Apis::DriveV2::ChildReference::Representation
           command.response_class = Google::Apis::DriveV2::ChildReference
           command.params['folderId'] = folder_id unless folder_id.nil?
           command.params['childId'] = child_id unless child_id.nil?
@@ -439,12 +432,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Inserts a file into a folder.
         # @param [String] folder_id
         #   The ID of the folder.
-        # @param [Google::Apis::DriveV2::ChildReference] child_reference
-        #   
+        # @param [Google::Apis::DriveV2::ChildReference] child_reference_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -454,7 +445,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -466,12 +457,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_child(folder_id, child_reference = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_child(folder_id, child_reference_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{folderId}/children'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DriveV2::ChildReferenceRepresentation
-          command.request_object = child_reference
-          command.response_representation = Google::Apis::DriveV2::ChildReferenceRepresentation
+          command.request_representation = Google::Apis::DriveV2::ChildReference::Representation
+          command.request_object = child_reference_object
+          command.response_representation = Google::Apis::DriveV2::ChildReference::Representation
           command.response_class = Google::Apis::DriveV2::ChildReference
           command.params['folderId'] = folder_id unless folder_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -479,7 +470,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists a folder's children.
         # @param [String] folder_id
@@ -499,7 +489,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -514,7 +504,7 @@ module Google
         def list_children(folder_id, max_results: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{folderId}/children'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::ChildListRepresentation
+          command.response_representation = Google::Apis::DriveV2::ChildList::Representation
           command.response_class = Google::Apis::DriveV2::ChildList
           command.params['folderId'] = folder_id unless folder_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -525,7 +515,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Deletes a comment.
         # @param [String] file_id
         #   The ID of the file.
@@ -540,7 +530,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -563,7 +553,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets a comment by ID.
         # @param [String] file_id
         #   The ID of the file.
@@ -581,7 +570,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -596,7 +585,7 @@ module Google
         def get_comment(file_id, comment_id, include_deleted: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/comments/{commentId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::CommentRepresentation
+          command.response_representation = Google::Apis::DriveV2::Comment::Representation
           command.response_class = Google::Apis::DriveV2::Comment
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['commentId'] = comment_id unless comment_id.nil?
@@ -607,12 +596,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates a new comment on the given file.
         # @param [String] file_id
         #   The ID of the file.
-        # @param [Google::Apis::DriveV2::Comment] comment
-        #   
+        # @param [Google::Apis::DriveV2::Comment] comment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -622,7 +609,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -634,12 +621,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_comment(file_id, comment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_comment(file_id, comment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/comments'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DriveV2::CommentRepresentation
-          command.request_object = comment
-          command.response_representation = Google::Apis::DriveV2::CommentRepresentation
+          command.request_representation = Google::Apis::DriveV2::Comment::Representation
+          command.request_object = comment_object
+          command.response_representation = Google::Apis::DriveV2::Comment::Representation
           command.response_class = Google::Apis::DriveV2::Comment
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -647,7 +634,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists a file's comments.
         # @param [String] file_id
@@ -673,7 +659,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -688,7 +674,7 @@ module Google
         def list_comments(file_id, include_deleted: nil, max_results: nil, page_token: nil, updated_min: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/comments'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::CommentListRepresentation
+          command.response_representation = Google::Apis::DriveV2::CommentList::Representation
           command.response_class = Google::Apis::DriveV2::CommentList
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['includeDeleted'] = include_deleted unless include_deleted.nil?
@@ -701,14 +687,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an existing comment. This method supports patch semantics.
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
         #   The ID of the comment.
-        # @param [Google::Apis::DriveV2::Comment] comment
-        #   
+        # @param [Google::Apis::DriveV2::Comment] comment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -718,7 +702,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -730,12 +714,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_comment(file_id, comment_id, comment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_comment(file_id, comment_id, comment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/comments/{commentId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::DriveV2::CommentRepresentation
-          command.request_object = comment
-          command.response_representation = Google::Apis::DriveV2::CommentRepresentation
+          command.request_representation = Google::Apis::DriveV2::Comment::Representation
+          command.request_object = comment_object
+          command.response_representation = Google::Apis::DriveV2::Comment::Representation
           command.response_class = Google::Apis::DriveV2::Comment
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['commentId'] = comment_id unless comment_id.nil?
@@ -744,15 +728,13 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates an existing comment.
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
         #   The ID of the comment.
-        # @param [Google::Apis::DriveV2::Comment] comment
-        #   
+        # @param [Google::Apis::DriveV2::Comment] comment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -762,7 +744,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -774,12 +756,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_comment(file_id, comment_id, comment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_comment(file_id, comment_id, comment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/comments/{commentId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::DriveV2::CommentRepresentation
-          command.request_object = comment
-          command.response_representation = Google::Apis::DriveV2::CommentRepresentation
+          command.request_representation = Google::Apis::DriveV2::Comment::Representation
+          command.request_object = comment_object
+          command.response_representation = Google::Apis::DriveV2::Comment::Representation
           command.response_class = Google::Apis::DriveV2::Comment
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['commentId'] = comment_id unless comment_id.nil?
@@ -788,12 +770,11 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Creates a copy of the specified file.
         # @param [String] file_id
         #   The ID of the file to copy.
-        # @param [Google::Apis::DriveV2::File] file
-        #   
+        # @param [Google::Apis::DriveV2::File] file_object
         # @param [Boolean] convert
         #   Whether to convert this file to the corresponding Google Docs format.
         # @param [Boolean] ocr
@@ -819,7 +800,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -831,12 +812,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def copy_file(file_id, file = nil, convert: nil, ocr: nil, ocr_language: nil, pinned: nil, timed_text_language: nil, timed_text_track_name: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def copy_file(file_id, file_object = nil, convert: nil, ocr: nil, ocr_language: nil, pinned: nil, timed_text_language: nil, timed_text_track_name: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/copy'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DriveV2::FileRepresentation
-          command.request_object = file
-          command.response_representation = Google::Apis::DriveV2::FileRepresentation
+          command.request_representation = Google::Apis::DriveV2::File::Representation
+          command.request_object = file_object
+          command.response_representation = Google::Apis::DriveV2::File::Representation
           command.response_class = Google::Apis::DriveV2::File
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['convert'] = convert unless convert.nil?
@@ -852,7 +833,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Permanently deletes a file by ID. Skips the trash. The currently authenticated
         # user must own the file.
         # @param [String] file_id
@@ -866,7 +846,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -888,7 +868,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Permanently deletes all of the user's trashed files.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -899,7 +878,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -919,7 +898,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Gets a file's metadata by ID.
         # @param [String] file_id
@@ -945,7 +923,7 @@ module Google
         #   enforce per-user limits.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -965,7 +943,7 @@ module Google
             command = make_download_command(:get, path, options)
             command.download_dest = download_dest
           end
-          command.response_representation = Google::Apis::DriveV2::FileRepresentation
+          command.response_representation = Google::Apis::DriveV2::File::Representation
           command.response_class = Google::Apis::DriveV2::File
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['acknowledgeAbuse'] = acknowledge_abuse unless acknowledge_abuse.nil?
@@ -978,10 +956,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Insert a new file.
-        # @param [Google::Apis::DriveV2::File] file
-        #   
+        # @param [Google::Apis::DriveV2::File] file_object
         # @param [Boolean] convert
         #   Whether to convert this file to the corresponding Google Docs format.
         # @param [Boolean] ocr
@@ -1013,7 +989,7 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1025,7 +1001,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_file(file = nil, convert: nil, ocr: nil, ocr_language: nil, pinned: nil, timed_text_language: nil, timed_text_track_name: nil, use_content_as_indexable_text: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_file(file_object = nil, convert: nil, ocr: nil, ocr_language: nil, pinned: nil, timed_text_language: nil, timed_text_track_name: nil, use_content_as_indexable_text: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'files'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -1034,9 +1010,9 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.request_representation = Google::Apis::DriveV2::FileRepresentation
-          command.request_object = file
-          command.response_representation = Google::Apis::DriveV2::FileRepresentation
+          command.request_representation = Google::Apis::DriveV2::File::Representation
+          command.request_object = file_object
+          command.response_representation = Google::Apis::DriveV2::File::Representation
           command.response_class = Google::Apis::DriveV2::File
           command.query['convert'] = convert unless convert.nil?
           command.query['ocr'] = ocr unless ocr.nil?
@@ -1051,7 +1027,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists the user's files.
         # @param [String] corpus
@@ -1073,7 +1048,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1088,7 +1063,7 @@ module Google
         def list_files(corpus: nil, max_results: nil, page_token: nil, projection: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::FileListRepresentation
+          command.response_representation = Google::Apis::DriveV2::FileList::Representation
           command.response_class = Google::Apis::DriveV2::FileList
           command.query['corpus'] = corpus unless corpus.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -1101,12 +1076,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates file metadata and/or content. This method supports patch semantics.
         # @param [String] file_id
         #   The ID of the file to update.
-        # @param [Google::Apis::DriveV2::File] file
-        #   
+        # @param [Google::Apis::DriveV2::File] file_object
         # @param [String] add_parents
         #   Comma-separated list of parent IDs to add.
         # @param [Boolean] convert
@@ -1144,7 +1117,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1156,12 +1129,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_file(file_id, file = nil, add_parents: nil, convert: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_file(file_id, file_object = nil, add_parents: nil, convert: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::DriveV2::FileRepresentation
-          command.request_object = file
-          command.response_representation = Google::Apis::DriveV2::FileRepresentation
+          command.request_representation = Google::Apis::DriveV2::File::Representation
+          command.request_object = file_object
+          command.response_representation = Google::Apis::DriveV2::File::Representation
           command.response_class = Google::Apis::DriveV2::File
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['addParents'] = add_parents unless add_parents.nil?
@@ -1182,7 +1155,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Set the file's updated time to the current server time.
         # @param [String] file_id
         #   The ID of the file to update.
@@ -1195,7 +1167,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1210,7 +1182,7 @@ module Google
         def touch_file(file_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/touch'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::DriveV2::FileRepresentation
+          command.response_representation = Google::Apis::DriveV2::File::Representation
           command.response_class = Google::Apis::DriveV2::File
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1218,7 +1190,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Moves a file to the trash.
         # @param [String] file_id
@@ -1232,7 +1203,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1247,7 +1218,7 @@ module Google
         def trash_file(file_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/trash'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::DriveV2::FileRepresentation
+          command.response_representation = Google::Apis::DriveV2::File::Representation
           command.response_class = Google::Apis::DriveV2::File
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1255,7 +1226,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Restores a file from the trash.
         # @param [String] file_id
@@ -1269,7 +1239,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1284,7 +1254,7 @@ module Google
         def untrash_file(file_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/untrash'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::DriveV2::FileRepresentation
+          command.response_representation = Google::Apis::DriveV2::File::Representation
           command.response_class = Google::Apis::DriveV2::File
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1293,12 +1263,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates file metadata and/or content.
         # @param [String] file_id
         #   The ID of the file to update.
-        # @param [Google::Apis::DriveV2::File] file
-        #   
+        # @param [Google::Apis::DriveV2::File] file_object
         # @param [String] add_parents
         #   Comma-separated list of parent IDs to add.
         # @param [Boolean] convert
@@ -1340,7 +1308,7 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1352,7 +1320,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_file(file_id, file = nil, add_parents: nil, convert: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def update_file(file_id, file_object = nil, add_parents: nil, convert: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'files/{fileId}'
           if upload_source.nil?
             command =  make_simple_command(:put, path, options)
@@ -1361,9 +1329,9 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.request_representation = Google::Apis::DriveV2::FileRepresentation
-          command.request_object = file
-          command.response_representation = Google::Apis::DriveV2::FileRepresentation
+          command.request_representation = Google::Apis::DriveV2::File::Representation
+          command.request_object = file_object
+          command.response_representation = Google::Apis::DriveV2::File::Representation
           command.response_class = Google::Apis::DriveV2::File
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['addParents'] = add_parents unless add_parents.nil?
@@ -1384,12 +1352,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Subscribe to changes on a file
         # @param [String] file_id
         #   The ID for the file in question.
-        # @param [Google::Apis::DriveV2::Channel] channel
-        #   
+        # @param [Google::Apis::DriveV2::Channel] channel_object
         # @param [Boolean] acknowledge_abuse
         #   Whether the user is acknowledging the risk of downloading known malware or
         #   other abusive files.
@@ -1411,7 +1377,7 @@ module Google
         #   enforce per-user limits.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1423,7 +1389,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_file(file_id, channel = nil, acknowledge_abuse: nil, projection: nil, revision_id: nil, update_viewed_date: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def watch_file(file_id, channel_object = nil, acknowledge_abuse: nil, projection: nil, revision_id: nil, update_viewed_date: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           path = 'files/{fileId}/watch'
           if download_dest.nil?
             command =  make_simple_command(:post, path, options)
@@ -1431,9 +1397,9 @@ module Google
             command = make_download_command(:post, path, options)
             command.download_dest = download_dest
           end
-          command.request_representation = Google::Apis::DriveV2::ChannelRepresentation
-          command.request_object = channel
-          command.response_representation = Google::Apis::DriveV2::ChannelRepresentation
+          command.request_representation = Google::Apis::DriveV2::Channel::Representation
+          command.request_object = channel_object
+          command.response_representation = Google::Apis::DriveV2::Channel::Representation
           command.response_class = Google::Apis::DriveV2::Channel
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['acknowledgeAbuse'] = acknowledge_abuse unless acknowledge_abuse.nil?
@@ -1445,7 +1411,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Removes a parent from a file.
         # @param [String] file_id
         #   The ID of the file.
@@ -1460,7 +1426,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1483,7 +1449,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets a specific parent reference.
         # @param [String] file_id
         #   The ID of the file.
@@ -1498,7 +1463,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1513,7 +1478,7 @@ module Google
         def get_parent(file_id, parent_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/parents/{parentId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::ParentReferenceRepresentation
+          command.response_representation = Google::Apis::DriveV2::ParentReference::Representation
           command.response_class = Google::Apis::DriveV2::ParentReference
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['parentId'] = parent_id unless parent_id.nil?
@@ -1523,12 +1488,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Adds a parent folder for a file.
         # @param [String] file_id
         #   The ID of the file.
-        # @param [Google::Apis::DriveV2::ParentReference] parent_reference
-        #   
+        # @param [Google::Apis::DriveV2::ParentReference] parent_reference_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1538,7 +1501,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1550,12 +1513,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_parent(file_id, parent_reference = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_parent(file_id, parent_reference_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/parents'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DriveV2::ParentReferenceRepresentation
-          command.request_object = parent_reference
-          command.response_representation = Google::Apis::DriveV2::ParentReferenceRepresentation
+          command.request_representation = Google::Apis::DriveV2::ParentReference::Representation
+          command.request_object = parent_reference_object
+          command.response_representation = Google::Apis::DriveV2::ParentReference::Representation
           command.response_class = Google::Apis::DriveV2::ParentReference
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1563,7 +1526,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists a file's parents.
         # @param [String] file_id
@@ -1577,7 +1539,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1592,7 +1554,7 @@ module Google
         def list_parents(file_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/parents'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::ParentListRepresentation
+          command.response_representation = Google::Apis::DriveV2::ParentList::Representation
           command.response_class = Google::Apis::DriveV2::ParentList
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1600,7 +1562,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Deletes a permission from a file.
         # @param [String] file_id
         #   The ID for the file.
@@ -1615,7 +1577,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1638,7 +1600,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets a permission by ID.
         # @param [String] file_id
         #   The ID for the file.
@@ -1653,7 +1614,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1668,7 +1629,7 @@ module Google
         def get_permission(file_id, permission_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/permissions/{permissionId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::PermissionRepresentation
+          command.response_representation = Google::Apis::DriveV2::Permission::Representation
           command.response_class = Google::Apis::DriveV2::Permission
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['permissionId'] = permission_id unless permission_id.nil?
@@ -1677,7 +1638,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Returns the permission ID for an email address.
         # @param [String] email
@@ -1691,7 +1651,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1706,7 +1666,7 @@ module Google
         def get_id_for_email_permission(email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'permissionIds/{email}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::PermissionIdRepresentation
+          command.response_representation = Google::Apis::DriveV2::PermissionId::Representation
           command.response_class = Google::Apis::DriveV2::PermissionId
           command.params['email'] = email unless email.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1715,12 +1675,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Inserts a permission for a file.
         # @param [String] file_id
         #   The ID for the file.
-        # @param [Google::Apis::DriveV2::Permission] permission
-        #   
+        # @param [Google::Apis::DriveV2::Permission] permission_object
         # @param [String] email_message
         #   A custom message to include in notification emails.
         # @param [Boolean] send_notification_emails
@@ -1735,7 +1693,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1747,12 +1705,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_permission(file_id, permission = nil, email_message: nil, send_notification_emails: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_permission(file_id, permission_object = nil, email_message: nil, send_notification_emails: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/permissions'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DriveV2::PermissionRepresentation
-          command.request_object = permission
-          command.response_representation = Google::Apis::DriveV2::PermissionRepresentation
+          command.request_representation = Google::Apis::DriveV2::Permission::Representation
+          command.request_object = permission_object
+          command.response_representation = Google::Apis::DriveV2::Permission::Representation
           command.response_class = Google::Apis::DriveV2::Permission
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['emailMessage'] = email_message unless email_message.nil?
@@ -1762,7 +1720,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists a file's permissions.
         # @param [String] file_id
@@ -1776,7 +1733,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1791,7 +1748,7 @@ module Google
         def list_permissions(file_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/permissions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::PermissionListRepresentation
+          command.response_representation = Google::Apis::DriveV2::PermissionList::Representation
           command.response_class = Google::Apis::DriveV2::PermissionList
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1800,14 +1757,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a permission. This method supports patch semantics.
         # @param [String] file_id
         #   The ID for the file.
         # @param [String] permission_id
         #   The ID for the permission.
-        # @param [Google::Apis::DriveV2::Permission] permission
-        #   
+        # @param [Google::Apis::DriveV2::Permission] permission_object
         # @param [Boolean] transfer_ownership
         #   Whether changing a role to 'owner' downgrades the current owners to writers.
         #   Does nothing if the specified role is not 'owner'.
@@ -1820,7 +1775,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1832,12 +1787,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_permission(file_id, permission_id, permission = nil, transfer_ownership: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_permission(file_id, permission_id, permission_object = nil, transfer_ownership: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/permissions/{permissionId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::DriveV2::PermissionRepresentation
-          command.request_object = permission
-          command.response_representation = Google::Apis::DriveV2::PermissionRepresentation
+          command.request_representation = Google::Apis::DriveV2::Permission::Representation
+          command.request_object = permission_object
+          command.response_representation = Google::Apis::DriveV2::Permission::Representation
           command.response_class = Google::Apis::DriveV2::Permission
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['permissionId'] = permission_id unless permission_id.nil?
@@ -1847,15 +1802,13 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates a permission.
         # @param [String] file_id
         #   The ID for the file.
         # @param [String] permission_id
         #   The ID for the permission.
-        # @param [Google::Apis::DriveV2::Permission] permission
-        #   
+        # @param [Google::Apis::DriveV2::Permission] permission_object
         # @param [Boolean] transfer_ownership
         #   Whether changing a role to 'owner' downgrades the current owners to writers.
         #   Does nothing if the specified role is not 'owner'.
@@ -1868,7 +1821,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1880,12 +1833,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_permission(file_id, permission_id, permission = nil, transfer_ownership: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_permission(file_id, permission_id, permission_object = nil, transfer_ownership: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/permissions/{permissionId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::DriveV2::PermissionRepresentation
-          command.request_object = permission
-          command.response_representation = Google::Apis::DriveV2::PermissionRepresentation
+          command.request_representation = Google::Apis::DriveV2::Permission::Representation
+          command.request_object = permission_object
+          command.response_representation = Google::Apis::DriveV2::Permission::Representation
           command.response_class = Google::Apis::DriveV2::Permission
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['permissionId'] = permission_id unless permission_id.nil?
@@ -1895,7 +1848,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Deletes a property.
         # @param [String] file_id
         #   The ID of the file.
@@ -1912,7 +1865,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1936,7 +1889,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets a property by its key.
         # @param [String] file_id
         #   The ID of the file.
@@ -1953,7 +1905,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1968,7 +1920,7 @@ module Google
         def get_property(file_id, property_key, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/properties/{propertyKey}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::PropertyRepresentation
+          command.response_representation = Google::Apis::DriveV2::Property::Representation
           command.response_class = Google::Apis::DriveV2::Property
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['propertyKey'] = property_key unless property_key.nil?
@@ -1979,12 +1931,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Adds a property to a file.
         # @param [String] file_id
         #   The ID of the file.
-        # @param [Google::Apis::DriveV2::Property] property
-        #   
+        # @param [Google::Apis::DriveV2::Property] property_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1994,7 +1944,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2006,12 +1956,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_property(file_id, property = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_property(file_id, property_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/properties'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DriveV2::PropertyRepresentation
-          command.request_object = property
-          command.response_representation = Google::Apis::DriveV2::PropertyRepresentation
+          command.request_representation = Google::Apis::DriveV2::Property::Representation
+          command.request_object = property_object
+          command.response_representation = Google::Apis::DriveV2::Property::Representation
           command.response_class = Google::Apis::DriveV2::Property
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2019,7 +1969,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists a file's properties.
         # @param [String] file_id
@@ -2033,7 +1982,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2048,7 +1997,7 @@ module Google
         def list_properties(file_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/properties'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::PropertyListRepresentation
+          command.response_representation = Google::Apis::DriveV2::PropertyList::Representation
           command.response_class = Google::Apis::DriveV2::PropertyList
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2057,14 +2006,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a property. This method supports patch semantics.
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] property_key
         #   The key of the property.
-        # @param [Google::Apis::DriveV2::Property] property
-        #   
+        # @param [Google::Apis::DriveV2::Property] property_object
         # @param [String] visibility
         #   The visibility of the property.
         # @param [String] fields
@@ -2076,7 +2023,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2088,12 +2035,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_property(file_id, property_key, property = nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_property(file_id, property_key, property_object = nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/properties/{propertyKey}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::DriveV2::PropertyRepresentation
-          command.request_object = property
-          command.response_representation = Google::Apis::DriveV2::PropertyRepresentation
+          command.request_representation = Google::Apis::DriveV2::Property::Representation
+          command.request_object = property_object
+          command.response_representation = Google::Apis::DriveV2::Property::Representation
           command.response_class = Google::Apis::DriveV2::Property
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['propertyKey'] = property_key unless property_key.nil?
@@ -2103,15 +2050,13 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates a property.
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] property_key
         #   The key of the property.
-        # @param [Google::Apis::DriveV2::Property] property
-        #   
+        # @param [Google::Apis::DriveV2::Property] property_object
         # @param [String] visibility
         #   The visibility of the property.
         # @param [String] fields
@@ -2123,7 +2068,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2135,12 +2080,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_property(file_id, property_key, property = nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_property(file_id, property_key, property_object = nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/properties/{propertyKey}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::DriveV2::PropertyRepresentation
-          command.request_object = property
-          command.response_representation = Google::Apis::DriveV2::PropertyRepresentation
+          command.request_representation = Google::Apis::DriveV2::Property::Representation
+          command.request_object = property_object
+          command.response_representation = Google::Apis::DriveV2::Property::Representation
           command.response_class = Google::Apis::DriveV2::Property
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['propertyKey'] = property_key unless property_key.nil?
@@ -2150,7 +2095,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Exports the contents of the Realtime API data model associated with this file
         # as JSON.
         # @param [String] file_id
@@ -2170,7 +2115,7 @@ module Google
         #   enforce per-user limits.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2198,7 +2143,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Overwrites the Realtime API data model associated with this file with the
         # provided JSON data model.
         # @param [String] file_id
@@ -2221,7 +2165,7 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2249,7 +2193,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Deletes a reply.
         # @param [String] file_id
         #   The ID of the file.
@@ -2266,7 +2210,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2290,7 +2234,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets a reply.
         # @param [String] file_id
         #   The ID of the file.
@@ -2309,7 +2252,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2324,7 +2267,7 @@ module Google
         def get_reply(file_id, comment_id, reply_id, include_deleted: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/comments/{commentId}/replies/{replyId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::CommentReplyRepresentation
+          command.response_representation = Google::Apis::DriveV2::CommentReply::Representation
           command.response_class = Google::Apis::DriveV2::CommentReply
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['commentId'] = comment_id unless comment_id.nil?
@@ -2336,14 +2279,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates a new reply to the given comment.
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
         #   The ID of the comment.
-        # @param [Google::Apis::DriveV2::CommentReply] comment_reply
-        #   
+        # @param [Google::Apis::DriveV2::CommentReply] comment_reply_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2353,7 +2294,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2365,12 +2306,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_reply(file_id, comment_id, comment_reply = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_reply(file_id, comment_id, comment_reply_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/comments/{commentId}/replies'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DriveV2::CommentReplyRepresentation
-          command.request_object = comment_reply
-          command.response_representation = Google::Apis::DriveV2::CommentReplyRepresentation
+          command.request_representation = Google::Apis::DriveV2::CommentReply::Representation
+          command.request_object = comment_reply_object
+          command.response_representation = Google::Apis::DriveV2::CommentReply::Representation
           command.response_class = Google::Apis::DriveV2::CommentReply
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['commentId'] = comment_id unless comment_id.nil?
@@ -2379,7 +2320,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists all of the replies to a comment.
         # @param [String] file_id
@@ -2404,7 +2344,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2419,7 +2359,7 @@ module Google
         def list_replies(file_id, comment_id, include_deleted: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/comments/{commentId}/replies'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::CommentReplyListRepresentation
+          command.response_representation = Google::Apis::DriveV2::CommentReplyList::Representation
           command.response_class = Google::Apis::DriveV2::CommentReplyList
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['commentId'] = comment_id unless comment_id.nil?
@@ -2432,7 +2372,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an existing reply. This method supports patch semantics.
         # @param [String] file_id
         #   The ID of the file.
@@ -2440,8 +2379,7 @@ module Google
         #   The ID of the comment.
         # @param [String] reply_id
         #   The ID of the reply.
-        # @param [Google::Apis::DriveV2::CommentReply] comment_reply
-        #   
+        # @param [Google::Apis::DriveV2::CommentReply] comment_reply_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2451,7 +2389,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2463,12 +2401,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_reply(file_id, comment_id, reply_id, comment_reply = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_reply(file_id, comment_id, reply_id, comment_reply_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/comments/{commentId}/replies/{replyId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::DriveV2::CommentReplyRepresentation
-          command.request_object = comment_reply
-          command.response_representation = Google::Apis::DriveV2::CommentReplyRepresentation
+          command.request_representation = Google::Apis::DriveV2::CommentReply::Representation
+          command.request_object = comment_reply_object
+          command.response_representation = Google::Apis::DriveV2::CommentReply::Representation
           command.response_class = Google::Apis::DriveV2::CommentReply
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['commentId'] = comment_id unless comment_id.nil?
@@ -2478,7 +2416,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates an existing reply.
         # @param [String] file_id
@@ -2487,8 +2424,7 @@ module Google
         #   The ID of the comment.
         # @param [String] reply_id
         #   The ID of the reply.
-        # @param [Google::Apis::DriveV2::CommentReply] comment_reply
-        #   
+        # @param [Google::Apis::DriveV2::CommentReply] comment_reply_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2498,7 +2434,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2510,12 +2446,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_reply(file_id, comment_id, reply_id, comment_reply = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_reply(file_id, comment_id, reply_id, comment_reply_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/comments/{commentId}/replies/{replyId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::DriveV2::CommentReplyRepresentation
-          command.request_object = comment_reply
-          command.response_representation = Google::Apis::DriveV2::CommentReplyRepresentation
+          command.request_representation = Google::Apis::DriveV2::CommentReply::Representation
+          command.request_object = comment_reply_object
+          command.response_representation = Google::Apis::DriveV2::CommentReply::Representation
           command.response_class = Google::Apis::DriveV2::CommentReply
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['commentId'] = comment_id unless comment_id.nil?
@@ -2525,7 +2461,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Removes a revision.
         # @param [String] file_id
         #   The ID of the file.
@@ -2540,7 +2476,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2563,7 +2499,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets a specific revision.
         # @param [String] file_id
         #   The ID of the file.
@@ -2578,7 +2513,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2593,7 +2528,7 @@ module Google
         def get_revision(file_id, revision_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/revisions/{revisionId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::RevisionRepresentation
+          command.response_representation = Google::Apis::DriveV2::Revision::Representation
           command.response_class = Google::Apis::DriveV2::Revision
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['revisionId'] = revision_id unless revision_id.nil?
@@ -2602,7 +2537,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists a file's revisions.
         # @param [String] file_id
@@ -2616,7 +2550,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2631,7 +2565,7 @@ module Google
         def list_revisions(file_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/revisions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DriveV2::RevisionListRepresentation
+          command.response_representation = Google::Apis::DriveV2::RevisionList::Representation
           command.response_class = Google::Apis::DriveV2::RevisionList
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2640,14 +2574,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a revision. This method supports patch semantics.
         # @param [String] file_id
         #   The ID for the file.
         # @param [String] revision_id
         #   The ID for the revision.
-        # @param [Google::Apis::DriveV2::Revision] revision
-        #   
+        # @param [Google::Apis::DriveV2::Revision] revision_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2657,7 +2589,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2669,12 +2601,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_revision(file_id, revision_id, revision = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_revision(file_id, revision_id, revision_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/revisions/{revisionId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::DriveV2::RevisionRepresentation
-          command.request_object = revision
-          command.response_representation = Google::Apis::DriveV2::RevisionRepresentation
+          command.request_representation = Google::Apis::DriveV2::Revision::Representation
+          command.request_object = revision_object
+          command.response_representation = Google::Apis::DriveV2::Revision::Representation
           command.response_class = Google::Apis::DriveV2::Revision
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['revisionId'] = revision_id unless revision_id.nil?
@@ -2684,14 +2616,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a revision.
         # @param [String] file_id
         #   The ID for the file.
         # @param [String] revision_id
         #   The ID for the revision.
-        # @param [Google::Apis::DriveV2::Revision] revision
-        #   
+        # @param [Google::Apis::DriveV2::Revision] revision_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2701,7 +2631,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2713,12 +2643,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_revision(file_id, revision_id, revision = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_revision(file_id, revision_id, revision_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}/revisions/{revisionId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::DriveV2::RevisionRepresentation
-          command.request_object = revision
-          command.response_representation = Google::Apis::DriveV2::RevisionRepresentation
+          command.request_representation = Google::Apis::DriveV2::Revision::Representation
+          command.request_object = revision_object
+          command.response_representation = Google::Apis::DriveV2::Revision::Representation
           command.response_class = Google::Apis::DriveV2::Revision
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['revisionId'] = revision_id unless revision_id.nil?

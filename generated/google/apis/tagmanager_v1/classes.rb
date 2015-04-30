@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module TagmanagerV1
-
+      
       # Represents a Google Tag Manager Account.
       class Account
         include Google::Apis::Core::Hashable
@@ -49,13 +49,18 @@ module Google
         alias_method :share_data?, :share_data
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @fingerprint = args[:fingerprint] unless args[:fingerprint].nil?
           @name = args[:name] unless args[:name].nil?
           @share_data = args[:share_data] unless args[:share_data].nil?
         end
       end
-
+      
       # Defines the Google Tag Manager Account access permissions.
       class AccountAccess
         include Google::Apis::Core::Hashable
@@ -66,10 +71,15 @@ module Google
         attr_accessor :permission
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @permission = args[:permission] unless args[:permission].nil?
         end
       end
-
+      
       # Represents a predicate.
       class Condition
         include Google::Apis::Core::Hashable
@@ -94,11 +104,16 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @parameter = args[:parameter] unless args[:parameter].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Represents a Google Tag Manager Container.
       class Container
         include Google::Apis::Core::Hashable
@@ -166,6 +181,11 @@ module Google
         attr_accessor :usage_context
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @container_id = args[:container_id] unless args[:container_id].nil?
           @domain_name = args[:domain_name] unless args[:domain_name].nil?
@@ -179,7 +199,7 @@ module Google
           @usage_context = args[:usage_context] unless args[:usage_context].nil?
         end
       end
-
+      
       # Defines the Google Tag Manager Container access permissions.
       class ContainerAccess
         include Google::Apis::Core::Hashable
@@ -196,11 +216,16 @@ module Google
         attr_accessor :permission
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @container_id = args[:container_id] unless args[:container_id].nil?
           @permission = args[:permission] unless args[:permission].nil?
         end
       end
-
+      
       # Represents a Google Tag Manager Container Version.
       class ContainerVersion
         include Google::Apis::Core::Hashable
@@ -210,7 +235,7 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
-        # The container that this version was taken from.
+        # Represents a Google Tag Manager Container.
         # Corresponds to the JSON property `container`
         # @return [Google::Apis::TagmanagerV1::Container]
         attr_accessor :container
@@ -273,6 +298,11 @@ module Google
         attr_accessor :variable
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @container = args[:container] unless args[:container].nil?
           @container_id = args[:container_id] unless args[:container_id].nil?
@@ -288,7 +318,7 @@ module Google
           @variable = args[:variable] unless args[:variable].nil?
         end
       end
-
+      
       # Represents a Google Tag Manager Container Version Header.
       class ContainerVersionHeader
         include Google::Apis::Core::Hashable
@@ -345,6 +375,11 @@ module Google
         attr_accessor :num_variables
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @container_id = args[:container_id] unless args[:container_id].nil?
           @container_version_id = args[:container_version_id] unless args[:container_version_id].nil?
@@ -357,7 +392,7 @@ module Google
           @num_variables = args[:num_variables] unless args[:num_variables].nil?
         end
       end
-
+      
       # Options for new container versions.
       class CreateContainerVersionRequestVersionOptions
         include Google::Apis::Core::Hashable
@@ -379,12 +414,17 @@ module Google
         alias_method :quick_preview?, :quick_preview
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @notes = args[:notes] unless args[:notes].nil?
           @quick_preview = args[:quick_preview] unless args[:quick_preview].nil?
         end
       end
-
+      
       # Create container versions response.
       class CreateContainerVersionResponse
         include Google::Apis::Core::Hashable
@@ -395,17 +435,22 @@ module Google
         attr_accessor :compiler_error
         alias_method :compiler_error?, :compiler_error
       
-        # The container version created.
+        # Represents a Google Tag Manager Container Version.
         # Corresponds to the JSON property `containerVersion`
         # @return [Google::Apis::TagmanagerV1::ContainerVersion]
         attr_accessor :container_version
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @compiler_error = args[:compiler_error] unless args[:compiler_error].nil?
           @container_version = args[:container_version] unless args[:container_version].nil?
         end
       end
-
+      
       # List AccountUsers Response.
       class ListAccountUsersResponse
         include Google::Apis::Core::Hashable
@@ -416,10 +461,15 @@ module Google
         attr_accessor :user_access
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @user_access = args[:user_access] unless args[:user_access].nil?
         end
       end
-
+      
       # List Accounts Response.
       class ListAccountsResponse
         include Google::Apis::Core::Hashable
@@ -430,10 +480,15 @@ module Google
         attr_accessor :accounts
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @accounts = args[:accounts] unless args[:accounts].nil?
         end
       end
-
+      
       # List container versions response.
       class ListContainerVersionsResponse
         include Google::Apis::Core::Hashable
@@ -449,11 +504,16 @@ module Google
         attr_accessor :container_version_header
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @container_version = args[:container_version] unless args[:container_version].nil?
           @container_version_header = args[:container_version_header] unless args[:container_version_header].nil?
         end
       end
-
+      
       # List Containers Response.
       class ListContainersResponse
         include Google::Apis::Core::Hashable
@@ -464,10 +524,15 @@ module Google
         attr_accessor :containers
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @containers = args[:containers] unless args[:containers].nil?
         end
       end
-
+      
       # List Macros Response.
       class ListMacrosResponse
         include Google::Apis::Core::Hashable
@@ -478,10 +543,15 @@ module Google
         attr_accessor :macros
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @macros = args[:macros] unless args[:macros].nil?
         end
       end
-
+      
       # List Rules Response.
       class ListRulesResponse
         include Google::Apis::Core::Hashable
@@ -492,10 +562,15 @@ module Google
         attr_accessor :rules
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @rules = args[:rules] unless args[:rules].nil?
         end
       end
-
+      
       # List Tags Response.
       class ListTagsResponse
         include Google::Apis::Core::Hashable
@@ -506,10 +581,15 @@ module Google
         attr_accessor :tags
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @tags = args[:tags] unless args[:tags].nil?
         end
       end
-
+      
       # List triggers response.
       class ListTriggersResponse
         include Google::Apis::Core::Hashable
@@ -520,10 +600,15 @@ module Google
         attr_accessor :triggers
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @triggers = args[:triggers] unless args[:triggers].nil?
         end
       end
-
+      
       # List Variables Response.
       class ListVariablesResponse
         include Google::Apis::Core::Hashable
@@ -534,10 +619,15 @@ module Google
         attr_accessor :variables
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @variables = args[:variables] unless args[:variables].nil?
         end
       end
-
+      
       # Represents a Google Tag Manager Macro.
       class Macro
         include Google::Apis::Core::Hashable
@@ -608,6 +698,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @container_id = args[:container_id] unless args[:container_id].nil?
           @disabling_rule_id = args[:disabling_rule_id] unless args[:disabling_rule_id].nil?
@@ -622,7 +717,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Represents a Google Tag Manager Parameter.
       class Parameter
         include Google::Apis::Core::Hashable
@@ -661,6 +756,11 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @key = args[:key] unless args[:key].nil?
           @list = args[:list] unless args[:list].nil?
           @map = args[:map] unless args[:map].nil?
@@ -668,7 +768,7 @@ module Google
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # Publish container version response.
       class PublishContainerVersionResponse
         include Google::Apis::Core::Hashable
@@ -679,17 +779,22 @@ module Google
         attr_accessor :compiler_error
         alias_method :compiler_error?, :compiler_error
       
-        # The container version created.
+        # Represents a Google Tag Manager Container Version.
         # Corresponds to the JSON property `containerVersion`
         # @return [Google::Apis::TagmanagerV1::ContainerVersion]
         attr_accessor :container_version
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @compiler_error = args[:compiler_error] unless args[:compiler_error].nil?
           @container_version = args[:container_version] unless args[:container_version].nil?
         end
       end
-
+      
       # Represents a Google Tag Manager Rule.
       class Rule
         include Google::Apis::Core::Hashable
@@ -731,6 +836,11 @@ module Google
         attr_accessor :rule_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @condition = args[:condition] unless args[:condition].nil?
           @container_id = args[:container_id] unless args[:container_id].nil?
@@ -740,7 +850,7 @@ module Google
           @rule_id = args[:rule_id] unless args[:rule_id].nil?
         end
       end
-
+      
       # Represents a Google Tag Manager Tag.
       class Tag
         include Google::Apis::Core::Hashable
@@ -807,9 +917,7 @@ module Google
         # @return [Array<Google::Apis::TagmanagerV1::Parameter>]
         attr_accessor :parameter
       
-        # User defined numeric priority of the tag. Tags are fired asynchronously in
-        # order of priority. Tags with higher numeric value fire first. A tag's priority
-        # can be a positive or negative value. The default value is 0.
+        # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `priority`
         # @return [Google::Apis::TagmanagerV1::Parameter]
         attr_accessor :priority
@@ -835,6 +943,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @blocking_rule_id = args[:blocking_rule_id] unless args[:blocking_rule_id].nil?
           @blocking_trigger_id = args[:blocking_trigger_id] unless args[:blocking_trigger_id].nil?
@@ -853,7 +966,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Represents a Google Tag Manager Trigger
       class Trigger
         include Google::Apis::Core::Hashable
@@ -868,9 +981,7 @@ module Google
         # @return [Array<Google::Apis::TagmanagerV1::Condition>]
         attr_accessor :auto_event_filter
       
-        # Whether or not we should only fire tags if the form submit or link click event
-        # is not cancelled by some other event handler (e.g. because of validation).
-        # Only valid for Form Submission and Link Click triggers.
+        # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `checkValidation`
         # @return [Google::Apis::TagmanagerV1::Parameter]
         attr_accessor :check_validation
@@ -885,14 +996,12 @@ module Google
         # @return [Array<Google::Apis::TagmanagerV1::Condition>]
         attr_accessor :custom_event_filter
       
-        # Reloads the videos in the page that don't already have the YT API enabled. If
-        # false, only capture events from videos that already have the API enabled. Only
-        # valid for YouTube triggers.
+        # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `enableAllVideos`
         # @return [Google::Apis::TagmanagerV1::Parameter]
         attr_accessor :enable_all_videos
       
-        # Name of the GTM event that is fired. Only valid for Timer triggers.
+        # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `eventName`
         # @return [Google::Apis::TagmanagerV1::Parameter]
         attr_accessor :event_name
@@ -908,15 +1017,12 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
-        # Time between triggering recurring Timer Events (in milliseconds). Only valid
-        # for Timer triggers.
+        # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `interval`
         # @return [Google::Apis::TagmanagerV1::Parameter]
         attr_accessor :interval
       
-        # Limit of the number of GTM events this Timer Trigger will fire. If no limit is
-        # set, we will continue to fire GTM events until the user leaves the page. Only
-        # valid for Timer triggers.
+        # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `limit`
         # @return [Google::Apis::TagmanagerV1::Parameter]
         attr_accessor :limit
@@ -936,36 +1042,32 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Globally unique id of the trigger that auto-generates this (a Form Submit,
-        # Link Click or Timer listener) if any. Used to make incompatible auto-events
-        # work together with trigger filtering based on trigger ids. This value is
-        # populated during output generation since the tags implied by triggers don't
-        # exist until then. Only valid for Form Submit, Link Click and Timer triggers.
+        # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `uniqueTriggerId`
         # @return [Google::Apis::TagmanagerV1::Parameter]
         attr_accessor :unique_trigger_id
       
-        # List of integer percentage values. The trigger will fire as each percentage is
-        # reached in any instrumented videos. Only valid for YouTube triggers.
+        # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `videoPercentageList`
         # @return [Google::Apis::TagmanagerV1::Parameter]
         attr_accessor :video_percentage_list
       
-        # Whether or not we should delay the form submissions or link opening until all
-        # of the tags have fired (by preventing the default action and later simulating
-        # the default action). Only valid for Form Submission and Link Click triggers.
+        # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `waitForTags`
         # @return [Google::Apis::TagmanagerV1::Parameter]
         attr_accessor :wait_for_tags
       
-        # How long to wait (in milliseconds) for tags to fire when 'waits_for_tags'
-        # above evaluates to true. Only valid for Form Submission and Link Click
-        # triggers.
+        # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `waitForTagsTimeout`
         # @return [Google::Apis::TagmanagerV1::Parameter]
         attr_accessor :wait_for_tags_timeout
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @auto_event_filter = args[:auto_event_filter] unless args[:auto_event_filter].nil?
           @check_validation = args[:check_validation] unless args[:check_validation].nil?
@@ -986,12 +1088,12 @@ module Google
           @wait_for_tags_timeout = args[:wait_for_tags_timeout] unless args[:wait_for_tags_timeout].nil?
         end
       end
-
+      
       # Represents a user's permissions to an account and its container.
       class UserAccess
         include Google::Apis::Core::Hashable
       
-        # GTM Account access permissions.
+        # Defines the Google Tag Manager Account access permissions.
         # Corresponds to the JSON property `accountAccess`
         # @return [Google::Apis::TagmanagerV1::AccountAccess]
         attr_accessor :account_access
@@ -1017,6 +1119,11 @@ module Google
         attr_accessor :permission_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_access = args[:account_access] unless args[:account_access].nil?
           @account_id = args[:account_id] unless args[:account_id].nil?
           @container_access = args[:container_access] unless args[:container_access].nil?
@@ -1024,7 +1131,7 @@ module Google
           @permission_id = args[:permission_id] unless args[:permission_id].nil?
         end
       end
-
+      
       # Represents a Google Tag Manager Variable.
       class Variable
         include Google::Apis::Core::Hashable
@@ -1095,6 +1202,11 @@ module Google
         attr_accessor :variable_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @container_id = args[:container_id] unless args[:container_id].nil?
           @disabling_trigger_id = args[:disabling_trigger_id] unless args[:disabling_trigger_id].nil?

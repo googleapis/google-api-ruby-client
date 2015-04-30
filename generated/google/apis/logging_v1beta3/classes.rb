@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module LoggingV1beta3
-
+      
       # Result returned from ListLogs.
       class ListLogsResponse
         include Google::Apis::Core::Hashable
@@ -40,11 +40,16 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @logs = args[:logs] unless args[:logs].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # A log object.
       class Log
         include Google::Apis::Core::Hashable
@@ -67,12 +72,17 @@ module Google
         attr_accessor :payload_type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @display_name = args[:display_name] unless args[:display_name].nil?
           @payload_type = args[:payload_type] unless args[:payload_type].nil?
         end
       end
-
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -81,9 +91,14 @@ module Google
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
-
+      
       # The parameters to WriteLogEntries.
       class WriteLogEntriesRequest
         include Google::Apis::Core::Hashable
@@ -101,16 +116,22 @@ module Google
         attr_accessor :entries
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @common_labels = args[:common_labels] unless args[:common_labels].nil?
           @entries = args[:entries] unless args[:entries].nil?
         end
       end
-
+      
       # An individual entry in a log.
       class LogEntry
         include Google::Apis::Core::Hashable
       
-        # Information about the log entry.
+        # Additional data that is associated with a log entry, set by the service
+        # creating the log entry.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::LoggingV1beta3::LogEntryMetadata]
         attr_accessor :metadata
@@ -147,6 +168,11 @@ module Google
         attr_accessor :log
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @metadata = args[:metadata] unless args[:metadata].nil?
           @proto_payload = args[:proto_payload] unless args[:proto_payload].nil?
           @text_payload = args[:text_payload] unless args[:text_payload].nil?
@@ -155,7 +181,7 @@ module Google
           @log = args[:log] unless args[:log].nil?
         end
       end
-
+      
       # Additional data that is associated with a log entry, set by the service
       # creating the log entry.
       class LogEntryMetadata
@@ -217,6 +243,11 @@ module Google
         attr_accessor :labels
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @timestamp = args[:timestamp] unless args[:timestamp].nil?
           @severity = args[:severity] unless args[:severity].nil?
           @project_id = args[:project_id] unless args[:project_id].nil?
@@ -227,15 +258,20 @@ module Google
           @labels = args[:labels] unless args[:labels].nil?
         end
       end
-
+      
       # Result returned from WriteLogEntries. empty
       class WriteLogEntriesResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
-
+      
       # Result returned from `ListLogServicesRequest`.
       class ListLogServicesResponse
         include Google::Apis::Core::Hashable
@@ -254,11 +290,16 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @log_services = args[:log_services] unless args[:log_services].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # A log service object.
       class LogService
         include Google::Apis::Core::Hashable
@@ -275,11 +316,16 @@ module Google
         attr_accessor :index_keys
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @index_keys = args[:index_keys] unless args[:index_keys].nil?
         end
       end
-
+      
       # Result returned from ListLogServiceIndexesRequest.
       class ListLogServiceIndexesResponse
         include Google::Apis::Core::Hashable
@@ -298,11 +344,16 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @service_index_prefixes = args[:service_index_prefixes] unless args[:service_index_prefixes].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Result returned from `ListLogSinks`.
       class ListLogSinksResponse
         include Google::Apis::Core::Hashable
@@ -315,10 +366,15 @@ module Google
         attr_accessor :sinks
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @sinks = args[:sinks] unless args[:sinks].nil?
         end
       end
-
+      
       # An object that describes where a log may be written.
       class LogSink
         include Google::Apis::Core::Hashable
@@ -344,12 +400,17 @@ module Google
         attr_accessor :errors
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @destination = args[:destination] unless args[:destination].nil?
           @errors = args[:errors] unless args[:errors].nil?
         end
       end
-
+      
       # A problem in a sink or the sink's configuration.
       class LogError
         include Google::Apis::Core::Hashable
@@ -361,7 +422,8 @@ module Google
         # @return [String]
         attr_accessor :resource
       
-        # The description of the last error observed.
+        # Represents the RPC error status for Google APIs. See http://go/errormodel for
+        # details.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::LoggingV1beta3::Status]
         attr_accessor :status
@@ -372,12 +434,17 @@ module Google
         attr_accessor :time_nanos
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @resource = args[:resource] unless args[:resource].nil?
           @status = args[:status] unless args[:status].nil?
           @time_nanos = args[:time_nanos] unless args[:time_nanos].nil?
         end
       end
-
+      
       # Represents the RPC error status for Google APIs. See http://go/errormodel for
       # details.
       class Status
@@ -402,12 +469,17 @@ module Google
         attr_accessor :details
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @code = args[:code] unless args[:code].nil?
           @message = args[:message] unless args[:message].nil?
           @details = args[:details] unless args[:details].nil?
         end
       end
-
+      
       # Result returned from `ListLogServiceSinks`.
       class ListLogServiceSinksResponse
         include Google::Apis::Core::Hashable
@@ -420,6 +492,11 @@ module Google
         attr_accessor :sinks
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @sinks = args[:sinks] unless args[:sinks].nil?
         end
       end

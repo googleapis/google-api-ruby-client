@@ -22,85 +22,92 @@ module Google
   module Apis
     module TaskqueueV1beta2
       
-      class TaskRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Task
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TaskQueueRepresentation < Google::Apis::Core::JsonRepresentation
+      class TaskQueue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class AclRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Acl
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
         
-        class StatsRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Stats
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class TasksRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Tasks
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class Tasks2Representation < Google::Apis::Core::JsonRepresentation
-        
+      class Tasks2
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class TaskRepresentation < Google::Apis::Core::JsonRepresentation
-        property :enqueue_timestamp, as: 'enqueueTimestamp'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :lease_timestamp, as: 'leaseTimestamp'
-        property :payload_base64, as: 'payloadBase64'
-        property :queue_name, as: 'queueName'
-        property :retry_count, as: 'retry_count'
-        property :tag, as: 'tag'
+      class Task
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enqueue_timestamp, as: 'enqueueTimestamp'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :lease_timestamp, as: 'leaseTimestamp'
+          property :payload_base64, as: 'payloadBase64'
+          property :queue_name, as: 'queueName'
+          property :retry_count, as: 'retry_count'
+          property :tag, as: 'tag'
+        end
       end
-
+      
       # @private
-      class TaskQueueRepresentation < Google::Apis::Core::JsonRepresentation
-        class AclRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class StatsRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :acl, as: 'acl', class: Google::Apis::TaskqueueV1beta2::TaskQueue::Acl, decorator: Google::Apis::TaskqueueV1beta2::TaskQueueRepresentation::AclRepresentation
-        
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :max_leases, as: 'maxLeases'
-        property :stats, as: 'stats', class: Google::Apis::TaskqueueV1beta2::TaskQueue::Stats, decorator: Google::Apis::TaskqueueV1beta2::TaskQueueRepresentation::StatsRepresentation
-        
-        
-        # @private
-        class AclRepresentation < Google::Apis::Core::JsonRepresentation
-          collection :admin_emails, as: 'adminEmails'
-          
-          collection :consumer_emails, as: 'consumerEmails'
-          
-          collection :producer_emails, as: 'producerEmails'
+      class TaskQueue
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acl, as: 'acl', class: Google::Apis::TaskqueueV1beta2::TaskQueue::Acl, decorator: Google::Apis::TaskqueueV1beta2::TaskQueue::Acl::Representation
+      
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :max_leases, as: 'maxLeases'
+          property :stats, as: 'stats', class: Google::Apis::TaskqueueV1beta2::TaskQueue::Stats, decorator: Google::Apis::TaskqueueV1beta2::TaskQueue::Stats::Representation
+      
         end
         
         # @private
-        class StatsRepresentation < Google::Apis::Core::JsonRepresentation
-          property :leased_last_hour, as: 'leasedLastHour'
-          property :leased_last_minute, as: 'leasedLastMinute'
-          property :oldest_task, as: 'oldestTask'
-          property :total_tasks, as: 'totalTasks'
+        class Acl
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :admin_emails, as: 'adminEmails'
+            collection :consumer_emails, as: 'consumerEmails'
+            collection :producer_emails, as: 'producerEmails'
+          end
+        end
+        
+        # @private
+        class Stats
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :leased_last_hour, as: 'leasedLastHour'
+            property :leased_last_minute, as: 'leasedLastMinute'
+            property :oldest_task, as: 'oldestTask'
+            property :total_tasks, as: 'totalTasks'
+          end
         end
       end
-
+      
       # @private
-      class TasksRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::TaskqueueV1beta2::Task, decorator: Google::Apis::TaskqueueV1beta2::TaskRepresentation
-        
-        
-        property :kind, as: 'kind'
+      class Tasks
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::TaskqueueV1beta2::Task, decorator: Google::Apis::TaskqueueV1beta2::Task::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class Tasks2Representation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::TaskqueueV1beta2::Task, decorator: Google::Apis::TaskqueueV1beta2::TaskRepresentation
-        
-        
-        property :kind, as: 'kind'
+      class Tasks2
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::TaskqueueV1beta2::Task, decorator: Google::Apis::TaskqueueV1beta2::Task::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
     end
   end

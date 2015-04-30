@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ReplicapoolV1beta2
-
+      
       # An Instance Group Manager resource.
       class InstanceGroupManager
         include Google::Apis::Core::Hashable
@@ -108,6 +108,11 @@ module Google
         attr_accessor :target_size
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @base_instance_name = args[:base_instance_name] unless args[:base_instance_name].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @current_size = args[:current_size] unless args[:current_size].nil?
@@ -123,7 +128,7 @@ module Google
           @target_size = args[:target_size] unless args[:target_size].nil?
         end
       end
-
+      
       # 
       class InstanceGroupManagerList
         include Google::Apis::Core::Hashable
@@ -154,6 +159,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -161,9 +171,9 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
-      class InstanceGroupManagersAbandonInstancesRequest
+      class AbandonInstancesRequest
         include Google::Apis::Core::Hashable
       
         # The names of one or more instances to abandon. For example:
@@ -173,12 +183,17 @@ module Google
         attr_accessor :instances
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @instances = args[:instances] unless args[:instances].nil?
         end
       end
-
+      
       # 
-      class InstanceGroupManagersDeleteInstancesRequest
+      class DeleteInstancesRequest
         include Google::Apis::Core::Hashable
       
         # Names of instances to delete.
@@ -188,12 +203,17 @@ module Google
         attr_accessor :instances
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @instances = args[:instances] unless args[:instances].nil?
         end
       end
-
+      
       # 
-      class InstanceGroupManagersRecreateInstancesRequest
+      class RecreateInstancesRequest
         include Google::Apis::Core::Hashable
       
         # The names of one or more instances to recreate. For example:
@@ -203,12 +223,17 @@ module Google
         attr_accessor :instances
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @instances = args[:instances] unless args[:instances].nil?
         end
       end
-
+      
       # 
-      class InstanceGroupManagersSetInstanceTemplateRequest
+      class SetInstanceTemplateRequest
         include Google::Apis::Core::Hashable
       
         # The full URL to an Instance Template from which all new instances will be
@@ -218,12 +243,17 @@ module Google
         attr_accessor :instance_template
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @instance_template = args[:instance_template] unless args[:instance_template].nil?
         end
       end
-
+      
       # 
-      class InstanceGroupManagersSetTargetPoolsRequest
+      class SetTargetPoolsRequest
         include Google::Apis::Core::Hashable
       
         # The current fingerprint of the Instance Group Manager resource. If this does
@@ -241,11 +271,16 @@ module Google
         attr_accessor :target_pools
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @fingerprint = args[:fingerprint] unless args[:fingerprint].nil?
           @target_pools = args[:target_pools] unless args[:target_pools].nil?
         end
       end
-
+      
       # An operation resource, used to manage asynchronous API requests.
       class Operation
         include Google::Apis::Core::Hashable
@@ -375,6 +410,11 @@ module Google
         attr_accessor :zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @client_operation_id = args[:client_operation_id] unless args[:client_operation_id].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @end_time = args[:end_time] unless args[:end_time].nil?
@@ -398,6 +438,7 @@ module Google
           @warnings = args[:warnings] unless args[:warnings].nil?
           @zone = args[:zone] unless args[:zone].nil?
         end
+        
         # [Output Only] If errors occurred during processing of this operation, this
         # field will be populated.
         class Error
@@ -409,8 +450,14 @@ module Google
           attr_accessor :errors
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @errors = args[:errors] unless args[:errors].nil?
           end
+          
           # 
           class Error
             include Google::Apis::Core::Hashable
@@ -432,12 +479,18 @@ module Google
             attr_accessor :message
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @code = args[:code] unless args[:code].nil?
               @location = args[:location] unless args[:location].nil?
               @message = args[:message] unless args[:message].nil?
             end
           end
         end
+        
         # 
         class Warning
           include Google::Apis::Core::Hashable
@@ -458,10 +511,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -477,13 +536,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # 
       class OperationList
         include Google::Apis::Core::Hashable
@@ -514,6 +578,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?

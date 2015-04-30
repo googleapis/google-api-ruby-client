@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module TaskqueueV1beta2
-
+      
       # 
       class Task
         include Google::Apis::Core::Hashable
@@ -69,6 +69,11 @@ module Google
         attr_accessor :tag
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @enqueue_timestamp = args[:enqueue_timestamp] unless args[:enqueue_timestamp].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -79,7 +84,7 @@ module Google
           @tag = args[:tag] unless args[:tag].nil?
         end
       end
-
+      
       # 
       class TaskQueue
         include Google::Apis::Core::Hashable
@@ -111,12 +116,18 @@ module Google
         attr_accessor :stats
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @acl = args[:acl] unless args[:acl].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @max_leases = args[:max_leases] unless args[:max_leases].nil?
           @stats = args[:stats] unless args[:stats].nil?
         end
+        
         # ACLs that are applicable to this TaskQueue object.
         class Acl
           include Google::Apis::Core::Hashable
@@ -140,11 +151,17 @@ module Google
           attr_accessor :producer_emails
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @admin_emails = args[:admin_emails] unless args[:admin_emails].nil?
             @consumer_emails = args[:consumer_emails] unless args[:consumer_emails].nil?
             @producer_emails = args[:producer_emails] unless args[:producer_emails].nil?
           end
         end
+        
         # Statistics for the TaskQueue object in question.
         class Stats
           include Google::Apis::Core::Hashable
@@ -170,6 +187,11 @@ module Google
           attr_accessor :total_tasks
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @leased_last_hour = args[:leased_last_hour] unless args[:leased_last_hour].nil?
             @leased_last_minute = args[:leased_last_minute] unless args[:leased_last_minute].nil?
             @oldest_task = args[:oldest_task] unless args[:oldest_task].nil?
@@ -177,7 +199,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class Tasks
         include Google::Apis::Core::Hashable
@@ -193,11 +215,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
       class Tasks2
         include Google::Apis::Core::Hashable
@@ -213,6 +240,11 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end

@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module IdentitytoolkitV3
-
+      
       # Response of creating the IDP authentication URL.
       class CreateAuthUriResponse
         include Google::Apis::Core::Hashable
@@ -60,6 +60,11 @@ module Google
         alias_method :registered?, :registered
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @auth_uri = args[:auth_uri] unless args[:auth_uri].nil?
           @captcha_required = args[:captcha_required] unless args[:captcha_required].nil?
           @for_existing_provider = args[:for_existing_provider] unless args[:for_existing_provider].nil?
@@ -68,7 +73,7 @@ module Google
           @registered = args[:registered] unless args[:registered].nil?
         end
       end
-
+      
       # Respone of deleting account.
       class DeleteAccountResponse
         include Google::Apis::Core::Hashable
@@ -79,10 +84,15 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Respone of downloading accounts in batch.
       class DownloadAccountResponse
         include Google::Apis::Core::Hashable
@@ -104,12 +114,17 @@ module Google
         attr_accessor :users
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @users = args[:users] unless args[:users].nil?
         end
       end
-
+      
       # Response of getting account information.
       class GetAccountInfoResponse
         include Google::Apis::Core::Hashable
@@ -125,11 +140,16 @@ module Google
         attr_accessor :users
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @users = args[:users] unless args[:users].nil?
         end
       end
-
+      
       # Response of getting a code for user confirmation (reset password, change email
       # etc.).
       class GetOobConfirmationCodeResponse
@@ -146,11 +166,16 @@ module Google
         attr_accessor :oob_code
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @oob_code = args[:oob_code] unless args[:oob_code].nil?
         end
       end
-
+      
       # Response of getting recaptcha param.
       class GetRecaptchaParamResponse
         include Google::Apis::Core::Hashable
@@ -171,12 +196,17 @@ module Google
         attr_accessor :recaptcha_stoken
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @recaptcha_site_key = args[:recaptcha_site_key] unless args[:recaptcha_site_key].nil?
           @recaptcha_stoken = args[:recaptcha_stoken] unless args[:recaptcha_stoken].nil?
         end
       end
-
+      
       # Request to get the IDP authentication URL.
       class CreateAuthUriRequest
         include Google::Apis::Core::Hashable
@@ -237,6 +267,11 @@ module Google
         attr_accessor :provider_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @app_id = args[:app_id] unless args[:app_id].nil?
           @client_id = args[:client_id] unless args[:client_id].nil?
           @context = args[:context] unless args[:context].nil?
@@ -249,7 +284,7 @@ module Google
           @provider_id = args[:provider_id] unless args[:provider_id].nil?
         end
       end
-
+      
       # Request to delete account.
       class DeleteAccountRequest
         include Google::Apis::Core::Hashable
@@ -260,10 +295,15 @@ module Google
         attr_accessor :local_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @local_id = args[:local_id] unless args[:local_id].nil?
         end
       end
-
+      
       # Request to download user account in batch.
       class DownloadAccountRequest
         include Google::Apis::Core::Hashable
@@ -279,11 +319,16 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @max_results = args[:max_results] unless args[:max_results].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Request to get the account information.
       class GetAccountInfoRequest
         include Google::Apis::Core::Hashable
@@ -304,12 +349,17 @@ module Google
         attr_accessor :local_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @email = args[:email] unless args[:email].nil?
           @id_token = args[:id_token] unless args[:id_token].nil?
           @local_id = args[:local_id] unless args[:local_id].nil?
         end
       end
-
+      
       # Request to reset the password.
       class ResetPasswordRequest
         include Google::Apis::Core::Hashable
@@ -335,13 +385,18 @@ module Google
         attr_accessor :oob_code
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @email = args[:email] unless args[:email].nil?
           @new_password = args[:new_password] unless args[:new_password].nil?
           @old_password = args[:old_password] unless args[:old_password].nil?
           @oob_code = args[:oob_code] unless args[:oob_code].nil?
         end
       end
-
+      
       # Request to set the account information.
       class SetAccountInfoRequest
         include Google::Apis::Core::Hashable
@@ -404,6 +459,11 @@ module Google
         alias_method :upgrade_to_federated_login?, :upgrade_to_federated_login
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @captcha_challenge = args[:captcha_challenge] unless args[:captcha_challenge].nil?
           @captcha_response = args[:captcha_response] unless args[:captcha_response].nil?
           @display_name = args[:display_name] unless args[:display_name].nil?
@@ -417,7 +477,7 @@ module Google
           @upgrade_to_federated_login = args[:upgrade_to_federated_login] unless args[:upgrade_to_federated_login].nil?
         end
       end
-
+      
       # Request to upload user account in batch.
       class UploadAccountRequest
         include Google::Apis::Core::Hashable
@@ -453,6 +513,11 @@ module Google
         attr_accessor :users
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @hash_algorithm = args[:hash_algorithm] unless args[:hash_algorithm].nil?
           @memory_cost = args[:memory_cost] unless args[:memory_cost].nil?
           @rounds = args[:rounds] unless args[:rounds].nil?
@@ -461,7 +526,7 @@ module Google
           @users = args[:users] unless args[:users].nil?
         end
       end
-
+      
       # Request to verify the IDP assertion.
       class VerifyAssertionRequest
         include Google::Apis::Core::Hashable
@@ -489,13 +554,18 @@ module Google
         alias_method :return_refresh_token?, :return_refresh_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @pending_id_token = args[:pending_id_token] unless args[:pending_id_token].nil?
           @post_body = args[:post_body] unless args[:post_body].nil?
           @request_uri = args[:request_uri] unless args[:request_uri].nil?
           @return_refresh_token = args[:return_refresh_token] unless args[:return_refresh_token].nil?
         end
       end
-
+      
       # Request to verify the password.
       class VerifyPasswordRequest
         include Google::Apis::Core::Hashable
@@ -526,6 +596,11 @@ module Google
         attr_accessor :pending_id_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @captcha_challenge = args[:captcha_challenge] unless args[:captcha_challenge].nil?
           @captcha_response = args[:captcha_response] unless args[:captcha_response].nil?
           @email = args[:email] unless args[:email].nil?
@@ -533,7 +608,7 @@ module Google
           @pending_id_token = args[:pending_id_token] unless args[:pending_id_token].nil?
         end
       end
-
+      
       # Request of getting a code for user confirmation (reset password, change email
       # etc.)
       class Relyingparty
@@ -580,6 +655,11 @@ module Google
         attr_accessor :user_ip
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @captcha_resp = args[:captcha_resp] unless args[:captcha_resp].nil?
           @challenge = args[:challenge] unless args[:challenge].nil?
           @email = args[:email] unless args[:email].nil?
@@ -590,7 +670,7 @@ module Google
           @user_ip = args[:user_ip] unless args[:user_ip].nil?
         end
       end
-
+      
       # Response of resetting the password.
       class ResetPasswordResponse
         include Google::Apis::Core::Hashable
@@ -606,11 +686,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @email = args[:email] unless args[:email].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Respone of setting the account information.
       class SetAccountInfoResponse
         include Google::Apis::Core::Hashable
@@ -641,12 +726,18 @@ module Google
         attr_accessor :provider_user_info
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @display_name = args[:display_name] unless args[:display_name].nil?
           @email = args[:email] unless args[:email].nil?
           @id_token = args[:id_token] unless args[:id_token].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @provider_user_info = args[:provider_user_info] unless args[:provider_user_info].nil?
         end
+        
         # 
         class ProviderUserInfo
           include Google::Apis::Core::Hashable
@@ -668,13 +759,18 @@ module Google
           attr_accessor :provider_id
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @display_name = args[:display_name] unless args[:display_name].nil?
             @photo_url = args[:photo_url] unless args[:photo_url].nil?
             @provider_id = args[:provider_id] unless args[:provider_id].nil?
           end
         end
       end
-
+      
       # Respone of uploading accounts in batch.
       class UploadAccountResponse
         include Google::Apis::Core::Hashable
@@ -690,9 +786,15 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @error = args[:error] unless args[:error].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
+        
         # 
         class Error
           include Google::Apis::Core::Hashable
@@ -708,12 +810,17 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @index = args[:index] unless args[:index].nil?
             @message = args[:message] unless args[:message].nil?
           end
         end
       end
-
+      
       # Template for an individual account info.
       class UserInfo
         include Google::Apis::Core::Hashable
@@ -770,6 +877,11 @@ module Google
         attr_accessor :version
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @display_name = args[:display_name] unless args[:display_name].nil?
           @email = args[:email] unless args[:email].nil?
           @email_verified = args[:email_verified] unless args[:email_verified].nil?
@@ -781,6 +893,7 @@ module Google
           @salt = args[:salt] unless args[:salt].nil?
           @version = args[:version] unless args[:version].nil?
         end
+        
         # 
         class ProviderUserInfo
           include Google::Apis::Core::Hashable
@@ -807,6 +920,11 @@ module Google
           attr_accessor :provider_id
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @display_name = args[:display_name] unless args[:display_name].nil?
             @federated_id = args[:federated_id] unless args[:federated_id].nil?
             @photo_url = args[:photo_url] unless args[:photo_url].nil?
@@ -814,7 +932,7 @@ module Google
           end
         end
       end
-
+      
       # Response of verifying the IDP assertion.
       class VerifyAssertionResponse
         include Google::Apis::Core::Hashable
@@ -985,6 +1103,11 @@ module Google
         attr_accessor :verified_provider
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @action = args[:action] unless args[:action].nil?
           @app_installation_url = args[:app_installation_url] unless args[:app_installation_url].nil?
           @app_scheme = args[:app_scheme] unless args[:app_scheme].nil?
@@ -1017,7 +1140,7 @@ module Google
           @verified_provider = args[:verified_provider] unless args[:verified_provider].nil?
         end
       end
-
+      
       # Request of verifying the password.
       class VerifyPasswordResponse
         include Google::Apis::Core::Hashable
@@ -1061,6 +1184,11 @@ module Google
         alias_method :registered?, :registered
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @display_name = args[:display_name] unless args[:display_name].nil?
           @email = args[:email] unless args[:email].nil?
           @id_token = args[:id_token] unless args[:id_token].nil?

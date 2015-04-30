@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module PredictionV1_6
-
+      
       # 
       class Analyze
         include Google::Apis::Core::Hashable
@@ -57,6 +57,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @data_description = args[:data_description] unless args[:data_description].nil?
           @errors = args[:errors] unless args[:errors].nil?
           @id = args[:id] unless args[:id].nil?
@@ -64,6 +69,7 @@ module Google
           @model_description = args[:model_description] unless args[:model_description].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
+        
         # Description of the data the model was trained on.
         class DataDescription
           include Google::Apis::Core::Hashable
@@ -79,9 +85,15 @@ module Google
           attr_accessor :output_feature
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @features = args[:features] unless args[:features].nil?
             @output_feature = args[:output_feature] unless args[:output_feature].nil?
           end
+          
           # 
           class Feature
             include Google::Apis::Core::Hashable
@@ -107,11 +119,17 @@ module Google
             attr_accessor :text
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @categorical = args[:categorical] unless args[:categorical].nil?
               @index = args[:index] unless args[:index].nil?
               @numeric = args[:numeric] unless args[:numeric].nil?
               @text = args[:text] unless args[:text].nil?
             end
+            
             # Description of the categorical values of this feature.
             class Categorical
               include Google::Apis::Core::Hashable
@@ -127,9 +145,15 @@ module Google
               attr_accessor :values
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @count = args[:count] unless args[:count].nil?
                 @values = args[:values] unless args[:values].nil?
               end
+              
               # 
               class Value
                 include Google::Apis::Core::Hashable
@@ -145,11 +169,17 @@ module Google
                 attr_accessor :value
               
                 def initialize(**args)
+                   update!(**args)
+                end
+              
+                # Update properties of this object
+                def update!(**args)
                   @count = args[:count] unless args[:count].nil?
                   @value = args[:value] unless args[:value].nil?
                 end
               end
             end
+            
             # Description of the numeric values of this feature.
             class Numeric
               include Google::Apis::Core::Hashable
@@ -170,11 +200,17 @@ module Google
               attr_accessor :variance
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @count = args[:count] unless args[:count].nil?
                 @mean = args[:mean] unless args[:mean].nil?
                 @variance = args[:variance] unless args[:variance].nil?
               end
             end
+            
             # Description of multiple-word text values of this feature.
             class Text
               include Google::Apis::Core::Hashable
@@ -185,10 +221,16 @@ module Google
               attr_accessor :count
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @count = args[:count] unless args[:count].nil?
               end
             end
           end
+          
           # Description of the output value or label.
           class OutputFeature
             include Google::Apis::Core::Hashable
@@ -204,9 +246,15 @@ module Google
             attr_accessor :text
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @numeric = args[:numeric] unless args[:numeric].nil?
               @text = args[:text] unless args[:text].nil?
             end
+            
             # Description of the output values in the data set.
             class Numeric
               include Google::Apis::Core::Hashable
@@ -227,11 +275,17 @@ module Google
               attr_accessor :variance
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @count = args[:count] unless args[:count].nil?
                 @mean = args[:mean] unless args[:mean].nil?
                 @variance = args[:variance] unless args[:variance].nil?
               end
             end
+            
             # 
             class Text
               include Google::Apis::Core::Hashable
@@ -247,12 +301,18 @@ module Google
               attr_accessor :value
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @count = args[:count] unless args[:count].nil?
                 @value = args[:value] unless args[:value].nil?
               end
             end
           end
         end
+        
         # Description of the model.
         class ModelDescription
           include Google::Apis::Core::Hashable
@@ -277,13 +337,18 @@ module Google
           attr_accessor :modelinfo
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @confusion_matrix = args[:confusion_matrix] unless args[:confusion_matrix].nil?
             @confusion_matrix_row_totals = args[:confusion_matrix_row_totals] unless args[:confusion_matrix_row_totals].nil?
             @modelinfo = args[:modelinfo] unless args[:modelinfo].nil?
           end
         end
       end
-
+      
       # 
       class Input
         include Google::Apis::Core::Hashable
@@ -294,8 +359,14 @@ module Google
         attr_accessor :input
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @input = args[:input] unless args[:input].nil?
         end
+        
         # Input to the model for a prediction.
         class Input
           include Google::Apis::Core::Hashable
@@ -306,11 +377,16 @@ module Google
           attr_accessor :csv_instance
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @csv_instance = args[:csv_instance] unless args[:csv_instance].nil?
           end
         end
       end
-
+      
       # 
       class Insert
         include Google::Apis::Core::Hashable
@@ -357,6 +433,11 @@ module Google
         attr_accessor :utility
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @model_type = args[:model_type] unless args[:model_type].nil?
           @source_model = args[:source_model] unless args[:source_model].nil?
@@ -366,6 +447,7 @@ module Google
           @training_instances = args[:training_instances] unless args[:training_instances].nil?
           @utility = args[:utility] unless args[:utility].nil?
         end
+        
         # 
         class TrainingInstance
           include Google::Apis::Core::Hashable
@@ -381,12 +463,17 @@ module Google
           attr_accessor :output
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @csv_instance = args[:csv_instance] unless args[:csv_instance].nil?
             @output = args[:output] unless args[:output].nil?
           end
         end
       end
-
+      
       # 
       class Insert2
         include Google::Apis::Core::Hashable
@@ -448,6 +535,11 @@ module Google
         attr_accessor :training_status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @created = args[:created] unless args[:created].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -460,6 +552,7 @@ module Google
           @training_complete = args[:training_complete] unless args[:training_complete].nil?
           @training_status = args[:training_status] unless args[:training_status].nil?
         end
+        
         # Model metadata.
         class ModelInfo
           include Google::Apis::Core::Hashable
@@ -502,6 +595,11 @@ module Google
           attr_accessor :number_labels
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @class_weighted_accuracy = args[:class_weighted_accuracy] unless args[:class_weighted_accuracy].nil?
             @classification_accuracy = args[:classification_accuracy] unless args[:classification_accuracy].nil?
             @mean_squared_error = args[:mean_squared_error] unless args[:mean_squared_error].nil?
@@ -511,7 +609,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class List
         include Google::Apis::Core::Hashable
@@ -537,13 +635,18 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
       class Output
         include Google::Apis::Core::Hashable
@@ -580,6 +683,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @output_label = args[:output_label] unless args[:output_label].nil?
@@ -587,6 +695,7 @@ module Google
           @output_value = args[:output_value] unless args[:output_value].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
+        
         # 
         class OutputMulti
           include Google::Apis::Core::Hashable
@@ -602,12 +711,17 @@ module Google
           attr_accessor :score
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @label = args[:label] unless args[:label].nil?
             @score = args[:score] unless args[:score].nil?
           end
         end
       end
-
+      
       # 
       class Update
         include Google::Apis::Core::Hashable
@@ -623,6 +737,11 @@ module Google
         attr_accessor :output
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @csv_instance = args[:csv_instance] unless args[:csv_instance].nil?
           @output = args[:output] unless args[:output].nil?
         end

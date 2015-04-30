@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/appengine/docs/python/taskqueue/rest
       class TaskqueueService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'taskqueue/v1beta2/projects/')
         end
-
+        
         # Get detailed information about a TaskQueue.
         # @param [String] project
         #   The project under which the queue lies.
@@ -69,7 +68,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -84,7 +83,7 @@ module Google
         def get_taskqueue(project, taskqueue, get_stats: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/taskqueues/{taskqueue}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::TaskqueueV1beta2::TaskQueueRepresentation
+          command.response_representation = Google::Apis::TaskqueueV1beta2::TaskQueue::Representation
           command.response_class = Google::Apis::TaskqueueV1beta2::TaskQueue
           command.params['project'] = project unless project.nil?
           command.params['taskqueue'] = taskqueue unless taskqueue.nil?
@@ -94,7 +93,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Delete a task from a TaskQueue.
         # @param [String] project
         #   The project under which the queue lies.
@@ -111,7 +110,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -135,7 +134,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Get a particular task from a TaskQueue.
         # @param [String] project
         #   The project under which the queue lies.
@@ -152,7 +150,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -167,7 +165,7 @@ module Google
         def get_task(project, taskqueue, task, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/taskqueues/{taskqueue}/tasks/{task}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::TaskqueueV1beta2::TaskRepresentation
+          command.response_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
           command.response_class = Google::Apis::TaskqueueV1beta2::Task
           command.params['project'] = project unless project.nil?
           command.params['taskqueue'] = taskqueue unless taskqueue.nil?
@@ -178,14 +176,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Insert a new task in a TaskQueue
         # @param [String] project
         #   The project under which the queue lies
         # @param [String] taskqueue
         #   The taskqueue to insert the task into
-        # @param [Google::Apis::TaskqueueV1beta2::Task] task
-        #   
+        # @param [Google::Apis::TaskqueueV1beta2::Task] task_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -195,7 +191,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -207,12 +203,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_task(project, taskqueue, task = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_task(project, taskqueue, task_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/taskqueues/{taskqueue}/tasks'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::TaskqueueV1beta2::TaskRepresentation
-          command.request_object = task
-          command.response_representation = Google::Apis::TaskqueueV1beta2::TaskRepresentation
+          command.request_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
+          command.request_object = task_object
+          command.response_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
           command.response_class = Google::Apis::TaskqueueV1beta2::Task
           command.params['project'] = project unless project.nil?
           command.params['taskqueue'] = taskqueue unless taskqueue.nil?
@@ -221,7 +217,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lease 1 or more tasks from a TaskQueue.
         # @param [String] project
@@ -247,7 +242,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -262,7 +257,7 @@ module Google
         def lease_task(project, taskqueue, group_by_tag: nil, lease_secs: nil, num_tasks: nil, tag: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/taskqueues/{taskqueue}/tasks/lease'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::TaskqueueV1beta2::TasksRepresentation
+          command.response_representation = Google::Apis::TaskqueueV1beta2::Tasks::Representation
           command.response_class = Google::Apis::TaskqueueV1beta2::Tasks
           command.params['project'] = project unless project.nil?
           command.params['taskqueue'] = taskqueue unless taskqueue.nil?
@@ -275,7 +270,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List Tasks in a TaskQueue
         # @param [String] project
@@ -291,7 +285,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -306,7 +300,7 @@ module Google
         def list_tasks(project, taskqueue, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/taskqueues/{taskqueue}/tasks'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::TaskqueueV1beta2::Tasks2Representation
+          command.response_representation = Google::Apis::TaskqueueV1beta2::Tasks2::Representation
           command.response_class = Google::Apis::TaskqueueV1beta2::Tasks2
           command.params['project'] = project unless project.nil?
           command.params['taskqueue'] = taskqueue unless taskqueue.nil?
@@ -316,17 +310,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Update tasks that are leased out of a TaskQueue. This method supports patch
         # semantics.
         # @param [String] project
         #   The project under which the queue lies.
         # @param [String] taskqueue
-        #   
         # @param [String] task
-        #   
         # @param [Google::Apis::TaskqueueV1beta2::Task] task_object
-        #   
         # @param [Fixnum] new_lease_seconds
         #   The new lease in seconds.
         # @param [String] fields
@@ -338,7 +328,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -353,9 +343,9 @@ module Google
         def patch_task(project, taskqueue, task, task_object = nil, new_lease_seconds: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/taskqueues/{taskqueue}/tasks/{task}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::TaskqueueV1beta2::TaskRepresentation
+          command.request_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
           command.request_object = task_object
-          command.response_representation = Google::Apis::TaskqueueV1beta2::TaskRepresentation
+          command.response_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
           command.response_class = Google::Apis::TaskqueueV1beta2::Task
           command.params['project'] = project unless project.nil?
           command.params['taskqueue'] = taskqueue unless taskqueue.nil?
@@ -367,16 +357,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Update tasks that are leased out of a TaskQueue.
         # @param [String] project
         #   The project under which the queue lies.
         # @param [String] taskqueue
-        #   
         # @param [String] task
-        #   
         # @param [Google::Apis::TaskqueueV1beta2::Task] task_object
-        #   
         # @param [Fixnum] new_lease_seconds
         #   The new lease in seconds.
         # @param [String] fields
@@ -388,7 +374,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -403,9 +389,9 @@ module Google
         def update_task(project, taskqueue, task, task_object = nil, new_lease_seconds: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/taskqueues/{taskqueue}/tasks/{task}'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::TaskqueueV1beta2::TaskRepresentation
+          command.request_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
           command.request_object = task_object
-          command.response_representation = Google::Apis::TaskqueueV1beta2::TaskRepresentation
+          command.response_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
           command.response_class = Google::Apis::TaskqueueV1beta2::Task
           command.params['project'] = project unless project.nil?
           command.params['taskqueue'] = taskqueue unless taskqueue.nil?

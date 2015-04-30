@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module PagespeedonlineV2
-
+      
       # 
       class FormatString
         include Google::Apis::Core::Hashable
@@ -40,9 +40,15 @@ module Google
         attr_accessor :format
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @args = args[:args] unless args[:args].nil?
           @format = args[:format] unless args[:format].nil?
         end
+        
         # 
         class Arg
           include Google::Apis::Core::Hashable
@@ -78,12 +84,18 @@ module Google
           attr_accessor :value
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @key = args[:key] unless args[:key].nil?
             @rects = args[:rects] unless args[:rects].nil?
             @secondary_rects = args[:secondary_rects] unless args[:secondary_rects].nil?
             @type = args[:type] unless args[:type].nil?
             @value = args[:value] unless args[:value].nil?
           end
+          
           # 
           class Rect
             include Google::Apis::Core::Hashable
@@ -109,12 +121,18 @@ module Google
             attr_accessor :width
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @height = args[:height] unless args[:height].nil?
               @left = args[:left] unless args[:left].nil?
               @top = args[:top] unless args[:top].nil?
               @width = args[:width] unless args[:width].nil?
             end
           end
+          
           # 
           class SecondaryRect
             include Google::Apis::Core::Hashable
@@ -140,6 +158,11 @@ module Google
             attr_accessor :width
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @height = args[:height] unless args[:height].nil?
               @left = args[:left] unless args[:left].nil?
               @top = args[:top] unless args[:top].nil?
@@ -148,7 +171,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class Image
         include Google::Apis::Core::Hashable
@@ -185,6 +208,11 @@ module Google
         attr_accessor :width
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @data = args[:data] unless args[:data].nil?
           @height = args[:height] unless args[:height].nil?
           @key = args[:key] unless args[:key].nil?
@@ -192,6 +220,7 @@ module Google
           @page_rect = args[:page_rect] unless args[:page_rect].nil?
           @width = args[:width] unless args[:width].nil?
         end
+        
         # The region of the page that is captured by this image, with dimensions
         # measured in CSS pixels.
         class PageRect
@@ -218,6 +247,11 @@ module Google
           attr_accessor :width
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @height = args[:height] unless args[:height].nil?
             @left = args[:left] unless args[:left].nil?
             @top = args[:top] unless args[:top].nil?
@@ -225,7 +259,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class Result
         include Google::Apis::Core::Hashable
@@ -286,6 +320,11 @@ module Google
         attr_accessor :version
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @formatted_results = args[:formatted_results] unless args[:formatted_results].nil?
           @id = args[:id] unless args[:id].nil?
           @invalid_rules = args[:invalid_rules] unless args[:invalid_rules].nil?
@@ -297,6 +336,7 @@ module Google
           @title = args[:title] unless args[:title].nil?
           @version = args[:version] unless args[:version].nil?
         end
+        
         # Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed
         # rule instantiated and run by the server.
         class FormattedResults
@@ -314,9 +354,15 @@ module Google
           attr_accessor :rule_results
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @locale = args[:locale] unless args[:locale].nil?
             @rule_results = args[:rule_results] unless args[:rule_results].nil?
           end
+          
           # The enum-like identifier for this rule. For instance "EnableKeepAlive" or "
           # AvoidCssImport". Not localized.
           class RuleResult
@@ -357,12 +403,18 @@ module Google
             attr_accessor :url_blocks
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @groups = args[:groups] unless args[:groups].nil?
               @localized_rule_name = args[:localized_rule_name] unless args[:localized_rule_name].nil?
               @rule_impact = args[:rule_impact] unless args[:rule_impact].nil?
               @summary = args[:summary] unless args[:summary].nil?
               @url_blocks = args[:url_blocks] unless args[:url_blocks].nil?
             end
+            
             # 
             class UrlBlock
               include Google::Apis::Core::Hashable
@@ -378,9 +430,15 @@ module Google
               attr_accessor :urls
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @header = args[:header] unless args[:header].nil?
                 @urls = args[:urls] unless args[:urls].nil?
               end
+              
               # 
               class Url
                 include Google::Apis::Core::Hashable
@@ -397,6 +455,11 @@ module Google
                 attr_accessor :result
               
                 def initialize(**args)
+                   update!(**args)
+                end
+              
+                # Update properties of this object
+                def update!(**args)
                   @details = args[:details] unless args[:details].nil?
                   @result = args[:result] unless args[:result].nil?
                 end
@@ -404,6 +467,7 @@ module Google
             end
           end
         end
+        
         # Summary statistics for the page, such as number of JavaScript bytes, number of
         # HTML bytes, etc.
         class PageStats
@@ -477,6 +541,11 @@ module Google
           attr_accessor :total_request_bytes
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @css_response_bytes = args[:css_response_bytes] unless args[:css_response_bytes].nil?
             @flash_response_bytes = args[:flash_response_bytes] unless args[:flash_response_bytes].nil?
             @html_response_bytes = args[:html_response_bytes] unless args[:html_response_bytes].nil?
@@ -492,6 +561,7 @@ module Google
             @total_request_bytes = args[:total_request_bytes] unless args[:total_request_bytes].nil?
           end
         end
+        
         # The name of this rule group: one of "SPEED" or "USABILITY".
         class RuleGroup
           include Google::Apis::Core::Hashable
@@ -505,9 +575,15 @@ module Google
           attr_accessor :score
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @score = args[:score] unless args[:score].nil?
           end
         end
+        
         # The version of PageSpeed used to generate these results.
         class Version
           include Google::Apis::Core::Hashable
@@ -523,6 +599,11 @@ module Google
           attr_accessor :minor
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @major = args[:major] unless args[:major].nil?
             @minor = args[:minor] unless args[:minor].nil?
           end

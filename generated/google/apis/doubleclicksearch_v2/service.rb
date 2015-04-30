@@ -33,7 +33,6 @@ module Google
       #
       # @see https://developers.google.com/doubleclick-search/
       class DoubleclicksearchService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -53,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'doubleclicksearch/v2/')
         end
-
+        
         # Retrieves a list of conversions from a DoubleClick Search engine account.
         # @param [String] agency_id
         #   Numeric ID of the agency.
@@ -86,14 +85,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DoubleclicksearchV2::ConversionList] parsed result object
+        # @yieldparam result [Google::Apis::DoubleclicksearchV2::List] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DoubleclicksearchV2::ConversionList]
+        # @return [Google::Apis::DoubleclicksearchV2::List]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -101,8 +100,8 @@ module Google
         def get_conversion(agency_id, advertiser_id, engine_account_id, ad_group_id: nil, ad_id: nil, campaign_id: nil, criterion_id: nil, end_date: nil, row_count: nil, start_date: nil, start_row: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionListRepresentation
-          command.response_class = Google::Apis::DoubleclicksearchV2::ConversionList
+          command.response_representation = Google::Apis::DoubleclicksearchV2::List::Representation
+          command.response_class = Google::Apis::DoubleclicksearchV2::List
           command.params['agencyId'] = agency_id unless agency_id.nil?
           command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
           command.params['engineAccountId'] = engine_account_id unless engine_account_id.nil?
@@ -120,10 +119,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Inserts a batch of new conversions into DoubleClick Search.
-        # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list
-        #   
+        # @param [Google::Apis::DoubleclicksearchV2::List] conversion_list_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -133,36 +130,34 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DoubleclicksearchV2::ConversionList] parsed result object
+        # @yieldparam result [Google::Apis::DoubleclicksearchV2::List] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DoubleclicksearchV2::ConversionList]
+        # @return [Google::Apis::DoubleclicksearchV2::List]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_conversion(conversion_list = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_conversion(conversion_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'conversion'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DoubleclicksearchV2::ConversionListRepresentation
-          command.request_object = conversion_list
-          command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionListRepresentation
-          command.response_class = Google::Apis::DoubleclicksearchV2::ConversionList
+          command.request_representation = Google::Apis::DoubleclicksearchV2::List::Representation
+          command.request_object = conversion_list_object
+          command.response_representation = Google::Apis::DoubleclicksearchV2::List::Representation
+          command.response_class = Google::Apis::DoubleclicksearchV2::List
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a batch of conversions in DoubleClick Search. This method supports
         # patch semantics.
-        # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list
-        #   
+        # @param [Google::Apis::DoubleclicksearchV2::List] conversion_list_object
         # @param [String] advertiser_id
         #   Numeric ID of the advertiser.
         # @param [String] agency_id
@@ -186,25 +181,25 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DoubleclicksearchV2::ConversionList] parsed result object
+        # @yieldparam result [Google::Apis::DoubleclicksearchV2::List] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DoubleclicksearchV2::ConversionList]
+        # @return [Google::Apis::DoubleclicksearchV2::List]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_conversion(conversion_list = nil, advertiser_id: nil, agency_id: nil, end_date: nil, engine_account_id: nil, row_count: nil, start_date: nil, start_row: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_conversion(conversion_list_object = nil, advertiser_id: nil, agency_id: nil, end_date: nil, engine_account_id: nil, row_count: nil, start_date: nil, start_row: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'conversion'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::DoubleclicksearchV2::ConversionListRepresentation
-          command.request_object = conversion_list
-          command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionListRepresentation
-          command.response_class = Google::Apis::DoubleclicksearchV2::ConversionList
+          command.request_representation = Google::Apis::DoubleclicksearchV2::List::Representation
+          command.request_object = conversion_list_object
+          command.response_representation = Google::Apis::DoubleclicksearchV2::List::Representation
+          command.response_class = Google::Apis::DoubleclicksearchV2::List
           command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
           command.query['agencyId'] = agency_id unless agency_id.nil?
           command.query['endDate'] = end_date unless end_date.nil?
@@ -218,10 +213,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a batch of conversions in DoubleClick Search.
-        # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list
-        #   
+        # @param [Google::Apis::DoubleclicksearchV2::List] conversion_list_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -231,36 +224,34 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DoubleclicksearchV2::ConversionList] parsed result object
+        # @yieldparam result [Google::Apis::DoubleclicksearchV2::List] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DoubleclicksearchV2::ConversionList]
+        # @return [Google::Apis::DoubleclicksearchV2::List]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_conversion(conversion_list = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_conversion(conversion_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'conversion'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::DoubleclicksearchV2::ConversionListRepresentation
-          command.request_object = conversion_list
-          command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionListRepresentation
-          command.response_class = Google::Apis::DoubleclicksearchV2::ConversionList
+          command.request_representation = Google::Apis::DoubleclicksearchV2::List::Representation
+          command.request_object = conversion_list_object
+          command.response_representation = Google::Apis::DoubleclicksearchV2::List::Representation
+          command.response_class = Google::Apis::DoubleclicksearchV2::List
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates the availabilities of a batch of floodlight activities in DoubleClick
         # Search.
-        # @param [Google::Apis::DoubleclicksearchV2::UpdateAvailabilityRequest] update_availability_request
-        #   
+        # @param [Google::Apis::DoubleclicksearchV2::UpdateAvailabilityRequest] update_availability_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -270,7 +261,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -282,22 +273,21 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_availability(update_availability_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_availability(update_availability_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'conversion/updateAvailability'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DoubleclicksearchV2::UpdateAvailabilityRequestRepresentation
-          command.request_object = update_availability_request
-          command.response_representation = Google::Apis::DoubleclicksearchV2::UpdateAvailabilityResponseRepresentation
+          command.request_representation = Google::Apis::DoubleclicksearchV2::UpdateAvailabilityRequest::Representation
+          command.request_object = update_availability_request_object
+          command.response_representation = Google::Apis::DoubleclicksearchV2::UpdateAvailabilityResponse::Representation
           command.response_class = Google::Apis::DoubleclicksearchV2::UpdateAvailabilityResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Generates and returns a report immediately.
-        # @param [Google::Apis::DoubleclicksearchV2::ReportRequest] report_request
-        #   
+        # @param [Google::Apis::DoubleclicksearchV2::ReportRequest] report_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -307,7 +297,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -319,19 +309,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_report(report_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def generate_report(report_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'reports/generate'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DoubleclicksearchV2::ReportRequestRepresentation
-          command.request_object = report_request
-          command.response_representation = Google::Apis::DoubleclicksearchV2::ReportRepresentation
+          command.request_representation = Google::Apis::DoubleclicksearchV2::ReportRequest::Representation
+          command.request_object = report_request_object
+          command.response_representation = Google::Apis::DoubleclicksearchV2::Report::Representation
           command.response_class = Google::Apis::DoubleclicksearchV2::Report
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Polls for the status of a report request.
         # @param [String] report_id
@@ -345,7 +334,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -360,7 +349,7 @@ module Google
         def get_report(report_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'reports/{reportId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DoubleclicksearchV2::ReportRepresentation
+          command.response_representation = Google::Apis::DoubleclicksearchV2::Report::Representation
           command.response_class = Google::Apis::DoubleclicksearchV2::Report
           command.params['reportId'] = report_id unless report_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -368,7 +357,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Downloads a report file encoded in UTF-8.
         # @param [String] report_id
@@ -386,7 +374,7 @@ module Google
         #   enforce per-user limits.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -414,10 +402,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Inserts a report request into the reporting system.
-        # @param [Google::Apis::DoubleclicksearchV2::ReportRequest] report_request
-        #   
+        # @param [Google::Apis::DoubleclicksearchV2::ReportRequest] report_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -427,7 +413,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -439,19 +425,19 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def request_report(report_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def request_report(report_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'reports'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DoubleclicksearchV2::ReportRequestRepresentation
-          command.request_object = report_request
-          command.response_representation = Google::Apis::DoubleclicksearchV2::ReportRepresentation
+          command.request_representation = Google::Apis::DoubleclicksearchV2::ReportRequest::Representation
+          command.request_object = report_request_object
+          command.response_representation = Google::Apis::DoubleclicksearchV2::Report::Representation
           command.response_class = Google::Apis::DoubleclicksearchV2::Report
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Retrieve the list of saved columns for a specified advertiser.
         # @param [String] agency_id
         #   DS ID of the agency.
@@ -466,7 +452,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -481,7 +467,7 @@ module Google
         def list_saved_columns(agency_id, advertiser_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'agency/{agencyId}/advertiser/{advertiserId}/savedcolumns'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DoubleclicksearchV2::SavedColumnListRepresentation
+          command.response_representation = Google::Apis::DoubleclicksearchV2::SavedColumnList::Representation
           command.response_class = Google::Apis::DoubleclicksearchV2::SavedColumnList
           command.params['agencyId'] = agency_id unless agency_id.nil?
           command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?

@@ -33,7 +33,6 @@ module Google
       #
       # @see http://developers.google.com/compute/docs/autoscaler
       class AutoscalerService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -53,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'autoscaler/v1beta2/')
         end
-
+        
         # Deletes the specified Autoscaler resource.
         # @param [String] project
         #   Project ID of Autoscaler resource.
@@ -70,7 +69,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -85,7 +84,7 @@ module Google
         def delete_autoscaler(project, zone, autoscaler, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/zones/{zone}/autoscalers/{autoscaler}'
           command =  make_simple_command(:delete, path, options)
-          command.response_representation = Google::Apis::AutoscalerV1beta2::OperationRepresentation
+          command.response_representation = Google::Apis::AutoscalerV1beta2::Operation::Representation
           command.response_class = Google::Apis::AutoscalerV1beta2::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -95,7 +94,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Gets the specified Autoscaler resource.
         # @param [String] project
@@ -113,7 +111,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -128,7 +126,7 @@ module Google
         def get_autoscaler(project, zone, autoscaler, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/zones/{zone}/autoscalers/{autoscaler}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AutoscalerV1beta2::AutoscalerRepresentation
+          command.response_representation = Google::Apis::AutoscalerV1beta2::Autoscaler::Representation
           command.response_class = Google::Apis::AutoscalerV1beta2::Autoscaler
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -139,14 +137,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Adds new Autoscaler resource.
         # @param [String] project
         #   Project ID of Autoscaler resource.
         # @param [String] zone
         #   Zone name of Autoscaler resource.
-        # @param [Google::Apis::AutoscalerV1beta2::Autoscaler] autoscaler
-        #   
+        # @param [Google::Apis::AutoscalerV1beta2::Autoscaler] autoscaler_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -156,7 +152,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -168,12 +164,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_autoscaler(project, zone, autoscaler = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_autoscaler(project, zone, autoscaler_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/zones/{zone}/autoscalers'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AutoscalerV1beta2::AutoscalerRepresentation
-          command.request_object = autoscaler
-          command.response_representation = Google::Apis::AutoscalerV1beta2::OperationRepresentation
+          command.request_representation = Google::Apis::AutoscalerV1beta2::Autoscaler::Representation
+          command.request_object = autoscaler_object
+          command.response_representation = Google::Apis::AutoscalerV1beta2::Operation::Representation
           command.response_class = Google::Apis::AutoscalerV1beta2::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -183,18 +179,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Lists all Autoscaler resources in this zone.
         # @param [String] project
         #   Project ID of Autoscaler resource.
         # @param [String] zone
         #   Zone name of Autoscaler resource.
         # @param [String] filter
-        #   
         # @param [Fixnum] max_results
-        #   
         # @param [String] page_token
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -204,7 +196,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -219,7 +211,7 @@ module Google
         def list_autoscalers(project, zone, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/zones/{zone}/autoscalers'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AutoscalerV1beta2::ListResponseRepresentation
+          command.response_representation = Google::Apis::AutoscalerV1beta2::ListResponse::Representation
           command.response_class = Google::Apis::AutoscalerV1beta2::ListResponse
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -232,7 +224,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Update the entire content of the Autoscaler resource. This method supports
         # patch semantics.
         # @param [String] project
@@ -242,7 +233,6 @@ module Google
         # @param [String] autoscaler
         #   Name of the Autoscaler resource.
         # @param [Google::Apis::AutoscalerV1beta2::Autoscaler] autoscaler_object
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -252,7 +242,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -267,9 +257,9 @@ module Google
         def patch_autoscaler(project, zone, autoscaler, autoscaler_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/zones/{zone}/autoscalers/{autoscaler}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::AutoscalerV1beta2::AutoscalerRepresentation
+          command.request_representation = Google::Apis::AutoscalerV1beta2::Autoscaler::Representation
           command.request_object = autoscaler_object
-          command.response_representation = Google::Apis::AutoscalerV1beta2::OperationRepresentation
+          command.response_representation = Google::Apis::AutoscalerV1beta2::Operation::Representation
           command.response_class = Google::Apis::AutoscalerV1beta2::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -280,7 +270,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Update the entire content of the Autoscaler resource.
         # @param [String] project
         #   Project ID of Autoscaler resource.
@@ -289,7 +278,6 @@ module Google
         # @param [String] autoscaler
         #   Name of the Autoscaler resource.
         # @param [Google::Apis::AutoscalerV1beta2::Autoscaler] autoscaler_object
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -299,7 +287,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -314,9 +302,9 @@ module Google
         def update_autoscaler(project, zone, autoscaler, autoscaler_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/zones/{zone}/autoscalers/{autoscaler}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::AutoscalerV1beta2::AutoscalerRepresentation
+          command.request_representation = Google::Apis::AutoscalerV1beta2::Autoscaler::Representation
           command.request_object = autoscaler_object
-          command.response_representation = Google::Apis::AutoscalerV1beta2::OperationRepresentation
+          command.response_representation = Google::Apis::AutoscalerV1beta2::Operation::Representation
           command.response_class = Google::Apis::AutoscalerV1beta2::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -326,14 +314,11 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Deletes the specified zone-specific operation resource.
         # @param [String] project
-        #   
         # @param [String] zone
-        #   
         # @param [String] operation
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -343,7 +328,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -367,14 +352,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Retrieves the specified zone-specific operation resource.
         # @param [String] project
-        #   
         # @param [String] zone
-        #   
         # @param [String] operation
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -384,7 +365,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -399,7 +380,7 @@ module Google
         def get_zone_operation(project, zone, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/operations/{operation}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AutoscalerV1beta2::OperationRepresentation
+          command.response_representation = Google::Apis::AutoscalerV1beta2::Operation::Representation
           command.response_class = Google::Apis::AutoscalerV1beta2::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -410,18 +391,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Retrieves the list of operation resources contained within the specified zone.
         # @param [String] project
-        #   
         # @param [String] zone
-        #   
         # @param [String] filter
-        #   
         # @param [Fixnum] max_results
-        #   
         # @param [String] page_token
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -431,7 +406,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -446,7 +421,7 @@ module Google
         def list_zone_operations(project, zone, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/operations'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AutoscalerV1beta2::OperationListRepresentation
+          command.response_representation = Google::Apis::AutoscalerV1beta2::OperationList::Representation
           command.response_class = Google::Apis::AutoscalerV1beta2::OperationList
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -458,16 +433,12 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # 
         # @param [String] project
-        #   
         # @param [String] filter
-        #   
         # @param [Fixnum] max_results
-        #   
         # @param [String] page_token
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -477,7 +448,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -492,7 +463,7 @@ module Google
         def list_zones(project, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AutoscalerV1beta2::ZoneListRepresentation
+          command.response_representation = Google::Apis::AutoscalerV1beta2::ZoneList::Representation
           command.response_class = Google::Apis::AutoscalerV1beta2::ZoneList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?

@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DriveV2
-
+      
       # An item with user information and settings.
       class About
         include Google::Apis::Core::Hashable
@@ -148,12 +148,17 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # The authenticated user.
+        # The JSON template for a user.
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :user
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @additional_role_info = args[:additional_role_info] unless args[:additional_role_info].nil?
           @domain_sharing_policy = args[:domain_sharing_policy] unless args[:domain_sharing_policy].nil?
           @etag = args[:etag] unless args[:etag].nil?
@@ -179,6 +184,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
           @user = args[:user] unless args[:user].nil?
         end
+        
         # 
         class AdditionalRoleInfo
           include Google::Apis::Core::Hashable
@@ -194,9 +200,15 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @role_sets = args[:role_sets] unless args[:role_sets].nil?
             @type = args[:type] unless args[:type].nil?
           end
+          
           # 
           class RoleSet
             include Google::Apis::Core::Hashable
@@ -212,11 +224,17 @@ module Google
             attr_accessor :primary_role
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @additional_roles = args[:additional_roles] unless args[:additional_roles].nil?
               @primary_role = args[:primary_role] unless args[:primary_role].nil?
             end
           end
         end
+        
         # 
         class ExportFormat
           include Google::Apis::Core::Hashable
@@ -232,10 +250,16 @@ module Google
           attr_accessor :targets
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @source = args[:source] unless args[:source].nil?
             @targets = args[:targets] unless args[:targets].nil?
           end
         end
+        
         # 
         class Feature
           include Google::Apis::Core::Hashable
@@ -251,10 +275,16 @@ module Google
           attr_accessor :feature_rate
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @feature_name = args[:feature_name] unless args[:feature_name].nil?
             @feature_rate = args[:feature_rate] unless args[:feature_rate].nil?
           end
         end
+        
         # 
         class ImportFormat
           include Google::Apis::Core::Hashable
@@ -270,10 +300,16 @@ module Google
           attr_accessor :targets
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @source = args[:source] unless args[:source].nil?
             @targets = args[:targets] unless args[:targets].nil?
           end
         end
+        
         # 
         class MaxUploadSize
           include Google::Apis::Core::Hashable
@@ -289,10 +325,16 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @size = args[:size] unless args[:size].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
+        
         # 
         class QuotaBytesByService
           include Google::Apis::Core::Hashable
@@ -308,12 +350,17 @@ module Google
           attr_accessor :service_name
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @bytes_used = args[:bytes_used] unless args[:bytes_used].nil?
             @service_name = args[:service_name] unless args[:service_name].nil?
           end
         end
       end
-
+      
       # The apps resource provides a list of the apps that a user has installed, with
       # information about each app's supported MIME types, file extensions, and other
       # details.
@@ -455,6 +502,11 @@ module Google
         alias_method :use_by_default?, :use_by_default
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @authorized = args[:authorized] unless args[:authorized].nil?
           @create_in_folder_template = args[:create_in_folder_template] unless args[:create_in_folder_template].nil?
           @create_url = args[:create_url] unless args[:create_url].nil?
@@ -480,6 +532,7 @@ module Google
           @supports_offline_create = args[:supports_offline_create] unless args[:supports_offline_create].nil?
           @use_by_default = args[:use_by_default] unless args[:use_by_default].nil?
         end
+        
         # 
         class Icon
           include Google::Apis::Core::Hashable
@@ -503,13 +556,18 @@ module Google
           attr_accessor :size
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @category = args[:category] unless args[:category].nil?
             @icon_url = args[:icon_url] unless args[:icon_url].nil?
             @size = args[:size] unless args[:size].nil?
           end
         end
       end
-
+      
       # A list of third-party applications which the user has installed or given
       # access to Google Drive.
       class AppList
@@ -542,6 +600,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @default_app_ids = args[:default_app_ids] unless args[:default_app_ids].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
@@ -549,7 +612,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # Representation of a change to a file.
       class Change
         include Google::Apis::Core::Hashable
@@ -560,7 +623,7 @@ module Google
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # The updated state of the file. Present if the file has not been deleted.
+        # The metadata for a file.
         # Corresponds to the JSON property `file`
         # @return [Google::Apis::DriveV2::File]
         attr_accessor :file
@@ -591,6 +654,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @deleted = args[:deleted] unless args[:deleted].nil?
           @file = args[:file] unless args[:file].nil?
           @file_id = args[:file_id] unless args[:file_id].nil?
@@ -600,7 +668,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A list of changes for a user.
       class ChangeList
         include Google::Apis::Core::Hashable
@@ -641,6 +709,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -650,7 +723,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # An notification channel used to watch for resource changes.
       class Channel
         include Google::Apis::Core::Hashable
@@ -711,6 +784,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @address = args[:address] unless args[:address].nil?
           @expiration = args[:expiration] unless args[:expiration].nil?
           @id = args[:id] unless args[:id].nil?
@@ -723,7 +801,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # A list of children of a file.
       class ChildList
         include Google::Apis::Core::Hashable
@@ -759,6 +837,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -767,7 +850,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A reference to a folder's child.
       class ChildReference
         include Google::Apis::Core::Hashable
@@ -793,13 +876,18 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @child_link = args[:child_link] unless args[:child_link].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A JSON representation of a comment on a file in Google Drive.
       class Comment
         include Google::Apis::Core::Hashable
@@ -810,7 +898,7 @@ module Google
         # @return [String]
         attr_accessor :anchor
       
-        # The user who wrote this comment.
+        # The JSON template for a user.
         # Corresponds to the JSON property `author`
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :author
@@ -888,6 +976,11 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @anchor = args[:anchor] unless args[:anchor].nil?
           @author = args[:author] unless args[:author].nil?
           @comment_id = args[:comment_id] unless args[:comment_id].nil?
@@ -904,6 +997,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
           @status = args[:status] unless args[:status].nil?
         end
+        
         # The context of the file which is being commented on.
         class Context
           include Google::Apis::Core::Hashable
@@ -921,12 +1015,17 @@ module Google
           attr_accessor :value
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @type = args[:type] unless args[:type].nil?
             @value = args[:value] unless args[:value].nil?
           end
         end
       end
-
+      
       # A JSON representation of a list of comments on a file in Google Drive.
       class CommentList
         include Google::Apis::Core::Hashable
@@ -957,6 +1056,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_link = args[:next_link] unless args[:next_link].nil?
@@ -964,12 +1068,12 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A JSON representation of a reply to a comment on a file in Google Drive.
       class CommentReply
         include Google::Apis::Core::Hashable
       
-        # The user who wrote this reply.
+        # The JSON template for a user.
         # Corresponds to the JSON property `author`
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :author
@@ -1023,6 +1127,11 @@ module Google
         attr_accessor :verb
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @author = args[:author] unless args[:author].nil?
           @content = args[:content] unless args[:content].nil?
           @created_date = args[:created_date] unless args[:created_date].nil?
@@ -1034,7 +1143,7 @@ module Google
           @verb = args[:verb] unless args[:verb].nil?
         end
       end
-
+      
       # A JSON representation of a list of replies to a comment on a file in Google
       # Drive.
       class CommentReplyList
@@ -1066,6 +1175,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_link = args[:next_link] unless args[:next_link].nil?
@@ -1073,7 +1187,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # The metadata for a file.
       class File
         include Google::Apis::Core::Hashable
@@ -1203,7 +1317,7 @@ module Google
         # @return [Google::Apis::DriveV2::File::Labels]
         attr_accessor :labels
       
-        # The last user to modify this file.
+        # The JSON template for a user.
         # Corresponds to the JSON property `lastModifyingUser`
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :last_modifying_user
@@ -1314,7 +1428,7 @@ module Google
         # @return [DateTime]
         attr_accessor :shared_with_me_date
       
-        # User that shared the item with the current user, if available.
+        # The JSON template for a user.
         # Corresponds to the JSON property `sharingUser`
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :sharing_user
@@ -1336,7 +1450,7 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # The permissions for the authenticated user on this file.
+        # A permission for a file.
         # Corresponds to the JSON property `userPermission`
         # @return [Google::Apis::DriveV2::Permission]
         attr_accessor :user_permission
@@ -1373,6 +1487,11 @@ module Google
         alias_method :writers_can_share?, :writers_can_share
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @alternate_link = args[:alternate_link] unless args[:alternate_link].nil?
           @app_data_contents = args[:app_data_contents] unless args[:app_data_contents].nil?
           @copyable = args[:copyable] unless args[:copyable].nil?
@@ -1425,6 +1544,7 @@ module Google
           @web_view_link = args[:web_view_link] unless args[:web_view_link].nil?
           @writers_can_share = args[:writers_can_share] unless args[:writers_can_share].nil?
         end
+        
         # Metadata about image media. This will only be present for image types, and its
         # contents will depend on what can be parsed from the image content.
         class ImageMediaMetadata
@@ -1538,6 +1658,11 @@ module Google
           attr_accessor :width
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @aperture = args[:aperture] unless args[:aperture].nil?
             @camera_make = args[:camera_make] unless args[:camera_make].nil?
             @camera_model = args[:camera_model] unless args[:camera_model].nil?
@@ -1560,6 +1685,7 @@ module Google
             @white_balance = args[:white_balance] unless args[:white_balance].nil?
             @width = args[:width] unless args[:width].nil?
           end
+          
           # Geographic location information stored in the image.
           class Location
             include Google::Apis::Core::Hashable
@@ -1580,12 +1706,18 @@ module Google
             attr_accessor :longitude
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @altitude = args[:altitude] unless args[:altitude].nil?
               @latitude = args[:latitude] unless args[:latitude].nil?
               @longitude = args[:longitude] unless args[:longitude].nil?
             end
           end
         end
+        
         # Indexable text attributes for the file (can only be written)
         class IndexableText
           include Google::Apis::Core::Hashable
@@ -1596,9 +1728,15 @@ module Google
           attr_accessor :text
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @text = args[:text] unless args[:text].nil?
           end
         end
+        
         # A group of labels for the file.
         class Labels
           include Google::Apis::Core::Hashable
@@ -1635,6 +1773,11 @@ module Google
           alias_method :viewed?, :viewed
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @hidden = args[:hidden] unless args[:hidden].nil?
             @restricted = args[:restricted] unless args[:restricted].nil?
             @starred = args[:starred] unless args[:starred].nil?
@@ -1642,6 +1785,7 @@ module Google
             @viewed = args[:viewed] unless args[:viewed].nil?
           end
         end
+        
         # Thumbnail for the file. Only accepted on upload and for files that are not
         # already thumbnailed by Google.
         class Thumbnail
@@ -1659,10 +1803,16 @@ module Google
           attr_accessor :mime_type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @image = args[:image] unless args[:image].nil?
             @mime_type = args[:mime_type] unless args[:mime_type].nil?
           end
         end
+        
         # Metadata about video media. This will only be present for video types.
         class VideoMediaMetadata
           include Google::Apis::Core::Hashable
@@ -1683,13 +1833,18 @@ module Google
           attr_accessor :width
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @duration_millis = args[:duration_millis] unless args[:duration_millis].nil?
             @height = args[:height] unless args[:height].nil?
             @width = args[:width] unless args[:width].nil?
           end
         end
       end
-
+      
       # A list of files.
       class FileList
         include Google::Apis::Core::Hashable
@@ -1725,6 +1880,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1733,7 +1893,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A list of a file's parents.
       class ParentList
         include Google::Apis::Core::Hashable
@@ -1759,13 +1919,18 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A reference to a file's parent.
       class ParentReference
         include Google::Apis::Core::Hashable
@@ -1797,6 +1962,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @is_root = args[:is_root] unless args[:is_root].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1804,7 +1974,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A permission for a file.
       class Permission
         include Google::Apis::Core::Hashable
@@ -1894,6 +2064,11 @@ module Google
         alias_method :with_link?, :with_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @additional_roles = args[:additional_roles] unless args[:additional_roles].nil?
           @auth_key = args[:auth_key] unless args[:auth_key].nil?
           @domain = args[:domain] unless args[:domain].nil?
@@ -1910,7 +2085,7 @@ module Google
           @with_link = args[:with_link] unless args[:with_link].nil?
         end
       end
-
+      
       # An ID for a user or group as seen in Permission items.
       class PermissionId
         include Google::Apis::Core::Hashable
@@ -1926,11 +2101,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A list of permissions associated with a file.
       class PermissionList
         include Google::Apis::Core::Hashable
@@ -1956,13 +2136,18 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A key-value pair attached to a file that is either public or private to an
       # application.
       # The following limits apply to file properties:
@@ -2005,6 +2190,11 @@ module Google
         attr_accessor :visibility
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @key = args[:key] unless args[:key].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -2013,7 +2203,7 @@ module Google
           @visibility = args[:visibility] unless args[:visibility].nil?
         end
       end
-
+      
       # A collection of properties, key-value pairs that are either public or private
       # to an application.
       class PropertyList
@@ -2040,13 +2230,18 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A revision of a file.
       class Revision
         include Google::Apis::Core::Hashable
@@ -2083,7 +2278,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The last user to modify this revision.
+        # The JSON template for a user.
         # Corresponds to the JSON property `lastModifyingUser`
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :last_modifying_user
@@ -2156,6 +2351,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @download_url = args[:download_url] unless args[:download_url].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @export_links = args[:export_links] unless args[:export_links].nil?
@@ -2176,7 +2376,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A list of revisions of a file.
       class RevisionList
         include Google::Apis::Core::Hashable
@@ -2202,13 +2402,18 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # The JSON template for a user.
       class User
         include Google::Apis::Core::Hashable
@@ -2246,6 +2451,11 @@ module Google
         attr_accessor :picture
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @display_name = args[:display_name] unless args[:display_name].nil?
           @email_address = args[:email_address] unless args[:email_address].nil?
           @is_authenticated_user = args[:is_authenticated_user] unless args[:is_authenticated_user].nil?
@@ -2253,6 +2463,7 @@ module Google
           @permission_id = args[:permission_id] unless args[:permission_id].nil?
           @picture = args[:picture] unless args[:picture].nil?
         end
+        
         # The user's profile picture.
         class Picture
           include Google::Apis::Core::Hashable
@@ -2263,6 +2474,11 @@ module Google
           attr_accessor :url
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @url = args[:url] unless args[:url].nil?
           end
         end

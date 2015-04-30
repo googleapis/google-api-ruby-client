@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ComputeV1
-
+      
       # An access configuration attached to an instance's network interface.
       class AccessConfig
         include Google::Apis::Core::Hashable
@@ -52,13 +52,18 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
           @nat_ip = args[:nat_ip] unless args[:nat_ip].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # A reserved address resource.
       class Address
         include Google::Apis::Core::Hashable
@@ -124,6 +129,11 @@ module Google
         attr_accessor :users
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @address = args[:address] unless args[:address].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
@@ -136,7 +146,7 @@ module Google
           @users = args[:users] unless args[:users].nil?
         end
       end
-
+      
       # 
       class AddressAggregatedList
         include Google::Apis::Core::Hashable
@@ -148,7 +158,7 @@ module Google
       
         # [Output Only] A map of scoped address lists.
         # Corresponds to the JSON property `items`
-        # @return [Hash<String,Google::Apis::ComputeV1::AddressesScopedList>]
+        # @return [Hash<String,Google::Apis::ComputeV1::ScopedList>]
         attr_accessor :items
       
         # [Output Only] Type of resource. Always compute#addressAggregatedList for
@@ -168,6 +178,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -175,7 +190,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # Contains a list of address resources.
       class AddressList
         include Google::Apis::Core::Hashable
@@ -207,6 +222,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -214,9 +234,9 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
-      class AddressesScopedList
+      class ScopedList
         include Google::Apis::Core::Hashable
       
         # [Output Only] List of addresses contained in this scope.
@@ -227,13 +247,19 @@ module Google
         # [Output Only] Informational warning which replaces the list of addresses when
         # the list is empty.
         # Corresponds to the JSON property `warning`
-        # @return [Google::Apis::ComputeV1::AddressesScopedList::Warning]
+        # @return [Google::Apis::ComputeV1::ScopedList::Warning]
         attr_accessor :warning
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @addresses = args[:addresses] unless args[:addresses].nil?
           @warning = args[:warning] unless args[:warning].nil?
         end
+        
         # [Output Only] Informational warning which replaces the list of addresses when
         # the list is empty.
         class Warning
@@ -246,7 +272,7 @@ module Google
         
           # [Output Only] Metadata for this warning in key: value format.
           # Corresponds to the JSON property `data`
-          # @return [Array<Google::Apis::ComputeV1::AddressesScopedList::Warning::Datum>]
+          # @return [Array<Google::Apis::ComputeV1::ScopedList::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] Optional human-readable details for this warning.
@@ -255,10 +281,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -274,13 +306,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # An instance-attached disk resource.
       class AttachedDisk
         include Google::Apis::Core::Hashable
@@ -362,6 +399,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @auto_delete = args[:auto_delete] unless args[:auto_delete].nil?
           @boot = args[:boot] unless args[:boot].nil?
           @device_name = args[:device_name] unless args[:device_name].nil?
@@ -375,7 +417,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # [Input Only] Specifies the parameters for a new disk that will be created
       # alongside the new instance. Use initialization parameters to create boot disks
       # or local SSDs attached to the new instance.
@@ -425,13 +467,18 @@ module Google
         attr_accessor :source_image
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @disk_name = args[:disk_name] unless args[:disk_name].nil?
           @disk_size_gb = args[:disk_size_gb] unless args[:disk_size_gb].nil?
           @disk_type = args[:disk_type] unless args[:disk_type].nil?
           @source_image = args[:source_image] unless args[:source_image].nil?
         end
       end
-
+      
       # Message containing information of one individual backend.
       class Backend
         include Google::Apis::Core::Hashable
@@ -483,6 +530,11 @@ module Google
         attr_accessor :max_utilization
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @balancing_mode = args[:balancing_mode] unless args[:balancing_mode].nil?
           @capacity_scaler = args[:capacity_scaler] unless args[:capacity_scaler].nil?
           @description = args[:description] unless args[:description].nil?
@@ -492,7 +544,7 @@ module Google
           @max_utilization = args[:max_utilization] unless args[:max_utilization].nil?
         end
       end
-
+      
       # A BackendService resource. This resource defines a group of backend VMs
       # together with their serving capacity.
       class BackendService
@@ -574,6 +626,11 @@ module Google
         attr_accessor :timeout_sec
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @backends = args[:backends] unless args[:backends].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
@@ -589,7 +646,7 @@ module Google
           @timeout_sec = args[:timeout_sec] unless args[:timeout_sec].nil?
         end
       end
-
+      
       # 
       class BackendServiceGroupHealth
         include Google::Apis::Core::Hashable
@@ -605,11 +662,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @health_status = args[:health_status] unless args[:health_status].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Contains a list of BackendService resources.
       class BackendServiceList
         include Google::Apis::Core::Hashable
@@ -640,6 +702,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -647,7 +714,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # Deprecation status for a public resource.
       class DeprecationStatus
         include Google::Apis::Core::Hashable
@@ -687,6 +754,11 @@ module Google
         attr_accessor :state
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @deleted = args[:deleted] unless args[:deleted].nil?
           @deprecated = args[:deprecated] unless args[:deprecated].nil?
           @obsolete = args[:obsolete] unless args[:obsolete].nil?
@@ -694,7 +766,7 @@ module Google
           @state = args[:state] unless args[:state].nil?
         end
       end
-
+      
       # A Disk resource.
       class Disk
         include Google::Apis::Core::Hashable
@@ -819,6 +891,11 @@ module Google
         attr_accessor :zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
           @id = args[:id] unless args[:id].nil?
@@ -837,7 +914,7 @@ module Google
           @zone = args[:zone] unless args[:zone].nil?
         end
       end
-
+      
       # 
       class DiskAggregatedList
         include Google::Apis::Core::Hashable
@@ -869,6 +946,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -876,7 +958,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A list of Disk resources.
       class DiskList
         include Google::Apis::Core::Hashable
@@ -907,6 +989,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -914,7 +1001,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
       class DiskMoveRequest
         include Google::Apis::Core::Hashable
@@ -938,11 +1025,16 @@ module Google
         attr_accessor :target_disk
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @destination_zone = args[:destination_zone] unless args[:destination_zone].nil?
           @target_disk = args[:target_disk] unless args[:target_disk].nil?
         end
       end
-
+      
       # A disk type resource.
       class DiskType
         include Google::Apis::Core::Hashable
@@ -957,7 +1049,7 @@ module Google
         # @return [String]
         attr_accessor :default_disk_size_gb
       
-        # [Output Only] The deprecation status associated with this disk type.
+        # Deprecation status for a public resource.
         # Corresponds to the JSON property `deprecated`
         # @return [Google::Apis::ComputeV1::DeprecationStatus]
         attr_accessor :deprecated
@@ -999,6 +1091,11 @@ module Google
         attr_accessor :zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @default_disk_size_gb = args[:default_disk_size_gb] unless args[:default_disk_size_gb].nil?
           @deprecated = args[:deprecated] unless args[:deprecated].nil?
@@ -1011,7 +1108,7 @@ module Google
           @zone = args[:zone] unless args[:zone].nil?
         end
       end
-
+      
       # 
       class DiskTypeAggregatedList
         include Google::Apis::Core::Hashable
@@ -1042,6 +1139,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1049,7 +1151,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # Contains a list of disk type resources.
       class DiskTypeList
         include Google::Apis::Core::Hashable
@@ -1080,6 +1182,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1087,7 +1194,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
       class DiskTypesScopedList
         include Google::Apis::Core::Hashable
@@ -1104,9 +1211,15 @@ module Google
         attr_accessor :warning
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @disk_types = args[:disk_types] unless args[:disk_types].nil?
           @warning = args[:warning] unless args[:warning].nil?
         end
+        
         # [Output Only] Informational warning which replaces the list of disk types when
         # the list is empty.
         class Warning
@@ -1128,10 +1241,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -1147,13 +1266,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # 
       class DisksScopedList
         include Google::Apis::Core::Hashable
@@ -1170,9 +1294,15 @@ module Google
         attr_accessor :warning
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @disks = args[:disks] unless args[:disks].nil?
           @warning = args[:warning] unless args[:warning].nil?
         end
+        
         # [Output Only] Informational warning which replaces the list of disks when the
         # list is empty.
         class Warning
@@ -1194,10 +1324,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -1213,13 +1349,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # A Firewall resource.
       class Firewall
         include Google::Apis::Core::Hashable
@@ -1306,6 +1447,11 @@ module Google
         attr_accessor :target_tags
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @allowed = args[:allowed] unless args[:allowed].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
@@ -1318,6 +1464,7 @@ module Google
           @source_tags = args[:source_tags] unless args[:source_tags].nil?
           @target_tags = args[:target_tags] unless args[:target_tags].nil?
         end
+        
         # 
         class Allowed
           include Google::Apis::Core::Hashable
@@ -1339,12 +1486,17 @@ module Google
           attr_accessor :ports
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @ip_protocol = args[:ip_protocol] unless args[:ip_protocol].nil?
             @ports = args[:ports] unless args[:ports].nil?
           end
         end
       end
-
+      
       # Contains a list of Firewall resources.
       class FirewallList
         include Google::Apis::Core::Hashable
@@ -1376,6 +1528,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1383,7 +1540,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A ForwardingRule resource. A ForwardingRule resource specifies which pool of
       # target VMs to forward a packet to if it matches the given [IPAddress,
       # IPProtocol, portRange] tuple.
@@ -1461,6 +1618,11 @@ module Google
         attr_accessor :target
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ip_address = args[:ip_address] unless args[:ip_address].nil?
           @ip_protocol = args[:ip_protocol] unless args[:ip_protocol].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
@@ -1474,7 +1636,7 @@ module Google
           @target = args[:target] unless args[:target].nil?
         end
       end
-
+      
       # 
       class ForwardingRuleAggregatedList
         include Google::Apis::Core::Hashable
@@ -1505,6 +1667,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1512,7 +1679,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # Contains a list of ForwardingRule resources.
       class ForwardingRuleList
         include Google::Apis::Core::Hashable
@@ -1543,6 +1710,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1550,7 +1722,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
       class ForwardingRulesScopedList
         include Google::Apis::Core::Hashable
@@ -1567,9 +1739,15 @@ module Google
         attr_accessor :warning
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @forwarding_rules = args[:forwarding_rules] unless args[:forwarding_rules].nil?
           @warning = args[:warning] unless args[:warning].nil?
         end
+        
         # Informational warning which replaces the list of forwarding rules when the
         # list is empty.
         class Warning
@@ -1591,10 +1769,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -1610,13 +1794,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # 
       class HealthCheckReference
         include Google::Apis::Core::Hashable
@@ -1627,10 +1816,15 @@ module Google
         attr_accessor :health_check
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @health_check = args[:health_check] unless args[:health_check].nil?
         end
       end
-
+      
       # 
       class HealthStatus
         include Google::Apis::Core::Hashable
@@ -1656,13 +1850,18 @@ module Google
         attr_accessor :port
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @health_state = args[:health_state] unless args[:health_state].nil?
           @instance = args[:instance] unless args[:instance].nil?
           @ip_address = args[:ip_address] unless args[:ip_address].nil?
           @port = args[:port] unless args[:port].nil?
         end
       end
-
+      
       # A host-matching rule for a URL. If matched, will use the named PathMatcher to
       # select the BackendService.
       class HostRule
@@ -1687,12 +1886,17 @@ module Google
         attr_accessor :path_matcher
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @description = args[:description] unless args[:description].nil?
           @hosts = args[:hosts] unless args[:hosts].nil?
           @path_matcher = args[:path_matcher] unless args[:path_matcher].nil?
         end
       end
-
+      
       # An HttpHealthCheck resource. This resource defines a template for how
       # individual VMs should be checked for health, via HTTP.
       class HttpHealthCheck
@@ -1772,6 +1976,11 @@ module Google
         attr_accessor :unhealthy_threshold
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @check_interval_sec = args[:check_interval_sec] unless args[:check_interval_sec].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
@@ -1787,7 +1996,7 @@ module Google
           @unhealthy_threshold = args[:unhealthy_threshold] unless args[:unhealthy_threshold].nil?
         end
       end
-
+      
       # Contains a list of HttpHealthCheck resources.
       class HttpHealthCheckList
         include Google::Apis::Core::Hashable
@@ -1818,6 +2027,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1825,7 +2039,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # An Image resource.
       class Image
         include Google::Apis::Core::Hashable
@@ -1840,7 +2054,7 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # The deprecation status associated with this image.
+        # Deprecation status for a public resource.
         # Corresponds to the JSON property `deprecated`
         # @return [Google::Apis::ComputeV1::DeprecationStatus]
         attr_accessor :deprecated
@@ -1924,6 +2138,11 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @archive_size_bytes = args[:archive_size_bytes] unless args[:archive_size_bytes].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @deprecated = args[:deprecated] unless args[:deprecated].nil?
@@ -1940,6 +2159,7 @@ module Google
           @source_type = args[:source_type] unless args[:source_type].nil?
           @status = args[:status] unless args[:status].nil?
         end
+        
         # The parameters of the raw disk image.
         class RawDisk
           include Google::Apis::Core::Hashable
@@ -1964,13 +2184,18 @@ module Google
           attr_accessor :source
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @container_type = args[:container_type] unless args[:container_type].nil?
             @sha1_checksum = args[:sha1_checksum] unless args[:sha1_checksum].nil?
             @source = args[:source] unless args[:source].nil?
           end
         end
       end
-
+      
       # Contains a list of Image resources.
       class ImageList
         include Google::Apis::Core::Hashable
@@ -2001,6 +2226,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -2008,7 +2238,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # An Instance resource.
       class Instance
         include Google::Apis::Core::Hashable
@@ -2061,8 +2291,7 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
-        # The metadata key/value pairs assigned to this instance. This includes custom
-        # metadata and predefined keys.
+        # A metadata key/value entry.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::ComputeV1::Metadata]
         attr_accessor :metadata
@@ -2084,7 +2313,7 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # Scheduling options for this instance.
+        # Sets the scheduling options for an Instance.
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::Scheduling]
         attr_accessor :scheduling
@@ -2113,10 +2342,7 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
-        # A list of tags to appy to this instance. Tags are used to identify valid
-        # sources or targets for network firewalls and are specified by the client
-        # during instance creation. The tags can be later modified by the setTags method.
-        # Each tag within the list must comply with RFC1035.
+        # A set of instance tags.
         # Corresponds to the JSON property `tags`
         # @return [Google::Apis::ComputeV1::Tags]
         attr_accessor :tags
@@ -2127,6 +2353,11 @@ module Google
         attr_accessor :zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @can_ip_forward = args[:can_ip_forward] unless args[:can_ip_forward].nil?
           @cpu_platform = args[:cpu_platform] unless args[:cpu_platform].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
@@ -2147,7 +2378,7 @@ module Google
           @zone = args[:zone] unless args[:zone].nil?
         end
       end
-
+      
       # 
       class InstanceAggregatedList
         include Google::Apis::Core::Hashable
@@ -2179,6 +2410,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -2186,7 +2422,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # Contains a list of instance resources.
       class InstanceList
         include Google::Apis::Core::Hashable
@@ -2218,6 +2454,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -2225,7 +2466,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
       class InstanceMoveRequest
         include Google::Apis::Core::Hashable
@@ -2250,11 +2491,16 @@ module Google
         attr_accessor :target_instance
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @destination_zone = args[:destination_zone] unless args[:destination_zone].nil?
           @target_instance = args[:target_instance] unless args[:target_instance].nil?
         end
       end
-
+      
       # 
       class InstanceProperties
         include Google::Apis::Core::Hashable
@@ -2288,9 +2534,7 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
-        # Metadata key/value pairs assigned to instances created based on this template.
-        # Consists of custom metadata or predefined keys; see Instance documentation for
-        # more information.
+        # A metadata key/value entry.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::ComputeV1::Metadata]
         attr_accessor :metadata
@@ -2304,7 +2548,7 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # Scheduling options for the instances created based on this template.
+        # Sets the scheduling options for an Instance.
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeV1::Scheduling]
         attr_accessor :scheduling
@@ -2316,15 +2560,17 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::ServiceAccount>]
         attr_accessor :service_accounts
       
-        # A list of tags to be applied to the instances created based on this template
-        # used to identify valid sources or targets for network firewalls. Provided by
-        # the client on instance creation. The tags can be later modified by the setTags
-        # method. Each tag within the list must comply with RFC1035.
+        # A set of instance tags.
         # Corresponds to the JSON property `tags`
         # @return [Google::Apis::ComputeV1::Tags]
         attr_accessor :tags
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @can_ip_forward = args[:can_ip_forward] unless args[:can_ip_forward].nil?
           @description = args[:description] unless args[:description].nil?
           @disks = args[:disks] unless args[:disks].nil?
@@ -2336,7 +2582,7 @@ module Google
           @tags = args[:tags] unless args[:tags].nil?
         end
       end
-
+      
       # 
       class InstanceReference
         include Google::Apis::Core::Hashable
@@ -2347,10 +2593,15 @@ module Google
         attr_accessor :instance
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @instance = args[:instance] unless args[:instance].nil?
         end
       end
-
+      
       # An Instance Template resource.
       class InstanceTemplate
         include Google::Apis::Core::Hashable
@@ -2383,7 +2634,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The instance properties portion of this instance template resource.
+        # 
         # Corresponds to the JSON property `properties`
         # @return [Google::Apis::ComputeV1::InstanceProperties]
         attr_accessor :properties
@@ -2394,6 +2645,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
           @id = args[:id] unless args[:id].nil?
@@ -2403,7 +2659,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # Contains a list of instance template resources.
       class InstanceTemplateList
         include Google::Apis::Core::Hashable
@@ -2434,6 +2690,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -2441,7 +2702,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
       class InstancesScopedList
         include Google::Apis::Core::Hashable
@@ -2458,9 +2719,15 @@ module Google
         attr_accessor :warning
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @instances = args[:instances] unless args[:instances].nil?
           @warning = args[:warning] unless args[:warning].nil?
         end
+        
         # [Output Only] Informational warning which replaces the list of instances when
         # the list is empty.
         class Warning
@@ -2482,10 +2749,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -2501,13 +2774,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # A license resource.
       class License
         include Google::Apis::Core::Hashable
@@ -2536,13 +2814,18 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @charges_use_fee = args[:charges_use_fee] unless args[:charges_use_fee].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A Machine Type resource.
       class MachineType
         include Google::Apis::Core::Hashable
@@ -2552,7 +2835,7 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # [Output Only] The deprecation status associated with this machine type.
+        # Deprecation status for a public resource.
         # Corresponds to the JSON property `deprecated`
         # @return [Google::Apis::ComputeV1::DeprecationStatus]
         attr_accessor :deprecated
@@ -2621,6 +2904,11 @@ module Google
         attr_accessor :zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @deprecated = args[:deprecated] unless args[:deprecated].nil?
           @description = args[:description] unless args[:description].nil?
@@ -2636,6 +2924,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
           @zone = args[:zone] unless args[:zone].nil?
         end
+        
         # 
         class ScratchDisk
           include Google::Apis::Core::Hashable
@@ -2646,11 +2935,16 @@ module Google
           attr_accessor :disk_gb
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @disk_gb = args[:disk_gb] unless args[:disk_gb].nil?
           end
         end
       end
-
+      
       # 
       class MachineTypeAggregatedList
         include Google::Apis::Core::Hashable
@@ -2682,6 +2976,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -2689,7 +2988,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # Contains a list of Machine Type resources.
       class MachineTypeList
         include Google::Apis::Core::Hashable
@@ -2721,6 +3020,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -2728,7 +3032,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
       class MachineTypesScopedList
         include Google::Apis::Core::Hashable
@@ -2745,9 +3049,15 @@ module Google
         attr_accessor :warning
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @machine_types = args[:machine_types] unless args[:machine_types].nil?
           @warning = args[:warning] unless args[:warning].nil?
         end
+        
         # [Output Only] An informational warning that appears when the machine types
         # list is empty.
         class Warning
@@ -2769,10 +3079,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -2788,13 +3104,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # A metadata key/value entry.
       class Metadata
         include Google::Apis::Core::Hashable
@@ -2820,10 +3141,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @fingerprint = args[:fingerprint] unless args[:fingerprint].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
+        
         # 
         class Item
           include Google::Apis::Core::Hashable
@@ -2845,12 +3172,17 @@ module Google
           attr_accessor :value
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @key = args[:key] unless args[:key].nil?
             @value = args[:value] unless args[:value].nil?
           end
         end
       end
-
+      
       # A network resource.
       class Network
         include Google::Apis::Core::Hashable
@@ -2906,6 +3238,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @i_pv4_range = args[:i_pv4_range] unless args[:i_pv4_range].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
@@ -2916,7 +3253,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A network interface resource attached to an instance.
       class NetworkInterface
         include Google::Apis::Core::Hashable
@@ -2955,13 +3292,18 @@ module Google
         attr_accessor :network_ip
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @access_configs = args[:access_configs] unless args[:access_configs].nil?
           @name = args[:name] unless args[:name].nil?
           @network = args[:network] unless args[:network].nil?
           @network_ip = args[:network_ip] unless args[:network_ip].nil?
         end
       end
-
+      
       # Contains a list of Network resources.
       class NetworkList
         include Google::Apis::Core::Hashable
@@ -2993,6 +3335,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -3000,7 +3347,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # An operation resource, used to manage asynchronous API requests.
       class Operation
         include Google::Apis::Core::Hashable
@@ -3132,6 +3479,11 @@ module Google
         attr_accessor :zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @client_operation_id = args[:client_operation_id] unless args[:client_operation_id].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @end_time = args[:end_time] unless args[:end_time].nil?
@@ -3155,6 +3507,7 @@ module Google
           @warnings = args[:warnings] unless args[:warnings].nil?
           @zone = args[:zone] unless args[:zone].nil?
         end
+        
         # [Output Only] If errors are generated during processing of the operation, this
         # field will be populated.
         class Error
@@ -3166,8 +3519,14 @@ module Google
           attr_accessor :errors
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @errors = args[:errors] unless args[:errors].nil?
           end
+          
           # 
           class Error
             include Google::Apis::Core::Hashable
@@ -3189,12 +3548,18 @@ module Google
             attr_accessor :message
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @code = args[:code] unless args[:code].nil?
               @location = args[:location] unless args[:location].nil?
               @message = args[:message] unless args[:message].nil?
             end
           end
         end
+        
         # 
         class Warning
           include Google::Apis::Core::Hashable
@@ -3215,10 +3580,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -3234,13 +3605,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # 
       class OperationAggregatedList
         include Google::Apis::Core::Hashable
@@ -3272,6 +3648,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -3279,7 +3660,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # Contains a list of operation resources.
       class OperationList
         include Google::Apis::Core::Hashable
@@ -3311,6 +3692,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -3318,7 +3704,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
       class OperationsScopedList
         include Google::Apis::Core::Hashable
@@ -3335,9 +3721,15 @@ module Google
         attr_accessor :warning
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @operations = args[:operations] unless args[:operations].nil?
           @warning = args[:warning] unless args[:warning].nil?
         end
+        
         # [Output Only] Informational warning which replaces the list of operations when
         # the list is empty.
         class Warning
@@ -3359,10 +3751,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -3378,13 +3776,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # A matcher for the path portion of the URL. The BackendService from the longest-
       # matched rule will serve the URL. If no rule was matched, the default_service
       # will be used.
@@ -3413,13 +3816,18 @@ module Google
         attr_accessor :path_rules
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @default_service = args[:default_service] unless args[:default_service].nil?
           @description = args[:description] unless args[:description].nil?
           @name = args[:name] unless args[:name].nil?
           @path_rules = args[:path_rules] unless args[:path_rules].nil?
         end
       end
-
+      
       # A path-matching rule for a URL. If matched, will use the specified
       # BackendService to handle the traffic arriving at this URL.
       class PathRule
@@ -3439,18 +3847,22 @@ module Google
         attr_accessor :service
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @paths = args[:paths] unless args[:paths].nil?
           @service = args[:service] unless args[:service].nil?
         end
       end
-
+      
       # A Project resource. Projects can only be created in the Google Developers
       # Console. Unless marked otherwise, values can only be modified in the console.
       class Project
         include Google::Apis::Core::Hashable
       
-        # Metadata key/value pairs available to all instances contained in this project.
-        # See Custom metadata for more information.
+        # A metadata key/value entry.
         # Corresponds to the JSON property `commonInstanceMetadata`
         # @return [Google::Apis::ComputeV1::Metadata]
         attr_accessor :common_instance_metadata
@@ -3491,11 +3903,17 @@ module Google
         attr_accessor :self_link
       
         # The location in Cloud Storage and naming method of the daily usage report.
+        # Contains bucket_name and report_name prefix.
         # Corresponds to the JSON property `usageExportLocation`
         # @return [Google::Apis::ComputeV1::UsageExportLocation]
         attr_accessor :usage_export_location
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @common_instance_metadata = args[:common_instance_metadata] unless args[:common_instance_metadata].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
@@ -3507,7 +3925,7 @@ module Google
           @usage_export_location = args[:usage_export_location] unless args[:usage_export_location].nil?
         end
       end
-
+      
       # A quotas entry.
       class Quota
         include Google::Apis::Core::Hashable
@@ -3528,12 +3946,17 @@ module Google
         attr_accessor :usage
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @limit = args[:limit] unless args[:limit].nil?
           @metric = args[:metric] unless args[:metric].nil?
           @usage = args[:usage] unless args[:usage].nil?
         end
       end
-
+      
       # Region resource.
       class Region
         include Google::Apis::Core::Hashable
@@ -3543,7 +3966,7 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # [Output Only] The deprecation status associated with this region.
+        # Deprecation status for a public resource.
         # Corresponds to the JSON property `deprecated`
         # @return [Google::Apis::ComputeV1::DeprecationStatus]
         attr_accessor :deprecated
@@ -3590,6 +4013,11 @@ module Google
         attr_accessor :zones
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @deprecated = args[:deprecated] unless args[:deprecated].nil?
           @description = args[:description] unless args[:description].nil?
@@ -3602,7 +4030,7 @@ module Google
           @zones = args[:zones] unless args[:zones].nil?
         end
       end
-
+      
       # Contains a list of region resources.
       class RegionList
         include Google::Apis::Core::Hashable
@@ -3633,6 +4061,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -3640,7 +4073,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
       class ResourceGroupReference
         include Google::Apis::Core::Hashable
@@ -3651,10 +4084,15 @@ module Google
         attr_accessor :group
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @group = args[:group] unless args[:group].nil?
         end
       end
-
+      
       # The route resource. A Route is a rule that specifies how certain packets
       # should be handled by the virtual network. Routes are associated with VMs by
       # tag and the set of Routes for a particular VM is called its routing table. For
@@ -3756,6 +4194,11 @@ module Google
         attr_accessor :warnings
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
           @dest_range = args[:dest_range] unless args[:dest_range].nil?
@@ -3773,6 +4216,7 @@ module Google
           @tags = args[:tags] unless args[:tags].nil?
           @warnings = args[:warnings] unless args[:warnings].nil?
         end
+        
         # 
         class Warning
           include Google::Apis::Core::Hashable
@@ -3793,10 +4237,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -3812,13 +4262,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # Contains a list of route resources.
       class RouteList
         include Google::Apis::Core::Hashable
@@ -3849,6 +4304,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -3856,7 +4316,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # Sets the scheduling options for an Instance.
       class Scheduling
         include Google::Apis::Core::Hashable
@@ -3875,11 +4335,16 @@ module Google
         attr_accessor :on_host_maintenance
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @automatic_restart = args[:automatic_restart] unless args[:automatic_restart].nil?
           @on_host_maintenance = args[:on_host_maintenance] unless args[:on_host_maintenance].nil?
         end
       end
-
+      
       # An instance's serial console output.
       class SerialPortOutput
         include Google::Apis::Core::Hashable
@@ -3901,12 +4366,17 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @contents = args[:contents] unless args[:contents].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A service account.
       class ServiceAccount
         include Google::Apis::Core::Hashable
@@ -3922,11 +4392,16 @@ module Google
         attr_accessor :scopes
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @email = args[:email] unless args[:email].nil?
           @scopes = args[:scopes] unless args[:scopes].nil?
         end
       end
-
+      
       # A persistent disk snapshot resource.
       class Snapshot
         include Google::Apis::Core::Hashable
@@ -4003,6 +4478,11 @@ module Google
         attr_accessor :storage_bytes_status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
           @disk_size_gb = args[:disk_size_gb] unless args[:disk_size_gb].nil?
@@ -4018,7 +4498,7 @@ module Google
           @storage_bytes_status = args[:storage_bytes_status] unless args[:storage_bytes_status].nil?
         end
       end
-
+      
       # Contains a list of persistent disk snapshot resources.
       class SnapshotList
         include Google::Apis::Core::Hashable
@@ -4049,6 +4529,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -4056,7 +4541,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A set of instance tags.
       class Tags
         include Google::Apis::Core::Hashable
@@ -4078,11 +4563,16 @@ module Google
         attr_accessor :items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @fingerprint = args[:fingerprint] unless args[:fingerprint].nil?
           @items = args[:items] unless args[:items].nil?
         end
       end
-
+      
       # A TargetHttpProxy resource. This resource defines an HTTP proxy.
       class TargetHttpProxy
         include Google::Apis::Core::Hashable
@@ -4126,6 +4616,11 @@ module Google
         attr_accessor :url_map
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
           @id = args[:id] unless args[:id].nil?
@@ -4135,7 +4630,7 @@ module Google
           @url_map = args[:url_map] unless args[:url_map].nil?
         end
       end
-
+      
       # Contains a list of TargetHttpProxy resources.
       class TargetHttpProxyList
         include Google::Apis::Core::Hashable
@@ -4166,6 +4661,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -4173,7 +4673,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A TargetInstance resource. This resource defines an endpoint VM that
       # terminates traffic of certain protocols.
       class TargetInstance
@@ -4228,6 +4728,11 @@ module Google
         attr_accessor :zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
           @id = args[:id] unless args[:id].nil?
@@ -4239,7 +4744,7 @@ module Google
           @zone = args[:zone] unless args[:zone].nil?
         end
       end
-
+      
       # 
       class TargetInstanceAggregatedList
         include Google::Apis::Core::Hashable
@@ -4270,6 +4775,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -4277,7 +4787,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # Contains a list of TargetInstance resources.
       class TargetInstanceList
         include Google::Apis::Core::Hashable
@@ -4308,6 +4818,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -4315,7 +4830,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
       class TargetInstancesScopedList
         include Google::Apis::Core::Hashable
@@ -4332,9 +4847,15 @@ module Google
         attr_accessor :warning
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @target_instances = args[:target_instances] unless args[:target_instances].nil?
           @warning = args[:warning] unless args[:warning].nil?
         end
+        
         # Informational warning which replaces the list of addresses when the list is
         # empty.
         class Warning
@@ -4356,10 +4877,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -4375,13 +4902,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # A TargetPool resource. This resource defines a pool of VMs, associated
       # HttpHealthCheck resources, and the fallback TargetPool.
       class TargetPool
@@ -4478,6 +5010,11 @@ module Google
         attr_accessor :session_affinity
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @backup_pool = args[:backup_pool] unless args[:backup_pool].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
@@ -4492,7 +5029,7 @@ module Google
           @session_affinity = args[:session_affinity] unless args[:session_affinity].nil?
         end
       end
-
+      
       # 
       class TargetPoolAggregatedList
         include Google::Apis::Core::Hashable
@@ -4523,6 +5060,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -4530,7 +5072,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
       class TargetPoolInstanceHealth
         include Google::Apis::Core::Hashable
@@ -4546,11 +5088,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @health_status = args[:health_status] unless args[:health_status].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Contains a list of TargetPool resources.
       class TargetPoolList
         include Google::Apis::Core::Hashable
@@ -4581,6 +5128,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -4588,9 +5140,9 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
-      class TargetPoolsAddHealthCheckRequest
+      class AddHealthCheckRequest
         include Google::Apis::Core::Hashable
       
         # Health check URLs to be added to targetPool.
@@ -4599,12 +5151,17 @@ module Google
         attr_accessor :health_checks
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @health_checks = args[:health_checks] unless args[:health_checks].nil?
         end
       end
-
+      
       # 
-      class TargetPoolsAddInstanceRequest
+      class AddInstanceRequest
         include Google::Apis::Core::Hashable
       
         # URLs of the instances to be added to targetPool.
@@ -4613,12 +5170,17 @@ module Google
         attr_accessor :instances
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @instances = args[:instances] unless args[:instances].nil?
         end
       end
-
+      
       # 
-      class TargetPoolsRemoveHealthCheckRequest
+      class RemoveHealthCheckRequest
         include Google::Apis::Core::Hashable
       
         # Health check URLs to be removed from targetPool.
@@ -4627,12 +5189,17 @@ module Google
         attr_accessor :health_checks
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @health_checks = args[:health_checks] unless args[:health_checks].nil?
         end
       end
-
+      
       # 
-      class TargetPoolsRemoveInstanceRequest
+      class RemoveInstanceRequest
         include Google::Apis::Core::Hashable
       
         # URLs of the instances to be removed from targetPool.
@@ -4641,10 +5208,15 @@ module Google
         attr_accessor :instances
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @instances = args[:instances] unless args[:instances].nil?
         end
       end
-
+      
       # 
       class TargetPoolsScopedList
         include Google::Apis::Core::Hashable
@@ -4661,9 +5233,15 @@ module Google
         attr_accessor :warning
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @target_pools = args[:target_pools] unless args[:target_pools].nil?
           @warning = args[:warning] unless args[:warning].nil?
         end
+        
         # Informational warning which replaces the list of addresses when the list is
         # empty.
         class Warning
@@ -4685,10 +5263,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -4704,13 +5288,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # 
       class TargetReference
         include Google::Apis::Core::Hashable
@@ -4721,10 +5310,15 @@ module Google
         attr_accessor :target
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @target = args[:target] unless args[:target].nil?
         end
       end
-
+      
       # 
       class TargetVpnGateway
         include Google::Apis::Core::Hashable
@@ -4792,6 +5386,11 @@ module Google
         attr_accessor :tunnels
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
           @forwarding_rules = args[:forwarding_rules] unless args[:forwarding_rules].nil?
@@ -4805,7 +5404,7 @@ module Google
           @tunnels = args[:tunnels] unless args[:tunnels].nil?
         end
       end
-
+      
       # 
       class TargetVpnGatewayAggregatedList
         include Google::Apis::Core::Hashable
@@ -4837,6 +5436,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -4844,7 +5448,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # Contains a list of TargetVpnGateway resources.
       class TargetVpnGatewayList
         include Google::Apis::Core::Hashable
@@ -4876,6 +5480,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -4883,7 +5492,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
       class TargetVpnGatewaysScopedList
         include Google::Apis::Core::Hashable
@@ -4900,9 +5509,15 @@ module Google
         attr_accessor :warning
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @target_vpn_gateways = args[:target_vpn_gateways] unless args[:target_vpn_gateways].nil?
           @warning = args[:warning] unless args[:warning].nil?
         end
+        
         # [Output Only] Informational warning which replaces the list of addresses when
         # the list is empty.
         class Warning
@@ -4924,10 +5539,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -4943,13 +5564,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # 
       class TestFailure
         include Google::Apis::Core::Hashable
@@ -4975,13 +5601,18 @@ module Google
         attr_accessor :path
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @actual_service = args[:actual_service] unless args[:actual_service].nil?
           @expected_service = args[:expected_service] unless args[:expected_service].nil?
           @host = args[:host] unless args[:host].nil?
           @path = args[:path] unless args[:path].nil?
         end
       end
-
+      
       # A UrlMap resource. This resource defines the mapping from URL to the
       # BackendService resource, based on the "longest-match" of the URL's host and
       # path.
@@ -5050,6 +5681,11 @@ module Google
         attr_accessor :tests
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @default_service = args[:default_service] unless args[:default_service].nil?
           @description = args[:description] unless args[:description].nil?
@@ -5063,7 +5699,7 @@ module Google
           @tests = args[:tests] unless args[:tests].nil?
         end
       end
-
+      
       # Contains a list of UrlMap resources.
       class UrlMapList
         include Google::Apis::Core::Hashable
@@ -5094,6 +5730,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -5101,7 +5742,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
       class UrlMapReference
         include Google::Apis::Core::Hashable
@@ -5112,10 +5753,15 @@ module Google
         attr_accessor :url_map
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @url_map = args[:url_map] unless args[:url_map].nil?
         end
       end
-
+      
       # Message for the expected URL mappings.
       class UrlMapTest
         include Google::Apis::Core::Hashable
@@ -5141,13 +5787,18 @@ module Google
         attr_accessor :service
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @description = args[:description] unless args[:description].nil?
           @host = args[:host] unless args[:host].nil?
           @path = args[:path] unless args[:path].nil?
           @service = args[:service] unless args[:service].nil?
         end
       end
-
+      
       # Message representing the validation result for a UrlMap.
       class UrlMapValidationResult
         include Google::Apis::Core::Hashable
@@ -5177,41 +5828,58 @@ module Google
         alias_method :test_passed?, :test_passed
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @load_errors = args[:load_errors] unless args[:load_errors].nil?
           @load_succeeded = args[:load_succeeded] unless args[:load_succeeded].nil?
           @test_failures = args[:test_failures] unless args[:test_failures].nil?
           @test_passed = args[:test_passed] unless args[:test_passed].nil?
         end
       end
-
+      
       # 
-      class UrlMapsValidateRequest
+      class ValidateRequest
         include Google::Apis::Core::Hashable
       
-        # Content of the UrlMap to be validated.
+        # A UrlMap resource. This resource defines the mapping from URL to the
+        # BackendService resource, based on the "longest-match" of the URL's host and
+        # path.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::ComputeV1::UrlMap]
         attr_accessor :resource
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @resource = args[:resource] unless args[:resource].nil?
         end
       end
-
+      
       # 
-      class UrlMapsValidateResponse
+      class ValidateResponse
         include Google::Apis::Core::Hashable
       
-        # 
+        # Message representing the validation result for a UrlMap.
         # Corresponds to the JSON property `result`
         # @return [Google::Apis::ComputeV1::UrlMapValidationResult]
         attr_accessor :result
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @result = args[:result] unless args[:result].nil?
         end
       end
-
+      
       # The location in Cloud Storage and naming method of the daily usage report.
       # Contains bucket_name and report_name prefix.
       class UsageExportLocation
@@ -5235,11 +5903,16 @@ module Google
         attr_accessor :report_name_prefix
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bucket_name = args[:bucket_name] unless args[:bucket_name].nil?
           @report_name_prefix = args[:report_name_prefix] unless args[:report_name_prefix].nil?
         end
       end
-
+      
       # 
       class VpnTunnel
         include Google::Apis::Core::Hashable
@@ -5327,6 +6000,11 @@ module Google
         attr_accessor :target_vpn_gateway
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
           @detailed_status = args[:detailed_status] unless args[:detailed_status].nil?
@@ -5344,7 +6022,7 @@ module Google
           @target_vpn_gateway = args[:target_vpn_gateway] unless args[:target_vpn_gateway].nil?
         end
       end
-
+      
       # 
       class VpnTunnelAggregatedList
         include Google::Apis::Core::Hashable
@@ -5375,6 +6053,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -5382,7 +6065,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # Contains a list of VpnTunnel resources.
       class VpnTunnelList
         include Google::Apis::Core::Hashable
@@ -5413,6 +6096,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -5420,7 +6108,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # 
       class VpnTunnelsScopedList
         include Google::Apis::Core::Hashable
@@ -5437,9 +6125,15 @@ module Google
         attr_accessor :warning
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @vpn_tunnels = args[:vpn_tunnels] unless args[:vpn_tunnels].nil?
           @warning = args[:warning] unless args[:warning].nil?
         end
+        
         # Informational warning which replaces the list of addresses when the list is
         # empty.
         class Warning
@@ -5461,10 +6155,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -5480,13 +6180,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # A Zone resource.
       class Zone
         include Google::Apis::Core::Hashable
@@ -5496,7 +6201,7 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # [Output Only] The deprecation status associated with this zone.
+        # Deprecation status for a public resource.
         # Corresponds to the JSON property `deprecated`
         # @return [Google::Apis::ComputeV1::DeprecationStatus]
         attr_accessor :deprecated
@@ -5544,6 +6249,11 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @deprecated = args[:deprecated] unless args[:deprecated].nil?
           @description = args[:description] unless args[:description].nil?
@@ -5555,6 +6265,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
           @status = args[:status] unless args[:status].nil?
         end
+        
         # 
         class MaintenanceWindow
           include Google::Apis::Core::Hashable
@@ -5580,6 +6291,11 @@ module Google
           attr_accessor :name
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @begin_time = args[:begin_time] unless args[:begin_time].nil?
             @description = args[:description] unless args[:description].nil?
             @end_time = args[:end_time] unless args[:end_time].nil?
@@ -5587,7 +6303,7 @@ module Google
           end
         end
       end
-
+      
       # Contains a list of zone resources.
       class ZoneList
         include Google::Apis::Core::Hashable
@@ -5618,6 +6334,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?

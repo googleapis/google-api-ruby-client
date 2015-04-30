@@ -33,7 +33,6 @@ module Google
       #
       # @see https://cloud.google.com/container-engine/docs/v1beta1/
       class ContainerService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -53,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'container/v1beta1/projects/')
         end
-
+        
         # Lists all clusters owned by a project across all zones.
         # @param [String] project_id
         #   The Google Developers Console project ID or  project number.
@@ -66,7 +65,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -81,7 +80,7 @@ module Google
         def list_project_clusters(project_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/clusters'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ContainerV1beta1::ListAggregatedClustersResponseRepresentation
+          command.response_representation = Google::Apis::ContainerV1beta1::ListAggregatedClustersResponse::Representation
           command.response_class = Google::Apis::ContainerV1beta1::ListAggregatedClustersResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -89,8 +88,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Lists all operations in a project, across all zones.
         # @param [String] project_id
@@ -104,7 +101,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -119,7 +116,7 @@ module Google
         def list_project_operations(project_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/operations'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ContainerV1beta1::ListAggregatedOperationsResponseRepresentation
+          command.response_representation = Google::Apis::ContainerV1beta1::ListAggregatedOperationsResponse::Representation
           command.response_class = Google::Apis::ContainerV1beta1::ListAggregatedOperationsResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -127,8 +124,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Creates a cluster, consisting of the specified number and type of Google
         # Compute Engine instances, plus a Kubernetes master instance.
@@ -142,8 +137,7 @@ module Google
         #   The Google Developers Console project ID or  project number.
         # @param [String] zone_id
         #   The name of the Google Compute Engine zone in which the cluster resides.
-        # @param [Google::Apis::ContainerV1beta1::CreateClusterRequest] create_cluster_request
-        #   
+        # @param [Google::Apis::ContainerV1beta1::CreateClusterRequest] create_cluster_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -153,7 +147,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -165,12 +159,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_cluster(project_id, zone_id, create_cluster_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_cluster(project_id, zone_id, create_cluster_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/zones/{zoneId}/clusters'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::ContainerV1beta1::CreateClusterRequestRepresentation
-          command.request_object = create_cluster_request
-          command.response_representation = Google::Apis::ContainerV1beta1::OperationRepresentation
+          command.request_representation = Google::Apis::ContainerV1beta1::CreateClusterRequest::Representation
+          command.request_object = create_cluster_request_object
+          command.response_representation = Google::Apis::ContainerV1beta1::Operation::Representation
           command.response_class = Google::Apis::ContainerV1beta1::Operation
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['zoneId'] = zone_id unless zone_id.nil?
@@ -179,7 +173,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Deletes the cluster, including the Kubernetes master and all worker nodes.
         # Firewalls and routes that were configured at cluster creation are also deleted.
@@ -198,7 +191,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -213,7 +206,7 @@ module Google
         def delete_project_zone_cluster(project_id, zone_id, cluster_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/zones/{zoneId}/clusters/{clusterId}'
           command =  make_simple_command(:delete, path, options)
-          command.response_representation = Google::Apis::ContainerV1beta1::OperationRepresentation
+          command.response_representation = Google::Apis::ContainerV1beta1::Operation::Representation
           command.response_class = Google::Apis::ContainerV1beta1::Operation
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['zoneId'] = zone_id unless zone_id.nil?
@@ -223,7 +216,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Gets a specific cluster.
         # @param [String] project_id
@@ -241,7 +233,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -256,7 +248,7 @@ module Google
         def get_project_zone_cluster(project_id, zone_id, cluster_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/zones/{zoneId}/clusters/{clusterId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ContainerV1beta1::ClusterRepresentation
+          command.response_representation = Google::Apis::ContainerV1beta1::Cluster::Representation
           command.response_class = Google::Apis::ContainerV1beta1::Cluster
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['zoneId'] = zone_id unless zone_id.nil?
@@ -266,7 +258,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists all clusters owned by a project in the specified zone.
         # @param [String] project_id
@@ -282,7 +273,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -297,7 +288,7 @@ module Google
         def list_project_zone_clusters(project_id, zone_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/zones/{zoneId}/clusters'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ContainerV1beta1::ListClustersResponseRepresentation
+          command.response_representation = Google::Apis::ContainerV1beta1::ListClustersResponse::Representation
           command.response_class = Google::Apis::ContainerV1beta1::ListClustersResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['zoneId'] = zone_id unless zone_id.nil?
@@ -306,8 +297,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Gets the specified operation.
         # @param [String] project_id
@@ -327,7 +316,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -342,7 +331,7 @@ module Google
         def get_project_zone_operation(project_id, zone_id, operation_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/zones/{zoneId}/operations/{operationId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ContainerV1beta1::OperationRepresentation
+          command.response_representation = Google::Apis::ContainerV1beta1::Operation::Representation
           command.response_class = Google::Apis::ContainerV1beta1::Operation
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['zoneId'] = zone_id unless zone_id.nil?
@@ -352,7 +341,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists all operations in a project in a specific zone.
         # @param [String] project_id
@@ -368,7 +356,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -383,7 +371,7 @@ module Google
         def list_project_zone_operations(project_id, zone_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/zones/{zoneId}/operations'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ContainerV1beta1::ListOperationsResponseRepresentation
+          command.response_representation = Google::Apis::ContainerV1beta1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::ContainerV1beta1::ListOperationsResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['zoneId'] = zone_id unless zone_id.nil?
@@ -392,8 +380,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Gets a compute-rw scoped OAuth2 access token for
         # . Authentication is performed to ensure that the caller is a member of  and
@@ -416,7 +402,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -431,7 +417,7 @@ module Google
         def get_project_zone_token(master_project_id, zone_id, project_number, cluster_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{masterProjectId}/zones/{zoneId}/tokens/{projectNumber}/{clusterName}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ContainerV1beta1::TokenRepresentation
+          command.response_representation = Google::Apis::ContainerV1beta1::Token::Representation
           command.response_class = Google::Apis::ContainerV1beta1::Token
           command.params['masterProjectId'] = master_project_id unless master_project_id.nil?
           command.params['zoneId'] = zone_id unless zone_id.nil?

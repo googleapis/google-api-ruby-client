@@ -21,23 +21,33 @@ require 'google/apis/errors'
 module Google
   module Apis
     module MapsengineV1
-
+      
       # 
       class GeoJsonGeometry
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
-
+      
       # 
       class MapItem
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
-
+      
       # Acquisition time represents acquired time of a raster.
       class AcquisitionTime
         include Google::Apis::Core::Hashable
@@ -60,12 +70,17 @@ module Google
         attr_accessor :start
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end = args[:end] unless args[:end].nil?
           @precision = args[:precision] unless args[:precision].nil?
           @start = args[:start] unless args[:start].nil?
         end
       end
-
+      
       # An asset is any Google Maps Engine resource that has a globally unique ID.
       # Assets include maps, layers, vector tables, raster collections, and rasters.
       # Projects and features are not considered assets.
@@ -155,6 +170,11 @@ module Google
         alias_method :writers_can_edit_permissions?, :writers_can_edit_permissions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bbox = args[:bbox] unless args[:bbox].nil?
           @creation_time = args[:creation_time] unless args[:creation_time].nil?
           @creator_email = args[:creator_email] unless args[:creator_email].nil?
@@ -171,9 +191,9 @@ module Google
           @writers_can_edit_permissions = args[:writers_can_edit_permissions] unless args[:writers_can_edit_permissions].nil?
         end
       end
-
+      
       # The response returned by a call to resources.List.
-      class AssetsListResponse
+      class ListResponse
         include Google::Apis::Core::Hashable
       
         # Assets returned.
@@ -187,11 +207,16 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @assets = args[:assets] unless args[:assets].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Border in line style. Both color and width are required.
       class Border
         include Google::Apis::Core::Hashable
@@ -212,12 +237,17 @@ module Google
         attr_accessor :width
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @color = args[:color] unless args[:color].nil?
           @opacity = args[:opacity] unless args[:opacity].nil?
           @width = args[:width] unless args[:width].nil?
         end
       end
-
+      
       # Basic color used in styling.
       class Color
         include Google::Apis::Core::Hashable
@@ -233,11 +263,16 @@ module Google
         attr_accessor :opacity
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @color = args[:color] unless args[:color].nil?
           @opacity = args[:opacity] unless args[:opacity].nil?
         end
       end
-
+      
       # 
       class Datasource
         include Google::Apis::Core::Hashable
@@ -248,10 +283,15 @@ module Google
         attr_accessor :id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
         end
       end
-
+      
       # A display rule of the vector style.
       class DisplayRule
         include Google::Apis::Core::Hashable
@@ -262,7 +302,7 @@ module Google
         # @return [Array<Google::Apis::MapsengineV1::Filter>]
         attr_accessor :filters
       
-        # Style applied to lines. Required for LineString Geometry.
+        # Style for lines.
         # Corresponds to the JSON property `lineOptions`
         # @return [Google::Apis::MapsengineV1::LineStyle]
         attr_accessor :line_options
@@ -273,22 +313,27 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Style applied to points. Required for Point Geometry.
+        # Style for points.
         # Corresponds to the JSON property `pointOptions`
         # @return [Google::Apis::MapsengineV1::PointStyle]
         attr_accessor :point_options
       
-        # Style applied to polygons. Required for Polygon Geometry.
+        # Style for polygons.
         # Corresponds to the JSON property `polygonOptions`
         # @return [Google::Apis::MapsengineV1::PolygonStyle]
         attr_accessor :polygon_options
       
-        # The zoom levels that this display rule apply.
+        # Zoom level range. Zoom levels are restricted between 0 and 24, inclusive.
         # Corresponds to the JSON property `zoomLevels`
         # @return [Google::Apis::MapsengineV1::ZoomLevels]
         attr_accessor :zoom_levels
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @filters = args[:filters] unless args[:filters].nil?
           @line_options = args[:line_options] unless args[:line_options].nil?
           @name = args[:name] unless args[:name].nil?
@@ -297,7 +342,7 @@ module Google
           @zoom_levels = args[:zoom_levels] unless args[:zoom_levels].nil?
         end
       end
-
+      
       # A feature within a table.
       class Feature
         include Google::Apis::Core::Hashable
@@ -307,7 +352,7 @@ module Google
         # @return [Google::Apis::MapsengineV1::GeoJsonGeometry]
         attr_accessor :geometry
       
-        # Key/value pairs of this Feature.
+        # The properties associated with a feature.
         # Corresponds to the JSON property `properties`
         # @return [Hash<String,Object>]
         attr_accessor :properties
@@ -318,12 +363,17 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @geometry = args[:geometry] unless args[:geometry].nil?
           @properties = args[:properties] unless args[:properties].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # A feature info contains information about individual feature.
       class FeatureInfo
         include Google::Apis::Core::Hashable
@@ -335,10 +385,15 @@ module Google
         attr_accessor :content
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @content = args[:content] unless args[:content].nil?
         end
       end
-
+      
       # The request sent to features.BatchDelete.
       class FeaturesBatchDeleteRequest
         include Google::Apis::Core::Hashable
@@ -354,11 +409,16 @@ module Google
         attr_accessor :primary_keys
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @gx_ids = args[:gx_ids] unless args[:gx_ids].nil?
           @primary_keys = args[:primary_keys] unless args[:primary_keys].nil?
         end
       end
-
+      
       # The request sent to features.Insert.
       class FeaturesBatchInsertRequest
         include Google::Apis::Core::Hashable
@@ -379,11 +439,16 @@ module Google
         alias_method :normalize_geometries?, :normalize_geometries
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @features = args[:features] unless args[:features].nil?
           @normalize_geometries = args[:normalize_geometries] unless args[:normalize_geometries].nil?
         end
       end
-
+      
       # The request sent to features.BatchPatch.
       class FeaturesBatchPatchRequest
         include Google::Apis::Core::Hashable
@@ -404,11 +469,16 @@ module Google
         alias_method :normalize_geometries?, :normalize_geometries
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @features = args[:features] unless args[:features].nil?
           @normalize_geometries = args[:normalize_geometries] unless args[:normalize_geometries].nil?
         end
       end
-
+      
       # The response returned by a call to features.List.
       class FeaturesListResponse
         include Google::Apis::Core::Hashable
@@ -429,7 +499,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The feature schema.
+        # A schema indicating the properties which may be associated with features
+        # within a Table, and the types of those properties.
         # Corresponds to the JSON property `schema`
         # @return [Google::Apis::MapsengineV1::Schema]
         attr_accessor :schema
@@ -440,6 +511,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @allowed_queries_per_second = args[:allowed_queries_per_second] unless args[:allowed_queries_per_second].nil?
           @features = args[:features] unless args[:features].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
@@ -447,7 +523,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # A single File, which is a component of an Asset.
       class File
         include Google::Apis::Core::Hashable
@@ -468,12 +544,17 @@ module Google
         attr_accessor :upload_status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @filename = args[:filename] unless args[:filename].nil?
           @size = args[:size] unless args[:size].nil?
           @upload_status = args[:upload_status] unless args[:upload_status].nil?
         end
       end
-
+      
       # Conditions for filtering features.
       class Filter
         include Google::Apis::Core::Hashable
@@ -494,14 +575,19 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @column = args[:column] unless args[:column].nil?
           @operator = args[:operator] unless args[:operator].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # A heterogenous collection of GeoJsonGeometry objects.
-      class GeoJsonGeometryCollection < GeoJsonGeometry
+      class GeoJsonGeometryCollection < Google::Apis::MapsengineV1::GeoJsonGeometry
         include Google::Apis::Core::Hashable
       
         # An array of geometry objects. There must be at least 2 different types of
@@ -516,13 +602,19 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+          @type = 'GeometryCollection'
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @geometries = args[:geometries] unless args[:geometries].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # 
-      class GeoJsonLineString < GeoJsonGeometry
+      class GeoJsonLineString < Google::Apis::MapsengineV1::GeoJsonGeometry
         include Google::Apis::Core::Hashable
       
         # An array of two or more positions, representing a line.
@@ -536,13 +628,19 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+          @type = 'LineString'
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @coordinates = args[:coordinates] unless args[:coordinates].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Multi Line String
-      class GeoJsonMultiLineString < GeoJsonGeometry
+      class GeoJsonMultiLineString < Google::Apis::MapsengineV1::GeoJsonGeometry
         include Google::Apis::Core::Hashable
       
         # An array of at least two GeoJsonLineString coordinate arrays.
@@ -556,13 +654,19 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+          @type = 'MultiLineString'
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @coordinates = args[:coordinates] unless args[:coordinates].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # 
-      class GeoJsonMultiPoint < GeoJsonGeometry
+      class GeoJsonMultiPoint < Google::Apis::MapsengineV1::GeoJsonGeometry
         include Google::Apis::Core::Hashable
       
         # An array of at least two GeoJsonPoint coordinate arrays.
@@ -576,13 +680,19 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+          @type = 'MultiPoint'
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @coordinates = args[:coordinates] unless args[:coordinates].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # 
-      class GeoJsonMultiPolygon < GeoJsonGeometry
+      class GeoJsonMultiPolygon < Google::Apis::MapsengineV1::GeoJsonGeometry
         include Google::Apis::Core::Hashable
       
         # An array of at least two GeoJsonPolygon coordinate arrays.
@@ -596,16 +706,25 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+          @type = 'MultiPolygon'
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @coordinates = args[:coordinates] unless args[:coordinates].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # 
-      class GeoJsonPoint < GeoJsonGeometry
+      class GeoJsonPoint < Google::Apis::MapsengineV1::GeoJsonGeometry
         include Google::Apis::Core::Hashable
       
-        # A single GeoJsonPosition, specifying the location of the point.
+        # A position represents a geographical position as an array containing a
+        # longitude and a latitude, and optionally an altitude, in that order. All
+        # Geometry objects make use of positions to represent geometries as nested
+        # arrays. The structure of the array is governed by the type of the geometry.
         # Corresponds to the JSON property `coordinates`
         # @return [Array<Float>]
         attr_accessor :coordinates
@@ -616,13 +735,19 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+          @type = 'Point'
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @coordinates = args[:coordinates] unless args[:coordinates].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # 
-      class GeoJsonPolygon < GeoJsonGeometry
+      class GeoJsonPolygon < Google::Apis::MapsengineV1::GeoJsonGeometry
         include Google::Apis::Core::Hashable
       
         # An array of LinearRings. A LinearRing is a GeoJsonLineString which is closed (
@@ -640,11 +765,17 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+          @type = 'Polygon'
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @coordinates = args[:coordinates] unless args[:coordinates].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # An icon is a user-uploaded image that can be used to style point geometries.
       class Icon
         include Google::Apis::Core::Hashable
@@ -665,12 +796,17 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @description = args[:description] unless args[:description].nil?
           @id = args[:id] unless args[:id].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Style for icon, this is part of point style.
       class IconStyle
         include Google::Apis::Core::Hashable
@@ -687,24 +823,29 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A scalable shape.
+        # Parameters for styling points as scaled shapes.
         # Corresponds to the JSON property `scaledShape`
         # @return [Google::Apis::MapsengineV1::ScaledShape]
         attr_accessor :scaled_shape
       
-        # The function used to scale shapes. Required when a scaledShape is specified.
+        # Parameters for scaling scaled shapes.
         # Corresponds to the JSON property `scalingFunction`
         # @return [Google::Apis::MapsengineV1::ScalingFunction]
         attr_accessor :scaling_function
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @name = args[:name] unless args[:name].nil?
           @scaled_shape = args[:scaled_shape] unless args[:scaled_shape].nil?
           @scaling_function = args[:scaling_function] unless args[:scaling_function].nil?
         end
       end
-
+      
       # The response returned by a call to icons.List.
       class IconsListResponse
         include Google::Apis::Core::Hashable
@@ -720,11 +861,16 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @icons = args[:icons] unless args[:icons].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Text label style.
       class LabelStyle
         include Google::Apis::Core::Hashable
@@ -754,7 +900,7 @@ module Google
         # @return [Float]
         attr_accessor :opacity
       
-        # Outline color of the text.
+        # Basic color used in styling.
         # Corresponds to the JSON property `outline`
         # @return [Google::Apis::MapsengineV1::Color]
         attr_accessor :outline
@@ -766,6 +912,11 @@ module Google
         attr_accessor :size
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @color = args[:color] unless args[:color].nil?
           @column = args[:column] unless args[:column].nil?
           @font_style = args[:font_style] unless args[:font_style].nil?
@@ -775,7 +926,7 @@ module Google
           @size = args[:size] unless args[:size].nil?
         end
       end
-
+      
       # A Layer combines multiple datasources, with styling information, for
       # presentation on a map.
       class Layer
@@ -895,10 +1046,7 @@ module Google
         # @return [String]
         attr_accessor :publishing_status
       
-        # The styling information for a vector layer. Note: Style information is
-        # returned in response to a get request but not a list request. After requesting
-        # a list of layers, you'll need to send a get request to retrieve the
-        # VectorStyles for each layer.
+        # A vector style contains styling information for vector layer.
         # Corresponds to the JSON property `style`
         # @return [Google::Apis::MapsengineV1::VectorStyle]
         attr_accessor :style
@@ -915,6 +1063,11 @@ module Google
         alias_method :writers_can_edit_permissions?, :writers_can_edit_permissions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bbox = args[:bbox] unless args[:bbox].nil?
           @creation_time = args[:creation_time] unless args[:creation_time].nil?
           @creator_email = args[:creator_email] unless args[:creator_email].nil?
@@ -937,7 +1090,7 @@ module Google
           @writers_can_edit_permissions = args[:writers_can_edit_permissions] unless args[:writers_can_edit_permissions].nil?
         end
       end
-
+      
       # The response returned by a call to layers.List. Note: The list response does
       # not include all the fields available in a layer. Refer to the layer resource
       # description for details of the fields that are not included. You'll need to
@@ -956,16 +1109,21 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @layers = args[:layers] unless args[:layers].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Style for lines.
       class LineStyle
         include Google::Apis::Core::Hashable
       
-        # Border of the line. 0 < border.width <= 5.
+        # Border in line style. Both color and width are required.
         # Corresponds to the JSON property `border`
         # @return [Google::Apis::MapsengineV1::Border]
         attr_accessor :border
@@ -977,7 +1135,7 @@ module Google
         # @return [Array<Float>]
         attr_accessor :dash
       
-        # Label style for the line.
+        # Text label style.
         # Corresponds to the JSON property `label`
         # @return [Google::Apis::MapsengineV1::LabelStyle]
         attr_accessor :label
@@ -988,11 +1146,17 @@ module Google
         attr_accessor :stroke
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @border = args[:border] unless args[:border].nil?
           @dash = args[:dash] unless args[:dash].nil?
           @label = args[:label] unless args[:label].nil?
           @stroke = args[:stroke] unless args[:stroke].nil?
         end
+        
         # Stroke of the line.
         class Stroke
           include Google::Apis::Core::Hashable
@@ -1014,13 +1178,18 @@ module Google
           attr_accessor :width
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @color = args[:color] unless args[:color].nil?
             @opacity = args[:opacity] unless args[:opacity].nil?
             @width = args[:width] unless args[:width].nil?
           end
         end
       end
-
+      
       # A Map is a collection of Layers, optionally contained within folders.
       class Map
         include Google::Apis::Core::Hashable
@@ -1049,9 +1218,7 @@ module Google
         # @return [String]
         attr_accessor :creator_email
       
-        # An array of four numbers (west, south, east, north) which defines the
-        # rectangular bounding box of the default viewport. The numbers represent
-        # latitude and longitude in decimal degrees.
+        # A rectangular geographic bounds.
         # Corresponds to the JSON property `defaultViewport`
         # @return [Array<Float>]
         attr_accessor :default_viewport
@@ -1148,6 +1315,11 @@ module Google
         alias_method :writers_can_edit_permissions?, :writers_can_edit_permissions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bbox = args[:bbox] unless args[:bbox].nil?
           @contents = args[:contents] unless args[:contents].nil?
           @creation_time = args[:creation_time] unless args[:creation_time].nil?
@@ -1169,9 +1341,9 @@ module Google
           @writers_can_edit_permissions = args[:writers_can_edit_permissions] unless args[:writers_can_edit_permissions].nil?
         end
       end
-
+      
       # 
-      class MapFolder < MapItem
+      class MapFolder < Google::Apis::MapsengineV1::MapItem
         include Google::Apis::Core::Hashable
       
         # 
@@ -1214,6 +1386,12 @@ module Google
         attr_accessor :visibility
       
         def initialize(**args)
+          @type = 'folder'
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @contents = args[:contents] unless args[:contents].nil?
           @default_viewport = args[:default_viewport] unless args[:default_viewport].nil?
           @expandable = args[:expandable] unless args[:expandable].nil?
@@ -1223,9 +1401,9 @@ module Google
           @visibility = args[:visibility] unless args[:visibility].nil?
         end
       end
-
+      
       # 
-      class MapKmlLink < MapItem
+      class MapKmlLink < Google::Apis::MapsengineV1::MapItem
         include Google::Apis::Core::Hashable
       
         # An array of four numbers (west, south, east, north) which defines the
@@ -1256,6 +1434,12 @@ module Google
         attr_accessor :visibility
       
         def initialize(**args)
+          @type = 'kmlLink'
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @default_viewport = args[:default_viewport] unless args[:default_viewport].nil?
           @kml_url = args[:kml_url] unless args[:kml_url].nil?
           @name = args[:name] unless args[:name].nil?
@@ -1263,9 +1447,9 @@ module Google
           @visibility = args[:visibility] unless args[:visibility].nil?
         end
       end
-
+      
       # 
-      class MapLayer < MapItem
+      class MapLayer < Google::Apis::MapsengineV1::MapItem
         include Google::Apis::Core::Hashable
       
         # An array of four numbers (west, south, east, north) which defines the
@@ -1302,6 +1486,12 @@ module Google
         attr_accessor :visibility
       
         def initialize(**args)
+          @type = 'layer'
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @default_viewport = args[:default_viewport] unless args[:default_viewport].nil?
           @id = args[:id] unless args[:id].nil?
           @key = args[:key] unless args[:key].nil?
@@ -1310,7 +1500,7 @@ module Google
           @visibility = args[:visibility] unless args[:visibility].nil?
         end
       end
-
+      
       # The response returned by a call to maps.List.
       class MapsListResponse
         include Google::Apis::Core::Hashable
@@ -1326,11 +1516,16 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @maps = args[:maps] unless args[:maps].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # A list of the parents of an asset.
       class Parent
         include Google::Apis::Core::Hashable
@@ -1341,10 +1536,15 @@ module Google
         attr_accessor :id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
         end
       end
-
+      
       # The response returned by a call to parents.List.
       class ParentsListResponse
         include Google::Apis::Core::Hashable
@@ -1360,11 +1560,16 @@ module Google
         attr_accessor :parents
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @parents = args[:parents] unless args[:parents].nil?
         end
       end
-
+      
       # A permission defines the user or group that has access to an asset, and the
       # type of access they have.
       class Permission
@@ -1396,15 +1601,20 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @discoverable = args[:discoverable] unless args[:discoverable].nil?
           @id = args[:id] unless args[:id].nil?
           @role = args[:role] unless args[:role].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # The request sent to mapsengine.permissions.batchDelete.
-      class PermissionsBatchDeleteRequest
+      class BatchDeleteRequest
         include Google::Apis::Core::Hashable
       
         # An array of permission ids to be removed. This could be the email address of
@@ -1415,20 +1625,30 @@ module Google
         attr_accessor :ids
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ids = args[:ids] unless args[:ids].nil?
         end
       end
-
+      
       # The response returned by a call to mapsengine.permissions.batchDelete.
-      class PermissionsBatchDeleteResponse
+      class BatchDeleteResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
-
+      
       # The request sent to mapsengine.permissions.batchUpdate.
-      class PermissionsBatchUpdateRequest
+      class BatchUpdateRequest
         include Google::Apis::Core::Hashable
       
         # The permissions to be inserted or updated.
@@ -1437,18 +1657,28 @@ module Google
         attr_accessor :permissions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @permissions = args[:permissions] unless args[:permissions].nil?
         end
       end
-
+      
       # The response returned by a call to mapsengine.permissions.batchUpdate.
-      class PermissionsBatchUpdateResponse
+      class BatchUpdateResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
-
+      
       # 
       class PermissionsListResponse
         include Google::Apis::Core::Hashable
@@ -1459,66 +1689,84 @@ module Google
         attr_accessor :permissions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @permissions = args[:permissions] unless args[:permissions].nil?
         end
       end
-
+      
       # Style for points.
       class PointStyle
         include Google::Apis::Core::Hashable
       
-        # Icon for the point; if it isn't null, exactly one of 'name', 'id' or '
-        # scaledShape' must be set.
+        # Style for icon, this is part of point style.
         # Corresponds to the JSON property `icon`
         # @return [Google::Apis::MapsengineV1::IconStyle]
         attr_accessor :icon
       
-        # Label style for the point.
+        # Text label style.
         # Corresponds to the JSON property `label`
         # @return [Google::Apis::MapsengineV1::LabelStyle]
         attr_accessor :label
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @icon = args[:icon] unless args[:icon].nil?
           @label = args[:label] unless args[:label].nil?
         end
       end
-
+      
       # Style for polygons.
       class PolygonStyle
         include Google::Apis::Core::Hashable
       
-        # Fill color of the polygon. If not provided, the polygon will be transparent
-        # and not visible if there is no border.
+        # Basic color used in styling.
         # Corresponds to the JSON property `fill`
         # @return [Google::Apis::MapsengineV1::Color]
         attr_accessor :fill
       
-        # Label style for the polygon.
+        # Text label style.
         # Corresponds to the JSON property `label`
         # @return [Google::Apis::MapsengineV1::LabelStyle]
         attr_accessor :label
       
-        # Border of the polygon. 0 < border.width <= 10.
+        # Border in line style. Both color and width are required.
         # Corresponds to the JSON property `stroke`
         # @return [Google::Apis::MapsengineV1::Border]
         attr_accessor :stroke
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @fill = args[:fill] unless args[:fill].nil?
           @label = args[:label] unless args[:label].nil?
           @stroke = args[:stroke] unless args[:stroke].nil?
         end
       end
-
+      
       # The response returned by a call to any asset's Process method.
       class ProcessResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
-
+      
       # A Maps Engine project groups a collection of resources.
       class Project
         include Google::Apis::Core::Hashable
@@ -1534,11 +1782,16 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # The response returned by a call to projects.List.
       class ProjectsListResponse
         include Google::Apis::Core::Hashable
@@ -1549,18 +1802,28 @@ module Google
         attr_accessor :projects
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @projects = args[:projects] unless args[:projects].nil?
         end
       end
-
+      
       # The response returned by a call to any asset's Publish method.
       class PublishResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
-
+      
       # The published version of a layer.
       class PublishedLayer
         include Google::Apis::Core::Hashable
@@ -1593,6 +1856,11 @@ module Google
         attr_accessor :project_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @description = args[:description] unless args[:description].nil?
           @id = args[:id] unless args[:id].nil?
           @layer_type = args[:layer_type] unless args[:layer_type].nil?
@@ -1600,7 +1868,7 @@ module Google
           @project_id = args[:project_id] unless args[:project_id].nil?
         end
       end
-
+      
       # The response returned by a call to layers.List.published.
       class PublishedLayersListResponse
         include Google::Apis::Core::Hashable
@@ -1616,11 +1884,16 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @layers = args[:layers] unless args[:layers].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # The published version of a map asset.
       class PublishedMap
         include Google::Apis::Core::Hashable
@@ -1630,9 +1903,7 @@ module Google
         # @return [Array<Google::Apis::MapsengineV1::MapItem>]
         attr_accessor :contents
       
-        # An array of four numbers (west, south, east, north) which defines the
-        # rectangular bounding box of the default viewport. The numbers represent
-        # latitude and longitude in decimal degrees.
+        # A rectangular geographic bounds.
         # Corresponds to the JSON property `defaultViewport`
         # @return [Array<Float>]
         attr_accessor :default_viewport
@@ -1658,6 +1929,11 @@ module Google
         attr_accessor :project_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @contents = args[:contents] unless args[:contents].nil?
           @default_viewport = args[:default_viewport] unless args[:default_viewport].nil?
           @description = args[:description] unless args[:description].nil?
@@ -1666,7 +1942,7 @@ module Google
           @project_id = args[:project_id] unless args[:project_id].nil?
         end
       end
-
+      
       # The response returned by a call to maps.List.published.
       class PublishedMapsListResponse
         include Google::Apis::Core::Hashable
@@ -1682,16 +1958,21 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @maps = args[:maps] unless args[:maps].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # A geo-referenced raster.
       class Raster
         include Google::Apis::Core::Hashable
       
-        # The acquisition time of this Raster.
+        # Acquisition time represents acquired time of a raster.
         # Corresponds to the JSON property `acquisitionTime`
         # @return [Google::Apis::MapsengineV1::AcquisitionTime]
         attr_accessor :acquisition_time
@@ -1801,6 +2082,11 @@ module Google
         alias_method :writers_can_edit_permissions?, :writers_can_edit_permissions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @acquisition_time = args[:acquisition_time] unless args[:acquisition_time].nil?
           @attribution = args[:attribution] unless args[:attribution].nil?
           @bbox = args[:bbox] unless args[:bbox].nil?
@@ -1822,7 +2108,7 @@ module Google
           @writers_can_edit_permissions = args[:writers_can_edit_permissions] unless args[:writers_can_edit_permissions].nil?
         end
       end
-
+      
       # A raster collection groups multiple Raster resources for inclusion in a Layer.
       class RasterCollection
         include Google::Apis::Core::Hashable
@@ -1931,6 +2217,11 @@ module Google
         alias_method :writers_can_edit_permissions?, :writers_can_edit_permissions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @attribution = args[:attribution] unless args[:attribution].nil?
           @bbox = args[:bbox] unless args[:bbox].nil?
           @creation_time = args[:creation_time] unless args[:creation_time].nil?
@@ -1950,7 +2241,7 @@ module Google
           @writers_can_edit_permissions = args[:writers_can_edit_permissions] unless args[:writers_can_edit_permissions].nil?
         end
       end
-
+      
       # The response returned by a call to raster_collections.List. Note: The list
       # response does not include all the fields available in a raster collection.
       # Refer to the RasterCollection resource description for details of the fields
@@ -1970,11 +2261,16 @@ module Google
         attr_accessor :raster_collections
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @raster_collections = args[:raster_collections] unless args[:raster_collections].nil?
         end
       end
-
+      
       # A raster resource.
       class RasterCollectionsRaster
         include Google::Apis::Core::Hashable
@@ -2029,6 +2325,11 @@ module Google
         attr_accessor :tags
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bbox = args[:bbox] unless args[:bbox].nil?
           @creation_time = args[:creation_time] unless args[:creation_time].nil?
           @description = args[:description] unless args[:description].nil?
@@ -2040,7 +2341,7 @@ module Google
           @tags = args[:tags] unless args[:tags].nil?
         end
       end
-
+      
       # The request sent to rasterCollections.Rasters.BatchDelete.
       class RasterCollectionsRasterBatchDeleteRequest
         include Google::Apis::Core::Hashable
@@ -2051,18 +2352,28 @@ module Google
         attr_accessor :ids
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ids = args[:ids] unless args[:ids].nil?
         end
       end
-
+      
       # The response returned by a call to rasterCollections.rasters.batchDelete.
       class RasterCollectionsRastersBatchDeleteResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
-
+      
       # The request sent to rasterCollections.Rasters.BatchInsert.
       class RasterCollectionsRastersBatchInsertRequest
         include Google::Apis::Core::Hashable
@@ -2073,18 +2384,28 @@ module Google
         attr_accessor :ids
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ids = args[:ids] unless args[:ids].nil?
         end
       end
-
+      
       # The response returned by a call to rasterCollections.rasters.batchInsert.
       class RasterCollectionsRastersBatchInsertResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
-
+      
       # The response returned by a call to rasterCollections.rasters.List.
       class RasterCollectionsRastersListResponse
         include Google::Apis::Core::Hashable
@@ -2100,11 +2421,16 @@ module Google
         attr_accessor :rasters
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @rasters = args[:rasters] unless args[:rasters].nil?
         end
       end
-
+      
       # The response returned by a call to rasters.List.
       class RastersListResponse
         include Google::Apis::Core::Hashable
@@ -2120,23 +2446,26 @@ module Google
         attr_accessor :rasters
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @rasters = args[:rasters] unless args[:rasters].nil?
         end
       end
-
+      
       # Parameters for styling points as scaled shapes.
       class ScaledShape
         include Google::Apis::Core::Hashable
       
-        # Border color/width of the shape. If not specified the shape won't have a
-        # border.
+        # Border in line style. Both color and width are required.
         # Corresponds to the JSON property `border`
         # @return [Google::Apis::MapsengineV1::Border]
         attr_accessor :border
       
-        # The fill color of the shape. If not specified the shape will be transparent (
-        # although the borders may not be).
+        # Basic color used in styling.
         # Corresponds to the JSON property `fill`
         # @return [Google::Apis::MapsengineV1::Color]
         attr_accessor :fill
@@ -2147,12 +2476,17 @@ module Google
         attr_accessor :shape
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @border = args[:border] unless args[:border].nil?
           @fill = args[:fill] unless args[:fill].nil?
           @shape = args[:shape] unless args[:shape].nil?
         end
       end
-
+      
       # Parameters for scaling scaled shapes.
       class ScalingFunction
         include Google::Apis::Core::Hashable
@@ -2168,25 +2502,30 @@ module Google
         # @return [String]
         attr_accessor :scaling_type
       
-        # The range of shape sizes, in pixels. For circles, the size corresponds to the
-        # diameter.
+        # Scaled shape size range in pixels. For circles, size corresponds to diameter.
         # Corresponds to the JSON property `sizeRange`
         # @return [Google::Apis::MapsengineV1::SizeRange]
         attr_accessor :size_range
       
-        # The range of values to display across the size range.
+        # Range of values used for scaling shapes. The min/max values will be drawn as
+        # shapes with the min/max size.
         # Corresponds to the JSON property `valueRange`
         # @return [Google::Apis::MapsengineV1::ValueRange]
         attr_accessor :value_range
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @column = args[:column] unless args[:column].nil?
           @scaling_type = args[:scaling_type] unless args[:scaling_type].nil?
           @size_range = args[:size_range] unless args[:size_range].nil?
           @value_range = args[:value_range] unless args[:value_range].nil?
         end
       end
-
+      
       # A schema indicating the properties which may be associated with features
       # within a Table, and the types of those properties.
       class Schema
@@ -2212,12 +2551,17 @@ module Google
         attr_accessor :primary_key
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @columns = args[:columns] unless args[:columns].nil?
           @primary_geometry = args[:primary_geometry] unless args[:primary_geometry].nil?
           @primary_key = args[:primary_key] unless args[:primary_key].nil?
         end
       end
-
+      
       # Scaled shape size range in pixels. For circles, size corresponds to diameter.
       class SizeRange
         include Google::Apis::Core::Hashable
@@ -2233,11 +2577,16 @@ module Google
         attr_accessor :min
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @max = args[:max] unless args[:max].nil?
           @min = args[:min] unless args[:min].nil?
         end
       end
-
+      
       # A collection of geographic features, and associated metadata.
       class Table
         include Google::Apis::Core::Hashable
@@ -2333,9 +2682,8 @@ module Google
         # @return [String]
         attr_accessor :published_access_list
       
-        # The schema for this table. Note: The schema is returned in response to a get
-        # request but not a list request. After requesting a list of tables, you'll need
-        # to send a get request to retrieve the schema for each table.
+        # A schema indicating the properties which may be associated with features
+        # within a Table, and the types of those properties.
         # Corresponds to the JSON property `schema`
         # @return [Google::Apis::MapsengineV1::Schema]
         attr_accessor :schema
@@ -2360,6 +2708,11 @@ module Google
         alias_method :writers_can_edit_permissions?, :writers_can_edit_permissions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bbox = args[:bbox] unless args[:bbox].nil?
           @creation_time = args[:creation_time] unless args[:creation_time].nil?
           @creator_email = args[:creator_email] unless args[:creator_email].nil?
@@ -2380,7 +2733,7 @@ module Google
           @writers_can_edit_permissions = args[:writers_can_edit_permissions] unless args[:writers_can_edit_permissions].nil?
         end
       end
-
+      
       # 
       class TableColumn
         include Google::Apis::Core::Hashable
@@ -2396,11 +2749,16 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # The response returned by a call to tables.List. Note: The list response does
       # not include all the fields available in a table. Refer to the table resource
       # description for details of the fields that are not included. You'll need to
@@ -2419,11 +2777,16 @@ module Google
         attr_accessor :tables
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @tables = args[:tables] unless args[:tables].nil?
         end
       end
-
+      
       # Range of values used for scaling shapes. The min/max values will be drawn as
       # shapes with the min/max size.
       class ValueRange
@@ -2440,11 +2803,16 @@ module Google
         attr_accessor :min
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @max = args[:max] unless args[:max].nil?
           @min = args[:min] unless args[:min].nil?
         end
       end
-
+      
       # A vector style contains styling information for vector layer.
       class VectorStyle
         include Google::Apis::Core::Hashable
@@ -2454,8 +2822,7 @@ module Google
         # @return [Array<Google::Apis::MapsengineV1::DisplayRule>]
         attr_accessor :display_rules
       
-        # Individual feature info, this is called Info Window in Maps Engine UI. If not
-        # provided, a default template with all attributes will be generated.
+        # A feature info contains information about individual feature.
         # Corresponds to the JSON property `featureInfo`
         # @return [Google::Apis::MapsengineV1::FeatureInfo]
         attr_accessor :feature_info
@@ -2466,12 +2833,17 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @display_rules = args[:display_rules] unless args[:display_rules].nil?
           @feature_info = args[:feature_info] unless args[:feature_info].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Zoom level range. Zoom levels are restricted between 0 and 24, inclusive.
       class ZoomLevels
         include Google::Apis::Core::Hashable
@@ -2487,6 +2859,11 @@ module Google
         attr_accessor :min
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @max = args[:max] unless args[:max].nil?
           @min = args[:min] unless args[:min].nil?
         end

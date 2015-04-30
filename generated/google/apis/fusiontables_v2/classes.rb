@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module FusiontablesV2
-
+      
       # Specifies the minimum and maximum values, the color, opacity, icon and weight
       # of a bucket within a StyleSetting.
       class Bucket
@@ -60,6 +60,11 @@ module Google
         attr_accessor :weight
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @color = args[:color] unless args[:color].nil?
           @icon = args[:icon] unless args[:icon].nil?
           @max = args[:max] unless args[:max].nil?
@@ -68,7 +73,7 @@ module Google
           @weight = args[:weight] unless args[:weight].nil?
         end
       end
-
+      
       # Specifies the details of a column in a table.
       class Column
         include Google::Apis::Core::Hashable
@@ -161,6 +166,11 @@ module Google
         alias_method :validate_data?, :validate_data
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @base_column = args[:base_column] unless args[:base_column].nil?
           @column_id = args[:column_id] unless args[:column_id].nil?
           @column_json_schema = args[:column_json_schema] unless args[:column_json_schema].nil?
@@ -174,6 +184,7 @@ module Google
           @valid_values = args[:valid_values] unless args[:valid_values].nil?
           @validate_data = args[:validate_data] unless args[:validate_data].nil?
         end
+        
         # Identifier of the base column. If present, this column is derived from the
         # specified base column.
         class BaseColumn
@@ -190,14 +201,19 @@ module Google
           attr_accessor :table_index
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @column_id = args[:column_id] unless args[:column_id].nil?
             @table_index = args[:table_index] unless args[:table_index].nil?
           end
         end
       end
-
+      
       # Represents a list of columns in a table.
-      class ColumnList
+      class List
         include Google::Apis::Core::Hashable
       
         # List of all requested columns.
@@ -223,13 +239,18 @@ module Google
         attr_accessor :total_items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @total_items = args[:total_items] unless args[:total_items].nil?
         end
       end
-
+      
       # Represents a Geometry object.
       class Geometry
         include Google::Apis::Core::Hashable
@@ -250,12 +271,17 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @geometries = args[:geometries] unless args[:geometries].nil?
           @geometry = args[:geometry] unless args[:geometry].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Represents an import request.
       class Import
         include Google::Apis::Core::Hashable
@@ -271,11 +297,16 @@ module Google
         attr_accessor :num_rows_received
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @num_rows_received = args[:num_rows_received] unless args[:num_rows_received].nil?
         end
       end
-
+      
       # Represents a line geometry.
       class Line
         include Google::Apis::Core::Hashable
@@ -291,11 +322,16 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @coordinates = args[:coordinates] unless args[:coordinates].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Represents a LineStyle within a StyleSetting
       class LineStyle
         include Google::Apis::Core::Hashable
@@ -305,10 +341,9 @@ module Google
         # @return [String]
         attr_accessor :stroke_color
       
-        # Column-value, gradient or buckets styler that is used to determine the line
-        # color and opacity.
+        # Represents a StyleFunction within a StyleSetting
         # Corresponds to the JSON property `strokeColorStyler`
-        # @return [Google::Apis::FusiontablesV2::StyleFunction]
+        # @return [Google::Apis::FusiontablesV2::Function]
         attr_accessor :stroke_color_styler
       
         # Opacity of the line : 0.0 (transparent) to 1.0 (opaque).
@@ -321,12 +356,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :stroke_weight
       
-        # Column-value or bucket styler that is used to determine the width of the line.
+        # Represents a StyleFunction within a StyleSetting
         # Corresponds to the JSON property `strokeWeightStyler`
-        # @return [Google::Apis::FusiontablesV2::StyleFunction]
+        # @return [Google::Apis::FusiontablesV2::Function]
         attr_accessor :stroke_weight_styler
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @stroke_color = args[:stroke_color] unless args[:stroke_color].nil?
           @stroke_color_styler = args[:stroke_color_styler] unless args[:stroke_color_styler].nil?
           @stroke_opacity = args[:stroke_opacity] unless args[:stroke_opacity].nil?
@@ -334,7 +374,7 @@ module Google
           @stroke_weight_styler = args[:stroke_weight_styler] unless args[:stroke_weight_styler].nil?
         end
       end
-
+      
       # Represents a point object.
       class Point
         include Google::Apis::Core::Hashable
@@ -350,11 +390,16 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @coordinates = args[:coordinates] unless args[:coordinates].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Represents a PointStyle within a StyleSetting
       class PointStyle
         include Google::Apis::Core::Hashable
@@ -365,17 +410,22 @@ module Google
         # @return [String]
         attr_accessor :icon_name
       
-        # Column or a bucket value from which the icon name is to be determined.
+        # Represents a StyleFunction within a StyleSetting
         # Corresponds to the JSON property `iconStyler`
-        # @return [Google::Apis::FusiontablesV2::StyleFunction]
+        # @return [Google::Apis::FusiontablesV2::Function]
         attr_accessor :icon_styler
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @icon_name = args[:icon_name] unless args[:icon_name].nil?
           @icon_styler = args[:icon_styler] unless args[:icon_styler].nil?
         end
       end
-
+      
       # Represents a polygon object.
       class Polygon
         include Google::Apis::Core::Hashable
@@ -391,11 +441,16 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @coordinates = args[:coordinates] unless args[:coordinates].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Represents a PolygonStyle within a StyleSetting
       class PolygonStyle
         include Google::Apis::Core::Hashable
@@ -405,10 +460,9 @@ module Google
         # @return [String]
         attr_accessor :fill_color
       
-        # Column-value, gradient, or bucket styler that is used to determine the
-        # interior color and opacity of the polygon.
+        # Represents a StyleFunction within a StyleSetting
         # Corresponds to the JSON property `fillColorStyler`
-        # @return [Google::Apis::FusiontablesV2::StyleFunction]
+        # @return [Google::Apis::FusiontablesV2::Function]
         attr_accessor :fill_color_styler
       
         # Opacity of the interior of the polygon: 0.0 (transparent) to 1.0 (opaque).
@@ -421,10 +475,9 @@ module Google
         # @return [String]
         attr_accessor :stroke_color
       
-        # Column-value, gradient or buckets styler that is used to determine the border
-        # color and opacity.
+        # Represents a StyleFunction within a StyleSetting
         # Corresponds to the JSON property `strokeColorStyler`
-        # @return [Google::Apis::FusiontablesV2::StyleFunction]
+        # @return [Google::Apis::FusiontablesV2::Function]
         attr_accessor :stroke_color_styler
       
         # Opacity of the polygon border: 0.0 (transparent) to 1.0 (opaque).
@@ -437,13 +490,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :stroke_weight
       
-        # Column-value or bucket styler that is used to determine the width of the
-        # polygon border.
+        # Represents a StyleFunction within a StyleSetting
         # Corresponds to the JSON property `strokeWeightStyler`
-        # @return [Google::Apis::FusiontablesV2::StyleFunction]
+        # @return [Google::Apis::FusiontablesV2::Function]
         attr_accessor :stroke_weight_styler
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @fill_color = args[:fill_color] unless args[:fill_color].nil?
           @fill_color_styler = args[:fill_color_styler] unless args[:fill_color_styler].nil?
           @fill_opacity = args[:fill_opacity] unless args[:fill_opacity].nil?
@@ -454,7 +511,7 @@ module Google
           @stroke_weight_styler = args[:stroke_weight_styler] unless args[:stroke_weight_styler].nil?
         end
       end
-
+      
       # Represents a response to a SQL statement.
       class Sqlresponse
         include Google::Apis::Core::Hashable
@@ -478,14 +535,19 @@ module Google
         attr_accessor :rows
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @columns = args[:columns] unless args[:columns].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @rows = args[:rows] unless args[:rows].nil?
         end
       end
-
+      
       # Represents a StyleFunction within a StyleSetting
-      class StyleFunction
+      class Function
         include Google::Apis::Core::Hashable
       
         # Bucket function that assigns a style based on the range a column value falls
@@ -501,7 +563,7 @@ module Google
       
         # Gradient function that interpolates a range of colors based on column value.
         # Corresponds to the JSON property `gradient`
-        # @return [Google::Apis::FusiontablesV2::StyleFunction::Gradient]
+        # @return [Google::Apis::FusiontablesV2::Function::Gradient]
         attr_accessor :gradient
       
         # Stylers can be one of three kinds: "fusiontables#fromColumn if the column
@@ -515,18 +577,24 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @buckets = args[:buckets] unless args[:buckets].nil?
           @column_name = args[:column_name] unless args[:column_name].nil?
           @gradient = args[:gradient] unless args[:gradient].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
+        
         # Gradient function that interpolates a range of colors based on column value.
         class Gradient
           include Google::Apis::Core::Hashable
         
           # Array with two or more colors.
           # Corresponds to the JSON property `colors`
-          # @return [Array<Google::Apis::FusiontablesV2::StyleFunction::Gradient::Color>]
+          # @return [Array<Google::Apis::FusiontablesV2::Function::Gradient::Color>]
           attr_accessor :colors
         
           # Higher-end of the interpolation range: rows with this value will be assigned
@@ -542,10 +610,16 @@ module Google
           attr_accessor :min
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @colors = args[:colors] unless args[:colors].nil?
             @max = args[:max] unless args[:max].nil?
             @min = args[:min] unless args[:min].nil?
           end
+          
           # 
           class Color
             include Google::Apis::Core::Hashable
@@ -561,16 +635,21 @@ module Google
             attr_accessor :opacity
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @color = args[:color] unless args[:color].nil?
               @opacity = args[:opacity] unless args[:opacity].nil?
             end
           end
         end
       end
-
+      
       # Represents a complete StyleSettings object. The primary key is a combination
       # of the tableId and a styleId.
-      class StyleSetting
+      class Setting
         include Google::Apis::Core::Hashable
       
         # The kind of item this is. A StyleSetting contains the style definitions for
@@ -580,7 +659,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Style definition for points in the table.
+        # Represents a PointStyle within a StyleSetting
         # Corresponds to the JSON property `markerOptions`
         # @return [Google::Apis::FusiontablesV2::PointStyle]
         attr_accessor :marker_options
@@ -590,12 +669,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Style definition for polygons in the table.
+        # Represents a PolygonStyle within a StyleSetting
         # Corresponds to the JSON property `polygonOptions`
         # @return [Google::Apis::FusiontablesV2::PolygonStyle]
         attr_accessor :polygon_options
       
-        # Style definition for lines in the table.
+        # Represents a LineStyle within a StyleSetting
         # Corresponds to the JSON property `polylineOptions`
         # @return [Google::Apis::FusiontablesV2::LineStyle]
         attr_accessor :polyline_options
@@ -611,6 +690,11 @@ module Google
         attr_accessor :table_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @marker_options = args[:marker_options] unless args[:marker_options].nil?
           @name = args[:name] unless args[:name].nil?
@@ -620,14 +704,14 @@ module Google
           @table_id = args[:table_id] unless args[:table_id].nil?
         end
       end
-
+      
       # Represents a list of styles for a given table.
-      class StyleSettingList
+      class SettingList
         include Google::Apis::Core::Hashable
       
         # All requested style settings.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::FusiontablesV2::StyleSetting>]
+        # @return [Array<Google::Apis::FusiontablesV2::Setting>]
         attr_accessor :items
       
         # The kind of item this is. For a style list, this is always fusiontables#
@@ -648,13 +732,18 @@ module Google
         attr_accessor :total_items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @total_items = args[:total_items] unless args[:total_items].nil?
         end
       end
-
+      
       # Represents a table.
       class Table
         include Google::Apis::Core::Hashable
@@ -726,6 +815,11 @@ module Google
         attr_accessor :table_properties_json_schema
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @attribution = args[:attribution] unless args[:attribution].nil?
           @attribution_link = args[:attribution_link] unless args[:attribution_link].nil?
           @base_table_ids = args[:base_table_ids] unless args[:base_table_ids].nil?
@@ -741,7 +835,7 @@ module Google
           @table_properties_json_schema = args[:table_properties_json_schema] unless args[:table_properties_json_schema].nil?
         end
       end
-
+      
       # Represents a list of tables.
       class TableList
         include Google::Apis::Core::Hashable
@@ -764,12 +858,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # A background task on a table, initiated for time- or resource-consuming
       # operations such as changing column types or deleting all rows.
       class Task
@@ -803,6 +902,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @progress = args[:progress] unless args[:progress].nil?
           @started = args[:started] unless args[:started].nil?
@@ -810,7 +914,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Represents a list of tasks for a table.
       class TaskList
         include Google::Apis::Core::Hashable
@@ -837,13 +941,18 @@ module Google
         attr_accessor :total_items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @total_items = args[:total_items] unless args[:total_items].nil?
         end
       end
-
+      
       # Represents the contents of InfoWindow templates.
       class Template
         include Google::Apis::Core::Hashable
@@ -882,6 +991,11 @@ module Google
         attr_accessor :template_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @automatic_column_names = args[:automatic_column_names] unless args[:automatic_column_names].nil?
           @body = args[:body] unless args[:body].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -890,7 +1004,7 @@ module Google
           @template_id = args[:template_id] unless args[:template_id].nil?
         end
       end
-
+      
       # Represents a list of templates for a given table.
       class TemplateList
         include Google::Apis::Core::Hashable
@@ -918,6 +1032,11 @@ module Google
         attr_accessor :total_items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?

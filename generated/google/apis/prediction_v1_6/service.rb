@@ -33,7 +33,6 @@ module Google
       #
       # @see https://developers.google.com/prediction/docs/developer-guide
       class PredictionService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -53,14 +52,13 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'prediction/v1.6/projects/')
         end
-
+        
         # Submit input and request an output against a hosted model.
         # @param [String] project
         #   The project associated with the model.
         # @param [String] hosted_model_name
         #   The name of a hosted model.
-        # @param [Google::Apis::PredictionV1_6::Input] input
-        #   
+        # @param [Google::Apis::PredictionV1_6::Input] input_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -70,7 +68,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -82,12 +80,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def predict_hostedmodel(project, hosted_model_name, input = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def predict_hostedmodel(project, hosted_model_name, input_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/hostedmodels/{hostedModelName}/predict'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::PredictionV1_6::InputRepresentation
-          command.request_object = input
-          command.response_representation = Google::Apis::PredictionV1_6::OutputRepresentation
+          command.request_representation = Google::Apis::PredictionV1_6::Input::Representation
+          command.request_object = input_object
+          command.response_representation = Google::Apis::PredictionV1_6::Output::Representation
           command.response_class = Google::Apis::PredictionV1_6::Output
           command.params['project'] = project unless project.nil?
           command.params['hostedModelName'] = hosted_model_name unless hosted_model_name.nil?
@@ -96,7 +94,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Get analysis of the model and the data the model was trained on.
         # @param [String] project
         #   The project associated with the model.
@@ -111,7 +109,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -126,7 +124,7 @@ module Google
         def analyze_trainedmodel(project, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/trainedmodels/{id}/analyze'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PredictionV1_6::AnalyzeRepresentation
+          command.response_representation = Google::Apis::PredictionV1_6::Analyze::Representation
           command.response_class = Google::Apis::PredictionV1_6::Analyze
           command.params['project'] = project unless project.nil?
           command.params['id'] = id unless id.nil?
@@ -135,7 +133,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Delete a trained model.
         # @param [String] project
@@ -151,7 +148,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -174,7 +171,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Check training status of your model.
         # @param [String] project
         #   The project associated with the model.
@@ -189,7 +185,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -204,7 +200,7 @@ module Google
         def get_trainedmodel(project, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/trainedmodels/{id}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PredictionV1_6::Insert2Representation
+          command.response_representation = Google::Apis::PredictionV1_6::Insert2::Representation
           command.response_class = Google::Apis::PredictionV1_6::Insert2
           command.params['project'] = project unless project.nil?
           command.params['id'] = id unless id.nil?
@@ -214,12 +210,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Train a Prediction API model.
         # @param [String] project
         #   The project associated with the model.
-        # @param [Google::Apis::PredictionV1_6::Insert] insert
-        #   
+        # @param [Google::Apis::PredictionV1_6::Insert] insert_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -229,7 +223,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -241,12 +235,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_trainedmodel(project, insert = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_trainedmodel(project, insert_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/trainedmodels'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::PredictionV1_6::InsertRepresentation
-          command.request_object = insert
-          command.response_representation = Google::Apis::PredictionV1_6::Insert2Representation
+          command.request_representation = Google::Apis::PredictionV1_6::Insert::Representation
+          command.request_object = insert_object
+          command.response_representation = Google::Apis::PredictionV1_6::Insert2::Representation
           command.response_class = Google::Apis::PredictionV1_6::Insert2
           command.params['project'] = project unless project.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -254,7 +248,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List available models.
         # @param [String] project
@@ -272,7 +265,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -287,7 +280,7 @@ module Google
         def list_trainedmodels(project, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/trainedmodels/list'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PredictionV1_6::ListRepresentation
+          command.response_representation = Google::Apis::PredictionV1_6::List::Representation
           command.response_class = Google::Apis::PredictionV1_6::List
           command.params['project'] = project unless project.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -298,14 +291,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Submit model id and request a prediction.
         # @param [String] project
         #   The project associated with the model.
         # @param [String] id
         #   The unique name for the predictive model.
-        # @param [Google::Apis::PredictionV1_6::Input] input
-        #   
+        # @param [Google::Apis::PredictionV1_6::Input] input_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -315,7 +306,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -327,12 +318,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def predict_trainedmodel(project, id, input = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def predict_trainedmodel(project, id, input_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/trainedmodels/{id}/predict'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::PredictionV1_6::InputRepresentation
-          command.request_object = input
-          command.response_representation = Google::Apis::PredictionV1_6::OutputRepresentation
+          command.request_representation = Google::Apis::PredictionV1_6::Input::Representation
+          command.request_object = input_object
+          command.response_representation = Google::Apis::PredictionV1_6::Output::Representation
           command.response_class = Google::Apis::PredictionV1_6::Output
           command.params['project'] = project unless project.nil?
           command.params['id'] = id unless id.nil?
@@ -342,14 +333,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Add new data to a trained model.
         # @param [String] project
         #   The project associated with the model.
         # @param [String] id
         #   The unique name for the predictive model.
-        # @param [Google::Apis::PredictionV1_6::Update] update
-        #   
+        # @param [Google::Apis::PredictionV1_6::Update] update_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -359,7 +348,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -371,12 +360,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_trainedmodel(project, id, update = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_trainedmodel(project, id, update_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/trainedmodels/{id}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::PredictionV1_6::UpdateRepresentation
-          command.request_object = update
-          command.response_representation = Google::Apis::PredictionV1_6::Insert2Representation
+          command.request_representation = Google::Apis::PredictionV1_6::Update::Representation
+          command.request_object = update_object
+          command.response_representation = Google::Apis::PredictionV1_6::Insert2::Representation
           command.response_class = Google::Apis::PredictionV1_6::Insert2
           command.params['project'] = project unless project.nil?
           command.params['id'] = id unless id.nil?

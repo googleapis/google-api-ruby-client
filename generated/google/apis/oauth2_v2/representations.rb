@@ -22,65 +22,72 @@ module Google
   module Apis
     module Oauth2V2
       
-      class JwkRepresentation < Google::Apis::Core::JsonRepresentation
+      class Jwk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class KeyRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Key
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class TokeninfoRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Tokeninfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UserinfoplusRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Userinfoplus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class JwkRepresentation < Google::Apis::Core::JsonRepresentation
-        class KeyRepresentation < Google::Apis::Core::JsonRepresentation; end
-        collection :keys, as: 'keys', class: Google::Apis::Oauth2V2::Jwk::Key, decorator: Google::Apis::Oauth2V2::JwkRepresentation::KeyRepresentation
-        
-        
+      class Jwk
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :keys, as: 'keys', class: Google::Apis::Oauth2V2::Jwk::Key, decorator: Google::Apis::Oauth2V2::Jwk::Key::Representation
+      
+        end
         
         # @private
-        class KeyRepresentation < Google::Apis::Core::JsonRepresentation
-          property :alg, as: 'alg'
-          property :e, as: 'e'
-          property :kid, as: 'kid'
-          property :kty, as: 'kty'
-          property :n, as: 'n'
-          property :use, as: 'use'
+        class Key
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :alg, as: 'alg'
+            property :e, as: 'e'
+            property :kid, as: 'kid'
+            property :kty, as: 'kty'
+            property :n, as: 'n'
+            property :use, as: 'use'
+          end
         end
       end
-
+      
       # @private
-      class TokeninfoRepresentation < Google::Apis::Core::JsonRepresentation
-        property :access_type, as: 'access_type'
-        property :audience, as: 'audience'
-        property :email, as: 'email'
-        property :expires_in, as: 'expires_in'
-        property :issued_to, as: 'issued_to'
-        property :scope, as: 'scope'
-        property :token_handle, as: 'token_handle'
-        property :user_id, as: 'user_id'
-        property :verified_email, as: 'verified_email'
+      class Tokeninfo
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_type, as: 'access_type'
+          property :audience, as: 'audience'
+          property :email, as: 'email'
+          property :expires_in, as: 'expires_in'
+          property :issued_to, as: 'issued_to'
+          property :scope, as: 'scope'
+          property :token_handle, as: 'token_handle'
+          property :user_id, as: 'user_id'
+          property :verified_email, as: 'verified_email'
+        end
       end
-
+      
       # @private
-      class UserinfoplusRepresentation < Google::Apis::Core::JsonRepresentation
-        property :email, as: 'email'
-        property :family_name, as: 'family_name'
-        property :gender, as: 'gender'
-        property :given_name, as: 'given_name'
-        property :hd, as: 'hd'
-        property :id, as: 'id'
-        property :link, as: 'link'
-        property :locale, as: 'locale'
-        property :name, as: 'name'
-        property :picture, as: 'picture'
-        property :verified_email, as: 'verified_email'
+      class Userinfoplus
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :family_name, as: 'family_name'
+          property :gender, as: 'gender'
+          property :given_name, as: 'given_name'
+          property :hd, as: 'hd'
+          property :id, as: 'id'
+          property :link, as: 'link'
+          property :locale, as: 'locale'
+          property :name, as: 'name'
+          property :picture, as: 'picture'
+          property :verified_email, as: 'verified_email'
+        end
       end
     end
   end

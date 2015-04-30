@@ -33,7 +33,6 @@ module Google
       #
       # @see https://cloud.google.com/compute/docs/instance-groups/manager/#applying_rolling_updates_using_the_updater_service
       class ReplicapoolupdaterService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -53,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'replicapoolupdater/v1beta1/projects/')
         end
-
+        
         # Cancels an update. The update must be PAUSED before it can be cancelled. This
         # has no effect if the update is already CANCELLED.
         # @param [String] project
@@ -71,7 +70,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -86,7 +85,7 @@ module Google
         def cancel_rolling_update(project, zone, rolling_update, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/rollingUpdates/{rollingUpdate}/cancel'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::OperationRepresentation
+          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::Operation::Representation
           command.response_class = Google::Apis::ReplicapoolupdaterV1beta1::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -96,7 +95,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Returns information about an update.
         # @param [String] project
@@ -114,7 +112,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -129,7 +127,7 @@ module Google
         def get_rolling_update(project, zone, rolling_update, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/rollingUpdates/{rollingUpdate}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdateRepresentation
+          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdate::Representation
           command.response_class = Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdate
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -140,14 +138,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Inserts and starts a new update.
         # @param [String] project
         #   The Google Developers Console project name.
         # @param [String] zone
         #   The name of the zone in which the update's target resides.
-        # @param [Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdate] rolling_update
-        #   
+        # @param [Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdate] rolling_update_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -157,7 +153,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -169,12 +165,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_rolling_update(project, zone, rolling_update = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_rolling_update(project, zone, rolling_update_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/rollingUpdates'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdateRepresentation
-          command.request_object = rolling_update
-          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::OperationRepresentation
+          command.request_representation = Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdate::Representation
+          command.request_object = rolling_update_object
+          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::Operation::Representation
           command.response_class = Google::Apis::ReplicapoolupdaterV1beta1::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -183,7 +179,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists recent updates for a given managed instance group, in reverse
         # chronological order and paginated format.
@@ -211,7 +206,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -226,7 +221,7 @@ module Google
         def list_rolling_updates(project, zone, filter: nil, instance_group_manager: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/rollingUpdates'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdateListRepresentation
+          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdateList::Representation
           command.response_class = Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdateList
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -239,7 +234,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists the current status for each instance within a given update.
         # @param [String] project
@@ -265,7 +259,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -280,7 +274,7 @@ module Google
         def list_instance_updates_rolling_update(project, zone, rolling_update, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/rollingUpdates/{rollingUpdate}/instanceUpdates'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::InstanceUpdateListRepresentation
+          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::InstanceUpdateList::Representation
           command.response_class = Google::Apis::ReplicapoolupdaterV1beta1::InstanceUpdateList
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -293,7 +287,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Pauses the update in state from ROLLING_FORWARD or ROLLING_BACK. Has no effect
         # if invoked when the state of the update is PAUSED.
@@ -312,7 +305,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -327,7 +320,7 @@ module Google
         def pause_rolling_update(project, zone, rolling_update, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/rollingUpdates/{rollingUpdate}/pause'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::OperationRepresentation
+          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::Operation::Representation
           command.response_class = Google::Apis::ReplicapoolupdaterV1beta1::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -337,7 +330,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Continues an update in PAUSED state. Has no effect if invoked when the state
         # of the update is ROLLED_OUT.
@@ -356,7 +348,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -371,7 +363,7 @@ module Google
         def resume_rolling_update(project, zone, rolling_update, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/rollingUpdates/{rollingUpdate}/resume'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::OperationRepresentation
+          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::Operation::Representation
           command.response_class = Google::Apis::ReplicapoolupdaterV1beta1::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -381,7 +373,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Rolls back the update in state from ROLLING_FORWARD or PAUSED. Has no effect
         # if invoked when the state of the update is ROLLED_BACK.
@@ -400,7 +391,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -415,7 +406,7 @@ module Google
         def rollback_rolling_update(project, zone, rolling_update, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/rollingUpdates/{rollingUpdate}/rollback'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::OperationRepresentation
+          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::Operation::Representation
           command.response_class = Google::Apis::ReplicapoolupdaterV1beta1::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -425,7 +416,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Retrieves the specified zone-specific operation resource.
         # @param [String] project
         #   Name of the project scoping this request.
@@ -442,7 +433,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -457,7 +448,7 @@ module Google
         def get_zone_operation(project, zone, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/operations/{operation}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::OperationRepresentation
+          command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::Operation::Representation
           command.response_class = Google::Apis::ReplicapoolupdaterV1beta1::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?

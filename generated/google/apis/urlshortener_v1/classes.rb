@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module UrlshortenerV1
-
+      
       # 
       class AnalyticsSnapshot
         include Google::Apis::Core::Hashable
@@ -61,6 +61,11 @@ module Google
         attr_accessor :short_url_clicks
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @browsers = args[:browsers] unless args[:browsers].nil?
           @countries = args[:countries] unless args[:countries].nil?
           @long_url_clicks = args[:long_url_clicks] unless args[:long_url_clicks].nil?
@@ -69,7 +74,7 @@ module Google
           @short_url_clicks = args[:short_url_clicks] unless args[:short_url_clicks].nil?
         end
       end
-
+      
       # 
       class AnalyticsSummary
         include Google::Apis::Core::Hashable
@@ -100,6 +105,11 @@ module Google
         attr_accessor :week
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @all_time = args[:all_time] unless args[:all_time].nil?
           @day = args[:day] unless args[:day].nil?
           @month = args[:month] unless args[:month].nil?
@@ -107,7 +117,7 @@ module Google
           @week = args[:week] unless args[:week].nil?
         end
       end
-
+      
       # 
       class StringCount
         include Google::Apis::Core::Hashable
@@ -124,11 +134,16 @@ module Google
         attr_accessor :id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @count = args[:count] unless args[:count].nil?
           @id = args[:id] unless args[:id].nil?
         end
       end
-
+      
       # 
       class Url
         include Google::Apis::Core::Hashable
@@ -169,6 +184,11 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @analytics = args[:analytics] unless args[:analytics].nil?
           @created = args[:created] unless args[:created].nil?
           @id = args[:id] unless args[:id].nil?
@@ -177,7 +197,7 @@ module Google
           @status = args[:status] unless args[:status].nil?
         end
       end
-
+      
       # 
       class History
         include Google::Apis::Core::Hashable
@@ -209,6 +229,11 @@ module Google
         attr_accessor :total_items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
           @kind = args[:kind] unless args[:kind].nil?

@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AdsenseV1_4
-
+      
       # 
       class Account
         include Google::Apis::Core::Hashable
@@ -58,6 +58,11 @@ module Google
         attr_accessor :timezone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
@@ -66,7 +71,7 @@ module Google
           @timezone = args[:timezone] unless args[:timezone].nil?
         end
       end
-
+      
       # 
       class Accounts
         include Google::Apis::Core::Hashable
@@ -93,13 +98,18 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # 
       class AdClient
         include Google::Apis::Core::Hashable
@@ -139,6 +149,11 @@ module Google
         alias_method :supports_reporting?, :supports_reporting
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @arc_opt_in = args[:arc_opt_in] unless args[:arc_opt_in].nil?
           @arc_review_mode = args[:arc_review_mode] unless args[:arc_review_mode].nil?
           @id = args[:id] unless args[:id].nil?
@@ -147,7 +162,7 @@ module Google
           @supports_reporting = args[:supports_reporting] unless args[:supports_reporting].nil?
         end
       end
-
+      
       # 
       class AdClients
         include Google::Apis::Core::Hashable
@@ -174,13 +189,18 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # 
       class AdCode
         include Google::Apis::Core::Hashable
@@ -196,11 +216,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ad_code = args[:ad_code] unless args[:ad_code].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
       class AdStyle
         include Google::Apis::Core::Hashable
@@ -228,11 +253,17 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @colors = args[:colors] unless args[:colors].nil?
           @corners = args[:corners] unless args[:corners].nil?
           @font = args[:font] unless args[:font].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
+        
         # The colors which are included in the style. These are represented as six
         # hexadecimal characters, similar to HTML color codes, but without the leading
         # hash.
@@ -265,6 +296,11 @@ module Google
           attr_accessor :url
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @background = args[:background] unless args[:background].nil?
             @border = args[:border] unless args[:border].nil?
             @text = args[:text] unless args[:text].nil?
@@ -272,6 +308,7 @@ module Google
             @url = args[:url] unless args[:url].nil?
           end
         end
+        
         # The font which is included in the style.
         class Font
           include Google::Apis::Core::Hashable
@@ -287,12 +324,17 @@ module Google
           attr_accessor :size
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @family = args[:family] unless args[:family].nil?
             @size = args[:size] unless args[:size].nil?
           end
         end
       end
-
+      
       # 
       class AdUnit
         include Google::Apis::Core::Hashable
@@ -355,6 +397,11 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @code = args[:code] unless args[:code].nil?
           @content_ads_settings = args[:content_ads_settings] unless args[:content_ads_settings].nil?
           @custom_style = args[:custom_style] unless args[:custom_style].nil?
@@ -366,6 +413,7 @@ module Google
           @saved_style_id = args[:saved_style_id] unless args[:saved_style_id].nil?
           @status = args[:status] unless args[:status].nil?
         end
+        
         # Settings specific to content ads (AFC) and highend mobile content ads (AFMC).
         class ContentAdsSettings
           include Google::Apis::Core::Hashable
@@ -386,10 +434,16 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @backup_option = args[:backup_option] unless args[:backup_option].nil?
             @size = args[:size] unless args[:size].nil?
             @type = args[:type] unless args[:type].nil?
           end
+          
           # The backup option to be used in instances where no ad is available.
           class BackupOption
             include Google::Apis::Core::Hashable
@@ -410,12 +464,18 @@ module Google
             attr_accessor :url
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @color = args[:color] unless args[:color].nil?
               @type = args[:type] unless args[:type].nil?
               @url = args[:url] unless args[:url].nil?
             end
           end
         end
+        
         # Settings specific to feed ads (AFF).
         class FeedAdsSettings
           include Google::Apis::Core::Hashable
@@ -441,12 +501,18 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @ad_position = args[:ad_position] unless args[:ad_position].nil?
             @frequency = args[:frequency] unless args[:frequency].nil?
             @minimum_word_count = args[:minimum_word_count] unless args[:minimum_word_count].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
+        
         # Settings specific to WAP mobile content ads (AFMC).
         class MobileContentAdsSettings
           include Google::Apis::Core::Hashable
@@ -472,6 +538,11 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @markup_language = args[:markup_language] unless args[:markup_language].nil?
             @scripting_language = args[:scripting_language] unless args[:scripting_language].nil?
             @size = args[:size] unless args[:size].nil?
@@ -479,7 +550,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class AdUnits
         include Google::Apis::Core::Hashable
@@ -506,15 +577,20 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # 
-      class ReportsGenerateResponse
+      class GenerateResponse
         include Google::Apis::Core::Hashable
       
         # The averages of the report. This is the same length as any other row in the
@@ -532,7 +608,7 @@ module Google
         # of headers; one for each dimension in the request, followed by one for each
         # metric in the request.
         # Corresponds to the JSON property `headers`
-        # @return [Array<Google::Apis::AdsenseV1_4::ReportsGenerateResponse::Header>]
+        # @return [Array<Google::Apis::AdsenseV1_4::GenerateResponse::Header>]
         attr_accessor :headers
       
         # Kind this is, in this case adsense#report.
@@ -571,6 +647,11 @@ module Google
         attr_accessor :warnings
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @averages = args[:averages] unless args[:averages].nil?
           @end_date = args[:end_date] unless args[:end_date].nil?
           @headers = args[:headers] unless args[:headers].nil?
@@ -581,6 +662,7 @@ module Google
           @totals = args[:totals] unless args[:totals].nil?
           @warnings = args[:warnings] unless args[:warnings].nil?
         end
+        
         # 
         class Header
           include Google::Apis::Core::Hashable
@@ -603,13 +685,18 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @currency = args[:currency] unless args[:currency].nil?
             @name = args[:name] unless args[:name].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
       end
-
+      
       # 
       class Alert
         include Google::Apis::Core::Hashable
@@ -649,6 +736,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @is_dismissible = args[:is_dismissible] unless args[:is_dismissible].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -657,7 +749,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # 
       class Alerts
         include Google::Apis::Core::Hashable
@@ -673,11 +765,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
       class CustomChannel
         include Google::Apis::Core::Hashable
@@ -709,12 +806,18 @@ module Google
         attr_accessor :targeting_info
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @code = args[:code] unless args[:code].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
           @targeting_info = args[:targeting_info] unless args[:targeting_info].nil?
         end
+        
         # The targeting information of this custom channel, if activated.
         class TargetingInfo
           include Google::Apis::Core::Hashable
@@ -744,6 +847,11 @@ module Google
           attr_accessor :site_language
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @ads_appear_on = args[:ads_appear_on] unless args[:ads_appear_on].nil?
             @description = args[:description] unless args[:description].nil?
             @location = args[:location] unless args[:location].nil?
@@ -751,7 +859,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class CustomChannels
         include Google::Apis::Core::Hashable
@@ -778,13 +886,18 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # 
       class Metadata
         include Google::Apis::Core::Hashable
@@ -800,11 +913,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
       class Payment
         include Google::Apis::Core::Hashable
@@ -836,6 +954,11 @@ module Google
         attr_accessor :payment_date
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @payment_amount = args[:payment_amount] unless args[:payment_amount].nil?
@@ -843,7 +966,7 @@ module Google
           @payment_date = args[:payment_date] unless args[:payment_date].nil?
         end
       end
-
+      
       # 
       class Payments
         include Google::Apis::Core::Hashable
@@ -860,11 +983,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
       class ReportingMetadataEntry
         include Google::Apis::Core::Hashable
@@ -916,6 +1044,11 @@ module Google
         attr_accessor :supported_products
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @compatible_dimensions = args[:compatible_dimensions] unless args[:compatible_dimensions].nil?
           @compatible_metrics = args[:compatible_metrics] unless args[:compatible_metrics].nil?
           @id = args[:id] unless args[:id].nil?
@@ -925,7 +1058,7 @@ module Google
           @supported_products = args[:supported_products] unless args[:supported_products].nil?
         end
       end
-
+      
       # 
       class SavedAdStyle
         include Google::Apis::Core::Hashable
@@ -952,15 +1085,20 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ad_style = args[:ad_style] unless args[:ad_style].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # 
-      class SavedAdStyles
+      class AdStyles
         include Google::Apis::Core::Hashable
       
         # ETag of this response for caching purposes.
@@ -985,15 +1123,20 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # 
-      class SavedReport
+      class Report
         include Google::Apis::Core::Hashable
       
         # Unique identifier of this saved report.
@@ -1012,14 +1155,19 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # 
-      class SavedReports
+      class Reports
         include Google::Apis::Core::Hashable
       
         # ETag of this response for caching purposes.
@@ -1029,7 +1177,7 @@ module Google
       
         # The saved reports returned in this list response.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::AdsenseV1_4::SavedReport>]
+        # @return [Array<Google::Apis::AdsenseV1_4::Report>]
         attr_accessor :items
       
         # Kind of list this is, in this case adsense#savedReports.
@@ -1044,13 +1192,18 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # 
       class UrlChannel
         include Google::Apis::Core::Hashable
@@ -1073,12 +1226,17 @@ module Google
         attr_accessor :url_pattern
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @url_pattern = args[:url_pattern] unless args[:url_pattern].nil?
         end
       end
-
+      
       # 
       class UrlChannels
         include Google::Apis::Core::Hashable
@@ -1105,6 +1263,11 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?

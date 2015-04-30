@@ -22,41 +22,46 @@ module Google
   module Apis
     module LicensingV1
       
-      class LicenseAssignmentRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class LicenseAssignment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LicenseAssignmentInsertRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class LicenseAssignmentInsert
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LicenseAssignmentListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class LicenseAssignmentList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class LicenseAssignmentRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etags, as: 'etags'
-        property :kind, as: 'kind'
-        property :product_id, as: 'productId'
-        property :self_link, as: 'selfLink'
-        property :sku_id, as: 'skuId'
-        property :user_id, as: 'userId'
+      class LicenseAssignment
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etags, as: 'etags'
+          property :kind, as: 'kind'
+          property :product_id, as: 'productId'
+          property :self_link, as: 'selfLink'
+          property :sku_id, as: 'skuId'
+          property :user_id, as: 'userId'
+        end
       end
-
+      
       # @private
-      class LicenseAssignmentInsertRepresentation < Google::Apis::Core::JsonRepresentation
-        property :user_id, as: 'userId'
+      class LicenseAssignmentInsert
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :user_id, as: 'userId'
+        end
       end
-
+      
       # @private
-      class LicenseAssignmentListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        collection :items, as: 'items', class: Google::Apis::LicensingV1::LicenseAssignment, decorator: Google::Apis::LicensingV1::LicenseAssignmentRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class LicenseAssignmentList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::LicensingV1::LicenseAssignment, decorator: Google::Apis::LicensingV1::LicenseAssignment::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
     end
   end

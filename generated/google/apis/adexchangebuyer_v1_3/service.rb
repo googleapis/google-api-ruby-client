@@ -33,7 +33,6 @@ module Google
       #
       # @see https://developers.google.com/ad-exchange/buyer-rest
       class AdExchangeBuyerService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -53,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'adexchangebuyer/v1.3/')
         end
-
+        
         # Gets one account by ID.
         # @param [Fixnum] id
         #   The account id
@@ -66,7 +65,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -81,7 +80,7 @@ module Google
         def get_account(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{id}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::AccountRepresentation
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::Account::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::Account
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -89,7 +88,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves the authenticated user's list of accounts.
         # @param [String] fields
@@ -101,14 +99,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AdexchangebuyerV1_3::AccountsList] parsed result object
+        # @yieldparam result [Google::Apis::AdexchangebuyerV1_3::List] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AdexchangebuyerV1_3::AccountsList]
+        # @return [Google::Apis::AdexchangebuyerV1_3::List]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -116,20 +114,18 @@ module Google
         def list_accounts(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::AccountsListRepresentation
-          command.response_class = Google::Apis::AdexchangebuyerV1_3::AccountsList
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::List::Representation
+          command.response_class = Google::Apis::AdexchangebuyerV1_3::List
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates an existing account. This method supports patch semantics.
         # @param [Fixnum] id
         #   The account id
-        # @param [Google::Apis::AdexchangebuyerV1_3::Account] account
-        #   
+        # @param [Google::Apis::AdexchangebuyerV1_3::Account] account_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -139,7 +135,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -151,12 +147,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_account(id, account = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_account(id, account_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{id}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::AdexchangebuyerV1_3::AccountRepresentation
-          command.request_object = account
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::AccountRepresentation
+          command.request_representation = Google::Apis::AdexchangebuyerV1_3::Account::Representation
+          command.request_object = account_object
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::Account::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::Account
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -164,13 +160,11 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates an existing account.
         # @param [Fixnum] id
         #   The account id
-        # @param [Google::Apis::AdexchangebuyerV1_3::Account] account
-        #   
+        # @param [Google::Apis::AdexchangebuyerV1_3::Account] account_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -180,7 +174,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -192,12 +186,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_account(id, account = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_account(id, account_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{id}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::AdexchangebuyerV1_3::AccountRepresentation
-          command.request_object = account
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::AccountRepresentation
+          command.request_representation = Google::Apis::AdexchangebuyerV1_3::Account::Representation
+          command.request_object = account_object
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::Account::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::Account
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -205,7 +199,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Returns the billing information for one account specified by account ID.
         # @param [Fixnum] account_id
         #   The account id.
@@ -218,7 +212,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -233,7 +227,7 @@ module Google
         def get_billing_info(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'billinginfo/{accountId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::BillingInfoRepresentation
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::BillingInfo::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::BillingInfo
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -241,7 +235,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves a list of billing information for all accounts of the authenticated
         # user.
@@ -254,7 +247,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -269,14 +262,14 @@ module Google
         def list_billing_infos(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'billinginfo'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::BillingInfoListRepresentation
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::BillingInfoList::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::BillingInfoList
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Returns the budget information for the adgroup specified by the accountId and
         # billingId.
         # @param [String] account_id
@@ -292,7 +285,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -307,7 +300,7 @@ module Google
         def get_budget(account_id, billing_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'billinginfo/{accountId}/{billingId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::BudgetRepresentation
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::Budget::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::Budget
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['billingId'] = billing_id unless billing_id.nil?
@@ -316,7 +309,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates the budget amount for the budget of the adgroup specified by the
         # accountId and billingId, with the budget amount in the request. This method
@@ -325,8 +317,7 @@ module Google
         #   The account id associated with the budget being updated.
         # @param [String] billing_id
         #   The billing id associated with the budget being updated.
-        # @param [Google::Apis::AdexchangebuyerV1_3::Budget] budget
-        #   
+        # @param [Google::Apis::AdexchangebuyerV1_3::Budget] budget_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -336,7 +327,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -348,12 +339,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_budget(account_id, billing_id, budget = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_budget(account_id, billing_id, budget_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'billinginfo/{accountId}/{billingId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::AdexchangebuyerV1_3::BudgetRepresentation
-          command.request_object = budget
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::BudgetRepresentation
+          command.request_representation = Google::Apis::AdexchangebuyerV1_3::Budget::Representation
+          command.request_object = budget_object
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::Budget::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::Budget
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['billingId'] = billing_id unless billing_id.nil?
@@ -362,7 +353,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates the budget amount for the budget of the adgroup specified by the
         # accountId and billingId, with the budget amount in the request.
@@ -370,8 +360,7 @@ module Google
         #   The account id associated with the budget being updated.
         # @param [String] billing_id
         #   The billing id associated with the budget being updated.
-        # @param [Google::Apis::AdexchangebuyerV1_3::Budget] budget
-        #   
+        # @param [Google::Apis::AdexchangebuyerV1_3::Budget] budget_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -381,7 +370,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -393,12 +382,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_budget(account_id, billing_id, budget = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_budget(account_id, billing_id, budget_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'billinginfo/{accountId}/{billingId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::AdexchangebuyerV1_3::BudgetRepresentation
-          command.request_object = budget
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::BudgetRepresentation
+          command.request_representation = Google::Apis::AdexchangebuyerV1_3::Budget::Representation
+          command.request_object = budget_object
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::Budget::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::Budget
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['billingId'] = billing_id unless billing_id.nil?
@@ -407,7 +396,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Gets the status for a single creative. A creative will be available 30-40
         # minutes after submission.
         # @param [Fixnum] account_id
@@ -423,7 +412,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -438,7 +427,7 @@ module Google
         def get_creative(account_id, buyer_creative_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'creatives/{accountId}/{buyerCreativeId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::CreativeRepresentation
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::Creative::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::Creative
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['buyerCreativeId'] = buyer_creative_id unless buyer_creative_id.nil?
@@ -448,10 +437,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Submit a new creative.
-        # @param [Google::Apis::AdexchangebuyerV1_3::Creative] creative
-        #   
+        # @param [Google::Apis::AdexchangebuyerV1_3::Creative] creative_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -461,7 +448,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -473,19 +460,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_creative(creative = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_creative(creative_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'creatives'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AdexchangebuyerV1_3::CreativeRepresentation
-          command.request_object = creative
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::CreativeRepresentation
+          command.request_representation = Google::Apis::AdexchangebuyerV1_3::Creative::Representation
+          command.request_object = creative_object
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::Creative::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::Creative
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves a list of the authenticated user's active creatives. A creative will
         # be available 30-40 minutes after submission.
@@ -511,7 +497,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -526,7 +512,7 @@ module Google
         def list_creatives(account_id: nil, buyer_creative_id: nil, max_results: nil, page_token: nil, status_filter: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'creatives'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::CreativesListRepresentation
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::CreativesList::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::CreativesList
           command.query['accountId'] = account_id unless account_id.nil?
           command.query['buyerCreativeId'] = buyer_creative_id unless buyer_creative_id.nil?
@@ -538,7 +524,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Gets one direct deal by ID.
         # @param [String] id
         #   The direct deal id
@@ -551,7 +537,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -566,7 +552,7 @@ module Google
         def get_direct_deal(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'directdeals/{id}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::DirectDealRepresentation
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::DirectDeal::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::DirectDeal
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -574,7 +560,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves the authenticated user's list of direct deals.
         # @param [String] fields
@@ -586,7 +571,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -601,14 +586,14 @@ module Google
         def list_direct_deals(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'directdeals'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::DirectDealsListRepresentation
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::DirectDealsList::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::DirectDealsList
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Retrieves the authenticated user's list of performance metrics.
         # @param [String] account_id
         #   The account id to get the reports.
@@ -632,7 +617,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -647,7 +632,7 @@ module Google
         def list_performance_reports(account_id: nil, end_date_time: nil, max_results: nil, page_token: nil, start_date_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'performancereport'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::PerformanceReportListRepresentation
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::PerformanceReportList::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::PerformanceReportList
           command.query['accountId'] = account_id unless account_id.nil?
           command.query['endDateTime'] = end_date_time unless end_date_time.nil?
@@ -659,7 +644,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Deletes an existing pretargeting config.
         # @param [String] account_id
         #   The account id to delete the pretargeting config for.
@@ -674,7 +659,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -697,7 +682,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets a specific pretargeting configuration
         # @param [String] account_id
         #   The account id to get the pretargeting config for.
@@ -712,7 +696,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -727,7 +711,7 @@ module Google
         def get_pretargeting_config(account_id, config_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'pretargetingconfigs/{accountId}/{configId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfigRepresentation
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfig::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::PretargetingConfig
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['configId'] = config_id unless config_id.nil?
@@ -737,12 +721,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Inserts a new pretargeting configuration.
         # @param [String] account_id
         #   The account id to insert the pretargeting config for.
-        # @param [Google::Apis::AdexchangebuyerV1_3::PretargetingConfig] pretargeting_config
-        #   
+        # @param [Google::Apis::AdexchangebuyerV1_3::PretargetingConfig] pretargeting_config_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -752,7 +734,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -764,12 +746,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_pretargeting_config(account_id, pretargeting_config = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_pretargeting_config(account_id, pretargeting_config_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'pretargetingconfigs/{accountId}'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfigRepresentation
-          command.request_object = pretargeting_config
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfigRepresentation
+          command.request_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfig::Representation
+          command.request_object = pretargeting_config_object
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfig::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::PretargetingConfig
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -777,7 +759,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves a list of the authenticated user's pretargeting configurations.
         # @param [String] account_id
@@ -791,7 +772,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -806,7 +787,7 @@ module Google
         def list_pretargeting_configs(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'pretargetingconfigs/{accountId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfigListRepresentation
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfigList::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::PretargetingConfigList
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -815,14 +796,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an existing pretargeting config. This method supports patch semantics.
         # @param [String] account_id
         #   The account id to update the pretargeting config for.
         # @param [String] config_id
         #   The specific id of the configuration to update.
-        # @param [Google::Apis::AdexchangebuyerV1_3::PretargetingConfig] pretargeting_config
-        #   
+        # @param [Google::Apis::AdexchangebuyerV1_3::PretargetingConfig] pretargeting_config_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -832,7 +811,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -844,12 +823,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_pretargeting_config(account_id, config_id, pretargeting_config = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_pretargeting_config(account_id, config_id, pretargeting_config_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'pretargetingconfigs/{accountId}/{configId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfigRepresentation
-          command.request_object = pretargeting_config
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfigRepresentation
+          command.request_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfig::Representation
+          command.request_object = pretargeting_config_object
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfig::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::PretargetingConfig
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['configId'] = config_id unless config_id.nil?
@@ -859,14 +838,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an existing pretargeting config.
         # @param [String] account_id
         #   The account id to update the pretargeting config for.
         # @param [String] config_id
         #   The specific id of the configuration to update.
-        # @param [Google::Apis::AdexchangebuyerV1_3::PretargetingConfig] pretargeting_config
-        #   
+        # @param [Google::Apis::AdexchangebuyerV1_3::PretargetingConfig] pretargeting_config_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -876,7 +853,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -888,12 +865,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_pretargeting_config(account_id, config_id, pretargeting_config = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_pretargeting_config(account_id, config_id, pretargeting_config_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'pretargetingconfigs/{accountId}/{configId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfigRepresentation
-          command.request_object = pretargeting_config
-          command.response_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfigRepresentation
+          command.request_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfig::Representation
+          command.request_object = pretargeting_config_object
+          command.response_representation = Google::Apis::AdexchangebuyerV1_3::PretargetingConfig::Representation
           command.response_class = Google::Apis::AdexchangebuyerV1_3::PretargetingConfig
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['configId'] = config_id unless config_id.nil?

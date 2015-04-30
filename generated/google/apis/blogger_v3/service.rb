@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/blogger/docs/3.0/getting_started
       class BloggerService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'blogger/v3/')
         end
-
+        
         # Gets one blog and user info pair by blogId and userId.
         # @param [String] user_id
         #   ID of the user whose blogs are to be fetched. Either the word 'self' (sans
@@ -70,7 +69,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -85,7 +84,7 @@ module Google
         def get_blog_user_info(user_id, blog_id, max_posts: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/{userId}/blogs/{blogId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BloggerV3::BlogUserInfoRepresentation
+          command.response_representation = Google::Apis::BloggerV3::BlogUserInfo::Representation
           command.response_class = Google::Apis::BloggerV3::BlogUserInfo
           command.params['userId'] = user_id unless user_id.nil?
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -95,7 +94,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Gets one blog by ID.
         # @param [String] blog_id
         #   The ID of the blog to get.
@@ -113,7 +112,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -128,7 +127,7 @@ module Google
         def get_blog(blog_id, max_posts: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BloggerV3::BlogRepresentation
+          command.response_representation = Google::Apis::BloggerV3::Blog::Representation
           command.response_class = Google::Apis::BloggerV3::Blog
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.query['maxPosts'] = max_posts unless max_posts.nil?
@@ -138,7 +137,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieve a Blog by URL.
         # @param [String] url
@@ -155,7 +153,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -170,7 +168,7 @@ module Google
         def get_by_url_blog(url: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/byurl'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BloggerV3::BlogRepresentation
+          command.response_representation = Google::Apis::BloggerV3::Blog::Representation
           command.response_class = Google::Apis::BloggerV3::Blog
           command.query['url'] = url unless url.nil?
           command.query['view'] = view unless view.nil?
@@ -179,7 +177,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves a list of blogs, possibly filtered.
         # @param [String] user_id
@@ -207,7 +204,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -222,7 +219,7 @@ module Google
         def list_by_user_blog(user_id, fetch_user_info: nil, role: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/{userId}/blogs'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BloggerV3::BlogListRepresentation
+          command.response_representation = Google::Apis::BloggerV3::BlogList::Representation
           command.response_class = Google::Apis::BloggerV3::BlogList
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fetchUserInfo'] = fetch_user_info unless fetch_user_info.nil?
@@ -234,7 +231,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Marks a comment as not spam.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -251,7 +248,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -266,7 +263,7 @@ module Google
         def approve_comment(blog_id, post_id, comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/{postId}/comments/{commentId}/approve'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::BloggerV3::CommentRepresentation
+          command.response_representation = Google::Apis::BloggerV3::Comment::Representation
           command.response_class = Google::Apis::BloggerV3::Comment
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['postId'] = post_id unless post_id.nil?
@@ -276,7 +273,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Delete a comment by ID.
         # @param [String] blog_id
@@ -294,7 +290,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -318,7 +314,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets one comment by ID.
         # @param [String] blog_id
         #   ID of the blog to containing the comment.
@@ -340,7 +335,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -355,7 +350,7 @@ module Google
         def get_comment(blog_id, post_id, comment_id, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/{postId}/comments/{commentId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BloggerV3::CommentRepresentation
+          command.response_representation = Google::Apis::BloggerV3::Comment::Representation
           command.response_class = Google::Apis::BloggerV3::Comment
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['postId'] = post_id unless post_id.nil?
@@ -366,7 +361,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves the comments for a post, possibly filtered.
         # @param [String] blog_id
@@ -384,7 +378,6 @@ module Google
         # @param [DateTime] start_date
         #   Earliest date of comment to fetch, a date-time with RFC 3339 formatting.
         # @param [Array<String>, String] status
-        #   
         # @param [String] view
         #   Access level with which to view the returned result. Note that some fields
         #   require elevated access.
@@ -397,7 +390,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -412,7 +405,7 @@ module Google
         def list_comments(blog_id, post_id, end_date: nil, fetch_bodies: nil, max_results: nil, page_token: nil, start_date: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/{postId}/comments'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BloggerV3::CommentListRepresentation
+          command.response_representation = Google::Apis::BloggerV3::CommentList::Representation
           command.response_class = Google::Apis::BloggerV3::CommentList
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['postId'] = post_id unless post_id.nil?
@@ -429,7 +422,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Retrieves the comments for a blog, across all posts, possibly filtered.
         # @param [String] blog_id
         #   ID of the blog to fetch comments from.
@@ -444,7 +436,6 @@ module Google
         # @param [DateTime] start_date
         #   Earliest date of comment to fetch, a date-time with RFC 3339 formatting.
         # @param [Array<String>, String] status
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -454,7 +445,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -469,7 +460,7 @@ module Google
         def list_by_blog_comment(blog_id, end_date: nil, fetch_bodies: nil, max_results: nil, page_token: nil, start_date: nil, status: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/comments'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BloggerV3::CommentListRepresentation
+          command.response_representation = Google::Apis::BloggerV3::CommentList::Representation
           command.response_class = Google::Apis::BloggerV3::CommentList
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.query['endDate'] = end_date unless end_date.nil?
@@ -483,7 +474,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Marks a comment as spam.
         # @param [String] blog_id
@@ -501,7 +491,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -516,7 +506,7 @@ module Google
         def mark_as_spam_comment(blog_id, post_id, comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/{postId}/comments/{commentId}/spam'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::BloggerV3::CommentRepresentation
+          command.response_representation = Google::Apis::BloggerV3::Comment::Representation
           command.response_class = Google::Apis::BloggerV3::Comment
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['postId'] = post_id unless post_id.nil?
@@ -526,7 +516,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Removes the content of a comment.
         # @param [String] blog_id
@@ -544,7 +533,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -559,7 +548,7 @@ module Google
         def remove_content_comment(blog_id, post_id, comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/{postId}/comments/{commentId}/removecontent'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::BloggerV3::CommentRepresentation
+          command.response_representation = Google::Apis::BloggerV3::Comment::Representation
           command.response_class = Google::Apis::BloggerV3::Comment
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['postId'] = post_id unless post_id.nil?
@@ -569,12 +558,11 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Retrieve pageview stats for a Blog.
         # @param [String] blog_id
         #   The ID of the blog to get.
         # @param [Array<String>, String] range
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -584,7 +572,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -599,7 +587,7 @@ module Google
         def get_page_view(blog_id, range: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/pageviews'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BloggerV3::PageviewsRepresentation
+          command.response_representation = Google::Apis::BloggerV3::Pageviews::Representation
           command.response_class = Google::Apis::BloggerV3::Pageviews
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.query['range'] = range unless range.nil?
@@ -608,7 +596,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Delete a page by ID.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -623,7 +611,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -646,14 +634,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets one blog page by ID.
         # @param [String] blog_id
         #   ID of the blog containing the page.
         # @param [String] page_id
         #   The ID of the page to get.
         # @param [String] view
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -663,7 +649,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -678,7 +664,7 @@ module Google
         def get_page(blog_id, page_id, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/pages/{pageId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BloggerV3::PageRepresentation
+          command.response_representation = Google::Apis::BloggerV3::Page::Representation
           command.response_class = Google::Apis::BloggerV3::Page
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['pageId'] = page_id unless page_id.nil?
@@ -689,12 +675,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Add a page.
         # @param [String] blog_id
         #   ID of the blog to add the page to.
-        # @param [Google::Apis::BloggerV3::Page] page
-        #   
+        # @param [Google::Apis::BloggerV3::Page] page_object
         # @param [Boolean] is_draft
         #   Whether to create the page as a draft (default: false).
         # @param [String] fields
@@ -706,7 +690,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -718,12 +702,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_page(blog_id, page = nil, is_draft: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_page(blog_id, page_object = nil, is_draft: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/pages'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::BloggerV3::PageRepresentation
-          command.request_object = page
-          command.response_representation = Google::Apis::BloggerV3::PageRepresentation
+          command.request_representation = Google::Apis::BloggerV3::Page::Representation
+          command.request_object = page_object
+          command.response_representation = Google::Apis::BloggerV3::Page::Representation
           command.response_class = Google::Apis::BloggerV3::Page
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.query['isDraft'] = is_draft unless is_draft.nil?
@@ -732,7 +716,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves the pages for a blog, optionally including non-LIVE statuses.
         # @param [String] blog_id
@@ -744,7 +727,6 @@ module Google
         # @param [String] page_token
         #   Continuation token if the request is paged.
         # @param [Array<String>, String] status
-        #   
         # @param [String] view
         #   Access level with which to view the returned result. Note that some fields
         #   require elevated access.
@@ -757,7 +739,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -772,7 +754,7 @@ module Google
         def list_pages(blog_id, fetch_bodies: nil, max_results: nil, page_token: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/pages'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BloggerV3::PageListRepresentation
+          command.response_representation = Google::Apis::BloggerV3::PageList::Representation
           command.response_class = Google::Apis::BloggerV3::PageList
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.query['fetchBodies'] = fetch_bodies unless fetch_bodies.nil?
@@ -786,14 +768,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Update a page. This method supports patch semantics.
         # @param [String] blog_id
         #   The ID of the Blog.
         # @param [String] page_id
         #   The ID of the Page.
-        # @param [Google::Apis::BloggerV3::Page] page
-        #   
+        # @param [Google::Apis::BloggerV3::Page] page_object
         # @param [Boolean] publish
         #   Whether a publish action should be performed when the page is updated (default:
         #   false).
@@ -809,7 +789,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -821,12 +801,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_page(blog_id, page_id, page = nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_page(blog_id, page_id, page_object = nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/pages/{pageId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::BloggerV3::PageRepresentation
-          command.request_object = page
-          command.response_representation = Google::Apis::BloggerV3::PageRepresentation
+          command.request_representation = Google::Apis::BloggerV3::Page::Representation
+          command.request_object = page_object
+          command.response_representation = Google::Apis::BloggerV3::Page::Representation
           command.response_class = Google::Apis::BloggerV3::Page
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['pageId'] = page_id unless page_id.nil?
@@ -837,7 +817,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Publishes a draft page.
         # @param [String] blog_id
@@ -853,7 +832,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -868,7 +847,7 @@ module Google
         def publish_page(blog_id, page_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/pages/{pageId}/publish'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::BloggerV3::PageRepresentation
+          command.response_representation = Google::Apis::BloggerV3::Page::Representation
           command.response_class = Google::Apis::BloggerV3::Page
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['pageId'] = page_id unless page_id.nil?
@@ -877,7 +856,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Revert a published or scheduled page to draft state.
         # @param [String] blog_id
@@ -893,7 +871,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -908,7 +886,7 @@ module Google
         def revert_page(blog_id, page_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/pages/{pageId}/revert'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::BloggerV3::PageRepresentation
+          command.response_representation = Google::Apis::BloggerV3::Page::Representation
           command.response_class = Google::Apis::BloggerV3::Page
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['pageId'] = page_id unless page_id.nil?
@@ -918,14 +896,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Update a page.
         # @param [String] blog_id
         #   The ID of the Blog.
         # @param [String] page_id
         #   The ID of the Page.
-        # @param [Google::Apis::BloggerV3::Page] page
-        #   
+        # @param [Google::Apis::BloggerV3::Page] page_object
         # @param [Boolean] publish
         #   Whether a publish action should be performed when the page is updated (default:
         #   false).
@@ -941,7 +917,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -953,12 +929,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_page(blog_id, page_id, page = nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_page(blog_id, page_id, page_object = nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/pages/{pageId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::BloggerV3::PageRepresentation
-          command.request_object = page
-          command.response_representation = Google::Apis::BloggerV3::PageRepresentation
+          command.request_representation = Google::Apis::BloggerV3::Page::Representation
+          command.request_object = page_object
+          command.response_representation = Google::Apis::BloggerV3::Page::Representation
           command.response_class = Google::Apis::BloggerV3::Page
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['pageId'] = page_id unless page_id.nil?
@@ -969,7 +945,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Gets one post and user info pair, by post ID and user ID. The post user info
         # contains per-user information about the post, such as access rights, specific
         # to the user.
@@ -991,7 +967,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1006,7 +982,7 @@ module Google
         def get_post_user_info(user_id, blog_id, post_id, max_comments: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/{userId}/blogs/{blogId}/posts/{postId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BloggerV3::PostUserInfoRepresentation
+          command.response_representation = Google::Apis::BloggerV3::PostUserInfo::Representation
           command.response_class = Google::Apis::BloggerV3::PostUserInfo
           command.params['userId'] = user_id unless user_id.nil?
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -1017,7 +993,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves a list of post and post user info pairs, possibly filtered. The post
         # user info contains per-user information about the post, such as access rights,
@@ -1042,7 +1017,6 @@ module Google
         # @param [DateTime] start_date
         #   Earliest post date to fetch, a date-time with RFC 3339 formatting.
         # @param [Array<String>, String] status
-        #   
         # @param [String] view
         #   Access level with which to view the returned result. Note that some fields
         #   require elevated access.
@@ -1055,14 +1029,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BloggerV3::PostUserInfosList] parsed result object
+        # @yieldparam result [Google::Apis::BloggerV3::List] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::BloggerV3::PostUserInfosList]
+        # @return [Google::Apis::BloggerV3::List]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1070,8 +1044,8 @@ module Google
         def list_post_user_infos(user_id, blog_id, end_date: nil, fetch_bodies: nil, labels: nil, max_results: nil, order_by: nil, page_token: nil, start_date: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/{userId}/blogs/{blogId}/posts'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BloggerV3::PostUserInfosListRepresentation
-          command.response_class = Google::Apis::BloggerV3::PostUserInfosList
+          command.response_representation = Google::Apis::BloggerV3::List::Representation
+          command.response_class = Google::Apis::BloggerV3::List
           command.params['userId'] = user_id unless user_id.nil?
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.query['endDate'] = end_date unless end_date.nil?
@@ -1088,7 +1062,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Delete a post by ID.
         # @param [String] blog_id
         #   The ID of the Blog.
@@ -1103,7 +1077,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1125,7 +1099,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Get a post by ID.
         # @param [String] blog_id
@@ -1152,7 +1125,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1167,7 +1140,7 @@ module Google
         def get_post(blog_id, post_id, fetch_body: nil, fetch_images: nil, max_comments: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/{postId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BloggerV3::PostRepresentation
+          command.response_representation = Google::Apis::BloggerV3::Post::Representation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['postId'] = post_id unless post_id.nil?
@@ -1180,7 +1153,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieve a Post by Path.
         # @param [String] blog_id
@@ -1201,7 +1173,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1216,7 +1188,7 @@ module Google
         def get_by_path_post(blog_id, max_comments: nil, path: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/bypath'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BloggerV3::PostRepresentation
+          command.response_representation = Google::Apis::BloggerV3::Post::Representation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.query['maxComments'] = max_comments unless max_comments.nil?
@@ -1228,12 +1200,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Add a post.
         # @param [String] blog_id
         #   ID of the blog to add the post to.
-        # @param [Google::Apis::BloggerV3::Post] post
-        #   
+        # @param [Google::Apis::BloggerV3::Post] post_object
         # @param [Boolean] fetch_body
         #   Whether the body content of the post is included with the result (default:
         #   true).
@@ -1251,7 +1221,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1263,12 +1233,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_post(blog_id, post = nil, fetch_body: nil, fetch_images: nil, is_draft: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_post(blog_id, post_object = nil, fetch_body: nil, fetch_images: nil, is_draft: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::BloggerV3::PostRepresentation
-          command.request_object = post
-          command.response_representation = Google::Apis::BloggerV3::PostRepresentation
+          command.request_representation = Google::Apis::BloggerV3::Post::Representation
+          command.request_object = post_object
+          command.response_representation = Google::Apis::BloggerV3::Post::Representation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.query['fetchBody'] = fetch_body unless fetch_body.nil?
@@ -1279,7 +1249,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves a list of posts, possibly filtered.
         # @param [String] blog_id
@@ -1315,7 +1284,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1330,7 +1299,7 @@ module Google
         def list_posts(blog_id, end_date: nil, fetch_bodies: nil, fetch_images: nil, labels: nil, max_results: nil, order_by: nil, page_token: nil, start_date: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BloggerV3::PostListRepresentation
+          command.response_representation = Google::Apis::BloggerV3::PostList::Representation
           command.response_class = Google::Apis::BloggerV3::PostList
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.query['endDate'] = end_date unless end_date.nil?
@@ -1349,14 +1318,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Update a post. This method supports patch semantics.
         # @param [String] blog_id
         #   The ID of the Blog.
         # @param [String] post_id
         #   The ID of the Post.
-        # @param [Google::Apis::BloggerV3::Post] post
-        #   
+        # @param [Google::Apis::BloggerV3::Post] post_object
         # @param [Boolean] fetch_body
         #   Whether the body content of the post is included with the result (default:
         #   true).
@@ -1380,7 +1347,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1392,12 +1359,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_post(blog_id, post_id, post = nil, fetch_body: nil, fetch_images: nil, max_comments: nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_post(blog_id, post_id, post_object = nil, fetch_body: nil, fetch_images: nil, max_comments: nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/{postId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::BloggerV3::PostRepresentation
-          command.request_object = post
-          command.response_representation = Google::Apis::BloggerV3::PostRepresentation
+          command.request_representation = Google::Apis::BloggerV3::Post::Representation
+          command.request_object = post_object
+          command.response_representation = Google::Apis::BloggerV3::Post::Representation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['postId'] = post_id unless post_id.nil?
@@ -1411,7 +1378,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Publishes a draft post, optionally at the specific time of the given
         # publishDate parameter.
@@ -1433,7 +1399,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1448,7 +1414,7 @@ module Google
         def publish_post(blog_id, post_id, publish_date: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/{postId}/publish'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::BloggerV3::PostRepresentation
+          command.response_representation = Google::Apis::BloggerV3::Post::Representation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['postId'] = post_id unless post_id.nil?
@@ -1458,7 +1424,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Revert a published or scheduled post to draft state.
         # @param [String] blog_id
@@ -1474,7 +1439,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1489,7 +1454,7 @@ module Google
         def revert_post(blog_id, post_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/{postId}/revert'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::BloggerV3::PostRepresentation
+          command.response_representation = Google::Apis::BloggerV3::Post::Representation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['postId'] = post_id unless post_id.nil?
@@ -1498,7 +1463,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Search for a post.
         # @param [String] blog_id
@@ -1519,7 +1483,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1534,7 +1498,7 @@ module Google
         def search_posts(blog_id, fetch_bodies: nil, order_by: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/search'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BloggerV3::PostListRepresentation
+          command.response_representation = Google::Apis::BloggerV3::PostList::Representation
           command.response_class = Google::Apis::BloggerV3::PostList
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.query['fetchBodies'] = fetch_bodies unless fetch_bodies.nil?
@@ -1546,14 +1510,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Update a post.
         # @param [String] blog_id
         #   The ID of the Blog.
         # @param [String] post_id
         #   The ID of the Post.
-        # @param [Google::Apis::BloggerV3::Post] post
-        #   
+        # @param [Google::Apis::BloggerV3::Post] post_object
         # @param [Boolean] fetch_body
         #   Whether the body content of the post is included with the result (default:
         #   true).
@@ -1577,7 +1539,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1589,12 +1551,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_post(blog_id, post_id, post = nil, fetch_body: nil, fetch_images: nil, max_comments: nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_post(blog_id, post_id, post_object = nil, fetch_body: nil, fetch_images: nil, max_comments: nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/{postId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::BloggerV3::PostRepresentation
-          command.request_object = post
-          command.response_representation = Google::Apis::BloggerV3::PostRepresentation
+          command.request_representation = Google::Apis::BloggerV3::Post::Representation
+          command.request_object = post_object
+          command.response_representation = Google::Apis::BloggerV3::Post::Representation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['postId'] = post_id unless post_id.nil?
@@ -1608,7 +1570,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Gets one user by ID.
         # @param [String] user_id
         #   The ID of the user to get.
@@ -1621,7 +1583,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1636,7 +1598,7 @@ module Google
         def get_user(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/{userId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BloggerV3::UserRepresentation
+          command.response_representation = Google::Apis::BloggerV3::User::Representation
           command.response_class = Google::Apis::BloggerV3::User
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?

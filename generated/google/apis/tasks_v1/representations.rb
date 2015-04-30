@@ -22,82 +22,93 @@ module Google
   module Apis
     module TasksV1
       
-      class TaskRepresentation < Google::Apis::Core::JsonRepresentation
+      class Task
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class LinkRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Link
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class TaskListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TaskList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TaskListsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TaskLists
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TasksRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Tasks
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class TaskRepresentation < Google::Apis::Core::JsonRepresentation
-        class LinkRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :completed, as: 'completed', type: DateTime
-        property :deleted, as: 'deleted'
-        property :due, as: 'due', type: DateTime
-        property :etag, as: 'etag'
-        property :hidden, as: 'hidden'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        collection :links, as: 'links', class: Google::Apis::TasksV1::Task::Link, decorator: Google::Apis::TasksV1::TaskRepresentation::LinkRepresentation
-        
-        
-        property :notes, as: 'notes'
-        property :parent, as: 'parent'
-        property :position, as: 'position'
-        property :self_link, as: 'selfLink'
-        property :status, as: 'status'
-        property :title, as: 'title'
-        property :updated, as: 'updated', type: DateTime
+      class Task
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completed, as: 'completed', type: DateTime
+      
+          property :deleted, as: 'deleted'
+          property :due, as: 'due', type: DateTime
+      
+          property :etag, as: 'etag'
+          property :hidden, as: 'hidden'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          collection :links, as: 'links', class: Google::Apis::TasksV1::Task::Link, decorator: Google::Apis::TasksV1::Task::Link::Representation
+      
+          property :notes, as: 'notes'
+          property :parent, as: 'parent'
+          property :position, as: 'position'
+          property :self_link, as: 'selfLink'
+          property :status, as: 'status'
+          property :title, as: 'title'
+          property :updated, as: 'updated', type: DateTime
+      
+        end
         
         # @private
-        class LinkRepresentation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :link, as: 'link'
-          property :type, as: 'type'
+        class Link
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :description, as: 'description'
+            property :link, as: 'link'
+            property :type, as: 'type'
+          end
         end
       end
-
+      
       # @private
-      class TaskListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :self_link, as: 'selfLink'
-        property :title, as: 'title'
-        property :updated, as: 'updated', type: DateTime
+      class TaskList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :self_link, as: 'selfLink'
+          property :title, as: 'title'
+          property :updated, as: 'updated', type: DateTime
+      
+        end
       end
-
+      
       # @private
-      class TaskListsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        collection :items, as: 'items', class: Google::Apis::TasksV1::TaskList, decorator: Google::Apis::TasksV1::TaskListRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class TaskLists
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::TasksV1::TaskList, decorator: Google::Apis::TasksV1::TaskList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class TasksRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        collection :items, as: 'items', class: Google::Apis::TasksV1::Task, decorator: Google::Apis::TasksV1::TaskRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class Tasks
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::TasksV1::Task, decorator: Google::Apis::TasksV1::Task::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
     end
   end

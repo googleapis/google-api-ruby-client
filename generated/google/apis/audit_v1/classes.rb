@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AuditV1
-
+      
       # 
       class Activities
         include Google::Apis::Core::Hashable
@@ -42,12 +42,17 @@ module Google
         attr_accessor :next
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next = args[:next] unless args[:next].nil?
         end
       end
-
+      
       # 
       class Activity
         include Google::Apis::Core::Hashable
@@ -83,6 +88,11 @@ module Google
         attr_accessor :owner_domain
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @actor = args[:actor] unless args[:actor].nil?
           @events = args[:events] unless args[:events].nil?
           @id = args[:id] unless args[:id].nil?
@@ -90,6 +100,7 @@ module Google
           @kind = args[:kind] unless args[:kind].nil?
           @owner_domain = args[:owner_domain] unless args[:owner_domain].nil?
         end
+        
         # User doing the action.
         class Actor
           include Google::Apis::Core::Hashable
@@ -115,12 +126,18 @@ module Google
           attr_accessor :key
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @application_id = args[:application_id] unless args[:application_id].nil?
             @caller_type = args[:caller_type] unless args[:caller_type].nil?
             @email = args[:email] unless args[:email].nil?
             @key = args[:key] unless args[:key].nil?
           end
         end
+        
         # 
         class Event
           include Google::Apis::Core::Hashable
@@ -141,10 +158,16 @@ module Google
           attr_accessor :parameters
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @event_type = args[:event_type] unless args[:event_type].nil?
             @name = args[:name] unless args[:name].nil?
             @parameters = args[:parameters] unless args[:parameters].nil?
           end
+          
           # 
           class Parameter
             include Google::Apis::Core::Hashable
@@ -160,11 +183,17 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @name = args[:name] unless args[:name].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
+        
         # Unique identifier for each activity record.
         class Id
           include Google::Apis::Core::Hashable
@@ -190,6 +219,11 @@ module Google
           attr_accessor :uniq_qualifier
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @application_id = args[:application_id] unless args[:application_id].nil?
             @customer_id = args[:customer_id] unless args[:customer_id].nil?
             @time = args[:time] unless args[:time].nil?

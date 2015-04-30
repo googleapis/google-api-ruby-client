@@ -33,7 +33,6 @@ module Google
       #
       # @see https://developers.google.com/admin-sdk/reports/
       class ReportsService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -53,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'admin/reports/v1/')
         end
-
+        
         # Retrieves a list of activities for a specific customer and application.
         # @param [String] user_key
         #   Represents the profile id or the user email for which the data should be
@@ -88,7 +87,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -103,7 +102,7 @@ module Google
         def list_activities(user_key, application_name, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, max_results: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activity/users/{userKey}/applications/{applicationName}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdminReportsV1::ActivitiesRepresentation
+          command.response_representation = Google::Apis::AdminReportsV1::Activities::Representation
           command.response_class = Google::Apis::AdminReportsV1::Activities
           command.params['userKey'] = user_key unless user_key.nil?
           command.params['applicationName'] = application_name unless application_name.nil?
@@ -121,7 +120,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Push changes to activities
         # @param [String] user_key
         #   Represents the profile id or the user email for which the data should be
@@ -129,8 +127,7 @@ module Google
         #   all users.
         # @param [String] application_name
         #   Application name for which the events are to be retrieved.
-        # @param [Google::Apis::AdminReportsV1::Channel] channel
-        #   
+        # @param [Google::Apis::AdminReportsV1::Channel] channel_object
         # @param [String] actor_ip_address
         #   IP Address of host where the event was performed. Supports both IPv4 and IPv6
         #   addresses.
@@ -158,7 +155,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -170,12 +167,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_activity(user_key, application_name, channel = nil, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, max_results: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_activity(user_key, application_name, channel_object = nil, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, max_results: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activity/users/{userKey}/applications/{applicationName}/watch'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AdminReportsV1::ChannelRepresentation
-          command.request_object = channel
-          command.response_representation = Google::Apis::AdminReportsV1::ChannelRepresentation
+          command.request_representation = Google::Apis::AdminReportsV1::Channel::Representation
+          command.request_object = channel_object
+          command.response_representation = Google::Apis::AdminReportsV1::Channel::Representation
           command.response_class = Google::Apis::AdminReportsV1::Channel
           command.params['userKey'] = user_key unless user_key.nil?
           command.params['applicationName'] = application_name unless application_name.nil?
@@ -192,10 +189,9 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Stop watching resources through this channel
-        # @param [Google::Apis::AdminReportsV1::Channel] channel
-        #   
+        # @param [Google::Apis::AdminReportsV1::Channel] channel_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -205,7 +201,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -217,17 +213,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_channel(channel = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def stop_channel(channel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '/admin/reports_v1/channels/stop'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AdminReportsV1::ChannelRepresentation
-          command.request_object = channel
+          command.request_representation = Google::Apis::AdminReportsV1::Channel::Representation
+          command.request_object = channel_object
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Retrieves a report which is a collection of properties / statistics for a
         # specific customer.
         # @param [String] date
@@ -248,7 +244,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -263,7 +259,7 @@ module Google
         def get_customer_usage_report(date, customer_id: nil, page_token: nil, parameters: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'usage/dates/{date}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdminReportsV1::UsageReportsRepresentation
+          command.response_representation = Google::Apis::AdminReportsV1::UsageReports::Representation
           command.response_class = Google::Apis::AdminReportsV1::UsageReports
           command.params['date'] = date unless date.nil?
           command.query['customerId'] = customer_id unless customer_id.nil?
@@ -274,7 +270,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Retrieves a report which is a collection of properties / statistics for a set
         # of users.
         # @param [String] user_key
@@ -302,7 +298,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -317,7 +313,7 @@ module Google
         def get_user_usage_report(user_key, date, customer_id: nil, filters: nil, max_results: nil, page_token: nil, parameters: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'usage/users/{userKey}/dates/{date}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdminReportsV1::UsageReportsRepresentation
+          command.response_representation = Google::Apis::AdminReportsV1::UsageReports::Representation
           command.response_class = Google::Apis::AdminReportsV1::UsageReports
           command.params['userKey'] = user_key unless user_key.nil?
           command.params['date'] = date unless date.nil?

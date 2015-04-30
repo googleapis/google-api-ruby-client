@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module StorageV1
-
+      
       # A bucket.
       class Bucket
         include Google::Apis::Core::Hashable
@@ -124,6 +124,11 @@ module Google
         attr_accessor :website
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @acl = args[:acl] unless args[:acl].nil?
           @cors = args[:cors] unless args[:cors].nil?
           @default_object_acl = args[:default_object_acl] unless args[:default_object_acl].nil?
@@ -143,6 +148,7 @@ module Google
           @versioning = args[:versioning] unless args[:versioning].nil?
           @website = args[:website] unless args[:website].nil?
         end
+        
         # 
         class Cor
           include Google::Apis::Core::Hashable
@@ -173,12 +179,18 @@ module Google
           attr_accessor :response_header
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @max_age_seconds = args[:max_age_seconds] unless args[:max_age_seconds].nil?
             @method_prop = args[:method_prop] unless args[:method_prop].nil?
             @origin = args[:origin] unless args[:origin].nil?
             @response_header = args[:response_header] unless args[:response_header].nil?
           end
         end
+        
         # The bucket's lifecycle configuration. See lifecycle management for more
         # information.
         class Lifecycle
@@ -191,8 +203,14 @@ module Google
           attr_accessor :rule
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @rule = args[:rule] unless args[:rule].nil?
           end
+          
           # 
           class Rule
             include Google::Apis::Core::Hashable
@@ -208,9 +226,15 @@ module Google
             attr_accessor :condition
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @action = args[:action] unless args[:action].nil?
               @condition = args[:condition] unless args[:condition].nil?
             end
+            
             # The action to take.
             class Action
               include Google::Apis::Core::Hashable
@@ -221,9 +245,15 @@ module Google
               attr_accessor :type
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @type = args[:type] unless args[:type].nil?
               end
             end
+            
             # The condition(s) under which the action will be taken.
             class Condition
               include Google::Apis::Core::Hashable
@@ -256,6 +286,11 @@ module Google
               attr_accessor :num_newer_versions
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @age = args[:age] unless args[:age].nil?
                 @created_before = args[:created_before] unless args[:created_before].nil?
                 @is_live = args[:is_live] unless args[:is_live].nil?
@@ -264,6 +299,7 @@ module Google
             end
           end
         end
+        
         # The bucket's logging configuration, which defines the destination bucket and
         # optional name prefix for the current bucket's logs.
         class Logging
@@ -280,10 +316,16 @@ module Google
           attr_accessor :log_object_prefix
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @log_bucket = args[:log_bucket] unless args[:log_bucket].nil?
             @log_object_prefix = args[:log_object_prefix] unless args[:log_object_prefix].nil?
           end
         end
+        
         # The owner of the bucket. This is always the project team's owner group.
         class Owner
           include Google::Apis::Core::Hashable
@@ -299,10 +341,16 @@ module Google
           attr_accessor :entity_id
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @entity = args[:entity] unless args[:entity].nil?
             @entity_id = args[:entity_id] unless args[:entity_id].nil?
           end
         end
+        
         # The bucket's versioning configuration.
         class Versioning
           include Google::Apis::Core::Hashable
@@ -314,9 +362,15 @@ module Google
           alias_method :enabled?, :enabled
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @enabled = args[:enabled] unless args[:enabled].nil?
           end
         end
+        
         # The bucket's website configuration.
         class Website
           include Google::Apis::Core::Hashable
@@ -333,12 +387,17 @@ module Google
           attr_accessor :not_found_page
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @main_page_suffix = args[:main_page_suffix] unless args[:main_page_suffix].nil?
             @not_found_page = args[:not_found_page] unless args[:not_found_page].nil?
           end
         end
       end
-
+      
       # An access-control entry.
       class BucketAccessControl
         include Google::Apis::Core::Hashable
@@ -412,6 +471,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bucket = args[:bucket] unless args[:bucket].nil?
           @domain = args[:domain] unless args[:domain].nil?
           @email = args[:email] unless args[:email].nil?
@@ -424,6 +488,7 @@ module Google
           @role = args[:role] unless args[:role].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
+        
         # The project team associated with the entity, if any.
         class ProjectTeam
           include Google::Apis::Core::Hashable
@@ -439,12 +504,17 @@ module Google
           attr_accessor :team
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @project_number = args[:project_number] unless args[:project_number].nil?
             @team = args[:team] unless args[:team].nil?
           end
         end
       end
-
+      
       # An access-control list.
       class BucketAccessControls
         include Google::Apis::Core::Hashable
@@ -461,11 +531,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A list of buckets.
       class Buckets
         include Google::Apis::Core::Hashable
@@ -487,12 +562,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # An notification channel used to watch for resource changes.
       class Channel
         include Google::Apis::Core::Hashable
@@ -553,6 +633,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @address = args[:address] unless args[:address].nil?
           @expiration = args[:expiration] unless args[:expiration].nil?
           @id = args[:id] unless args[:id].nil?
@@ -565,12 +650,12 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # A Compose request.
       class ComposeRequest
         include Google::Apis::Core::Hashable
       
-        # Properties of the resulting object.
+        # An object.
         # Corresponds to the JSON property `destination`
         # @return [Google::Apis::StorageV1::Object]
         attr_accessor :destination
@@ -586,10 +671,16 @@ module Google
         attr_accessor :source_objects
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @destination = args[:destination] unless args[:destination].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @source_objects = args[:source_objects] unless args[:source_objects].nil?
         end
+        
         # 
         class SourceObject
           include Google::Apis::Core::Hashable
@@ -611,10 +702,16 @@ module Google
           attr_accessor :object_preconditions
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @generation = args[:generation] unless args[:generation].nil?
             @name = args[:name] unless args[:name].nil?
             @object_preconditions = args[:object_preconditions] unless args[:object_preconditions].nil?
           end
+          
           # Conditions that must be met for this operation to execute.
           class ObjectPreconditions
             include Google::Apis::Core::Hashable
@@ -627,12 +724,17 @@ module Google
             attr_accessor :if_generation_match
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @if_generation_match = args[:if_generation_match] unless args[:if_generation_match].nil?
             end
           end
         end
       end
-
+      
       # An object.
       class Object
         include Google::Apis::Core::Hashable
@@ -765,6 +867,11 @@ module Google
         attr_accessor :updated
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @acl = args[:acl] unless args[:acl].nil?
           @bucket = args[:bucket] unless args[:bucket].nil?
           @cache_control = args[:cache_control] unless args[:cache_control].nil?
@@ -790,6 +897,7 @@ module Google
           @time_deleted = args[:time_deleted] unless args[:time_deleted].nil?
           @updated = args[:updated] unless args[:updated].nil?
         end
+        
         # The owner of the object. This will always be the uploader of the object.
         class Owner
           include Google::Apis::Core::Hashable
@@ -805,12 +913,17 @@ module Google
           attr_accessor :entity_id
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @entity = args[:entity] unless args[:entity].nil?
             @entity_id = args[:entity_id] unless args[:entity_id].nil?
           end
         end
       end
-
+      
       # An access-control entry.
       class ObjectAccessControl
         include Google::Apis::Core::Hashable
@@ -894,6 +1007,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bucket = args[:bucket] unless args[:bucket].nil?
           @domain = args[:domain] unless args[:domain].nil?
           @email = args[:email] unless args[:email].nil?
@@ -908,6 +1026,7 @@ module Google
           @role = args[:role] unless args[:role].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
+        
         # The project team associated with the entity, if any.
         class ProjectTeam
           include Google::Apis::Core::Hashable
@@ -923,12 +1042,17 @@ module Google
           attr_accessor :team
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @project_number = args[:project_number] unless args[:project_number].nil?
             @team = args[:team] unless args[:team].nil?
           end
         end
       end
-
+      
       # An access-control list.
       class ObjectAccessControls
         include Google::Apis::Core::Hashable
@@ -945,11 +1069,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A list of objects.
       class Objects
         include Google::Apis::Core::Hashable
@@ -977,13 +1106,18 @@ module Google
         attr_accessor :prefixes
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @prefixes = args[:prefixes] unless args[:prefixes].nil?
         end
       end
-
+      
       # A Rewrite response.
       class RewriteResponse
         include Google::Apis::Core::Hashable
@@ -1004,7 +1138,7 @@ module Google
         # @return [String]
         attr_accessor :object_size
       
-        # 
+        # An object.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::StorageV1::Object]
         attr_accessor :resource
@@ -1020,6 +1154,11 @@ module Google
         attr_accessor :total_bytes_rewritten
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @done = args[:done] unless args[:done].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @object_size = args[:object_size] unless args[:object_size].nil?

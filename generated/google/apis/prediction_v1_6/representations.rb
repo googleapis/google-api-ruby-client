@@ -22,277 +22,305 @@ module Google
   module Apis
     module PredictionV1_6
       
-      class AnalyzeRepresentation < Google::Apis::Core::JsonRepresentation
+      class Analyze
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class DataDescriptionRepresentation < Google::Apis::Core::JsonRepresentation
+        class DataDescription
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class FeatureRepresentation < Google::Apis::Core::JsonRepresentation
+          class Feature
+            class Representation < Google::Apis::Core::JsonRepresentation; end
             
-            class CategoricalRepresentation < Google::Apis::Core::JsonRepresentation
+            class Categorical
+              class Representation < Google::Apis::Core::JsonRepresentation; end
               
-              class ValueRepresentation < Google::Apis::Core::JsonRepresentation
-                
+              class Value
+                class Representation < Google::Apis::Core::JsonRepresentation; end
               end
             end
             
-            class NumericRepresentation < Google::Apis::Core::JsonRepresentation
-              
+            class Numeric
+              class Representation < Google::Apis::Core::JsonRepresentation; end
             end
             
-            class TextRepresentation < Google::Apis::Core::JsonRepresentation
-              
+            class Text
+              class Representation < Google::Apis::Core::JsonRepresentation; end
             end
           end
           
-          class OutputFeatureRepresentation < Google::Apis::Core::JsonRepresentation
+          class OutputFeature
+            class Representation < Google::Apis::Core::JsonRepresentation; end
             
-            class NumericRepresentation < Google::Apis::Core::JsonRepresentation
-              
+            class Numeric
+              class Representation < Google::Apis::Core::JsonRepresentation; end
             end
             
-            class TextRepresentation < Google::Apis::Core::JsonRepresentation
-              
+            class Text
+              class Representation < Google::Apis::Core::JsonRepresentation; end
             end
           end
         end
         
-        class ModelDescriptionRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class ModelDescription
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class InputRepresentation < Google::Apis::Core::JsonRepresentation
+      class Input
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class InputRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Input
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class InsertRepresentation < Google::Apis::Core::JsonRepresentation
+      class Insert
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class TrainingInstanceRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class TrainingInstance
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class Insert2Representation < Google::Apis::Core::JsonRepresentation
+      class Insert2
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class ModelInfoRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class ModelInfo
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class ListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class List
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class OutputRepresentation < Google::Apis::Core::JsonRepresentation
+      class Output
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class OutputMultiRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class OutputMulti
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class UpdateRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Update
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class AnalyzeRepresentation < Google::Apis::Core::JsonRepresentation
-        class DataDescriptionRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class ModelDescriptionRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :data_description, as: 'dataDescription', class: Google::Apis::PredictionV1_6::Analyze::DataDescription, decorator: Google::Apis::PredictionV1_6::AnalyzeRepresentation::DataDescriptionRepresentation
-        
-        collection :errors, as: 'errors'
-        
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :model_description, as: 'modelDescription', class: Google::Apis::PredictionV1_6::Analyze::ModelDescription, decorator: Google::Apis::PredictionV1_6::AnalyzeRepresentation::ModelDescriptionRepresentation
-        
-        property :self_link, as: 'selfLink'
+      class Analyze
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_description, as: 'dataDescription', class: Google::Apis::PredictionV1_6::Analyze::DataDescription, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::Representation
+      
+          collection :errors, as: 'errors'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :model_description, as: 'modelDescription', class: Google::Apis::PredictionV1_6::Analyze::ModelDescription, decorator: Google::Apis::PredictionV1_6::Analyze::ModelDescription::Representation
+      
+          property :self_link, as: 'selfLink'
+        end
         
         # @private
-        class DataDescriptionRepresentation < Google::Apis::Core::JsonRepresentation
-          class FeatureRepresentation < Google::Apis::Core::JsonRepresentation; end
-          class OutputFeatureRepresentation < Google::Apis::Core::JsonRepresentation; end
-          collection :features, as: 'features', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature, decorator: Google::Apis::PredictionV1_6::AnalyzeRepresentation::DataDescriptionRepresentation::FeatureRepresentation
-          
-          
-          property :output_feature, as: 'outputFeature', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::OutputFeature, decorator: Google::Apis::PredictionV1_6::AnalyzeRepresentation::DataDescriptionRepresentation::OutputFeatureRepresentation
-          
+        class DataDescription
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :features, as: 'features', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Representation
+        
+            property :output_feature, as: 'outputFeature', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::OutputFeature, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::OutputFeature::Representation
+        
+          end
           
           # @private
-          class FeatureRepresentation < Google::Apis::Core::JsonRepresentation
-            class CategoricalRepresentation < Google::Apis::Core::JsonRepresentation; end
-            class NumericRepresentation < Google::Apis::Core::JsonRepresentation; end
-            class TextRepresentation < Google::Apis::Core::JsonRepresentation; end
-            property :categorical, as: 'categorical', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Categorical, decorator: Google::Apis::PredictionV1_6::AnalyzeRepresentation::DataDescriptionRepresentation::FeatureRepresentation::CategoricalRepresentation
-            
-            property :index, as: 'index'
-            property :numeric, as: 'numeric', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Numeric, decorator: Google::Apis::PredictionV1_6::AnalyzeRepresentation::DataDescriptionRepresentation::FeatureRepresentation::NumericRepresentation
-            
-            property :text, as: 'text', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Text, decorator: Google::Apis::PredictionV1_6::AnalyzeRepresentation::DataDescriptionRepresentation::FeatureRepresentation::TextRepresentation
-            
+          class Feature
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :categorical, as: 'categorical', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Categorical, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Categorical::Representation
+          
+              property :index, as: 'index'
+              property :numeric, as: 'numeric', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Numeric, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Numeric::Representation
+          
+              property :text, as: 'text', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Text, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Text::Representation
+          
+            end
             
             # @private
-            class CategoricalRepresentation < Google::Apis::Core::JsonRepresentation
-              class ValueRepresentation < Google::Apis::Core::JsonRepresentation; end
-              property :count, as: 'count'
-              collection :values, as: 'values', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Categorical::Value, decorator: Google::Apis::PredictionV1_6::AnalyzeRepresentation::DataDescriptionRepresentation::FeatureRepresentation::CategoricalRepresentation::ValueRepresentation
-              
-              
+            class Categorical
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :count, as: 'count'
+                collection :values, as: 'values', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Categorical::Value, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Categorical::Value::Representation
+            
+              end
               
               # @private
-              class ValueRepresentation < Google::Apis::Core::JsonRepresentation
+              class Value
+                class Representation < Google::Apis::Core::JsonRepresentation
+                  property :count, as: 'count'
+                  property :value, as: 'value'
+                end
+              end
+            end
+            
+            # @private
+            class Numeric
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :count, as: 'count'
+                property :mean, as: 'mean'
+                property :variance, as: 'variance'
+              end
+            end
+            
+            # @private
+            class Text
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :count, as: 'count'
+              end
+            end
+          end
+          
+          # @private
+          class OutputFeature
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :numeric, as: 'numeric', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::OutputFeature::Numeric, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::OutputFeature::Numeric::Representation
+          
+              collection :text, as: 'text', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::OutputFeature::Text, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::OutputFeature::Text::Representation
+          
+            end
+            
+            # @private
+            class Numeric
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :count, as: 'count'
+                property :mean, as: 'mean'
+                property :variance, as: 'variance'
+              end
+            end
+            
+            # @private
+            class Text
+              class Representation < Google::Apis::Core::JsonRepresentation
                 property :count, as: 'count'
                 property :value, as: 'value'
               end
             end
-            
-            # @private
-            class NumericRepresentation < Google::Apis::Core::JsonRepresentation
-              property :count, as: 'count'
-              property :mean, as: 'mean'
-              property :variance, as: 'variance'
-            end
-            
-            # @private
-            class TextRepresentation < Google::Apis::Core::JsonRepresentation
-              property :count, as: 'count'
-            end
-          end
-          
-          # @private
-          class OutputFeatureRepresentation < Google::Apis::Core::JsonRepresentation
-            class NumericRepresentation < Google::Apis::Core::JsonRepresentation; end
-            class TextRepresentation < Google::Apis::Core::JsonRepresentation; end
-            property :numeric, as: 'numeric', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::OutputFeature::Numeric, decorator: Google::Apis::PredictionV1_6::AnalyzeRepresentation::DataDescriptionRepresentation::OutputFeatureRepresentation::NumericRepresentation
-            
-            collection :text, as: 'text', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::OutputFeature::Text, decorator: Google::Apis::PredictionV1_6::AnalyzeRepresentation::DataDescriptionRepresentation::OutputFeatureRepresentation::TextRepresentation
-            
-            
-            
-            # @private
-            class NumericRepresentation < Google::Apis::Core::JsonRepresentation
-              property :count, as: 'count'
-              property :mean, as: 'mean'
-              property :variance, as: 'variance'
-            end
-            
-            # @private
-            class TextRepresentation < Google::Apis::Core::JsonRepresentation
-              property :count, as: 'count'
-              property :value, as: 'value'
-            end
           end
         end
         
         # @private
-        class ModelDescriptionRepresentation < Google::Apis::Core::JsonRepresentation
-          hash :confusion_matrix, as: 'confusionMatrix'
-          
-          hash :confusion_matrix_row_totals, as: 'confusionMatrixRowTotals'
-          
-          property :modelinfo, as: 'modelinfo', class: Google::Apis::PredictionV1_6::Insert2, decorator: Google::Apis::PredictionV1_6::Insert2Representation
+        class ModelDescription
+          class Representation < Google::Apis::Core::JsonRepresentation
+            hash :confusion_matrix, as: 'confusionMatrix'
+            hash :confusion_matrix_row_totals, as: 'confusionMatrixRowTotals'
+            property :modelinfo, as: 'modelinfo', class: Google::Apis::PredictionV1_6::Insert2, decorator: Google::Apis::PredictionV1_6::Insert2::Representation
+        
+          end
         end
       end
-
+      
       # @private
-      class InputRepresentation < Google::Apis::Core::JsonRepresentation
-        class InputRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :input, as: 'input', class: Google::Apis::PredictionV1_6::Input::Input, decorator: Google::Apis::PredictionV1_6::InputRepresentation::InputRepresentation
-        
+      class Input
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input, as: 'input', class: Google::Apis::PredictionV1_6::Input::Input, decorator: Google::Apis::PredictionV1_6::Input::Input::Representation
+      
+        end
         
         # @private
-        class InputRepresentation < Google::Apis::Core::JsonRepresentation
-          collection :csv_instance, as: 'csvInstance'
+        class Input
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :csv_instance, as: 'csvInstance'
+          end
         end
       end
-
+      
       # @private
-      class InsertRepresentation < Google::Apis::Core::JsonRepresentation
-        class TrainingInstanceRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :id, as: 'id'
-        property :model_type, as: 'modelType'
-        property :source_model, as: 'sourceModel'
-        property :storage_data_location, as: 'storageDataLocation'
-        property :storage_pmml_location, as: 'storagePMMLLocation'
-        property :storage_pmml_model_location, as: 'storagePMMLModelLocation'
-        collection :training_instances, as: 'trainingInstances', class: Google::Apis::PredictionV1_6::Insert::TrainingInstance, decorator: Google::Apis::PredictionV1_6::InsertRepresentation::TrainingInstanceRepresentation
-        
-        
-        collection :utility, as: 'utility'
-        
+      class Insert
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :model_type, as: 'modelType'
+          property :source_model, as: 'sourceModel'
+          property :storage_data_location, as: 'storageDataLocation'
+          property :storage_pmml_location, as: 'storagePMMLLocation'
+          property :storage_pmml_model_location, as: 'storagePMMLModelLocation'
+          collection :training_instances, as: 'trainingInstances', class: Google::Apis::PredictionV1_6::Insert::TrainingInstance, decorator: Google::Apis::PredictionV1_6::Insert::TrainingInstance::Representation
+      
+          collection :utility, as: 'utility'
+        end
         
         # @private
-        class TrainingInstanceRepresentation < Google::Apis::Core::JsonRepresentation
+        class TrainingInstance
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :csv_instance, as: 'csvInstance'
+            property :output, as: 'output'
+          end
+        end
+      end
+      
+      # @private
+      class Insert2
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :created, as: 'created', type: DateTime
+      
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :model_info, as: 'modelInfo', class: Google::Apis::PredictionV1_6::Insert2::ModelInfo, decorator: Google::Apis::PredictionV1_6::Insert2::ModelInfo::Representation
+      
+          property :model_type, as: 'modelType'
+          property :self_link, as: 'selfLink'
+          property :storage_data_location, as: 'storageDataLocation'
+          property :storage_pmml_location, as: 'storagePMMLLocation'
+          property :storage_pmml_model_location, as: 'storagePMMLModelLocation'
+          property :training_complete, as: 'trainingComplete', type: DateTime
+      
+          property :training_status, as: 'trainingStatus'
+        end
+        
+        # @private
+        class ModelInfo
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :class_weighted_accuracy, as: 'classWeightedAccuracy'
+            property :classification_accuracy, as: 'classificationAccuracy'
+            property :mean_squared_error, as: 'meanSquaredError'
+            property :model_type, as: 'modelType'
+            property :number_instances, as: 'numberInstances'
+            property :number_labels, as: 'numberLabels'
+          end
+        end
+      end
+      
+      # @private
+      class List
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::PredictionV1_6::Insert2, decorator: Google::Apis::PredictionV1_6::Insert2::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class Output
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :output_label, as: 'outputLabel'
+          collection :output_multi, as: 'outputMulti', class: Google::Apis::PredictionV1_6::Output::OutputMulti, decorator: Google::Apis::PredictionV1_6::Output::OutputMulti::Representation
+      
+          property :output_value, as: 'outputValue'
+          property :self_link, as: 'selfLink'
+        end
+        
+        # @private
+        class OutputMulti
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :label, as: 'label'
+            property :score, as: 'score'
+          end
+        end
+      end
+      
+      # @private
+      class Update
+        class Representation < Google::Apis::Core::JsonRepresentation
           collection :csv_instance, as: 'csvInstance'
-          
           property :output, as: 'output'
         end
-      end
-
-      # @private
-      class Insert2Representation < Google::Apis::Core::JsonRepresentation
-        class ModelInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :created, as: 'created', type: DateTime
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :model_info, as: 'modelInfo', class: Google::Apis::PredictionV1_6::Insert2::ModelInfo, decorator: Google::Apis::PredictionV1_6::Insert2Representation::ModelInfoRepresentation
-        
-        property :model_type, as: 'modelType'
-        property :self_link, as: 'selfLink'
-        property :storage_data_location, as: 'storageDataLocation'
-        property :storage_pmml_location, as: 'storagePMMLLocation'
-        property :storage_pmml_model_location, as: 'storagePMMLModelLocation'
-        property :training_complete, as: 'trainingComplete', type: DateTime
-        property :training_status, as: 'trainingStatus'
-        
-        # @private
-        class ModelInfoRepresentation < Google::Apis::Core::JsonRepresentation
-          property :class_weighted_accuracy, as: 'classWeightedAccuracy'
-          property :classification_accuracy, as: 'classificationAccuracy'
-          property :mean_squared_error, as: 'meanSquaredError'
-          property :model_type, as: 'modelType'
-          property :number_instances, as: 'numberInstances'
-          property :number_labels, as: 'numberLabels'
-        end
-      end
-
-      # @private
-      class ListRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::PredictionV1_6::Insert2, decorator: Google::Apis::PredictionV1_6::Insert2Representation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class OutputRepresentation < Google::Apis::Core::JsonRepresentation
-        class OutputMultiRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :output_label, as: 'outputLabel'
-        collection :output_multi, as: 'outputMulti', class: Google::Apis::PredictionV1_6::Output::OutputMulti, decorator: Google::Apis::PredictionV1_6::OutputRepresentation::OutputMultiRepresentation
-        
-        
-        property :output_value, as: 'outputValue'
-        property :self_link, as: 'selfLink'
-        
-        # @private
-        class OutputMultiRepresentation < Google::Apis::Core::JsonRepresentation
-          property :label, as: 'label'
-          property :score, as: 'score'
-        end
-      end
-
-      # @private
-      class UpdateRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :csv_instance, as: 'csvInstance'
-        
-        property :output, as: 'output'
       end
     end
   end

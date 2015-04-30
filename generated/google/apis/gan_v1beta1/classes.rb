@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module GanV1beta1
-
+      
       # An AdvertiserResource.
       class Advertiser
         include Google::Apis::Core::Hashable
@@ -65,16 +65,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The sum of fees paid to publishers divided by the total number of clicks over
-        # the past three months. This value should be multiplied by 100 at the time of
-        # display.
+        # An ApiMoneyProto.
         # Corresponds to the JSON property `epcNinetyDayAverage`
         # @return [Google::Apis::GanV1beta1::Money]
         attr_accessor :epc_ninety_day_average
       
-        # The sum of fees paid to publishers divided by the total number of clicks over
-        # the past seven days. This value should be multiplied by 100 at the time of
-        # display.
+        # An ApiMoneyProto.
         # Corresponds to the JSON property `epcSevenDayAverage`
         # @return [Google::Apis::GanV1beta1::Money]
         attr_accessor :epc_seven_day_average
@@ -84,7 +80,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The requested advertiser.
+        # An AdvertiserResource.
         # Corresponds to the JSON property `item`
         # @return [Google::Apis::GanV1beta1::Advertiser]
         attr_accessor :item
@@ -144,6 +140,11 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @allow_publisher_created_links = args[:allow_publisher_created_links] unless args[:allow_publisher_created_links].nil?
           @category = args[:category] unless args[:category].nil?
           @commission_duration = args[:commission_duration] unless args[:commission_duration].nil?
@@ -167,7 +168,7 @@ module Google
           @status = args[:status] unless args[:status].nil?
         end
       end
-
+      
       # 
       class Advertisers
         include Google::Apis::Core::Hashable
@@ -189,12 +190,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # A credit card offer. There are many possible result fields. We provide two
       # different views of the data, or "projections." The "full" projection includes
       # every result field. And the "summary" projection, which is the default,
@@ -548,6 +554,11 @@ module Google
         attr_accessor :variable_rates_update_frequency
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @additional_card_benefits = args[:additional_card_benefits] unless args[:additional_card_benefits].nil?
           @additional_card_holder_fee = args[:additional_card_holder_fee] unless args[:additional_card_holder_fee].nil?
           @age_minimum = args[:age_minimum] unless args[:age_minimum].nil?
@@ -612,6 +623,7 @@ module Google
           @variable_rates_last_updated = args[:variable_rates_last_updated] unless args[:variable_rates_last_updated].nil?
           @variable_rates_update_frequency = args[:variable_rates_update_frequency] unless args[:variable_rates_update_frequency].nil?
         end
+        
         # 
         class BonusReward
           include Google::Apis::Core::Hashable
@@ -628,10 +640,16 @@ module Google
           attr_accessor :details
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @amount = args[:amount] unless args[:amount].nil?
             @details = args[:details] unless args[:details].nil?
           end
         end
+        
         # 
         class DefaultFee
           include Google::Apis::Core::Hashable
@@ -659,12 +677,18 @@ module Google
           attr_accessor :rate_type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @category = args[:category] unless args[:category].nil?
             @max_rate = args[:max_rate] unless args[:max_rate].nil?
             @min_rate = args[:min_rate] unless args[:min_rate].nil?
             @rate_type = args[:rate_type] unless args[:rate_type].nil?
           end
         end
+        
         # 
         class Reward
           include Google::Apis::Core::Hashable
@@ -701,6 +725,11 @@ module Google
           attr_accessor :min_reward_tier
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @additional_details = args[:additional_details] unless args[:additional_details].nil?
             @amount = args[:amount] unless args[:amount].nil?
             @category = args[:category] unless args[:category].nil?
@@ -710,7 +739,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class CcOffers
         include Google::Apis::Core::Hashable
@@ -726,11 +755,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # An EventResource.
       class Event
         include Google::Apis::Core::Hashable
@@ -756,13 +790,12 @@ module Google
         # @return [String]
         attr_accessor :charge_type
       
-        # Amount of money exchanged during the transaction. Only returned for charge and
-        # conversion events.
+        # An ApiMoneyProto.
         # Corresponds to the JSON property `commissionableSales`
         # @return [Google::Apis::GanV1beta1::Money]
         attr_accessor :commissionable_sales
       
-        # Earnings by the publisher.
+        # An ApiMoneyProto.
         # Corresponds to the JSON property `earnings`
         # @return [Google::Apis::GanV1beta1::Money]
         attr_accessor :earnings
@@ -788,7 +821,7 @@ module Google
         # @return [DateTime]
         attr_accessor :modify_date
       
-        # Fee that the advertiser paid to the Google Affiliate Network.
+        # An ApiMoneyProto.
         # Corresponds to the JSON property `networkFee`
         # @return [Google::Apis::GanV1beta1::Money]
         attr_accessor :network_fee
@@ -803,7 +836,7 @@ module Google
         # @return [Array<Google::Apis::GanV1beta1::Event::Product>]
         attr_accessor :products
       
-        # Fee that the advertiser paid to the publisher.
+        # An ApiMoneyProto.
         # Corresponds to the JSON property `publisherFee`
         # @return [Google::Apis::GanV1beta1::Money]
         attr_accessor :publisher_fee
@@ -830,6 +863,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
           @advertiser_name = args[:advertiser_name] unless args[:advertiser_name].nil?
           @charge_id = args[:charge_id] unless args[:charge_id].nil?
@@ -849,6 +887,7 @@ module Google
           @status = args[:status] unless args[:status].nil?
           @type = args[:type] unless args[:type].nil?
         end
+        
         # 
         class Product
           include Google::Apis::Core::Hashable
@@ -863,17 +902,17 @@ module Google
           # @return [String]
           attr_accessor :category_name
         
-          # Amount earned by the publisher on this product.
+          # An ApiMoneyProto.
           # Corresponds to the JSON property `earnings`
           # @return [Google::Apis::GanV1beta1::Money]
           attr_accessor :earnings
         
-          # Fee that the advertiser paid to the Google Affiliate Network for this product.
+          # An ApiMoneyProto.
           # Corresponds to the JSON property `networkFee`
           # @return [Google::Apis::GanV1beta1::Money]
           attr_accessor :network_fee
         
-          # Fee that the advertiser paid to the publisehr for this product.
+          # An ApiMoneyProto.
           # Corresponds to the JSON property `publisherFee`
           # @return [Google::Apis::GanV1beta1::Money]
           attr_accessor :publisher_fee
@@ -893,12 +932,17 @@ module Google
           # @return [String]
           attr_accessor :sku_name
         
-          # Price per unit of this product.
+          # An ApiMoneyProto.
           # Corresponds to the JSON property `unitPrice`
           # @return [Google::Apis::GanV1beta1::Money]
           attr_accessor :unit_price
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @category_id = args[:category_id] unless args[:category_id].nil?
             @category_name = args[:category_name] unless args[:category_name].nil?
             @earnings = args[:earnings] unless args[:earnings].nil?
@@ -911,7 +955,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class Events
         include Google::Apis::Core::Hashable
@@ -933,12 +977,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # A LinkResource.
       class Link
         include Google::Apis::Core::Hashable
@@ -988,16 +1037,12 @@ module Google
         # @return [DateTime]
         attr_accessor :end_date
       
-        # The sum of fees paid to publishers divided by the total number of clicks over
-        # the past three months on this link. This value should be multiplied by 100 at
-        # the time of display.
+        # An ApiMoneyProto.
         # Corresponds to the JSON property `epcNinetyDayAverage`
         # @return [Google::Apis::GanV1beta1::Money]
         attr_accessor :epc_ninety_day_average
       
-        # The sum of fees paid to publishers divided by the total number of clicks over
-        # the past seven days on this link. This value should be multiplied by 100 at
-        # the time of display.
+        # An ApiMoneyProto.
         # Corresponds to the JSON property `epcSevenDayAverage`
         # @return [Google::Apis::GanV1beta1::Money]
         attr_accessor :epc_seven_day_average
@@ -1054,6 +1099,11 @@ module Google
         attr_accessor :start_date
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
           @authorship = args[:authorship] unless args[:authorship].nil?
           @availability = args[:availability] unless args[:availability].nil?
@@ -1076,6 +1126,7 @@ module Google
           @special_offers = args[:special_offers] unless args[:special_offers].nil?
           @start_date = args[:start_date] unless args[:start_date].nil?
         end
+        
         # Special offers on the link.
         class SpecialOffers
           include Google::Apis::Core::Hashable
@@ -1092,7 +1143,7 @@ module Google
           attr_accessor :free_shipping
           alias_method :free_shipping?, :free_shipping
         
-          # Minimum purchase amount for free shipping promotion
+          # An ApiMoneyProto.
           # Corresponds to the JSON property `freeShippingMin`
           # @return [Google::Apis::GanV1beta1::Money]
           attr_accessor :free_shipping_min
@@ -1102,17 +1153,17 @@ module Google
           # @return [Float]
           attr_accessor :percent_off
         
-          # Minimum purchase amount for percent off promotion
+          # An ApiMoneyProto.
           # Corresponds to the JSON property `percentOffMin`
           # @return [Google::Apis::GanV1beta1::Money]
           attr_accessor :percent_off_min
         
-          # Price cut on the purchase
+          # An ApiMoneyProto.
           # Corresponds to the JSON property `priceCut`
           # @return [Google::Apis::GanV1beta1::Money]
           attr_accessor :price_cut
         
-          # Minimum purchase amount for price cut promotion
+          # An ApiMoneyProto.
           # Corresponds to the JSON property `priceCutMin`
           # @return [Google::Apis::GanV1beta1::Money]
           attr_accessor :price_cut_min
@@ -1123,6 +1174,11 @@ module Google
           attr_accessor :promotion_codes
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @free_gift = args[:free_gift] unless args[:free_gift].nil?
             @free_shipping = args[:free_shipping] unless args[:free_shipping].nil?
             @free_shipping_min = args[:free_shipping_min] unless args[:free_shipping_min].nil?
@@ -1134,7 +1190,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class Links
         include Google::Apis::Core::Hashable
@@ -1155,12 +1211,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # An ApiMoneyProto.
       class Money
         include Google::Apis::Core::Hashable
@@ -1176,11 +1237,16 @@ module Google
         attr_accessor :currency_code
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @amount = args[:amount] unless args[:amount].nil?
           @currency_code = args[:currency_code] unless args[:currency_code].nil?
         end
       end
-
+      
       # A PublisherResource.
       class Publisher
         include Google::Apis::Core::Hashable
@@ -1192,14 +1258,12 @@ module Google
         # @return [String]
         attr_accessor :classification
       
-        # The sum of fees paid to this publisher divided by the total number of clicks
-        # over the past three months. Values are multiplied by 100 for display purposes.
+        # An ApiMoneyProto.
         # Corresponds to the JSON property `epcNinetyDayAverage`
         # @return [Google::Apis::GanV1beta1::Money]
         attr_accessor :epc_ninety_day_average
       
-        # The sum of fees paid to this publisher divided by the total number of clicks
-        # over the past seven days. Values are multiplied by 100 for display purposes.
+        # An ApiMoneyProto.
         # Corresponds to the JSON property `epcSevenDayAverage`
         # @return [Google::Apis::GanV1beta1::Money]
         attr_accessor :epc_seven_day_average
@@ -1209,7 +1273,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The requested publisher.
+        # A PublisherResource.
         # Corresponds to the JSON property `item`
         # @return [Google::Apis::GanV1beta1::Publisher]
         attr_accessor :item
@@ -1247,6 +1311,11 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @classification = args[:classification] unless args[:classification].nil?
           @epc_ninety_day_average = args[:epc_ninety_day_average] unless args[:epc_ninety_day_average].nil?
           @epc_seven_day_average = args[:epc_seven_day_average] unless args[:epc_seven_day_average].nil?
@@ -1260,7 +1329,7 @@ module Google
           @status = args[:status] unless args[:status].nil?
         end
       end
-
+      
       # 
       class Publishers
         include Google::Apis::Core::Hashable
@@ -1282,12 +1351,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # A ReportResource representing a report of a certain type either for an
       # advertiser or publisher.
       class Report
@@ -1334,6 +1408,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @column_names = args[:column_names] unless args[:column_names].nil?
           @end_date = args[:end_date] unless args[:end_date].nil?
           @kind = args[:kind] unless args[:kind].nil?

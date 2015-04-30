@@ -22,278 +22,305 @@ module Google
   module Apis
     module AdsensehostV4_1
       
-      class AccountRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Account
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AccountsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Accounts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AdClientRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AdClient
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AdClientsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AdClients
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AdCodeRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AdCode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AdStyleRepresentation < Google::Apis::Core::JsonRepresentation
+      class AdStyle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class ColorsRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Colors
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
         
-        class FontRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Font
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class AdUnitRepresentation < Google::Apis::Core::JsonRepresentation
+      class AdUnit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class ContentAdsSettingsRepresentation < Google::Apis::Core::JsonRepresentation
+        class ContentAdsSettings
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class BackupOptionRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class BackupOption
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
         
-        class MobileContentAdsSettingsRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class MobileContentAdsSettings
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class AdUnitsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AdUnits
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AssociationSessionRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AssociationSession
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CustomChannelRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class CustomChannel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CustomChannelsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class CustomChannels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ReportRepresentation < Google::Apis::Core::JsonRepresentation
+      class Report
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class HeaderRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Header
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class UrlChannelRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class UrlChannel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UrlChannelsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class UrlChannels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class AccountRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :status, as: 'status'
+      class Account
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :status, as: 'status'
+        end
       end
-
+      
       # @private
-      class AccountsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        collection :items, as: 'items', class: Google::Apis::AdsensehostV4_1::Account, decorator: Google::Apis::AdsensehostV4_1::AccountRepresentation
-        
-        
-        property :kind, as: 'kind'
+      class Accounts
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::AdsensehostV4_1::Account, decorator: Google::Apis::AdsensehostV4_1::Account::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class AdClientRepresentation < Google::Apis::Core::JsonRepresentation
-        property :arc_opt_in, as: 'arcOptIn'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :product_code, as: 'productCode'
-        property :supports_reporting, as: 'supportsReporting'
+      class AdClient
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :arc_opt_in, as: 'arcOptIn'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :product_code, as: 'productCode'
+          property :supports_reporting, as: 'supportsReporting'
+        end
       end
-
+      
       # @private
-      class AdClientsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        collection :items, as: 'items', class: Google::Apis::AdsensehostV4_1::AdClient, decorator: Google::Apis::AdsensehostV4_1::AdClientRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class AdClients
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::AdsensehostV4_1::AdClient, decorator: Google::Apis::AdsensehostV4_1::AdClient::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class AdCodeRepresentation < Google::Apis::Core::JsonRepresentation
-        property :ad_code, as: 'adCode'
-        property :kind, as: 'kind'
+      class AdCode
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_code, as: 'adCode'
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class AdStyleRepresentation < Google::Apis::Core::JsonRepresentation
-        class ColorsRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class FontRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :colors, as: 'colors', class: Google::Apis::AdsensehostV4_1::AdStyle::Colors, decorator: Google::Apis::AdsensehostV4_1::AdStyleRepresentation::ColorsRepresentation
-        
-        property :corners, as: 'corners'
-        property :font, as: 'font', class: Google::Apis::AdsensehostV4_1::AdStyle::Font, decorator: Google::Apis::AdsensehostV4_1::AdStyleRepresentation::FontRepresentation
-        
-        property :kind, as: 'kind'
+      class AdStyle
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :colors, as: 'colors', class: Google::Apis::AdsensehostV4_1::AdStyle::Colors, decorator: Google::Apis::AdsensehostV4_1::AdStyle::Colors::Representation
+      
+          property :corners, as: 'corners'
+          property :font, as: 'font', class: Google::Apis::AdsensehostV4_1::AdStyle::Font, decorator: Google::Apis::AdsensehostV4_1::AdStyle::Font::Representation
+      
+          property :kind, as: 'kind'
+        end
         
         # @private
-        class ColorsRepresentation < Google::Apis::Core::JsonRepresentation
-          property :background, as: 'background'
-          property :border, as: 'border'
-          property :text, as: 'text'
-          property :title, as: 'title'
-          property :url, as: 'url'
-        end
-        
-        # @private
-        class FontRepresentation < Google::Apis::Core::JsonRepresentation
-          property :family, as: 'family'
-          property :size, as: 'size'
-        end
-      end
-
-      # @private
-      class AdUnitRepresentation < Google::Apis::Core::JsonRepresentation
-        class ContentAdsSettingsRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class MobileContentAdsSettingsRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :code, as: 'code'
-        property :content_ads_settings, as: 'contentAdsSettings', class: Google::Apis::AdsensehostV4_1::AdUnit::ContentAdsSettings, decorator: Google::Apis::AdsensehostV4_1::AdUnitRepresentation::ContentAdsSettingsRepresentation
-        
-        property :custom_style, as: 'customStyle', class: Google::Apis::AdsensehostV4_1::AdStyle, decorator: Google::Apis::AdsensehostV4_1::AdStyleRepresentation
-        
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :mobile_content_ads_settings, as: 'mobileContentAdsSettings', class: Google::Apis::AdsensehostV4_1::AdUnit::MobileContentAdsSettings, decorator: Google::Apis::AdsensehostV4_1::AdUnitRepresentation::MobileContentAdsSettingsRepresentation
-        
-        property :name, as: 'name'
-        property :status, as: 'status'
-        
-        # @private
-        class ContentAdsSettingsRepresentation < Google::Apis::Core::JsonRepresentation
-          class BackupOptionRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :backup_option, as: 'backupOption', class: Google::Apis::AdsensehostV4_1::AdUnit::ContentAdsSettings::BackupOption, decorator: Google::Apis::AdsensehostV4_1::AdUnitRepresentation::ContentAdsSettingsRepresentation::BackupOptionRepresentation
-          
-          property :size, as: 'size'
-          property :type, as: 'type'
-          
-          # @private
-          class BackupOptionRepresentation < Google::Apis::Core::JsonRepresentation
-            property :color, as: 'color'
-            property :type, as: 'type'
+        class Colors
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :background, as: 'background'
+            property :border, as: 'border'
+            property :text, as: 'text'
+            property :title, as: 'title'
             property :url, as: 'url'
           end
         end
         
         # @private
-        class MobileContentAdsSettingsRepresentation < Google::Apis::Core::JsonRepresentation
-          property :markup_language, as: 'markupLanguage'
-          property :scripting_language, as: 'scriptingLanguage'
-          property :size, as: 'size'
-          property :type, as: 'type'
+        class Font
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :family, as: 'family'
+            property :size, as: 'size'
+          end
         end
       end
-
+      
       # @private
-      class AdUnitsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        collection :items, as: 'items', class: Google::Apis::AdsensehostV4_1::AdUnit, decorator: Google::Apis::AdsensehostV4_1::AdUnitRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-      end
-
-      # @private
-      class AssociationSessionRepresentation < Google::Apis::Core::JsonRepresentation
-        property :account_id, as: 'accountId'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        collection :product_codes, as: 'productCodes'
-        
-        property :redirect_url, as: 'redirectUrl'
-        property :status, as: 'status'
-        property :user_locale, as: 'userLocale'
-        property :website_locale, as: 'websiteLocale'
-        property :website_url, as: 'websiteUrl'
-      end
-
-      # @private
-      class CustomChannelRepresentation < Google::Apis::Core::JsonRepresentation
-        property :code, as: 'code'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-      end
-
-      # @private
-      class CustomChannelsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        collection :items, as: 'items', class: Google::Apis::AdsensehostV4_1::CustomChannel, decorator: Google::Apis::AdsensehostV4_1::CustomChannelRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-      end
-
-      # @private
-      class ReportRepresentation < Google::Apis::Core::JsonRepresentation
-        class HeaderRepresentation < Google::Apis::Core::JsonRepresentation; end
-        collection :averages, as: 'averages'
-        
-        collection :headers, as: 'headers', class: Google::Apis::AdsensehostV4_1::Report::Header, decorator: Google::Apis::AdsensehostV4_1::ReportRepresentation::HeaderRepresentation
-        
-        
-        property :kind, as: 'kind'
-        collection :rows, as: 'rows', :class => Array do
-          include Representable::JSON::Collection
-          items
+      class AdUnit
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :content_ads_settings, as: 'contentAdsSettings', class: Google::Apis::AdsensehostV4_1::AdUnit::ContentAdsSettings, decorator: Google::Apis::AdsensehostV4_1::AdUnit::ContentAdsSettings::Representation
+      
+          property :custom_style, as: 'customStyle', class: Google::Apis::AdsensehostV4_1::AdStyle, decorator: Google::Apis::AdsensehostV4_1::AdStyle::Representation
+      
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :mobile_content_ads_settings, as: 'mobileContentAdsSettings', class: Google::Apis::AdsensehostV4_1::AdUnit::MobileContentAdsSettings, decorator: Google::Apis::AdsensehostV4_1::AdUnit::MobileContentAdsSettings::Representation
+      
+          property :name, as: 'name'
+          property :status, as: 'status'
         end
-        
-        
-        property :total_matched_rows, as: 'totalMatchedRows'
-        collection :totals, as: 'totals'
-        
-        collection :warnings, as: 'warnings'
-        
         
         # @private
-        class HeaderRepresentation < Google::Apis::Core::JsonRepresentation
-          property :currency, as: 'currency'
-          property :name, as: 'name'
-          property :type, as: 'type'
+        class ContentAdsSettings
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :backup_option, as: 'backupOption', class: Google::Apis::AdsensehostV4_1::AdUnit::ContentAdsSettings::BackupOption, decorator: Google::Apis::AdsensehostV4_1::AdUnit::ContentAdsSettings::BackupOption::Representation
+        
+            property :size, as: 'size'
+            property :type, as: 'type'
+          end
+          
+          # @private
+          class BackupOption
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :color, as: 'color'
+              property :type, as: 'type'
+              property :url, as: 'url'
+            end
+          end
+        end
+        
+        # @private
+        class MobileContentAdsSettings
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :markup_language, as: 'markupLanguage'
+            property :scripting_language, as: 'scriptingLanguage'
+            property :size, as: 'size'
+            property :type, as: 'type'
+          end
         end
       end
-
+      
       # @private
-      class UrlChannelRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :url_pattern, as: 'urlPattern'
+      class AdUnits
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::AdsensehostV4_1::AdUnit, decorator: Google::Apis::AdsensehostV4_1::AdUnit::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class UrlChannelsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        collection :items, as: 'items', class: Google::Apis::AdsensehostV4_1::UrlChannel, decorator: Google::Apis::AdsensehostV4_1::UrlChannelRepresentation
+      class AssociationSession
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          collection :product_codes, as: 'productCodes'
+          property :redirect_url, as: 'redirectUrl'
+          property :status, as: 'status'
+          property :user_locale, as: 'userLocale'
+          property :website_locale, as: 'websiteLocale'
+          property :website_url, as: 'websiteUrl'
+        end
+      end
+      
+      # @private
+      class CustomChannel
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+        end
+      end
+      
+      # @private
+      class CustomChannels
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::AdsensehostV4_1::CustomChannel, decorator: Google::Apis::AdsensehostV4_1::CustomChannel::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      # @private
+      class Report
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :averages, as: 'averages'
+          collection :headers, as: 'headers', class: Google::Apis::AdsensehostV4_1::Report::Header, decorator: Google::Apis::AdsensehostV4_1::Report::Header::Representation
+      
+          property :kind, as: 'kind'
+          collection :rows, as: 'rows', :class => Array do
+        include Representable::JSON::Collection
+        items
+      end
+      
+          property :total_matched_rows, as: 'totalMatchedRows'
+          collection :totals, as: 'totals'
+          collection :warnings, as: 'warnings'
+        end
         
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+        # @private
+        class Header
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :currency, as: 'currency'
+            property :name, as: 'name'
+            property :type, as: 'type'
+          end
+        end
+      end
+      
+      # @private
+      class UrlChannel
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :url_pattern, as: 'urlPattern'
+        end
+      end
+      
+      # @private
+      class UrlChannels
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::AdsensehostV4_1::UrlChannel, decorator: Google::Apis::AdsensehostV4_1::UrlChannel::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
     end
   end

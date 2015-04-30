@@ -21,9 +21,9 @@ require 'google/apis/errors'
 module Google
   module Apis
     module WebmastersV3
-
+      
       # List of sitemaps.
-      class SitemapsListResponse
+      class ListResponse
         include Google::Apis::Core::Hashable
       
         # Information about a sitemap entry.
@@ -32,10 +32,15 @@ module Google
         attr_accessor :sitemap
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @sitemap = args[:sitemap] unless args[:sitemap].nil?
         end
       end
-
+      
       # List of sites with access level information.
       class SitesListResponse
         include Google::Apis::Core::Hashable
@@ -46,10 +51,15 @@ module Google
         attr_accessor :site_entry
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @site_entry = args[:site_entry] unless args[:site_entry].nil?
         end
       end
-
+      
       # An entry in a URL crawl errors time series.
       class UrlCrawlErrorCount
         include Google::Apis::Core::Hashable
@@ -65,11 +75,16 @@ module Google
         attr_accessor :timestamp
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @count = args[:count] unless args[:count].nil?
           @timestamp = args[:timestamp] unless args[:timestamp].nil?
         end
       end
-
+      
       # Number of errors per day for a specific error type (defined by platform and
       # category).
       class UrlCrawlErrorCountsPerType
@@ -91,15 +106,20 @@ module Google
         attr_accessor :platform
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @category = args[:category] unless args[:category].nil?
           @entries = args[:entries] unless args[:entries].nil?
           @platform = args[:platform] unless args[:platform].nil?
         end
       end
-
+      
       # A time series of the number of URL crawl errors per error category and
       # platform.
-      class UrlCrawlErrorsCountsQueryResponse
+      class QueryResponse
         include Google::Apis::Core::Hashable
       
         # The time series of the number of URL crawl errors for per error category and
@@ -109,10 +129,15 @@ module Google
         attr_accessor :count_per_types
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @count_per_types = args[:count_per_types] unless args[:count_per_types].nil?
         end
       end
-
+      
       # 
       class UrlCrawlErrorsSample
         include Google::Apis::Core::Hashable
@@ -143,6 +168,11 @@ module Google
         attr_accessor :url_details
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @first_detected = args[:first_detected] unless args[:first_detected].nil?
           @last_crawled = args[:last_crawled] unless args[:last_crawled].nil?
           @page_url = args[:page_url] unless args[:page_url].nil?
@@ -150,7 +180,7 @@ module Google
           @url_details = args[:url_details] unless args[:url_details].nil?
         end
       end
-
+      
       # List of crawl error samples.
       class UrlCrawlErrorsSamplesListResponse
         include Google::Apis::Core::Hashable
@@ -161,10 +191,15 @@ module Google
         attr_accessor :url_crawl_error_sample
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @url_crawl_error_sample = args[:url_crawl_error_sample] unless args[:url_crawl_error_sample].nil?
         end
       end
-
+      
       # Additional details about the URL, set only when calling get().
       class UrlSampleDetails
         include Google::Apis::Core::Hashable
@@ -180,11 +215,16 @@ module Google
         attr_accessor :linked_from_urls
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @containing_sitemaps = args[:containing_sitemaps] unless args[:containing_sitemaps].nil?
           @linked_from_urls = args[:linked_from_urls] unless args[:linked_from_urls].nil?
         end
       end
-
+      
       # Access level information for a Webmaster Tools site.
       class WmxSite
         include Google::Apis::Core::Hashable
@@ -200,11 +240,16 @@ module Google
         attr_accessor :site_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @permission_level = args[:permission_level] unless args[:permission_level].nil?
           @site_url = args[:site_url] unless args[:site_url].nil?
         end
       end
-
+      
       # 
       class WmxSitemap
         include Google::Apis::Core::Hashable
@@ -260,6 +305,11 @@ module Google
         attr_accessor :warnings
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @contents = args[:contents] unless args[:contents].nil?
           @errors = args[:errors] unless args[:errors].nil?
           @is_pending = args[:is_pending] unless args[:is_pending].nil?
@@ -271,7 +321,7 @@ module Google
           @warnings = args[:warnings] unless args[:warnings].nil?
         end
       end
-
+      
       # Information about the various content types in the sitemap.
       class WmxSitemapContent
         include Google::Apis::Core::Hashable
@@ -292,6 +342,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @indexed = args[:indexed] unless args[:indexed].nil?
           @submitted = args[:submitted] unless args[:submitted].nil?
           @type = args[:type] unless args[:type].nil?

@@ -33,7 +33,6 @@ module Google
       #
       # @see https://developers.google.com/deployment-manager/
       class ManagerService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -53,14 +52,11 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'manager/v1beta2/projects/')
         end
-
+        
         # 
         # @param [String] project_id
-        #   
         # @param [String] region
-        #   
         # @param [String] deployment_name
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -70,7 +66,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -94,14 +90,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # 
         # @param [String] project_id
-        #   
         # @param [String] region
-        #   
         # @param [String] deployment_name
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -111,7 +103,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -126,7 +118,7 @@ module Google
         def get_deployment(project_id, region, deployment_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/regions/{region}/deployments/{deploymentName}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ManagerV1beta2::DeploymentRepresentation
+          command.response_representation = Google::Apis::ManagerV1beta2::Deployment::Representation
           command.response_class = Google::Apis::ManagerV1beta2::Deployment
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['region'] = region unless region.nil?
@@ -137,14 +129,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # 
         # @param [String] project_id
-        #   
         # @param [String] region
-        #   
-        # @param [Google::Apis::ManagerV1beta2::Deployment] deployment
-        #   
+        # @param [Google::Apis::ManagerV1beta2::Deployment] deployment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -154,7 +142,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -166,12 +154,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_deployment(project_id, region, deployment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_deployment(project_id, region, deployment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/regions/{region}/deployments'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::ManagerV1beta2::DeploymentRepresentation
-          command.request_object = deployment
-          command.response_representation = Google::Apis::ManagerV1beta2::DeploymentRepresentation
+          command.request_representation = Google::Apis::ManagerV1beta2::Deployment::Representation
+          command.request_object = deployment_object
+          command.response_representation = Google::Apis::ManagerV1beta2::Deployment::Representation
           command.response_class = Google::Apis::ManagerV1beta2::Deployment
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['region'] = region unless region.nil?
@@ -181,12 +169,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # 
         # @param [String] project_id
-        #   
         # @param [String] region
-        #   
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned. Acceptable values are 0 to 100,
         #   inclusive. (Default: 50)
@@ -202,14 +187,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ManagerV1beta2::DeploymentsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::ManagerV1beta2::ListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ManagerV1beta2::DeploymentsListResponse]
+        # @return [Google::Apis::ManagerV1beta2::ListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -217,8 +202,8 @@ module Google
         def list_deployments(project_id, region, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/regions/{region}/deployments'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ManagerV1beta2::DeploymentsListResponseRepresentation
-          command.response_class = Google::Apis::ManagerV1beta2::DeploymentsListResponse
+          command.response_representation = Google::Apis::ManagerV1beta2::ListResponse::Representation
+          command.response_class = Google::Apis::ManagerV1beta2::ListResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['region'] = region unless region.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -228,12 +213,10 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # 
         # @param [String] project_id
-        #   
         # @param [String] template_name
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -243,7 +226,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -266,12 +249,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # 
         # @param [String] project_id
-        #   
         # @param [String] template_name
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -281,7 +261,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -296,7 +276,7 @@ module Google
         def get_template(project_id, template_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/templates/{templateName}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ManagerV1beta2::TemplateRepresentation
+          command.response_representation = Google::Apis::ManagerV1beta2::Template::Representation
           command.response_class = Google::Apis::ManagerV1beta2::Template
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['templateName'] = template_name unless template_name.nil?
@@ -306,12 +286,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # 
         # @param [String] project_id
-        #   
-        # @param [Google::Apis::ManagerV1beta2::Template] template
-        #   
+        # @param [Google::Apis::ManagerV1beta2::Template] template_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -321,7 +298,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -333,12 +310,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_template(project_id, template = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_template(project_id, template_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/templates'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::ManagerV1beta2::TemplateRepresentation
-          command.request_object = template
-          command.response_representation = Google::Apis::ManagerV1beta2::TemplateRepresentation
+          command.request_representation = Google::Apis::ManagerV1beta2::Template::Representation
+          command.request_object = template_object
+          command.response_representation = Google::Apis::ManagerV1beta2::Template::Representation
           command.response_class = Google::Apis::ManagerV1beta2::Template
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -347,10 +324,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # 
         # @param [String] project_id
-        #   
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned. Acceptable values are 0 to 100,
         #   inclusive. (Default: 50)
@@ -366,7 +341,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -381,7 +356,7 @@ module Google
         def list_templates(project_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{projectId}/templates'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ManagerV1beta2::TemplatesListResponseRepresentation
+          command.response_representation = Google::Apis::ManagerV1beta2::TemplatesListResponse::Representation
           command.response_class = Google::Apis::ManagerV1beta2::TemplatesListResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?

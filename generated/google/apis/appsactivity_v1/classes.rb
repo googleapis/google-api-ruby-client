@@ -21,14 +21,14 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AppsactivityV1
-
+      
       # An Activity resource is a combined view of multiple events. An activity has a
       # list of individual events and a combined view of the common fields among all
       # events.
       class Activity
         include Google::Apis::Core::Hashable
       
-        # The fields common to all of the singleEvents that make up the Activity.
+        # Represents the changes associated with an action taken by a user.
         # Corresponds to the JSON property `combinedEvent`
         # @return [Google::Apis::AppsactivityV1::Event]
         attr_accessor :combined_event
@@ -39,11 +39,16 @@ module Google
         attr_accessor :single_events
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @combined_event = args[:combined_event] unless args[:combined_event].nil?
           @single_events = args[:single_events] unless args[:single_events].nil?
         end
       end
-
+      
       # Represents the changes associated with an action taken by a user.
       class Event
         include Google::Apis::Core::Hashable
@@ -66,7 +71,8 @@ module Google
         attr_accessor :from_user_deletion
         alias_method :from_user_deletion?, :from_user_deletion
       
-        # Extra information for move type events, such as changes in an object's parents.
+        # Contains information about changes in an object's parents as a result of a
+        # move type event.
         # Corresponds to the JSON property `move`
         # @return [Google::Apis::AppsactivityV1::Move]
         attr_accessor :move
@@ -82,22 +88,27 @@ module Google
         # @return [String]
         attr_accessor :primary_event_type
       
-        # Extra information for rename type events, such as the old and new names.
+        # Contains information about a renametype event.
         # Corresponds to the JSON property `rename`
         # @return [Google::Apis::AppsactivityV1::Rename]
         attr_accessor :rename
       
-        # Information specific to the Target object modified by the event.
+        # Information about the object modified by the event.
         # Corresponds to the JSON property `target`
         # @return [Google::Apis::AppsactivityV1::Target]
         attr_accessor :target
       
-        # Represents the user responsible for the event.
+        # A representation of a user.
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::AppsactivityV1::User]
         attr_accessor :user
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @additional_event_types = args[:additional_event_types] unless args[:additional_event_types].nil?
           @event_time_millis = args[:event_time_millis] unless args[:event_time_millis].nil?
           @from_user_deletion = args[:from_user_deletion] unless args[:from_user_deletion].nil?
@@ -109,7 +120,7 @@ module Google
           @user = args[:user] unless args[:user].nil?
         end
       end
-
+      
       # The response from the list request. Contains a list of activities and a token
       # to retrieve the next page of results.
       class ListActivitiesResponse
@@ -126,11 +137,16 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @activities = args[:activities] unless args[:activities].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Contains information about changes in an object's parents as a result of a
       # move type event.
       class Move
@@ -147,11 +163,16 @@ module Google
         attr_accessor :removed_parents
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @added_parents = args[:added_parents] unless args[:added_parents].nil?
           @removed_parents = args[:removed_parents] unless args[:removed_parents].nil?
         end
       end
-
+      
       # Contains information about a parent object. For example, a folder in Drive is
       # a parent for all files within it.
       class Parent
@@ -174,12 +195,17 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @is_root = args[:is_root] unless args[:is_root].nil?
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # Contains information about the permissions and type of access allowed with
       # regards to a Google Drive object. This is a subset of the fields contained in
       # a corresponding Drive Permissions object.
@@ -208,7 +234,7 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # The user's information if the type is USER.
+        # A representation of a user.
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::AppsactivityV1::User]
         attr_accessor :user
@@ -220,6 +246,11 @@ module Google
         alias_method :with_link?, :with_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @permission_id = args[:permission_id] unless args[:permission_id].nil?
           @role = args[:role] unless args[:role].nil?
@@ -228,7 +259,7 @@ module Google
           @with_link = args[:with_link] unless args[:with_link].nil?
         end
       end
-
+      
       # Contains information about a Drive object's permissions that changed as a
       # result of a permissionChange type event.
       class PermissionChange
@@ -245,11 +276,16 @@ module Google
         attr_accessor :removed_permissions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @added_permissions = args[:added_permissions] unless args[:added_permissions].nil?
           @removed_permissions = args[:removed_permissions] unless args[:removed_permissions].nil?
         end
       end
-
+      
       # Photo information for a user.
       class Photo
         include Google::Apis::Core::Hashable
@@ -260,10 +296,15 @@ module Google
         attr_accessor :url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @url = args[:url] unless args[:url].nil?
         end
       end
-
+      
       # Contains information about a renametype event.
       class Rename
         include Google::Apis::Core::Hashable
@@ -279,11 +320,16 @@ module Google
         attr_accessor :old_title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @new_title = args[:new_title] unless args[:new_title].nil?
           @old_title = args[:old_title] unless args[:old_title].nil?
         end
       end
-
+      
       # Information about the object modified by the event.
       class Target
         include Google::Apis::Core::Hashable
@@ -306,12 +352,17 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @mime_type = args[:mime_type] unless args[:mime_type].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # A representation of a user.
       class User
         include Google::Apis::Core::Hashable
@@ -321,12 +372,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The profile photo of the user.
+        # Photo information for a user.
         # Corresponds to the JSON property `photo`
         # @return [Google::Apis::AppsactivityV1::Photo]
         attr_accessor :photo
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @photo = args[:photo] unless args[:photo].nil?
         end

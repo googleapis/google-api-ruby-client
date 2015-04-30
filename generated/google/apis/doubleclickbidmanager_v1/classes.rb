@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DoubleclickbidmanagerV1
-
+      
       # Request to fetch stored line items.
       class DownloadLineItemsRequest
         include Google::Apis::Core::Hashable
@@ -43,12 +43,17 @@ module Google
         attr_accessor :format
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @filter_ids = args[:filter_ids] unless args[:filter_ids].nil?
           @filter_type = args[:filter_type] unless args[:filter_type].nil?
           @format = args[:format] unless args[:format].nil?
         end
       end
-
+      
       # Download line items response.
       class DownloadLineItemsResponse
         include Google::Apis::Core::Hashable
@@ -60,10 +65,15 @@ module Google
         attr_accessor :line_items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @line_items = args[:line_items] unless args[:line_items].nil?
         end
       end
-
+      
       # Filter used to match traffic data in your report.
       class FilterPair
         include Google::Apis::Core::Hashable
@@ -79,11 +89,16 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @type = args[:type] unless args[:type].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # List queries response.
       class ListQueriesResponse
         include Google::Apis::Core::Hashable
@@ -100,11 +115,16 @@ module Google
         attr_accessor :queries
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @queries = args[:queries] unless args[:queries].nil?
         end
       end
-
+      
       # List reports response.
       class ListReportsResponse
         include Google::Apis::Core::Hashable
@@ -121,11 +141,16 @@ module Google
         attr_accessor :reports
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @reports = args[:reports] unless args[:reports].nil?
         end
       end
-
+      
       # Parameters of a query or report.
       class Parameters
         include Google::Apis::Core::Hashable
@@ -157,6 +182,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @filters = args[:filters] unless args[:filters].nil?
           @group_bys = args[:group_bys] unless args[:group_bys].nil?
           @include_invite_data = args[:include_invite_data] unless args[:include_invite_data].nil?
@@ -164,7 +194,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Represents a query.
       class Query
         include Google::Apis::Core::Hashable
@@ -180,7 +210,7 @@ module Google
         # @return [Google::Apis::DoubleclickbidmanagerV1::QueryMetadata]
         attr_accessor :metadata
       
-        # Query parameters.
+        # Parameters of a query or report.
         # Corresponds to the JSON property `params`
         # @return [Google::Apis::DoubleclickbidmanagerV1::Parameters]
         attr_accessor :params
@@ -204,7 +234,7 @@ module Google
         # @return [String]
         attr_accessor :report_data_start_time_ms
       
-        # Information on how often and when to run a query.
+        # Information on how frequently and when to run a query.
         # Corresponds to the JSON property `schedule`
         # @return [Google::Apis::DoubleclickbidmanagerV1::QuerySchedule]
         attr_accessor :schedule
@@ -215,6 +245,11 @@ module Google
         attr_accessor :timezone_code
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @metadata = args[:metadata] unless args[:metadata].nil?
           @params = args[:params] unless args[:params].nil?
@@ -225,7 +260,7 @@ module Google
           @timezone_code = args[:timezone_code] unless args[:timezone_code].nil?
         end
       end
-
+      
       # Query metadata.
       class QueryMetadata
         include Google::Apis::Core::Hashable
@@ -294,6 +329,11 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @data_range = args[:data_range] unless args[:data_range].nil?
           @format = args[:format] unless args[:format].nil?
           @google_cloud_storage_path_for_latest_report = args[:google_cloud_storage_path_for_latest_report] unless args[:google_cloud_storage_path_for_latest_report].nil?
@@ -307,7 +347,7 @@ module Google
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # Information on how frequently and when to run a query.
       class QuerySchedule
         include Google::Apis::Core::Hashable
@@ -335,13 +375,18 @@ module Google
         attr_accessor :next_run_timezone_code
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end_time_ms = args[:end_time_ms] unless args[:end_time_ms].nil?
           @frequency = args[:frequency] unless args[:frequency].nil?
           @next_run_minute_of_day = args[:next_run_minute_of_day] unless args[:next_run_minute_of_day].nil?
           @next_run_timezone_code = args[:next_run_timezone_code] unless args[:next_run_timezone_code].nil?
         end
       end
-
+      
       # Represents a report.
       class Report
         include Google::Apis::Core::Hashable
@@ -356,18 +401,23 @@ module Google
         # @return [Google::Apis::DoubleclickbidmanagerV1::ReportMetadata]
         attr_accessor :metadata
       
-        # Report parameters.
+        # Parameters of a query or report.
         # Corresponds to the JSON property `params`
         # @return [Google::Apis::DoubleclickbidmanagerV1::Parameters]
         attr_accessor :params
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @key = args[:key] unless args[:key].nil?
           @metadata = args[:metadata] unless args[:metadata].nil?
           @params = args[:params] unless args[:params].nil?
         end
       end
-
+      
       # An explanation of a report failure.
       class ReportFailure
         include Google::Apis::Core::Hashable
@@ -378,10 +428,15 @@ module Google
         attr_accessor :error_code
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @error_code = args[:error_code] unless args[:error_code].nil?
         end
       end
-
+      
       # Key used to identify a report.
       class ReportKey
         include Google::Apis::Core::Hashable
@@ -397,11 +452,16 @@ module Google
         attr_accessor :report_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @query_id = args[:query_id] unless args[:query_id].nil?
           @report_id = args[:report_id] unless args[:report_id].nil?
         end
       end
-
+      
       # Report metadata.
       class ReportMetadata
         include Google::Apis::Core::Hashable
@@ -427,18 +487,23 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @google_cloud_storage_path = args[:google_cloud_storage_path] unless args[:google_cloud_storage_path].nil?
           @report_data_end_time_ms = args[:report_data_end_time_ms] unless args[:report_data_end_time_ms].nil?
           @report_data_start_time_ms = args[:report_data_start_time_ms] unless args[:report_data_start_time_ms].nil?
           @status = args[:status] unless args[:status].nil?
         end
       end
-
+      
       # Report status.
       class ReportStatus
         include Google::Apis::Core::Hashable
       
-        # If the report failed, this records the cause.
+        # An explanation of a report failure.
         # Corresponds to the JSON property `failure`
         # @return [Google::Apis::DoubleclickbidmanagerV1::ReportFailure]
         attr_accessor :failure
@@ -459,13 +524,18 @@ module Google
         attr_accessor :state
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @failure = args[:failure] unless args[:failure].nil?
           @finish_time_ms = args[:finish_time_ms] unless args[:finish_time_ms].nil?
           @format = args[:format] unless args[:format].nil?
           @state = args[:state] unless args[:state].nil?
         end
       end
-
+      
       # Represents the upload status of a row in the request.
       class RowStatus
         include Google::Apis::Core::Hashable
@@ -503,6 +573,11 @@ module Google
         attr_accessor :row_number
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @changed = args[:changed] unless args[:changed].nil?
           @entity_id = args[:entity_id] unless args[:entity_id].nil?
           @entity_name = args[:entity_name] unless args[:entity_name].nil?
@@ -511,7 +586,7 @@ module Google
           @row_number = args[:row_number] unless args[:row_number].nil?
         end
       end
-
+      
       # Request to run a stored query to generate a report.
       class RunQueryRequest
         include Google::Apis::Core::Hashable
@@ -541,13 +616,18 @@ module Google
         attr_accessor :timezone_code
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @data_range = args[:data_range] unless args[:data_range].nil?
           @report_data_end_time_ms = args[:report_data_end_time_ms] unless args[:report_data_end_time_ms].nil?
           @report_data_start_time_ms = args[:report_data_start_time_ms] unless args[:report_data_start_time_ms].nil?
           @timezone_code = args[:timezone_code] unless args[:timezone_code].nil?
         end
       end
-
+      
       # Request to upload line items.
       class UploadLineItemsRequest
         include Google::Apis::Core::Hashable
@@ -570,26 +650,36 @@ module Google
         attr_accessor :line_items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dry_run = args[:dry_run] unless args[:dry_run].nil?
           @format = args[:format] unless args[:format].nil?
           @line_items = args[:line_items] unless args[:line_items].nil?
         end
       end
-
+      
       # Upload line items response.
       class UploadLineItemsResponse
         include Google::Apis::Core::Hashable
       
-        # Status of upload.
+        # Represents the status of upload.
         # Corresponds to the JSON property `uploadStatus`
         # @return [Google::Apis::DoubleclickbidmanagerV1::UploadStatus]
         attr_accessor :upload_status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @upload_status = args[:upload_status] unless args[:upload_status].nil?
         end
       end
-
+      
       # Represents the status of upload.
       class UploadStatus
         include Google::Apis::Core::Hashable
@@ -605,6 +695,11 @@ module Google
         attr_accessor :row_status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @errors = args[:errors] unless args[:errors].nil?
           @row_status = args[:row_status] unless args[:row_status].nil?
         end

@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ResourceviewsV1beta2
-
+      
       # The Label to be applied to the resource views.
       class Label
         include Google::Apis::Core::Hashable
@@ -37,11 +37,16 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @key = args[:key] unless args[:key].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # The list response item that contains the resource and end points information.
       class ListResourceResponseItem
         include Google::Apis::Core::Hashable
@@ -57,11 +62,16 @@ module Google
         attr_accessor :resource
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @endpoints = args[:endpoints] unless args[:endpoints].nil?
           @resource = args[:resource] unless args[:resource].nil?
         end
       end
-
+      
       # An operation resource, used to manage asynchronous API requests.
       class Operation
         include Google::Apis::Core::Hashable
@@ -191,6 +201,11 @@ module Google
         attr_accessor :zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @client_operation_id = args[:client_operation_id] unless args[:client_operation_id].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @end_time = args[:end_time] unless args[:end_time].nil?
@@ -214,6 +229,7 @@ module Google
           @warnings = args[:warnings] unless args[:warnings].nil?
           @zone = args[:zone] unless args[:zone].nil?
         end
+        
         # [Output Only] If errors occurred during processing of this operation, this
         # field will be populated.
         class Error
@@ -225,8 +241,14 @@ module Google
           attr_accessor :errors
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @errors = args[:errors] unless args[:errors].nil?
           end
+          
           # 
           class Error
             include Google::Apis::Core::Hashable
@@ -248,12 +270,18 @@ module Google
             attr_accessor :message
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @code = args[:code] unless args[:code].nil?
               @location = args[:location] unless args[:location].nil?
               @message = args[:message] unless args[:message].nil?
             end
           end
         end
+        
         # 
         class Warning
           include Google::Apis::Core::Hashable
@@ -274,10 +302,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -293,13 +327,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # 
       class OperationList
         include Google::Apis::Core::Hashable
@@ -330,6 +369,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -337,7 +381,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # The resource view object.
       class ResourceView
         include Google::Apis::Core::Hashable
@@ -403,6 +447,11 @@ module Google
         attr_accessor :size
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
           @endpoints = args[:endpoints] unless args[:endpoints].nil?
@@ -417,7 +466,7 @@ module Google
           @size = args[:size] unless args[:size].nil?
         end
       end
-
+      
       # The service endpoint that may be started in a VM.
       class ServiceEndpoint
         include Google::Apis::Core::Hashable
@@ -433,13 +482,18 @@ module Google
         attr_accessor :port
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @port = args[:port] unless args[:port].nil?
         end
       end
-
+      
       # The request to add resources to the resource view.
-      class ZoneViewsAddResourcesRequest
+      class AddResourcesRequest
         include Google::Apis::Core::Hashable
       
         # The list of resources to be added.
@@ -448,12 +502,17 @@ module Google
         attr_accessor :resources
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @resources = args[:resources] unless args[:resources].nil?
         end
       end
-
+      
       # 
-      class ZoneViewsGetServiceResponse
+      class GetServiceResponse
         include Google::Apis::Core::Hashable
       
         # The service information.
@@ -467,13 +526,18 @@ module Google
         attr_accessor :fingerprint
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @endpoints = args[:endpoints] unless args[:endpoints].nil?
           @fingerprint = args[:fingerprint] unless args[:fingerprint].nil?
         end
       end
-
+      
       # The response to a list request.
-      class ZoneViewsList
+      class List
         include Google::Apis::Core::Hashable
       
         # The result that contains all resource views that meet the criteria.
@@ -497,15 +561,20 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # The response to a list resource request.
-      class ZoneViewsListResourcesResponse
+      class ListResourcesResponse
         include Google::Apis::Core::Hashable
       
         # The formatted JSON that is requested by the user.
@@ -524,14 +593,19 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @network = args[:network] unless args[:network].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # The request to remove resources from the resource view.
-      class ZoneViewsRemoveResourcesRequest
+      class RemoveResourcesRequest
         include Google::Apis::Core::Hashable
       
         # The list of resources to be removed.
@@ -540,12 +614,17 @@ module Google
         attr_accessor :resources
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @resources = args[:resources] unless args[:resources].nil?
         end
       end
-
+      
       # 
-      class ZoneViewsSetServiceRequest
+      class SetServiceRequest
         include Google::Apis::Core::Hashable
       
         # The service information to be updated.
@@ -566,6 +645,11 @@ module Google
         attr_accessor :resource_name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @endpoints = args[:endpoints] unless args[:endpoints].nil?
           @fingerprint = args[:fingerprint] unless args[:fingerprint].nil?
           @resource_name = args[:resource_name] unless args[:resource_name].nil?

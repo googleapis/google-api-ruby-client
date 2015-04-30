@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/google-apps/groups-settings/get_started
       class GroupssettingsService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'groups/v1/groups/')
         end
-
+        
         # Gets one resource by id.
         # @param [String] group_unique_id
         #   The resource ID
@@ -65,7 +64,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -80,7 +79,7 @@ module Google
         def get_group(group_unique_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{groupUniqueId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GroupssettingsV1::GroupsRepresentation
+          command.response_representation = Google::Apis::GroupssettingsV1::Groups::Representation
           command.response_class = Google::Apis::GroupssettingsV1::Groups
           command.params['groupUniqueId'] = group_unique_id unless group_unique_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -88,13 +87,11 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates an existing resource. This method supports patch semantics.
         # @param [String] group_unique_id
         #   The resource ID
-        # @param [Google::Apis::GroupssettingsV1::Groups] groups
-        #   
+        # @param [Google::Apis::GroupssettingsV1::Groups] groups_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -104,7 +101,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -116,12 +113,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_group(group_unique_id, groups = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_group(group_unique_id, groups_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{groupUniqueId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::GroupssettingsV1::GroupsRepresentation
-          command.request_object = groups
-          command.response_representation = Google::Apis::GroupssettingsV1::GroupsRepresentation
+          command.request_representation = Google::Apis::GroupssettingsV1::Groups::Representation
+          command.request_object = groups_object
+          command.response_representation = Google::Apis::GroupssettingsV1::Groups::Representation
           command.response_class = Google::Apis::GroupssettingsV1::Groups
           command.params['groupUniqueId'] = group_unique_id unless group_unique_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -130,12 +127,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an existing resource.
         # @param [String] group_unique_id
         #   The resource ID
-        # @param [Google::Apis::GroupssettingsV1::Groups] groups
-        #   
+        # @param [Google::Apis::GroupssettingsV1::Groups] groups_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -145,7 +140,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -157,12 +152,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_group(group_unique_id, groups = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_group(group_unique_id, groups_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{groupUniqueId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::GroupssettingsV1::GroupsRepresentation
-          command.request_object = groups
-          command.response_representation = Google::Apis::GroupssettingsV1::GroupsRepresentation
+          command.request_representation = Google::Apis::GroupssettingsV1::Groups::Representation
+          command.request_object = groups_object
+          command.response_representation = Google::Apis::GroupssettingsV1::Groups::Representation
           command.response_class = Google::Apis::GroupssettingsV1::Groups
           command.params['groupUniqueId'] = group_unique_id unless group_unique_id.nil?
           command.query['fields'] = fields unless fields.nil?

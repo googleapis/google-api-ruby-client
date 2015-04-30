@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/bid-manager/
       class DoubleClickBidManagerService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,10 +51,9 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'doubleclickbidmanager/v1/')
         end
-
+        
         # Retrieves line items in CSV format.
-        # @param [Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsRequest] download_line_items_request
-        #   
+        # @param [Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsRequest] download_line_items_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -65,7 +63,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -77,12 +75,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def downloadlineitems_lineitem(download_line_items_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def downloadlineitems_lineitem(download_line_items_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'lineitems/downloadlineitems'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsRequestRepresentation
-          command.request_object = download_line_items_request
-          command.response_representation = Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsResponseRepresentation
+          command.request_representation = Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsRequest::Representation
+          command.request_object = download_line_items_request_object
+          command.response_representation = Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsResponse::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -90,10 +88,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Uploads line items in CSV format.
-        # @param [Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsRequest] upload_line_items_request
-        #   
+        # @param [Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsRequest] upload_line_items_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -103,7 +99,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -115,22 +111,21 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def uploadlineitems_lineitem(upload_line_items_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def uploadlineitems_lineitem(upload_line_items_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'lineitems/uploadlineitems'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsRequestRepresentation
-          command.request_object = upload_line_items_request
-          command.response_representation = Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsResponseRepresentation
+          command.request_representation = Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsRequest::Representation
+          command.request_object = upload_line_items_request_object
+          command.response_representation = Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsResponse::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Creates a query.
-        # @param [Google::Apis::DoubleclickbidmanagerV1::Query] query
-        #   
+        # @param [Google::Apis::DoubleclickbidmanagerV1::Query] query_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -140,7 +135,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -152,19 +147,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def createquery_query(query = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def createquery_query(query_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'query'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DoubleclickbidmanagerV1::QueryRepresentation
-          command.request_object = query
-          command.response_representation = Google::Apis::DoubleclickbidmanagerV1::QueryRepresentation
+          command.request_representation = Google::Apis::DoubleclickbidmanagerV1::Query::Representation
+          command.request_object = query_object
+          command.response_representation = Google::Apis::DoubleclickbidmanagerV1::Query::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1::Query
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Deletes a stored query as well as the associated stored reports.
         # @param [String] query_id
@@ -178,7 +172,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -200,7 +194,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Retrieves a stored query.
         # @param [String] query_id
         #   Query ID to retrieve.
@@ -213,7 +206,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -228,7 +221,7 @@ module Google
         def getquery_query(query_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'query/{queryId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DoubleclickbidmanagerV1::QueryRepresentation
+          command.response_representation = Google::Apis::DoubleclickbidmanagerV1::Query::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1::Query
           command.params['queryId'] = query_id unless query_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -236,7 +229,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves stored queries.
         # @param [String] fields
@@ -248,7 +240,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -263,7 +255,7 @@ module Google
         def listqueries_query(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'queries'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DoubleclickbidmanagerV1::ListQueriesResponseRepresentation
+          command.response_representation = Google::Apis::DoubleclickbidmanagerV1::ListQueriesResponse::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1::ListQueriesResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -271,12 +263,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Runs a stored query to generate a report.
         # @param [String] query_id
         #   Query ID to run.
-        # @param [Google::Apis::DoubleclickbidmanagerV1::RunQueryRequest] run_query_request
-        #   
+        # @param [Google::Apis::DoubleclickbidmanagerV1::RunQueryRequest] run_query_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -286,7 +276,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -298,18 +288,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def runquery_query(query_id, run_query_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def runquery_query(query_id, run_query_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'query/{queryId}'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DoubleclickbidmanagerV1::RunQueryRequestRepresentation
-          command.request_object = run_query_request
+          command.request_representation = Google::Apis::DoubleclickbidmanagerV1::RunQueryRequest::Representation
+          command.request_object = run_query_request_object
           command.params['queryId'] = query_id unless query_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Retrieves stored reports.
         # @param [String] query_id
         #   Query ID with which the reports are associated.
@@ -322,7 +312,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -337,7 +327,7 @@ module Google
         def listreports_report(query_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'queries/{queryId}/reports'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DoubleclickbidmanagerV1::ListReportsResponseRepresentation
+          command.response_representation = Google::Apis::DoubleclickbidmanagerV1::ListReportsResponse::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1::ListReportsResponse
           command.params['queryId'] = query_id unless query_id.nil?
           command.query['fields'] = fields unless fields.nil?

@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/genomics/v1beta2/reference
       class GenomicsService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,11 +51,10 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'genomics/v1beta2/')
         end
-
+        
         # Creates a new annotation set. Caller must have WRITE permission for the
         # associated dataset.
-        # @param [Google::Apis::GenomicsV1beta2::AnnotationSet] annotation_set
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::AnnotationSet] annotation_set_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -66,7 +64,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -78,19 +76,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_annotation_set(annotation_set = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_annotation_set(annotation_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'annotationSets'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::AnnotationSetRepresentation
-          command.request_object = annotation_set
-          command.response_representation = Google::Apis::GenomicsV1beta2::AnnotationSetRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::AnnotationSet::Representation
+          command.request_object = annotation_set_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::AnnotationSet::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::AnnotationSet
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Deletes an annotation set. Caller must have WRITE permission for the
         # associated annotation set.
@@ -105,7 +102,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -127,7 +124,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets an annotation set. Caller must have READ permission for the associated
         # dataset.
         # @param [String] annotation_set_id
@@ -141,7 +137,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -156,7 +152,7 @@ module Google
         def get_annotation_set(annotation_set_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'annotationSets/{annotationSetId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GenomicsV1beta2::AnnotationSetRepresentation
+          command.response_representation = Google::Apis::GenomicsV1beta2::AnnotationSet::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::AnnotationSet
           command.params['annotationSetId'] = annotation_set_id unless annotation_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -165,15 +161,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an annotation set. The update must respect all mutability restrictions
         # and other invariants described on the annotation set resource. Caller must
         # have WRITE permission for the associated dataset. This method supports patch
         # semantics.
         # @param [String] annotation_set_id
         #   The ID of the annotation set to be updated.
-        # @param [Google::Apis::GenomicsV1beta2::AnnotationSet] annotation_set
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::AnnotationSet] annotation_set_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -183,7 +177,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -195,12 +189,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_annotation_set(annotation_set_id, annotation_set = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_annotation_set(annotation_set_id, annotation_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'annotationSets/{annotationSetId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::AnnotationSetRepresentation
-          command.request_object = annotation_set
-          command.response_representation = Google::Apis::GenomicsV1beta2::AnnotationSetRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::AnnotationSet::Representation
+          command.request_object = annotation_set_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::AnnotationSet::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::AnnotationSet
           command.params['annotationSetId'] = annotation_set_id unless annotation_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -209,12 +203,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Searches for annotation sets that match the given criteria. Results are
         # returned in a deterministic order. Caller must have READ permission for the
         # queried datasets.
-        # @param [Google::Apis::GenomicsV1beta2::SearchAnnotationSetsRequest] search_annotation_sets_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::SearchAnnotationSetsRequest] search_annotation_sets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -224,7 +216,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -236,12 +228,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_annotation_sets(search_annotation_sets_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def search_annotation_sets(search_annotation_sets_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'annotationSets/search'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::SearchAnnotationSetsRequestRepresentation
-          command.request_object = search_annotation_sets_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::SearchAnnotationSetsResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::SearchAnnotationSetsRequest::Representation
+          command.request_object = search_annotation_sets_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::SearchAnnotationSetsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::SearchAnnotationSetsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -249,14 +241,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an annotation set. The update must respect all mutability restrictions
         # and other invariants described on the annotation set resource. Caller must
         # have WRITE permission for the associated dataset.
         # @param [String] annotation_set_id
         #   The ID of the annotation set to be updated.
-        # @param [Google::Apis::GenomicsV1beta2::AnnotationSet] annotation_set
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::AnnotationSet] annotation_set_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -266,7 +256,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -278,12 +268,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_annotation_set(annotation_set_id, annotation_set = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_annotation_set(annotation_set_id, annotation_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'annotationSets/{annotationSetId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::AnnotationSetRepresentation
-          command.request_object = annotation_set
-          command.response_representation = Google::Apis::GenomicsV1beta2::AnnotationSetRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::AnnotationSet::Representation
+          command.request_object = annotation_set_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::AnnotationSet::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::AnnotationSet
           command.params['annotationSetId'] = annotation_set_id unless annotation_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -291,7 +281,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Creates one or more new annotations atomically. All annotations must belong to
         # the same annotation set. Caller must have WRITE permission for this annotation
         # set. For optimal performance, batch positionally adjacent annotations together.
@@ -300,8 +290,7 @@ module Google
         # data issues, when possible an error will be isolated to the corresponding
         # batch entry in the response; the remaining well formed annotations will be
         # created normally.
-        # @param [Google::Apis::GenomicsV1beta2::BatchCreateAnnotationsRequest] batch_create_annotations_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::BatchCreateAnnotationsRequest] batch_create_annotations_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -311,7 +300,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -323,12 +312,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_create_annotations(batch_create_annotations_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_create_annotations(batch_create_annotations_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'annotations:batchCreate'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::BatchCreateAnnotationsRequestRepresentation
-          command.request_object = batch_create_annotations_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::BatchAnnotationsResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::BatchCreateAnnotationsRequest::Representation
+          command.request_object = batch_create_annotations_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::BatchAnnotationsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::BatchAnnotationsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -336,11 +325,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates a new annotation. Caller must have WRITE permission for the associated
         # annotation set.
-        # @param [Google::Apis::GenomicsV1beta2::Annotation] annotation
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::Annotation] annotation_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -350,7 +337,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -362,19 +349,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_annotation(annotation = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_annotation(annotation_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'annotations'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::AnnotationRepresentation
-          command.request_object = annotation
-          command.response_representation = Google::Apis::GenomicsV1beta2::AnnotationRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::Annotation::Representation
+          command.request_object = annotation_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::Annotation::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::Annotation
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Deletes an annotation. Caller must have WRITE permission for the associated
         # annotation set.
@@ -389,7 +375,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -411,7 +397,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets an annotation. Caller must have READ permission for the associated
         # annotation set.
         # @param [String] annotation_id
@@ -425,7 +410,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -440,7 +425,7 @@ module Google
         def get_annotation(annotation_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'annotations/{annotationId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GenomicsV1beta2::AnnotationRepresentation
+          command.response_representation = Google::Apis::GenomicsV1beta2::Annotation::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::Annotation
           command.params['annotationId'] = annotation_id unless annotation_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -449,14 +434,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an annotation. The update must respect all mutability restrictions and
         # other invariants described on the annotation resource. Caller must have WRITE
         # permission for the associated dataset. This method supports patch semantics.
         # @param [String] annotation_id
         #   The ID of the annotation set to be updated.
-        # @param [Google::Apis::GenomicsV1beta2::Annotation] annotation
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::Annotation] annotation_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -466,7 +449,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -478,12 +461,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_annotation(annotation_id, annotation = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_annotation(annotation_id, annotation_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'annotations/{annotationId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::AnnotationRepresentation
-          command.request_object = annotation
-          command.response_representation = Google::Apis::GenomicsV1beta2::AnnotationRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::Annotation::Representation
+          command.request_object = annotation_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::Annotation::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::Annotation
           command.params['annotationId'] = annotation_id unless annotation_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -492,13 +475,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Searches for annotations that match the given criteria. Results are returned
         # ordered by start position. Annotations that have matching start positions are
         # ordered deterministically. Caller must have READ permission for the queried
         # annotation sets.
-        # @param [Google::Apis::GenomicsV1beta2::SearchAnnotationsRequest] search_annotations_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::SearchAnnotationsRequest] search_annotations_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -508,7 +489,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -520,12 +501,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_annotations(search_annotations_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def search_annotations(search_annotations_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'annotations/search'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::SearchAnnotationsRequestRepresentation
-          command.request_object = search_annotations_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::SearchAnnotationsResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::SearchAnnotationsRequest::Representation
+          command.request_object = search_annotations_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::SearchAnnotationsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::SearchAnnotationsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -533,14 +514,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an annotation. The update must respect all mutability restrictions and
         # other invariants described on the annotation resource. Caller must have WRITE
         # permission for the associated dataset.
         # @param [String] annotation_id
         #   The ID of the annotation set to be updated.
-        # @param [Google::Apis::GenomicsV1beta2::Annotation] annotation
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::Annotation] annotation_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -550,7 +529,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -562,12 +541,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_annotation(annotation_id, annotation = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_annotation(annotation_id, annotation_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'annotations/{annotationId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::AnnotationRepresentation
-          command.request_object = annotation
-          command.response_representation = Google::Apis::GenomicsV1beta2::AnnotationRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::Annotation::Representation
+          command.request_object = annotation_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::Annotation::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::Annotation
           command.params['annotationId'] = annotation_id unless annotation_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -575,10 +554,9 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Creates a new call set.
-        # @param [Google::Apis::GenomicsV1beta2::CallSet] call_set
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::CallSet] call_set_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -588,7 +566,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -600,19 +578,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_callset(call_set = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_callset(call_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'callsets'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::CallSetRepresentation
-          command.request_object = call_set
-          command.response_representation = Google::Apis::GenomicsV1beta2::CallSetRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::CallSet::Representation
+          command.request_object = call_set_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::CallSet::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::CallSet
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Deletes a call set.
         # @param [String] call_set_id
@@ -626,7 +603,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -648,7 +625,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets a call set by ID.
         # @param [String] call_set_id
         #   The ID of the call set.
@@ -661,7 +637,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -676,7 +652,7 @@ module Google
         def get_callset(call_set_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'callsets/{callSetId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GenomicsV1beta2::CallSetRepresentation
+          command.response_representation = Google::Apis::GenomicsV1beta2::CallSet::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::CallSet
           command.params['callSetId'] = call_set_id unless call_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -685,12 +661,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a call set. This method supports patch semantics.
         # @param [String] call_set_id
         #   The ID of the call set to be updated.
-        # @param [Google::Apis::GenomicsV1beta2::CallSet] call_set
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::CallSet] call_set_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -700,7 +674,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -712,12 +686,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_callset(call_set_id, call_set = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_callset(call_set_id, call_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'callsets/{callSetId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::CallSetRepresentation
-          command.request_object = call_set
-          command.response_representation = Google::Apis::GenomicsV1beta2::CallSetRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::CallSet::Representation
+          command.request_object = call_set_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::CallSet::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::CallSet
           command.params['callSetId'] = call_set_id unless call_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -726,11 +700,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets a list of call sets matching the criteria.
         # Implements GlobalAllianceApi.searchCallSets.
-        # @param [Google::Apis::GenomicsV1beta2::SearchCallSetsRequest] search_call_sets_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::SearchCallSetsRequest] search_call_sets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -740,7 +712,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -752,12 +724,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_call_sets(search_call_sets_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def search_call_sets(search_call_sets_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'callsets/search'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::SearchCallSetsRequestRepresentation
-          command.request_object = search_call_sets_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::SearchCallSetsResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::SearchCallSetsRequest::Representation
+          command.request_object = search_call_sets_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::SearchCallSetsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::SearchCallSetsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -765,12 +737,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a call set.
         # @param [String] call_set_id
         #   The ID of the call set to be updated.
-        # @param [Google::Apis::GenomicsV1beta2::CallSet] call_set
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::CallSet] call_set_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -780,7 +750,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -792,12 +762,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_callset(call_set_id, call_set = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_callset(call_set_id, call_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'callsets/{callSetId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::CallSetRepresentation
-          command.request_object = call_set
-          command.response_representation = Google::Apis::GenomicsV1beta2::CallSetRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::CallSet::Representation
+          command.request_object = call_set_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::CallSet::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::CallSet
           command.params['callSetId'] = call_set_id unless call_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -805,10 +775,9 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Creates a new dataset.
-        # @param [Google::Apis::GenomicsV1beta2::Dataset] dataset
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::Dataset] dataset_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -818,7 +787,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -830,19 +799,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_dataset(dataset = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_dataset(dataset_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'datasets'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::DatasetRepresentation
-          command.request_object = dataset
-          command.response_representation = Google::Apis::GenomicsV1beta2::DatasetRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::Dataset::Representation
+          command.request_object = dataset_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::Dataset::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::Dataset
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Deletes a dataset.
         # @param [String] dataset_id
@@ -856,7 +824,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -878,7 +846,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets a dataset by ID.
         # @param [String] dataset_id
         #   The ID of the dataset.
@@ -891,7 +858,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -906,7 +873,7 @@ module Google
         def get_dataset(dataset_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'datasets/{datasetId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GenomicsV1beta2::DatasetRepresentation
+          command.response_representation = Google::Apis::GenomicsV1beta2::Dataset::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::Dataset
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -914,7 +881,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists datasets within a project.
         # @param [Fixnum] page_size
@@ -935,7 +901,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -950,7 +916,7 @@ module Google
         def list_datasets(page_size: nil, page_token: nil, project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'datasets'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GenomicsV1beta2::ListDatasetsResponseRepresentation
+          command.response_representation = Google::Apis::GenomicsV1beta2::ListDatasetsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::ListDatasetsResponse
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -961,12 +927,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a dataset. This method supports patch semantics.
         # @param [String] dataset_id
         #   The ID of the dataset to be updated.
-        # @param [Google::Apis::GenomicsV1beta2::Dataset] dataset
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::Dataset] dataset_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -976,7 +940,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -988,12 +952,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_dataset(dataset_id, dataset = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_dataset(dataset_id, dataset_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'datasets/{datasetId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::DatasetRepresentation
-          command.request_object = dataset
-          command.response_representation = Google::Apis::GenomicsV1beta2::DatasetRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::Dataset::Representation
+          command.request_object = dataset_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::Dataset::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::Dataset
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1001,7 +965,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Undeletes a dataset by restoring a dataset which was deleted via this API.
         # This operation is only possible for a week after the deletion occurred.
@@ -1016,7 +979,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1031,7 +994,7 @@ module Google
         def undelete_dataset(dataset_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'datasets/{datasetId}/undelete'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::GenomicsV1beta2::DatasetRepresentation
+          command.response_representation = Google::Apis::GenomicsV1beta2::Dataset::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::Dataset
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1040,12 +1003,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a dataset.
         # @param [String] dataset_id
         #   The ID of the dataset to be updated.
-        # @param [Google::Apis::GenomicsV1beta2::Dataset] dataset
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::Dataset] dataset_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1055,7 +1016,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1067,12 +1028,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_dataset(dataset_id, dataset = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_dataset(dataset_id, dataset_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'datasets/{datasetId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::DatasetRepresentation
-          command.request_object = dataset
-          command.response_representation = Google::Apis::GenomicsV1beta2::DatasetRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::Dataset::Representation
+          command.request_object = dataset_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::Dataset::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::Dataset
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1080,11 +1041,10 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Creates and asynchronously runs an ad-hoc job. This is an experimental call
         # and may be removed or changed at any time.
-        # @param [Google::Apis::GenomicsV1beta2::ExperimentalCreateJobRequest] experimental_create_job_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::CreateJobRequest] experimental_create_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1094,31 +1054,31 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GenomicsV1beta2::ExperimentalCreateJobResponse] parsed result object
+        # @yieldparam result [Google::Apis::GenomicsV1beta2::CreateJobResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GenomicsV1beta2::ExperimentalCreateJobResponse]
+        # @return [Google::Apis::GenomicsV1beta2::CreateJobResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_experimental_job(experimental_create_job_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_experimental_job(experimental_create_job_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'experimental/jobs/create'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::ExperimentalCreateJobRequestRepresentation
-          command.request_object = experimental_create_job_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::ExperimentalCreateJobResponseRepresentation
-          command.response_class = Google::Apis::GenomicsV1beta2::ExperimentalCreateJobResponse
+          command.request_representation = Google::Apis::GenomicsV1beta2::CreateJobRequest::Representation
+          command.request_object = experimental_create_job_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::CreateJobResponse::Representation
+          command.response_class = Google::Apis::GenomicsV1beta2::CreateJobResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Cancels a job by ID. Note that it is possible for partial results to be
         # generated and stored for cancelled jobs.
         # @param [String] job_id
@@ -1132,7 +1092,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1154,7 +1114,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets a job by ID.
         # @param [String] job_id
         #   Required. The ID of the job.
@@ -1167,7 +1126,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1182,7 +1141,7 @@ module Google
         def get_job(job_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'jobs/{jobId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GenomicsV1beta2::JobRepresentation
+          command.response_representation = Google::Apis::GenomicsV1beta2::Job::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::Job
           command.params['jobId'] = job_id unless job_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1191,10 +1150,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets a list of jobs matching the criteria.
-        # @param [Google::Apis::GenomicsV1beta2::SearchJobsRequest] search_jobs_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::SearchJobsRequest] search_jobs_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1204,7 +1161,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1216,23 +1173,22 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_jobs(search_jobs_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def search_jobs(search_jobs_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'jobs/search'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::SearchJobsRequestRepresentation
-          command.request_object = search_jobs_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::SearchJobsResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::SearchJobsRequest::Representation
+          command.request_object = search_jobs_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::SearchJobsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::SearchJobsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Aligns read data from existing read group sets or files from Google Cloud
         # Storage. See the  alignment and variant calling documentation for more details.
-        # @param [Google::Apis::GenomicsV1beta2::AlignReadGroupSetsRequest] align_read_group_sets_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::AlignReadGroupSetsRequest] align_read_group_sets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1242,7 +1198,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1254,12 +1210,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def align_read_group_sets(align_read_group_sets_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def align_read_group_sets(align_read_group_sets_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'readgroupsets/align'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::AlignReadGroupSetsRequestRepresentation
-          command.request_object = align_read_group_sets_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::AlignReadGroupSetsResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::AlignReadGroupSetsRequest::Representation
+          command.request_object = align_read_group_sets_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::AlignReadGroupSetsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::AlignReadGroupSetsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1267,12 +1223,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Calls variants on read data from existing read group sets or files from Google
         # Cloud Storage. See the  alignment and variant calling documentation for more
         # details.
-        # @param [Google::Apis::GenomicsV1beta2::CallReadGroupSetsRequest] call_read_group_sets_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::CallReadGroupSetsRequest] call_read_group_sets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1282,7 +1236,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1294,19 +1248,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def call_read_group_sets(call_read_group_sets_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def call_read_group_sets(call_read_group_sets_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'readgroupsets/call'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::CallReadGroupSetsRequestRepresentation
-          command.request_object = call_read_group_sets_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::CallReadGroupSetsResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::CallReadGroupSetsRequest::Representation
+          command.request_object = call_read_group_sets_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::CallReadGroupSetsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::CallReadGroupSetsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Deletes a read group set.
         # @param [String] read_group_set_id
@@ -1321,7 +1274,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1343,15 +1296,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Exports read group sets to a BAM file in Google Cloud Storage.
         # Note that currently there may be some differences between exported BAM files
         # and the original BAM file at the time of import. In particular, comments in
         # the input file header will not be preserved, some custom tags will be
         # converted to strings, and original reference sequence order is not necessarily
         # preserved.
-        # @param [Google::Apis::GenomicsV1beta2::ExportReadGroupSetsRequest] export_read_group_sets_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::ExportReadGroupSetsRequest] export_read_group_sets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1361,7 +1312,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1373,19 +1324,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def export_read_group_sets(export_read_group_sets_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def export_read_group_sets(export_read_group_sets_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'readgroupsets/export'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::ExportReadGroupSetsRequestRepresentation
-          command.request_object = export_read_group_sets_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::ExportReadGroupSetsResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::ExportReadGroupSetsRequest::Representation
+          command.request_object = export_read_group_sets_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::ExportReadGroupSetsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::ExportReadGroupSetsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Gets a read group set by ID.
         # @param [String] read_group_set_id
@@ -1399,7 +1349,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1414,7 +1364,7 @@ module Google
         def get_readgroupset(read_group_set_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'readgroupsets/{readGroupSetId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GenomicsV1beta2::ReadGroupSetRepresentation
+          command.response_representation = Google::Apis::GenomicsV1beta2::ReadGroupSet::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::ReadGroupSet
           command.params['readGroupSetId'] = read_group_set_id unless read_group_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1423,13 +1373,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates read group sets by asynchronously importing the provided information.
         # Note that currently comments in the input file header are not imported and
         # some custom tags will be converted to strings, rather than preserving tag
         # types. The caller must have WRITE permissions to the dataset.
-        # @param [Google::Apis::GenomicsV1beta2::ImportReadGroupSetsRequest] import_read_group_sets_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::ImportReadGroupSetsRequest] import_read_group_sets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1439,7 +1387,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1451,12 +1399,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_read_group_sets(import_read_group_sets_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def import_read_group_sets(import_read_group_sets_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'readgroupsets/import'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::ImportReadGroupSetsRequestRepresentation
-          command.request_object = import_read_group_sets_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::ImportReadGroupSetsResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::ImportReadGroupSetsRequest::Representation
+          command.request_object = import_read_group_sets_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::ImportReadGroupSetsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::ImportReadGroupSetsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1464,13 +1412,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a read group set. This method supports patch semantics.
         # @param [String] read_group_set_id
         #   The ID of the read group set to be updated. The caller must have WRITE
         #   permissions to the dataset associated with this read group set.
-        # @param [Google::Apis::GenomicsV1beta2::ReadGroupSet] read_group_set
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::ReadGroupSet] read_group_set_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1480,7 +1426,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1492,12 +1438,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_readgroupset(read_group_set_id, read_group_set = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_readgroupset(read_group_set_id, read_group_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'readgroupsets/{readGroupSetId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::ReadGroupSetRepresentation
-          command.request_object = read_group_set
-          command.response_representation = Google::Apis::GenomicsV1beta2::ReadGroupSetRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::ReadGroupSet::Representation
+          command.request_object = read_group_set_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::ReadGroupSet::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::ReadGroupSet
           command.params['readGroupSetId'] = read_group_set_id unless read_group_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1506,11 +1452,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Searches for read group sets matching the criteria.
         # Implements GlobalAllianceApi.searchReadGroupSets.
-        # @param [Google::Apis::GenomicsV1beta2::SearchReadGroupSetsRequest] search_read_group_sets_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::SearchReadGroupSetsRequest] search_read_group_sets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1520,7 +1464,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1532,12 +1476,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_read_group_sets(search_read_group_sets_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def search_read_group_sets(search_read_group_sets_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'readgroupsets/search'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::SearchReadGroupSetsRequestRepresentation
-          command.request_object = search_read_group_sets_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::SearchReadGroupSetsResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::SearchReadGroupSetsRequest::Representation
+          command.request_object = search_read_group_sets_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::SearchReadGroupSetsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::SearchReadGroupSetsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1545,13 +1489,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a read group set.
         # @param [String] read_group_set_id
         #   The ID of the read group set to be updated. The caller must have WRITE
         #   permissions to the dataset associated with this read group set.
-        # @param [Google::Apis::GenomicsV1beta2::ReadGroupSet] read_group_set
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::ReadGroupSet] read_group_set_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1561,7 +1503,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1573,12 +1515,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_readgroupset(read_group_set_id, read_group_set = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_readgroupset(read_group_set_id, read_group_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'readgroupsets/{readGroupSetId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::ReadGroupSetRepresentation
-          command.request_object = read_group_set
-          command.response_representation = Google::Apis::GenomicsV1beta2::ReadGroupSetRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::ReadGroupSet::Representation
+          command.request_object = read_group_set_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::ReadGroupSet::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::ReadGroupSet
           command.params['readGroupSetId'] = read_group_set_id unless read_group_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1586,7 +1528,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists fixed width coverage buckets for a read group set, each of which
         # correspond to a range of a reference sequence. Each bucket summarizes coverage
@@ -1628,7 +1569,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1643,7 +1584,7 @@ module Google
         def list_readgroupset_coveragebuckets(read_group_set_id, page_size: nil, page_token: nil, range_end: nil, range_reference_name: nil, range_start: nil, target_bucket_width: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'readgroupsets/{readGroupSetId}/coveragebuckets'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GenomicsV1beta2::ListCoverageBucketsResponseRepresentation
+          command.response_representation = Google::Apis::GenomicsV1beta2::ListCoverageBucketsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::ListCoverageBucketsResponse
           command.params['readGroupSetId'] = read_group_set_id unless read_group_set_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -1657,7 +1598,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Gets a list of reads for one or more read group sets. Reads search operates
         # over a genomic coordinate space of reference sequence & position defined over
         # the reference sequences to which the requested read group sets are aligned.
@@ -1669,8 +1610,7 @@ module Google
         # genomic coordinate (reference sequence & position). Reads with equivalent
         # genomic coordinates are returned in a deterministic order.
         # Implements GlobalAllianceApi.searchReads.
-        # @param [Google::Apis::GenomicsV1beta2::SearchReadsRequest] search_reads_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::SearchReadsRequest] search_reads_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1680,7 +1620,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1692,19 +1632,19 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_reads(search_reads_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def search_reads(search_reads_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'reads/search'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::SearchReadsRequestRepresentation
-          command.request_object = search_reads_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::SearchReadsResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::SearchReadsRequest::Representation
+          command.request_object = search_reads_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::SearchReadsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::SearchReadsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Gets a reference.
         # Implements GlobalAllianceApi.getReference.
         # @param [String] reference_id
@@ -1718,7 +1658,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1733,7 +1673,7 @@ module Google
         def get_reference(reference_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'references/{referenceId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GenomicsV1beta2::ReferenceRepresentation
+          command.response_representation = Google::Apis::GenomicsV1beta2::Reference::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::Reference
           command.params['referenceId'] = reference_id unless reference_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1742,11 +1682,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Searches for references which match the given criteria.
         # Implements GlobalAllianceApi.searchReferences.
-        # @param [Google::Apis::GenomicsV1beta2::SearchReferencesRequest] search_references_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::SearchReferencesRequest] search_references_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1756,7 +1694,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1768,19 +1706,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_references(search_references_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def search_references(search_references_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'references/search'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::SearchReferencesRequestRepresentation
-          command.request_object = search_references_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::SearchReferencesResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::SearchReferencesRequest::Representation
+          command.request_object = search_references_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::SearchReferencesResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::SearchReferencesResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists the bases in a reference, optionally restricted to a range.
         # Implements GlobalAllianceApi.getReferenceBases.
@@ -1806,7 +1743,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1821,7 +1758,7 @@ module Google
         def list_reference_bases(reference_id, end_: nil, page_size: nil, page_token: nil, start: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'references/{referenceId}/bases'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GenomicsV1beta2::ListBasesResponseRepresentation
+          command.response_representation = Google::Apis::GenomicsV1beta2::ListBasesResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::ListBasesResponse
           command.params['referenceId'] = reference_id unless reference_id.nil?
           command.query['end'] = end_ unless end_.nil?
@@ -1833,7 +1770,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Gets a reference set.
         # Implements GlobalAllianceApi.getReferenceSet.
         # @param [String] reference_set_id
@@ -1847,7 +1784,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1862,7 +1799,7 @@ module Google
         def get_referenceset(reference_set_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'referencesets/{referenceSetId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GenomicsV1beta2::ReferenceSetRepresentation
+          command.response_representation = Google::Apis::GenomicsV1beta2::ReferenceSet::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::ReferenceSet
           command.params['referenceSetId'] = reference_set_id unless reference_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1871,11 +1808,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Searches for reference sets which match the given criteria.
         # Implements GlobalAllianceApi.searchReferenceSets.
-        # @param [Google::Apis::GenomicsV1beta2::SearchReferenceSetsRequest] search_reference_sets_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::SearchReferenceSetsRequest] search_reference_sets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1885,7 +1820,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1897,19 +1832,19 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_reference_sets(search_reference_sets_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def search_reference_sets(search_reference_sets_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'referencesets/search'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::SearchReferenceSetsRequestRepresentation
-          command.request_object = search_reference_sets_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::SearchReferenceSetsResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::SearchReferenceSetsRequest::Representation
+          command.request_object = search_reference_sets_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::SearchReferenceSetsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::SearchReferenceSetsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Gets a stream of reads for one or more read group sets. Reads search operates
         # over a genomic coordinate space of reference sequence & position defined over
         # the reference sequences to which the requested read group sets are aligned.
@@ -1918,8 +1853,7 @@ module Google
         # All reads returned are ordered by genomic coordinate (reference sequence &
         # position). Reads with equivalent genomic coordinates are returned in a
         # deterministic order.
-        # @param [Google::Apis::GenomicsV1beta2::StreamReadsRequest] stream_reads_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::StreamReadsRequest] stream_reads_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1929,7 +1863,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1941,22 +1875,21 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def streamreads_streaming_readstore(stream_reads_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def streamreads_streaming_readstore(stream_reads_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'streamingReadstore/streamreads'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::StreamReadsRequestRepresentation
-          command.request_object = stream_reads_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::StreamReadsResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::StreamReadsRequest::Representation
+          command.request_object = stream_reads_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::StreamReadsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::StreamReadsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Creates a new variant.
-        # @param [Google::Apis::GenomicsV1beta2::Variant] variant
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::Variant] variant_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1966,7 +1899,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1978,19 +1911,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_variant(variant = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_variant(variant_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'variants'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::VariantRepresentation
-          command.request_object = variant
-          command.response_representation = Google::Apis::GenomicsV1beta2::VariantRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::Variant::Representation
+          command.request_object = variant_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::Variant::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::Variant
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Deletes a variant.
         # @param [String] variant_id
@@ -2004,7 +1936,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2026,7 +1958,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets a variant by ID.
         # @param [String] variant_id
         #   The ID of the variant.
@@ -2039,7 +1970,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2054,7 +1985,7 @@ module Google
         def get_variant(variant_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'variants/{variantId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GenomicsV1beta2::VariantRepresentation
+          command.response_representation = Google::Apis::GenomicsV1beta2::Variant::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::Variant
           command.params['variantId'] = variant_id unless variant_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2063,11 +1994,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets a list of variants matching the criteria.
         # Implements GlobalAllianceApi.searchVariants.
-        # @param [Google::Apis::GenomicsV1beta2::SearchVariantsRequest] search_variants_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::SearchVariantsRequest] search_variants_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2077,7 +2006,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2089,12 +2018,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_variants(search_variants_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def search_variants(search_variants_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'variants/search'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::SearchVariantsRequestRepresentation
-          command.request_object = search_variants_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::SearchVariantsResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::SearchVariantsRequest::Representation
+          command.request_object = search_variants_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::SearchVariantsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::SearchVariantsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2102,13 +2031,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a variant's names and info fields. All other modifications are
         # silently ignored. Returns the modified variant without its calls.
         # @param [String] variant_id
         #   The ID of the variant to be updated.
-        # @param [Google::Apis::GenomicsV1beta2::Variant] variant
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::Variant] variant_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2118,7 +2045,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2130,12 +2057,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_variant(variant_id, variant = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_variant(variant_id, variant_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'variants/{variantId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::VariantRepresentation
-          command.request_object = variant
-          command.response_representation = Google::Apis::GenomicsV1beta2::VariantRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::Variant::Representation
+          command.request_object = variant_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::Variant::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::Variant
           command.params['variantId'] = variant_id unless variant_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2143,7 +2070,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Deletes the contents of a variant set. The variant set object is not deleted.
         # @param [String] variant_set_id
         #   The ID of the variant set to be deleted.
@@ -2156,7 +2083,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2178,13 +2105,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Exports variant set data to an external destination.
         # @param [String] variant_set_id
         #   Required. The ID of the variant set that contains variant data which should be
         #   exported. The caller must have READ access to this variant set.
-        # @param [Google::Apis::GenomicsV1beta2::ExportVariantSetRequest] export_variant_set_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::ExportVariantSetRequest] export_variant_set_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2194,7 +2119,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2206,12 +2131,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def export_variant_set(variant_set_id, export_variant_set_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def export_variant_set(variant_set_id, export_variant_set_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'variantsets/{variantSetId}/export'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::ExportVariantSetRequestRepresentation
-          command.request_object = export_variant_set_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::ExportVariantSetResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::ExportVariantSetRequest::Representation
+          command.request_object = export_variant_set_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::ExportVariantSetResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::ExportVariantSetResponse
           command.params['variantSetId'] = variant_set_id unless variant_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2219,7 +2144,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Gets a variant set by ID.
         # @param [String] variant_set_id
@@ -2233,7 +2157,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2248,7 +2172,7 @@ module Google
         def get_variantset(variant_set_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'variantsets/{variantSetId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GenomicsV1beta2::VariantSetRepresentation
+          command.response_representation = Google::Apis::GenomicsV1beta2::VariantSet::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::VariantSet
           command.params['variantSetId'] = variant_set_id unless variant_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2256,7 +2180,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Creates variant data by asynchronously importing the provided information.
         # The variants for import will be merged with any existing data and each other
@@ -2268,8 +2191,7 @@ module Google
         # the metadata already in a variant set.
         # @param [String] variant_set_id
         #   Required. The variant set to which variant data should be imported.
-        # @param [Google::Apis::GenomicsV1beta2::ImportVariantsRequest] import_variants_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::ImportVariantsRequest] import_variants_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2279,7 +2201,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2291,12 +2213,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_variants(variant_set_id, import_variants_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def import_variants(variant_set_id, import_variants_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'variantsets/{variantSetId}/importVariants'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::ImportVariantsRequestRepresentation
-          command.request_object = import_variants_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::ImportVariantsResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::ImportVariantsRequest::Representation
+          command.request_object = import_variants_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::ImportVariantsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::ImportVariantsResponse
           command.params['variantSetId'] = variant_set_id unless variant_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2304,7 +2226,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Merges the given variants with existing variants. Each variant will be merged
         # with an existing variant that matches its reference sequence, start, end,
@@ -2315,8 +2236,7 @@ module Google
         # discarded.
         # @param [String] variant_set_id
         #   The destination variant set.
-        # @param [Google::Apis::GenomicsV1beta2::MergeVariantsRequest] merge_variants_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::MergeVariantsRequest] merge_variants_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2326,7 +2246,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2338,11 +2258,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def merge_variants(variant_set_id, merge_variants_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def merge_variants(variant_set_id, merge_variants_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'variantsets/{variantSetId}/mergeVariants'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::MergeVariantsRequestRepresentation
-          command.request_object = merge_variants_request
+          command.request_representation = Google::Apis::GenomicsV1beta2::MergeVariantsRequest::Representation
+          command.request_object = merge_variants_request_object
           command.params['variantSetId'] = variant_set_id unless variant_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2350,13 +2270,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a variant set's metadata. All other modifications are silently ignored.
         # This method supports patch semantics.
         # @param [String] variant_set_id
         #   The ID of the variant to be updated.
-        # @param [Google::Apis::GenomicsV1beta2::VariantSet] variant_set
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::VariantSet] variant_set_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2366,7 +2284,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2378,12 +2296,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_variantset(variant_set_id, variant_set = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_variantset(variant_set_id, variant_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'variantsets/{variantSetId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::VariantSetRepresentation
-          command.request_object = variant_set
-          command.response_representation = Google::Apis::GenomicsV1beta2::VariantSetRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::VariantSet::Representation
+          command.request_object = variant_set_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::VariantSet::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::VariantSet
           command.params['variantSetId'] = variant_set_id unless variant_set_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2392,11 +2310,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Returns a list of all variant sets matching search criteria.
         # Implements GlobalAllianceApi.searchVariantSets.
-        # @param [Google::Apis::GenomicsV1beta2::SearchVariantSetsRequest] search_variant_sets_request
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::SearchVariantSetsRequest] search_variant_sets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2406,7 +2322,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2418,12 +2334,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_variant_sets(search_variant_sets_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def search_variant_sets(search_variant_sets_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'variantsets/search'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::SearchVariantSetsRequestRepresentation
-          command.request_object = search_variant_sets_request
-          command.response_representation = Google::Apis::GenomicsV1beta2::SearchVariantSetsResponseRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::SearchVariantSetsRequest::Representation
+          command.request_object = search_variant_sets_request_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::SearchVariantSetsResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::SearchVariantSetsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2431,12 +2347,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a variant set's metadata. All other modifications are silently ignored.
         # @param [String] variant_set_id
         #   The ID of the variant to be updated.
-        # @param [Google::Apis::GenomicsV1beta2::VariantSet] variant_set
-        #   
+        # @param [Google::Apis::GenomicsV1beta2::VariantSet] variant_set_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2446,7 +2360,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2458,12 +2372,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_variantset(variant_set_id, variant_set = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_variantset(variant_set_id, variant_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'variantsets/{variantSetId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::VariantSetRepresentation
-          command.request_object = variant_set
-          command.response_representation = Google::Apis::GenomicsV1beta2::VariantSetRepresentation
+          command.request_representation = Google::Apis::GenomicsV1beta2::VariantSet::Representation
+          command.request_object = variant_set_object
+          command.response_representation = Google::Apis::GenomicsV1beta2::VariantSet::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::VariantSet
           command.params['variantSetId'] = variant_set_id unless variant_set_id.nil?
           command.query['fields'] = fields unless fields.nil?

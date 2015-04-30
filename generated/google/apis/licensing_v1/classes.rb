@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module LicensingV1
-
+      
       # Template for LiscenseAssignment Resource
       class LicenseAssignment
         include Google::Apis::Core::Hashable
@@ -57,6 +57,11 @@ module Google
         attr_accessor :user_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etags = args[:etags] unless args[:etags].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @product_id = args[:product_id] unless args[:product_id].nil?
@@ -65,7 +70,7 @@ module Google
           @user_id = args[:user_id] unless args[:user_id].nil?
         end
       end
-
+      
       # Template for LicenseAssignment Insert request
       class LicenseAssignmentInsert
         include Google::Apis::Core::Hashable
@@ -76,10 +81,15 @@ module Google
         attr_accessor :user_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @user_id = args[:user_id] unless args[:user_id].nil?
         end
       end
-
+      
       # LicesnseAssignment List for a given product/sku for a customer.
       class LicenseAssignmentList
         include Google::Apis::Core::Hashable
@@ -106,6 +116,11 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?

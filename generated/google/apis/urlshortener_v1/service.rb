@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/url-shortener/v1/getting_started
       class UrlshortenerService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'urlshortener/v1/')
         end
-
+        
         # Expands a short URL or gets creation time and analytics.
         # @param [String] projection
         #   Additional information to return.
@@ -67,7 +66,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -82,7 +81,7 @@ module Google
         def get_url(projection: nil, short_url: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'url'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::UrlshortenerV1::UrlRepresentation
+          command.response_representation = Google::Apis::UrlshortenerV1::Url::Representation
           command.response_class = Google::Apis::UrlshortenerV1::Url
           command.query['projection'] = projection unless projection.nil?
           command.query['shortUrl'] = short_url unless short_url.nil?
@@ -92,10 +91,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates a new short URL.
-        # @param [Google::Apis::UrlshortenerV1::Url] url
-        #   
+        # @param [Google::Apis::UrlshortenerV1::Url] url_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -105,7 +102,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -117,19 +114,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_url(url = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_url(url_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'url'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::UrlshortenerV1::UrlRepresentation
-          command.request_object = url
-          command.response_representation = Google::Apis::UrlshortenerV1::UrlRepresentation
+          command.request_representation = Google::Apis::UrlshortenerV1::Url::Representation
+          command.request_object = url_object
+          command.response_representation = Google::Apis::UrlshortenerV1::Url::Representation
           command.response_class = Google::Apis::UrlshortenerV1::Url
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves a list of URLs shortened by a user.
         # @param [String] projection
@@ -145,7 +141,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -160,7 +156,7 @@ module Google
         def list_urls(projection: nil, start_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'url/history'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::UrlshortenerV1::HistoryRepresentation
+          command.response_representation = Google::Apis::UrlshortenerV1::History::Representation
           command.response_class = Google::Apis::UrlshortenerV1::History
           command.query['projection'] = projection unless projection.nil?
           command.query['start-token'] = start_token unless start_token.nil?

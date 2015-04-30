@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AppstateV1
-
+      
       # This is a JSON template for an app state resource.
       class GetResponse
         include Google::Apis::Core::Hashable
@@ -48,13 +48,18 @@ module Google
         attr_accessor :state_key
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @current_state_version = args[:current_state_version] unless args[:current_state_version].nil?
           @data = args[:data] unless args[:data].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @state_key = args[:state_key] unless args[:state_key].nil?
         end
       end
-
+      
       # This is a JSON template to convert a list-response for app state.
       class ListResponse
         include Google::Apis::Core::Hashable
@@ -76,12 +81,17 @@ module Google
         attr_accessor :maximum_key_count
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @maximum_key_count = args[:maximum_key_count] unless args[:maximum_key_count].nil?
         end
       end
-
+      
       # This is a JSON template for a requests which update app state
       class UpdateRequest
         include Google::Apis::Core::Hashable
@@ -98,11 +108,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @data = args[:data] unless args[:data].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # This is a JSON template for an app state write result.
       class WriteResult
         include Google::Apis::Core::Hashable
@@ -124,6 +139,11 @@ module Google
         attr_accessor :state_key
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @current_state_version = args[:current_state_version] unless args[:current_state_version].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @state_key = args[:state_key] unless args[:state_key].nil?

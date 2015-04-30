@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module SqladminV1beta4
-
+      
       # An entry for an Access Control list.
       class AclEntry
         include Google::Apis::Core::Hashable
@@ -48,13 +48,18 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @expiration_time = args[:expiration_time] unless args[:expiration_time].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # Database instance backup configuration.
       class BackupConfiguration
         include Google::Apis::Core::Hashable
@@ -84,13 +89,18 @@ module Google
         attr_accessor :start_time
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @binary_log_enabled = args[:binary_log_enabled] unless args[:binary_log_enabled].nil?
           @enabled = args[:enabled] unless args[:enabled].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @start_time = args[:start_time] unless args[:start_time].nil?
         end
       end
-
+      
       # A database instance backup run resource.
       class BackupRun
         include Google::Apis::Core::Hashable
@@ -107,8 +117,7 @@ module Google
         # @return [DateTime]
         attr_accessor :enqueued_time
       
-        # Information about why the backup operation failed. This is only present if the
-        # run has the FAILED status.
+        # Database instance operation error.
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::SqladminV1beta4::OperationError]
         attr_accessor :error
@@ -152,6 +161,11 @@ module Google
         attr_accessor :window_start_time
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end_time = args[:end_time] unless args[:end_time].nil?
           @enqueued_time = args[:enqueued_time] unless args[:enqueued_time].nil?
           @error = args[:error] unless args[:error].nil?
@@ -164,9 +178,9 @@ module Google
           @window_start_time = args[:window_start_time] unless args[:window_start_time].nil?
         end
       end
-
+      
       # Backup run list results.
-      class BackupRunsListResponse
+      class ListResponse
         include Google::Apis::Core::Hashable
       
         # A list of backup runs in reverse chronological order of the enqueued time.
@@ -186,12 +200,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Binary log coordinates.
       class BinLogCoordinates
         include Google::Apis::Core::Hashable
@@ -212,19 +231,22 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bin_log_file_name = args[:bin_log_file_name] unless args[:bin_log_file_name].nil?
           @bin_log_position = args[:bin_log_position] unless args[:bin_log_position].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Database instance clone context.
       class CloneContext
         include Google::Apis::Core::Hashable
       
-        # Binary log coordinates, if specified, indentify the the position up to which
-        # the source instance should be cloned. If not specified, the source instance is
-        # cloned up to the most recent binary log coordintes.
+        # Binary log coordinates.
         # Corresponds to the JSON property `binLogCoordinates`
         # @return [Google::Apis::SqladminV1beta4::BinLogCoordinates]
         attr_accessor :bin_log_coordinates
@@ -240,12 +262,17 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bin_log_coordinates = args[:bin_log_coordinates] unless args[:bin_log_coordinates].nil?
           @destination_instance_name = args[:destination_instance_name] unless args[:destination_instance_name].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A database resource inside a Cloud SQL instance.
       class Database
         include Google::Apis::Core::Hashable
@@ -293,6 +320,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @charset = args[:charset] unless args[:charset].nil?
           @collation = args[:collation] unless args[:collation].nil?
           @etag = args[:etag] unless args[:etag].nil?
@@ -303,7 +335,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # MySQL flags for Cloud SQL instances.
       class DatabaseFlags
         include Google::Apis::Core::Hashable
@@ -324,11 +356,16 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # A Cloud SQL instance resource.
       class DatabaseInstance
         include Google::Apis::Core::Hashable
@@ -387,7 +424,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Configuration specific to on-premises instances.
+        # On-premises instance configuration.
         # Corresponds to the JSON property `onPremisesConfiguration`
         # @return [Google::Apis::SqladminV1beta4::OnPremisesConfiguration]
         attr_accessor :on_premises_configuration
@@ -404,7 +441,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Configuration specific to read-replicas replicating from on-premises masters.
+        # Read-replica configuration for connecting to the master.
         # Corresponds to the JSON property `replicaConfiguration`
         # @return [Google::Apis::SqladminV1beta4::ReplicaConfiguration]
         attr_accessor :replica_configuration
@@ -419,7 +456,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # SSL configuration.
+        # SslCerts Resource
         # Corresponds to the JSON property `serverCaCert`
         # @return [Google::Apis::SqladminV1beta4::SslCert]
         attr_accessor :server_ca_cert
@@ -429,7 +466,7 @@ module Google
         # @return [String]
         attr_accessor :service_account_email_address
       
-        # The user settings.
+        # Database instance settings.
         # Corresponds to the JSON property `settings`
         # @return [Google::Apis::SqladminV1beta4::Settings]
         attr_accessor :settings
@@ -447,6 +484,11 @@ module Google
         attr_accessor :state
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @current_disk_size = args[:current_disk_size] unless args[:current_disk_size].nil?
           @database_version = args[:database_version] unless args[:database_version].nil?
           @etag = args[:etag] unless args[:etag].nil?
@@ -469,7 +511,7 @@ module Google
           @state = args[:state] unless args[:state].nil?
         end
       end
-
+      
       # Database list response.
       class DatabasesListResponse
         include Google::Apis::Core::Hashable
@@ -485,11 +527,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Database instance export context.
       class ExportContext
         include Google::Apis::Core::Hashable
@@ -534,6 +581,11 @@ module Google
         attr_accessor :uri
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @csv_export_options = args[:csv_export_options] unless args[:csv_export_options].nil?
           @databases = args[:databases] unless args[:databases].nil?
           @file_type = args[:file_type] unless args[:file_type].nil?
@@ -541,6 +593,7 @@ module Google
           @sql_export_options = args[:sql_export_options] unless args[:sql_export_options].nil?
           @uri = args[:uri] unless args[:uri].nil?
         end
+        
         # Options for exporting data as CSV.
         class CsvExportOptions
           include Google::Apis::Core::Hashable
@@ -551,9 +604,15 @@ module Google
           attr_accessor :select_query
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @select_query = args[:select_query] unless args[:select_query].nil?
           end
         end
+        
         # Options for exporting data as SQL statements.
         class SqlExportOptions
           include Google::Apis::Core::Hashable
@@ -565,11 +624,16 @@ module Google
           attr_accessor :tables
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @tables = args[:tables] unless args[:tables].nil?
           end
         end
       end
-
+      
       # A Google Cloud SQL service flag resource.
       class Flag
         include Google::Apis::Core::Hashable
@@ -614,6 +678,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @allowed_string_values = args[:allowed_string_values] unless args[:allowed_string_values].nil?
           @applies_to = args[:applies_to] unless args[:applies_to].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -623,7 +692,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Flags list response.
       class FlagsListResponse
         include Google::Apis::Core::Hashable
@@ -639,11 +708,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Database instance import context.
       class ImportContext
         include Google::Apis::Core::Hashable
@@ -680,12 +754,18 @@ module Google
         attr_accessor :uri
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @csv_import_options = args[:csv_import_options] unless args[:csv_import_options].nil?
           @database = args[:database] unless args[:database].nil?
           @file_type = args[:file_type] unless args[:file_type].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @uri = args[:uri] unless args[:uri].nil?
         end
+        
         # Options for importing data as CSV.
         class CsvImportOptions
           include Google::Apis::Core::Hashable
@@ -702,54 +782,74 @@ module Google
           attr_accessor :table
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @columns = args[:columns] unless args[:columns].nil?
             @table = args[:table] unless args[:table].nil?
           end
         end
       end
-
+      
       # Database instance clone request.
-      class InstancesCloneRequest
+      class CloneRequest
         include Google::Apis::Core::Hashable
       
-        # Contains details about the clone operation.
+        # Database instance clone context.
         # Corresponds to the JSON property `cloneContext`
         # @return [Google::Apis::SqladminV1beta4::CloneContext]
         attr_accessor :clone_context
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @clone_context = args[:clone_context] unless args[:clone_context].nil?
         end
       end
-
+      
       # Database instance export request.
-      class InstancesExportRequest
+      class ExportRequest
         include Google::Apis::Core::Hashable
       
-        # Contains details about the export operation.
+        # Database instance export context.
         # Corresponds to the JSON property `exportContext`
         # @return [Google::Apis::SqladminV1beta4::ExportContext]
         attr_accessor :export_context
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @export_context = args[:export_context] unless args[:export_context].nil?
         end
       end
-
+      
       # Database instance import request.
-      class InstancesImportRequest
+      class ImportRequest
         include Google::Apis::Core::Hashable
       
-        # Contains details about the import operation.
+        # Database instance import context.
         # Corresponds to the JSON property `importContext`
         # @return [Google::Apis::SqladminV1beta4::ImportContext]
         attr_accessor :import_context
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @import_context = args[:import_context] unless args[:import_context].nil?
         end
       end
-
+      
       # Database instances list response.
       class InstancesListResponse
         include Google::Apis::Core::Hashable
@@ -771,26 +871,36 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Database instance restore backup request.
-      class InstancesRestoreBackupRequest
+      class RestoreBackupRequest
         include Google::Apis::Core::Hashable
       
-        # Parameters required to perform the restore backup operation.
+        # Database instance restore from backup context.
         # Corresponds to the JSON property `restoreBackupContext`
         # @return [Google::Apis::SqladminV1beta4::RestoreBackupContext]
         attr_accessor :restore_backup_context
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @restore_backup_context = args[:restore_backup_context] unless args[:restore_backup_context].nil?
         end
       end
-
+      
       # IP Management configuration.
       class IpConfiguration
         include Google::Apis::Core::Hashable
@@ -816,12 +926,17 @@ module Google
         alias_method :require_ssl?, :require_ssl
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @authorized_networks = args[:authorized_networks] unless args[:authorized_networks].nil?
           @ipv4_enabled = args[:ipv4_enabled] unless args[:ipv4_enabled].nil?
           @require_ssl = args[:require_ssl] unless args[:require_ssl].nil?
         end
       end
-
+      
       # Database instance IP Mapping.
       class IpMapping
         include Google::Apis::Core::Hashable
@@ -839,11 +954,16 @@ module Google
         attr_accessor :time_to_retire
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ip_address = args[:ip_address] unless args[:ip_address].nil?
           @time_to_retire = args[:time_to_retire] unless args[:time_to_retire].nil?
         end
       end
-
+      
       # Preferred location. This specifies where a Cloud SQL instance should
       # preferably be located, either in a specific Compute Engine zone, or co-located
       # with an App Engine application. Note that if the preferred location is not
@@ -869,12 +989,17 @@ module Google
         attr_accessor :zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @follow_gae_application = args[:follow_gae_application] unless args[:follow_gae_application].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @zone = args[:zone] unless args[:zone].nil?
         end
       end
-
+      
       # Read-replica configuration specific to MySQL databases.
       class MySqlReplicaConfiguration
         include Google::Apis::Core::Hashable
@@ -942,6 +1067,11 @@ module Google
         alias_method :verify_server_certificate?, :verify_server_certificate
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ca_certificate = args[:ca_certificate] unless args[:ca_certificate].nil?
           @client_certificate = args[:client_certificate] unless args[:client_certificate].nil?
           @client_key = args[:client_key] unless args[:client_key].nil?
@@ -955,7 +1085,7 @@ module Google
           @verify_server_certificate = args[:verify_server_certificate] unless args[:verify_server_certificate].nil?
         end
       end
-
+      
       # On-premises instance configuration.
       class OnPremisesConfiguration
         include Google::Apis::Core::Hashable
@@ -971,11 +1101,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @host_port = args[:host_port] unless args[:host_port].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # An Operations resource contains information about database instance operations
       # such as create, delete, and restart. Operations resources are created in
       # response to operations that were initiated; you never create them directly.
@@ -988,17 +1123,17 @@ module Google
         # @return [DateTime]
         attr_accessor :end_time
       
-        # 
+        # Database instance operation errors list wrapper.
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::SqladminV1beta4::OperationErrors]
         attr_accessor :error
       
-        # The context for export operation, if applicable.
+        # Database instance export context.
         # Corresponds to the JSON property `exportContext`
         # @return [Google::Apis::SqladminV1beta4::ExportContext]
         attr_accessor :export_context
       
-        # The context for import operation, if applicable.
+        # Database instance import context.
         # Corresponds to the JSON property `importContext`
         # @return [Google::Apis::SqladminV1beta4::ImportContext]
         attr_accessor :import_context
@@ -1065,6 +1200,11 @@ module Google
         attr_accessor :user
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end_time = args[:end_time] unless args[:end_time].nil?
           @error = args[:error] unless args[:error].nil?
           @export_context = args[:export_context] unless args[:export_context].nil?
@@ -1082,7 +1222,7 @@ module Google
           @user = args[:user] unless args[:user].nil?
         end
       end
-
+      
       # Database instance operation error.
       class OperationError
         include Google::Apis::Core::Hashable
@@ -1103,12 +1243,17 @@ module Google
         attr_accessor :message
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @code = args[:code] unless args[:code].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @message = args[:message] unless args[:message].nil?
         end
       end
-
+      
       # Database instance operation errors list wrapper.
       class OperationErrors
         include Google::Apis::Core::Hashable
@@ -1124,11 +1269,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @errors = args[:errors] unless args[:errors].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Database instance list operations response.
       class OperationsListResponse
         include Google::Apis::Core::Hashable
@@ -1150,12 +1300,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Read-replica configuration for connecting to the master.
       class ReplicaConfiguration
         include Google::Apis::Core::Hashable
@@ -1165,21 +1320,22 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # MySQL specific configuration when replicating from a MySQL on-premises master.
-        # Replication configuration information such as the username, password,
-        # certificates, and keys are not stored in the instance metadata. The
-        # configuration information is used only to set up the replication connection
-        # and is stored by MySQL in a file named master.info in the data directory.
+        # Read-replica configuration specific to MySQL databases.
         # Corresponds to the JSON property `mysqlReplicaConfiguration`
         # @return [Google::Apis::SqladminV1beta4::MySqlReplicaConfiguration]
         attr_accessor :mysql_replica_configuration
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @mysql_replica_configuration = args[:mysql_replica_configuration] unless args[:mysql_replica_configuration].nil?
         end
       end
-
+      
       # Database instance restore from backup context.
       class RestoreBackupContext
         include Google::Apis::Core::Hashable
@@ -1195,11 +1351,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @backup_run_id = args[:backup_run_id] unless args[:backup_run_id].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Database instance settings.
       class Settings
         include Google::Apis::Core::Hashable
@@ -1219,7 +1380,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :authorized_gae_applications
       
-        # The daily backup configuration for the instance.
+        # Database instance backup configuration.
         # Corresponds to the JSON property `backupConfiguration`
         # @return [Google::Apis::SqladminV1beta4::BackupConfiguration]
         attr_accessor :backup_configuration
@@ -1243,8 +1404,7 @@ module Google
         attr_accessor :database_replication_enabled
         alias_method :database_replication_enabled?, :database_replication_enabled
       
-        # The settings for IP Management. This allows to enable or disable the instance
-        # IP and manage which external networks can connect to the instance.
+        # IP Management configuration.
         # Corresponds to the JSON property `ipConfiguration`
         # @return [Google::Apis::SqladminV1beta4::IpConfiguration]
         attr_accessor :ip_configuration
@@ -1254,9 +1414,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The location preference settings. This allows the instance to be located as
-        # near as possible to either an App Engine app or GCE zone for better
-        # performance.
+        # Preferred location. This specifies where a Cloud SQL instance should
+        # preferably be located, either in a specific Compute Engine zone, or co-located
+        # with an App Engine application. Note that if the preferred location is not
+        # available, the instance will be located as close as possible within the region.
+        # Only one location may be specified.
         # Corresponds to the JSON property `locationPreference`
         # @return [Google::Apis::SqladminV1beta4::LocationPreference]
         attr_accessor :location_preference
@@ -1287,6 +1449,11 @@ module Google
         attr_accessor :tier
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @activation_policy = args[:activation_policy] unless args[:activation_policy].nil?
           @authorized_gae_applications = args[:authorized_gae_applications] unless args[:authorized_gae_applications].nil?
           @backup_configuration = args[:backup_configuration] unless args[:backup_configuration].nil?
@@ -1302,7 +1469,7 @@ module Google
           @tier = args[:tier] unless args[:tier].nil?
         end
       end
-
+      
       # SslCerts Resource
       class SslCert
         include Google::Apis::Core::Hashable
@@ -1355,6 +1522,11 @@ module Google
         attr_accessor :sha1_fingerprint
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cert = args[:cert] unless args[:cert].nil?
           @cert_serial_number = args[:cert_serial_number] unless args[:cert_serial_number].nil?
           @common_name = args[:common_name] unless args[:common_name].nil?
@@ -1366,12 +1538,12 @@ module Google
           @sha1_fingerprint = args[:sha1_fingerprint] unless args[:sha1_fingerprint].nil?
         end
       end
-
+      
       # SslCertDetail.
       class SslCertDetail
         include Google::Apis::Core::Hashable
       
-        # The public information about the cert.
+        # SslCerts Resource
         # Corresponds to the JSON property `certInfo`
         # @return [Google::Apis::SqladminV1beta4::SslCert]
         attr_accessor :cert_info
@@ -1383,13 +1555,18 @@ module Google
         attr_accessor :cert_private_key
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cert_info = args[:cert_info] unless args[:cert_info].nil?
           @cert_private_key = args[:cert_private_key] unless args[:cert_private_key].nil?
         end
       end
-
+      
       # SslCerts insert request.
-      class SslCertsInsertRequest
+      class InsertRequest
         include Google::Apis::Core::Hashable
       
         # User supplied name. Must be a distinct name from the other certificates for
@@ -1400,16 +1577,20 @@ module Google
         attr_accessor :common_name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @common_name = args[:common_name] unless args[:common_name].nil?
         end
       end
-
+      
       # SslCert insert response.
-      class SslCertsInsertResponse
+      class InsertResponse
         include Google::Apis::Core::Hashable
       
-        # The new client certificate and private key. The new certificate will not work
-        # until the instance is restarted.
+        # SslCertDetail.
         # Corresponds to the JSON property `clientCert`
         # @return [Google::Apis::SqladminV1beta4::SslCertDetail]
         attr_accessor :client_cert
@@ -1419,20 +1600,23 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The server Certificate Authority's certificate. If this is missing you can
-        # force a new one to be generated by calling resetSslConfig method on instances
-        # resource.
+        # SslCerts Resource
         # Corresponds to the JSON property `serverCaCert`
         # @return [Google::Apis::SqladminV1beta4::SslCert]
         attr_accessor :server_ca_cert
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @client_cert = args[:client_cert] unless args[:client_cert].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @server_ca_cert = args[:server_ca_cert] unless args[:server_ca_cert].nil?
         end
       end
-
+      
       # SslCerts list response.
       class SslCertsListResponse
         include Google::Apis::Core::Hashable
@@ -1448,11 +1632,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A Google Cloud SQL service tier resource.
       class Tier
         include Google::Apis::Core::Hashable
@@ -1485,6 +1674,11 @@ module Google
         attr_accessor :tier
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @disk_quota = args[:disk_quota] unless args[:disk_quota].nil?
           @ram = args[:ram] unless args[:ram].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1492,7 +1686,7 @@ module Google
           @tier = args[:tier] unless args[:tier].nil?
         end
       end
-
+      
       # Tiers list response.
       class TiersListResponse
         include Google::Apis::Core::Hashable
@@ -1508,11 +1702,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A Cloud SQL user resource.
       class User
         include Google::Apis::Core::Hashable
@@ -1559,6 +1758,11 @@ module Google
         attr_accessor :project
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @host = args[:host] unless args[:host].nil?
           @instance = args[:instance] unless args[:instance].nil?
@@ -1568,7 +1772,7 @@ module Google
           @project = args[:project] unless args[:project].nil?
         end
       end
-
+      
       # User list response.
       class UsersListResponse
         include Google::Apis::Core::Hashable
@@ -1591,6 +1795,11 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?

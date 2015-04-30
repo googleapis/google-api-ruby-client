@@ -22,371 +22,405 @@ module Google
   module Apis
     module StorageV1
       
-      class BucketRepresentation < Google::Apis::Core::JsonRepresentation
+      class Bucket
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class CorRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Cor
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
         
-        class LifecycleRepresentation < Google::Apis::Core::JsonRepresentation
+        class Lifecycle
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class RuleRepresentation < Google::Apis::Core::JsonRepresentation
+          class Rule
+            class Representation < Google::Apis::Core::JsonRepresentation; end
             
-            class ActionRepresentation < Google::Apis::Core::JsonRepresentation
-              
+            class Action
+              class Representation < Google::Apis::Core::JsonRepresentation; end
             end
             
-            class ConditionRepresentation < Google::Apis::Core::JsonRepresentation
-              
-            end
-          end
-        end
-        
-        class LoggingRepresentation < Google::Apis::Core::JsonRepresentation
-          
-        end
-        
-        class OwnerRepresentation < Google::Apis::Core::JsonRepresentation
-          
-        end
-        
-        class VersioningRepresentation < Google::Apis::Core::JsonRepresentation
-          
-        end
-        
-        class WebsiteRepresentation < Google::Apis::Core::JsonRepresentation
-          
-        end
-      end
-      
-      class BucketAccessControlRepresentation < Google::Apis::Core::JsonRepresentation
-        
-        class ProjectTeamRepresentation < Google::Apis::Core::JsonRepresentation
-          
-        end
-      end
-      
-      class BucketAccessControlsRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class BucketsRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class ChannelRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class ComposeRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
-        class SourceObjectRepresentation < Google::Apis::Core::JsonRepresentation
-          
-          class ObjectPreconditionsRepresentation < Google::Apis::Core::JsonRepresentation
-            
-          end
-        end
-      end
-      
-      class ObjectRepresentation < Google::Apis::Core::JsonRepresentation
-        
-        class OwnerRepresentation < Google::Apis::Core::JsonRepresentation
-          
-        end
-      end
-      
-      class ObjectAccessControlRepresentation < Google::Apis::Core::JsonRepresentation
-        
-        class ProjectTeamRepresentation < Google::Apis::Core::JsonRepresentation
-          
-        end
-      end
-      
-      class ObjectAccessControlsRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class ObjectsRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class RewriteResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-
-      # @private
-      class BucketRepresentation < Google::Apis::Core::JsonRepresentation
-        class CorRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class LifecycleRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class LoggingRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class OwnerRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class VersioningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class WebsiteRepresentation < Google::Apis::Core::JsonRepresentation; end
-        collection :acl, as: 'acl', class: Google::Apis::StorageV1::BucketAccessControl, decorator: Google::Apis::StorageV1::BucketAccessControlRepresentation
-        
-        
-        collection :cors, as: 'cors', class: Google::Apis::StorageV1::Bucket::Cor, decorator: Google::Apis::StorageV1::BucketRepresentation::CorRepresentation
-        
-        
-        collection :default_object_acl, as: 'defaultObjectAcl', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControlRepresentation
-        
-        
-        property :etag, as: 'etag'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :lifecycle, as: 'lifecycle', class: Google::Apis::StorageV1::Bucket::Lifecycle, decorator: Google::Apis::StorageV1::BucketRepresentation::LifecycleRepresentation
-        
-        property :location, as: 'location'
-        property :logging, as: 'logging', class: Google::Apis::StorageV1::Bucket::Logging, decorator: Google::Apis::StorageV1::BucketRepresentation::LoggingRepresentation
-        
-        property :metageneration, as: 'metageneration'
-        property :name, as: 'name'
-        property :owner, as: 'owner', class: Google::Apis::StorageV1::Bucket::Owner, decorator: Google::Apis::StorageV1::BucketRepresentation::OwnerRepresentation
-        
-        property :project_number, as: 'projectNumber'
-        property :self_link, as: 'selfLink'
-        property :storage_class, as: 'storageClass'
-        property :time_created, as: 'timeCreated', type: DateTime
-        property :versioning, as: 'versioning', class: Google::Apis::StorageV1::Bucket::Versioning, decorator: Google::Apis::StorageV1::BucketRepresentation::VersioningRepresentation
-        
-        property :website, as: 'website', class: Google::Apis::StorageV1::Bucket::Website, decorator: Google::Apis::StorageV1::BucketRepresentation::WebsiteRepresentation
-        
-        
-        # @private
-        class CorRepresentation < Google::Apis::Core::JsonRepresentation
-          property :max_age_seconds, as: 'maxAgeSeconds'
-          collection :method_prop, as: 'method'
-          
-          collection :origin, as: 'origin'
-          
-          collection :response_header, as: 'responseHeader'
-        end
-        
-        # @private
-        class LifecycleRepresentation < Google::Apis::Core::JsonRepresentation
-          class RuleRepresentation < Google::Apis::Core::JsonRepresentation; end
-          collection :rule, as: 'rule', class: Google::Apis::StorageV1::Bucket::Lifecycle::Rule, decorator: Google::Apis::StorageV1::BucketRepresentation::LifecycleRepresentation::RuleRepresentation
-          
-          
-          
-          # @private
-          class RuleRepresentation < Google::Apis::Core::JsonRepresentation
-            class ActionRepresentation < Google::Apis::Core::JsonRepresentation; end
-            class ConditionRepresentation < Google::Apis::Core::JsonRepresentation; end
-            property :action, as: 'action', class: Google::Apis::StorageV1::Bucket::Lifecycle::Rule::Action, decorator: Google::Apis::StorageV1::BucketRepresentation::LifecycleRepresentation::RuleRepresentation::ActionRepresentation
-            
-            property :condition, as: 'condition', class: Google::Apis::StorageV1::Bucket::Lifecycle::Rule::Condition, decorator: Google::Apis::StorageV1::BucketRepresentation::LifecycleRepresentation::RuleRepresentation::ConditionRepresentation
-            
-            
-            # @private
-            class ActionRepresentation < Google::Apis::Core::JsonRepresentation
-              property :type, as: 'type'
-            end
-            
-            # @private
-            class ConditionRepresentation < Google::Apis::Core::JsonRepresentation
-              property :age, as: 'age'
-              property :created_before, as: 'createdBefore', type: Date
-              property :is_live, as: 'isLive'
-              property :num_newer_versions, as: 'numNewerVersions'
+            class Condition
+              class Representation < Google::Apis::Core::JsonRepresentation; end
             end
           end
         end
         
-        # @private
-        class LoggingRepresentation < Google::Apis::Core::JsonRepresentation
-          property :log_bucket, as: 'logBucket'
-          property :log_object_prefix, as: 'logObjectPrefix'
+        class Logging
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
         
-        # @private
-        class OwnerRepresentation < Google::Apis::Core::JsonRepresentation
-          property :entity, as: 'entity'
-          property :entity_id, as: 'entityId'
+        class Owner
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
         
-        # @private
-        class VersioningRepresentation < Google::Apis::Core::JsonRepresentation
-          property :enabled, as: 'enabled'
+        class Versioning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
         
-        # @private
-        class WebsiteRepresentation < Google::Apis::Core::JsonRepresentation
-          property :main_page_suffix, as: 'mainPageSuffix'
-          property :not_found_page, as: 'notFoundPage'
+        class Website
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
-
-      # @private
-      class BucketAccessControlRepresentation < Google::Apis::Core::JsonRepresentation
-        class ProjectTeamRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :bucket, as: 'bucket'
-        property :domain, as: 'domain'
-        property :email, as: 'email'
-        property :entity, as: 'entity'
-        property :entity_id, as: 'entityId'
-        property :etag, as: 'etag'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :project_team, as: 'projectTeam', class: Google::Apis::StorageV1::BucketAccessControl::ProjectTeam, decorator: Google::Apis::StorageV1::BucketAccessControlRepresentation::ProjectTeamRepresentation
+      
+      class BucketAccessControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        property :role, as: 'role'
-        property :self_link, as: 'selfLink'
-        
-        # @private
-        class ProjectTeamRepresentation < Google::Apis::Core::JsonRepresentation
-          property :project_number, as: 'projectNumber'
-          property :team, as: 'team'
+        class ProjectTeam
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
-
-      # @private
-      class BucketAccessControlsRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::StorageV1::BucketAccessControl, decorator: Google::Apis::StorageV1::BucketAccessControlRepresentation
-        
-        
-        property :kind, as: 'kind'
+      
+      class BucketAccessControls
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
-      # @private
-      class BucketsRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::StorageV1::Bucket, decorator: Google::Apis::StorageV1::BucketRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      
+      class Buckets
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
-      # @private
-      class ChannelRepresentation < Google::Apis::Core::JsonRepresentation
-        property :address, as: 'address'
-        property :expiration, as: 'expiration'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        hash :params, as: 'params'
-        
-        property :payload, as: 'payload'
-        property :resource_id, as: 'resourceId'
-        property :resource_uri, as: 'resourceUri'
-        property :token, as: 'token'
-        property :type, as: 'type'
+      
+      class Channel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
+      class ComposeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class SourceObject
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class ObjectPreconditions
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          end
+        end
+      end
+      
+      class Object
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Owner
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        end
+      end
+      
+      class ObjectAccessControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class ProjectTeam
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        end
+      end
+      
+      class ObjectAccessControls
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Objects
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class RewriteResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       # @private
-      class ComposeRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        class SourceObjectRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :destination, as: 'destination', class: Google::Apis::StorageV1::Object, decorator: Google::Apis::StorageV1::ObjectRepresentation
-        
-        property :kind, as: 'kind'
-        collection :source_objects, as: 'sourceObjects', class: Google::Apis::StorageV1::ComposeRequest::SourceObject, decorator: Google::Apis::StorageV1::ComposeRequestRepresentation::SourceObjectRepresentation
-        
-        
-        
-        # @private
-        class SourceObjectRepresentation < Google::Apis::Core::JsonRepresentation
-          class ObjectPreconditionsRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :generation, as: 'generation'
+      class Bucket
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :acl, as: 'acl', class: Google::Apis::StorageV1::BucketAccessControl, decorator: Google::Apis::StorageV1::BucketAccessControl::Representation
+      
+          collection :cors, as: 'cors', class: Google::Apis::StorageV1::Bucket::Cor, decorator: Google::Apis::StorageV1::Bucket::Cor::Representation
+      
+          collection :default_object_acl, as: 'defaultObjectAcl', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControl::Representation
+      
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :lifecycle, as: 'lifecycle', class: Google::Apis::StorageV1::Bucket::Lifecycle, decorator: Google::Apis::StorageV1::Bucket::Lifecycle::Representation
+      
+          property :location, as: 'location'
+          property :logging, as: 'logging', class: Google::Apis::StorageV1::Bucket::Logging, decorator: Google::Apis::StorageV1::Bucket::Logging::Representation
+      
+          property :metageneration, as: 'metageneration'
           property :name, as: 'name'
-          property :object_preconditions, as: 'objectPreconditions', class: Google::Apis::StorageV1::ComposeRequest::SourceObject::ObjectPreconditions, decorator: Google::Apis::StorageV1::ComposeRequestRepresentation::SourceObjectRepresentation::ObjectPreconditionsRepresentation
-          
+          property :owner, as: 'owner', class: Google::Apis::StorageV1::Bucket::Owner, decorator: Google::Apis::StorageV1::Bucket::Owner::Representation
+      
+          property :project_number, as: 'projectNumber'
+          property :self_link, as: 'selfLink'
+          property :storage_class, as: 'storageClass'
+          property :time_created, as: 'timeCreated', type: DateTime
+      
+          property :versioning, as: 'versioning', class: Google::Apis::StorageV1::Bucket::Versioning, decorator: Google::Apis::StorageV1::Bucket::Versioning::Representation
+      
+          property :website, as: 'website', class: Google::Apis::StorageV1::Bucket::Website, decorator: Google::Apis::StorageV1::Bucket::Website::Representation
+      
+        end
+        
+        # @private
+        class Cor
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :max_age_seconds, as: 'maxAgeSeconds'
+            collection :method_prop, as: 'method'
+            collection :origin, as: 'origin'
+            collection :response_header, as: 'responseHeader'
+          end
+        end
+        
+        # @private
+        class Lifecycle
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :rule, as: 'rule', class: Google::Apis::StorageV1::Bucket::Lifecycle::Rule, decorator: Google::Apis::StorageV1::Bucket::Lifecycle::Rule::Representation
+        
+          end
           
           # @private
-          class ObjectPreconditionsRepresentation < Google::Apis::Core::JsonRepresentation
-            property :if_generation_match, as: 'ifGenerationMatch'
+          class Rule
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :action, as: 'action', class: Google::Apis::StorageV1::Bucket::Lifecycle::Rule::Action, decorator: Google::Apis::StorageV1::Bucket::Lifecycle::Rule::Action::Representation
+          
+              property :condition, as: 'condition', class: Google::Apis::StorageV1::Bucket::Lifecycle::Rule::Condition, decorator: Google::Apis::StorageV1::Bucket::Lifecycle::Rule::Condition::Representation
+          
+            end
+            
+            # @private
+            class Action
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :type, as: 'type'
+              end
+            end
+            
+            # @private
+            class Condition
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :age, as: 'age'
+                property :created_before, as: 'createdBefore', type: Date
+            
+                property :is_live, as: 'isLive'
+                property :num_newer_versions, as: 'numNewerVersions'
+              end
+            end
+          end
+        end
+        
+        # @private
+        class Logging
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :log_bucket, as: 'logBucket'
+            property :log_object_prefix, as: 'logObjectPrefix'
+          end
+        end
+        
+        # @private
+        class Owner
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :entity, as: 'entity'
+            property :entity_id, as: 'entityId'
+          end
+        end
+        
+        # @private
+        class Versioning
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :enabled, as: 'enabled'
+          end
+        end
+        
+        # @private
+        class Website
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :main_page_suffix, as: 'mainPageSuffix'
+            property :not_found_page, as: 'notFoundPage'
           end
         end
       end
-
+      
       # @private
-      class ObjectRepresentation < Google::Apis::Core::JsonRepresentation
-        class OwnerRepresentation < Google::Apis::Core::JsonRepresentation; end
-        collection :acl, as: 'acl', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControlRepresentation
-        
-        
-        property :bucket, as: 'bucket'
-        property :cache_control, as: 'cacheControl'
-        property :component_count, as: 'componentCount'
-        property :content_disposition, as: 'contentDisposition'
-        property :content_encoding, as: 'contentEncoding'
-        property :content_language, as: 'contentLanguage'
-        property :content_type, as: 'contentType'
-        property :crc32c, as: 'crc32c'
-        property :etag, as: 'etag'
-        property :generation, as: 'generation'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :md5_hash, as: 'md5Hash'
-        property :media_link, as: 'mediaLink'
-        hash :metadata, as: 'metadata'
-        
-        property :metageneration, as: 'metageneration'
-        property :name, as: 'name'
-        property :owner, as: 'owner', class: Google::Apis::StorageV1::Object::Owner, decorator: Google::Apis::StorageV1::ObjectRepresentation::OwnerRepresentation
-        
-        property :self_link, as: 'selfLink'
-        property :size, as: 'size'
-        property :storage_class, as: 'storageClass'
-        property :time_deleted, as: 'timeDeleted', type: DateTime
-        property :updated, as: 'updated', type: DateTime
-        
-        # @private
-        class OwnerRepresentation < Google::Apis::Core::JsonRepresentation
+      class BucketAccessControl
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :domain, as: 'domain'
+          property :email, as: 'email'
           property :entity, as: 'entity'
           property :entity_id, as: 'entityId'
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :project_team, as: 'projectTeam', class: Google::Apis::StorageV1::BucketAccessControl::ProjectTeam, decorator: Google::Apis::StorageV1::BucketAccessControl::ProjectTeam::Representation
+      
+          property :role, as: 'role'
+          property :self_link, as: 'selfLink'
         end
-      end
-
-      # @private
-      class ObjectAccessControlRepresentation < Google::Apis::Core::JsonRepresentation
-        class ProjectTeamRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :bucket, as: 'bucket'
-        property :domain, as: 'domain'
-        property :email, as: 'email'
-        property :entity, as: 'entity'
-        property :entity_id, as: 'entityId'
-        property :etag, as: 'etag'
-        property :generation, as: 'generation'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :object, as: 'object'
-        property :project_team, as: 'projectTeam', class: Google::Apis::StorageV1::ObjectAccessControl::ProjectTeam, decorator: Google::Apis::StorageV1::ObjectAccessControlRepresentation::ProjectTeamRepresentation
-        
-        property :role, as: 'role'
-        property :self_link, as: 'selfLink'
         
         # @private
-        class ProjectTeamRepresentation < Google::Apis::Core::JsonRepresentation
-          property :project_number, as: 'projectNumber'
-          property :team, as: 'team'
+        class ProjectTeam
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :project_number, as: 'projectNumber'
+            property :team, as: 'team'
+          end
         end
       end
-
+      
       # @private
-      class ObjectAccessControlsRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items'
-        
-        property :kind, as: 'kind'
+      class BucketAccessControls
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::StorageV1::BucketAccessControl, decorator: Google::Apis::StorageV1::BucketAccessControl::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class ObjectsRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::StorageV1::Object, decorator: Google::Apis::StorageV1::ObjectRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        collection :prefixes, as: 'prefixes'
+      class Buckets
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::StorageV1::Bucket, decorator: Google::Apis::StorageV1::Bucket::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class RewriteResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :done, as: 'done'
-        property :kind, as: 'kind'
-        property :object_size, as: 'objectSize'
-        property :resource, as: 'resource', class: Google::Apis::StorageV1::Object, decorator: Google::Apis::StorageV1::ObjectRepresentation
+      class Channel
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :expiration, as: 'expiration'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          hash :params, as: 'params'
+          property :payload, as: 'payload'
+          property :resource_id, as: 'resourceId'
+          property :resource_uri, as: 'resourceUri'
+          property :token, as: 'token'
+          property :type, as: 'type'
+        end
+      end
+      
+      # @private
+      class ComposeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination, as: 'destination', class: Google::Apis::StorageV1::Object, decorator: Google::Apis::StorageV1::Object::Representation
+      
+          property :kind, as: 'kind'
+          collection :source_objects, as: 'sourceObjects', class: Google::Apis::StorageV1::ComposeRequest::SourceObject, decorator: Google::Apis::StorageV1::ComposeRequest::SourceObject::Representation
+      
+        end
         
-        property :rewrite_token, as: 'rewriteToken'
-        property :total_bytes_rewritten, as: 'totalBytesRewritten'
+        # @private
+        class SourceObject
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :generation, as: 'generation'
+            property :name, as: 'name'
+            property :object_preconditions, as: 'objectPreconditions', class: Google::Apis::StorageV1::ComposeRequest::SourceObject::ObjectPreconditions, decorator: Google::Apis::StorageV1::ComposeRequest::SourceObject::ObjectPreconditions::Representation
+        
+          end
+          
+          # @private
+          class ObjectPreconditions
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :if_generation_match, as: 'ifGenerationMatch'
+            end
+          end
+        end
+      end
+      
+      # @private
+      class Object
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :acl, as: 'acl', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControl::Representation
+      
+          property :bucket, as: 'bucket'
+          property :cache_control, as: 'cacheControl'
+          property :component_count, as: 'componentCount'
+          property :content_disposition, as: 'contentDisposition'
+          property :content_encoding, as: 'contentEncoding'
+          property :content_language, as: 'contentLanguage'
+          property :content_type, as: 'contentType'
+          property :crc32c, as: 'crc32c'
+          property :etag, as: 'etag'
+          property :generation, as: 'generation'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :md5_hash, as: 'md5Hash'
+          property :media_link, as: 'mediaLink'
+          hash :metadata, as: 'metadata'
+          property :metageneration, as: 'metageneration'
+          property :name, as: 'name'
+          property :owner, as: 'owner', class: Google::Apis::StorageV1::Object::Owner, decorator: Google::Apis::StorageV1::Object::Owner::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :size, as: 'size'
+          property :storage_class, as: 'storageClass'
+          property :time_deleted, as: 'timeDeleted', type: DateTime
+      
+          property :updated, as: 'updated', type: DateTime
+      
+        end
+        
+        # @private
+        class Owner
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :entity, as: 'entity'
+            property :entity_id, as: 'entityId'
+          end
+        end
+      end
+      
+      # @private
+      class ObjectAccessControl
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :domain, as: 'domain'
+          property :email, as: 'email'
+          property :entity, as: 'entity'
+          property :entity_id, as: 'entityId'
+          property :etag, as: 'etag'
+          property :generation, as: 'generation'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :object, as: 'object'
+          property :project_team, as: 'projectTeam', class: Google::Apis::StorageV1::ObjectAccessControl::ProjectTeam, decorator: Google::Apis::StorageV1::ObjectAccessControl::ProjectTeam::Representation
+      
+          property :role, as: 'role'
+          property :self_link, as: 'selfLink'
+        end
+        
+        # @private
+        class ProjectTeam
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :project_number, as: 'projectNumber'
+            property :team, as: 'team'
+          end
+        end
+      end
+      
+      # @private
+      class ObjectAccessControls
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      # @private
+      class Objects
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::StorageV1::Object, decorator: Google::Apis::StorageV1::Object::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :prefixes, as: 'prefixes'
+        end
+      end
+      
+      # @private
+      class RewriteResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :kind, as: 'kind'
+          property :object_size, as: 'objectSize'
+          property :resource, as: 'resource', class: Google::Apis::StorageV1::Object, decorator: Google::Apis::StorageV1::Object::Representation
+      
+          property :rewrite_token, as: 'rewriteToken'
+          property :total_bytes_rewritten, as: 'totalBytesRewritten'
+        end
       end
     end
   end

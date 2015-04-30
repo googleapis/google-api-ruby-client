@@ -33,7 +33,6 @@ module Google
       #
       # @see https://developers.google.com/ad-exchange/seller-rest/
       class AdExchangeSellerService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -53,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'adexchangeseller/v2.0/')
         end
-
+        
         # Get information about the selected Ad Exchange account.
         # @param [String] account_id
         #   Account to get information about. Tip: 'myaccount' is a valid ID.
@@ -66,7 +65,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -81,7 +80,7 @@ module Google
         def get_account(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangesellerV2_0::AccountRepresentation
+          command.response_representation = Google::Apis::AdexchangesellerV2_0::Account::Representation
           command.response_class = Google::Apis::AdexchangesellerV2_0::Account
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -89,7 +88,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all accounts available to this Ad Exchange account.
         # @param [Fixnum] max_results
@@ -106,7 +104,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -121,7 +119,7 @@ module Google
         def list_accounts(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangesellerV2_0::AccountsRepresentation
+          command.response_representation = Google::Apis::AdexchangesellerV2_0::Accounts::Representation
           command.response_class = Google::Apis::AdexchangesellerV2_0::Accounts
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -130,7 +128,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all ad clients in this Ad Exchange account.
         # @param [String] account_id
@@ -150,7 +147,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -165,7 +162,7 @@ module Google
         def list_account_adclients(account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangesellerV2_0::AdClientsRepresentation
+          command.response_representation = Google::Apis::AdexchangesellerV2_0::AdClients::Representation
           command.response_class = Google::Apis::AdexchangesellerV2_0::AdClients
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -175,8 +172,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # List the alerts for this Ad Exchange account.
         # @param [String] account_id
@@ -194,7 +189,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -209,7 +204,7 @@ module Google
         def list_account_alerts(account_id, locale: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/alerts'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangesellerV2_0::AlertsRepresentation
+          command.response_representation = Google::Apis::AdexchangesellerV2_0::Alerts::Representation
           command.response_class = Google::Apis::AdexchangesellerV2_0::Alerts
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['locale'] = locale unless locale.nil?
@@ -218,8 +213,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Get the specified custom channel from the specified ad client.
         # @param [String] account_id
@@ -237,7 +230,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -252,7 +245,7 @@ module Google
         def get_account_customchannel(account_id, ad_client_id, custom_channel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/customchannels/{customChannelId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangesellerV2_0::CustomChannelRepresentation
+          command.response_representation = Google::Apis::AdexchangesellerV2_0::CustomChannel::Representation
           command.response_class = Google::Apis::AdexchangesellerV2_0::CustomChannel
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -262,7 +255,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all custom channels in the specified ad client for this Ad Exchange
         # account.
@@ -286,7 +278,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -301,7 +293,7 @@ module Google
         def list_account_customchannels(account_id, ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/customchannels'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangesellerV2_0::CustomChannelsRepresentation
+          command.response_representation = Google::Apis::AdexchangesellerV2_0::CustomChannels::Representation
           command.response_class = Google::Apis::AdexchangesellerV2_0::CustomChannels
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -312,8 +304,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # List the metadata for the dimensions available to this AdExchange account.
         # @param [String] account_id
@@ -327,7 +317,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -342,7 +332,7 @@ module Google
         def list_account_metadatum_dimensions(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/metadata/dimensions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangesellerV2_0::MetadataRepresentation
+          command.response_representation = Google::Apis::AdexchangesellerV2_0::Metadata::Representation
           command.response_class = Google::Apis::AdexchangesellerV2_0::Metadata
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -350,8 +340,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # List the metadata for the metrics available to this AdExchange account.
         # @param [String] account_id
@@ -365,7 +353,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -380,7 +368,7 @@ module Google
         def list_account_metadatum_metrics(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/metadata/metrics'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangesellerV2_0::MetadataRepresentation
+          command.response_representation = Google::Apis::AdexchangesellerV2_0::Metadata::Representation
           command.response_class = Google::Apis::AdexchangesellerV2_0::Metadata
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -388,9 +376,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
-        
         
         # Get information about the selected Ad Exchange Preferred Deal.
         # @param [String] account_id
@@ -406,7 +391,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -421,7 +406,7 @@ module Google
         def get_account_preferreddeal(account_id, deal_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/preferreddeals/{dealId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangesellerV2_0::PreferredDealRepresentation
+          command.response_representation = Google::Apis::AdexchangesellerV2_0::PreferredDeal::Representation
           command.response_class = Google::Apis::AdexchangesellerV2_0::PreferredDeal
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['dealId'] = deal_id unless deal_id.nil?
@@ -430,7 +415,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List the preferred deals for this Ad Exchange account.
         # @param [String] account_id
@@ -444,7 +428,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -459,7 +443,7 @@ module Google
         def list_account_preferreddeals(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/preferreddeals'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangesellerV2_0::PreferredDealsRepresentation
+          command.response_representation = Google::Apis::AdexchangesellerV2_0::PreferredDeals::Representation
           command.response_class = Google::Apis::AdexchangesellerV2_0::PreferredDeals
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -467,8 +451,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Generate an Ad Exchange report based on the report request sent in the query
         # parameters. Returns the result as JSON; to retrieve output in CSV format
@@ -507,7 +489,7 @@ module Google
         #   enforce per-user limits.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -527,7 +509,7 @@ module Google
             command = make_download_command(:get, path, options)
             command.download_dest = download_dest
           end
-          command.response_representation = Google::Apis::AdexchangesellerV2_0::ReportRepresentation
+          command.response_representation = Google::Apis::AdexchangesellerV2_0::Report::Representation
           command.response_class = Google::Apis::AdexchangesellerV2_0::Report
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['dimension'] = dimension unless dimension.nil?
@@ -544,7 +526,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Generate an Ad Exchange report based on the saved report ID sent in the query
         # parameters.
@@ -568,7 +549,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -583,7 +564,7 @@ module Google
         def generate_account_report_saved(account_id, saved_report_id, locale: nil, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/reports/{savedReportId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangesellerV2_0::ReportRepresentation
+          command.response_representation = Google::Apis::AdexchangesellerV2_0::Report::Representation
           command.response_class = Google::Apis::AdexchangesellerV2_0::Report
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['savedReportId'] = saved_report_id unless saved_report_id.nil?
@@ -595,7 +576,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all saved reports in this Ad Exchange account.
         # @param [String] account_id
@@ -616,14 +596,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AdexchangesellerV2_0::SavedReports] parsed result object
+        # @yieldparam result [Google::Apis::AdexchangesellerV2_0::Reports] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AdexchangesellerV2_0::SavedReports]
+        # @return [Google::Apis::AdexchangesellerV2_0::Reports]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -631,8 +611,8 @@ module Google
         def list_account_report_saveds(account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/reports/saved'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangesellerV2_0::SavedReportsRepresentation
-          command.response_class = Google::Apis::AdexchangesellerV2_0::SavedReports
+          command.response_representation = Google::Apis::AdexchangesellerV2_0::Reports::Representation
+          command.response_class = Google::Apis::AdexchangesellerV2_0::Reports
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -641,9 +621,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
-        
         
         # List all URL channels in the specified ad client for this Ad Exchange account.
         # @param [String] account_id
@@ -665,7 +642,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -680,7 +657,7 @@ module Google
         def list_account_urlchannels(account_id, ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/urlchannels'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangesellerV2_0::UrlChannelsRepresentation
+          command.response_representation = Google::Apis::AdexchangesellerV2_0::UrlChannels::Representation
           command.response_class = Google::Apis::AdexchangesellerV2_0::UrlChannels
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?

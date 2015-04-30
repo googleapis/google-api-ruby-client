@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DoubleclicksearchV2
-
+      
       # A message containing availability data relevant to DoubleClick Search.
       class Availability
         include Google::Apis::Core::Hashable
@@ -60,6 +60,11 @@ module Google
         attr_accessor :segmentation_type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
           @agency_id = args[:agency_id] unless args[:agency_id].nil?
           @availability_timestamp = args[:availability_timestamp] unless args[:availability_timestamp].nil?
@@ -68,7 +73,7 @@ module Google
           @segmentation_type = args[:segmentation_type] unless args[:segmentation_type].nil?
         end
       end
-
+      
       # A conversion containing data relevant to DoubleClick Search.
       class Conversion
         include Google::Apis::Core::Hashable
@@ -102,6 +107,11 @@ module Google
         # Corresponds to the JSON property `campaignId`
         # @return [String]
         attr_accessor :campaign_id
+      
+        # Channel of the product: local or online.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
       
         # DS click ID for the conversion.
         # Corresponds to the JSON property `clickId`
@@ -161,10 +171,35 @@ module Google
         # @return [String]
         attr_accessor :engine_account_id
       
+        # DS inventory feed ID.
+        # Corresponds to the JSON property `feedId`
+        # @return [String]
+        attr_accessor :feed_id
+      
         # The advertiser-provided order id for the conversion.
         # Corresponds to the JSON property `floodlightOrderId`
         # @return [String]
         attr_accessor :floodlight_order_id
+      
+        # ISO 3166 code of the product country.
+        # Corresponds to the JSON property `productCountry`
+        # @return [String]
+        attr_accessor :product_country
+      
+        # DS product group ID.
+        # Corresponds to the JSON property `productGroupId`
+        # @return [String]
+        attr_accessor :product_group_id
+      
+        # The product ID (SKU).
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # ISO 639 code of the product language.
+        # Corresponds to the JSON property `productLanguage`
+        # @return [String]
+        attr_accessor :product_language
       
         # The quantity of this conversion, in millis.
         # Corresponds to the JSON property `quantityMillis`
@@ -199,6 +234,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # The store id for which the product was advertised, when the channel is "local".
+        # Corresponds to the JSON property `storeId`
+        # @return [String]
+        attr_accessor :store_id
+      
         # The type of the conversion, that is, either ACTION or TRANSACTION. An ACTION
         # conversion is an action by the user that has no monetarily quantifiable value,
         # while a TRANSACTION conversion is an action that does have a monetarily
@@ -209,12 +249,18 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ad_group_id = args[:ad_group_id] unless args[:ad_group_id].nil?
           @ad_id = args[:ad_id] unless args[:ad_id].nil?
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
           @agency_id = args[:agency_id] unless args[:agency_id].nil?
           @attribution_model = args[:attribution_model] unless args[:attribution_model].nil?
           @campaign_id = args[:campaign_id] unless args[:campaign_id].nil?
+          @channel = args[:channel] unless args[:channel].nil?
           @click_id = args[:click_id] unless args[:click_id].nil?
           @conversion_id = args[:conversion_id] unless args[:conversion_id].nil?
           @conversion_modified_timestamp = args[:conversion_modified_timestamp] unless args[:conversion_modified_timestamp].nil?
@@ -226,19 +272,25 @@ module Google
           @custom_metric = args[:custom_metric] unless args[:custom_metric].nil?
           @ds_conversion_id = args[:ds_conversion_id] unless args[:ds_conversion_id].nil?
           @engine_account_id = args[:engine_account_id] unless args[:engine_account_id].nil?
+          @feed_id = args[:feed_id] unless args[:feed_id].nil?
           @floodlight_order_id = args[:floodlight_order_id] unless args[:floodlight_order_id].nil?
+          @product_country = args[:product_country] unless args[:product_country].nil?
+          @product_group_id = args[:product_group_id] unless args[:product_group_id].nil?
+          @product_id = args[:product_id] unless args[:product_id].nil?
+          @product_language = args[:product_language] unless args[:product_language].nil?
           @quantity_millis = args[:quantity_millis] unless args[:quantity_millis].nil?
           @revenue_micros = args[:revenue_micros] unless args[:revenue_micros].nil?
           @segmentation_id = args[:segmentation_id] unless args[:segmentation_id].nil?
           @segmentation_name = args[:segmentation_name] unless args[:segmentation_name].nil?
           @segmentation_type = args[:segmentation_type] unless args[:segmentation_type].nil?
           @state = args[:state] unless args[:state].nil?
+          @store_id = args[:store_id] unless args[:store_id].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # A list of conversions.
-      class ConversionList
+      class List
         include Google::Apis::Core::Hashable
       
         # The conversions being requested.
@@ -253,11 +305,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @conversion = args[:conversion] unless args[:conversion].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A message containing the custome dimension.
       class CustomDimension
         include Google::Apis::Core::Hashable
@@ -273,11 +330,16 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # A message containing the custome metric.
       class CustomMetric
         include Google::Apis::Core::Hashable
@@ -293,11 +355,16 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # A DoubleClick Search report. This object contains the report request, some
       # report metadata such as currency code, and the generated report rows or report
       # files.
@@ -328,8 +395,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The request that created the report. Optional fields not specified in the
-        # original request are filled with default values.
+        # A request object used to create a DoubleClick Search report.
         # Corresponds to the JSON property `request`
         # @return [Google::Apis::DoubleclicksearchV2::ReportRequest]
         attr_accessor :request
@@ -359,6 +425,11 @@ module Google
         attr_accessor :statistics_time_zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @files = args[:files] unless args[:files].nil?
           @id = args[:id] unless args[:id].nil?
           @is_report_ready = args[:is_report_ready] unless args[:is_report_ready].nil?
@@ -369,6 +440,7 @@ module Google
           @statistics_currency_code = args[:statistics_currency_code] unless args[:statistics_currency_code].nil?
           @statistics_time_zone = args[:statistics_time_zone] unless args[:statistics_time_zone].nil?
         end
+        
         # 
         class File
           include Google::Apis::Core::Hashable
@@ -384,12 +456,17 @@ module Google
           attr_accessor :url
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @byte_count = args[:byte_count] unless args[:byte_count].nil?
             @url = args[:url] unless args[:url].nil?
           end
         end
       end
-
+      
       # A request object used to create a DoubleClick Search report.
       class ReportApiColumnSpec
         include Google::Apis::Core::Hashable
@@ -460,6 +537,11 @@ module Google
         attr_accessor :start_date
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @column_name = args[:column_name] unless args[:column_name].nil?
           @custom_dimension_name = args[:custom_dimension_name] unless args[:custom_dimension_name].nil?
           @custom_metric_name = args[:custom_metric_name] unless args[:custom_metric_name].nil?
@@ -471,7 +553,7 @@ module Google
           @start_date = args[:start_date] unless args[:start_date].nil?
         end
       end
-
+      
       # A request object used to create a DoubleClick Search report.
       class ReportRequest
         include Google::Apis::Core::Hashable
@@ -571,6 +653,11 @@ module Google
         alias_method :verify_single_time_zone?, :verify_single_time_zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @columns = args[:columns] unless args[:columns].nil?
           @download_format = args[:download_format] unless args[:download_format].nil?
           @filters = args[:filters] unless args[:filters].nil?
@@ -586,12 +673,12 @@ module Google
           @time_range = args[:time_range] unless args[:time_range].nil?
           @verify_single_time_zone = args[:verify_single_time_zone] unless args[:verify_single_time_zone].nil?
         end
+        
         # 
         class Filter
           include Google::Apis::Core::Hashable
         
-          # Column to perform the filter on. This can be a DoubleClick Search column or a
-          # saved column.
+          # A request object used to create a DoubleClick Search report.
           # Corresponds to the JSON property `column`
           # @return [Google::Apis::DoubleclicksearchV2::ReportApiColumnSpec]
           attr_accessor :column
@@ -608,17 +695,22 @@ module Google
           attr_accessor :values
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @column = args[:column] unless args[:column].nil?
             @operator = args[:operator] unless args[:operator].nil?
             @values = args[:values] unless args[:values].nil?
           end
         end
+        
         # 
         class OrderBy
           include Google::Apis::Core::Hashable
         
-          # Column to perform the sort on. This can be a DoubleClick Search-defined column
-          # or a saved column.
+          # A request object used to create a DoubleClick Search report.
           # Corresponds to the JSON property `column`
           # @return [Google::Apis::DoubleclicksearchV2::ReportApiColumnSpec]
           attr_accessor :column
@@ -629,10 +721,16 @@ module Google
           attr_accessor :sort_order
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @column = args[:column] unless args[:column].nil?
             @sort_order = args[:sort_order] unless args[:sort_order].nil?
           end
         end
+        
         # The reportScope is a set of IDs that are used to determine which subset of
         # entities will be returned in the report. The full lineage of IDs from the
         # lowest scoped level desired up through agency is required.
@@ -675,6 +773,11 @@ module Google
           attr_accessor :keyword_id
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @ad_group_id = args[:ad_group_id] unless args[:ad_group_id].nil?
             @ad_id = args[:ad_id] unless args[:ad_id].nil?
             @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
@@ -684,6 +787,7 @@ module Google
             @keyword_id = args[:keyword_id] unless args[:keyword_id].nil?
           end
         end
+        
         # If metrics are requested in a report, this argument will be used to restrict
         # the metrics to a specific time range.
         class TimeRange
@@ -712,6 +816,11 @@ module Google
           attr_accessor :start_date
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @changed_attributes_since_timestamp = args[:changed_attributes_since_timestamp] unless args[:changed_attributes_since_timestamp].nil?
             @changed_metrics_since_timestamp = args[:changed_metrics_since_timestamp] unless args[:changed_metrics_since_timestamp].nil?
             @end_date = args[:end_date] unless args[:end_date].nil?
@@ -719,7 +828,7 @@ module Google
           end
         end
       end
-
+      
       # A saved column
       class SavedColumn
         include Google::Apis::Core::Hashable
@@ -741,12 +850,17 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @saved_column_name = args[:saved_column_name] unless args[:saved_column_name].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # A list of saved columns. Advertisers create saved columns to report on
       # Floodlight activities, Google Analytics goals, or custom KPIs. To request
       # reports with saved columns, you'll need the saved column names that are
@@ -766,11 +880,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # The request to update availability.
       class UpdateAvailabilityRequest
         include Google::Apis::Core::Hashable
@@ -781,10 +900,15 @@ module Google
         attr_accessor :availabilities
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @availabilities = args[:availabilities] unless args[:availabilities].nil?
         end
       end
-
+      
       # The response to a update availability request.
       class UpdateAvailabilityResponse
         include Google::Apis::Core::Hashable
@@ -795,6 +919,11 @@ module Google
         attr_accessor :availabilities
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @availabilities = args[:availabilities] unless args[:availabilities].nil?
         end
       end

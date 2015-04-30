@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module GenomicsV1beta2
-
+      
       # The read group set align request.
       class AlignReadGroupSetsRequest
         include Google::Apis::Core::Hashable
@@ -39,17 +39,12 @@ module Google
         # @return [String]
         attr_accessor :dataset_id
       
-        # The interleaved FASTQ source files for alignment, where both members of each
-        # pair of reads are found on consecutive records within the same FASTQ file.
-        # Exactly one of readGroupSetId, bamSourceUris, interleavedFastqSource or
-        # pairedFastqSource must be provided.
+        # Describes an interleaved FASTQ file source for alignment.
         # Corresponds to the JSON property `interleavedFastqSource`
         # @return [Google::Apis::GenomicsV1beta2::InterleavedFastqSource]
         attr_accessor :interleaved_fastq_source
       
-        # The paired end FASTQ source files for alignment, where each member of a pair
-        # of reads are found in separate files. Exactly one of readGroupSetId,
-        # bamSourceUris, interleavedFastqSource or pairedFastqSource must be provided.
+        # Describes a paired-end FASTQ file source for alignment.
         # Corresponds to the JSON property `pairedFastqSource`
         # @return [Google::Apis::GenomicsV1beta2::PairedFastqSource]
         attr_accessor :paired_fastq_source
@@ -64,6 +59,11 @@ module Google
         attr_accessor :read_group_set_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bam_source_uris = args[:bam_source_uris] unless args[:bam_source_uris].nil?
           @dataset_id = args[:dataset_id] unless args[:dataset_id].nil?
           @interleaved_fastq_source = args[:interleaved_fastq_source] unless args[:interleaved_fastq_source].nil?
@@ -71,7 +71,7 @@ module Google
           @read_group_set_id = args[:read_group_set_id] unless args[:read_group_set_id].nil?
         end
       end
-
+      
       # The read group set align response.
       class AlignReadGroupSetsResponse
         include Google::Apis::Core::Hashable
@@ -82,10 +82,15 @@ module Google
         attr_accessor :job_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @job_id = args[:job_id] unless args[:job_id].nil?
         end
       end
-
+      
       # An annotation describes a region of reference genome. The value of an
       # annotation may be one of several canonical types, supplemented by arbitrary
       # info tags. A variant annotation is represented by one or more of these
@@ -115,15 +120,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The position of this annotation on the reference sequence.
+        # A 0-based half-open genomic coordinate range over a reference sequence, for
+        # representing the position of a genomic resource.
         # Corresponds to the JSON property `position`
         # @return [Google::Apis::GenomicsV1beta2::RangePosition]
         attr_accessor :position
       
-        # A transcript value represents the assertion that a particular region of the
-        # reference genome may be transcribed as RNA. An alternative splicing pattern
-        # would be represented as a separate transcript object. This field is only set
-        # for annotations of type TRANSCRIPT.
+        # A transcript represents the assertion that a particular region of the
+        # reference genome may be transcribed as RNA.
         # Corresponds to the JSON property `transcript`
         # @return [Google::Apis::GenomicsV1beta2::Transcript]
         attr_accessor :transcript
@@ -134,14 +138,17 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # A variant annotation, which describes the effect of a variant on the genome,
-        # the coding sequence, and/or higher level consequences at the organism level e.
-        # g. pathogenicity. This field is only set for annotations of type VARIANT.
+        # A Variant annotation.
         # Corresponds to the JSON property `variant`
         # @return [Google::Apis::GenomicsV1beta2::VariantAnnotation]
         attr_accessor :variant
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @annotation_set_id = args[:annotation_set_id] unless args[:annotation_set_id].nil?
           @id = args[:id] unless args[:id].nil?
           @info = args[:info] unless args[:info].nil?
@@ -152,7 +159,7 @@ module Google
           @variant = args[:variant] unless args[:variant].nil?
         end
       end
-
+      
       # An annotation set is a logical grouping of annotations that share consistent
       # type information and provenance. Examples of annotation sets include 'all
       # genes from refseq', and 'all variant annotations from ClinVar'.
@@ -197,6 +204,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dataset_id = args[:dataset_id] unless args[:dataset_id].nil?
           @id = args[:id] unless args[:id].nil?
           @info = args[:info] unless args[:info].nil?
@@ -206,7 +218,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # 
       class BatchAnnotationsResponse
         include Google::Apis::Core::Hashable
@@ -218,30 +230,45 @@ module Google
         attr_accessor :entries
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
         end
       end
-
+      
       # 
       class BatchAnnotationsResponseEntry
         include Google::Apis::Core::Hashable
       
-        # The annotation, if any.
+        # An annotation describes a region of reference genome. The value of an
+        # annotation may be one of several canonical types, supplemented by arbitrary
+        # info tags. A variant annotation is represented by one or more of these
+        # canonical types. An annotation is not inherently associated with a specific
+        # sample or individual (though a client could choose to use annotations in this
+        # way). Example canonical annotation types are 'Gene' and 'Variant'.
         # Corresponds to the JSON property `annotation`
         # @return [Google::Apis::GenomicsV1beta2::Annotation]
         attr_accessor :annotation
       
-        # The resulting status for this annotation operation.
+        # 
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::GenomicsV1beta2::BatchAnnotationsResponseEntryStatus]
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @annotation = args[:annotation] unless args[:annotation].nil?
           @status = args[:status] unless args[:status].nil?
         end
       end
-
+      
       # 
       class BatchAnnotationsResponseEntryStatus
         include Google::Apis::Core::Hashable
@@ -257,11 +284,16 @@ module Google
         attr_accessor :message
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @code = args[:code] unless args[:code].nil?
           @message = args[:message] unless args[:message].nil?
         end
       end
-
+      
       # 
       class BatchCreateAnnotationsRequest
         include Google::Apis::Core::Hashable
@@ -273,10 +305,15 @@ module Google
         attr_accessor :annotations
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @annotations = args[:annotations] unless args[:annotations].nil?
         end
       end
-
+      
       # A call represents the determination of genotype with respect to a particular
       # variant. It may include associated information such as quality and phasing.
       # For example, a call might assign a probability of 0.32 to the occurrence of a
@@ -331,6 +368,11 @@ module Google
         attr_accessor :phaseset
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @call_set_id = args[:call_set_id] unless args[:call_set_id].nil?
           @call_set_name = args[:call_set_name] unless args[:call_set_name].nil?
           @genotype = args[:genotype] unless args[:genotype].nil?
@@ -339,7 +381,7 @@ module Google
           @phaseset = args[:phaseset] unless args[:phaseset].nil?
         end
       end
-
+      
       # The read group set call request.
       class CallReadGroupSetsRequest
         include Google::Apis::Core::Hashable
@@ -365,12 +407,17 @@ module Google
         attr_accessor :source_uris
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dataset_id = args[:dataset_id] unless args[:dataset_id].nil?
           @read_group_set_id = args[:read_group_set_id] unless args[:read_group_set_id].nil?
           @source_uris = args[:source_uris] unless args[:source_uris].nil?
         end
       end
-
+      
       # The read group set call response.
       class CallReadGroupSetsResponse
         include Google::Apis::Core::Hashable
@@ -381,10 +428,15 @@ module Google
         attr_accessor :job_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @job_id = args[:job_id] unless args[:job_id].nil?
         end
       end
-
+      
       # A call set is a collection of variant calls, typically for one sample. It
       # belongs to a variant set.
       class CallSet
@@ -421,6 +473,11 @@ module Google
         attr_accessor :variant_set_ids
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @created = args[:created] unless args[:created].nil?
           @id = args[:id] unless args[:id].nil?
           @info = args[:info] unless args[:info].nil?
@@ -429,7 +486,7 @@ module Google
           @variant_set_ids = args[:variant_set_ids] unless args[:variant_set_ids].nil?
         end
       end
-
+      
       # A single CIGAR operation.
       class CigarUnit
         include Google::Apis::Core::Hashable
@@ -452,12 +509,17 @@ module Google
         attr_accessor :reference_sequence
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @operation = args[:operation] unless args[:operation].nil?
           @operation_length = args[:operation_length] unless args[:operation_length].nil?
           @reference_sequence = args[:reference_sequence] unless args[:reference_sequence].nil?
         end
       end
-
+      
       # A bucket over which read coverage has been precomputed. A bucket corresponds
       # to a specific range of the reference sequence.
       class CoverageBucket
@@ -469,17 +531,22 @@ module Google
         # @return [Float]
         attr_accessor :mean_coverage
       
-        # The genomic coordinate range spanned by this bucket.
+        # A 0-based half-open genomic coordinate range over a reference sequence.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::GenomicsV1beta2::Range]
         attr_accessor :range
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @mean_coverage = args[:mean_coverage] unless args[:mean_coverage].nil?
           @range = args[:range] unless args[:range].nil?
         end
       end
-
+      
       # A Dataset is a collection of genomic data.
       class Dataset
         include Google::Apis::Core::Hashable
@@ -507,15 +574,20 @@ module Google
         attr_accessor :project_number
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @is_public = args[:is_public] unless args[:is_public].nil?
           @name = args[:name] unless args[:name].nil?
           @project_number = args[:project_number] unless args[:project_number].nil?
         end
       end
-
+      
       # The job creation request.
-      class ExperimentalCreateJobRequest
+      class CreateJobRequest
         include Google::Apis::Core::Hashable
       
         # Specifies whether or not to run the alignment pipeline. Either align or
@@ -559,6 +631,11 @@ module Google
         attr_accessor :source_uris
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @align = args[:align] unless args[:align].nil?
           @call_variants = args[:call_variants] unless args[:call_variants].nil?
           @gcs_output_path = args[:gcs_output_path] unless args[:gcs_output_path].nil?
@@ -567,9 +644,9 @@ module Google
           @source_uris = args[:source_uris] unless args[:source_uris].nil?
         end
       end
-
+      
       # The job creation response.
-      class ExperimentalCreateJobResponse
+      class CreateJobResponse
         include Google::Apis::Core::Hashable
       
         # A job ID that can be used to get status information.
@@ -578,10 +655,15 @@ module Google
         attr_accessor :job_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @job_id = args[:job_id] unless args[:job_id].nil?
         end
       end
-
+      
       # The read group set export request.
       class ExportReadGroupSetsRequest
         include Google::Apis::Core::Hashable
@@ -611,13 +693,18 @@ module Google
         attr_accessor :reference_names
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @export_uri = args[:export_uri] unless args[:export_uri].nil?
           @project_number = args[:project_number] unless args[:project_number].nil?
           @read_group_set_ids = args[:read_group_set_ids] unless args[:read_group_set_ids].nil?
           @reference_names = args[:reference_names] unless args[:reference_names].nil?
         end
       end
-
+      
       # The read group set export response.
       class ExportReadGroupSetsResponse
         include Google::Apis::Core::Hashable
@@ -628,10 +715,15 @@ module Google
         attr_accessor :job_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @job_id = args[:job_id] unless args[:job_id].nil?
         end
       end
-
+      
       # The variant data export request.
       class ExportVariantSetRequest
         include Google::Apis::Core::Hashable
@@ -667,6 +759,11 @@ module Google
         attr_accessor :project_number
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bigquery_dataset = args[:bigquery_dataset] unless args[:bigquery_dataset].nil?
           @bigquery_table = args[:bigquery_table] unless args[:bigquery_table].nil?
           @call_set_ids = args[:call_set_ids] unless args[:call_set_ids].nil?
@@ -674,7 +771,7 @@ module Google
           @project_number = args[:project_number] unless args[:project_number].nil?
         end
       end
-
+      
       # The variant data export response.
       class ExportVariantSetResponse
         include Google::Apis::Core::Hashable
@@ -685,10 +782,15 @@ module Google
         attr_accessor :job_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @job_id = args[:job_id] unless args[:job_id].nil?
         end
       end
-
+      
       # 
       class ExternalId
         include Google::Apis::Core::Hashable
@@ -704,11 +806,16 @@ module Google
         attr_accessor :source_name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @source_name = args[:source_name] unless args[:source_name].nil?
         end
       end
-
+      
       # 
       class FastqMetadata
         include Google::Apis::Core::Hashable
@@ -741,6 +848,11 @@ module Google
         attr_accessor :sample_name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @library_name = args[:library_name] unless args[:library_name].nil?
           @platform_name = args[:platform_name] unless args[:platform_name].nil?
           @platform_unit = args[:platform_unit] unless args[:platform_unit].nil?
@@ -748,7 +860,7 @@ module Google
           @sample_name = args[:sample_name] unless args[:sample_name].nil?
         end
       end
-
+      
       # The read group set import request.
       class ImportReadGroupSetsRequest
         include Google::Apis::Core::Hashable
@@ -779,13 +891,18 @@ module Google
         attr_accessor :source_uris
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dataset_id = args[:dataset_id] unless args[:dataset_id].nil?
           @partition_strategy = args[:partition_strategy] unless args[:partition_strategy].nil?
           @reference_set_id = args[:reference_set_id] unless args[:reference_set_id].nil?
           @source_uris = args[:source_uris] unless args[:source_uris].nil?
         end
       end
-
+      
       # The read group set import response.
       class ImportReadGroupSetsResponse
         include Google::Apis::Core::Hashable
@@ -796,10 +913,15 @@ module Google
         attr_accessor :job_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @job_id = args[:job_id] unless args[:job_id].nil?
         end
       end
-
+      
       # The variant data import request.
       class ImportVariantsRequest
         include Google::Apis::Core::Hashable
@@ -816,11 +938,16 @@ module Google
         attr_accessor :source_uris
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @format = args[:format] unless args[:format].nil?
           @source_uris = args[:source_uris] unless args[:source_uris].nil?
         end
       end
-
+      
       # The variant data import response.
       class ImportVariantsResponse
         include Google::Apis::Core::Hashable
@@ -831,10 +958,15 @@ module Google
         attr_accessor :job_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @job_id = args[:job_id] unless args[:job_id].nil?
         end
       end
-
+      
       # Wrapper message for int32.
       class Int32Value
         include Google::Apis::Core::Hashable
@@ -845,10 +977,15 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # Describes an interleaved FASTQ file source for alignment.
       class InterleavedFastqSource
         include Google::Apis::Core::Hashable
@@ -866,11 +1003,16 @@ module Google
         attr_accessor :source_uris
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @metadata = args[:metadata] unless args[:metadata].nil?
           @source_uris = args[:source_uris] unless args[:source_uris].nil?
         end
       end
-
+      
       # A Job represents an ongoing process that can be monitored for status
       # information.
       class Job
@@ -907,7 +1049,7 @@ module Google
         # @return [String]
         attr_accessor :project_number
       
-        # A summarized representation of the original service request.
+        # A summary representation of the service request that spawned the job.
         # Corresponds to the JSON property `request`
         # @return [Google::Apis::GenomicsV1beta2::JobRequest]
         attr_accessor :request
@@ -923,6 +1065,11 @@ module Google
         attr_accessor :warnings
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @created = args[:created] unless args[:created].nil?
           @detailed_status = args[:detailed_status] unless args[:detailed_status].nil?
           @errors = args[:errors] unless args[:errors].nil?
@@ -934,7 +1081,7 @@ module Google
           @warnings = args[:warnings] unless args[:warnings].nil?
         end
       end
-
+      
       # A summary representation of the service request that spawned the job.
       class JobRequest
         include Google::Apis::Core::Hashable
@@ -957,12 +1104,17 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @destination = args[:destination] unless args[:destination].nil?
           @source = args[:source] unless args[:source].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # A linear alignment can be represented by one CIGAR string. Describes the
       # mapped position and local alignment of the read to the reference.
       class LinearAlignment
@@ -980,18 +1132,26 @@ module Google
         # @return [Fixnum]
         attr_accessor :mapping_quality
       
-        # The position of this alignment.
+        # An abstraction for referring to a genomic position, in relation to some
+        # already known reference. For now, represents a genomic position as a reference
+        # name, a base number on that reference (0-based), and a determination of
+        # forward or reverse strand.
         # Corresponds to the JSON property `position`
         # @return [Google::Apis::GenomicsV1beta2::Position]
         attr_accessor :position
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cigar = args[:cigar] unless args[:cigar].nil?
           @mapping_quality = args[:mapping_quality] unless args[:mapping_quality].nil?
           @position = args[:position] unless args[:position].nil?
         end
       end
-
+      
       # 
       class ListBasesResponse
         include Google::Apis::Core::Hashable
@@ -1015,12 +1175,17 @@ module Google
         attr_accessor :sequence
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @offset = args[:offset] unless args[:offset].nil?
           @sequence = args[:sequence] unless args[:sequence].nil?
         end
       end
-
+      
       # 
       class ListCoverageBucketsResponse
         include Google::Apis::Core::Hashable
@@ -1048,12 +1213,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bucket_width = args[:bucket_width] unless args[:bucket_width].nil?
           @coverage_buckets = args[:coverage_buckets] unless args[:coverage_buckets].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # The dataset list response.
       class ListDatasetsResponse
         include Google::Apis::Core::Hashable
@@ -1071,11 +1241,16 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @datasets = args[:datasets] unless args[:datasets].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # 
       class MergeVariantsRequest
         include Google::Apis::Core::Hashable
@@ -1086,10 +1261,15 @@ module Google
         attr_accessor :variants
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @variants = args[:variants] unless args[:variants].nil?
         end
       end
-
+      
       # Metadata describes a single piece of variant call metadata. These data include
       # a top level key and either a single value string (value) or a list of key-
       # value pairs (info.) Value and info are mutually exclusive.
@@ -1135,6 +1315,11 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @description = args[:description] unless args[:description].nil?
           @id = args[:id] unless args[:id].nil?
           @info = args[:info] unless args[:info].nil?
@@ -1144,7 +1329,7 @@ module Google
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # Describes a paired-end FASTQ file source for alignment.
       class PairedFastqSource
         include Google::Apis::Core::Hashable
@@ -1176,12 +1361,17 @@ module Google
         attr_accessor :second_source_uris
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @first_source_uris = args[:first_source_uris] unless args[:first_source_uris].nil?
           @metadata = args[:metadata] unless args[:metadata].nil?
           @second_source_uris = args[:second_source_uris] unless args[:second_source_uris].nil?
         end
       end
-
+      
       # An abstraction for referring to a genomic position, in relation to some
       # already known reference. For now, represents a genomic position as a reference
       # name, a base number on that reference (0-based), and a determination of
@@ -1207,12 +1397,17 @@ module Google
         alias_method :reverse_strand?, :reverse_strand
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @position = args[:position] unless args[:position].nil?
           @reference_name = args[:reference_name] unless args[:reference_name].nil?
           @reverse_strand = args[:reverse_strand] unless args[:reverse_strand].nil?
         end
       end
-
+      
       # A 0-based half-open genomic coordinate range for search requests.
       class QueryRange
         include Google::Apis::Core::Hashable
@@ -1243,13 +1438,18 @@ module Google
         attr_accessor :start
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end = args[:end] unless args[:end].nil?
           @reference_id = args[:reference_id] unless args[:reference_id].nil?
           @reference_name = args[:reference_name] unless args[:reference_name].nil?
           @start = args[:start] unless args[:start].nil?
         end
       end
-
+      
       # A 0-based half-open genomic coordinate range over a reference sequence.
       class Range
         include Google::Apis::Core::Hashable
@@ -1272,12 +1472,17 @@ module Google
         attr_accessor :start
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end = args[:end] unless args[:end].nil?
           @reference_name = args[:reference_name] unless args[:reference_name].nil?
           @start = args[:start] unless args[:start].nil?
         end
       end
-
+      
       # A 0-based half-open genomic coordinate range over a reference sequence, for
       # representing the position of a genomic resource.
       class RangePosition
@@ -1313,6 +1518,11 @@ module Google
         attr_accessor :start
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end = args[:end] unless args[:end].nil?
           @reference_id = args[:reference_id] unless args[:reference_id].nil?
           @reference_name = args[:reference_name] unless args[:reference_name].nil?
@@ -1320,7 +1530,7 @@ module Google
           @start = args[:start] unless args[:start].nil?
         end
       end
-
+      
       # A read alignment describes a linear alignment of a string of DNA to a
       # reference sequence, in addition to metadata about the fragment (the molecule
       # of DNA sequenced) and the read (the bases which were read by the sequencer). A
@@ -1366,8 +1576,8 @@ module Google
         # @return [String]
         attr_accessor :aligned_sequence
       
-        # The linear alignment for this alignment record. This field will be unset if
-        # the read is unmapped.
+        # A linear alignment can be represented by one CIGAR string. Describes the
+        # mapped position and local alignment of the read to the reference.
         # Corresponds to the JSON property `alignment`
         # @return [Google::Apis::GenomicsV1beta2::LinearAlignment]
         attr_accessor :alignment
@@ -1405,10 +1615,10 @@ module Google
         # @return [Hash<String,Array<String>>]
         attr_accessor :info
       
-        # The position of the primary alignment of the (readNumber+1)%numberReads read
-        # in the fragment. It replaces mate position and mate strand in SAM. This field
-        # will be unset if that read is unmapped or if the fragment only has a single
-        # read.
+        # An abstraction for referring to a genomic position, in relation to some
+        # already known reference. For now, represents a genomic position as a reference
+        # name, a base number on that reference (0-based), and a determination of
+        # forward or reverse strand.
         # Corresponds to the JSON property `nextMatePosition`
         # @return [Google::Apis::GenomicsV1beta2::Position]
         attr_accessor :next_mate_position
@@ -1470,6 +1680,11 @@ module Google
         alias_method :supplementary_alignment?, :supplementary_alignment
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @aligned_quality = args[:aligned_quality] unless args[:aligned_quality].nil?
           @aligned_sequence = args[:aligned_sequence] unless args[:aligned_sequence].nil?
           @alignment = args[:alignment] unless args[:alignment].nil?
@@ -1489,7 +1704,7 @@ module Google
           @supplementary_alignment = args[:supplementary_alignment] unless args[:supplementary_alignment].nil?
         end
       end
-
+      
       # A read group is all the data that's processed the same way by the sequencer.
       class ReadGroup
         include Google::Apis::Core::Hashable
@@ -1552,6 +1767,11 @@ module Google
         attr_accessor :sample_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dataset_id = args[:dataset_id] unless args[:dataset_id].nil?
           @description = args[:description] unless args[:description].nil?
           @experiment = args[:experiment] unless args[:experiment].nil?
@@ -1564,7 +1784,7 @@ module Google
           @sample_id = args[:sample_id] unless args[:sample_id].nil?
         end
       end
-
+      
       # 
       class ReadGroupExperiment
         include Google::Apis::Core::Hashable
@@ -1594,13 +1814,18 @@ module Google
         attr_accessor :sequencing_center
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @instrument_model = args[:instrument_model] unless args[:instrument_model].nil?
           @library_id = args[:library_id] unless args[:library_id].nil?
           @platform_unit = args[:platform_unit] unless args[:platform_unit].nil?
           @sequencing_center = args[:sequencing_center] unless args[:sequencing_center].nil?
         end
       end
-
+      
       # 
       class ReadGroupProgram
         include Google::Apis::Core::Hashable
@@ -1632,6 +1857,11 @@ module Google
         attr_accessor :version
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @command_line = args[:command_line] unless args[:command_line].nil?
           @id = args[:id] unless args[:id].nil?
           @name = args[:name] unless args[:name].nil?
@@ -1639,7 +1869,7 @@ module Google
           @version = args[:version] unless args[:version].nil?
         end
       end
-
+      
       # A read group set is a logical collection of read groups, which are collections
       # of reads produced by a sequencer. A read group set typically models reads
       # corresponding to one sample, sequenced one way, and aligned one way.
@@ -1687,6 +1917,11 @@ module Google
         attr_accessor :reference_set_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dataset_id = args[:dataset_id] unless args[:dataset_id].nil?
           @filename = args[:filename] unless args[:filename].nil?
           @id = args[:id] unless args[:id].nil?
@@ -1696,7 +1931,7 @@ module Google
           @reference_set_id = args[:reference_set_id] unless args[:reference_set_id].nil?
         end
       end
-
+      
       # A reference is a canonical assembled DNA sequence, intended to act as a
       # reference coordinate space for other genomic annotations. A single reference
       # might represent the human chromosome 1 or mitochandrial DNA, for instance. A
@@ -1745,6 +1980,11 @@ module Google
         attr_accessor :source_uri
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @length = args[:length] unless args[:length].nil?
           @md5checksum = args[:md5checksum] unless args[:md5checksum].nil?
@@ -1754,7 +1994,7 @@ module Google
           @source_uri = args[:source_uri] unless args[:source_uri].nil?
         end
       end
-
+      
       # ReferenceBound records an upper bound for the starting coordinate of variants
       # in a particular reference.
       class ReferenceBound
@@ -1772,11 +2012,16 @@ module Google
         attr_accessor :upper_bound
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @reference_name = args[:reference_name] unless args[:reference_name].nil?
           @upper_bound = args[:upper_bound] unless args[:upper_bound].nil?
         end
       end
-
+      
       # A reference set is a set of references which typically comprise a reference
       # assembly for a species, such as GRCh38 which is representative of the human
       # genome. A reference set defines a common coordinate space for comparing
@@ -1836,6 +2081,11 @@ module Google
         attr_accessor :source_uri
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @assembly_id = args[:assembly_id] unless args[:assembly_id].nil?
           @description = args[:description] unless args[:description].nil?
           @id = args[:id] unless args[:id].nil?
@@ -1846,7 +2096,7 @@ module Google
           @source_uri = args[:source_uri] unless args[:source_uri].nil?
         end
       end
-
+      
       # 
       class SearchAnnotationSetsRequest
         include Google::Apis::Core::Hashable
@@ -1888,6 +2138,11 @@ module Google
         attr_accessor :types
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dataset_ids = args[:dataset_ids] unless args[:dataset_ids].nil?
           @name = args[:name] unless args[:name].nil?
           @page_size = args[:page_size] unless args[:page_size].nil?
@@ -1896,7 +2151,7 @@ module Google
           @types = args[:types] unless args[:types].nil?
         end
       end
-
+      
       # 
       class SearchAnnotationSetsResponse
         include Google::Apis::Core::Hashable
@@ -1914,11 +2169,16 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @annotation_sets = args[:annotation_sets] unless args[:annotation_sets].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # 
       class SearchAnnotationsRequest
         include Google::Apis::Core::Hashable
@@ -1943,19 +2203,24 @@ module Google
         # @return [String]
         attr_accessor :page_token
       
-        # If specified, this query matches only annotations that overlap this range.
+        # A 0-based half-open genomic coordinate range for search requests.
         # Corresponds to the JSON property `range`
         # @return [Google::Apis::GenomicsV1beta2::QueryRange]
         attr_accessor :range
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @annotation_set_ids = args[:annotation_set_ids] unless args[:annotation_set_ids].nil?
           @page_size = args[:page_size] unless args[:page_size].nil?
           @page_token = args[:page_token] unless args[:page_token].nil?
           @range = args[:range] unless args[:range].nil?
         end
       end
-
+      
       # 
       class SearchAnnotationsResponse
         include Google::Apis::Core::Hashable
@@ -1973,11 +2238,16 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @annotations = args[:annotations] unless args[:annotations].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # The call set search request.
       class SearchCallSetsRequest
         include Google::Apis::Core::Hashable
@@ -2006,13 +2276,18 @@ module Google
         attr_accessor :variant_set_ids
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @page_size = args[:page_size] unless args[:page_size].nil?
           @page_token = args[:page_token] unless args[:page_token].nil?
           @variant_set_ids = args[:variant_set_ids] unless args[:variant_set_ids].nil?
         end
       end
-
+      
       # The call set search response.
       class SearchCallSetsResponse
         include Google::Apis::Core::Hashable
@@ -2030,11 +2305,16 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @call_sets = args[:call_sets] unless args[:call_sets].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # The jobs search request.
       class SearchJobsRequest
         include Google::Apis::Core::Hashable
@@ -2076,6 +2356,11 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @created_after = args[:created_after] unless args[:created_after].nil?
           @created_before = args[:created_before] unless args[:created_before].nil?
           @page_size = args[:page_size] unless args[:page_size].nil?
@@ -2084,7 +2369,7 @@ module Google
           @status = args[:status] unless args[:status].nil?
         end
       end
-
+      
       # The job search response.
       class SearchJobsResponse
         include Google::Apis::Core::Hashable
@@ -2102,11 +2387,16 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @jobs = args[:jobs] unless args[:jobs].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # The read group set search request.
       class SearchReadGroupSetsRequest
         include Google::Apis::Core::Hashable
@@ -2137,13 +2427,18 @@ module Google
         attr_accessor :page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dataset_ids = args[:dataset_ids] unless args[:dataset_ids].nil?
           @name = args[:name] unless args[:name].nil?
           @page_size = args[:page_size] unless args[:page_size].nil?
           @page_token = args[:page_token] unless args[:page_token].nil?
         end
       end
-
+      
       # The read group set search response.
       class SearchReadGroupSetsResponse
         include Google::Apis::Core::Hashable
@@ -2161,11 +2456,16 @@ module Google
         attr_accessor :read_group_sets
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @read_group_sets = args[:read_group_sets] unless args[:read_group_sets].nil?
         end
       end
-
+      
       # The read search request.
       class SearchReadsRequest
         include Google::Apis::Core::Hashable
@@ -2217,6 +2517,11 @@ module Google
         attr_accessor :start
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end = args[:end] unless args[:end].nil?
           @page_size = args[:page_size] unless args[:page_size].nil?
           @page_token = args[:page_token] unless args[:page_token].nil?
@@ -2226,7 +2531,7 @@ module Google
           @start = args[:start] unless args[:start].nil?
         end
       end
-
+      
       # The read search response.
       class SearchReadsResponse
         include Google::Apis::Core::Hashable
@@ -2247,11 +2552,16 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @alignments = args[:alignments] unless args[:alignments].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # 
       class SearchReferenceSetsRequest
         include Google::Apis::Core::Hashable
@@ -2290,6 +2600,11 @@ module Google
         attr_accessor :page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @accessions = args[:accessions] unless args[:accessions].nil?
           @assembly_id = args[:assembly_id] unless args[:assembly_id].nil?
           @md5checksums = args[:md5checksums] unless args[:md5checksums].nil?
@@ -2297,7 +2612,7 @@ module Google
           @page_token = args[:page_token] unless args[:page_token].nil?
         end
       end
-
+      
       # 
       class SearchReferenceSetsResponse
         include Google::Apis::Core::Hashable
@@ -2315,11 +2630,16 @@ module Google
         attr_accessor :reference_sets
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @reference_sets = args[:reference_sets] unless args[:reference_sets].nil?
         end
       end
-
+      
       # 
       class SearchReferencesRequest
         include Google::Apis::Core::Hashable
@@ -2357,6 +2677,11 @@ module Google
         attr_accessor :reference_set_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @accessions = args[:accessions] unless args[:accessions].nil?
           @md5checksums = args[:md5checksums] unless args[:md5checksums].nil?
           @page_size = args[:page_size] unless args[:page_size].nil?
@@ -2364,7 +2689,7 @@ module Google
           @reference_set_id = args[:reference_set_id] unless args[:reference_set_id].nil?
         end
       end
-
+      
       # 
       class SearchReferencesResponse
         include Google::Apis::Core::Hashable
@@ -2382,11 +2707,16 @@ module Google
         attr_accessor :references
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @references = args[:references] unless args[:references].nil?
         end
       end
-
+      
       # The search variant sets request.
       class SearchVariantSetsRequest
         include Google::Apis::Core::Hashable
@@ -2410,12 +2740,17 @@ module Google
         attr_accessor :page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dataset_ids = args[:dataset_ids] unless args[:dataset_ids].nil?
           @page_size = args[:page_size] unless args[:page_size].nil?
           @page_token = args[:page_token] unless args[:page_token].nil?
         end
       end
-
+      
       # The search variant sets response.
       class SearchVariantSetsResponse
         include Google::Apis::Core::Hashable
@@ -2433,11 +2768,16 @@ module Google
         attr_accessor :variant_sets
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @variant_sets = args[:variant_sets] unless args[:variant_sets].nil?
         end
       end
-
+      
       # The variant search request.
       class SearchVariantsRequest
         include Google::Apis::Core::Hashable
@@ -2498,6 +2838,11 @@ module Google
         attr_accessor :variant_set_ids
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @call_set_ids = args[:call_set_ids] unless args[:call_set_ids].nil?
           @end = args[:end] unless args[:end].nil?
           @max_calls = args[:max_calls] unless args[:max_calls].nil?
@@ -2509,7 +2854,7 @@ module Google
           @variant_set_ids = args[:variant_set_ids] unless args[:variant_set_ids].nil?
         end
       end
-
+      
       # The variant search response.
       class SearchVariantsResponse
         include Google::Apis::Core::Hashable
@@ -2527,11 +2872,16 @@ module Google
         attr_accessor :variants
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @variants = args[:variants] unless args[:variants].nil?
         end
       end
-
+      
       # 
       class StreamReadsRequest
         include Google::Apis::Core::Hashable
@@ -2561,13 +2911,18 @@ module Google
         attr_accessor :start
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end = args[:end] unless args[:end].nil?
           @read_group_set_ids = args[:read_group_set_ids] unless args[:read_group_set_ids].nil?
           @reference_name = args[:reference_name] unless args[:reference_name].nil?
           @start = args[:start] unless args[:start].nil?
         end
       end
-
+      
       # 
       class StreamReadsResponse
         include Google::Apis::Core::Hashable
@@ -2578,10 +2933,15 @@ module Google
         attr_accessor :alignments
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @alignments = args[:alignments] unless args[:alignments].nil?
         end
       end
-
+      
       # A transcript represents the assertion that a particular region of the
       # reference genome may be transcribed as RNA.
       class Transcript
@@ -2619,12 +2979,17 @@ module Google
         attr_accessor :gene_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @coding_sequence = args[:coding_sequence] unless args[:coding_sequence].nil?
           @exons = args[:exons] unless args[:exons].nil?
           @gene_id = args[:gene_id] unless args[:gene_id].nil?
         end
       end
-
+      
       # 
       class TranscriptCodingSequence
         include Google::Apis::Core::Hashable
@@ -2644,11 +3009,16 @@ module Google
         attr_accessor :start
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end = args[:end] unless args[:end].nil?
           @start = args[:start] unless args[:start].nil?
         end
       end
-
+      
       # 
       class TranscriptExon
         include Google::Apis::Core::Hashable
@@ -2660,14 +3030,7 @@ module Google
         # @return [String]
         attr_accessor :end
       
-        # The frame of this exon. Contains a value of 0, 1, or 2, which indicates the
-        # offset of the first coding base of the exon within the reading frame of the
-        # coding DNA sequence, if any. This field is dependent on the strandedness of
-        # this annotation (see Annotation.position.reverseStrand). For forward stranded
-        # annotations, this offset is relative to the exon.start. For reverse strand
-        # annotations, this offset is relative to the exon.end-1.
-        # Unset if this exon does not intersect the coding sequence. Upon creation of a
-        # transcript, the frame must be populated for all or none of the coding exons.
+        # Wrapper message for int32.
         # Corresponds to the JSON property `frame`
         # @return [Google::Apis::GenomicsV1beta2::Int32Value]
         attr_accessor :frame
@@ -2680,12 +3043,17 @@ module Google
         attr_accessor :start
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end = args[:end] unless args[:end].nil?
           @frame = args[:frame] unless args[:frame].nil?
           @start = args[:start] unless args[:start].nil?
         end
       end
-
+      
       # A variant represents a change in DNA sequence relative to a reference sequence.
       # For example, a variant could represent a SNP or an insertion. Variants belong
       # to a variant set. Each of the calls on a variant represent a determination of
@@ -2768,6 +3136,11 @@ module Google
         attr_accessor :variant_set_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @alternate_bases = args[:alternate_bases] unless args[:alternate_bases].nil?
           @calls = args[:calls] unless args[:calls].nil?
           @created = args[:created] unless args[:created].nil?
@@ -2783,7 +3156,7 @@ module Google
           @variant_set_id = args[:variant_set_id] unless args[:variant_set_id].nil?
         end
       end
-
+      
       # A Variant annotation.
       class VariantAnnotation
         include Google::Apis::Core::Hashable
@@ -2831,6 +3204,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @alternate_bases = args[:alternate_bases] unless args[:alternate_bases].nil?
           @clinical_significance = args[:clinical_significance] unless args[:clinical_significance].nil?
           @conditions = args[:conditions] unless args[:conditions].nil?
@@ -2840,7 +3218,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # 
       class VariantAnnotationCondition
         include Google::Apis::Core::Hashable
@@ -2867,13 +3245,18 @@ module Google
         attr_accessor :omim_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @concept_id = args[:concept_id] unless args[:concept_id].nil?
           @external_ids = args[:external_ids] unless args[:external_ids].nil?
           @names = args[:names] unless args[:names].nil?
           @omim_id = args[:omim_id] unless args[:omim_id].nil?
         end
       end
-
+      
       # A variant set is a collection of call sets and variants. It contains summary
       # statistics of those contents. A variant set belongs to a dataset.
       class VariantSet
@@ -2901,6 +3284,11 @@ module Google
         attr_accessor :reference_bounds
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dataset_id = args[:dataset_id] unless args[:dataset_id].nil?
           @id = args[:id] unless args[:id].nil?
           @metadata = args[:metadata] unless args[:metadata].nil?

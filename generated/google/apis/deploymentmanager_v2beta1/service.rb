@@ -33,7 +33,6 @@ module Google
       #
       # @see https://developers.google.com/deployment-manager/
       class DeploymentmanagerService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -53,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'deploymentmanager/v2beta1/projects/')
         end
-
+        
         # ! Deletes a deployment and all of the resources in the deployment.
         # @param [String] project
         #   ! The project ID for this request.
@@ -68,7 +67,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -83,7 +82,7 @@ module Google
         def delete_deployment(project, deployment, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments/{deployment}'
           command =  make_simple_command(:delete, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::OperationRepresentation
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::Operation::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta1::Operation
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
@@ -92,7 +91,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # ! Gets information about a specific deployment.
         # @param [String] project
@@ -108,7 +106,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -123,7 +121,7 @@ module Google
         def get_deployment(project, deployment, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments/{deployment}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::DeploymentRepresentation
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::Deployment::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta1::Deployment
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
@@ -133,13 +131,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # ! Creates a deployment and all of the resources described by the ! deployment
         # manifest.
         # @param [String] project
         #   ! The project ID for this request.
-        # @param [Google::Apis::DeploymentmanagerV2beta1::Deployment] deployment
-        #   
+        # @param [Google::Apis::DeploymentmanagerV2beta1::Deployment] deployment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -149,7 +145,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -161,12 +157,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_deployment(project, deployment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_deployment(project, deployment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DeploymentmanagerV2beta1::DeploymentRepresentation
-          command.request_object = deployment
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::OperationRepresentation
+          command.request_representation = Google::Apis::DeploymentmanagerV2beta1::Deployment::Representation
+          command.request_object = deployment_object
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::Operation::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta1::Operation
           command.params['project'] = project unless project.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -174,7 +170,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # ! Lists all deployments for a given project.
         # @param [String] project
@@ -194,14 +189,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::DeploymentsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::ListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2beta1::DeploymentsListResponse]
+        # @return [Google::Apis::DeploymentmanagerV2beta1::ListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -209,8 +204,8 @@ module Google
         def list_deployments(project, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::DeploymentsListResponseRepresentation
-          command.response_class = Google::Apis::DeploymentmanagerV2beta1::DeploymentsListResponse
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ListResponse::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta1::ListResponse
           command.params['project'] = project unless project.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -219,7 +214,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # ! Gets information about a specific manifest.
         # @param [String] project
         #   ! The project ID for this request.
@@ -236,7 +231,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -251,7 +246,7 @@ module Google
         def get_manifest(project, deployment, manifest, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments/{deployment}/manifests/{manifest}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ManifestRepresentation
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::Manifest::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta1::Manifest
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
@@ -261,7 +256,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # ! Lists all manifests for a given deployment.
         # @param [String] project
@@ -283,7 +277,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -298,7 +292,7 @@ module Google
         def list_manifests(project, deployment, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments/{deployment}/manifests'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ManifestsListResponseRepresentation
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ManifestsListResponse::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta1::ManifestsListResponse
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
@@ -309,7 +303,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # ! Gets information about a specific Operation.
         # @param [String] project
         #   ! The project ID for this request.
@@ -324,7 +318,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -339,7 +333,7 @@ module Google
         def get_operation(project, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/operations/{operation}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::OperationRepresentation
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::Operation::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta1::Operation
           command.params['project'] = project unless project.nil?
           command.params['operation'] = operation unless operation.nil?
@@ -348,7 +342,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # ! Lists all Operations for a project.
         # @param [String] project
@@ -368,7 +361,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -383,7 +376,7 @@ module Google
         def list_operations(project, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/operations'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::OperationsListResponseRepresentation
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::OperationsListResponse::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta1::OperationsListResponse
           command.params['project'] = project unless project.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -393,7 +386,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # ! Gets information about a single resource.
         # @param [String] project
         #   ! The project ID for this request.
@@ -410,7 +403,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -425,7 +418,7 @@ module Google
         def get_resource(project, deployment, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments/{deployment}/resources/{resource}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ResourceRepresentation
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::Resource::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta1::Resource
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
@@ -435,7 +428,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # ! Lists all resources in a given deployment.
         # @param [String] project
@@ -457,7 +449,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -472,7 +464,7 @@ module Google
         def list_resources(project, deployment, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments/{deployment}/resources'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ResourcesListResponseRepresentation
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ResourcesListResponse::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta1::ResourcesListResponse
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
@@ -483,7 +475,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # ! Lists all Types for Deployment Manager.
         # @param [String] project
         #   ! The project ID for this request.
@@ -502,7 +494,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -517,7 +509,7 @@ module Google
         def list_types(project, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/types'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::TypesListResponseRepresentation
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::TypesListResponse::Representation
           command.response_class = Google::Apis::DeploymentmanagerV2beta1::TypesListResponse
           command.params['project'] = project unless project.nil?
           command.query['maxResults'] = max_results unless max_results.nil?

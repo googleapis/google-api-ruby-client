@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module BooksV1
-
+      
       # 
       class Annotation
         include Google::Apis::Core::Hashable
@@ -115,6 +115,11 @@ module Google
         attr_accessor :volume_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @after_selected_text = args[:after_selected_text] unless args[:after_selected_text].nil?
           @before_selected_text = args[:before_selected_text] unless args[:before_selected_text].nil?
           @client_version_ranges = args[:client_version_ranges] unless args[:client_version_ranges].nil?
@@ -133,13 +138,14 @@ module Google
           @updated = args[:updated] unless args[:updated].nil?
           @volume_id = args[:volume_id] unless args[:volume_id].nil?
         end
+        
         # Selection ranges sent from the client.
         class ClientVersionRanges
           include Google::Apis::Core::Hashable
         
           # Range in CFI format for this annotation sent by client.
           # Corresponds to the JSON property `cfiRange`
-          # @return [Google::Apis::BooksV1::AnnotationsRange]
+          # @return [Google::Apis::BooksV1::Range]
           attr_accessor :cfi_range
         
           # Content version the client sent in.
@@ -149,20 +155,25 @@ module Google
         
           # Range in GB image format for this annotation sent by client.
           # Corresponds to the JSON property `gbImageRange`
-          # @return [Google::Apis::BooksV1::AnnotationsRange]
+          # @return [Google::Apis::BooksV1::Range]
           attr_accessor :gb_image_range
         
           # Range in GB text format for this annotation sent by client.
           # Corresponds to the JSON property `gbTextRange`
-          # @return [Google::Apis::BooksV1::AnnotationsRange]
+          # @return [Google::Apis::BooksV1::Range]
           attr_accessor :gb_text_range
         
           # Range in image CFI format for this annotation sent by client.
           # Corresponds to the JSON property `imageCfiRange`
-          # @return [Google::Apis::BooksV1::AnnotationsRange]
+          # @return [Google::Apis::BooksV1::Range]
           attr_accessor :image_cfi_range
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @cfi_range = args[:cfi_range] unless args[:cfi_range].nil?
             @content_version = args[:content_version] unless args[:content_version].nil?
             @gb_image_range = args[:gb_image_range] unless args[:gb_image_range].nil?
@@ -170,13 +181,14 @@ module Google
             @image_cfi_range = args[:image_cfi_range] unless args[:image_cfi_range].nil?
           end
         end
+        
         # Selection ranges for the most recent content version.
         class CurrentVersionRanges
           include Google::Apis::Core::Hashable
         
           # Range in CFI format for this annotation for version above.
           # Corresponds to the JSON property `cfiRange`
-          # @return [Google::Apis::BooksV1::AnnotationsRange]
+          # @return [Google::Apis::BooksV1::Range]
           attr_accessor :cfi_range
         
           # Content version applicable to ranges below.
@@ -186,20 +198,25 @@ module Google
         
           # Range in GB image format for this annotation for version above.
           # Corresponds to the JSON property `gbImageRange`
-          # @return [Google::Apis::BooksV1::AnnotationsRange]
+          # @return [Google::Apis::BooksV1::Range]
           attr_accessor :gb_image_range
         
           # Range in GB text format for this annotation for version above.
           # Corresponds to the JSON property `gbTextRange`
-          # @return [Google::Apis::BooksV1::AnnotationsRange]
+          # @return [Google::Apis::BooksV1::Range]
           attr_accessor :gb_text_range
         
           # Range in image CFI format for this annotation for version above.
           # Corresponds to the JSON property `imageCfiRange`
-          # @return [Google::Apis::BooksV1::AnnotationsRange]
+          # @return [Google::Apis::BooksV1::Range]
           attr_accessor :image_cfi_range
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @cfi_range = args[:cfi_range] unless args[:cfi_range].nil?
             @content_version = args[:content_version] unless args[:content_version].nil?
             @gb_image_range = args[:gb_image_range] unless args[:gb_image_range].nil?
@@ -207,6 +224,7 @@ module Google
             @image_cfi_range = args[:image_cfi_range] unless args[:image_cfi_range].nil?
           end
         end
+        
         # 
         class LayerSummary
           include Google::Apis::Core::Hashable
@@ -228,13 +246,18 @@ module Google
           attr_accessor :remaining_character_count
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @allowed_character_count = args[:allowed_character_count] unless args[:allowed_character_count].nil?
             @limit_type = args[:limit_type] unless args[:limit_type].nil?
             @remaining_character_count = args[:remaining_character_count] unless args[:remaining_character_count].nil?
           end
         end
       end
-
+      
       # 
       class Annotationdata
         include Google::Apis::Core::Hashable
@@ -286,6 +309,11 @@ module Google
         attr_accessor :volume_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @annotation_type = args[:annotation_type] unless args[:annotation_type].nil?
           @data = args[:data] unless args[:data].nil?
           @encoded_data = args[:encoded_data] unless args[:encoded_data].nil?
@@ -297,7 +325,7 @@ module Google
           @volume_id = args[:volume_id] unless args[:volume_id].nil?
         end
       end
-
+      
       # 
       class Annotations
         include Google::Apis::Core::Hashable
@@ -325,15 +353,20 @@ module Google
         attr_accessor :total_items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @total_items = args[:total_items] unless args[:total_items].nil?
         end
       end
-
+      
       # 
-      class AnnotationsSummary
+      class Summary
         include Google::Apis::Core::Hashable
       
         # 
@@ -343,13 +376,19 @@ module Google
       
         # 
         # Corresponds to the JSON property `layers`
-        # @return [Array<Google::Apis::BooksV1::AnnotationsSummary::Layer>]
+        # @return [Array<Google::Apis::BooksV1::Summary::Layer>]
         attr_accessor :layers
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @layers = args[:layers] unless args[:layers].nil?
         end
+        
         # 
         class Layer
           include Google::Apis::Core::Hashable
@@ -380,6 +419,11 @@ module Google
           attr_accessor :updated
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @allowed_character_count = args[:allowed_character_count] unless args[:allowed_character_count].nil?
             @layer_id = args[:layer_id] unless args[:layer_id].nil?
             @limit_type = args[:limit_type] unless args[:limit_type].nil?
@@ -388,7 +432,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class Annotationsdata
         include Google::Apis::Core::Hashable
@@ -415,15 +459,20 @@ module Google
         attr_accessor :total_items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @total_items = args[:total_items] unless args[:total_items].nil?
         end
       end
-
+      
       # 
-      class AnnotationsRange
+      class Range
         include Google::Apis::Core::Hashable
       
         # The offset from the ending position.
@@ -447,15 +496,20 @@ module Google
         attr_accessor :start_position
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end_offset = args[:end_offset] unless args[:end_offset].nil?
           @end_position = args[:end_position] unless args[:end_position].nil?
           @start_offset = args[:start_offset] unless args[:start_offset].nil?
           @start_position = args[:start_position] unless args[:start_position].nil?
         end
       end
-
+      
       # 
-      class CloudloadingResource
+      class Resource
         include Google::Apis::Core::Hashable
       
         # 
@@ -479,15 +533,20 @@ module Google
         attr_accessor :volume_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @author = args[:author] unless args[:author].nil?
           @processing_state = args[:processing_state] unless args[:processing_state].nil?
           @title = args[:title] unless args[:title].nil?
           @volume_id = args[:volume_id] unless args[:volume_id].nil?
         end
       end
-
+      
       # 
-      class VolumesRecommendedRateResponse
+      class RateResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -496,10 +555,15 @@ module Google
         attr_accessor :consistency_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @consistency_token = args[:consistency_token] unless args[:consistency_token].nil?
         end
       end
-
+      
       # 
       class Bookshelf
         include Google::Apis::Core::Hashable
@@ -558,6 +622,11 @@ module Google
         attr_accessor :volumes_last_updated
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @access = args[:access] unless args[:access].nil?
           @created = args[:created] unless args[:created].nil?
           @description = args[:description] unless args[:description].nil?
@@ -570,7 +639,7 @@ module Google
           @volumes_last_updated = args[:volumes_last_updated] unless args[:volumes_last_updated].nil?
         end
       end
-
+      
       # 
       class Bookshelves
         include Google::Apis::Core::Hashable
@@ -586,11 +655,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
       class Category
         include Google::Apis::Core::Hashable
@@ -606,9 +680,15 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
+        
         # 
         class Item
           include Google::Apis::Core::Hashable
@@ -629,13 +709,18 @@ module Google
           attr_accessor :name
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @badge_url = args[:badge_url] unless args[:badge_url].nil?
             @category_id = args[:category_id] unless args[:category_id].nil?
             @name = args[:name] unless args[:name].nil?
           end
         end
       end
-
+      
       # 
       class ConcurrentAccessRestriction
         include Google::Apis::Core::Hashable
@@ -699,6 +784,11 @@ module Google
         attr_accessor :volume_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @device_allowed = args[:device_allowed] unless args[:device_allowed].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @max_concurrent_devices = args[:max_concurrent_devices] unless args[:max_concurrent_devices].nil?
@@ -712,7 +802,7 @@ module Google
           @volume_id = args[:volume_id] unless args[:volume_id].nil?
         end
       end
-
+      
       # 
       class Dictlayerdata
         include Google::Apis::Core::Hashable
@@ -733,10 +823,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @common = args[:common] unless args[:common].nil?
           @dict = args[:dict] unless args[:dict].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
+        
         # 
         class Common
           include Google::Apis::Core::Hashable
@@ -748,9 +844,15 @@ module Google
           attr_accessor :title
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @title = args[:title] unless args[:title].nil?
           end
         end
+        
         # 
         class Dict
           include Google::Apis::Core::Hashable
@@ -766,9 +868,15 @@ module Google
           attr_accessor :words
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @source = args[:source] unless args[:source].nil?
             @words = args[:words] unless args[:words].nil?
           end
+          
           # The source, url and attribution for this dictionary data.
           class Source
             include Google::Apis::Core::Hashable
@@ -784,10 +892,16 @@ module Google
             attr_accessor :url
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @attribution = args[:attribution] unless args[:attribution].nil?
               @url = args[:url] unless args[:url].nil?
             end
           end
+          
           # 
           class Word
             include Google::Apis::Core::Hashable
@@ -814,11 +928,17 @@ module Google
             attr_accessor :source
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @derivatives = args[:derivatives] unless args[:derivatives].nil?
               @examples = args[:examples] unless args[:examples].nil?
               @senses = args[:senses] unless args[:senses].nil?
               @source = args[:source] unless args[:source].nil?
             end
+            
             # 
             class Derivative
               include Google::Apis::Core::Hashable
@@ -834,9 +954,15 @@ module Google
               attr_accessor :text
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @source = args[:source] unless args[:source].nil?
                 @text = args[:text] unless args[:text].nil?
               end
+              
               # 
               class Source
                 include Google::Apis::Core::Hashable
@@ -852,11 +978,17 @@ module Google
                 attr_accessor :url
               
                 def initialize(**args)
+                   update!(**args)
+                end
+              
+                # Update properties of this object
+                def update!(**args)
                   @attribution = args[:attribution] unless args[:attribution].nil?
                   @url = args[:url] unless args[:url].nil?
                 end
               end
             end
+            
             # 
             class Example
               include Google::Apis::Core::Hashable
@@ -872,9 +1004,15 @@ module Google
               attr_accessor :text
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @source = args[:source] unless args[:source].nil?
                 @text = args[:text] unless args[:text].nil?
               end
+              
               # 
               class Source
                 include Google::Apis::Core::Hashable
@@ -890,11 +1028,17 @@ module Google
                 attr_accessor :url
               
                 def initialize(**args)
+                   update!(**args)
+                end
+              
+                # Update properties of this object
+                def update!(**args)
                   @attribution = args[:attribution] unless args[:attribution].nil?
                   @url = args[:url] unless args[:url].nil?
                 end
               end
             end
+            
             # 
             class Sense
               include Google::Apis::Core::Hashable
@@ -940,6 +1084,11 @@ module Google
               attr_accessor :synonyms
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @conjugations = args[:conjugations] unless args[:conjugations].nil?
                 @definitions = args[:definitions] unless args[:definitions].nil?
                 @part_of_speech = args[:part_of_speech] unless args[:part_of_speech].nil?
@@ -949,6 +1098,7 @@ module Google
                 @syllabification = args[:syllabification] unless args[:syllabification].nil?
                 @synonyms = args[:synonyms] unless args[:synonyms].nil?
               end
+              
               # 
               class Conjugation
                 include Google::Apis::Core::Hashable
@@ -964,10 +1114,16 @@ module Google
                 attr_accessor :value
               
                 def initialize(**args)
+                   update!(**args)
+                end
+              
+                # Update properties of this object
+                def update!(**args)
                   @type = args[:type] unless args[:type].nil?
                   @value = args[:value] unless args[:value].nil?
                 end
               end
+              
               # 
               class Definition
                 include Google::Apis::Core::Hashable
@@ -983,9 +1139,15 @@ module Google
                 attr_accessor :examples
               
                 def initialize(**args)
+                   update!(**args)
+                end
+              
+                # Update properties of this object
+                def update!(**args)
                   @definition = args[:definition] unless args[:definition].nil?
                   @examples = args[:examples] unless args[:examples].nil?
                 end
+                
                 # 
                 class Example
                   include Google::Apis::Core::Hashable
@@ -1001,9 +1163,15 @@ module Google
                   attr_accessor :text
                 
                   def initialize(**args)
+                     update!(**args)
+                  end
+                
+                  # Update properties of this object
+                  def update!(**args)
                     @source = args[:source] unless args[:source].nil?
                     @text = args[:text] unless args[:text].nil?
                   end
+                  
                   # 
                   class Source
                     include Google::Apis::Core::Hashable
@@ -1019,12 +1187,18 @@ module Google
                     attr_accessor :url
                   
                     def initialize(**args)
+                       update!(**args)
+                    end
+                  
+                    # Update properties of this object
+                    def update!(**args)
                       @attribution = args[:attribution] unless args[:attribution].nil?
                       @url = args[:url] unless args[:url].nil?
                     end
                   end
                 end
               end
+              
               # 
               class Source
                 include Google::Apis::Core::Hashable
@@ -1040,10 +1214,16 @@ module Google
                 attr_accessor :url
               
                 def initialize(**args)
+                   update!(**args)
+                end
+              
+                # Update properties of this object
+                def update!(**args)
                   @attribution = args[:attribution] unless args[:attribution].nil?
                   @url = args[:url] unless args[:url].nil?
                 end
               end
+              
               # 
               class Synonym
                 include Google::Apis::Core::Hashable
@@ -1059,9 +1239,15 @@ module Google
                 attr_accessor :text
               
                 def initialize(**args)
+                   update!(**args)
+                end
+              
+                # Update properties of this object
+                def update!(**args)
                   @source = args[:source] unless args[:source].nil?
                   @text = args[:text] unless args[:text].nil?
                 end
+                
                 # 
                 class Source
                   include Google::Apis::Core::Hashable
@@ -1077,12 +1263,18 @@ module Google
                   attr_accessor :url
                 
                   def initialize(**args)
+                     update!(**args)
+                  end
+                
+                  # Update properties of this object
+                  def update!(**args)
                     @attribution = args[:attribution] unless args[:attribution].nil?
                     @url = args[:url] unless args[:url].nil?
                   end
                 end
               end
             end
+            
             # The words with different meanings but not related words, e.g. "go" (game) and "
             # go" (verb).
             class Source
@@ -1099,6 +1291,11 @@ module Google
               attr_accessor :url
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @attribution = args[:attribution] unless args[:attribution].nil?
                 @url = args[:url] unless args[:url].nil?
               end
@@ -1106,7 +1303,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class DownloadAccessRestriction
         include Google::Apis::Core::Hashable
@@ -1179,6 +1376,11 @@ module Google
         attr_accessor :volume_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @device_allowed = args[:device_allowed] unless args[:device_allowed].nil?
           @downloads_acquired = args[:downloads_acquired] unless args[:downloads_acquired].nil?
           @just_acquired = args[:just_acquired] unless args[:just_acquired].nil?
@@ -1193,7 +1395,7 @@ module Google
           @volume_id = args[:volume_id] unless args[:volume_id].nil?
         end
       end
-
+      
       # 
       class DownloadAccesses
         include Google::Apis::Core::Hashable
@@ -1209,11 +1411,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @download_access_list = args[:download_access_list] unless args[:download_access_list].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
       class Geolayerdata
         include Google::Apis::Core::Hashable
@@ -1234,10 +1441,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @common = args[:common] unless args[:common].nil?
           @geo = args[:geo] unless args[:geo].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
+        
         # 
         class Common
           include Google::Apis::Core::Hashable
@@ -1269,6 +1482,11 @@ module Google
           attr_accessor :title
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @lang = args[:lang] unless args[:lang].nil?
             @preview_image_url = args[:preview_image_url] unless args[:preview_image_url].nil?
             @snippet = args[:snippet] unless args[:snippet].nil?
@@ -1276,6 +1494,7 @@ module Google
             @title = args[:title] unless args[:title].nil?
           end
         end
+        
         # 
         class Geo
           include Google::Apis::Core::Hashable
@@ -1327,6 +1546,11 @@ module Google
           attr_accessor :zoom
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @boundary = args[:boundary] unless args[:boundary].nil?
             @cache_policy = args[:cache_policy] unless args[:cache_policy].nil?
             @country_code = args[:country_code] unless args[:country_code].nil?
@@ -1336,6 +1560,7 @@ module Google
             @viewport = args[:viewport] unless args[:viewport].nil?
             @zoom = args[:zoom] unless args[:zoom].nil?
           end
+          
           # 
           class Boundary
             include Google::Apis::Core::Hashable
@@ -1351,10 +1576,16 @@ module Google
             attr_accessor :longitude
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @latitude = args[:latitude] unless args[:latitude].nil?
               @longitude = args[:longitude] unless args[:longitude].nil?
             end
           end
+          
           # The viewport for showing this location. This is a latitude, longitude
           # rectangle.
           class Viewport
@@ -1371,9 +1602,15 @@ module Google
             attr_accessor :lo
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @hi = args[:hi] unless args[:hi].nil?
               @lo = args[:lo] unless args[:lo].nil?
             end
+            
             # 
             class Hi
               include Google::Apis::Core::Hashable
@@ -1389,10 +1626,16 @@ module Google
               attr_accessor :longitude
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @latitude = args[:latitude] unless args[:latitude].nil?
                 @longitude = args[:longitude] unless args[:longitude].nil?
               end
             end
+            
             # 
             class Lo
               include Google::Apis::Core::Hashable
@@ -1408,6 +1651,11 @@ module Google
               attr_accessor :longitude
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @latitude = args[:latitude] unless args[:latitude].nil?
                 @longitude = args[:longitude] unless args[:longitude].nil?
               end
@@ -1415,7 +1663,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class Layersummaries
         include Google::Apis::Core::Hashable
@@ -1436,12 +1684,17 @@ module Google
         attr_accessor :total_items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @total_items = args[:total_items] unless args[:total_items].nil?
         end
       end
-
+      
       # 
       class Layersummary
         include Google::Apis::Core::Hashable
@@ -1515,6 +1768,11 @@ module Google
         attr_accessor :volume_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @annotation_count = args[:annotation_count] unless args[:annotation_count].nil?
           @annotation_types = args[:annotation_types] unless args[:annotation_types].nil?
           @annotations_data_link = args[:annotations_data_link] unless args[:annotations_data_link].nil?
@@ -1530,7 +1788,7 @@ module Google
           @volume_id = args[:volume_id] unless args[:volume_id].nil?
         end
       end
-
+      
       # 
       class Metadata
         include Google::Apis::Core::Hashable
@@ -1546,9 +1804,15 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
+        
         # 
         class Item
           include Google::Apis::Core::Hashable
@@ -1579,6 +1843,11 @@ module Google
           attr_accessor :version
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @download_url = args[:download_url] unless args[:download_url].nil?
             @encrypted_key = args[:encrypted_key] unless args[:encrypted_key].nil?
             @language = args[:language] unless args[:language].nil?
@@ -1587,7 +1856,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class Offers
         include Google::Apis::Core::Hashable
@@ -1603,9 +1872,15 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
+        
         # 
         class Item
           include Google::Apis::Core::Hashable
@@ -1631,11 +1906,17 @@ module Google
           attr_accessor :items
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @art_url = args[:art_url] unless args[:art_url].nil?
             @gservices_key = args[:gservices_key] unless args[:gservices_key].nil?
             @id = args[:id] unless args[:id].nil?
             @items = args[:items] unless args[:items].nil?
           end
+          
           # 
           class Item
             include Google::Apis::Core::Hashable
@@ -1671,6 +1952,11 @@ module Google
             attr_accessor :volume_id
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @author = args[:author] unless args[:author].nil?
               @canonical_volume_link = args[:canonical_volume_link] unless args[:canonical_volume_link].nil?
               @cover_url = args[:cover_url] unless args[:cover_url].nil?
@@ -1681,7 +1967,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class ReadingPosition
         include Google::Apis::Core::Hashable
@@ -1723,6 +2009,11 @@ module Google
         attr_accessor :volume_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @epub_cfi_position = args[:epub_cfi_position] unless args[:epub_cfi_position].nil?
           @gb_image_position = args[:gb_image_position] unless args[:gb_image_position].nil?
           @gb_text_position = args[:gb_text_position] unless args[:gb_text_position].nil?
@@ -1732,7 +2023,7 @@ module Google
           @volume_id = args[:volume_id] unless args[:volume_id].nil?
         end
       end
-
+      
       # 
       class RequestAccess
         include Google::Apis::Core::Hashable
@@ -1753,12 +2044,17 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @concurrent_access = args[:concurrent_access] unless args[:concurrent_access].nil?
           @download_access = args[:download_access] unless args[:download_access].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
       class Review
         include Google::Apis::Core::Hashable
@@ -1817,6 +2113,11 @@ module Google
         attr_accessor :volume_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @author = args[:author] unless args[:author].nil?
           @content = args[:content] unless args[:content].nil?
           @date = args[:date] unless args[:date].nil?
@@ -1828,6 +2129,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
           @volume_id = args[:volume_id] unless args[:volume_id].nil?
         end
+        
         # Author of this review.
         class Author
           include Google::Apis::Core::Hashable
@@ -1838,9 +2140,15 @@ module Google
           attr_accessor :display_name
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @display_name = args[:display_name] unless args[:display_name].nil?
           end
         end
+        
         # Information regarding the source of this review, when the review is not from a
         # Google Books user.
         class Source
@@ -1862,13 +2170,18 @@ module Google
           attr_accessor :url
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @description = args[:description] unless args[:description].nil?
             @extra_description = args[:extra_description] unless args[:extra_description].nil?
             @url = args[:url] unless args[:url].nil?
           end
         end
       end
-
+      
       # 
       class Usersettings
         include Google::Apis::Core::Hashable
@@ -1884,9 +2197,15 @@ module Google
         attr_accessor :notes_export
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @notes_export = args[:notes_export] unless args[:notes_export].nil?
         end
+        
         # User settings in sub-objects, each for different purposes.
         class NotesExport
           include Google::Apis::Core::Hashable
@@ -1903,12 +2222,17 @@ module Google
           alias_method :is_enabled?, :is_enabled
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @folder_name = args[:folder_name] unless args[:folder_name].nil?
             @is_enabled = args[:is_enabled] unless args[:is_enabled].nil?
           end
         end
       end
-
+      
       # 
       class Volume
         include Google::Apis::Core::Hashable
@@ -1943,7 +2267,7 @@ module Google
       
         # Recommendation related information for this volume.
         # Corresponds to the JSON property `recommendedInfo`
-        # @return [Google::Apis::BooksV1::Volume::RecommendedInfo]
+        # @return [Google::Apis::BooksV1::Volume::Info]
         attr_accessor :recommended_info
       
         # Any information about a volume related to the eBookstore and/or
@@ -1975,6 +2299,11 @@ module Google
         attr_accessor :volume_info
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @access_info = args[:access_info] unless args[:access_info].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
@@ -1987,6 +2316,7 @@ module Google
           @user_info = args[:user_info] unless args[:user_info].nil?
           @volume_info = args[:volume_info] unless args[:volume_info].nil?
         end
+        
         # Any information about a volume related to reading or obtaining that volume
         # text. This information can depend on country (books may be public domain in
         # one country but not in another, e.g.).
@@ -2082,6 +2412,11 @@ module Google
           attr_accessor :web_reader_link
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @access_view_status = args[:access_view_status] unless args[:access_view_status].nil?
             @country = args[:country] unless args[:country].nil?
             @download_access = args[:download_access] unless args[:download_access].nil?
@@ -2097,6 +2432,7 @@ module Google
             @viewability = args[:viewability] unless args[:viewability].nil?
             @web_reader_link = args[:web_reader_link] unless args[:web_reader_link].nil?
           end
+          
           # Information about epub content. (In LITE projection.)
           class Epub
             include Google::Apis::Core::Hashable
@@ -2119,11 +2455,17 @@ module Google
             alias_method :is_available?, :is_available
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @acs_token_link = args[:acs_token_link] unless args[:acs_token_link].nil?
               @download_link = args[:download_link] unless args[:download_link].nil?
               @is_available = args[:is_available] unless args[:is_available].nil?
             end
           end
+          
           # Information about pdf content. (In LITE projection.)
           class Pdf
             include Google::Apis::Core::Hashable
@@ -2146,12 +2488,18 @@ module Google
             alias_method :is_available?, :is_available
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @acs_token_link = args[:acs_token_link] unless args[:acs_token_link].nil?
               @download_link = args[:download_link] unless args[:download_link].nil?
               @is_available = args[:is_available] unless args[:is_available].nil?
             end
           end
         end
+        
         # What layers exist in this volume and high level information about them.
         class LayerInfo
           include Google::Apis::Core::Hashable
@@ -2162,8 +2510,14 @@ module Google
           attr_accessor :layers
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @layers = args[:layers] unless args[:layers].nil?
           end
+          
           # 
           class Layer
             include Google::Apis::Core::Hashable
@@ -2181,13 +2535,19 @@ module Google
             attr_accessor :volume_annotations_version
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @layer_id = args[:layer_id] unless args[:layer_id].nil?
               @volume_annotations_version = args[:volume_annotations_version] unless args[:volume_annotations_version].nil?
             end
           end
         end
+        
         # Recommendation related information for this volume.
-        class RecommendedInfo
+        class Info
           include Google::Apis::Core::Hashable
         
           # A text explaining why this volume is recommended.
@@ -2196,9 +2556,15 @@ module Google
           attr_accessor :explanation
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @explanation = args[:explanation] unless args[:explanation].nil?
           end
         end
+        
         # Any information about a volume related to the eBookstore and/or
         # purchaseability. This information can depend on the country where the request
         # originates from (i.e. books may not be for sale in certain countries).
@@ -2252,6 +2618,11 @@ module Google
           attr_accessor :saleability
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @buy_link = args[:buy_link] unless args[:buy_link].nil?
             @country = args[:country] unless args[:country].nil?
             @is_ebook = args[:is_ebook] unless args[:is_ebook].nil?
@@ -2261,6 +2632,7 @@ module Google
             @retail_price = args[:retail_price] unless args[:retail_price].nil?
             @saleability = args[:saleability] unless args[:saleability].nil?
           end
+          
           # Suggested retail price. (In LITE projection.)
           class ListPrice
             include Google::Apis::Core::Hashable
@@ -2276,10 +2648,16 @@ module Google
             attr_accessor :currency_code
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @amount = args[:amount] unless args[:amount].nil?
               @currency_code = args[:currency_code] unless args[:currency_code].nil?
             end
           end
+          
           # 
           class Offer
             include Google::Apis::Core::Hashable
@@ -2305,11 +2683,17 @@ module Google
             attr_accessor :retail_price
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @finsky_offer_type = args[:finsky_offer_type] unless args[:finsky_offer_type].nil?
               @list_price = args[:list_price] unless args[:list_price].nil?
               @rental_duration = args[:rental_duration] unless args[:rental_duration].nil?
               @retail_price = args[:retail_price] unless args[:retail_price].nil?
             end
+            
             # Offer list (=undiscounted) price in Micros.
             class ListPrice
               include Google::Apis::Core::Hashable
@@ -2325,10 +2709,16 @@ module Google
               attr_accessor :currency_code
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @amount_in_micros = args[:amount_in_micros] unless args[:amount_in_micros].nil?
                 @currency_code = args[:currency_code] unless args[:currency_code].nil?
               end
             end
+            
             # The rental duration (for rental offers only).
             class RentalDuration
               include Google::Apis::Core::Hashable
@@ -2344,10 +2734,16 @@ module Google
               attr_accessor :unit
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @count = args[:count] unless args[:count].nil?
                 @unit = args[:unit] unless args[:unit].nil?
               end
             end
+            
             # Offer retail (=discounted) price in Micros
             class RetailPrice
               include Google::Apis::Core::Hashable
@@ -2363,11 +2759,17 @@ module Google
               attr_accessor :currency_code
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @amount_in_micros = args[:amount_in_micros] unless args[:amount_in_micros].nil?
                 @currency_code = args[:currency_code] unless args[:currency_code].nil?
               end
             end
           end
+          
           # The actual selling price of the book. This is the same as the suggested retail
           # or list price unless there are offers or discounts on this volume. (In LITE
           # projection.)
@@ -2385,11 +2787,17 @@ module Google
             attr_accessor :currency_code
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @amount = args[:amount] unless args[:amount].nil?
               @currency_code = args[:currency_code] unless args[:currency_code].nil?
             end
           end
         end
+        
         # Search result information related to this volume.
         class SearchInfo
           include Google::Apis::Core::Hashable
@@ -2400,9 +2808,15 @@ module Google
           attr_accessor :text_snippet
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @text_snippet = args[:text_snippet] unless args[:text_snippet].nil?
           end
         end
+        
         # User specific information related to this volume. (e.g. page this user last
         # read or whether they purchased this book)
         class UserInfo
@@ -2469,10 +2883,15 @@ module Google
         
           # 
           # Corresponds to the JSON property `userUploadedVolumeInfo`
-          # @return [Google::Apis::BooksV1::Volume::UserInfo::UserUploadedVolumeInfo]
+          # @return [Google::Apis::BooksV1::Volume::UserInfo::VolumeInfo]
           attr_accessor :user_uploaded_volume_info
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @copy = args[:copy] unless args[:copy].nil?
             @is_in_my_books = args[:is_in_my_books] unless args[:is_in_my_books].nil?
             @is_preordered = args[:is_preordered] unless args[:is_preordered].nil?
@@ -2485,6 +2904,7 @@ module Google
             @updated = args[:updated] unless args[:updated].nil?
             @user_uploaded_volume_info = args[:user_uploaded_volume_info] unless args[:user_uploaded_volume_info].nil?
           end
+          
           # Copy/Paste accounting information.
           class Copy
             include Google::Apis::Core::Hashable
@@ -2510,12 +2930,18 @@ module Google
             attr_accessor :updated
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @allowed_character_count = args[:allowed_character_count] unless args[:allowed_character_count].nil?
               @limit_type = args[:limit_type] unless args[:limit_type].nil?
               @remaining_character_count = args[:remaining_character_count] unless args[:remaining_character_count].nil?
               @updated = args[:updated] unless args[:updated].nil?
             end
           end
+          
           # Period during this book is/was a valid rental.
           class RentalPeriod
             include Google::Apis::Core::Hashable
@@ -2531,12 +2957,18 @@ module Google
             attr_accessor :start_utc_sec
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @end_utc_sec = args[:end_utc_sec] unless args[:end_utc_sec].nil?
               @start_utc_sec = args[:start_utc_sec] unless args[:start_utc_sec].nil?
             end
           end
+          
           # 
-          class UserUploadedVolumeInfo
+          class VolumeInfo
             include Google::Apis::Core::Hashable
           
             # 
@@ -2545,13 +2977,25 @@ module Google
             attr_accessor :processing_state
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @processing_state = args[:processing_state] unless args[:processing_state].nil?
             end
           end
         end
+        
         # General volume information.
         class VolumeInfo
           include Google::Apis::Core::Hashable
+        
+          # Whether anonymous logging should be allowed.
+          # Corresponds to the JSON property `allowAnonLogging`
+          # @return [Boolean]
+          attr_accessor :allow_anon_logging
+          alias_method :allow_anon_logging?, :allow_anon_logging
         
           # The names of the authors and/or editors for this volume. (In LITE projection)
           # Corresponds to the JSON property `authors`
@@ -2681,6 +3125,12 @@ module Google
           attr_accessor :title
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @allow_anon_logging = args[:allow_anon_logging] unless args[:allow_anon_logging].nil?
             @authors = args[:authors] unless args[:authors].nil?
             @average_rating = args[:average_rating] unless args[:average_rating].nil?
             @canonical_volume_link = args[:canonical_volume_link] unless args[:canonical_volume_link].nil?
@@ -2706,6 +3156,7 @@ module Google
             @subtitle = args[:subtitle] unless args[:subtitle].nil?
             @title = args[:title] unless args[:title].nil?
           end
+          
           # Physical dimensions of this volume.
           class Dimensions
             include Google::Apis::Core::Hashable
@@ -2726,11 +3177,17 @@ module Google
             attr_accessor :width
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @height = args[:height] unless args[:height].nil?
               @thickness = args[:thickness] unless args[:thickness].nil?
               @width = args[:width] unless args[:width].nil?
             end
           end
+          
           # A list of image links for all the sizes that are available. (In LITE
           # projection.)
           class ImageLinks
@@ -2767,6 +3224,11 @@ module Google
             attr_accessor :thumbnail
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @extra_large = args[:extra_large] unless args[:extra_large].nil?
               @large = args[:large] unless args[:large].nil?
               @medium = args[:medium] unless args[:medium].nil?
@@ -2775,6 +3237,7 @@ module Google
               @thumbnail = args[:thumbnail] unless args[:thumbnail].nil?
             end
           end
+          
           # 
           class IndustryIdentifier
             include Google::Apis::Core::Hashable
@@ -2790,13 +3253,18 @@ module Google
             attr_accessor :type
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @identifier = args[:identifier] unless args[:identifier].nil?
               @type = args[:type] unless args[:type].nil?
             end
           end
         end
       end
-
+      
       # 
       class Volume2
         include Google::Apis::Core::Hashable
@@ -2817,12 +3285,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # 
       class Volumeannotation
         include Google::Apis::Core::Hashable
@@ -2900,6 +3373,11 @@ module Google
         attr_accessor :volume_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @annotation_data_id = args[:annotation_data_id] unless args[:annotation_data_id].nil?
           @annotation_data_link = args[:annotation_data_link] unless args[:annotation_data_link].nil?
           @annotation_type = args[:annotation_type] unless args[:annotation_type].nil?
@@ -2915,13 +3393,14 @@ module Google
           @updated = args[:updated] unless args[:updated].nil?
           @volume_id = args[:volume_id] unless args[:volume_id].nil?
         end
+        
         # The content ranges to identify the selected text.
         class ContentRanges
           include Google::Apis::Core::Hashable
         
           # Range in CFI format for this annotation for version above.
           # Corresponds to the JSON property `cfiRange`
-          # @return [Google::Apis::BooksV1::AnnotationsRange]
+          # @return [Google::Apis::BooksV1::Range]
           attr_accessor :cfi_range
         
           # Content version applicable to ranges below.
@@ -2931,15 +3410,20 @@ module Google
         
           # Range in GB image format for this annotation for version above.
           # Corresponds to the JSON property `gbImageRange`
-          # @return [Google::Apis::BooksV1::AnnotationsRange]
+          # @return [Google::Apis::BooksV1::Range]
           attr_accessor :gb_image_range
         
           # Range in GB text format for this annotation for version above.
           # Corresponds to the JSON property `gbTextRange`
-          # @return [Google::Apis::BooksV1::AnnotationsRange]
+          # @return [Google::Apis::BooksV1::Range]
           attr_accessor :gb_text_range
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @cfi_range = args[:cfi_range] unless args[:cfi_range].nil?
             @content_version = args[:content_version] unless args[:content_version].nil?
             @gb_image_range = args[:gb_image_range] unless args[:gb_image_range].nil?
@@ -2947,7 +3431,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class Volumeannotations
         include Google::Apis::Core::Hashable
@@ -2982,6 +3466,11 @@ module Google
         attr_accessor :version
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
@@ -2989,7 +3478,7 @@ module Google
           @version = args[:version] unless args[:version].nil?
         end
       end
-
+      
       # 
       class Volumes
         include Google::Apis::Core::Hashable
@@ -3011,6 +3500,11 @@ module Google
         attr_accessor :total_items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @total_items = args[:total_items] unless args[:total_items].nil?

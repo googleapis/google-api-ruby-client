@@ -22,235 +22,263 @@ module Google
   module Apis
     module CoordinateV1
       
-      class CustomFieldRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class CustomField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CustomFieldDefRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class CustomFieldDef
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CustomFieldDefListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CustomFieldsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class CustomFields
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EnumItemDefRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class EnumItemDef
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class JobRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Job
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class JobChangeRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class JobChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class JobListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class JobListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class JobStateRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class JobState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LocationRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LocationListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class LocationListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LocationRecordRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Record
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ScheduleRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Schedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TeamRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Team
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TeamListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TeamListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TokenPaginationRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TokenPagination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class WorkerRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Worker
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class WorkerListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class WorkerListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class CustomFieldRepresentation < Google::Apis::Core::JsonRepresentation
-        property :custom_field_id, as: 'customFieldId'
-        property :kind, as: 'kind'
-        property :value, as: 'value'
+      class CustomField
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_field_id, as: 'customFieldId'
+          property :kind, as: 'kind'
+          property :value, as: 'value'
+        end
       end
-
+      
       # @private
-      class CustomFieldDefRepresentation < Google::Apis::Core::JsonRepresentation
-        property :enabled, as: 'enabled'
-        collection :enumitems, as: 'enumitems', class: Google::Apis::CoordinateV1::EnumItemDef, decorator: Google::Apis::CoordinateV1::EnumItemDefRepresentation
-        
-        
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :required_for_checkout, as: 'requiredForCheckout'
-        property :type, as: 'type'
+      class CustomFieldDef
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          collection :enumitems, as: 'enumitems', class: Google::Apis::CoordinateV1::EnumItemDef, decorator: Google::Apis::CoordinateV1::EnumItemDef::Representation
+      
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :required_for_checkout, as: 'requiredForCheckout'
+          property :type, as: 'type'
+        end
       end
-
+      
       # @private
-      class CustomFieldDefListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::CoordinateV1::CustomFieldDef, decorator: Google::Apis::CoordinateV1::CustomFieldDefRepresentation
-        
-        
-        property :kind, as: 'kind'
+      class ListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::CoordinateV1::CustomFieldDef, decorator: Google::Apis::CoordinateV1::CustomFieldDef::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class CustomFieldsRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :custom_field, as: 'customField', class: Google::Apis::CoordinateV1::CustomField, decorator: Google::Apis::CoordinateV1::CustomFieldRepresentation
-        
-        
-        property :kind, as: 'kind'
+      class CustomFields
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_field, as: 'customField', class: Google::Apis::CoordinateV1::CustomField, decorator: Google::Apis::CoordinateV1::CustomField::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class EnumItemDefRepresentation < Google::Apis::Core::JsonRepresentation
-        property :active, as: 'active'
-        property :kind, as: 'kind'
-        property :value, as: 'value'
+      class EnumItemDef
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active, as: 'active'
+          property :kind, as: 'kind'
+          property :value, as: 'value'
+        end
       end
-
+      
       # @private
-      class JobRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :job_change, as: 'jobChange', class: Google::Apis::CoordinateV1::JobChange, decorator: Google::Apis::CoordinateV1::JobChangeRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :state, as: 'state', class: Google::Apis::CoordinateV1::JobState, decorator: Google::Apis::CoordinateV1::JobStateRepresentation
+      class Job
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :job_change, as: 'jobChange', class: Google::Apis::CoordinateV1::JobChange, decorator: Google::Apis::CoordinateV1::JobChange::Representation
+      
+          property :kind, as: 'kind'
+          property :state, as: 'state', class: Google::Apis::CoordinateV1::JobState, decorator: Google::Apis::CoordinateV1::JobState::Representation
+      
+        end
       end
-
+      
       # @private
-      class JobChangeRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :state, as: 'state', class: Google::Apis::CoordinateV1::JobState, decorator: Google::Apis::CoordinateV1::JobStateRepresentation
-        
-        property :timestamp, as: 'timestamp'
+      class JobChange
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :state, as: 'state', class: Google::Apis::CoordinateV1::JobState, decorator: Google::Apis::CoordinateV1::JobState::Representation
+      
+          property :timestamp, as: 'timestamp'
+        end
       end
-
+      
       # @private
-      class JobListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::CoordinateV1::Job, decorator: Google::Apis::CoordinateV1::JobRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class JobListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::CoordinateV1::Job, decorator: Google::Apis::CoordinateV1::Job::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class JobStateRepresentation < Google::Apis::Core::JsonRepresentation
-        property :assignee, as: 'assignee'
-        property :custom_fields, as: 'customFields', class: Google::Apis::CoordinateV1::CustomFields, decorator: Google::Apis::CoordinateV1::CustomFieldsRepresentation
-        
-        property :customer_name, as: 'customerName'
-        property :customer_phone_number, as: 'customerPhoneNumber'
-        property :kind, as: 'kind'
-        property :location, as: 'location', class: Google::Apis::CoordinateV1::Location, decorator: Google::Apis::CoordinateV1::LocationRepresentation
-        
-        collection :note, as: 'note'
-        
-        property :progress, as: 'progress'
-        property :title, as: 'title'
+      class JobState
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assignee, as: 'assignee'
+          property :custom_fields, as: 'customFields', class: Google::Apis::CoordinateV1::CustomFields, decorator: Google::Apis::CoordinateV1::CustomFields::Representation
+      
+          property :customer_name, as: 'customerName'
+          property :customer_phone_number, as: 'customerPhoneNumber'
+          property :kind, as: 'kind'
+          property :location, as: 'location', class: Google::Apis::CoordinateV1::Location, decorator: Google::Apis::CoordinateV1::Location::Representation
+      
+          collection :note, as: 'note'
+          property :progress, as: 'progress'
+          property :title, as: 'title'
+        end
       end
-
+      
       # @private
-      class LocationRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :address_line, as: 'addressLine'
-        
-        property :kind, as: 'kind'
-        property :lat, as: 'lat'
-        property :lng, as: 'lng'
+      class Location
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :address_line, as: 'addressLine'
+          property :kind, as: 'kind'
+          property :lat, as: 'lat'
+          property :lng, as: 'lng'
+        end
       end
-
+      
       # @private
-      class LocationListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::CoordinateV1::LocationRecord, decorator: Google::Apis::CoordinateV1::LocationRecordRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :token_pagination, as: 'tokenPagination', class: Google::Apis::CoordinateV1::TokenPagination, decorator: Google::Apis::CoordinateV1::TokenPaginationRepresentation
+      class LocationListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::CoordinateV1::Record, decorator: Google::Apis::CoordinateV1::Record::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :token_pagination, as: 'tokenPagination', class: Google::Apis::CoordinateV1::TokenPagination, decorator: Google::Apis::CoordinateV1::TokenPagination::Representation
+      
+        end
       end
-
+      
       # @private
-      class LocationRecordRepresentation < Google::Apis::Core::JsonRepresentation
-        property :collection_time, as: 'collectionTime'
-        property :confidence_radius, as: 'confidenceRadius'
-        property :kind, as: 'kind'
-        property :latitude, as: 'latitude'
-        property :longitude, as: 'longitude'
+      class Record
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collection_time, as: 'collectionTime'
+          property :confidence_radius, as: 'confidenceRadius'
+          property :kind, as: 'kind'
+          property :latitude, as: 'latitude'
+          property :longitude, as: 'longitude'
+        end
       end
-
+      
       # @private
-      class ScheduleRepresentation < Google::Apis::Core::JsonRepresentation
-        property :all_day, as: 'allDay'
-        property :duration, as: 'duration'
-        property :end_time, as: 'endTime'
-        property :kind, as: 'kind'
-        property :start_time, as: 'startTime'
+      class Schedule
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_day, as: 'allDay'
+          property :duration, as: 'duration'
+          property :end_time, as: 'endTime'
+          property :kind, as: 'kind'
+          property :start_time, as: 'startTime'
+        end
       end
-
+      
       # @private
-      class TeamRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
+      class Team
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+        end
       end
-
+      
       # @private
-      class TeamListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::CoordinateV1::Team, decorator: Google::Apis::CoordinateV1::TeamRepresentation
-        
-        
-        property :kind, as: 'kind'
+      class TeamListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::CoordinateV1::Team, decorator: Google::Apis::CoordinateV1::Team::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class TokenPaginationRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :previous_page_token, as: 'previousPageToken'
+      class TokenPagination
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :previous_page_token, as: 'previousPageToken'
+        end
       end
-
+      
       # @private
-      class WorkerRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        property :kind, as: 'kind'
+      class Worker
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class WorkerListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::CoordinateV1::Worker, decorator: Google::Apis::CoordinateV1::WorkerRepresentation
-        
-        
-        property :kind, as: 'kind'
+      class WorkerListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::CoordinateV1::Worker, decorator: Google::Apis::CoordinateV1::Worker::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
     end
   end

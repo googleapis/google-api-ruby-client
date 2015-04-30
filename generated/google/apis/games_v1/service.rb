@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/games/services/
       class GamesService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'games/v1/')
         end
-
+        
         # Lists all the achievement definitions for your application.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
@@ -71,14 +70,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesV1::AchievementDefinitionsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::GamesV1::ListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesV1::AchievementDefinitionsListResponse]
+        # @return [Google::Apis::GamesV1::ListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -86,8 +85,8 @@ module Google
         def list_achievement_definitions(language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'achievements'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::AchievementDefinitionsListResponseRepresentation
-          command.response_class = Google::Apis::GamesV1::AchievementDefinitionsListResponse
+          command.response_representation = Google::Apis::GamesV1::ListResponse::Representation
+          command.response_class = Google::Apis::GamesV1::ListResponse
           command.query['language'] = language unless language.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -96,7 +95,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Increments the steps of the achievement with the given ID for the currently
         # authenticated player.
         # @param [String] achievement_id
@@ -116,7 +115,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -131,7 +130,7 @@ module Google
         def increment_achievement(achievement_id, request_id: nil, steps_to_increment: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'achievements/{achievementId}/increment'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::GamesV1::AchievementIncrementResponseRepresentation
+          command.response_representation = Google::Apis::GamesV1::AchievementIncrementResponse::Representation
           command.response_class = Google::Apis::GamesV1::AchievementIncrementResponse
           command.params['achievementId'] = achievement_id unless achievement_id.nil?
           command.query['requestId'] = request_id unless request_id.nil?
@@ -141,7 +140,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists the progress for all your application's achievements for the currently
         # authenticated player.
@@ -168,7 +166,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -183,7 +181,7 @@ module Google
         def list_achievements(player_id, language: nil, max_results: nil, page_token: nil, state: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'players/{playerId}/achievements'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::PlayerAchievementListResponseRepresentation
+          command.response_representation = Google::Apis::GamesV1::PlayerAchievementListResponse::Representation
           command.response_class = Google::Apis::GamesV1::PlayerAchievementListResponse
           command.params['playerId'] = player_id unless player_id.nil?
           command.query['language'] = language unless language.nil?
@@ -195,7 +193,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Sets the state of the achievement with the given ID to REVEALED for the
         # currently authenticated player.
@@ -210,7 +207,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -225,7 +222,7 @@ module Google
         def reveal_achievement(achievement_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'achievements/{achievementId}/reveal'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::GamesV1::AchievementRevealResponseRepresentation
+          command.response_representation = Google::Apis::GamesV1::AchievementRevealResponse::Representation
           command.response_class = Google::Apis::GamesV1::AchievementRevealResponse
           command.params['achievementId'] = achievement_id unless achievement_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -233,7 +230,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Sets the steps for the currently authenticated player towards unlocking an
         # achievement. If the steps parameter is less than the current number of steps
@@ -252,7 +248,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -267,7 +263,7 @@ module Google
         def set_steps_at_least_achievement(achievement_id, steps: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'achievements/{achievementId}/setStepsAtLeast'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::GamesV1::AchievementSetStepsAtLeastResponseRepresentation
+          command.response_representation = Google::Apis::GamesV1::AchievementSetStepsAtLeastResponse::Representation
           command.response_class = Google::Apis::GamesV1::AchievementSetStepsAtLeastResponse
           command.params['achievementId'] = achievement_id unless achievement_id.nil?
           command.query['steps'] = steps unless steps.nil?
@@ -276,7 +272,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Unlocks this achievement for the currently authenticated player.
         # @param [String] achievement_id
@@ -290,7 +285,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -305,7 +300,7 @@ module Google
         def unlock_achievement(achievement_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'achievements/{achievementId}/unlock'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::GamesV1::AchievementUnlockResponseRepresentation
+          command.response_representation = Google::Apis::GamesV1::AchievementUnlockResponse::Representation
           command.response_class = Google::Apis::GamesV1::AchievementUnlockResponse
           command.params['achievementId'] = achievement_id unless achievement_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -314,10 +309,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates multiple achievements for the currently authenticated player.
-        # @param [Google::Apis::GamesV1::AchievementUpdateMultipleRequest] achievement_update_multiple_request
-        #   
+        # @param [Google::Apis::GamesV1::AchievementUpdateMultipleRequest] achievement_update_multiple_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -327,7 +320,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -339,19 +332,19 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_multiple_achievement(achievement_update_multiple_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_multiple_achievement(achievement_update_multiple_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'achievements/updateMultiple'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GamesV1::AchievementUpdateMultipleRequestRepresentation
-          command.request_object = achievement_update_multiple_request
-          command.response_representation = Google::Apis::GamesV1::AchievementUpdateMultipleResponseRepresentation
+          command.request_representation = Google::Apis::GamesV1::AchievementUpdateMultipleRequest::Representation
+          command.request_object = achievement_update_multiple_request_object
+          command.response_representation = Google::Apis::GamesV1::AchievementUpdateMultipleResponse::Representation
           command.response_class = Google::Apis::GamesV1::AchievementUpdateMultipleResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Retrieves the metadata of the application with the given ID. If the requested
         # application is not available for the specified platformType, the returned
         # response will not include any instance data.
@@ -370,7 +363,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -385,7 +378,7 @@ module Google
         def get_application(application_id, language: nil, platform_type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'applications/{applicationId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::ApplicationRepresentation
+          command.response_representation = Google::Apis::GamesV1::Application::Representation
           command.response_class = Google::Apis::GamesV1::Application
           command.params['applicationId'] = application_id unless application_id.nil?
           command.query['language'] = language unless language.nil?
@@ -395,7 +388,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Indicate that the the currently authenticated user is playing your application.
         # @param [String] fields
@@ -407,7 +399,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -427,7 +419,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Returns a list showing the current progress on events in this application for
         # the currently authenticated user.
         # @param [String] language
@@ -447,7 +439,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -462,7 +454,7 @@ module Google
         def list_by_player_event(language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'events'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::PlayerEventListResponseRepresentation
+          command.response_representation = Google::Apis::GamesV1::PlayerEventListResponse::Representation
           command.response_class = Google::Apis::GamesV1::PlayerEventListResponse
           command.query['language'] = language unless language.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -472,7 +464,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Returns a list of the event definitions in this application.
         # @param [String] language
@@ -492,7 +483,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -507,7 +498,7 @@ module Google
         def list_definitions_event(language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'eventDefinitions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::EventDefinitionListResponseRepresentation
+          command.response_representation = Google::Apis::GamesV1::EventDefinitionListResponse::Representation
           command.response_class = Google::Apis::GamesV1::EventDefinitionListResponse
           command.query['language'] = language unless language.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -518,11 +509,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Records a batch of changes to the number of times events have occurred for the
         # currently authenticated user of this application.
-        # @param [Google::Apis::GamesV1::EventRecordRequest] event_record_request
-        #   
+        # @param [Google::Apis::GamesV1::EventRecordRequest] event_record_request_object
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -534,7 +523,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -546,12 +535,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def record_event(event_record_request = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def record_event(event_record_request_object = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'events'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GamesV1::EventRecordRequestRepresentation
-          command.request_object = event_record_request
-          command.response_representation = Google::Apis::GamesV1::EventUpdateResponseRepresentation
+          command.request_representation = Google::Apis::GamesV1::EventRecordRequest::Representation
+          command.request_object = event_record_request_object
+          command.response_representation = Google::Apis::GamesV1::EventUpdateResponse::Representation
           command.response_class = Google::Apis::GamesV1::EventUpdateResponse
           command.query['language'] = language unless language.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -559,7 +548,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Retrieves the metadata of the leaderboard with the given ID.
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
@@ -574,7 +563,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -589,7 +578,7 @@ module Google
         def get_leaderboard(leaderboard_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'leaderboards/{leaderboardId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::LeaderboardRepresentation
+          command.response_representation = Google::Apis::GamesV1::Leaderboard::Representation
           command.response_class = Google::Apis::GamesV1::Leaderboard
           command.params['leaderboardId'] = leaderboard_id unless leaderboard_id.nil?
           command.query['language'] = language unless language.nil?
@@ -598,7 +587,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists all the leaderboard metadata for your application.
         # @param [String] language
@@ -618,7 +606,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -633,7 +621,7 @@ module Google
         def list_leaderboards(language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'leaderboards'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::LeaderboardListResponseRepresentation
+          command.response_representation = Google::Apis::GamesV1::LeaderboardListResponse::Representation
           command.response_class = Google::Apis::GamesV1::LeaderboardListResponse
           command.query['language'] = language unless language.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -643,7 +631,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Return the metagame configuration data for the calling application.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -654,14 +642,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesV1::MetagameConfig] parsed result object
+        # @yieldparam result [Google::Apis::GamesV1::Config] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesV1::MetagameConfig]
+        # @return [Google::Apis::GamesV1::Config]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -669,14 +657,13 @@ module Google
         def get_metagame_config_metagame(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'metagameConfig'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::MetagameConfigRepresentation
-          command.response_class = Google::Apis::GamesV1::MetagameConfig
+          command.response_representation = Google::Apis::GamesV1::Config::Representation
+          command.response_class = Google::Apis::GamesV1::Config
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List play data aggregated per category for the player corresponding to
         # playerId.
@@ -702,7 +689,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -717,7 +704,7 @@ module Google
         def list_categories_by_player_metagame(player_id, collection, language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'players/{playerId}/categories/{collection}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::CategoryListResponseRepresentation
+          command.response_representation = Google::Apis::GamesV1::CategoryListResponse::Representation
           command.response_class = Google::Apis::GamesV1::CategoryListResponse
           command.params['playerId'] = player_id unless player_id.nil?
           command.params['collection'] = collection unless collection.nil?
@@ -729,7 +716,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Retrieves the Player resource with the given ID. To retrieve the player for
         # the currently authenticated user, set playerId to me.
         # @param [String] player_id
@@ -746,7 +733,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -761,7 +748,7 @@ module Google
         def get_player(player_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'players/{playerId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::PlayerRepresentation
+          command.response_representation = Google::Apis::GamesV1::Player::Representation
           command.response_class = Google::Apis::GamesV1::Player
           command.params['playerId'] = player_id unless player_id.nil?
           command.query['language'] = language unless language.nil?
@@ -770,7 +757,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Get the collection of players for the currently authenticated user.
         # @param [String] collection
@@ -792,7 +778,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -807,7 +793,7 @@ module Google
         def list_players(collection, language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'players/me/players/{collection}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::PlayerListResponseRepresentation
+          command.response_representation = Google::Apis::GamesV1::PlayerListResponse::Representation
           command.response_class = Google::Apis::GamesV1::PlayerListResponse
           command.params['collection'] = collection unless collection.nil?
           command.query['language'] = language unless language.nil?
@@ -818,11 +804,10 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Removes a push token for the current user and application. Removing a non-
         # existent push token will report success.
-        # @param [Google::Apis::GamesV1::PushTokenId] push_token_id
-        #   
+        # @param [Google::Apis::GamesV1::PushTokenId] push_token_id_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -832,7 +817,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -844,21 +829,19 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_pushtoken(push_token_id = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def remove_pushtoken(push_token_id_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'pushtokens/remove'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GamesV1::PushTokenIdRepresentation
-          command.request_object = push_token_id
+          command.request_representation = Google::Apis::GamesV1::PushTokenId::Representation
+          command.request_object = push_token_id_object
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        
         # Registers a push token for the current user and application.
-        # @param [Google::Apis::GamesV1::PushToken] push_token
-        #   
+        # @param [Google::Apis::GamesV1::PushToken] push_token_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -868,7 +851,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -880,17 +863,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_pushtoken(push_token = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_pushtoken(push_token_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'pushtokens'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::GamesV1::PushTokenRepresentation
-          command.request_object = push_token
+          command.request_representation = Google::Apis::GamesV1::PushToken::Representation
+          command.request_object = push_token_object
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Report that a reward for the milestone corresponding to milestoneId for the
         # quest corresponding to questId has been claimed by the currently authorized
         # user.
@@ -910,7 +893,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -933,7 +916,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Indicates that the currently authorized user will participate in the quest.
         # @param [String] quest_id
         #   The ID of the quest.
@@ -948,7 +931,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -963,7 +946,7 @@ module Google
         def accept_quest(quest_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'quests/{questId}/accept'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::GamesV1::QuestRepresentation
+          command.response_representation = Google::Apis::GamesV1::Quest::Representation
           command.response_class = Google::Apis::GamesV1::Quest
           command.params['questId'] = quest_id unless quest_id.nil?
           command.query['language'] = language unless language.nil?
@@ -972,7 +955,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Get a list of quests for your application and the currently authenticated
         # player.
@@ -997,7 +979,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1012,7 +994,7 @@ module Google
         def list_quests(player_id, language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'players/{playerId}/quests'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::QuestListResponseRepresentation
+          command.response_representation = Google::Apis::GamesV1::QuestListResponse::Representation
           command.response_class = Google::Apis::GamesV1::QuestListResponse
           command.params['playerId'] = player_id unless player_id.nil?
           command.query['language'] = language unless language.nil?
@@ -1023,7 +1005,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Checks whether the games client is out of date.
         # @param [String] client_revision
         #   The revision of the client SDK used by your application. Format:
@@ -1041,7 +1023,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1056,7 +1038,7 @@ module Google
         def check_revision(client_revision: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'revisions/check'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::RevisionCheckResponseRepresentation
+          command.response_representation = Google::Apis::GamesV1::RevisionCheckResponse::Representation
           command.response_class = Google::Apis::GamesV1::RevisionCheckResponse
           command.query['clientRevision'] = client_revision unless client_revision.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1064,11 +1046,10 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Create a room. For internal use by the Games SDK only. Calling this method
         # directly is unsupported.
-        # @param [Google::Apis::GamesV1::RoomCreateRequest] room_create_request
-        #   
+        # @param [Google::Apis::GamesV1::RoomCreateRequest] room_create_request_object
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -1080,7 +1061,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1092,12 +1073,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_room(room_create_request = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_room(room_create_request_object = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rooms/create'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GamesV1::RoomCreateRequestRepresentation
-          command.request_object = room_create_request
-          command.response_representation = Google::Apis::GamesV1::RoomRepresentation
+          command.request_representation = Google::Apis::GamesV1::RoomCreateRequest::Representation
+          command.request_object = room_create_request_object
+          command.response_representation = Google::Apis::GamesV1::Room::Representation
           command.response_class = Google::Apis::GamesV1::Room
           command.query['language'] = language unless language.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1105,7 +1086,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Decline an invitation to join a room. For internal use by the Games SDK only.
         # Calling this method directly is unsupported.
@@ -1122,7 +1102,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1137,7 +1117,7 @@ module Google
         def decline_room(room_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rooms/{roomId}/decline'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::GamesV1::RoomRepresentation
+          command.response_representation = Google::Apis::GamesV1::Room::Representation
           command.response_class = Google::Apis::GamesV1::Room
           command.params['roomId'] = room_id unless room_id.nil?
           command.query['language'] = language unless language.nil?
@@ -1146,7 +1126,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Dismiss an invitation to join a room. For internal use by the Games SDK only.
         # Calling this method directly is unsupported.
@@ -1161,7 +1140,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1183,7 +1162,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Get the data for a room.
         # @param [String] room_id
         #   The ID of the room.
@@ -1198,7 +1176,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1213,7 +1191,7 @@ module Google
         def get_room(room_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rooms/{roomId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::RoomRepresentation
+          command.response_representation = Google::Apis::GamesV1::Room::Representation
           command.response_class = Google::Apis::GamesV1::Room
           command.params['roomId'] = room_id unless room_id.nil?
           command.query['language'] = language unless language.nil?
@@ -1222,14 +1200,12 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Join a room. For internal use by the Games SDK only. Calling this method
         # directly is unsupported.
         # @param [String] room_id
         #   The ID of the room.
-        # @param [Google::Apis::GamesV1::RoomJoinRequest] room_join_request
-        #   
+        # @param [Google::Apis::GamesV1::RoomJoinRequest] room_join_request_object
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -1241,7 +1217,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1253,12 +1229,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def join_room(room_id, room_join_request = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def join_room(room_id, room_join_request_object = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rooms/{roomId}/join'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GamesV1::RoomJoinRequestRepresentation
-          command.request_object = room_join_request
-          command.response_representation = Google::Apis::GamesV1::RoomRepresentation
+          command.request_representation = Google::Apis::GamesV1::RoomJoinRequest::Representation
+          command.request_object = room_join_request_object
+          command.response_representation = Google::Apis::GamesV1::Room::Representation
           command.response_class = Google::Apis::GamesV1::Room
           command.params['roomId'] = room_id unless room_id.nil?
           command.query['language'] = language unless language.nil?
@@ -1267,14 +1243,12 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Leave a room. For internal use by the Games SDK only. Calling this method
         # directly is unsupported.
         # @param [String] room_id
         #   The ID of the room.
-        # @param [Google::Apis::GamesV1::RoomLeaveRequest] room_leave_request
-        #   
+        # @param [Google::Apis::GamesV1::RoomLeaveRequest] room_leave_request_object
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -1286,7 +1260,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1298,12 +1272,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def leave_room(room_id, room_leave_request = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def leave_room(room_id, room_leave_request_object = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rooms/{roomId}/leave'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GamesV1::RoomLeaveRequestRepresentation
-          command.request_object = room_leave_request
-          command.response_representation = Google::Apis::GamesV1::RoomRepresentation
+          command.request_representation = Google::Apis::GamesV1::RoomLeaveRequest::Representation
+          command.request_object = room_leave_request_object
+          command.response_representation = Google::Apis::GamesV1::Room::Representation
           command.response_class = Google::Apis::GamesV1::Room
           command.params['roomId'] = room_id unless room_id.nil?
           command.query['language'] = language unless language.nil?
@@ -1312,7 +1286,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Returns invitations to join rooms.
         # @param [String] language
@@ -1332,7 +1305,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1347,7 +1320,7 @@ module Google
         def list_rooms(language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rooms'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::RoomListRepresentation
+          command.response_representation = Google::Apis::GamesV1::RoomList::Representation
           command.response_class = Google::Apis::GamesV1::RoomList
           command.query['language'] = language unless language.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -1358,13 +1331,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates sent by a client reporting the status of peers in a room. For internal
         # use by the Games SDK only. Calling this method directly is unsupported.
         # @param [String] room_id
         #   The ID of the room.
-        # @param [Google::Apis::GamesV1::RoomP2PStatuses] room_p2_p_statuses
-        #   
+        # @param [Google::Apis::GamesV1::RoomP2PStatuses] room_p2_p_statuses_object
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -1376,7 +1347,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1388,12 +1359,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def report_status_room(room_id, room_p2_p_statuses = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def report_status_room(room_id, room_p2_p_statuses_object = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rooms/{roomId}/reportstatus'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GamesV1::RoomP2PStatusesRepresentation
-          command.request_object = room_p2_p_statuses
-          command.response_representation = Google::Apis::GamesV1::RoomStatusRepresentation
+          command.request_representation = Google::Apis::GamesV1::RoomP2PStatuses::Representation
+          command.request_object = room_p2_p_statuses_object
+          command.response_representation = Google::Apis::GamesV1::RoomStatus::Representation
           command.response_class = Google::Apis::GamesV1::RoomStatus
           command.params['roomId'] = room_id unless room_id.nil?
           command.query['language'] = language unless language.nil?
@@ -1402,7 +1373,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Get high scores, and optionally ranks, in leaderboards for the currently
         # authenticated player. For a specific time span, leaderboardId can be set to
         # ALL to retrieve data for all leaderboards in a given time span.
@@ -1436,7 +1407,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1451,7 +1422,7 @@ module Google
         def get_score(player_id, leaderboard_id, time_span, include_rank_type: nil, language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'players/{playerId}/leaderboards/{leaderboardId}/scores/{timeSpan}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::PlayerLeaderboardScoreListResponseRepresentation
+          command.response_representation = Google::Apis::GamesV1::PlayerLeaderboardScoreListResponse::Representation
           command.response_class = Google::Apis::GamesV1::PlayerLeaderboardScoreListResponse
           command.params['playerId'] = player_id unless player_id.nil?
           command.params['leaderboardId'] = leaderboard_id unless leaderboard_id.nil?
@@ -1465,7 +1436,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists the scores in a leaderboard, starting from the top.
         # @param [String] leaderboard_id
@@ -1491,7 +1461,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1506,7 +1476,7 @@ module Google
         def list_scores(leaderboard_id, collection, language: nil, max_results: nil, page_token: nil, time_span: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'leaderboards/{leaderboardId}/scores/{collection}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::LeaderboardScoresRepresentation
+          command.response_representation = Google::Apis::GamesV1::LeaderboardScores::Representation
           command.response_class = Google::Apis::GamesV1::LeaderboardScores
           command.params['leaderboardId'] = leaderboard_id unless leaderboard_id.nil?
           command.params['collection'] = collection unless collection.nil?
@@ -1519,7 +1489,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists the scores in a leaderboard around (and including) a player's score.
         # @param [String] leaderboard_id
@@ -1553,7 +1522,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1568,7 +1537,7 @@ module Google
         def list_window_score(leaderboard_id, collection, language: nil, max_results: nil, page_token: nil, results_above: nil, return_top_if_absent: nil, time_span: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'leaderboards/{leaderboardId}/window/{collection}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::LeaderboardScoresRepresentation
+          command.response_representation = Google::Apis::GamesV1::LeaderboardScores::Representation
           command.response_class = Google::Apis::GamesV1::LeaderboardScores
           command.params['leaderboardId'] = leaderboard_id unless leaderboard_id.nil?
           command.params['collection'] = collection unless collection.nil?
@@ -1583,7 +1552,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Submits a score to the specified leaderboard.
         # @param [String] leaderboard_id
@@ -1609,7 +1577,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1624,7 +1592,7 @@ module Google
         def submit_score(leaderboard_id, language: nil, score: nil, score_tag: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'leaderboards/{leaderboardId}/scores'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::GamesV1::PlayerScoreResponseRepresentation
+          command.response_representation = Google::Apis::GamesV1::PlayerScoreResponse::Representation
           command.response_class = Google::Apis::GamesV1::PlayerScoreResponse
           command.params['leaderboardId'] = leaderboard_id unless leaderboard_id.nil?
           command.query['language'] = language unless language.nil?
@@ -1636,10 +1604,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Submits multiple scores to leaderboards.
-        # @param [Google::Apis::GamesV1::PlayerScoreSubmissionList] player_score_submission_list
-        #   
+        # @param [Google::Apis::GamesV1::PlayerScoreSubmissionList] player_score_submission_list_object
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -1651,7 +1617,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1663,12 +1629,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def submit_multiple_score(player_score_submission_list = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def submit_multiple_score(player_score_submission_list_object = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'leaderboards/scores'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GamesV1::PlayerScoreSubmissionListRepresentation
-          command.request_object = player_score_submission_list
-          command.response_representation = Google::Apis::GamesV1::PlayerScoreListResponseRepresentation
+          command.request_representation = Google::Apis::GamesV1::PlayerScoreSubmissionList::Representation
+          command.request_object = player_score_submission_list_object
+          command.response_representation = Google::Apis::GamesV1::PlayerScoreListResponse::Representation
           command.response_class = Google::Apis::GamesV1::PlayerScoreListResponse
           command.query['language'] = language unless language.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1676,7 +1642,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Retrieves the metadata for a given snapshot ID.
         # @param [String] snapshot_id
         #   The ID of the snapshot.
@@ -1691,7 +1657,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1706,7 +1672,7 @@ module Google
         def get_snapshot(snapshot_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'snapshots/{snapshotId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::SnapshotRepresentation
+          command.response_representation = Google::Apis::GamesV1::Snapshot::Representation
           command.response_class = Google::Apis::GamesV1::Snapshot
           command.params['snapshotId'] = snapshot_id unless snapshot_id.nil?
           command.query['language'] = language unless language.nil?
@@ -1715,7 +1681,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves a list of snapshots created by your application for the player
         # corresponding to the player ID.
@@ -1739,7 +1704,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1754,7 +1719,7 @@ module Google
         def list_snapshots(player_id, language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'players/{playerId}/snapshots'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::SnapshotListResponseRepresentation
+          command.response_representation = Google::Apis::GamesV1::SnapshotListResponse::Representation
           command.response_class = Google::Apis::GamesV1::SnapshotListResponse
           command.params['playerId'] = player_id unless player_id.nil?
           command.query['language'] = language unless language.nil?
@@ -1765,7 +1730,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Cancel a turn-based match.
         # @param [String] match_id
         #   The ID of the match.
@@ -1778,7 +1743,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1800,10 +1765,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a turn-based match.
-        # @param [Google::Apis::GamesV1::TurnBasedMatchCreateRequest] turn_based_match_create_request
-        #   
+        # @param [Google::Apis::GamesV1::TurnBasedMatchCreateRequest] turn_based_match_create_request_object
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -1815,7 +1778,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1827,12 +1790,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_turn_based_match(turn_based_match_create_request = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_turn_based_match(turn_based_match_create_request_object = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/create'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GamesV1::TurnBasedMatchCreateRequestRepresentation
-          command.request_object = turn_based_match_create_request
-          command.response_representation = Google::Apis::GamesV1::TurnBasedMatchRepresentation
+          command.request_representation = Google::Apis::GamesV1::TurnBasedMatchCreateRequest::Representation
+          command.request_object = turn_based_match_create_request_object
+          command.response_representation = Google::Apis::GamesV1::TurnBasedMatch::Representation
           command.response_class = Google::Apis::GamesV1::TurnBasedMatch
           command.query['language'] = language unless language.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1840,7 +1803,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Decline an invitation to play a turn-based match.
         # @param [String] match_id
@@ -1856,7 +1818,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1871,7 +1833,7 @@ module Google
         def decline_turn_based_match(match_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/{matchId}/decline'
           command =  make_simple_command(:put, path, options)
-          command.response_representation = Google::Apis::GamesV1::TurnBasedMatchRepresentation
+          command.response_representation = Google::Apis::GamesV1::TurnBasedMatch::Representation
           command.response_class = Google::Apis::GamesV1::TurnBasedMatch
           command.params['matchId'] = match_id unless match_id.nil?
           command.query['language'] = language unless language.nil?
@@ -1880,7 +1842,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Dismiss a turn-based match from the match list. The match will no longer show
         # up in the list and will not generate notifications.
@@ -1895,7 +1856,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1917,14 +1878,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Finish a turn-based match. Each player should make this call once, after all
         # results are in. Only the player whose turn it is may make the first call to
         # Finish, and can pass in the final match state.
         # @param [String] match_id
         #   The ID of the match.
-        # @param [Google::Apis::GamesV1::TurnBasedMatchResults] turn_based_match_results
-        #   
+        # @param [Google::Apis::GamesV1::TurnBasedMatchResults] turn_based_match_results_object
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -1936,7 +1895,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1948,12 +1907,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def finish_turn_based_match(match_id, turn_based_match_results = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def finish_turn_based_match(match_id, turn_based_match_results_object = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/{matchId}/finish'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::GamesV1::TurnBasedMatchResultsRepresentation
-          command.request_object = turn_based_match_results
-          command.response_representation = Google::Apis::GamesV1::TurnBasedMatchRepresentation
+          command.request_representation = Google::Apis::GamesV1::TurnBasedMatchResults::Representation
+          command.request_object = turn_based_match_results_object
+          command.response_representation = Google::Apis::GamesV1::TurnBasedMatch::Representation
           command.response_class = Google::Apis::GamesV1::TurnBasedMatch
           command.params['matchId'] = match_id unless match_id.nil?
           command.query['language'] = language unless language.nil?
@@ -1962,7 +1921,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Get the data for a turn-based match.
         # @param [String] match_id
@@ -1980,7 +1938,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1995,7 +1953,7 @@ module Google
         def get_turn_based_match(match_id, include_match_data: nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/{matchId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::TurnBasedMatchRepresentation
+          command.response_representation = Google::Apis::GamesV1::TurnBasedMatch::Representation
           command.response_class = Google::Apis::GamesV1::TurnBasedMatch
           command.params['matchId'] = match_id unless match_id.nil?
           command.query['includeMatchData'] = include_match_data unless include_match_data.nil?
@@ -2005,7 +1963,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Join a turn-based match.
         # @param [String] match_id
@@ -2021,7 +1978,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2036,7 +1993,7 @@ module Google
         def join_turn_based_match(match_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/{matchId}/join'
           command =  make_simple_command(:put, path, options)
-          command.response_representation = Google::Apis::GamesV1::TurnBasedMatchRepresentation
+          command.response_representation = Google::Apis::GamesV1::TurnBasedMatch::Representation
           command.response_class = Google::Apis::GamesV1::TurnBasedMatch
           command.params['matchId'] = match_id unless match_id.nil?
           command.query['language'] = language unless language.nil?
@@ -2045,7 +2002,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Leave a turn-based match when it is not the current player's turn, without
         # canceling the match.
@@ -2062,7 +2018,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2077,7 +2033,7 @@ module Google
         def leave_turn_based_match(match_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/{matchId}/leave'
           command =  make_simple_command(:put, path, options)
-          command.response_representation = Google::Apis::GamesV1::TurnBasedMatchRepresentation
+          command.response_representation = Google::Apis::GamesV1::TurnBasedMatch::Representation
           command.response_class = Google::Apis::GamesV1::TurnBasedMatch
           command.params['matchId'] = match_id unless match_id.nil?
           command.query['language'] = language unless language.nil?
@@ -2086,7 +2042,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Leave a turn-based match during the current player's turn, without canceling
         # the match.
@@ -2110,7 +2065,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2125,7 +2080,7 @@ module Google
         def leave_turn_turn_based_match(match_id, language: nil, match_version: nil, pending_participant_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/{matchId}/leaveTurn'
           command =  make_simple_command(:put, path, options)
-          command.response_representation = Google::Apis::GamesV1::TurnBasedMatchRepresentation
+          command.response_representation = Google::Apis::GamesV1::TurnBasedMatch::Representation
           command.response_class = Google::Apis::GamesV1::TurnBasedMatch
           command.params['matchId'] = match_id unless match_id.nil?
           command.query['language'] = language unless language.nil?
@@ -2136,7 +2091,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Returns turn-based matches the player is or was involved in.
         # @param [Boolean] include_match_data
@@ -2165,7 +2119,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2180,7 +2134,7 @@ module Google
         def list_turn_based_matches(include_match_data: nil, language: nil, max_completed_matches: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::TurnBasedMatchListRepresentation
+          command.response_representation = Google::Apis::GamesV1::TurnBasedMatchList::Representation
           command.response_class = Google::Apis::GamesV1::TurnBasedMatchList
           command.query['includeMatchData'] = include_match_data unless include_match_data.nil?
           command.query['language'] = language unless language.nil?
@@ -2192,7 +2146,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Create a rematch of a match that was previously completed, with the same
         # participants. This can be called by only one player on a match still in their
@@ -2215,7 +2168,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2230,7 +2183,7 @@ module Google
         def rematch_turn_based_match(match_id, language: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/{matchId}/rematch'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::GamesV1::TurnBasedMatchRematchRepresentation
+          command.response_representation = Google::Apis::GamesV1::TurnBasedMatchRematch::Representation
           command.response_class = Google::Apis::GamesV1::TurnBasedMatchRematch
           command.params['matchId'] = match_id unless match_id.nil?
           command.query['language'] = language unless language.nil?
@@ -2240,7 +2193,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Returns turn-based matches the player is or was involved in that changed since
         # the last sync call, with the least recent changes coming first. Matches that
@@ -2271,7 +2223,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2286,7 +2238,7 @@ module Google
         def sync_turn_based_match(include_match_data: nil, language: nil, max_completed_matches: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/sync'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::TurnBasedMatchSyncRepresentation
+          command.response_representation = Google::Apis::GamesV1::TurnBasedMatchSync::Representation
           command.response_class = Google::Apis::GamesV1::TurnBasedMatchSync
           command.query['includeMatchData'] = include_match_data unless include_match_data.nil?
           command.query['language'] = language unless language.nil?
@@ -2299,12 +2251,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Commit the results of a player turn.
         # @param [String] match_id
         #   The ID of the match.
-        # @param [Google::Apis::GamesV1::TurnBasedMatchTurn] turn_based_match_turn
-        #   
+        # @param [Google::Apis::GamesV1::TurnBasedMatchTurn] turn_based_match_turn_object
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -2316,7 +2266,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2328,12 +2278,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def take_turn_turn_based_match(match_id, turn_based_match_turn = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def take_turn_turn_based_match(match_id, turn_based_match_turn_object = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/{matchId}/turn'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::GamesV1::TurnBasedMatchTurnRepresentation
-          command.request_object = turn_based_match_turn
-          command.response_representation = Google::Apis::GamesV1::TurnBasedMatchRepresentation
+          command.request_representation = Google::Apis::GamesV1::TurnBasedMatchTurn::Representation
+          command.request_object = turn_based_match_turn_object
+          command.response_representation = Google::Apis::GamesV1::TurnBasedMatch::Representation
           command.response_class = Google::Apis::GamesV1::TurnBasedMatch
           command.params['matchId'] = match_id unless match_id.nil?
           command.query['language'] = language unless language.nil?

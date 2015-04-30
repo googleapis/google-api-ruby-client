@@ -22,1365 +22,1548 @@ module Google
   module Apis
     module GamesV1
       
-      class AchievementDefinitionRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AchievementDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementDefinitionsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementIncrementResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AchievementIncrementResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementRevealResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AchievementRevealResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementSetStepsAtLeastResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AchievementSetStepsAtLeastResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementUnlockResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AchievementUnlockResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementUpdateMultipleRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AchievementUpdateMultipleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementUpdateMultipleResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AchievementUpdateMultipleResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementUpdateRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AchievementUpdateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementUpdateResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AchievementUpdateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AggregateStatsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AggregateStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AnonymousPlayerRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AnonymousPlayer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ApplicationRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Application
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ApplicationCategoryRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ApplicationCategory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CategoryRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Category
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CategoryListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class CategoryListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EventBatchRecordFailureRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class EventBatchRecordFailure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EventChildRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class EventChild
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EventDefinitionRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class EventDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EventDefinitionListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class EventDefinitionListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EventPeriodRangeRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class EventPeriodRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EventPeriodUpdateRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class EventPeriodUpdate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EventRecordFailureRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class EventRecordFailure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EventRecordRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class EventRecordRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EventUpdateRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class EventUpdateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EventUpdateResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class EventUpdateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementIncrementRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AchievementIncrement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementSetStepsAtLeastRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AchievementSetStepsAtLeast
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ImageAssetRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ImageAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstanceRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Instance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstanceAndroidDetailsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class InstanceAndroidDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstanceIosDetailsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class InstanceIosDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstanceWebDetailsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class InstanceWebDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LeaderboardRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Leaderboard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LeaderboardEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class LeaderboardEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LeaderboardListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class LeaderboardListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LeaderboardScoreRankRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class LeaderboardScoreRank
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LeaderboardScoresRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class LeaderboardScores
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class MetagameConfigRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class NetworkDiagnosticsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class NetworkDiagnostics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ParticipantResultRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ParticipantResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PeerChannelDiagnosticsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PeerChannelDiagnostics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PeerSessionDiagnosticsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PeerSessionDiagnostics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayedRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Played
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerRepresentation < Google::Apis::Core::JsonRepresentation
+      class Player
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class NameRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Name
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class PlayerAchievementRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PlayerAchievement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerAchievementListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PlayerAchievementListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerEventRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PlayerEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerEventListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PlayerEventListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerExperienceInfoRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PlayerExperienceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerLeaderboardScoreRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PlayerLeaderboardScore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerLeaderboardScoreListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PlayerLeaderboardScoreListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerLevelRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PlayerLevel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PlayerListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerScoreRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PlayerScore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerScoreListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PlayerScoreListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerScoreResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PlayerScoreResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerScoreSubmissionListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PlayerScoreSubmissionList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PushTokenRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PushToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PushTokenIdRepresentation < Google::Apis::Core::JsonRepresentation
+      class PushTokenId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class IosRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Ios
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class QuestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Quest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class QuestContributionRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class QuestContribution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class QuestCriterionRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class QuestCriterion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class QuestListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class QuestListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class QuestMilestoneRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class QuestMilestone
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RevisionCheckResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RevisionCheckResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RoomRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Room
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RoomAutoMatchStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RoomAutoMatchStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RoomAutoMatchingCriteriaRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RoomAutoMatchingCriteria
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RoomClientAddressRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RoomClientAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RoomCreateRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RoomCreateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RoomJoinRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RoomJoinRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RoomLeaveDiagnosticsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RoomLeaveDiagnostics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RoomLeaveRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RoomLeaveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RoomListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RoomList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RoomModificationRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RoomModification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RoomP2PStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RoomP2PStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RoomP2PStatusesRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RoomP2PStatuses
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RoomParticipantRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RoomParticipant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RoomStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RoomStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ScoreSubmissionRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ScoreSubmission
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SnapshotRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Snapshot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SnapshotImageRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class SnapshotImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SnapshotListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class SnapshotListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TurnBasedAutoMatchingCriteriaRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TurnBasedAutoMatchingCriteria
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TurnBasedMatchRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TurnBasedMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TurnBasedMatchCreateRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TurnBasedMatchCreateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TurnBasedMatchDataRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TurnBasedMatchData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TurnBasedMatchDataRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TurnBasedMatchDataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TurnBasedMatchListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TurnBasedMatchList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TurnBasedMatchModificationRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TurnBasedMatchModification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TurnBasedMatchParticipantRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TurnBasedMatchParticipant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TurnBasedMatchRematchRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TurnBasedMatchRematch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TurnBasedMatchResultsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TurnBasedMatchResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TurnBasedMatchSyncRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TurnBasedMatchSync
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TurnBasedMatchTurnRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TurnBasedMatchTurn
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class AchievementDefinitionRepresentation < Google::Apis::Core::JsonRepresentation
-        property :achievement_type, as: 'achievementType'
-        property :description, as: 'description'
-        property :experience_points, as: 'experiencePoints'
-        property :formatted_total_steps, as: 'formattedTotalSteps'
-        property :id, as: 'id'
-        property :initial_state, as: 'initialState'
-        property :is_revealed_icon_url_default, as: 'isRevealedIconUrlDefault'
-        property :is_unlocked_icon_url_default, as: 'isUnlockedIconUrlDefault'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :revealed_icon_url, as: 'revealedIconUrl'
-        property :total_steps, as: 'totalSteps'
-        property :unlocked_icon_url, as: 'unlockedIconUrl'
+      class AchievementDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :achievement_type, as: 'achievementType'
+          property :description, as: 'description'
+          property :experience_points, as: 'experiencePoints'
+          property :formatted_total_steps, as: 'formattedTotalSteps'
+          property :id, as: 'id'
+          property :initial_state, as: 'initialState'
+          property :is_revealed_icon_url_default, as: 'isRevealedIconUrlDefault'
+          property :is_unlocked_icon_url_default, as: 'isUnlockedIconUrlDefault'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :revealed_icon_url, as: 'revealedIconUrl'
+          property :total_steps, as: 'totalSteps'
+          property :unlocked_icon_url, as: 'unlockedIconUrl'
+        end
       end
-
+      
       # @private
-      class AchievementDefinitionsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::GamesV1::AchievementDefinition, decorator: Google::Apis::GamesV1::AchievementDefinitionRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class ListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesV1::AchievementDefinition, decorator: Google::Apis::GamesV1::AchievementDefinition::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class AchievementIncrementResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :current_steps, as: 'currentSteps'
-        property :kind, as: 'kind'
-        property :newly_unlocked, as: 'newlyUnlocked'
+      class AchievementIncrementResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_steps, as: 'currentSteps'
+          property :kind, as: 'kind'
+          property :newly_unlocked, as: 'newlyUnlocked'
+        end
       end
-
+      
       # @private
-      class AchievementRevealResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :current_state, as: 'currentState'
-        property :kind, as: 'kind'
+      class AchievementRevealResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_state, as: 'currentState'
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class AchievementSetStepsAtLeastResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :current_steps, as: 'currentSteps'
-        property :kind, as: 'kind'
-        property :newly_unlocked, as: 'newlyUnlocked'
+      class AchievementSetStepsAtLeastResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_steps, as: 'currentSteps'
+          property :kind, as: 'kind'
+          property :newly_unlocked, as: 'newlyUnlocked'
+        end
       end
-
+      
       # @private
-      class AchievementUnlockResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :newly_unlocked, as: 'newlyUnlocked'
+      class AchievementUnlockResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :newly_unlocked, as: 'newlyUnlocked'
+        end
       end
-
+      
       # @private
-      class AchievementUpdateMultipleRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        collection :updates, as: 'updates', class: Google::Apis::GamesV1::AchievementUpdateRequest, decorator: Google::Apis::GamesV1::AchievementUpdateRequestRepresentation
+      class AchievementUpdateMultipleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :updates, as: 'updates', class: Google::Apis::GamesV1::AchievementUpdateRequest, decorator: Google::Apis::GamesV1::AchievementUpdateRequest::Representation
+      
+        end
       end
-
+      
       # @private
-      class AchievementUpdateMultipleResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        collection :updated_achievements, as: 'updatedAchievements', class: Google::Apis::GamesV1::AchievementUpdateResponse, decorator: Google::Apis::GamesV1::AchievementUpdateResponseRepresentation
+      class AchievementUpdateMultipleResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :updated_achievements, as: 'updatedAchievements', class: Google::Apis::GamesV1::AchievementUpdateResponse, decorator: Google::Apis::GamesV1::AchievementUpdateResponse::Representation
+      
+        end
       end
-
+      
       # @private
-      class AchievementUpdateRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :achievement_id, as: 'achievementId'
-        property :increment_payload, as: 'incrementPayload', class: Google::Apis::GamesV1::AchievementIncrement, decorator: Google::Apis::GamesV1::AchievementIncrementRepresentation
-        
-        property :kind, as: 'kind'
-        property :set_steps_at_least_payload, as: 'setStepsAtLeastPayload', class: Google::Apis::GamesV1::AchievementSetStepsAtLeast, decorator: Google::Apis::GamesV1::AchievementSetStepsAtLeastRepresentation
-        
-        property :update_type, as: 'updateType'
+      class AchievementUpdateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :achievement_id, as: 'achievementId'
+          property :increment_payload, as: 'incrementPayload', class: Google::Apis::GamesV1::AchievementIncrement, decorator: Google::Apis::GamesV1::AchievementIncrement::Representation
+      
+          property :kind, as: 'kind'
+          property :set_steps_at_least_payload, as: 'setStepsAtLeastPayload', class: Google::Apis::GamesV1::AchievementSetStepsAtLeast, decorator: Google::Apis::GamesV1::AchievementSetStepsAtLeast::Representation
+      
+          property :update_type, as: 'updateType'
+        end
       end
-
+      
       # @private
-      class AchievementUpdateResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :achievement_id, as: 'achievementId'
-        property :current_state, as: 'currentState'
-        property :current_steps, as: 'currentSteps'
-        property :kind, as: 'kind'
-        property :newly_unlocked, as: 'newlyUnlocked'
-        property :update_occurred, as: 'updateOccurred'
+      class AchievementUpdateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :achievement_id, as: 'achievementId'
+          property :current_state, as: 'currentState'
+          property :current_steps, as: 'currentSteps'
+          property :kind, as: 'kind'
+          property :newly_unlocked, as: 'newlyUnlocked'
+          property :update_occurred, as: 'updateOccurred'
+        end
       end
-
+      
       # @private
-      class AggregateStatsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :count, as: 'count'
-        property :kind, as: 'kind'
-        property :max, as: 'max'
-        property :min, as: 'min'
-        property :sum, as: 'sum'
+      class AggregateStats
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          property :kind, as: 'kind'
+          property :max, as: 'max'
+          property :min, as: 'min'
+          property :sum, as: 'sum'
+        end
       end
-
+      
       # @private
-      class AnonymousPlayerRepresentation < Google::Apis::Core::JsonRepresentation
-        property :avatar_image_url, as: 'avatarImageUrl'
-        property :display_name, as: 'displayName'
-        property :kind, as: 'kind'
+      class AnonymousPlayer
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :avatar_image_url, as: 'avatarImageUrl'
+          property :display_name, as: 'displayName'
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class ApplicationRepresentation < Google::Apis::Core::JsonRepresentation
-        property :achievement_count, as: 'achievement_count'
-        collection :assets, as: 'assets', class: Google::Apis::GamesV1::ImageAsset, decorator: Google::Apis::GamesV1::ImageAssetRepresentation
-        
-        
-        property :author, as: 'author'
-        property :category, as: 'category', class: Google::Apis::GamesV1::ApplicationCategory, decorator: Google::Apis::GamesV1::ApplicationCategoryRepresentation
-        
-        property :description, as: 'description'
-        collection :enabled_features, as: 'enabledFeatures'
-        
-        property :id, as: 'id'
-        collection :instances, as: 'instances', class: Google::Apis::GamesV1::Instance, decorator: Google::Apis::GamesV1::InstanceRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :last_updated_timestamp, as: 'lastUpdatedTimestamp'
-        property :leaderboard_count, as: 'leaderboard_count'
-        property :name, as: 'name'
-        property :theme_color, as: 'themeColor'
+      class Application
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :achievement_count, as: 'achievement_count'
+          collection :assets, as: 'assets', class: Google::Apis::GamesV1::ImageAsset, decorator: Google::Apis::GamesV1::ImageAsset::Representation
+      
+          property :author, as: 'author'
+          property :category, as: 'category', class: Google::Apis::GamesV1::ApplicationCategory, decorator: Google::Apis::GamesV1::ApplicationCategory::Representation
+      
+          property :description, as: 'description'
+          collection :enabled_features, as: 'enabledFeatures'
+          property :id, as: 'id'
+          collection :instances, as: 'instances', class: Google::Apis::GamesV1::Instance, decorator: Google::Apis::GamesV1::Instance::Representation
+      
+          property :kind, as: 'kind'
+          property :last_updated_timestamp, as: 'lastUpdatedTimestamp'
+          property :leaderboard_count, as: 'leaderboard_count'
+          property :name, as: 'name'
+          property :theme_color, as: 'themeColor'
+        end
       end
-
+      
       # @private
-      class ApplicationCategoryRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :primary, as: 'primary'
-        property :secondary, as: 'secondary'
+      class ApplicationCategory
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :primary, as: 'primary'
+          property :secondary, as: 'secondary'
+        end
       end
-
+      
       # @private
-      class CategoryRepresentation < Google::Apis::Core::JsonRepresentation
-        property :category, as: 'category'
-        property :experience_points, as: 'experiencePoints'
-        property :kind, as: 'kind'
+      class Category
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :experience_points, as: 'experiencePoints'
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class CategoryListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::GamesV1::Category, decorator: Google::Apis::GamesV1::CategoryRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class CategoryListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesV1::Category, decorator: Google::Apis::GamesV1::Category::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class EventBatchRecordFailureRepresentation < Google::Apis::Core::JsonRepresentation
-        property :failure_cause, as: 'failureCause'
-        property :kind, as: 'kind'
-        property :range, as: 'range', class: Google::Apis::GamesV1::EventPeriodRange, decorator: Google::Apis::GamesV1::EventPeriodRangeRepresentation
+      class EventBatchRecordFailure
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_cause, as: 'failureCause'
+          property :kind, as: 'kind'
+          property :range, as: 'range', class: Google::Apis::GamesV1::EventPeriodRange, decorator: Google::Apis::GamesV1::EventPeriodRange::Representation
+      
+        end
       end
-
+      
       # @private
-      class EventChildRepresentation < Google::Apis::Core::JsonRepresentation
-        property :child_id, as: 'childId'
-        property :kind, as: 'kind'
+      class EventChild
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :child_id, as: 'childId'
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class EventDefinitionRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :child_events, as: 'childEvents', class: Google::Apis::GamesV1::EventChild, decorator: Google::Apis::GamesV1::EventChildRepresentation
-        
-        
-        property :description, as: 'description'
-        property :display_name, as: 'displayName'
-        property :id, as: 'id'
-        property :image_url, as: 'imageUrl'
-        property :is_default_image_url, as: 'isDefaultImageUrl'
-        property :kind, as: 'kind'
-        property :visibility, as: 'visibility'
+      class EventDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :child_events, as: 'childEvents', class: Google::Apis::GamesV1::EventChild, decorator: Google::Apis::GamesV1::EventChild::Representation
+      
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
+          property :image_url, as: 'imageUrl'
+          property :is_default_image_url, as: 'isDefaultImageUrl'
+          property :kind, as: 'kind'
+          property :visibility, as: 'visibility'
+        end
       end
-
+      
       # @private
-      class EventDefinitionListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::GamesV1::EventDefinition, decorator: Google::Apis::GamesV1::EventDefinitionRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class EventDefinitionListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesV1::EventDefinition, decorator: Google::Apis::GamesV1::EventDefinition::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class EventPeriodRangeRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :period_end_millis, as: 'periodEndMillis'
-        property :period_start_millis, as: 'periodStartMillis'
+      class EventPeriodRange
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :period_end_millis, as: 'periodEndMillis'
+          property :period_start_millis, as: 'periodStartMillis'
+        end
       end
-
+      
       # @private
-      class EventPeriodUpdateRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :time_period, as: 'timePeriod', class: Google::Apis::GamesV1::EventPeriodRange, decorator: Google::Apis::GamesV1::EventPeriodRangeRepresentation
-        
-        collection :updates, as: 'updates', class: Google::Apis::GamesV1::EventUpdateRequest, decorator: Google::Apis::GamesV1::EventUpdateRequestRepresentation
+      class EventPeriodUpdate
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :time_period, as: 'timePeriod', class: Google::Apis::GamesV1::EventPeriodRange, decorator: Google::Apis::GamesV1::EventPeriodRange::Representation
+      
+          collection :updates, as: 'updates', class: Google::Apis::GamesV1::EventUpdateRequest, decorator: Google::Apis::GamesV1::EventUpdateRequest::Representation
+      
+        end
       end
-
+      
       # @private
-      class EventRecordFailureRepresentation < Google::Apis::Core::JsonRepresentation
-        property :event_id, as: 'eventId'
-        property :failure_cause, as: 'failureCause'
-        property :kind, as: 'kind'
+      class EventRecordFailure
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_id, as: 'eventId'
+          property :failure_cause, as: 'failureCause'
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class EventRecordRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :current_time_millis, as: 'currentTimeMillis'
-        property :kind, as: 'kind'
-        property :request_id, as: 'requestId'
-        collection :time_periods, as: 'timePeriods', class: Google::Apis::GamesV1::EventPeriodUpdate, decorator: Google::Apis::GamesV1::EventPeriodUpdateRepresentation
+      class EventRecordRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_time_millis, as: 'currentTimeMillis'
+          property :kind, as: 'kind'
+          property :request_id, as: 'requestId'
+          collection :time_periods, as: 'timePeriods', class: Google::Apis::GamesV1::EventPeriodUpdate, decorator: Google::Apis::GamesV1::EventPeriodUpdate::Representation
+      
+        end
       end
-
+      
       # @private
-      class EventUpdateRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :definition_id, as: 'definitionId'
-        property :kind, as: 'kind'
-        property :update_count, as: 'updateCount'
+      class EventUpdateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :definition_id, as: 'definitionId'
+          property :kind, as: 'kind'
+          property :update_count, as: 'updateCount'
+        end
       end
-
+      
       # @private
-      class EventUpdateResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :batch_failures, as: 'batchFailures', class: Google::Apis::GamesV1::EventBatchRecordFailure, decorator: Google::Apis::GamesV1::EventBatchRecordFailureRepresentation
-        
-        
-        collection :event_failures, as: 'eventFailures', class: Google::Apis::GamesV1::EventRecordFailure, decorator: Google::Apis::GamesV1::EventRecordFailureRepresentation
-        
-        
-        property :kind, as: 'kind'
-        collection :player_events, as: 'playerEvents', class: Google::Apis::GamesV1::PlayerEvent, decorator: Google::Apis::GamesV1::PlayerEventRepresentation
+      class EventUpdateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :batch_failures, as: 'batchFailures', class: Google::Apis::GamesV1::EventBatchRecordFailure, decorator: Google::Apis::GamesV1::EventBatchRecordFailure::Representation
+      
+          collection :event_failures, as: 'eventFailures', class: Google::Apis::GamesV1::EventRecordFailure, decorator: Google::Apis::GamesV1::EventRecordFailure::Representation
+      
+          property :kind, as: 'kind'
+          collection :player_events, as: 'playerEvents', class: Google::Apis::GamesV1::PlayerEvent, decorator: Google::Apis::GamesV1::PlayerEvent::Representation
+      
+        end
       end
-
+      
       # @private
-      class AchievementIncrementRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :request_id, as: 'requestId'
-        property :steps, as: 'steps'
+      class AchievementIncrement
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :request_id, as: 'requestId'
+          property :steps, as: 'steps'
+        end
       end
-
+      
       # @private
-      class AchievementSetStepsAtLeastRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :steps, as: 'steps'
+      class AchievementSetStepsAtLeast
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :steps, as: 'steps'
+        end
       end
-
+      
       # @private
-      class ImageAssetRepresentation < Google::Apis::Core::JsonRepresentation
-        property :height, as: 'height'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :url, as: 'url'
-        property :width, as: 'width'
+      class ImageAsset
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :height, as: 'height'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :url, as: 'url'
+          property :width, as: 'width'
+        end
       end
-
+      
       # @private
-      class InstanceRepresentation < Google::Apis::Core::JsonRepresentation
-        property :acquisition_uri, as: 'acquisitionUri'
-        property :android_instance, as: 'androidInstance', class: Google::Apis::GamesV1::InstanceAndroidDetails, decorator: Google::Apis::GamesV1::InstanceAndroidDetailsRepresentation
-        
-        property :ios_instance, as: 'iosInstance', class: Google::Apis::GamesV1::InstanceIosDetails, decorator: Google::Apis::GamesV1::InstanceIosDetailsRepresentation
-        
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :platform_type, as: 'platformType'
-        property :realtime_play, as: 'realtimePlay'
-        property :turn_based_play, as: 'turnBasedPlay'
-        property :web_instance, as: 'webInstance', class: Google::Apis::GamesV1::InstanceWebDetails, decorator: Google::Apis::GamesV1::InstanceWebDetailsRepresentation
+      class Instance
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acquisition_uri, as: 'acquisitionUri'
+          property :android_instance, as: 'androidInstance', class: Google::Apis::GamesV1::InstanceAndroidDetails, decorator: Google::Apis::GamesV1::InstanceAndroidDetails::Representation
+      
+          property :ios_instance, as: 'iosInstance', class: Google::Apis::GamesV1::InstanceIosDetails, decorator: Google::Apis::GamesV1::InstanceIosDetails::Representation
+      
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :platform_type, as: 'platformType'
+          property :realtime_play, as: 'realtimePlay'
+          property :turn_based_play, as: 'turnBasedPlay'
+          property :web_instance, as: 'webInstance', class: Google::Apis::GamesV1::InstanceWebDetails, decorator: Google::Apis::GamesV1::InstanceWebDetails::Representation
+      
+        end
       end
-
+      
       # @private
-      class InstanceAndroidDetailsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :enable_piracy_check, as: 'enablePiracyCheck'
-        property :kind, as: 'kind'
-        property :package_name, as: 'packageName'
-        property :preferred, as: 'preferred'
+      class InstanceAndroidDetails
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_piracy_check, as: 'enablePiracyCheck'
+          property :kind, as: 'kind'
+          property :package_name, as: 'packageName'
+          property :preferred, as: 'preferred'
+        end
       end
-
+      
       # @private
-      class InstanceIosDetailsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :bundle_identifier, as: 'bundleIdentifier'
-        property :itunes_app_id, as: 'itunesAppId'
-        property :kind, as: 'kind'
-        property :preferred_for_ipad, as: 'preferredForIpad'
-        property :preferred_for_iphone, as: 'preferredForIphone'
-        property :support_ipad, as: 'supportIpad'
-        property :support_iphone, as: 'supportIphone'
+      class InstanceIosDetails
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bundle_identifier, as: 'bundleIdentifier'
+          property :itunes_app_id, as: 'itunesAppId'
+          property :kind, as: 'kind'
+          property :preferred_for_ipad, as: 'preferredForIpad'
+          property :preferred_for_iphone, as: 'preferredForIphone'
+          property :support_ipad, as: 'supportIpad'
+          property :support_iphone, as: 'supportIphone'
+        end
       end
-
+      
       # @private
-      class InstanceWebDetailsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :launch_url, as: 'launchUrl'
-        property :preferred, as: 'preferred'
+      class InstanceWebDetails
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :launch_url, as: 'launchUrl'
+          property :preferred, as: 'preferred'
+        end
       end
-
+      
       # @private
-      class LeaderboardRepresentation < Google::Apis::Core::JsonRepresentation
-        property :icon_url, as: 'iconUrl'
-        property :id, as: 'id'
-        property :is_icon_url_default, as: 'isIconUrlDefault'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :order, as: 'order'
+      class Leaderboard
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :icon_url, as: 'iconUrl'
+          property :id, as: 'id'
+          property :is_icon_url_default, as: 'isIconUrlDefault'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :order, as: 'order'
+        end
       end
-
+      
       # @private
-      class LeaderboardEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        property :formatted_score, as: 'formattedScore'
-        property :formatted_score_rank, as: 'formattedScoreRank'
-        property :kind, as: 'kind'
-        property :player, as: 'player', class: Google::Apis::GamesV1::Player, decorator: Google::Apis::GamesV1::PlayerRepresentation
-        
-        property :score_rank, as: 'scoreRank'
-        property :score_tag, as: 'scoreTag'
-        property :score_value, as: 'scoreValue'
-        property :time_span, as: 'timeSpan'
-        property :write_timestamp_millis, as: 'writeTimestampMillis'
+      class LeaderboardEntry
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :formatted_score, as: 'formattedScore'
+          property :formatted_score_rank, as: 'formattedScoreRank'
+          property :kind, as: 'kind'
+          property :player, as: 'player', class: Google::Apis::GamesV1::Player, decorator: Google::Apis::GamesV1::Player::Representation
+      
+          property :score_rank, as: 'scoreRank'
+          property :score_tag, as: 'scoreTag'
+          property :score_value, as: 'scoreValue'
+          property :time_span, as: 'timeSpan'
+          property :write_timestamp_millis, as: 'writeTimestampMillis'
+        end
       end
-
+      
       # @private
-      class LeaderboardListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::GamesV1::Leaderboard, decorator: Google::Apis::GamesV1::LeaderboardRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class LeaderboardListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesV1::Leaderboard, decorator: Google::Apis::GamesV1::Leaderboard::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class LeaderboardScoreRankRepresentation < Google::Apis::Core::JsonRepresentation
-        property :formatted_num_scores, as: 'formattedNumScores'
-        property :formatted_rank, as: 'formattedRank'
-        property :kind, as: 'kind'
-        property :num_scores, as: 'numScores'
-        property :rank, as: 'rank'
+      class LeaderboardScoreRank
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :formatted_num_scores, as: 'formattedNumScores'
+          property :formatted_rank, as: 'formattedRank'
+          property :kind, as: 'kind'
+          property :num_scores, as: 'numScores'
+          property :rank, as: 'rank'
+        end
       end
-
+      
       # @private
-      class LeaderboardScoresRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::GamesV1::LeaderboardEntry, decorator: Google::Apis::GamesV1::LeaderboardEntryRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :num_scores, as: 'numScores'
-        property :player_score, as: 'playerScore', class: Google::Apis::GamesV1::LeaderboardEntry, decorator: Google::Apis::GamesV1::LeaderboardEntryRepresentation
-        
-        property :prev_page_token, as: 'prevPageToken'
+      class LeaderboardScores
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesV1::LeaderboardEntry, decorator: Google::Apis::GamesV1::LeaderboardEntry::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :num_scores, as: 'numScores'
+          property :player_score, as: 'playerScore', class: Google::Apis::GamesV1::LeaderboardEntry, decorator: Google::Apis::GamesV1::LeaderboardEntry::Representation
+      
+          property :prev_page_token, as: 'prevPageToken'
+        end
       end
-
+      
       # @private
-      class MetagameConfigRepresentation < Google::Apis::Core::JsonRepresentation
-        property :current_version, as: 'currentVersion'
-        property :kind, as: 'kind'
-        collection :player_levels, as: 'playerLevels', class: Google::Apis::GamesV1::PlayerLevel, decorator: Google::Apis::GamesV1::PlayerLevelRepresentation
+      class Config
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_version, as: 'currentVersion'
+          property :kind, as: 'kind'
+          collection :player_levels, as: 'playerLevels', class: Google::Apis::GamesV1::PlayerLevel, decorator: Google::Apis::GamesV1::PlayerLevel::Representation
+      
+        end
       end
-
+      
       # @private
-      class NetworkDiagnosticsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :android_network_subtype, as: 'androidNetworkSubtype'
-        property :android_network_type, as: 'androidNetworkType'
-        property :ios_network_type, as: 'iosNetworkType'
-        property :kind, as: 'kind'
-        property :network_operator_code, as: 'networkOperatorCode'
-        property :network_operator_name, as: 'networkOperatorName'
-        property :registration_latency_millis, as: 'registrationLatencyMillis'
+      class NetworkDiagnostics
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_network_subtype, as: 'androidNetworkSubtype'
+          property :android_network_type, as: 'androidNetworkType'
+          property :ios_network_type, as: 'iosNetworkType'
+          property :kind, as: 'kind'
+          property :network_operator_code, as: 'networkOperatorCode'
+          property :network_operator_name, as: 'networkOperatorName'
+          property :registration_latency_millis, as: 'registrationLatencyMillis'
+        end
       end
-
+      
       # @private
-      class ParticipantResultRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :participant_id, as: 'participantId'
-        property :placing, as: 'placing'
-        property :result, as: 'result'
+      class ParticipantResult
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :participant_id, as: 'participantId'
+          property :placing, as: 'placing'
+          property :result, as: 'result'
+        end
       end
-
+      
       # @private
-      class PeerChannelDiagnosticsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :bytes_received, as: 'bytesReceived', class: Google::Apis::GamesV1::AggregateStats, decorator: Google::Apis::GamesV1::AggregateStatsRepresentation
-        
-        property :bytes_sent, as: 'bytesSent', class: Google::Apis::GamesV1::AggregateStats, decorator: Google::Apis::GamesV1::AggregateStatsRepresentation
-        
-        property :kind, as: 'kind'
-        property :num_messages_lost, as: 'numMessagesLost'
-        property :num_messages_received, as: 'numMessagesReceived'
-        property :num_messages_sent, as: 'numMessagesSent'
-        property :num_send_failures, as: 'numSendFailures'
-        property :roundtrip_latency_millis, as: 'roundtripLatencyMillis', class: Google::Apis::GamesV1::AggregateStats, decorator: Google::Apis::GamesV1::AggregateStatsRepresentation
+      class PeerChannelDiagnostics
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bytes_received, as: 'bytesReceived', class: Google::Apis::GamesV1::AggregateStats, decorator: Google::Apis::GamesV1::AggregateStats::Representation
+      
+          property :bytes_sent, as: 'bytesSent', class: Google::Apis::GamesV1::AggregateStats, decorator: Google::Apis::GamesV1::AggregateStats::Representation
+      
+          property :kind, as: 'kind'
+          property :num_messages_lost, as: 'numMessagesLost'
+          property :num_messages_received, as: 'numMessagesReceived'
+          property :num_messages_sent, as: 'numMessagesSent'
+          property :num_send_failures, as: 'numSendFailures'
+          property :roundtrip_latency_millis, as: 'roundtripLatencyMillis', class: Google::Apis::GamesV1::AggregateStats, decorator: Google::Apis::GamesV1::AggregateStats::Representation
+      
+        end
       end
-
+      
       # @private
-      class PeerSessionDiagnosticsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :connected_timestamp_millis, as: 'connectedTimestampMillis'
-        property :kind, as: 'kind'
-        property :participant_id, as: 'participantId'
-        property :reliable_channel, as: 'reliableChannel', class: Google::Apis::GamesV1::PeerChannelDiagnostics, decorator: Google::Apis::GamesV1::PeerChannelDiagnosticsRepresentation
-        
-        property :unreliable_channel, as: 'unreliableChannel', class: Google::Apis::GamesV1::PeerChannelDiagnostics, decorator: Google::Apis::GamesV1::PeerChannelDiagnosticsRepresentation
+      class PeerSessionDiagnostics
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connected_timestamp_millis, as: 'connectedTimestampMillis'
+          property :kind, as: 'kind'
+          property :participant_id, as: 'participantId'
+          property :reliable_channel, as: 'reliableChannel', class: Google::Apis::GamesV1::PeerChannelDiagnostics, decorator: Google::Apis::GamesV1::PeerChannelDiagnostics::Representation
+      
+          property :unreliable_channel, as: 'unreliableChannel', class: Google::Apis::GamesV1::PeerChannelDiagnostics, decorator: Google::Apis::GamesV1::PeerChannelDiagnostics::Representation
+      
+        end
       end
-
+      
       # @private
-      class PlayedRepresentation < Google::Apis::Core::JsonRepresentation
-        property :auto_matched, as: 'autoMatched'
-        property :kind, as: 'kind'
-        property :time_millis, as: 'timeMillis'
+      class Played
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_matched, as: 'autoMatched'
+          property :kind, as: 'kind'
+          property :time_millis, as: 'timeMillis'
+        end
       end
-
+      
       # @private
-      class PlayerRepresentation < Google::Apis::Core::JsonRepresentation
-        class NameRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :avatar_image_url, as: 'avatarImageUrl'
-        property :display_name, as: 'displayName'
-        property :experience_info, as: 'experienceInfo', class: Google::Apis::GamesV1::PlayerExperienceInfo, decorator: Google::Apis::GamesV1::PlayerExperienceInfoRepresentation
-        
-        property :kind, as: 'kind'
-        property :last_played_with, as: 'lastPlayedWith', class: Google::Apis::GamesV1::Played, decorator: Google::Apis::GamesV1::PlayedRepresentation
-        
-        property :name, as: 'name', class: Google::Apis::GamesV1::Player::Name, decorator: Google::Apis::GamesV1::PlayerRepresentation::NameRepresentation
-        
-        property :player_id, as: 'playerId'
-        property :title, as: 'title'
+      class Player
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :avatar_image_url, as: 'avatarImageUrl'
+          property :display_name, as: 'displayName'
+          property :experience_info, as: 'experienceInfo', class: Google::Apis::GamesV1::PlayerExperienceInfo, decorator: Google::Apis::GamesV1::PlayerExperienceInfo::Representation
+      
+          property :kind, as: 'kind'
+          property :last_played_with, as: 'lastPlayedWith', class: Google::Apis::GamesV1::Played, decorator: Google::Apis::GamesV1::Played::Representation
+      
+          property :name, as: 'name', class: Google::Apis::GamesV1::Player::Name, decorator: Google::Apis::GamesV1::Player::Name::Representation
+      
+          property :player_id, as: 'playerId'
+          property :title, as: 'title'
+        end
         
         # @private
-        class NameRepresentation < Google::Apis::Core::JsonRepresentation
-          property :family_name, as: 'familyName'
-          property :given_name, as: 'givenName'
+        class Name
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :family_name, as: 'familyName'
+            property :given_name, as: 'givenName'
+          end
         end
       end
-
+      
       # @private
-      class PlayerAchievementRepresentation < Google::Apis::Core::JsonRepresentation
-        property :achievement_state, as: 'achievementState'
-        property :current_steps, as: 'currentSteps'
-        property :experience_points, as: 'experiencePoints'
-        property :formatted_current_steps_string, as: 'formattedCurrentStepsString'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :last_updated_timestamp, as: 'lastUpdatedTimestamp'
+      class PlayerAchievement
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :achievement_state, as: 'achievementState'
+          property :current_steps, as: 'currentSteps'
+          property :experience_points, as: 'experiencePoints'
+          property :formatted_current_steps_string, as: 'formattedCurrentStepsString'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :last_updated_timestamp, as: 'lastUpdatedTimestamp'
+        end
       end
-
+      
       # @private
-      class PlayerAchievementListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::GamesV1::PlayerAchievement, decorator: Google::Apis::GamesV1::PlayerAchievementRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class PlayerAchievementListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesV1::PlayerAchievement, decorator: Google::Apis::GamesV1::PlayerAchievement::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class PlayerEventRepresentation < Google::Apis::Core::JsonRepresentation
-        property :definition_id, as: 'definitionId'
-        property :formatted_num_events, as: 'formattedNumEvents'
-        property :kind, as: 'kind'
-        property :num_events, as: 'numEvents'
-        property :player_id, as: 'playerId'
+      class PlayerEvent
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :definition_id, as: 'definitionId'
+          property :formatted_num_events, as: 'formattedNumEvents'
+          property :kind, as: 'kind'
+          property :num_events, as: 'numEvents'
+          property :player_id, as: 'playerId'
+        end
       end
-
+      
       # @private
-      class PlayerEventListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::GamesV1::PlayerEvent, decorator: Google::Apis::GamesV1::PlayerEventRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class PlayerEventListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesV1::PlayerEvent, decorator: Google::Apis::GamesV1::PlayerEvent::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class PlayerExperienceInfoRepresentation < Google::Apis::Core::JsonRepresentation
-        property :current_experience_points, as: 'currentExperiencePoints'
-        property :current_level, as: 'currentLevel', class: Google::Apis::GamesV1::PlayerLevel, decorator: Google::Apis::GamesV1::PlayerLevelRepresentation
-        
-        property :kind, as: 'kind'
-        property :last_level_up_timestamp_millis, as: 'lastLevelUpTimestampMillis'
-        property :next_level, as: 'nextLevel', class: Google::Apis::GamesV1::PlayerLevel, decorator: Google::Apis::GamesV1::PlayerLevelRepresentation
+      class PlayerExperienceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_experience_points, as: 'currentExperiencePoints'
+          property :current_level, as: 'currentLevel', class: Google::Apis::GamesV1::PlayerLevel, decorator: Google::Apis::GamesV1::PlayerLevel::Representation
+      
+          property :kind, as: 'kind'
+          property :last_level_up_timestamp_millis, as: 'lastLevelUpTimestampMillis'
+          property :next_level, as: 'nextLevel', class: Google::Apis::GamesV1::PlayerLevel, decorator: Google::Apis::GamesV1::PlayerLevel::Representation
+      
+        end
       end
-
+      
       # @private
-      class PlayerLeaderboardScoreRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :leaderboard_id, as: 'leaderboard_id'
-        property :public_rank, as: 'publicRank', class: Google::Apis::GamesV1::LeaderboardScoreRank, decorator: Google::Apis::GamesV1::LeaderboardScoreRankRepresentation
-        
-        property :score_string, as: 'scoreString'
-        property :score_tag, as: 'scoreTag'
-        property :score_value, as: 'scoreValue'
-        property :social_rank, as: 'socialRank', class: Google::Apis::GamesV1::LeaderboardScoreRank, decorator: Google::Apis::GamesV1::LeaderboardScoreRankRepresentation
-        
-        property :time_span, as: 'timeSpan'
-        property :write_timestamp, as: 'writeTimestamp'
+      class PlayerLeaderboardScore
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :leaderboard_id, as: 'leaderboard_id'
+          property :public_rank, as: 'publicRank', class: Google::Apis::GamesV1::LeaderboardScoreRank, decorator: Google::Apis::GamesV1::LeaderboardScoreRank::Representation
+      
+          property :score_string, as: 'scoreString'
+          property :score_tag, as: 'scoreTag'
+          property :score_value, as: 'scoreValue'
+          property :social_rank, as: 'socialRank', class: Google::Apis::GamesV1::LeaderboardScoreRank, decorator: Google::Apis::GamesV1::LeaderboardScoreRank::Representation
+      
+          property :time_span, as: 'timeSpan'
+          property :write_timestamp, as: 'writeTimestamp'
+        end
       end
-
+      
       # @private
-      class PlayerLeaderboardScoreListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::GamesV1::PlayerLeaderboardScore, decorator: Google::Apis::GamesV1::PlayerLeaderboardScoreRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :player, as: 'player', class: Google::Apis::GamesV1::Player, decorator: Google::Apis::GamesV1::PlayerRepresentation
+      class PlayerLeaderboardScoreListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesV1::PlayerLeaderboardScore, decorator: Google::Apis::GamesV1::PlayerLeaderboardScore::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :player, as: 'player', class: Google::Apis::GamesV1::Player, decorator: Google::Apis::GamesV1::Player::Representation
+      
+        end
       end
-
+      
       # @private
-      class PlayerLevelRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :level, as: 'level'
-        property :max_experience_points, as: 'maxExperiencePoints'
-        property :min_experience_points, as: 'minExperiencePoints'
+      class PlayerLevel
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :level, as: 'level'
+          property :max_experience_points, as: 'maxExperiencePoints'
+          property :min_experience_points, as: 'minExperiencePoints'
+        end
       end
-
+      
       # @private
-      class PlayerListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::GamesV1::Player, decorator: Google::Apis::GamesV1::PlayerRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class PlayerListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesV1::Player, decorator: Google::Apis::GamesV1::Player::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class PlayerScoreRepresentation < Google::Apis::Core::JsonRepresentation
-        property :formatted_score, as: 'formattedScore'
-        property :kind, as: 'kind'
-        property :score, as: 'score'
-        property :score_tag, as: 'scoreTag'
-        property :time_span, as: 'timeSpan'
+      class PlayerScore
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :formatted_score, as: 'formattedScore'
+          property :kind, as: 'kind'
+          property :score, as: 'score'
+          property :score_tag, as: 'scoreTag'
+          property :time_span, as: 'timeSpan'
+        end
       end
-
+      
       # @private
-      class PlayerScoreListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        collection :submitted_scores, as: 'submittedScores', class: Google::Apis::GamesV1::PlayerScoreResponse, decorator: Google::Apis::GamesV1::PlayerScoreResponseRepresentation
+      class PlayerScoreListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :submitted_scores, as: 'submittedScores', class: Google::Apis::GamesV1::PlayerScoreResponse, decorator: Google::Apis::GamesV1::PlayerScoreResponse::Representation
+      
+        end
       end
-
+      
       # @private
-      class PlayerScoreResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :beaten_score_time_spans, as: 'beatenScoreTimeSpans'
-        
-        property :formatted_score, as: 'formattedScore'
-        property :kind, as: 'kind'
-        property :leaderboard_id, as: 'leaderboardId'
-        property :score_tag, as: 'scoreTag'
-        collection :unbeaten_scores, as: 'unbeatenScores', class: Google::Apis::GamesV1::PlayerScore, decorator: Google::Apis::GamesV1::PlayerScoreRepresentation
+      class PlayerScoreResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :beaten_score_time_spans, as: 'beatenScoreTimeSpans'
+          property :formatted_score, as: 'formattedScore'
+          property :kind, as: 'kind'
+          property :leaderboard_id, as: 'leaderboardId'
+          property :score_tag, as: 'scoreTag'
+          collection :unbeaten_scores, as: 'unbeatenScores', class: Google::Apis::GamesV1::PlayerScore, decorator: Google::Apis::GamesV1::PlayerScore::Representation
+      
+        end
       end
-
+      
       # @private
-      class PlayerScoreSubmissionListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        collection :scores, as: 'scores', class: Google::Apis::GamesV1::ScoreSubmission, decorator: Google::Apis::GamesV1::ScoreSubmissionRepresentation
+      class PlayerScoreSubmissionList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :scores, as: 'scores', class: Google::Apis::GamesV1::ScoreSubmission, decorator: Google::Apis::GamesV1::ScoreSubmission::Representation
+      
+        end
       end
-
+      
       # @private
-      class PushTokenRepresentation < Google::Apis::Core::JsonRepresentation
-        property :client_revision, as: 'clientRevision'
-        property :id, as: 'id', class: Google::Apis::GamesV1::PushTokenId, decorator: Google::Apis::GamesV1::PushTokenIdRepresentation
-        
-        property :kind, as: 'kind'
-        property :language, as: 'language'
+      class PushToken
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_revision, as: 'clientRevision'
+          property :id, as: 'id', class: Google::Apis::GamesV1::PushTokenId, decorator: Google::Apis::GamesV1::PushTokenId::Representation
+      
+          property :kind, as: 'kind'
+          property :language, as: 'language'
+        end
       end
-
+      
       # @private
-      class PushTokenIdRepresentation < Google::Apis::Core::JsonRepresentation
-        class IosRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :ios, as: 'ios', class: Google::Apis::GamesV1::PushTokenId::Ios, decorator: Google::Apis::GamesV1::PushTokenIdRepresentation::IosRepresentation
-        
-        property :kind, as: 'kind'
+      class PushTokenId
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ios, as: 'ios', class: Google::Apis::GamesV1::PushTokenId::Ios, decorator: Google::Apis::GamesV1::PushTokenId::Ios::Representation
+      
+          property :kind, as: 'kind'
+        end
         
         # @private
-        class IosRepresentation < Google::Apis::Core::JsonRepresentation
-          property :apns_device_token, :base64 => true, as: 'apns_device_token'
-          property :apns_environment, as: 'apns_environment'
+        class Ios
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :apns_device_token, :base64 => true, as: 'apns_device_token'
+            property :apns_environment, as: 'apns_environment'
+          end
         end
       end
-
+      
       # @private
-      class QuestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :accepted_timestamp_millis, as: 'acceptedTimestampMillis'
-        property :application_id, as: 'applicationId'
-        property :banner_url, as: 'bannerUrl'
-        property :description, as: 'description'
-        property :end_timestamp_millis, as: 'endTimestampMillis'
-        property :icon_url, as: 'iconUrl'
-        property :id, as: 'id'
-        property :is_default_banner_url, as: 'isDefaultBannerUrl'
-        property :is_default_icon_url, as: 'isDefaultIconUrl'
-        property :kind, as: 'kind'
-        property :last_updated_timestamp_millis, as: 'lastUpdatedTimestampMillis'
-        collection :milestones, as: 'milestones', class: Google::Apis::GamesV1::QuestMilestone, decorator: Google::Apis::GamesV1::QuestMilestoneRepresentation
-        
-        
-        property :name, as: 'name'
-        property :notify_timestamp_millis, as: 'notifyTimestampMillis'
-        property :start_timestamp_millis, as: 'startTimestampMillis'
-        property :state, as: 'state'
+      class Quest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accepted_timestamp_millis, as: 'acceptedTimestampMillis'
+          property :application_id, as: 'applicationId'
+          property :banner_url, as: 'bannerUrl'
+          property :description, as: 'description'
+          property :end_timestamp_millis, as: 'endTimestampMillis'
+          property :icon_url, as: 'iconUrl'
+          property :id, as: 'id'
+          property :is_default_banner_url, as: 'isDefaultBannerUrl'
+          property :is_default_icon_url, as: 'isDefaultIconUrl'
+          property :kind, as: 'kind'
+          property :last_updated_timestamp_millis, as: 'lastUpdatedTimestampMillis'
+          collection :milestones, as: 'milestones', class: Google::Apis::GamesV1::QuestMilestone, decorator: Google::Apis::GamesV1::QuestMilestone::Representation
+      
+          property :name, as: 'name'
+          property :notify_timestamp_millis, as: 'notifyTimestampMillis'
+          property :start_timestamp_millis, as: 'startTimestampMillis'
+          property :state, as: 'state'
+        end
       end
-
+      
       # @private
-      class QuestContributionRepresentation < Google::Apis::Core::JsonRepresentation
-        property :formatted_value, as: 'formattedValue'
-        property :kind, as: 'kind'
-        property :value, as: 'value'
+      class QuestContribution
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :formatted_value, as: 'formattedValue'
+          property :kind, as: 'kind'
+          property :value, as: 'value'
+        end
       end
-
+      
       # @private
-      class QuestCriterionRepresentation < Google::Apis::Core::JsonRepresentation
-        property :completion_contribution, as: 'completionContribution', class: Google::Apis::GamesV1::QuestContribution, decorator: Google::Apis::GamesV1::QuestContributionRepresentation
-        
-        property :current_contribution, as: 'currentContribution', class: Google::Apis::GamesV1::QuestContribution, decorator: Google::Apis::GamesV1::QuestContributionRepresentation
-        
-        property :event_id, as: 'eventId'
-        property :initial_player_progress, as: 'initialPlayerProgress', class: Google::Apis::GamesV1::QuestContribution, decorator: Google::Apis::GamesV1::QuestContributionRepresentation
-        
-        property :kind, as: 'kind'
+      class QuestCriterion
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completion_contribution, as: 'completionContribution', class: Google::Apis::GamesV1::QuestContribution, decorator: Google::Apis::GamesV1::QuestContribution::Representation
+      
+          property :current_contribution, as: 'currentContribution', class: Google::Apis::GamesV1::QuestContribution, decorator: Google::Apis::GamesV1::QuestContribution::Representation
+      
+          property :event_id, as: 'eventId'
+          property :initial_player_progress, as: 'initialPlayerProgress', class: Google::Apis::GamesV1::QuestContribution, decorator: Google::Apis::GamesV1::QuestContribution::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class QuestListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::GamesV1::Quest, decorator: Google::Apis::GamesV1::QuestRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class QuestListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesV1::Quest, decorator: Google::Apis::GamesV1::Quest::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class QuestMilestoneRepresentation < Google::Apis::Core::JsonRepresentation
-        property :completion_reward_data, :base64 => true, as: 'completionRewardData'
-        collection :criteria, as: 'criteria', class: Google::Apis::GamesV1::QuestCriterion, decorator: Google::Apis::GamesV1::QuestCriterionRepresentation
-        
-        
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :state, as: 'state'
+      class QuestMilestone
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completion_reward_data, :base64 => true, as: 'completionRewardData'
+          collection :criteria, as: 'criteria', class: Google::Apis::GamesV1::QuestCriterion, decorator: Google::Apis::GamesV1::QuestCriterion::Representation
+      
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :state, as: 'state'
+        end
       end
-
+      
       # @private
-      class RevisionCheckResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :api_version, as: 'apiVersion'
-        property :kind, as: 'kind'
-        property :revision_status, as: 'revisionStatus'
+      class RevisionCheckResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :kind, as: 'kind'
+          property :revision_status, as: 'revisionStatus'
+        end
       end
-
+      
       # @private
-      class RoomRepresentation < Google::Apis::Core::JsonRepresentation
-        property :application_id, as: 'applicationId'
-        property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::RoomAutoMatchingCriteria, decorator: Google::Apis::GamesV1::RoomAutoMatchingCriteriaRepresentation
-        
-        property :auto_matching_status, as: 'autoMatchingStatus', class: Google::Apis::GamesV1::RoomAutoMatchStatus, decorator: Google::Apis::GamesV1::RoomAutoMatchStatusRepresentation
-        
-        property :creation_details, as: 'creationDetails', class: Google::Apis::GamesV1::RoomModification, decorator: Google::Apis::GamesV1::RoomModificationRepresentation
-        
-        property :description, as: 'description'
-        property :inviter_id, as: 'inviterId'
-        property :kind, as: 'kind'
-        property :last_update_details, as: 'lastUpdateDetails', class: Google::Apis::GamesV1::RoomModification, decorator: Google::Apis::GamesV1::RoomModificationRepresentation
-        
-        collection :participants, as: 'participants', class: Google::Apis::GamesV1::RoomParticipant, decorator: Google::Apis::GamesV1::RoomParticipantRepresentation
-        
-        
-        property :room_id, as: 'roomId'
-        property :room_status_version, as: 'roomStatusVersion'
-        property :status, as: 'status'
-        property :variant, as: 'variant'
+      class Room
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_id, as: 'applicationId'
+          property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::RoomAutoMatchingCriteria, decorator: Google::Apis::GamesV1::RoomAutoMatchingCriteria::Representation
+      
+          property :auto_matching_status, as: 'autoMatchingStatus', class: Google::Apis::GamesV1::RoomAutoMatchStatus, decorator: Google::Apis::GamesV1::RoomAutoMatchStatus::Representation
+      
+          property :creation_details, as: 'creationDetails', class: Google::Apis::GamesV1::RoomModification, decorator: Google::Apis::GamesV1::RoomModification::Representation
+      
+          property :description, as: 'description'
+          property :inviter_id, as: 'inviterId'
+          property :kind, as: 'kind'
+          property :last_update_details, as: 'lastUpdateDetails', class: Google::Apis::GamesV1::RoomModification, decorator: Google::Apis::GamesV1::RoomModification::Representation
+      
+          collection :participants, as: 'participants', class: Google::Apis::GamesV1::RoomParticipant, decorator: Google::Apis::GamesV1::RoomParticipant::Representation
+      
+          property :room_id, as: 'roomId'
+          property :room_status_version, as: 'roomStatusVersion'
+          property :status, as: 'status'
+          property :variant, as: 'variant'
+        end
       end
-
+      
       # @private
-      class RoomAutoMatchStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :wait_estimate_seconds, as: 'waitEstimateSeconds'
+      class RoomAutoMatchStatus
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :wait_estimate_seconds, as: 'waitEstimateSeconds'
+        end
       end
-
+      
       # @private
-      class RoomAutoMatchingCriteriaRepresentation < Google::Apis::Core::JsonRepresentation
-        property :exclusive_bitmask, as: 'exclusiveBitmask'
-        property :kind, as: 'kind'
-        property :max_auto_matching_players, as: 'maxAutoMatchingPlayers'
-        property :min_auto_matching_players, as: 'minAutoMatchingPlayers'
+      class RoomAutoMatchingCriteria
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclusive_bitmask, as: 'exclusiveBitmask'
+          property :kind, as: 'kind'
+          property :max_auto_matching_players, as: 'maxAutoMatchingPlayers'
+          property :min_auto_matching_players, as: 'minAutoMatchingPlayers'
+        end
       end
-
+      
       # @private
-      class RoomClientAddressRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :xmpp_address, as: 'xmppAddress'
+      class RoomClientAddress
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :xmpp_address, as: 'xmppAddress'
+        end
       end
-
+      
       # @private
-      class RoomCreateRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::RoomAutoMatchingCriteria, decorator: Google::Apis::GamesV1::RoomAutoMatchingCriteriaRepresentation
-        
-        collection :capabilities, as: 'capabilities'
-        
-        property :client_address, as: 'clientAddress', class: Google::Apis::GamesV1::RoomClientAddress, decorator: Google::Apis::GamesV1::RoomClientAddressRepresentation
-        
-        collection :invited_player_ids, as: 'invitedPlayerIds'
-        
-        property :kind, as: 'kind'
-        property :network_diagnostics, as: 'networkDiagnostics', class: Google::Apis::GamesV1::NetworkDiagnostics, decorator: Google::Apis::GamesV1::NetworkDiagnosticsRepresentation
-        
-        property :request_id, as: 'requestId'
-        property :variant, as: 'variant'
+      class RoomCreateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::RoomAutoMatchingCriteria, decorator: Google::Apis::GamesV1::RoomAutoMatchingCriteria::Representation
+      
+          collection :capabilities, as: 'capabilities'
+          property :client_address, as: 'clientAddress', class: Google::Apis::GamesV1::RoomClientAddress, decorator: Google::Apis::GamesV1::RoomClientAddress::Representation
+      
+          collection :invited_player_ids, as: 'invitedPlayerIds'
+          property :kind, as: 'kind'
+          property :network_diagnostics, as: 'networkDiagnostics', class: Google::Apis::GamesV1::NetworkDiagnostics, decorator: Google::Apis::GamesV1::NetworkDiagnostics::Representation
+      
+          property :request_id, as: 'requestId'
+          property :variant, as: 'variant'
+        end
       end
-
+      
       # @private
-      class RoomJoinRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :capabilities, as: 'capabilities'
-        
-        property :client_address, as: 'clientAddress', class: Google::Apis::GamesV1::RoomClientAddress, decorator: Google::Apis::GamesV1::RoomClientAddressRepresentation
-        
-        property :kind, as: 'kind'
-        property :network_diagnostics, as: 'networkDiagnostics', class: Google::Apis::GamesV1::NetworkDiagnostics, decorator: Google::Apis::GamesV1::NetworkDiagnosticsRepresentation
+      class RoomJoinRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :capabilities, as: 'capabilities'
+          property :client_address, as: 'clientAddress', class: Google::Apis::GamesV1::RoomClientAddress, decorator: Google::Apis::GamesV1::RoomClientAddress::Representation
+      
+          property :kind, as: 'kind'
+          property :network_diagnostics, as: 'networkDiagnostics', class: Google::Apis::GamesV1::NetworkDiagnostics, decorator: Google::Apis::GamesV1::NetworkDiagnostics::Representation
+      
+        end
       end
-
+      
       # @private
-      class RoomLeaveDiagnosticsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :android_network_subtype, as: 'androidNetworkSubtype'
-        property :android_network_type, as: 'androidNetworkType'
-        property :ios_network_type, as: 'iosNetworkType'
-        property :kind, as: 'kind'
-        property :network_operator_code, as: 'networkOperatorCode'
-        property :network_operator_name, as: 'networkOperatorName'
-        collection :peer_session, as: 'peerSession', class: Google::Apis::GamesV1::PeerSessionDiagnostics, decorator: Google::Apis::GamesV1::PeerSessionDiagnosticsRepresentation
-        
-        
-        property :sockets_used, as: 'socketsUsed'
+      class RoomLeaveDiagnostics
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_network_subtype, as: 'androidNetworkSubtype'
+          property :android_network_type, as: 'androidNetworkType'
+          property :ios_network_type, as: 'iosNetworkType'
+          property :kind, as: 'kind'
+          property :network_operator_code, as: 'networkOperatorCode'
+          property :network_operator_name, as: 'networkOperatorName'
+          collection :peer_session, as: 'peerSession', class: Google::Apis::GamesV1::PeerSessionDiagnostics, decorator: Google::Apis::GamesV1::PeerSessionDiagnostics::Representation
+      
+          property :sockets_used, as: 'socketsUsed'
+        end
       end
-
+      
       # @private
-      class RoomLeaveRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :leave_diagnostics, as: 'leaveDiagnostics', class: Google::Apis::GamesV1::RoomLeaveDiagnostics, decorator: Google::Apis::GamesV1::RoomLeaveDiagnosticsRepresentation
-        
-        property :reason, as: 'reason'
+      class RoomLeaveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :leave_diagnostics, as: 'leaveDiagnostics', class: Google::Apis::GamesV1::RoomLeaveDiagnostics, decorator: Google::Apis::GamesV1::RoomLeaveDiagnostics::Representation
+      
+          property :reason, as: 'reason'
+        end
       end
-
+      
       # @private
-      class RoomListRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::GamesV1::Room, decorator: Google::Apis::GamesV1::RoomRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class RoomList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesV1::Room, decorator: Google::Apis::GamesV1::Room::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class RoomModificationRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :modified_timestamp_millis, as: 'modifiedTimestampMillis'
-        property :participant_id, as: 'participantId'
+      class RoomModification
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :modified_timestamp_millis, as: 'modifiedTimestampMillis'
+          property :participant_id, as: 'participantId'
+        end
       end
-
+      
       # @private
-      class RoomP2PStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        property :connection_setup_latency_millis, as: 'connectionSetupLatencyMillis'
-        property :error, as: 'error'
-        property :error_reason, as: 'error_reason'
-        property :kind, as: 'kind'
-        property :participant_id, as: 'participantId'
-        property :status, as: 'status'
-        property :unreliable_roundtrip_latency_millis, as: 'unreliableRoundtripLatencyMillis'
+      class RoomP2PStatus
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_setup_latency_millis, as: 'connectionSetupLatencyMillis'
+          property :error, as: 'error'
+          property :error_reason, as: 'error_reason'
+          property :kind, as: 'kind'
+          property :participant_id, as: 'participantId'
+          property :status, as: 'status'
+          property :unreliable_roundtrip_latency_millis, as: 'unreliableRoundtripLatencyMillis'
+        end
       end
-
+      
       # @private
-      class RoomP2PStatusesRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        collection :updates, as: 'updates', class: Google::Apis::GamesV1::RoomP2PStatus, decorator: Google::Apis::GamesV1::RoomP2PStatusRepresentation
+      class RoomP2PStatuses
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :updates, as: 'updates', class: Google::Apis::GamesV1::RoomP2PStatus, decorator: Google::Apis::GamesV1::RoomP2PStatus::Representation
+      
+        end
       end
-
+      
       # @private
-      class RoomParticipantRepresentation < Google::Apis::Core::JsonRepresentation
-        property :auto_matched, as: 'autoMatched'
-        property :auto_matched_player, as: 'autoMatchedPlayer', class: Google::Apis::GamesV1::AnonymousPlayer, decorator: Google::Apis::GamesV1::AnonymousPlayerRepresentation
-        
-        collection :capabilities, as: 'capabilities'
-        
-        property :client_address, as: 'clientAddress', class: Google::Apis::GamesV1::RoomClientAddress, decorator: Google::Apis::GamesV1::RoomClientAddressRepresentation
-        
-        property :connected, as: 'connected'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :leave_reason, as: 'leaveReason'
-        property :player, as: 'player', class: Google::Apis::GamesV1::Player, decorator: Google::Apis::GamesV1::PlayerRepresentation
-        
-        property :status, as: 'status'
+      class RoomParticipant
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_matched, as: 'autoMatched'
+          property :auto_matched_player, as: 'autoMatchedPlayer', class: Google::Apis::GamesV1::AnonymousPlayer, decorator: Google::Apis::GamesV1::AnonymousPlayer::Representation
+      
+          collection :capabilities, as: 'capabilities'
+          property :client_address, as: 'clientAddress', class: Google::Apis::GamesV1::RoomClientAddress, decorator: Google::Apis::GamesV1::RoomClientAddress::Representation
+      
+          property :connected, as: 'connected'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :leave_reason, as: 'leaveReason'
+          property :player, as: 'player', class: Google::Apis::GamesV1::Player, decorator: Google::Apis::GamesV1::Player::Representation
+      
+          property :status, as: 'status'
+        end
       end
-
+      
       # @private
-      class RoomStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        property :auto_matching_status, as: 'autoMatchingStatus', class: Google::Apis::GamesV1::RoomAutoMatchStatus, decorator: Google::Apis::GamesV1::RoomAutoMatchStatusRepresentation
-        
-        property :kind, as: 'kind'
-        collection :participants, as: 'participants', class: Google::Apis::GamesV1::RoomParticipant, decorator: Google::Apis::GamesV1::RoomParticipantRepresentation
-        
-        
-        property :room_id, as: 'roomId'
-        property :status, as: 'status'
-        property :status_version, as: 'statusVersion'
+      class RoomStatus
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_matching_status, as: 'autoMatchingStatus', class: Google::Apis::GamesV1::RoomAutoMatchStatus, decorator: Google::Apis::GamesV1::RoomAutoMatchStatus::Representation
+      
+          property :kind, as: 'kind'
+          collection :participants, as: 'participants', class: Google::Apis::GamesV1::RoomParticipant, decorator: Google::Apis::GamesV1::RoomParticipant::Representation
+      
+          property :room_id, as: 'roomId'
+          property :status, as: 'status'
+          property :status_version, as: 'statusVersion'
+        end
       end
-
+      
       # @private
-      class ScoreSubmissionRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :leaderboard_id, as: 'leaderboardId'
-        property :score, as: 'score'
-        property :score_tag, as: 'scoreTag'
-        property :signature, as: 'signature'
+      class ScoreSubmission
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :leaderboard_id, as: 'leaderboardId'
+          property :score, as: 'score'
+          property :score_tag, as: 'scoreTag'
+          property :signature, as: 'signature'
+        end
       end
-
+      
       # @private
-      class SnapshotRepresentation < Google::Apis::Core::JsonRepresentation
-        property :cover_image, as: 'coverImage', class: Google::Apis::GamesV1::SnapshotImage, decorator: Google::Apis::GamesV1::SnapshotImageRepresentation
-        
-        property :description, as: 'description'
-        property :drive_id, as: 'driveId'
-        property :duration_millis, as: 'durationMillis'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :last_modified_millis, as: 'lastModifiedMillis'
-        property :progress_value, as: 'progressValue'
-        property :title, as: 'title'
-        property :type, as: 'type'
-        property :unique_name, as: 'uniqueName'
+      class Snapshot
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cover_image, as: 'coverImage', class: Google::Apis::GamesV1::SnapshotImage, decorator: Google::Apis::GamesV1::SnapshotImage::Representation
+      
+          property :description, as: 'description'
+          property :drive_id, as: 'driveId'
+          property :duration_millis, as: 'durationMillis'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :last_modified_millis, as: 'lastModifiedMillis'
+          property :progress_value, as: 'progressValue'
+          property :title, as: 'title'
+          property :type, as: 'type'
+          property :unique_name, as: 'uniqueName'
+        end
       end
-
+      
       # @private
-      class SnapshotImageRepresentation < Google::Apis::Core::JsonRepresentation
-        property :height, as: 'height'
-        property :kind, as: 'kind'
-        property :mime_type, as: 'mime_type'
-        property :url, as: 'url'
-        property :width, as: 'width'
+      class SnapshotImage
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :height, as: 'height'
+          property :kind, as: 'kind'
+          property :mime_type, as: 'mime_type'
+          property :url, as: 'url'
+          property :width, as: 'width'
+        end
       end
-
+      
       # @private
-      class SnapshotListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::GamesV1::Snapshot, decorator: Google::Apis::GamesV1::SnapshotRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class SnapshotListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesV1::Snapshot, decorator: Google::Apis::GamesV1::Snapshot::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class TurnBasedAutoMatchingCriteriaRepresentation < Google::Apis::Core::JsonRepresentation
-        property :exclusive_bitmask, as: 'exclusiveBitmask'
-        property :kind, as: 'kind'
-        property :max_auto_matching_players, as: 'maxAutoMatchingPlayers'
-        property :min_auto_matching_players, as: 'minAutoMatchingPlayers'
+      class TurnBasedAutoMatchingCriteria
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclusive_bitmask, as: 'exclusiveBitmask'
+          property :kind, as: 'kind'
+          property :max_auto_matching_players, as: 'maxAutoMatchingPlayers'
+          property :min_auto_matching_players, as: 'minAutoMatchingPlayers'
+        end
       end
-
+      
       # @private
-      class TurnBasedMatchRepresentation < Google::Apis::Core::JsonRepresentation
-        property :application_id, as: 'applicationId'
-        property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria, decorator: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteriaRepresentation
-        
-        property :creation_details, as: 'creationDetails', class: Google::Apis::GamesV1::TurnBasedMatchModification, decorator: Google::Apis::GamesV1::TurnBasedMatchModificationRepresentation
-        
-        property :data, as: 'data', class: Google::Apis::GamesV1::TurnBasedMatchData, decorator: Google::Apis::GamesV1::TurnBasedMatchDataRepresentation
-        
-        property :description, as: 'description'
-        property :inviter_id, as: 'inviterId'
-        property :kind, as: 'kind'
-        property :last_update_details, as: 'lastUpdateDetails', class: Google::Apis::GamesV1::TurnBasedMatchModification, decorator: Google::Apis::GamesV1::TurnBasedMatchModificationRepresentation
-        
-        property :match_id, as: 'matchId'
-        property :match_number, as: 'matchNumber'
-        property :match_version, as: 'matchVersion'
-        collection :participants, as: 'participants', class: Google::Apis::GamesV1::TurnBasedMatchParticipant, decorator: Google::Apis::GamesV1::TurnBasedMatchParticipantRepresentation
-        
-        
-        property :pending_participant_id, as: 'pendingParticipantId'
-        property :previous_match_data, as: 'previousMatchData', class: Google::Apis::GamesV1::TurnBasedMatchData, decorator: Google::Apis::GamesV1::TurnBasedMatchDataRepresentation
-        
-        property :rematch_id, as: 'rematchId'
-        collection :results, as: 'results', class: Google::Apis::GamesV1::ParticipantResult, decorator: Google::Apis::GamesV1::ParticipantResultRepresentation
-        
-        
-        property :status, as: 'status'
-        property :user_match_status, as: 'userMatchStatus'
-        property :variant, as: 'variant'
-        property :with_participant_id, as: 'withParticipantId'
+      class TurnBasedMatch
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_id, as: 'applicationId'
+          property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria, decorator: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria::Representation
+      
+          property :creation_details, as: 'creationDetails', class: Google::Apis::GamesV1::TurnBasedMatchModification, decorator: Google::Apis::GamesV1::TurnBasedMatchModification::Representation
+      
+          property :data, as: 'data', class: Google::Apis::GamesV1::TurnBasedMatchData, decorator: Google::Apis::GamesV1::TurnBasedMatchData::Representation
+      
+          property :description, as: 'description'
+          property :inviter_id, as: 'inviterId'
+          property :kind, as: 'kind'
+          property :last_update_details, as: 'lastUpdateDetails', class: Google::Apis::GamesV1::TurnBasedMatchModification, decorator: Google::Apis::GamesV1::TurnBasedMatchModification::Representation
+      
+          property :match_id, as: 'matchId'
+          property :match_number, as: 'matchNumber'
+          property :match_version, as: 'matchVersion'
+          collection :participants, as: 'participants', class: Google::Apis::GamesV1::TurnBasedMatchParticipant, decorator: Google::Apis::GamesV1::TurnBasedMatchParticipant::Representation
+      
+          property :pending_participant_id, as: 'pendingParticipantId'
+          property :previous_match_data, as: 'previousMatchData', class: Google::Apis::GamesV1::TurnBasedMatchData, decorator: Google::Apis::GamesV1::TurnBasedMatchData::Representation
+      
+          property :rematch_id, as: 'rematchId'
+          collection :results, as: 'results', class: Google::Apis::GamesV1::ParticipantResult, decorator: Google::Apis::GamesV1::ParticipantResult::Representation
+      
+          property :status, as: 'status'
+          property :user_match_status, as: 'userMatchStatus'
+          property :variant, as: 'variant'
+          property :with_participant_id, as: 'withParticipantId'
+        end
       end
-
+      
       # @private
-      class TurnBasedMatchCreateRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria, decorator: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteriaRepresentation
-        
-        collection :invited_player_ids, as: 'invitedPlayerIds'
-        
-        property :kind, as: 'kind'
-        property :request_id, as: 'requestId'
-        property :variant, as: 'variant'
+      class TurnBasedMatchCreateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria, decorator: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria::Representation
+      
+          collection :invited_player_ids, as: 'invitedPlayerIds'
+          property :kind, as: 'kind'
+          property :request_id, as: 'requestId'
+          property :variant, as: 'variant'
+        end
       end
-
+      
       # @private
-      class TurnBasedMatchDataRepresentation < Google::Apis::Core::JsonRepresentation
-        property :data, :base64 => true, as: 'data'
-        property :data_available, as: 'dataAvailable'
-        property :kind, as: 'kind'
+      class TurnBasedMatchData
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
+          property :data_available, as: 'dataAvailable'
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class TurnBasedMatchDataRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :data, :base64 => true, as: 'data'
-        property :kind, as: 'kind'
+      class TurnBasedMatchDataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class TurnBasedMatchListRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::GamesV1::TurnBasedMatch, decorator: Google::Apis::GamesV1::TurnBasedMatchRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class TurnBasedMatchList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesV1::TurnBasedMatch, decorator: Google::Apis::GamesV1::TurnBasedMatch::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class TurnBasedMatchModificationRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :modified_timestamp_millis, as: 'modifiedTimestampMillis'
-        property :participant_id, as: 'participantId'
+      class TurnBasedMatchModification
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :modified_timestamp_millis, as: 'modifiedTimestampMillis'
+          property :participant_id, as: 'participantId'
+        end
       end
-
+      
       # @private
-      class TurnBasedMatchParticipantRepresentation < Google::Apis::Core::JsonRepresentation
-        property :auto_matched, as: 'autoMatched'
-        property :auto_matched_player, as: 'autoMatchedPlayer', class: Google::Apis::GamesV1::AnonymousPlayer, decorator: Google::Apis::GamesV1::AnonymousPlayerRepresentation
-        
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :player, as: 'player', class: Google::Apis::GamesV1::Player, decorator: Google::Apis::GamesV1::PlayerRepresentation
-        
-        property :status, as: 'status'
+      class TurnBasedMatchParticipant
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_matched, as: 'autoMatched'
+          property :auto_matched_player, as: 'autoMatchedPlayer', class: Google::Apis::GamesV1::AnonymousPlayer, decorator: Google::Apis::GamesV1::AnonymousPlayer::Representation
+      
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :player, as: 'player', class: Google::Apis::GamesV1::Player, decorator: Google::Apis::GamesV1::Player::Representation
+      
+          property :status, as: 'status'
+        end
       end
-
+      
       # @private
-      class TurnBasedMatchRematchRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :previous_match, as: 'previousMatch', class: Google::Apis::GamesV1::TurnBasedMatch, decorator: Google::Apis::GamesV1::TurnBasedMatchRepresentation
-        
-        property :rematch, as: 'rematch', class: Google::Apis::GamesV1::TurnBasedMatch, decorator: Google::Apis::GamesV1::TurnBasedMatchRepresentation
+      class TurnBasedMatchRematch
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :previous_match, as: 'previousMatch', class: Google::Apis::GamesV1::TurnBasedMatch, decorator: Google::Apis::GamesV1::TurnBasedMatch::Representation
+      
+          property :rematch, as: 'rematch', class: Google::Apis::GamesV1::TurnBasedMatch, decorator: Google::Apis::GamesV1::TurnBasedMatch::Representation
+      
+        end
       end
-
+      
       # @private
-      class TurnBasedMatchResultsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :data, as: 'data', class: Google::Apis::GamesV1::TurnBasedMatchDataRequest, decorator: Google::Apis::GamesV1::TurnBasedMatchDataRequestRepresentation
-        
-        property :kind, as: 'kind'
-        property :match_version, as: 'matchVersion'
-        collection :results, as: 'results', class: Google::Apis::GamesV1::ParticipantResult, decorator: Google::Apis::GamesV1::ParticipantResultRepresentation
+      class TurnBasedMatchResults
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data', class: Google::Apis::GamesV1::TurnBasedMatchDataRequest, decorator: Google::Apis::GamesV1::TurnBasedMatchDataRequest::Representation
+      
+          property :kind, as: 'kind'
+          property :match_version, as: 'matchVersion'
+          collection :results, as: 'results', class: Google::Apis::GamesV1::ParticipantResult, decorator: Google::Apis::GamesV1::ParticipantResult::Representation
+      
+        end
       end
-
+      
       # @private
-      class TurnBasedMatchSyncRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::GamesV1::TurnBasedMatch, decorator: Google::Apis::GamesV1::TurnBasedMatchRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :more_available, as: 'moreAvailable'
-        property :next_page_token, as: 'nextPageToken'
+      class TurnBasedMatchSync
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesV1::TurnBasedMatch, decorator: Google::Apis::GamesV1::TurnBasedMatch::Representation
+      
+          property :kind, as: 'kind'
+          property :more_available, as: 'moreAvailable'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class TurnBasedMatchTurnRepresentation < Google::Apis::Core::JsonRepresentation
-        property :data, as: 'data', class: Google::Apis::GamesV1::TurnBasedMatchDataRequest, decorator: Google::Apis::GamesV1::TurnBasedMatchDataRequestRepresentation
-        
-        property :kind, as: 'kind'
-        property :match_version, as: 'matchVersion'
-        property :pending_participant_id, as: 'pendingParticipantId'
-        collection :results, as: 'results', class: Google::Apis::GamesV1::ParticipantResult, decorator: Google::Apis::GamesV1::ParticipantResultRepresentation
+      class TurnBasedMatchTurn
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data', class: Google::Apis::GamesV1::TurnBasedMatchDataRequest, decorator: Google::Apis::GamesV1::TurnBasedMatchDataRequest::Representation
+      
+          property :kind, as: 'kind'
+          property :match_version, as: 'matchVersion'
+          property :pending_participant_id, as: 'pendingParticipantId'
+          collection :results, as: 'results', class: Google::Apis::GamesV1::ParticipantResult, decorator: Google::Apis::GamesV1::ParticipantResult::Representation
+      
+        end
       end
     end
   end

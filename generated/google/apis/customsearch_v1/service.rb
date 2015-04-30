@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/custom-search/v1/using_rest
       class CustomsearchService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'customsearch/')
         end
-
+        
         # Returns metadata about the search performed, metadata about the custom search
         # engine used for the search, and the search results.
         # @param [String] c2coff
@@ -141,7 +140,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -156,7 +155,7 @@ module Google
         def list_cses(c2coff: nil, cr: nil, cref: nil, cx: nil, date_restrict: nil, exact_terms: nil, exclude_terms: nil, file_type: nil, filter: nil, gl: nil, googlehost: nil, high_range: nil, hl: nil, hq: nil, img_color_type: nil, img_dominant_color: nil, img_size: nil, img_type: nil, link_site: nil, low_range: nil, lr: nil, num: nil, or_terms: nil, q: nil, related_site: nil, rights: nil, safe: nil, search_type: nil, site_search: nil, site_search_filter: nil, sort: nil, start: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'v1'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CustomsearchV1::SearchRepresentation
+          command.response_representation = Google::Apis::CustomsearchV1::Search::Representation
           command.response_class = Google::Apis::CustomsearchV1::Search
           command.query['c2coff'] = c2coff unless c2coff.nil?
           command.query['cr'] = cr unless cr.nil?

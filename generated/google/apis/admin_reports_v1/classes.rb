@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AdminReportsV1
-
+      
       # JSON template for a collection of activites.
       class Activities
         include Google::Apis::Core::Hashable
@@ -47,13 +47,18 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # JSON template for the activity resource.
       class Activity
         include Google::Apis::Core::Hashable
@@ -94,6 +99,11 @@ module Google
         attr_accessor :owner_domain
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @actor = args[:actor] unless args[:actor].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @events = args[:events] unless args[:events].nil?
@@ -102,6 +112,7 @@ module Google
           @kind = args[:kind] unless args[:kind].nil?
           @owner_domain = args[:owner_domain] unless args[:owner_domain].nil?
         end
+        
         # User doing the action.
         class Actor
           include Google::Apis::Core::Hashable
@@ -127,12 +138,18 @@ module Google
           attr_accessor :profile_id
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @caller_type = args[:caller_type] unless args[:caller_type].nil?
             @email = args[:email] unless args[:email].nil?
             @key = args[:key] unless args[:key].nil?
             @profile_id = args[:profile_id] unless args[:profile_id].nil?
           end
         end
+        
         # 
         class Event
           include Google::Apis::Core::Hashable
@@ -153,10 +170,16 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @name = args[:name] unless args[:name].nil?
             @parameters = args[:parameters] unless args[:parameters].nil?
             @type = args[:type] unless args[:type].nil?
           end
+          
           # 
           class Parameter
             include Google::Apis::Core::Hashable
@@ -193,6 +216,11 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @bool_value = args[:bool_value] unless args[:bool_value].nil?
               @int_value = args[:int_value] unless args[:int_value].nil?
               @multi_int_value = args[:multi_int_value] unless args[:multi_int_value].nil?
@@ -202,6 +230,7 @@ module Google
             end
           end
         end
+        
         # Unique identifier for each activity record.
         class Id
           include Google::Apis::Core::Hashable
@@ -227,6 +256,11 @@ module Google
           attr_accessor :unique_qualifier
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @application_name = args[:application_name] unless args[:application_name].nil?
             @customer_id = args[:customer_id] unless args[:customer_id].nil?
             @time = args[:time] unless args[:time].nil?
@@ -234,7 +268,7 @@ module Google
           end
         end
       end
-
+      
       # An notification channel used to watch for resource changes.
       class Channel
         include Google::Apis::Core::Hashable
@@ -295,6 +329,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @address = args[:address] unless args[:address].nil?
           @expiration = args[:expiration] unless args[:expiration].nil?
           @id = args[:id] unless args[:id].nil?
@@ -307,7 +346,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # JSON template for a usage report.
       class UsageReport
         include Google::Apis::Core::Hashable
@@ -338,12 +377,18 @@ module Google
         attr_accessor :parameters
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @date = args[:date] unless args[:date].nil?
           @entity = args[:entity] unless args[:entity].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @parameters = args[:parameters] unless args[:parameters].nil?
         end
+        
         # Information about the type of the item.
         class Entity
           include Google::Apis::Core::Hashable
@@ -369,12 +414,18 @@ module Google
           attr_accessor :user_email
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @customer_id = args[:customer_id] unless args[:customer_id].nil?
             @profile_id = args[:profile_id] unless args[:profile_id].nil?
             @type = args[:type] unless args[:type].nil?
             @user_email = args[:user_email] unless args[:user_email].nil?
           end
         end
+        
         # 
         class Parameter
           include Google::Apis::Core::Hashable
@@ -411,6 +462,11 @@ module Google
           attr_accessor :string_value
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @bool_value = args[:bool_value] unless args[:bool_value].nil?
             @datetime_value = args[:datetime_value] unless args[:datetime_value].nil?
             @int_value = args[:int_value] unless args[:int_value].nil?
@@ -420,7 +476,7 @@ module Google
           end
         end
       end
-
+      
       # JSON template for a collection of usage reports.
       class UsageReports
         include Google::Apis::Core::Hashable
@@ -451,12 +507,18 @@ module Google
         attr_accessor :warnings
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @usage_reports = args[:usage_reports] unless args[:usage_reports].nil?
           @warnings = args[:warnings] unless args[:warnings].nil?
         end
+        
         # 
         class Warning
           include Google::Apis::Core::Hashable
@@ -477,10 +539,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -498,6 +566,11 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end

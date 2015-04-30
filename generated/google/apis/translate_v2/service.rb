@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/translate/v2/using_rest
       class TranslateService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'language/translate/')
         end
-
+        
         # Detect the language of text.
         # @param [Array<String>, String] q
         #   The text to detect
@@ -65,14 +64,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::TranslateV2::DetectionsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::TranslateV2::ListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::TranslateV2::DetectionsListResponse]
+        # @return [Google::Apis::TranslateV2::ListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -80,15 +79,15 @@ module Google
         def list_detections(q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'v2/detect'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::TranslateV2::DetectionsListResponseRepresentation
-          command.response_class = Google::Apis::TranslateV2::DetectionsListResponse
+          command.response_representation = Google::Apis::TranslateV2::ListResponse::Representation
+          command.response_class = Google::Apis::TranslateV2::ListResponse
           command.query['q'] = q unless q.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # List the source/target languages supported by the API
         # @param [String] target
         #   the language and collation in which the localized results should be returned
@@ -101,7 +100,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -116,7 +115,7 @@ module Google
         def list_languages(target: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'v2/languages'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::TranslateV2::LanguagesListResponseRepresentation
+          command.response_representation = Google::Apis::TranslateV2::LanguagesListResponse::Representation
           command.response_class = Google::Apis::TranslateV2::LanguagesListResponse
           command.query['target'] = target unless target.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -124,7 +123,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Returns text translations from one language to another.
         # @param [Array<String>, String] cid
         #   The customization id for translate
@@ -145,7 +144,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -160,7 +159,7 @@ module Google
         def list_translations(cid: nil, format: nil, q: nil, source: nil, target: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'v2'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::TranslateV2::TranslationsListResponseRepresentation
+          command.response_representation = Google::Apis::TranslateV2::TranslationsListResponse::Representation
           command.response_class = Google::Apis::TranslateV2::TranslationsListResponse
           command.query['cid'] = cid unless cid.nil?
           command.query['format'] = format unless format.nil?

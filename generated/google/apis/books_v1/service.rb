@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/books/docs/v1/getting_started
       class BooksService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'books/v1/')
         end
-
+        
         # Retrieves metadata for a specific bookshelf for the specified user.
         # @param [String] user_id
         #   ID of user for whom to retrieve bookshelves.
@@ -69,7 +68,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -84,7 +83,7 @@ module Google
         def get_bookshelf(user_id, shelf, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/{userId}/bookshelves/{shelf}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::BookshelfRepresentation
+          command.response_representation = Google::Apis::BooksV1::Bookshelf::Representation
           command.response_class = Google::Apis::BooksV1::Bookshelf
           command.params['userId'] = user_id unless user_id.nil?
           command.params['shelf'] = shelf unless shelf.nil?
@@ -94,7 +93,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves a list of public bookshelves for the specified user.
         # @param [String] user_id
@@ -110,7 +108,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -125,7 +123,7 @@ module Google
         def list_bookshelves(user_id, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/{userId}/bookshelves'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::BookshelvesRepresentation
+          command.response_representation = Google::Apis::BooksV1::Bookshelves::Representation
           command.response_class = Google::Apis::BooksV1::Bookshelves
           command.params['userId'] = user_id unless user_id.nil?
           command.query['source'] = source unless source.nil?
@@ -134,7 +132,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves volumes in a specific bookshelf for the specified user.
         # @param [String] user_id
@@ -158,7 +155,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -173,7 +170,7 @@ module Google
         def list_bookshelf_volumes(user_id, shelf, max_results: nil, show_preorders: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/{userId}/bookshelves/{shelf}/volumes'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::VolumesRepresentation
+          command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.params['userId'] = user_id unless user_id.nil?
           command.params['shelf'] = shelf unless shelf.nil?
@@ -186,7 +183,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # 
         # @param [String] drive_document_id
         #   A drive document id. The upload_client_token must not be set.
@@ -195,7 +192,6 @@ module Google
         # @param [String] name
         #   The document name. It can be set only if the drive_document_id is set.
         # @param [String] upload_client_token
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -205,14 +201,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BooksV1::CloudloadingResource] parsed result object
+        # @yieldparam result [Google::Apis::BooksV1::Resource] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::BooksV1::CloudloadingResource]
+        # @return [Google::Apis::BooksV1::Resource]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -220,8 +216,8 @@ module Google
         def add_book_cloudloading(drive_document_id: nil, mime_type: nil, name: nil, upload_client_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'cloudloading/addBook'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::BooksV1::CloudloadingResourceRepresentation
-          command.response_class = Google::Apis::BooksV1::CloudloadingResource
+          command.response_representation = Google::Apis::BooksV1::Resource::Representation
+          command.response_class = Google::Apis::BooksV1::Resource
           command.query['drive_document_id'] = drive_document_id unless drive_document_id.nil?
           command.query['mime_type'] = mime_type unless mime_type.nil?
           command.query['name'] = name unless name.nil?
@@ -231,7 +227,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Remove the book and its contents
         # @param [String] volume_id
@@ -245,7 +240,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -267,10 +262,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # 
-        # @param [Google::Apis::BooksV1::CloudloadingResource] books_cloudloading_resource
-        #   
+        # @param [Google::Apis::BooksV1::Resource] books_cloudloading_resource_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -280,31 +273,31 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BooksV1::CloudloadingResource] parsed result object
+        # @yieldparam result [Google::Apis::BooksV1::Resource] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::BooksV1::CloudloadingResource]
+        # @return [Google::Apis::BooksV1::Resource]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_book_cloudloading(books_cloudloading_resource = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_book_cloudloading(books_cloudloading_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'cloudloading/updateBook'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::BooksV1::CloudloadingResourceRepresentation
-          command.request_object = books_cloudloading_resource
-          command.response_representation = Google::Apis::BooksV1::CloudloadingResourceRepresentation
-          command.response_class = Google::Apis::BooksV1::CloudloadingResource
+          command.request_representation = Google::Apis::BooksV1::Resource::Representation
+          command.request_object = books_cloudloading_resource_object
+          command.response_representation = Google::Apis::BooksV1::Resource::Representation
+          command.response_class = Google::Apis::BooksV1::Resource
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Returns a list of offline dictionary meatadata available
         # @param [String] cpksver
         #   The device/version ID from which to request the data.
@@ -317,7 +310,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -332,7 +325,7 @@ module Google
         def list_offline_metadata_dictionary(cpksver: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'dictionary/listOfflineMetadata'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::MetadataRepresentation
+          command.response_representation = Google::Apis::BooksV1::Metadata::Representation
           command.response_class = Google::Apis::BooksV1::Metadata
           command.query['cpksver'] = cpksver unless cpksver.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -340,7 +333,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Gets the layer summary for a volume.
         # @param [String] volume_id
         #   The volume to retrieve layers for.
@@ -359,7 +352,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -374,7 +367,7 @@ module Google
         def get_layer(volume_id, summary_id, content_version: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'volumes/{volumeId}/layersummary/{summaryId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::LayersummaryRepresentation
+          command.response_representation = Google::Apis::BooksV1::Layersummary::Representation
           command.response_class = Google::Apis::BooksV1::Layersummary
           command.params['volumeId'] = volume_id unless volume_id.nil?
           command.params['summaryId'] = summary_id unless summary_id.nil?
@@ -385,7 +378,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List the layer summaries for a volume.
         # @param [String] volume_id
@@ -407,7 +399,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -422,7 +414,7 @@ module Google
         def list_layers(volume_id, content_version: nil, max_results: nil, page_token: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'volumes/{volumeId}/layersummary'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::LayersummariesRepresentation
+          command.response_representation = Google::Apis::BooksV1::Layersummaries::Representation
           command.response_class = Google::Apis::BooksV1::Layersummaries
           command.params['volumeId'] = volume_id unless volume_id.nil?
           command.query['contentVersion'] = content_version unless content_version.nil?
@@ -434,7 +426,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Gets the annotation data.
         # @param [String] volume_id
@@ -469,7 +460,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -484,7 +475,7 @@ module Google
         def get_layer_annotation_datum(volume_id, layer_id, annotation_data_id, allow_web_definitions: nil, content_version: nil, h: nil, locale: nil, scale: nil, source: nil, w: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::AnnotationdataRepresentation
+          command.response_representation = Google::Apis::BooksV1::Annotationdata::Representation
           command.response_class = Google::Apis::BooksV1::Annotationdata
           command.params['volumeId'] = volume_id unless volume_id.nil?
           command.params['layerId'] = layer_id unless layer_id.nil?
@@ -501,7 +492,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Gets the annotation data for a volume and layer.
         # @param [String] volume_id
@@ -545,7 +535,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -560,7 +550,7 @@ module Google
         def list_layer_annotation_data(volume_id, layer_id, annotation_data_id: nil, content_version: nil, h: nil, locale: nil, max_results: nil, page_token: nil, scale: nil, source: nil, updated_max: nil, updated_min: nil, w: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'volumes/{volumeId}/layers/{layerId}/data'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::AnnotationsdataRepresentation
+          command.response_representation = Google::Apis::BooksV1::Annotationsdata::Representation
           command.response_class = Google::Apis::BooksV1::Annotationsdata
           command.params['volumeId'] = volume_id unless volume_id.nil?
           command.params['layerId'] = layer_id unless layer_id.nil?
@@ -580,8 +570,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Gets the volume annotation.
         # @param [String] volume_id
@@ -604,7 +592,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -619,7 +607,7 @@ module Google
         def get_layer_volume_annotation(volume_id, layer_id, annotation_id, locale: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'volumes/{volumeId}/layers/{layerId}/annotations/{annotationId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::VolumeannotationRepresentation
+          command.response_representation = Google::Apis::BooksV1::Volumeannotation::Representation
           command.response_class = Google::Apis::BooksV1::Volumeannotation
           command.params['volumeId'] = volume_id unless volume_id.nil?
           command.params['layerId'] = layer_id unless layer_id.nil?
@@ -631,7 +619,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Gets the volume annotations for a volume and layer.
         # @param [String] volume_id
@@ -677,7 +664,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -692,7 +679,7 @@ module Google
         def list_layer_volume_annotations(volume_id, layer_id, content_version: nil, end_offset: nil, end_position: nil, locale: nil, max_results: nil, page_token: nil, show_deleted: nil, source: nil, start_offset: nil, start_position: nil, updated_max: nil, updated_min: nil, volume_annotations_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'volumes/{volumeId}/layers/{layerId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::VolumeannotationsRepresentation
+          command.response_representation = Google::Apis::BooksV1::Volumeannotations::Representation
           command.response_class = Google::Apis::BooksV1::Volumeannotations
           command.params['volumeId'] = volume_id unless volume_id.nil?
           command.params['layerId'] = layer_id unless layer_id.nil?
@@ -714,7 +701,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Gets the current settings for the user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -725,7 +712,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -740,14 +727,13 @@ module Google
         def get_user_settings_myconfig(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'myconfig/getUserSettings'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::UsersettingsRepresentation
+          command.response_representation = Google::Apis::BooksV1::Usersettings::Representation
           command.response_class = Google::Apis::BooksV1::Usersettings
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Release downloaded content access restriction.
         # @param [String] cpksver
@@ -767,7 +753,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -782,7 +768,7 @@ module Google
         def release_download_access_myconfig(cpksver: nil, locale: nil, source: nil, volume_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'myconfig/releaseDownloadAccess'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::BooksV1::DownloadAccessesRepresentation
+          command.response_representation = Google::Apis::BooksV1::DownloadAccesses::Representation
           command.response_class = Google::Apis::BooksV1::DownloadAccesses
           command.query['cpksver'] = cpksver unless cpksver.nil?
           command.query['locale'] = locale unless locale.nil?
@@ -793,7 +779,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Request concurrent and download access restrictions.
         # @param [String] cpksver
@@ -817,7 +802,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -832,7 +817,7 @@ module Google
         def request_access_myconfig(cpksver: nil, license_types: nil, locale: nil, nonce: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'myconfig/requestAccess'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::BooksV1::RequestAccessRepresentation
+          command.response_representation = Google::Apis::BooksV1::RequestAccess::Representation
           command.response_class = Google::Apis::BooksV1::RequestAccess
           command.query['cpksver'] = cpksver unless cpksver.nil?
           command.query['licenseTypes'] = license_types unless license_types.nil?
@@ -845,7 +830,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Request downloaded content access for specified volumes on the My eBooks shelf.
         # @param [String] cpksver
@@ -871,7 +855,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -886,7 +870,7 @@ module Google
         def sync_volume_licenses_myconfig(cpksver: nil, features: nil, locale: nil, nonce: nil, show_preorders: nil, source: nil, volume_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'myconfig/syncVolumeLicenses'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::BooksV1::VolumesRepresentation
+          command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.query['cpksver'] = cpksver unless cpksver.nil?
           command.query['features'] = features unless features.nil?
@@ -901,12 +885,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Sets the settings for the user. If a sub-object is specified, it will
         # overwrite the existing sub-object stored in the server. Unspecified sub-
         # objects will retain the existing value.
-        # @param [Google::Apis::BooksV1::Usersettings] usersettings
-        #   
+        # @param [Google::Apis::BooksV1::Usersettings] usersettings_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -916,7 +898,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -928,19 +910,19 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user_settings_myconfig(usersettings = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_user_settings_myconfig(usersettings_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'myconfig/updateUserSettings'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::BooksV1::UsersettingsRepresentation
-          command.request_object = usersettings
-          command.response_representation = Google::Apis::BooksV1::UsersettingsRepresentation
+          command.request_representation = Google::Apis::BooksV1::Usersettings::Representation
+          command.request_object = usersettings_object
+          command.response_representation = Google::Apis::BooksV1::Usersettings::Representation
           command.response_class = Google::Apis::BooksV1::Usersettings
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Deletes an annotation.
         # @param [String] annotation_id
         #   The ID for the annotation to delete.
@@ -955,7 +937,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -978,10 +960,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Inserts a new annotation.
-        # @param [Google::Apis::BooksV1::Annotation] annotation
-        #   
+        # @param [Google::Apis::BooksV1::Annotation] annotation_object
         # @param [String] country
         #   ISO-3166-1 code to override the IP-based location.
         # @param [Boolean] show_only_summary_in_response
@@ -998,7 +978,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1010,12 +990,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_mylibrary_annotation(annotation = nil, country: nil, show_only_summary_in_response: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_mylibrary_annotation(annotation_object = nil, country: nil, show_only_summary_in_response: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'mylibrary/annotations'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::BooksV1::AnnotationRepresentation
-          command.request_object = annotation
-          command.response_representation = Google::Apis::BooksV1::AnnotationRepresentation
+          command.request_representation = Google::Apis::BooksV1::Annotation::Representation
+          command.request_object = annotation_object
+          command.response_representation = Google::Apis::BooksV1::Annotation::Representation
           command.response_class = Google::Apis::BooksV1::Annotation
           command.query['country'] = country unless country.nil?
           command.query['showOnlySummaryInResponse'] = show_only_summary_in_response unless show_only_summary_in_response.nil?
@@ -1025,7 +1005,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves a list of annotations, possibly filtered.
         # @param [String] content_version
@@ -1060,7 +1039,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1075,7 +1054,7 @@ module Google
         def list_mylibrary_annotations(content_version: nil, layer_id: nil, layer_ids: nil, max_results: nil, page_token: nil, show_deleted: nil, source: nil, updated_max: nil, updated_min: nil, volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'mylibrary/annotations'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::AnnotationsRepresentation
+          command.response_representation = Google::Apis::BooksV1::Annotations::Representation
           command.response_class = Google::Apis::BooksV1::Annotations
           command.query['contentVersion'] = content_version unless content_version.nil?
           command.query['layerId'] = layer_id unless layer_id.nil?
@@ -1093,7 +1072,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets the summary of specified layers.
         # @param [Array<String>, String] layer_ids
         #   Array of layer IDs to get the summary for.
@@ -1108,14 +1086,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BooksV1::AnnotationsSummary] parsed result object
+        # @yieldparam result [Google::Apis::BooksV1::Summary] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::BooksV1::AnnotationsSummary]
+        # @return [Google::Apis::BooksV1::Summary]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1123,8 +1101,8 @@ module Google
         def summary_mylibrary_annotation(layer_ids: nil, volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'mylibrary/annotations/summary'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::BooksV1::AnnotationsSummaryRepresentation
-          command.response_class = Google::Apis::BooksV1::AnnotationsSummary
+          command.response_representation = Google::Apis::BooksV1::Summary::Representation
+          command.response_class = Google::Apis::BooksV1::Summary
           command.query['layerIds'] = layer_ids unless layer_ids.nil?
           command.query['volumeId'] = volume_id unless volume_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1133,12 +1111,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an existing annotation.
         # @param [String] annotation_id
         #   The ID for the annotation to update.
-        # @param [Google::Apis::BooksV1::Annotation] annotation
-        #   
+        # @param [Google::Apis::BooksV1::Annotation] annotation_object
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] fields
@@ -1150,7 +1126,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1162,12 +1138,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_mylibrary_annotation(annotation_id, annotation = nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_mylibrary_annotation(annotation_id, annotation_object = nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'mylibrary/annotations/{annotationId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::BooksV1::AnnotationRepresentation
-          command.request_object = annotation
-          command.response_representation = Google::Apis::BooksV1::AnnotationRepresentation
+          command.request_representation = Google::Apis::BooksV1::Annotation::Representation
+          command.request_object = annotation_object
+          command.response_representation = Google::Apis::BooksV1::Annotation::Representation
           command.response_class = Google::Apis::BooksV1::Annotation
           command.params['annotationId'] = annotation_id unless annotation_id.nil?
           command.query['source'] = source unless source.nil?
@@ -1176,8 +1152,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Adds a volume to a bookshelf.
         # @param [String] shelf
@@ -1197,7 +1171,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1222,7 +1196,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Clears all volumes from a bookshelf.
         # @param [String] shelf
         #   ID of bookshelf from which to remove a volume.
@@ -1237,7 +1210,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1260,7 +1233,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Retrieves metadata for a specific bookshelf belonging to the authenticated
         # user.
         # @param [String] shelf
@@ -1276,7 +1248,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1291,7 +1263,7 @@ module Google
         def get_mylibrary_bookshelf(shelf, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'mylibrary/bookshelves/{shelf}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::BookshelfRepresentation
+          command.response_representation = Google::Apis::BooksV1::Bookshelf::Representation
           command.response_class = Google::Apis::BooksV1::Bookshelf
           command.params['shelf'] = shelf unless shelf.nil?
           command.query['source'] = source unless source.nil?
@@ -1300,7 +1272,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves a list of bookshelves belonging to the authenticated user.
         # @param [String] source
@@ -1314,7 +1285,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1329,7 +1300,7 @@ module Google
         def list_mylibrary_bookshelves(source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'mylibrary/bookshelves'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::BookshelvesRepresentation
+          command.response_representation = Google::Apis::BooksV1::Bookshelves::Representation
           command.response_class = Google::Apis::BooksV1::Bookshelves
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1337,7 +1308,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Moves a volume within a bookshelf.
         # @param [String] shelf
@@ -1358,7 +1328,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1383,7 +1353,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Removes a volume from a bookshelf.
         # @param [String] shelf
         #   ID of bookshelf from which to remove a volume.
@@ -1402,7 +1371,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1426,7 +1395,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Gets volume information for volumes on a bookshelf.
         # @param [String] shelf
@@ -1454,7 +1422,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1469,7 +1437,7 @@ module Google
         def list_mylibrary_bookshelf_volumes(shelf, country: nil, max_results: nil, projection: nil, q: nil, show_preorders: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'mylibrary/bookshelves/{shelf}/volumes'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::VolumesRepresentation
+          command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.params['shelf'] = shelf unless shelf.nil?
           command.query['country'] = country unless country.nil?
@@ -1484,9 +1452,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
-        
         
         # Retrieves my reading position information for a volume.
         # @param [String] volume_id
@@ -1504,7 +1469,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1519,7 +1484,7 @@ module Google
         def get_mylibrary_readingposition(volume_id, content_version: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'mylibrary/readingpositions/{volumeId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::ReadingPositionRepresentation
+          command.response_representation = Google::Apis::BooksV1::ReadingPosition::Representation
           command.response_class = Google::Apis::BooksV1::ReadingPosition
           command.params['volumeId'] = volume_id unless volume_id.nil?
           command.query['contentVersion'] = content_version unless content_version.nil?
@@ -1529,7 +1494,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Sets my reading position information for a volume.
         # @param [String] volume_id
@@ -1555,7 +1519,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1582,7 +1546,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # List categories for onboarding experience.
         # @param [String] locale
         #   ISO-639-1 language and ISO-3166-1 country code. Default is en-US if unset.
@@ -1595,7 +1559,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1610,7 +1574,7 @@ module Google
         def list_categories_onboarding(locale: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'onboarding/listCategories'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::CategoryRepresentation
+          command.response_representation = Google::Apis::BooksV1::Category::Representation
           command.response_class = Google::Apis::BooksV1::Category
           command.query['locale'] = locale unless locale.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1619,12 +1583,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # List available volumes under categories for onboarding experience.
         # @param [Array<String>, String] category_id
         #   List of category ids requested.
         # @param [String] locale
         #   ISO-639-1 language and ISO-3166-1 country code. Default is en-US if unset.
+        # @param [String] max_allowed_maturity_rating
+        #   The maximum allowed maturity rating of returned volumes. Books with a higher
+        #   maturity rating are filtered out.
         # @param [Fixnum] page_size
         #   Number of maximum results per page to be included in the response.
         # @param [String] page_token
@@ -1638,7 +1604,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1650,13 +1616,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_category_volumes_onboarding(category_id: nil, locale: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_category_volumes_onboarding(category_id: nil, locale: nil, max_allowed_maturity_rating: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'onboarding/listCategoryVolumes'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::Volume2Representation
+          command.response_representation = Google::Apis::BooksV1::Volume2::Representation
           command.response_class = Google::Apis::BooksV1::Volume2
           command.query['categoryId'] = category_id unless category_id.nil?
           command.query['locale'] = locale unless locale.nil?
+          command.query['maxAllowedMaturityRating'] = max_allowed_maturity_rating unless max_allowed_maturity_rating.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1664,7 +1631,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # 
         # @param [String] android_id
         #   device android_id
@@ -1675,7 +1642,6 @@ module Google
         # @param [String] model
         #   device model
         # @param [String] offer_id
-        #   
         # @param [String] product
         #   device product
         # @param [String] serial
@@ -1691,7 +1657,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1720,7 +1686,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # 
         # @param [String] android_id
         #   device android_id
@@ -1745,7 +1710,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1773,7 +1738,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Returns a list of promo offers available to the user
         # @param [String] android_id
         #   device android_id
@@ -1796,7 +1760,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1811,7 +1775,7 @@ module Google
         def get_promooffer(android_id: nil, device: nil, manufacturer: nil, model: nil, product: nil, serial: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'promooffer/get'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::OffersRepresentation
+          command.response_representation = Google::Apis::BooksV1::Offers::Representation
           command.response_class = Google::Apis::BooksV1::Offers
           command.query['androidId'] = android_id unless android_id.nil?
           command.query['device'] = device unless device.nil?
@@ -1824,7 +1788,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Gets volume information for a single volume.
         # @param [String] volume_id
         #   ID of volume to retrieve.
@@ -1837,7 +1801,6 @@ module Google
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [Boolean] user_library_consistent_read
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1847,7 +1810,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1862,7 +1825,7 @@ module Google
         def get_volume(volume_id, country: nil, partner: nil, projection: nil, source: nil, user_library_consistent_read: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'volumes/{volumeId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::VolumeRepresentation
+          command.response_representation = Google::Apis::BooksV1::Volume::Representation
           command.response_class = Google::Apis::BooksV1::Volume
           command.params['volumeId'] = volume_id unless volume_id.nil?
           command.query['country'] = country unless country.nil?
@@ -1875,7 +1838,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Performs a book search.
         # @param [String] download
@@ -1913,7 +1875,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1928,7 +1890,7 @@ module Google
         def list_volumes(download: nil, filter: nil, lang_restrict: nil, library_restrict: nil, max_results: nil, order_by: nil, partner: nil, print_type: nil, projection: nil, q: nil, show_preorders: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'volumes'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::VolumesRepresentation
+          command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.query['download'] = download unless download.nil?
           command.query['filter'] = filter unless filter.nil?
@@ -1949,7 +1911,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Return a list of associated books.
         # @param [String] volume_id
         #   ID of the source volume.
@@ -1958,6 +1919,9 @@ module Google
         # @param [String] locale
         #   ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for
         #   generating recommendations.
+        # @param [String] max_allowed_maturity_rating
+        #   The maximum allowed maturity rating of returned recommendations. Books with a
+        #   higher maturity rating are filtered out.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] fields
@@ -1969,7 +1933,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1981,22 +1945,21 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_volume_associateds(volume_id, association: nil, locale: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_volume_associateds(volume_id, association: nil, locale: nil, max_allowed_maturity_rating: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'volumes/{volumeId}/associated'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::VolumesRepresentation
+          command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.params['volumeId'] = volume_id unless volume_id.nil?
           command.query['association'] = association unless association.nil?
           command.query['locale'] = locale unless locale.nil?
+          command.query['maxAllowedMaturityRating'] = max_allowed_maturity_rating unless max_allowed_maturity_rating.nil?
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Return a list of books in My Library.
         # @param [Array<String>, String] acquire_method
@@ -2022,7 +1985,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2037,7 +2000,7 @@ module Google
         def list_volume_mybooks(acquire_method: nil, locale: nil, max_results: nil, processing_state: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'volumes/mybooks'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::VolumesRepresentation
+          command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.query['acquireMethod'] = acquire_method unless acquire_method.nil?
           command.query['locale'] = locale unless locale.nil?
@@ -2051,12 +2014,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
-        
         # Return a list of recommended books for the current user.
         # @param [String] locale
         #   ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for
         #   generating recommendations.
+        # @param [String] max_allowed_maturity_rating
+        #   The maximum allowed maturity rating of returned recommendations. Books with a
+        #   higher maturity rating are filtered out.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] fields
@@ -2068,7 +2032,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2080,19 +2044,19 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_volume_recommendeds(locale: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_volume_recommendeds(locale: nil, max_allowed_maturity_rating: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'volumes/recommended'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::VolumesRepresentation
+          command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.query['locale'] = locale unless locale.nil?
+          command.query['maxAllowedMaturityRating'] = max_allowed_maturity_rating unless max_allowed_maturity_rating.nil?
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Rate a recommended book for the current user.
         # @param [String] locale
@@ -2113,14 +2077,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BooksV1::VolumesRecommendedRateResponse] parsed result object
+        # @yieldparam result [Google::Apis::BooksV1::RateResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::BooksV1::VolumesRecommendedRateResponse]
+        # @return [Google::Apis::BooksV1::RateResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2128,8 +2092,8 @@ module Google
         def rate_volume_recommended(locale: nil, rating: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'volumes/recommended/rate'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::BooksV1::VolumesRecommendedRateResponseRepresentation
-          command.response_class = Google::Apis::BooksV1::VolumesRecommendedRateResponse
+          command.response_representation = Google::Apis::BooksV1::RateResponse::Representation
+          command.response_class = Google::Apis::BooksV1::RateResponse
           command.query['locale'] = locale unless locale.nil?
           command.query['rating'] = rating unless rating.nil?
           command.query['source'] = source unless source.nil?
@@ -2139,8 +2103,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Return a list of books uploaded by the current user.
         # @param [String] locale
@@ -2166,7 +2128,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2181,7 +2143,7 @@ module Google
         def list_volume_useruploadeds(locale: nil, max_results: nil, processing_state: nil, source: nil, start_index: nil, volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'volumes/useruploaded'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BooksV1::VolumesRepresentation
+          command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.query['locale'] = locale unless locale.nil?
           command.query['maxResults'] = max_results unless max_results.nil?

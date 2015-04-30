@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/storage/docs/json_api/
       class StorageService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'storage/v1/')
         end
-
+        
         # Permanently deletes the ACL entry for the specified entity on the specified
         # bucket.
         # @param [String] bucket
@@ -69,7 +68,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -92,7 +91,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Returns the ACL entry for the specified entity on the specified bucket.
         # @param [String] bucket
         #   Name of a bucket.
@@ -108,7 +106,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -123,7 +121,7 @@ module Google
         def get_bucket_access_control(bucket, entity, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/acl/{entity}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::StorageV1::BucketAccessControlRepresentation
+          command.response_representation = Google::Apis::StorageV1::BucketAccessControl::Representation
           command.response_class = Google::Apis::StorageV1::BucketAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
           command.params['entity'] = entity unless entity.nil?
@@ -133,12 +131,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates a new ACL entry on the specified bucket.
         # @param [String] bucket
         #   Name of a bucket.
-        # @param [Google::Apis::StorageV1::BucketAccessControl] bucket_access_control
-        #   
+        # @param [Google::Apis::StorageV1::BucketAccessControl] bucket_access_control_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -148,7 +144,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -160,12 +156,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_bucket_access_control(bucket, bucket_access_control = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_bucket_access_control(bucket, bucket_access_control_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/acl'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::StorageV1::BucketAccessControlRepresentation
-          command.request_object = bucket_access_control
-          command.response_representation = Google::Apis::StorageV1::BucketAccessControlRepresentation
+          command.request_representation = Google::Apis::StorageV1::BucketAccessControl::Representation
+          command.request_object = bucket_access_control_object
+          command.response_representation = Google::Apis::StorageV1::BucketAccessControl::Representation
           command.response_class = Google::Apis::StorageV1::BucketAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -173,7 +169,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves ACL entries on the specified bucket.
         # @param [String] bucket
@@ -187,7 +182,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -202,7 +197,7 @@ module Google
         def list_bucket_access_controls(bucket, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/acl'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::StorageV1::BucketAccessControlsRepresentation
+          command.response_representation = Google::Apis::StorageV1::BucketAccessControls::Representation
           command.response_class = Google::Apis::StorageV1::BucketAccessControls
           command.params['bucket'] = bucket unless bucket.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -211,7 +206,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an ACL entry on the specified bucket. This method supports patch
         # semantics.
         # @param [String] bucket
@@ -219,8 +213,7 @@ module Google
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
-        # @param [Google::Apis::StorageV1::BucketAccessControl] bucket_access_control
-        #   
+        # @param [Google::Apis::StorageV1::BucketAccessControl] bucket_access_control_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -230,7 +223,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -242,12 +235,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_bucket_access_control(bucket, entity, bucket_access_control = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_bucket_access_control(bucket, entity, bucket_access_control_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/acl/{entity}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::StorageV1::BucketAccessControlRepresentation
-          command.request_object = bucket_access_control
-          command.response_representation = Google::Apis::StorageV1::BucketAccessControlRepresentation
+          command.request_representation = Google::Apis::StorageV1::BucketAccessControl::Representation
+          command.request_object = bucket_access_control_object
+          command.response_representation = Google::Apis::StorageV1::BucketAccessControl::Representation
           command.response_class = Google::Apis::StorageV1::BucketAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
           command.params['entity'] = entity unless entity.nil?
@@ -256,7 +249,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates an ACL entry on the specified bucket.
         # @param [String] bucket
@@ -264,8 +256,7 @@ module Google
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
-        # @param [Google::Apis::StorageV1::BucketAccessControl] bucket_access_control
-        #   
+        # @param [Google::Apis::StorageV1::BucketAccessControl] bucket_access_control_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -275,7 +266,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -287,12 +278,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_bucket_access_control(bucket, entity, bucket_access_control = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_bucket_access_control(bucket, entity, bucket_access_control_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/acl/{entity}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::StorageV1::BucketAccessControlRepresentation
-          command.request_object = bucket_access_control
-          command.response_representation = Google::Apis::StorageV1::BucketAccessControlRepresentation
+          command.request_representation = Google::Apis::StorageV1::BucketAccessControl::Representation
+          command.request_object = bucket_access_control_object
+          command.response_representation = Google::Apis::StorageV1::BucketAccessControl::Representation
           command.response_class = Google::Apis::StorageV1::BucketAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
           command.params['entity'] = entity unless entity.nil?
@@ -301,7 +292,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Permanently deletes an empty bucket.
         # @param [String] bucket
         #   Name of a bucket.
@@ -319,7 +310,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -343,7 +334,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Returns metadata for the specified bucket.
         # @param [String] bucket
         #   Name of a bucket.
@@ -364,7 +354,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -379,7 +369,7 @@ module Google
         def get_bucket(bucket, if_metageneration_match: nil, if_metageneration_not_match: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::StorageV1::BucketRepresentation
+          command.response_representation = Google::Apis::StorageV1::Bucket::Representation
           command.response_class = Google::Apis::StorageV1::Bucket
           command.params['bucket'] = bucket unless bucket.nil?
           command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
@@ -391,10 +381,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates a new bucket.
-        # @param [Google::Apis::StorageV1::Bucket] bucket
-        #   
+        # @param [Google::Apis::StorageV1::Bucket] bucket_object
         # @param [String] predefined_acl
         #   Apply a predefined set of access controls to this bucket.
         # @param [String] predefined_default_object_acl
@@ -413,7 +401,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -425,12 +413,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_bucket(bucket = nil, predefined_acl: nil, predefined_default_object_acl: nil, project: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_bucket(bucket_object = nil, predefined_acl: nil, predefined_default_object_acl: nil, project: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::StorageV1::BucketRepresentation
-          command.request_object = bucket
-          command.response_representation = Google::Apis::StorageV1::BucketRepresentation
+          command.request_representation = Google::Apis::StorageV1::Bucket::Representation
+          command.request_object = bucket_object
+          command.response_representation = Google::Apis::StorageV1::Bucket::Representation
           command.response_class = Google::Apis::StorageV1::Bucket
           command.query['predefinedAcl'] = predefined_acl unless predefined_acl.nil?
           command.query['predefinedDefaultObjectAcl'] = predefined_default_object_acl unless predefined_default_object_acl.nil?
@@ -441,7 +429,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves a list of buckets for a given project.
         # @param [Fixnum] max_results
@@ -464,7 +451,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -479,7 +466,7 @@ module Google
         def list_buckets(max_results: nil, page_token: nil, prefix: nil, project: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::StorageV1::BucketsRepresentation
+          command.response_representation = Google::Apis::StorageV1::Buckets::Representation
           command.response_class = Google::Apis::StorageV1::Buckets
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -492,12 +479,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a bucket. This method supports patch semantics.
         # @param [String] bucket
         #   Name of a bucket.
         # @param [Google::Apis::StorageV1::Bucket] bucket_object
-        #   
         # @param [String] if_metageneration_match
         #   Makes the return of the bucket metadata conditional on whether the bucket's
         #   current metageneration matches the given value.
@@ -519,7 +504,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -534,9 +519,9 @@ module Google
         def patch_bucket(bucket, bucket_object = nil, if_metageneration_match: nil, if_metageneration_not_match: nil, predefined_acl: nil, predefined_default_object_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::StorageV1::BucketRepresentation
+          command.request_representation = Google::Apis::StorageV1::Bucket::Representation
           command.request_object = bucket_object
-          command.response_representation = Google::Apis::StorageV1::BucketRepresentation
+          command.response_representation = Google::Apis::StorageV1::Bucket::Representation
           command.response_class = Google::Apis::StorageV1::Bucket
           command.params['bucket'] = bucket unless bucket.nil?
           command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
@@ -550,12 +535,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a bucket.
         # @param [String] bucket
         #   Name of a bucket.
         # @param [Google::Apis::StorageV1::Bucket] bucket_object
-        #   
         # @param [String] if_metageneration_match
         #   Makes the return of the bucket metadata conditional on whether the bucket's
         #   current metageneration matches the given value.
@@ -577,7 +560,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -592,9 +575,9 @@ module Google
         def update_bucket(bucket, bucket_object = nil, if_metageneration_match: nil, if_metageneration_not_match: nil, predefined_acl: nil, predefined_default_object_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::StorageV1::BucketRepresentation
+          command.request_representation = Google::Apis::StorageV1::Bucket::Representation
           command.request_object = bucket_object
-          command.response_representation = Google::Apis::StorageV1::BucketRepresentation
+          command.response_representation = Google::Apis::StorageV1::Bucket::Representation
           command.response_class = Google::Apis::StorageV1::Bucket
           command.params['bucket'] = bucket unless bucket.nil?
           command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
@@ -607,10 +590,9 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Stop watching resources through this channel
-        # @param [Google::Apis::StorageV1::Channel] channel
-        #   
+        # @param [Google::Apis::StorageV1::Channel] channel_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -620,7 +602,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -632,17 +614,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_channel(channel = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def stop_channel(channel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'channels/stop'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::StorageV1::ChannelRepresentation
-          command.request_object = channel
+          command.request_representation = Google::Apis::StorageV1::Channel::Representation
+          command.request_object = channel_object
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Permanently deletes the default object ACL entry for the specified entity on
         # the specified bucket.
         # @param [String] bucket
@@ -659,7 +641,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -682,7 +664,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Returns the default object ACL entry for the specified entity on the specified
         # bucket.
         # @param [String] bucket
@@ -699,7 +680,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -714,7 +695,7 @@ module Google
         def get_default_object_access_control(bucket, entity, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/defaultObjectAcl/{entity}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
+          command.response_representation = Google::Apis::StorageV1::ObjectAccessControl::Representation
           command.response_class = Google::Apis::StorageV1::ObjectAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
           command.params['entity'] = entity unless entity.nil?
@@ -724,12 +705,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates a new default object ACL entry on the specified bucket.
         # @param [String] bucket
         #   Name of a bucket.
-        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control
-        #   
+        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -739,7 +718,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -751,12 +730,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_default_object_access_control(bucket, object_access_control = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_default_object_access_control(bucket, object_access_control_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/defaultObjectAcl'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
-          command.request_object = object_access_control
-          command.response_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
+          command.request_representation = Google::Apis::StorageV1::ObjectAccessControl::Representation
+          command.request_object = object_access_control_object
+          command.response_representation = Google::Apis::StorageV1::ObjectAccessControl::Representation
           command.response_class = Google::Apis::StorageV1::ObjectAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -764,7 +743,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves default object ACL entries on the specified bucket.
         # @param [String] bucket
@@ -784,7 +762,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -799,7 +777,7 @@ module Google
         def list_default_object_access_controls(bucket, if_metageneration_match: nil, if_metageneration_not_match: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/defaultObjectAcl'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::StorageV1::ObjectAccessControlsRepresentation
+          command.response_representation = Google::Apis::StorageV1::ObjectAccessControls::Representation
           command.response_class = Google::Apis::StorageV1::ObjectAccessControls
           command.params['bucket'] = bucket unless bucket.nil?
           command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
@@ -810,7 +788,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a default object ACL entry on the specified bucket. This method
         # supports patch semantics.
         # @param [String] bucket
@@ -818,8 +795,7 @@ module Google
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
-        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control
-        #   
+        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -829,7 +805,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -841,12 +817,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_default_object_access_control(bucket, entity, object_access_control = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_default_object_access_control(bucket, entity, object_access_control_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/defaultObjectAcl/{entity}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
-          command.request_object = object_access_control
-          command.response_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
+          command.request_representation = Google::Apis::StorageV1::ObjectAccessControl::Representation
+          command.request_object = object_access_control_object
+          command.response_representation = Google::Apis::StorageV1::ObjectAccessControl::Representation
           command.response_class = Google::Apis::StorageV1::ObjectAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
           command.params['entity'] = entity unless entity.nil?
@@ -855,7 +831,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates a default object ACL entry on the specified bucket.
         # @param [String] bucket
@@ -863,8 +838,7 @@ module Google
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
-        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control
-        #   
+        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -874,7 +848,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -886,12 +860,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_default_object_access_control(bucket, entity, object_access_control = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_default_object_access_control(bucket, entity, object_access_control_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/defaultObjectAcl/{entity}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
-          command.request_object = object_access_control
-          command.response_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
+          command.request_representation = Google::Apis::StorageV1::ObjectAccessControl::Representation
+          command.request_object = object_access_control_object
+          command.response_representation = Google::Apis::StorageV1::ObjectAccessControl::Representation
           command.response_class = Google::Apis::StorageV1::ObjectAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
           command.params['entity'] = entity unless entity.nil?
@@ -900,7 +874,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Permanently deletes the ACL entry for the specified entity on the specified
         # object.
         # @param [String] bucket
@@ -922,7 +896,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -947,7 +921,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Returns the ACL entry for the specified entity on the specified object.
         # @param [String] bucket
         #   Name of a bucket.
@@ -968,7 +941,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -983,7 +956,7 @@ module Google
         def get_object_access_control(bucket, object, entity, generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/o/{object}/acl/{entity}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
+          command.response_representation = Google::Apis::StorageV1::ObjectAccessControl::Representation
           command.response_class = Google::Apis::StorageV1::ObjectAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
           command.params['object'] = object unless object.nil?
@@ -995,14 +968,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates a new ACL entry on the specified object.
         # @param [String] bucket
         #   Name of a bucket.
         # @param [String] object
         #   Name of the object.
-        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control
-        #   
+        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_object
         # @param [String] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
@@ -1015,7 +986,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1027,12 +998,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_object_access_control(bucket, object, object_access_control = nil, generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_object_access_control(bucket, object, object_access_control_object = nil, generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/o/{object}/acl'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
-          command.request_object = object_access_control
-          command.response_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
+          command.request_representation = Google::Apis::StorageV1::ObjectAccessControl::Representation
+          command.request_object = object_access_control_object
+          command.response_representation = Google::Apis::StorageV1::ObjectAccessControl::Representation
           command.response_class = Google::Apis::StorageV1::ObjectAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
           command.params['object'] = object unless object.nil?
@@ -1042,7 +1013,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves ACL entries on the specified object.
         # @param [String] bucket
@@ -1061,7 +1031,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1076,7 +1046,7 @@ module Google
         def list_object_access_controls(bucket, object, generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/o/{object}/acl'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::StorageV1::ObjectAccessControlsRepresentation
+          command.response_representation = Google::Apis::StorageV1::ObjectAccessControls::Representation
           command.response_class = Google::Apis::StorageV1::ObjectAccessControls
           command.params['bucket'] = bucket unless bucket.nil?
           command.params['object'] = object unless object.nil?
@@ -1087,7 +1057,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an ACL entry on the specified object. This method supports patch
         # semantics.
         # @param [String] bucket
@@ -1097,8 +1066,7 @@ module Google
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
-        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control
-        #   
+        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_object
         # @param [String] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
@@ -1111,7 +1079,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1123,12 +1091,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_object_access_control(bucket, object, entity, object_access_control = nil, generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_object_access_control(bucket, object, entity, object_access_control_object = nil, generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/o/{object}/acl/{entity}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
-          command.request_object = object_access_control
-          command.response_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
+          command.request_representation = Google::Apis::StorageV1::ObjectAccessControl::Representation
+          command.request_object = object_access_control_object
+          command.response_representation = Google::Apis::StorageV1::ObjectAccessControl::Representation
           command.response_class = Google::Apis::StorageV1::ObjectAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
           command.params['object'] = object unless object.nil?
@@ -1139,7 +1107,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates an ACL entry on the specified object.
         # @param [String] bucket
@@ -1149,8 +1116,7 @@ module Google
         # @param [String] entity
         #   The entity holding the permission. Can be user-userId, user-emailAddress,
         #   group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers.
-        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control
-        #   
+        # @param [Google::Apis::StorageV1::ObjectAccessControl] object_access_control_object
         # @param [String] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
@@ -1163,7 +1129,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1175,12 +1141,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_object_access_control(bucket, object, entity, object_access_control = nil, generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_object_access_control(bucket, object, entity, object_access_control_object = nil, generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/o/{object}/acl/{entity}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
-          command.request_object = object_access_control
-          command.response_representation = Google::Apis::StorageV1::ObjectAccessControlRepresentation
+          command.request_representation = Google::Apis::StorageV1::ObjectAccessControl::Representation
+          command.request_object = object_access_control_object
+          command.response_representation = Google::Apis::StorageV1::ObjectAccessControl::Representation
           command.response_class = Google::Apis::StorageV1::ObjectAccessControl
           command.params['bucket'] = bucket unless bucket.nil?
           command.params['object'] = object unless object.nil?
@@ -1191,14 +1157,13 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Concatenates a list of existing objects into a new object in the same bucket.
         # @param [String] destination_bucket
         #   Name of the bucket in which to store the new object.
         # @param [String] destination_object
         #   Name of the new object.
-        # @param [Google::Apis::StorageV1::ComposeRequest] compose_request
-        #   
+        # @param [Google::Apis::StorageV1::ComposeRequest] compose_request_object
         # @param [String] destination_predefined_acl
         #   Apply a predefined set of access controls to the destination object.
         # @param [String] if_generation_match
@@ -1218,7 +1183,7 @@ module Google
         #   enforce per-user limits.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1230,7 +1195,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def compose(destination_bucket, destination_object, compose_request = nil, destination_predefined_acl: nil, if_generation_match: nil, if_metageneration_match: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def compose(destination_bucket, destination_object, compose_request_object = nil, destination_predefined_acl: nil, if_generation_match: nil, if_metageneration_match: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           path = 'b/{destinationBucket}/o/{destinationObject}/compose'
           if download_dest.nil?
             command =  make_simple_command(:post, path, options)
@@ -1238,9 +1203,9 @@ module Google
             command = make_download_command(:post, path, options)
             command.download_dest = download_dest
           end
-          command.request_representation = Google::Apis::StorageV1::ComposeRequestRepresentation
-          command.request_object = compose_request
-          command.response_representation = Google::Apis::StorageV1::ObjectRepresentation
+          command.request_representation = Google::Apis::StorageV1::ComposeRequest::Representation
+          command.request_object = compose_request_object
+          command.response_representation = Google::Apis::StorageV1::Object::Representation
           command.response_class = Google::Apis::StorageV1::Object
           command.params['destinationBucket'] = destination_bucket unless destination_bucket.nil?
           command.params['destinationObject'] = destination_object unless destination_object.nil?
@@ -1253,7 +1218,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Copies an object to a specified location. Optionally overrides metadata.
         # @param [String] source_bucket
         #   Name of the bucket in which to find the source object.
@@ -1265,8 +1229,7 @@ module Google
         # @param [String] destination_object
         #   Name of the new object. Required when the object metadata is not otherwise
         #   provided. Overrides the object metadata's name value, if any.
-        # @param [Google::Apis::StorageV1::Object] object
-        #   
+        # @param [Google::Apis::StorageV1::Object] object_object
         # @param [String] destination_predefined_acl
         #   Apply a predefined set of access controls to the destination object.
         # @param [String] if_generation_match
@@ -1310,7 +1273,7 @@ module Google
         #   enforce per-user limits.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1322,7 +1285,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def copy_object(source_bucket, source_object, destination_bucket, destination_object, object = nil, destination_predefined_acl: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, if_source_generation_match: nil, if_source_generation_not_match: nil, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, projection: nil, source_generation: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def copy_object(source_bucket, source_object, destination_bucket, destination_object, object_object = nil, destination_predefined_acl: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, if_source_generation_match: nil, if_source_generation_not_match: nil, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, projection: nil, source_generation: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           path = 'b/{sourceBucket}/o/{sourceObject}/copyTo/b/{destinationBucket}/o/{destinationObject}'
           if download_dest.nil?
             command =  make_simple_command(:post, path, options)
@@ -1330,9 +1293,9 @@ module Google
             command = make_download_command(:post, path, options)
             command.download_dest = download_dest
           end
-          command.request_representation = Google::Apis::StorageV1::ObjectRepresentation
-          command.request_object = object
-          command.response_representation = Google::Apis::StorageV1::ObjectRepresentation
+          command.request_representation = Google::Apis::StorageV1::Object::Representation
+          command.request_object = object_object
+          command.response_representation = Google::Apis::StorageV1::Object::Representation
           command.response_class = Google::Apis::StorageV1::Object
           command.params['sourceBucket'] = source_bucket unless source_bucket.nil?
           command.params['sourceObject'] = source_object unless source_object.nil?
@@ -1354,7 +1317,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Deletes an object and its metadata. Deletions are permanent if versioning is
         # not enabled for the bucket, or if the generation parameter is used.
@@ -1386,7 +1348,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1413,7 +1375,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves an object or its metadata.
         # @param [String] bucket
@@ -1448,7 +1409,7 @@ module Google
         #   enforce per-user limits.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1468,7 +1429,7 @@ module Google
             command = make_download_command(:get, path, options)
             command.download_dest = download_dest
           end
-          command.response_representation = Google::Apis::StorageV1::ObjectRepresentation
+          command.response_representation = Google::Apis::StorageV1::Object::Representation
           command.response_class = Google::Apis::StorageV1::Object
           command.params['bucket'] = bucket unless bucket.nil?
           command.params['object'] = object unless object.nil?
@@ -1484,13 +1445,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Stores a new object and metadata.
         # @param [String] bucket
         #   Name of the bucket in which to store the new object. Overrides the provided
         #   object metadata's bucket value, if any.
-        # @param [Google::Apis::StorageV1::Object] object
-        #   
+        # @param [Google::Apis::StorageV1::Object] object_object
         # @param [String] content_encoding
         #   If set, sets the contentEncoding property of the final object to this value.
         #   Setting this parameter is equivalent to setting the contentEncoding metadata
@@ -1529,7 +1488,7 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1541,7 +1500,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_object(bucket, object = nil, content_encoding: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, name: nil, predefined_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_object(bucket, object_object = nil, content_encoding: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, name: nil, predefined_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'b/{bucket}/o'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -1550,9 +1509,9 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.request_representation = Google::Apis::StorageV1::ObjectRepresentation
-          command.request_object = object
-          command.response_representation = Google::Apis::StorageV1::ObjectRepresentation
+          command.request_representation = Google::Apis::StorageV1::Object::Representation
+          command.request_object = object_object
+          command.response_representation = Google::Apis::StorageV1::Object::Representation
           command.response_class = Google::Apis::StorageV1::Object
           command.params['bucket'] = bucket unless bucket.nil?
           command.query['contentEncoding'] = content_encoding unless content_encoding.nil?
@@ -1568,7 +1527,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves a list of objects matching the criteria.
         # @param [String] bucket
@@ -1602,7 +1560,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1617,7 +1575,7 @@ module Google
         def list_objects(bucket, delimiter: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/o'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::StorageV1::ObjectsRepresentation
+          command.response_representation = Google::Apis::StorageV1::Objects::Representation
           command.response_class = Google::Apis::StorageV1::Objects
           command.params['bucket'] = bucket unless bucket.nil?
           command.query['delimiter'] = delimiter unless delimiter.nil?
@@ -1632,14 +1590,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an object's metadata. This method supports patch semantics.
         # @param [String] bucket
         #   Name of the bucket in which the object resides.
         # @param [String] object
         #   Name of the object.
         # @param [Google::Apis::StorageV1::Object] object_object
-        #   
         # @param [String] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
@@ -1668,7 +1624,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1683,9 +1639,9 @@ module Google
         def patch_object(bucket, object, object_object = nil, generation: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, predefined_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/o/{object}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::StorageV1::ObjectRepresentation
+          command.request_representation = Google::Apis::StorageV1::Object::Representation
           command.request_object = object_object
-          command.response_representation = Google::Apis::StorageV1::ObjectRepresentation
+          command.response_representation = Google::Apis::StorageV1::Object::Representation
           command.response_class = Google::Apis::StorageV1::Object
           command.params['bucket'] = bucket unless bucket.nil?
           command.params['object'] = object unless object.nil?
@@ -1702,7 +1658,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Rewrites a source object to a destination object. Optionally overrides
         # metadata.
         # @param [String] source_bucket
@@ -1715,8 +1670,7 @@ module Google
         # @param [String] destination_object
         #   Name of the new object. Required when the object metadata is not otherwise
         #   provided. Overrides the object metadata's name value, if any.
-        # @param [Google::Apis::StorageV1::Object] object
-        #   
+        # @param [Google::Apis::StorageV1::Object] object_object
         # @param [String] destination_predefined_acl
         #   Apply a predefined set of access controls to the destination object.
         # @param [String] if_generation_match
@@ -1772,7 +1726,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1784,12 +1738,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def rewrite_object(source_bucket, source_object, destination_bucket, destination_object, object = nil, destination_predefined_acl: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, if_source_generation_match: nil, if_source_generation_not_match: nil, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, max_bytes_rewritten_per_call: nil, projection: nil, rewrite_token: nil, source_generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def rewrite_object(source_bucket, source_object, destination_bucket, destination_object, object_object = nil, destination_predefined_acl: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, if_source_generation_match: nil, if_source_generation_not_match: nil, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, max_bytes_rewritten_per_call: nil, projection: nil, rewrite_token: nil, source_generation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{sourceBucket}/o/{sourceObject}/rewriteTo/b/{destinationBucket}/o/{destinationObject}'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::StorageV1::ObjectRepresentation
-          command.request_object = object
-          command.response_representation = Google::Apis::StorageV1::RewriteResponseRepresentation
+          command.request_representation = Google::Apis::StorageV1::Object::Representation
+          command.request_object = object_object
+          command.response_representation = Google::Apis::StorageV1::RewriteResponse::Representation
           command.response_class = Google::Apis::StorageV1::RewriteResponse
           command.params['sourceBucket'] = source_bucket unless source_bucket.nil?
           command.params['sourceObject'] = source_object unless source_object.nil?
@@ -1814,14 +1768,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an object's metadata.
         # @param [String] bucket
         #   Name of the bucket in which the object resides.
         # @param [String] object
         #   Name of the object.
         # @param [Google::Apis::StorageV1::Object] object_object
-        #   
         # @param [String] generation
         #   If present, selects a specific revision of this object (as opposed to the
         #   latest version, the default).
@@ -1852,7 +1804,7 @@ module Google
         #   enforce per-user limits.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1872,9 +1824,9 @@ module Google
             command = make_download_command(:put, path, options)
             command.download_dest = download_dest
           end
-          command.request_representation = Google::Apis::StorageV1::ObjectRepresentation
+          command.request_representation = Google::Apis::StorageV1::Object::Representation
           command.request_object = object_object
-          command.response_representation = Google::Apis::StorageV1::ObjectRepresentation
+          command.response_representation = Google::Apis::StorageV1::Object::Representation
           command.response_class = Google::Apis::StorageV1::Object
           command.params['bucket'] = bucket unless bucket.nil?
           command.params['object'] = object unless object.nil?
@@ -1891,12 +1843,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Watch for changes on all objects in a bucket.
         # @param [String] bucket
         #   Name of the bucket in which to look for objects.
-        # @param [Google::Apis::StorageV1::Channel] channel
-        #   
+        # @param [Google::Apis::StorageV1::Channel] channel_object
         # @param [String] delimiter
         #   Returns results in a directory-like mode. items will contain only objects
         #   whose names, aside from the prefix, do not contain delimiter. Objects whose
@@ -1926,7 +1876,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1938,12 +1888,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_all_object(bucket, channel = nil, delimiter: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_all_object(bucket, channel_object = nil, delimiter: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b/{bucket}/o/watch'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::StorageV1::ChannelRepresentation
-          command.request_object = channel
-          command.response_representation = Google::Apis::StorageV1::ChannelRepresentation
+          command.request_representation = Google::Apis::StorageV1::Channel::Representation
+          command.request_object = channel_object
+          command.response_representation = Google::Apis::StorageV1::Channel::Representation
           command.response_class = Google::Apis::StorageV1::Channel
           command.params['bucket'] = bucket unless bucket.nil?
           command.query['delimiter'] = delimiter unless delimiter.nil?

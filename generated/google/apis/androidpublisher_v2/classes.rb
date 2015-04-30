@@ -21,12 +21,12 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AndroidpublisherV2
-
+      
       # 
       class Apk
         include Google::Apis::Core::Hashable
       
-        # Information about the binary payload of this APK.
+        # Represents the binary payload of an APK.
         # Corresponds to the JSON property `binary`
         # @return [Google::Apis::AndroidpublisherV2::ApkBinary]
         attr_accessor :binary
@@ -37,11 +37,16 @@ module Google
         attr_accessor :version_code
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @binary = args[:binary] unless args[:binary].nil?
           @version_code = args[:version_code] unless args[:version_code].nil?
         end
       end
-
+      
       # Represents the binary payload of an APK.
       class ApkBinary
         include Google::Apis::Core::Hashable
@@ -53,10 +58,15 @@ module Google
         attr_accessor :sha1
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @sha1 = args[:sha1] unless args[:sha1].nil?
         end
       end
-
+      
       # 
       class ApkListing
         include Google::Apis::Core::Hashable
@@ -72,13 +82,18 @@ module Google
         attr_accessor :recent_changes
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @language = args[:language] unless args[:language].nil?
           @recent_changes = args[:recent_changes] unless args[:recent_changes].nil?
         end
       end
-
+      
       # 
-      class ApkListingsListResponse
+      class ListResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -93,39 +108,60 @@ module Google
         attr_accessor :listings
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @listings = args[:listings] unless args[:listings].nil?
         end
       end
-
+      
       # 
-      class ApksAddExternallyHostedRequest
+      class AddExternallyHostedRequest
         include Google::Apis::Core::Hashable
       
-        # The definition of the externally-hosted APK and where it is located.
+        # Defines an APK available for this application that is hosted externally and
+        # not uploaded to Google Play. This function is only available to enterprises
+        # who are using Google Play for Work, and whos application is restricted to the
+        # enterprise private channel
         # Corresponds to the JSON property `externallyHostedApk`
         # @return [Google::Apis::AndroidpublisherV2::ExternallyHostedApk]
         attr_accessor :externally_hosted_apk
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @externally_hosted_apk = args[:externally_hosted_apk] unless args[:externally_hosted_apk].nil?
         end
       end
-
+      
       # 
-      class ApksAddExternallyHostedResponse
+      class AddExternallyHostedResponse
         include Google::Apis::Core::Hashable
       
-        # The definition of the externally-hosted APK and where it is located.
+        # Defines an APK available for this application that is hosted externally and
+        # not uploaded to Google Play. This function is only available to enterprises
+        # who are using Google Play for Work, and whos application is restricted to the
+        # enterprise private channel
         # Corresponds to the JSON property `externallyHostedApk`
         # @return [Google::Apis::AndroidpublisherV2::ExternallyHostedApk]
         attr_accessor :externally_hosted_apk
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @externally_hosted_apk = args[:externally_hosted_apk] unless args[:externally_hosted_apk].nil?
         end
       end
-
+      
       # 
       class ApksListResponse
         include Google::Apis::Core::Hashable
@@ -142,11 +178,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @apks = args[:apks] unless args[:apks].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
       class AppDetails
         include Google::Apis::Core::Hashable
@@ -172,13 +213,18 @@ module Google
         attr_accessor :default_language
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @contact_email = args[:contact_email] unless args[:contact_email].nil?
           @contact_phone = args[:contact_phone] unless args[:contact_phone].nil?
           @contact_website = args[:contact_website] unless args[:contact_website].nil?
           @default_language = args[:default_language] unless args[:default_language].nil?
         end
       end
-
+      
       # Represents an edit of an app. An edit allows clients to make multiple changes
       # before committing them in one operation.
       class AppEdit
@@ -196,11 +242,87 @@ module Google
         attr_accessor :id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @expiry_time_seconds = args[:expiry_time_seconds] unless args[:expiry_time_seconds].nil?
           @id = args[:id] unless args[:id].nil?
         end
       end
-
+      
+      # An Entitlement resource indicates a user's current entitlement to an inapp
+      # item or subscription.
+      class Entitlement
+        include Google::Apis::Core::Hashable
+      
+        # This kind represents an entitlement object in the androidpublisher service.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The SKU of the product.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # The type of the inapp product. Possible values are:
+        # - In-app item: "inapp"
+        # - Subscription: "subs"
+        # Corresponds to the JSON property `productType`
+        # @return [String]
+        attr_accessor :product_type
+      
+        # The token which can be verified using the subscriptions or products API.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] unless args[:kind].nil?
+          @product_id = args[:product_id] unless args[:product_id].nil?
+          @product_type = args[:product_type] unless args[:product_type].nil?
+          @token = args[:token] unless args[:token].nil?
+        end
+      end
+      
+      # 
+      class EntitlementsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `pageInfo`
+        # @return [Google::Apis::AndroidpublisherV2::PageInfo]
+        attr_accessor :page_info
+      
+        # 
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::AndroidpublisherV2::Entitlement>]
+        attr_accessor :resources
+      
+        # 
+        # Corresponds to the JSON property `tokenPagination`
+        # @return [Google::Apis::AndroidpublisherV2::TokenPagination]
+        attr_accessor :token_pagination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_info = args[:page_info] unless args[:page_info].nil?
+          @resources = args[:resources] unless args[:resources].nil?
+          @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
+        end
+      end
+      
       # 
       class ExpansionFile
         include Google::Apis::Core::Hashable
@@ -219,13 +341,18 @@ module Google
         attr_accessor :references_version
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @file_size = args[:file_size] unless args[:file_size].nil?
           @references_version = args[:references_version] unless args[:references_version].nil?
         end
       end
-
+      
       # 
-      class ExpansionFilesUploadResponse
+      class UploadResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -234,10 +361,15 @@ module Google
         attr_accessor :expansion_file
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @expansion_file = args[:expansion_file] unless args[:expansion_file].nil?
         end
       end
-
+      
       # Defines an APK available for this application that is hosted externally and
       # not uploaded to Google Play. This function is only available to enterprises
       # who are using Google Play for Work, and whos application is restricted to the
@@ -322,6 +454,11 @@ module Google
         attr_accessor :version_name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @application_label = args[:application_label] unless args[:application_label].nil?
           @certificate_base64s = args[:certificate_base64s] unless args[:certificate_base64s].nil?
           @externally_hosted_url = args[:externally_hosted_url] unless args[:externally_hosted_url].nil?
@@ -339,7 +476,7 @@ module Google
           @version_name = args[:version_name] unless args[:version_name].nil?
         end
       end
-
+      
       # A permission used by this APK.
       class ExternallyHostedApkUsesPermission
         include Google::Apis::Core::Hashable
@@ -355,11 +492,16 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @max_sdk_version = args[:max_sdk_version] unless args[:max_sdk_version].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # 
       class Image
         include Google::Apis::Core::Hashable
@@ -380,14 +522,19 @@ module Google
         attr_accessor :url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @sha1 = args[:sha1] unless args[:sha1].nil?
           @url = args[:url] unless args[:url].nil?
         end
       end
-
+      
       # 
-      class ImagesDeleteAllResponse
+      class DeleteAllResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -396,10 +543,15 @@ module Google
         attr_accessor :deleted
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @deleted = args[:deleted] unless args[:deleted].nil?
         end
       end
-
+      
       # 
       class ImagesListResponse
         include Google::Apis::Core::Hashable
@@ -410,10 +562,15 @@ module Google
         attr_accessor :images
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @images = args[:images] unless args[:images].nil?
         end
       end
-
+      
       # 
       class ImagesUploadResponse
         include Google::Apis::Core::Hashable
@@ -424,10 +581,15 @@ module Google
         attr_accessor :image
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @image = args[:image] unless args[:image].nil?
         end
       end
-
+      
       # 
       class InAppProduct
         include Google::Apis::Core::Hashable
@@ -495,6 +657,11 @@ module Google
         attr_accessor :trial_period
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @default_language = args[:default_language] unless args[:default_language].nil?
           @default_price = args[:default_price] unless args[:default_price].nil?
           @listings = args[:listings] unless args[:listings].nil?
@@ -508,7 +675,7 @@ module Google
           @trial_period = args[:trial_period] unless args[:trial_period].nil?
         end
       end
-
+      
       # 
       class InAppProductListing
         include Google::Apis::Core::Hashable
@@ -524,27 +691,37 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @description = args[:description] unless args[:description].nil?
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # 
-      class InappproductsBatchRequest
+      class BatchRequest
         include Google::Apis::Core::Hashable
       
         # 
         # Corresponds to the JSON property `entrys`
-        # @return [Array<Google::Apis::AndroidpublisherV2::InappproductsBatchRequestEntry>]
+        # @return [Array<Google::Apis::AndroidpublisherV2::BatchRequestEntry>]
         attr_accessor :entrys
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entrys = args[:entrys] unless args[:entrys].nil?
         end
       end
-
+      
       # 
-      class InappproductsBatchRequestEntry
+      class BatchRequestEntry
         include Google::Apis::Core::Hashable
       
         # 
@@ -554,12 +731,12 @@ module Google
       
         # 
         # Corresponds to the JSON property `inappproductsinsertrequest`
-        # @return [Google::Apis::AndroidpublisherV2::InappproductsInsertRequest]
+        # @return [Google::Apis::AndroidpublisherV2::InsertRequest]
         attr_accessor :inappproductsinsertrequest
       
         # 
         # Corresponds to the JSON property `inappproductsupdaterequest`
-        # @return [Google::Apis::AndroidpublisherV2::InappproductsUpdateRequest]
+        # @return [Google::Apis::AndroidpublisherV2::UpdateRequest]
         attr_accessor :inappproductsupdaterequest
       
         # 
@@ -568,20 +745,25 @@ module Google
         attr_accessor :method_name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
           @inappproductsinsertrequest = args[:inappproductsinsertrequest] unless args[:inappproductsinsertrequest].nil?
           @inappproductsupdaterequest = args[:inappproductsupdaterequest] unless args[:inappproductsupdaterequest].nil?
           @method_name = args[:method_name] unless args[:method_name].nil?
         end
       end
-
+      
       # 
-      class InappproductsBatchResponse
+      class BatchResponse
         include Google::Apis::Core::Hashable
       
         # 
         # Corresponds to the JSON property `entrys`
-        # @return [Array<Google::Apis::AndroidpublisherV2::InappproductsBatchResponseEntry>]
+        # @return [Array<Google::Apis::AndroidpublisherV2::BatchResponseEntry>]
         attr_accessor :entrys
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -591,13 +773,18 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entrys = args[:entrys] unless args[:entrys].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
-      class InappproductsBatchResponseEntry
+      class BatchResponseEntry
         include Google::Apis::Core::Hashable
       
         # 
@@ -607,23 +794,28 @@ module Google
       
         # 
         # Corresponds to the JSON property `inappproductsinsertresponse`
-        # @return [Google::Apis::AndroidpublisherV2::InappproductsInsertResponse]
+        # @return [Google::Apis::AndroidpublisherV2::InsertResponse]
         attr_accessor :inappproductsinsertresponse
       
         # 
         # Corresponds to the JSON property `inappproductsupdateresponse`
-        # @return [Google::Apis::AndroidpublisherV2::InappproductsUpdateResponse]
+        # @return [Google::Apis::AndroidpublisherV2::UpdateResponse]
         attr_accessor :inappproductsupdateresponse
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
           @inappproductsinsertresponse = args[:inappproductsinsertresponse] unless args[:inappproductsinsertresponse].nil?
           @inappproductsupdateresponse = args[:inappproductsupdateresponse] unless args[:inappproductsupdateresponse].nil?
         end
       end
-
+      
       # 
-      class InappproductsInsertRequest
+      class InsertRequest
         include Google::Apis::Core::Hashable
       
         # 
@@ -632,12 +824,17 @@ module Google
         attr_accessor :inappproduct
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @inappproduct = args[:inappproduct] unless args[:inappproduct].nil?
         end
       end
-
+      
       # 
-      class InappproductsInsertResponse
+      class InsertResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -646,10 +843,15 @@ module Google
         attr_accessor :inappproduct
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @inappproduct = args[:inappproduct] unless args[:inappproduct].nil?
         end
       end
-
+      
       # 
       class InappproductsListResponse
         include Google::Apis::Core::Hashable
@@ -676,15 +878,20 @@ module Google
         attr_accessor :token_pagination
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @inappproduct = args[:inappproduct] unless args[:inappproduct].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @page_info = args[:page_info] unless args[:page_info].nil?
           @token_pagination = args[:token_pagination] unless args[:token_pagination].nil?
         end
       end
-
+      
       # 
-      class InappproductsUpdateRequest
+      class UpdateRequest
         include Google::Apis::Core::Hashable
       
         # 
@@ -693,12 +900,17 @@ module Google
         attr_accessor :inappproduct
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @inappproduct = args[:inappproduct] unless args[:inappproduct].nil?
         end
       end
-
+      
       # 
-      class InappproductsUpdateResponse
+      class UpdateResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -707,10 +919,15 @@ module Google
         attr_accessor :inappproduct
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @inappproduct = args[:inappproduct] unless args[:inappproduct].nil?
         end
       end
-
+      
       # 
       class Listing
         include Google::Apis::Core::Hashable
@@ -742,6 +959,11 @@ module Google
         attr_accessor :video
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @full_description = args[:full_description] unless args[:full_description].nil?
           @language = args[:language] unless args[:language].nil?
           @short_description = args[:short_description] unless args[:short_description].nil?
@@ -749,7 +971,7 @@ module Google
           @video = args[:video] unless args[:video].nil?
         end
       end
-
+      
       # 
       class ListingsListResponse
         include Google::Apis::Core::Hashable
@@ -766,11 +988,16 @@ module Google
         attr_accessor :listings
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @listings = args[:listings] unless args[:listings].nil?
         end
       end
-
+      
       # 
       class MonthDay
         include Google::Apis::Core::Hashable
@@ -787,11 +1014,16 @@ module Google
         attr_accessor :month
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @day = args[:day] unless args[:day].nil?
           @month = args[:month] unless args[:month].nil?
         end
       end
-
+      
       # 
       class PageInfo
         include Google::Apis::Core::Hashable
@@ -812,12 +1044,17 @@ module Google
         attr_accessor :total_results
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @result_per_page = args[:result_per_page] unless args[:result_per_page].nil?
           @start_index = args[:start_index] unless args[:start_index].nil?
           @total_results = args[:total_results] unless args[:total_results].nil?
         end
       end
-
+      
       # 
       class Price
         include Google::Apis::Core::Hashable
@@ -833,11 +1070,16 @@ module Google
         attr_accessor :price_micros
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @currency = args[:currency] unless args[:currency].nil?
           @price_micros = args[:price_micros] unless args[:price_micros].nil?
         end
       end
-
+      
       # A ProductPurchase resource indicates the status of a user's inapp product
       # purchase.
       class ProductPurchase
@@ -875,6 +1117,11 @@ module Google
         attr_accessor :purchase_time_millis
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @consumption_state = args[:consumption_state] unless args[:consumption_state].nil?
           @developer_payload = args[:developer_payload] unless args[:developer_payload].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -882,7 +1129,7 @@ module Google
           @purchase_time_millis = args[:purchase_time_millis] unless args[:purchase_time_millis].nil?
         end
       end
-
+      
       # 
       class Season
         include Google::Apis::Core::Hashable
@@ -898,11 +1145,16 @@ module Google
         attr_accessor :start
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end = args[:end] unless args[:end].nil?
           @start = args[:start] unless args[:start].nil?
         end
       end
-
+      
       # A SubscriptionDeferralInfo contains the data needed to defer a subscription
       # purchase to a future expiry time.
       class SubscriptionDeferralInfo
@@ -921,11 +1173,16 @@ module Google
         attr_accessor :expected_expiry_time_millis
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @desired_expiry_time_millis = args[:desired_expiry_time_millis] unless args[:desired_expiry_time_millis].nil?
           @expected_expiry_time_millis = args[:expected_expiry_time_millis] unless args[:expected_expiry_time_millis].nil?
         end
       end
-
+      
       # A SubscriptionPurchase resource indicates the status of a user's subscription
       # purchase.
       class SubscriptionPurchase
@@ -955,27 +1212,38 @@ module Google
         attr_accessor :start_time_millis
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @auto_renewing = args[:auto_renewing] unless args[:auto_renewing].nil?
           @expiry_time_millis = args[:expiry_time_millis] unless args[:expiry_time_millis].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @start_time_millis = args[:start_time_millis] unless args[:start_time_millis].nil?
         end
       end
-
+      
       # 
       class SubscriptionPurchasesDeferRequest
         include Google::Apis::Core::Hashable
       
-        # The information about the new desired expiry time for the subscription.
+        # A SubscriptionDeferralInfo contains the data needed to defer a subscription
+        # purchase to a future expiry time.
         # Corresponds to the JSON property `deferralInfo`
         # @return [Google::Apis::AndroidpublisherV2::SubscriptionDeferralInfo]
         attr_accessor :deferral_info
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @deferral_info = args[:deferral_info] unless args[:deferral_info].nil?
         end
       end
-
+      
       # 
       class SubscriptionPurchasesDeferResponse
         include Google::Apis::Core::Hashable
@@ -986,10 +1254,15 @@ module Google
         attr_accessor :new_expiry_time_millis
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @new_expiry_time_millis = args[:new_expiry_time_millis] unless args[:new_expiry_time_millis].nil?
         end
       end
-
+      
       # 
       class Testers
         include Google::Apis::Core::Hashable
@@ -1005,11 +1278,16 @@ module Google
         attr_accessor :google_plus_communities
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @google_groups = args[:google_groups] unless args[:google_groups].nil?
           @google_plus_communities = args[:google_plus_communities] unless args[:google_plus_communities].nil?
         end
       end
-
+      
       # 
       class TokenPagination
         include Google::Apis::Core::Hashable
@@ -1025,11 +1303,16 @@ module Google
         attr_accessor :previous_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @previous_page_token = args[:previous_page_token] unless args[:previous_page_token].nil?
         end
       end
-
+      
       # 
       class Track
         include Google::Apis::Core::Hashable
@@ -1050,12 +1333,17 @@ module Google
         attr_accessor :version_codes
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @track = args[:track] unless args[:track].nil?
           @user_fraction = args[:user_fraction] unless args[:user_fraction].nil?
           @version_codes = args[:version_codes] unless args[:version_codes].nil?
         end
       end
-
+      
       # 
       class TracksListResponse
         include Google::Apis::Core::Hashable
@@ -1072,6 +1360,11 @@ module Google
         attr_accessor :tracks
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @tracks = args[:tracks] unless args[:tracks].nil?
         end

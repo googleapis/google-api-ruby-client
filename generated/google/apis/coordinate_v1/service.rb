@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/coordinate/
       class CoordinateService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'coordinate/v1/')
         end
-
+        
         # Retrieves a list of custom field definitions for a team.
         # @param [String] team_id
         #   Team ID
@@ -65,14 +64,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CoordinateV1::CustomFieldDefListResponse] parsed result object
+        # @yieldparam result [Google::Apis::CoordinateV1::ListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::CoordinateV1::CustomFieldDefListResponse]
+        # @return [Google::Apis::CoordinateV1::ListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -80,15 +79,15 @@ module Google
         def list_custom_field_defs(team_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/custom_fields'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CoordinateV1::CustomFieldDefListResponseRepresentation
-          command.response_class = Google::Apis::CoordinateV1::CustomFieldDefListResponse
+          command.response_representation = Google::Apis::CoordinateV1::ListResponse::Representation
+          command.response_class = Google::Apis::CoordinateV1::ListResponse
           command.params['teamId'] = team_id unless team_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Retrieves a job, including all the changes made to the job.
         # @param [String] team_id
         #   Team ID
@@ -103,7 +102,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -118,7 +117,7 @@ module Google
         def get_job(team_id, job_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/jobs/{jobId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CoordinateV1::JobRepresentation
+          command.response_representation = Google::Apis::CoordinateV1::Job::Representation
           command.response_class = Google::Apis::CoordinateV1::Job
           command.params['teamId'] = team_id unless team_id.nil?
           command.params['jobId'] = job_id unless job_id.nil?
@@ -128,12 +127,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Inserts a new job. Only the state field of the job should be set.
         # @param [String] team_id
         #   Team ID
-        # @param [Google::Apis::CoordinateV1::Job] job
-        #   
+        # @param [Google::Apis::CoordinateV1::Job] job_object
         # @param [String] address
         #   Job address as newline (Unix) separated string
         # @param [String] assignee
@@ -166,7 +163,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -178,12 +175,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_job(team_id, job = nil, address: nil, assignee: nil, custom_field: nil, customer_name: nil, customer_phone_number: nil, lat: nil, lng: nil, note: nil, title: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_job(team_id, job_object = nil, address: nil, assignee: nil, custom_field: nil, customer_name: nil, customer_phone_number: nil, lat: nil, lng: nil, note: nil, title: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/jobs'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::CoordinateV1::JobRepresentation
-          command.request_object = job
-          command.response_representation = Google::Apis::CoordinateV1::JobRepresentation
+          command.request_representation = Google::Apis::CoordinateV1::Job::Representation
+          command.request_object = job_object
+          command.response_representation = Google::Apis::CoordinateV1::Job::Representation
           command.response_class = Google::Apis::CoordinateV1::Job
           command.params['teamId'] = team_id unless team_id.nil?
           command.query['address'] = address unless address.nil?
@@ -200,7 +197,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves jobs created or modified since the given timestamp.
         # @param [String] team_id
@@ -220,7 +216,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -235,7 +231,7 @@ module Google
         def list_jobs(team_id, max_results: nil, min_modified_timestamp_ms: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/jobs'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CoordinateV1::JobListResponseRepresentation
+          command.response_representation = Google::Apis::CoordinateV1::JobListResponse::Representation
           command.response_class = Google::Apis::CoordinateV1::JobListResponse
           command.params['teamId'] = team_id unless team_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -247,15 +243,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a job. Fields that are set in the job state will be updated. This
         # method supports patch semantics.
         # @param [String] team_id
         #   Team ID
         # @param [String] job_id
         #   Job number
-        # @param [Google::Apis::CoordinateV1::Job] job
-        #   
+        # @param [Google::Apis::CoordinateV1::Job] job_object
         # @param [String] address
         #   Job address as newline (Unix) separated string
         # @param [String] assignee
@@ -290,7 +284,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -302,12 +296,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_job(team_id, job_id, job = nil, address: nil, assignee: nil, custom_field: nil, customer_name: nil, customer_phone_number: nil, lat: nil, lng: nil, note: nil, progress: nil, title: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_job(team_id, job_id, job_object = nil, address: nil, assignee: nil, custom_field: nil, customer_name: nil, customer_phone_number: nil, lat: nil, lng: nil, note: nil, progress: nil, title: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/jobs/{jobId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::CoordinateV1::JobRepresentation
-          command.request_object = job
-          command.response_representation = Google::Apis::CoordinateV1::JobRepresentation
+          command.request_representation = Google::Apis::CoordinateV1::Job::Representation
+          command.request_object = job_object
+          command.response_representation = Google::Apis::CoordinateV1::Job::Representation
           command.response_class = Google::Apis::CoordinateV1::Job
           command.params['teamId'] = team_id unless team_id.nil?
           command.params['jobId'] = job_id unless job_id.nil?
@@ -326,15 +320,13 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates a job. Fields that are set in the job state will be updated.
         # @param [String] team_id
         #   Team ID
         # @param [String] job_id
         #   Job number
-        # @param [Google::Apis::CoordinateV1::Job] job
-        #   
+        # @param [Google::Apis::CoordinateV1::Job] job_object
         # @param [String] address
         #   Job address as newline (Unix) separated string
         # @param [String] assignee
@@ -369,7 +361,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -381,12 +373,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_job(team_id, job_id, job = nil, address: nil, assignee: nil, custom_field: nil, customer_name: nil, customer_phone_number: nil, lat: nil, lng: nil, note: nil, progress: nil, title: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_job(team_id, job_id, job_object = nil, address: nil, assignee: nil, custom_field: nil, customer_name: nil, customer_phone_number: nil, lat: nil, lng: nil, note: nil, progress: nil, title: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/jobs/{jobId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::CoordinateV1::JobRepresentation
-          command.request_object = job
-          command.response_representation = Google::Apis::CoordinateV1::JobRepresentation
+          command.request_representation = Google::Apis::CoordinateV1::Job::Representation
+          command.request_object = job_object
+          command.response_representation = Google::Apis::CoordinateV1::Job::Representation
           command.response_class = Google::Apis::CoordinateV1::Job
           command.params['teamId'] = team_id unless team_id.nil?
           command.params['jobId'] = job_id unless job_id.nil?
@@ -405,7 +397,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Retrieves a list of locations for a worker.
         # @param [String] team_id
         #   Team ID
@@ -426,7 +418,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -441,7 +433,7 @@ module Google
         def list_locations(team_id, worker_email, max_results: nil, page_token: nil, start_timestamp_ms: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/workers/{workerEmail}/locations'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CoordinateV1::LocationListResponseRepresentation
+          command.response_representation = Google::Apis::CoordinateV1::LocationListResponse::Representation
           command.response_class = Google::Apis::CoordinateV1::LocationListResponse
           command.params['teamId'] = team_id unless team_id.nil?
           command.params['workerEmail'] = worker_email unless worker_email.nil?
@@ -453,7 +445,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Retrieves the schedule for a job.
         # @param [String] team_id
         #   Team ID
@@ -468,7 +460,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -483,7 +475,7 @@ module Google
         def get_schedule(team_id, job_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/jobs/{jobId}/schedule'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CoordinateV1::ScheduleRepresentation
+          command.response_representation = Google::Apis::CoordinateV1::Schedule::Representation
           command.response_class = Google::Apis::CoordinateV1::Schedule
           command.params['teamId'] = team_id unless team_id.nil?
           command.params['jobId'] = job_id unless job_id.nil?
@@ -492,7 +484,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Replaces the schedule of a job with the provided schedule. This method
         # supports patch semantics.
@@ -500,8 +491,7 @@ module Google
         #   Team ID
         # @param [String] job_id
         #   Job number
-        # @param [Google::Apis::CoordinateV1::Schedule] schedule
-        #   
+        # @param [Google::Apis::CoordinateV1::Schedule] schedule_object
         # @param [Boolean] all_day
         #   Whether the job is scheduled for the whole day. Time of day in start/end times
         #   is ignored if this is true.
@@ -520,7 +510,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -532,12 +522,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_schedule(team_id, job_id, schedule = nil, all_day: nil, duration: nil, end_time: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_schedule(team_id, job_id, schedule_object = nil, all_day: nil, duration: nil, end_time: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/jobs/{jobId}/schedule'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::CoordinateV1::ScheduleRepresentation
-          command.request_object = schedule
-          command.response_representation = Google::Apis::CoordinateV1::ScheduleRepresentation
+          command.request_representation = Google::Apis::CoordinateV1::Schedule::Representation
+          command.request_object = schedule_object
+          command.response_representation = Google::Apis::CoordinateV1::Schedule::Representation
           command.response_class = Google::Apis::CoordinateV1::Schedule
           command.params['teamId'] = team_id unless team_id.nil?
           command.params['jobId'] = job_id unless job_id.nil?
@@ -550,15 +540,13 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Replaces the schedule of a job with the provided schedule.
         # @param [String] team_id
         #   Team ID
         # @param [String] job_id
         #   Job number
-        # @param [Google::Apis::CoordinateV1::Schedule] schedule
-        #   
+        # @param [Google::Apis::CoordinateV1::Schedule] schedule_object
         # @param [Boolean] all_day
         #   Whether the job is scheduled for the whole day. Time of day in start/end times
         #   is ignored if this is true.
@@ -577,7 +565,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -589,12 +577,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_schedule(team_id, job_id, schedule = nil, all_day: nil, duration: nil, end_time: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_schedule(team_id, job_id, schedule_object = nil, all_day: nil, duration: nil, end_time: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/jobs/{jobId}/schedule'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::CoordinateV1::ScheduleRepresentation
-          command.request_object = schedule
-          command.response_representation = Google::Apis::CoordinateV1::ScheduleRepresentation
+          command.request_representation = Google::Apis::CoordinateV1::Schedule::Representation
+          command.request_object = schedule_object
+          command.response_representation = Google::Apis::CoordinateV1::Schedule::Representation
           command.response_class = Google::Apis::CoordinateV1::Schedule
           command.params['teamId'] = team_id unless team_id.nil?
           command.params['jobId'] = job_id unless job_id.nil?
@@ -607,7 +595,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Retrieves a list of teams for a user.
         # @param [Boolean] admin
         #   Whether to include teams for which the user has the Admin role.
@@ -624,7 +612,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -639,7 +627,7 @@ module Google
         def list_teams(admin: nil, dispatcher: nil, worker: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CoordinateV1::TeamListResponseRepresentation
+          command.response_representation = Google::Apis::CoordinateV1::TeamListResponse::Representation
           command.response_class = Google::Apis::CoordinateV1::TeamListResponse
           command.query['admin'] = admin unless admin.nil?
           command.query['dispatcher'] = dispatcher unless dispatcher.nil?
@@ -649,7 +637,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Retrieves a list of workers in a team.
         # @param [String] team_id
         #   Team ID
@@ -662,7 +650,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -677,7 +665,7 @@ module Google
         def list_workers(team_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/workers'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CoordinateV1::WorkerListResponseRepresentation
+          command.response_representation = Google::Apis::CoordinateV1::WorkerListResponse::Representation
           command.response_class = Google::Apis::CoordinateV1::WorkerListResponse
           command.params['teamId'] = team_id unless team_id.nil?
           command.query['fields'] = fields unless fields.nil?

@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module TasksV1
-
+      
       # 
       class Task
         include Google::Apis::Core::Hashable
@@ -114,6 +114,11 @@ module Google
         attr_accessor :updated
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @completed = args[:completed] unless args[:completed].nil?
           @deleted = args[:deleted] unless args[:deleted].nil?
           @due = args[:due] unless args[:due].nil?
@@ -130,6 +135,7 @@ module Google
           @title = args[:title] unless args[:title].nil?
           @updated = args[:updated] unless args[:updated].nil?
         end
+        
         # 
         class Link
           include Google::Apis::Core::Hashable
@@ -150,13 +156,18 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @description = args[:description] unless args[:description].nil?
             @link = args[:link] unless args[:link].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
       end
-
+      
       # 
       class TaskList
         include Google::Apis::Core::Hashable
@@ -193,6 +204,11 @@ module Google
         attr_accessor :updated
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -201,7 +217,7 @@ module Google
           @updated = args[:updated] unless args[:updated].nil?
         end
       end
-
+      
       # 
       class TaskLists
         include Google::Apis::Core::Hashable
@@ -227,13 +243,18 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # 
       class Tasks
         include Google::Apis::Core::Hashable
@@ -259,6 +280,11 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?

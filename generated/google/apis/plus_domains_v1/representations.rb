@@ -22,774 +22,851 @@ module Google
   module Apis
     module PlusDomainsV1
       
-      class AclRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Acl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ActivityRepresentation < Google::Apis::Core::JsonRepresentation
+      class Activity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class ActorRepresentation < Google::Apis::Core::JsonRepresentation
+        class Actor
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Image
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
           
-          class NameRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Name
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
         
-        class ObjectRepresentation < Google::Apis::Core::JsonRepresentation
+        class Object
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class ActorRepresentation < Google::Apis::Core::JsonRepresentation
+          class Actor
+            class Representation < Google::Apis::Core::JsonRepresentation; end
             
-            class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-              
+            class Image
+              class Representation < Google::Apis::Core::JsonRepresentation; end
             end
           end
           
-          class AttachmentRepresentation < Google::Apis::Core::JsonRepresentation
+          class Attachment
+            class Representation < Google::Apis::Core::JsonRepresentation; end
             
-            class EmbedRepresentation < Google::Apis::Core::JsonRepresentation
-              
+            class Embed
+              class Representation < Google::Apis::Core::JsonRepresentation; end
             end
             
-            class FullImageRepresentation < Google::Apis::Core::JsonRepresentation
-              
+            class FullImage
+              class Representation < Google::Apis::Core::JsonRepresentation; end
             end
             
-            class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-              
+            class Image
+              class Representation < Google::Apis::Core::JsonRepresentation; end
             end
             
-            class PreviewThumbnailRepresentation < Google::Apis::Core::JsonRepresentation
-              
+            class PreviewThumbnail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
             end
             
-            class ThumbnailRepresentation < Google::Apis::Core::JsonRepresentation
+            class Thumbnail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
               
-              class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-                
+              class Image
+                class Representation < Google::Apis::Core::JsonRepresentation; end
               end
             end
           end
           
-          class PlusonersRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Plusoners
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
           
-          class RepliesRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Replies
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
           
-          class ResharersRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Resharers
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
           
-          class StatusForViewerRepresentation < Google::Apis::Core::JsonRepresentation
-            
-          end
-        end
-        
-        class ProviderRepresentation < Google::Apis::Core::JsonRepresentation
-          
-        end
-      end
-      
-      class ActivityFeedRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class AudienceRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class AudiencesFeedRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class CircleRepresentation < Google::Apis::Core::JsonRepresentation
-        
-        class PeopleRepresentation < Google::Apis::Core::JsonRepresentation
-          
-        end
-      end
-      
-      class CircleFeedRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class CommentRepresentation < Google::Apis::Core::JsonRepresentation
-        
-        class ActorRepresentation < Google::Apis::Core::JsonRepresentation
-          
-          class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class StatusForViewer
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
         
-        class InReplyToRepresentation < Google::Apis::Core::JsonRepresentation
-          
-        end
-        
-        class ObjectRepresentation < Google::Apis::Core::JsonRepresentation
-          
-        end
-        
-        class PlusonersRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Provider
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class CommentFeedRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ActivityFeed
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class MediaRepresentation < Google::Apis::Core::JsonRepresentation
+      class Audience
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Feed
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Circle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class AuthorRepresentation < Google::Apis::Core::JsonRepresentation
+        class People
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        end
+      end
+      
+      class CircleFeed
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Comment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Actor
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Image
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
         
-        class ExifRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class InReplyTo
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        end
+        
+        class Object
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        end
+        
+        class Plusoners
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class PeopleFeedRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class CommentFeed
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PersonRepresentation < Google::Apis::Core::JsonRepresentation
+      class Media
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class CoverRepresentation < Google::Apis::Core::JsonRepresentation
+        class Author
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class CoverInfoRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Image
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          end
+        end
+        
+        class Exif
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        end
+      end
+      
+      class PeopleFeed
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Person
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Cover
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class CoverInfo
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
           
-          class CoverPhotoRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class CoverPhoto
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
         
-        class EmailRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Email
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
         
-        class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Image
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
         
-        class NameRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Name
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
         
-        class OrganizationRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Organization
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
         
-        class PlacesLivedRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class PlacesLived
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
         
-        class UrlRepresentation < Google::Apis::Core::JsonRepresentation
-          
-        end
-      end
-      
-      class PlaceRepresentation < Google::Apis::Core::JsonRepresentation
-        
-        class AddressRepresentation < Google::Apis::Core::JsonRepresentation
-          
-        end
-        
-        class PositionRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Url
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class AclentryResourceRepresentation < Google::Apis::Core::JsonRepresentation
+      class Place
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
+        class Address
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        end
+        
+        class Position
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        end
       end
       
-      class VideostreamRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AclentryResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
+      class Videostream
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       # @private
-      class AclRepresentation < Google::Apis::Core::JsonRepresentation
-        property :description, as: 'description'
-        property :domain_restricted, as: 'domainRestricted'
-        collection :items, as: 'items', class: Google::Apis::PlusDomainsV1::AclentryResource, decorator: Google::Apis::PlusDomainsV1::AclentryResourceRepresentation
-        
-        
-        property :kind, as: 'kind'
+      class Acl
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :domain_restricted, as: 'domainRestricted'
+          collection :items, as: 'items', class: Google::Apis::PlusDomainsV1::AclentryResource, decorator: Google::Apis::PlusDomainsV1::AclentryResource::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class ActivityRepresentation < Google::Apis::Core::JsonRepresentation
-        class ActorRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class ObjectRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class ProviderRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :access, as: 'access', class: Google::Apis::PlusDomainsV1::Acl, decorator: Google::Apis::PlusDomainsV1::AclRepresentation
-        
-        property :actor, as: 'actor', class: Google::Apis::PlusDomainsV1::Activity::Actor, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ActorRepresentation
-        
-        property :address, as: 'address'
-        property :annotation, as: 'annotation'
-        property :crosspost_source, as: 'crosspostSource'
-        property :etag, as: 'etag'
-        property :geocode, as: 'geocode'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :location, as: 'location', class: Google::Apis::PlusDomainsV1::Place, decorator: Google::Apis::PlusDomainsV1::PlaceRepresentation
-        
-        property :object, as: 'object', class: Google::Apis::PlusDomainsV1::Activity::Object, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ObjectRepresentation
-        
-        property :place_id, as: 'placeId'
-        property :place_name, as: 'placeName'
-        property :provider, as: 'provider', class: Google::Apis::PlusDomainsV1::Activity::Provider, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ProviderRepresentation
-        
-        property :published, as: 'published', type: DateTime
-        property :radius, as: 'radius'
-        property :title, as: 'title'
-        property :updated, as: 'updated', type: DateTime
-        property :url, as: 'url'
-        property :verb, as: 'verb'
-        
-        # @private
-        class ActorRepresentation < Google::Apis::Core::JsonRepresentation
-          class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
-          class NameRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :display_name, as: 'displayName'
+      class Activity
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access, as: 'access', class: Google::Apis::PlusDomainsV1::Acl, decorator: Google::Apis::PlusDomainsV1::Acl::Representation
+      
+          property :actor, as: 'actor', class: Google::Apis::PlusDomainsV1::Activity::Actor, decorator: Google::Apis::PlusDomainsV1::Activity::Actor::Representation
+      
+          property :address, as: 'address'
+          property :annotation, as: 'annotation'
+          property :crosspost_source, as: 'crosspostSource'
+          property :etag, as: 'etag'
+          property :geocode, as: 'geocode'
           property :id, as: 'id'
-          property :image, as: 'image', class: Google::Apis::PlusDomainsV1::Activity::Actor::Image, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ActorRepresentation::ImageRepresentation
-          
-          property :name, as: 'name', class: Google::Apis::PlusDomainsV1::Activity::Actor::Name, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ActorRepresentation::NameRepresentation
-          
+          property :kind, as: 'kind'
+          property :location, as: 'location', class: Google::Apis::PlusDomainsV1::Place, decorator: Google::Apis::PlusDomainsV1::Place::Representation
+      
+          property :object, as: 'object', class: Google::Apis::PlusDomainsV1::Activity::Object, decorator: Google::Apis::PlusDomainsV1::Activity::Object::Representation
+      
+          property :place_id, as: 'placeId'
+          property :place_name, as: 'placeName'
+          property :provider, as: 'provider', class: Google::Apis::PlusDomainsV1::Activity::Provider, decorator: Google::Apis::PlusDomainsV1::Activity::Provider::Representation
+      
+          property :published, as: 'published', type: DateTime
+      
+          property :radius, as: 'radius'
+          property :title, as: 'title'
+          property :updated, as: 'updated', type: DateTime
+      
           property :url, as: 'url'
-          
-          # @private
-          class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-            property :url, as: 'url'
-          end
-          
-          # @private
-          class NameRepresentation < Google::Apis::Core::JsonRepresentation
-            property :family_name, as: 'familyName'
-            property :given_name, as: 'givenName'
-          end
+          property :verb, as: 'verb'
         end
         
         # @private
-        class ObjectRepresentation < Google::Apis::Core::JsonRepresentation
-          class ActorRepresentation < Google::Apis::Core::JsonRepresentation; end
-          class AttachmentRepresentation < Google::Apis::Core::JsonRepresentation; end
-          class PlusonersRepresentation < Google::Apis::Core::JsonRepresentation; end
-          class RepliesRepresentation < Google::Apis::Core::JsonRepresentation; end
-          class ResharersRepresentation < Google::Apis::Core::JsonRepresentation; end
-          class StatusForViewerRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :actor, as: 'actor', class: Google::Apis::PlusDomainsV1::Activity::Object::Actor, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ObjectRepresentation::ActorRepresentation
-          
-          collection :attachments, as: 'attachments', class: Google::Apis::PlusDomainsV1::Activity::Object::Attachment, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ObjectRepresentation::AttachmentRepresentation
-          
-          
-          property :content, as: 'content'
-          property :id, as: 'id'
-          property :object_type, as: 'objectType'
-          property :original_content, as: 'originalContent'
-          property :plusoners, as: 'plusoners', class: Google::Apis::PlusDomainsV1::Activity::Object::Plusoners, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ObjectRepresentation::PlusonersRepresentation
-          
-          property :replies, as: 'replies', class: Google::Apis::PlusDomainsV1::Activity::Object::Replies, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ObjectRepresentation::RepliesRepresentation
-          
-          property :resharers, as: 'resharers', class: Google::Apis::PlusDomainsV1::Activity::Object::Resharers, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ObjectRepresentation::ResharersRepresentation
-          
-          property :status_for_viewer, as: 'statusForViewer', class: Google::Apis::PlusDomainsV1::Activity::Object::StatusForViewer, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ObjectRepresentation::StatusForViewerRepresentation
-          
-          property :url, as: 'url'
-          
-          # @private
-          class ActorRepresentation < Google::Apis::Core::JsonRepresentation
-            class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
+        class Actor
+          class Representation < Google::Apis::Core::JsonRepresentation
             property :display_name, as: 'displayName'
             property :id, as: 'id'
-            property :image, as: 'image', class: Google::Apis::PlusDomainsV1::Activity::Object::Actor::Image, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ObjectRepresentation::ActorRepresentation::ImageRepresentation
-            
+            property :image, as: 'image', class: Google::Apis::PlusDomainsV1::Activity::Actor::Image, decorator: Google::Apis::PlusDomainsV1::Activity::Actor::Image::Representation
+        
+            property :name, as: 'name', class: Google::Apis::PlusDomainsV1::Activity::Actor::Name, decorator: Google::Apis::PlusDomainsV1::Activity::Actor::Name::Representation
+        
             property :url, as: 'url'
-            
-            # @private
-            class ImageRepresentation < Google::Apis::Core::JsonRepresentation
+          end
+          
+          # @private
+          class Image
+            class Representation < Google::Apis::Core::JsonRepresentation
               property :url, as: 'url'
             end
           end
           
           # @private
-          class AttachmentRepresentation < Google::Apis::Core::JsonRepresentation
-            class EmbedRepresentation < Google::Apis::Core::JsonRepresentation; end
-            class FullImageRepresentation < Google::Apis::Core::JsonRepresentation; end
-            class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
-            class PreviewThumbnailRepresentation < Google::Apis::Core::JsonRepresentation; end
-            class ThumbnailRepresentation < Google::Apis::Core::JsonRepresentation; end
+          class Name
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :family_name, as: 'familyName'
+              property :given_name, as: 'givenName'
+            end
+          end
+        end
+        
+        # @private
+        class Object
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :actor, as: 'actor', class: Google::Apis::PlusDomainsV1::Activity::Object::Actor, decorator: Google::Apis::PlusDomainsV1::Activity::Object::Actor::Representation
+        
+            collection :attachments, as: 'attachments', class: Google::Apis::PlusDomainsV1::Activity::Object::Attachment, decorator: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::Representation
+        
             property :content, as: 'content'
-            property :display_name, as: 'displayName'
-            property :embed, as: 'embed', class: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::Embed, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ObjectRepresentation::AttachmentRepresentation::EmbedRepresentation
-            
-            property :full_image, as: 'fullImage', class: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::FullImage, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ObjectRepresentation::AttachmentRepresentation::FullImageRepresentation
-            
             property :id, as: 'id'
-            property :image, as: 'image', class: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::Image, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ObjectRepresentation::AttachmentRepresentation::ImageRepresentation
-            
             property :object_type, as: 'objectType'
-            collection :preview_thumbnails, as: 'previewThumbnails', class: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::PreviewThumbnail, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ObjectRepresentation::AttachmentRepresentation::PreviewThumbnailRepresentation
-            
-            
-            collection :thumbnails, as: 'thumbnails', class: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::Thumbnail, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ObjectRepresentation::AttachmentRepresentation::ThumbnailRepresentation
-            
-            
+            property :original_content, as: 'originalContent'
+            property :plusoners, as: 'plusoners', class: Google::Apis::PlusDomainsV1::Activity::Object::Plusoners, decorator: Google::Apis::PlusDomainsV1::Activity::Object::Plusoners::Representation
+        
+            property :replies, as: 'replies', class: Google::Apis::PlusDomainsV1::Activity::Object::Replies, decorator: Google::Apis::PlusDomainsV1::Activity::Object::Replies::Representation
+        
+            property :resharers, as: 'resharers', class: Google::Apis::PlusDomainsV1::Activity::Object::Resharers, decorator: Google::Apis::PlusDomainsV1::Activity::Object::Resharers::Representation
+        
+            property :status_for_viewer, as: 'statusForViewer', class: Google::Apis::PlusDomainsV1::Activity::Object::StatusForViewer, decorator: Google::Apis::PlusDomainsV1::Activity::Object::StatusForViewer::Representation
+        
             property :url, as: 'url'
-            
-            # @private
-            class EmbedRepresentation < Google::Apis::Core::JsonRepresentation
-              property :type, as: 'type'
+          end
+          
+          # @private
+          class Actor
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :display_name, as: 'displayName'
+              property :id, as: 'id'
+              property :image, as: 'image', class: Google::Apis::PlusDomainsV1::Activity::Object::Actor::Image, decorator: Google::Apis::PlusDomainsV1::Activity::Object::Actor::Image::Representation
+          
               property :url, as: 'url'
             end
             
             # @private
-            class FullImageRepresentation < Google::Apis::Core::JsonRepresentation
-              property :height, as: 'height'
-              property :type, as: 'type'
+            class Image
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :url, as: 'url'
+              end
+            end
+          end
+          
+          # @private
+          class Attachment
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :content, as: 'content'
+              property :display_name, as: 'displayName'
+              property :embed, as: 'embed', class: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::Embed, decorator: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::Embed::Representation
+          
+              property :full_image, as: 'fullImage', class: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::FullImage, decorator: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::FullImage::Representation
+          
+              property :id, as: 'id'
+              property :image, as: 'image', class: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::Image, decorator: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::Image::Representation
+          
+              property :object_type, as: 'objectType'
+              collection :preview_thumbnails, as: 'previewThumbnails', class: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::PreviewThumbnail, decorator: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::PreviewThumbnail::Representation
+          
+              collection :thumbnails, as: 'thumbnails', class: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::Thumbnail, decorator: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::Thumbnail::Representation
+          
               property :url, as: 'url'
-              property :width, as: 'width'
             end
             
             # @private
-            class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-              property :height, as: 'height'
-              property :type, as: 'type'
-              property :url, as: 'url'
-              property :width, as: 'width'
+            class Embed
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :type, as: 'type'
+                property :url, as: 'url'
+              end
             end
             
             # @private
-            class PreviewThumbnailRepresentation < Google::Apis::Core::JsonRepresentation
-              property :url, as: 'url'
-            end
-            
-            # @private
-            class ThumbnailRepresentation < Google::Apis::Core::JsonRepresentation
-              class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
-              property :description, as: 'description'
-              property :image, as: 'image', class: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::Thumbnail::Image, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation::ObjectRepresentation::AttachmentRepresentation::ThumbnailRepresentation::ImageRepresentation
-              
-              property :url, as: 'url'
-              
-              # @private
-              class ImageRepresentation < Google::Apis::Core::JsonRepresentation
+            class FullImage
+              class Representation < Google::Apis::Core::JsonRepresentation
                 property :height, as: 'height'
                 property :type, as: 'type'
                 property :url, as: 'url'
                 property :width, as: 'width'
               end
             end
+            
+            # @private
+            class Image
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :height, as: 'height'
+                property :type, as: 'type'
+                property :url, as: 'url'
+                property :width, as: 'width'
+              end
+            end
+            
+            # @private
+            class PreviewThumbnail
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :url, as: 'url'
+              end
+            end
+            
+            # @private
+            class Thumbnail
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :description, as: 'description'
+                property :image, as: 'image', class: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::Thumbnail::Image, decorator: Google::Apis::PlusDomainsV1::Activity::Object::Attachment::Thumbnail::Image::Representation
+            
+                property :url, as: 'url'
+              end
+              
+              # @private
+              class Image
+                class Representation < Google::Apis::Core::JsonRepresentation
+                  property :height, as: 'height'
+                  property :type, as: 'type'
+                  property :url, as: 'url'
+                  property :width, as: 'width'
+                end
+              end
+            end
           end
           
           # @private
-          class PlusonersRepresentation < Google::Apis::Core::JsonRepresentation
-            property :self_link, as: 'selfLink'
-            property :total_items, as: 'totalItems'
+          class Plusoners
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :self_link, as: 'selfLink'
+              property :total_items, as: 'totalItems'
+            end
           end
           
           # @private
-          class RepliesRepresentation < Google::Apis::Core::JsonRepresentation
-            property :self_link, as: 'selfLink'
-            property :total_items, as: 'totalItems'
+          class Replies
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :self_link, as: 'selfLink'
+              property :total_items, as: 'totalItems'
+            end
           end
           
           # @private
-          class ResharersRepresentation < Google::Apis::Core::JsonRepresentation
-            property :self_link, as: 'selfLink'
-            property :total_items, as: 'totalItems'
+          class Resharers
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :self_link, as: 'selfLink'
+              property :total_items, as: 'totalItems'
+            end
           end
           
           # @private
-          class StatusForViewerRepresentation < Google::Apis::Core::JsonRepresentation
-            property :can_comment, as: 'canComment'
-            property :can_plusone, as: 'canPlusone'
-            property :can_update, as: 'canUpdate'
-            property :is_plus_oned, as: 'isPlusOned'
-            property :resharing_disabled, as: 'resharingDisabled'
+          class StatusForViewer
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :can_comment, as: 'canComment'
+              property :can_plusone, as: 'canPlusone'
+              property :can_update, as: 'canUpdate'
+              property :is_plus_oned, as: 'isPlusOned'
+              property :resharing_disabled, as: 'resharingDisabled'
+            end
           end
         end
         
         # @private
-        class ProviderRepresentation < Google::Apis::Core::JsonRepresentation
+        class Provider
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :title, as: 'title'
+          end
+        end
+      end
+      
+      # @private
+      class ActivityFeed
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::PlusDomainsV1::Activity, decorator: Google::Apis::PlusDomainsV1::Activity::Representation
+      
+          property :kind, as: 'kind'
+          property :next_link, as: 'nextLink'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
           property :title, as: 'title'
+          property :updated, as: 'updated', type: DateTime
+      
         end
       end
-
+      
       # @private
-      class ActivityFeedRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::PlusDomainsV1::Activity, decorator: Google::Apis::PlusDomainsV1::ActivityRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_link, as: 'nextLink'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-        property :title, as: 'title'
-        property :updated, as: 'updated', type: DateTime
+      class Audience
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :item, as: 'item', class: Google::Apis::PlusDomainsV1::AclentryResource, decorator: Google::Apis::PlusDomainsV1::AclentryResource::Representation
+      
+          property :kind, as: 'kind'
+          property :member_count, as: 'memberCount'
+          property :visibility, as: 'visibility'
+        end
       end
-
+      
       # @private
-      class AudienceRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        property :item, as: 'item', class: Google::Apis::PlusDomainsV1::AclentryResource, decorator: Google::Apis::PlusDomainsV1::AclentryResourceRepresentation
-        
-        property :kind, as: 'kind'
-        property :member_count, as: 'memberCount'
-        property :visibility, as: 'visibility'
-      end
-
-      # @private
-      class AudiencesFeedRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        collection :items, as: 'items', class: Google::Apis::PlusDomainsV1::Audience, decorator: Google::Apis::PlusDomainsV1::AudienceRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :total_items, as: 'totalItems'
-      end
-
-      # @private
-      class CircleRepresentation < Google::Apis::Core::JsonRepresentation
-        class PeopleRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :description, as: 'description'
-        property :display_name, as: 'displayName'
-        property :etag, as: 'etag'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :people, as: 'people', class: Google::Apis::PlusDomainsV1::Circle::People, decorator: Google::Apis::PlusDomainsV1::CircleRepresentation::PeopleRepresentation
-        
-        property :self_link, as: 'selfLink'
-        
-        # @private
-        class PeopleRepresentation < Google::Apis::Core::JsonRepresentation
+      class Feed
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::PlusDomainsV1::Audience, decorator: Google::Apis::PlusDomainsV1::Audience::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
           property :total_items, as: 'totalItems'
         end
       end
-
+      
       # @private
-      class CircleFeedRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        collection :items, as: 'items', class: Google::Apis::PlusDomainsV1::Circle, decorator: Google::Apis::PlusDomainsV1::CircleRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_link, as: 'nextLink'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-        property :title, as: 'title'
-        property :total_items, as: 'totalItems'
-      end
-
-      # @private
-      class CommentRepresentation < Google::Apis::Core::JsonRepresentation
-        class ActorRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class InReplyToRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class ObjectRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class PlusonersRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :actor, as: 'actor', class: Google::Apis::PlusDomainsV1::Comment::Actor, decorator: Google::Apis::PlusDomainsV1::CommentRepresentation::ActorRepresentation
-        
-        property :etag, as: 'etag'
-        property :id, as: 'id'
-        collection :in_reply_to, as: 'inReplyTo', class: Google::Apis::PlusDomainsV1::Comment::InReplyTo, decorator: Google::Apis::PlusDomainsV1::CommentRepresentation::InReplyToRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :object, as: 'object', class: Google::Apis::PlusDomainsV1::Comment::Object, decorator: Google::Apis::PlusDomainsV1::CommentRepresentation::ObjectRepresentation
-        
-        property :plusoners, as: 'plusoners', class: Google::Apis::PlusDomainsV1::Comment::Plusoners, decorator: Google::Apis::PlusDomainsV1::CommentRepresentation::PlusonersRepresentation
-        
-        property :published, as: 'published', type: DateTime
-        property :self_link, as: 'selfLink'
-        property :updated, as: 'updated', type: DateTime
-        property :verb, as: 'verb'
-        
-        # @private
-        class ActorRepresentation < Google::Apis::Core::JsonRepresentation
-          class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :display_name, as: 'displayName'
-          property :id, as: 'id'
-          property :image, as: 'image', class: Google::Apis::PlusDomainsV1::Comment::Actor::Image, decorator: Google::Apis::PlusDomainsV1::CommentRepresentation::ActorRepresentation::ImageRepresentation
-          
-          property :url, as: 'url'
-          
-          # @private
-          class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-            property :url, as: 'url'
-          end
-        end
-        
-        # @private
-        class InReplyToRepresentation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :url, as: 'url'
-        end
-        
-        # @private
-        class ObjectRepresentation < Google::Apis::Core::JsonRepresentation
-          property :content, as: 'content'
-          property :object_type, as: 'objectType'
-          property :original_content, as: 'originalContent'
-        end
-        
-        # @private
-        class PlusonersRepresentation < Google::Apis::Core::JsonRepresentation
-          property :total_items, as: 'totalItems'
-        end
-      end
-
-      # @private
-      class CommentFeedRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::PlusDomainsV1::Comment, decorator: Google::Apis::PlusDomainsV1::CommentRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_link, as: 'nextLink'
-        property :next_page_token, as: 'nextPageToken'
-        property :title, as: 'title'
-        property :updated, as: 'updated', type: DateTime
-      end
-
-      # @private
-      class MediaRepresentation < Google::Apis::Core::JsonRepresentation
-        class AuthorRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class ExifRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :author, as: 'author', class: Google::Apis::PlusDomainsV1::Media::Author, decorator: Google::Apis::PlusDomainsV1::MediaRepresentation::AuthorRepresentation
-        
-        property :display_name, as: 'displayName'
-        property :etag, as: 'etag'
-        property :exif, as: 'exif', class: Google::Apis::PlusDomainsV1::Media::Exif, decorator: Google::Apis::PlusDomainsV1::MediaRepresentation::ExifRepresentation
-        
-        property :height, as: 'height'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :media_created_time, as: 'mediaCreatedTime', type: DateTime
-        property :media_url, as: 'mediaUrl'
-        property :published, as: 'published', type: DateTime
-        property :size_bytes, as: 'sizeBytes'
-        collection :streams, as: 'streams', class: Google::Apis::PlusDomainsV1::Videostream, decorator: Google::Apis::PlusDomainsV1::VideostreamRepresentation
-        
-        
-        property :summary, as: 'summary'
-        property :updated, as: 'updated', type: DateTime
-        property :url, as: 'url'
-        property :video_duration, as: 'videoDuration'
-        property :video_status, as: 'videoStatus'
-        property :width, as: 'width'
-        
-        # @private
-        class AuthorRepresentation < Google::Apis::Core::JsonRepresentation
-          class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :display_name, as: 'displayName'
-          property :id, as: 'id'
-          property :image, as: 'image', class: Google::Apis::PlusDomainsV1::Media::Author::Image, decorator: Google::Apis::PlusDomainsV1::MediaRepresentation::AuthorRepresentation::ImageRepresentation
-          
-          property :url, as: 'url'
-          
-          # @private
-          class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-            property :url, as: 'url'
-          end
-        end
-        
-        # @private
-        class ExifRepresentation < Google::Apis::Core::JsonRepresentation
-          property :time, as: 'time', type: DateTime
-        end
-      end
-
-      # @private
-      class PeopleFeedRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        collection :items, as: 'items', class: Google::Apis::PlusDomainsV1::Person, decorator: Google::Apis::PlusDomainsV1::PersonRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-        property :title, as: 'title'
-        property :total_items, as: 'totalItems'
-      end
-
-      # @private
-      class PersonRepresentation < Google::Apis::Core::JsonRepresentation
-        class CoverRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class EmailRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class ImageRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class NameRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class OrganizationRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class PlacesLivedRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class UrlRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :about_me, as: 'aboutMe'
-        property :birthday, as: 'birthday'
-        property :bragging_rights, as: 'braggingRights'
-        property :circled_by_count, as: 'circledByCount'
-        property :cover, as: 'cover', class: Google::Apis::PlusDomainsV1::Person::Cover, decorator: Google::Apis::PlusDomainsV1::PersonRepresentation::CoverRepresentation
-        
-        property :current_location, as: 'currentLocation'
-        property :display_name, as: 'displayName'
-        property :domain, as: 'domain'
-        collection :emails, as: 'emails', class: Google::Apis::PlusDomainsV1::Person::Email, decorator: Google::Apis::PlusDomainsV1::PersonRepresentation::EmailRepresentation
-        
-        
-        property :etag, as: 'etag'
-        property :gender, as: 'gender'
-        property :id, as: 'id'
-        property :image, as: 'image', class: Google::Apis::PlusDomainsV1::Person::Image, decorator: Google::Apis::PlusDomainsV1::PersonRepresentation::ImageRepresentation
-        
-        property :is_plus_user, as: 'isPlusUser'
-        property :kind, as: 'kind'
-        property :name, as: 'name', class: Google::Apis::PlusDomainsV1::Person::Name, decorator: Google::Apis::PlusDomainsV1::PersonRepresentation::NameRepresentation
-        
-        property :nickname, as: 'nickname'
-        property :object_type, as: 'objectType'
-        property :occupation, as: 'occupation'
-        collection :organizations, as: 'organizations', class: Google::Apis::PlusDomainsV1::Person::Organization, decorator: Google::Apis::PlusDomainsV1::PersonRepresentation::OrganizationRepresentation
-        
-        
-        collection :places_lived, as: 'placesLived', class: Google::Apis::PlusDomainsV1::Person::PlacesLived, decorator: Google::Apis::PlusDomainsV1::PersonRepresentation::PlacesLivedRepresentation
-        
-        
-        property :plus_one_count, as: 'plusOneCount'
-        property :relationship_status, as: 'relationshipStatus'
-        property :skills, as: 'skills'
-        property :tagline, as: 'tagline'
-        property :url, as: 'url'
-        collection :urls, as: 'urls', class: Google::Apis::PlusDomainsV1::Person::Url, decorator: Google::Apis::PlusDomainsV1::PersonRepresentation::UrlRepresentation
-        
-        
-        property :verified, as: 'verified'
-        
-        # @private
-        class CoverRepresentation < Google::Apis::Core::JsonRepresentation
-          class CoverInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
-          class CoverPhotoRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :cover_info, as: 'coverInfo', class: Google::Apis::PlusDomainsV1::Person::Cover::CoverInfo, decorator: Google::Apis::PlusDomainsV1::PersonRepresentation::CoverRepresentation::CoverInfoRepresentation
-          
-          property :cover_photo, as: 'coverPhoto', class: Google::Apis::PlusDomainsV1::Person::Cover::CoverPhoto, decorator: Google::Apis::PlusDomainsV1::PersonRepresentation::CoverRepresentation::CoverPhotoRepresentation
-          
-          property :layout, as: 'layout'
-          
-          # @private
-          class CoverInfoRepresentation < Google::Apis::Core::JsonRepresentation
-            property :left_image_offset, as: 'leftImageOffset'
-            property :top_image_offset, as: 'topImageOffset'
-          end
-          
-          # @private
-          class CoverPhotoRepresentation < Google::Apis::Core::JsonRepresentation
-            property :height, as: 'height'
-            property :url, as: 'url'
-            property :width, as: 'width'
-          end
-        end
-        
-        # @private
-        class EmailRepresentation < Google::Apis::Core::JsonRepresentation
-          property :type, as: 'type'
-          property :value, as: 'value'
-        end
-        
-        # @private
-        class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-          property :is_default, as: 'isDefault'
-          property :url, as: 'url'
-        end
-        
-        # @private
-        class NameRepresentation < Google::Apis::Core::JsonRepresentation
-          property :family_name, as: 'familyName'
-          property :formatted, as: 'formatted'
-          property :given_name, as: 'givenName'
-          property :honorific_prefix, as: 'honorificPrefix'
-          property :honorific_suffix, as: 'honorificSuffix'
-          property :middle_name, as: 'middleName'
-        end
-        
-        # @private
-        class OrganizationRepresentation < Google::Apis::Core::JsonRepresentation
-          property :department, as: 'department'
+      class Circle
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
-          property :end_date, as: 'endDate'
-          property :location, as: 'location'
-          property :name, as: 'name'
-          property :primary, as: 'primary'
-          property :start_date, as: 'startDate'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :people, as: 'people', class: Google::Apis::PlusDomainsV1::Circle::People, decorator: Google::Apis::PlusDomainsV1::Circle::People::Representation
+      
+          property :self_link, as: 'selfLink'
+        end
+        
+        # @private
+        class People
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :total_items, as: 'totalItems'
+          end
+        end
+      end
+      
+      # @private
+      class CircleFeed
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::PlusDomainsV1::Circle, decorator: Google::Apis::PlusDomainsV1::Circle::Representation
+      
+          property :kind, as: 'kind'
+          property :next_link, as: 'nextLink'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
           property :title, as: 'title'
+          property :total_items, as: 'totalItems'
+        end
+      end
+      
+      # @private
+      class Comment
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actor, as: 'actor', class: Google::Apis::PlusDomainsV1::Comment::Actor, decorator: Google::Apis::PlusDomainsV1::Comment::Actor::Representation
+      
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :in_reply_to, as: 'inReplyTo', class: Google::Apis::PlusDomainsV1::Comment::InReplyTo, decorator: Google::Apis::PlusDomainsV1::Comment::InReplyTo::Representation
+      
+          property :kind, as: 'kind'
+          property :object, as: 'object', class: Google::Apis::PlusDomainsV1::Comment::Object, decorator: Google::Apis::PlusDomainsV1::Comment::Object::Representation
+      
+          property :plusoners, as: 'plusoners', class: Google::Apis::PlusDomainsV1::Comment::Plusoners, decorator: Google::Apis::PlusDomainsV1::Comment::Plusoners::Representation
+      
+          property :published, as: 'published', type: DateTime
+      
+          property :self_link, as: 'selfLink'
+          property :updated, as: 'updated', type: DateTime
+      
+          property :verb, as: 'verb'
+        end
+        
+        # @private
+        class Actor
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :display_name, as: 'displayName'
+            property :id, as: 'id'
+            property :image, as: 'image', class: Google::Apis::PlusDomainsV1::Comment::Actor::Image, decorator: Google::Apis::PlusDomainsV1::Comment::Actor::Image::Representation
+        
+            property :url, as: 'url'
+          end
+          
+          # @private
+          class Image
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :url, as: 'url'
+            end
+          end
+        end
+        
+        # @private
+        class InReplyTo
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :id, as: 'id'
+            property :url, as: 'url'
+          end
+        end
+        
+        # @private
+        class Object
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :content, as: 'content'
+            property :object_type, as: 'objectType'
+            property :original_content, as: 'originalContent'
+          end
+        end
+        
+        # @private
+        class Plusoners
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :total_items, as: 'totalItems'
+          end
+        end
+      end
+      
+      # @private
+      class CommentFeed
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::PlusDomainsV1::Comment, decorator: Google::Apis::PlusDomainsV1::Comment::Representation
+      
+          property :kind, as: 'kind'
+          property :next_link, as: 'nextLink'
+          property :next_page_token, as: 'nextPageToken'
+          property :title, as: 'title'
+          property :updated, as: 'updated', type: DateTime
+      
+        end
+      end
+      
+      # @private
+      class Media
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :author, as: 'author', class: Google::Apis::PlusDomainsV1::Media::Author, decorator: Google::Apis::PlusDomainsV1::Media::Author::Representation
+      
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          property :exif, as: 'exif', class: Google::Apis::PlusDomainsV1::Media::Exif, decorator: Google::Apis::PlusDomainsV1::Media::Exif::Representation
+      
+          property :height, as: 'height'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :media_created_time, as: 'mediaCreatedTime', type: DateTime
+      
+          property :media_url, as: 'mediaUrl'
+          property :published, as: 'published', type: DateTime
+      
+          property :size_bytes, as: 'sizeBytes'
+          collection :streams, as: 'streams', class: Google::Apis::PlusDomainsV1::Videostream, decorator: Google::Apis::PlusDomainsV1::Videostream::Representation
+      
+          property :summary, as: 'summary'
+          property :updated, as: 'updated', type: DateTime
+      
+          property :url, as: 'url'
+          property :video_duration, as: 'videoDuration'
+          property :video_status, as: 'videoStatus'
+          property :width, as: 'width'
+        end
+        
+        # @private
+        class Author
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :display_name, as: 'displayName'
+            property :id, as: 'id'
+            property :image, as: 'image', class: Google::Apis::PlusDomainsV1::Media::Author::Image, decorator: Google::Apis::PlusDomainsV1::Media::Author::Image::Representation
+        
+            property :url, as: 'url'
+          end
+          
+          # @private
+          class Image
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :url, as: 'url'
+            end
+          end
+        end
+        
+        # @private
+        class Exif
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :time, as: 'time', type: DateTime
+        
+          end
+        end
+      end
+      
+      # @private
+      class PeopleFeed
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::PlusDomainsV1::Person, decorator: Google::Apis::PlusDomainsV1::Person::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :title, as: 'title'
+          property :total_items, as: 'totalItems'
+        end
+      end
+      
+      # @private
+      class Person
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :about_me, as: 'aboutMe'
+          property :birthday, as: 'birthday'
+          property :bragging_rights, as: 'braggingRights'
+          property :circled_by_count, as: 'circledByCount'
+          property :cover, as: 'cover', class: Google::Apis::PlusDomainsV1::Person::Cover, decorator: Google::Apis::PlusDomainsV1::Person::Cover::Representation
+      
+          property :current_location, as: 'currentLocation'
+          property :display_name, as: 'displayName'
+          property :domain, as: 'domain'
+          collection :emails, as: 'emails', class: Google::Apis::PlusDomainsV1::Person::Email, decorator: Google::Apis::PlusDomainsV1::Person::Email::Representation
+      
+          property :etag, as: 'etag'
+          property :gender, as: 'gender'
+          property :id, as: 'id'
+          property :image, as: 'image', class: Google::Apis::PlusDomainsV1::Person::Image, decorator: Google::Apis::PlusDomainsV1::Person::Image::Representation
+      
+          property :is_plus_user, as: 'isPlusUser'
+          property :kind, as: 'kind'
+          property :name, as: 'name', class: Google::Apis::PlusDomainsV1::Person::Name, decorator: Google::Apis::PlusDomainsV1::Person::Name::Representation
+      
+          property :nickname, as: 'nickname'
+          property :object_type, as: 'objectType'
+          property :occupation, as: 'occupation'
+          collection :organizations, as: 'organizations', class: Google::Apis::PlusDomainsV1::Person::Organization, decorator: Google::Apis::PlusDomainsV1::Person::Organization::Representation
+      
+          collection :places_lived, as: 'placesLived', class: Google::Apis::PlusDomainsV1::Person::PlacesLived, decorator: Google::Apis::PlusDomainsV1::Person::PlacesLived::Representation
+      
+          property :plus_one_count, as: 'plusOneCount'
+          property :relationship_status, as: 'relationshipStatus'
+          property :skills, as: 'skills'
+          property :tagline, as: 'tagline'
+          property :url, as: 'url'
+          collection :urls, as: 'urls', class: Google::Apis::PlusDomainsV1::Person::Url, decorator: Google::Apis::PlusDomainsV1::Person::Url::Representation
+      
+          property :verified, as: 'verified'
+        end
+        
+        # @private
+        class Cover
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :cover_info, as: 'coverInfo', class: Google::Apis::PlusDomainsV1::Person::Cover::CoverInfo, decorator: Google::Apis::PlusDomainsV1::Person::Cover::CoverInfo::Representation
+        
+            property :cover_photo, as: 'coverPhoto', class: Google::Apis::PlusDomainsV1::Person::Cover::CoverPhoto, decorator: Google::Apis::PlusDomainsV1::Person::Cover::CoverPhoto::Representation
+        
+            property :layout, as: 'layout'
+          end
+          
+          # @private
+          class CoverInfo
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :left_image_offset, as: 'leftImageOffset'
+              property :top_image_offset, as: 'topImageOffset'
+            end
+          end
+          
+          # @private
+          class CoverPhoto
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :height, as: 'height'
+              property :url, as: 'url'
+              property :width, as: 'width'
+            end
+          end
+        end
+        
+        # @private
+        class Email
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :type, as: 'type'
+            property :value, as: 'value'
+          end
+        end
+        
+        # @private
+        class Image
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :is_default, as: 'isDefault'
+            property :url, as: 'url'
+          end
+        end
+        
+        # @private
+        class Name
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :family_name, as: 'familyName'
+            property :formatted, as: 'formatted'
+            property :given_name, as: 'givenName'
+            property :honorific_prefix, as: 'honorificPrefix'
+            property :honorific_suffix, as: 'honorificSuffix'
+            property :middle_name, as: 'middleName'
+          end
+        end
+        
+        # @private
+        class Organization
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :department, as: 'department'
+            property :description, as: 'description'
+            property :end_date, as: 'endDate'
+            property :location, as: 'location'
+            property :name, as: 'name'
+            property :primary, as: 'primary'
+            property :start_date, as: 'startDate'
+            property :title, as: 'title'
+            property :type, as: 'type'
+          end
+        end
+        
+        # @private
+        class PlacesLived
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :primary, as: 'primary'
+            property :value, as: 'value'
+          end
+        end
+        
+        # @private
+        class Url
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :label, as: 'label'
+            property :type, as: 'type'
+            property :value, as: 'value'
+          end
+        end
+      end
+      
+      # @private
+      class Place
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address', class: Google::Apis::PlusDomainsV1::Place::Address, decorator: Google::Apis::PlusDomainsV1::Place::Address::Representation
+      
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :position, as: 'position', class: Google::Apis::PlusDomainsV1::Place::Position, decorator: Google::Apis::PlusDomainsV1::Place::Position::Representation
+      
+        end
+        
+        # @private
+        class Address
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :formatted, as: 'formatted'
+          end
+        end
+        
+        # @private
+        class Position
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :latitude, as: 'latitude'
+            property :longitude, as: 'longitude'
+          end
+        end
+      end
+      
+      # @private
+      class AclentryResource
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
           property :type, as: 'type'
         end
-        
-        # @private
-        class PlacesLivedRepresentation < Google::Apis::Core::JsonRepresentation
-          property :primary, as: 'primary'
-          property :value, as: 'value'
-        end
-        
-        # @private
-        class UrlRepresentation < Google::Apis::Core::JsonRepresentation
-          property :label, as: 'label'
+      end
+      
+      # @private
+      class Videostream
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :height, as: 'height'
           property :type, as: 'type'
-          property :value, as: 'value'
+          property :url, as: 'url'
+          property :width, as: 'width'
         end
-      end
-
-      # @private
-      class PlaceRepresentation < Google::Apis::Core::JsonRepresentation
-        class AddressRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class PositionRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :address, as: 'address', class: Google::Apis::PlusDomainsV1::Place::Address, decorator: Google::Apis::PlusDomainsV1::PlaceRepresentation::AddressRepresentation
-        
-        property :display_name, as: 'displayName'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :position, as: 'position', class: Google::Apis::PlusDomainsV1::Place::Position, decorator: Google::Apis::PlusDomainsV1::PlaceRepresentation::PositionRepresentation
-        
-        
-        # @private
-        class AddressRepresentation < Google::Apis::Core::JsonRepresentation
-          property :formatted, as: 'formatted'
-        end
-        
-        # @private
-        class PositionRepresentation < Google::Apis::Core::JsonRepresentation
-          property :latitude, as: 'latitude'
-          property :longitude, as: 'longitude'
-        end
-      end
-
-      # @private
-      class AclentryResourceRepresentation < Google::Apis::Core::JsonRepresentation
-        property :display_name, as: 'displayName'
-        property :id, as: 'id'
-        property :type, as: 'type'
-      end
-
-      # @private
-      class VideostreamRepresentation < Google::Apis::Core::JsonRepresentation
-        property :height, as: 'height'
-        property :type, as: 'type'
-        property :url, as: 'url'
-        property :width, as: 'width'
       end
     end
   end

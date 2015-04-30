@@ -22,50 +22,57 @@ module Google
   module Apis
     module AppstateV1
       
-      class GetResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class GetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UpdateRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class UpdateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class WriteResultRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class WriteResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class GetResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :current_state_version, as: 'currentStateVersion'
-        property :data, as: 'data'
-        property :kind, as: 'kind'
-        property :state_key, as: 'stateKey'
+      class GetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_state_version, as: 'currentStateVersion'
+          property :data, as: 'data'
+          property :kind, as: 'kind'
+          property :state_key, as: 'stateKey'
+        end
       end
-
+      
       # @private
-      class ListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::AppstateV1::GetResponse, decorator: Google::Apis::AppstateV1::GetResponseRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :maximum_key_count, as: 'maximumKeyCount'
+      class ListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::AppstateV1::GetResponse, decorator: Google::Apis::AppstateV1::GetResponse::Representation
+      
+          property :kind, as: 'kind'
+          property :maximum_key_count, as: 'maximumKeyCount'
+        end
       end
-
+      
       # @private
-      class UpdateRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :data, as: 'data'
-        property :kind, as: 'kind'
+      class UpdateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data'
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class WriteResultRepresentation < Google::Apis::Core::JsonRepresentation
-        property :current_state_version, as: 'currentStateVersion'
-        property :kind, as: 'kind'
-        property :state_key, as: 'stateKey'
+      class WriteResult
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_state_version, as: 'currentStateVersion'
+          property :kind, as: 'kind'
+          property :state_key, as: 'stateKey'
+        end
       end
     end
   end

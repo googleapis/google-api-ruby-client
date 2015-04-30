@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AdminDirectoryV1
-
+      
       # JSON template for Alias object in Directory API.
       class Alias
         include Google::Apis::Core::Hashable
@@ -52,6 +52,11 @@ module Google
         attr_accessor :primary_email
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @alias = args[:alias] unless args[:alias].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
@@ -59,7 +64,7 @@ module Google
           @primary_email = args[:primary_email] unless args[:primary_email].nil?
         end
       end
-
+      
       # JSON response template to list aliases in Directory API.
       class Aliases
         include Google::Apis::Core::Hashable
@@ -80,12 +85,17 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @aliases = args[:aliases] unless args[:aliases].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # The template that returns individual ASP (Access Code) data.
       class Asp
         include Google::Apis::Core::Hashable
@@ -127,6 +137,11 @@ module Google
         attr_accessor :user_key
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @code_id = args[:code_id] unless args[:code_id].nil?
           @creation_time = args[:creation_time] unless args[:creation_time].nil?
           @etag = args[:etag] unless args[:etag].nil?
@@ -136,7 +151,7 @@ module Google
           @user_key = args[:user_key] unless args[:user_key].nil?
         end
       end
-
+      
       # 
       class Asps
         include Google::Apis::Core::Hashable
@@ -157,12 +172,17 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # An notification channel used to watch for resource changes.
       class Channel
         include Google::Apis::Core::Hashable
@@ -223,6 +243,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @address = args[:address] unless args[:address].nil?
           @expiration = args[:expiration] unless args[:expiration].nil?
           @id = args[:id] unless args[:id].nil?
@@ -235,7 +260,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # JSON template for Chrome Os Device resource in Directory API.
       class ChromeOsDevice
         include Google::Apis::Core::Hashable
@@ -369,6 +394,11 @@ module Google
         alias_method :will_auto_renew?, :will_auto_renew
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @active_time_ranges = args[:active_time_ranges] unless args[:active_time_ranges].nil?
           @annotated_asset_id = args[:annotated_asset_id] unless args[:annotated_asset_id].nil?
           @annotated_location = args[:annotated_location] unless args[:annotated_location].nil?
@@ -395,6 +425,7 @@ module Google
           @support_end_date = args[:support_end_date] unless args[:support_end_date].nil?
           @will_auto_renew = args[:will_auto_renew] unless args[:will_auto_renew].nil?
         end
+        
         # 
         class ActiveTimeRange
           include Google::Apis::Core::Hashable
@@ -410,10 +441,16 @@ module Google
           attr_accessor :date
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @active_time = args[:active_time] unless args[:active_time].nil?
             @date = args[:date] unless args[:date].nil?
           end
         end
+        
         # 
         class RecentUser
           include Google::Apis::Core::Hashable
@@ -429,12 +466,17 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @email = args[:email] unless args[:email].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
       end
-
+      
       # JSON response template for List Chrome OS Devices operation in Directory API.
       class ChromeOsDevices
         include Google::Apis::Core::Hashable
@@ -460,13 +502,18 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @chromeosdevices = args[:chromeosdevices] unless args[:chromeosdevices].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # JSON template for Group resource in Directory API.
       class Group
         include Google::Apis::Core::Hashable
@@ -523,6 +570,11 @@ module Google
         attr_accessor :non_editable_aliases
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @admin_created = args[:admin_created] unless args[:admin_created].nil?
           @aliases = args[:aliases] unless args[:aliases].nil?
           @description = args[:description] unless args[:description].nil?
@@ -535,7 +587,7 @@ module Google
           @non_editable_aliases = args[:non_editable_aliases] unless args[:non_editable_aliases].nil?
         end
       end
-
+      
       # JSON response template for List Groups operation in Directory API.
       class Groups
         include Google::Apis::Core::Hashable
@@ -561,13 +613,18 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @groups = args[:groups] unless args[:groups].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # JSON template for Member resource in Directory API.
       class Member
         include Google::Apis::Core::Hashable
@@ -604,6 +661,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @email = args[:email] unless args[:email].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
@@ -612,7 +674,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # JSON response template for List Members operation in Directory API.
       class Members
         include Google::Apis::Core::Hashable
@@ -638,13 +700,18 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @members = args[:members] unless args[:members].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # JSON template for Mobile Device resource in Directory API.
       class MobileDevice
         include Google::Apis::Core::Hashable
@@ -784,6 +851,11 @@ module Google
         attr_accessor :wifi_mac_address
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @applications = args[:applications] unless args[:applications].nil?
           @baseband_version = args[:baseband_version] unless args[:baseband_version].nil?
           @build_number = args[:build_number] unless args[:build_number].nil?
@@ -811,6 +883,7 @@ module Google
           @user_agent = args[:user_agent] unless args[:user_agent].nil?
           @wifi_mac_address = args[:wifi_mac_address] unless args[:wifi_mac_address].nil?
         end
+        
         # 
         class Application
           include Google::Apis::Core::Hashable
@@ -841,6 +914,11 @@ module Google
           attr_accessor :version_name
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @display_name = args[:display_name] unless args[:display_name].nil?
             @package_name = args[:package_name] unless args[:package_name].nil?
             @permission = args[:permission] unless args[:permission].nil?
@@ -849,7 +927,7 @@ module Google
           end
         end
       end
-
+      
       # JSON request template for firing commands on Mobile Device in Directory
       # Devices API.
       class MobileDeviceAction
@@ -861,10 +939,15 @@ module Google
         attr_accessor :action
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @action = args[:action] unless args[:action].nil?
         end
       end
-
+      
       # JSON response template for List Mobile Devices operation in Directory API.
       class MobileDevices
         include Google::Apis::Core::Hashable
@@ -890,13 +973,18 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @mobiledevices = args[:mobiledevices] unless args[:mobiledevices].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Template for a notification resource.
       class Notification
         include Google::Apis::Core::Hashable
@@ -943,6 +1031,11 @@ module Google
         attr_accessor :subject
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @body = args[:body] unless args[:body].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @from_address = args[:from_address] unless args[:from_address].nil?
@@ -953,7 +1046,7 @@ module Google
           @subject = args[:subject] unless args[:subject].nil?
         end
       end
-
+      
       # Template for notifications list response.
       class Notifications
         include Google::Apis::Core::Hashable
@@ -984,6 +1077,11 @@ module Google
         attr_accessor :unread_notifications_count
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -991,7 +1089,7 @@ module Google
           @unread_notifications_count = args[:unread_notifications_count] unless args[:unread_notifications_count].nil?
         end
       end
-
+      
       # JSON template for Org Unit resource in Directory API.
       class OrgUnit
         include Google::Apis::Core::Hashable
@@ -1043,6 +1141,11 @@ module Google
         attr_accessor :parent_org_unit_path
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @block_inheritance = args[:block_inheritance] unless args[:block_inheritance].nil?
           @description = args[:description] unless args[:description].nil?
           @etag = args[:etag] unless args[:etag].nil?
@@ -1054,7 +1157,7 @@ module Google
           @parent_org_unit_path = args[:parent_org_unit_path] unless args[:parent_org_unit_path].nil?
         end
       end
-
+      
       # JSON response template for List Organization Units operation in Directory API.
       class OrgUnits
         include Google::Apis::Core::Hashable
@@ -1075,12 +1178,17 @@ module Google
         attr_accessor :organization_units
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @organization_units = args[:organization_units] unless args[:organization_units].nil?
         end
       end
-
+      
       # JSON template for Schema resource in Directory API.
       class Schema
         include Google::Apis::Core::Hashable
@@ -1111,6 +1219,11 @@ module Google
         attr_accessor :schema_name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @fields = args[:fields] unless args[:fields].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1118,7 +1231,7 @@ module Google
           @schema_name = args[:schema_name] unless args[:schema_name].nil?
         end
       end
-
+      
       # JSON template for FieldSpec resource for Schemas in Directory API.
       class SchemaFieldSpec
         include Google::Apis::Core::Hashable
@@ -1174,6 +1287,11 @@ module Google
         attr_accessor :read_access_type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @field_id = args[:field_id] unless args[:field_id].nil?
           @field_name = args[:field_name] unless args[:field_name].nil?
@@ -1184,6 +1302,7 @@ module Google
           @numeric_indexing_spec = args[:numeric_indexing_spec] unless args[:numeric_indexing_spec].nil?
           @read_access_type = args[:read_access_type] unless args[:read_access_type].nil?
         end
+        
         # Indexing spec for a numeric field. By default, only exact match queries will
         # be supported for numeric fields. Setting the numericIndexingSpec allows range
         # queries to be supported.
@@ -1205,12 +1324,17 @@ module Google
           attr_accessor :min_value
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @max_value = args[:max_value] unless args[:max_value].nil?
             @min_value = args[:min_value] unless args[:min_value].nil?
           end
         end
       end
-
+      
       # JSON response template for List Schema operation in Directory API.
       class Schemas
         include Google::Apis::Core::Hashable
@@ -1231,12 +1355,17 @@ module Google
         attr_accessor :schemas
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @schemas = args[:schemas] unless args[:schemas].nil?
         end
       end
-
+      
       # JSON template for token resource in Directory API.
       class Token
         include Google::Apis::Core::Hashable
@@ -1286,6 +1415,11 @@ module Google
         attr_accessor :user_key
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @anonymous = args[:anonymous] unless args[:anonymous].nil?
           @client_id = args[:client_id] unless args[:client_id].nil?
           @display_text = args[:display_text] unless args[:display_text].nil?
@@ -1296,7 +1430,7 @@ module Google
           @user_key = args[:user_key] unless args[:user_key].nil?
         end
       end
-
+      
       # JSON response template for List tokens operation in Directory API.
       class Tokens
         include Google::Apis::Core::Hashable
@@ -1317,12 +1451,17 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # JSON template for User object in Directory API.
       class User
         include Google::Apis::Core::Hashable
@@ -1439,7 +1578,7 @@ module Google
         # @return [DateTime]
         attr_accessor :last_login_time
       
-        # User's name
+        # JSON template for name of a user in Directory API.
         # Corresponds to the JSON property `name`
         # @return [Google::Apis::AdminDirectoryV1::UserName]
         attr_accessor :name
@@ -1506,6 +1645,11 @@ module Google
         attr_accessor :websites
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @addresses = args[:addresses] unless args[:addresses].nil?
           @agreed_to_terms = args[:agreed_to_terms] unless args[:agreed_to_terms].nil?
           @aliases = args[:aliases] unless args[:aliases].nil?
@@ -1542,7 +1686,7 @@ module Google
           @websites = args[:websites] unless args[:websites].nil?
         end
       end
-
+      
       # JSON template for About (notes) of a user in Directory API.
       class UserAbout
         include Google::Apis::Core::Hashable
@@ -1559,11 +1703,16 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @content_type = args[:content_type] unless args[:content_type].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # JSON template for address.
       class UserAddress
         include Google::Apis::Core::Hashable
@@ -1641,6 +1790,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @country = args[:country] unless args[:country].nil?
           @country_code = args[:country_code] unless args[:country_code].nil?
           @custom_type = args[:custom_type] unless args[:custom_type].nil?
@@ -1656,7 +1810,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # JSON template for an email.
       class UserEmail
         include Google::Apis::Core::Hashable
@@ -1686,13 +1840,18 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @address = args[:address] unless args[:address].nil?
           @custom_type = args[:custom_type] unless args[:custom_type].nil?
           @primary = args[:primary] unless args[:primary].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # JSON template for an externalId entry.
       class UserExternalId
         include Google::Apis::Core::Hashable
@@ -1713,12 +1872,17 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @custom_type = args[:custom_type] unless args[:custom_type].nil?
           @type = args[:type] unless args[:type].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # JSON template for instant messenger of an user.
       class UserIm
         include Google::Apis::Core::Hashable
@@ -1760,6 +1924,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @custom_protocol = args[:custom_protocol] unless args[:custom_protocol].nil?
           @custom_type = args[:custom_type] unless args[:custom_type].nil?
           @im = args[:im] unless args[:im].nil?
@@ -1768,7 +1937,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # JSON request template for setting/revoking admin status of a user in Directory
       # API.
       class UserMakeAdmin
@@ -1781,10 +1950,15 @@ module Google
         alias_method :status?, :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @status = args[:status] unless args[:status].nil?
         end
       end
-
+      
       # JSON template for name of a user in Directory API.
       class UserName
         include Google::Apis::Core::Hashable
@@ -1805,12 +1979,17 @@ module Google
         attr_accessor :given_name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @family_name = args[:family_name] unless args[:family_name].nil?
           @full_name = args[:full_name] unless args[:full_name].nil?
           @given_name = args[:given_name] unless args[:given_name].nil?
         end
       end
-
+      
       # JSON template for an organization entry.
       class UserOrganization
         include Google::Apis::Core::Hashable
@@ -1875,6 +2054,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cost_center = args[:cost_center] unless args[:cost_center].nil?
           @custom_type = args[:custom_type] unless args[:custom_type].nil?
           @department = args[:department] unless args[:department].nil?
@@ -1888,7 +2072,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # JSON template for a phone entry.
       class UserPhone
         include Google::Apis::Core::Hashable
@@ -1918,13 +2102,18 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @custom_type = args[:custom_type] unless args[:custom_type].nil?
           @primary = args[:primary] unless args[:primary].nil?
           @type = args[:type] unless args[:type].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # JSON template for Photo object in Directory API.
       class UserPhoto
         include Google::Apis::Core::Hashable
@@ -1970,6 +2159,11 @@ module Google
         attr_accessor :width
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @height = args[:height] unless args[:height].nil?
           @id = args[:id] unless args[:id].nil?
@@ -1980,7 +2174,7 @@ module Google
           @width = args[:width] unless args[:width].nil?
         end
       end
-
+      
       # JSON template for a relation entry.
       class UserRelation
         include Google::Apis::Core::Hashable
@@ -2002,12 +2196,17 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @custom_type = args[:custom_type] unless args[:custom_type].nil?
           @type = args[:type] unless args[:type].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # JSON request template to undelete a user in Directory API.
       class UserUndelete
         include Google::Apis::Core::Hashable
@@ -2018,10 +2217,15 @@ module Google
         attr_accessor :org_unit_path
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @org_unit_path = args[:org_unit_path] unless args[:org_unit_path].nil?
         end
       end
-
+      
       # JSON template for a website entry.
       class UserWebsite
         include Google::Apis::Core::Hashable
@@ -2051,13 +2255,18 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @custom_type = args[:custom_type] unless args[:custom_type].nil?
           @primary = args[:primary] unless args[:primary].nil?
           @type = args[:type] unless args[:type].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # JSON response template for List Users operation in Apps Directory API.
       class Users
         include Google::Apis::Core::Hashable
@@ -2088,6 +2297,11 @@ module Google
         attr_accessor :users
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
@@ -2095,7 +2309,7 @@ module Google
           @users = args[:users] unless args[:users].nil?
         end
       end
-
+      
       # JSON template for verification codes in Directory API.
       class VerificationCode
         include Google::Apis::Core::Hashable
@@ -2122,13 +2336,18 @@ module Google
         attr_accessor :verification_code
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @user_id = args[:user_id] unless args[:user_id].nil?
           @verification_code = args[:verification_code] unless args[:verification_code].nil?
         end
       end
-
+      
       # JSON response template for List verification codes operation in Directory API.
       class VerificationCodes
         include Google::Apis::Core::Hashable
@@ -2149,6 +2368,11 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?

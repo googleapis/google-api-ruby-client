@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/identity-toolkit/v3/
       class IdentityToolkitService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,10 +51,9 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'identitytoolkit/v3/relyingparty/')
         end
-
+        
         # Creates the URI used by the IdP to authenticate the user.
-        # @param [Google::Apis::IdentitytoolkitV3::CreateAuthUriRequest] identitytoolkit_relyingparty_create_auth_uri_request
-        #   
+        # @param [Google::Apis::IdentitytoolkitV3::CreateAuthUriRequest] identitytoolkit_relyingparty_create_auth_uri_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -65,7 +63,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -77,12 +75,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_auth_uri_relyingparty(identitytoolkit_relyingparty_create_auth_uri_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_auth_uri_relyingparty(identitytoolkit_relyingparty_create_auth_uri_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'createAuthUri'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::CreateAuthUriRequestRepresentation
-          command.request_object = identitytoolkit_relyingparty_create_auth_uri_request
-          command.response_representation = Google::Apis::IdentitytoolkitV3::CreateAuthUriResponseRepresentation
+          command.request_representation = Google::Apis::IdentitytoolkitV3::CreateAuthUriRequest::Representation
+          command.request_object = identitytoolkit_relyingparty_create_auth_uri_request_object
+          command.response_representation = Google::Apis::IdentitytoolkitV3::CreateAuthUriResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::CreateAuthUriResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -90,10 +88,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Delete user account.
-        # @param [Google::Apis::IdentitytoolkitV3::DeleteAccountRequest] identitytoolkit_relyingparty_delete_account_request
-        #   
+        # @param [Google::Apis::IdentitytoolkitV3::DeleteAccountRequest] identitytoolkit_relyingparty_delete_account_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -103,7 +99,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -115,12 +111,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_account_relyingparty(identitytoolkit_relyingparty_delete_account_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_account_relyingparty(identitytoolkit_relyingparty_delete_account_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'deleteAccount'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::DeleteAccountRequestRepresentation
-          command.request_object = identitytoolkit_relyingparty_delete_account_request
-          command.response_representation = Google::Apis::IdentitytoolkitV3::DeleteAccountResponseRepresentation
+          command.request_representation = Google::Apis::IdentitytoolkitV3::DeleteAccountRequest::Representation
+          command.request_object = identitytoolkit_relyingparty_delete_account_request_object
+          command.response_representation = Google::Apis::IdentitytoolkitV3::DeleteAccountResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::DeleteAccountResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -128,10 +124,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Batch download user accounts.
-        # @param [Google::Apis::IdentitytoolkitV3::DownloadAccountRequest] identitytoolkit_relyingparty_download_account_request
-        #   
+        # @param [Google::Apis::IdentitytoolkitV3::DownloadAccountRequest] identitytoolkit_relyingparty_download_account_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -141,7 +135,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -153,12 +147,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def download_account_relyingparty(identitytoolkit_relyingparty_download_account_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def download_account_relyingparty(identitytoolkit_relyingparty_download_account_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'downloadAccount'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::DownloadAccountRequestRepresentation
-          command.request_object = identitytoolkit_relyingparty_download_account_request
-          command.response_representation = Google::Apis::IdentitytoolkitV3::DownloadAccountResponseRepresentation
+          command.request_representation = Google::Apis::IdentitytoolkitV3::DownloadAccountRequest::Representation
+          command.request_object = identitytoolkit_relyingparty_download_account_request_object
+          command.response_representation = Google::Apis::IdentitytoolkitV3::DownloadAccountResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::DownloadAccountResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -166,10 +160,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Returns the account info.
-        # @param [Google::Apis::IdentitytoolkitV3::GetAccountInfoRequest] identitytoolkit_relyingparty_get_account_info_request
-        #   
+        # @param [Google::Apis::IdentitytoolkitV3::GetAccountInfoRequest] identitytoolkit_relyingparty_get_account_info_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -179,7 +171,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -191,12 +183,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_info_relyingparty(identitytoolkit_relyingparty_get_account_info_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_info_relyingparty(identitytoolkit_relyingparty_get_account_info_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'getAccountInfo'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::GetAccountInfoRequestRepresentation
-          command.request_object = identitytoolkit_relyingparty_get_account_info_request
-          command.response_representation = Google::Apis::IdentitytoolkitV3::GetAccountInfoResponseRepresentation
+          command.request_representation = Google::Apis::IdentitytoolkitV3::GetAccountInfoRequest::Representation
+          command.request_object = identitytoolkit_relyingparty_get_account_info_request_object
+          command.response_representation = Google::Apis::IdentitytoolkitV3::GetAccountInfoResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::GetAccountInfoResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -204,10 +196,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Get a code for user action confirmation.
-        # @param [Google::Apis::IdentitytoolkitV3::Relyingparty] relyingparty
-        #   
+        # @param [Google::Apis::IdentitytoolkitV3::Relyingparty] relyingparty_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -217,7 +207,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -229,19 +219,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_oob_confirmation_code_relyingparty(relyingparty = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_oob_confirmation_code_relyingparty(relyingparty_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'getOobConfirmationCode'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::RelyingpartyRepresentation
-          command.request_object = relyingparty
-          command.response_representation = Google::Apis::IdentitytoolkitV3::GetOobConfirmationCodeResponseRepresentation
+          command.request_representation = Google::Apis::IdentitytoolkitV3::Relyingparty::Representation
+          command.request_object = relyingparty_object
+          command.response_representation = Google::Apis::IdentitytoolkitV3::GetOobConfirmationCodeResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::GetOobConfirmationCodeResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Get token signing public key.
         # @param [String] fields
@@ -253,7 +242,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -268,14 +257,13 @@ module Google
         def get_public_keys_relyingparty(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'publicKeys'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Hash<String,String>Representation
+          command.response_representation = Hash<String,String>::Representation
           command.response_class = Hash<String,String>
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Get recaptcha secure param.
         # @param [String] fields
@@ -287,7 +275,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -302,7 +290,7 @@ module Google
         def get_recaptcha_param_relyingparty(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'getRecaptchaParam'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::IdentitytoolkitV3::GetRecaptchaParamResponseRepresentation
+          command.response_representation = Google::Apis::IdentitytoolkitV3::GetRecaptchaParamResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::GetRecaptchaParamResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -310,10 +298,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Reset password for a user.
-        # @param [Google::Apis::IdentitytoolkitV3::ResetPasswordRequest] identitytoolkit_relyingparty_reset_password_request
-        #   
+        # @param [Google::Apis::IdentitytoolkitV3::ResetPasswordRequest] identitytoolkit_relyingparty_reset_password_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -323,7 +309,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -335,12 +321,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def reset_password_relyingparty(identitytoolkit_relyingparty_reset_password_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def reset_password_relyingparty(identitytoolkit_relyingparty_reset_password_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'resetPassword'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::ResetPasswordRequestRepresentation
-          command.request_object = identitytoolkit_relyingparty_reset_password_request
-          command.response_representation = Google::Apis::IdentitytoolkitV3::ResetPasswordResponseRepresentation
+          command.request_representation = Google::Apis::IdentitytoolkitV3::ResetPasswordRequest::Representation
+          command.request_object = identitytoolkit_relyingparty_reset_password_request_object
+          command.response_representation = Google::Apis::IdentitytoolkitV3::ResetPasswordResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::ResetPasswordResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -348,10 +334,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Set account info for a user.
-        # @param [Google::Apis::IdentitytoolkitV3::SetAccountInfoRequest] identitytoolkit_relyingparty_set_account_info_request
-        #   
+        # @param [Google::Apis::IdentitytoolkitV3::SetAccountInfoRequest] identitytoolkit_relyingparty_set_account_info_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -361,7 +345,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -373,12 +357,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_account_info_relyingparty(identitytoolkit_relyingparty_set_account_info_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_account_info_relyingparty(identitytoolkit_relyingparty_set_account_info_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'setAccountInfo'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::SetAccountInfoRequestRepresentation
-          command.request_object = identitytoolkit_relyingparty_set_account_info_request
-          command.response_representation = Google::Apis::IdentitytoolkitV3::SetAccountInfoResponseRepresentation
+          command.request_representation = Google::Apis::IdentitytoolkitV3::SetAccountInfoRequest::Representation
+          command.request_object = identitytoolkit_relyingparty_set_account_info_request_object
+          command.response_representation = Google::Apis::IdentitytoolkitV3::SetAccountInfoResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::SetAccountInfoResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -386,10 +370,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Batch upload existing user accounts.
-        # @param [Google::Apis::IdentitytoolkitV3::UploadAccountRequest] identitytoolkit_relyingparty_upload_account_request
-        #   
+        # @param [Google::Apis::IdentitytoolkitV3::UploadAccountRequest] identitytoolkit_relyingparty_upload_account_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -399,7 +381,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -411,12 +393,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_account_relyingparty(identitytoolkit_relyingparty_upload_account_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def upload_account_relyingparty(identitytoolkit_relyingparty_upload_account_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'uploadAccount'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::UploadAccountRequestRepresentation
-          command.request_object = identitytoolkit_relyingparty_upload_account_request
-          command.response_representation = Google::Apis::IdentitytoolkitV3::UploadAccountResponseRepresentation
+          command.request_representation = Google::Apis::IdentitytoolkitV3::UploadAccountRequest::Representation
+          command.request_object = identitytoolkit_relyingparty_upload_account_request_object
+          command.response_representation = Google::Apis::IdentitytoolkitV3::UploadAccountResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::UploadAccountResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -424,10 +406,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Verifies the assertion returned by the IdP.
-        # @param [Google::Apis::IdentitytoolkitV3::VerifyAssertionRequest] identitytoolkit_relyingparty_verify_assertion_request
-        #   
+        # @param [Google::Apis::IdentitytoolkitV3::VerifyAssertionRequest] identitytoolkit_relyingparty_verify_assertion_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -437,7 +417,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -449,12 +429,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def verify_assertion_relyingparty(identitytoolkit_relyingparty_verify_assertion_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def verify_assertion_relyingparty(identitytoolkit_relyingparty_verify_assertion_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'verifyAssertion'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::VerifyAssertionRequestRepresentation
-          command.request_object = identitytoolkit_relyingparty_verify_assertion_request
-          command.response_representation = Google::Apis::IdentitytoolkitV3::VerifyAssertionResponseRepresentation
+          command.request_representation = Google::Apis::IdentitytoolkitV3::VerifyAssertionRequest::Representation
+          command.request_object = identitytoolkit_relyingparty_verify_assertion_request_object
+          command.response_representation = Google::Apis::IdentitytoolkitV3::VerifyAssertionResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::VerifyAssertionResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -462,10 +442,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Verifies the user entered password.
-        # @param [Google::Apis::IdentitytoolkitV3::VerifyPasswordRequest] identitytoolkit_relyingparty_verify_password_request
-        #   
+        # @param [Google::Apis::IdentitytoolkitV3::VerifyPasswordRequest] identitytoolkit_relyingparty_verify_password_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -475,7 +453,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -487,12 +465,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def verify_password_relyingparty(identitytoolkit_relyingparty_verify_password_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def verify_password_relyingparty(identitytoolkit_relyingparty_verify_password_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'verifyPassword'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::IdentitytoolkitV3::VerifyPasswordRequestRepresentation
-          command.request_object = identitytoolkit_relyingparty_verify_password_request
-          command.response_representation = Google::Apis::IdentitytoolkitV3::VerifyPasswordResponseRepresentation
+          command.request_representation = Google::Apis::IdentitytoolkitV3::VerifyPasswordRequest::Representation
+          command.request_object = identitytoolkit_relyingparty_verify_password_request_object
+          command.response_representation = Google::Apis::IdentitytoolkitV3::VerifyPasswordResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::VerifyPasswordResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

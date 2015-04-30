@@ -33,7 +33,6 @@ module Google
       #
       # @see https://developers.google.com/adsense/management/
       class AdSenseService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -53,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'adsense/v1.4/')
         end
-
+        
         # Get information about the selected AdSense account.
         # @param [String] account_id
         #   Account to get information about.
@@ -68,7 +67,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -83,7 +82,7 @@ module Google
         def get_account(account_id, tree: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::AccountRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::Account::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Account
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['tree'] = tree unless tree.nil?
@@ -92,7 +91,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all accounts available to this AdSense account.
         # @param [Fixnum] max_results
@@ -109,7 +107,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -124,7 +122,7 @@ module Google
         def list_accounts(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::AccountsRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::Accounts::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Accounts
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -133,7 +131,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all ad clients in the specified account.
         # @param [String] account_id
@@ -153,7 +150,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -168,7 +165,7 @@ module Google
         def list_account_adclients(account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::AdClientsRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::AdClients::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdClients
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -178,8 +175,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Gets the specified ad unit in the specified ad client for the specified
         # account.
@@ -198,7 +193,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -213,7 +208,7 @@ module Google
         def get_account_adunit(account_id, ad_client_id, ad_unit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::AdUnitRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::AdUnit::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnit
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -223,7 +218,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Get ad code for the specified ad unit.
         # @param [String] account_id
@@ -241,7 +235,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -256,7 +250,7 @@ module Google
         def get_ad_code_account_adunit(account_id, ad_client_id, ad_unit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}/adcode'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::AdCodeRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::AdCode::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdCode
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -266,7 +260,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all ad units in the specified ad client for the specified account.
         # @param [String] account_id
@@ -289,7 +282,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -304,7 +297,7 @@ module Google
         def list_account_adunits(account_id, ad_client_id, include_inactive: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/adunits'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::AdUnitsRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::AdUnits::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnits
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -316,7 +309,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all custom channels which the specified ad unit belongs to.
         # @param [String] account_id
@@ -341,7 +333,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -356,7 +348,7 @@ module Google
         def list_account_adunit_customchannels(account_id, ad_client_id, ad_unit_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}/customchannels'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::CustomChannelsRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::CustomChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannels
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -368,9 +360,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
-        
         
         # Dismiss (delete) the specified alert from the specified publisher AdSense
         # account.
@@ -387,7 +376,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -410,7 +399,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # List the alerts for the specified AdSense account.
         # @param [String] account_id
         #   Account for which to retrieve the alerts.
@@ -427,7 +415,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -442,7 +430,7 @@ module Google
         def list_account_alerts(account_id, locale: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/alerts'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::AlertsRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::Alerts::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Alerts
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['locale'] = locale unless locale.nil?
@@ -451,8 +439,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Get the specified custom channel from the specified ad client for the
         # specified account.
@@ -471,7 +457,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -486,7 +472,7 @@ module Google
         def get_account_customchannel(account_id, ad_client_id, custom_channel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/customchannels/{customChannelId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::CustomChannelRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::CustomChannel::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannel
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -496,7 +482,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all custom channels in the specified ad client for the specified account.
         # @param [String] account_id
@@ -519,7 +504,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -534,7 +519,7 @@ module Google
         def list_account_customchannels(account_id, ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/customchannels'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::CustomChannelsRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::CustomChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannels
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -545,7 +530,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all ad units in the specified custom channel.
         # @param [String] account_id
@@ -570,7 +554,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -585,7 +569,7 @@ module Google
         def list_account_customchannel_adunits(account_id, ad_client_id, custom_channel_id, include_inactive: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/customchannels/{customChannelId}/adunits'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::AdUnitsRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::AdUnits::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnits
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -599,9 +583,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
-        
-        
         # List the payments for the specified AdSense account.
         # @param [String] account_id
         #   Account for which to retrieve the payments.
@@ -614,7 +595,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -629,7 +610,7 @@ module Google
         def list_account_payments(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/payments'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::PaymentsRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::Payments::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Payments
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -637,8 +618,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Generate an AdSense report based on the report request sent in the query
         # parameters. Returns the result as JSON; to retrieve output in CSV format
@@ -683,14 +662,14 @@ module Google
         #   enforce per-user limits.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AdsenseV1_4::ReportsGenerateResponse] parsed result object
+        # @yieldparam result [Google::Apis::AdsenseV1_4::GenerateResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AdsenseV1_4::ReportsGenerateResponse]
+        # @return [Google::Apis::AdsenseV1_4::GenerateResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -703,8 +682,8 @@ module Google
             command = make_download_command(:get, path, options)
             command.download_dest = download_dest
           end
-          command.response_representation = Google::Apis::AdsenseV1_4::ReportsGenerateResponseRepresentation
-          command.response_class = Google::Apis::AdsenseV1_4::ReportsGenerateResponse
+          command.response_representation = Google::Apis::AdsenseV1_4::GenerateResponse::Representation
+          command.response_class = Google::Apis::AdsenseV1_4::GenerateResponse
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['currency'] = currency unless currency.nil?
           command.query['dimension'] = dimension unless dimension.nil?
@@ -722,7 +701,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Generate an AdSense report based on the saved report ID sent in the query
         # parameters.
@@ -746,14 +724,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AdsenseV1_4::ReportsGenerateResponse] parsed result object
+        # @yieldparam result [Google::Apis::AdsenseV1_4::GenerateResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AdsenseV1_4::ReportsGenerateResponse]
+        # @return [Google::Apis::AdsenseV1_4::GenerateResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -761,8 +739,8 @@ module Google
         def generate_account_report_saved(account_id, saved_report_id, locale: nil, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/reports/{savedReportId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::ReportsGenerateResponseRepresentation
-          command.response_class = Google::Apis::AdsenseV1_4::ReportsGenerateResponse
+          command.response_representation = Google::Apis::AdsenseV1_4::GenerateResponse::Representation
+          command.response_class = Google::Apis::AdsenseV1_4::GenerateResponse
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['savedReportId'] = saved_report_id unless saved_report_id.nil?
           command.query['locale'] = locale unless locale.nil?
@@ -773,7 +751,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all saved reports in the specified AdSense account.
         # @param [String] account_id
@@ -794,14 +771,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AdsenseV1_4::SavedReports] parsed result object
+        # @yieldparam result [Google::Apis::AdsenseV1_4::Reports] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AdsenseV1_4::SavedReports]
+        # @return [Google::Apis::AdsenseV1_4::Reports]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -809,8 +786,8 @@ module Google
         def list_account_report_saveds(account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/reports/saved'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::SavedReportsRepresentation
-          command.response_class = Google::Apis::AdsenseV1_4::SavedReports
+          command.response_representation = Google::Apis::AdsenseV1_4::Reports::Representation
+          command.response_class = Google::Apis::AdsenseV1_4::Reports
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -819,9 +796,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
-        
         
         # List a specific saved ad style for the specified account.
         # @param [String] account_id
@@ -837,7 +811,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -852,7 +826,7 @@ module Google
         def get_account_savedadstyle(account_id, saved_ad_style_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/savedadstyles/{savedAdStyleId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::SavedAdStyleRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::SavedAdStyle::Representation
           command.response_class = Google::Apis::AdsenseV1_4::SavedAdStyle
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['savedAdStyleId'] = saved_ad_style_id unless saved_ad_style_id.nil?
@@ -861,7 +835,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all saved ad styles in the specified account.
         # @param [String] account_id
@@ -882,14 +855,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AdsenseV1_4::SavedAdStyles] parsed result object
+        # @yieldparam result [Google::Apis::AdsenseV1_4::AdStyles] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AdsenseV1_4::SavedAdStyles]
+        # @return [Google::Apis::AdsenseV1_4::AdStyles]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -897,8 +870,8 @@ module Google
         def list_account_savedadstyles(account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/savedadstyles'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::SavedAdStylesRepresentation
-          command.response_class = Google::Apis::AdsenseV1_4::SavedAdStyles
+          command.response_representation = Google::Apis::AdsenseV1_4::AdStyles::Representation
+          command.response_class = Google::Apis::AdsenseV1_4::AdStyles
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -907,8 +880,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # List all URL channels in the specified ad client for the specified account.
         # @param [String] account_id
@@ -930,7 +901,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -945,7 +916,7 @@ module Google
         def list_account_urlchannels(account_id, ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/urlchannels'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::UrlChannelsRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::UrlChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::UrlChannels
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
@@ -956,7 +927,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # List all ad clients in this AdSense account.
         # @param [Fixnum] max_results
         #   The maximum number of ad clients to include in the response, used for paging.
@@ -973,7 +944,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -988,7 +959,7 @@ module Google
         def list_adclients(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::AdClientsRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::AdClients::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdClients
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -997,7 +968,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Gets the specified ad unit in the specified ad client.
         # @param [String] ad_client_id
         #   Ad client for which to get the ad unit.
@@ -1012,7 +983,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1027,7 +998,7 @@ module Google
         def get_adunit(ad_client_id, ad_unit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/adunits/{adUnitId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::AdUnitRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::AdUnit::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnit
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
           command.params['adUnitId'] = ad_unit_id unless ad_unit_id.nil?
@@ -1036,7 +1007,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Get ad code for the specified ad unit.
         # @param [String] ad_client_id
@@ -1052,7 +1022,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1067,7 +1037,7 @@ module Google
         def get_ad_code_adunit(ad_client_id, ad_unit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/adunits/{adUnitId}/adcode'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::AdCodeRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::AdCode::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdCode
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
           command.params['adUnitId'] = ad_unit_id unless ad_unit_id.nil?
@@ -1076,7 +1046,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all ad units in the specified ad client for this AdSense account.
         # @param [String] ad_client_id
@@ -1097,7 +1066,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1112,7 +1081,7 @@ module Google
         def list_adunits(ad_client_id, include_inactive: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/adunits'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::AdUnitsRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::AdUnits::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnits
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
           command.query['includeInactive'] = include_inactive unless include_inactive.nil?
@@ -1123,7 +1092,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all custom channels which the specified ad unit belongs to.
         # @param [String] ad_client_id
@@ -1146,7 +1114,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1161,7 +1129,7 @@ module Google
         def list_adunit_customchannels(ad_client_id, ad_unit_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/adunits/{adUnitId}/customchannels'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::CustomChannelsRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::CustomChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannels
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
           command.params['adUnitId'] = ad_unit_id unless ad_unit_id.nil?
@@ -1172,7 +1140,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Dismiss (delete) the specified alert from the publisher's AdSense account.
         # @param [String] alert_id
         #   Alert to delete.
@@ -1185,7 +1153,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1207,7 +1175,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # List the alerts for this AdSense account.
         # @param [String] locale
         #   The locale to use for translating alert messages. The account locale will be
@@ -1222,7 +1189,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1237,7 +1204,7 @@ module Google
         def list_alerts(locale: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'alerts'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::AlertsRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::Alerts::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Alerts
           command.query['locale'] = locale unless locale.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1245,7 +1212,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Get the specified custom channel from the specified ad client.
         # @param [String] ad_client_id
         #   Ad client which contains the custom channel.
@@ -1260,7 +1227,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1275,7 +1242,7 @@ module Google
         def get_customchannel(ad_client_id, custom_channel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/customchannels/{customChannelId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::CustomChannelRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::CustomChannel::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannel
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
           command.params['customChannelId'] = custom_channel_id unless custom_channel_id.nil?
@@ -1284,7 +1251,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all custom channels in the specified ad client for this AdSense account.
         # @param [String] ad_client_id
@@ -1305,7 +1271,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1320,7 +1286,7 @@ module Google
         def list_customchannels(ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/customchannels'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::CustomChannelsRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::CustomChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::CustomChannels
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -1330,7 +1296,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all ad units in the specified custom channel.
         # @param [String] ad_client_id
@@ -1353,7 +1318,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1368,7 +1333,7 @@ module Google
         def list_customchannel_adunits(ad_client_id, custom_channel_id, include_inactive: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/customchannels/{customChannelId}/adunits'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::AdUnitsRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::AdUnits::Representation
           command.response_class = Google::Apis::AdsenseV1_4::AdUnits
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
           command.params['customChannelId'] = custom_channel_id unless custom_channel_id.nil?
@@ -1380,7 +1345,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # List the metadata for the dimensions available to this AdSense account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1391,7 +1356,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1406,15 +1371,13 @@ module Google
         def list_metadatum_dimensions(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'metadata/dimensions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::MetadataRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::Metadata::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Metadata
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # List the metadata for the metrics available to this AdSense account.
         # @param [String] fields
@@ -1426,7 +1389,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1441,14 +1404,14 @@ module Google
         def list_metadatum_metrics(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'metadata/metrics'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::MetadataRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::Metadata::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Metadata
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # List the payments for this AdSense account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1459,7 +1422,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1474,14 +1437,14 @@ module Google
         def list_payments(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'payments'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::PaymentsRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::Payments::Representation
           command.response_class = Google::Apis::AdsenseV1_4::Payments
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Generate an AdSense report based on the report request sent in the query
         # parameters. Returns the result as JSON; to retrieve output in CSV format
         # specify "alt=csv" as a query parameter.
@@ -1525,14 +1488,14 @@ module Google
         #   enforce per-user limits.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AdsenseV1_4::ReportsGenerateResponse] parsed result object
+        # @yieldparam result [Google::Apis::AdsenseV1_4::GenerateResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AdsenseV1_4::ReportsGenerateResponse]
+        # @return [Google::Apis::AdsenseV1_4::GenerateResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1545,8 +1508,8 @@ module Google
             command = make_download_command(:get, path, options)
             command.download_dest = download_dest
           end
-          command.response_representation = Google::Apis::AdsenseV1_4::ReportsGenerateResponseRepresentation
-          command.response_class = Google::Apis::AdsenseV1_4::ReportsGenerateResponse
+          command.response_representation = Google::Apis::AdsenseV1_4::GenerateResponse::Representation
+          command.response_class = Google::Apis::AdsenseV1_4::GenerateResponse
           command.query['accountId'] = account_id unless account_id.nil?
           command.query['currency'] = currency unless currency.nil?
           command.query['dimension'] = dimension unless dimension.nil?
@@ -1564,7 +1527,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Generate an AdSense report based on the saved report ID sent in the query
         # parameters.
@@ -1586,14 +1548,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AdsenseV1_4::ReportsGenerateResponse] parsed result object
+        # @yieldparam result [Google::Apis::AdsenseV1_4::GenerateResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AdsenseV1_4::ReportsGenerateResponse]
+        # @return [Google::Apis::AdsenseV1_4::GenerateResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1601,8 +1563,8 @@ module Google
         def generate_report_saved(saved_report_id, locale: nil, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'reports/{savedReportId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::ReportsGenerateResponseRepresentation
-          command.response_class = Google::Apis::AdsenseV1_4::ReportsGenerateResponse
+          command.response_representation = Google::Apis::AdsenseV1_4::GenerateResponse::Representation
+          command.response_class = Google::Apis::AdsenseV1_4::GenerateResponse
           command.params['savedReportId'] = saved_report_id unless saved_report_id.nil?
           command.query['locale'] = locale unless locale.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -1612,7 +1574,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all saved reports in this AdSense account.
         # @param [Fixnum] max_results
@@ -1631,14 +1592,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AdsenseV1_4::SavedReports] parsed result object
+        # @yieldparam result [Google::Apis::AdsenseV1_4::Reports] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AdsenseV1_4::SavedReports]
+        # @return [Google::Apis::AdsenseV1_4::Reports]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1646,8 +1607,8 @@ module Google
         def list_report_saveds(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'reports/saved'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::SavedReportsRepresentation
-          command.response_class = Google::Apis::AdsenseV1_4::SavedReports
+          command.response_representation = Google::Apis::AdsenseV1_4::Reports::Representation
+          command.response_class = Google::Apis::AdsenseV1_4::Reports
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1655,7 +1616,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Get a specific saved ad style from the user's account.
         # @param [String] saved_ad_style_id
         #   Saved ad style to retrieve.
@@ -1668,7 +1629,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1683,7 +1644,7 @@ module Google
         def get_savedadstyle(saved_ad_style_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'savedadstyles/{savedAdStyleId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::SavedAdStyleRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::SavedAdStyle::Representation
           command.response_class = Google::Apis::AdsenseV1_4::SavedAdStyle
           command.params['savedAdStyleId'] = saved_ad_style_id unless saved_ad_style_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1691,7 +1652,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all saved ad styles in the user's account.
         # @param [Fixnum] max_results
@@ -1710,14 +1670,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AdsenseV1_4::SavedAdStyles] parsed result object
+        # @yieldparam result [Google::Apis::AdsenseV1_4::AdStyles] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AdsenseV1_4::SavedAdStyles]
+        # @return [Google::Apis::AdsenseV1_4::AdStyles]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1725,8 +1685,8 @@ module Google
         def list_savedadstyles(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'savedadstyles'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::SavedAdStylesRepresentation
-          command.response_class = Google::Apis::AdsenseV1_4::SavedAdStyles
+          command.response_representation = Google::Apis::AdsenseV1_4::AdStyles::Representation
+          command.response_class = Google::Apis::AdsenseV1_4::AdStyles
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1734,7 +1694,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # List all URL channels in the specified ad client for this AdSense account.
         # @param [String] ad_client_id
         #   Ad client for which to list URL channels.
@@ -1753,7 +1713,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1768,7 +1728,7 @@ module Google
         def list_urlchannels(ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/urlchannels'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdsenseV1_4::UrlChannelsRepresentation
+          command.response_representation = Google::Apis::AdsenseV1_4::UrlChannels::Representation
           command.response_class = Google::Apis::AdsenseV1_4::UrlChannels
           command.params['adClientId'] = ad_client_id unless ad_client_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?

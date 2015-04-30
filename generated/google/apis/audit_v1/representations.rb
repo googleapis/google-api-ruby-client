@@ -22,83 +22,91 @@ module Google
   module Apis
     module AuditV1
       
-      class ActivitiesRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Activities
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ActivityRepresentation < Google::Apis::Core::JsonRepresentation
+      class Activity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class ActorRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Actor
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
         
-        class EventRepresentation < Google::Apis::Core::JsonRepresentation
+        class Event
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class ParameterRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Parameter
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
         
-        class IdRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Id
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
-
+      
       # @private
-      class ActivitiesRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::AuditV1::Activity, decorator: Google::Apis::AuditV1::ActivityRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next, as: 'next'
+      class Activities
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::AuditV1::Activity, decorator: Google::Apis::AuditV1::Activity::Representation
+      
+          property :kind, as: 'kind'
+          property :next, as: 'next'
+        end
       end
-
+      
       # @private
-      class ActivityRepresentation < Google::Apis::Core::JsonRepresentation
-        class ActorRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class EventRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class IdRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :actor, as: 'actor', class: Google::Apis::AuditV1::Activity::Actor, decorator: Google::Apis::AuditV1::ActivityRepresentation::ActorRepresentation
-        
-        collection :events, as: 'events', class: Google::Apis::AuditV1::Activity::Event, decorator: Google::Apis::AuditV1::ActivityRepresentation::EventRepresentation
-        
-        
-        property :id, as: 'id', class: Google::Apis::AuditV1::Activity::Id, decorator: Google::Apis::AuditV1::ActivityRepresentation::IdRepresentation
-        
-        property :ip_address, as: 'ipAddress'
-        property :kind, as: 'kind'
-        property :owner_domain, as: 'ownerDomain'
-        
-        # @private
-        class ActorRepresentation < Google::Apis::Core::JsonRepresentation
-          property :application_id, as: 'applicationId'
-          property :caller_type, as: 'callerType'
-          property :email, as: 'email'
-          property :key, as: 'key'
+      class Activity
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actor, as: 'actor', class: Google::Apis::AuditV1::Activity::Actor, decorator: Google::Apis::AuditV1::Activity::Actor::Representation
+      
+          collection :events, as: 'events', class: Google::Apis::AuditV1::Activity::Event, decorator: Google::Apis::AuditV1::Activity::Event::Representation
+      
+          property :id, as: 'id', class: Google::Apis::AuditV1::Activity::Id, decorator: Google::Apis::AuditV1::Activity::Id::Representation
+      
+          property :ip_address, as: 'ipAddress'
+          property :kind, as: 'kind'
+          property :owner_domain, as: 'ownerDomain'
         end
         
         # @private
-        class EventRepresentation < Google::Apis::Core::JsonRepresentation
-          class ParameterRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :event_type, as: 'eventType'
-          property :name, as: 'name'
-          collection :parameters, as: 'parameters', class: Google::Apis::AuditV1::Activity::Event::Parameter, decorator: Google::Apis::AuditV1::ActivityRepresentation::EventRepresentation::ParameterRepresentation
-          
-          
+        class Actor
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :application_id, as: 'applicationId'
+            property :caller_type, as: 'callerType'
+            property :email, as: 'email'
+            property :key, as: 'key'
+          end
+        end
+        
+        # @private
+        class Event
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :event_type, as: 'eventType'
+            property :name, as: 'name'
+            collection :parameters, as: 'parameters', class: Google::Apis::AuditV1::Activity::Event::Parameter, decorator: Google::Apis::AuditV1::Activity::Event::Parameter::Representation
+        
+          end
           
           # @private
-          class ParameterRepresentation < Google::Apis::Core::JsonRepresentation
-            property :name, as: 'name'
-            property :value, as: 'value'
+          class Parameter
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :name, as: 'name'
+              property :value, as: 'value'
+            end
           end
         end
         
         # @private
-        class IdRepresentation < Google::Apis::Core::JsonRepresentation
-          property :application_id, as: 'applicationId'
-          property :customer_id, as: 'customerId'
-          property :time, as: 'time', type: DateTime
-          property :uniq_qualifier, as: 'uniqQualifier'
+        class Id
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :application_id, as: 'applicationId'
+            property :customer_id, as: 'customerId'
+            property :time, as: 'time', type: DateTime
+        
+            property :uniq_qualifier, as: 'uniqQualifier'
+          end
         end
       end
     end

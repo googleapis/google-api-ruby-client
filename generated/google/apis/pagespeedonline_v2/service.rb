@@ -33,7 +33,6 @@ module Google
       #
       # @see https://developers.google.com/speed/docs/insights/v2/getting-started
       class PagespeedonlineService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -53,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'pagespeedonline/v2/')
         end
-
+        
         # Runs PageSpeed analysis on the page at the specified URL, and returns
         # PageSpeed scores, a list of suggestions to make that page faster, and other
         # information.
@@ -79,7 +78,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -94,7 +93,7 @@ module Google
         def runpagespeed_pagespeedapi(filter_third_party_resources: nil, locale: nil, rule: nil, screenshot: nil, strategy: nil, url: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'runPagespeed'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PagespeedonlineV2::ResultRepresentation
+          command.response_representation = Google::Apis::PagespeedonlineV2::Result::Representation
           command.response_class = Google::Apis::PagespeedonlineV2::Result
           command.query['filter_third_party_resources'] = filter_third_party_resources unless filter_third_party_resources.nil?
           command.query['locale'] = locale unless locale.nil?

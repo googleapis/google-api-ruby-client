@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module MirrorV1
-
+      
       # Represents an account passed into the Account Manager on Glass.
       class Account
         include Google::Apis::Core::Hashable
@@ -47,13 +47,18 @@ module Google
         attr_accessor :user_data
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @auth_tokens = args[:auth_tokens] unless args[:auth_tokens].nil?
           @features = args[:features] unless args[:features].nil?
           @password = args[:password] unless args[:password].nil?
           @user_data = args[:user_data] unless args[:user_data].nil?
         end
       end
-
+      
       # Represents media content, such as a photo, that can be attached to a timeline
       # item.
       class Attachment
@@ -83,13 +88,18 @@ module Google
         alias_method :is_processing_content?, :is_processing_content
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @content_type = args[:content_type] unless args[:content_type].nil?
           @content_url = args[:content_url] unless args[:content_url].nil?
           @id = args[:id] unless args[:id].nil?
           @is_processing_content = args[:is_processing_content] unless args[:is_processing_content].nil?
         end
       end
-
+      
       # A list of Attachments. This is the response from the server to GET requests on
       # the attachments collection.
       class AttachmentsListResponse
@@ -106,11 +116,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
       class AuthToken
         include Google::Apis::Core::Hashable
@@ -126,11 +141,16 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @auth_token = args[:auth_token] unless args[:auth_token].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # A single menu command that is part of a Contact.
       class Command
         include Google::Apis::Core::Hashable
@@ -145,10 +165,15 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # A person or group that can be used as a creator or a contact.
       class Contact
         include Google::Apis::Core::Hashable
@@ -231,6 +256,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @accept_commands = args[:accept_commands] unless args[:accept_commands].nil?
           @accept_types = args[:accept_types] unless args[:accept_types].nil?
           @display_name = args[:display_name] unless args[:display_name].nil?
@@ -245,10 +275,10 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # A list of Contacts representing contacts. This is the response from the server
       # to GET requests on the contacts collection.
-      class ContactsListResponse
+      class ListResponse
         include Google::Apis::Core::Hashable
       
         # Contact list.
@@ -262,11 +292,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A geographic location that can be associated with a timeline item.
       class Location
         include Google::Apis::Core::Hashable
@@ -313,6 +348,11 @@ module Google
         attr_accessor :timestamp
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @accuracy = args[:accuracy] unless args[:accuracy].nil?
           @address = args[:address] unless args[:address].nil?
           @display_name = args[:display_name] unless args[:display_name].nil?
@@ -323,7 +363,7 @@ module Google
           @timestamp = args[:timestamp] unless args[:timestamp].nil?
         end
       end
-
+      
       # A list of Locations. This is the response from the server to GET requests on
       # the locations collection.
       class LocationsListResponse
@@ -340,11 +380,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A custom menu item that can be presented to the user by a timeline item.
       class MenuItem
         include Google::Apis::Core::Hashable
@@ -424,6 +469,11 @@ module Google
         attr_accessor :values
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @action = args[:action] unless args[:action].nil?
           @contextual_command = args[:contextual_command] unless args[:contextual_command].nil?
           @id = args[:id] unless args[:id].nil?
@@ -432,7 +482,7 @@ module Google
           @values = args[:values] unless args[:values].nil?
         end
       end
-
+      
       # A single value that is part of a MenuItem.
       class MenuValue
         include Google::Apis::Core::Hashable
@@ -460,12 +510,17 @@ module Google
         attr_accessor :state
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @display_name = args[:display_name] unless args[:display_name].nil?
           @icon_url = args[:icon_url] unless args[:icon_url].nil?
           @state = args[:state] unless args[:state].nil?
         end
       end
-
+      
       # A notification delivered by the API.
       class Notification
         include Google::Apis::Core::Hashable
@@ -502,6 +557,11 @@ module Google
         attr_accessor :verify_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @collection = args[:collection] unless args[:collection].nil?
           @item_id = args[:item_id] unless args[:item_id].nil?
           @operation = args[:operation] unless args[:operation].nil?
@@ -510,7 +570,7 @@ module Google
           @verify_token = args[:verify_token] unless args[:verify_token].nil?
         end
       end
-
+      
       # Controls how notifications for a timeline item are presented to the user.
       class NotificationConfig
         include Google::Apis::Core::Hashable
@@ -528,11 +588,16 @@ module Google
         attr_accessor :level
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @delivery_time = args[:delivery_time] unless args[:delivery_time].nil?
           @level = args[:level] unless args[:level].nil?
         end
       end
-
+      
       # A setting for Glass.
       class Setting
         include Google::Apis::Core::Hashable
@@ -557,12 +622,17 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # A subscription to events on a collection.
       class Subscription
         include Google::Apis::Core::Hashable
@@ -591,8 +661,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Container object for notifications. This is not populated in the Subscription
-        # resource.
+        # A notification delivered by the API.
         # Corresponds to the JSON property `notification`
         # @return [Google::Apis::MirrorV1::Notification]
         attr_accessor :notification
@@ -627,6 +696,11 @@ module Google
         attr_accessor :verify_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @callback_url = args[:callback_url] unless args[:callback_url].nil?
           @collection = args[:collection] unless args[:collection].nil?
           @id = args[:id] unless args[:id].nil?
@@ -638,7 +712,7 @@ module Google
           @verify_token = args[:verify_token] unless args[:verify_token].nil?
         end
       end
-
+      
       # A list of Subscriptions. This is the response from the server to GET requests
       # on the subscription collection.
       class SubscriptionsListResponse
@@ -655,14 +729,19 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Each item in the user's timeline is represented as a TimelineItem JSON
       # structure, described below.
-      class TimelineItem
+      class Item
         include Google::Apis::Core::Hashable
       
         # A list of media attachments associated with this item. As a convenience, you
@@ -693,7 +772,7 @@ module Google
         # @return [DateTime]
         attr_accessor :created
       
-        # The user or group that created this item.
+        # A person or group that can be used as a creator or a contact.
         # Corresponds to the JSON property `creator`
         # @return [Google::Apis::MirrorV1::Contact]
         attr_accessor :creator
@@ -783,7 +862,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The geographic location associated with this item.
+        # A geographic location that can be associated with a timeline item.
         # Corresponds to the JSON property `location`
         # @return [Google::Apis::MirrorV1::Location]
         attr_accessor :location
@@ -794,8 +873,7 @@ module Google
         # @return [Array<Google::Apis::MirrorV1::MenuItem>]
         attr_accessor :menu_items
       
-        # Controls how notifications for this item are presented on the device. If this
-        # is missing, no notification will be generated.
+        # Controls how notifications for a timeline item are presented to the user.
         # Corresponds to the JSON property `notification`
         # @return [Google::Apis::MirrorV1::NotificationConfig]
         attr_accessor :notification
@@ -862,6 +940,11 @@ module Google
         attr_accessor :updated
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @attachments = args[:attachments] unless args[:attachments].nil?
           @bundle_id = args[:bundle_id] unless args[:bundle_id].nil?
           @canonical_url = args[:canonical_url] unless args[:canonical_url].nil?
@@ -890,7 +973,7 @@ module Google
           @updated = args[:updated] unless args[:updated].nil?
         end
       end
-
+      
       # A list of timeline items. This is the response from the server to GET requests
       # on the timeline collection.
       class TimelineListResponse
@@ -898,7 +981,7 @@ module Google
       
         # Items in the timeline.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::MirrorV1::TimelineItem>]
+        # @return [Array<Google::Apis::MirrorV1::Item>]
         attr_accessor :items
       
         # The type of resource. This is always mirror#timeline.
@@ -913,12 +996,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Represents an action taken by the user that triggered a notification.
       class UserAction
         include Google::Apis::Core::Hashable
@@ -945,11 +1033,16 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @payload = args[:payload] unless args[:payload].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # 
       class UserData
         include Google::Apis::Core::Hashable
@@ -965,6 +1058,11 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @key = args[:key] unless args[:key].nil?
           @value = args[:value] unless args[:value].nil?
         end

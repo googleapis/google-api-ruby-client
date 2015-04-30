@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CustomsearchV1
-
+      
       # 
       class Context
         include Google::Apis::Core::Hashable
@@ -37,9 +37,15 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @facets = args[:facets] unless args[:facets].nil?
           @title = args[:title] unless args[:title].nil?
         end
+        
         # 
         class Facet
           include Google::Apis::Core::Hashable
@@ -60,13 +66,18 @@ module Google
           attr_accessor :label_with_op
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @anchor = args[:anchor] unless args[:anchor].nil?
             @label = args[:label] unless args[:label].nil?
             @label_with_op = args[:label_with_op] unless args[:label_with_op].nil?
           end
         end
       end
-
+      
       # 
       class Promotion
         include Google::Apis::Core::Hashable
@@ -102,6 +113,11 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @body_lines = args[:body_lines] unless args[:body_lines].nil?
           @display_link = args[:display_link] unless args[:display_link].nil?
           @html_title = args[:html_title] unless args[:html_title].nil?
@@ -109,6 +125,7 @@ module Google
           @link = args[:link] unless args[:link].nil?
           @title = args[:title] unless args[:title].nil?
         end
+        
         # 
         class BodyLine
           include Google::Apis::Core::Hashable
@@ -134,12 +151,18 @@ module Google
           attr_accessor :url
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @html_title = args[:html_title] unless args[:html_title].nil?
             @link = args[:link] unless args[:link].nil?
             @title = args[:title] unless args[:title].nil?
             @url = args[:url] unless args[:url].nil?
           end
         end
+        
         # 
         class Image
           include Google::Apis::Core::Hashable
@@ -160,13 +183,18 @@ module Google
           attr_accessor :width
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @height = args[:height] unless args[:height].nil?
             @source = args[:source] unless args[:source].nil?
             @width = args[:width] unless args[:width].nil?
           end
         end
       end
-
+      
       # 
       class Query
         include Google::Apis::Core::Hashable
@@ -357,6 +385,11 @@ module Google
         attr_accessor :total_results
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @count = args[:count] unless args[:count].nil?
           @cr = args[:cr] unless args[:cr].nil?
           @cref = args[:cref] unless args[:cref].nil?
@@ -396,7 +429,7 @@ module Google
           @total_results = args[:total_results] unless args[:total_results].nil?
         end
       end
-
+      
       # 
       class Result
         include Google::Apis::Core::Hashable
@@ -477,6 +510,11 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cache_id = args[:cache_id] unless args[:cache_id].nil?
           @display_link = args[:display_link] unless args[:display_link].nil?
           @file_format = args[:file_format] unless args[:file_format].nil?
@@ -493,6 +531,7 @@ module Google
           @snippet = args[:snippet] unless args[:snippet].nil?
           @title = args[:title] unless args[:title].nil?
         end
+        
         # 
         class Image
           include Google::Apis::Core::Hashable
@@ -533,6 +572,11 @@ module Google
           attr_accessor :width
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @byte_size = args[:byte_size] unless args[:byte_size].nil?
             @context_link = args[:context_link] unless args[:context_link].nil?
             @height = args[:height] unless args[:height].nil?
@@ -542,6 +586,7 @@ module Google
             @width = args[:width] unless args[:width].nil?
           end
         end
+        
         # 
         class Label
           include Google::Apis::Core::Hashable
@@ -562,13 +607,18 @@ module Google
           attr_accessor :name
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @display_name = args[:display_name] unless args[:display_name].nil?
             @label_with_op = args[:label_with_op] unless args[:label_with_op].nil?
             @name = args[:name] unless args[:name].nil?
           end
         end
       end
-
+      
       # 
       class Search
         include Google::Apis::Core::Hashable
@@ -614,6 +664,11 @@ module Google
         attr_accessor :url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @context = args[:context] unless args[:context].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -623,6 +678,7 @@ module Google
           @spelling = args[:spelling] unless args[:spelling].nil?
           @url = args[:url] unless args[:url].nil?
         end
+        
         # 
         class SearchInformation
           include Google::Apis::Core::Hashable
@@ -648,12 +704,18 @@ module Google
           attr_accessor :total_results
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @formatted_search_time = args[:formatted_search_time] unless args[:formatted_search_time].nil?
             @formatted_total_results = args[:formatted_total_results] unless args[:formatted_total_results].nil?
             @search_time = args[:search_time] unless args[:search_time].nil?
             @total_results = args[:total_results] unless args[:total_results].nil?
           end
         end
+        
         # 
         class Spelling
           include Google::Apis::Core::Hashable
@@ -669,10 +731,16 @@ module Google
           attr_accessor :html_corrected_query
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @corrected_query = args[:corrected_query] unless args[:corrected_query].nil?
             @html_corrected_query = args[:html_corrected_query] unless args[:html_corrected_query].nil?
           end
         end
+        
         # 
         class Url
           include Google::Apis::Core::Hashable
@@ -688,6 +756,11 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @template = args[:template] unless args[:template].nil?
             @type = args[:type] unless args[:type].nil?
           end

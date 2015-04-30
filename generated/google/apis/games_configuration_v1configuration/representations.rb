@@ -22,161 +22,184 @@ module Google
   module Apis
     module GamesConfigurationV1configuration
       
-      class AchievementConfigurationRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AchievementConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementConfigurationDetailRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AchievementConfigurationDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementConfigurationListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AchievementConfigurationListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class GamesNumberAffixConfigurationRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class GamesNumberAffixConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class GamesNumberFormatConfigurationRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class GamesNumberFormatConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ImageConfigurationRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ImageConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LeaderboardConfigurationRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class LeaderboardConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LeaderboardConfigurationDetailRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class LeaderboardConfigurationDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LeaderboardConfigurationListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class LeaderboardConfigurationListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LocalizedStringRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class LocalizedString
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LocalizedStringBundleRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class LocalizedStringBundle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class AchievementConfigurationRepresentation < Google::Apis::Core::JsonRepresentation
-        property :achievement_type, as: 'achievementType'
-        property :draft, as: 'draft', class: Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationDetail, decorator: Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationDetailRepresentation
-        
-        property :id, as: 'id'
-        property :initial_state, as: 'initialState'
-        property :kind, as: 'kind'
-        property :published, as: 'published', class: Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationDetail, decorator: Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationDetailRepresentation
-        
-        property :steps_to_unlock, as: 'stepsToUnlock'
-        property :token, as: 'token'
+      class AchievementConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :achievement_type, as: 'achievementType'
+          property :draft, as: 'draft', class: Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationDetail, decorator: Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationDetail::Representation
+      
+          property :id, as: 'id'
+          property :initial_state, as: 'initialState'
+          property :kind, as: 'kind'
+          property :published, as: 'published', class: Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationDetail, decorator: Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationDetail::Representation
+      
+          property :steps_to_unlock, as: 'stepsToUnlock'
+          property :token, as: 'token'
+        end
       end
-
+      
       # @private
-      class AchievementConfigurationDetailRepresentation < Google::Apis::Core::JsonRepresentation
-        property :description, as: 'description', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundleRepresentation
-        
-        property :icon_url, as: 'iconUrl'
-        property :kind, as: 'kind'
-        property :name, as: 'name', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundleRepresentation
-        
-        property :point_value, as: 'pointValue'
-        property :sort_rank, as: 'sortRank'
+      class AchievementConfigurationDetail
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle::Representation
+      
+          property :icon_url, as: 'iconUrl'
+          property :kind, as: 'kind'
+          property :name, as: 'name', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle::Representation
+      
+          property :point_value, as: 'pointValue'
+          property :sort_rank, as: 'sortRank'
+        end
       end
-
+      
       # @private
-      class AchievementConfigurationListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration, decorator: Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class AchievementConfigurationListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration, decorator: Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class GamesNumberAffixConfigurationRepresentation < Google::Apis::Core::JsonRepresentation
-        property :few, as: 'few', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundleRepresentation
-        
-        property :many, as: 'many', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundleRepresentation
-        
-        property :one, as: 'one', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundleRepresentation
-        
-        property :other, as: 'other', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundleRepresentation
-        
-        property :two, as: 'two', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundleRepresentation
-        
-        property :zero, as: 'zero', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundleRepresentation
+      class GamesNumberAffixConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :few, as: 'few', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle::Representation
+      
+          property :many, as: 'many', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle::Representation
+      
+          property :one, as: 'one', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle::Representation
+      
+          property :other, as: 'other', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle::Representation
+      
+          property :two, as: 'two', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle::Representation
+      
+          property :zero, as: 'zero', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle::Representation
+      
+        end
       end
-
+      
       # @private
-      class GamesNumberFormatConfigurationRepresentation < Google::Apis::Core::JsonRepresentation
-        property :currency_code, as: 'currencyCode'
-        property :num_decimal_places, as: 'numDecimalPlaces'
-        property :number_format_type, as: 'numberFormatType'
-        property :suffix, as: 'suffix', class: Google::Apis::GamesConfigurationV1configuration::GamesNumberAffixConfiguration, decorator: Google::Apis::GamesConfigurationV1configuration::GamesNumberAffixConfigurationRepresentation
+      class GamesNumberFormatConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency_code, as: 'currencyCode'
+          property :num_decimal_places, as: 'numDecimalPlaces'
+          property :number_format_type, as: 'numberFormatType'
+          property :suffix, as: 'suffix', class: Google::Apis::GamesConfigurationV1configuration::GamesNumberAffixConfiguration, decorator: Google::Apis::GamesConfigurationV1configuration::GamesNumberAffixConfiguration::Representation
+      
+        end
       end
-
+      
       # @private
-      class ImageConfigurationRepresentation < Google::Apis::Core::JsonRepresentation
-        property :image_type, as: 'imageType'
-        property :kind, as: 'kind'
-        property :resource_id, as: 'resourceId'
-        property :url, as: 'url'
+      class ImageConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_type, as: 'imageType'
+          property :kind, as: 'kind'
+          property :resource_id, as: 'resourceId'
+          property :url, as: 'url'
+        end
       end
-
+      
       # @private
-      class LeaderboardConfigurationRepresentation < Google::Apis::Core::JsonRepresentation
-        property :draft, as: 'draft', class: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationDetail, decorator: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationDetailRepresentation
-        
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :published, as: 'published', class: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationDetail, decorator: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationDetailRepresentation
-        
-        property :score_max, as: 'scoreMax'
-        property :score_min, as: 'scoreMin'
-        property :score_order, as: 'scoreOrder'
-        property :token, as: 'token'
+      class LeaderboardConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :draft, as: 'draft', class: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationDetail, decorator: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationDetail::Representation
+      
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :published, as: 'published', class: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationDetail, decorator: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationDetail::Representation
+      
+          property :score_max, as: 'scoreMax'
+          property :score_min, as: 'scoreMin'
+          property :score_order, as: 'scoreOrder'
+          property :token, as: 'token'
+        end
       end
-
+      
       # @private
-      class LeaderboardConfigurationDetailRepresentation < Google::Apis::Core::JsonRepresentation
-        property :icon_url, as: 'iconUrl'
-        property :kind, as: 'kind'
-        property :name, as: 'name', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundleRepresentation
-        
-        property :score_format, as: 'scoreFormat', class: Google::Apis::GamesConfigurationV1configuration::GamesNumberFormatConfiguration, decorator: Google::Apis::GamesConfigurationV1configuration::GamesNumberFormatConfigurationRepresentation
-        
-        property :sort_rank, as: 'sortRank'
+      class LeaderboardConfigurationDetail
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :icon_url, as: 'iconUrl'
+          property :kind, as: 'kind'
+          property :name, as: 'name', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle::Representation
+      
+          property :score_format, as: 'scoreFormat', class: Google::Apis::GamesConfigurationV1configuration::GamesNumberFormatConfiguration, decorator: Google::Apis::GamesConfigurationV1configuration::GamesNumberFormatConfiguration::Representation
+      
+          property :sort_rank, as: 'sortRank'
+        end
       end
-
+      
       # @private
-      class LeaderboardConfigurationListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration, decorator: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class LeaderboardConfigurationListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration, decorator: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class LocalizedStringRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :locale, as: 'locale'
-        property :value, as: 'value'
+      class LocalizedString
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :locale, as: 'locale'
+          property :value, as: 'value'
+        end
       end
-
+      
       # @private
-      class LocalizedStringBundleRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        collection :translations, as: 'translations', class: Google::Apis::GamesConfigurationV1configuration::LocalizedString, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringRepresentation
+      class LocalizedStringBundle
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :translations, as: 'translations', class: Google::Apis::GamesConfigurationV1configuration::LocalizedString, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedString::Representation
+      
+        end
       end
     end
   end

@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/google-apps/licensing/
       class LicensingService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'apps/licensing/v1/product/')
         end
-
+        
         # Revoke License.
         # @param [String] product_id
         #   Name for product
@@ -69,7 +68,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -93,7 +92,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Get license assignment of a particular product and sku for a user
         # @param [String] product_id
         #   Name for product
@@ -110,7 +108,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -125,7 +123,7 @@ module Google
         def get_license_assignment(product_id, sku_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{productId}/sku/{skuId}/user/{userId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::LicensingV1::LicenseAssignmentRepresentation
+          command.response_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation
           command.response_class = Google::Apis::LicensingV1::LicenseAssignment
           command.params['productId'] = product_id unless product_id.nil?
           command.params['skuId'] = sku_id unless sku_id.nil?
@@ -136,14 +134,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Assign License.
         # @param [String] product_id
         #   Name for product
         # @param [String] sku_id
         #   Name for sku
-        # @param [Google::Apis::LicensingV1::LicenseAssignmentInsert] license_assignment_insert
-        #   
+        # @param [Google::Apis::LicensingV1::LicenseAssignmentInsert] license_assignment_insert_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -153,7 +149,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -165,12 +161,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_license_assignment(product_id, sku_id, license_assignment_insert = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_license_assignment(product_id, sku_id, license_assignment_insert_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{productId}/sku/{skuId}/user'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::LicensingV1::LicenseAssignmentInsertRepresentation
-          command.request_object = license_assignment_insert
-          command.response_representation = Google::Apis::LicensingV1::LicenseAssignmentRepresentation
+          command.request_representation = Google::Apis::LicensingV1::LicenseAssignmentInsert::Representation
+          command.request_object = license_assignment_insert_object
+          command.response_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation
           command.response_class = Google::Apis::LicensingV1::LicenseAssignment
           command.params['productId'] = product_id unless product_id.nil?
           command.params['skuId'] = sku_id unless sku_id.nil?
@@ -179,7 +175,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List license assignments for given product of the customer.
         # @param [String] product_id
@@ -201,7 +196,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -216,7 +211,7 @@ module Google
         def list_for_product_license_assignment(product_id, customer_id: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{productId}/users'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::LicensingV1::LicenseAssignmentListRepresentation
+          command.response_representation = Google::Apis::LicensingV1::LicenseAssignmentList::Representation
           command.response_class = Google::Apis::LicensingV1::LicenseAssignmentList
           command.params['productId'] = product_id unless product_id.nil?
           command.query['customerId'] = customer_id unless customer_id.nil?
@@ -227,7 +222,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List license assignments for given product and sku of the customer.
         # @param [String] product_id
@@ -251,7 +245,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -266,7 +260,7 @@ module Google
         def list_for_product_and_sku_license_assignment(product_id, sku_id, customer_id: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{productId}/sku/{skuId}/users'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::LicensingV1::LicenseAssignmentListRepresentation
+          command.response_representation = Google::Apis::LicensingV1::LicenseAssignmentList::Representation
           command.response_class = Google::Apis::LicensingV1::LicenseAssignmentList
           command.params['productId'] = product_id unless product_id.nil?
           command.params['skuId'] = sku_id unless sku_id.nil?
@@ -279,7 +273,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Assign License. This method supports patch semantics.
         # @param [String] product_id
         #   Name for product
@@ -287,8 +280,7 @@ module Google
         #   Name for sku for which license would be revoked
         # @param [String] user_id
         #   email id or unique Id of the user
-        # @param [Google::Apis::LicensingV1::LicenseAssignment] license_assignment
-        #   
+        # @param [Google::Apis::LicensingV1::LicenseAssignment] license_assignment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -298,7 +290,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -310,12 +302,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_license_assignment(product_id, sku_id, user_id, license_assignment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_license_assignment(product_id, sku_id, user_id, license_assignment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{productId}/sku/{skuId}/user/{userId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::LicensingV1::LicenseAssignmentRepresentation
-          command.request_object = license_assignment
-          command.response_representation = Google::Apis::LicensingV1::LicenseAssignmentRepresentation
+          command.request_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation
+          command.request_object = license_assignment_object
+          command.response_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation
           command.response_class = Google::Apis::LicensingV1::LicenseAssignment
           command.params['productId'] = product_id unless product_id.nil?
           command.params['skuId'] = sku_id unless sku_id.nil?
@@ -326,7 +318,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Assign License.
         # @param [String] product_id
         #   Name for product
@@ -334,8 +325,7 @@ module Google
         #   Name for sku for which license would be revoked
         # @param [String] user_id
         #   email id or unique Id of the user
-        # @param [Google::Apis::LicensingV1::LicenseAssignment] license_assignment
-        #   
+        # @param [Google::Apis::LicensingV1::LicenseAssignment] license_assignment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -345,7 +335,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -357,12 +347,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_license_assignment(product_id, sku_id, user_id, license_assignment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_license_assignment(product_id, sku_id, user_id, license_assignment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{productId}/sku/{skuId}/user/{userId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::LicensingV1::LicenseAssignmentRepresentation
-          command.request_object = license_assignment
-          command.response_representation = Google::Apis::LicensingV1::LicenseAssignmentRepresentation
+          command.request_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation
+          command.request_object = license_assignment_object
+          command.response_representation = Google::Apis::LicensingV1::LicenseAssignment::Representation
           command.response_class = Google::Apis::LicensingV1::LicenseAssignment
           command.params['productId'] = product_id unless product_id.nil?
           command.params['skuId'] = sku_id unless sku_id.nil?

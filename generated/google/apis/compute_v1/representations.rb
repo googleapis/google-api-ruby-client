@@ -22,1992 +22,2183 @@ module Google
   module Apis
     module ComputeV1
       
-      class AccessConfigRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AccessConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AddressRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Address
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AddressAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AddressAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AddressListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AddressList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AddressesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
+      class ScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
       end
       
-      class AttachedDiskRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AttachedDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AttachedDiskInitializeParamsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AttachedDiskInitializeParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class BackendRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Backend
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class BackendServiceRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class BackendService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class BackendServiceGroupHealthRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class BackendServiceGroupHealth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class BackendServiceListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class BackendServiceList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DeprecationStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class DeprecationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DiskRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Disk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DiskAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class DiskAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DiskListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class DiskList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DiskMoveRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class DiskMoveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DiskTypeRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class DiskType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DiskTypeAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class DiskTypeAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DiskTypeListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class DiskTypeList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DiskTypesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
+      class DiskTypesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
       end
       
-      class DisksScopedListRepresentation < Google::Apis::Core::JsonRepresentation
+      class DisksScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
       end
       
-      class FirewallRepresentation < Google::Apis::Core::JsonRepresentation
+      class Firewall
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class AllowedRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Allowed
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class FirewallListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class FirewallList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ForwardingRuleRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ForwardingRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ForwardingRuleAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ForwardingRuleAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ForwardingRuleListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ForwardingRuleList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ForwardingRulesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
+      class ForwardingRulesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
       end
       
-      class HealthCheckReferenceRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class HealthCheckReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class HealthStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class HealthStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class HostRuleRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class HostRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class HttpHealthCheckRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class HttpHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class HttpHealthCheckListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class HttpHealthCheckList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ImageRepresentation < Google::Apis::Core::JsonRepresentation
+      class Image
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class RawDiskRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class RawDisk
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class ImageListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ImageList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstanceRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Instance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstanceAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class InstanceAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstanceListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class InstanceList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstanceMoveRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class InstanceMoveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstancePropertiesRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class InstanceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstanceReferenceRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class InstanceReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstanceTemplateRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class InstanceTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstanceTemplateListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class InstanceTemplateList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstancesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
+      class InstancesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
       end
       
-      class LicenseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class License
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class MachineTypeRepresentation < Google::Apis::Core::JsonRepresentation
+      class MachineType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class ScratchDiskRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class ScratchDisk
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class MachineTypeAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class MachineTypeAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class MachineTypeListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class MachineTypeList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class MachineTypesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
+      class MachineTypesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
       end
       
-      class MetadataRepresentation < Google::Apis::Core::JsonRepresentation
+      class Metadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class ItemRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Item
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class NetworkRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Network
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class NetworkInterfaceRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class NetworkInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class NetworkListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class NetworkList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class OperationRepresentation < Google::Apis::Core::JsonRepresentation
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
+        class Error
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
         
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
-          end
-        end
-      end
-      
-      class OperationAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class OperationListRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class OperationsScopedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
-          
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
       end
       
-      class PathMatcherRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class OperationAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PathRuleRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class OperationList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ProjectRepresentation < Google::Apis::Core::JsonRepresentation
+      class OperationsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-      end
-      
-      class QuotaRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class RegionRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class RegionListRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class ResourceGroupReferenceRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class RouteRepresentation < Google::Apis::Core::JsonRepresentation
-        
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
       end
       
-      class RouteListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PathMatcher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SchedulingRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PathRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SerialPortOutputRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Project
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ServiceAccountRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Quota
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SnapshotRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Region
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SnapshotListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RegionList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TagsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ResourceGroupReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TargetHttpProxyRepresentation < Google::Apis::Core::JsonRepresentation
+      class Route
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-      end
-      
-      class TargetHttpProxyListRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class TargetInstanceRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class TargetInstanceAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class TargetInstanceListRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class TargetInstancesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
       end
       
-      class TargetPoolRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RouteList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TargetPoolAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Scheduling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TargetPoolInstanceHealthRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class SerialPortOutput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TargetPoolListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ServiceAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TargetPoolsAddHealthCheckRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Snapshot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TargetPoolsAddInstanceRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class SnapshotList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TargetPoolsRemoveHealthCheckRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Tags
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TargetPoolsRemoveInstanceRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TargetHttpProxy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TargetPoolsScopedListRepresentation < Google::Apis::Core::JsonRepresentation
+      class TargetHttpProxyList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class TargetInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class TargetInstanceAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class TargetInstanceList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class TargetInstancesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
       end
       
-      class TargetReferenceRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TargetPool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TargetVpnGatewayRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TargetPoolAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TargetVpnGatewayAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TargetPoolInstanceHealth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TargetVpnGatewayListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TargetPoolList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TargetVpnGatewaysScopedListRepresentation < Google::Apis::Core::JsonRepresentation
+      class AddHealthCheckRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class AddInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class RemoveHealthCheckRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class RemoveInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class TargetPoolsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
       end
       
-      class TestFailureRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TargetReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UrlMapRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TargetVpnGateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UrlMapListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TargetVpnGatewayAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UrlMapReferenceRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TargetVpnGatewayList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UrlMapTestRepresentation < Google::Apis::Core::JsonRepresentation
+      class TargetVpnGatewaysScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-      end
-      
-      class UrlMapValidationResultRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class UrlMapsValidateRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class UrlMapsValidateResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class UsageExportLocationRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class VpnTunnelRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class VpnTunnelAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class VpnTunnelListRepresentation < Google::Apis::Core::JsonRepresentation
-        
-      end
-      
-      class VpnTunnelsScopedListRepresentation < Google::Apis::Core::JsonRepresentation
-        
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
       end
       
-      class ZoneRepresentation < Google::Apis::Core::JsonRepresentation
+      class TestFailure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class UrlMap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class UrlMapList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class UrlMapReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class UrlMapTest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class UrlMapValidationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class ValidateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class ValidateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class UsageExportLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class VpnTunnel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class VpnTunnelAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class VpnTunnelList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class VpnTunnelsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class MaintenanceWindowRepresentation < Google::Apis::Core::JsonRepresentation
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          end
         end
       end
       
-      class ZoneListRepresentation < Google::Apis::Core::JsonRepresentation
+      class Zone
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
+        class MaintenanceWindow
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        end
       end
-
+      
+      class ZoneList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       # @private
-      class AccessConfigRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :nat_ip, as: 'natIP'
-        property :type, as: 'type'
+      class AccessConfig
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :nat_ip, as: 'natIP'
+          property :type, as: 'type'
+        end
       end
-
+      
       # @private
-      class AddressRepresentation < Google::Apis::Core::JsonRepresentation
-        property :address, as: 'address'
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :region, as: 'region'
-        property :self_link, as: 'selfLink'
-        property :status, as: 'status'
-        collection :users, as: 'users'
+      class Address
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :status, as: 'status'
+          collection :users, as: 'users'
+        end
       end
-
+      
       # @private
-      class AddressAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        hash :items, as: 'items', class: Google::Apis::ComputeV1::AddressesScopedList, decorator: Google::Apis::ComputeV1::AddressesScopedListRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
+      class AddressAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::ScopedList, decorator: Google::Apis::ComputeV1::ScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
       end
-
+      
       # @private
-      class AddressListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::Address, decorator: Google::Apis::ComputeV1::AddressRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
+      class AddressList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Address, decorator: Google::Apis::ComputeV1::Address::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
       end
-
+      
       # @private
-      class AddressesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        collection :addresses, as: 'addresses', class: Google::Apis::ComputeV1::Address, decorator: Google::Apis::ComputeV1::AddressRepresentation
-        
-        
-        property :warning, as: 'warning', class: Google::Apis::ComputeV1::AddressesScopedList::Warning, decorator: Google::Apis::ComputeV1::AddressesScopedListRepresentation::WarningRepresentation
-        
+      class ScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :addresses, as: 'addresses', class: Google::Apis::ComputeV1::Address, decorator: Google::Apis::ComputeV1::Address::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::ScopedList::Warning, decorator: Google::Apis::ComputeV1::ScopedList::Warning::Representation
+      
+        end
         
         # @private
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :code, as: 'code'
-          collection :data, as: 'data', class: Google::Apis::ComputeV1::AddressesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::AddressesScopedListRepresentation::WarningRepresentation::DatumRepresentation
-          
-          
-          property :message, as: 'message'
-          
-          # @private
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            property :key, as: 'key'
-            property :value, as: 'value'
-          end
-        end
-      end
-
-      # @private
-      class AttachedDiskRepresentation < Google::Apis::Core::JsonRepresentation
-        property :auto_delete, as: 'autoDelete'
-        property :boot, as: 'boot'
-        property :device_name, as: 'deviceName'
-        property :index, as: 'index'
-        property :initialize_params, as: 'initializeParams', class: Google::Apis::ComputeV1::AttachedDiskInitializeParams, decorator: Google::Apis::ComputeV1::AttachedDiskInitializeParamsRepresentation
-        
-        property :interface, as: 'interface'
-        property :kind, as: 'kind'
-        collection :licenses, as: 'licenses'
-        
-        property :mode, as: 'mode'
-        property :source, as: 'source'
-        property :type, as: 'type'
-      end
-
-      # @private
-      class AttachedDiskInitializeParamsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :disk_name, as: 'diskName'
-        property :disk_size_gb, as: 'diskSizeGb'
-        property :disk_type, as: 'diskType'
-        property :source_image, as: 'sourceImage'
-      end
-
-      # @private
-      class BackendRepresentation < Google::Apis::Core::JsonRepresentation
-        property :balancing_mode, as: 'balancingMode'
-        property :capacity_scaler, as: 'capacityScaler'
-        property :description, as: 'description'
-        property :group, as: 'group'
-        property :max_rate, as: 'maxRate'
-        property :max_rate_per_instance, as: 'maxRatePerInstance'
-        property :max_utilization, as: 'maxUtilization'
-      end
-
-      # @private
-      class BackendServiceRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :backends, as: 'backends', class: Google::Apis::ComputeV1::Backend, decorator: Google::Apis::ComputeV1::BackendRepresentation
-        
-        
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        property :fingerprint, :base64 => true, as: 'fingerprint'
-        collection :health_checks, as: 'healthChecks'
-        
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :port, as: 'port'
-        property :port_name, as: 'portName'
-        property :protocol, as: 'protocol'
-        property :self_link, as: 'selfLink'
-        property :timeout_sec, as: 'timeoutSec'
-      end
-
-      # @private
-      class BackendServiceGroupHealthRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :health_status, as: 'healthStatus', class: Google::Apis::ComputeV1::HealthStatus, decorator: Google::Apis::ComputeV1::HealthStatusRepresentation
-        
-        
-        property :kind, as: 'kind'
-      end
-
-      # @private
-      class BackendServiceListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::BackendService, decorator: Google::Apis::ComputeV1::BackendServiceRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class DeprecationStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        property :deleted, as: 'deleted'
-        property :deprecated, as: 'deprecated'
-        property :obsolete, as: 'obsolete'
-        property :replacement, as: 'replacement'
-        property :state, as: 'state'
-      end
-
-      # @private
-      class DiskRepresentation < Google::Apis::Core::JsonRepresentation
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        collection :licenses, as: 'licenses'
-        
-        property :name, as: 'name'
-        property :options, as: 'options'
-        property :self_link, as: 'selfLink'
-        property :size_gb, as: 'sizeGb'
-        property :source_image, as: 'sourceImage'
-        property :source_image_id, as: 'sourceImageId'
-        property :source_snapshot, as: 'sourceSnapshot'
-        property :source_snapshot_id, as: 'sourceSnapshotId'
-        property :status, as: 'status'
-        property :type, as: 'type'
-        property :zone, as: 'zone'
-      end
-
-      # @private
-      class DiskAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        hash :items, as: 'items', class: Google::Apis::ComputeV1::DisksScopedList, decorator: Google::Apis::ComputeV1::DisksScopedListRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class DiskListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::Disk, decorator: Google::Apis::ComputeV1::DiskRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class DiskMoveRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :destination_zone, as: 'destinationZone'
-        property :target_disk, as: 'targetDisk'
-      end
-
-      # @private
-      class DiskTypeRepresentation < Google::Apis::Core::JsonRepresentation
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :default_disk_size_gb, as: 'defaultDiskSizeGb'
-        property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatusRepresentation
-        
-        property :description, as: 'description'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :self_link, as: 'selfLink'
-        property :valid_disk_size, as: 'validDiskSize'
-        property :zone, as: 'zone'
-      end
-
-      # @private
-      class DiskTypeAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        hash :items, as: 'items', class: Google::Apis::ComputeV1::DiskTypesScopedList, decorator: Google::Apis::ComputeV1::DiskTypesScopedListRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class DiskTypeListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::DiskType, decorator: Google::Apis::ComputeV1::DiskTypeRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class DiskTypesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        collection :disk_types, as: 'diskTypes', class: Google::Apis::ComputeV1::DiskType, decorator: Google::Apis::ComputeV1::DiskTypeRepresentation
-        
-        
-        property :warning, as: 'warning', class: Google::Apis::ComputeV1::DiskTypesScopedList::Warning, decorator: Google::Apis::ComputeV1::DiskTypesScopedListRepresentation::WarningRepresentation
-        
-        
-        # @private
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :code, as: 'code'
-          collection :data, as: 'data', class: Google::Apis::ComputeV1::DiskTypesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::DiskTypesScopedListRepresentation::WarningRepresentation::DatumRepresentation
-          
-          
-          property :message, as: 'message'
-          
-          # @private
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            property :key, as: 'key'
-            property :value, as: 'value'
-          end
-        end
-      end
-
-      # @private
-      class DisksScopedListRepresentation < Google::Apis::Core::JsonRepresentation
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        collection :disks, as: 'disks', class: Google::Apis::ComputeV1::Disk, decorator: Google::Apis::ComputeV1::DiskRepresentation
-        
-        
-        property :warning, as: 'warning', class: Google::Apis::ComputeV1::DisksScopedList::Warning, decorator: Google::Apis::ComputeV1::DisksScopedListRepresentation::WarningRepresentation
-        
-        
-        # @private
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :code, as: 'code'
-          collection :data, as: 'data', class: Google::Apis::ComputeV1::DisksScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::DisksScopedListRepresentation::WarningRepresentation::DatumRepresentation
-          
-          
-          property :message, as: 'message'
-          
-          # @private
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            property :key, as: 'key'
-            property :value, as: 'value'
-          end
-        end
-      end
-
-      # @private
-      class FirewallRepresentation < Google::Apis::Core::JsonRepresentation
-        class AllowedRepresentation < Google::Apis::Core::JsonRepresentation; end
-        collection :allowed, as: 'allowed', class: Google::Apis::ComputeV1::Firewall::Allowed, decorator: Google::Apis::ComputeV1::FirewallRepresentation::AllowedRepresentation
-        
-        
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :network, as: 'network'
-        property :self_link, as: 'selfLink'
-        collection :source_ranges, as: 'sourceRanges'
-        
-        collection :source_tags, as: 'sourceTags'
-        
-        collection :target_tags, as: 'targetTags'
-        
-        
-        # @private
-        class AllowedRepresentation < Google::Apis::Core::JsonRepresentation
-          property :ip_protocol, as: 'IPProtocol'
-          collection :ports, as: 'ports'
-        end
-      end
-
-      # @private
-      class FirewallListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::Firewall, decorator: Google::Apis::ComputeV1::FirewallRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class ForwardingRuleRepresentation < Google::Apis::Core::JsonRepresentation
-        property :ip_address, as: 'IPAddress'
-        property :ip_protocol, as: 'IPProtocol'
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :port_range, as: 'portRange'
-        property :region, as: 'region'
-        property :self_link, as: 'selfLink'
-        property :target, as: 'target'
-      end
-
-      # @private
-      class ForwardingRuleAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        hash :items, as: 'items', class: Google::Apis::ComputeV1::ForwardingRulesScopedList, decorator: Google::Apis::ComputeV1::ForwardingRulesScopedListRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class ForwardingRuleListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::ForwardingRule, decorator: Google::Apis::ComputeV1::ForwardingRuleRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class ForwardingRulesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        collection :forwarding_rules, as: 'forwardingRules', class: Google::Apis::ComputeV1::ForwardingRule, decorator: Google::Apis::ComputeV1::ForwardingRuleRepresentation
-        
-        
-        property :warning, as: 'warning', class: Google::Apis::ComputeV1::ForwardingRulesScopedList::Warning, decorator: Google::Apis::ComputeV1::ForwardingRulesScopedListRepresentation::WarningRepresentation
-        
-        
-        # @private
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :code, as: 'code'
-          collection :data, as: 'data', class: Google::Apis::ComputeV1::ForwardingRulesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::ForwardingRulesScopedListRepresentation::WarningRepresentation::DatumRepresentation
-          
-          
-          property :message, as: 'message'
-          
-          # @private
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            property :key, as: 'key'
-            property :value, as: 'value'
-          end
-        end
-      end
-
-      # @private
-      class HealthCheckReferenceRepresentation < Google::Apis::Core::JsonRepresentation
-        property :health_check, as: 'healthCheck'
-      end
-
-      # @private
-      class HealthStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        property :health_state, as: 'healthState'
-        property :instance, as: 'instance'
-        property :ip_address, as: 'ipAddress'
-        property :port, as: 'port'
-      end
-
-      # @private
-      class HostRuleRepresentation < Google::Apis::Core::JsonRepresentation
-        property :description, as: 'description'
-        collection :hosts, as: 'hosts'
-        
-        property :path_matcher, as: 'pathMatcher'
-      end
-
-      # @private
-      class HttpHealthCheckRepresentation < Google::Apis::Core::JsonRepresentation
-        property :check_interval_sec, as: 'checkIntervalSec'
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        property :healthy_threshold, as: 'healthyThreshold'
-        property :host, as: 'host'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :port, as: 'port'
-        property :request_path, as: 'requestPath'
-        property :self_link, as: 'selfLink'
-        property :timeout_sec, as: 'timeoutSec'
-        property :unhealthy_threshold, as: 'unhealthyThreshold'
-      end
-
-      # @private
-      class HttpHealthCheckListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::HttpHealthCheck, decorator: Google::Apis::ComputeV1::HttpHealthCheckRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class ImageRepresentation < Google::Apis::Core::JsonRepresentation
-        class RawDiskRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :archive_size_bytes, as: 'archiveSizeBytes'
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatusRepresentation
-        
-        property :description, as: 'description'
-        property :disk_size_gb, as: 'diskSizeGb'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        collection :licenses, as: 'licenses'
-        
-        property :name, as: 'name'
-        property :raw_disk, as: 'rawDisk', class: Google::Apis::ComputeV1::Image::RawDisk, decorator: Google::Apis::ComputeV1::ImageRepresentation::RawDiskRepresentation
-        
-        property :self_link, as: 'selfLink'
-        property :source_disk, as: 'sourceDisk'
-        property :source_disk_id, as: 'sourceDiskId'
-        property :source_type, as: 'sourceType'
-        property :status, as: 'status'
-        
-        # @private
-        class RawDiskRepresentation < Google::Apis::Core::JsonRepresentation
-          property :container_type, as: 'containerType'
-          property :sha1_checksum, as: 'sha1Checksum'
-          property :source, as: 'source'
-        end
-      end
-
-      # @private
-      class ImageListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::Image, decorator: Google::Apis::ComputeV1::ImageRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class InstanceRepresentation < Google::Apis::Core::JsonRepresentation
-        property :can_ip_forward, as: 'canIpForward'
-        property :cpu_platform, as: 'cpuPlatform'
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        collection :disks, as: 'disks', class: Google::Apis::ComputeV1::AttachedDisk, decorator: Google::Apis::ComputeV1::AttachedDiskRepresentation
-        
-        
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :machine_type, as: 'machineType'
-        property :metadata, as: 'metadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::MetadataRepresentation
-        
-        property :name, as: 'name'
-        collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeV1::NetworkInterface, decorator: Google::Apis::ComputeV1::NetworkInterfaceRepresentation
-        
-        
-        property :scheduling, as: 'scheduling', class: Google::Apis::ComputeV1::Scheduling, decorator: Google::Apis::ComputeV1::SchedulingRepresentation
-        
-        property :self_link, as: 'selfLink'
-        collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeV1::ServiceAccount, decorator: Google::Apis::ComputeV1::ServiceAccountRepresentation
-        
-        
-        property :status, as: 'status'
-        property :status_message, as: 'statusMessage'
-        property :tags, as: 'tags', class: Google::Apis::ComputeV1::Tags, decorator: Google::Apis::ComputeV1::TagsRepresentation
-        
-        property :zone, as: 'zone'
-      end
-
-      # @private
-      class InstanceAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        hash :items, as: 'items', class: Google::Apis::ComputeV1::InstancesScopedList, decorator: Google::Apis::ComputeV1::InstancesScopedListRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class InstanceListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::Instance, decorator: Google::Apis::ComputeV1::InstanceRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class InstanceMoveRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :destination_zone, as: 'destinationZone'
-        property :target_instance, as: 'targetInstance'
-      end
-
-      # @private
-      class InstancePropertiesRepresentation < Google::Apis::Core::JsonRepresentation
-        property :can_ip_forward, as: 'canIpForward'
-        property :description, as: 'description'
-        collection :disks, as: 'disks', class: Google::Apis::ComputeV1::AttachedDisk, decorator: Google::Apis::ComputeV1::AttachedDiskRepresentation
-        
-        
-        property :machine_type, as: 'machineType'
-        property :metadata, as: 'metadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::MetadataRepresentation
-        
-        collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeV1::NetworkInterface, decorator: Google::Apis::ComputeV1::NetworkInterfaceRepresentation
-        
-        
-        property :scheduling, as: 'scheduling', class: Google::Apis::ComputeV1::Scheduling, decorator: Google::Apis::ComputeV1::SchedulingRepresentation
-        
-        collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeV1::ServiceAccount, decorator: Google::Apis::ComputeV1::ServiceAccountRepresentation
-        
-        
-        property :tags, as: 'tags', class: Google::Apis::ComputeV1::Tags, decorator: Google::Apis::ComputeV1::TagsRepresentation
-      end
-
-      # @private
-      class InstanceReferenceRepresentation < Google::Apis::Core::JsonRepresentation
-        property :instance, as: 'instance'
-      end
-
-      # @private
-      class InstanceTemplateRepresentation < Google::Apis::Core::JsonRepresentation
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :properties, as: 'properties', class: Google::Apis::ComputeV1::InstanceProperties, decorator: Google::Apis::ComputeV1::InstancePropertiesRepresentation
-        
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class InstanceTemplateListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::InstanceTemplate, decorator: Google::Apis::ComputeV1::InstanceTemplateRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class InstancesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        collection :instances, as: 'instances', class: Google::Apis::ComputeV1::Instance, decorator: Google::Apis::ComputeV1::InstanceRepresentation
-        
-        
-        property :warning, as: 'warning', class: Google::Apis::ComputeV1::InstancesScopedList::Warning, decorator: Google::Apis::ComputeV1::InstancesScopedListRepresentation::WarningRepresentation
-        
-        
-        # @private
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :code, as: 'code'
-          collection :data, as: 'data', class: Google::Apis::ComputeV1::InstancesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::InstancesScopedListRepresentation::WarningRepresentation::DatumRepresentation
-          
-          
-          property :message, as: 'message'
-          
-          # @private
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            property :key, as: 'key'
-            property :value, as: 'value'
-          end
-        end
-      end
-
-      # @private
-      class LicenseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :charges_use_fee, as: 'chargesUseFee'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class MachineTypeRepresentation < Google::Apis::Core::JsonRepresentation
-        class ScratchDiskRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatusRepresentation
-        
-        property :description, as: 'description'
-        property :guest_cpus, as: 'guestCpus'
-        property :id, as: 'id'
-        property :image_space_gb, as: 'imageSpaceGb'
-        property :kind, as: 'kind'
-        property :maximum_persistent_disks, as: 'maximumPersistentDisks'
-        property :maximum_persistent_disks_size_gb, as: 'maximumPersistentDisksSizeGb'
-        property :memory_mb, as: 'memoryMb'
-        property :name, as: 'name'
-        collection :scratch_disks, as: 'scratchDisks', class: Google::Apis::ComputeV1::MachineType::ScratchDisk, decorator: Google::Apis::ComputeV1::MachineTypeRepresentation::ScratchDiskRepresentation
-        
-        
-        property :self_link, as: 'selfLink'
-        property :zone, as: 'zone'
-        
-        # @private
-        class ScratchDiskRepresentation < Google::Apis::Core::JsonRepresentation
-          property :disk_gb, as: 'diskGb'
-        end
-      end
-
-      # @private
-      class MachineTypeAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        hash :items, as: 'items', class: Google::Apis::ComputeV1::MachineTypesScopedList, decorator: Google::Apis::ComputeV1::MachineTypesScopedListRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class MachineTypeListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::MachineType, decorator: Google::Apis::ComputeV1::MachineTypeRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class MachineTypesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        collection :machine_types, as: 'machineTypes', class: Google::Apis::ComputeV1::MachineType, decorator: Google::Apis::ComputeV1::MachineTypeRepresentation
-        
-        
-        property :warning, as: 'warning', class: Google::Apis::ComputeV1::MachineTypesScopedList::Warning, decorator: Google::Apis::ComputeV1::MachineTypesScopedListRepresentation::WarningRepresentation
-        
-        
-        # @private
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :code, as: 'code'
-          collection :data, as: 'data', class: Google::Apis::ComputeV1::MachineTypesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::MachineTypesScopedListRepresentation::WarningRepresentation::DatumRepresentation
-          
-          
-          property :message, as: 'message'
-          
-          # @private
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            property :key, as: 'key'
-            property :value, as: 'value'
-          end
-        end
-      end
-
-      # @private
-      class MetadataRepresentation < Google::Apis::Core::JsonRepresentation
-        class ItemRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :fingerprint, :base64 => true, as: 'fingerprint'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::Metadata::Item, decorator: Google::Apis::ComputeV1::MetadataRepresentation::ItemRepresentation
-        
-        
-        property :kind, as: 'kind'
-        
-        # @private
-        class ItemRepresentation < Google::Apis::Core::JsonRepresentation
-          property :key, as: 'key'
-          property :value, as: 'value'
-        end
-      end
-
-      # @private
-      class NetworkRepresentation < Google::Apis::Core::JsonRepresentation
-        property :i_pv4_range, as: 'IPv4Range'
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        property :gateway_i_pv4, as: 'gatewayIPv4'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class NetworkInterfaceRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :access_configs, as: 'accessConfigs', class: Google::Apis::ComputeV1::AccessConfig, decorator: Google::Apis::ComputeV1::AccessConfigRepresentation
-        
-        
-        property :name, as: 'name'
-        property :network, as: 'network'
-        property :network_ip, as: 'networkIP'
-      end
-
-      # @private
-      class NetworkListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::Network, decorator: Google::Apis::ComputeV1::NetworkRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class OperationRepresentation < Google::Apis::Core::JsonRepresentation
-        class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :client_operation_id, as: 'clientOperationId'
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :end_time, as: 'endTime'
-        property :error, as: 'error', class: Google::Apis::ComputeV1::Operation::Error, decorator: Google::Apis::ComputeV1::OperationRepresentation::ErrorRepresentation
-        
-        property :http_error_message, as: 'httpErrorMessage'
-        property :http_error_status_code, as: 'httpErrorStatusCode'
-        property :id, as: 'id'
-        property :insert_time, as: 'insertTime'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :operation_type, as: 'operationType'
-        property :progress, as: 'progress'
-        property :region, as: 'region'
-        property :self_link, as: 'selfLink'
-        property :start_time, as: 'startTime'
-        property :status, as: 'status'
-        property :status_message, as: 'statusMessage'
-        property :target_id, as: 'targetId'
-        property :target_link, as: 'targetLink'
-        property :user, as: 'user'
-        collection :warnings, as: 'warnings', class: Google::Apis::ComputeV1::Operation::Warning, decorator: Google::Apis::ComputeV1::OperationRepresentation::WarningRepresentation
-        
-        
-        property :zone, as: 'zone'
-        
-        # @private
-        class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
-          class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
-          collection :errors, as: 'errors', class: Google::Apis::ComputeV1::Operation::Error::Error, decorator: Google::Apis::ComputeV1::OperationRepresentation::ErrorRepresentation::ErrorRepresentation
-          
-          
-          
-          # @private
-          class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
-            property :location, as: 'location'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::ScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::ScopedList::Warning::Datum::Representation
+        
             property :message, as: 'message'
           end
-        end
-        
-        # @private
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :code, as: 'code'
-          collection :data, as: 'data', class: Google::Apis::ComputeV1::Operation::Warning::Datum, decorator: Google::Apis::ComputeV1::OperationRepresentation::WarningRepresentation::DatumRepresentation
-          
-          
-          property :message, as: 'message'
           
           # @private
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            property :key, as: 'key'
-            property :value, as: 'value'
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
           end
         end
       end
-
+      
       # @private
-      class OperationAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        hash :items, as: 'items', class: Google::Apis::ComputeV1::OperationsScopedList, decorator: Google::Apis::ComputeV1::OperationsScopedListRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class OperationListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::Operation, decorator: Google::Apis::ComputeV1::OperationRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class OperationsScopedListRepresentation < Google::Apis::Core::JsonRepresentation
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        collection :operations, as: 'operations', class: Google::Apis::ComputeV1::Operation, decorator: Google::Apis::ComputeV1::OperationRepresentation
-        
-        
-        property :warning, as: 'warning', class: Google::Apis::ComputeV1::OperationsScopedList::Warning, decorator: Google::Apis::ComputeV1::OperationsScopedListRepresentation::WarningRepresentation
-        
-        
-        # @private
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :code, as: 'code'
-          collection :data, as: 'data', class: Google::Apis::ComputeV1::OperationsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::OperationsScopedListRepresentation::WarningRepresentation::DatumRepresentation
-          
-          
-          property :message, as: 'message'
-          
-          # @private
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            property :key, as: 'key'
-            property :value, as: 'value'
-          end
+      class AttachedDisk
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_delete, as: 'autoDelete'
+          property :boot, as: 'boot'
+          property :device_name, as: 'deviceName'
+          property :index, as: 'index'
+          property :initialize_params, as: 'initializeParams', class: Google::Apis::ComputeV1::AttachedDiskInitializeParams, decorator: Google::Apis::ComputeV1::AttachedDiskInitializeParams::Representation
+      
+          property :interface, as: 'interface'
+          property :kind, as: 'kind'
+          collection :licenses, as: 'licenses'
+          property :mode, as: 'mode'
+          property :source, as: 'source'
+          property :type, as: 'type'
         end
       end
-
+      
       # @private
-      class PathMatcherRepresentation < Google::Apis::Core::JsonRepresentation
-        property :default_service, as: 'defaultService'
-        property :description, as: 'description'
-        property :name, as: 'name'
-        collection :path_rules, as: 'pathRules', class: Google::Apis::ComputeV1::PathRule, decorator: Google::Apis::ComputeV1::PathRuleRepresentation
-      end
-
-      # @private
-      class PathRuleRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :paths, as: 'paths'
-        
-        property :service, as: 'service'
-      end
-
-      # @private
-      class ProjectRepresentation < Google::Apis::Core::JsonRepresentation
-        property :common_instance_metadata, as: 'commonInstanceMetadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::MetadataRepresentation
-        
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        collection :quotas, as: 'quotas', class: Google::Apis::ComputeV1::Quota, decorator: Google::Apis::ComputeV1::QuotaRepresentation
-        
-        
-        property :self_link, as: 'selfLink'
-        property :usage_export_location, as: 'usageExportLocation', class: Google::Apis::ComputeV1::UsageExportLocation, decorator: Google::Apis::ComputeV1::UsageExportLocationRepresentation
-      end
-
-      # @private
-      class QuotaRepresentation < Google::Apis::Core::JsonRepresentation
-        property :limit, as: 'limit'
-        property :metric, as: 'metric'
-        property :usage, as: 'usage'
-      end
-
-      # @private
-      class RegionRepresentation < Google::Apis::Core::JsonRepresentation
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatusRepresentation
-        
-        property :description, as: 'description'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        collection :quotas, as: 'quotas', class: Google::Apis::ComputeV1::Quota, decorator: Google::Apis::ComputeV1::QuotaRepresentation
-        
-        
-        property :self_link, as: 'selfLink'
-        property :status, as: 'status'
-        collection :zones, as: 'zones'
-      end
-
-      # @private
-      class RegionListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::Region, decorator: Google::Apis::ComputeV1::RegionRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class ResourceGroupReferenceRepresentation < Google::Apis::Core::JsonRepresentation
-        property :group, as: 'group'
-      end
-
-      # @private
-      class RouteRepresentation < Google::Apis::Core::JsonRepresentation
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        property :dest_range, as: 'destRange'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :network, as: 'network'
-        property :next_hop_gateway, as: 'nextHopGateway'
-        property :next_hop_instance, as: 'nextHopInstance'
-        property :next_hop_ip, as: 'nextHopIp'
-        property :next_hop_network, as: 'nextHopNetwork'
-        property :next_hop_vpn_tunnel, as: 'nextHopVpnTunnel'
-        property :priority, as: 'priority'
-        property :self_link, as: 'selfLink'
-        collection :tags, as: 'tags'
-        
-        collection :warnings, as: 'warnings', class: Google::Apis::ComputeV1::Route::Warning, decorator: Google::Apis::ComputeV1::RouteRepresentation::WarningRepresentation
-        
-        
-        
-        # @private
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :code, as: 'code'
-          collection :data, as: 'data', class: Google::Apis::ComputeV1::Route::Warning::Datum, decorator: Google::Apis::ComputeV1::RouteRepresentation::WarningRepresentation::DatumRepresentation
-          
-          
-          property :message, as: 'message'
-          
-          # @private
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            property :key, as: 'key'
-            property :value, as: 'value'
-          end
+      class AttachedDiskInitializeParams
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_name, as: 'diskName'
+          property :disk_size_gb, as: 'diskSizeGb'
+          property :disk_type, as: 'diskType'
+          property :source_image, as: 'sourceImage'
         end
       end
-
+      
       # @private
-      class RouteListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::Route, decorator: Google::Apis::ComputeV1::RouteRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class SchedulingRepresentation < Google::Apis::Core::JsonRepresentation
-        property :automatic_restart, as: 'automaticRestart'
-        property :on_host_maintenance, as: 'onHostMaintenance'
-      end
-
-      # @private
-      class SerialPortOutputRepresentation < Google::Apis::Core::JsonRepresentation
-        property :contents, as: 'contents'
-        property :kind, as: 'kind'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class ServiceAccountRepresentation < Google::Apis::Core::JsonRepresentation
-        property :email, as: 'email'
-        collection :scopes, as: 'scopes'
-      end
-
-      # @private
-      class SnapshotRepresentation < Google::Apis::Core::JsonRepresentation
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        property :disk_size_gb, as: 'diskSizeGb'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        collection :licenses, as: 'licenses'
-        
-        property :name, as: 'name'
-        property :self_link, as: 'selfLink'
-        property :source_disk, as: 'sourceDisk'
-        property :source_disk_id, as: 'sourceDiskId'
-        property :status, as: 'status'
-        property :storage_bytes, as: 'storageBytes'
-        property :storage_bytes_status, as: 'storageBytesStatus'
-      end
-
-      # @private
-      class SnapshotListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::Snapshot, decorator: Google::Apis::ComputeV1::SnapshotRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class TagsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :fingerprint, :base64 => true, as: 'fingerprint'
-        collection :items, as: 'items'
-      end
-
-      # @private
-      class TargetHttpProxyRepresentation < Google::Apis::Core::JsonRepresentation
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :self_link, as: 'selfLink'
-        property :url_map, as: 'urlMap'
-      end
-
-      # @private
-      class TargetHttpProxyListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::TargetHttpProxy, decorator: Google::Apis::ComputeV1::TargetHttpProxyRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class TargetInstanceRepresentation < Google::Apis::Core::JsonRepresentation
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        property :id, as: 'id'
-        property :instance, as: 'instance'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :nat_policy, as: 'natPolicy'
-        property :self_link, as: 'selfLink'
-        property :zone, as: 'zone'
-      end
-
-      # @private
-      class TargetInstanceAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        hash :items, as: 'items', class: Google::Apis::ComputeV1::TargetInstancesScopedList, decorator: Google::Apis::ComputeV1::TargetInstancesScopedListRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class TargetInstanceListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::TargetInstance, decorator: Google::Apis::ComputeV1::TargetInstanceRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class TargetInstancesScopedListRepresentation < Google::Apis::Core::JsonRepresentation
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        collection :target_instances, as: 'targetInstances', class: Google::Apis::ComputeV1::TargetInstance, decorator: Google::Apis::ComputeV1::TargetInstanceRepresentation
-        
-        
-        property :warning, as: 'warning', class: Google::Apis::ComputeV1::TargetInstancesScopedList::Warning, decorator: Google::Apis::ComputeV1::TargetInstancesScopedListRepresentation::WarningRepresentation
-        
-        
-        # @private
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :code, as: 'code'
-          collection :data, as: 'data', class: Google::Apis::ComputeV1::TargetInstancesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::TargetInstancesScopedListRepresentation::WarningRepresentation::DatumRepresentation
-          
-          
-          property :message, as: 'message'
-          
-          # @private
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            property :key, as: 'key'
-            property :value, as: 'value'
-          end
-        end
-      end
-
-      # @private
-      class TargetPoolRepresentation < Google::Apis::Core::JsonRepresentation
-        property :backup_pool, as: 'backupPool'
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        property :failover_ratio, as: 'failoverRatio'
-        collection :health_checks, as: 'healthChecks'
-        
-        property :id, as: 'id'
-        collection :instances, as: 'instances'
-        
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :region, as: 'region'
-        property :self_link, as: 'selfLink'
-        property :session_affinity, as: 'sessionAffinity'
-      end
-
-      # @private
-      class TargetPoolAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        hash :items, as: 'items', class: Google::Apis::ComputeV1::TargetPoolsScopedList, decorator: Google::Apis::ComputeV1::TargetPoolsScopedListRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class TargetPoolInstanceHealthRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :health_status, as: 'healthStatus', class: Google::Apis::ComputeV1::HealthStatus, decorator: Google::Apis::ComputeV1::HealthStatusRepresentation
-        
-        
-        property :kind, as: 'kind'
-      end
-
-      # @private
-      class TargetPoolListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::TargetPool, decorator: Google::Apis::ComputeV1::TargetPoolRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class TargetPoolsAddHealthCheckRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :health_checks, as: 'healthChecks', class: Google::Apis::ComputeV1::HealthCheckReference, decorator: Google::Apis::ComputeV1::HealthCheckReferenceRepresentation
-      end
-
-      # @private
-      class TargetPoolsAddInstanceRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :instances, as: 'instances', class: Google::Apis::ComputeV1::InstanceReference, decorator: Google::Apis::ComputeV1::InstanceReferenceRepresentation
-      end
-
-      # @private
-      class TargetPoolsRemoveHealthCheckRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :health_checks, as: 'healthChecks', class: Google::Apis::ComputeV1::HealthCheckReference, decorator: Google::Apis::ComputeV1::HealthCheckReferenceRepresentation
-      end
-
-      # @private
-      class TargetPoolsRemoveInstanceRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :instances, as: 'instances', class: Google::Apis::ComputeV1::InstanceReference, decorator: Google::Apis::ComputeV1::InstanceReferenceRepresentation
-      end
-
-      # @private
-      class TargetPoolsScopedListRepresentation < Google::Apis::Core::JsonRepresentation
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        collection :target_pools, as: 'targetPools', class: Google::Apis::ComputeV1::TargetPool, decorator: Google::Apis::ComputeV1::TargetPoolRepresentation
-        
-        
-        property :warning, as: 'warning', class: Google::Apis::ComputeV1::TargetPoolsScopedList::Warning, decorator: Google::Apis::ComputeV1::TargetPoolsScopedListRepresentation::WarningRepresentation
-        
-        
-        # @private
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :code, as: 'code'
-          collection :data, as: 'data', class: Google::Apis::ComputeV1::TargetPoolsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::TargetPoolsScopedListRepresentation::WarningRepresentation::DatumRepresentation
-          
-          
-          property :message, as: 'message'
-          
-          # @private
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            property :key, as: 'key'
-            property :value, as: 'value'
-          end
-        end
-      end
-
-      # @private
-      class TargetReferenceRepresentation < Google::Apis::Core::JsonRepresentation
-        property :target, as: 'target'
-      end
-
-      # @private
-      class TargetVpnGatewayRepresentation < Google::Apis::Core::JsonRepresentation
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        collection :forwarding_rules, as: 'forwardingRules'
-        
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :network, as: 'network'
-        property :region, as: 'region'
-        property :self_link, as: 'selfLink'
-        property :status, as: 'status'
-        collection :tunnels, as: 'tunnels'
-      end
-
-      # @private
-      class TargetVpnGatewayAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        hash :items, as: 'items', class: Google::Apis::ComputeV1::TargetVpnGatewaysScopedList, decorator: Google::Apis::ComputeV1::TargetVpnGatewaysScopedListRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class TargetVpnGatewayListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::TargetVpnGateway, decorator: Google::Apis::ComputeV1::TargetVpnGatewayRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class TargetVpnGatewaysScopedListRepresentation < Google::Apis::Core::JsonRepresentation
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        collection :target_vpn_gateways, as: 'targetVpnGateways', class: Google::Apis::ComputeV1::TargetVpnGateway, decorator: Google::Apis::ComputeV1::TargetVpnGatewayRepresentation
-        
-        
-        property :warning, as: 'warning', class: Google::Apis::ComputeV1::TargetVpnGatewaysScopedList::Warning, decorator: Google::Apis::ComputeV1::TargetVpnGatewaysScopedListRepresentation::WarningRepresentation
-        
-        
-        # @private
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :code, as: 'code'
-          collection :data, as: 'data', class: Google::Apis::ComputeV1::TargetVpnGatewaysScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::TargetVpnGatewaysScopedListRepresentation::WarningRepresentation::DatumRepresentation
-          
-          
-          property :message, as: 'message'
-          
-          # @private
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            property :key, as: 'key'
-            property :value, as: 'value'
-          end
-        end
-      end
-
-      # @private
-      class TestFailureRepresentation < Google::Apis::Core::JsonRepresentation
-        property :actual_service, as: 'actualService'
-        property :expected_service, as: 'expectedService'
-        property :host, as: 'host'
-        property :path, as: 'path'
-      end
-
-      # @private
-      class UrlMapRepresentation < Google::Apis::Core::JsonRepresentation
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :default_service, as: 'defaultService'
-        property :description, as: 'description'
-        property :fingerprint, :base64 => true, as: 'fingerprint'
-        collection :host_rules, as: 'hostRules', class: Google::Apis::ComputeV1::HostRule, decorator: Google::Apis::ComputeV1::HostRuleRepresentation
-        
-        
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        collection :path_matchers, as: 'pathMatchers', class: Google::Apis::ComputeV1::PathMatcher, decorator: Google::Apis::ComputeV1::PathMatcherRepresentation
-        
-        
-        property :self_link, as: 'selfLink'
-        collection :tests, as: 'tests', class: Google::Apis::ComputeV1::UrlMapTest, decorator: Google::Apis::ComputeV1::UrlMapTestRepresentation
-      end
-
-      # @private
-      class UrlMapListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::UrlMap, decorator: Google::Apis::ComputeV1::UrlMapRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class UrlMapReferenceRepresentation < Google::Apis::Core::JsonRepresentation
-        property :url_map, as: 'urlMap'
-      end
-
-      # @private
-      class UrlMapTestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :description, as: 'description'
-        property :host, as: 'host'
-        property :path, as: 'path'
-        property :service, as: 'service'
-      end
-
-      # @private
-      class UrlMapValidationResultRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :load_errors, as: 'loadErrors'
-        
-        property :load_succeeded, as: 'loadSucceeded'
-        collection :test_failures, as: 'testFailures', class: Google::Apis::ComputeV1::TestFailure, decorator: Google::Apis::ComputeV1::TestFailureRepresentation
-        
-        
-        property :test_passed, as: 'testPassed'
-      end
-
-      # @private
-      class UrlMapsValidateRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :resource, as: 'resource', class: Google::Apis::ComputeV1::UrlMap, decorator: Google::Apis::ComputeV1::UrlMapRepresentation
-      end
-
-      # @private
-      class UrlMapsValidateResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :result, as: 'result', class: Google::Apis::ComputeV1::UrlMapValidationResult, decorator: Google::Apis::ComputeV1::UrlMapValidationResultRepresentation
-      end
-
-      # @private
-      class UsageExportLocationRepresentation < Google::Apis::Core::JsonRepresentation
-        property :bucket_name, as: 'bucketName'
-        property :report_name_prefix, as: 'reportNamePrefix'
-      end
-
-      # @private
-      class VpnTunnelRepresentation < Google::Apis::Core::JsonRepresentation
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        property :detailed_status, as: 'detailedStatus'
-        property :id, as: 'id'
-        collection :ike_networks, as: 'ikeNetworks'
-        
-        property :ike_version, as: 'ikeVersion'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :peer_ip, as: 'peerIp'
-        property :region, as: 'region'
-        property :self_link, as: 'selfLink'
-        property :shared_secret, as: 'sharedSecret'
-        property :shared_secret_hash, as: 'sharedSecretHash'
-        property :status, as: 'status'
-        property :target_vpn_gateway, as: 'targetVpnGateway'
-      end
-
-      # @private
-      class VpnTunnelAggregatedListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        hash :items, as: 'items', class: Google::Apis::ComputeV1::VpnTunnelsScopedList, decorator: Google::Apis::ComputeV1::VpnTunnelsScopedListRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class VpnTunnelListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::VpnTunnel, decorator: Google::Apis::ComputeV1::VpnTunnelRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
-      end
-
-      # @private
-      class VpnTunnelsScopedListRepresentation < Google::Apis::Core::JsonRepresentation
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        collection :vpn_tunnels, as: 'vpnTunnels', class: Google::Apis::ComputeV1::VpnTunnel, decorator: Google::Apis::ComputeV1::VpnTunnelRepresentation
-        
-        
-        property :warning, as: 'warning', class: Google::Apis::ComputeV1::VpnTunnelsScopedList::Warning, decorator: Google::Apis::ComputeV1::VpnTunnelsScopedListRepresentation::WarningRepresentation
-        
-        
-        # @private
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :code, as: 'code'
-          collection :data, as: 'data', class: Google::Apis::ComputeV1::VpnTunnelsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::VpnTunnelsScopedListRepresentation::WarningRepresentation::DatumRepresentation
-          
-          
-          property :message, as: 'message'
-          
-          # @private
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            property :key, as: 'key'
-            property :value, as: 'value'
-          end
-        end
-      end
-
-      # @private
-      class ZoneRepresentation < Google::Apis::Core::JsonRepresentation
-        class MaintenanceWindowRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatusRepresentation
-        
-        property :description, as: 'description'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        collection :maintenance_windows, as: 'maintenanceWindows', class: Google::Apis::ComputeV1::Zone::MaintenanceWindow, decorator: Google::Apis::ComputeV1::ZoneRepresentation::MaintenanceWindowRepresentation
-        
-        
-        property :name, as: 'name'
-        property :region, as: 'region'
-        property :self_link, as: 'selfLink'
-        property :status, as: 'status'
-        
-        # @private
-        class MaintenanceWindowRepresentation < Google::Apis::Core::JsonRepresentation
-          property :begin_time, as: 'beginTime'
+      class Backend
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :balancing_mode, as: 'balancingMode'
+          property :capacity_scaler, as: 'capacityScaler'
           property :description, as: 'description'
-          property :end_time, as: 'endTime'
-          property :name, as: 'name'
+          property :group, as: 'group'
+          property :max_rate, as: 'maxRate'
+          property :max_rate_per_instance, as: 'maxRatePerInstance'
+          property :max_utilization, as: 'maxUtilization'
         end
       end
-
+      
       # @private
-      class ZoneListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ComputeV1::Zone, decorator: Google::Apis::ComputeV1::ZoneRepresentation
+      class BackendService
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backends, as: 'backends', class: Google::Apis::ComputeV1::Backend, decorator: Google::Apis::ComputeV1::Backend::Representation
+      
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          collection :health_checks, as: 'healthChecks'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :port, as: 'port'
+          property :port_name, as: 'portName'
+          property :protocol, as: 'protocol'
+          property :self_link, as: 'selfLink'
+          property :timeout_sec, as: 'timeoutSec'
+        end
+      end
+      
+      # @private
+      class BackendServiceGroupHealth
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :health_status, as: 'healthStatus', class: Google::Apis::ComputeV1::HealthStatus, decorator: Google::Apis::ComputeV1::HealthStatus::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
+      # @private
+      class BackendServiceList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::BackendService, decorator: Google::Apis::ComputeV1::BackendService::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class DeprecationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deleted, as: 'deleted'
+          property :deprecated, as: 'deprecated'
+          property :obsolete, as: 'obsolete'
+          property :replacement, as: 'replacement'
+          property :state, as: 'state'
+        end
+      end
+      
+      # @private
+      class Disk
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          collection :licenses, as: 'licenses'
+          property :name, as: 'name'
+          property :options, as: 'options'
+          property :self_link, as: 'selfLink'
+          property :size_gb, as: 'sizeGb'
+          property :source_image, as: 'sourceImage'
+          property :source_image_id, as: 'sourceImageId'
+          property :source_snapshot, as: 'sourceSnapshot'
+          property :source_snapshot_id, as: 'sourceSnapshotId'
+          property :status, as: 'status'
+          property :type, as: 'type'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      # @private
+      class DiskAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::DisksScopedList, decorator: Google::Apis::ComputeV1::DisksScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class DiskList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Disk, decorator: Google::Apis::ComputeV1::Disk::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class DiskMoveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_zone, as: 'destinationZone'
+          property :target_disk, as: 'targetDisk'
+        end
+      end
+      
+      # @private
+      class DiskType
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :default_disk_size_gb, as: 'defaultDiskSizeGb'
+          property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatus::Representation
+      
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :valid_disk_size, as: 'validDiskSize'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      # @private
+      class DiskTypeAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::DiskTypesScopedList, decorator: Google::Apis::ComputeV1::DiskTypesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class DiskTypeList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::DiskType, decorator: Google::Apis::ComputeV1::DiskType::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class DiskTypesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disk_types, as: 'diskTypes', class: Google::Apis::ComputeV1::DiskType, decorator: Google::Apis::ComputeV1::DiskType::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::DiskTypesScopedList::Warning, decorator: Google::Apis::ComputeV1::DiskTypesScopedList::Warning::Representation
+      
+        end
         
+        # @private
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::DiskTypesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::DiskTypesScopedList::Warning::Datum::Representation
         
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
+            property :message, as: 'message'
+          end
+          
+          # @private
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      # @private
+      class DisksScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disks, as: 'disks', class: Google::Apis::ComputeV1::Disk, decorator: Google::Apis::ComputeV1::Disk::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::DisksScopedList::Warning, decorator: Google::Apis::ComputeV1::DisksScopedList::Warning::Representation
+      
+        end
+        
+        # @private
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::DisksScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::DisksScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          # @private
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      # @private
+      class Firewall
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed, as: 'allowed', class: Google::Apis::ComputeV1::Firewall::Allowed, decorator: Google::Apis::ComputeV1::Firewall::Allowed::Representation
+      
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :self_link, as: 'selfLink'
+          collection :source_ranges, as: 'sourceRanges'
+          collection :source_tags, as: 'sourceTags'
+          collection :target_tags, as: 'targetTags'
+        end
+        
+        # @private
+        class Allowed
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :ip_protocol, as: 'IPProtocol'
+            collection :ports, as: 'ports'
+          end
+        end
+      end
+      
+      # @private
+      class FirewallList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Firewall, decorator: Google::Apis::ComputeV1::Firewall::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class ForwardingRule
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'IPAddress'
+          property :ip_protocol, as: 'IPProtocol'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :port_range, as: 'portRange'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :target, as: 'target'
+        end
+      end
+      
+      # @private
+      class ForwardingRuleAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::ForwardingRulesScopedList, decorator: Google::Apis::ComputeV1::ForwardingRulesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class ForwardingRuleList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::ForwardingRule, decorator: Google::Apis::ComputeV1::ForwardingRule::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class ForwardingRulesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :forwarding_rules, as: 'forwardingRules', class: Google::Apis::ComputeV1::ForwardingRule, decorator: Google::Apis::ComputeV1::ForwardingRule::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::ForwardingRulesScopedList::Warning, decorator: Google::Apis::ComputeV1::ForwardingRulesScopedList::Warning::Representation
+      
+        end
+        
+        # @private
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::ForwardingRulesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::ForwardingRulesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          # @private
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      # @private
+      class HealthCheckReference
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_check, as: 'healthCheck'
+        end
+      end
+      
+      # @private
+      class HealthStatus
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_state, as: 'healthState'
+          property :instance, as: 'instance'
+          property :ip_address, as: 'ipAddress'
+          property :port, as: 'port'
+        end
+      end
+      
+      # @private
+      class HostRule
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          collection :hosts, as: 'hosts'
+          property :path_matcher, as: 'pathMatcher'
+        end
+      end
+      
+      # @private
+      class HttpHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :check_interval_sec, as: 'checkIntervalSec'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :healthy_threshold, as: 'healthyThreshold'
+          property :host, as: 'host'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :port, as: 'port'
+          property :request_path, as: 'requestPath'
+          property :self_link, as: 'selfLink'
+          property :timeout_sec, as: 'timeoutSec'
+          property :unhealthy_threshold, as: 'unhealthyThreshold'
+        end
+      end
+      
+      # @private
+      class HttpHealthCheckList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::HttpHealthCheck, decorator: Google::Apis::ComputeV1::HttpHealthCheck::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class Image
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive_size_bytes, as: 'archiveSizeBytes'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatus::Representation
+      
+          property :description, as: 'description'
+          property :disk_size_gb, as: 'diskSizeGb'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          collection :licenses, as: 'licenses'
+          property :name, as: 'name'
+          property :raw_disk, as: 'rawDisk', class: Google::Apis::ComputeV1::Image::RawDisk, decorator: Google::Apis::ComputeV1::Image::RawDisk::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :source_disk, as: 'sourceDisk'
+          property :source_disk_id, as: 'sourceDiskId'
+          property :source_type, as: 'sourceType'
+          property :status, as: 'status'
+        end
+        
+        # @private
+        class RawDisk
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :container_type, as: 'containerType'
+            property :sha1_checksum, as: 'sha1Checksum'
+            property :source, as: 'source'
+          end
+        end
+      end
+      
+      # @private
+      class ImageList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Image, decorator: Google::Apis::ComputeV1::Image::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class Instance
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :can_ip_forward, as: 'canIpForward'
+          property :cpu_platform, as: 'cpuPlatform'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          collection :disks, as: 'disks', class: Google::Apis::ComputeV1::AttachedDisk, decorator: Google::Apis::ComputeV1::AttachedDisk::Representation
+      
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :machine_type, as: 'machineType'
+          property :metadata, as: 'metadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::Metadata::Representation
+      
+          property :name, as: 'name'
+          collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeV1::NetworkInterface, decorator: Google::Apis::ComputeV1::NetworkInterface::Representation
+      
+          property :scheduling, as: 'scheduling', class: Google::Apis::ComputeV1::Scheduling, decorator: Google::Apis::ComputeV1::Scheduling::Representation
+      
+          property :self_link, as: 'selfLink'
+          collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeV1::ServiceAccount, decorator: Google::Apis::ComputeV1::ServiceAccount::Representation
+      
+          property :status, as: 'status'
+          property :status_message, as: 'statusMessage'
+          property :tags, as: 'tags', class: Google::Apis::ComputeV1::Tags, decorator: Google::Apis::ComputeV1::Tags::Representation
+      
+          property :zone, as: 'zone'
+        end
+      end
+      
+      # @private
+      class InstanceAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::InstancesScopedList, decorator: Google::Apis::ComputeV1::InstancesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class InstanceList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Instance, decorator: Google::Apis::ComputeV1::Instance::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class InstanceMoveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_zone, as: 'destinationZone'
+          property :target_instance, as: 'targetInstance'
+        end
+      end
+      
+      # @private
+      class InstanceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :can_ip_forward, as: 'canIpForward'
+          property :description, as: 'description'
+          collection :disks, as: 'disks', class: Google::Apis::ComputeV1::AttachedDisk, decorator: Google::Apis::ComputeV1::AttachedDisk::Representation
+      
+          property :machine_type, as: 'machineType'
+          property :metadata, as: 'metadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::Metadata::Representation
+      
+          collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeV1::NetworkInterface, decorator: Google::Apis::ComputeV1::NetworkInterface::Representation
+      
+          property :scheduling, as: 'scheduling', class: Google::Apis::ComputeV1::Scheduling, decorator: Google::Apis::ComputeV1::Scheduling::Representation
+      
+          collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeV1::ServiceAccount, decorator: Google::Apis::ComputeV1::ServiceAccount::Representation
+      
+          property :tags, as: 'tags', class: Google::Apis::ComputeV1::Tags, decorator: Google::Apis::ComputeV1::Tags::Representation
+      
+        end
+      end
+      
+      # @private
+      class InstanceReference
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance'
+        end
+      end
+      
+      # @private
+      class InstanceTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :properties, as: 'properties', class: Google::Apis::ComputeV1::InstanceProperties, decorator: Google::Apis::ComputeV1::InstanceProperties::Representation
+      
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class InstanceTemplateList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::InstanceTemplate, decorator: Google::Apis::ComputeV1::InstanceTemplate::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class InstancesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::ComputeV1::Instance, decorator: Google::Apis::ComputeV1::Instance::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::InstancesScopedList::Warning, decorator: Google::Apis::ComputeV1::InstancesScopedList::Warning::Representation
+      
+        end
+        
+        # @private
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::InstancesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::InstancesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          # @private
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      # @private
+      class License
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :charges_use_fee, as: 'chargesUseFee'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class MachineType
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatus::Representation
+      
+          property :description, as: 'description'
+          property :guest_cpus, as: 'guestCpus'
+          property :id, as: 'id'
+          property :image_space_gb, as: 'imageSpaceGb'
+          property :kind, as: 'kind'
+          property :maximum_persistent_disks, as: 'maximumPersistentDisks'
+          property :maximum_persistent_disks_size_gb, as: 'maximumPersistentDisksSizeGb'
+          property :memory_mb, as: 'memoryMb'
+          property :name, as: 'name'
+          collection :scratch_disks, as: 'scratchDisks', class: Google::Apis::ComputeV1::MachineType::ScratchDisk, decorator: Google::Apis::ComputeV1::MachineType::ScratchDisk::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :zone, as: 'zone'
+        end
+        
+        # @private
+        class ScratchDisk
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :disk_gb, as: 'diskGb'
+          end
+        end
+      end
+      
+      # @private
+      class MachineTypeAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::MachineTypesScopedList, decorator: Google::Apis::ComputeV1::MachineTypesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class MachineTypeList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::MachineType, decorator: Google::Apis::ComputeV1::MachineType::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class MachineTypesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :machine_types, as: 'machineTypes', class: Google::Apis::ComputeV1::MachineType, decorator: Google::Apis::ComputeV1::MachineType::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::MachineTypesScopedList::Warning, decorator: Google::Apis::ComputeV1::MachineTypesScopedList::Warning::Representation
+      
+        end
+        
+        # @private
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::MachineTypesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::MachineTypesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          # @private
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      # @private
+      class Metadata
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Metadata::Item, decorator: Google::Apis::ComputeV1::Metadata::Item::Representation
+      
+          property :kind, as: 'kind'
+        end
+        
+        # @private
+        class Item
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :key, as: 'key'
+            property :value, as: 'value'
+          end
+        end
+      end
+      
+      # @private
+      class Network
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :i_pv4_range, as: 'IPv4Range'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :gateway_i_pv4, as: 'gatewayIPv4'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class NetworkInterface
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_configs, as: 'accessConfigs', class: Google::Apis::ComputeV1::AccessConfig, decorator: Google::Apis::ComputeV1::AccessConfig::Representation
+      
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :network_ip, as: 'networkIP'
+        end
+      end
+      
+      # @private
+      class NetworkList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Network, decorator: Google::Apis::ComputeV1::Network::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_operation_id, as: 'clientOperationId'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :end_time, as: 'endTime'
+          property :error, as: 'error', class: Google::Apis::ComputeV1::Operation::Error, decorator: Google::Apis::ComputeV1::Operation::Error::Representation
+      
+          property :http_error_message, as: 'httpErrorMessage'
+          property :http_error_status_code, as: 'httpErrorStatusCode'
+          property :id, as: 'id'
+          property :insert_time, as: 'insertTime'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :operation_type, as: 'operationType'
+          property :progress, as: 'progress'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :start_time, as: 'startTime'
+          property :status, as: 'status'
+          property :status_message, as: 'statusMessage'
+          property :target_id, as: 'targetId'
+          property :target_link, as: 'targetLink'
+          property :user, as: 'user'
+          collection :warnings, as: 'warnings', class: Google::Apis::ComputeV1::Operation::Warning, decorator: Google::Apis::ComputeV1::Operation::Warning::Representation
+      
+          property :zone, as: 'zone'
+        end
+        
+        # @private
+        class Error
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::ComputeV1::Operation::Error::Error, decorator: Google::Apis::ComputeV1::Operation::Error::Error::Representation
+        
+          end
+          
+          # @private
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+          end
+        end
+        
+        # @private
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::Operation::Warning::Datum, decorator: Google::Apis::ComputeV1::Operation::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          # @private
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      # @private
+      class OperationAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::OperationsScopedList, decorator: Google::Apis::ComputeV1::OperationsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class OperationList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Operation, decorator: Google::Apis::ComputeV1::Operation::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class OperationsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :operations, as: 'operations', class: Google::Apis::ComputeV1::Operation, decorator: Google::Apis::ComputeV1::Operation::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::OperationsScopedList::Warning, decorator: Google::Apis::ComputeV1::OperationsScopedList::Warning::Representation
+      
+        end
+        
+        # @private
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::OperationsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::OperationsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          # @private
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      # @private
+      class PathMatcher
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_service, as: 'defaultService'
+          property :description, as: 'description'
+          property :name, as: 'name'
+          collection :path_rules, as: 'pathRules', class: Google::Apis::ComputeV1::PathRule, decorator: Google::Apis::ComputeV1::PathRule::Representation
+      
+        end
+      end
+      
+      # @private
+      class PathRule
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :paths, as: 'paths'
+          property :service, as: 'service'
+        end
+      end
+      
+      # @private
+      class Project
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_instance_metadata, as: 'commonInstanceMetadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::Metadata::Representation
+      
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          collection :quotas, as: 'quotas', class: Google::Apis::ComputeV1::Quota, decorator: Google::Apis::ComputeV1::Quota::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :usage_export_location, as: 'usageExportLocation', class: Google::Apis::ComputeV1::UsageExportLocation, decorator: Google::Apis::ComputeV1::UsageExportLocation::Representation
+      
+        end
+      end
+      
+      # @private
+      class Quota
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :limit, as: 'limit'
+          property :metric, as: 'metric'
+          property :usage, as: 'usage'
+        end
+      end
+      
+      # @private
+      class Region
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatus::Representation
+      
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          collection :quotas, as: 'quotas', class: Google::Apis::ComputeV1::Quota, decorator: Google::Apis::ComputeV1::Quota::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :status, as: 'status'
+          collection :zones, as: 'zones'
+        end
+      end
+      
+      # @private
+      class RegionList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Region, decorator: Google::Apis::ComputeV1::Region::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class ResourceGroupReference
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group, as: 'group'
+        end
+      end
+      
+      # @private
+      class Route
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :dest_range, as: 'destRange'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :next_hop_gateway, as: 'nextHopGateway'
+          property :next_hop_instance, as: 'nextHopInstance'
+          property :next_hop_ip, as: 'nextHopIp'
+          property :next_hop_network, as: 'nextHopNetwork'
+          property :next_hop_vpn_tunnel, as: 'nextHopVpnTunnel'
+          property :priority, as: 'priority'
+          property :self_link, as: 'selfLink'
+          collection :tags, as: 'tags'
+          collection :warnings, as: 'warnings', class: Google::Apis::ComputeV1::Route::Warning, decorator: Google::Apis::ComputeV1::Route::Warning::Representation
+      
+        end
+        
+        # @private
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::Route::Warning::Datum, decorator: Google::Apis::ComputeV1::Route::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          # @private
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      # @private
+      class RouteList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Route, decorator: Google::Apis::ComputeV1::Route::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class Scheduling
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :automatic_restart, as: 'automaticRestart'
+          property :on_host_maintenance, as: 'onHostMaintenance'
+        end
+      end
+      
+      # @private
+      class SerialPortOutput
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contents, as: 'contents'
+          property :kind, as: 'kind'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class ServiceAccount
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          collection :scopes, as: 'scopes'
+        end
+      end
+      
+      # @private
+      class Snapshot
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :disk_size_gb, as: 'diskSizeGb'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          collection :licenses, as: 'licenses'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :source_disk, as: 'sourceDisk'
+          property :source_disk_id, as: 'sourceDiskId'
+          property :status, as: 'status'
+          property :storage_bytes, as: 'storageBytes'
+          property :storage_bytes_status, as: 'storageBytesStatus'
+        end
+      end
+      
+      # @private
+      class SnapshotList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Snapshot, decorator: Google::Apis::ComputeV1::Snapshot::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class Tags
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          collection :items, as: 'items'
+        end
+      end
+      
+      # @private
+      class TargetHttpProxy
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :url_map, as: 'urlMap'
+        end
+      end
+      
+      # @private
+      class TargetHttpProxyList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::TargetHttpProxy, decorator: Google::Apis::ComputeV1::TargetHttpProxy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class TargetInstance
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :instance, as: 'instance'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :nat_policy, as: 'natPolicy'
+          property :self_link, as: 'selfLink'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      # @private
+      class TargetInstanceAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::TargetInstancesScopedList, decorator: Google::Apis::ComputeV1::TargetInstancesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class TargetInstanceList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::TargetInstance, decorator: Google::Apis::ComputeV1::TargetInstance::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class TargetInstancesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :target_instances, as: 'targetInstances', class: Google::Apis::ComputeV1::TargetInstance, decorator: Google::Apis::ComputeV1::TargetInstance::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::TargetInstancesScopedList::Warning, decorator: Google::Apis::ComputeV1::TargetInstancesScopedList::Warning::Representation
+      
+        end
+        
+        # @private
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::TargetInstancesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::TargetInstancesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          # @private
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      # @private
+      class TargetPool
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_pool, as: 'backupPool'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :failover_ratio, as: 'failoverRatio'
+          collection :health_checks, as: 'healthChecks'
+          property :id, as: 'id'
+          collection :instances, as: 'instances'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :session_affinity, as: 'sessionAffinity'
+        end
+      end
+      
+      # @private
+      class TargetPoolAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::TargetPoolsScopedList, decorator: Google::Apis::ComputeV1::TargetPoolsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class TargetPoolInstanceHealth
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :health_status, as: 'healthStatus', class: Google::Apis::ComputeV1::HealthStatus, decorator: Google::Apis::ComputeV1::HealthStatus::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
+      # @private
+      class TargetPoolList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::TargetPool, decorator: Google::Apis::ComputeV1::TargetPool::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class AddHealthCheckRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :health_checks, as: 'healthChecks', class: Google::Apis::ComputeV1::HealthCheckReference, decorator: Google::Apis::ComputeV1::HealthCheckReference::Representation
+      
+        end
+      end
+      
+      # @private
+      class AddInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::ComputeV1::InstanceReference, decorator: Google::Apis::ComputeV1::InstanceReference::Representation
+      
+        end
+      end
+      
+      # @private
+      class RemoveHealthCheckRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :health_checks, as: 'healthChecks', class: Google::Apis::ComputeV1::HealthCheckReference, decorator: Google::Apis::ComputeV1::HealthCheckReference::Representation
+      
+        end
+      end
+      
+      # @private
+      class RemoveInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::ComputeV1::InstanceReference, decorator: Google::Apis::ComputeV1::InstanceReference::Representation
+      
+        end
+      end
+      
+      # @private
+      class TargetPoolsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :target_pools, as: 'targetPools', class: Google::Apis::ComputeV1::TargetPool, decorator: Google::Apis::ComputeV1::TargetPool::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::TargetPoolsScopedList::Warning, decorator: Google::Apis::ComputeV1::TargetPoolsScopedList::Warning::Representation
+      
+        end
+        
+        # @private
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::TargetPoolsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::TargetPoolsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          # @private
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      # @private
+      class TargetReference
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target, as: 'target'
+        end
+      end
+      
+      # @private
+      class TargetVpnGateway
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          collection :forwarding_rules, as: 'forwardingRules'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :status, as: 'status'
+          collection :tunnels, as: 'tunnels'
+        end
+      end
+      
+      # @private
+      class TargetVpnGatewayAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::TargetVpnGatewaysScopedList, decorator: Google::Apis::ComputeV1::TargetVpnGatewaysScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class TargetVpnGatewayList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::TargetVpnGateway, decorator: Google::Apis::ComputeV1::TargetVpnGateway::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class TargetVpnGatewaysScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :target_vpn_gateways, as: 'targetVpnGateways', class: Google::Apis::ComputeV1::TargetVpnGateway, decorator: Google::Apis::ComputeV1::TargetVpnGateway::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::TargetVpnGatewaysScopedList::Warning, decorator: Google::Apis::ComputeV1::TargetVpnGatewaysScopedList::Warning::Representation
+      
+        end
+        
+        # @private
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::TargetVpnGatewaysScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::TargetVpnGatewaysScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          # @private
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      # @private
+      class TestFailure
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actual_service, as: 'actualService'
+          property :expected_service, as: 'expectedService'
+          property :host, as: 'host'
+          property :path, as: 'path'
+        end
+      end
+      
+      # @private
+      class UrlMap
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :default_service, as: 'defaultService'
+          property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          collection :host_rules, as: 'hostRules', class: Google::Apis::ComputeV1::HostRule, decorator: Google::Apis::ComputeV1::HostRule::Representation
+      
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          collection :path_matchers, as: 'pathMatchers', class: Google::Apis::ComputeV1::PathMatcher, decorator: Google::Apis::ComputeV1::PathMatcher::Representation
+      
+          property :self_link, as: 'selfLink'
+          collection :tests, as: 'tests', class: Google::Apis::ComputeV1::UrlMapTest, decorator: Google::Apis::ComputeV1::UrlMapTest::Representation
+      
+        end
+      end
+      
+      # @private
+      class UrlMapList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::UrlMap, decorator: Google::Apis::ComputeV1::UrlMap::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class UrlMapReference
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :url_map, as: 'urlMap'
+        end
+      end
+      
+      # @private
+      class UrlMapTest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :host, as: 'host'
+          property :path, as: 'path'
+          property :service, as: 'service'
+        end
+      end
+      
+      # @private
+      class UrlMapValidationResult
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :load_errors, as: 'loadErrors'
+          property :load_succeeded, as: 'loadSucceeded'
+          collection :test_failures, as: 'testFailures', class: Google::Apis::ComputeV1::TestFailure, decorator: Google::Apis::ComputeV1::TestFailure::Representation
+      
+          property :test_passed, as: 'testPassed'
+        end
+      end
+      
+      # @private
+      class ValidateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource, as: 'resource', class: Google::Apis::ComputeV1::UrlMap, decorator: Google::Apis::ComputeV1::UrlMap::Representation
+      
+        end
+      end
+      
+      # @private
+      class ValidateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :result, as: 'result', class: Google::Apis::ComputeV1::UrlMapValidationResult, decorator: Google::Apis::ComputeV1::UrlMapValidationResult::Representation
+      
+        end
+      end
+      
+      # @private
+      class UsageExportLocation
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_name, as: 'bucketName'
+          property :report_name_prefix, as: 'reportNamePrefix'
+        end
+      end
+      
+      # @private
+      class VpnTunnel
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :detailed_status, as: 'detailedStatus'
+          property :id, as: 'id'
+          collection :ike_networks, as: 'ikeNetworks'
+          property :ike_version, as: 'ikeVersion'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :peer_ip, as: 'peerIp'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :shared_secret, as: 'sharedSecret'
+          property :shared_secret_hash, as: 'sharedSecretHash'
+          property :status, as: 'status'
+          property :target_vpn_gateway, as: 'targetVpnGateway'
+        end
+      end
+      
+      # @private
+      class VpnTunnelAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::VpnTunnelsScopedList, decorator: Google::Apis::ComputeV1::VpnTunnelsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class VpnTunnelList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::VpnTunnel, decorator: Google::Apis::ComputeV1::VpnTunnel::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class VpnTunnelsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :vpn_tunnels, as: 'vpnTunnels', class: Google::Apis::ComputeV1::VpnTunnel, decorator: Google::Apis::ComputeV1::VpnTunnel::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::VpnTunnelsScopedList::Warning, decorator: Google::Apis::ComputeV1::VpnTunnelsScopedList::Warning::Representation
+      
+        end
+        
+        # @private
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::VpnTunnelsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::VpnTunnelsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          # @private
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      # @private
+      class Zone
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatus::Representation
+      
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          collection :maintenance_windows, as: 'maintenanceWindows', class: Google::Apis::ComputeV1::Zone::MaintenanceWindow, decorator: Google::Apis::ComputeV1::Zone::MaintenanceWindow::Representation
+      
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :status, as: 'status'
+        end
+        
+        # @private
+        class MaintenanceWindow
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :begin_time, as: 'beginTime'
+            property :description, as: 'description'
+            property :end_time, as: 'endTime'
+            property :name, as: 'name'
+          end
+        end
+      end
+      
+      # @private
+      class ZoneList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Zone, decorator: Google::Apis::ComputeV1::Zone::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
       end
     end
   end

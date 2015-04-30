@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ResellerV1
-
+      
       # JSON template for address of a customer.
       class Address
         include Google::Apis::Core::Hashable
@@ -80,6 +80,11 @@ module Google
         attr_accessor :region
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @address_line1 = args[:address_line1] unless args[:address_line1].nil?
           @address_line2 = args[:address_line2] unless args[:address_line2].nil?
           @address_line3 = args[:address_line3] unless args[:address_line3].nil?
@@ -92,7 +97,7 @@ module Google
           @region = args[:region] unless args[:region].nil?
         end
       end
-
+      
       # JSON template for the ChangePlan rpc request.
       class ChangePlanRequest
         include Google::Apis::Core::Hashable
@@ -112,19 +117,24 @@ module Google
         # @return [String]
         attr_accessor :purchase_order_id
       
-        # Number/Limit of seats in the new plan.
+        # JSON template for subscription seats.
         # Corresponds to the JSON property `seats`
         # @return [Google::Apis::ResellerV1::Seats]
         attr_accessor :seats
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @plan_name = args[:plan_name] unless args[:plan_name].nil?
           @purchase_order_id = args[:purchase_order_id] unless args[:purchase_order_id].nil?
           @seats = args[:seats] unless args[:seats].nil?
         end
       end
-
+      
       # JSON template for a customer.
       class Customer
         include Google::Apis::Core::Hashable
@@ -154,7 +164,7 @@ module Google
         # @return [String]
         attr_accessor :phone_number
       
-        # The postal address of the customer.
+        # JSON template for address of a customer.
         # Corresponds to the JSON property `postalAddress`
         # @return [Google::Apis::ResellerV1::Address]
         attr_accessor :postal_address
@@ -165,6 +175,11 @@ module Google
         attr_accessor :resource_ui_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @alternate_email = args[:alternate_email] unless args[:alternate_email].nil?
           @customer_domain = args[:customer_domain] unless args[:customer_domain].nil?
           @customer_id = args[:customer_id] unless args[:customer_id].nil?
@@ -174,7 +189,7 @@ module Google
           @resource_ui_url = args[:resource_ui_url] unless args[:resource_ui_url].nil?
         end
       end
-
+      
       # JSON template for a subscription renewal settings.
       class RenewalSettings
         include Google::Apis::Core::Hashable
@@ -190,11 +205,16 @@ module Google
         attr_accessor :renewal_type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @renewal_type = args[:renewal_type] unless args[:renewal_type].nil?
         end
       end
-
+      
       # JSON template for subscription seats.
       class Seats
         include Google::Apis::Core::Hashable
@@ -223,13 +243,18 @@ module Google
         attr_accessor :number_of_seats
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @licensed_number_of_seats = args[:licensed_number_of_seats] unless args[:licensed_number_of_seats].nil?
           @maximum_number_of_seats = args[:maximum_number_of_seats] unless args[:maximum_number_of_seats].nil?
           @number_of_seats = args[:number_of_seats] unless args[:number_of_seats].nil?
         end
       end
-
+      
       # JSON template for a subscription.
       class Subscription
         include Google::Apis::Core::Hashable
@@ -264,7 +289,7 @@ module Google
         # @return [String]
         attr_accessor :purchase_order_id
       
-        # Renewal settings of the subscription.
+        # JSON template for a subscription renewal settings.
         # Corresponds to the JSON property `renewalSettings`
         # @return [Google::Apis::ResellerV1::RenewalSettings]
         attr_accessor :renewal_settings
@@ -274,7 +299,7 @@ module Google
         # @return [String]
         attr_accessor :resource_ui_url
       
-        # Number/Limit of seats in the new plan.
+        # JSON template for subscription seats.
         # Corresponds to the JSON property `seats`
         # @return [Google::Apis::ResellerV1::Seats]
         attr_accessor :seats
@@ -305,6 +330,11 @@ module Google
         attr_accessor :trial_settings
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @billing_method = args[:billing_method] unless args[:billing_method].nil?
           @creation_time = args[:creation_time] unless args[:creation_time].nil?
           @customer_id = args[:customer_id] unless args[:customer_id].nil?
@@ -320,6 +350,7 @@ module Google
           @transfer_info = args[:transfer_info] unless args[:transfer_info].nil?
           @trial_settings = args[:trial_settings] unless args[:trial_settings].nil?
         end
+        
         # Plan details of the subscription
         class Plan
           include Google::Apis::Core::Hashable
@@ -341,10 +372,16 @@ module Google
           attr_accessor :plan_name
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @commitment_interval = args[:commitment_interval] unless args[:commitment_interval].nil?
             @is_commitment_plan = args[:is_commitment_plan] unless args[:is_commitment_plan].nil?
             @plan_name = args[:plan_name] unless args[:plan_name].nil?
           end
+          
           # Interval of the commitment if it is a commitment plan.
           class CommitmentInterval
             include Google::Apis::Core::Hashable
@@ -360,11 +397,17 @@ module Google
             attr_accessor :start_time
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @end_time = args[:end_time] unless args[:end_time].nil?
               @start_time = args[:start_time] unless args[:start_time].nil?
             end
           end
         end
+        
         # Transfer related information for the subscription.
         class TransferInfo
           include Google::Apis::Core::Hashable
@@ -380,10 +423,16 @@ module Google
           attr_accessor :transferability_expiration_time
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @minimum_transferable_seats = args[:minimum_transferable_seats] unless args[:minimum_transferable_seats].nil?
             @transferability_expiration_time = args[:transferability_expiration_time] unless args[:transferability_expiration_time].nil?
           end
         end
+        
         # Trial Settings of the subscription.
         class TrialSettings
           include Google::Apis::Core::Hashable
@@ -400,12 +449,17 @@ module Google
           attr_accessor :trial_end_time
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @is_in_trial = args[:is_in_trial] unless args[:is_in_trial].nil?
             @trial_end_time = args[:trial_end_time] unless args[:trial_end_time].nil?
           end
         end
       end
-
+      
       # JSON template for a subscription list.
       class Subscriptions
         include Google::Apis::Core::Hashable
@@ -427,6 +481,11 @@ module Google
         attr_accessor :subscriptions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @subscriptions = args[:subscriptions] unless args[:subscriptions].nil?

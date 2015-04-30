@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AnalyticsV3
-
+      
       # JSON template for Analytics account entry.
       class Account
         include Google::Apis::Core::Hashable
@@ -68,6 +68,11 @@ module Google
         attr_accessor :updated
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @child_link = args[:child_link] unless args[:child_link].nil?
           @created = args[:created] unless args[:created].nil?
           @id = args[:id] unless args[:id].nil?
@@ -77,6 +82,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
           @updated = args[:updated] unless args[:updated].nil?
         end
+        
         # Child link for an account entry. Points to the list of web properties for this
         # account.
         class ChildLink
@@ -93,10 +99,16 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @href = args[:href] unless args[:href].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
+        
         # Permissions the user has for this account.
         class Permissions
           include Google::Apis::Core::Hashable
@@ -108,11 +120,16 @@ module Google
           attr_accessor :effective
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @effective = args[:effective] unless args[:effective].nil?
           end
         end
       end
-
+      
       # JSON template for a linked account.
       class AccountRef
         include Google::Apis::Core::Hashable
@@ -138,13 +155,18 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @href = args[:href] unless args[:href].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # An AccountSummary collection lists a summary of accounts, properties and views
       # (profiles) to which the user has access. Each resource in the collection
       # corresponds to a single AccountSummary.
@@ -197,6 +219,11 @@ module Google
         attr_accessor :username
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -207,7 +234,7 @@ module Google
           @username = args[:username] unless args[:username].nil?
         end
       end
-
+      
       # JSON template for an Analytics AccountSummary. An AccountSummary is a
       # lightweight tree comprised of properties/profiles.
       class AccountSummary
@@ -234,19 +261,24 @@ module Google
         attr_accessor :web_properties
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
           @web_properties = args[:web_properties] unless args[:web_properties].nil?
         end
       end
-
+      
       # JSON template for an Analytics account ticket. The account ticket consists of
       # the ticket ID and the basic information for the account, property and profile.
       class AccountTicket
         include Google::Apis::Core::Hashable
       
-        # Account for this ticket.
+        # JSON template for Analytics account entry.
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::AnalyticsV3::Account]
         attr_accessor :account
@@ -261,7 +293,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # View (Profile) for the account.
+        # JSON template for an Analytics view (profile).
         # Corresponds to the JSON property `profile`
         # @return [Google::Apis::AnalyticsV3::Profile]
         attr_accessor :profile
@@ -272,12 +304,17 @@ module Google
         # @return [String]
         attr_accessor :redirect_uri
       
-        # Web property for the account.
+        # JSON template for an Analytics web property.
         # Corresponds to the JSON property `webproperty`
         # @return [Google::Apis::AnalyticsV3::Webproperty]
         attr_accessor :webproperty
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account = args[:account] unless args[:account].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -286,7 +323,7 @@ module Google
           @webproperty = args[:webproperty] unless args[:webproperty].nil?
         end
       end
-
+      
       # An account collection provides a list of Analytics accounts to which a user
       # has access. The account collection is the entry point to all management
       # information. Each resource in the collection corresponds to a single Analytics
@@ -340,6 +377,11 @@ module Google
         attr_accessor :username
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -350,7 +392,7 @@ module Google
           @username = args[:username] unless args[:username].nil?
         end
       end
-
+      
       # JSON template for an AdWords account.
       class AdWordsAccount
         include Google::Apis::Core::Hashable
@@ -373,12 +415,17 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @auto_tagging_enabled = args[:auto_tagging_enabled] unless args[:auto_tagging_enabled].nil?
           @customer_id = args[:customer_id] unless args[:customer_id].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Request template for the delete upload data request.
       class DataimportDeleteUploadDataRequest
         include Google::Apis::Core::Hashable
@@ -389,10 +436,15 @@ module Google
         attr_accessor :custom_data_import_uids
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @custom_data_import_uids = args[:custom_data_import_uids] unless args[:custom_data_import_uids].nil?
         end
       end
-
+      
       # JSON template for a metadata column.
       class Column
         include Google::Apis::Core::Hashable
@@ -413,12 +465,17 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @attributes = args[:attributes] unless args[:attributes].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Lists columns (dimensions and metrics) for a particular report type.
       class Columns
         include Google::Apis::Core::Hashable
@@ -450,6 +507,11 @@ module Google
         attr_accessor :total_results
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @attribute_names = args[:attribute_names] unless args[:attribute_names].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
@@ -457,7 +519,7 @@ module Google
           @total_results = args[:total_results] unless args[:total_results].nil?
         end
       end
-
+      
       # JSON template for an Analytics custom data source.
       class CustomDataSource
         include Google::Apis::Core::Hashable
@@ -540,6 +602,11 @@ module Google
         attr_accessor :web_property_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @child_link = args[:child_link] unless args[:child_link].nil?
           @created = args[:created] unless args[:created].nil?
@@ -556,6 +623,7 @@ module Google
           @upload_type = args[:upload_type] unless args[:upload_type].nil?
           @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
         end
+        
         # 
         class ChildLink
           include Google::Apis::Core::Hashable
@@ -572,10 +640,16 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @href = args[:href] unless args[:href].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
+        
         # Parent link for this custom data source. Points to the web property to which
         # this custom data source belongs.
         class ParentLink
@@ -592,12 +666,17 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @href = args[:href] unless args[:href].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
       end
-
+      
       # Lists Analytics custom data sources to which the user has access. Each
       # resource in the collection corresponds to a single Analytics custom data
       # source.
@@ -650,6 +729,11 @@ module Google
         attr_accessor :username
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -660,7 +744,7 @@ module Google
           @username = args[:username] unless args[:username].nil?
         end
       end
-
+      
       # JSON template for Analytics Custom Dimension.
       class CustomDimension
         include Google::Apis::Core::Hashable
@@ -729,6 +813,11 @@ module Google
         attr_accessor :web_property_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @active = args[:active] unless args[:active].nil?
           @created = args[:created] unless args[:created].nil?
@@ -742,6 +831,7 @@ module Google
           @updated = args[:updated] unless args[:updated].nil?
           @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
         end
+        
         # Parent link for the custom dimension. Points to the property to which the
         # custom dimension belongs.
         class ParentLink
@@ -758,12 +848,17 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @href = args[:href] unless args[:href].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
       end
-
+      
       # A custom dimension collection lists Analytics custom dimensions to which the
       # user has access. Each resource in the collection corresponds to a single
       # Analytics custom dimension.
@@ -816,6 +911,11 @@ module Google
         attr_accessor :username
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -826,7 +926,7 @@ module Google
           @username = args[:username] unless args[:username].nil?
         end
       end
-
+      
       # JSON template for Analytics Custom Metric.
       class CustomMetric
         include Google::Apis::Core::Hashable
@@ -910,6 +1010,11 @@ module Google
         attr_accessor :web_property_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @active = args[:active] unless args[:active].nil?
           @created = args[:created] unless args[:created].nil?
@@ -926,6 +1031,7 @@ module Google
           @updated = args[:updated] unless args[:updated].nil?
           @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
         end
+        
         # Parent link for the custom metric. Points to the property to which the custom
         # metric belongs.
         class ParentLink
@@ -942,12 +1048,17 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @href = args[:href] unless args[:href].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
       end
-
+      
       # A custom metric collection lists Analytics custom metrics to which the user
       # has access. Each resource in the collection corresponds to a single Analytics
       # custom metric.
@@ -1000,6 +1111,11 @@ module Google
         attr_accessor :username
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1010,7 +1126,7 @@ module Google
           @username = args[:username] unless args[:username].nil?
         end
       end
-
+      
       # JSON template for Analytics Entity AdWords Link.
       class EntityAdWordsLink
         include Google::Apis::Core::Hashable
@@ -1052,6 +1168,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ad_words_accounts = args[:ad_words_accounts] unless args[:ad_words_accounts].nil?
           @entity = args[:entity] unless args[:entity].nil?
           @id = args[:id] unless args[:id].nil?
@@ -1060,21 +1181,27 @@ module Google
           @profile_ids = args[:profile_ids] unless args[:profile_ids].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
+        
         # Web property being linked.
         class Entity
           include Google::Apis::Core::Hashable
         
-          # 
+          # JSON template for a web property reference.
           # Corresponds to the JSON property `webPropertyRef`
           # @return [Google::Apis::AnalyticsV3::WebPropertyRef]
           attr_accessor :web_property_ref
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @web_property_ref = args[:web_property_ref] unless args[:web_property_ref].nil?
           end
         end
       end
-
+      
       # An entity AdWords link collection provides a list of GA-AdWords links Each
       # resource in this collection corresponds to a single link.
       class EntityAdWordsLinks
@@ -1121,6 +1248,11 @@ module Google
         attr_accessor :total_results
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1130,7 +1262,7 @@ module Google
           @total_results = args[:total_results] unless args[:total_results].nil?
         end
       end
-
+      
       # JSON template for an Analytics Entity-User Link. Returns permissions that a
       # user has for an entity.
       class EntityUserLink
@@ -1162,12 +1294,17 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # User reference.
+        # JSON template for a user reference.
         # Corresponds to the JSON property `userRef`
         # @return [Google::Apis::AnalyticsV3::UserRef]
         attr_accessor :user_ref
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entity = args[:entity] unless args[:entity].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1175,32 +1312,39 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
           @user_ref = args[:user_ref] unless args[:user_ref].nil?
         end
+        
         # Entity for this link. It can be an account, a web property, or a view (profile)
         # .
         class Entity
           include Google::Apis::Core::Hashable
         
-          # Account for this link.
+          # JSON template for a linked account.
           # Corresponds to the JSON property `accountRef`
           # @return [Google::Apis::AnalyticsV3::AccountRef]
           attr_accessor :account_ref
         
-          # View (Profile) for this link.
+          # JSON template for a linked view (profile).
           # Corresponds to the JSON property `profileRef`
           # @return [Google::Apis::AnalyticsV3::ProfileRef]
           attr_accessor :profile_ref
         
-          # Web property for this link.
+          # JSON template for a web property reference.
           # Corresponds to the JSON property `webPropertyRef`
           # @return [Google::Apis::AnalyticsV3::WebPropertyRef]
           attr_accessor :web_property_ref
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @account_ref = args[:account_ref] unless args[:account_ref].nil?
             @profile_ref = args[:profile_ref] unless args[:profile_ref].nil?
             @web_property_ref = args[:web_property_ref] unless args[:web_property_ref].nil?
           end
         end
+        
         # Permissions the user has for this entity.
         class Permissions
           include Google::Apis::Core::Hashable
@@ -1220,12 +1364,17 @@ module Google
           attr_accessor :local
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @effective = args[:effective] unless args[:effective].nil?
             @local = args[:local] unless args[:local].nil?
           end
         end
       end
-
+      
       # An entity user link collection provides a list of Analytics ACL links Each
       # resource in this collection corresponds to a single link.
       class EntityUserLinks
@@ -1272,6 +1421,11 @@ module Google
         attr_accessor :total_results
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1281,7 +1435,7 @@ module Google
           @total_results = args[:total_results] unless args[:total_results].nil?
         end
       end
-
+      
       # JSON template for Analytics experiment resource.
       class Experiment
         include Google::Apis::Core::Hashable
@@ -1477,6 +1631,11 @@ module Google
         alias_method :winner_found?, :winner_found
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @created = args[:created] unless args[:created].nil?
           @description = args[:description] unless args[:description].nil?
@@ -1506,6 +1665,7 @@ module Google
           @winner_confidence_level = args[:winner_confidence_level] unless args[:winner_confidence_level].nil?
           @winner_found = args[:winner_found] unless args[:winner_found].nil?
         end
+        
         # Parent link for an experiment. Points to the view (profile) to which this
         # experiment belongs.
         class ParentLink
@@ -1523,10 +1683,16 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @href = args[:href] unless args[:href].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
+        
         # 
         class Variation
           include Google::Apis::Core::Hashable
@@ -1564,6 +1730,11 @@ module Google
           alias_method :won?, :won
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @name = args[:name] unless args[:name].nil?
             @status = args[:status] unless args[:status].nil?
             @url = args[:url] unless args[:url].nil?
@@ -1572,7 +1743,7 @@ module Google
           end
         end
       end
-
+      
       # An experiment collection lists Analytics experiments to which the user has
       # access. Each view (profile) can have a set of experiments. Each resource in
       # the Experiment collection corresponds to a single Analytics experiment.
@@ -1625,6 +1796,11 @@ module Google
         attr_accessor :username
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1635,7 +1811,7 @@ module Google
           @username = args[:username] unless args[:username].nil?
         end
       end
-
+      
       # JSON template for an Analytics account filter.
       class Filter
         include Google::Apis::Core::Hashable
@@ -1655,7 +1831,7 @@ module Google
         # @return [DateTime]
         attr_accessor :created
       
-        # Details for the filter of the type EXCLUDE.
+        # JSON template for an Analytics filter expression.
         # Corresponds to the JSON property `excludeDetails`
         # @return [Google::Apis::AnalyticsV3::FilterExpression]
         attr_accessor :exclude_details
@@ -1665,7 +1841,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Details for the filter of the type INCLUDE.
+        # JSON template for an Analytics filter expression.
         # Corresponds to the JSON property `includeDetails`
         # @return [Google::Apis::AnalyticsV3::FilterExpression]
         attr_accessor :include_details
@@ -1718,6 +1894,11 @@ module Google
         attr_accessor :uppercase_details
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @advanced_details = args[:advanced_details] unless args[:advanced_details].nil?
           @created = args[:created] unless args[:created].nil?
@@ -1734,6 +1915,7 @@ module Google
           @updated = args[:updated] unless args[:updated].nil?
           @uppercase_details = args[:uppercase_details] unless args[:uppercase_details].nil?
         end
+        
         # Details for the filter of the type ADVANCED.
         class AdvancedDetails
           include Google::Apis::Core::Hashable
@@ -1794,6 +1976,11 @@ module Google
           alias_method :override_output_field?, :override_output_field
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @case_sensitive = args[:case_sensitive] unless args[:case_sensitive].nil?
             @extract_a = args[:extract_a] unless args[:extract_a].nil?
             @extract_b = args[:extract_b] unless args[:extract_b].nil?
@@ -1806,6 +1993,7 @@ module Google
             @override_output_field = args[:override_output_field] unless args[:override_output_field].nil?
           end
         end
+        
         # Details for the filter of the type LOWER.
         class LowercaseDetails
           include Google::Apis::Core::Hashable
@@ -1816,9 +2004,15 @@ module Google
           attr_accessor :field
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @field = args[:field] unless args[:field].nil?
           end
         end
+        
         # Parent link for this filter. Points to the account to which this filter
         # belongs.
         class ParentLink
@@ -1835,10 +2029,16 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @href = args[:href] unless args[:href].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
+        
         # Details for the filter of the type SEARCH_AND_REPLACE.
         class SearchAndReplaceDetails
           include Google::Apis::Core::Hashable
@@ -1865,12 +2065,18 @@ module Google
           attr_accessor :search_string
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @case_sensitive = args[:case_sensitive] unless args[:case_sensitive].nil?
             @field = args[:field] unless args[:field].nil?
             @replace_string = args[:replace_string] unless args[:replace_string].nil?
             @search_string = args[:search_string] unless args[:search_string].nil?
           end
         end
+        
         # Details for the filter of the type UPPER.
         class UppercaseDetails
           include Google::Apis::Core::Hashable
@@ -1881,11 +2087,16 @@ module Google
           attr_accessor :field
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @field = args[:field] unless args[:field].nil?
           end
         end
       end
-
+      
       # JSON template for an Analytics filter expression.
       class FilterExpression
         include Google::Apis::Core::Hashable
@@ -2006,6 +2217,11 @@ module Google
         attr_accessor :match_type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @case_sensitive = args[:case_sensitive] unless args[:case_sensitive].nil?
           @expression_value = args[:expression_value] unless args[:expression_value].nil?
           @field = args[:field] unless args[:field].nil?
@@ -2013,7 +2229,7 @@ module Google
           @match_type = args[:match_type] unless args[:match_type].nil?
         end
       end
-
+      
       # JSON template for a profile filter link.
       class FilterRef
         include Google::Apis::Core::Hashable
@@ -2044,6 +2260,11 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @href = args[:href] unless args[:href].nil?
           @id = args[:id] unless args[:id].nil?
@@ -2051,7 +2272,7 @@ module Google
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # A filter collection lists filters created by users in an Analytics account.
       # Each resource in the collection corresponds to a filter.
       class Filters
@@ -2103,6 +2324,11 @@ module Google
         attr_accessor :username
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -2113,15 +2339,15 @@ module Google
           @username = args[:username] unless args[:username].nil?
         end
       end
-
+      
       # Analytics data for a given view (profile).
-      class GaData
+      class Data
         include Google::Apis::Core::Hashable
       
         # Column headers that list dimension names followed by the metric names. The
         # order of dimensions and metrics is same as specified in the request.
         # Corresponds to the JSON property `columnHeaders`
-        # @return [Array<Google::Apis::AnalyticsV3::GaData::ColumnHeader>]
+        # @return [Array<Google::Apis::AnalyticsV3::Data::ColumnHeader>]
         attr_accessor :column_headers
       
         # Determines if Analytics data contains samples.
@@ -2132,7 +2358,7 @@ module Google
       
         # 
         # Corresponds to the JSON property `dataTable`
-        # @return [Google::Apis::AnalyticsV3::GaData::DataTable]
+        # @return [Google::Apis::AnalyticsV3::Data::Table]
         attr_accessor :data_table
       
         # Unique ID for this data response.
@@ -2164,12 +2390,12 @@ module Google
       
         # Information for the view (profile), for which the Analytics data was requested.
         # Corresponds to the JSON property `profileInfo`
-        # @return [Google::Apis::AnalyticsV3::GaData::ProfileInfo]
+        # @return [Google::Apis::AnalyticsV3::Data::ProfileInfo]
         attr_accessor :profile_info
       
         # Analytics data request query parameters.
         # Corresponds to the JSON property `query`
-        # @return [Google::Apis::AnalyticsV3::GaData::Query]
+        # @return [Google::Apis::AnalyticsV3::Data::Query]
         attr_accessor :query
       
         # Analytics data rows, where each row contains a list of dimension values
@@ -2208,6 +2434,11 @@ module Google
         attr_accessor :totals_for_all_results
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @column_headers = args[:column_headers] unless args[:column_headers].nil?
           @contains_sampled_data = args[:contains_sampled_data] unless args[:contains_sampled_data].nil?
           @data_table = args[:data_table] unless args[:data_table].nil?
@@ -2225,6 +2456,7 @@ module Google
           @total_results = args[:total_results] unless args[:total_results].nil?
           @totals_for_all_results = args[:totals_for_all_results] unless args[:totals_for_all_results].nil?
         end
+        
         # 
         class ColumnHeader
           include Google::Apis::Core::Hashable
@@ -2247,29 +2479,41 @@ module Google
           attr_accessor :name
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @column_type = args[:column_type] unless args[:column_type].nil?
             @data_type = args[:data_type] unless args[:data_type].nil?
             @name = args[:name] unless args[:name].nil?
           end
         end
+        
         # 
-        class DataTable
+        class Table
           include Google::Apis::Core::Hashable
         
           # 
           # Corresponds to the JSON property `cols`
-          # @return [Array<Google::Apis::AnalyticsV3::GaData::DataTable::Col>]
+          # @return [Array<Google::Apis::AnalyticsV3::Data::Table::Col>]
           attr_accessor :cols
         
           # 
           # Corresponds to the JSON property `rows`
-          # @return [Array<Google::Apis::AnalyticsV3::GaData::DataTable::Row>]
+          # @return [Array<Google::Apis::AnalyticsV3::Data::Table::Row>]
           attr_accessor :rows
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @cols = args[:cols] unless args[:cols].nil?
             @rows = args[:rows] unless args[:rows].nil?
           end
+          
           # 
           class Col
             include Google::Apis::Core::Hashable
@@ -2290,23 +2534,35 @@ module Google
             attr_accessor :type
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @id = args[:id] unless args[:id].nil?
               @label = args[:label] unless args[:label].nil?
               @type = args[:type] unless args[:type].nil?
             end
           end
+          
           # 
           class Row
             include Google::Apis::Core::Hashable
           
             # 
             # Corresponds to the JSON property `c`
-            # @return [Array<Google::Apis::AnalyticsV3::GaData::DataTable::Row::C>]
+            # @return [Array<Google::Apis::AnalyticsV3::Data::Table::Row::C>]
             attr_accessor :c
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @c = args[:c] unless args[:c].nil?
             end
+            
             # 
             class C
               include Google::Apis::Core::Hashable
@@ -2317,11 +2573,17 @@ module Google
               attr_accessor :v
             
               def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
                 @v = args[:v] unless args[:v].nil?
               end
             end
           end
         end
+        
         # Information for the view (profile), for which the Analytics data was requested.
         class ProfileInfo
           include Google::Apis::Core::Hashable
@@ -2357,6 +2619,11 @@ module Google
           attr_accessor :web_property_id
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @account_id = args[:account_id] unless args[:account_id].nil?
             @internal_web_property_id = args[:internal_web_property_id] unless args[:internal_web_property_id].nil?
             @profile_id = args[:profile_id] unless args[:profile_id].nil?
@@ -2365,6 +2632,7 @@ module Google
             @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
           end
         end
+        
         # Analytics data request query parameters.
         class Query
           include Google::Apis::Core::Hashable
@@ -2425,6 +2693,11 @@ module Google
           attr_accessor :start_index
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @dimensions = args[:dimensions] unless args[:dimensions].nil?
             @end_date = args[:end_date] unless args[:end_date].nil?
             @filters = args[:filters] unless args[:filters].nil?
@@ -2439,7 +2712,7 @@ module Google
           end
         end
       end
-
+      
       # JSON template for Analytics goal resource.
       class Goal
         include Google::Apis::Core::Hashable
@@ -2539,6 +2812,11 @@ module Google
         attr_accessor :web_property_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @active = args[:active] unless args[:active].nil?
           @created = args[:created] unless args[:created].nil?
@@ -2558,6 +2836,7 @@ module Google
           @visit_time_on_site_details = args[:visit_time_on_site_details] unless args[:visit_time_on_site_details].nil?
           @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
         end
+        
         # Details for the goal of the type EVENT.
         class EventDetails
           include Google::Apis::Core::Hashable
@@ -2574,9 +2853,15 @@ module Google
           alias_method :use_event_value?, :use_event_value
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @event_conditions = args[:event_conditions] unless args[:event_conditions].nil?
             @use_event_value = args[:use_event_value] unless args[:use_event_value].nil?
           end
+          
           # 
           class EventCondition
             include Google::Apis::Core::Hashable
@@ -2609,6 +2894,11 @@ module Google
             attr_accessor :type
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @comparison_type = args[:comparison_type] unless args[:comparison_type].nil?
               @comparison_value = args[:comparison_value] unless args[:comparison_value].nil?
               @expression = args[:expression] unless args[:expression].nil?
@@ -2617,6 +2907,7 @@ module Google
             end
           end
         end
+        
         # Parent link for a goal. Points to the view (profile) to which this goal
         # belongs.
         class ParentLink
@@ -2633,10 +2924,16 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @href = args[:href] unless args[:href].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
+        
         # Details for the goal of the type URL_DESTINATION.
         class UrlDestinationDetails
           include Google::Apis::Core::Hashable
@@ -2670,12 +2967,18 @@ module Google
           attr_accessor :url
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @case_sensitive = args[:case_sensitive] unless args[:case_sensitive].nil?
             @first_step_required = args[:first_step_required] unless args[:first_step_required].nil?
             @match_type = args[:match_type] unless args[:match_type].nil?
             @steps = args[:steps] unless args[:steps].nil?
             @url = args[:url] unless args[:url].nil?
           end
+          
           # 
           class Step
             include Google::Apis::Core::Hashable
@@ -2696,12 +2999,18 @@ module Google
             attr_accessor :url
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @name = args[:name] unless args[:name].nil?
               @number = args[:number] unless args[:number].nil?
               @url = args[:url] unless args[:url].nil?
             end
           end
         end
+        
         # Details for the goal of the type VISIT_NUM_PAGES.
         class VisitNumPagesDetails
           include Google::Apis::Core::Hashable
@@ -2717,10 +3026,16 @@ module Google
           attr_accessor :comparison_value
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @comparison_type = args[:comparison_type] unless args[:comparison_type].nil?
             @comparison_value = args[:comparison_value] unless args[:comparison_value].nil?
           end
         end
+        
         # Details for the goal of the type VISIT_TIME_ON_SITE.
         class VisitTimeOnSiteDetails
           include Google::Apis::Core::Hashable
@@ -2736,12 +3051,17 @@ module Google
           attr_accessor :comparison_value
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @comparison_type = args[:comparison_type] unless args[:comparison_type].nil?
             @comparison_value = args[:comparison_value] unless args[:comparison_value].nil?
           end
         end
       end
-
+      
       # A goal collection lists Analytics goals to which the user has access. Each
       # view (profile) can have a set of goals. Each resource in the Goal collection
       # corresponds to a single Analytics goal.
@@ -2794,6 +3114,11 @@ module Google
         attr_accessor :username
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -2804,7 +3129,7 @@ module Google
           @username = args[:username] unless args[:username].nil?
         end
       end
-
+      
       # Multi-Channel Funnels data for a given view (profile).
       class McfData
         include Google::Apis::Core::Hashable
@@ -2894,6 +3219,11 @@ module Google
         attr_accessor :totals_for_all_results
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @column_headers = args[:column_headers] unless args[:column_headers].nil?
           @contains_sampled_data = args[:contains_sampled_data] unless args[:contains_sampled_data].nil?
           @id = args[:id] unless args[:id].nil?
@@ -2910,6 +3240,7 @@ module Google
           @total_results = args[:total_results] unless args[:total_results].nil?
           @totals_for_all_results = args[:totals_for_all_results] unless args[:totals_for_all_results].nil?
         end
+        
         # 
         class ColumnHeader
           include Google::Apis::Core::Hashable
@@ -2931,11 +3262,17 @@ module Google
           attr_accessor :name
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @column_type = args[:column_type] unless args[:column_type].nil?
             @data_type = args[:data_type] unless args[:data_type].nil?
             @name = args[:name] unless args[:name].nil?
           end
         end
+        
         # Information for the view (profile), for which the Analytics data was requested.
         class ProfileInfo
           include Google::Apis::Core::Hashable
@@ -2971,6 +3308,11 @@ module Google
           attr_accessor :web_property_id
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @account_id = args[:account_id] unless args[:account_id].nil?
             @internal_web_property_id = args[:internal_web_property_id] unless args[:internal_web_property_id].nil?
             @profile_id = args[:profile_id] unless args[:profile_id].nil?
@@ -2979,6 +3321,7 @@ module Google
             @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
           end
         end
+        
         # Analytics data request query parameters.
         class Query
           include Google::Apis::Core::Hashable
@@ -3039,6 +3382,11 @@ module Google
           attr_accessor :start_index
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @dimensions = args[:dimensions] unless args[:dimensions].nil?
             @end_date = args[:end_date] unless args[:end_date].nil?
             @filters = args[:filters] unless args[:filters].nil?
@@ -3052,6 +3400,7 @@ module Google
             @start_index = args[:start_index] unless args[:start_index].nil?
           end
         end
+        
         # A union object representing a dimension or metric value. Only one of "
         # primitiveValue" or "conversionPathValue" attribute will be populated.
         class Row
@@ -3069,9 +3418,15 @@ module Google
           attr_accessor :primitive_value
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @conversion_path_value = args[:conversion_path_value] unless args[:conversion_path_value].nil?
             @primitive_value = args[:primitive_value] unless args[:primitive_value].nil?
           end
+          
           # 
           class ConversionPathValue
             include Google::Apis::Core::Hashable
@@ -3087,13 +3442,18 @@ module Google
             attr_accessor :node_value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @interaction_type = args[:interaction_type] unless args[:interaction_type].nil?
               @node_value = args[:node_value] unless args[:node_value].nil?
             end
           end
         end
       end
-
+      
       # JSON template for an Analytics view (profile).
       class Profile
         include Google::Apis::Core::Hashable
@@ -3232,6 +3592,11 @@ module Google
         attr_accessor :website_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @child_link = args[:child_link] unless args[:child_link].nil?
           @created = args[:created] unless args[:created].nil?
@@ -3257,6 +3622,7 @@ module Google
           @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
           @website_url = args[:website_url] unless args[:website_url].nil?
         end
+        
         # Child link for this view (profile). Points to the list of goals for this view (
         # profile).
         class ChildLink
@@ -3273,10 +3639,16 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @href = args[:href] unless args[:href].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
+        
         # Parent link for this view (profile). Points to the web property to which this
         # view (profile) belongs.
         class ParentLink
@@ -3293,10 +3665,16 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @href = args[:href] unless args[:href].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
+        
         # Permissions the user has for this view (profile).
         class Permissions
           include Google::Apis::Core::Hashable
@@ -3309,16 +3687,21 @@ module Google
           attr_accessor :effective
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @effective = args[:effective] unless args[:effective].nil?
           end
         end
       end
-
+      
       # JSON template for an Analytics profile filter link.
       class ProfileFilterLink
         include Google::Apis::Core::Hashable
       
-        # Filter for this link.
+        # JSON template for a profile filter link.
         # Corresponds to the JSON property `filterRef`
         # @return [Google::Apis::AnalyticsV3::FilterRef]
         attr_accessor :filter_ref
@@ -3333,7 +3716,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # View (Profile) for this link.
+        # JSON template for a linked view (profile).
         # Corresponds to the JSON property `profileRef`
         # @return [Google::Apis::AnalyticsV3::ProfileRef]
         attr_accessor :profile_ref
@@ -3359,6 +3742,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @filter_ref = args[:filter_ref] unless args[:filter_ref].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -3367,7 +3755,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # A profile filter link collection lists profile filter links between profiles
       # and filters. Each resource in the collection corresponds to a profile filter
       # link.
@@ -3420,6 +3808,11 @@ module Google
         attr_accessor :username
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -3430,7 +3823,7 @@ module Google
           @username = args[:username] unless args[:username].nil?
         end
       end
-
+      
       # JSON template for a linked view (profile).
       class ProfileRef
         include Google::Apis::Core::Hashable
@@ -3471,6 +3864,11 @@ module Google
         attr_accessor :web_property_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @href = args[:href] unless args[:href].nil?
           @id = args[:id] unless args[:id].nil?
@@ -3480,7 +3878,7 @@ module Google
           @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
         end
       end
-
+      
       # JSON template for an Analytics ProfileSummary. ProfileSummary returns basic
       # information (i.e., summary) for a profile.
       class ProfileSummary
@@ -3507,13 +3905,18 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # A view (profile) collection lists Analytics views (profiles) to which the user
       # has access. Each resource in the collection corresponds to a single Analytics
       # view (profile).
@@ -3566,6 +3969,11 @@ module Google
         attr_accessor :username
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -3576,7 +3984,7 @@ module Google
           @username = args[:username] unless args[:username].nil?
         end
       end
-
+      
       # Real time data for a given view (profile).
       class RealtimeData
         include Google::Apis::Core::Hashable
@@ -3633,6 +4041,11 @@ module Google
         attr_accessor :totals_for_all_results
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @column_headers = args[:column_headers] unless args[:column_headers].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -3643,6 +4056,7 @@ module Google
           @total_results = args[:total_results] unless args[:total_results].nil?
           @totals_for_all_results = args[:totals_for_all_results] unless args[:totals_for_all_results].nil?
         end
+        
         # 
         class ColumnHeader
           include Google::Apis::Core::Hashable
@@ -3665,11 +4079,17 @@ module Google
           attr_accessor :name
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @column_type = args[:column_type] unless args[:column_type].nil?
             @data_type = args[:data_type] unless args[:data_type].nil?
             @name = args[:name] unless args[:name].nil?
           end
         end
+        
         # Information for the view (profile), for which the real time data was requested.
         class ProfileInfo
           include Google::Apis::Core::Hashable
@@ -3705,6 +4125,11 @@ module Google
           attr_accessor :web_property_id
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @account_id = args[:account_id] unless args[:account_id].nil?
             @internal_web_property_id = args[:internal_web_property_id] unless args[:internal_web_property_id].nil?
             @profile_id = args[:profile_id] unless args[:profile_id].nil?
@@ -3713,6 +4138,7 @@ module Google
             @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
           end
         end
+        
         # Real time data request query parameters.
         class Query
           include Google::Apis::Core::Hashable
@@ -3748,6 +4174,11 @@ module Google
           attr_accessor :sort
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @dimensions = args[:dimensions] unless args[:dimensions].nil?
             @filters = args[:filters] unless args[:filters].nil?
             @ids = args[:ids] unless args[:ids].nil?
@@ -3757,7 +4188,7 @@ module Google
           end
         end
       end
-
+      
       # JSON template for an Analytics segment.
       class Segment
         include Google::Apis::Core::Hashable
@@ -3808,6 +4239,11 @@ module Google
         attr_accessor :updated
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @created = args[:created] unless args[:created].nil?
           @definition = args[:definition] unless args[:definition].nil?
           @id = args[:id] unless args[:id].nil?
@@ -3819,7 +4255,7 @@ module Google
           @updated = args[:updated] unless args[:updated].nil?
         end
       end
-
+      
       # An segment collection lists Analytics segments that the user has access to.
       # Each resource in the collection corresponds to a single Analytics segment.
       class Segments
@@ -3871,6 +4307,11 @@ module Google
         attr_accessor :username
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -3881,7 +4322,7 @@ module Google
           @username = args[:username] unless args[:username].nil?
         end
       end
-
+      
       # JSON template for Analytics unsampled report resource.
       class UnsampledReport
         include Google::Apis::Core::Hashable
@@ -3984,6 +4425,11 @@ module Google
         attr_accessor :web_property_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @cloud_storage_download_details = args[:cloud_storage_download_details] unless args[:cloud_storage_download_details].nil?
           @created = args[:created] unless args[:created].nil?
@@ -4004,6 +4450,7 @@ module Google
           @updated = args[:updated] unless args[:updated].nil?
           @web_property_id = args[:web_property_id] unless args[:web_property_id].nil?
         end
+        
         # Download details for a file stored in Google Cloud Storage.
         class CloudStorageDownloadDetails
           include Google::Apis::Core::Hashable
@@ -4019,10 +4466,16 @@ module Google
           attr_accessor :object_id_prop
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @bucket_id = args[:bucket_id] unless args[:bucket_id].nil?
             @object_id_prop = args[:object_id_prop] unless args[:object_id_prop].nil?
           end
         end
+        
         # Download details for a file stored in Google Drive.
         class DriveDownloadDetails
           include Google::Apis::Core::Hashable
@@ -4033,11 +4486,16 @@ module Google
           attr_accessor :document_id
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @document_id = args[:document_id] unless args[:document_id].nil?
           end
         end
       end
-
+      
       # An unsampled report collection lists Analytics unsampled reports to which the
       # user has access. Each view (profile) can have a set of unsampled reports. Each
       # resource in the unsampled report collection corresponds to a single Analytics
@@ -4091,6 +4549,11 @@ module Google
         attr_accessor :username
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -4101,7 +4564,7 @@ module Google
           @username = args[:username] unless args[:username].nil?
         end
       end
-
+      
       # Metadata returned for an upload operation.
       class Upload
         include Google::Apis::Core::Hashable
@@ -4137,6 +4600,11 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @custom_data_source_id = args[:custom_data_source_id] unless args[:custom_data_source_id].nil?
           @errors = args[:errors] unless args[:errors].nil?
@@ -4145,7 +4613,7 @@ module Google
           @status = args[:status] unless args[:status].nil?
         end
       end
-
+      
       # Upload collection lists Analytics uploads to which the user has access. Each
       # custom data source can have a set of uploads. Each resource in the upload
       # collection corresponds to a single Analytics data upload.
@@ -4193,6 +4661,11 @@ module Google
         attr_accessor :total_results
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -4202,7 +4675,7 @@ module Google
           @total_results = args[:total_results] unless args[:total_results].nil?
         end
       end
-
+      
       # JSON template for a user reference.
       class UserRef
         include Google::Apis::Core::Hashable
@@ -4223,12 +4696,17 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @email = args[:email] unless args[:email].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # JSON template for a web property reference.
       class WebPropertyRef
         include Google::Apis::Core::Hashable
@@ -4264,6 +4742,11 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @href = args[:href] unless args[:href].nil?
           @id = args[:id] unless args[:id].nil?
@@ -4272,7 +4755,7 @@ module Google
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # JSON template for an Analytics WebPropertySummary. WebPropertySummary returns
       # basic information (i.e., summary) for a web property.
       class WebPropertySummary
@@ -4314,6 +4797,11 @@ module Google
         attr_accessor :website_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @internal_web_property_id = args[:internal_web_property_id] unless args[:internal_web_property_id].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -4323,7 +4811,7 @@ module Google
           @website_url = args[:website_url] unless args[:website_url].nil?
         end
       end
-
+      
       # A web property collection lists Analytics web properties to which the user has
       # access. Each resource in the collection corresponds to a single Analytics web
       # property.
@@ -4376,6 +4864,11 @@ module Google
         attr_accessor :username
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @items_per_page = args[:items_per_page] unless args[:items_per_page].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -4386,7 +4879,7 @@ module Google
           @username = args[:username] unless args[:username].nil?
         end
       end
-
+      
       # JSON template for an Analytics web property.
       class Webproperty
         include Google::Apis::Core::Hashable
@@ -4474,6 +4967,11 @@ module Google
         attr_accessor :website_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @child_link = args[:child_link] unless args[:child_link].nil?
           @created = args[:created] unless args[:created].nil?
@@ -4491,6 +4989,7 @@ module Google
           @updated = args[:updated] unless args[:updated].nil?
           @website_url = args[:website_url] unless args[:website_url].nil?
         end
+        
         # Child link for this web property. Points to the list of views (profiles) for
         # this web property.
         class ChildLink
@@ -4507,10 +5006,16 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @href = args[:href] unless args[:href].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
+        
         # Parent link for this web property. Points to the account to which this web
         # property belongs.
         class ParentLink
@@ -4527,10 +5032,16 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @href = args[:href] unless args[:href].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
+        
         # Permissions the user has for this web property.
         class Permissions
           include Google::Apis::Core::Hashable
@@ -4543,6 +5054,11 @@ module Google
           attr_accessor :effective
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @effective = args[:effective] unless args[:effective].nil?
           end
         end

@@ -33,7 +33,6 @@ module Google
       #
       # @see https://developers.google.com/maps-engine/
       class MapsEngineService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -53,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'mapsengine/v1/')
         end
-
+        
         # Return metadata for a particular asset.
         # @param [String] id
         #   The ID of the asset.
@@ -66,7 +65,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -81,7 +80,7 @@ module Google
         def get_asset(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'assets/{id}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::AssetRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::Asset::Representation
           command.response_class = Google::Apis::MapsengineV1::Asset
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -89,7 +88,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all assets readable by the current user.
         # @param [String] bbox
@@ -144,14 +142,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::AssetsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::AssetsListResponse]
+        # @return [Google::Apis::MapsengineV1::ListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -159,8 +157,8 @@ module Google
         def list_assets(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, project_id: nil, role: nil, search: nil, tags: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'assets'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::AssetsListResponseRepresentation
-          command.response_class = Google::Apis::MapsengineV1::AssetsListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListResponse
           command.query['bbox'] = bbox unless bbox.nil?
           command.query['createdAfter'] = created_after unless created_after.nil?
           command.query['createdBefore'] = created_before unless created_before.nil?
@@ -179,7 +177,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all parent ids of the specified asset.
         # @param [String] id
@@ -200,7 +197,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -215,7 +212,7 @@ module Google
         def list_asset_parents(id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'assets/{id}/parents'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ParentsListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::ParentsListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ParentsListResponse
           command.params['id'] = id unless id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -225,8 +222,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Return all of the permissions for the specified asset.
         # @param [String] id
@@ -240,7 +235,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -255,7 +250,7 @@ module Google
         def list_asset_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'assets/{id}/permissions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::PermissionsListResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -263,7 +258,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Cancel processing on a layer asset.
         # @param [String] id
         #   The ID of the layer.
@@ -276,7 +271,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -291,7 +286,7 @@ module Google
         def cancel_processing_layer(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/{id}/cancelProcessing'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ProcessResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::ProcessResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ProcessResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -300,10 +295,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a layer asset.
-        # @param [Google::Apis::MapsengineV1::Layer] layer
-        #   
+        # @param [Google::Apis::MapsengineV1::Layer] layer_object
         # @param [Boolean] process
         #   Whether to queue the created layer for processing.
         # @param [String] fields
@@ -315,7 +308,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -327,12 +320,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_layer(layer = nil, process: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_layer(layer_object = nil, process: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::LayerRepresentation
-          command.request_object = layer
-          command.response_representation = Google::Apis::MapsengineV1::LayerRepresentation
+          command.request_representation = Google::Apis::MapsengineV1::Layer::Representation
+          command.request_object = layer_object
+          command.response_representation = Google::Apis::MapsengineV1::Layer::Representation
           command.response_class = Google::Apis::MapsengineV1::Layer
           command.query['process'] = process unless process.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -340,7 +333,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Delete a layer.
         # @param [String] id
@@ -356,7 +348,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -378,7 +370,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Return metadata for a particular layer.
         # @param [String] id
         #   The ID of the layer.
@@ -395,7 +386,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -410,7 +401,7 @@ module Google
         def get_layer(id, version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/{id}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::LayerRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::Layer::Representation
           command.response_class = Google::Apis::MapsengineV1::Layer
           command.params['id'] = id unless id.nil?
           command.query['version'] = version unless version.nil?
@@ -419,7 +410,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return the published metadata for a particular layer.
         # @param [String] id
@@ -433,7 +423,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -448,7 +438,7 @@ module Google
         def get_published_layer(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/{id}/published'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PublishedLayerRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::PublishedLayer::Representation
           command.response_class = Google::Apis::MapsengineV1::PublishedLayer
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -456,7 +446,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all layers readable by the current user.
         # @param [String] bbox
@@ -485,7 +474,6 @@ module Google
         #   next page of results, set this parameter to the value of nextPageToken from
         #   the previous response.
         # @param [String] processing_status
-        #   
         # @param [String] project_id
         #   The ID of a Maps Engine project, used to filter the response. To list all
         #   available projects with their IDs, send a Projects: list request. You can also
@@ -509,7 +497,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -524,7 +512,7 @@ module Google
         def list_layers(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, processing_status: nil, project_id: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::LayersListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::LayersListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::LayersListResponse
           command.query['bbox'] = bbox unless bbox.nil?
           command.query['createdAfter'] = created_after unless created_after.nil?
@@ -544,7 +532,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all published layers readable by the current user.
         # @param [Fixnum] max_results
@@ -568,7 +555,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -583,7 +570,7 @@ module Google
         def list_published_layer(max_results: nil, page_token: nil, project_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/published'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PublishedLayersListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::PublishedLayersListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::PublishedLayersListResponse
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -594,12 +581,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Mutate a layer asset.
         # @param [String] id
         #   The ID of the layer.
-        # @param [Google::Apis::MapsengineV1::Layer] layer
-        #   
+        # @param [Google::Apis::MapsengineV1::Layer] layer_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -609,7 +594,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -621,18 +606,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_layer(id, layer = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_layer(id, layer_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/{id}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::LayerRepresentation
-          command.request_object = layer
+          command.request_representation = Google::Apis::MapsengineV1::Layer::Representation
+          command.request_object = layer_object
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Process a layer asset.
         # @param [String] id
@@ -646,7 +630,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -661,7 +645,7 @@ module Google
         def process_layer(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/{id}/process'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ProcessResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::ProcessResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ProcessResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -669,7 +653,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Publish a layer asset.
         # @param [String] id
@@ -687,7 +670,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -702,7 +685,7 @@ module Google
         def publish_layer(id, force: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/{id}/publish'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PublishResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::PublishResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::PublishResponse
           command.params['id'] = id unless id.nil?
           command.query['force'] = force unless force.nil?
@@ -711,7 +694,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Unpublish a layer asset.
         # @param [String] id
@@ -725,7 +707,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -740,7 +722,7 @@ module Google
         def unpublish_layer(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/{id}/unpublish'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PublishResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::PublishResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::PublishResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -748,7 +730,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all parent ids of the specified layer.
         # @param [String] id
@@ -769,7 +750,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -784,7 +765,7 @@ module Google
         def list_layer_parents(id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/{id}/parents'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ParentsListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::ParentsListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ParentsListResponse
           command.params['id'] = id unless id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -795,13 +776,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
-        
         # Remove permission entries from an already existing asset.
         # @param [String] id
         #   The ID of the asset from which permissions will be removed.
-        # @param [Google::Apis::MapsengineV1::PermissionsBatchDeleteRequest] permissions_batch_delete_request
-        #   
+        # @param [Google::Apis::MapsengineV1::BatchDeleteRequest] permissions_batch_delete_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -811,40 +789,38 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PermissionsBatchDeleteResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchDeleteResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PermissionsBatchDeleteResponse]
+        # @return [Google::Apis::MapsengineV1::BatchDeleteResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_delete_layer_permission(id, permissions_batch_delete_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_delete_layer_permission(id, permissions_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/{id}/permissions/batchDelete'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::PermissionsBatchDeleteRequestRepresentation
-          command.request_object = permissions_batch_delete_request
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsBatchDeleteResponseRepresentation
-          command.response_class = Google::Apis::MapsengineV1::PermissionsBatchDeleteResponse
+          command.request_representation = Google::Apis::MapsengineV1::BatchDeleteRequest::Representation
+          command.request_object = permissions_batch_delete_request_object
+          command.response_representation = Google::Apis::MapsengineV1::BatchDeleteResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchDeleteResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Add or update permission entries to an already existing asset.
         # An asset can hold up to 20 different permission entries. Each batchInsert
         # request is atomic.
         # @param [String] id
         #   The ID of the asset to which permissions will be added.
-        # @param [Google::Apis::MapsengineV1::PermissionsBatchUpdateRequest] permissions_batch_update_request
-        #   
+        # @param [Google::Apis::MapsengineV1::BatchUpdateRequest] permissions_batch_update_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -854,32 +830,31 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PermissionsBatchUpdateResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchUpdateResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PermissionsBatchUpdateResponse]
+        # @return [Google::Apis::MapsengineV1::BatchUpdateResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_update_layer_permission(id, permissions_batch_update_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_update_layer_permission(id, permissions_batch_update_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/{id}/permissions/batchUpdate'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::PermissionsBatchUpdateRequestRepresentation
-          command.request_object = permissions_batch_update_request
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsBatchUpdateResponseRepresentation
-          command.response_class = Google::Apis::MapsengineV1::PermissionsBatchUpdateResponse
+          command.request_representation = Google::Apis::MapsengineV1::BatchUpdateRequest::Representation
+          command.request_object = permissions_batch_update_request_object
+          command.response_representation = Google::Apis::MapsengineV1::BatchUpdateResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchUpdateResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all of the permissions for the specified asset.
         # @param [String] id
@@ -893,7 +868,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -908,7 +883,7 @@ module Google
         def list_layer_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/{id}/permissions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::PermissionsListResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -916,10 +891,9 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Create a map asset.
-        # @param [Google::Apis::MapsengineV1::Map] map
-        #   
+        # @param [Google::Apis::MapsengineV1::Map] map_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -929,7 +903,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -941,19 +915,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_map(map = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_map(map_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::MapRepresentation
-          command.request_object = map
-          command.response_representation = Google::Apis::MapsengineV1::MapRepresentation
+          command.request_representation = Google::Apis::MapsengineV1::Map::Representation
+          command.request_object = map_object
+          command.response_representation = Google::Apis::MapsengineV1::Map::Representation
           command.response_class = Google::Apis::MapsengineV1::Map
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Delete a map.
         # @param [String] id
@@ -969,7 +942,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -991,7 +964,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Return metadata for a particular map.
         # @param [String] id
         #   The ID of the map.
@@ -1008,7 +980,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1023,7 +995,7 @@ module Google
         def get_map(id, version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps/{id}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::MapRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::Map::Representation
           command.response_class = Google::Apis::MapsengineV1::Map
           command.params['id'] = id unless id.nil?
           command.query['version'] = version unless version.nil?
@@ -1032,7 +1004,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return the published metadata for a particular map.
         # @param [String] id
@@ -1046,7 +1017,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1061,7 +1032,7 @@ module Google
         def get_published_map(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps/{id}/published'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PublishedMapRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::PublishedMap::Representation
           command.response_class = Google::Apis::MapsengineV1::PublishedMap
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1069,7 +1040,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all maps readable by the current user.
         # @param [String] bbox
@@ -1098,7 +1068,6 @@ module Google
         #   next page of results, set this parameter to the value of nextPageToken from
         #   the previous response.
         # @param [String] processing_status
-        #   
         # @param [String] project_id
         #   The ID of a Maps Engine project, used to filter the response. To list all
         #   available projects with their IDs, send a Projects: list request. You can also
@@ -1122,7 +1091,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1137,7 +1106,7 @@ module Google
         def list_maps(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, processing_status: nil, project_id: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::MapsListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::MapsListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::MapsListResponse
           command.query['bbox'] = bbox unless bbox.nil?
           command.query['createdAfter'] = created_after unless created_after.nil?
@@ -1157,7 +1126,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all published maps readable by the current user.
         # @param [Fixnum] max_results
@@ -1181,7 +1149,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1196,7 +1164,7 @@ module Google
         def list_published_map(max_results: nil, page_token: nil, project_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps/published'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PublishedMapsListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::PublishedMapsListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::PublishedMapsListResponse
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -1207,12 +1175,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Mutate a map asset.
         # @param [String] id
         #   The ID of the map.
-        # @param [Google::Apis::MapsengineV1::Map] map
-        #   
+        # @param [Google::Apis::MapsengineV1::Map] map_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1222,7 +1188,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1234,18 +1200,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_map(id, map = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_map(id, map_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps/{id}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::MapRepresentation
-          command.request_object = map
+          command.request_representation = Google::Apis::MapsengineV1::Map::Representation
+          command.request_object = map_object
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Publish a map asset.
         # @param [String] id
@@ -1263,7 +1228,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1278,7 +1243,7 @@ module Google
         def publish_map(id, force: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps/{id}/publish'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PublishResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::PublishResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::PublishResponse
           command.params['id'] = id unless id.nil?
           command.query['force'] = force unless force.nil?
@@ -1287,7 +1252,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Unpublish a map asset.
         # @param [String] id
@@ -1301,7 +1265,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1316,7 +1280,7 @@ module Google
         def unpublish_map(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps/{id}/unpublish'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PublishResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::PublishResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::PublishResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1325,12 +1289,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Remove permission entries from an already existing asset.
         # @param [String] id
         #   The ID of the asset from which permissions will be removed.
-        # @param [Google::Apis::MapsengineV1::PermissionsBatchDeleteRequest] permissions_batch_delete_request
-        #   
+        # @param [Google::Apis::MapsengineV1::BatchDeleteRequest] permissions_batch_delete_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1340,40 +1302,38 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PermissionsBatchDeleteResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchDeleteResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PermissionsBatchDeleteResponse]
+        # @return [Google::Apis::MapsengineV1::BatchDeleteResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_delete_map_permission(id, permissions_batch_delete_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_delete_map_permission(id, permissions_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps/{id}/permissions/batchDelete'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::PermissionsBatchDeleteRequestRepresentation
-          command.request_object = permissions_batch_delete_request
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsBatchDeleteResponseRepresentation
-          command.response_class = Google::Apis::MapsengineV1::PermissionsBatchDeleteResponse
+          command.request_representation = Google::Apis::MapsengineV1::BatchDeleteRequest::Representation
+          command.request_object = permissions_batch_delete_request_object
+          command.response_representation = Google::Apis::MapsengineV1::BatchDeleteResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchDeleteResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Add or update permission entries to an already existing asset.
         # An asset can hold up to 20 different permission entries. Each batchInsert
         # request is atomic.
         # @param [String] id
         #   The ID of the asset to which permissions will be added.
-        # @param [Google::Apis::MapsengineV1::PermissionsBatchUpdateRequest] permissions_batch_update_request
-        #   
+        # @param [Google::Apis::MapsengineV1::BatchUpdateRequest] permissions_batch_update_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1383,32 +1343,31 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PermissionsBatchUpdateResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchUpdateResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PermissionsBatchUpdateResponse]
+        # @return [Google::Apis::MapsengineV1::BatchUpdateResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_update_map_permission(id, permissions_batch_update_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_update_map_permission(id, permissions_batch_update_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps/{id}/permissions/batchUpdate'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::PermissionsBatchUpdateRequestRepresentation
-          command.request_object = permissions_batch_update_request
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsBatchUpdateResponseRepresentation
-          command.response_class = Google::Apis::MapsengineV1::PermissionsBatchUpdateResponse
+          command.request_representation = Google::Apis::MapsengineV1::BatchUpdateRequest::Representation
+          command.request_object = permissions_batch_update_request_object
+          command.response_representation = Google::Apis::MapsengineV1::BatchUpdateResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchUpdateResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all of the permissions for the specified asset.
         # @param [String] id
@@ -1422,7 +1381,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1437,7 +1396,7 @@ module Google
         def list_map_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps/{id}/permissions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::PermissionsListResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1445,7 +1404,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Return all projects readable by the current user.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1456,7 +1415,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1471,7 +1430,7 @@ module Google
         def list_projects(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ProjectsListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::ProjectsListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ProjectsListResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1479,12 +1438,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create an icon.
         # @param [String] project_id
         #   The ID of the project.
-        # @param [Google::Apis::MapsengineV1::Icon] icon
-        #   
+        # @param [Google::Apis::MapsengineV1::Icon] icon_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1498,7 +1455,7 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1510,7 +1467,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_icon(project_id, icon = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def create_project_icon(project_id, icon_object = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'projects/{projectId}/icons'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -1519,9 +1476,9 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.request_representation = Google::Apis::MapsengineV1::IconRepresentation
-          command.request_object = icon
-          command.response_representation = Google::Apis::MapsengineV1::IconRepresentation
+          command.request_representation = Google::Apis::MapsengineV1::Icon::Representation
+          command.request_object = icon_object
+          command.response_representation = Google::Apis::MapsengineV1::Icon::Representation
           command.response_class = Google::Apis::MapsengineV1::Icon
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1529,7 +1486,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return an icon or its associated metadata
         # @param [String] project_id
@@ -1547,7 +1503,7 @@ module Google
         #   enforce per-user limits.
         # @param [IO, String] download_dest
         #   IO stream or filename to receive content download
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1567,7 +1523,7 @@ module Google
             command = make_download_command(:get, path, options)
             command.download_dest = download_dest
           end
-          command.response_representation = Google::Apis::MapsengineV1::IconRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::Icon::Representation
           command.response_class = Google::Apis::MapsengineV1::Icon
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['id'] = id unless id.nil?
@@ -1576,7 +1532,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all icons in the current project
         # @param [String] project_id
@@ -1597,7 +1552,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1612,7 +1567,7 @@ module Google
         def list_project_icons(project_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/icons'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::IconsListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::IconsListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::IconsListResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -1622,7 +1577,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Cancel processing on a raster collection asset.
         # @param [String] id
         #   The ID of the raster collection.
@@ -1635,7 +1590,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1650,7 +1605,7 @@ module Google
         def cancel_processing_raster_collection(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/cancelProcessing'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ProcessResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::ProcessResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ProcessResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1659,10 +1614,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a raster collection asset.
-        # @param [Google::Apis::MapsengineV1::RasterCollection] raster_collection
-        #   
+        # @param [Google::Apis::MapsengineV1::RasterCollection] raster_collection_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1672,7 +1625,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1684,19 +1637,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_raster_collection(raster_collection = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_raster_collection(raster_collection_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::RasterCollectionRepresentation
-          command.request_object = raster_collection
-          command.response_representation = Google::Apis::MapsengineV1::RasterCollectionRepresentation
+          command.request_representation = Google::Apis::MapsengineV1::RasterCollection::Representation
+          command.request_object = raster_collection_object
+          command.response_representation = Google::Apis::MapsengineV1::RasterCollection::Representation
           command.response_class = Google::Apis::MapsengineV1::RasterCollection
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Delete a raster collection.
         # @param [String] id
@@ -1713,7 +1665,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1735,7 +1687,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Return metadata for a particular raster collection.
         # @param [String] id
         #   The ID of the raster collection.
@@ -1748,7 +1699,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1763,7 +1714,7 @@ module Google
         def get_raster_collection(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::RasterCollectionRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::RasterCollection::Representation
           command.response_class = Google::Apis::MapsengineV1::RasterCollection
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1771,7 +1722,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all raster collections readable by the current user.
         # @param [String] bbox
@@ -1800,7 +1750,6 @@ module Google
         #   next page of results, set this parameter to the value of nextPageToken from
         #   the previous response.
         # @param [String] processing_status
-        #   
         # @param [String] project_id
         #   The ID of a Maps Engine project, used to filter the response. To list all
         #   available projects with their IDs, send a Projects: list request. You can also
@@ -1824,7 +1773,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1839,7 +1788,7 @@ module Google
         def list_raster_collections(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, processing_status: nil, project_id: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::RasterCollectionsListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::RasterCollectionsListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::RasterCollectionsListResponse
           command.query['bbox'] = bbox unless bbox.nil?
           command.query['createdAfter'] = created_after unless created_after.nil?
@@ -1860,12 +1809,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Mutate a raster collection asset.
         # @param [String] id
         #   The ID of the raster collection.
-        # @param [Google::Apis::MapsengineV1::RasterCollection] raster_collection
-        #   
+        # @param [Google::Apis::MapsengineV1::RasterCollection] raster_collection_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1875,7 +1822,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1887,18 +1834,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_raster_collection(id, raster_collection = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_raster_collection(id, raster_collection_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::RasterCollectionRepresentation
-          command.request_object = raster_collection
+          command.request_representation = Google::Apis::MapsengineV1::RasterCollection::Representation
+          command.request_object = raster_collection_object
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Process a raster collection asset.
         # @param [String] id
@@ -1912,7 +1858,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1927,7 +1873,7 @@ module Google
         def process_raster_collection(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/process'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ProcessResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::ProcessResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ProcessResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1935,7 +1881,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all parent ids of the specified raster collection.
         # @param [String] id
@@ -1956,7 +1901,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1971,7 +1916,7 @@ module Google
         def list_raster_collection_parents(id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/parents'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ParentsListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::ParentsListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ParentsListResponse
           command.params['id'] = id unless id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -1982,13 +1927,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
-        
         # Remove permission entries from an already existing asset.
         # @param [String] id
         #   The ID of the asset from which permissions will be removed.
-        # @param [Google::Apis::MapsengineV1::PermissionsBatchDeleteRequest] permissions_batch_delete_request
-        #   
+        # @param [Google::Apis::MapsengineV1::BatchDeleteRequest] permissions_batch_delete_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1998,40 +1940,38 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PermissionsBatchDeleteResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchDeleteResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PermissionsBatchDeleteResponse]
+        # @return [Google::Apis::MapsengineV1::BatchDeleteResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_delete_raster_collection_permission(id, permissions_batch_delete_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_delete_raster_collection_permission(id, permissions_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/permissions/batchDelete'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::PermissionsBatchDeleteRequestRepresentation
-          command.request_object = permissions_batch_delete_request
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsBatchDeleteResponseRepresentation
-          command.response_class = Google::Apis::MapsengineV1::PermissionsBatchDeleteResponse
+          command.request_representation = Google::Apis::MapsengineV1::BatchDeleteRequest::Representation
+          command.request_object = permissions_batch_delete_request_object
+          command.response_representation = Google::Apis::MapsengineV1::BatchDeleteResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchDeleteResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Add or update permission entries to an already existing asset.
         # An asset can hold up to 20 different permission entries. Each batchInsert
         # request is atomic.
         # @param [String] id
         #   The ID of the asset to which permissions will be added.
-        # @param [Google::Apis::MapsengineV1::PermissionsBatchUpdateRequest] permissions_batch_update_request
-        #   
+        # @param [Google::Apis::MapsengineV1::BatchUpdateRequest] permissions_batch_update_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2041,32 +1981,31 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PermissionsBatchUpdateResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchUpdateResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PermissionsBatchUpdateResponse]
+        # @return [Google::Apis::MapsengineV1::BatchUpdateResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_update_raster_collection_permission(id, permissions_batch_update_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_update_raster_collection_permission(id, permissions_batch_update_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/permissions/batchUpdate'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::PermissionsBatchUpdateRequestRepresentation
-          command.request_object = permissions_batch_update_request
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsBatchUpdateResponseRepresentation
-          command.response_class = Google::Apis::MapsengineV1::PermissionsBatchUpdateResponse
+          command.request_representation = Google::Apis::MapsengineV1::BatchUpdateRequest::Representation
+          command.request_object = permissions_batch_update_request_object
+          command.response_representation = Google::Apis::MapsengineV1::BatchUpdateResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchUpdateResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all of the permissions for the specified asset.
         # @param [String] id
@@ -2080,7 +2019,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2095,7 +2034,7 @@ module Google
         def list_raster_collection_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/permissions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::PermissionsListResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2104,15 +2043,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
-        
         # Remove rasters from an existing raster collection.
         # Up to 50 rasters can be included in a single batchDelete request. Each
         # batchDelete request is atomic.
         # @param [String] id
         #   The ID of the raster collection to which these rasters belong.
-        # @param [Google::Apis::MapsengineV1::RasterCollectionsRasterBatchDeleteRequest] raster_collections_raster_batch_delete_request
-        #   
+        # @param [Google::Apis::MapsengineV1::RasterCollectionsRasterBatchDeleteRequest] raster_collections_raster_batch_delete_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2122,7 +2058,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2134,12 +2070,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_delete_raster_collection_raster(id, raster_collections_raster_batch_delete_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_delete_raster_collection_raster(id, raster_collections_raster_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/rasters/batchDelete'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::RasterCollectionsRasterBatchDeleteRequestRepresentation
-          command.request_object = raster_collections_raster_batch_delete_request
-          command.response_representation = Google::Apis::MapsengineV1::RasterCollectionsRastersBatchDeleteResponseRepresentation
+          command.request_representation = Google::Apis::MapsengineV1::RasterCollectionsRasterBatchDeleteRequest::Representation
+          command.request_object = raster_collections_raster_batch_delete_request_object
+          command.response_representation = Google::Apis::MapsengineV1::RasterCollectionsRastersBatchDeleteResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::RasterCollectionsRastersBatchDeleteResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2148,15 +2084,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Add rasters to an existing raster collection. Rasters must be successfully
         # processed in order to be added to a raster collection.
         # Up to 50 rasters can be included in a single batchInsert request. Each
         # batchInsert request is atomic.
         # @param [String] id
         #   The ID of the raster collection to which these rasters belong.
-        # @param [Google::Apis::MapsengineV1::RasterCollectionsRastersBatchInsertRequest] raster_collections_rasters_batch_insert_request
-        #   
+        # @param [Google::Apis::MapsengineV1::RasterCollectionsRastersBatchInsertRequest] raster_collections_rasters_batch_insert_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2166,7 +2100,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2178,12 +2112,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_insert_raster_collection_raster(id, raster_collections_rasters_batch_insert_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_insert_raster_collection_raster(id, raster_collections_rasters_batch_insert_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/rasters/batchInsert'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::RasterCollectionsRastersBatchInsertRequestRepresentation
-          command.request_object = raster_collections_rasters_batch_insert_request
-          command.response_representation = Google::Apis::MapsengineV1::RasterCollectionsRastersBatchInsertResponseRepresentation
+          command.request_representation = Google::Apis::MapsengineV1::RasterCollectionsRastersBatchInsertRequest::Representation
+          command.request_object = raster_collections_rasters_batch_insert_request_object
+          command.response_representation = Google::Apis::MapsengineV1::RasterCollectionsRastersBatchInsertResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::RasterCollectionsRastersBatchInsertResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2191,7 +2125,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all rasters within a raster collection.
         # @param [String] id
@@ -2239,7 +2172,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2254,7 +2187,7 @@ module Google
         def list_raster_collection_rasters(id, bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/rasters'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::RasterCollectionsRastersListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::RasterCollectionsRastersListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::RasterCollectionsRastersListResponse
           command.params['id'] = id unless id.nil?
           command.query['bbox'] = bbox unless bbox.nil?
@@ -2273,7 +2206,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Delete a raster.
         # @param [String] id
         #   The ID of the raster. Only the raster creator or project owner are permitted
@@ -2288,7 +2221,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2310,7 +2243,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Return metadata for a single raster.
         # @param [String] id
         #   The ID of the raster.
@@ -2323,7 +2255,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2338,7 +2270,7 @@ module Google
         def get_raster(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasters/{id}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::RasterRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::Raster::Representation
           command.response_class = Google::Apis::MapsengineV1::Raster
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2346,7 +2278,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all rasters readable by the current user.
         # @param [String] bbox
@@ -2375,7 +2306,6 @@ module Google
         #   next page of results, set this parameter to the value of nextPageToken from
         #   the previous response.
         # @param [String] processing_status
-        #   
         # @param [String] project_id
         #   The ID of a Maps Engine project, used to filter the response. To list all
         #   available projects with their IDs, send a Projects: list request. You can also
@@ -2399,7 +2329,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2414,7 +2344,7 @@ module Google
         def list_rasters(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, processing_status: nil, project_id: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasters'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::RastersListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::RastersListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::RastersListResponse
           command.query['bbox'] = bbox unless bbox.nil?
           command.query['createdAfter'] = created_after unless created_after.nil?
@@ -2435,12 +2365,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Mutate a raster asset.
         # @param [String] id
         #   The ID of the raster.
-        # @param [Google::Apis::MapsengineV1::Raster] raster
-        #   
+        # @param [Google::Apis::MapsengineV1::Raster] raster_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2450,7 +2378,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2462,18 +2390,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_raster(id, raster = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_raster(id, raster_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasters/{id}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::RasterRepresentation
-          command.request_object = raster
+          command.request_representation = Google::Apis::MapsengineV1::Raster::Representation
+          command.request_object = raster_object
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Process a raster asset.
         # @param [String] id
@@ -2487,7 +2414,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2502,7 +2429,7 @@ module Google
         def process_raster(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasters/{id}/process'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ProcessResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::ProcessResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ProcessResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2511,10 +2438,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a skeleton raster asset for upload.
-        # @param [Google::Apis::MapsengineV1::Raster] raster
-        #   
+        # @param [Google::Apis::MapsengineV1::Raster] raster_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2524,7 +2449,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2536,19 +2461,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_raster(raster = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def upload_raster(raster_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasters/upload'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::RasterRepresentation
-          command.request_object = raster
-          command.response_representation = Google::Apis::MapsengineV1::RasterRepresentation
+          command.request_representation = Google::Apis::MapsengineV1::Raster::Representation
+          command.request_object = raster_object
+          command.response_representation = Google::Apis::MapsengineV1::Raster::Representation
           command.response_class = Google::Apis::MapsengineV1::Raster
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Upload a file to a raster asset.
         # @param [String] id
@@ -2568,7 +2492,7 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2597,8 +2521,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
-        
         # Return all parent ids of the specified rasters.
         # @param [String] id
         #   The ID of the rasters whose parents will be listed.
@@ -2618,7 +2540,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2633,7 +2555,7 @@ module Google
         def list_raster_parents(id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasters/{id}/parents'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ParentsListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::ParentsListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ParentsListResponse
           command.params['id'] = id unless id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -2644,13 +2566,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
-        
         # Remove permission entries from an already existing asset.
         # @param [String] id
         #   The ID of the asset from which permissions will be removed.
-        # @param [Google::Apis::MapsengineV1::PermissionsBatchDeleteRequest] permissions_batch_delete_request
-        #   
+        # @param [Google::Apis::MapsengineV1::BatchDeleteRequest] permissions_batch_delete_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2660,40 +2579,38 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PermissionsBatchDeleteResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchDeleteResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PermissionsBatchDeleteResponse]
+        # @return [Google::Apis::MapsengineV1::BatchDeleteResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_delete_raster_permission(id, permissions_batch_delete_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_delete_raster_permission(id, permissions_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasters/{id}/permissions/batchDelete'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::PermissionsBatchDeleteRequestRepresentation
-          command.request_object = permissions_batch_delete_request
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsBatchDeleteResponseRepresentation
-          command.response_class = Google::Apis::MapsengineV1::PermissionsBatchDeleteResponse
+          command.request_representation = Google::Apis::MapsengineV1::BatchDeleteRequest::Representation
+          command.request_object = permissions_batch_delete_request_object
+          command.response_representation = Google::Apis::MapsengineV1::BatchDeleteResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchDeleteResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Add or update permission entries to an already existing asset.
         # An asset can hold up to 20 different permission entries. Each batchInsert
         # request is atomic.
         # @param [String] id
         #   The ID of the asset to which permissions will be added.
-        # @param [Google::Apis::MapsengineV1::PermissionsBatchUpdateRequest] permissions_batch_update_request
-        #   
+        # @param [Google::Apis::MapsengineV1::BatchUpdateRequest] permissions_batch_update_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2703,32 +2620,31 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PermissionsBatchUpdateResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchUpdateResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PermissionsBatchUpdateResponse]
+        # @return [Google::Apis::MapsengineV1::BatchUpdateResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_update_raster_permission(id, permissions_batch_update_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_update_raster_permission(id, permissions_batch_update_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasters/{id}/permissions/batchUpdate'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::PermissionsBatchUpdateRequestRepresentation
-          command.request_object = permissions_batch_update_request
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsBatchUpdateResponseRepresentation
-          command.response_class = Google::Apis::MapsengineV1::PermissionsBatchUpdateResponse
+          command.request_representation = Google::Apis::MapsengineV1::BatchUpdateRequest::Representation
+          command.request_object = permissions_batch_update_request_object
+          command.response_representation = Google::Apis::MapsengineV1::BatchUpdateResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchUpdateResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all of the permissions for the specified asset.
         # @param [String] id
@@ -2742,7 +2658,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2757,7 +2673,7 @@ module Google
         def list_raster_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasters/{id}/permissions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::PermissionsListResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2765,10 +2681,9 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Create a table asset.
-        # @param [Google::Apis::MapsengineV1::Table] table
-        #   
+        # @param [Google::Apis::MapsengineV1::Table] table_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2778,7 +2693,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2790,19 +2705,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_table(table = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_table(table_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::TableRepresentation
-          command.request_object = table
-          command.response_representation = Google::Apis::MapsengineV1::TableRepresentation
+          command.request_representation = Google::Apis::MapsengineV1::Table::Representation
+          command.request_object = table_object
+          command.response_representation = Google::Apis::MapsengineV1::Table::Representation
           command.response_class = Google::Apis::MapsengineV1::Table
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Delete a table.
         # @param [String] id
@@ -2818,7 +2732,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2840,12 +2754,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Return metadata for a particular table, including the schema.
         # @param [String] id
         #   The ID of the table.
         # @param [String] version
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2855,7 +2767,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2870,7 +2782,7 @@ module Google
         def get_table(id, version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::TableRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::Table::Representation
           command.response_class = Google::Apis::MapsengineV1::Table
           command.params['id'] = id unless id.nil?
           command.query['version'] = version unless version.nil?
@@ -2879,7 +2791,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all tables readable by the current user.
         # @param [String] bbox
@@ -2908,7 +2819,6 @@ module Google
         #   next page of results, set this parameter to the value of nextPageToken from
         #   the previous response.
         # @param [String] processing_status
-        #   
         # @param [String] project_id
         #   The ID of a Maps Engine project, used to filter the response. To list all
         #   available projects with their IDs, send a Projects: list request. You can also
@@ -2932,7 +2842,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2947,7 +2857,7 @@ module Google
         def list_tables(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, processing_status: nil, project_id: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::TablesListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::TablesListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::TablesListResponse
           command.query['bbox'] = bbox unless bbox.nil?
           command.query['createdAfter'] = created_after unless created_after.nil?
@@ -2968,12 +2878,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Mutate a table asset.
         # @param [String] id
         #   The ID of the table.
-        # @param [Google::Apis::MapsengineV1::Table] table
-        #   
+        # @param [Google::Apis::MapsengineV1::Table] table_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2983,7 +2891,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2995,18 +2903,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_table(id, table = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_table(id, table_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::TableRepresentation
-          command.request_object = table
+          command.request_representation = Google::Apis::MapsengineV1::Table::Representation
+          command.request_object = table_object
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Process a table asset.
         # @param [String] id
@@ -3020,7 +2927,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3035,7 +2942,7 @@ module Google
         def process_table(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/process'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ProcessResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::ProcessResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ProcessResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3044,14 +2951,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a placeholder table asset to which table files can be uploaded.
         # Once the placeholder has been created, files are uploaded to the https://www.
         # googleapis.com/upload/mapsengine/v1/tables/table_id/files endpoint.
         # See Table Upload in the Developer's Guide or Table.files: insert in the
         # reference documentation for more information.
-        # @param [Google::Apis::MapsengineV1::Table] table
-        #   
+        # @param [Google::Apis::MapsengineV1::Table] table_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3061,7 +2966,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3073,12 +2978,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_table(table = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def upload_table(table_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/upload'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::TableRepresentation
-          command.request_object = table
-          command.response_representation = Google::Apis::MapsengineV1::TableRepresentation
+          command.request_representation = Google::Apis::MapsengineV1::Table::Representation
+          command.request_object = table_object
+          command.response_representation = Google::Apis::MapsengineV1::Table::Representation
           command.response_class = Google::Apis::MapsengineV1::Table
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -3086,12 +2991,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Delete all features matching the given IDs.
         # @param [String] id
         #   The ID of the table that contains the features to be deleted.
-        # @param [Google::Apis::MapsengineV1::FeaturesBatchDeleteRequest] features_batch_delete_request
-        #   
+        # @param [Google::Apis::MapsengineV1::FeaturesBatchDeleteRequest] features_batch_delete_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3101,7 +3004,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3113,18 +3016,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_delete_table_feature(id, features_batch_delete_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_delete_table_feature(id, features_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/features/batchDelete'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::FeaturesBatchDeleteRequestRepresentation
-          command.request_object = features_batch_delete_request
+          command.request_representation = Google::Apis::MapsengineV1::FeaturesBatchDeleteRequest::Representation
+          command.request_object = features_batch_delete_request_object
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Append features to an existing table.
         # A single batchInsert request can create:
@@ -3137,8 +3039,7 @@ module Google
         # Google Maps Engine developer's guide.
         # @param [String] id
         #   The ID of the table to append the features to.
-        # @param [Google::Apis::MapsengineV1::FeaturesBatchInsertRequest] features_batch_insert_request
-        #   
+        # @param [Google::Apis::MapsengineV1::FeaturesBatchInsertRequest] features_batch_insert_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3148,7 +3049,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3160,18 +3061,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_insert_table_feature(id, features_batch_insert_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_insert_table_feature(id, features_batch_insert_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/features/batchInsert'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::FeaturesBatchInsertRequestRepresentation
-          command.request_object = features_batch_insert_request
+          command.request_representation = Google::Apis::MapsengineV1::FeaturesBatchInsertRequest::Representation
+          command.request_object = features_batch_insert_request_object
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Update the supplied features.
         # A single batchPatch request can update:
@@ -3191,8 +3091,7 @@ module Google
         # Google Maps Engine developer's guide.
         # @param [String] id
         #   The ID of the table containing the features to be patched.
-        # @param [Google::Apis::MapsengineV1::FeaturesBatchPatchRequest] features_batch_patch_request
-        #   
+        # @param [Google::Apis::MapsengineV1::FeaturesBatchPatchRequest] features_batch_patch_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3202,7 +3101,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3214,18 +3113,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_patch_table_feature(id, features_batch_patch_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_patch_table_feature(id, features_batch_patch_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/features/batchPatch'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::FeaturesBatchPatchRequestRepresentation
-          command.request_object = features_batch_patch_request
+          command.request_representation = Google::Apis::MapsengineV1::FeaturesBatchPatchRequest::Representation
+          command.request_object = features_batch_patch_request_object
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return a single feature, given its ID.
         # @param [String] table_id
@@ -3246,7 +3144,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3261,7 +3159,7 @@ module Google
         def get_table_feature(table_id, id, select: nil, version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}/features/{id}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::FeatureRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::Feature::Representation
           command.response_class = Google::Apis::MapsengineV1::Feature
           command.params['tableId'] = table_id unless table_id.nil?
           command.params['id'] = id unless id.nil?
@@ -3272,7 +3170,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all features readable by the current user.
         # @param [String] id
@@ -3311,7 +3208,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3326,7 +3223,7 @@ module Google
         def list_table_features(id, include: nil, intersects: nil, limit: nil, max_results: nil, order_by: nil, page_token: nil, select: nil, version: nil, where: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/features'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::FeaturesListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::FeaturesListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::FeaturesListResponse
           command.params['id'] = id unless id.nil?
           command.query['include'] = include unless include.nil?
@@ -3343,8 +3240,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Upload a file to a placeholder table asset. See Table Upload in the Developer'
         # s Guide for more information.
@@ -3367,7 +3262,7 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3396,8 +3291,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
-        
         # Return all parent ids of the specified table.
         # @param [String] id
         #   The ID of the table whose parents will be listed.
@@ -3417,7 +3310,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3432,7 +3325,7 @@ module Google
         def list_table_parents(id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/parents'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ParentsListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::ParentsListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ParentsListResponse
           command.params['id'] = id unless id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -3443,13 +3336,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
-        
         # Remove permission entries from an already existing asset.
         # @param [String] id
         #   The ID of the asset from which permissions will be removed.
-        # @param [Google::Apis::MapsengineV1::PermissionsBatchDeleteRequest] permissions_batch_delete_request
-        #   
+        # @param [Google::Apis::MapsengineV1::BatchDeleteRequest] permissions_batch_delete_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3459,40 +3349,38 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PermissionsBatchDeleteResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchDeleteResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PermissionsBatchDeleteResponse]
+        # @return [Google::Apis::MapsengineV1::BatchDeleteResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_delete_table_permission(id, permissions_batch_delete_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_delete_table_permission(id, permissions_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/permissions/batchDelete'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::PermissionsBatchDeleteRequestRepresentation
-          command.request_object = permissions_batch_delete_request
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsBatchDeleteResponseRepresentation
-          command.response_class = Google::Apis::MapsengineV1::PermissionsBatchDeleteResponse
+          command.request_representation = Google::Apis::MapsengineV1::BatchDeleteRequest::Representation
+          command.request_object = permissions_batch_delete_request_object
+          command.response_representation = Google::Apis::MapsengineV1::BatchDeleteResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchDeleteResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Add or update permission entries to an already existing asset.
         # An asset can hold up to 20 different permission entries. Each batchInsert
         # request is atomic.
         # @param [String] id
         #   The ID of the asset to which permissions will be added.
-        # @param [Google::Apis::MapsengineV1::PermissionsBatchUpdateRequest] permissions_batch_update_request
-        #   
+        # @param [Google::Apis::MapsengineV1::BatchUpdateRequest] permissions_batch_update_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3502,32 +3390,31 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PermissionsBatchUpdateResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchUpdateResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PermissionsBatchUpdateResponse]
+        # @return [Google::Apis::MapsengineV1::BatchUpdateResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_update_table_permission(id, permissions_batch_update_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_update_table_permission(id, permissions_batch_update_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/permissions/batchUpdate'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::PermissionsBatchUpdateRequestRepresentation
-          command.request_object = permissions_batch_update_request
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsBatchUpdateResponseRepresentation
-          command.response_class = Google::Apis::MapsengineV1::PermissionsBatchUpdateResponse
+          command.request_representation = Google::Apis::MapsengineV1::BatchUpdateRequest::Representation
+          command.request_object = permissions_batch_update_request_object
+          command.response_representation = Google::Apis::MapsengineV1::BatchUpdateResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchUpdateResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Return all of the permissions for the specified asset.
         # @param [String] id
@@ -3541,7 +3428,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3556,7 +3443,7 @@ module Google
         def list_table_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/permissions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponseRepresentation
+          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::PermissionsListResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?

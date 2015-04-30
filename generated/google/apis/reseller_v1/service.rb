@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/google-apps/reseller/
       class ResellerService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'apps/reseller/v1/')
         end
-
+        
         # Gets a customer resource if one exists and is owned by the reseller.
         # @param [String] customer_id
         #   Id of the Customer
@@ -65,7 +64,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -80,7 +79,7 @@ module Google
         def get_customer(customer_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ResellerV1::CustomerRepresentation
+          command.response_representation = Google::Apis::ResellerV1::Customer::Representation
           command.response_class = Google::Apis::ResellerV1::Customer
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -89,10 +88,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates a customer resource if one does not already exist.
-        # @param [Google::Apis::ResellerV1::Customer] customer
-        #   
+        # @param [Google::Apis::ResellerV1::Customer] customer_object
         # @param [String] customer_auth_token
         #   An auth token needed for inserting a customer for which domain already exists.
         #   Can be generated at https://www.google.com/a/cpanel//TransferToken. Optional.
@@ -105,7 +102,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -117,12 +114,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_customer(customer = nil, customer_auth_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_customer(customer_object = nil, customer_auth_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::ResellerV1::CustomerRepresentation
-          command.request_object = customer
-          command.response_representation = Google::Apis::ResellerV1::CustomerRepresentation
+          command.request_representation = Google::Apis::ResellerV1::Customer::Representation
+          command.request_object = customer_object
+          command.response_representation = Google::Apis::ResellerV1::Customer::Representation
           command.response_class = Google::Apis::ResellerV1::Customer
           command.query['customerAuthToken'] = customer_auth_token unless customer_auth_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -131,13 +128,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Update a customer resource if one it exists and is owned by the reseller. This
         # method supports patch semantics.
         # @param [String] customer_id
         #   Id of the Customer
-        # @param [Google::Apis::ResellerV1::Customer] customer
-        #   
+        # @param [Google::Apis::ResellerV1::Customer] customer_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -147,7 +142,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -159,12 +154,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_customer(customer_id, customer = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_customer(customer_id, customer_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::ResellerV1::CustomerRepresentation
-          command.request_object = customer
-          command.response_representation = Google::Apis::ResellerV1::CustomerRepresentation
+          command.request_representation = Google::Apis::ResellerV1::Customer::Representation
+          command.request_object = customer_object
+          command.response_representation = Google::Apis::ResellerV1::Customer::Representation
           command.response_class = Google::Apis::ResellerV1::Customer
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -172,13 +167,11 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Update a customer resource if one it exists and is owned by the reseller.
         # @param [String] customer_id
         #   Id of the Customer
-        # @param [Google::Apis::ResellerV1::Customer] customer
-        #   
+        # @param [Google::Apis::ResellerV1::Customer] customer_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -188,7 +181,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -200,12 +193,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_customer(customer_id, customer = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_customer(customer_id, customer_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::ResellerV1::CustomerRepresentation
-          command.request_object = customer
-          command.response_representation = Google::Apis::ResellerV1::CustomerRepresentation
+          command.request_representation = Google::Apis::ResellerV1::Customer::Representation
+          command.request_object = customer_object
+          command.response_representation = Google::Apis::ResellerV1::Customer::Representation
           command.response_class = Google::Apis::ResellerV1::Customer
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -213,7 +206,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Activates a subscription previously suspended by the reseller
         # @param [String] customer_id
         #   Id of the Customer
@@ -228,7 +221,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -243,7 +236,7 @@ module Google
         def activate_subscription(customer_id, subscription_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}/subscriptions/{subscriptionId}/activate'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::ResellerV1::SubscriptionRepresentation
+          command.response_representation = Google::Apis::ResellerV1::Subscription::Representation
           command.response_class = Google::Apis::ResellerV1::Subscription
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
@@ -252,15 +245,13 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Changes the plan of a subscription
         # @param [String] customer_id
         #   Id of the Customer
         # @param [String] subscription_id
         #   Id of the subscription, which is unique for a customer
-        # @param [Google::Apis::ResellerV1::ChangePlanRequest] change_plan_request
-        #   
+        # @param [Google::Apis::ResellerV1::ChangePlanRequest] change_plan_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -270,7 +261,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -282,12 +273,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def change_plan(customer_id, subscription_id, change_plan_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def change_plan(customer_id, subscription_id, change_plan_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}/subscriptions/{subscriptionId}/changePlan'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::ResellerV1::ChangePlanRequestRepresentation
-          command.request_object = change_plan_request
-          command.response_representation = Google::Apis::ResellerV1::SubscriptionRepresentation
+          command.request_representation = Google::Apis::ResellerV1::ChangePlanRequest::Representation
+          command.request_object = change_plan_request_object
+          command.response_representation = Google::Apis::ResellerV1::Subscription::Representation
           command.response_class = Google::Apis::ResellerV1::Subscription
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
@@ -296,15 +287,13 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Changes the renewal settings of a subscription
         # @param [String] customer_id
         #   Id of the Customer
         # @param [String] subscription_id
         #   Id of the subscription, which is unique for a customer
-        # @param [Google::Apis::ResellerV1::RenewalSettings] renewal_settings
-        #   
+        # @param [Google::Apis::ResellerV1::RenewalSettings] renewal_settings_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -314,7 +303,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -326,12 +315,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def change_renewal_settings_subscription(customer_id, subscription_id, renewal_settings = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def change_renewal_settings_subscription(customer_id, subscription_id, renewal_settings_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::ResellerV1::RenewalSettingsRepresentation
-          command.request_object = renewal_settings
-          command.response_representation = Google::Apis::ResellerV1::SubscriptionRepresentation
+          command.request_representation = Google::Apis::ResellerV1::RenewalSettings::Representation
+          command.request_object = renewal_settings_object
+          command.response_representation = Google::Apis::ResellerV1::Subscription::Representation
           command.response_class = Google::Apis::ResellerV1::Subscription
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
@@ -340,15 +329,13 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Changes the seats configuration of a subscription
         # @param [String] customer_id
         #   Id of the Customer
         # @param [String] subscription_id
         #   Id of the subscription, which is unique for a customer
-        # @param [Google::Apis::ResellerV1::Seats] seats
-        #   
+        # @param [Google::Apis::ResellerV1::Seats] seats_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -358,7 +345,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -370,12 +357,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def change_seats_subscription(customer_id, subscription_id, seats = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def change_seats_subscription(customer_id, subscription_id, seats_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}/subscriptions/{subscriptionId}/changeSeats'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::ResellerV1::SeatsRepresentation
-          command.request_object = seats
-          command.response_representation = Google::Apis::ResellerV1::SubscriptionRepresentation
+          command.request_representation = Google::Apis::ResellerV1::Seats::Representation
+          command.request_object = seats_object
+          command.response_representation = Google::Apis::ResellerV1::Subscription::Representation
           command.response_class = Google::Apis::ResellerV1::Subscription
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
@@ -384,7 +371,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Cancels/Downgrades a subscription.
         # @param [String] customer_id
@@ -402,7 +388,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -426,7 +412,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets a subscription of the customer.
         # @param [String] customer_id
         #   Id of the Customer
@@ -441,7 +426,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -456,7 +441,7 @@ module Google
         def get_subscription(customer_id, subscription_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}/subscriptions/{subscriptionId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ResellerV1::SubscriptionRepresentation
+          command.response_representation = Google::Apis::ResellerV1::Subscription::Representation
           command.response_class = Google::Apis::ResellerV1::Subscription
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
@@ -466,12 +451,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates/Transfers a subscription for the customer.
         # @param [String] customer_id
         #   Id of the Customer
-        # @param [Google::Apis::ResellerV1::Subscription] subscription
-        #   
+        # @param [Google::Apis::ResellerV1::Subscription] subscription_object
         # @param [String] customer_auth_token
         #   An auth token needed for transferring a subscription. Can be generated at
         #   https://www.google.com/a/cpanel/customer-domain/TransferToken. Optional.
@@ -484,7 +467,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -496,12 +479,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_subscription(customer_id, subscription = nil, customer_auth_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_subscription(customer_id, subscription_object = nil, customer_auth_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}/subscriptions'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::ResellerV1::SubscriptionRepresentation
-          command.request_object = subscription
-          command.response_representation = Google::Apis::ResellerV1::SubscriptionRepresentation
+          command.request_representation = Google::Apis::ResellerV1::Subscription::Representation
+          command.request_object = subscription_object
+          command.response_representation = Google::Apis::ResellerV1::Subscription::Representation
           command.response_class = Google::Apis::ResellerV1::Subscription
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.query['customerAuthToken'] = customer_auth_token unless customer_auth_token.nil?
@@ -510,7 +493,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists subscriptions of a reseller, optionally filtered by a customer name
         # prefix.
@@ -536,7 +518,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -551,7 +533,7 @@ module Google
         def list_subscriptions(customer_auth_token: nil, customer_id: nil, customer_name_prefix: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'subscriptions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ResellerV1::SubscriptionsRepresentation
+          command.response_representation = Google::Apis::ResellerV1::Subscriptions::Representation
           command.response_class = Google::Apis::ResellerV1::Subscriptions
           command.query['customerAuthToken'] = customer_auth_token unless customer_auth_token.nil?
           command.query['customerId'] = customer_id unless customer_id.nil?
@@ -563,7 +545,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Starts paid service of a trial subscription
         # @param [String] customer_id
@@ -579,7 +560,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -594,7 +575,7 @@ module Google
         def start_paid_service_subscription(customer_id, subscription_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}/subscriptions/{subscriptionId}/startPaidService'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::ResellerV1::SubscriptionRepresentation
+          command.response_representation = Google::Apis::ResellerV1::Subscription::Representation
           command.response_class = Google::Apis::ResellerV1::Subscription
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
@@ -603,7 +584,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Suspends an active subscription
         # @param [String] customer_id
@@ -619,7 +599,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -634,7 +614,7 @@ module Google
         def suspend_subscription(customer_id, subscription_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}/subscriptions/{subscriptionId}/suspend'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::ResellerV1::SubscriptionRepresentation
+          command.response_representation = Google::Apis::ResellerV1::Subscription::Representation
           command.response_class = Google::Apis::ResellerV1::Subscription
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['subscriptionId'] = subscription_id unless subscription_id.nil?

@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module BigqueryV2
-
+      
       # 
       class CsvOptions
         include Google::Apis::Core::Hashable
@@ -79,6 +79,11 @@ module Google
         attr_accessor :skip_leading_rows
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @allow_jagged_rows = args[:allow_jagged_rows] unless args[:allow_jagged_rows].nil?
           @allow_quoted_newlines = args[:allow_quoted_newlines] unless args[:allow_quoted_newlines].nil?
           @encoding = args[:encoding] unless args[:encoding].nil?
@@ -87,7 +92,7 @@ module Google
           @skip_leading_rows = args[:skip_leading_rows] unless args[:skip_leading_rows].nil?
         end
       end
-
+      
       # 
       class Dataset
         include Google::Apis::Core::Hashable
@@ -170,6 +175,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @access = args[:access] unless args[:access].nil?
           @creation_time = args[:creation_time] unless args[:creation_time].nil?
           @dataset_reference = args[:dataset_reference] unless args[:dataset_reference].nil?
@@ -182,6 +192,7 @@ module Google
           @last_modified_time = args[:last_modified_time] unless args[:last_modified_time].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
+        
         # 
         class Acces
           include Google::Apis::Core::Hashable
@@ -228,6 +239,11 @@ module Google
           attr_accessor :view
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @domain = args[:domain] unless args[:domain].nil?
             @group_by_email = args[:group_by_email] unless args[:group_by_email].nil?
             @role = args[:role] unless args[:role].nil?
@@ -237,7 +253,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class DatasetList
         include Google::Apis::Core::Hashable
@@ -268,11 +284,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @datasets = args[:datasets] unless args[:datasets].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
+        
         # 
         class Dataset
           include Google::Apis::Core::Hashable
@@ -299,6 +321,11 @@ module Google
           attr_accessor :kind
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @dataset_reference = args[:dataset_reference] unless args[:dataset_reference].nil?
             @friendly_name = args[:friendly_name] unless args[:friendly_name].nil?
             @id = args[:id] unless args[:id].nil?
@@ -306,7 +333,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class DatasetReference
         include Google::Apis::Core::Hashable
@@ -324,11 +351,16 @@ module Google
         attr_accessor :project_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dataset_id = args[:dataset_id] unless args[:dataset_id].nil?
           @project_id = args[:project_id] unless args[:project_id].nil?
         end
       end
-
+      
       # 
       class ErrorProto
         include Google::Apis::Core::Hashable
@@ -355,13 +387,18 @@ module Google
         attr_accessor :reason
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @debug_info = args[:debug_info] unless args[:debug_info].nil?
           @location = args[:location] unless args[:location].nil?
           @message = args[:message] unless args[:message].nil?
           @reason = args[:reason] unless args[:reason].nil?
         end
       end
-
+      
       # 
       class ExternalDataConfiguration
         include Google::Apis::Core::Hashable
@@ -416,6 +453,11 @@ module Google
         attr_accessor :source_uris
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @compression = args[:compression] unless args[:compression].nil?
           @csv_options = args[:csv_options] unless args[:csv_options].nil?
           @ignore_unknown_values = args[:ignore_unknown_values] unless args[:ignore_unknown_values].nil?
@@ -425,7 +467,7 @@ module Google
           @source_uris = args[:source_uris] unless args[:source_uris].nil?
         end
       end
-
+      
       # 
       class GetQueryResultsResponse
         include Google::Apis::Core::Hashable
@@ -493,6 +535,11 @@ module Google
         attr_accessor :total_rows
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cache_hit = args[:cache_hit] unless args[:cache_hit].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @job_complete = args[:job_complete] unless args[:job_complete].nil?
@@ -505,7 +552,7 @@ module Google
           @total_rows = args[:total_rows] unless args[:total_rows].nil?
         end
       end
-
+      
       # 
       class Job
         include Google::Apis::Core::Hashable
@@ -558,6 +605,11 @@ module Google
         attr_accessor :user_email
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @configuration = args[:configuration] unless args[:configuration].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
@@ -569,7 +621,7 @@ module Google
           @user_email = args[:user_email] unless args[:user_email].nil?
         end
       end
-
+      
       # 
       class JobConfiguration
         include Google::Apis::Core::Hashable
@@ -609,6 +661,11 @@ module Google
         attr_accessor :query
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @copy = args[:copy] unless args[:copy].nil?
           @dry_run = args[:dry_run] unless args[:dry_run].nil?
           @extract = args[:extract] unless args[:extract].nil?
@@ -617,7 +674,7 @@ module Google
           @query = args[:query] unless args[:query].nil?
         end
       end
-
+      
       # 
       class JobConfigurationExtract
         include Google::Apis::Core::Hashable
@@ -665,6 +722,11 @@ module Google
         attr_accessor :source_table
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @compression = args[:compression] unless args[:compression].nil?
           @destination_format = args[:destination_format] unless args[:destination_format].nil?
           @destination_uri = args[:destination_uri] unless args[:destination_uri].nil?
@@ -674,7 +736,7 @@ module Google
           @source_table = args[:source_table] unless args[:source_table].nil?
         end
       end
-
+      
       # 
       class JobConfigurationLink
         include Google::Apis::Core::Hashable
@@ -712,13 +774,18 @@ module Google
         attr_accessor :write_disposition
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @create_disposition = args[:create_disposition] unless args[:create_disposition].nil?
           @destination_table = args[:destination_table] unless args[:destination_table].nil?
           @source_uri = args[:source_uri] unless args[:source_uri].nil?
           @write_disposition = args[:write_disposition] unless args[:write_disposition].nil?
         end
       end
-
+      
       # 
       class JobConfigurationLoad
         include Google::Apis::Core::Hashable
@@ -865,6 +932,11 @@ module Google
         attr_accessor :write_disposition
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @allow_jagged_rows = args[:allow_jagged_rows] unless args[:allow_jagged_rows].nil?
           @allow_quoted_newlines = args[:allow_quoted_newlines] unless args[:allow_quoted_newlines].nil?
           @create_disposition = args[:create_disposition] unless args[:create_disposition].nil?
@@ -884,7 +956,7 @@ module Google
           @write_disposition = args[:write_disposition] unless args[:write_disposition].nil?
         end
       end
-
+      
       # 
       class JobConfigurationQuery
         include Google::Apis::Core::Hashable
@@ -972,6 +1044,11 @@ module Google
         attr_accessor :write_disposition
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @allow_large_results = args[:allow_large_results] unless args[:allow_large_results].nil?
           @create_disposition = args[:create_disposition] unless args[:create_disposition].nil?
           @default_dataset = args[:default_dataset] unless args[:default_dataset].nil?
@@ -985,7 +1062,7 @@ module Google
           @write_disposition = args[:write_disposition] unless args[:write_disposition].nil?
         end
       end
-
+      
       # 
       class JobConfigurationTableCopy
         include Google::Apis::Core::Hashable
@@ -1028,6 +1105,11 @@ module Google
         attr_accessor :write_disposition
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @create_disposition = args[:create_disposition] unless args[:create_disposition].nil?
           @destination_table = args[:destination_table] unless args[:destination_table].nil?
           @source_table = args[:source_table] unless args[:source_table].nil?
@@ -1035,7 +1117,7 @@ module Google
           @write_disposition = args[:write_disposition] unless args[:write_disposition].nil?
         end
       end
-
+      
       # 
       class JobList
         include Google::Apis::Core::Hashable
@@ -1066,12 +1148,18 @@ module Google
         attr_accessor :total_items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @jobs = args[:jobs] unless args[:jobs].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @total_items = args[:total_items] unless args[:total_items].nil?
         end
+        
         # 
         class Job
           include Google::Apis::Core::Hashable
@@ -1124,6 +1212,11 @@ module Google
           attr_accessor :user_email
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @configuration = args[:configuration] unless args[:configuration].nil?
             @error_result = args[:error_result] unless args[:error_result].nil?
             @id = args[:id] unless args[:id].nil?
@@ -1136,7 +1229,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class JobReference
         include Google::Apis::Core::Hashable
@@ -1154,11 +1247,16 @@ module Google
         attr_accessor :project_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @job_id = args[:job_id] unless args[:job_id].nil?
           @project_id = args[:project_id] unless args[:project_id].nil?
         end
       end
-
+      
       # 
       class JobStatistics
         include Google::Apis::Core::Hashable
@@ -1204,6 +1302,11 @@ module Google
         attr_accessor :total_bytes_processed
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_time = args[:creation_time] unless args[:creation_time].nil?
           @end_time = args[:end_time] unless args[:end_time].nil?
           @extract = args[:extract] unless args[:extract].nil?
@@ -1213,7 +1316,7 @@ module Google
           @total_bytes_processed = args[:total_bytes_processed] unless args[:total_bytes_processed].nil?
         end
       end
-
+      
       # 
       class JobStatistics2
         include Google::Apis::Core::Hashable
@@ -1230,11 +1333,16 @@ module Google
         attr_accessor :total_bytes_processed
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cache_hit = args[:cache_hit] unless args[:cache_hit].nil?
           @total_bytes_processed = args[:total_bytes_processed] unless args[:total_bytes_processed].nil?
         end
       end
-
+      
       # 
       class JobStatistics3
         include Google::Apis::Core::Hashable
@@ -1262,13 +1370,18 @@ module Google
         attr_accessor :output_rows
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @input_file_bytes = args[:input_file_bytes] unless args[:input_file_bytes].nil?
           @input_files = args[:input_files] unless args[:input_files].nil?
           @output_bytes = args[:output_bytes] unless args[:output_bytes].nil?
           @output_rows = args[:output_rows] unless args[:output_rows].nil?
         end
       end
-
+      
       # 
       class JobStatistics4
         include Google::Apis::Core::Hashable
@@ -1281,10 +1394,15 @@ module Google
         attr_accessor :destination_uri_file_counts
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @destination_uri_file_counts = args[:destination_uri_file_counts] unless args[:destination_uri_file_counts].nil?
         end
       end
-
+      
       # 
       class JobStatus
         include Google::Apis::Core::Hashable
@@ -1307,12 +1425,17 @@ module Google
         attr_accessor :state
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @error_result = args[:error_result] unless args[:error_result].nil?
           @errors = args[:errors] unless args[:errors].nil?
           @state = args[:state] unless args[:state].nil?
         end
       end
-
+      
       # 
       class ProjectList
         include Google::Apis::Core::Hashable
@@ -1343,12 +1466,18 @@ module Google
         attr_accessor :total_items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @projects = args[:projects] unless args[:projects].nil?
           @total_items = args[:total_items] unless args[:total_items].nil?
         end
+        
         # 
         class Project
           include Google::Apis::Core::Hashable
@@ -1379,6 +1508,11 @@ module Google
           attr_accessor :project_reference
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @friendly_name = args[:friendly_name] unless args[:friendly_name].nil?
             @id = args[:id] unless args[:id].nil?
             @kind = args[:kind] unless args[:kind].nil?
@@ -1387,7 +1521,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class ProjectReference
         include Google::Apis::Core::Hashable
@@ -1399,10 +1533,15 @@ module Google
         attr_accessor :project_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @project_id = args[:project_id] unless args[:project_id].nil?
         end
       end
-
+      
       # 
       class QueryRequest
         include Google::Apis::Core::Hashable
@@ -1468,6 +1607,11 @@ module Google
         alias_method :use_query_cache?, :use_query_cache
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @default_dataset = args[:default_dataset] unless args[:default_dataset].nil?
           @dry_run = args[:dry_run] unless args[:dry_run].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1478,7 +1622,7 @@ module Google
           @use_query_cache = args[:use_query_cache] unless args[:use_query_cache].nil?
         end
       end
-
+      
       # 
       class QueryResponse
         include Google::Apis::Core::Hashable
@@ -1540,6 +1684,11 @@ module Google
         attr_accessor :total_rows
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cache_hit = args[:cache_hit] unless args[:cache_hit].nil?
           @job_complete = args[:job_complete] unless args[:job_complete].nil?
           @job_reference = args[:job_reference] unless args[:job_reference].nil?
@@ -1551,7 +1700,7 @@ module Google
           @total_rows = args[:total_rows] unless args[:total_rows].nil?
         end
       end
-
+      
       # 
       class Table
         include Google::Apis::Core::Hashable
@@ -1640,6 +1789,11 @@ module Google
         attr_accessor :view
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_time = args[:creation_time] unless args[:creation_time].nil?
           @description = args[:description] unless args[:description].nil?
           @etag = args[:etag] unless args[:etag].nil?
@@ -1657,7 +1811,7 @@ module Google
           @view = args[:view] unless args[:view].nil?
         end
       end
-
+      
       # Represents a single cell in the result set. Users of the java client can
       # detect whether their value result is null by calling 'com.google.api.client.
       # util.Data.isNull(cell.getV())'.
@@ -1670,12 +1824,17 @@ module Google
         attr_accessor :v
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @v = args[:v] unless args[:v].nil?
         end
       end
-
+      
       # 
-      class TableDataInsertAllRequest
+      class InsertAllRequest
         include Google::Apis::Core::Hashable
       
         # [Optional] Accept rows that contain values that do not match the schema. The
@@ -1693,7 +1852,7 @@ module Google
       
         # The rows to insert.
         # Corresponds to the JSON property `rows`
-        # @return [Array<Google::Apis::BigqueryV2::TableDataInsertAllRequest::Row>]
+        # @return [Array<Google::Apis::BigqueryV2::InsertAllRequest::Row>]
         attr_accessor :rows
       
         # [Optional] Insert all valid rows of a request, even if invalid rows exist. The
@@ -1705,11 +1864,17 @@ module Google
         alias_method :skip_invalid_rows?, :skip_invalid_rows
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ignore_unknown_values = args[:ignore_unknown_values] unless args[:ignore_unknown_values].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @rows = args[:rows] unless args[:rows].nil?
           @skip_invalid_rows = args[:skip_invalid_rows] unless args[:skip_invalid_rows].nil?
         end
+        
         # 
         class Row
           include Google::Apis::Core::Hashable
@@ -1720,26 +1885,30 @@ module Google
           # @return [String]
           attr_accessor :insert_id
         
-          # [Required] A JSON object that contains a row of data. The object's properties
-          # and values must match the destination table's schema.
+          # Represents a single JSON object.
           # Corresponds to the JSON property `json`
           # @return [Hash<String,Object>]
           attr_accessor :json
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @insert_id = args[:insert_id] unless args[:insert_id].nil?
             @json = args[:json] unless args[:json].nil?
           end
         end
       end
-
+      
       # 
-      class TableDataInsertAllResponse
+      class InsertAllResponse
         include Google::Apis::Core::Hashable
       
         # An array of errors for rows that were not inserted.
         # Corresponds to the JSON property `insertErrors`
-        # @return [Array<Google::Apis::BigqueryV2::TableDataInsertAllResponse::InsertError>]
+        # @return [Array<Google::Apis::BigqueryV2::InsertAllResponse::InsertError>]
         attr_accessor :insert_errors
       
         # The resource type of the response.
@@ -1748,9 +1917,15 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @insert_errors = args[:insert_errors] unless args[:insert_errors].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
+        
         # 
         class InsertError
           include Google::Apis::Core::Hashable
@@ -1766,14 +1941,19 @@ module Google
           attr_accessor :index
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @errors = args[:errors] unless args[:errors].nil?
             @index = args[:index] unless args[:index].nil?
           end
         end
       end
-
+      
       # 
-      class TableDataList
+      class List
         include Google::Apis::Core::Hashable
       
         # A hash of this page of results.
@@ -1804,6 +1984,11 @@ module Google
         attr_accessor :total_rows
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @page_token = args[:page_token] unless args[:page_token].nil?
@@ -1811,7 +1996,7 @@ module Google
           @total_rows = args[:total_rows] unless args[:total_rows].nil?
         end
       end
-
+      
       # 
       class TableFieldSchema
         include Google::Apis::Core::Hashable
@@ -1848,6 +2033,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @description = args[:description] unless args[:description].nil?
           @fields = args[:fields] unless args[:fields].nil?
           @mode = args[:mode] unless args[:mode].nil?
@@ -1855,7 +2045,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # 
       class TableList
         include Google::Apis::Core::Hashable
@@ -1886,12 +2076,18 @@ module Google
         attr_accessor :total_items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @tables = args[:tables] unless args[:tables].nil?
           @total_items = args[:total_items] unless args[:total_items].nil?
         end
+        
         # 
         class Table
           include Google::Apis::Core::Hashable
@@ -1922,6 +2118,11 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @friendly_name = args[:friendly_name] unless args[:friendly_name].nil?
             @id = args[:id] unless args[:id].nil?
             @kind = args[:kind] unless args[:kind].nil?
@@ -1930,7 +2131,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class TableReference
         include Google::Apis::Core::Hashable
@@ -1952,12 +2153,17 @@ module Google
         attr_accessor :table_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dataset_id = args[:dataset_id] unless args[:dataset_id].nil?
           @project_id = args[:project_id] unless args[:project_id].nil?
           @table_id = args[:table_id] unless args[:table_id].nil?
         end
       end
-
+      
       # Represents a single row in the result set, consisting of one or more fields.
       class TableRow
         include Google::Apis::Core::Hashable
@@ -1968,10 +2174,15 @@ module Google
         attr_accessor :f
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @f = args[:f] unless args[:f].nil?
         end
       end
-
+      
       # 
       class TableSchema
         include Google::Apis::Core::Hashable
@@ -1982,10 +2193,15 @@ module Google
         attr_accessor :fields
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @fields = args[:fields] unless args[:fields].nil?
         end
       end
-
+      
       # 
       class ViewDefinition
         include Google::Apis::Core::Hashable
@@ -1996,6 +2212,11 @@ module Google
         attr_accessor :query
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @query = args[:query] unless args[:query].nil?
         end
       end

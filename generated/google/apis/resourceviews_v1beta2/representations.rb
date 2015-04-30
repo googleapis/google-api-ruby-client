@@ -22,228 +22,247 @@ module Google
   module Apis
     module ResourceviewsV1beta2
       
-      class LabelRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Label
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListResourceResponseItemRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ListResourceResponseItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class OperationRepresentation < Google::Apis::Core::JsonRepresentation
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
+        class Error
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
         
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
       end
       
-      class OperationListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class OperationList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ResourceViewRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ResourceView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ServiceEndpointRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ServiceEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ZoneViewsAddResourcesRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AddResourcesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ZoneViewsGetServiceResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class GetServiceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ZoneViewsListRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class List
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ZoneViewsListResourcesResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ListResourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ZoneViewsRemoveResourcesRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RemoveResourcesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ZoneViewsSetServiceRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class SetServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class LabelRepresentation < Google::Apis::Core::JsonRepresentation
-        property :key, as: 'key'
-        property :value, as: 'value'
-      end
-
-      # @private
-      class ListResourceResponseItemRepresentation < Google::Apis::Core::JsonRepresentation
-        hash :endpoints, as: 'endpoints', :class => Array do
-          include Representable::JSON::Collection
-          items
+      class Label
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
-        
-        
-        property :resource, as: 'resource'
       end
-
+      
       # @private
-      class OperationRepresentation < Google::Apis::Core::JsonRepresentation
-        class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :client_operation_id, as: 'clientOperationId'
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :end_time, as: 'endTime'
-        property :error, as: 'error', class: Google::Apis::ResourceviewsV1beta2::Operation::Error, decorator: Google::Apis::ResourceviewsV1beta2::OperationRepresentation::ErrorRepresentation
-        
-        property :http_error_message, as: 'httpErrorMessage'
-        property :http_error_status_code, as: 'httpErrorStatusCode'
-        property :id, as: 'id'
-        property :insert_time, as: 'insertTime'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :operation_type, as: 'operationType'
-        property :progress, as: 'progress'
-        property :region, as: 'region'
-        property :self_link, as: 'selfLink'
-        property :start_time, as: 'startTime'
-        property :status, as: 'status'
-        property :status_message, as: 'statusMessage'
-        property :target_id, as: 'targetId'
-        property :target_link, as: 'targetLink'
-        property :user, as: 'user'
-        collection :warnings, as: 'warnings', class: Google::Apis::ResourceviewsV1beta2::Operation::Warning, decorator: Google::Apis::ResourceviewsV1beta2::OperationRepresentation::WarningRepresentation
-        
-        
-        property :zone, as: 'zone'
+      class ListResourceResponseItem
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :endpoints, as: 'endpoints', :class => Array do
+        include Representable::JSON::Collection
+        items
+      end
+      
+          property :resource, as: 'resource'
+        end
+      end
+      
+      # @private
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_operation_id, as: 'clientOperationId'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :end_time, as: 'endTime'
+          property :error, as: 'error', class: Google::Apis::ResourceviewsV1beta2::Operation::Error, decorator: Google::Apis::ResourceviewsV1beta2::Operation::Error::Representation
+      
+          property :http_error_message, as: 'httpErrorMessage'
+          property :http_error_status_code, as: 'httpErrorStatusCode'
+          property :id, as: 'id'
+          property :insert_time, as: 'insertTime'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :operation_type, as: 'operationType'
+          property :progress, as: 'progress'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          property :start_time, as: 'startTime'
+          property :status, as: 'status'
+          property :status_message, as: 'statusMessage'
+          property :target_id, as: 'targetId'
+          property :target_link, as: 'targetLink'
+          property :user, as: 'user'
+          collection :warnings, as: 'warnings', class: Google::Apis::ResourceviewsV1beta2::Operation::Warning, decorator: Google::Apis::ResourceviewsV1beta2::Operation::Warning::Representation
+      
+          property :zone, as: 'zone'
+        end
         
         # @private
-        class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
-          class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
-          collection :errors, as: 'errors', class: Google::Apis::ResourceviewsV1beta2::Operation::Error::Error, decorator: Google::Apis::ResourceviewsV1beta2::OperationRepresentation::ErrorRepresentation::ErrorRepresentation
-          
-          
+        class Error
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::ResourceviewsV1beta2::Operation::Error::Error, decorator: Google::Apis::ResourceviewsV1beta2::Operation::Error::Error::Representation
+        
+          end
           
           # @private
-          class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+          end
+        end
+        
+        # @private
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
-            property :location, as: 'location'
+            collection :data, as: 'data', class: Google::Apis::ResourceviewsV1beta2::Operation::Warning::Datum, decorator: Google::Apis::ResourceviewsV1beta2::Operation::Warning::Datum::Representation
+        
             property :message, as: 'message'
           end
-        end
-        
-        # @private
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :code, as: 'code'
-          collection :data, as: 'data', class: Google::Apis::ResourceviewsV1beta2::Operation::Warning::Datum, decorator: Google::Apis::ResourceviewsV1beta2::OperationRepresentation::WarningRepresentation::DatumRepresentation
-          
-          
-          property :message, as: 'message'
           
           # @private
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            property :key, as: 'key'
-            property :value, as: 'value'
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
           end
         end
       end
-
+      
       # @private
-      class OperationListRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        collection :items, as: 'items', class: Google::Apis::ResourceviewsV1beta2::Operation, decorator: Google::Apis::ResourceviewsV1beta2::OperationRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
+      class OperationList
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ResourceviewsV1beta2::Operation, decorator: Google::Apis::ResourceviewsV1beta2::Operation::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
       end
-
+      
       # @private
-      class ResourceViewRepresentation < Google::Apis::Core::JsonRepresentation
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :description, as: 'description'
-        collection :endpoints, as: 'endpoints', class: Google::Apis::ResourceviewsV1beta2::ServiceEndpoint, decorator: Google::Apis::ResourceviewsV1beta2::ServiceEndpointRepresentation
-        
-        
-        property :fingerprint, as: 'fingerprint'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        collection :labels, as: 'labels', class: Google::Apis::ResourceviewsV1beta2::Label, decorator: Google::Apis::ResourceviewsV1beta2::LabelRepresentation
-        
-        
-        property :name, as: 'name'
-        property :network, as: 'network'
-        collection :resources, as: 'resources'
-        
-        property :self_link, as: 'selfLink'
-        property :size, as: 'size'
+      class ResourceView
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          collection :endpoints, as: 'endpoints', class: Google::Apis::ResourceviewsV1beta2::ServiceEndpoint, decorator: Google::Apis::ResourceviewsV1beta2::ServiceEndpoint::Representation
+      
+          property :fingerprint, as: 'fingerprint'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          collection :labels, as: 'labels', class: Google::Apis::ResourceviewsV1beta2::Label, decorator: Google::Apis::ResourceviewsV1beta2::Label::Representation
+      
+          property :name, as: 'name'
+          property :network, as: 'network'
+          collection :resources, as: 'resources'
+          property :self_link, as: 'selfLink'
+          property :size, as: 'size'
+        end
       end
-
+      
       # @private
-      class ServiceEndpointRepresentation < Google::Apis::Core::JsonRepresentation
-        property :name, as: 'name'
-        property :port, as: 'port'
+      class ServiceEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :port, as: 'port'
+        end
       end
-
+      
       # @private
-      class ZoneViewsAddResourcesRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :resources, as: 'resources'
+      class AddResourcesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resources, as: 'resources'
+        end
       end
-
+      
       # @private
-      class ZoneViewsGetServiceResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :endpoints, as: 'endpoints', class: Google::Apis::ResourceviewsV1beta2::ServiceEndpoint, decorator: Google::Apis::ResourceviewsV1beta2::ServiceEndpointRepresentation
-        
-        
-        property :fingerprint, as: 'fingerprint'
+      class GetServiceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :endpoints, as: 'endpoints', class: Google::Apis::ResourceviewsV1beta2::ServiceEndpoint, decorator: Google::Apis::ResourceviewsV1beta2::ServiceEndpoint::Representation
+      
+          property :fingerprint, as: 'fingerprint'
+        end
       end
-
+      
       # @private
-      class ZoneViewsListRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::ResourceviewsV1beta2::ResourceView, decorator: Google::Apis::ResourceviewsV1beta2::ResourceViewRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :self_link, as: 'selfLink'
+      class List
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::ResourceviewsV1beta2::ResourceView, decorator: Google::Apis::ResourceviewsV1beta2::ResourceView::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
       end
-
+      
       # @private
-      class ZoneViewsListResourcesResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::ResourceviewsV1beta2::ListResourceResponseItem, decorator: Google::Apis::ResourceviewsV1beta2::ListResourceResponseItemRepresentation
-        
-        
-        property :network, as: 'network'
-        property :next_page_token, as: 'nextPageToken'
+      class ListResourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::ResourceviewsV1beta2::ListResourceResponseItem, decorator: Google::Apis::ResourceviewsV1beta2::ListResourceResponseItem::Representation
+      
+          property :network, as: 'network'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class ZoneViewsRemoveResourcesRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :resources, as: 'resources'
+      class RemoveResourcesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resources, as: 'resources'
+        end
       end
-
+      
       # @private
-      class ZoneViewsSetServiceRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :endpoints, as: 'endpoints', class: Google::Apis::ResourceviewsV1beta2::ServiceEndpoint, decorator: Google::Apis::ResourceviewsV1beta2::ServiceEndpointRepresentation
-        
-        
-        property :fingerprint, as: 'fingerprint'
-        property :resource_name, as: 'resourceName'
+      class SetServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :endpoints, as: 'endpoints', class: Google::Apis::ResourceviewsV1beta2::ServiceEndpoint, decorator: Google::Apis::ResourceviewsV1beta2::ServiceEndpoint::Representation
+      
+          property :fingerprint, as: 'fingerprint'
+          property :resource_name, as: 'resourceName'
+        end
       end
     end
   end

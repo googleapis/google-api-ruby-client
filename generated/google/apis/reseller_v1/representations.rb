@@ -22,154 +22,176 @@ module Google
   module Apis
     module ResellerV1
       
-      class AddressRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Address
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ChangePlanRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ChangePlanRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CustomerRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Customer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RenewalSettingsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class RenewalSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SeatsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Seats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SubscriptionRepresentation < Google::Apis::Core::JsonRepresentation
+      class Subscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class PlanRepresentation < Google::Apis::Core::JsonRepresentation
+        class Plan
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class CommitmentIntervalRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class CommitmentInterval
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
         
-        class TransferInfoRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class TransferInfo
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
         
-        class TrialSettingsRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class TrialSettings
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class SubscriptionsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Subscriptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class AddressRepresentation < Google::Apis::Core::JsonRepresentation
-        property :address_line1, as: 'addressLine1'
-        property :address_line2, as: 'addressLine2'
-        property :address_line3, as: 'addressLine3'
-        property :contact_name, as: 'contactName'
-        property :country_code, as: 'countryCode'
-        property :kind, as: 'kind'
-        property :locality, as: 'locality'
-        property :organization_name, as: 'organizationName'
-        property :postal_code, as: 'postalCode'
-        property :region, as: 'region'
+      class Address
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address_line1, as: 'addressLine1'
+          property :address_line2, as: 'addressLine2'
+          property :address_line3, as: 'addressLine3'
+          property :contact_name, as: 'contactName'
+          property :country_code, as: 'countryCode'
+          property :kind, as: 'kind'
+          property :locality, as: 'locality'
+          property :organization_name, as: 'organizationName'
+          property :postal_code, as: 'postalCode'
+          property :region, as: 'region'
+        end
       end
-
+      
       # @private
-      class ChangePlanRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :plan_name, as: 'planName'
-        property :purchase_order_id, as: 'purchaseOrderId'
-        property :seats, as: 'seats', class: Google::Apis::ResellerV1::Seats, decorator: Google::Apis::ResellerV1::SeatsRepresentation
+      class ChangePlanRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :plan_name, as: 'planName'
+          property :purchase_order_id, as: 'purchaseOrderId'
+          property :seats, as: 'seats', class: Google::Apis::ResellerV1::Seats, decorator: Google::Apis::ResellerV1::Seats::Representation
+      
+        end
       end
-
+      
       # @private
-      class CustomerRepresentation < Google::Apis::Core::JsonRepresentation
-        property :alternate_email, as: 'alternateEmail'
-        property :customer_domain, as: 'customerDomain'
-        property :customer_id, as: 'customerId'
-        property :kind, as: 'kind'
-        property :phone_number, as: 'phoneNumber'
-        property :postal_address, as: 'postalAddress', class: Google::Apis::ResellerV1::Address, decorator: Google::Apis::ResellerV1::AddressRepresentation
-        
-        property :resource_ui_url, as: 'resourceUiUrl'
+      class Customer
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alternate_email, as: 'alternateEmail'
+          property :customer_domain, as: 'customerDomain'
+          property :customer_id, as: 'customerId'
+          property :kind, as: 'kind'
+          property :phone_number, as: 'phoneNumber'
+          property :postal_address, as: 'postalAddress', class: Google::Apis::ResellerV1::Address, decorator: Google::Apis::ResellerV1::Address::Representation
+      
+          property :resource_ui_url, as: 'resourceUiUrl'
+        end
       end
-
+      
       # @private
-      class RenewalSettingsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :renewal_type, as: 'renewalType'
+      class RenewalSettings
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :renewal_type, as: 'renewalType'
+        end
       end
-
+      
       # @private
-      class SeatsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :licensed_number_of_seats, as: 'licensedNumberOfSeats'
-        property :maximum_number_of_seats, as: 'maximumNumberOfSeats'
-        property :number_of_seats, as: 'numberOfSeats'
+      class Seats
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :licensed_number_of_seats, as: 'licensedNumberOfSeats'
+          property :maximum_number_of_seats, as: 'maximumNumberOfSeats'
+          property :number_of_seats, as: 'numberOfSeats'
+        end
       end
-
+      
       # @private
-      class SubscriptionRepresentation < Google::Apis::Core::JsonRepresentation
-        class PlanRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class TransferInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class TrialSettingsRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :billing_method, as: 'billingMethod'
-        property :creation_time, as: 'creationTime'
-        property :customer_id, as: 'customerId'
-        property :kind, as: 'kind'
-        property :plan, as: 'plan', class: Google::Apis::ResellerV1::Subscription::Plan, decorator: Google::Apis::ResellerV1::SubscriptionRepresentation::PlanRepresentation
-        
-        property :purchase_order_id, as: 'purchaseOrderId'
-        property :renewal_settings, as: 'renewalSettings', class: Google::Apis::ResellerV1::RenewalSettings, decorator: Google::Apis::ResellerV1::RenewalSettingsRepresentation
-        
-        property :resource_ui_url, as: 'resourceUiUrl'
-        property :seats, as: 'seats', class: Google::Apis::ResellerV1::Seats, decorator: Google::Apis::ResellerV1::SeatsRepresentation
-        
-        property :sku_id, as: 'skuId'
-        property :status, as: 'status'
-        property :subscription_id, as: 'subscriptionId'
-        property :transfer_info, as: 'transferInfo', class: Google::Apis::ResellerV1::Subscription::TransferInfo, decorator: Google::Apis::ResellerV1::SubscriptionRepresentation::TransferInfoRepresentation
-        
-        property :trial_settings, as: 'trialSettings', class: Google::Apis::ResellerV1::Subscription::TrialSettings, decorator: Google::Apis::ResellerV1::SubscriptionRepresentation::TrialSettingsRepresentation
-        
+      class Subscription
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_method, as: 'billingMethod'
+          property :creation_time, as: 'creationTime'
+          property :customer_id, as: 'customerId'
+          property :kind, as: 'kind'
+          property :plan, as: 'plan', class: Google::Apis::ResellerV1::Subscription::Plan, decorator: Google::Apis::ResellerV1::Subscription::Plan::Representation
+      
+          property :purchase_order_id, as: 'purchaseOrderId'
+          property :renewal_settings, as: 'renewalSettings', class: Google::Apis::ResellerV1::RenewalSettings, decorator: Google::Apis::ResellerV1::RenewalSettings::Representation
+      
+          property :resource_ui_url, as: 'resourceUiUrl'
+          property :seats, as: 'seats', class: Google::Apis::ResellerV1::Seats, decorator: Google::Apis::ResellerV1::Seats::Representation
+      
+          property :sku_id, as: 'skuId'
+          property :status, as: 'status'
+          property :subscription_id, as: 'subscriptionId'
+          property :transfer_info, as: 'transferInfo', class: Google::Apis::ResellerV1::Subscription::TransferInfo, decorator: Google::Apis::ResellerV1::Subscription::TransferInfo::Representation
+      
+          property :trial_settings, as: 'trialSettings', class: Google::Apis::ResellerV1::Subscription::TrialSettings, decorator: Google::Apis::ResellerV1::Subscription::TrialSettings::Representation
+      
+        end
         
         # @private
-        class PlanRepresentation < Google::Apis::Core::JsonRepresentation
-          class CommitmentIntervalRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :commitment_interval, as: 'commitmentInterval', class: Google::Apis::ResellerV1::Subscription::Plan::CommitmentInterval, decorator: Google::Apis::ResellerV1::SubscriptionRepresentation::PlanRepresentation::CommitmentIntervalRepresentation
-          
-          property :is_commitment_plan, as: 'isCommitmentPlan'
-          property :plan_name, as: 'planName'
+        class Plan
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :commitment_interval, as: 'commitmentInterval', class: Google::Apis::ResellerV1::Subscription::Plan::CommitmentInterval, decorator: Google::Apis::ResellerV1::Subscription::Plan::CommitmentInterval::Representation
+        
+            property :is_commitment_plan, as: 'isCommitmentPlan'
+            property :plan_name, as: 'planName'
+          end
           
           # @private
-          class CommitmentIntervalRepresentation < Google::Apis::Core::JsonRepresentation
-            property :end_time, as: 'endTime'
-            property :start_time, as: 'startTime'
+          class CommitmentInterval
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :end_time, as: 'endTime'
+              property :start_time, as: 'startTime'
+            end
           end
         end
         
         # @private
-        class TransferInfoRepresentation < Google::Apis::Core::JsonRepresentation
-          property :minimum_transferable_seats, as: 'minimumTransferableSeats'
-          property :transferability_expiration_time, as: 'transferabilityExpirationTime'
+        class TransferInfo
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :minimum_transferable_seats, as: 'minimumTransferableSeats'
+            property :transferability_expiration_time, as: 'transferabilityExpirationTime'
+          end
         end
         
         # @private
-        class TrialSettingsRepresentation < Google::Apis::Core::JsonRepresentation
-          property :is_in_trial, as: 'isInTrial'
-          property :trial_end_time, as: 'trialEndTime'
+        class TrialSettings
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :is_in_trial, as: 'isInTrial'
+            property :trial_end_time, as: 'trialEndTime'
+          end
         end
       end
-
+      
       # @private
-      class SubscriptionsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        collection :subscriptions, as: 'subscriptions', class: Google::Apis::ResellerV1::Subscription, decorator: Google::Apis::ResellerV1::SubscriptionRepresentation
+      class Subscriptions
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :subscriptions, as: 'subscriptions', class: Google::Apis::ResellerV1::Subscription, decorator: Google::Apis::ResellerV1::Subscription::Representation
+      
+        end
       end
     end
   end

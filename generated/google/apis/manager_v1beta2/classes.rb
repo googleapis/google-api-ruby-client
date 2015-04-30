@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ManagerV1beta2
-
+      
       # A Compute Engine network accessConfig. Identical to the accessConfig on
       # corresponding Compute Engine resource.
       class AccessConfig
@@ -44,12 +44,17 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @nat_ip = args[:nat_ip] unless args[:nat_ip].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # An Action encapsulates a set of commands as a single runnable module with
       # additional information needed during run-time.
       class Action
@@ -66,11 +71,16 @@ module Google
         attr_accessor :timeout_ms
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @commands = args[:commands] unless args[:commands].nil?
           @timeout_ms = args[:timeout_ms] unless args[:timeout_ms].nil?
         end
       end
-
+      
       # An allowed port resource.
       class AllowedRule
         include Google::Apis::Core::Hashable
@@ -87,11 +97,16 @@ module Google
         attr_accessor :ports
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ip_protocol = args[:ip_protocol] unless args[:ip_protocol].nil?
           @ports = args[:ports] unless args[:ports].nil?
         end
       end
-
+      
       # 
       class AutoscalingModule
         include Google::Apis::Core::Hashable
@@ -132,6 +147,11 @@ module Google
         attr_accessor :target_utilization
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cool_down_period_sec = args[:cool_down_period_sec] unless args[:cool_down_period_sec].nil?
           @description = args[:description] unless args[:description].nil?
           @max_num_replicas = args[:max_num_replicas] unless args[:max_num_replicas].nil?
@@ -141,7 +161,7 @@ module Google
           @target_utilization = args[:target_utilization] unless args[:target_utilization].nil?
         end
       end
-
+      
       # 
       class AutoscalingModuleStatus
         include Google::Apis::Core::Hashable
@@ -152,10 +172,15 @@ module Google
         attr_accessor :autoscaling_config_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @autoscaling_config_url = args[:autoscaling_config_url] unless args[:autoscaling_config_url].nil?
         end
       end
-
+      
       # [Output Only] The current state of a replica or module.
       class DeployState
         include Google::Apis::Core::Hashable
@@ -178,11 +203,16 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @details = args[:details] unless args[:details].nil?
           @status = args[:status] unless args[:status].nil?
         end
       end
-
+      
       # A deployment represents a physical instantiation of a Template.
       class Deployment
         include Google::Apis::Core::Hashable
@@ -214,7 +244,7 @@ module Google
         # @return [Array<Google::Apis::ManagerV1beta2::ParamOverride>]
         attr_accessor :overrides
       
-        # [Output Only] Current status of this deployment.
+        # [Output Only] The current state of a replica or module.
         # Corresponds to the JSON property `state`
         # @return [Google::Apis::ManagerV1beta2::DeployState]
         attr_accessor :state
@@ -225,6 +255,11 @@ module Google
         attr_accessor :template_name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_date = args[:creation_date] unless args[:creation_date].nil?
           @description = args[:description] unless args[:description].nil?
           @modules = args[:modules] unless args[:modules].nil?
@@ -234,9 +269,9 @@ module Google
           @template_name = args[:template_name] unless args[:template_name].nil?
         end
       end
-
+      
       # 
-      class DeploymentsListResponse
+      class ListResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -250,11 +285,16 @@ module Google
         attr_accessor :resources
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @resources = args[:resources] unless args[:resources].nil?
         end
       end
-
+      
       # How to attach a disk to a Replica.
       class DiskAttachment
         include Google::Apis::Core::Hashable
@@ -271,11 +311,16 @@ module Google
         attr_accessor :index
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @device_name = args[:device_name] unless args[:device_name].nil?
           @index = args[:index] unless args[:index].nil?
         end
       end
-
+      
       # An environment variable.
       class EnvVariable
         include Google::Apis::Core::Hashable
@@ -292,17 +337,22 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @hidden = args[:hidden] unless args[:hidden].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # A pre-existing persistent disk that will be attached to every Replica in the
       # Pool.
       class ExistingDisk
         include Google::Apis::Core::Hashable
       
-        # Optional. How the disk will be attached to the Replica.
+        # How to attach a disk to a Replica.
         # Corresponds to the JSON property `attachment`
         # @return [Google::Apis::ManagerV1beta2::DiskAttachment]
         attr_accessor :attachment
@@ -314,11 +364,16 @@ module Google
         attr_accessor :source
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @attachment = args[:attachment] unless args[:attachment].nil?
           @source = args[:source] unless args[:source].nil?
         end
       end
-
+      
       # A Firewall resource
       class FirewallModule
         include Google::Apis::Core::Hashable
@@ -356,6 +411,11 @@ module Google
         attr_accessor :target_tags
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @allowed = args[:allowed] unless args[:allowed].nil?
           @description = args[:description] unless args[:description].nil?
           @network = args[:network] unless args[:network].nil?
@@ -364,7 +424,7 @@ module Google
           @target_tags = args[:target_tags] unless args[:target_tags].nil?
         end
       end
-
+      
       # 
       class FirewallModuleStatus
         include Google::Apis::Core::Hashable
@@ -375,10 +435,15 @@ module Google
         attr_accessor :firewall_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @firewall_url = args[:firewall_url] unless args[:firewall_url].nil?
         end
       end
-
+      
       # 
       class HealthCheckModule
         include Google::Apis::Core::Hashable
@@ -424,6 +489,11 @@ module Google
         attr_accessor :unhealthy_threshold
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @check_interval_sec = args[:check_interval_sec] unless args[:check_interval_sec].nil?
           @description = args[:description] unless args[:description].nil?
           @healthy_threshold = args[:healthy_threshold] unless args[:healthy_threshold].nil?
@@ -434,7 +504,7 @@ module Google
           @unhealthy_threshold = args[:unhealthy_threshold] unless args[:unhealthy_threshold].nil?
         end
       end
-
+      
       # 
       class HealthCheckModuleStatus
         include Google::Apis::Core::Hashable
@@ -445,10 +515,15 @@ module Google
         attr_accessor :health_check_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @health_check_url = args[:health_check_url] unless args[:health_check_url].nil?
         end
       end
-
+      
       # 
       class LbModule
         include Google::Apis::Core::Hashable
@@ -489,6 +564,11 @@ module Google
         attr_accessor :target_modules
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @description = args[:description] unless args[:description].nil?
           @health_checks = args[:health_checks] unless args[:health_checks].nil?
           @ip_address = args[:ip_address] unless args[:ip_address].nil?
@@ -498,7 +578,7 @@ module Google
           @target_modules = args[:target_modules] unless args[:target_modules].nil?
         end
       end
-
+      
       # 
       class LbModuleStatus
         include Google::Apis::Core::Hashable
@@ -514,11 +594,16 @@ module Google
         attr_accessor :target_pool_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @forwarding_rule_url = args[:forwarding_rule_url] unless args[:forwarding_rule_url].nil?
           @target_pool_url = args[:target_pool_url] unless args[:target_pool_url].nil?
         end
       end
-
+      
       # A Compute Engine metadata entry. Identical to the metadata on the
       # corresponding Compute Engine resource.
       class Metadata
@@ -535,11 +620,16 @@ module Google
         attr_accessor :items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @finger_print = args[:finger_print] unless args[:finger_print].nil?
           @items = args[:items] unless args[:items].nil?
         end
       end
-
+      
       # A Compute Engine metadata item, defined as a key:value pair. Identical to the
       # metadata on the corresponding Compute Engine resource.
       class MetadataItem
@@ -556,11 +646,16 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @key = args[:key] unless args[:key].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # A module in a configuration. A module represents a single homogeneous,
       # possibly replicated task.
       class Module
@@ -571,7 +666,7 @@ module Google
         # @return [Google::Apis::ManagerV1beta2::AutoscalingModule]
         attr_accessor :autoscaling_module
       
-        # 
+        # A Firewall resource
         # Corresponds to the JSON property `firewallModule`
         # @return [Google::Apis::ManagerV1beta2::FirewallModule]
         attr_accessor :firewall_module
@@ -603,6 +698,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @autoscaling_module = args[:autoscaling_module] unless args[:autoscaling_module].nil?
           @firewall_module = args[:firewall_module] unless args[:firewall_module].nil?
           @health_check_module = args[:health_check_module] unless args[:health_check_module].nil?
@@ -612,7 +712,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # [Output Only] Aggregate status for a module.
       class ModuleStatus
         include Google::Apis::Core::Hashable
@@ -647,7 +747,7 @@ module Google
         # @return [Google::Apis::ManagerV1beta2::ReplicaPoolModuleStatus]
         attr_accessor :replica_pool_module_status
       
-        # [Output Only] The current state of the module.
+        # [Output Only] The current state of a replica or module.
         # Corresponds to the JSON property `state`
         # @return [Google::Apis::ManagerV1beta2::DeployState]
         attr_accessor :state
@@ -658,6 +758,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @autoscaling_module_status = args[:autoscaling_module_status] unless args[:autoscaling_module_status].nil?
           @firewall_module_status = args[:firewall_module_status] unless args[:firewall_module_status].nil?
           @health_check_module_status = args[:health_check_module_status] unless args[:health_check_module_status].nil?
@@ -668,7 +773,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # A Compute Engine NetworkInterface resource. Identical to the NetworkInterface
       # on the corresponding Compute Engine resource.
       class NetworkInterface
@@ -698,13 +803,18 @@ module Google
         attr_accessor :network_ip
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @access_configs = args[:access_configs] unless args[:access_configs].nil?
           @name = args[:name] unless args[:name].nil?
           @network = args[:network] unless args[:network].nil?
           @network_ip = args[:network_ip] unless args[:network_ip].nil?
         end
       end
-
+      
       # 
       class NetworkModule
         include Google::Apis::Core::Hashable
@@ -729,12 +839,17 @@ module Google
         attr_accessor :gateway_i_pv4
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @i_pv4_range = args[:i_pv4_range] unless args[:i_pv4_range].nil?
           @description = args[:description] unless args[:description].nil?
           @gateway_i_pv4 = args[:gateway_i_pv4] unless args[:gateway_i_pv4].nil?
         end
       end
-
+      
       # 
       class NetworkModuleStatus
         include Google::Apis::Core::Hashable
@@ -745,17 +860,22 @@ module Google
         attr_accessor :network_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @network_url = args[:network_url] unless args[:network_url].nil?
         end
       end
-
+      
       # A Persistent Disk resource that will be created and attached to each Replica
       # in the Pool. Each Replica will have a unique persistent disk that is created
       # and attached to that Replica.
       class NewDisk
         include Google::Apis::Core::Hashable
       
-        # How the disk will be attached to the Replica.
+        # How to attach a disk to a Replica.
         # Corresponds to the JSON property `attachment`
         # @return [Google::Apis::ManagerV1beta2::DiskAttachment]
         attr_accessor :attachment
@@ -772,20 +892,24 @@ module Google
         attr_accessor :boot
         alias_method :boot?, :boot
       
-        # Create the new disk using these parameters. The name of the disk will be <
-        # instance_name>-<five_random_charactersgt;.
+        # Initialization parameters for creating a new disk.
         # Corresponds to the JSON property `initializeParams`
         # @return [Google::Apis::ManagerV1beta2::NewDiskInitializeParams]
         attr_accessor :initialize_params
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @attachment = args[:attachment] unless args[:attachment].nil?
           @auto_delete = args[:auto_delete] unless args[:auto_delete].nil?
           @boot = args[:boot] unless args[:boot].nil?
           @initialize_params = args[:initialize_params] unless args[:initialize_params].nil?
         end
       end
-
+      
       # Initialization parameters for creating a new disk.
       class NewDiskInitializeParams
         include Google::Apis::Core::Hashable
@@ -807,12 +931,17 @@ module Google
         attr_accessor :source_image
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @disk_size_gb = args[:disk_size_gb] unless args[:disk_size_gb].nil?
           @disk_type = args[:disk_type] unless args[:disk_type].nil?
           @source_image = args[:source_image] unless args[:source_image].nil?
         end
       end
-
+      
       # A specification for overriding parameters in a Template that corresponds to
       # the Deployment.
       class ParamOverride
@@ -829,11 +958,16 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @path = args[:path] unless args[:path].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # 
       class ReplicaPoolModule
         include Google::Apis::Core::Hashable
@@ -853,7 +987,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_replicas
       
-        # Information for a ReplicaPoolModule.
+        # Configuration information for a ReplicaPools resource. Specifying an item
+        # within will determine the ReplicaPools API version used for a
+        # ReplicaPoolModule. Only one may be specified.
         # Corresponds to the JSON property `replicaPoolParams`
         # @return [Google::Apis::ManagerV1beta2::ReplicaPoolParams]
         attr_accessor :replica_pool_params
@@ -865,6 +1001,11 @@ module Google
         attr_accessor :resource_view
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @env_variables = args[:env_variables] unless args[:env_variables].nil?
           @health_checks = args[:health_checks] unless args[:health_checks].nil?
           @num_replicas = args[:num_replicas] unless args[:num_replicas].nil?
@@ -872,7 +1013,7 @@ module Google
           @resource_view = args[:resource_view] unless args[:resource_view].nil?
         end
       end
-
+      
       # 
       class ReplicaPoolModuleStatus
         include Google::Apis::Core::Hashable
@@ -888,27 +1029,38 @@ module Google
         attr_accessor :resource_view_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @replica_pool_url = args[:replica_pool_url] unless args[:replica_pool_url].nil?
           @resource_view_url = args[:resource_view_url] unless args[:resource_view_url].nil?
         end
       end
-
+      
       # Configuration information for a ReplicaPools resource. Specifying an item
       # within will determine the ReplicaPools API version used for a
       # ReplicaPoolModule. Only one may be specified.
       class ReplicaPoolParams
         include Google::Apis::Core::Hashable
       
-        # ReplicaPoolParams specifications for use with ReplicaPools v1beta1.
+        # Configuration information for a ReplicaPools v1beta1 API resource. Directly
+        # maps to ReplicaPool InitTemplate.
         # Corresponds to the JSON property `v1beta1`
         # @return [Google::Apis::ManagerV1beta2::ReplicaPoolParamsV1Beta1]
         attr_accessor :v1beta1
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @v1beta1 = args[:v1beta1] unless args[:v1beta1].nil?
         end
       end
-
+      
       # Configuration information for a ReplicaPools v1beta1 API resource. Directly
       # maps to ReplicaPool InitTemplate.
       class ReplicaPoolParamsV1Beta1
@@ -961,7 +1113,8 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
-        # The metadata key/value pairs assigned to this instance.
+        # A Compute Engine metadata entry. Identical to the metadata on the
+        # corresponding Compute Engine resource.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::ManagerV1beta2::Metadata]
         attr_accessor :metadata
@@ -982,8 +1135,8 @@ module Google
         # @return [Array<Google::Apis::ManagerV1beta2::ServiceAccount>]
         attr_accessor :service_accounts
       
-        # A list of tags to apply to the Google Compute Engine instance to identify
-        # resources.
+        # A Compute Engine Instance tag, identical to the tags on the corresponding
+        # Compute Engine Instance resource.
         # Corresponds to the JSON property `tags`
         # @return [Google::Apis::ManagerV1beta2::Tag]
         attr_accessor :tags
@@ -994,6 +1147,11 @@ module Google
         attr_accessor :zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @auto_restart = args[:auto_restart] unless args[:auto_restart].nil?
           @base_instance_name = args[:base_instance_name] unless args[:base_instance_name].nil?
           @can_ip_forward = args[:can_ip_forward] unless args[:can_ip_forward].nil?
@@ -1010,7 +1168,7 @@ module Google
           @zone = args[:zone] unless args[:zone].nil?
         end
       end
-
+      
       # A Compute Engine service account, identical to the Compute Engine resource.
       class ServiceAccount
         include Google::Apis::Core::Hashable
@@ -1026,11 +1184,16 @@ module Google
         attr_accessor :scopes
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @email = args[:email] unless args[:email].nil?
           @scopes = args[:scopes] unless args[:scopes].nil?
         end
       end
-
+      
       # A Compute Engine Instance tag, identical to the tags on the corresponding
       # Compute Engine Instance resource.
       class Tag
@@ -1047,11 +1210,16 @@ module Google
         attr_accessor :items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @finger_print = args[:finger_print] unless args[:finger_print].nil?
           @items = args[:items] unless args[:items].nil?
         end
       end
-
+      
       # A Template represents a complete configuration for a Deployment.
       class Template
         include Google::Apis::Core::Hashable
@@ -1078,13 +1246,18 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @actions = args[:actions] unless args[:actions].nil?
           @description = args[:description] unless args[:description].nil?
           @modules = args[:modules] unless args[:modules].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # 
       class TemplatesListResponse
         include Google::Apis::Core::Hashable
@@ -1100,6 +1273,11 @@ module Google
         attr_accessor :resources
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @resources = args[:resources] unless args[:resources].nil?
         end

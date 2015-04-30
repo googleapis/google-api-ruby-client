@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module PubsubV1beta2
-
+      
       # 
       class AcknowledgeRequest
         include Google::Apis::Core::Hashable
@@ -32,18 +32,28 @@ module Google
         attr_accessor :ack_ids
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ack_ids = args[:ack_ids] unless args[:ack_ids].nil?
         end
       end
-
+      
       # 
       class Empty
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
-
+      
       # 
       class ListSubscriptionsResponse
         include Google::Apis::Core::Hashable
@@ -59,11 +69,16 @@ module Google
         attr_accessor :subscriptions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @subscriptions = args[:subscriptions] unless args[:subscriptions].nil?
         end
       end
-
+      
       # 
       class ListTopicSubscriptionsResponse
         include Google::Apis::Core::Hashable
@@ -79,11 +94,16 @@ module Google
         attr_accessor :subscriptions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @subscriptions = args[:subscriptions] unless args[:subscriptions].nil?
         end
       end
-
+      
       # 
       class ListTopicsResponse
         include Google::Apis::Core::Hashable
@@ -99,11 +119,16 @@ module Google
         attr_accessor :topics
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @topics = args[:topics] unless args[:topics].nil?
         end
       end
-
+      
       # 
       class ModifyAckDeadlineRequest
         include Google::Apis::Core::Hashable
@@ -119,11 +144,16 @@ module Google
         attr_accessor :ack_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ack_deadline_seconds = args[:ack_deadline_seconds] unless args[:ack_deadline_seconds].nil?
           @ack_id = args[:ack_id] unless args[:ack_id].nil?
         end
       end
-
+      
       # 
       class ModifyPushConfigRequest
         include Google::Apis::Core::Hashable
@@ -134,10 +164,15 @@ module Google
         attr_accessor :push_config
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @push_config = args[:push_config] unless args[:push_config].nil?
         end
       end
-
+      
       # 
       class PublishRequest
         include Google::Apis::Core::Hashable
@@ -148,10 +183,15 @@ module Google
         attr_accessor :messages
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @messages = args[:messages] unless args[:messages].nil?
         end
       end
-
+      
       # 
       class PublishResponse
         include Google::Apis::Core::Hashable
@@ -162,10 +202,15 @@ module Google
         attr_accessor :message_ids
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @message_ids = args[:message_ids] unless args[:message_ids].nil?
         end
       end
-
+      
       # 
       class Message
         include Google::Apis::Core::Hashable
@@ -186,12 +231,17 @@ module Google
         attr_accessor :message_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @attributes = args[:attributes] unless args[:attributes].nil?
           @data = args[:data] unless args[:data].nil?
           @message_id = args[:message_id] unless args[:message_id].nil?
         end
       end
-
+      
       # 
       class PullRequest
         include Google::Apis::Core::Hashable
@@ -208,11 +258,16 @@ module Google
         alias_method :return_immediately?, :return_immediately
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @max_messages = args[:max_messages] unless args[:max_messages].nil?
           @return_immediately = args[:return_immediately] unless args[:return_immediately].nil?
         end
       end
-
+      
       # 
       class PullResponse
         include Google::Apis::Core::Hashable
@@ -223,10 +278,15 @@ module Google
         attr_accessor :received_messages
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @received_messages = args[:received_messages] unless args[:received_messages].nil?
         end
       end
-
+      
       # 
       class PushConfig
         include Google::Apis::Core::Hashable
@@ -242,11 +302,16 @@ module Google
         attr_accessor :push_endpoint
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @attributes = args[:attributes] unless args[:attributes].nil?
           @push_endpoint = args[:push_endpoint] unless args[:push_endpoint].nil?
         end
       end
-
+      
       # 
       class ReceivedMessage
         include Google::Apis::Core::Hashable
@@ -262,11 +327,16 @@ module Google
         attr_accessor :message
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ack_id = args[:ack_id] unless args[:ack_id].nil?
           @message = args[:message] unless args[:message].nil?
         end
       end
-
+      
       # 
       class Subscription
         include Google::Apis::Core::Hashable
@@ -292,13 +362,18 @@ module Google
         attr_accessor :topic
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ack_deadline_seconds = args[:ack_deadline_seconds] unless args[:ack_deadline_seconds].nil?
           @name = args[:name] unless args[:name].nil?
           @push_config = args[:push_config] unless args[:push_config].nil?
           @topic = args[:topic] unless args[:topic].nil?
         end
       end
-
+      
       # 
       class Topic
         include Google::Apis::Core::Hashable
@@ -309,6 +384,11 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
         end
       end

@@ -22,312 +22,357 @@ module Google
   module Apis
     module AndroidenterpriseV1
       
-      class AppRestrictionsSchemaRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AppRestrictionsSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AppRestrictionsSchemaRestrictionRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AppRestrictionsSchemaRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AppRestrictionsSchemaRestrictionRestrictionValueRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AppRestrictionsSchemaRestrictionRestrictionValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CollectionRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Collection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CollectionViewersListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class CollectionViewersListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CollectionsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DeviceRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Device
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DeviceStateRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class DeviceState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DevicesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class DevicesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EnterpriseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Enterprise
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EnterpriseAccountRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class EnterpriseAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EnterprisesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class EnterprisesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EntitlementRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Entitlement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EntitlementsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class EntitlementsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class GroupLicenseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class GroupLicense
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class GroupLicenseUsersListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class GroupLicenseUsersListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class GroupLicensesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class GroupLicensesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstallRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Install
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstallsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class InstallsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PermissionRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Permission
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ProductRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Product
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ProductPermissionRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ProductPermission
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ProductPermissionsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ProductPermissions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UserRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class User
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UserTokenRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class UserToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UsersListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class UsersListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class AppRestrictionsSchemaRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :restrictions, as: 'restrictions', class: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestriction, decorator: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestrictionRepresentation
+      class AppRestrictionsSchema
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :restrictions, as: 'restrictions', class: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestriction, decorator: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestriction::Representation
+      
+        end
       end
-
+      
       # @private
-      class AppRestrictionsSchemaRestrictionRepresentation < Google::Apis::Core::JsonRepresentation
-        property :default_value, as: 'defaultValue', class: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestrictionRestrictionValue, decorator: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestrictionRestrictionValueRepresentation
-        
-        property :description, as: 'description'
-        collection :entry, as: 'entry'
-        
-        collection :entry_value, as: 'entryValue'
-        
-        property :key, as: 'key'
-        property :restriction_type, as: 'restrictionType'
-        property :title, as: 'title'
+      class AppRestrictionsSchemaRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_value, as: 'defaultValue', class: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestrictionRestrictionValue, decorator: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestrictionRestrictionValue::Representation
+      
+          property :description, as: 'description'
+          collection :entry, as: 'entry'
+          collection :entry_value, as: 'entryValue'
+          property :key, as: 'key'
+          property :restriction_type, as: 'restrictionType'
+          property :title, as: 'title'
+        end
       end
-
+      
       # @private
-      class AppRestrictionsSchemaRestrictionRestrictionValueRepresentation < Google::Apis::Core::JsonRepresentation
-        property :type, as: 'type'
-        property :value_bool, as: 'valueBool'
-        property :value_integer, as: 'valueInteger'
-        collection :value_multiselect, as: 'valueMultiselect'
-        
-        property :value_string, as: 'valueString'
+      class AppRestrictionsSchemaRestrictionRestrictionValue
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+          property :value_bool, as: 'valueBool'
+          property :value_integer, as: 'valueInteger'
+          collection :value_multiselect, as: 'valueMultiselect'
+          property :value_string, as: 'valueString'
+        end
       end
-
+      
       # @private
-      class CollectionRepresentation < Google::Apis::Core::JsonRepresentation
-        property :collection_id, as: 'collectionId'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        collection :product_id, as: 'productId'
-        
-        property :visibility, as: 'visibility'
+      class Collection
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collection_id, as: 'collectionId'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          collection :product_id, as: 'productId'
+          property :visibility, as: 'visibility'
+        end
       end
-
+      
       # @private
-      class CollectionViewersListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        collection :user, as: 'user', class: Google::Apis::AndroidenterpriseV1::User, decorator: Google::Apis::AndroidenterpriseV1::UserRepresentation
+      class CollectionViewersListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :user, as: 'user', class: Google::Apis::AndroidenterpriseV1::User, decorator: Google::Apis::AndroidenterpriseV1::User::Representation
+      
+        end
       end
-
+      
       # @private
-      class CollectionsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :collection, as: 'collection', class: Google::Apis::AndroidenterpriseV1::Collection, decorator: Google::Apis::AndroidenterpriseV1::CollectionRepresentation
-        
-        
-        property :kind, as: 'kind'
+      class ListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :collection, as: 'collection', class: Google::Apis::AndroidenterpriseV1::Collection, decorator: Google::Apis::AndroidenterpriseV1::Collection::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class DeviceRepresentation < Google::Apis::Core::JsonRepresentation
-        property :android_id, as: 'androidId'
-        property :kind, as: 'kind'
+      class Device
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_id, as: 'androidId'
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class DeviceStateRepresentation < Google::Apis::Core::JsonRepresentation
-        property :account_state, as: 'accountState'
-        property :kind, as: 'kind'
+      class DeviceState
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_state, as: 'accountState'
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class DevicesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :device, as: 'device', class: Google::Apis::AndroidenterpriseV1::Device, decorator: Google::Apis::AndroidenterpriseV1::DeviceRepresentation
-        
-        
-        property :kind, as: 'kind'
+      class DevicesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device, as: 'device', class: Google::Apis::AndroidenterpriseV1::Device, decorator: Google::Apis::AndroidenterpriseV1::Device::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class EnterpriseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :primary_domain, as: 'primaryDomain'
+      class Enterprise
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :primary_domain, as: 'primaryDomain'
+        end
       end
-
+      
       # @private
-      class EnterpriseAccountRepresentation < Google::Apis::Core::JsonRepresentation
-        property :account_email, as: 'accountEmail'
-        property :kind, as: 'kind'
+      class EnterpriseAccount
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_email, as: 'accountEmail'
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class EnterprisesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :enterprise, as: 'enterprise', class: Google::Apis::AndroidenterpriseV1::Enterprise, decorator: Google::Apis::AndroidenterpriseV1::EnterpriseRepresentation
-        
-        
-        property :kind, as: 'kind'
+      class EnterprisesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enterprise, as: 'enterprise', class: Google::Apis::AndroidenterpriseV1::Enterprise, decorator: Google::Apis::AndroidenterpriseV1::Enterprise::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class EntitlementRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :product_id, as: 'productId'
-        property :reason, as: 'reason'
+      class Entitlement
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :product_id, as: 'productId'
+          property :reason, as: 'reason'
+        end
       end
-
+      
       # @private
-      class EntitlementsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :entitlement, as: 'entitlement', class: Google::Apis::AndroidenterpriseV1::Entitlement, decorator: Google::Apis::AndroidenterpriseV1::EntitlementRepresentation
-        
-        
-        property :kind, as: 'kind'
+      class EntitlementsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entitlement, as: 'entitlement', class: Google::Apis::AndroidenterpriseV1::Entitlement, decorator: Google::Apis::AndroidenterpriseV1::Entitlement::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class GroupLicenseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :acquisition_kind, as: 'acquisitionKind'
-        property :approval, as: 'approval'
-        property :kind, as: 'kind'
-        property :num_provisioned, as: 'numProvisioned'
-        property :num_purchased, as: 'numPurchased'
-        property :product_id, as: 'productId'
+      class GroupLicense
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acquisition_kind, as: 'acquisitionKind'
+          property :approval, as: 'approval'
+          property :kind, as: 'kind'
+          property :num_provisioned, as: 'numProvisioned'
+          property :num_purchased, as: 'numPurchased'
+          property :product_id, as: 'productId'
+        end
       end
-
+      
       # @private
-      class GroupLicenseUsersListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        collection :user, as: 'user', class: Google::Apis::AndroidenterpriseV1::User, decorator: Google::Apis::AndroidenterpriseV1::UserRepresentation
+      class GroupLicenseUsersListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :user, as: 'user', class: Google::Apis::AndroidenterpriseV1::User, decorator: Google::Apis::AndroidenterpriseV1::User::Representation
+      
+        end
       end
-
+      
       # @private
-      class GroupLicensesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :group_license, as: 'groupLicense', class: Google::Apis::AndroidenterpriseV1::GroupLicense, decorator: Google::Apis::AndroidenterpriseV1::GroupLicenseRepresentation
-        
-        
-        property :kind, as: 'kind'
+      class GroupLicensesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :group_license, as: 'groupLicense', class: Google::Apis::AndroidenterpriseV1::GroupLicense, decorator: Google::Apis::AndroidenterpriseV1::GroupLicense::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class InstallRepresentation < Google::Apis::Core::JsonRepresentation
-        property :install_state, as: 'installState'
-        property :kind, as: 'kind'
-        property :product_id, as: 'productId'
-        property :version_code, as: 'versionCode'
+      class Install
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :install_state, as: 'installState'
+          property :kind, as: 'kind'
+          property :product_id, as: 'productId'
+          property :version_code, as: 'versionCode'
+        end
       end
-
+      
       # @private
-      class InstallsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :install, as: 'install', class: Google::Apis::AndroidenterpriseV1::Install, decorator: Google::Apis::AndroidenterpriseV1::InstallRepresentation
-        
-        
-        property :kind, as: 'kind'
+      class InstallsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :install, as: 'install', class: Google::Apis::AndroidenterpriseV1::Install, decorator: Google::Apis::AndroidenterpriseV1::Install::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class PermissionRepresentation < Google::Apis::Core::JsonRepresentation
-        property :description, as: 'description'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :permission_id, as: 'permissionId'
+      class Permission
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :permission_id, as: 'permissionId'
+        end
       end
-
+      
       # @private
-      class ProductRepresentation < Google::Apis::Core::JsonRepresentation
-        property :author_name, as: 'authorName'
-        property :details_url, as: 'detailsUrl'
-        property :icon_url, as: 'iconUrl'
-        property :kind, as: 'kind'
-        property :product_id, as: 'productId'
-        property :title, as: 'title'
-        property :work_details_url, as: 'workDetailsUrl'
+      class Product
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :author_name, as: 'authorName'
+          property :details_url, as: 'detailsUrl'
+          property :icon_url, as: 'iconUrl'
+          property :kind, as: 'kind'
+          property :product_id, as: 'productId'
+          property :title, as: 'title'
+          property :work_details_url, as: 'workDetailsUrl'
+        end
       end
-
+      
       # @private
-      class ProductPermissionRepresentation < Google::Apis::Core::JsonRepresentation
-        property :permission_id, as: 'permissionId'
-        property :state, as: 'state'
+      class ProductPermission
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :permission_id, as: 'permissionId'
+          property :state, as: 'state'
+        end
       end
-
+      
       # @private
-      class ProductPermissionsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        collection :permission, as: 'permission', class: Google::Apis::AndroidenterpriseV1::ProductPermission, decorator: Google::Apis::AndroidenterpriseV1::ProductPermissionRepresentation
-        
-        
-        property :product_id, as: 'productId'
+      class ProductPermissions
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :permission, as: 'permission', class: Google::Apis::AndroidenterpriseV1::ProductPermission, decorator: Google::Apis::AndroidenterpriseV1::ProductPermission::Representation
+      
+          property :product_id, as: 'productId'
+        end
       end
-
+      
       # @private
-      class UserRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :primary_email, as: 'primaryEmail'
+      class User
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :primary_email, as: 'primaryEmail'
+        end
       end
-
+      
       # @private
-      class UserTokenRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        property :token, as: 'token'
-        property :user_id, as: 'userId'
+      class UserToken
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :token, as: 'token'
+          property :user_id, as: 'userId'
+        end
       end
-
+      
       # @private
-      class UsersListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :kind, as: 'kind'
-        collection :user, as: 'user', class: Google::Apis::AndroidenterpriseV1::User, decorator: Google::Apis::AndroidenterpriseV1::UserRepresentation
+      class UsersListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :user, as: 'user', class: Google::Apis::AndroidenterpriseV1::User, decorator: Google::Apis::AndroidenterpriseV1::User::Representation
+      
+        end
       end
     end
   end

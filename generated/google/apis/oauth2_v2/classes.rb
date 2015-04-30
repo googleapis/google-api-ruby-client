@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module Oauth2V2
-
+      
       # 
       class Jwk
         include Google::Apis::Core::Hashable
@@ -32,8 +32,14 @@ module Google
         attr_accessor :keys
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @keys = args[:keys] unless args[:keys].nil?
         end
+        
         # 
         class Key
           include Google::Apis::Core::Hashable
@@ -69,6 +75,11 @@ module Google
           attr_accessor :use
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @alg = args[:alg] unless args[:alg].nil?
             @e = args[:e] unless args[:e].nil?
             @kid = args[:kid] unless args[:kid].nil?
@@ -78,7 +89,7 @@ module Google
           end
         end
       end
-
+      
       # 
       class Tokeninfo
         include Google::Apis::Core::Hashable
@@ -132,6 +143,11 @@ module Google
         alias_method :verified_email?, :verified_email
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @access_type = args[:access_type] unless args[:access_type].nil?
           @audience = args[:audience] unless args[:audience].nil?
           @email = args[:email] unless args[:email].nil?
@@ -143,7 +159,7 @@ module Google
           @verified_email = args[:verified_email] unless args[:verified_email].nil?
         end
       end
-
+      
       # 
       class Userinfoplus
         include Google::Apis::Core::Hashable
@@ -206,6 +222,11 @@ module Google
         alias_method :verified_email?, :verified_email
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @email = args[:email] unless args[:email].nil?
           @family_name = args[:family_name] unless args[:family_name].nil?
           @gender = args[:gender] unless args[:gender].nil?

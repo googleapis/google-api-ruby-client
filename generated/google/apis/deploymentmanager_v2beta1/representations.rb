@@ -22,184 +22,208 @@ module Google
   module Apis
     module DeploymentmanagerV2beta1
       
-      class DeploymentRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Deployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DeploymentsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ManifestRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Manifest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ManifestsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ManifestsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class OperationRepresentation < Google::Apis::Core::JsonRepresentation
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
+        class Error
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
         
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
           
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
       end
       
-      class OperationsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class OperationsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ResourceRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Resource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ResourcesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ResourcesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TypeRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Type
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TypesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TypesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class DeploymentRepresentation < Google::Apis::Core::JsonRepresentation
-        property :description, as: 'description'
-        property :id, as: 'id'
-        property :manifest, as: 'manifest'
-        property :name, as: 'name'
-        property :target_config, as: 'targetConfig'
+      class Deployment
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :manifest, as: 'manifest'
+          property :name, as: 'name'
+          property :target_config, as: 'targetConfig'
+        end
       end
-
+      
       # @private
-      class DeploymentsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :deployments, as: 'deployments', class: Google::Apis::DeploymentmanagerV2beta1::Deployment, decorator: Google::Apis::DeploymentmanagerV2beta1::DeploymentRepresentation
-        
-        
-        property :next_page_token, as: 'nextPageToken'
+      class ListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deployments, as: 'deployments', class: Google::Apis::DeploymentmanagerV2beta1::Deployment, decorator: Google::Apis::DeploymentmanagerV2beta1::Deployment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class ManifestRepresentation < Google::Apis::Core::JsonRepresentation
-        property :config, as: 'config'
-        property :evaluated_config, as: 'evaluatedConfig'
-        property :id, as: 'id'
-        property :name, as: 'name'
-        property :self_link, as: 'selfLink'
+      class Manifest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config'
+          property :evaluated_config, as: 'evaluatedConfig'
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+        end
       end
-
+      
       # @private
-      class ManifestsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :manifests, as: 'manifests', class: Google::Apis::DeploymentmanagerV2beta1::Manifest, decorator: Google::Apis::DeploymentmanagerV2beta1::ManifestRepresentation
-        
-        
-        property :next_page_token, as: 'nextPageToken'
+      class ManifestsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :manifests, as: 'manifests', class: Google::Apis::DeploymentmanagerV2beta1::Manifest, decorator: Google::Apis::DeploymentmanagerV2beta1::Manifest::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class OperationRepresentation < Google::Apis::Core::JsonRepresentation
-        class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :creation_timestamp, as: 'creationTimestamp'
-        property :end_time, as: 'endTime'
-        property :error, as: 'error', class: Google::Apis::DeploymentmanagerV2beta1::Operation::Error, decorator: Google::Apis::DeploymentmanagerV2beta1::OperationRepresentation::ErrorRepresentation
-        
-        property :http_error_message, as: 'httpErrorMessage'
-        property :http_error_status_code, as: 'httpErrorStatusCode'
-        property :id, as: 'id'
-        property :insert_time, as: 'insertTime'
-        property :name, as: 'name'
-        property :operation_type, as: 'operationType'
-        property :progress, as: 'progress'
-        property :self_link, as: 'selfLink'
-        property :start_time, as: 'startTime'
-        property :status, as: 'status'
-        property :status_message, as: 'statusMessage'
-        property :target_id, as: 'targetId'
-        property :target_link, as: 'targetLink'
-        property :user, as: 'user'
-        collection :warnings, as: 'warnings', class: Google::Apis::DeploymentmanagerV2beta1::Operation::Warning, decorator: Google::Apis::DeploymentmanagerV2beta1::OperationRepresentation::WarningRepresentation
-        
-        
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :end_time, as: 'endTime'
+          property :error, as: 'error', class: Google::Apis::DeploymentmanagerV2beta1::Operation::Error, decorator: Google::Apis::DeploymentmanagerV2beta1::Operation::Error::Representation
+      
+          property :http_error_message, as: 'httpErrorMessage'
+          property :http_error_status_code, as: 'httpErrorStatusCode'
+          property :id, as: 'id'
+          property :insert_time, as: 'insertTime'
+          property :name, as: 'name'
+          property :operation_type, as: 'operationType'
+          property :progress, as: 'progress'
+          property :self_link, as: 'selfLink'
+          property :start_time, as: 'startTime'
+          property :status, as: 'status'
+          property :status_message, as: 'statusMessage'
+          property :target_id, as: 'targetId'
+          property :target_link, as: 'targetLink'
+          property :user, as: 'user'
+          collection :warnings, as: 'warnings', class: Google::Apis::DeploymentmanagerV2beta1::Operation::Warning, decorator: Google::Apis::DeploymentmanagerV2beta1::Operation::Warning::Representation
+      
+        end
         
         # @private
-        class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
-          class ErrorRepresentation < Google::Apis::Core::JsonRepresentation; end
-          collection :errors, as: 'errors', class: Google::Apis::DeploymentmanagerV2beta1::Operation::Error::Error, decorator: Google::Apis::DeploymentmanagerV2beta1::OperationRepresentation::ErrorRepresentation::ErrorRepresentation
-          
-          
+        class Error
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::DeploymentmanagerV2beta1::Operation::Error::Error, decorator: Google::Apis::DeploymentmanagerV2beta1::Operation::Error::Error::Representation
+        
+          end
           
           # @private
-          class ErrorRepresentation < Google::Apis::Core::JsonRepresentation
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+          end
+        end
+        
+        # @private
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
-            property :location, as: 'location'
+            collection :data, as: 'data', class: Google::Apis::DeploymentmanagerV2beta1::Operation::Warning::Datum, decorator: Google::Apis::DeploymentmanagerV2beta1::Operation::Warning::Datum::Representation
+        
             property :message, as: 'message'
           end
-        end
-        
-        # @private
-        class WarningRepresentation < Google::Apis::Core::JsonRepresentation
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation; end
-          property :code, as: 'code'
-          collection :data, as: 'data', class: Google::Apis::DeploymentmanagerV2beta1::Operation::Warning::Datum, decorator: Google::Apis::DeploymentmanagerV2beta1::OperationRepresentation::WarningRepresentation::DatumRepresentation
-          
-          
-          property :message, as: 'message'
           
           # @private
-          class DatumRepresentation < Google::Apis::Core::JsonRepresentation
-            property :key, as: 'key'
-            property :value, as: 'value'
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
           end
         end
       end
-
+      
       # @private
-      class OperationsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :next_page_token, as: 'nextPageToken'
-        collection :operations, as: 'operations', class: Google::Apis::DeploymentmanagerV2beta1::Operation, decorator: Google::Apis::DeploymentmanagerV2beta1::OperationRepresentation
+      class OperationsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::DeploymentmanagerV2beta1::Operation, decorator: Google::Apis::DeploymentmanagerV2beta1::Operation::Representation
+      
+        end
       end
-
+      
       # @private
-      class ResourceRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :errors, as: 'errors'
-        
-        property :id, as: 'id'
-        property :intent, as: 'intent'
-        property :manifest, as: 'manifest'
-        property :name, as: 'name'
-        property :state, as: 'state'
-        property :type, as: 'type'
-        property :url, as: 'url'
+      class Resource
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors'
+          property :id, as: 'id'
+          property :intent, as: 'intent'
+          property :manifest, as: 'manifest'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :type, as: 'type'
+          property :url, as: 'url'
+        end
       end
-
+      
       # @private
-      class ResourcesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :next_page_token, as: 'nextPageToken'
-        collection :resources, as: 'resources', class: Google::Apis::DeploymentmanagerV2beta1::Resource, decorator: Google::Apis::DeploymentmanagerV2beta1::ResourceRepresentation
+      class ResourcesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::DeploymentmanagerV2beta1::Resource, decorator: Google::Apis::DeploymentmanagerV2beta1::Resource::Representation
+      
+        end
       end
-
+      
       # @private
-      class TypeRepresentation < Google::Apis::Core::JsonRepresentation
-        property :name, as: 'name'
+      class Type
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
       end
-
+      
       # @private
-      class TypesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :types, as: 'types', class: Google::Apis::DeploymentmanagerV2beta1::Type, decorator: Google::Apis::DeploymentmanagerV2beta1::TypeRepresentation
+      class TypesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :types, as: 'types', class: Google::Apis::DeploymentmanagerV2beta1::Type, decorator: Google::Apis::DeploymentmanagerV2beta1::Type::Representation
+      
+        end
       end
     end
   end

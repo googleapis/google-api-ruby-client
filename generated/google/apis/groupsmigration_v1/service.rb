@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/google-apps/groups-migration/
       class GroupsMigrationService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'groups/v1/groups/')
         end
-
+        
         # Inserts a new mail into the archive of the Google group.
         # @param [String] group_id
         #   The group ID
@@ -69,7 +68,7 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -90,7 +89,7 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.response_representation = Google::Apis::GroupsmigrationV1::GroupsRepresentation
+          command.response_representation = Google::Apis::GroupsmigrationV1::Groups::Representation
           command.response_class = Google::Apis::GroupsmigrationV1::Groups
           command.params['groupId'] = group_id unless group_id.nil?
           command.query['fields'] = fields unless fields.nil?

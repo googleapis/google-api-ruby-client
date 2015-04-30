@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module YoutubeV3
-
+      
       # Rights management policy for YouTube resources.
       class AccessPolicy
         include Google::Apis::Core::Hashable
@@ -40,11 +40,16 @@ module Google
         attr_accessor :exception
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @allowed = args[:allowed] unless args[:allowed].nil?
           @exception = args[:exception] unless args[:exception].nil?
         end
       end
-
+      
       # An activity resource contains information about an action that a particular
       # channel, or user, has taken on YouTube.The actions reported in activity feeds
       # include rating a video, sharing a video, marking a video as a favorite,
@@ -55,9 +60,8 @@ module Google
       class Activity
         include Google::Apis::Core::Hashable
       
-        # The contentDetails object contains information about the content associated
-        # with the activity. For example, if the snippet.type value is videoRated, then
-        # the contentDetails object's content identifies the rated video.
+        # Details about the content of an activity: the video that was shared, the
+        # channel that was subscribed to, etc.
         # Corresponds to the JSON property `contentDetails`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetails]
         attr_accessor :content_details
@@ -78,13 +82,18 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The snippet object contains basic details about the activity, including the
-        # activity's type and group ID.
+        # Basic details about an activity, including title, description, thumbnails,
+        # activity type and group.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::ActivitySnippet]
         attr_accessor :snippet
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @content_details = args[:content_details] unless args[:content_details].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
@@ -92,80 +101,73 @@ module Google
           @snippet = args[:snippet] unless args[:snippet].nil?
         end
       end
-
+      
       # Details about the content of an activity: the video that was shared, the
       # channel that was subscribed to, etc.
       class ActivityContentDetails
         include Google::Apis::Core::Hashable
       
-        # The bulletin object contains details about a channel bulletin post. This
-        # object is only present if the snippet.type is bulletin.
+        # Details about a channel bulletin post.
         # Corresponds to the JSON property `bulletin`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsBulletin]
         attr_accessor :bulletin
       
-        # The channelItem object contains details about a resource which was added to a
-        # channel. This property is only present if the snippet.type is channelItem.
+        # Details about a resource which was added to a channel.
         # Corresponds to the JSON property `channelItem`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsChannelItem]
         attr_accessor :channel_item
       
-        # The comment object contains information about a resource that received a
-        # comment. This property is only present if the snippet.type is comment.
+        # Information about a resource that received a comment.
         # Corresponds to the JSON property `comment`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsComment]
         attr_accessor :comment
       
-        # The favorite object contains information about a video that was marked as a
-        # favorite video. This property is only present if the snippet.type is favorite.
+        # Information about a video that was marked as a favorite video.
         # Corresponds to the JSON property `favorite`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsFavorite]
         attr_accessor :favorite
       
-        # The like object contains information about a resource that received a positive
-        # (like) rating. This property is only present if the snippet.type is like.
+        # Information about a resource that received a positive (like) rating.
         # Corresponds to the JSON property `like`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsLike]
         attr_accessor :like
       
-        # The playlistItem object contains information about a new playlist item. This
-        # property is only present if the snippet.type is playlistItem.
+        # Information about a new playlist item.
         # Corresponds to the JSON property `playlistItem`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsPlaylistItem]
         attr_accessor :playlist_item
       
-        # The promotedItem object contains details about a resource which is being
-        # promoted. This property is only present if the snippet.type is promotedItem.
+        # Details about a resource which is being promoted.
         # Corresponds to the JSON property `promotedItem`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsPromotedItem]
         attr_accessor :promoted_item
       
-        # The recommendation object contains information about a recommended resource.
-        # This property is only present if the snippet.type is recommendation.
+        # Information that identifies the recommended resource.
         # Corresponds to the JSON property `recommendation`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsRecommendation]
         attr_accessor :recommendation
       
-        # The social object contains details about a social network post. This property
-        # is only present if the snippet.type is social.
+        # Details about a social network post.
         # Corresponds to the JSON property `social`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsSocial]
         attr_accessor :social
       
-        # The subscription object contains information about a channel that a user
-        # subscribed to. This property is only present if the snippet.type is
-        # subscription.
+        # Information about a channel that a user subscribed to.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsSubscription]
         attr_accessor :subscription
       
-        # The upload object contains information about the uploaded video. This property
-        # is only present if the snippet.type is upload.
+        # Information about the uploaded video.
         # Corresponds to the JSON property `upload`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsUpload]
         attr_accessor :upload
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bulletin = args[:bulletin] unless args[:bulletin].nil?
           @channel_item = args[:channel_item] unless args[:channel_item].nil?
           @comment = args[:comment] unless args[:comment].nil?
@@ -179,81 +181,102 @@ module Google
           @upload = args[:upload] unless args[:upload].nil?
         end
       end
-
+      
       # Details about a channel bulletin post.
       class ActivityContentDetailsBulletin
         include Google::Apis::Core::Hashable
       
-        # The resourceId object contains information that identifies the resource
-        # associated with a bulletin post.
+        # A resource id is a generic reference that points to another YouTube resource.
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::YoutubeV3::ResourceId]
         attr_accessor :resource_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @resource_id = args[:resource_id] unless args[:resource_id].nil?
         end
       end
-
+      
       # Details about a resource which was added to a channel.
       class ActivityContentDetailsChannelItem
         include Google::Apis::Core::Hashable
       
-        # The resourceId object contains information that identifies the resource that
-        # was added to the channel.
+        # A resource id is a generic reference that points to another YouTube resource.
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::YoutubeV3::ResourceId]
         attr_accessor :resource_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @resource_id = args[:resource_id] unless args[:resource_id].nil?
         end
       end
-
+      
       # Information about a resource that received a comment.
       class ActivityContentDetailsComment
         include Google::Apis::Core::Hashable
       
-        # The resourceId object contains information that identifies the resource
-        # associated with the comment.
+        # A resource id is a generic reference that points to another YouTube resource.
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::YoutubeV3::ResourceId]
         attr_accessor :resource_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @resource_id = args[:resource_id] unless args[:resource_id].nil?
         end
       end
-
+      
       # Information about a video that was marked as a favorite video.
       class ActivityContentDetailsFavorite
         include Google::Apis::Core::Hashable
       
-        # The resourceId object contains information that identifies the resource that
-        # was marked as a favorite.
+        # A resource id is a generic reference that points to another YouTube resource.
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::YoutubeV3::ResourceId]
         attr_accessor :resource_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @resource_id = args[:resource_id] unless args[:resource_id].nil?
         end
       end
-
+      
       # Information about a resource that received a positive (like) rating.
       class ActivityContentDetailsLike
         include Google::Apis::Core::Hashable
       
-        # The resourceId object contains information that identifies the rated resource.
+        # A resource id is a generic reference that points to another YouTube resource.
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::YoutubeV3::ResourceId]
         attr_accessor :resource_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @resource_id = args[:resource_id] unless args[:resource_id].nil?
         end
       end
-
+      
       # Information about a new playlist item.
       class ActivityContentDetailsPlaylistItem
         include Google::Apis::Core::Hashable
@@ -268,19 +291,23 @@ module Google
         # @return [String]
         attr_accessor :playlist_item_id
       
-        # The resourceId object contains information about the resource that was added
-        # to the playlist.
+        # A resource id is a generic reference that points to another YouTube resource.
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::YoutubeV3::ResourceId]
         attr_accessor :resource_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @playlist_id = args[:playlist_id] unless args[:playlist_id].nil?
           @playlist_item_id = args[:playlist_item_id] unless args[:playlist_item_id].nil?
           @resource_id = args[:resource_id] unless args[:resource_id].nil?
         end
       end
-
+      
       # Details about a resource which is being promoted.
       class ActivityContentDetailsPromotedItem
         include Google::Apis::Core::Hashable
@@ -344,6 +371,11 @@ module Google
         attr_accessor :video_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ad_tag = args[:ad_tag] unless args[:ad_tag].nil?
           @click_tracking_url = args[:click_tracking_url] unless args[:click_tracking_url].nil?
           @creative_view_url = args[:creative_view_url] unless args[:creative_view_url].nil?
@@ -356,7 +388,7 @@ module Google
           @video_id = args[:video_id] unless args[:video_id].nil?
         end
       end
-
+      
       # Information that identifies the recommended resource.
       class ActivityContentDetailsRecommendation
         include Google::Apis::Core::Hashable
@@ -366,25 +398,28 @@ module Google
         # @return [String]
         attr_accessor :reason
       
-        # The resourceId object contains information that identifies the recommended
-        # resource.
+        # A resource id is a generic reference that points to another YouTube resource.
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::YoutubeV3::ResourceId]
         attr_accessor :resource_id
       
-        # The seedResourceId object contains information about the resource that caused
-        # the recommendation.
+        # A resource id is a generic reference that points to another YouTube resource.
         # Corresponds to the JSON property `seedResourceId`
         # @return [Google::Apis::YoutubeV3::ResourceId]
         attr_accessor :seed_resource_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @reason = args[:reason] unless args[:reason].nil?
           @resource_id = args[:resource_id] unless args[:resource_id].nil?
           @seed_resource_id = args[:seed_resource_id] unless args[:seed_resource_id].nil?
         end
       end
-
+      
       # Details about a social network post.
       class ActivityContentDetailsSocial
         include Google::Apis::Core::Hashable
@@ -404,8 +439,7 @@ module Google
         # @return [String]
         attr_accessor :reference_url
       
-        # The resourceId object encapsulates information that identifies the resource
-        # associated with a social network post.
+        # A resource id is a generic reference that points to another YouTube resource.
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::YoutubeV3::ResourceId]
         attr_accessor :resource_id
@@ -416,6 +450,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @author = args[:author] unless args[:author].nil?
           @image_url = args[:image_url] unless args[:image_url].nil?
           @reference_url = args[:reference_url] unless args[:reference_url].nil?
@@ -423,22 +462,26 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Information about a channel that a user subscribed to.
       class ActivityContentDetailsSubscription
         include Google::Apis::Core::Hashable
       
-        # The resourceId object contains information that identifies the resource that
-        # the user subscribed to.
+        # A resource id is a generic reference that points to another YouTube resource.
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::YoutubeV3::ResourceId]
         attr_accessor :resource_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @resource_id = args[:resource_id] unless args[:resource_id].nil?
         end
       end
-
+      
       # Information about the uploaded video.
       class ActivityContentDetailsUpload
         include Google::Apis::Core::Hashable
@@ -449,10 +492,15 @@ module Google
         attr_accessor :video_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @video_id = args[:video_id] unless args[:video_id].nil?
         end
       end
-
+      
       # 
       class ActivityListResponse
         include Google::Apis::Core::Hashable
@@ -484,7 +532,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # 
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
@@ -495,7 +544,7 @@ module Google
         # @return [String]
         attr_accessor :prev_page_token
       
-        # 
+        # Stub token pagination template to suppress results.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
@@ -506,6 +555,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -517,7 +571,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # Basic details about an activity, including title, description, thumbnails,
       # activity type and group.
       class ActivitySnippet
@@ -555,10 +609,7 @@ module Google
         # @return [DateTime]
         attr_accessor :published_at
       
-        # A map of thumbnail images associated with the resource that is primarily
-        # associated with the activity. For each object in the map, the key is the name
-        # of the thumbnail image, and the value is an object that contains other
-        # information about the thumbnail.
+        # Internal representation of thumbnails for a YouTube resource.
         # Corresponds to the JSON property `thumbnails`
         # @return [Google::Apis::YoutubeV3::ThumbnailDetails]
         attr_accessor :thumbnails
@@ -574,6 +625,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
           @channel_title = args[:channel_title] unless args[:channel_title].nil?
           @description = args[:description] unless args[:description].nil?
@@ -584,7 +640,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # A caption resource represents a YouTube caption track. A caption track is
       # associated with exactly one YouTube video.
       class Caption
@@ -606,19 +662,24 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The snippet object contains basic details about the caption.
+        # Basic details about a caption track, such as its language and name.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::CaptionSnippet]
         attr_accessor :snippet
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @snippet = args[:snippet] unless args[:snippet].nil?
         end
       end
-
+      
       # 
       class CaptionListResponse
         include Google::Apis::Core::Hashable
@@ -650,6 +711,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -657,7 +723,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # Basic details about a caption track, such as its language and name.
       class CaptionSnippet
         include Google::Apis::Core::Hashable
@@ -747,6 +813,11 @@ module Google
         attr_accessor :video_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @audio_track_type = args[:audio_track_type] unless args[:audio_track_type].nil?
           @failure_reason = args[:failure_reason] unless args[:failure_reason].nil?
           @is_auto_synced = args[:is_auto_synced] unless args[:is_auto_synced].nil?
@@ -762,7 +833,7 @@ module Google
           @video_id = args[:video_id] unless args[:video_id].nil?
         end
       end
-
+      
       # Brief description of the live stream cdn settings.
       class CdnSettings
         include Google::Apis::Core::Hashable
@@ -772,8 +843,7 @@ module Google
         # @return [String]
         attr_accessor :format
       
-        # The ingestionInfo object contains information that YouTube provides that you
-        # need to transmit your RTMP or HTTP stream to YouTube.
+        # Describes information necessary for ingesting an RTMP or an HTTP stream.
         # Corresponds to the JSON property `ingestionInfo`
         # @return [Google::Apis::YoutubeV3::IngestionInfo]
         attr_accessor :ingestion_info
@@ -784,29 +854,33 @@ module Google
         attr_accessor :ingestion_type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @format = args[:format] unless args[:format].nil?
           @ingestion_info = args[:ingestion_info] unless args[:ingestion_info].nil?
           @ingestion_type = args[:ingestion_type] unless args[:ingestion_type].nil?
         end
       end
-
+      
       # A channel resource contains information about a YouTube channel.
       class Channel
         include Google::Apis::Core::Hashable
       
-        # The auditionDetails object encapsulates channel data that is relevant for
-        # YouTube Partners during the audition process.
+        # The auditDetails object encapsulates channel data that is relevant for YouTube
+        # Partners during the audit process.
         # Corresponds to the JSON property `auditDetails`
         # @return [Google::Apis::YoutubeV3::ChannelAuditDetails]
         attr_accessor :audit_details
       
-        # The brandingSettings object encapsulates information about the branding of the
-        # channel.
+        # Branding properties of a YouTube channel.
         # Corresponds to the JSON property `brandingSettings`
         # @return [Google::Apis::YoutubeV3::ChannelBrandingSettings]
         attr_accessor :branding_settings
       
-        # The contentDetails object encapsulates information about the channel's content.
+        # Details about the content of a channel.
         # Corresponds to the JSON property `contentDetails`
         # @return [Google::Apis::YoutubeV3::ChannelContentDetails]
         attr_accessor :content_details
@@ -833,8 +907,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The invideoPromotion object encapsulates information about promotion campaign
-        # associated with the channel.
+        # Describes an invideo promotion campaign consisting of multiple promoted items.
+        # A campaign belongs to a single channel_id.
         # Corresponds to the JSON property `invideoPromotion`
         # @return [Google::Apis::YoutubeV3::InvideoPromotion]
         attr_accessor :invideo_promotion
@@ -850,30 +924,33 @@ module Google
         # @return [Hash<String,Google::Apis::YoutubeV3::ChannelLocalization>]
         attr_accessor :localizations
       
-        # The snippet object contains basic details about the channel, such as its title,
-        # description, and thumbnail images.
+        # Basic details about a channel, including title, description and thumbnails.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::ChannelSnippet]
         attr_accessor :snippet
       
-        # The statistics object encapsulates statistics for the channel.
+        # Statistics about a channel: number of subscribers, number of videos in the
+        # channel, etc.
         # Corresponds to the JSON property `statistics`
         # @return [Google::Apis::YoutubeV3::ChannelStatistics]
         attr_accessor :statistics
       
-        # The status object encapsulates information about the privacy status of the
-        # channel.
+        # JSON template for the status part of a channel.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::YoutubeV3::ChannelStatus]
         attr_accessor :status
       
-        # The topicDetails object encapsulates information about Freebase topics
-        # associated with the channel.
+        # Freebase topic information related to the channel.
         # Corresponds to the JSON property `topicDetails`
         # @return [Google::Apis::YoutubeV3::ChannelTopicDetails]
         attr_accessor :topic_details
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @audit_details = args[:audit_details] unless args[:audit_details].nil?
           @branding_settings = args[:branding_settings] unless args[:branding_settings].nil?
           @content_details = args[:content_details] unless args[:content_details].nil?
@@ -890,7 +967,7 @@ module Google
           @topic_details = args[:topic_details] unless args[:topic_details].nil?
         end
       end
-
+      
       # The auditDetails object encapsulates channel data that is relevant for YouTube
       # Partners during the audit process.
       class ChannelAuditDetails
@@ -925,13 +1002,18 @@ module Google
         alias_method :overall_good_standing?, :overall_good_standing
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @community_guidelines_good_standing = args[:community_guidelines_good_standing] unless args[:community_guidelines_good_standing].nil?
           @content_id_claims_good_standing = args[:content_id_claims_good_standing] unless args[:content_id_claims_good_standing].nil?
           @copyright_strikes_good_standing = args[:copyright_strikes_good_standing] unless args[:copyright_strikes_good_standing].nil?
           @overall_good_standing = args[:overall_good_standing] unless args[:overall_good_standing].nil?
         end
       end
-
+      
       # A channel banner returned as the response to a channel_banner.insert call.
       class ChannelBannerResource
         include Google::Apis::Core::Hashable
@@ -953,12 +1035,17 @@ module Google
         attr_accessor :url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @url = args[:url] unless args[:url].nil?
         end
       end
-
+      
       # Branding properties of a YouTube channel.
       class ChannelBrandingSettings
         include Google::Apis::Core::Hashable
@@ -973,24 +1060,29 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::PropertyValue>]
         attr_accessor :hints
       
-        # Branding properties for branding images.
+        # Branding properties for images associated with the channel.
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::YoutubeV3::ImageSettings]
         attr_accessor :image
       
-        # Branding properties for the watch page.
+        # Branding properties for the watch.
         # Corresponds to the JSON property `watch`
         # @return [Google::Apis::YoutubeV3::WatchSettings]
         attr_accessor :watch
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @channel = args[:channel] unless args[:channel].nil?
           @hints = args[:hints] unless args[:hints].nil?
           @image = args[:image] unless args[:image].nil?
           @watch = args[:watch] unless args[:watch].nil?
         end
       end
-
+      
       # Details about the content of a channel.
       class ChannelContentDetails
         include Google::Apis::Core::Hashable
@@ -1007,9 +1099,15 @@ module Google
         attr_accessor :related_playlists
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @google_plus_user_id = args[:google_plus_user_id] unless args[:google_plus_user_id].nil?
           @related_playlists = args[:related_playlists] unless args[:related_playlists].nil?
         end
+        
         # 
         class RelatedPlaylists
           include Google::Apis::Core::Hashable
@@ -1050,6 +1148,11 @@ module Google
           attr_accessor :watch_later
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @favorites = args[:favorites] unless args[:favorites].nil?
             @likes = args[:likes] unless args[:likes].nil?
             @uploads = args[:uploads] unless args[:uploads].nil?
@@ -1058,7 +1161,7 @@ module Google
           end
         end
       end
-
+      
       # The contentOwnerDetails object encapsulates channel data that is relevant for
       # YouTube Partners linked with the channel.
       class ChannelContentOwnerDetails
@@ -1076,11 +1179,16 @@ module Google
         attr_accessor :time_linked
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @content_owner = args[:content_owner] unless args[:content_owner].nil?
           @time_linked = args[:time_linked] unless args[:time_linked].nil?
         end
       end
-
+      
       # Pings that the app shall fire (authenticated by biscotti cookie). Each ping
       # has a context, in which the app must fire the ping, and a url identifying the
       # ping.
@@ -1103,11 +1211,16 @@ module Google
         attr_accessor :conversion_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @context = args[:context] unless args[:context].nil?
           @conversion_url = args[:conversion_url] unless args[:conversion_url].nil?
         end
       end
-
+      
       # The conversionPings object encapsulates information about conversion pings
       # that need to be respected by the channel.
       class ChannelConversionPings
@@ -1121,10 +1234,15 @@ module Google
         attr_accessor :pings
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @pings = args[:pings] unless args[:pings].nil?
         end
       end
-
+      
       # 
       class ChannelId
         include Google::Apis::Core::Hashable
@@ -1135,10 +1253,15 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # 
       class ChannelListResponse
         include Google::Apis::Core::Hashable
@@ -1170,7 +1293,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # 
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
@@ -1181,7 +1305,7 @@ module Google
         # @return [String]
         attr_accessor :prev_page_token
       
-        # 
+        # Stub token pagination template to suppress results.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
@@ -1192,6 +1316,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -1203,7 +1332,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # Channel localization setting
       class ChannelLocalization
         include Google::Apis::Core::Hashable
@@ -1219,17 +1348,21 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @description = args[:description] unless args[:description].nil?
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # 
       class ChannelSection
         include Google::Apis::Core::Hashable
       
-        # The contentDetails object contains details about the channel section content,
-        # such as a list of playlists or channels featured in the section.
+        # Details about a channelsection, including playlists and channels.
         # Corresponds to the JSON property `contentDetails`
         # @return [Google::Apis::YoutubeV3::ChannelSectionContentDetails]
         attr_accessor :content_details
@@ -1255,19 +1388,22 @@ module Google
         # @return [Hash<String,Google::Apis::YoutubeV3::ChannelSectionLocalization>]
         attr_accessor :localizations
       
-        # The snippet object contains basic details about the channel section, such as
-        # its type, style and title.
+        # Basic details about a channel section, including title, style and position.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::ChannelSectionSnippet]
         attr_accessor :snippet
       
-        # The targeting object contains basic targeting settings about the channel
-        # section.
+        # ChannelSection targeting setting.
         # Corresponds to the JSON property `targeting`
         # @return [Google::Apis::YoutubeV3::ChannelSectionTargeting]
         attr_accessor :targeting
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @content_details = args[:content_details] unless args[:content_details].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
@@ -1277,7 +1413,7 @@ module Google
           @targeting = args[:targeting] unless args[:targeting].nil?
         end
       end
-
+      
       # Details about a channelsection, including playlists and channels.
       class ChannelSectionContentDetails
         include Google::Apis::Core::Hashable
@@ -1294,11 +1430,16 @@ module Google
         attr_accessor :playlists
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @channels = args[:channels] unless args[:channels].nil?
           @playlists = args[:playlists] unless args[:playlists].nil?
         end
       end
-
+      
       # 
       class ChannelSectionListResponse
         include Google::Apis::Core::Hashable
@@ -1330,6 +1471,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -1337,7 +1483,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # ChannelSection localization setting
       class ChannelSectionLocalization
         include Google::Apis::Core::Hashable
@@ -1348,10 +1494,15 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # Basic details about a channel section, including title, style and position.
       class ChannelSectionSnippet
         include Google::Apis::Core::Hashable
@@ -1367,7 +1518,7 @@ module Google
         # @return [String]
         attr_accessor :default_language
       
-        # Localized title, read-only.
+        # ChannelSection localization setting
         # Corresponds to the JSON property `localized`
         # @return [Google::Apis::YoutubeV3::ChannelSectionLocalization]
         attr_accessor :localized
@@ -1393,6 +1544,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
           @default_language = args[:default_language] unless args[:default_language].nil?
           @localized = args[:localized] unless args[:localized].nil?
@@ -1402,7 +1558,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # ChannelSection targeting setting.
       class ChannelSectionTargeting
         include Google::Apis::Core::Hashable
@@ -1423,12 +1579,17 @@ module Google
         attr_accessor :regions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @countries = args[:countries] unless args[:countries].nil?
           @languages = args[:languages] unless args[:languages].nil?
           @regions = args[:regions] unless args[:regions].nil?
         end
       end
-
+      
       # Branding properties for the channel view.
       class ChannelSettings
         include Google::Apis::Core::Hashable
@@ -1509,6 +1670,11 @@ module Google
         attr_accessor :unsubscribed_trailer
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @country = args[:country] unless args[:country].nil?
           @default_language = args[:default_language] unless args[:default_language].nil?
           @default_tab = args[:default_tab] unless args[:default_tab].nil?
@@ -1525,7 +1691,7 @@ module Google
           @unsubscribed_trailer = args[:unsubscribed_trailer] unless args[:unsubscribed_trailer].nil?
         end
       end
-
+      
       # Basic details about a channel, including title, description and thumbnails.
       class ChannelSnippet
         include Google::Apis::Core::Hashable
@@ -1545,7 +1711,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Localized title and description, read-only.
+        # Channel localization setting
         # Corresponds to the JSON property `localized`
         # @return [Google::Apis::YoutubeV3::ChannelLocalization]
         attr_accessor :localized
@@ -1556,9 +1722,7 @@ module Google
         # @return [DateTime]
         attr_accessor :published_at
       
-        # A map of thumbnail images associated with the channel. For each object in the
-        # map, the key is the name of the thumbnail image, and the value is an object
-        # that contains other information about the thumbnail.
+        # Internal representation of thumbnails for a YouTube resource.
         # Corresponds to the JSON property `thumbnails`
         # @return [Google::Apis::YoutubeV3::ThumbnailDetails]
         attr_accessor :thumbnails
@@ -1569,6 +1733,11 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @country = args[:country] unless args[:country].nil?
           @default_language = args[:default_language] unless args[:default_language].nil?
           @description = args[:description] unless args[:description].nil?
@@ -1578,7 +1747,7 @@ module Google
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # Statistics about a channel: number of subscribers, number of videos in the
       # channel, etc.
       class ChannelStatistics
@@ -1611,6 +1780,11 @@ module Google
         attr_accessor :view_count
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @comment_count = args[:comment_count] unless args[:comment_count].nil?
           @hidden_subscriber_count = args[:hidden_subscriber_count] unless args[:hidden_subscriber_count].nil?
           @subscriber_count = args[:subscriber_count] unless args[:subscriber_count].nil?
@@ -1618,7 +1792,7 @@ module Google
           @view_count = args[:view_count] unless args[:view_count].nil?
         end
       end
-
+      
       # JSON template for the status part of a channel.
       class ChannelStatus
         include Google::Apis::Core::Hashable
@@ -1641,12 +1815,17 @@ module Google
         attr_accessor :privacy_status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @is_linked = args[:is_linked] unless args[:is_linked].nil?
           @long_uploads_status = args[:long_uploads_status] unless args[:long_uploads_status].nil?
           @privacy_status = args[:privacy_status] unless args[:privacy_status].nil?
         end
       end
-
+      
       # Freebase topic information related to the channel.
       class ChannelTopicDetails
         include Google::Apis::Core::Hashable
@@ -1658,10 +1837,15 @@ module Google
         attr_accessor :topic_ids
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @topic_ids = args[:topic_ids] unless args[:topic_ids].nil?
         end
       end
-
+      
       # A comment represents a single YouTube comment.
       class Comment
         include Google::Apis::Core::Hashable
@@ -1682,19 +1866,24 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The snippet object contains basic details about the comment.
+        # Basic details about a comment, such as its author and text.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::CommentSnippet]
         attr_accessor :snippet
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @snippet = args[:snippet] unless args[:snippet].nil?
         end
       end
-
+      
       # 
       class CommentListResponse
         include Google::Apis::Core::Hashable
@@ -1726,12 +1915,13 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # 
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
       
-        # 
+        # Stub token pagination template to suppress results.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
@@ -1742,6 +1932,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -1752,7 +1947,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # Basic details about a comment, such as its author and text.
       class CommentSnippet
         include Google::Apis::Core::Hashable
@@ -1851,6 +2046,11 @@ module Google
         attr_accessor :viewer_rating
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @author_channel_id = args[:author_channel_id] unless args[:author_channel_id].nil?
           @author_channel_url = args[:author_channel_url] unless args[:author_channel_url].nil?
           @author_display_name = args[:author_display_name] unless args[:author_display_name].nil?
@@ -1869,7 +2069,7 @@ module Google
           @viewer_rating = args[:viewer_rating] unless args[:viewer_rating].nil?
         end
       end
-
+      
       # A comment thread represents information that applies to a top level comment
       # and all its replies. It can also include the top level comment itself and some
       # of the replies.
@@ -1892,19 +2092,22 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The replies object contains a limited number of replies (if any) to the top
-        # level comment found in the snippet.
+        # Comments written in (direct or indirect) reply to the top level comment.
         # Corresponds to the JSON property `replies`
         # @return [Google::Apis::YoutubeV3::CommentThreadReplies]
         attr_accessor :replies
       
-        # The snippet object contains basic details about the comment thread and also
-        # the top level comment.
+        # Basic details about a comment thread.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::CommentThreadSnippet]
         attr_accessor :snippet
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1912,7 +2115,7 @@ module Google
           @snippet = args[:snippet] unless args[:snippet].nil?
         end
       end
-
+      
       # 
       class CommentThreadListResponse
         include Google::Apis::Core::Hashable
@@ -1944,12 +2147,13 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # 
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
       
-        # 
+        # Stub token pagination template to suppress results.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
@@ -1960,6 +2164,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -1970,7 +2179,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # Comments written in (direct or indirect) reply to the top level comment.
       class CommentThreadReplies
         include Google::Apis::Core::Hashable
@@ -1983,10 +2192,15 @@ module Google
         attr_accessor :comments
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @comments = args[:comments] unless args[:comments].nil?
         end
       end
-
+      
       # Basic details about a comment thread.
       class CommentThreadSnippet
         include Google::Apis::Core::Hashable
@@ -2012,7 +2226,7 @@ module Google
         attr_accessor :is_public
         alias_method :is_public?, :is_public
       
-        # The top level comment of this thread.
+        # A comment represents a single YouTube comment.
         # Corresponds to the JSON property `topLevelComment`
         # @return [Google::Apis::YoutubeV3::Comment]
         attr_accessor :top_level_comment
@@ -2029,6 +2243,11 @@ module Google
         attr_accessor :video_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @can_reply = args[:can_reply] unless args[:can_reply].nil?
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
           @is_public = args[:is_public] unless args[:is_public].nil?
@@ -2037,7 +2256,7 @@ module Google
           @video_id = args[:video_id] unless args[:video_id].nil?
         end
       end
-
+      
       # Ratings schemes. The country-specific ratings are mostly for movies and shows.
       # NEXT_ID: 65
       class ContentRating
@@ -2374,6 +2593,11 @@ module Google
         attr_accessor :yt_rating
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @acb_rating = args[:acb_rating] unless args[:acb_rating].nil?
           @agcom_rating = args[:agcom_rating] unless args[:agcom_rating].nil?
           @anatel_rating = args[:anatel_rating] unless args[:anatel_rating].nil?
@@ -2440,7 +2664,7 @@ module Google
           @yt_rating = args[:yt_rating] unless args[:yt_rating].nil?
         end
       end
-
+      
       # Geographical coordinates of a point, in WGS84.
       class GeoPoint
         include Google::Apis::Core::Hashable
@@ -2461,12 +2685,17 @@ module Google
         attr_accessor :longitude
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @altitude = args[:altitude] unless args[:altitude].nil?
           @latitude = args[:latitude] unless args[:latitude].nil?
           @longitude = args[:longitude] unless args[:longitude].nil?
         end
       end
-
+      
       # A guideCategory resource identifies a category that YouTube algorithmically
       # assigns based on a channel's content or other indicators, such as the channel'
       # s popularity. The list is similar to video categories, with the difference
@@ -2491,20 +2720,24 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The snippet object contains basic details about the category, such as its
-        # title.
+        # Basic details about a guide category.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::GuideCategorySnippet]
         attr_accessor :snippet
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @snippet = args[:snippet] unless args[:snippet].nil?
         end
       end
-
+      
       # 
       class GuideCategoryListResponse
         include Google::Apis::Core::Hashable
@@ -2538,7 +2771,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # 
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
@@ -2549,7 +2783,7 @@ module Google
         # @return [String]
         attr_accessor :prev_page_token
       
-        # 
+        # Stub token pagination template to suppress results.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
@@ -2560,6 +2794,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -2571,7 +2810,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # Basic details about a guide category.
       class GuideCategorySnippet
         include Google::Apis::Core::Hashable
@@ -2587,11 +2826,16 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # An i18nLanguage resource identifies a UI language currently supported by
       # YouTube.
       class I18nLanguage
@@ -2613,20 +2857,25 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The snippet object contains basic details about the i18n language, such as
-        # language code and human-readable name.
+        # Basic details about an i18n language, such as language code and human-readable
+        # name.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::I18nLanguageSnippet]
         attr_accessor :snippet
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @snippet = args[:snippet] unless args[:snippet].nil?
         end
       end
-
+      
       # 
       class I18nLanguageListResponse
         include Google::Apis::Core::Hashable
@@ -2659,6 +2908,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -2666,7 +2920,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # Basic details about an i18n language, such as language code and human-readable
       # name.
       class I18nLanguageSnippet
@@ -2683,11 +2937,16 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @hl = args[:hl] unless args[:hl].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # A i18nRegion resource identifies a region where YouTube is available.
       class I18nRegion
         include Google::Apis::Core::Hashable
@@ -2708,20 +2967,25 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The snippet object contains basic details about the i18n region, such as
-        # region code and human-readable name.
+        # Basic details about an i18n region, such as region code and human-readable
+        # name.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::I18nRegionSnippet]
         attr_accessor :snippet
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @snippet = args[:snippet] unless args[:snippet].nil?
         end
       end
-
+      
       # 
       class I18nRegionListResponse
         include Google::Apis::Core::Hashable
@@ -2754,6 +3018,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -2761,7 +3030,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # Basic details about an i18n region, such as region code and human-readable
       # name.
       class I18nRegionSnippet
@@ -2778,11 +3047,16 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @gl = args[:gl] unless args[:gl].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Branding properties for images associated with the channel.
       class ImageSettings
         include Google::Apis::Core::Hashable
@@ -2905,6 +3179,11 @@ module Google
         attr_accessor :watch_icon_image_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @background_image_url = args[:background_image_url] unless args[:background_image_url].nil?
           @banner_external_url = args[:banner_external_url] unless args[:banner_external_url].nil?
           @banner_image_url = args[:banner_image_url] unless args[:banner_image_url].nil?
@@ -2929,7 +3208,7 @@ module Google
           @watch_icon_image_url = args[:watch_icon_image_url] unless args[:watch_icon_image_url].nil?
         end
       end
-
+      
       # Describes information necessary for ingesting an RTMP or an HTTP stream.
       class IngestionInfo
         include Google::Apis::Core::Hashable
@@ -2957,12 +3236,17 @@ module Google
         attr_accessor :stream_name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @backup_ingestion_address = args[:backup_ingestion_address] unless args[:backup_ingestion_address].nil?
           @ingestion_address = args[:ingestion_address] unless args[:ingestion_address].nil?
           @stream_name = args[:stream_name] unless args[:stream_name].nil?
         end
       end
-
+      
       # 
       class InvideoBranding
         include Google::Apis::Core::Hashable
@@ -2977,7 +3261,8 @@ module Google
         # @return [String]
         attr_accessor :image_url
       
-        # 
+        # Describes the spatial position of a visual widget inside a video. It is a
+        # union of various position types, out of which only will be set one.
         # Corresponds to the JSON property `position`
         # @return [Google::Apis::YoutubeV3::InvideoPosition]
         attr_accessor :position
@@ -2987,12 +3272,17 @@ module Google
         # @return [String]
         attr_accessor :target_channel_id
       
-        # 
+        # Describes a temporal position of a visual widget inside a video.
         # Corresponds to the JSON property `timing`
         # @return [Google::Apis::YoutubeV3::InvideoTiming]
         attr_accessor :timing
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @image_bytes = args[:image_bytes] unless args[:image_bytes].nil?
           @image_url = args[:image_url] unless args[:image_url].nil?
           @position = args[:position] unless args[:position].nil?
@@ -3000,7 +3290,7 @@ module Google
           @timing = args[:timing] unless args[:timing].nil?
         end
       end
-
+      
       # Describes the spatial position of a visual widget inside a video. It is a
       # union of various position types, out of which only will be set one.
       class InvideoPosition
@@ -3017,18 +3307,22 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @corner_position = args[:corner_position] unless args[:corner_position].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Describes an invideo promotion campaign consisting of multiple promoted items.
       # A campaign belongs to a single channel_id.
       class InvideoPromotion
         include Google::Apis::Core::Hashable
       
-        # The default temporal position within the video where the promoted item will be
-        # displayed. Can be overriden by more specific timing in the item.
+        # Describes a temporal position of a visual widget inside a video.
         # Corresponds to the JSON property `defaultTiming`
         # @return [Google::Apis::YoutubeV3::InvideoTiming]
         attr_accessor :default_timing
@@ -3038,8 +3332,8 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::PromotedItem>]
         attr_accessor :items
       
-        # The spatial position within the video where the promoted item will be
-        # displayed.
+        # Describes the spatial position of a visual widget inside a video. It is a
+        # union of various position types, out of which only will be set one.
         # Corresponds to the JSON property `position`
         # @return [Google::Apis::YoutubeV3::InvideoPosition]
         attr_accessor :position
@@ -3054,13 +3348,18 @@ module Google
         alias_method :use_smart_timing?, :use_smart_timing
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @default_timing = args[:default_timing] unless args[:default_timing].nil?
           @items = args[:items] unless args[:items].nil?
           @position = args[:position] unless args[:position].nil?
           @use_smart_timing = args[:use_smart_timing] unless args[:use_smart_timing].nil?
         end
       end
-
+      
       # Describes a temporal position of a visual widget inside a video.
       class InvideoTiming
         include Google::Apis::Core::Hashable
@@ -3087,12 +3386,17 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @duration_ms = args[:duration_ms] unless args[:duration_ms].nil?
           @offset_ms = args[:offset_ms] unless args[:offset_ms].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # 
       class LanguageTag
         include Google::Apis::Core::Hashable
@@ -3103,19 +3407,21 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # A liveBroadcast resource represents an event that will be streamed, via live
       # video, on YouTube.
       class LiveBroadcast
         include Google::Apis::Core::Hashable
       
-        # The contentDetails object contains information about the event's video content,
-        # such as whether the content can be shown in an embedded video player or if it
-        # will be archived and therefore available for viewing after the event has
-        # concluded.
+        # Detailed settings of a broadcast.
         # Corresponds to the JSON property `contentDetails`
         # @return [Google::Apis::YoutubeV3::LiveBroadcastContentDetails]
         attr_accessor :content_details
@@ -3148,6 +3454,11 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @content_details = args[:content_details] unless args[:content_details].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
@@ -3156,7 +3467,7 @@ module Google
           @status = args[:status] unless args[:status].nil?
         end
       end
-
+      
       # Detailed settings of a broadcast.
       class LiveBroadcastContentDetails
         include Google::Apis::Core::Hashable
@@ -3201,9 +3512,7 @@ module Google
         attr_accessor :enable_embed
         alias_method :enable_embed?, :enable_embed
       
-        # The monitorStream object contains information about the monitor stream, which
-        # the broadcaster can use to review the event content before the broadcast
-        # stream is shown publicly.
+        # Settings and Info of the monitor stream
         # Corresponds to the JSON property `monitorStream`
         # @return [Google::Apis::YoutubeV3::MonitorStreamInfo]
         attr_accessor :monitor_stream
@@ -3231,6 +3540,11 @@ module Google
         alias_method :start_with_slate?, :start_with_slate
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bound_stream_id = args[:bound_stream_id] unless args[:bound_stream_id].nil?
           @enable_closed_captions = args[:enable_closed_captions] unless args[:enable_closed_captions].nil?
           @enable_content_encryption = args[:enable_content_encryption] unless args[:enable_content_encryption].nil?
@@ -3241,7 +3555,7 @@ module Google
           @start_with_slate = args[:start_with_slate] unless args[:start_with_slate].nil?
         end
       end
-
+      
       # 
       class LiveBroadcastListResponse
         include Google::Apis::Core::Hashable
@@ -3273,7 +3587,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # 
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
@@ -3284,7 +3599,7 @@ module Google
         # @return [String]
         attr_accessor :prev_page_token
       
-        # 
+        # Stub token pagination template to suppress results.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
@@ -3295,6 +3610,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -3306,7 +3626,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # 
       class LiveBroadcastSnippet
         include Google::Apis::Core::Hashable
@@ -3356,9 +3676,7 @@ module Google
         # @return [DateTime]
         attr_accessor :scheduled_start_time
       
-        # A map of thumbnail images associated with the broadcast. For each nested
-        # object in this object, the key is the name of the thumbnail image, and the
-        # value is an object that contains other information about the thumbnail.
+        # Internal representation of thumbnails for a YouTube resource.
         # Corresponds to the JSON property `thumbnails`
         # @return [Google::Apis::YoutubeV3::ThumbnailDetails]
         attr_accessor :thumbnails
@@ -3371,6 +3689,11 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @actual_end_time = args[:actual_end_time] unless args[:actual_end_time].nil?
           @actual_start_time = args[:actual_start_time] unless args[:actual_start_time].nil?
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
@@ -3382,7 +3705,7 @@ module Google
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # 
       class LiveBroadcastStatus
         include Google::Apis::Core::Hashable
@@ -3419,6 +3742,11 @@ module Google
         attr_accessor :recording_status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @is_default_broadcast = args[:is_default_broadcast] unless args[:is_default_broadcast].nil?
           @life_cycle_status = args[:life_cycle_status] unless args[:life_cycle_status].nil?
           @live_broadcast_priority = args[:live_broadcast_priority] unless args[:live_broadcast_priority].nil?
@@ -3426,20 +3754,17 @@ module Google
           @recording_status = args[:recording_status] unless args[:recording_status].nil?
         end
       end
-
+      
       # A live stream describes a live ingestion point.
       class LiveStream
         include Google::Apis::Core::Hashable
       
-        # The cdn object defines the live stream's content delivery network (CDN)
-        # settings. These settings provide details about the manner in which you stream
-        # your content to YouTube.
+        # Brief description of the live stream cdn settings.
         # Corresponds to the JSON property `cdn`
         # @return [Google::Apis::YoutubeV3::CdnSettings]
         attr_accessor :cdn
       
-        # The content_details object contains information about the stream, including
-        # the closed captions ingestion URL.
+        # Detailed settings of a stream.
         # Corresponds to the JSON property `contentDetails`
         # @return [Google::Apis::YoutubeV3::LiveStreamContentDetails]
         attr_accessor :content_details
@@ -3466,12 +3791,17 @@ module Google
         # @return [Google::Apis::YoutubeV3::LiveStreamSnippet]
         attr_accessor :snippet
       
-        # The status object contains information about live stream's status.
+        # Brief description of the live stream status.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::YoutubeV3::LiveStreamStatus]
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cdn = args[:cdn] unless args[:cdn].nil?
           @content_details = args[:content_details] unless args[:content_details].nil?
           @etag = args[:etag] unless args[:etag].nil?
@@ -3481,7 +3811,7 @@ module Google
           @status = args[:status] unless args[:status].nil?
         end
       end
-
+      
       # Detailed settings of a stream.
       class LiveStreamContentDetails
         include Google::Apis::Core::Hashable
@@ -3510,11 +3840,16 @@ module Google
         alias_method :is_reusable?, :is_reusable
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @closed_captions_ingestion_url = args[:closed_captions_ingestion_url] unless args[:closed_captions_ingestion_url].nil?
           @is_reusable = args[:is_reusable] unless args[:is_reusable].nil?
         end
       end
-
+      
       # 
       class LiveStreamListResponse
         include Google::Apis::Core::Hashable
@@ -3546,7 +3881,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # 
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
@@ -3557,7 +3893,7 @@ module Google
         # @return [String]
         attr_accessor :prev_page_token
       
-        # 
+        # Stub token pagination template to suppress results.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
@@ -3568,6 +3904,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -3579,7 +3920,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # 
       class LiveStreamSnippet
         include Google::Apis::Core::Hashable
@@ -3607,13 +3948,18 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
           @description = args[:description] unless args[:description].nil?
           @published_at = args[:published_at] unless args[:published_at].nil?
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # Brief description of the live stream status.
       class LiveStreamStatus
         include Google::Apis::Core::Hashable
@@ -3630,11 +3976,16 @@ module Google
         attr_accessor :stream_status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @is_default_stream = args[:is_default_stream] unless args[:is_default_stream].nil?
           @stream_status = args[:stream_status] unless args[:stream_status].nil?
         end
       end
-
+      
       # 
       class LocalizedProperty
         include Google::Apis::Core::Hashable
@@ -3655,12 +4006,17 @@ module Google
         attr_accessor :localized
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @default = args[:default] unless args[:default].nil?
           @default_language = args[:default_language] unless args[:default_language].nil?
           @localized = args[:localized] unless args[:localized].nil?
         end
       end
-
+      
       # 
       class LocalizedString
         include Google::Apis::Core::Hashable
@@ -3676,11 +4032,16 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @language = args[:language] unless args[:language].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # Settings and Info of the monitor stream
       class MonitorStreamInfo
         include Google::Apis::Core::Hashable
@@ -3711,12 +4072,17 @@ module Google
         alias_method :enable_monitor_stream?, :enable_monitor_stream
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @broadcast_stream_delay_ms = args[:broadcast_stream_delay_ms] unless args[:broadcast_stream_delay_ms].nil?
           @embed_html = args[:embed_html] unless args[:embed_html].nil?
           @enable_monitor_stream = args[:enable_monitor_stream] unless args[:enable_monitor_stream].nil?
         end
       end
-
+      
       # Paging details for lists of resources, including total number of items
       # available and number of resources returned in a single page.
       class PageInfo
@@ -3733,11 +4099,16 @@ module Google
         attr_accessor :total_results
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @results_per_page = args[:results_per_page] unless args[:results_per_page].nil?
           @total_results = args[:total_results] unless args[:total_results].nil?
         end
       end
-
+      
       # A playlist resource represents a YouTube playlist. A playlist is a collection
       # of videos that can be viewed sequentially and shared with other users. A
       # playlist can contain up to 200 videos, and YouTube does not limit the number
@@ -3791,8 +4162,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::PlaylistPlayer]
         attr_accessor :player
       
-        # The snippet object contains basic details about the playlist, such as its
-        # title and description.
+        # Basic details about a playlist, including title, description and thumbnails.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::PlaylistSnippet]
         attr_accessor :snippet
@@ -3803,6 +4173,11 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @content_details = args[:content_details] unless args[:content_details].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
@@ -3813,7 +4188,7 @@ module Google
           @status = args[:status] unless args[:status].nil?
         end
       end
-
+      
       # 
       class PlaylistContentDetails
         include Google::Apis::Core::Hashable
@@ -3824,10 +4199,15 @@ module Google
         attr_accessor :item_count
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @item_count = args[:item_count] unless args[:item_count].nil?
         end
       end
-
+      
       # A playlistItem resource identifies another resource, such as a video, that is
       # included in a playlist. In addition, the playlistItem  resource contains
       # details about the included resource that pertain specifically to how that
@@ -3872,19 +4252,22 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The snippet object contains basic details about the playlist item, such as its
-        # title and position in the playlist.
+        # Basic details about a playlist, including title, description and thumbnails.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::PlaylistItemSnippet]
         attr_accessor :snippet
       
-        # The status object contains information about the playlist item's privacy
-        # status.
+        # Information about the playlist item's privacy status.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::YoutubeV3::PlaylistItemStatus]
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @content_details = args[:content_details] unless args[:content_details].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
@@ -3893,7 +4276,7 @@ module Google
           @status = args[:status] unless args[:status].nil?
         end
       end
-
+      
       # 
       class PlaylistItemContentDetails
         include Google::Apis::Core::Hashable
@@ -3926,13 +4309,18 @@ module Google
         attr_accessor :video_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end_at = args[:end_at] unless args[:end_at].nil?
           @note = args[:note] unless args[:note].nil?
           @start_at = args[:start_at] unless args[:start_at].nil?
           @video_id = args[:video_id] unless args[:video_id].nil?
         end
       end
-
+      
       # 
       class PlaylistItemListResponse
         include Google::Apis::Core::Hashable
@@ -3964,7 +4352,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # 
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
@@ -3975,7 +4364,7 @@ module Google
         # @return [String]
         attr_accessor :prev_page_token
       
-        # 
+        # Stub token pagination template to suppress results.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
@@ -3986,6 +4375,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -3997,7 +4391,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # Basic details about a playlist, including title, description and thumbnails.
       class PlaylistItemSnippet
         include Google::Apis::Core::Hashable
@@ -4037,15 +4431,12 @@ module Google
         # @return [DateTime]
         attr_accessor :published_at
       
-        # The id object contains information that can be used to uniquely identify the
-        # resource that is included in the playlist as the playlist item.
+        # A resource id is a generic reference that points to another YouTube resource.
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::YoutubeV3::ResourceId]
         attr_accessor :resource_id
       
-        # A map of thumbnail images associated with the playlist item. For each object
-        # in the map, the key is the name of the thumbnail image, and the value is an
-        # object that contains other information about the thumbnail.
+        # Internal representation of thumbnails for a YouTube resource.
         # Corresponds to the JSON property `thumbnails`
         # @return [Google::Apis::YoutubeV3::ThumbnailDetails]
         attr_accessor :thumbnails
@@ -4056,6 +4447,11 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
           @channel_title = args[:channel_title] unless args[:channel_title].nil?
           @description = args[:description] unless args[:description].nil?
@@ -4067,7 +4463,7 @@ module Google
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # Information about the playlist item's privacy status.
       class PlaylistItemStatus
         include Google::Apis::Core::Hashable
@@ -4078,10 +4474,15 @@ module Google
         attr_accessor :privacy_status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @privacy_status = args[:privacy_status] unless args[:privacy_status].nil?
         end
       end
-
+      
       # 
       class PlaylistListResponse
         include Google::Apis::Core::Hashable
@@ -4113,7 +4514,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # 
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
@@ -4124,7 +4526,7 @@ module Google
         # @return [String]
         attr_accessor :prev_page_token
       
-        # 
+        # Stub token pagination template to suppress results.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
@@ -4135,6 +4537,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -4146,7 +4553,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # Playlist localization setting
       class PlaylistLocalization
         include Google::Apis::Core::Hashable
@@ -4162,11 +4569,16 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @description = args[:description] unless args[:description].nil?
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # 
       class PlaylistPlayer
         include Google::Apis::Core::Hashable
@@ -4177,10 +4589,15 @@ module Google
         attr_accessor :embed_html
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @embed_html = args[:embed_html] unless args[:embed_html].nil?
         end
       end
-
+      
       # Basic details about a playlist, including title, description and thumbnails.
       class PlaylistSnippet
         include Google::Apis::Core::Hashable
@@ -4206,7 +4623,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Localized title and description, read-only.
+        # Playlist localization setting
         # Corresponds to the JSON property `localized`
         # @return [Google::Apis::YoutubeV3::PlaylistLocalization]
         attr_accessor :localized
@@ -4222,9 +4639,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
-        # A map of thumbnail images associated with the playlist. For each object in the
-        # map, the key is the name of the thumbnail image, and the value is an object
-        # that contains other information about the thumbnail.
+        # Internal representation of thumbnails for a YouTube resource.
         # Corresponds to the JSON property `thumbnails`
         # @return [Google::Apis::YoutubeV3::ThumbnailDetails]
         attr_accessor :thumbnails
@@ -4235,6 +4650,11 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
           @channel_title = args[:channel_title] unless args[:channel_title].nil?
           @default_language = args[:default_language] unless args[:default_language].nil?
@@ -4246,7 +4666,7 @@ module Google
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # 
       class PlaylistStatus
         include Google::Apis::Core::Hashable
@@ -4257,10 +4677,15 @@ module Google
         attr_accessor :privacy_status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @privacy_status = args[:privacy_status] unless args[:privacy_status].nil?
         end
       end
-
+      
       # Describes a single promoted item.
       class PromotedItem
         include Google::Apis::Core::Hashable
@@ -4271,7 +4696,7 @@ module Google
         # @return [String]
         attr_accessor :custom_message
       
-        # Identifies the promoted item.
+        # Describes a single promoted item id. It is a union of various possible types.
         # Corresponds to the JSON property `id`
         # @return [Google::Apis::YoutubeV3::PromotedItemId]
         attr_accessor :id
@@ -4284,20 +4709,24 @@ module Google
         attr_accessor :promoted_by_content_owner
         alias_method :promoted_by_content_owner?, :promoted_by_content_owner
       
-        # The temporal position within the video where the promoted item will be
-        # displayed. If present, it overrides the default timing.
+        # Describes a temporal position of a visual widget inside a video.
         # Corresponds to the JSON property `timing`
         # @return [Google::Apis::YoutubeV3::InvideoTiming]
         attr_accessor :timing
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @custom_message = args[:custom_message] unless args[:custom_message].nil?
           @id = args[:id] unless args[:id].nil?
           @promoted_by_content_owner = args[:promoted_by_content_owner] unless args[:promoted_by_content_owner].nil?
           @timing = args[:timing] unless args[:timing].nil?
         end
       end
-
+      
       # Describes a single promoted item id. It is a union of various possible types.
       class PromotedItemId
         include Google::Apis::Core::Hashable
@@ -4329,13 +4758,18 @@ module Google
         attr_accessor :website_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @recently_uploaded_by = args[:recently_uploaded_by] unless args[:recently_uploaded_by].nil?
           @type = args[:type] unless args[:type].nil?
           @video_id = args[:video_id] unless args[:video_id].nil?
           @website_url = args[:website_url] unless args[:website_url].nil?
         end
       end
-
+      
       # A pair Property / Value.
       class PropertyValue
         include Google::Apis::Core::Hashable
@@ -4351,11 +4785,16 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @property = args[:property] unless args[:property].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # A resource id is a generic reference that points to another YouTube resource.
       class ResourceId
         include Google::Apis::Core::Hashable
@@ -4387,15 +4826,20 @@ module Google
         attr_accessor :video_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @playlist_id = args[:playlist_id] unless args[:playlist_id].nil?
           @video_id = args[:video_id] unless args[:video_id].nil?
         end
       end
-
+      
       # 
-      class SearchListResponse
+      class ListResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -4410,7 +4854,7 @@ module Google
       
         # A list of results that match the search criteria.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::YoutubeV3::SearchResult>]
+        # @return [Array<Google::Apis::YoutubeV3::Result>]
         attr_accessor :items
       
         # Identifies what kind of resource this is. Value: the fixed string "youtube#
@@ -4425,7 +4869,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # 
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
@@ -4436,7 +4881,7 @@ module Google
         # @return [String]
         attr_accessor :prev_page_token
       
-        # 
+        # Stub token pagination template to suppress results.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
@@ -4447,6 +4892,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -4458,12 +4908,12 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # A search result contains information about a YouTube video, channel, or
       # playlist that matches the search parameters specified in an API request. While
       # a search result points to a uniquely identifiable resource, like a video, it
       # does not have its own persistent data.
-      class SearchResult
+      class Result
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -4471,8 +4921,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The id object contains information that can be used to uniquely identify the
-        # resource that matches the search request.
+        # A resource id is a generic reference that points to another YouTube resource.
         # Corresponds to the JSON property `id`
         # @return [Google::Apis::YoutubeV3::ResourceId]
         attr_accessor :id
@@ -4483,25 +4932,28 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The snippet object contains basic details about a search result, such as its
-        # title or description. For example, if the search result is a video, then the
-        # title will be the video's title and the description will be the video's
-        # description.
+        # Basic details about a search result, including title, description and
+        # thumbnails of the item referenced by the search result.
         # Corresponds to the JSON property `snippet`
-        # @return [Google::Apis::YoutubeV3::SearchResultSnippet]
+        # @return [Google::Apis::YoutubeV3::ResultSnippet]
         attr_accessor :snippet
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @snippet = args[:snippet] unless args[:snippet].nil?
         end
       end
-
+      
       # Basic details about a search result, including title, description and
       # thumbnails of the item referenced by the search result.
-      class SearchResultSnippet
+      class ResultSnippet
         include Google::Apis::Core::Hashable
       
         # The value that YouTube uses to uniquely identify the channel that published
@@ -4534,9 +4986,7 @@ module Google
         # @return [DateTime]
         attr_accessor :published_at
       
-        # A map of thumbnail images associated with the search result. For each object
-        # in the map, the key is the name of the thumbnail image, and the value is an
-        # object that contains other information about the thumbnail.
+        # Internal representation of thumbnails for a YouTube resource.
         # Corresponds to the JSON property `thumbnails`
         # @return [Google::Apis::YoutubeV3::ThumbnailDetails]
         attr_accessor :thumbnails
@@ -4547,6 +4997,11 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
           @channel_title = args[:channel_title] unless args[:channel_title].nil?
           @description = args[:description] unless args[:description].nil?
@@ -4556,7 +5011,7 @@ module Google
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # A subscription resource contains information about a YouTube user subscription.
       # A subscription notifies a user when new videos are added to a channel or when
       # another user takes one of several actions on YouTube, such as uploading a
@@ -4564,7 +5019,7 @@ module Google
       class Subscription
         include Google::Apis::Core::Hashable
       
-        # The contentDetails object contains basic statistics about the subscription.
+        # Details about the content to witch a subscription refers.
         # Corresponds to the JSON property `contentDetails`
         # @return [Google::Apis::YoutubeV3::SubscriptionContentDetails]
         attr_accessor :content_details
@@ -4585,18 +5040,24 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The snippet object contains basic details about the subscription, including
-        # its title and the channel that the user subscribed to.
+        # Basic details about a subscription, including title, description and
+        # thumbnails of the subscribed item.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::SubscriptionSnippet]
         attr_accessor :snippet
       
-        # The subscriberSnippet object contains basic details about the sbuscriber.
+        # Basic details about a subscription's subscriber including title, description,
+        # channel ID and thumbnails.
         # Corresponds to the JSON property `subscriberSnippet`
         # @return [Google::Apis::YoutubeV3::SubscriptionSubscriberSnippet]
         attr_accessor :subscriber_snippet
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @content_details = args[:content_details] unless args[:content_details].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
@@ -4605,7 +5066,7 @@ module Google
           @subscriber_snippet = args[:subscriber_snippet] unless args[:subscriber_snippet].nil?
         end
       end
-
+      
       # Details about the content to witch a subscription refers.
       class SubscriptionContentDetails
         include Google::Apis::Core::Hashable
@@ -4626,12 +5087,17 @@ module Google
         attr_accessor :total_item_count
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @activity_type = args[:activity_type] unless args[:activity_type].nil?
           @new_item_count = args[:new_item_count] unless args[:new_item_count].nil?
           @total_item_count = args[:total_item_count] unless args[:total_item_count].nil?
         end
       end
-
+      
       # 
       class SubscriptionListResponse
         include Google::Apis::Core::Hashable
@@ -4663,7 +5129,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # 
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
@@ -4674,7 +5141,7 @@ module Google
         # @return [String]
         attr_accessor :prev_page_token
       
-        # 
+        # Stub token pagination template to suppress results.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
@@ -4685,6 +5152,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -4696,7 +5168,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # Basic details about a subscription, including title, description and
       # thumbnails of the subscribed item.
       class SubscriptionSnippet
@@ -4723,15 +5195,12 @@ module Google
         # @return [DateTime]
         attr_accessor :published_at
       
-        # The id object contains information about the channel that the user subscribed
-        # to.
+        # A resource id is a generic reference that points to another YouTube resource.
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::YoutubeV3::ResourceId]
         attr_accessor :resource_id
       
-        # A map of thumbnail images associated with the video. For each object in the
-        # map, the key is the name of the thumbnail image, and the value is an object
-        # that contains other information about the thumbnail.
+        # Internal representation of thumbnails for a YouTube resource.
         # Corresponds to the JSON property `thumbnails`
         # @return [Google::Apis::YoutubeV3::ThumbnailDetails]
         attr_accessor :thumbnails
@@ -4742,6 +5211,11 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
           @channel_title = args[:channel_title] unless args[:channel_title].nil?
           @description = args[:description] unless args[:description].nil?
@@ -4751,7 +5225,7 @@ module Google
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # Basic details about a subscription's subscriber including title, description,
       # channel ID and thumbnails.
       class SubscriptionSubscriberSnippet
@@ -4767,7 +5241,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Thumbnails for this subscriber.
+        # Internal representation of thumbnails for a YouTube resource.
         # Corresponds to the JSON property `thumbnails`
         # @return [Google::Apis::YoutubeV3::ThumbnailDetails]
         attr_accessor :thumbnails
@@ -4778,13 +5252,18 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
           @description = args[:description] unless args[:description].nil?
           @thumbnails = args[:thumbnails] unless args[:thumbnails].nil?
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # A thumbnail is an image representing a YouTube resource.
       class Thumbnail
         include Google::Apis::Core::Hashable
@@ -4805,42 +5284,52 @@ module Google
         attr_accessor :width
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @height = args[:height] unless args[:height].nil?
           @url = args[:url] unless args[:url].nil?
           @width = args[:width] unless args[:width].nil?
         end
       end
-
+      
       # Internal representation of thumbnails for a YouTube resource.
       class ThumbnailDetails
         include Google::Apis::Core::Hashable
       
-        # The default image for this resource.
+        # A thumbnail is an image representing a YouTube resource.
         # Corresponds to the JSON property `default`
         # @return [Google::Apis::YoutubeV3::Thumbnail]
         attr_accessor :default
       
-        # The high quality image for this resource.
+        # A thumbnail is an image representing a YouTube resource.
         # Corresponds to the JSON property `high`
         # @return [Google::Apis::YoutubeV3::Thumbnail]
         attr_accessor :high
       
-        # The maximum resolution quality image for this resource.
+        # A thumbnail is an image representing a YouTube resource.
         # Corresponds to the JSON property `maxres`
         # @return [Google::Apis::YoutubeV3::Thumbnail]
         attr_accessor :maxres
       
-        # The medium quality image for this resource.
+        # A thumbnail is an image representing a YouTube resource.
         # Corresponds to the JSON property `medium`
         # @return [Google::Apis::YoutubeV3::Thumbnail]
         attr_accessor :medium
       
-        # The standard quality image for this resource.
+        # A thumbnail is an image representing a YouTube resource.
         # Corresponds to the JSON property `standard`
         # @return [Google::Apis::YoutubeV3::Thumbnail]
         attr_accessor :standard
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @default = args[:default] unless args[:default].nil?
           @high = args[:high] unless args[:high].nil?
           @maxres = args[:maxres] unless args[:maxres].nil?
@@ -4848,7 +5337,7 @@ module Google
           @standard = args[:standard] unless args[:standard].nil?
         end
       end
-
+      
       # 
       class ThumbnailSetResponse
         include Google::Apis::Core::Hashable
@@ -4880,6 +5369,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -4887,15 +5381,20 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # Stub token pagination template to suppress results.
       class TokenPagination
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
-
+      
       # A video resource represents a YouTube video.
       class Video
         include Google::Apis::Core::Hashable
@@ -4905,8 +5404,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::VideoAgeGating]
         attr_accessor :age_gating
       
-        # The contentDetails object contains information about the video content,
-        # including the length of the video and its aspect ratio.
+        # Details about the content of a YouTube Video.
         # Corresponds to the JSON property `contentDetails`
         # @return [Google::Apis::YoutubeV3::VideoContentDetails]
         attr_accessor :content_details
@@ -4922,10 +5420,9 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The fileDetails object encapsulates information about the video file that was
-        # uploaded to YouTube, including the file's resolution, duration, audio and
-        # video codecs, stream bitrates, and more. This data can only be retrieved by
-        # the video owner.
+        # Describes original video file properties, including technical details about
+        # audio and video streams, but also metadata information like content length,
+        # digitization time, or geotagging information.
         # Corresponds to the JSON property `fileDetails`
         # @return [Google::Apis::YoutubeV3::VideoFileDetails]
         attr_accessor :file_details
@@ -4941,9 +5438,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The liveStreamingDetails object contains metadata about a live video broadcast.
-        # The object will only be present in a video resource if the video is an
-        # upcoming, live, or completed live broadcast.
+        # Details about the live streaming metadata.
         # Corresponds to the JSON property `liveStreamingDetails`
         # @return [Google::Apis::YoutubeV3::VideoLiveStreamingDetails]
         attr_accessor :live_streaming_details
@@ -4953,74 +5448,66 @@ module Google
         # @return [Hash<String,Google::Apis::YoutubeV3::VideoLocalization>]
         attr_accessor :localizations
       
-        # The monetizationDetails object encapsulates information about the monetization
-        # status of the video.
+        # Details about monetization of a YouTube Video.
         # Corresponds to the JSON property `monetizationDetails`
         # @return [Google::Apis::YoutubeV3::VideoMonetizationDetails]
         attr_accessor :monetization_details
       
-        # The player object contains information that you would use to play the video in
-        # an embedded player.
+        # Player to be used for a video playback.
         # Corresponds to the JSON property `player`
         # @return [Google::Apis::YoutubeV3::VideoPlayer]
         attr_accessor :player
       
-        # The processingProgress object encapsulates information about YouTube's
-        # progress in processing the uploaded video file. The properties in the object
-        # identify the current processing status and an estimate of the time remaining
-        # until YouTube finishes processing the video. This part also indicates whether
-        # different types of data or content, such as file details or thumbnail images,
-        # are available for the video.
-        # The processingProgress object is designed to be polled so that the video
-        # uploaded can track the progress that YouTube has made in processing the
-        # uploaded video file. This data can only be retrieved by the video owner.
+        # Describes processing status and progress and availability of some other Video
+        # resource parts.
         # Corresponds to the JSON property `processingDetails`
         # @return [Google::Apis::YoutubeV3::VideoProcessingDetails]
         attr_accessor :processing_details
       
-        # The projectDetails object contains information about the project specific
-        # video metadata.
+        # Project specific details about the content of a YouTube Video.
         # Corresponds to the JSON property `projectDetails`
         # @return [Google::Apis::YoutubeV3::VideoProjectDetails]
         attr_accessor :project_details
       
-        # The recordingDetails object encapsulates information about the location, date
-        # and address where the video was recorded.
+        # Recording information associated with the video.
         # Corresponds to the JSON property `recordingDetails`
         # @return [Google::Apis::YoutubeV3::VideoRecordingDetails]
         attr_accessor :recording_details
       
-        # The snippet object contains basic details about the video, such as its title,
-        # description, and category.
+        # Basic details about a video, including title, description, uploader,
+        # thumbnails and category.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::VideoSnippet]
         attr_accessor :snippet
       
-        # The statistics object contains statistics about the video.
+        # Statistics about the video, such as the number of times the video was viewed
+        # or liked.
         # Corresponds to the JSON property `statistics`
         # @return [Google::Apis::YoutubeV3::VideoStatistics]
         attr_accessor :statistics
       
-        # The status object contains information about the video's uploading, processing,
-        # and privacy statuses.
+        # Basic details about a video category, such as its localized title.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::YoutubeV3::VideoStatus]
         attr_accessor :status
       
-        # The suggestions object encapsulates suggestions that identify opportunities to
-        # improve the video quality or the metadata for the uploaded video. This data
-        # can only be retrieved by the video owner.
+        # Specifies suggestions on how to improve video content, including encoding
+        # hints, tag suggestions, and editor suggestions.
         # Corresponds to the JSON property `suggestions`
         # @return [Google::Apis::YoutubeV3::VideoSuggestions]
         attr_accessor :suggestions
       
-        # The topicDetails object encapsulates information about Freebase topics
-        # associated with the video.
+        # Freebase topic information related to the video.
         # Corresponds to the JSON property `topicDetails`
         # @return [Google::Apis::YoutubeV3::VideoTopicDetails]
         attr_accessor :topic_details
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @age_gating = args[:age_gating] unless args[:age_gating].nil?
           @content_details = args[:content_details] unless args[:content_details].nil?
           @conversion_pings = args[:conversion_pings] unless args[:conversion_pings].nil?
@@ -5042,7 +5529,7 @@ module Google
           @topic_details = args[:topic_details] unless args[:topic_details].nil?
         end
       end
-
+      
       # 
       class VideoAbuseReport
         include Google::Apis::Core::Hashable
@@ -5076,6 +5563,11 @@ module Google
         attr_accessor :video_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @comments = args[:comments] unless args[:comments].nil?
           @language = args[:language] unless args[:language].nil?
           @reason_id = args[:reason_id] unless args[:reason_id].nil?
@@ -5083,7 +5575,7 @@ module Google
           @video_id = args[:video_id] unless args[:video_id].nil?
         end
       end
-
+      
       # A videoAbuseReportReason resource identifies a reason that a video could be
       # reported as abusive. Video abuse report reasons are used with video.
       # ReportAbuse.
@@ -5106,33 +5598,24 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The snippet object contains basic details about the abuse report reason.
+        # Basic details about a video category, such as its localized title.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::VideoAbuseReportReasonSnippet]
         attr_accessor :snippet
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @snippet = args[:snippet] unless args[:snippet].nil?
         end
       end
-
-      # 
-      class VideoAbuseReportReasonId
-        include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-          @value = args[:value] unless args[:value].nil?
-        end
-      end
-
       # 
       class VideoAbuseReportReasonListResponse
         include Google::Apis::Core::Hashable
@@ -5164,6 +5647,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -5171,7 +5659,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # Basic details about a video category, such as its localized title.
       class VideoAbuseReportReasonSnippet
         include Google::Apis::Core::Hashable
@@ -5188,18 +5676,23 @@ module Google
         attr_accessor :secondary_reasons
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @label = args[:label] unless args[:label].nil?
           @secondary_reasons = args[:secondary_reasons] unless args[:secondary_reasons].nil?
         end
       end
-
+      
       # 
       class VideoAbuseReportSecondaryReason
         include Google::Apis::Core::Hashable
       
         # The ID of this abuse report secondary reason.
         # Corresponds to the JSON property `id`
-        # @return [Google::Apis::YoutubeV3::VideoAbuseReportReasonId]
+        # @return [String]
         attr_accessor :id
       
         # The localized label for this abuse report secondary reason.
@@ -5208,11 +5701,16 @@ module Google
         attr_accessor :label
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @label = args[:label] unless args[:label].nil?
         end
       end
-
+      
       # 
       class VideoAgeGating
         include Google::Apis::Core::Hashable
@@ -5239,12 +5737,17 @@ module Google
         attr_accessor :video_game_rating
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @alcohol_content = args[:alcohol_content] unless args[:alcohol_content].nil?
           @restricted = args[:restricted] unless args[:restricted].nil?
           @video_game_rating = args[:video_game_rating] unless args[:video_game_rating].nil?
         end
       end
-
+      
       # A videoCategory resource identifies a category that has been or could be
       # associated with uploaded videos.
       class VideoCategory
@@ -5266,20 +5769,24 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The snippet object contains basic details about the video category, including
-        # its title.
+        # Basic details about a video category, such as its localized title.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::VideoCategorySnippet]
         attr_accessor :snippet
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @snippet = args[:snippet] unless args[:snippet].nil?
         end
       end
-
+      
       # 
       class VideoCategoryListResponse
         include Google::Apis::Core::Hashable
@@ -5313,7 +5820,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # 
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
@@ -5324,7 +5832,7 @@ module Google
         # @return [String]
         attr_accessor :prev_page_token
       
-        # 
+        # Stub token pagination template to suppress results.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
@@ -5335,6 +5843,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -5346,7 +5859,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # Basic details about a video category, such as its localized title.
       class VideoCategorySnippet
         include Google::Apis::Core::Hashable
@@ -5368,12 +5881,17 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @assignable = args[:assignable] unless args[:assignable].nil?
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # Details about the content of a YouTube Video.
       class VideoContentDetails
         include Google::Apis::Core::Hashable
@@ -5383,13 +5901,13 @@ module Google
         # @return [String]
         attr_accessor :caption
       
-        # Specifies the ratings that the video received under various rating schemes.
+        # Ratings schemes. The country-specific ratings are mostly for movies and shows.
+        # NEXT_ID: 65
         # Corresponds to the JSON property `contentRating`
         # @return [Google::Apis::YoutubeV3::ContentRating]
         attr_accessor :content_rating
       
-        # The countryRestriction object contains information about the countries where a
-        # video is (or is not) viewable.
+        # Rights management policy for YouTube resources.
         # Corresponds to the JSON property `countryRestriction`
         # @return [Google::Apis::YoutubeV3::AccessPolicy]
         attr_accessor :country_restriction
@@ -5422,15 +5940,17 @@ module Google
         attr_accessor :licensed_content
         alias_method :licensed_content?, :licensed_content
       
-        # The regionRestriction object contains information about the countries where a
-        # video is (or is not) viewable. The object will contain either the
-        # contentDetails.regionRestriction.allowed property or the contentDetails.
-        # regionRestriction.blocked property.
+        # DEPRECATED Region restriction of the video.
         # Corresponds to the JSON property `regionRestriction`
         # @return [Google::Apis::YoutubeV3::VideoContentDetailsRegionRestriction]
         attr_accessor :region_restriction
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @caption = args[:caption] unless args[:caption].nil?
           @content_rating = args[:content_rating] unless args[:content_rating].nil?
           @country_restriction = args[:country_restriction] unless args[:country_restriction].nil?
@@ -5441,7 +5961,7 @@ module Google
           @region_restriction = args[:region_restriction] unless args[:region_restriction].nil?
         end
       end
-
+      
       # DEPRECATED Region restriction of the video.
       class VideoContentDetailsRegionRestriction
         include Google::Apis::Core::Hashable
@@ -5463,11 +5983,16 @@ module Google
         attr_accessor :blocked
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @allowed = args[:allowed] unless args[:allowed].nil?
           @blocked = args[:blocked] unless args[:blocked].nil?
         end
       end
-
+      
       # 
       class VideoConversionPing
         include Google::Apis::Core::Hashable
@@ -5489,11 +6014,16 @@ module Google
         attr_accessor :conversion_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @context = args[:context] unless args[:context].nil?
           @conversion_url = args[:conversion_url] unless args[:conversion_url].nil?
         end
       end
-
+      
       # 
       class VideoConversionPings
         include Google::Apis::Core::Hashable
@@ -5506,10 +6036,15 @@ module Google
         attr_accessor :pings
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @pings = args[:pings] unless args[:pings].nil?
         end
       end
-
+      
       # Describes original video file properties, including technical details about
       # audio and video streams, but also metadata information like content length,
       # digitization time, or geotagging information.
@@ -5567,8 +6102,7 @@ module Google
         # @return [String]
         attr_accessor :file_type
       
-        # Geographic coordinates that identify the place where the uploaded video was
-        # recorded. Coordinates are defined using WGS 84.
+        # Geographical coordinates of a point, in WGS84.
         # Corresponds to the JSON property `recordingLocation`
         # @return [Google::Apis::YoutubeV3::GeoPoint]
         attr_accessor :recording_location
@@ -5580,6 +6114,11 @@ module Google
         attr_accessor :video_streams
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @audio_streams = args[:audio_streams] unless args[:audio_streams].nil?
           @bitrate_bps = args[:bitrate_bps] unless args[:bitrate_bps].nil?
           @container = args[:container] unless args[:container].nil?
@@ -5592,7 +6131,7 @@ module Google
           @video_streams = args[:video_streams] unless args[:video_streams].nil?
         end
       end
-
+      
       # Information about an audio stream.
       class VideoFileDetailsAudioStream
         include Google::Apis::Core::Hashable
@@ -5619,13 +6158,18 @@ module Google
         attr_accessor :vendor
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bitrate_bps = args[:bitrate_bps] unless args[:bitrate_bps].nil?
           @channel_count = args[:channel_count] unless args[:channel_count].nil?
           @codec = args[:codec] unless args[:codec].nil?
           @vendor = args[:vendor] unless args[:vendor].nil?
         end
       end
-
+      
       # Information about a video stream.
       class VideoFileDetailsVideoStream
         include Google::Apis::Core::Hashable
@@ -5675,6 +6219,11 @@ module Google
         attr_accessor :width_pixels
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @aspect_ratio = args[:aspect_ratio] unless args[:aspect_ratio].nil?
           @bitrate_bps = args[:bitrate_bps] unless args[:bitrate_bps].nil?
           @codec = args[:codec] unless args[:codec].nil?
@@ -5685,7 +6234,7 @@ module Google
           @width_pixels = args[:width_pixels] unless args[:width_pixels].nil?
         end
       end
-
+      
       # 
       class VideoGetRatingResponse
         include Google::Apis::Core::Hashable
@@ -5717,6 +6266,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -5724,7 +6278,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # 
       class VideoListResponse
         include Google::Apis::Core::Hashable
@@ -5756,7 +6310,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # 
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
         # Corresponds to the JSON property `pageInfo`
         # @return [Google::Apis::YoutubeV3::PageInfo]
         attr_accessor :page_info
@@ -5767,7 +6322,7 @@ module Google
         # @return [String]
         attr_accessor :prev_page_token
       
-        # 
+        # Stub token pagination template to suppress results.
         # Corresponds to the JSON property `tokenPagination`
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
@@ -5778,6 +6333,11 @@ module Google
         attr_accessor :visitor_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @event_id = args[:event_id] unless args[:event_id].nil?
           @items = args[:items] unless args[:items].nil?
@@ -5789,7 +6349,7 @@ module Google
           @visitor_id = args[:visitor_id] unless args[:visitor_id].nil?
         end
       end
-
+      
       # Details about the live streaming metadata.
       class VideoLiveStreamingDetails
         include Google::Apis::Core::Hashable
@@ -5832,6 +6392,11 @@ module Google
         attr_accessor :scheduled_start_time
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @actual_end_time = args[:actual_end_time] unless args[:actual_end_time].nil?
           @actual_start_time = args[:actual_start_time] unless args[:actual_start_time].nil?
           @concurrent_viewers = args[:concurrent_viewers] unless args[:concurrent_viewers].nil?
@@ -5839,7 +6404,7 @@ module Google
           @scheduled_start_time = args[:scheduled_start_time] unless args[:scheduled_start_time].nil?
         end
       end
-
+      
       # Localized versions of certain video properties (e.g. title).
       class VideoLocalization
         include Google::Apis::Core::Hashable
@@ -5855,25 +6420,35 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @description = args[:description] unless args[:description].nil?
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # Details about monetization of a YouTube Video.
       class VideoMonetizationDetails
         include Google::Apis::Core::Hashable
       
-        # The value of access indicates whether the video can be monetized or not.
+        # Rights management policy for YouTube resources.
         # Corresponds to the JSON property `access`
         # @return [Google::Apis::YoutubeV3::AccessPolicy]
         attr_accessor :access
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @access = args[:access] unless args[:access].nil?
         end
       end
-
+      
       # Player to be used for a video playback.
       class VideoPlayer
         include Google::Apis::Core::Hashable
@@ -5884,10 +6459,15 @@ module Google
         attr_accessor :embed_html
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @embed_html = args[:embed_html] unless args[:embed_html].nil?
         end
       end
-
+      
       # Describes processing status and progress and availability of some other Video
       # resource parts.
       class VideoProcessingDetails
@@ -5923,9 +6503,7 @@ module Google
         # @return [String]
         attr_accessor :processing_issues_availability
       
-        # The processingProgress object contains information about the progress YouTube
-        # has made in processing the video. The values are really only relevant if the
-        # video's processing status is processing.
+        # Video processing progress and completion time estimate.
         # Corresponds to the JSON property `processingProgress`
         # @return [Google::Apis::YoutubeV3::VideoProcessingDetailsProcessingProgress]
         attr_accessor :processing_progress
@@ -5951,6 +6529,11 @@ module Google
         attr_accessor :thumbnails_availability
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @editor_suggestions_availability = args[:editor_suggestions_availability] unless args[:editor_suggestions_availability].nil?
           @file_details_availability = args[:file_details_availability] unless args[:file_details_availability].nil?
           @processing_failure_reason = args[:processing_failure_reason] unless args[:processing_failure_reason].nil?
@@ -5961,7 +6544,7 @@ module Google
           @thumbnails_availability = args[:thumbnails_availability] unless args[:thumbnails_availability].nil?
         end
       end
-
+      
       # Video processing progress and completion time estimate.
       class VideoProcessingDetailsProcessingProgress
         include Google::Apis::Core::Hashable
@@ -5992,12 +6575,17 @@ module Google
         attr_accessor :time_left_ms
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @parts_processed = args[:parts_processed] unless args[:parts_processed].nil?
           @parts_total = args[:parts_total] unless args[:parts_total].nil?
           @time_left_ms = args[:time_left_ms] unless args[:time_left_ms].nil?
         end
       end
-
+      
       # Project specific details about the content of a YouTube Video.
       class VideoProjectDetails
         include Google::Apis::Core::Hashable
@@ -6008,10 +6596,15 @@ module Google
         attr_accessor :tags
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @tags = args[:tags] unless args[:tags].nil?
         end
       end
-
+      
       # 
       class VideoRating
         include Google::Apis::Core::Hashable
@@ -6027,16 +6620,21 @@ module Google
         attr_accessor :video_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @rating = args[:rating] unless args[:rating].nil?
           @video_id = args[:video_id] unless args[:video_id].nil?
         end
       end
-
+      
       # Recording information associated with the video.
       class VideoRecordingDetails
         include Google::Apis::Core::Hashable
       
-        # The geolocation information associated with the video.
+        # Geographical coordinates of a point, in WGS84.
         # Corresponds to the JSON property `location`
         # @return [Google::Apis::YoutubeV3::GeoPoint]
         attr_accessor :location
@@ -6053,12 +6651,17 @@ module Google
         attr_accessor :recording_date
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @location = args[:location] unless args[:location].nil?
           @location_description = args[:location_description] unless args[:location_description].nil?
           @recording_date = args[:recording_date] unless args[:recording_date].nil?
         end
       end
-
+      
       # Basic details about a video, including title, description, uploader,
       # thumbnails and category.
       class VideoSnippet
@@ -6096,8 +6699,7 @@ module Google
         # @return [String]
         attr_accessor :live_broadcast_content
       
-        # Localized snippet selected with the hl parameter. If no such localization
-        # exists, this field is populated with the default snippet. (Read-only)
+        # Localized versions of certain video properties (e.g. title).
         # Corresponds to the JSON property `localized`
         # @return [Google::Apis::YoutubeV3::VideoLocalization]
         attr_accessor :localized
@@ -6114,9 +6716,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
-        # A map of thumbnail images associated with the video. For each object in the
-        # map, the key is the name of the thumbnail image, and the value is an object
-        # that contains other information about the thumbnail.
+        # Internal representation of thumbnails for a YouTube resource.
         # Corresponds to the JSON property `thumbnails`
         # @return [Google::Apis::YoutubeV3::ThumbnailDetails]
         attr_accessor :thumbnails
@@ -6127,6 +6727,11 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @category_id = args[:category_id] unless args[:category_id].nil?
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
           @channel_title = args[:channel_title] unless args[:channel_title].nil?
@@ -6140,7 +6745,7 @@ module Google
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # Statistics about the video, such as the number of times the video was viewed
       # or liked.
       class VideoStatistics
@@ -6174,6 +6779,11 @@ module Google
         attr_accessor :view_count
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @comment_count = args[:comment_count] unless args[:comment_count].nil?
           @dislike_count = args[:dislike_count] unless args[:dislike_count].nil?
           @favorite_count = args[:favorite_count] unless args[:favorite_count].nil?
@@ -6181,7 +6791,7 @@ module Google
           @view_count = args[:view_count] unless args[:view_count].nil?
         end
       end
-
+      
       # Basic details about a video category, such as its localized title.
       class VideoStatus
         include Google::Apis::Core::Hashable
@@ -6236,6 +6846,11 @@ module Google
         attr_accessor :upload_status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @embeddable = args[:embeddable] unless args[:embeddable].nil?
           @failure_reason = args[:failure_reason] unless args[:failure_reason].nil?
           @license = args[:license] unless args[:license].nil?
@@ -6246,7 +6861,7 @@ module Google
           @upload_status = args[:upload_status] unless args[:upload_status].nil?
         end
       end
-
+      
       # Specifies suggestions on how to improve video content, including encoding
       # hints, tag suggestions, and editor suggestions.
       class VideoSuggestions
@@ -6289,6 +6904,11 @@ module Google
         attr_accessor :tag_suggestions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @editor_suggestions = args[:editor_suggestions] unless args[:editor_suggestions].nil?
           @processing_errors = args[:processing_errors] unless args[:processing_errors].nil?
           @processing_hints = args[:processing_hints] unless args[:processing_hints].nil?
@@ -6296,7 +6916,7 @@ module Google
           @tag_suggestions = args[:tag_suggestions] unless args[:tag_suggestions].nil?
         end
       end
-
+      
       # A single tag suggestion with it's relevance information.
       class VideoSuggestionsTagSuggestion
         include Google::Apis::Core::Hashable
@@ -6316,11 +6936,16 @@ module Google
         attr_accessor :tag
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @category_restricts = args[:category_restricts] unless args[:category_restricts].nil?
           @tag = args[:tag] unless args[:tag].nil?
         end
       end
-
+      
       # Freebase topic information related to the video.
       class VideoTopicDetails
         include Google::Apis::Core::Hashable
@@ -6341,11 +6966,16 @@ module Google
         attr_accessor :topic_ids
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @relevant_topic_ids = args[:relevant_topic_ids] unless args[:relevant_topic_ids].nil?
           @topic_ids = args[:topic_ids] unless args[:topic_ids].nil?
         end
       end
-
+      
       # Branding properties for the watch.
       class WatchSettings
         include Google::Apis::Core::Hashable
@@ -6367,6 +6997,11 @@ module Google
         attr_accessor :text_color
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @background_color = args[:background_color] unless args[:background_color].nil?
           @featured_playlist_id = args[:featured_playlist_id] unless args[:featured_playlist_id].nil?
           @text_color = args[:text_color] unless args[:text_color].nil?

@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module QpxExpressV1
-
+      
       # The make, model, and type of an aircraft.
       class AircraftData
         include Google::Apis::Core::Hashable
@@ -43,12 +43,17 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @code = args[:code] unless args[:code].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # An airport.
       class AirportData
         include Google::Apis::Core::Hashable
@@ -77,13 +82,18 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @city = args[:city] unless args[:city].nil?
           @code = args[:code] unless args[:code].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Information about an item of baggage.
       class BagDescriptor
         include Google::Apis::Core::Hashable
@@ -115,6 +125,11 @@ module Google
         attr_accessor :subcode
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @commercial_name = args[:commercial_name] unless args[:commercial_name].nil?
           @count = args[:count] unless args[:count].nil?
           @description = args[:description] unless args[:description].nil?
@@ -122,7 +137,7 @@ module Google
           @subcode = args[:subcode] unless args[:subcode].nil?
         end
       end
-
+      
       # Information about a carrier (ie. an airline, bus line, railroad, etc) that
       # might be useful to display to an end-user.
       class CarrierData
@@ -146,12 +161,17 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @code = args[:code] unless args[:code].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Information about a city that might be useful to an end-user; typically the
       # city of an airport.
       class CityData
@@ -180,13 +200,18 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @code = args[:code] unless args[:code].nil?
           @country = args[:country] unless args[:country].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Detailed information about components found in the solutions of this response,
       # including a trip's airport, city, taxes, airline, and aircraft.
       class Data
@@ -225,6 +250,11 @@ module Google
         attr_accessor :tax
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @aircraft = args[:aircraft] unless args[:aircraft].nil?
           @airport = args[:airport] unless args[:airport].nil?
           @carrier = args[:carrier] unless args[:carrier].nil?
@@ -233,7 +263,7 @@ module Google
           @tax = args[:tax] unless args[:tax].nil?
         end
       end
-
+      
       # Complete information about a fare used in the solution to a low-fare search
       # query. In the airline industry a fare is a price an airline charges for one-
       # way travel between two points. A fare typically contains a carrier code, two
@@ -280,6 +310,11 @@ module Google
         alias_method :private?, :private
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @basis_code = args[:basis_code] unless args[:basis_code].nil?
           @carrier = args[:carrier] unless args[:carrier].nil?
           @destination = args[:destination] unless args[:destination].nil?
@@ -289,7 +324,7 @@ module Google
           @private = args[:private] unless args[:private].nil?
         end
       end
-
+      
       # A flight is a sequence of legs with the same airline carrier and flight number.
       # (A leg is the smallest unit of travel, in the case of a flight a takeoff
       # immediately followed by a landing at two set points on a particular carrier
@@ -311,11 +346,16 @@ module Google
         attr_accessor :number
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @carrier = args[:carrier] unless args[:carrier].nil?
           @number = args[:number] unless args[:number].nil?
         end
       end
-
+      
       # Information about free baggage allowed on one segment of a trip.
       class FreeBaggageAllowance
         include Google::Apis::Core::Hashable
@@ -353,6 +393,11 @@ module Google
         attr_accessor :pounds
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bag_descriptor = args[:bag_descriptor] unless args[:bag_descriptor].nil?
           @kilos = args[:kilos] unless args[:kilos].nil?
           @kilos_per_piece = args[:kilos_per_piece] unless args[:kilos_per_piece].nil?
@@ -361,7 +406,7 @@ module Google
           @pounds = args[:pounds] unless args[:pounds].nil?
         end
       end
-
+      
       # Information about a leg. (A leg is the smallest unit of travel, in the case of
       # a flight a takeoff immediately followed by a landing at two set points on a
       # particular carrier with a particular flight number.)
@@ -467,6 +512,11 @@ module Google
         alias_method :secure?, :secure
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @aircraft = args[:aircraft] unless args[:aircraft].nil?
           @arrival_time = args[:arrival_time] unless args[:arrival_time].nil?
           @change_plane = args[:change_plane] unless args[:change_plane].nil?
@@ -486,7 +536,7 @@ module Google
           @secure = args[:secure] unless args[:secure].nil?
         end
       end
-
+      
       # The number and type of passengers. Unfortunately the definition of an infant,
       # child, adult, and senior citizen varies across carriers and reservation
       # systems.
@@ -525,6 +575,11 @@ module Google
         attr_accessor :senior_count
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @adult_count = args[:adult_count] unless args[:adult_count].nil?
           @child_count = args[:child_count] unless args[:child_count].nil?
           @infant_in_lap_count = args[:infant_in_lap_count] unless args[:infant_in_lap_count].nil?
@@ -533,7 +588,7 @@ module Google
           @senior_count = args[:senior_count] unless args[:senior_count].nil?
         end
       end
-
+      
       # The price of one or more travel segments. The currency used to purchase
       # tickets is usually determined by the sale/ticketing city or the sale/ticketing
       # country, unless none are specified, in which case it defaults to that of the
@@ -572,7 +627,9 @@ module Google
         # @return [String]
         attr_accessor :latest_ticketing_time
       
-        # The number of passengers to which this price applies.
+        # The number and type of passengers. Unfortunately the definition of an infant,
+        # child, adult, and senior citizen varies across carriers and reservation
+        # systems.
         # Corresponds to the JSON property `passengers`
         # @return [Google::Apis::QpxExpressV1::PassengerCounts]
         attr_accessor :passengers
@@ -616,6 +673,11 @@ module Google
         attr_accessor :tax
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @base_fare_total = args[:base_fare_total] unless args[:base_fare_total].nil?
           @fare = args[:fare] unless args[:fare].nil?
           @fare_calculation = args[:fare_calculation] unless args[:fare_calculation].nil?
@@ -631,7 +693,7 @@ module Google
           @tax = args[:tax] unless args[:tax].nil?
         end
       end
-
+      
       # Details of a segment of a flight; a segment is one or more consecutive legs on
       # the same flight. For example a hypothetical flight ZZ001, from DFW to OGG,
       # would have one segment with two legs: DFW to HNL (leg 1), HNL to OGG (leg 2),
@@ -664,7 +726,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :duration
       
-        # The flight this is a segment of.
+        # A flight is a sequence of legs with the same airline carrier and flight number.
+        # (A leg is the smallest unit of travel, in the case of a flight a takeoff
+        # immediately followed by a landing at two set points on a particular carrier
+        # with a particular flight number.) The naive view is that a flight is scheduled
+        # travel of an aircraft between two points, with possibly intermediate stops,
+        # but carriers will frequently list flights that require a change of aircraft
+        # between legs.
         # Corresponds to the JSON property `flight`
         # @return [Google::Apis::QpxExpressV1::FlightInfo]
         attr_accessor :flight
@@ -707,6 +775,11 @@ module Google
         alias_method :subject_to_government_approval?, :subject_to_government_approval
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @booking_code = args[:booking_code] unless args[:booking_code].nil?
           @booking_code_count = args[:booking_code_count] unless args[:booking_code_count].nil?
           @cabin = args[:cabin] unless args[:cabin].nil?
@@ -720,7 +793,7 @@ module Google
           @subject_to_government_approval = args[:subject_to_government_approval] unless args[:subject_to_government_approval].nil?
         end
       end
-
+      
       # The price of this segment.
       class SegmentPricing
         include Google::Apis::Core::Hashable
@@ -748,13 +821,18 @@ module Google
         attr_accessor :segment_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @fare_id = args[:fare_id] unless args[:fare_id].nil?
           @free_baggage_option = args[:free_baggage_option] unless args[:free_baggage_option].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @segment_id = args[:segment_id] unless args[:segment_id].nil?
         end
       end
-
+      
       # Information about a slice. A slice represents a traveller's intent, the
       # portion of a low-fare search corresponding to a traveler's request to get
       # between two points. One-way journeys are generally expressed using 1 slice,
@@ -785,12 +863,17 @@ module Google
         attr_accessor :segment
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @duration = args[:duration] unless args[:duration].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @segment = args[:segment] unless args[:segment].nil?
         end
       end
-
+      
       # Criteria a desired slice must satisfy.
       class SliceInput
         include Google::Apis::Core::Hashable
@@ -839,7 +922,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :permitted_carrier
       
-        # Slices must depart in this time of day range, local to the point of departure.
+        # Two times in a single day defining a time range.
         # Corresponds to the JSON property `permittedDepartureTime`
         # @return [Google::Apis::QpxExpressV1::TimeOfDayRange]
         attr_accessor :permitted_departure_time
@@ -857,6 +940,11 @@ module Google
         attr_accessor :prohibited_carrier
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @alliance = args[:alliance] unless args[:alliance].nil?
           @date = args[:date] unless args[:date].nil?
           @destination = args[:destination] unless args[:destination].nil?
@@ -870,7 +958,7 @@ module Google
           @prohibited_carrier = args[:prohibited_carrier] unless args[:prohibited_carrier].nil?
         end
       end
-
+      
       # Tax data.
       class TaxData
         include Google::Apis::Core::Hashable
@@ -892,12 +980,17 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Tax information.
       class TaxInfo
         include Google::Apis::Core::Hashable
@@ -935,6 +1028,11 @@ module Google
         attr_accessor :sale_price
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @charge_type = args[:charge_type] unless args[:charge_type].nil?
           @code = args[:code] unless args[:code].nil?
           @country = args[:country] unless args[:country].nil?
@@ -943,7 +1041,7 @@ module Google
           @sale_price = args[:sale_price] unless args[:sale_price].nil?
         end
       end
-
+      
       # Two times in a single day defining a time range.
       class TimeOfDayRange
         include Google::Apis::Core::Hashable
@@ -966,12 +1064,17 @@ module Google
         attr_accessor :latest_time
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @earliest_time = args[:earliest_time] unless args[:earliest_time].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @latest_time = args[:latest_time] unless args[:latest_time].nil?
         end
       end
-
+      
       # Trip information.
       class TripOption
         include Google::Apis::Core::Hashable
@@ -1004,6 +1107,11 @@ module Google
         attr_accessor :slice
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @pricing = args[:pricing] unless args[:pricing].nil?
@@ -1011,7 +1119,7 @@ module Google
           @slice = args[:slice] unless args[:slice].nil?
         end
       end
-
+      
       # A QPX Express search request, which will yield one or more solutions.
       class TripOptionsRequest
         include Google::Apis::Core::Hashable
@@ -1023,7 +1131,9 @@ module Google
         # @return [String]
         attr_accessor :max_price
       
-        # Counts for each passenger type in the request.
+        # The number and type of passengers. Unfortunately the definition of an infant,
+        # child, adult, and senior citizen varies across carriers and reservation
+        # systems.
         # Corresponds to the JSON property `passengers`
         # @return [Google::Apis::QpxExpressV1::PassengerCounts]
         attr_accessor :passengers
@@ -1056,6 +1166,11 @@ module Google
         attr_accessor :solutions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @max_price = args[:max_price] unless args[:max_price].nil?
           @passengers = args[:passengers] unless args[:passengers].nil?
           @refundable = args[:refundable] unless args[:refundable].nil?
@@ -1064,12 +1179,13 @@ module Google
           @solutions = args[:solutions] unless args[:solutions].nil?
         end
       end
-
+      
       # A QPX Express search response.
       class TripOptionsResponse
         include Google::Apis::Core::Hashable
       
-        # Informational data global to list of solutions.
+        # Detailed information about components found in the solutions of this response,
+        # including a trip's airport, city, taxes, airline, and aircraft.
         # Corresponds to the JSON property `data`
         # @return [Google::Apis::QpxExpressV1::Data]
         attr_accessor :data
@@ -1091,28 +1207,37 @@ module Google
         attr_accessor :trip_option
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @data = args[:data] unless args[:data].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @request_id = args[:request_id] unless args[:request_id].nil?
           @trip_option = args[:trip_option] unless args[:trip_option].nil?
         end
       end
-
+      
       # A QPX Express search request.
       class SearchRequest
         include Google::Apis::Core::Hashable
       
-        # A QPX Express search request. Required values are at least one adult or senior
-        # passenger, an origin, a destination, and a date.
+        # A QPX Express search request, which will yield one or more solutions.
         # Corresponds to the JSON property `request`
         # @return [Google::Apis::QpxExpressV1::TripOptionsRequest]
         attr_accessor :request
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @request = args[:request] unless args[:request].nil?
         end
       end
-
+      
       # A QPX Express search response.
       class SearchResponse
         include Google::Apis::Core::Hashable
@@ -1123,12 +1248,17 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # All possible solutions to the QPX Express search request.
+        # A QPX Express search response.
         # Corresponds to the JSON property `trips`
         # @return [Google::Apis::QpxExpressV1::TripOptionsResponse]
         attr_accessor :trips
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @trips = args[:trips] unless args[:trips].nil?
         end

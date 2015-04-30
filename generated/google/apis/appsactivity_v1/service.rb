@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/google-apps/activity/
       class AppsactivityService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'appsactivity/v1/')
         end
-
+        
         # Returns a list of activities visible to the current logged in user. Visible
         # activities are determined by the visiblity settings of the object that was
         # acted on, e.g. Drive files a user can see. An activity is a record of past
@@ -87,7 +86,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -102,7 +101,7 @@ module Google
         def list_activities(drive_ancestor_id: nil, drive_file_id: nil, grouping_strategy: nil, page_size: nil, page_token: nil, source: nil, user_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activities'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AppsactivityV1::ListActivitiesResponseRepresentation
+          command.response_representation = Google::Apis::AppsactivityV1::ListActivitiesResponse::Representation
           command.response_class = Google::Apis::AppsactivityV1::ListActivitiesResponse
           command.query['drive.ancestorId'] = drive_ancestor_id unless drive_ancestor_id.nil?
           command.query['drive.fileId'] = drive_file_id unless drive_file_id.nil?

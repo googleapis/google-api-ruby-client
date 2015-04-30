@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/analytics/
       class AnalyticsService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'analytics/v3/')
         end
-
+        
         # Returns Analytics data for a view (profile).
         # @param [String] dimensions
         #   A comma-separated list of Analytics dimensions. E.g., 'ga:browser,ga:city'.
@@ -96,14 +95,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsV3::GaData] parsed result object
+        # @yieldparam result [Google::Apis::AnalyticsV3::Data] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AnalyticsV3::GaData]
+        # @return [Google::Apis::AnalyticsV3::Data]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -111,8 +110,8 @@ module Google
         def get_datum_ga(dimensions: nil, end_date: nil, filters: nil, ids: nil, max_results: nil, metrics: nil, output: nil, sampling_level: nil, segment: nil, sort: nil, start_date: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'data/ga'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::GaDataRepresentation
-          command.response_class = Google::Apis::AnalyticsV3::GaData
+          command.response_representation = Google::Apis::AnalyticsV3::Data::Representation
+          command.response_class = Google::Apis::AnalyticsV3::Data
           command.query['dimensions'] = dimensions unless dimensions.nil?
           command.query['end-date'] = end_date unless end_date.nil?
           command.query['filters'] = filters unless filters.nil?
@@ -130,8 +129,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Returns Analytics Multi-Channel Funnels data for a view (profile).
         # @param [String] dimensions
@@ -174,7 +171,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -189,7 +186,7 @@ module Google
         def get_datum_mcf(dimensions: nil, end_date: nil, filters: nil, ids: nil, max_results: nil, metrics: nil, sampling_level: nil, sort: nil, start_date: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'data/mcf'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::McfDataRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::McfData::Representation
           command.response_class = Google::Apis::AnalyticsV3::McfData
           command.query['dimensions'] = dimensions unless dimensions.nil?
           command.query['end-date'] = end_date unless end_date.nil?
@@ -206,8 +203,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Returns real time data for a view (profile).
         # @param [String] dimensions
@@ -235,7 +230,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -250,7 +245,7 @@ module Google
         def get_datum_realtime(dimensions: nil, filters: nil, ids: nil, max_results: nil, metrics: nil, sort: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'data/realtime'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::RealtimeDataRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::RealtimeData::Representation
           command.response_class = Google::Apis::AnalyticsV3::RealtimeData
           command.query['dimensions'] = dimensions unless dimensions.nil?
           command.query['filters'] = filters unless filters.nil?
@@ -263,7 +258,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Lists account summaries (lightweight tree comprised of accounts/properties/
         # profiles) to which the user has access.
         # @param [Fixnum] max_results
@@ -281,7 +276,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -296,7 +291,7 @@ module Google
         def list_management_account_summaries(max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accountSummaries'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::AccountSummariesRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::AccountSummaries::Representation
           command.response_class = Google::Apis::AnalyticsV3::AccountSummaries
           command.query['max-results'] = max_results unless max_results.nil?
           command.query['start-index'] = start_index unless start_index.nil?
@@ -305,8 +300,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Removes a user from the given account.
         # @param [String] account_id
@@ -322,7 +315,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -345,12 +338,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Adds a new user to the given account.
         # @param [String] account_id
         #   Account ID to create the user link for.
-        # @param [Google::Apis::AnalyticsV3::EntityUserLink] entity_user_link
-        #   
+        # @param [Google::Apis::AnalyticsV3::EntityUserLink] entity_user_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -360,7 +351,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -372,12 +363,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_management_account_user_link(account_id, entity_user_link = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_account_user_link(account_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/entityUserLinks'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::EntityUserLinkRepresentation
-          command.request_object = entity_user_link
-          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLinkRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
+          command.request_object = entity_user_link_object
+          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityUserLink
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -385,7 +376,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists account-user links for a given account.
         # @param [String] account_id
@@ -404,7 +394,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -419,7 +409,7 @@ module Google
         def list_management_account_user_links(account_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/entityUserLinks'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLinksRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLinks::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityUserLinks
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['max-results'] = max_results unless max_results.nil?
@@ -430,14 +420,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates permissions for an existing user on the given account.
         # @param [String] account_id
         #   Account ID to update the account-user link for.
         # @param [String] link_id
         #   Link ID to update the account-user link for.
-        # @param [Google::Apis::AnalyticsV3::EntityUserLink] entity_user_link
-        #   
+        # @param [Google::Apis::AnalyticsV3::EntityUserLink] entity_user_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -447,7 +435,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -459,12 +447,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_management_account_user_link(account_id, link_id, entity_user_link = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_account_user_link(account_id, link_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/entityUserLinks/{linkId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::EntityUserLinkRepresentation
-          command.request_object = entity_user_link
-          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLinkRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
+          command.request_object = entity_user_link_object
+          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityUserLink
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['linkId'] = link_id unless link_id.nil?
@@ -473,8 +461,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Lists all accounts to which the user has access.
         # @param [Fixnum] max_results
@@ -491,7 +477,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -506,7 +492,7 @@ module Google
         def list_management_accounts(max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::AccountsRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::Accounts::Representation
           command.response_class = Google::Apis::AnalyticsV3::Accounts
           command.query['max-results'] = max_results unless max_results.nil?
           command.query['start-index'] = start_index unless start_index.nil?
@@ -515,8 +501,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # List custom data sources to which the user has access.
         # @param [String] account_id
@@ -537,7 +521,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -552,7 +536,7 @@ module Google
         def list_management_custom_data_sources(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::CustomDataSourcesRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::CustomDataSources::Representation
           command.response_class = Google::Apis::AnalyticsV3::CustomDataSources
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -563,8 +547,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Get a custom dimension to which the user has access.
         # @param [String] account_id
@@ -582,7 +564,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -597,7 +579,7 @@ module Google
         def get_management_custom_dimension(account_id, web_property_id, custom_dimension_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::CustomDimensionRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::CustomDimension::Representation
           command.response_class = Google::Apis::AnalyticsV3::CustomDimension
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -608,14 +590,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a new custom dimension.
         # @param [String] account_id
         #   Account ID for the custom dimension to create.
         # @param [String] web_property_id
         #   Web property ID for the custom dimension to create.
-        # @param [Google::Apis::AnalyticsV3::CustomDimension] custom_dimension
-        #   
+        # @param [Google::Apis::AnalyticsV3::CustomDimension] custom_dimension_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -625,7 +605,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -637,12 +617,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_management_custom_dimension(account_id, web_property_id, custom_dimension = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_custom_dimension(account_id, web_property_id, custom_dimension_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::CustomDimensionRepresentation
-          command.request_object = custom_dimension
-          command.response_representation = Google::Apis::AnalyticsV3::CustomDimensionRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::CustomDimension::Representation
+          command.request_object = custom_dimension_object
+          command.response_representation = Google::Apis::AnalyticsV3::CustomDimension::Representation
           command.response_class = Google::Apis::AnalyticsV3::CustomDimension
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -651,7 +631,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists custom dimensions to which the user has access.
         # @param [String] account_id
@@ -672,7 +651,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -687,7 +666,7 @@ module Google
         def list_management_custom_dimensions(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::CustomDimensionsRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::CustomDimensions::Representation
           command.response_class = Google::Apis::AnalyticsV3::CustomDimensions
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -699,7 +678,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an existing custom dimension. This method supports patch semantics.
         # @param [String] account_id
         #   Account ID for the custom dimension to update.
@@ -707,8 +685,7 @@ module Google
         #   Web property ID for the custom dimension to update.
         # @param [String] custom_dimension_id
         #   Custom dimension ID for the custom dimension to update.
-        # @param [Google::Apis::AnalyticsV3::CustomDimension] custom_dimension
-        #   
+        # @param [Google::Apis::AnalyticsV3::CustomDimension] custom_dimension_object
         # @param [Boolean] ignore_custom_data_source_links
         #   Force the update and ignore any warnings related to the custom dimension being
         #   linked to a custom data source / data set.
@@ -721,7 +698,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -733,12 +710,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_management_custom_dimension(account_id, web_property_id, custom_dimension_id, custom_dimension = nil, ignore_custom_data_source_links: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_custom_dimension(account_id, web_property_id, custom_dimension_id, custom_dimension_object = nil, ignore_custom_data_source_links: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::CustomDimensionRepresentation
-          command.request_object = custom_dimension
-          command.response_representation = Google::Apis::AnalyticsV3::CustomDimensionRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::CustomDimension::Representation
+          command.request_object = custom_dimension_object
+          command.response_representation = Google::Apis::AnalyticsV3::CustomDimension::Representation
           command.response_class = Google::Apis::AnalyticsV3::CustomDimension
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -749,7 +726,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates an existing custom dimension.
         # @param [String] account_id
@@ -758,8 +734,7 @@ module Google
         #   Web property ID for the custom dimension to update.
         # @param [String] custom_dimension_id
         #   Custom dimension ID for the custom dimension to update.
-        # @param [Google::Apis::AnalyticsV3::CustomDimension] custom_dimension
-        #   
+        # @param [Google::Apis::AnalyticsV3::CustomDimension] custom_dimension_object
         # @param [Boolean] ignore_custom_data_source_links
         #   Force the update and ignore any warnings related to the custom dimension being
         #   linked to a custom data source / data set.
@@ -772,7 +747,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -784,12 +759,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_management_custom_dimension(account_id, web_property_id, custom_dimension_id, custom_dimension = nil, ignore_custom_data_source_links: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_custom_dimension(account_id, web_property_id, custom_dimension_id, custom_dimension_object = nil, ignore_custom_data_source_links: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::CustomDimensionRepresentation
-          command.request_object = custom_dimension
-          command.response_representation = Google::Apis::AnalyticsV3::CustomDimensionRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::CustomDimension::Representation
+          command.request_object = custom_dimension_object
+          command.response_representation = Google::Apis::AnalyticsV3::CustomDimension::Representation
           command.response_class = Google::Apis::AnalyticsV3::CustomDimension
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -800,8 +775,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Get a custom metric to which the user has access.
         # @param [String] account_id
@@ -819,7 +792,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -834,7 +807,7 @@ module Google
         def get_management_custom_metric(account_id, web_property_id, custom_metric_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::CustomMetricRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::CustomMetric::Representation
           command.response_class = Google::Apis::AnalyticsV3::CustomMetric
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -845,14 +818,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a new custom metric.
         # @param [String] account_id
         #   Account ID for the custom metric to create.
         # @param [String] web_property_id
         #   Web property ID for the custom dimension to create.
-        # @param [Google::Apis::AnalyticsV3::CustomMetric] custom_metric
-        #   
+        # @param [Google::Apis::AnalyticsV3::CustomMetric] custom_metric_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -862,7 +833,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -874,12 +845,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_management_custom_metric(account_id, web_property_id, custom_metric = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_custom_metric(account_id, web_property_id, custom_metric_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::CustomMetricRepresentation
-          command.request_object = custom_metric
-          command.response_representation = Google::Apis::AnalyticsV3::CustomMetricRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::CustomMetric::Representation
+          command.request_object = custom_metric_object
+          command.response_representation = Google::Apis::AnalyticsV3::CustomMetric::Representation
           command.response_class = Google::Apis::AnalyticsV3::CustomMetric
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -888,7 +859,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists custom metrics to which the user has access.
         # @param [String] account_id
@@ -909,7 +879,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -924,7 +894,7 @@ module Google
         def list_management_custom_metrics(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::CustomMetricsRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::CustomMetrics::Representation
           command.response_class = Google::Apis::AnalyticsV3::CustomMetrics
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -936,7 +906,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an existing custom metric. This method supports patch semantics.
         # @param [String] account_id
         #   Account ID for the custom metric to update.
@@ -944,8 +913,7 @@ module Google
         #   Web property ID for the custom metric to update.
         # @param [String] custom_metric_id
         #   Custom metric ID for the custom metric to update.
-        # @param [Google::Apis::AnalyticsV3::CustomMetric] custom_metric
-        #   
+        # @param [Google::Apis::AnalyticsV3::CustomMetric] custom_metric_object
         # @param [Boolean] ignore_custom_data_source_links
         #   Force the update and ignore any warnings related to the custom metric being
         #   linked to a custom data source / data set.
@@ -958,7 +926,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -970,12 +938,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_management_custom_metric(account_id, web_property_id, custom_metric_id, custom_metric = nil, ignore_custom_data_source_links: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_custom_metric(account_id, web_property_id, custom_metric_id, custom_metric_object = nil, ignore_custom_data_source_links: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::CustomMetricRepresentation
-          command.request_object = custom_metric
-          command.response_representation = Google::Apis::AnalyticsV3::CustomMetricRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::CustomMetric::Representation
+          command.request_object = custom_metric_object
+          command.response_representation = Google::Apis::AnalyticsV3::CustomMetric::Representation
           command.response_class = Google::Apis::AnalyticsV3::CustomMetric
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -986,7 +954,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates an existing custom metric.
         # @param [String] account_id
@@ -995,8 +962,7 @@ module Google
         #   Web property ID for the custom metric to update.
         # @param [String] custom_metric_id
         #   Custom metric ID for the custom metric to update.
-        # @param [Google::Apis::AnalyticsV3::CustomMetric] custom_metric
-        #   
+        # @param [Google::Apis::AnalyticsV3::CustomMetric] custom_metric_object
         # @param [Boolean] ignore_custom_data_source_links
         #   Force the update and ignore any warnings related to the custom metric being
         #   linked to a custom data source / data set.
@@ -1009,7 +975,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1021,12 +987,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_management_custom_metric(account_id, web_property_id, custom_metric_id, custom_metric = nil, ignore_custom_data_source_links: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_custom_metric(account_id, web_property_id, custom_metric_id, custom_metric_object = nil, ignore_custom_data_source_links: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::CustomMetricRepresentation
-          command.request_object = custom_metric
-          command.response_representation = Google::Apis::AnalyticsV3::CustomMetricRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::CustomMetric::Representation
+          command.request_object = custom_metric_object
+          command.response_representation = Google::Apis::AnalyticsV3::CustomMetric::Representation
           command.response_class = Google::Apis::AnalyticsV3::CustomMetric
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -1037,8 +1003,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Delete an experiment.
         # @param [String] account_id
@@ -1058,7 +1022,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1083,7 +1047,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Returns an experiment to which the user has access.
         # @param [String] account_id
         #   Account ID to retrieve the experiment for.
@@ -1102,7 +1065,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1117,7 +1080,7 @@ module Google
         def get_management_experiment(account_id, web_property_id, profile_id, experiment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::ExperimentRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::Experiment::Representation
           command.response_class = Google::Apis::AnalyticsV3::Experiment
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -1129,7 +1092,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a new experiment.
         # @param [String] account_id
         #   Account ID to create the experiment for.
@@ -1137,8 +1099,7 @@ module Google
         #   Web property ID to create the experiment for.
         # @param [String] profile_id
         #   View (Profile) ID to create the experiment for.
-        # @param [Google::Apis::AnalyticsV3::Experiment] experiment
-        #   
+        # @param [Google::Apis::AnalyticsV3::Experiment] experiment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1148,7 +1109,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1160,12 +1121,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_management_experiment(account_id, web_property_id, profile_id, experiment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_experiment(account_id, web_property_id, profile_id, experiment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::ExperimentRepresentation
-          command.request_object = experiment
-          command.response_representation = Google::Apis::AnalyticsV3::ExperimentRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::Experiment::Representation
+          command.request_object = experiment_object
+          command.response_representation = Google::Apis::AnalyticsV3::Experiment::Representation
           command.response_class = Google::Apis::AnalyticsV3::Experiment
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -1175,7 +1136,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists experiments to which the user has access.
         # @param [String] account_id
@@ -1198,7 +1158,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1213,7 +1173,7 @@ module Google
         def list_management_experiments(account_id, web_property_id, profile_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::ExperimentsRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::Experiments::Representation
           command.response_class = Google::Apis::AnalyticsV3::Experiments
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -1226,7 +1186,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Update an existing experiment. This method supports patch semantics.
         # @param [String] account_id
         #   Account ID of the experiment to update.
@@ -1236,8 +1195,7 @@ module Google
         #   View (Profile) ID of the experiment to update.
         # @param [String] experiment_id
         #   Experiment ID of the experiment to update.
-        # @param [Google::Apis::AnalyticsV3::Experiment] experiment
-        #   
+        # @param [Google::Apis::AnalyticsV3::Experiment] experiment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1247,7 +1205,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1259,12 +1217,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_management_experiment(account_id, web_property_id, profile_id, experiment_id, experiment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_experiment(account_id, web_property_id, profile_id, experiment_id, experiment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::ExperimentRepresentation
-          command.request_object = experiment
-          command.response_representation = Google::Apis::AnalyticsV3::ExperimentRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::Experiment::Representation
+          command.request_object = experiment_object
+          command.response_representation = Google::Apis::AnalyticsV3::Experiment::Representation
           command.response_class = Google::Apis::AnalyticsV3::Experiment
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -1275,7 +1233,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Update an existing experiment.
         # @param [String] account_id
@@ -1286,8 +1243,7 @@ module Google
         #   View (Profile) ID of the experiment to update.
         # @param [String] experiment_id
         #   Experiment ID of the experiment to update.
-        # @param [Google::Apis::AnalyticsV3::Experiment] experiment
-        #   
+        # @param [Google::Apis::AnalyticsV3::Experiment] experiment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1297,7 +1253,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1309,12 +1265,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_management_experiment(account_id, web_property_id, profile_id, experiment_id, experiment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_experiment(account_id, web_property_id, profile_id, experiment_id, experiment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::ExperimentRepresentation
-          command.request_object = experiment
-          command.response_representation = Google::Apis::AnalyticsV3::ExperimentRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::Experiment::Representation
+          command.request_object = experiment_object
+          command.response_representation = Google::Apis::AnalyticsV3::Experiment::Representation
           command.response_class = Google::Apis::AnalyticsV3::Experiment
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -1325,8 +1281,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Delete a filter.
         # @param [String] account_id
@@ -1342,7 +1296,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1357,7 +1311,7 @@ module Google
         def delete_management_filter(account_id, filter_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/filters/{filterId}'
           command =  make_simple_command(:delete, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::FilterRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::Filter::Representation
           command.response_class = Google::Apis::AnalyticsV3::Filter
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['filterId'] = filter_id unless filter_id.nil?
@@ -1366,7 +1320,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Returns a filters to which the user has access.
         # @param [String] account_id
@@ -1382,7 +1335,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1397,7 +1350,7 @@ module Google
         def get_management_filter(account_id, filter_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/filters/{filterId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::FilterRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::Filter::Representation
           command.response_class = Google::Apis::AnalyticsV3::Filter
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['filterId'] = filter_id unless filter_id.nil?
@@ -1407,12 +1360,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a new filter.
         # @param [String] account_id
         #   Account ID to create filter for.
-        # @param [Google::Apis::AnalyticsV3::Filter] filter
-        #   
+        # @param [Google::Apis::AnalyticsV3::Filter] filter_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1422,7 +1373,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1434,12 +1385,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_management_filter(account_id, filter = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_filter(account_id, filter_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/filters'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::FilterRepresentation
-          command.request_object = filter
-          command.response_representation = Google::Apis::AnalyticsV3::FilterRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::Filter::Representation
+          command.request_object = filter_object
+          command.response_representation = Google::Apis::AnalyticsV3::Filter::Representation
           command.response_class = Google::Apis::AnalyticsV3::Filter
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1447,7 +1398,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists all filters for an account
         # @param [String] account_id
@@ -1466,7 +1416,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1481,7 +1431,7 @@ module Google
         def list_management_filters(account_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/filters'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::FiltersRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::Filters::Representation
           command.response_class = Google::Apis::AnalyticsV3::Filters
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['max-results'] = max_results unless max_results.nil?
@@ -1492,14 +1442,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an existing filter. This method supports patch semantics.
         # @param [String] account_id
         #   Account ID to which the filter belongs.
         # @param [String] filter_id
         #   ID of the filter to be updated.
-        # @param [Google::Apis::AnalyticsV3::Filter] filter
-        #   
+        # @param [Google::Apis::AnalyticsV3::Filter] filter_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1509,7 +1457,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1521,12 +1469,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_management_filter(account_id, filter_id, filter = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_filter(account_id, filter_id, filter_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/filters/{filterId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::FilterRepresentation
-          command.request_object = filter
-          command.response_representation = Google::Apis::AnalyticsV3::FilterRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::Filter::Representation
+          command.request_object = filter_object
+          command.response_representation = Google::Apis::AnalyticsV3::Filter::Representation
           command.response_class = Google::Apis::AnalyticsV3::Filter
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['filterId'] = filter_id unless filter_id.nil?
@@ -1535,15 +1483,13 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates an existing filter.
         # @param [String] account_id
         #   Account ID to which the filter belongs.
         # @param [String] filter_id
         #   ID of the filter to be updated.
-        # @param [Google::Apis::AnalyticsV3::Filter] filter
-        #   
+        # @param [Google::Apis::AnalyticsV3::Filter] filter_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1553,7 +1499,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1565,12 +1511,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_management_filter(account_id, filter_id, filter = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_filter(account_id, filter_id, filter_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/filters/{filterId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::FilterRepresentation
-          command.request_object = filter
-          command.response_representation = Google::Apis::AnalyticsV3::FilterRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::Filter::Representation
+          command.request_object = filter_object
+          command.response_representation = Google::Apis::AnalyticsV3::Filter::Representation
           command.response_class = Google::Apis::AnalyticsV3::Filter
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['filterId'] = filter_id unless filter_id.nil?
@@ -1579,8 +1525,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Gets a goal to which the user has access.
         # @param [String] account_id
@@ -1600,7 +1544,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1615,7 +1559,7 @@ module Google
         def get_management_goal(account_id, web_property_id, profile_id, goal_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::GoalRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::Goal::Representation
           command.response_class = Google::Apis::AnalyticsV3::Goal
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -1627,7 +1571,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a new goal.
         # @param [String] account_id
         #   Account ID to create the goal for.
@@ -1635,8 +1578,7 @@ module Google
         #   Web property ID to create the goal for.
         # @param [String] profile_id
         #   View (Profile) ID to create the goal for.
-        # @param [Google::Apis::AnalyticsV3::Goal] goal
-        #   
+        # @param [Google::Apis::AnalyticsV3::Goal] goal_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1646,7 +1588,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1658,12 +1600,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_management_goal(account_id, web_property_id, profile_id, goal = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_goal(account_id, web_property_id, profile_id, goal_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::GoalRepresentation
-          command.request_object = goal
-          command.response_representation = Google::Apis::AnalyticsV3::GoalRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::Goal::Representation
+          command.request_object = goal_object
+          command.response_representation = Google::Apis::AnalyticsV3::Goal::Representation
           command.response_class = Google::Apis::AnalyticsV3::Goal
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -1673,7 +1615,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists goals to which the user has access.
         # @param [String] account_id
@@ -1700,7 +1641,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1715,7 +1656,7 @@ module Google
         def list_management_goals(account_id, web_property_id, profile_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::GoalsRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::Goals::Representation
           command.response_class = Google::Apis::AnalyticsV3::Goals
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -1728,7 +1669,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an existing view (profile). This method supports patch semantics.
         # @param [String] account_id
         #   Account ID to update the goal.
@@ -1738,8 +1678,7 @@ module Google
         #   View (Profile) ID to update the goal.
         # @param [String] goal_id
         #   Index of the goal to be updated.
-        # @param [Google::Apis::AnalyticsV3::Goal] goal
-        #   
+        # @param [Google::Apis::AnalyticsV3::Goal] goal_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1749,7 +1688,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1761,12 +1700,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_management_goal(account_id, web_property_id, profile_id, goal_id, goal = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_goal(account_id, web_property_id, profile_id, goal_id, goal_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::GoalRepresentation
-          command.request_object = goal
-          command.response_representation = Google::Apis::AnalyticsV3::GoalRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::Goal::Representation
+          command.request_object = goal_object
+          command.response_representation = Google::Apis::AnalyticsV3::Goal::Representation
           command.response_class = Google::Apis::AnalyticsV3::Goal
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -1777,7 +1716,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates an existing view (profile).
         # @param [String] account_id
@@ -1788,8 +1726,7 @@ module Google
         #   View (Profile) ID to update the goal.
         # @param [String] goal_id
         #   Index of the goal to be updated.
-        # @param [Google::Apis::AnalyticsV3::Goal] goal
-        #   
+        # @param [Google::Apis::AnalyticsV3::Goal] goal_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1799,7 +1736,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1811,12 +1748,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_management_goal(account_id, web_property_id, profile_id, goal_id, goal = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_goal(account_id, web_property_id, profile_id, goal_id, goal_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::GoalRepresentation
-          command.request_object = goal
-          command.response_representation = Google::Apis::AnalyticsV3::GoalRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::Goal::Representation
+          command.request_object = goal_object
+          command.response_representation = Google::Apis::AnalyticsV3::Goal::Representation
           command.response_class = Google::Apis::AnalyticsV3::Goal
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -1827,8 +1764,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Delete a profile filter link.
         # @param [String] account_id
@@ -1848,7 +1783,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1873,7 +1808,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Returns a single profile filter link.
         # @param [String] account_id
         #   Account ID to retrieve profile filter link for.
@@ -1892,7 +1826,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1907,7 +1841,7 @@ module Google
         def get_management_profile_filter_link(account_id, web_property_id, profile_id, link_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::ProfileFilterLinkRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::ProfileFilterLink::Representation
           command.response_class = Google::Apis::AnalyticsV3::ProfileFilterLink
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -1919,7 +1853,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a new profile filter link.
         # @param [String] account_id
         #   Account ID to create profile filter link for.
@@ -1927,8 +1860,7 @@ module Google
         #   Web property Id to create profile filter link for.
         # @param [String] profile_id
         #   Profile ID to create filter link for.
-        # @param [Google::Apis::AnalyticsV3::ProfileFilterLink] profile_filter_link
-        #   
+        # @param [Google::Apis::AnalyticsV3::ProfileFilterLink] profile_filter_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1938,7 +1870,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1950,12 +1882,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_management_profile_filter_link(account_id, web_property_id, profile_id, profile_filter_link = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_profile_filter_link(account_id, web_property_id, profile_id, profile_filter_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::ProfileFilterLinkRepresentation
-          command.request_object = profile_filter_link
-          command.response_representation = Google::Apis::AnalyticsV3::ProfileFilterLinkRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::ProfileFilterLink::Representation
+          command.request_object = profile_filter_link_object
+          command.response_representation = Google::Apis::AnalyticsV3::ProfileFilterLink::Representation
           command.response_class = Google::Apis::AnalyticsV3::ProfileFilterLink
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -1965,7 +1897,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists all profile filter links for a profile.
         # @param [String] account_id
@@ -1991,7 +1922,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2006,7 +1937,7 @@ module Google
         def list_management_profile_filter_links(account_id, web_property_id, profile_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::ProfileFilterLinksRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::ProfileFilterLinks::Representation
           command.response_class = Google::Apis::AnalyticsV3::ProfileFilterLinks
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2019,7 +1950,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Update an existing profile filter link. This method supports patch semantics.
         # @param [String] account_id
         #   Account ID to which profile filter link belongs.
@@ -2029,8 +1959,7 @@ module Google
         #   Profile ID to which filter link belongs
         # @param [String] link_id
         #   ID of the profile filter link to be updated.
-        # @param [Google::Apis::AnalyticsV3::ProfileFilterLink] profile_filter_link
-        #   
+        # @param [Google::Apis::AnalyticsV3::ProfileFilterLink] profile_filter_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2040,7 +1969,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2052,12 +1981,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_management_profile_filter_link(account_id, web_property_id, profile_id, link_id, profile_filter_link = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_profile_filter_link(account_id, web_property_id, profile_id, link_id, profile_filter_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::ProfileFilterLinkRepresentation
-          command.request_object = profile_filter_link
-          command.response_representation = Google::Apis::AnalyticsV3::ProfileFilterLinkRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::ProfileFilterLink::Representation
+          command.request_object = profile_filter_link_object
+          command.response_representation = Google::Apis::AnalyticsV3::ProfileFilterLink::Representation
           command.response_class = Google::Apis::AnalyticsV3::ProfileFilterLink
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2068,7 +1997,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Update an existing profile filter link.
         # @param [String] account_id
@@ -2079,8 +2007,7 @@ module Google
         #   Profile ID to which filter link belongs
         # @param [String] link_id
         #   ID of the profile filter link to be updated.
-        # @param [Google::Apis::AnalyticsV3::ProfileFilterLink] profile_filter_link
-        #   
+        # @param [Google::Apis::AnalyticsV3::ProfileFilterLink] profile_filter_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2090,7 +2017,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2102,12 +2029,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_management_profile_filter_link(account_id, web_property_id, profile_id, link_id, profile_filter_link = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_profile_filter_link(account_id, web_property_id, profile_id, link_id, profile_filter_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::ProfileFilterLinkRepresentation
-          command.request_object = profile_filter_link
-          command.response_representation = Google::Apis::AnalyticsV3::ProfileFilterLinkRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::ProfileFilterLink::Representation
+          command.request_object = profile_filter_link_object
+          command.response_representation = Google::Apis::AnalyticsV3::ProfileFilterLink::Representation
           command.response_class = Google::Apis::AnalyticsV3::ProfileFilterLink
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2118,8 +2045,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Removes a user from the given view (profile).
         # @param [String] account_id
@@ -2139,7 +2064,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2164,7 +2089,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Adds a new user to the given view (profile).
         # @param [String] account_id
         #   Account ID to create the user link for.
@@ -2172,8 +2096,7 @@ module Google
         #   Web Property ID to create the user link for.
         # @param [String] profile_id
         #   View (Profile) ID to create the user link for.
-        # @param [Google::Apis::AnalyticsV3::EntityUserLink] entity_user_link
-        #   
+        # @param [Google::Apis::AnalyticsV3::EntityUserLink] entity_user_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2183,7 +2106,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2195,12 +2118,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_management_profile_user_link(account_id, web_property_id, profile_id, entity_user_link = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_profile_user_link(account_id, web_property_id, profile_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::EntityUserLinkRepresentation
-          command.request_object = entity_user_link
-          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLinkRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
+          command.request_object = entity_user_link_object
+          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityUserLink
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2210,7 +2133,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists profile-user links for a given view (profile).
         # @param [String] account_id
@@ -2237,7 +2159,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2252,7 +2174,7 @@ module Google
         def list_management_profile_user_links(account_id, web_property_id, profile_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLinksRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLinks::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityUserLinks
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2265,7 +2187,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates permissions for an existing user on the given view (profile).
         # @param [String] account_id
         #   Account ID to update the user link for.
@@ -2275,8 +2196,7 @@ module Google
         #   View (Profile ID) to update the user link for.
         # @param [String] link_id
         #   Link ID to update the user link for.
-        # @param [Google::Apis::AnalyticsV3::EntityUserLink] entity_user_link
-        #   
+        # @param [Google::Apis::AnalyticsV3::EntityUserLink] entity_user_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2286,7 +2206,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2298,12 +2218,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_management_profile_user_link(account_id, web_property_id, profile_id, link_id, entity_user_link = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_profile_user_link(account_id, web_property_id, profile_id, link_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks/{linkId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::EntityUserLinkRepresentation
-          command.request_object = entity_user_link
-          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLinkRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
+          command.request_object = entity_user_link_object
+          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityUserLink
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2314,8 +2234,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Deletes a view (profile).
         # @param [String] account_id
@@ -2333,7 +2251,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2357,7 +2275,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets a view (profile) to which the user has access.
         # @param [String] account_id
         #   Account ID to retrieve the goal for.
@@ -2374,7 +2291,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2389,7 +2306,7 @@ module Google
         def get_management_profile(account_id, web_property_id, profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::ProfileRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::Profile::Representation
           command.response_class = Google::Apis::AnalyticsV3::Profile
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2400,14 +2317,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a new view (profile).
         # @param [String] account_id
         #   Account ID to create the view (profile) for.
         # @param [String] web_property_id
         #   Web property ID to create the view (profile) for.
-        # @param [Google::Apis::AnalyticsV3::Profile] profile
-        #   
+        # @param [Google::Apis::AnalyticsV3::Profile] profile_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2417,7 +2332,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2429,12 +2344,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_management_profile(account_id, web_property_id, profile = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_profile(account_id, web_property_id, profile_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::ProfileRepresentation
-          command.request_object = profile
-          command.response_representation = Google::Apis::AnalyticsV3::ProfileRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::Profile::Representation
+          command.request_object = profile_object
+          command.response_representation = Google::Apis::AnalyticsV3::Profile::Representation
           command.response_class = Google::Apis::AnalyticsV3::Profile
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2443,7 +2358,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists views (profiles) to which the user has access.
         # @param [String] account_id
@@ -2468,7 +2382,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2483,7 +2397,7 @@ module Google
         def list_management_profiles(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::ProfilesRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::Profiles::Representation
           command.response_class = Google::Apis::AnalyticsV3::Profiles
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2495,7 +2409,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an existing view (profile). This method supports patch semantics.
         # @param [String] account_id
         #   Account ID to which the view (profile) belongs
@@ -2503,8 +2416,7 @@ module Google
         #   Web property ID to which the view (profile) belongs
         # @param [String] profile_id
         #   ID of the view (profile) to be updated.
-        # @param [Google::Apis::AnalyticsV3::Profile] profile
-        #   
+        # @param [Google::Apis::AnalyticsV3::Profile] profile_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2514,7 +2426,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2526,12 +2438,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_management_profile(account_id, web_property_id, profile_id, profile = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_profile(account_id, web_property_id, profile_id, profile_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::ProfileRepresentation
-          command.request_object = profile
-          command.response_representation = Google::Apis::AnalyticsV3::ProfileRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::Profile::Representation
+          command.request_object = profile_object
+          command.response_representation = Google::Apis::AnalyticsV3::Profile::Representation
           command.response_class = Google::Apis::AnalyticsV3::Profile
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2541,7 +2453,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates an existing view (profile).
         # @param [String] account_id
@@ -2550,8 +2461,7 @@ module Google
         #   Web property ID to which the view (profile) belongs
         # @param [String] profile_id
         #   ID of the view (profile) to be updated.
-        # @param [Google::Apis::AnalyticsV3::Profile] profile
-        #   
+        # @param [Google::Apis::AnalyticsV3::Profile] profile_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2561,7 +2471,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2573,12 +2483,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_management_profile(account_id, web_property_id, profile_id, profile = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_profile(account_id, web_property_id, profile_id, profile_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::ProfileRepresentation
-          command.request_object = profile
-          command.response_representation = Google::Apis::AnalyticsV3::ProfileRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::Profile::Representation
+          command.request_object = profile_object
+          command.response_representation = Google::Apis::AnalyticsV3::Profile::Representation
           command.response_class = Google::Apis::AnalyticsV3::Profile
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2588,8 +2498,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Lists segments to which the user has access.
         # @param [Fixnum] max_results
@@ -2606,7 +2514,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2621,7 +2529,7 @@ module Google
         def list_management_segments(max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/segments'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::SegmentsRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::Segments::Representation
           command.response_class = Google::Apis::AnalyticsV3::Segments
           command.query['max-results'] = max_results unless max_results.nil?
           command.query['start-index'] = start_index unless start_index.nil?
@@ -2630,8 +2538,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Returns a single unsampled report.
         # @param [String] account_id
@@ -2651,7 +2557,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2666,7 +2572,7 @@ module Google
         def get_management_unsampled_report(account_id, web_property_id, profile_id, unsampled_report_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports/{unsampledReportId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::UnsampledReportRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::UnsampledReport::Representation
           command.response_class = Google::Apis::AnalyticsV3::UnsampledReport
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2678,7 +2584,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a new unsampled report.
         # @param [String] account_id
         #   Account ID to create the unsampled report for.
@@ -2686,8 +2591,7 @@ module Google
         #   Web property ID to create the unsampled report for.
         # @param [String] profile_id
         #   View (Profile) ID to create the unsampled report for.
-        # @param [Google::Apis::AnalyticsV3::UnsampledReport] unsampled_report
-        #   
+        # @param [Google::Apis::AnalyticsV3::UnsampledReport] unsampled_report_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2697,7 +2601,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2709,12 +2613,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_management_unsampled_report(account_id, web_property_id, profile_id, unsampled_report = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_unsampled_report(account_id, web_property_id, profile_id, unsampled_report_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::UnsampledReportRepresentation
-          command.request_object = unsampled_report
-          command.response_representation = Google::Apis::AnalyticsV3::UnsampledReportRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::UnsampledReport::Representation
+          command.request_object = unsampled_report_object
+          command.response_representation = Google::Apis::AnalyticsV3::UnsampledReport::Representation
           command.response_class = Google::Apis::AnalyticsV3::UnsampledReport
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2724,7 +2628,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists unsampled reports to which the user has access.
         # @param [String] account_id
@@ -2750,7 +2653,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2765,7 +2668,7 @@ module Google
         def list_management_unsampled_reports(account_id, web_property_id, profile_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::UnsampledReportsRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::UnsampledReports::Representation
           command.response_class = Google::Apis::AnalyticsV3::UnsampledReports
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2778,8 +2681,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
-        
         # Delete data associated with a previous upload.
         # @param [String] account_id
         #   Account Id for the uploads to be deleted.
@@ -2787,8 +2688,7 @@ module Google
         #   Web property Id for the uploads to be deleted.
         # @param [String] custom_data_source_id
         #   Custom data source Id for the uploads to be deleted.
-        # @param [Google::Apis::AnalyticsV3::DataimportDeleteUploadDataRequest] analytics_dataimport_delete_upload_data_request
-        #   
+        # @param [Google::Apis::AnalyticsV3::DataimportDeleteUploadDataRequest] analytics_dataimport_delete_upload_data_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2798,7 +2698,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2810,11 +2710,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_upload_data_management_upload(account_id, web_property_id, custom_data_source_id, analytics_dataimport_delete_upload_data_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_upload_data_management_upload(account_id, web_property_id, custom_data_source_id, analytics_dataimport_delete_upload_data_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/deleteUploadData'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::DataimportDeleteUploadDataRequestRepresentation
-          command.request_object = analytics_dataimport_delete_upload_data_request
+          command.request_representation = Google::Apis::AnalyticsV3::DataimportDeleteUploadDataRequest::Representation
+          command.request_object = analytics_dataimport_delete_upload_data_request_object
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
           command.params['customDataSourceId'] = custom_data_source_id unless custom_data_source_id.nil?
@@ -2823,7 +2723,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List uploads to which the user has access.
         # @param [String] account_id
@@ -2843,7 +2742,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2858,7 +2757,7 @@ module Google
         def get_management_upload(account_id, web_property_id, custom_data_source_id, upload_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads/{uploadId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::UploadRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::Upload::Representation
           command.response_class = Google::Apis::AnalyticsV3::Upload
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2869,7 +2768,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List uploads to which the user has access.
         # @param [String] account_id
@@ -2892,7 +2790,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2907,7 +2805,7 @@ module Google
         def list_management_uploads(account_id, web_property_id, custom_data_source_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::UploadsRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::Uploads::Representation
           command.response_class = Google::Apis::AnalyticsV3::Uploads
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2919,7 +2817,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Upload data for a custom data source.
         # @param [String] account_id
@@ -2941,7 +2838,7 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -2962,7 +2859,7 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.response_representation = Google::Apis::AnalyticsV3::UploadRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::Upload::Representation
           command.response_class = Google::Apis::AnalyticsV3::Upload
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -2972,8 +2869,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Deletes a web property-AdWords link.
         # @param [String] account_id
@@ -2991,7 +2886,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3015,7 +2910,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Returns a web property-AdWords link to which the user has access.
         # @param [String] account_id
         #   ID of the account which the given web property belongs to.
@@ -3032,7 +2926,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3047,7 +2941,7 @@ module Google
         def get_management_web_property_ad_words_link(account_id, web_property_id, web_property_ad_words_link_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::EntityAdWordsLinkRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::EntityAdWordsLink::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityAdWordsLink
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -3058,14 +2952,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates a webProperty-AdWords link.
         # @param [String] account_id
         #   ID of the Google Analytics account to create the link for.
         # @param [String] web_property_id
         #   Web property ID to create the link for.
-        # @param [Google::Apis::AnalyticsV3::EntityAdWordsLink] entity_ad_words_link
-        #   
+        # @param [Google::Apis::AnalyticsV3::EntityAdWordsLink] entity_ad_words_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3075,7 +2967,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3087,12 +2979,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_management_web_property_ad_words_link(account_id, web_property_id, entity_ad_words_link = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_web_property_ad_words_link(account_id, web_property_id, entity_ad_words_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::EntityAdWordsLinkRepresentation
-          command.request_object = entity_ad_words_link
-          command.response_representation = Google::Apis::AnalyticsV3::EntityAdWordsLinkRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::EntityAdWordsLink::Representation
+          command.request_object = entity_ad_words_link_object
+          command.response_representation = Google::Apis::AnalyticsV3::EntityAdWordsLink::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityAdWordsLink
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -3101,7 +2993,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists webProperty-AdWords links for a given web property.
         # @param [String] account_id
@@ -3122,7 +3013,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3137,7 +3028,7 @@ module Google
         def list_management_web_property_ad_words_links(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::EntityAdWordsLinksRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::EntityAdWordsLinks::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityAdWordsLinks
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -3149,7 +3040,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an existing webProperty-AdWords link. This method supports patch
         # semantics.
         # @param [String] account_id
@@ -3158,8 +3048,7 @@ module Google
         #   Web property ID to retrieve the AdWords link for.
         # @param [String] web_property_ad_words_link_id
         #   Web property-AdWords link ID.
-        # @param [Google::Apis::AnalyticsV3::EntityAdWordsLink] entity_ad_words_link
-        #   
+        # @param [Google::Apis::AnalyticsV3::EntityAdWordsLink] entity_ad_words_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3169,7 +3058,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3181,12 +3070,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_management_web_property_ad_words_link(account_id, web_property_id, web_property_ad_words_link_id, entity_ad_words_link = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_web_property_ad_words_link(account_id, web_property_id, web_property_ad_words_link_id, entity_ad_words_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::EntityAdWordsLinkRepresentation
-          command.request_object = entity_ad_words_link
-          command.response_representation = Google::Apis::AnalyticsV3::EntityAdWordsLinkRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::EntityAdWordsLink::Representation
+          command.request_object = entity_ad_words_link_object
+          command.response_representation = Google::Apis::AnalyticsV3::EntityAdWordsLink::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityAdWordsLink
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -3196,7 +3085,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates an existing webProperty-AdWords link.
         # @param [String] account_id
@@ -3205,8 +3093,7 @@ module Google
         #   Web property ID to retrieve the AdWords link for.
         # @param [String] web_property_ad_words_link_id
         #   Web property-AdWords link ID.
-        # @param [Google::Apis::AnalyticsV3::EntityAdWordsLink] entity_ad_words_link
-        #   
+        # @param [Google::Apis::AnalyticsV3::EntityAdWordsLink] entity_ad_words_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3216,7 +3103,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3228,12 +3115,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_management_web_property_ad_words_link(account_id, web_property_id, web_property_ad_words_link_id, entity_ad_words_link = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_web_property_ad_words_link(account_id, web_property_id, web_property_ad_words_link_id, entity_ad_words_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::EntityAdWordsLinkRepresentation
-          command.request_object = entity_ad_words_link
-          command.response_representation = Google::Apis::AnalyticsV3::EntityAdWordsLinkRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::EntityAdWordsLink::Representation
+          command.request_object = entity_ad_words_link_object
+          command.response_representation = Google::Apis::AnalyticsV3::EntityAdWordsLink::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityAdWordsLink
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -3243,8 +3130,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Gets a web property to which the user has access.
         # @param [String] account_id
@@ -3260,7 +3145,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3275,7 +3160,7 @@ module Google
         def get_management_webproperty(account_id, web_property_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::WebpropertyRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::Webproperty::Representation
           command.response_class = Google::Apis::AnalyticsV3::Webproperty
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -3285,14 +3170,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a new property if the account has fewer than 20 properties. Web
         # properties are visible in the Google Analytics interface only if they have at
         # least one profile.
         # @param [String] account_id
         #   Account ID to create the web property for.
-        # @param [Google::Apis::AnalyticsV3::Webproperty] webproperty
-        #   
+        # @param [Google::Apis::AnalyticsV3::Webproperty] webproperty_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3302,7 +3185,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3314,12 +3197,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_management_webproperty(account_id, webproperty = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_webproperty(account_id, webproperty_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::WebpropertyRepresentation
-          command.request_object = webproperty
-          command.response_representation = Google::Apis::AnalyticsV3::WebpropertyRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::Webproperty::Representation
+          command.request_object = webproperty_object
+          command.response_representation = Google::Apis::AnalyticsV3::Webproperty::Representation
           command.response_class = Google::Apis::AnalyticsV3::Webproperty
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3327,7 +3210,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists web properties to which the user has access.
         # @param [String] account_id
@@ -3347,7 +3229,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3362,7 +3244,7 @@ module Google
         def list_management_webproperties(account_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::WebpropertiesRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::Webproperties::Representation
           command.response_class = Google::Apis::AnalyticsV3::Webproperties
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['max-results'] = max_results unless max_results.nil?
@@ -3373,14 +3255,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an existing web property. This method supports patch semantics.
         # @param [String] account_id
         #   Account ID to which the web property belongs
         # @param [String] web_property_id
         #   Web property ID
-        # @param [Google::Apis::AnalyticsV3::Webproperty] webproperty
-        #   
+        # @param [Google::Apis::AnalyticsV3::Webproperty] webproperty_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3390,7 +3270,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3402,12 +3282,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_management_webproperty(account_id, web_property_id, webproperty = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_management_webproperty(account_id, web_property_id, webproperty_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::WebpropertyRepresentation
-          command.request_object = webproperty
-          command.response_representation = Google::Apis::AnalyticsV3::WebpropertyRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::Webproperty::Representation
+          command.request_object = webproperty_object
+          command.response_representation = Google::Apis::AnalyticsV3::Webproperty::Representation
           command.response_class = Google::Apis::AnalyticsV3::Webproperty
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -3416,15 +3296,13 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates an existing web property.
         # @param [String] account_id
         #   Account ID to which the web property belongs
         # @param [String] web_property_id
         #   Web property ID
-        # @param [Google::Apis::AnalyticsV3::Webproperty] webproperty
-        #   
+        # @param [Google::Apis::AnalyticsV3::Webproperty] webproperty_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3434,7 +3312,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3446,12 +3324,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_management_webproperty(account_id, web_property_id, webproperty = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_webproperty(account_id, web_property_id, webproperty_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::WebpropertyRepresentation
-          command.request_object = webproperty
-          command.response_representation = Google::Apis::AnalyticsV3::WebpropertyRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::Webproperty::Representation
+          command.request_object = webproperty_object
+          command.response_representation = Google::Apis::AnalyticsV3::Webproperty::Representation
           command.response_class = Google::Apis::AnalyticsV3::Webproperty
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -3460,8 +3338,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Removes a user from the given web property.
         # @param [String] account_id
@@ -3479,7 +3355,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3503,14 +3379,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Adds a new user to the given web property.
         # @param [String] account_id
         #   Account ID to create the user link for.
         # @param [String] web_property_id
         #   Web Property ID to create the user link for.
-        # @param [Google::Apis::AnalyticsV3::EntityUserLink] entity_user_link
-        #   
+        # @param [Google::Apis::AnalyticsV3::EntityUserLink] entity_user_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3520,7 +3394,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3532,12 +3406,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_management_webproperty_user_link(account_id, web_property_id, entity_user_link = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_management_webproperty_user_link(account_id, web_property_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::EntityUserLinkRepresentation
-          command.request_object = entity_user_link
-          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLinkRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
+          command.request_object = entity_user_link_object
+          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityUserLink
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -3546,7 +3420,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists webProperty-user links for a given web property.
         # @param [String] account_id
@@ -3569,7 +3442,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3584,7 +3457,7 @@ module Google
         def list_management_webproperty_user_links(account_id, web_property_id, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLinksRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLinks::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityUserLinks
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -3596,7 +3469,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates permissions for an existing user on the given web property.
         # @param [String] account_id
         #   Account ID to update the account-user link for.
@@ -3604,8 +3476,7 @@ module Google
         #   Web property ID to update the account-user link for.
         # @param [String] link_id
         #   Link ID to update the account-user link for.
-        # @param [Google::Apis::AnalyticsV3::EntityUserLink] entity_user_link
-        #   
+        # @param [Google::Apis::AnalyticsV3::EntityUserLink] entity_user_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3615,7 +3486,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3627,12 +3498,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_management_webproperty_user_link(account_id, web_property_id, link_id, entity_user_link = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_management_webproperty_user_link(account_id, web_property_id, link_id, entity_user_link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks/{linkId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::EntityUserLinkRepresentation
-          command.request_object = entity_user_link
-          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLinkRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
+          command.request_object = entity_user_link_object
+          command.response_representation = Google::Apis::AnalyticsV3::EntityUserLink::Representation
           command.response_class = Google::Apis::AnalyticsV3::EntityUserLink
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
@@ -3642,7 +3513,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Lists all columns for a report type
         # @param [String] report_type
         #   Report type. Allowed Values: 'ga'. Where 'ga' corresponds to the Core
@@ -3656,7 +3527,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3671,7 +3542,7 @@ module Google
         def list_metadatum_columns(report_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'metadata/{reportType}/columns'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AnalyticsV3::ColumnsRepresentation
+          command.response_representation = Google::Apis::AnalyticsV3::Columns::Representation
           command.response_class = Google::Apis::AnalyticsV3::Columns
           command.params['reportType'] = report_type unless report_type.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3679,10 +3550,9 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Creates an account ticket.
-        # @param [Google::Apis::AnalyticsV3::AccountTicket] account_ticket
-        #   
+        # @param [Google::Apis::AnalyticsV3::AccountTicket] account_ticket_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3692,7 +3562,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -3704,12 +3574,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_account_ticket_provisioning(account_ticket = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_account_ticket_provisioning(account_ticket_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'provisioning/createAccountTicket'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::AnalyticsV3::AccountTicketRepresentation
-          command.request_object = account_ticket
-          command.response_representation = Google::Apis::AnalyticsV3::AccountTicketRepresentation
+          command.request_representation = Google::Apis::AnalyticsV3::AccountTicket::Representation
+          command.request_object = account_ticket_object
+          command.response_representation = Google::Apis::AnalyticsV3::AccountTicket::Representation
           command.response_class = Google::Apis::AnalyticsV3::AccountTicket
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

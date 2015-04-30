@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/+/api/
       class PlusService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'plus/v1/')
         end
-
+        
         # Get an activity.
         # @param [String] activity_id
         #   The ID of the activity to get.
@@ -65,7 +64,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -80,7 +79,7 @@ module Google
         def get_activity(activity_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activities/{activityId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusV1::ActivityRepresentation
+          command.response_representation = Google::Apis::PlusV1::Activity::Representation
           command.response_class = Google::Apis::PlusV1::Activity
           command.params['activityId'] = activity_id unless activity_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -88,7 +87,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all of the activities in the specified collection for a particular user.
         # @param [String] user_id
@@ -113,7 +111,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -128,7 +126,7 @@ module Google
         def list_activities(user_id, collection, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people/{userId}/activities/{collection}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusV1::ActivityFeedRepresentation
+          command.response_representation = Google::Apis::PlusV1::ActivityFeed::Representation
           command.response_class = Google::Apis::PlusV1::ActivityFeed
           command.params['userId'] = user_id unless user_id.nil?
           command.params['collection'] = collection unless collection.nil?
@@ -139,7 +137,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Search public activities.
         # @param [String] language
@@ -166,7 +163,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -181,7 +178,7 @@ module Google
         def search_activities(language: nil, max_results: nil, order_by: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activities'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusV1::ActivityFeedRepresentation
+          command.response_representation = Google::Apis::PlusV1::ActivityFeed::Representation
           command.response_class = Google::Apis::PlusV1::ActivityFeed
           command.query['language'] = language unless language.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -193,7 +190,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Get a comment.
         # @param [String] comment_id
         #   The ID of the comment to get.
@@ -206,7 +203,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -221,7 +218,7 @@ module Google
         def get_comment(comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'comments/{commentId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusV1::CommentRepresentation
+          command.response_representation = Google::Apis::PlusV1::Comment::Representation
           command.response_class = Google::Apis::PlusV1::Comment
           command.params['commentId'] = comment_id unless comment_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -229,7 +226,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all of the comments for an activity.
         # @param [String] activity_id
@@ -253,7 +249,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -268,7 +264,7 @@ module Google
         def list_comments(activity_id, max_results: nil, page_token: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activities/{activityId}/comments'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusV1::CommentFeedRepresentation
+          command.response_representation = Google::Apis::PlusV1::CommentFeed::Representation
           command.response_class = Google::Apis::PlusV1::CommentFeed
           command.params['activityId'] = activity_id unless activity_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -279,7 +275,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Record a moment representing a user's action such as making a purchase or
         # commenting on a blog.
         # @param [String] user_id
@@ -287,8 +283,7 @@ module Google
         #   the ID of the authenticated user.
         # @param [String] collection
         #   The collection to which to write moments.
-        # @param [Google::Apis::PlusV1::Moment] moment
-        #   
+        # @param [Google::Apis::PlusV1::Moment] moment_object
         # @param [Boolean] debug
         #   Return the moment as written. Should be used only for debugging.
         # @param [String] fields
@@ -300,7 +295,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -312,12 +307,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_moment(user_id, collection, moment = nil, debug: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_moment(user_id, collection, moment_object = nil, debug: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people/{userId}/moments/{collection}'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::PlusV1::MomentRepresentation
-          command.request_object = moment
-          command.response_representation = Google::Apis::PlusV1::MomentRepresentation
+          command.request_representation = Google::Apis::PlusV1::Moment::Representation
+          command.request_object = moment_object
+          command.response_representation = Google::Apis::PlusV1::Moment::Representation
           command.response_class = Google::Apis::PlusV1::Moment
           command.params['userId'] = user_id unless user_id.nil?
           command.params['collection'] = collection unless collection.nil?
@@ -327,7 +322,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all of the moments for a particular user.
         # @param [String] user_id
@@ -356,14 +350,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PlusV1::MomentsFeed] parsed result object
+        # @yieldparam result [Google::Apis::PlusV1::Feed] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::PlusV1::MomentsFeed]
+        # @return [Google::Apis::PlusV1::Feed]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -371,8 +365,8 @@ module Google
         def list_moments(user_id, collection, max_results: nil, page_token: nil, target_url: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people/{userId}/moments/{collection}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusV1::MomentsFeedRepresentation
-          command.response_class = Google::Apis::PlusV1::MomentsFeed
+          command.response_representation = Google::Apis::PlusV1::Feed::Representation
+          command.response_class = Google::Apis::PlusV1::Feed
           command.params['userId'] = user_id unless user_id.nil?
           command.params['collection'] = collection unless collection.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -384,7 +378,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Delete a moment.
         # @param [String] id
@@ -398,7 +391,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -419,7 +412,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Get a person's profile. If your app uses scope https://www.googleapis.com/auth/
         # plus.login, this method is guaranteed to return ageRange and language.
         # @param [String] user_id
@@ -434,7 +427,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -449,7 +442,7 @@ module Google
         def get_person(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people/{userId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusV1::PersonRepresentation
+          command.response_representation = Google::Apis::PlusV1::Person::Representation
           command.response_class = Google::Apis::PlusV1::Person
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -457,7 +450,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all of the people in the specified collection.
         # @param [String] user_id
@@ -484,7 +476,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -499,7 +491,7 @@ module Google
         def list_people(user_id, collection, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people/{userId}/people/{collection}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusV1::PeopleFeedRepresentation
+          command.response_representation = Google::Apis::PlusV1::PeopleFeed::Representation
           command.response_class = Google::Apis::PlusV1::PeopleFeed
           command.params['userId'] = user_id unless user_id.nil?
           command.params['collection'] = collection unless collection.nil?
@@ -511,7 +503,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all of the people in the specified collection for a particular activity.
         # @param [String] activity_id
@@ -535,7 +526,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -550,7 +541,7 @@ module Google
         def list_by_activity_person(activity_id, collection, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activities/{activityId}/people/{collection}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusV1::PeopleFeedRepresentation
+          command.response_representation = Google::Apis::PlusV1::PeopleFeed::Representation
           command.response_class = Google::Apis::PlusV1::PeopleFeed
           command.params['activityId'] = activity_id unless activity_id.nil?
           command.params['collection'] = collection unless collection.nil?
@@ -561,7 +552,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Search all public profiles.
         # @param [String] language
@@ -586,7 +576,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -601,7 +591,7 @@ module Google
         def search_people(language: nil, max_results: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusV1::PeopleFeedRepresentation
+          command.response_representation = Google::Apis::PlusV1::PeopleFeed::Representation
           command.response_class = Google::Apis::PlusV1::PeopleFeed
           command.query['language'] = language unless language.nil?
           command.query['maxResults'] = max_results unless max_results.nil?

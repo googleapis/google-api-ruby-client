@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module GmailV1
-
+      
       # A draft email in the user's mailbox.
       class Draft
         include Google::Apis::Core::Hashable
@@ -31,17 +31,22 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The message content of the draft.
+        # An email message.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::GmailV1::Message]
         attr_accessor :message
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @message = args[:message] unless args[:message].nil?
         end
       end
-
+      
       # A record of a change to the user's mailbox. Each history change may affect
       # multiple messages in multiple ways.
       class History
@@ -54,12 +59,12 @@ module Google
       
         # Labels added to messages in this history record.
         # Corresponds to the JSON property `labelsAdded`
-        # @return [Array<Google::Apis::GmailV1::HistoryLabelAdded>]
+        # @return [Array<Google::Apis::GmailV1::LabelAdded>]
         attr_accessor :labels_added
       
         # Labels removed from messages in this history record.
         # Corresponds to the JSON property `labelsRemoved`
-        # @return [Array<Google::Apis::GmailV1::HistoryLabelRemoved>]
+        # @return [Array<Google::Apis::GmailV1::LabelRemoved>]
         attr_accessor :labels_removed
       
         # List of messages changed in this history record. The fields for specific
@@ -71,15 +76,20 @@ module Google
       
         # Messages added to the mailbox in this history record.
         # Corresponds to the JSON property `messagesAdded`
-        # @return [Array<Google::Apis::GmailV1::HistoryMessageAdded>]
+        # @return [Array<Google::Apis::GmailV1::MessageAdded>]
         attr_accessor :messages_added
       
         # Messages deleted (not Trashed) from the mailbox in this history record.
         # Corresponds to the JSON property `messagesDeleted`
-        # @return [Array<Google::Apis::GmailV1::HistoryMessageDeleted>]
+        # @return [Array<Google::Apis::GmailV1::MessageDeleted>]
         attr_accessor :messages_deleted
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @labels_added = args[:labels_added] unless args[:labels_added].nil?
           @labels_removed = args[:labels_removed] unless args[:labels_removed].nil?
@@ -88,9 +98,9 @@ module Google
           @messages_deleted = args[:messages_deleted] unless args[:messages_deleted].nil?
         end
       end
-
+      
       # 
-      class HistoryLabelAdded
+      class LabelAdded
         include Google::Apis::Core::Hashable
       
         # Label IDs added to the message.
@@ -98,19 +108,24 @@ module Google
         # @return [Array<String>]
         attr_accessor :label_ids
       
-        # 
+        # An email message.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::GmailV1::Message]
         attr_accessor :message
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @label_ids = args[:label_ids] unless args[:label_ids].nil?
           @message = args[:message] unless args[:message].nil?
         end
       end
-
+      
       # 
-      class HistoryLabelRemoved
+      class LabelRemoved
         include Google::Apis::Core::Hashable
       
         # Label IDs removed from the message.
@@ -118,45 +133,60 @@ module Google
         # @return [Array<String>]
         attr_accessor :label_ids
       
-        # 
+        # An email message.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::GmailV1::Message]
         attr_accessor :message
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @label_ids = args[:label_ids] unless args[:label_ids].nil?
           @message = args[:message] unless args[:message].nil?
         end
       end
-
+      
       # 
-      class HistoryMessageAdded
+      class MessageAdded
         include Google::Apis::Core::Hashable
       
-        # 
+        # An email message.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::GmailV1::Message]
         attr_accessor :message
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @message = args[:message] unless args[:message].nil?
         end
       end
-
+      
       # 
-      class HistoryMessageDeleted
+      class MessageDeleted
         include Google::Apis::Core::Hashable
       
-        # 
+        # An email message.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::GmailV1::Message]
         attr_accessor :message
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @message = args[:message] unless args[:message].nil?
         end
       end
-
+      
       # Labels are used to categorize messages and threads within the user's mailbox.
       class Label
         include Google::Apis::Core::Hashable
@@ -214,6 +244,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @label_list_visibility = args[:label_list_visibility] unless args[:label_list_visibility].nil?
           @message_list_visibility = args[:message_list_visibility] unless args[:message_list_visibility].nil?
@@ -225,7 +260,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # 
       class ListDraftsResponse
         include Google::Apis::Core::Hashable
@@ -246,12 +281,17 @@ module Google
         attr_accessor :result_size_estimate
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @drafts = args[:drafts] unless args[:drafts].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @result_size_estimate = args[:result_size_estimate] unless args[:result_size_estimate].nil?
         end
       end
-
+      
       # 
       class ListHistoryResponse
         include Google::Apis::Core::Hashable
@@ -273,12 +313,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @history = args[:history] unless args[:history].nil?
           @history_id = args[:history_id] unless args[:history_id].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # 
       class ListLabelsResponse
         include Google::Apis::Core::Hashable
@@ -289,10 +334,15 @@ module Google
         attr_accessor :labels
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @labels = args[:labels] unless args[:labels].nil?
         end
       end
-
+      
       # 
       class ListMessagesResponse
         include Google::Apis::Core::Hashable
@@ -313,12 +363,17 @@ module Google
         attr_accessor :result_size_estimate
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @messages = args[:messages] unless args[:messages].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @result_size_estimate = args[:result_size_estimate] unless args[:result_size_estimate].nil?
         end
       end
-
+      
       # 
       class ListThreadsResponse
         include Google::Apis::Core::Hashable
@@ -339,12 +394,17 @@ module Google
         attr_accessor :threads
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @result_size_estimate = args[:result_size_estimate] unless args[:result_size_estimate].nil?
           @threads = args[:threads] unless args[:threads].nil?
         end
       end
-
+      
       # An email message.
       class Message
         include Google::Apis::Core::Hashable
@@ -364,7 +424,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :label_ids
       
-        # The parsed email structure in the message parts.
+        # A single MIME message part.
         # Corresponds to the JSON property `payload`
         # @return [Google::Apis::GmailV1::MessagePart]
         attr_accessor :payload
@@ -398,6 +458,11 @@ module Google
         attr_accessor :thread_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @history_id = args[:history_id] unless args[:history_id].nil?
           @id = args[:id] unless args[:id].nil?
           @label_ids = args[:label_ids] unless args[:label_ids].nil?
@@ -408,13 +473,12 @@ module Google
           @thread_id = args[:thread_id] unless args[:thread_id].nil?
         end
       end
-
+      
       # A single MIME message part.
       class MessagePart
         include Google::Apis::Core::Hashable
       
-        # The message part body for this part, which may be empty for container MIME
-        # message parts.
+        # The body of a single MIME message part.
         # Corresponds to the JSON property `body`
         # @return [Google::Apis::GmailV1::MessagePartBody]
         attr_accessor :body
@@ -451,6 +515,11 @@ module Google
         attr_accessor :parts
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @body = args[:body] unless args[:body].nil?
           @filename = args[:filename] unless args[:filename].nil?
           @headers = args[:headers] unless args[:headers].nil?
@@ -459,7 +528,7 @@ module Google
           @parts = args[:parts] unless args[:parts].nil?
         end
       end
-
+      
       # The body of a single MIME message part.
       class MessagePartBody
         include Google::Apis::Core::Hashable
@@ -485,12 +554,17 @@ module Google
         attr_accessor :size
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @attachment_id = args[:attachment_id] unless args[:attachment_id].nil?
           @data = args[:data] unless args[:data].nil?
           @size = args[:size] unless args[:size].nil?
         end
       end
-
+      
       # 
       class MessagePartHeader
         include Google::Apis::Core::Hashable
@@ -507,11 +581,16 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # 
       class ModifyMessageRequest
         include Google::Apis::Core::Hashable
@@ -527,11 +606,16 @@ module Google
         attr_accessor :remove_label_ids
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @add_label_ids = args[:add_label_ids] unless args[:add_label_ids].nil?
           @remove_label_ids = args[:remove_label_ids] unless args[:remove_label_ids].nil?
         end
       end
-
+      
       # 
       class ModifyThreadRequest
         include Google::Apis::Core::Hashable
@@ -547,11 +631,16 @@ module Google
         attr_accessor :remove_label_ids
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @add_label_ids = args[:add_label_ids] unless args[:add_label_ids].nil?
           @remove_label_ids = args[:remove_label_ids] unless args[:remove_label_ids].nil?
         end
       end
-
+      
       # Profile for a Gmail user.
       class Profile
         include Google::Apis::Core::Hashable
@@ -577,13 +666,18 @@ module Google
         attr_accessor :threads_total
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @email_address = args[:email_address] unless args[:email_address].nil?
           @history_id = args[:history_id] unless args[:history_id].nil?
           @messages_total = args[:messages_total] unless args[:messages_total].nil?
           @threads_total = args[:threads_total] unless args[:threads_total].nil?
         end
       end
-
+      
       # A collection of messages representing a conversation.
       class Thread
         include Google::Apis::Core::Hashable
@@ -609,6 +703,11 @@ module Google
         attr_accessor :snippet
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @history_id = args[:history_id] unless args[:history_id].nil?
           @id = args[:id] unless args[:id].nil?
           @messages = args[:messages] unless args[:messages].nil?

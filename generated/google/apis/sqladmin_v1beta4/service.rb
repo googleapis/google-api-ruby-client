@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/cloud-sql/docs/admin-api/
       class SQLAdminService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'sql/v1beta4/')
         end
-
+        
         # Retrieves a resource containing information about a backup run.
         # @param [String] project
         #   Project ID of the project that contains the instance.
@@ -69,7 +68,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -84,7 +83,7 @@ module Google
         def get_backup_run(project, instance, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/backupRuns/{id}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::BackupRunRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::BackupRun::Representation
           command.response_class = Google::Apis::SqladminV1beta4::BackupRun
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -94,7 +93,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists all backup runs associated with a given instance and configuration in
         # the reverse chronological order of the enqueued time.
@@ -116,14 +114,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SqladminV1beta4::BackupRunsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::SqladminV1beta4::ListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::SqladminV1beta4::BackupRunsListResponse]
+        # @return [Google::Apis::SqladminV1beta4::ListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -131,8 +129,8 @@ module Google
         def list_backup_runs(project, instance, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/backupRuns'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::BackupRunsListResponseRepresentation
-          command.response_class = Google::Apis::SqladminV1beta4::BackupRunsListResponse
+          command.response_representation = Google::Apis::SqladminV1beta4::ListResponse::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::ListResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -142,7 +140,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Deletes a resource containing information about a database inside a Cloud SQL
         # instance.
         # @param [String] project
@@ -160,7 +158,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -175,7 +173,7 @@ module Google
         def delete_database(project, instance, database, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/databases/{database}'
           command =  make_simple_command(:delete, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -185,7 +183,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves a resource containing information about a database inside a Cloud
         # SQL instance.
@@ -204,7 +201,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -219,7 +216,7 @@ module Google
         def get_database(project, instance, database, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/databases/{database}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::DatabaseRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::Database::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Database
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -230,15 +227,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Inserts a resource containing information about a database inside a Cloud SQL
         # instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Database instance ID. This does not include the project ID.
-        # @param [Google::Apis::SqladminV1beta4::Database] database
-        #   
+        # @param [Google::Apis::SqladminV1beta4::Database] database_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -248,7 +243,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -260,12 +255,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_database(project, instance, database = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_database(project, instance, database_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/databases'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::SqladminV1beta4::DatabaseRepresentation
-          command.request_object = database
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.request_representation = Google::Apis::SqladminV1beta4::Database::Representation
+          command.request_object = database_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -274,7 +269,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists databases in the specified Cloud SQL instance.
         # @param [String] project
@@ -290,7 +284,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -305,7 +299,7 @@ module Google
         def list_databases(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/databases'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::DatabasesListResponseRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::DatabasesListResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::DatabasesListResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -314,7 +308,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates a resource containing information about a database inside a Cloud SQL
         # instance. This method supports patch semantics.
@@ -325,7 +318,6 @@ module Google
         # @param [String] database
         #   Name of the database to be updated in the instance.
         # @param [Google::Apis::SqladminV1beta4::Database] database_object
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -335,7 +327,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -350,9 +342,9 @@ module Google
         def patch_database(project, instance, database, database_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/databases/{database}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::SqladminV1beta4::DatabaseRepresentation
+          command.request_representation = Google::Apis::SqladminV1beta4::Database::Representation
           command.request_object = database_object
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -363,7 +355,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates a resource containing information about a database inside a Cloud SQL
         # instance.
         # @param [String] project
@@ -373,7 +364,6 @@ module Google
         # @param [String] database
         #   Name of the database to be updated in the instance.
         # @param [Google::Apis::SqladminV1beta4::Database] database_object
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -383,7 +373,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -398,9 +388,9 @@ module Google
         def update_database(project, instance, database, database_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/databases/{database}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::SqladminV1beta4::DatabaseRepresentation
+          command.request_representation = Google::Apis::SqladminV1beta4::Database::Representation
           command.request_object = database_object
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -410,7 +400,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # List all available database flags for Google Cloud SQL instances.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -421,7 +411,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -436,22 +426,21 @@ module Google
         def list_flags(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'flags'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::FlagsListResponseRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::FlagsListResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::FlagsListResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Creates a Cloud SQL instance as a clone of the source instance.
         # @param [String] project
         #   Project ID of the source as well as the clone Cloud SQL instance.
         # @param [String] instance
         #   The ID of the Cloud SQL instance to be cloned (source). This does not include
         #   the project ID.
-        # @param [Google::Apis::SqladminV1beta4::InstancesCloneRequest] instances_clone_request
-        #   
+        # @param [Google::Apis::SqladminV1beta4::CloneRequest] instances_clone_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -461,7 +450,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -473,12 +462,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def clone_instance(project, instance, instances_clone_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def clone_instance(project, instance, instances_clone_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/clone'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::SqladminV1beta4::InstancesCloneRequestRepresentation
-          command.request_object = instances_clone_request
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.request_representation = Google::Apis::SqladminV1beta4::CloneRequest::Representation
+          command.request_object = instances_clone_request_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -487,7 +476,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Deletes a Cloud SQL instance.
         # @param [String] project
@@ -503,7 +491,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -518,7 +506,7 @@ module Google
         def delete_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}'
           command =  make_simple_command(:delete, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -528,15 +516,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Exports data from a Cloud SQL instance to a Google Cloud Storage bucket as a
         # MySQL dump file.
         # @param [String] project
         #   Project ID of the project that contains the instance to be exported.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
-        # @param [Google::Apis::SqladminV1beta4::InstancesExportRequest] instances_export_request
-        #   
+        # @param [Google::Apis::SqladminV1beta4::ExportRequest] instances_export_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -546,7 +532,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -558,12 +544,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def export_instance(project, instance, instances_export_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def export_instance(project, instance, instances_export_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/export'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::SqladminV1beta4::InstancesExportRequestRepresentation
-          command.request_object = instances_export_request
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.request_representation = Google::Apis::SqladminV1beta4::ExportRequest::Representation
+          command.request_object = instances_export_request_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -572,7 +558,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves a resource containing information about a Cloud SQL instance.
         # @param [String] project
@@ -588,7 +573,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -603,7 +588,7 @@ module Google
         def get_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::DatabaseInstanceRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::DatabaseInstance::Representation
           command.response_class = Google::Apis::SqladminV1beta4::DatabaseInstance
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -613,15 +598,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Imports data into a Cloud SQL instance from a MySQL dump file in Google Cloud
         # Storage.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
-        # @param [Google::Apis::SqladminV1beta4::InstancesImportRequest] instances_import_request
-        #   
+        # @param [Google::Apis::SqladminV1beta4::ImportRequest] instances_import_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -631,7 +614,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -643,12 +626,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_instance(project, instance, instances_import_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def import_instance(project, instance, instances_import_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/import'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::SqladminV1beta4::InstancesImportRequestRepresentation
-          command.request_object = instances_import_request
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.request_representation = Google::Apis::SqladminV1beta4::ImportRequest::Representation
+          command.request_object = instances_import_request_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -658,13 +641,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates a new Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project to which the newly created Cloud SQL instances
         #   should belong.
-        # @param [Google::Apis::SqladminV1beta4::DatabaseInstance] database_instance
-        #   
+        # @param [Google::Apis::SqladminV1beta4::DatabaseInstance] database_instance_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -674,7 +655,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -686,12 +667,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_instance(project, database_instance = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_instance(project, database_instance_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::SqladminV1beta4::DatabaseInstanceRepresentation
-          command.request_object = database_instance
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.request_representation = Google::Apis::SqladminV1beta4::DatabaseInstance::Representation
+          command.request_object = database_instance_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -699,7 +680,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists instances under a given project in the alphabetical order of the
         # instance name.
@@ -719,7 +699,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -734,7 +714,7 @@ module Google
         def list_instances(project, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::InstancesListResponseRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::InstancesListResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::InstancesListResponse
           command.params['project'] = project unless project.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -745,7 +725,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates settings of a Cloud SQL instance. Caution: This is not a partial
         # update, so you must include values for all the settings that you want to
         # retain. For partial updates, use patch.. This method supports patch semantics.
@@ -753,8 +732,7 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
-        # @param [Google::Apis::SqladminV1beta4::DatabaseInstance] database_instance
-        #   
+        # @param [Google::Apis::SqladminV1beta4::DatabaseInstance] database_instance_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -764,7 +742,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -776,12 +754,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_instance(project, instance, database_instance = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_instance(project, instance, database_instance_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::SqladminV1beta4::DatabaseInstanceRepresentation
-          command.request_object = database_instance
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.request_representation = Google::Apis::SqladminV1beta4::DatabaseInstance::Representation
+          command.request_object = database_instance_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -790,7 +768,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Promotes the read replica instance to be a stand-alone Cloud SQL instance.
         # @param [String] project
@@ -806,7 +783,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -821,7 +798,7 @@ module Google
         def promote_replica_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/promoteReplica'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -830,7 +807,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Deletes all client certificates and generates a new server SSL certificate for
         # the instance. The changes will not take effect until the instance is restarted.
@@ -849,7 +825,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -864,7 +840,7 @@ module Google
         def reset_ssl_config_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/resetSslConfig'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -873,7 +849,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Restarts a Cloud SQL instance.
         # @param [String] project
@@ -889,7 +864,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -904,7 +879,7 @@ module Google
         def restart_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/restart'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -914,14 +889,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Restores a backup of a Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
-        # @param [Google::Apis::SqladminV1beta4::InstancesRestoreBackupRequest] instances_restore_backup_request
-        #   
+        # @param [Google::Apis::SqladminV1beta4::RestoreBackupRequest] instances_restore_backup_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -931,7 +904,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -943,12 +916,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def restore_backup_instance(project, instance, instances_restore_backup_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def restore_backup_instance(project, instance, instances_restore_backup_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/restoreBackup'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::SqladminV1beta4::InstancesRestoreBackupRequestRepresentation
-          command.request_object = instances_restore_backup_request
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.request_representation = Google::Apis::SqladminV1beta4::RestoreBackupRequest::Representation
+          command.request_object = instances_restore_backup_request_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -957,7 +930,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Starts the replication in the read replica instance.
         # @param [String] project
@@ -973,7 +945,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -988,7 +960,7 @@ module Google
         def start_replica_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/startReplica'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -997,7 +969,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Stops the replication in the read replica instance.
         # @param [String] project
@@ -1013,7 +984,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1028,7 +999,7 @@ module Google
         def stop_replica_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/stopReplica'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -1038,7 +1009,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates settings of a Cloud SQL instance. Caution: This is not a partial
         # update, so you must include values for all the settings that you want to
         # retain. For partial updates, use patch.
@@ -1046,8 +1016,7 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
-        # @param [Google::Apis::SqladminV1beta4::DatabaseInstance] database_instance
-        #   
+        # @param [Google::Apis::SqladminV1beta4::DatabaseInstance] database_instance_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1057,7 +1026,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1069,12 +1038,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_instance(project, instance, database_instance = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_instance(project, instance, database_instance_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::SqladminV1beta4::DatabaseInstanceRepresentation
-          command.request_object = database_instance
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.request_representation = Google::Apis::SqladminV1beta4::DatabaseInstance::Representation
+          command.request_object = database_instance_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -1083,7 +1052,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Retrieves an instance operation that has been performed on an instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
@@ -1098,7 +1067,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1113,7 +1082,7 @@ module Google
         def get_operation(project, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/operations/{operation}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['operation'] = operation unless operation.nil?
@@ -1122,7 +1091,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists all instance operations that have been performed on the given Cloud SQL
         # instance in the reverse chronological order of the start time.
@@ -1144,7 +1112,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1159,7 +1127,7 @@ module Google
         def list_operations(project, instance: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/operations'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationsListResponseRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::OperationsListResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::OperationsListResponse
           command.params['project'] = project unless project.nil?
           command.query['instance'] = instance unless instance.nil?
@@ -1170,7 +1138,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Deletes the SSL certificate. The change will not take effect until the
         # instance is restarted.
         # @param [String] project
@@ -1188,7 +1156,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1203,7 +1171,7 @@ module Google
         def delete_ssl_cert(project, instance, sha1_fingerprint, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}'
           command =  make_simple_command(:delete, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -1213,7 +1181,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves a particular SSL certificate. Does not include the private key (
         # required for usage). The private key must be saved from the response to
@@ -1233,7 +1200,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1248,7 +1215,7 @@ module Google
         def get_ssl_cert(project, instance, sha1_fingerprint, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::SslCertRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::SslCert::Representation
           command.response_class = Google::Apis::SqladminV1beta4::SslCert
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -1259,7 +1226,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates an SSL certificate and returns it along with the private key and
         # server certificate authority. The new certificate will not be usable until the
         # instance is restarted.
@@ -1268,8 +1234,7 @@ module Google
         #   should belong.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
-        # @param [Google::Apis::SqladminV1beta4::SslCertsInsertRequest] ssl_certs_insert_request
-        #   
+        # @param [Google::Apis::SqladminV1beta4::InsertRequest] ssl_certs_insert_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1279,25 +1244,25 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SqladminV1beta4::SslCertsInsertResponse] parsed result object
+        # @yieldparam result [Google::Apis::SqladminV1beta4::InsertResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::SqladminV1beta4::SslCertsInsertResponse]
+        # @return [Google::Apis::SqladminV1beta4::InsertResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_ssl_cert(project, instance, ssl_certs_insert_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_ssl_cert(project, instance, ssl_certs_insert_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/sslCerts'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::SqladminV1beta4::SslCertsInsertRequestRepresentation
-          command.request_object = ssl_certs_insert_request
-          command.response_representation = Google::Apis::SqladminV1beta4::SslCertsInsertResponseRepresentation
-          command.response_class = Google::Apis::SqladminV1beta4::SslCertsInsertResponse
+          command.request_representation = Google::Apis::SqladminV1beta4::InsertRequest::Representation
+          command.request_object = ssl_certs_insert_request_object
+          command.response_representation = Google::Apis::SqladminV1beta4::InsertResponse::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::InsertResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1305,7 +1270,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists all of the current SSL certificates for the instance.
         # @param [String] project
@@ -1321,7 +1285,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1336,7 +1300,7 @@ module Google
         def list_ssl_certs(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/sslCerts'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::SslCertsListResponseRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::SslCertsListResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::SslCertsListResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -1345,7 +1309,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Lists all available service tiers for Google Cloud SQL, for example D1, D2.
         # For related information, see Pricing.
         # @param [String] project
@@ -1359,7 +1323,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1374,7 +1338,7 @@ module Google
         def list_tiers(project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/tiers'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::TiersListResponseRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::TiersListResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::TiersListResponse
           command.params['project'] = project unless project.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1382,7 +1346,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Deletes a user from a Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
@@ -1401,7 +1365,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1416,7 +1380,7 @@ module Google
         def delete_user(project, instance, host: nil, name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/users'
           command =  make_simple_command(:delete, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -1428,14 +1392,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates a new user in a Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Database instance ID. This does not include the project ID.
-        # @param [Google::Apis::SqladminV1beta4::User] user
-        #   
+        # @param [Google::Apis::SqladminV1beta4::User] user_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1445,7 +1407,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1457,12 +1419,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_user(project, instance, user = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_user(project, instance, user_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/users'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::SqladminV1beta4::UserRepresentation
-          command.request_object = user
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.request_representation = Google::Apis::SqladminV1beta4::User::Representation
+          command.request_object = user_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -1471,7 +1433,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists users in the specified Cloud SQL instance.
         # @param [String] project
@@ -1487,7 +1448,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1502,7 +1463,7 @@ module Google
         def list_users(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/users'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::SqladminV1beta4::UsersListResponseRepresentation
+          command.response_representation = Google::Apis::SqladminV1beta4::UsersListResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::UsersListResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
@@ -1512,14 +1473,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates an existing user in a Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Database instance ID. This does not include the project ID.
-        # @param [Google::Apis::SqladminV1beta4::User] user
-        #   
+        # @param [Google::Apis::SqladminV1beta4::User] user_object
         # @param [String] host
         #   Host of the user in the instance.
         # @param [String] name
@@ -1533,7 +1492,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1545,12 +1504,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user(project, instance, user = nil, host: nil, name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_user(project, instance, user_object = nil, host: nil, name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/users'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::SqladminV1beta4::UserRepresentation
-          command.request_object = user
-          command.response_representation = Google::Apis::SqladminV1beta4::OperationRepresentation
+          command.request_representation = Google::Apis::SqladminV1beta4::User::Representation
+          command.request_object = user_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?

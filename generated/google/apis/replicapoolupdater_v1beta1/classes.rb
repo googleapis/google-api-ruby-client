@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ReplicapoolupdaterV1beta1
-
+      
       # Update of a single instance.
       class InstanceUpdate
         include Google::Apis::Core::Hashable
@@ -52,10 +52,16 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @error = args[:error] unless args[:error].nil?
           @instance = args[:instance] unless args[:instance].nil?
           @status = args[:status] unless args[:status].nil?
         end
+        
         # Errors that occurred during the instance update.
         class Error
           include Google::Apis::Core::Hashable
@@ -66,8 +72,14 @@ module Google
           attr_accessor :errors
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @errors = args[:errors] unless args[:errors].nil?
           end
+          
           # 
           class Error
             include Google::Apis::Core::Hashable
@@ -89,6 +101,11 @@ module Google
             attr_accessor :message
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @code = args[:code] unless args[:code].nil?
               @location = args[:location] unless args[:location].nil?
               @message = args[:message] unless args[:message].nil?
@@ -96,7 +113,7 @@ module Google
           end
         end
       end
-
+      
       # Response returned by ListInstanceUpdates method.
       class InstanceUpdateList
         include Google::Apis::Core::Hashable
@@ -122,13 +139,18 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # An operation resource, used to manage asynchronous API requests.
       class Operation
         include Google::Apis::Core::Hashable
@@ -251,6 +273,11 @@ module Google
         attr_accessor :zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @client_operation_id = args[:client_operation_id] unless args[:client_operation_id].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @end_time = args[:end_time] unless args[:end_time].nil?
@@ -274,6 +301,7 @@ module Google
           @warnings = args[:warnings] unless args[:warnings].nil?
           @zone = args[:zone] unless args[:zone].nil?
         end
+        
         # [Output Only] If errors occurred during processing of this operation, this
         # field will be populated.
         class Error
@@ -285,8 +313,14 @@ module Google
           attr_accessor :errors
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @errors = args[:errors] unless args[:errors].nil?
           end
+          
           # 
           class Error
             include Google::Apis::Core::Hashable
@@ -308,12 +342,18 @@ module Google
             attr_accessor :message
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @code = args[:code] unless args[:code].nil?
               @location = args[:location] unless args[:location].nil?
               @message = args[:message] unless args[:message].nil?
             end
           end
         end
+        
         # 
         class Warning
           include Google::Apis::Core::Hashable
@@ -334,10 +374,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -353,13 +399,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # The following represents a resource describing a single update (rollout) of a
       # group of instances to the given template.
       class RollingUpdate
@@ -461,6 +512,11 @@ module Google
         attr_accessor :user
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @action_type = args[:action_type] unless args[:action_type].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
@@ -477,6 +533,7 @@ module Google
           @status_message = args[:status_message] unless args[:status_message].nil?
           @user = args[:user] unless args[:user].nil?
         end
+        
         # [Output Only] Errors that occurred during the rolling update.
         class Error
           include Google::Apis::Core::Hashable
@@ -487,8 +544,14 @@ module Google
           attr_accessor :errors
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @errors = args[:errors] unless args[:errors].nil?
           end
+          
           # 
           class Error
             include Google::Apis::Core::Hashable
@@ -510,12 +573,18 @@ module Google
             attr_accessor :message
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @code = args[:code] unless args[:code].nil?
               @location = args[:location] unless args[:location].nil?
               @message = args[:message] unless args[:message].nil?
             end
           end
         end
+        
         # Parameters of the update process.
         class Policy
           include Google::Apis::Core::Hashable
@@ -558,6 +627,11 @@ module Google
           attr_accessor :min_instance_update_time_sec
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @auto_pause_after_instances = args[:auto_pause_after_instances] unless args[:auto_pause_after_instances].nil?
             @instance_startup_timeout_sec = args[:instance_startup_timeout_sec] unless args[:instance_startup_timeout_sec].nil?
             @max_num_concurrent_instances = args[:max_num_concurrent_instances] unless args[:max_num_concurrent_instances].nil?
@@ -566,7 +640,7 @@ module Google
           end
         end
       end
-
+      
       # Response returned by List method.
       class RollingUpdateList
         include Google::Apis::Core::Hashable
@@ -592,6 +666,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?

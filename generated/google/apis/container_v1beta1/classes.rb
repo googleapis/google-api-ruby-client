@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ContainerV1beta1
-
+      
       # 
       class Cluster
         include Google::Apis::Core::Hashable
@@ -68,7 +68,8 @@ module Google
         # @return [String]
         attr_accessor :endpoint
       
-        # The authentication information for accessing the master.
+        # The authentication information for accessing the master. Authentication is
+        # either done using HTTP basic authentication or using a bearer token.
         # Corresponds to the JSON property `masterAuth`
         # @return [Google::Apis::ContainerV1beta1::MasterAuth]
         attr_accessor :master_auth
@@ -138,6 +139,11 @@ module Google
         attr_accessor :zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cluster_api_version = args[:cluster_api_version] unless args[:cluster_api_version].nil?
           @container_ipv4_cidr = args[:container_ipv4_cidr] unless args[:container_ipv4_cidr].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
@@ -157,7 +163,7 @@ module Google
           @zone = args[:zone] unless args[:zone].nil?
         end
       end
-
+      
       # 
       class CreateClusterRequest
         include Google::Apis::Core::Hashable
@@ -168,10 +174,15 @@ module Google
         attr_accessor :cluster
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cluster = args[:cluster] unless args[:cluster].nil?
         end
       end
-
+      
       # 
       class ListAggregatedClustersResponse
         include Google::Apis::Core::Hashable
@@ -182,10 +193,15 @@ module Google
         attr_accessor :clusters
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @clusters = args[:clusters] unless args[:clusters].nil?
         end
       end
-
+      
       # 
       class ListAggregatedOperationsResponse
         include Google::Apis::Core::Hashable
@@ -196,10 +212,15 @@ module Google
         attr_accessor :operations
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @operations = args[:operations] unless args[:operations].nil?
         end
       end
-
+      
       # 
       class ListClustersResponse
         include Google::Apis::Core::Hashable
@@ -210,10 +231,15 @@ module Google
         attr_accessor :clusters
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @clusters = args[:clusters] unless args[:clusters].nil?
         end
       end
-
+      
       # 
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -224,10 +250,15 @@ module Google
         attr_accessor :operations
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @operations = args[:operations] unless args[:operations].nil?
         end
       end
-
+      
       # The authentication information for accessing the master. Authentication is
       # either done using HTTP basic authentication or using a bearer token.
       class MasterAuth
@@ -254,12 +285,17 @@ module Google
         attr_accessor :user
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bearer_token = args[:bearer_token] unless args[:bearer_token].nil?
           @password = args[:password] unless args[:password].nil?
           @user = args[:user] unless args[:user].nil?
         end
       end
-
+      
       # 
       class NodeConfig
         include Google::Apis::Core::Hashable
@@ -291,12 +327,17 @@ module Google
         attr_accessor :source_image
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @machine_type = args[:machine_type] unless args[:machine_type].nil?
           @service_accounts = args[:service_accounts] unless args[:service_accounts].nil?
           @source_image = args[:source_image] unless args[:source_image].nil?
         end
       end
-
+      
       # Defines the operation resource. All fields are output only.
       class Operation
         include Google::Apis::Core::Hashable
@@ -345,6 +386,11 @@ module Google
         attr_accessor :zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @error_message = args[:error_message] unless args[:error_message].nil?
           @name = args[:name] unless args[:name].nil?
           @operation_type = args[:operation_type] unless args[:operation_type].nil?
@@ -355,7 +401,7 @@ module Google
           @zone = args[:zone] unless args[:zone].nil?
         end
       end
-
+      
       # A Compute Engine service account.
       class ServiceAccount
         include Google::Apis::Core::Hashable
@@ -371,11 +417,16 @@ module Google
         attr_accessor :scopes
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @email = args[:email] unless args[:email].nil?
           @scopes = args[:scopes] unless args[:scopes].nil?
         end
       end
-
+      
       # 
       class Token
         include Google::Apis::Core::Hashable
@@ -391,6 +442,11 @@ module Google
         attr_accessor :expiry_time_seconds
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @access_token = args[:access_token] unless args[:access_token].nil?
           @expiry_time_seconds = args[:expiry_time_seconds] unless args[:expiry_time_seconds].nil?
         end

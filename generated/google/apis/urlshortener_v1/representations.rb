@@ -22,83 +22,89 @@ module Google
   module Apis
     module UrlshortenerV1
       
-      class AnalyticsSnapshotRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AnalyticsSnapshot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AnalyticsSummaryRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AnalyticsSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class StringCountRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class StringCount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UrlRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Url
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class HistoryRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class History
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class AnalyticsSnapshotRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :browsers, as: 'browsers', class: Google::Apis::UrlshortenerV1::StringCount, decorator: Google::Apis::UrlshortenerV1::StringCountRepresentation
-        
-        
-        collection :countries, as: 'countries', class: Google::Apis::UrlshortenerV1::StringCount, decorator: Google::Apis::UrlshortenerV1::StringCountRepresentation
-        
-        
-        property :long_url_clicks, as: 'longUrlClicks'
-        collection :platforms, as: 'platforms', class: Google::Apis::UrlshortenerV1::StringCount, decorator: Google::Apis::UrlshortenerV1::StringCountRepresentation
-        
-        
-        collection :referrers, as: 'referrers', class: Google::Apis::UrlshortenerV1::StringCount, decorator: Google::Apis::UrlshortenerV1::StringCountRepresentation
-        
-        
-        property :short_url_clicks, as: 'shortUrlClicks'
+      class AnalyticsSnapshot
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :browsers, as: 'browsers', class: Google::Apis::UrlshortenerV1::StringCount, decorator: Google::Apis::UrlshortenerV1::StringCount::Representation
+      
+          collection :countries, as: 'countries', class: Google::Apis::UrlshortenerV1::StringCount, decorator: Google::Apis::UrlshortenerV1::StringCount::Representation
+      
+          property :long_url_clicks, as: 'longUrlClicks'
+          collection :platforms, as: 'platforms', class: Google::Apis::UrlshortenerV1::StringCount, decorator: Google::Apis::UrlshortenerV1::StringCount::Representation
+      
+          collection :referrers, as: 'referrers', class: Google::Apis::UrlshortenerV1::StringCount, decorator: Google::Apis::UrlshortenerV1::StringCount::Representation
+      
+          property :short_url_clicks, as: 'shortUrlClicks'
+        end
       end
-
+      
       # @private
-      class AnalyticsSummaryRepresentation < Google::Apis::Core::JsonRepresentation
-        property :all_time, as: 'allTime', class: Google::Apis::UrlshortenerV1::AnalyticsSnapshot, decorator: Google::Apis::UrlshortenerV1::AnalyticsSnapshotRepresentation
-        
-        property :day, as: 'day', class: Google::Apis::UrlshortenerV1::AnalyticsSnapshot, decorator: Google::Apis::UrlshortenerV1::AnalyticsSnapshotRepresentation
-        
-        property :month, as: 'month', class: Google::Apis::UrlshortenerV1::AnalyticsSnapshot, decorator: Google::Apis::UrlshortenerV1::AnalyticsSnapshotRepresentation
-        
-        property :two_hours, as: 'twoHours', class: Google::Apis::UrlshortenerV1::AnalyticsSnapshot, decorator: Google::Apis::UrlshortenerV1::AnalyticsSnapshotRepresentation
-        
-        property :week, as: 'week', class: Google::Apis::UrlshortenerV1::AnalyticsSnapshot, decorator: Google::Apis::UrlshortenerV1::AnalyticsSnapshotRepresentation
+      class AnalyticsSummary
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_time, as: 'allTime', class: Google::Apis::UrlshortenerV1::AnalyticsSnapshot, decorator: Google::Apis::UrlshortenerV1::AnalyticsSnapshot::Representation
+      
+          property :day, as: 'day', class: Google::Apis::UrlshortenerV1::AnalyticsSnapshot, decorator: Google::Apis::UrlshortenerV1::AnalyticsSnapshot::Representation
+      
+          property :month, as: 'month', class: Google::Apis::UrlshortenerV1::AnalyticsSnapshot, decorator: Google::Apis::UrlshortenerV1::AnalyticsSnapshot::Representation
+      
+          property :two_hours, as: 'twoHours', class: Google::Apis::UrlshortenerV1::AnalyticsSnapshot, decorator: Google::Apis::UrlshortenerV1::AnalyticsSnapshot::Representation
+      
+          property :week, as: 'week', class: Google::Apis::UrlshortenerV1::AnalyticsSnapshot, decorator: Google::Apis::UrlshortenerV1::AnalyticsSnapshot::Representation
+      
+        end
       end
-
+      
       # @private
-      class StringCountRepresentation < Google::Apis::Core::JsonRepresentation
-        property :count, as: 'count'
-        property :id, as: 'id'
+      class StringCount
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, as: 'count'
+          property :id, as: 'id'
+        end
       end
-
+      
       # @private
-      class UrlRepresentation < Google::Apis::Core::JsonRepresentation
-        property :analytics, as: 'analytics', class: Google::Apis::UrlshortenerV1::AnalyticsSummary, decorator: Google::Apis::UrlshortenerV1::AnalyticsSummaryRepresentation
-        
-        property :created, as: 'created'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :long_url, as: 'longUrl'
-        property :status, as: 'status'
+      class Url
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analytics, as: 'analytics', class: Google::Apis::UrlshortenerV1::AnalyticsSummary, decorator: Google::Apis::UrlshortenerV1::AnalyticsSummary::Representation
+      
+          property :created, as: 'created'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :long_url, as: 'longUrl'
+          property :status, as: 'status'
+        end
       end
-
+      
       # @private
-      class HistoryRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::UrlshortenerV1::Url, decorator: Google::Apis::UrlshortenerV1::UrlRepresentation
-        
-        
-        property :items_per_page, as: 'itemsPerPage'
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-        property :total_items, as: 'totalItems'
+      class History
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::UrlshortenerV1::Url, decorator: Google::Apis::UrlshortenerV1::Url::Representation
+      
+          property :items_per_page, as: 'itemsPerPage'
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :total_items, as: 'totalItems'
+        end
       end
     end
   end

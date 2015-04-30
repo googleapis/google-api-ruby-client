@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/+/domains/
       class PlusDomainsService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'plusDomains/v1/')
         end
-
+        
         # Get an activity.
         # @param [String] activity_id
         #   The ID of the activity to get.
@@ -65,7 +64,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -80,7 +79,7 @@ module Google
         def get_activity(activity_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activities/{activityId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusDomainsV1::ActivityRepresentation
+          command.response_representation = Google::Apis::PlusDomainsV1::Activity::Representation
           command.response_class = Google::Apis::PlusDomainsV1::Activity
           command.params['activityId'] = activity_id unless activity_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -89,13 +88,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a new activity for the authenticated user.
         # @param [String] user_id
         #   The ID of the user to create the activity on behalf of. Its value should be "
         #   me", to indicate the authenticated user.
-        # @param [Google::Apis::PlusDomainsV1::Activity] activity
-        #   
+        # @param [Google::Apis::PlusDomainsV1::Activity] activity_object
         # @param [Boolean] preview
         #   If "true", extract the potential media attachments for a URL. The response
         #   will include all possible attachments for a URL, including video, photos, and
@@ -109,7 +106,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -121,12 +118,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_activity(user_id, activity = nil, preview: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_activity(user_id, activity_object = nil, preview: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people/{userId}/activities'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::PlusDomainsV1::ActivityRepresentation
-          command.request_object = activity
-          command.response_representation = Google::Apis::PlusDomainsV1::ActivityRepresentation
+          command.request_representation = Google::Apis::PlusDomainsV1::Activity::Representation
+          command.request_object = activity_object
+          command.response_representation = Google::Apis::PlusDomainsV1::Activity::Representation
           command.response_class = Google::Apis::PlusDomainsV1::Activity
           command.params['userId'] = user_id unless user_id.nil?
           command.query['preview'] = preview unless preview.nil?
@@ -135,7 +132,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all of the activities in the specified collection for a particular user.
         # @param [String] user_id
@@ -160,7 +156,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -175,7 +171,7 @@ module Google
         def list_activities(user_id, collection, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people/{userId}/activities/{collection}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusDomainsV1::ActivityFeedRepresentation
+          command.response_representation = Google::Apis::PlusDomainsV1::ActivityFeed::Representation
           command.response_class = Google::Apis::PlusDomainsV1::ActivityFeed
           command.params['userId'] = user_id unless user_id.nil?
           command.params['collection'] = collection unless collection.nil?
@@ -186,7 +182,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # List all of the audiences to which a user can share.
         # @param [String] user_id
         #   The ID of the user to get audiences for. The special value "me" can be used to
@@ -208,14 +204,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PlusDomainsV1::AudiencesFeed] parsed result object
+        # @yieldparam result [Google::Apis::PlusDomainsV1::Feed] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::PlusDomainsV1::AudiencesFeed]
+        # @return [Google::Apis::PlusDomainsV1::Feed]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -223,8 +219,8 @@ module Google
         def list_audiences(user_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people/{userId}/audiences'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusDomainsV1::AudiencesFeedRepresentation
-          command.response_class = Google::Apis::PlusDomainsV1::AudiencesFeed
+          command.response_representation = Google::Apis::PlusDomainsV1::Feed::Representation
+          command.response_class = Google::Apis::PlusDomainsV1::Feed
           command.params['userId'] = user_id unless user_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -233,7 +229,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Add a person to a circle. Google+ limits certain circle operations, including
         # the number of circle adds. Learn More.
         # @param [String] circle_id
@@ -251,7 +247,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -266,7 +262,7 @@ module Google
         def add_people_circle(circle_id, email: nil, user_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'circles/{circleId}/people'
           command =  make_simple_command(:put, path, options)
-          command.response_representation = Google::Apis::PlusDomainsV1::CircleRepresentation
+          command.response_representation = Google::Apis::PlusDomainsV1::Circle::Representation
           command.response_class = Google::Apis::PlusDomainsV1::Circle
           command.params['circleId'] = circle_id unless circle_id.nil?
           command.query['email'] = email unless email.nil?
@@ -276,7 +272,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Get a circle.
         # @param [String] circle_id
@@ -290,7 +285,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -305,7 +300,7 @@ module Google
         def get_circle(circle_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'circles/{circleId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusDomainsV1::CircleRepresentation
+          command.response_representation = Google::Apis::PlusDomainsV1::Circle::Representation
           command.response_class = Google::Apis::PlusDomainsV1::Circle
           command.params['circleId'] = circle_id unless circle_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -314,13 +309,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a new circle for the authenticated user.
         # @param [String] user_id
         #   The ID of the user to create the circle on behalf of. The value "me" can be
         #   used to indicate the authenticated user.
-        # @param [Google::Apis::PlusDomainsV1::Circle] circle
-        #   
+        # @param [Google::Apis::PlusDomainsV1::Circle] circle_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -330,7 +323,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -342,12 +335,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_circle(user_id, circle = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_circle(user_id, circle_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people/{userId}/circles'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::PlusDomainsV1::CircleRepresentation
-          command.request_object = circle
-          command.response_representation = Google::Apis::PlusDomainsV1::CircleRepresentation
+          command.request_representation = Google::Apis::PlusDomainsV1::Circle::Representation
+          command.request_object = circle_object
+          command.response_representation = Google::Apis::PlusDomainsV1::Circle::Representation
           command.response_class = Google::Apis::PlusDomainsV1::Circle
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -355,7 +348,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all of the circles for a user.
         # @param [String] user_id
@@ -378,7 +370,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -393,7 +385,7 @@ module Google
         def list_circles(user_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people/{userId}/circles'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusDomainsV1::CircleFeedRepresentation
+          command.response_representation = Google::Apis::PlusDomainsV1::CircleFeed::Representation
           command.response_class = Google::Apis::PlusDomainsV1::CircleFeed
           command.params['userId'] = user_id unless user_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -404,12 +396,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Update a circle's description. This method supports patch semantics.
         # @param [String] circle_id
         #   The ID of the circle to update.
-        # @param [Google::Apis::PlusDomainsV1::Circle] circle
-        #   
+        # @param [Google::Apis::PlusDomainsV1::Circle] circle_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -419,7 +409,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -431,12 +421,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_circle(circle_id, circle = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_circle(circle_id, circle_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'circles/{circleId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::PlusDomainsV1::CircleRepresentation
-          command.request_object = circle
-          command.response_representation = Google::Apis::PlusDomainsV1::CircleRepresentation
+          command.request_representation = Google::Apis::PlusDomainsV1::Circle::Representation
+          command.request_object = circle_object
+          command.response_representation = Google::Apis::PlusDomainsV1::Circle::Representation
           command.response_class = Google::Apis::PlusDomainsV1::Circle
           command.params['circleId'] = circle_id unless circle_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -444,7 +434,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Delete a circle.
         # @param [String] circle_id
@@ -458,7 +447,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -480,7 +469,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Remove a person from a circle.
         # @param [String] circle_id
         #   The ID of the circle to remove the person from.
@@ -497,7 +485,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -521,12 +509,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Update a circle's description.
         # @param [String] circle_id
         #   The ID of the circle to update.
-        # @param [Google::Apis::PlusDomainsV1::Circle] circle
-        #   
+        # @param [Google::Apis::PlusDomainsV1::Circle] circle_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -536,7 +522,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -548,12 +534,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_circle(circle_id, circle = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_circle(circle_id, circle_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'circles/{circleId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::PlusDomainsV1::CircleRepresentation
-          command.request_object = circle
-          command.response_representation = Google::Apis::PlusDomainsV1::CircleRepresentation
+          command.request_representation = Google::Apis::PlusDomainsV1::Circle::Representation
+          command.request_object = circle_object
+          command.response_representation = Google::Apis::PlusDomainsV1::Circle::Representation
           command.response_class = Google::Apis::PlusDomainsV1::Circle
           command.params['circleId'] = circle_id unless circle_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -561,7 +547,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Get a comment.
         # @param [String] comment_id
         #   The ID of the comment to get.
@@ -574,7 +560,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -589,7 +575,7 @@ module Google
         def get_comment(comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'comments/{commentId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusDomainsV1::CommentRepresentation
+          command.response_representation = Google::Apis::PlusDomainsV1::Comment::Representation
           command.response_class = Google::Apis::PlusDomainsV1::Comment
           command.params['commentId'] = comment_id unless comment_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -598,12 +584,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a new comment in reply to an activity.
         # @param [String] activity_id
         #   The ID of the activity to reply to.
-        # @param [Google::Apis::PlusDomainsV1::Comment] comment
-        #   
+        # @param [Google::Apis::PlusDomainsV1::Comment] comment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -613,7 +597,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -625,12 +609,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_comment(activity_id, comment = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_comment(activity_id, comment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activities/{activityId}/comments'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::PlusDomainsV1::CommentRepresentation
-          command.request_object = comment
-          command.response_representation = Google::Apis::PlusDomainsV1::CommentRepresentation
+          command.request_representation = Google::Apis::PlusDomainsV1::Comment::Representation
+          command.request_object = comment_object
+          command.response_representation = Google::Apis::PlusDomainsV1::Comment::Representation
           command.response_class = Google::Apis::PlusDomainsV1::Comment
           command.params['activityId'] = activity_id unless activity_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -638,7 +622,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all of the comments for an activity.
         # @param [String] activity_id
@@ -662,7 +645,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -677,7 +660,7 @@ module Google
         def list_comments(activity_id, max_results: nil, page_token: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activities/{activityId}/comments'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusDomainsV1::CommentFeedRepresentation
+          command.response_representation = Google::Apis::PlusDomainsV1::CommentFeed::Representation
           command.response_class = Google::Apis::PlusDomainsV1::CommentFeed
           command.params['activityId'] = activity_id unless activity_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -688,7 +671,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Add a new media item to an album. The current upload size limitations are 36MB
         # for a photo and 1GB for a video. Uploads do not count against quota if photos
         # are less than 2048 pixels on their longest side or videos are less than 15
@@ -696,9 +679,7 @@ module Google
         # @param [String] user_id
         #   The ID of the user to create the activity on behalf of.
         # @param [String] collection
-        #   
-        # @param [Google::Apis::PlusDomainsV1::Media] media
-        #   
+        # @param [Google::Apis::PlusDomainsV1::Media] media_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -712,7 +693,7 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -724,7 +705,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_medium(user_id, collection, media = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_medium(user_id, collection, media_object = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'people/{userId}/media/{collection}'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -733,9 +714,9 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.request_representation = Google::Apis::PlusDomainsV1::MediaRepresentation
-          command.request_object = media
-          command.response_representation = Google::Apis::PlusDomainsV1::MediaRepresentation
+          command.request_representation = Google::Apis::PlusDomainsV1::Media::Representation
+          command.request_object = media_object
+          command.response_representation = Google::Apis::PlusDomainsV1::Media::Representation
           command.response_class = Google::Apis::PlusDomainsV1::Media
           command.params['userId'] = user_id unless user_id.nil?
           command.params['collection'] = collection unless collection.nil?
@@ -744,7 +725,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Get a person's profile.
         # @param [String] user_id
         #   The ID of the person to get the profile for. The special value "me" can be
@@ -758,7 +739,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -773,7 +754,7 @@ module Google
         def get_person(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people/{userId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusDomainsV1::PersonRepresentation
+          command.response_representation = Google::Apis::PlusDomainsV1::Person::Representation
           command.response_class = Google::Apis::PlusDomainsV1::Person
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -781,7 +762,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all of the people in the specified collection.
         # @param [String] user_id
@@ -808,7 +788,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -823,7 +803,7 @@ module Google
         def list_people(user_id, collection, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people/{userId}/people/{collection}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusDomainsV1::PeopleFeedRepresentation
+          command.response_representation = Google::Apis::PlusDomainsV1::PeopleFeed::Representation
           command.response_class = Google::Apis::PlusDomainsV1::PeopleFeed
           command.params['userId'] = user_id unless user_id.nil?
           command.params['collection'] = collection unless collection.nil?
@@ -835,7 +815,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all of the people in the specified collection for a particular activity.
         # @param [String] activity_id
@@ -859,7 +838,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -874,7 +853,7 @@ module Google
         def list_by_activity_person(activity_id, collection, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activities/{activityId}/people/{collection}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusDomainsV1::PeopleFeedRepresentation
+          command.response_representation = Google::Apis::PlusDomainsV1::PeopleFeed::Representation
           command.response_class = Google::Apis::PlusDomainsV1::PeopleFeed
           command.params['activityId'] = activity_id unless activity_id.nil?
           command.params['collection'] = collection unless collection.nil?
@@ -885,7 +864,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List all of the people who are members of a circle.
         # @param [String] circle_id
@@ -907,7 +885,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -922,7 +900,7 @@ module Google
         def list_by_circle_person(circle_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'circles/{circleId}/people'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusDomainsV1::PeopleFeedRepresentation
+          command.response_representation = Google::Apis::PlusDomainsV1::PeopleFeed::Representation
           command.response_class = Google::Apis::PlusDomainsV1::PeopleFeed
           command.params['circleId'] = circle_id unless circle_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?

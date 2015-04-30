@@ -22,455 +22,514 @@ module Google
   module Apis
     module ManagerV1beta2
       
-      class AccessConfigRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AccessConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ActionRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Action
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AllowedRuleRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AllowedRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AutoscalingModuleRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AutoscalingModule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AutoscalingModuleStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AutoscalingModuleStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DeployStateRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class DeployState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DeploymentRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Deployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DeploymentsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DiskAttachmentRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class DiskAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EnvVariableRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class EnvVariable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ExistingDiskRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ExistingDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class FirewallModuleRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class FirewallModule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class FirewallModuleStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class FirewallModuleStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class HealthCheckModuleRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class HealthCheckModule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class HealthCheckModuleStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class HealthCheckModuleStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LbModuleRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class LbModule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LbModuleStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class LbModuleStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class MetadataRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Metadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class MetadataItemRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class MetadataItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ModuleRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Module
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ModuleStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ModuleStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class NetworkInterfaceRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class NetworkInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class NetworkModuleRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class NetworkModule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class NetworkModuleStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class NetworkModuleStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class NewDiskRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class NewDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class NewDiskInitializeParamsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class NewDiskInitializeParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ParamOverrideRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ParamOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ReplicaPoolModuleRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ReplicaPoolModule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ReplicaPoolModuleStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ReplicaPoolModuleStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ReplicaPoolParamsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ReplicaPoolParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ReplicaPoolParamsV1Beta1Representation < Google::Apis::Core::JsonRepresentation
-        
+      class ReplicaPoolParamsV1Beta1
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ServiceAccountRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ServiceAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TagRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Tag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TemplateRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Template
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TemplatesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class TemplatesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class AccessConfigRepresentation < Google::Apis::Core::JsonRepresentation
-        property :name, as: 'name'
-        property :nat_ip, as: 'natIp'
-        property :type, as: 'type'
+      class AccessConfig
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :nat_ip, as: 'natIp'
+          property :type, as: 'type'
+        end
       end
-
+      
       # @private
-      class ActionRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :commands, as: 'commands'
-        
-        property :timeout_ms, as: 'timeoutMs'
+      class Action
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :commands, as: 'commands'
+          property :timeout_ms, as: 'timeoutMs'
+        end
       end
-
+      
       # @private
-      class AllowedRuleRepresentation < Google::Apis::Core::JsonRepresentation
-        property :ip_protocol, as: 'IPProtocol'
-        collection :ports, as: 'ports'
+      class AllowedRule
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_protocol, as: 'IPProtocol'
+          collection :ports, as: 'ports'
+        end
       end
-
+      
       # @private
-      class AutoscalingModuleRepresentation < Google::Apis::Core::JsonRepresentation
-        property :cool_down_period_sec, as: 'coolDownPeriodSec'
-        property :description, as: 'description'
-        property :max_num_replicas, as: 'maxNumReplicas'
-        property :min_num_replicas, as: 'minNumReplicas'
-        property :signal_type, as: 'signalType'
-        property :target_module, as: 'targetModule'
-        property :target_utilization, as: 'targetUtilization'
+      class AutoscalingModule
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cool_down_period_sec, as: 'coolDownPeriodSec'
+          property :description, as: 'description'
+          property :max_num_replicas, as: 'maxNumReplicas'
+          property :min_num_replicas, as: 'minNumReplicas'
+          property :signal_type, as: 'signalType'
+          property :target_module, as: 'targetModule'
+          property :target_utilization, as: 'targetUtilization'
+        end
       end
-
+      
       # @private
-      class AutoscalingModuleStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        property :autoscaling_config_url, as: 'autoscalingConfigUrl'
+      class AutoscalingModuleStatus
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_config_url, as: 'autoscalingConfigUrl'
+        end
       end
-
+      
       # @private
-      class DeployStateRepresentation < Google::Apis::Core::JsonRepresentation
-        property :details, as: 'details'
-        property :status, as: 'status'
+      class DeployState
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :status, as: 'status'
+        end
       end
-
+      
       # @private
-      class DeploymentRepresentation < Google::Apis::Core::JsonRepresentation
-        property :creation_date, as: 'creationDate'
-        property :description, as: 'description'
-        hash :modules, as: 'modules', class: Google::Apis::ManagerV1beta2::ModuleStatus, decorator: Google::Apis::ManagerV1beta2::ModuleStatusRepresentation
-        
-        
-        property :name, as: 'name'
-        collection :overrides, as: 'overrides', class: Google::Apis::ManagerV1beta2::ParamOverride, decorator: Google::Apis::ManagerV1beta2::ParamOverrideRepresentation
-        
-        
-        property :state, as: 'state', class: Google::Apis::ManagerV1beta2::DeployState, decorator: Google::Apis::ManagerV1beta2::DeployStateRepresentation
-        
-        property :template_name, as: 'templateName'
+      class Deployment
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_date, as: 'creationDate'
+          property :description, as: 'description'
+          hash :modules, as: 'modules', class: Google::Apis::ManagerV1beta2::ModuleStatus, decorator: Google::Apis::ManagerV1beta2::ModuleStatus::Representation
+      
+          property :name, as: 'name'
+          collection :overrides, as: 'overrides', class: Google::Apis::ManagerV1beta2::ParamOverride, decorator: Google::Apis::ManagerV1beta2::ParamOverride::Representation
+      
+          property :state, as: 'state', class: Google::Apis::ManagerV1beta2::DeployState, decorator: Google::Apis::ManagerV1beta2::DeployState::Representation
+      
+          property :template_name, as: 'templateName'
+        end
       end
-
+      
       # @private
-      class DeploymentsListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :next_page_token, as: 'nextPageToken'
-        collection :resources, as: 'resources', class: Google::Apis::ManagerV1beta2::Deployment, decorator: Google::Apis::ManagerV1beta2::DeploymentRepresentation
+      class ListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::ManagerV1beta2::Deployment, decorator: Google::Apis::ManagerV1beta2::Deployment::Representation
+      
+        end
       end
-
+      
       # @private
-      class DiskAttachmentRepresentation < Google::Apis::Core::JsonRepresentation
-        property :device_name, as: 'deviceName'
-        property :index, as: 'index'
+      class DiskAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_name, as: 'deviceName'
+          property :index, as: 'index'
+        end
       end
-
+      
       # @private
-      class EnvVariableRepresentation < Google::Apis::Core::JsonRepresentation
-        property :hidden, as: 'hidden'
-        property :value, as: 'value'
+      class EnvVariable
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hidden, as: 'hidden'
+          property :value, as: 'value'
+        end
       end
-
+      
       # @private
-      class ExistingDiskRepresentation < Google::Apis::Core::JsonRepresentation
-        property :attachment, as: 'attachment', class: Google::Apis::ManagerV1beta2::DiskAttachment, decorator: Google::Apis::ManagerV1beta2::DiskAttachmentRepresentation
-        
-        property :source, as: 'source'
+      class ExistingDisk
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment, as: 'attachment', class: Google::Apis::ManagerV1beta2::DiskAttachment, decorator: Google::Apis::ManagerV1beta2::DiskAttachment::Representation
+      
+          property :source, as: 'source'
+        end
       end
-
+      
       # @private
-      class FirewallModuleRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :allowed, as: 'allowed', class: Google::Apis::ManagerV1beta2::AllowedRule, decorator: Google::Apis::ManagerV1beta2::AllowedRuleRepresentation
-        
-        
-        property :description, as: 'description'
-        property :network, as: 'network'
-        collection :source_ranges, as: 'sourceRanges'
-        
-        collection :source_tags, as: 'sourceTags'
-        
-        collection :target_tags, as: 'targetTags'
+      class FirewallModule
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed, as: 'allowed', class: Google::Apis::ManagerV1beta2::AllowedRule, decorator: Google::Apis::ManagerV1beta2::AllowedRule::Representation
+      
+          property :description, as: 'description'
+          property :network, as: 'network'
+          collection :source_ranges, as: 'sourceRanges'
+          collection :source_tags, as: 'sourceTags'
+          collection :target_tags, as: 'targetTags'
+        end
       end
-
+      
       # @private
-      class FirewallModuleStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        property :firewall_url, as: 'firewallUrl'
+      class FirewallModuleStatus
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :firewall_url, as: 'firewallUrl'
+        end
       end
-
+      
       # @private
-      class HealthCheckModuleRepresentation < Google::Apis::Core::JsonRepresentation
-        property :check_interval_sec, as: 'checkIntervalSec'
-        property :description, as: 'description'
-        property :healthy_threshold, as: 'healthyThreshold'
-        property :host, as: 'host'
-        property :path, as: 'path'
-        property :port, as: 'port'
-        property :timeout_sec, as: 'timeoutSec'
-        property :unhealthy_threshold, as: 'unhealthyThreshold'
+      class HealthCheckModule
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :check_interval_sec, as: 'checkIntervalSec'
+          property :description, as: 'description'
+          property :healthy_threshold, as: 'healthyThreshold'
+          property :host, as: 'host'
+          property :path, as: 'path'
+          property :port, as: 'port'
+          property :timeout_sec, as: 'timeoutSec'
+          property :unhealthy_threshold, as: 'unhealthyThreshold'
+        end
       end
-
+      
       # @private
-      class HealthCheckModuleStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        property :health_check_url, as: 'healthCheckUrl'
+      class HealthCheckModuleStatus
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_check_url, as: 'healthCheckUrl'
+        end
       end
-
+      
       # @private
-      class LbModuleRepresentation < Google::Apis::Core::JsonRepresentation
-        property :description, as: 'description'
-        collection :health_checks, as: 'healthChecks'
-        
-        property :ip_address, as: 'ipAddress'
-        property :ip_protocol, as: 'ipProtocol'
-        property :port_range, as: 'portRange'
-        property :session_affinity, as: 'sessionAffinity'
-        collection :target_modules, as: 'targetModules'
+      class LbModule
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          collection :health_checks, as: 'healthChecks'
+          property :ip_address, as: 'ipAddress'
+          property :ip_protocol, as: 'ipProtocol'
+          property :port_range, as: 'portRange'
+          property :session_affinity, as: 'sessionAffinity'
+          collection :target_modules, as: 'targetModules'
+        end
       end
-
+      
       # @private
-      class LbModuleStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        property :forwarding_rule_url, as: 'forwardingRuleUrl'
-        property :target_pool_url, as: 'targetPoolUrl'
+      class LbModuleStatus
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :forwarding_rule_url, as: 'forwardingRuleUrl'
+          property :target_pool_url, as: 'targetPoolUrl'
+        end
       end
-
+      
       # @private
-      class MetadataRepresentation < Google::Apis::Core::JsonRepresentation
-        property :finger_print, as: 'fingerPrint'
-        collection :items, as: 'items', class: Google::Apis::ManagerV1beta2::MetadataItem, decorator: Google::Apis::ManagerV1beta2::MetadataItemRepresentation
+      class Metadata
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finger_print, as: 'fingerPrint'
+          collection :items, as: 'items', class: Google::Apis::ManagerV1beta2::MetadataItem, decorator: Google::Apis::ManagerV1beta2::MetadataItem::Representation
+      
+        end
       end
-
+      
       # @private
-      class MetadataItemRepresentation < Google::Apis::Core::JsonRepresentation
-        property :key, as: 'key'
-        property :value, as: 'value'
+      class MetadataItem
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
       end
-
+      
       # @private
-      class ModuleRepresentation < Google::Apis::Core::JsonRepresentation
-        property :autoscaling_module, as: 'autoscalingModule', class: Google::Apis::ManagerV1beta2::AutoscalingModule, decorator: Google::Apis::ManagerV1beta2::AutoscalingModuleRepresentation
-        
-        property :firewall_module, as: 'firewallModule', class: Google::Apis::ManagerV1beta2::FirewallModule, decorator: Google::Apis::ManagerV1beta2::FirewallModuleRepresentation
-        
-        property :health_check_module, as: 'healthCheckModule', class: Google::Apis::ManagerV1beta2::HealthCheckModule, decorator: Google::Apis::ManagerV1beta2::HealthCheckModuleRepresentation
-        
-        property :lb_module, as: 'lbModule', class: Google::Apis::ManagerV1beta2::LbModule, decorator: Google::Apis::ManagerV1beta2::LbModuleRepresentation
-        
-        property :network_module, as: 'networkModule', class: Google::Apis::ManagerV1beta2::NetworkModule, decorator: Google::Apis::ManagerV1beta2::NetworkModuleRepresentation
-        
-        property :replica_pool_module, as: 'replicaPoolModule', class: Google::Apis::ManagerV1beta2::ReplicaPoolModule, decorator: Google::Apis::ManagerV1beta2::ReplicaPoolModuleRepresentation
-        
-        property :type, as: 'type'
+      class Module
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_module, as: 'autoscalingModule', class: Google::Apis::ManagerV1beta2::AutoscalingModule, decorator: Google::Apis::ManagerV1beta2::AutoscalingModule::Representation
+      
+          property :firewall_module, as: 'firewallModule', class: Google::Apis::ManagerV1beta2::FirewallModule, decorator: Google::Apis::ManagerV1beta2::FirewallModule::Representation
+      
+          property :health_check_module, as: 'healthCheckModule', class: Google::Apis::ManagerV1beta2::HealthCheckModule, decorator: Google::Apis::ManagerV1beta2::HealthCheckModule::Representation
+      
+          property :lb_module, as: 'lbModule', class: Google::Apis::ManagerV1beta2::LbModule, decorator: Google::Apis::ManagerV1beta2::LbModule::Representation
+      
+          property :network_module, as: 'networkModule', class: Google::Apis::ManagerV1beta2::NetworkModule, decorator: Google::Apis::ManagerV1beta2::NetworkModule::Representation
+      
+          property :replica_pool_module, as: 'replicaPoolModule', class: Google::Apis::ManagerV1beta2::ReplicaPoolModule, decorator: Google::Apis::ManagerV1beta2::ReplicaPoolModule::Representation
+      
+          property :type, as: 'type'
+        end
       end
-
+      
       # @private
-      class ModuleStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        property :autoscaling_module_status, as: 'autoscalingModuleStatus', class: Google::Apis::ManagerV1beta2::AutoscalingModuleStatus, decorator: Google::Apis::ManagerV1beta2::AutoscalingModuleStatusRepresentation
-        
-        property :firewall_module_status, as: 'firewallModuleStatus', class: Google::Apis::ManagerV1beta2::FirewallModuleStatus, decorator: Google::Apis::ManagerV1beta2::FirewallModuleStatusRepresentation
-        
-        property :health_check_module_status, as: 'healthCheckModuleStatus', class: Google::Apis::ManagerV1beta2::HealthCheckModuleStatus, decorator: Google::Apis::ManagerV1beta2::HealthCheckModuleStatusRepresentation
-        
-        property :lb_module_status, as: 'lbModuleStatus', class: Google::Apis::ManagerV1beta2::LbModuleStatus, decorator: Google::Apis::ManagerV1beta2::LbModuleStatusRepresentation
-        
-        property :network_module_status, as: 'networkModuleStatus', class: Google::Apis::ManagerV1beta2::NetworkModuleStatus, decorator: Google::Apis::ManagerV1beta2::NetworkModuleStatusRepresentation
-        
-        property :replica_pool_module_status, as: 'replicaPoolModuleStatus', class: Google::Apis::ManagerV1beta2::ReplicaPoolModuleStatus, decorator: Google::Apis::ManagerV1beta2::ReplicaPoolModuleStatusRepresentation
-        
-        property :state, as: 'state', class: Google::Apis::ManagerV1beta2::DeployState, decorator: Google::Apis::ManagerV1beta2::DeployStateRepresentation
-        
-        property :type, as: 'type'
+      class ModuleStatus
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_module_status, as: 'autoscalingModuleStatus', class: Google::Apis::ManagerV1beta2::AutoscalingModuleStatus, decorator: Google::Apis::ManagerV1beta2::AutoscalingModuleStatus::Representation
+      
+          property :firewall_module_status, as: 'firewallModuleStatus', class: Google::Apis::ManagerV1beta2::FirewallModuleStatus, decorator: Google::Apis::ManagerV1beta2::FirewallModuleStatus::Representation
+      
+          property :health_check_module_status, as: 'healthCheckModuleStatus', class: Google::Apis::ManagerV1beta2::HealthCheckModuleStatus, decorator: Google::Apis::ManagerV1beta2::HealthCheckModuleStatus::Representation
+      
+          property :lb_module_status, as: 'lbModuleStatus', class: Google::Apis::ManagerV1beta2::LbModuleStatus, decorator: Google::Apis::ManagerV1beta2::LbModuleStatus::Representation
+      
+          property :network_module_status, as: 'networkModuleStatus', class: Google::Apis::ManagerV1beta2::NetworkModuleStatus, decorator: Google::Apis::ManagerV1beta2::NetworkModuleStatus::Representation
+      
+          property :replica_pool_module_status, as: 'replicaPoolModuleStatus', class: Google::Apis::ManagerV1beta2::ReplicaPoolModuleStatus, decorator: Google::Apis::ManagerV1beta2::ReplicaPoolModuleStatus::Representation
+      
+          property :state, as: 'state', class: Google::Apis::ManagerV1beta2::DeployState, decorator: Google::Apis::ManagerV1beta2::DeployState::Representation
+      
+          property :type, as: 'type'
+        end
       end
-
+      
       # @private
-      class NetworkInterfaceRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :access_configs, as: 'accessConfigs', class: Google::Apis::ManagerV1beta2::AccessConfig, decorator: Google::Apis::ManagerV1beta2::AccessConfigRepresentation
-        
-        
-        property :name, as: 'name'
-        property :network, as: 'network'
-        property :network_ip, as: 'networkIp'
+      class NetworkInterface
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_configs, as: 'accessConfigs', class: Google::Apis::ManagerV1beta2::AccessConfig, decorator: Google::Apis::ManagerV1beta2::AccessConfig::Representation
+      
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :network_ip, as: 'networkIp'
+        end
       end
-
+      
       # @private
-      class NetworkModuleRepresentation < Google::Apis::Core::JsonRepresentation
-        property :i_pv4_range, as: 'IPv4Range'
-        property :description, as: 'description'
-        property :gateway_i_pv4, as: 'gatewayIPv4'
+      class NetworkModule
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :i_pv4_range, as: 'IPv4Range'
+          property :description, as: 'description'
+          property :gateway_i_pv4, as: 'gatewayIPv4'
+        end
       end
-
+      
       # @private
-      class NetworkModuleStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        property :network_url, as: 'networkUrl'
+      class NetworkModuleStatus
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_url, as: 'networkUrl'
+        end
       end
-
+      
       # @private
-      class NewDiskRepresentation < Google::Apis::Core::JsonRepresentation
-        property :attachment, as: 'attachment', class: Google::Apis::ManagerV1beta2::DiskAttachment, decorator: Google::Apis::ManagerV1beta2::DiskAttachmentRepresentation
-        
-        property :auto_delete, as: 'autoDelete'
-        property :boot, as: 'boot'
-        property :initialize_params, as: 'initializeParams', class: Google::Apis::ManagerV1beta2::NewDiskInitializeParams, decorator: Google::Apis::ManagerV1beta2::NewDiskInitializeParamsRepresentation
+      class NewDisk
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment, as: 'attachment', class: Google::Apis::ManagerV1beta2::DiskAttachment, decorator: Google::Apis::ManagerV1beta2::DiskAttachment::Representation
+      
+          property :auto_delete, as: 'autoDelete'
+          property :boot, as: 'boot'
+          property :initialize_params, as: 'initializeParams', class: Google::Apis::ManagerV1beta2::NewDiskInitializeParams, decorator: Google::Apis::ManagerV1beta2::NewDiskInitializeParams::Representation
+      
+        end
       end
-
+      
       # @private
-      class NewDiskInitializeParamsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :disk_size_gb, as: 'diskSizeGb'
-        property :disk_type, as: 'diskType'
-        property :source_image, as: 'sourceImage'
+      class NewDiskInitializeParams
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_size_gb, as: 'diskSizeGb'
+          property :disk_type, as: 'diskType'
+          property :source_image, as: 'sourceImage'
+        end
       end
-
+      
       # @private
-      class ParamOverrideRepresentation < Google::Apis::Core::JsonRepresentation
-        property :path, as: 'path'
-        property :value, as: 'value'
+      class ParamOverride
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+          property :value, as: 'value'
+        end
       end
-
+      
       # @private
-      class ReplicaPoolModuleRepresentation < Google::Apis::Core::JsonRepresentation
-        hash :env_variables, as: 'envVariables', class: Google::Apis::ManagerV1beta2::EnvVariable, decorator: Google::Apis::ManagerV1beta2::EnvVariableRepresentation
-        
-        
-        collection :health_checks, as: 'healthChecks'
-        
-        property :num_replicas, as: 'numReplicas'
-        property :replica_pool_params, as: 'replicaPoolParams', class: Google::Apis::ManagerV1beta2::ReplicaPoolParams, decorator: Google::Apis::ManagerV1beta2::ReplicaPoolParamsRepresentation
-        
-        property :resource_view, as: 'resourceView'
+      class ReplicaPoolModule
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :env_variables, as: 'envVariables', class: Google::Apis::ManagerV1beta2::EnvVariable, decorator: Google::Apis::ManagerV1beta2::EnvVariable::Representation
+      
+          collection :health_checks, as: 'healthChecks'
+          property :num_replicas, as: 'numReplicas'
+          property :replica_pool_params, as: 'replicaPoolParams', class: Google::Apis::ManagerV1beta2::ReplicaPoolParams, decorator: Google::Apis::ManagerV1beta2::ReplicaPoolParams::Representation
+      
+          property :resource_view, as: 'resourceView'
+        end
       end
-
+      
       # @private
-      class ReplicaPoolModuleStatusRepresentation < Google::Apis::Core::JsonRepresentation
-        property :replica_pool_url, as: 'replicaPoolUrl'
-        property :resource_view_url, as: 'resourceViewUrl'
+      class ReplicaPoolModuleStatus
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :replica_pool_url, as: 'replicaPoolUrl'
+          property :resource_view_url, as: 'resourceViewUrl'
+        end
       end
-
+      
       # @private
-      class ReplicaPoolParamsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :v1beta1, as: 'v1beta1', class: Google::Apis::ManagerV1beta2::ReplicaPoolParamsV1Beta1, decorator: Google::Apis::ManagerV1beta2::ReplicaPoolParamsV1Beta1Representation
+      class ReplicaPoolParams
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :v1beta1, as: 'v1beta1', class: Google::Apis::ManagerV1beta2::ReplicaPoolParamsV1Beta1, decorator: Google::Apis::ManagerV1beta2::ReplicaPoolParamsV1Beta1::Representation
+      
+        end
       end
-
+      
       # @private
-      class ReplicaPoolParamsV1Beta1Representation < Google::Apis::Core::JsonRepresentation
-        property :auto_restart, as: 'autoRestart'
-        property :base_instance_name, as: 'baseInstanceName'
-        property :can_ip_forward, as: 'canIpForward'
-        property :description, as: 'description'
-        collection :disks_to_attach, as: 'disksToAttach', class: Google::Apis::ManagerV1beta2::ExistingDisk, decorator: Google::Apis::ManagerV1beta2::ExistingDiskRepresentation
-        
-        
-        collection :disks_to_create, as: 'disksToCreate', class: Google::Apis::ManagerV1beta2::NewDisk, decorator: Google::Apis::ManagerV1beta2::NewDiskRepresentation
-        
-        
-        property :init_action, as: 'initAction'
-        property :machine_type, as: 'machineType'
-        property :metadata, as: 'metadata', class: Google::Apis::ManagerV1beta2::Metadata, decorator: Google::Apis::ManagerV1beta2::MetadataRepresentation
-        
-        collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ManagerV1beta2::NetworkInterface, decorator: Google::Apis::ManagerV1beta2::NetworkInterfaceRepresentation
-        
-        
-        property :on_host_maintenance, as: 'onHostMaintenance'
-        collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ManagerV1beta2::ServiceAccount, decorator: Google::Apis::ManagerV1beta2::ServiceAccountRepresentation
-        
-        
-        property :tags, as: 'tags', class: Google::Apis::ManagerV1beta2::Tag, decorator: Google::Apis::ManagerV1beta2::TagRepresentation
-        
-        property :zone, as: 'zone'
+      class ReplicaPoolParamsV1Beta1
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_restart, as: 'autoRestart'
+          property :base_instance_name, as: 'baseInstanceName'
+          property :can_ip_forward, as: 'canIpForward'
+          property :description, as: 'description'
+          collection :disks_to_attach, as: 'disksToAttach', class: Google::Apis::ManagerV1beta2::ExistingDisk, decorator: Google::Apis::ManagerV1beta2::ExistingDisk::Representation
+      
+          collection :disks_to_create, as: 'disksToCreate', class: Google::Apis::ManagerV1beta2::NewDisk, decorator: Google::Apis::ManagerV1beta2::NewDisk::Representation
+      
+          property :init_action, as: 'initAction'
+          property :machine_type, as: 'machineType'
+          property :metadata, as: 'metadata', class: Google::Apis::ManagerV1beta2::Metadata, decorator: Google::Apis::ManagerV1beta2::Metadata::Representation
+      
+          collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ManagerV1beta2::NetworkInterface, decorator: Google::Apis::ManagerV1beta2::NetworkInterface::Representation
+      
+          property :on_host_maintenance, as: 'onHostMaintenance'
+          collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ManagerV1beta2::ServiceAccount, decorator: Google::Apis::ManagerV1beta2::ServiceAccount::Representation
+      
+          property :tags, as: 'tags', class: Google::Apis::ManagerV1beta2::Tag, decorator: Google::Apis::ManagerV1beta2::Tag::Representation
+      
+          property :zone, as: 'zone'
+        end
       end
-
+      
       # @private
-      class ServiceAccountRepresentation < Google::Apis::Core::JsonRepresentation
-        property :email, as: 'email'
-        collection :scopes, as: 'scopes'
+      class ServiceAccount
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          collection :scopes, as: 'scopes'
+        end
       end
-
+      
       # @private
-      class TagRepresentation < Google::Apis::Core::JsonRepresentation
-        property :finger_print, as: 'fingerPrint'
-        collection :items, as: 'items'
+      class Tag
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finger_print, as: 'fingerPrint'
+          collection :items, as: 'items'
+        end
       end
-
+      
       # @private
-      class TemplateRepresentation < Google::Apis::Core::JsonRepresentation
-        hash :actions, as: 'actions', class: Google::Apis::ManagerV1beta2::Action, decorator: Google::Apis::ManagerV1beta2::ActionRepresentation
-        
-        
-        property :description, as: 'description'
-        hash :modules, as: 'modules', class: Google::Apis::ManagerV1beta2::Module, decorator: Google::Apis::ManagerV1beta2::ModuleRepresentation
-        
-        
-        property :name, as: 'name'
+      class Template
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :actions, as: 'actions', class: Google::Apis::ManagerV1beta2::Action, decorator: Google::Apis::ManagerV1beta2::Action::Representation
+      
+          property :description, as: 'description'
+          hash :modules, as: 'modules', class: Google::Apis::ManagerV1beta2::Module, decorator: Google::Apis::ManagerV1beta2::Module::Representation
+      
+          property :name, as: 'name'
+        end
       end
-
+      
       # @private
-      class TemplatesListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :next_page_token, as: 'nextPageToken'
-        collection :resources, as: 'resources', class: Google::Apis::ManagerV1beta2::Template, decorator: Google::Apis::ManagerV1beta2::TemplateRepresentation
+      class TemplatesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::ManagerV1beta2::Template, decorator: Google::Apis::ManagerV1beta2::Template::Representation
+      
+        end
       end
     end
   end

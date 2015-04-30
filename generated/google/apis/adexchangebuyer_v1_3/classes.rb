@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AdexchangebuyerV1_3
-
+      
       # Configuration data for an Ad Exchange buyer account.
       class Account
         include Google::Apis::Core::Hashable
@@ -72,6 +72,11 @@ module Google
         attr_accessor :number_active_creatives
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @bidder_location = args[:bidder_location] unless args[:bidder_location].nil?
           @cookie_matching_nid = args[:cookie_matching_nid] unless args[:cookie_matching_nid].nil?
           @cookie_matching_url = args[:cookie_matching_url] unless args[:cookie_matching_url].nil?
@@ -81,6 +86,7 @@ module Google
           @maximum_total_qps = args[:maximum_total_qps] unless args[:maximum_total_qps].nil?
           @number_active_creatives = args[:number_active_creatives] unless args[:number_active_creatives].nil?
         end
+        
         # 
         class BidderLocation
           include Google::Apis::Core::Hashable
@@ -107,16 +113,21 @@ module Google
           attr_accessor :url
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @maximum_qps = args[:maximum_qps] unless args[:maximum_qps].nil?
             @region = args[:region] unless args[:region].nil?
             @url = args[:url] unless args[:url].nil?
           end
         end
       end
-
+      
       # An account feed lists Ad Exchange buyer accounts that the user has access to.
       # Each entry in the feed corresponds to a single buyer account.
-      class AccountsList
+      class List
         include Google::Apis::Core::Hashable
       
         # A list of accounts.
@@ -130,11 +141,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # The configuration data for an Ad Exchange billing info.
       class BillingInfo
         include Google::Apis::Core::Hashable
@@ -162,13 +178,18 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @account_name = args[:account_name] unless args[:account_name].nil?
           @billing_id = args[:billing_id] unless args[:billing_id].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A billing info feed lists Billing Info the Ad Exchange buyer account has
       # access to. Each entry in the feed corresponds to a single billing info.
       class BillingInfoList
@@ -185,11 +206,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # The configuration data for Ad Exchange RTB - Budget API.
       class Budget
         include Google::Apis::Core::Hashable
@@ -227,6 +253,11 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @billing_id = args[:billing_id] unless args[:billing_id].nil?
           @budget_amount = args[:budget_amount] unless args[:budget_amount].nil?
@@ -235,7 +266,7 @@ module Google
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A creative and its classification data.
       class Creative
         include Google::Apis::Core::Hashable
@@ -351,6 +382,11 @@ module Google
         attr_accessor :width
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @html_snippet = args[:html_snippet] unless args[:html_snippet].nil?
           @account_id = args[:account_id] unless args[:account_id].nil?
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
@@ -372,6 +408,7 @@ module Google
           @video_url = args[:video_url] unless args[:video_url].nil?
           @width = args[:width] unless args[:width].nil?
         end
+        
         # 
         class Correction
           include Google::Apis::Core::Hashable
@@ -387,10 +424,16 @@ module Google
           attr_accessor :reason
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @details = args[:details] unless args[:details].nil?
             @reason = args[:reason] unless args[:reason].nil?
           end
         end
+        
         # 
         class DisapprovalReason
           include Google::Apis::Core::Hashable
@@ -406,10 +449,16 @@ module Google
           attr_accessor :reason
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @details = args[:details] unless args[:details].nil?
             @reason = args[:reason] unless args[:reason].nil?
           end
         end
+        
         # The filtering reasons for the creative. Read-only. This field should not be
         # set in requests.
         class FilteringReasons
@@ -427,9 +476,15 @@ module Google
           attr_accessor :reasons
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @date = args[:date] unless args[:date].nil?
             @reasons = args[:reasons] unless args[:reasons].nil?
           end
+          
           # 
           class Reason
             include Google::Apis::Core::Hashable
@@ -447,13 +502,18 @@ module Google
             attr_accessor :filtering_status
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @filtering_count = args[:filtering_count] unless args[:filtering_count].nil?
               @filtering_status = args[:filtering_status] unless args[:filtering_status].nil?
             end
           end
         end
       end
-
+      
       # The creatives feed lists the active creatives for the Ad Exchange buyer
       # accounts that the user has access to. Each entry in the feed corresponds to a
       # single creative.
@@ -477,12 +537,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # The configuration data for an Ad Exchange direct deal.
       class DirectDeal
         include Google::Apis::Core::Hashable
@@ -557,6 +622,11 @@ module Google
         attr_accessor :start_time
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @advertiser = args[:advertiser] unless args[:advertiser].nil?
           @currency_code = args[:currency_code] unless args[:currency_code].nil?
@@ -571,7 +641,7 @@ module Google
           @start_time = args[:start_time] unless args[:start_time].nil?
         end
       end
-
+      
       # A direct deals feed lists Direct Deals the Ad Exchange buyer account has
       # access to. This includes direct deals set up for the buyer account as well as
       # its merged stream seats.
@@ -589,11 +659,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @direct_deals = args[:direct_deals] unless args[:direct_deals].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # The configuration data for an Ad Exchange performance report list.
       class PerformanceReport
         include Google::Apis::Core::Hashable
@@ -684,6 +759,11 @@ module Google
         attr_accessor :timestamp
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @callout_status_rate = args[:callout_status_rate] unless args[:callout_status_rate].nil?
           @cookie_matcher_status_rate = args[:cookie_matcher_status_rate] unless args[:cookie_matcher_status_rate].nil?
           @creative_status_rate = args[:creative_status_rate] unless args[:creative_status_rate].nil?
@@ -702,7 +782,7 @@ module Google
           @timestamp = args[:timestamp] unless args[:timestamp].nil?
         end
       end
-
+      
       # The configuration data for an Ad Exchange performance report list. https://
       # sites.google.com/a/google.com/adx-integration/Home/engineering/binary-releases/
       # rtb-api-release https://cs.corp.google.com/#piper///depot/google3/contentads/
@@ -721,11 +801,16 @@ module Google
         attr_accessor :performance_report
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @performance_report = args[:performance_report] unless args[:performance_report].nil?
         end
       end
-
+      
       # 
       class PretargetingConfig
         include Google::Apis::Core::Hashable
@@ -861,6 +946,11 @@ module Google
         attr_accessor :verticals
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @billing_id = args[:billing_id] unless args[:billing_id].nil?
           @config_id = args[:config_id] unless args[:config_id].nil?
           @config_name = args[:config_name] unless args[:config_name].nil?
@@ -885,6 +975,7 @@ module Google
           @vendor_types = args[:vendor_types] unless args[:vendor_types].nil?
           @verticals = args[:verticals] unless args[:verticals].nil?
         end
+        
         # 
         class Dimension
           include Google::Apis::Core::Hashable
@@ -900,10 +991,16 @@ module Google
           attr_accessor :width
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @height = args[:height] unless args[:height].nil?
             @width = args[:width] unless args[:width].nil?
           end
         end
+        
         # 
         class ExcludedPlacement
           include Google::Apis::Core::Hashable
@@ -921,10 +1018,16 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @token = args[:token] unless args[:token].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
+        
         # 
         class Placement
           include Google::Apis::Core::Hashable
@@ -942,12 +1045,17 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @token = args[:token] unless args[:token].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
       end
-
+      
       # 
       class PretargetingConfigList
         include Google::Apis::Core::Hashable
@@ -963,6 +1071,11 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end

@@ -32,7 +32,6 @@ module Google
       #
       # @see https://cloud.google.com/bigquery/
       class BigqueryService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'bigquery/v2/')
         end
-
+        
         # Deletes the dataset specified by the datasetId value. Before you can delete a
         # dataset, you must delete all its tables, either manually or by specifying
         # deleteContents. Immediately after deletion, you can create another dataset
@@ -73,7 +72,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -97,7 +96,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Returns the dataset specified by datasetID.
         # @param [String] project_id
         #   Project ID of the requested dataset
@@ -112,7 +110,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -127,7 +125,7 @@ module Google
         def get_dataset(project_id, dataset_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BigqueryV2::DatasetRepresentation
+          command.response_representation = Google::Apis::BigqueryV2::Dataset::Representation
           command.response_class = Google::Apis::BigqueryV2::Dataset
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
@@ -137,12 +135,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates a new empty dataset.
         # @param [String] project_id
         #   Project ID of the new dataset
-        # @param [Google::Apis::BigqueryV2::Dataset] dataset
-        #   
+        # @param [Google::Apis::BigqueryV2::Dataset] dataset_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -152,7 +148,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -164,12 +160,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_dataset(project_id, dataset = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_dataset(project_id, dataset_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::BigqueryV2::DatasetRepresentation
-          command.request_object = dataset
-          command.response_representation = Google::Apis::BigqueryV2::DatasetRepresentation
+          command.request_representation = Google::Apis::BigqueryV2::Dataset::Representation
+          command.request_object = dataset_object
+          command.response_representation = Google::Apis::BigqueryV2::Dataset::Representation
           command.response_class = Google::Apis::BigqueryV2::Dataset
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -177,7 +173,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists all datasets in the specified project to which you have been granted the
         # READER dataset role.
@@ -198,7 +193,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -213,7 +208,7 @@ module Google
         def list_datasets(project_id, all: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BigqueryV2::DatasetListRepresentation
+          command.response_representation = Google::Apis::BigqueryV2::DatasetList::Representation
           command.response_class = Google::Apis::BigqueryV2::DatasetList
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['all'] = all unless all.nil?
@@ -225,7 +220,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates information in an existing dataset. The update method replaces the
         # entire dataset resource, whereas the patch method only replaces fields that
         # are provided in the submitted dataset resource. This method supports patch
@@ -234,8 +228,7 @@ module Google
         #   Project ID of the dataset being updated
         # @param [String] dataset_id
         #   Dataset ID of the dataset being updated
-        # @param [Google::Apis::BigqueryV2::Dataset] dataset
-        #   
+        # @param [Google::Apis::BigqueryV2::Dataset] dataset_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -245,7 +238,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -257,12 +250,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_dataset(project_id, dataset_id, dataset = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_dataset(project_id, dataset_id, dataset_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::BigqueryV2::DatasetRepresentation
-          command.request_object = dataset
-          command.response_representation = Google::Apis::BigqueryV2::DatasetRepresentation
+          command.request_representation = Google::Apis::BigqueryV2::Dataset::Representation
+          command.request_object = dataset_object
+          command.response_representation = Google::Apis::BigqueryV2::Dataset::Representation
           command.response_class = Google::Apis::BigqueryV2::Dataset
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
@@ -271,7 +264,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates information in an existing dataset. The update method replaces the
         # entire dataset resource, whereas the patch method only replaces fields that
@@ -280,8 +272,7 @@ module Google
         #   Project ID of the dataset being updated
         # @param [String] dataset_id
         #   Dataset ID of the dataset being updated
-        # @param [Google::Apis::BigqueryV2::Dataset] dataset
-        #   
+        # @param [Google::Apis::BigqueryV2::Dataset] dataset_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -291,7 +282,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -303,12 +294,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_dataset(project_id, dataset_id, dataset = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_dataset(project_id, dataset_id, dataset_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::BigqueryV2::DatasetRepresentation
-          command.request_object = dataset
-          command.response_representation = Google::Apis::BigqueryV2::DatasetRepresentation
+          command.request_representation = Google::Apis::BigqueryV2::Dataset::Representation
+          command.request_object = dataset_object
+          command.response_representation = Google::Apis::BigqueryV2::Dataset::Representation
           command.response_class = Google::Apis::BigqueryV2::Dataset
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
@@ -317,7 +308,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Returns information about a specific job. Job information is available for a
         # six month period after creation. Requires that you're the person who ran the
         # job, or have the Is Owner project role.
@@ -334,7 +325,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -349,7 +340,7 @@ module Google
         def get_job(project_id, job_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/jobs/{jobId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BigqueryV2::JobRepresentation
+          command.response_representation = Google::Apis::BigqueryV2::Job::Representation
           command.response_class = Google::Apis::BigqueryV2::Job
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['jobId'] = job_id unless job_id.nil?
@@ -358,7 +349,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves the results of a query job.
         # @param [String] project_id
@@ -384,7 +374,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -399,7 +389,7 @@ module Google
         def get_query_results_job(project_id, job_id, max_results: nil, page_token: nil, start_index: nil, timeout_ms: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/queries/{jobId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BigqueryV2::GetQueryResultsResponseRepresentation
+          command.response_representation = Google::Apis::BigqueryV2::GetQueryResultsResponse::Representation
           command.response_class = Google::Apis::BigqueryV2::GetQueryResultsResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['jobId'] = job_id unless job_id.nil?
@@ -413,12 +403,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Starts a new asynchronous job. Requires the Can View project role.
         # @param [String] project_id
         #   Project ID of the project that will be billed for the job
-        # @param [Google::Apis::BigqueryV2::Job] job
-        #   
+        # @param [Google::Apis::BigqueryV2::Job] job_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -432,7 +420,7 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -444,7 +432,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_job(project_id, job = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_job(project_id, job_object = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'projects/{projectId}/jobs'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -453,9 +441,9 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.request_representation = Google::Apis::BigqueryV2::JobRepresentation
-          command.request_object = job
-          command.response_representation = Google::Apis::BigqueryV2::JobRepresentation
+          command.request_representation = Google::Apis::BigqueryV2::Job::Representation
+          command.request_object = job_object
+          command.response_representation = Google::Apis::BigqueryV2::Job::Representation
           command.response_class = Google::Apis::BigqueryV2::Job
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -463,7 +451,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists all jobs that you started in the specified project. The job list returns
         # in reverse chronological order of when the jobs were created, starting with
@@ -490,7 +477,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -505,7 +492,7 @@ module Google
         def list_jobs(project_id, all_users: nil, max_results: nil, page_token: nil, projection: nil, state_filter: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/jobs'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BigqueryV2::JobListRepresentation
+          command.response_representation = Google::Apis::BigqueryV2::JobList::Representation
           command.response_class = Google::Apis::BigqueryV2::JobList
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['allUsers'] = all_users unless all_users.nil?
@@ -519,13 +506,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Runs a BigQuery SQL query synchronously and returns query results if the query
         # completes within a specified timeout.
         # @param [String] project_id
         #   Project ID of the project billed for the query
-        # @param [Google::Apis::BigqueryV2::QueryRequest] query_request
-        #   
+        # @param [Google::Apis::BigqueryV2::QueryRequest] query_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -535,7 +520,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -547,12 +532,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def query(project_id, query_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def query(project_id, query_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/queries'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::BigqueryV2::QueryRequestRepresentation
-          command.request_object = query_request
-          command.response_representation = Google::Apis::BigqueryV2::QueryResponseRepresentation
+          command.request_representation = Google::Apis::BigqueryV2::QueryRequest::Representation
+          command.request_object = query_request_object
+          command.response_representation = Google::Apis::BigqueryV2::QueryResponse::Representation
           command.response_class = Google::Apis::BigqueryV2::QueryResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -560,7 +545,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Lists all projects to which you have been granted any project role.
         # @param [Fixnum] max_results
         #   Maximum number of results to return
@@ -575,7 +560,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -590,7 +575,7 @@ module Google
         def list_projects(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BigqueryV2::ProjectListRepresentation
+          command.response_representation = Google::Apis::BigqueryV2::ProjectList::Representation
           command.response_class = Google::Apis::BigqueryV2::ProjectList
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -599,7 +584,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Streams data into BigQuery one record at a time without needing to run a load
         # job. Requires the WRITER dataset role.
         # @param [String] project_id
@@ -608,8 +593,7 @@ module Google
         #   Dataset ID of the destination table.
         # @param [String] table_id
         #   Table ID of the destination table.
-        # @param [Google::Apis::BigqueryV2::TableDataInsertAllRequest] table_data_insert_all_request
-        #   
+        # @param [Google::Apis::BigqueryV2::InsertAllRequest] table_data_insert_all_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -619,25 +603,25 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BigqueryV2::TableDataInsertAllResponse] parsed result object
+        # @yieldparam result [Google::Apis::BigqueryV2::InsertAllResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::BigqueryV2::TableDataInsertAllResponse]
+        # @return [Google::Apis::BigqueryV2::InsertAllResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_all_tabledatum(project_id, dataset_id, table_id, table_data_insert_all_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_all_tabledatum(project_id, dataset_id, table_id, table_data_insert_all_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}/insertAll'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::BigqueryV2::TableDataInsertAllRequestRepresentation
-          command.request_object = table_data_insert_all_request
-          command.response_representation = Google::Apis::BigqueryV2::TableDataInsertAllResponseRepresentation
-          command.response_class = Google::Apis::BigqueryV2::TableDataInsertAllResponse
+          command.request_representation = Google::Apis::BigqueryV2::InsertAllRequest::Representation
+          command.request_object = table_data_insert_all_request_object
+          command.response_representation = Google::Apis::BigqueryV2::InsertAllResponse::Representation
+          command.response_class = Google::Apis::BigqueryV2::InsertAllResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
           command.params['tableId'] = table_id unless table_id.nil?
@@ -646,7 +630,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves table data from a specified set of rows. Requires the READER dataset
         # role.
@@ -671,14 +654,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BigqueryV2::TableDataList] parsed result object
+        # @yieldparam result [Google::Apis::BigqueryV2::List] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::BigqueryV2::TableDataList]
+        # @return [Google::Apis::BigqueryV2::List]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -686,8 +669,8 @@ module Google
         def list_tabledata(project_id, dataset_id, table_id, max_results: nil, page_token: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}/data'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BigqueryV2::TableDataListRepresentation
-          command.response_class = Google::Apis::BigqueryV2::TableDataList
+          command.response_representation = Google::Apis::BigqueryV2::List::Representation
+          command.response_class = Google::Apis::BigqueryV2::List
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
           command.params['tableId'] = table_id unless table_id.nil?
@@ -699,7 +682,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Deletes the table specified by tableId from the dataset. If the table contains
         # data, all the data will be deleted.
         # @param [String] project_id
@@ -717,7 +700,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -741,7 +724,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets the specified table resource by table ID. This method does not return the
         # data in the table, it only returns the table resource, which describes the
         # structure of this table.
@@ -760,7 +742,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -775,7 +757,7 @@ module Google
         def get_table(project_id, dataset_id, table_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BigqueryV2::TableRepresentation
+          command.response_representation = Google::Apis::BigqueryV2::Table::Representation
           command.response_class = Google::Apis::BigqueryV2::Table
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
@@ -786,14 +768,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates a new, empty table in the dataset.
         # @param [String] project_id
         #   Project ID of the new table
         # @param [String] dataset_id
         #   Dataset ID of the new table
-        # @param [Google::Apis::BigqueryV2::Table] table
-        #   
+        # @param [Google::Apis::BigqueryV2::Table] table_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -803,7 +783,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -815,12 +795,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_table(project_id, dataset_id, table = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_table(project_id, dataset_id, table_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}/tables'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::BigqueryV2::TableRepresentation
-          command.request_object = table
-          command.response_representation = Google::Apis::BigqueryV2::TableRepresentation
+          command.request_representation = Google::Apis::BigqueryV2::Table::Representation
+          command.request_object = table_object
+          command.response_representation = Google::Apis::BigqueryV2::Table::Representation
           command.response_class = Google::Apis::BigqueryV2::Table
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
@@ -829,7 +809,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists all tables in the specified dataset. Requires the READER dataset role.
         # @param [String] project_id
@@ -849,7 +828,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -864,7 +843,7 @@ module Google
         def list_tables(project_id, dataset_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}/tables'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::BigqueryV2::TableListRepresentation
+          command.response_representation = Google::Apis::BigqueryV2::TableList::Representation
           command.response_class = Google::Apis::BigqueryV2::TableList
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
@@ -876,7 +855,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates information in an existing table. The update method replaces the
         # entire table resource, whereas the patch method only replaces fields that are
         # provided in the submitted table resource. This method supports patch semantics.
@@ -886,8 +864,7 @@ module Google
         #   Dataset ID of the table to update
         # @param [String] table_id
         #   Table ID of the table to update
-        # @param [Google::Apis::BigqueryV2::Table] table
-        #   
+        # @param [Google::Apis::BigqueryV2::Table] table_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -897,7 +874,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -909,12 +886,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_table(project_id, dataset_id, table_id, table = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_table(project_id, dataset_id, table_id, table_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::BigqueryV2::TableRepresentation
-          command.request_object = table
-          command.response_representation = Google::Apis::BigqueryV2::TableRepresentation
+          command.request_representation = Google::Apis::BigqueryV2::Table::Representation
+          command.request_object = table_object
+          command.response_representation = Google::Apis::BigqueryV2::Table::Representation
           command.response_class = Google::Apis::BigqueryV2::Table
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
@@ -925,7 +902,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates information in an existing table. The update method replaces the
         # entire table resource, whereas the patch method only replaces fields that are
         # provided in the submitted table resource.
@@ -935,8 +911,7 @@ module Google
         #   Dataset ID of the table to update
         # @param [String] table_id
         #   Table ID of the table to update
-        # @param [Google::Apis::BigqueryV2::Table] table
-        #   
+        # @param [Google::Apis::BigqueryV2::Table] table_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -946,7 +921,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -958,12 +933,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_table(project_id, dataset_id, table_id, table = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_table(project_id, dataset_id, table_id, table_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::BigqueryV2::TableRepresentation
-          command.request_object = table
-          command.response_representation = Google::Apis::BigqueryV2::TableRepresentation
+          command.request_representation = Google::Apis::BigqueryV2::Table::Representation
+          command.request_object = table_object
+          command.response_representation = Google::Apis::BigqueryV2::Table::Representation
           command.response_class = Google::Apis::BigqueryV2::Table
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?

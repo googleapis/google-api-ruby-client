@@ -33,7 +33,6 @@ module Google
       #
       # @see https://developers.google.com/compute/
       class ResourceviewsService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -53,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'resourceviews/v1beta2/projects/')
         end
-
+        
         # Retrieves the specified zone-specific operation resource.
         # @param [String] project
         #   Name of the project scoping this request.
@@ -70,7 +69,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -85,7 +84,7 @@ module Google
         def get_zone_operation(project, zone, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/operations/{operation}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ResourceviewsV1beta2::OperationRepresentation
+          command.response_representation = Google::Apis::ResourceviewsV1beta2::Operation::Representation
           command.response_class = Google::Apis::ResourceviewsV1beta2::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -95,7 +94,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Retrieves the list of operation resources contained within the specified zone.
         # @param [String] project
@@ -119,7 +117,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -134,7 +132,7 @@ module Google
         def list_zone_operations(project, zone, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/operations'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ResourceviewsV1beta2::OperationListRepresentation
+          command.response_representation = Google::Apis::ResourceviewsV1beta2::OperationList::Representation
           command.response_class = Google::Apis::ResourceviewsV1beta2::OperationList
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -146,7 +144,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Add resources to the view.
         # @param [String] project
         #   The project name of the resource view.
@@ -154,8 +152,7 @@ module Google
         #   The zone name of the resource view.
         # @param [String] resource_view
         #   The name of the resource view.
-        # @param [Google::Apis::ResourceviewsV1beta2::ZoneViewsAddResourcesRequest] zone_views_add_resources_request
-        #   
+        # @param [Google::Apis::ResourceviewsV1beta2::AddResourcesRequest] zone_views_add_resources_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -165,7 +162,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -177,12 +174,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_resources_zone_view(project, zone, resource_view, zone_views_add_resources_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_resources_zone_view(project, zone, resource_view, zone_views_add_resources_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/resourceViews/{resourceView}/addResources'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::ResourceviewsV1beta2::ZoneViewsAddResourcesRequestRepresentation
-          command.request_object = zone_views_add_resources_request
-          command.response_representation = Google::Apis::ResourceviewsV1beta2::OperationRepresentation
+          command.request_representation = Google::Apis::ResourceviewsV1beta2::AddResourcesRequest::Representation
+          command.request_object = zone_views_add_resources_request_object
+          command.response_representation = Google::Apis::ResourceviewsV1beta2::Operation::Representation
           command.response_class = Google::Apis::ResourceviewsV1beta2::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -192,7 +189,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Delete a resource view.
         # @param [String] project
@@ -210,7 +206,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -225,7 +221,7 @@ module Google
         def delete_zone_view(project, zone, resource_view, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/resourceViews/{resourceView}'
           command =  make_simple_command(:delete, path, options)
-          command.response_representation = Google::Apis::ResourceviewsV1beta2::OperationRepresentation
+          command.response_representation = Google::Apis::ResourceviewsV1beta2::Operation::Representation
           command.response_class = Google::Apis::ResourceviewsV1beta2::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -235,7 +231,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Get the information of a zonal resource view.
         # @param [String] project
@@ -253,7 +248,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -268,7 +263,7 @@ module Google
         def get_zone_view(project, zone, resource_view, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/resourceViews/{resourceView}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ResourceviewsV1beta2::ResourceViewRepresentation
+          command.response_representation = Google::Apis::ResourceviewsV1beta2::ResourceView::Representation
           command.response_class = Google::Apis::ResourceviewsV1beta2::ResourceView
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -278,7 +273,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Get the service information of a resource view or a resource.
         # @param [String] project
@@ -299,14 +293,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ResourceviewsV1beta2::ZoneViewsGetServiceResponse] parsed result object
+        # @yieldparam result [Google::Apis::ResourceviewsV1beta2::GetServiceResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ResourceviewsV1beta2::ZoneViewsGetServiceResponse]
+        # @return [Google::Apis::ResourceviewsV1beta2::GetServiceResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -314,8 +308,8 @@ module Google
         def get_service_zone_view(project, zone, resource_view, resource_name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/resourceViews/{resourceView}/getService'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::ResourceviewsV1beta2::ZoneViewsGetServiceResponseRepresentation
-          command.response_class = Google::Apis::ResourceviewsV1beta2::ZoneViewsGetServiceResponse
+          command.response_representation = Google::Apis::ResourceviewsV1beta2::GetServiceResponse::Representation
+          command.response_class = Google::Apis::ResourceviewsV1beta2::GetServiceResponse
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['resourceView'] = resource_view unless resource_view.nil?
@@ -326,14 +320,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Create a resource view.
         # @param [String] project
         #   The project name of the resource view.
         # @param [String] zone
         #   The zone name of the resource view.
-        # @param [Google::Apis::ResourceviewsV1beta2::ResourceView] resource_view
-        #   
+        # @param [Google::Apis::ResourceviewsV1beta2::ResourceView] resource_view_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -343,7 +335,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -355,12 +347,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_zone_view(project, zone, resource_view = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_zone_view(project, zone, resource_view_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/resourceViews'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::ResourceviewsV1beta2::ResourceViewRepresentation
-          command.request_object = resource_view
-          command.response_representation = Google::Apis::ResourceviewsV1beta2::OperationRepresentation
+          command.request_representation = Google::Apis::ResourceviewsV1beta2::ResourceView::Representation
+          command.request_object = resource_view_object
+          command.response_representation = Google::Apis::ResourceviewsV1beta2::Operation::Representation
           command.response_class = Google::Apis::ResourceviewsV1beta2::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -369,7 +361,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List resource views.
         # @param [String] project
@@ -391,14 +382,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ResourceviewsV1beta2::ZoneViewsList] parsed result object
+        # @yieldparam result [Google::Apis::ResourceviewsV1beta2::List] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ResourceviewsV1beta2::ZoneViewsList]
+        # @return [Google::Apis::ResourceviewsV1beta2::List]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -406,8 +397,8 @@ module Google
         def list_zone_views(project, zone, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/resourceViews'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ResourceviewsV1beta2::ZoneViewsListRepresentation
-          command.response_class = Google::Apis::ResourceviewsV1beta2::ZoneViewsList
+          command.response_representation = Google::Apis::ResourceviewsV1beta2::List::Representation
+          command.response_class = Google::Apis::ResourceviewsV1beta2::List
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -417,7 +408,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # List the resources of the resource view.
         # @param [String] project
@@ -450,14 +440,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ResourceviewsV1beta2::ZoneViewsListResourcesResponse] parsed result object
+        # @yieldparam result [Google::Apis::ResourceviewsV1beta2::ListResourcesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ResourceviewsV1beta2::ZoneViewsListResourcesResponse]
+        # @return [Google::Apis::ResourceviewsV1beta2::ListResourcesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -465,8 +455,8 @@ module Google
         def list_resources_zone_view(project, zone, resource_view, format: nil, list_state: nil, max_results: nil, page_token: nil, service_name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/resourceViews/{resourceView}/resources'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ResourceviewsV1beta2::ZoneViewsListResourcesResponseRepresentation
-          command.response_class = Google::Apis::ResourceviewsV1beta2::ZoneViewsListResourcesResponse
+          command.response_representation = Google::Apis::ResourceviewsV1beta2::ListResourcesResponse::Representation
+          command.response_class = Google::Apis::ResourceviewsV1beta2::ListResourcesResponse
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['resourceView'] = resource_view unless resource_view.nil?
@@ -481,7 +471,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Remove resources from the view.
         # @param [String] project
         #   The project name of the resource view.
@@ -489,8 +478,7 @@ module Google
         #   The zone name of the resource view.
         # @param [String] resource_view
         #   The name of the resource view.
-        # @param [Google::Apis::ResourceviewsV1beta2::ZoneViewsRemoveResourcesRequest] zone_views_remove_resources_request
-        #   
+        # @param [Google::Apis::ResourceviewsV1beta2::RemoveResourcesRequest] zone_views_remove_resources_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -500,7 +488,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -512,12 +500,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_resources_zone_view(project, zone, resource_view, zone_views_remove_resources_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def remove_resources_zone_view(project, zone, resource_view, zone_views_remove_resources_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/resourceViews/{resourceView}/removeResources'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::ResourceviewsV1beta2::ZoneViewsRemoveResourcesRequestRepresentation
-          command.request_object = zone_views_remove_resources_request
-          command.response_representation = Google::Apis::ResourceviewsV1beta2::OperationRepresentation
+          command.request_representation = Google::Apis::ResourceviewsV1beta2::RemoveResourcesRequest::Representation
+          command.request_object = zone_views_remove_resources_request_object
+          command.response_representation = Google::Apis::ResourceviewsV1beta2::Operation::Representation
           command.response_class = Google::Apis::ResourceviewsV1beta2::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
@@ -528,7 +516,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Update the service information of a resource view or a resource.
         # @param [String] project
         #   The project name of the resource view.
@@ -536,8 +523,7 @@ module Google
         #   The zone name of the resource view.
         # @param [String] resource_view
         #   The name of the resource view.
-        # @param [Google::Apis::ResourceviewsV1beta2::ZoneViewsSetServiceRequest] zone_views_set_service_request
-        #   
+        # @param [Google::Apis::ResourceviewsV1beta2::SetServiceRequest] zone_views_set_service_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -547,7 +533,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -559,12 +545,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_service_zone_view(project, zone, resource_view, zone_views_set_service_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_service_zone_view(project, zone, resource_view, zone_views_set_service_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/resourceViews/{resourceView}/setService'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::ResourceviewsV1beta2::ZoneViewsSetServiceRequestRepresentation
-          command.request_object = zone_views_set_service_request
-          command.response_representation = Google::Apis::ResourceviewsV1beta2::OperationRepresentation
+          command.request_representation = Google::Apis::ResourceviewsV1beta2::SetServiceRequest::Representation
+          command.request_object = zone_views_set_service_request_object
+          command.response_representation = Google::Apis::ResourceviewsV1beta2::Operation::Representation
           command.response_class = Google::Apis::ResourceviewsV1beta2::Operation
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?

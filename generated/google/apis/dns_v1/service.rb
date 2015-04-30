@@ -33,7 +33,6 @@ module Google
       #
       # @see https://developers.google.com/cloud-dns
       class DnsService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -53,15 +52,14 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'dns/v1/projects/')
         end
-
+        
         # Atomically update the ResourceRecordSet collection.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request. Can be the managed zone
         #   name or id.
-        # @param [Google::Apis::DnsV1::Change] change
-        #   
+        # @param [Google::Apis::DnsV1::Change] change_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -71,7 +69,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -83,12 +81,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_change(project, managed_zone, change = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_change(project, managed_zone, change_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/managedZones/{managedZone}/changes'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DnsV1::ChangeRepresentation
-          command.request_object = change
-          command.response_representation = Google::Apis::DnsV1::ChangeRepresentation
+          command.request_representation = Google::Apis::DnsV1::Change::Representation
+          command.request_object = change_object
+          command.response_representation = Google::Apis::DnsV1::Change::Representation
           command.response_class = Google::Apis::DnsV1::Change
           command.params['project'] = project unless project.nil?
           command.params['managedZone'] = managed_zone unless managed_zone.nil?
@@ -97,7 +95,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Fetch the representation of an existing Change.
         # @param [String] project
@@ -117,7 +114,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -132,7 +129,7 @@ module Google
         def get_change(project, managed_zone, change_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/managedZones/{managedZone}/changes/{changeId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DnsV1::ChangeRepresentation
+          command.response_representation = Google::Apis::DnsV1::Change::Representation
           command.response_class = Google::Apis::DnsV1::Change
           command.params['project'] = project unless project.nil?
           command.params['managedZone'] = managed_zone unless managed_zone.nil?
@@ -142,7 +139,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Enumerate Changes to a ResourceRecordSet collection.
         # @param [String] project
@@ -169,14 +165,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DnsV1::ChangesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DnsV1::ListResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DnsV1::ChangesListResponse]
+        # @return [Google::Apis::DnsV1::ListResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -184,8 +180,8 @@ module Google
         def list_changes(project, managed_zone, max_results: nil, page_token: nil, sort_by: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/managedZones/{managedZone}/changes'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DnsV1::ChangesListResponseRepresentation
-          command.response_class = Google::Apis::DnsV1::ChangesListResponse
+          command.response_representation = Google::Apis::DnsV1::ListResponse::Representation
+          command.response_class = Google::Apis::DnsV1::ListResponse
           command.params['project'] = project unless project.nil?
           command.params['managedZone'] = managed_zone unless managed_zone.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -197,12 +193,11 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Create a new ManagedZone.
         # @param [String] project
         #   Identifies the project addressed by this request.
-        # @param [Google::Apis::DnsV1::ManagedZone] managed_zone
-        #   
+        # @param [Google::Apis::DnsV1::ManagedZone] managed_zone_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -212,7 +207,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -224,12 +219,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_managed_zone(project, managed_zone = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_managed_zone(project, managed_zone_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/managedZones'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DnsV1::ManagedZoneRepresentation
-          command.request_object = managed_zone
-          command.response_representation = Google::Apis::DnsV1::ManagedZoneRepresentation
+          command.request_representation = Google::Apis::DnsV1::ManagedZone::Representation
+          command.request_object = managed_zone_object
+          command.response_representation = Google::Apis::DnsV1::ManagedZone::Representation
           command.response_class = Google::Apis::DnsV1::ManagedZone
           command.params['project'] = project unless project.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -237,7 +232,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Delete a previously created ManagedZone.
         # @param [String] project
@@ -254,7 +248,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -277,7 +271,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Fetch the representation of an existing ManagedZone.
         # @param [String] project
         #   Identifies the project addressed by this request.
@@ -293,7 +286,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -308,7 +301,7 @@ module Google
         def get_managed_zone(project, managed_zone, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/managedZones/{managedZone}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DnsV1::ManagedZoneRepresentation
+          command.response_representation = Google::Apis::DnsV1::ManagedZone::Representation
           command.response_class = Google::Apis::DnsV1::ManagedZone
           command.params['project'] = project unless project.nil?
           command.params['managedZone'] = managed_zone unless managed_zone.nil?
@@ -317,7 +310,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Enumerate ManagedZones that have been created but not yet deleted.
         # @param [String] project
@@ -337,7 +329,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -352,7 +344,7 @@ module Google
         def list_managed_zones(project, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/managedZones'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DnsV1::ManagedZonesListResponseRepresentation
+          command.response_representation = Google::Apis::DnsV1::ManagedZonesListResponse::Representation
           command.response_class = Google::Apis::DnsV1::ManagedZonesListResponse
           command.params['project'] = project unless project.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -362,7 +354,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Fetch the representation of an existing Project.
         # @param [String] project
         #   Identifies the project addressed by this request.
@@ -375,7 +367,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -390,7 +382,7 @@ module Google
         def get_project(project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DnsV1::ProjectRepresentation
+          command.response_representation = Google::Apis::DnsV1::Project::Representation
           command.response_class = Google::Apis::DnsV1::Project
           command.params['project'] = project unless project.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -398,7 +390,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Enumerate ResourceRecordSets that have been created but not yet deleted.
         # @param [String] project
         #   Identifies the project addressed by this request.
@@ -426,7 +418,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -441,7 +433,7 @@ module Google
         def list_resource_record_sets(project, managed_zone, max_results: nil, name: nil, page_token: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/managedZones/{managedZone}/rrsets'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DnsV1::ResourceRecordSetsListResponseRepresentation
+          command.response_representation = Google::Apis::DnsV1::ResourceRecordSetsListResponse::Representation
           command.response_class = Google::Apis::DnsV1::ResourceRecordSetsListResponse
           command.params['project'] = project unless project.nil?
           command.params['managedZone'] = managed_zone unless managed_zone.nil?

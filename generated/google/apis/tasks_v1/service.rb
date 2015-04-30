@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/google-apps/tasks/firstapp
       class TasksService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'tasks/v1/')
         end
-
+        
         # Deletes the authenticated user's specified task list.
         # @param [String] tasklist
         #   Task list identifier.
@@ -65,7 +64,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -87,7 +86,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Returns the authenticated user's specified task list.
         # @param [String] tasklist
         #   Task list identifier.
@@ -100,7 +98,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -115,7 +113,7 @@ module Google
         def get_tasklist(tasklist, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/@me/lists/{tasklist}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::TasksV1::TaskListRepresentation
+          command.response_representation = Google::Apis::TasksV1::TaskList::Representation
           command.response_class = Google::Apis::TasksV1::TaskList
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -124,10 +122,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates a new task list and adds it to the authenticated user's task lists.
-        # @param [Google::Apis::TasksV1::TaskList] task_list
-        #   
+        # @param [Google::Apis::TasksV1::TaskList] task_list_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -137,7 +133,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -149,19 +145,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_tasklist(task_list = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_tasklist(task_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/@me/lists'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::TasksV1::TaskListRepresentation
-          command.request_object = task_list
-          command.response_representation = Google::Apis::TasksV1::TaskListRepresentation
+          command.request_representation = Google::Apis::TasksV1::TaskList::Representation
+          command.request_object = task_list_object
+          command.response_representation = Google::Apis::TasksV1::TaskList::Representation
           command.response_class = Google::Apis::TasksV1::TaskList
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Returns all the authenticated user's task lists.
         # @param [String] max_results
@@ -178,7 +173,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -193,7 +188,7 @@ module Google
         def list_tasklists(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/@me/lists'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::TasksV1::TaskListsRepresentation
+          command.response_representation = Google::Apis::TasksV1::TaskLists::Representation
           command.response_class = Google::Apis::TasksV1::TaskLists
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -203,13 +198,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates the authenticated user's specified task list. This method supports
         # patch semantics.
         # @param [String] tasklist
         #   Task list identifier.
-        # @param [Google::Apis::TasksV1::TaskList] task_list
-        #   
+        # @param [Google::Apis::TasksV1::TaskList] task_list_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -219,7 +212,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -231,12 +224,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_tasklist(tasklist, task_list = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_tasklist(tasklist, task_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/@me/lists/{tasklist}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::TasksV1::TaskListRepresentation
-          command.request_object = task_list
-          command.response_representation = Google::Apis::TasksV1::TaskListRepresentation
+          command.request_representation = Google::Apis::TasksV1::TaskList::Representation
+          command.request_object = task_list_object
+          command.response_representation = Google::Apis::TasksV1::TaskList::Representation
           command.response_class = Google::Apis::TasksV1::TaskList
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -244,13 +237,11 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates the authenticated user's specified task list.
         # @param [String] tasklist
         #   Task list identifier.
-        # @param [Google::Apis::TasksV1::TaskList] task_list
-        #   
+        # @param [Google::Apis::TasksV1::TaskList] task_list_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -260,7 +251,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -272,12 +263,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_tasklist(tasklist, task_list = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_tasklist(tasklist, task_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'users/@me/lists/{tasklist}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::TasksV1::TaskListRepresentation
-          command.request_object = task_list
-          command.response_representation = Google::Apis::TasksV1::TaskListRepresentation
+          command.request_representation = Google::Apis::TasksV1::TaskList::Representation
+          command.request_object = task_list_object
+          command.response_representation = Google::Apis::TasksV1::TaskList::Representation
           command.response_class = Google::Apis::TasksV1::TaskList
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -285,7 +276,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Clears all completed tasks from the specified task list. The affected tasks
         # will be marked as 'hidden' and no longer be returned by default when
         # retrieving all tasks for a task list.
@@ -300,7 +291,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -322,7 +313,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Deletes the specified task from the task list.
         # @param [String] tasklist
         #   Task list identifier.
@@ -337,7 +327,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -360,7 +350,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Returns the specified task.
         # @param [String] tasklist
         #   Task list identifier.
@@ -375,7 +364,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -390,7 +379,7 @@ module Google
         def get_task(tasklist, task, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'lists/{tasklist}/tasks/{task}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::TasksV1::TaskRepresentation
+          command.response_representation = Google::Apis::TasksV1::Task::Representation
           command.response_class = Google::Apis::TasksV1::Task
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.params['task'] = task unless task.nil?
@@ -400,12 +389,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates a new task on the specified task list.
         # @param [String] tasklist
         #   Task list identifier.
-        # @param [Google::Apis::TasksV1::Task] task
-        #   
+        # @param [Google::Apis::TasksV1::Task] task_object
         # @param [String] parent
         #   Parent task identifier. If the task is created at the top level, this
         #   parameter is omitted. Optional.
@@ -421,7 +408,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -433,12 +420,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_task(tasklist, task = nil, parent: nil, previous: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_task(tasklist, task_object = nil, parent: nil, previous: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'lists/{tasklist}/tasks'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::TasksV1::TaskRepresentation
-          command.request_object = task
-          command.response_representation = Google::Apis::TasksV1::TaskRepresentation
+          command.request_representation = Google::Apis::TasksV1::Task::Representation
+          command.request_object = task_object
+          command.response_representation = Google::Apis::TasksV1::Task::Representation
           command.response_class = Google::Apis::TasksV1::Task
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.query['parent'] = parent unless parent.nil?
@@ -448,7 +435,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Returns all tasks in the specified task list.
         # @param [String] tasklist
@@ -491,7 +477,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -506,7 +492,7 @@ module Google
         def list_tasks(tasklist, completed_max: nil, completed_min: nil, due_max: nil, due_min: nil, max_results: nil, page_token: nil, show_completed: nil, show_deleted: nil, show_hidden: nil, updated_min: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'lists/{tasklist}/tasks'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::TasksV1::TasksRepresentation
+          command.response_representation = Google::Apis::TasksV1::Tasks::Representation
           command.response_class = Google::Apis::TasksV1::Tasks
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.query['completedMax'] = completed_max unless completed_max.nil?
@@ -524,7 +510,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Moves the specified task to another position in the task list. This can
         # include putting it as a child task under a new parent and/or move it to a
@@ -548,7 +533,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -563,7 +548,7 @@ module Google
         def move_task(tasklist, task, parent: nil, previous: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'lists/{tasklist}/tasks/{task}/move'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::TasksV1::TaskRepresentation
+          command.response_representation = Google::Apis::TasksV1::Task::Representation
           command.response_class = Google::Apis::TasksV1::Task
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.params['task'] = task unless task.nil?
@@ -575,14 +560,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates the specified task. This method supports patch semantics.
         # @param [String] tasklist
         #   Task list identifier.
         # @param [String] task
         #   Task identifier.
         # @param [Google::Apis::TasksV1::Task] task_object
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -592,7 +575,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -607,9 +590,9 @@ module Google
         def patch_task(tasklist, task, task_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'lists/{tasklist}/tasks/{task}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::TasksV1::TaskRepresentation
+          command.request_representation = Google::Apis::TasksV1::Task::Representation
           command.request_object = task_object
-          command.response_representation = Google::Apis::TasksV1::TaskRepresentation
+          command.response_representation = Google::Apis::TasksV1::Task::Representation
           command.response_class = Google::Apis::TasksV1::Task
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.params['task'] = task unless task.nil?
@@ -619,14 +602,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates the specified task.
         # @param [String] tasklist
         #   Task list identifier.
         # @param [String] task
         #   Task identifier.
         # @param [Google::Apis::TasksV1::Task] task_object
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -636,7 +617,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -651,9 +632,9 @@ module Google
         def update_task(tasklist, task, task_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'lists/{tasklist}/tasks/{task}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::TasksV1::TaskRepresentation
+          command.request_representation = Google::Apis::TasksV1::Task::Representation
           command.request_object = task_object
-          command.response_representation = Google::Apis::TasksV1::TaskRepresentation
+          command.response_representation = Google::Apis::TasksV1::Task::Representation
           command.response_class = Google::Apis::TasksV1::Task
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.params['task'] = task unless task.nil?

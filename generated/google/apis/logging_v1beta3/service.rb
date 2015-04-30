@@ -33,7 +33,6 @@ module Google
       #
       # @see 
       class LoggingService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  OAuth access token.
         attr_accessor :access_token
@@ -67,7 +66,7 @@ module Google
         def initialize
           super('https://logging.googleapis.com/', '')
         end
-
+        
         # Lists log resources belonging to the specified project.
         # @param [String] projects_id
         #   Part of `projectName`. The project name for which to list the log resources.
@@ -106,7 +105,7 @@ module Google
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [String] __xgafv
         #   V1 error format.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -121,7 +120,7 @@ module Google
         def list_project_logs(projects_id, service_name: nil, service_index_prefix: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::LoggingV1beta3::ListLogsResponseRepresentation
+          command.response_representation = Google::Apis::LoggingV1beta3::ListLogsResponse::Representation
           command.response_class = Google::Apis::LoggingV1beta3::ListLogsResponse
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.query['serviceName'] = service_name unless service_name.nil?
@@ -137,7 +136,6 @@ module Google
           command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Deletes the specified log resource and all log entries contained in it.
         # @param [String] projects_id
@@ -159,7 +157,7 @@ module Google
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [String] __xgafv
         #   V1 error format.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -174,7 +172,7 @@ module Google
         def delete_project_log(projects_id, logs_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}'
           command =  make_simple_command(:delete, path, options)
-          command.response_representation = Google::Apis::LoggingV1beta3::EmptyRepresentation
+          command.response_representation = Google::Apis::LoggingV1beta3::Empty::Representation
           command.response_class = Google::Apis::LoggingV1beta3::Empty
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logsId'] = logs_id unless logs_id.nil?
@@ -188,7 +186,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates one or more log entries in a log. You must supply a list of `LogEntry`
         # objects, named `entries`. Each `LogEntry` object must contain a payload object
         # and a `LogEntryMetadata` object that describes the entry. You must fill in all
@@ -201,8 +198,7 @@ module Google
         #   entries.
         # @param [String] logs_id
         #   Part of `logName`. See documentation of `projectsId`.
-        # @param [Google::Apis::LoggingV1beta3::WriteLogEntriesRequest] write_log_entries_request
-        #   
+        # @param [Google::Apis::LoggingV1beta3::WriteLogEntriesRequest] write_log_entries_request_object
         # @param [String] access_token
         #   OAuth access token.
         # @param [String] bearer_token
@@ -218,7 +214,7 @@ module Google
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [String] __xgafv
         #   V1 error format.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -230,12 +226,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def write_log_entries(projects_id, logs_id, write_log_entries_request = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def write_log_entries(projects_id, logs_id, write_log_entries_request_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/entries:write'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::LoggingV1beta3::WriteLogEntriesRequestRepresentation
-          command.request_object = write_log_entries_request
-          command.response_representation = Google::Apis::LoggingV1beta3::WriteLogEntriesResponseRepresentation
+          command.request_representation = Google::Apis::LoggingV1beta3::WriteLogEntriesRequest::Representation
+          command.request_object = write_log_entries_request_object
+          command.response_representation = Google::Apis::LoggingV1beta3::WriteLogEntriesResponse::Representation
           command.response_class = Google::Apis::LoggingV1beta3::WriteLogEntriesResponse
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logsId'] = logs_id unless logs_id.nil?
@@ -248,8 +244,6 @@ module Google
           command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Lists log sinks associated with the specified log.
         # @param [String] projects_id
@@ -271,7 +265,7 @@ module Google
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [String] __xgafv
         #   V1 error format.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -286,7 +280,7 @@ module Google
         def list_project_log_sinks(projects_id, logs_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::LoggingV1beta3::ListLogSinksResponseRepresentation
+          command.response_representation = Google::Apis::LoggingV1beta3::ListLogSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV1beta3::ListLogSinksResponse
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logsId'] = logs_id unless logs_id.nil?
@@ -299,7 +293,6 @@ module Google
           command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Gets the specified log sink resource.
         # @param [String] projects_id
@@ -323,7 +316,7 @@ module Google
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [String] __xgafv
         #   V1 error format.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -338,7 +331,7 @@ module Google
         def get_project_log_sink(projects_id, logs_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks/{sinksId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
+          command.response_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
           command.response_class = Google::Apis::LoggingV1beta3::LogSink
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logsId'] = logs_id unless logs_id.nil?
@@ -353,14 +346,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates the specified log sink resource.
         # @param [String] projects_id
         #   Part of `logName`. The log in which to create a sink resource.
         # @param [String] logs_id
         #   Part of `logName`. See documentation of `projectsId`.
-        # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink
-        #   
+        # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink_object
         # @param [String] access_token
         #   OAuth access token.
         # @param [String] bearer_token
@@ -376,7 +367,7 @@ module Google
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [String] __xgafv
         #   V1 error format.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -388,12 +379,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_log_sink(projects_id, logs_id, log_sink = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def create_project_log_sink(projects_id, logs_id, log_sink_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
-          command.request_object = log_sink
-          command.response_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
+          command.request_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
+          command.request_object = log_sink_object
+          command.response_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
           command.response_class = Google::Apis::LoggingV1beta3::LogSink
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logsId'] = logs_id unless logs_id.nil?
@@ -406,7 +397,6 @@ module Google
           command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Creates or updates the specified log sink resource.
         # @param [String] projects_id
@@ -415,8 +405,7 @@ module Google
         #   Part of `sinkName`. See documentation of `projectsId`.
         # @param [String] sinks_id
         #   Part of `sinkName`. See documentation of `projectsId`.
-        # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink
-        #   
+        # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink_object
         # @param [String] access_token
         #   OAuth access token.
         # @param [String] bearer_token
@@ -432,7 +421,7 @@ module Google
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [String] __xgafv
         #   V1 error format.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -444,12 +433,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_log_sink(projects_id, logs_id, sinks_id, log_sink = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def update_project_log_sink(projects_id, logs_id, sinks_id, log_sink_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks/{sinksId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
-          command.request_object = log_sink
-          command.response_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
+          command.request_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
+          command.request_object = log_sink_object
+          command.response_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
           command.response_class = Google::Apis::LoggingV1beta3::LogSink
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logsId'] = logs_id unless logs_id.nil?
@@ -463,7 +452,6 @@ module Google
           command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Deletes the specified log sink resource.
         # @param [String] projects_id
@@ -487,7 +475,7 @@ module Google
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [String] __xgafv
         #   V1 error format.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -502,7 +490,7 @@ module Google
         def delete_project_log_sink(projects_id, logs_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks/{sinksId}'
           command =  make_simple_command(:delete, path, options)
-          command.response_representation = Google::Apis::LoggingV1beta3::EmptyRepresentation
+          command.response_representation = Google::Apis::LoggingV1beta3::Empty::Representation
           command.response_class = Google::Apis::LoggingV1beta3::Empty
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logsId'] = logs_id unless logs_id.nil?
@@ -516,9 +504,6 @@ module Google
           command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
-        
         
         # Lists log services associated with log entries ingested for a project.
         # @param [String] projects_id
@@ -547,7 +532,7 @@ module Google
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [String] __xgafv
         #   V1 error format.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -562,7 +547,7 @@ module Google
         def list_project_log_services(projects_id, log: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::LoggingV1beta3::ListLogServicesResponseRepresentation
+          command.response_representation = Google::Apis::LoggingV1beta3::ListLogServicesResponse::Representation
           command.response_class = Google::Apis::LoggingV1beta3::ListLogServicesResponse
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.query['log'] = log unless log.nil?
@@ -577,7 +562,6 @@ module Google
           command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists log service indexes associated with a log service.
         # @param [String] projects_id
@@ -625,7 +609,7 @@ module Google
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [String] __xgafv
         #   V1 error format.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -640,7 +624,7 @@ module Google
         def list_project_log_service_indexes(projects_id, log_services_id, index_prefix: nil, depth: nil, log: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/indexes'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::LoggingV1beta3::ListLogServiceIndexesResponseRepresentation
+          command.response_representation = Google::Apis::LoggingV1beta3::ListLogServiceIndexesResponse::Representation
           command.response_class = Google::Apis::LoggingV1beta3::ListLogServiceIndexesResponse
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logServicesId'] = log_services_id unless log_services_id.nil?
@@ -658,8 +642,6 @@ module Google
           command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Lists log service sinks associated with the specified service.
         # @param [String] projects_id
@@ -681,7 +663,7 @@ module Google
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [String] __xgafv
         #   V1 error format.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -696,7 +678,7 @@ module Google
         def list_project_log_service_sinks(projects_id, log_services_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::LoggingV1beta3::ListLogServiceSinksResponseRepresentation
+          command.response_representation = Google::Apis::LoggingV1beta3::ListLogServiceSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV1beta3::ListLogServiceSinksResponse
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logServicesId'] = log_services_id unless log_services_id.nil?
@@ -709,7 +691,6 @@ module Google
           command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Gets the specified log service sink resource.
         # @param [String] projects_id
@@ -733,7 +714,7 @@ module Google
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [String] __xgafv
         #   V1 error format.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -748,7 +729,7 @@ module Google
         def get_project_log_service_sink(projects_id, log_services_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks/{sinksId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
+          command.response_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
           command.response_class = Google::Apis::LoggingV1beta3::LogSink
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logServicesId'] = log_services_id unless log_services_id.nil?
@@ -763,14 +744,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates the specified log service sink resource.
         # @param [String] projects_id
         #   Part of `serviceName`. The name of the service in which to create a sink.
         # @param [String] log_services_id
         #   Part of `serviceName`. See documentation of `projectsId`.
-        # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink
-        #   
+        # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink_object
         # @param [String] access_token
         #   OAuth access token.
         # @param [String] bearer_token
@@ -786,7 +765,7 @@ module Google
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [String] __xgafv
         #   V1 error format.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -798,12 +777,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_log_service_sink(projects_id, log_services_id, log_sink = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def create_project_log_service_sink(projects_id, log_services_id, log_sink_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
-          command.request_object = log_sink
-          command.response_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
+          command.request_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
+          command.request_object = log_sink_object
+          command.response_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
           command.response_class = Google::Apis::LoggingV1beta3::LogSink
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logServicesId'] = log_services_id unless log_services_id.nil?
@@ -816,7 +795,6 @@ module Google
           command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Creates or update the specified log service sink resource.
         # @param [String] projects_id
@@ -825,8 +803,7 @@ module Google
         #   Part of `sinkName`. See documentation of `projectsId`.
         # @param [String] sinks_id
         #   Part of `sinkName`. See documentation of `projectsId`.
-        # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink
-        #   
+        # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink_object
         # @param [String] access_token
         #   OAuth access token.
         # @param [String] bearer_token
@@ -842,7 +819,7 @@ module Google
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [String] __xgafv
         #   V1 error format.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -854,12 +831,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_log_service_sink(projects_id, log_services_id, sinks_id, log_sink = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def update_project_log_service_sink(projects_id, log_services_id, sinks_id, log_sink_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks/{sinksId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
-          command.request_object = log_sink
-          command.response_representation = Google::Apis::LoggingV1beta3::LogSinkRepresentation
+          command.request_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
+          command.request_object = log_sink_object
+          command.response_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
           command.response_class = Google::Apis::LoggingV1beta3::LogSink
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logServicesId'] = log_services_id unless log_services_id.nil?
@@ -873,7 +850,6 @@ module Google
           command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Deletes the specified log service sink.
         # @param [String] projects_id
@@ -897,7 +873,7 @@ module Google
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [String] __xgafv
         #   V1 error format.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -912,7 +888,7 @@ module Google
         def delete_project_log_service_sink(projects_id, log_services_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks/{sinksId}'
           command =  make_simple_command(:delete, path, options)
-          command.response_representation = Google::Apis::LoggingV1beta3::EmptyRepresentation
+          command.response_representation = Google::Apis::LoggingV1beta3::Empty::Representation
           command.response_class = Google::Apis::LoggingV1beta3::Empty
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logServicesId'] = log_services_id unless log_services_id.nil?

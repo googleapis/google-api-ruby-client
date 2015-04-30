@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/accounts/docs/OAuth2
       class Oauth2Service < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', '')
         end
-
+        
         # 
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -63,7 +62,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -78,21 +77,18 @@ module Google
         def get_cert_for_open_id_connect(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'oauth2/v2/certs'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::Oauth2V2::JwkRepresentation
+          command.response_representation = Google::Apis::Oauth2V2::Jwk::Representation
           command.response_class = Google::Apis::Oauth2V2::Jwk
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # 
         # @param [String] access_token
-        #   
         # @param [String] id_token
-        #   
         # @param [String] token_handle
-        #   
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -102,7 +98,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -117,7 +113,7 @@ module Google
         def tokeninfo(access_token: nil, id_token: nil, token_handle: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'oauth2/v2/tokeninfo'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::Oauth2V2::TokeninfoRepresentation
+          command.response_representation = Google::Apis::Oauth2V2::Tokeninfo::Representation
           command.response_class = Google::Apis::Oauth2V2::Tokeninfo
           command.query['access_token'] = access_token unless access_token.nil?
           command.query['id_token'] = id_token unless id_token.nil?
@@ -127,7 +123,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # 
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -138,7 +134,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -153,14 +149,13 @@ module Google
         def get_userinfo(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'oauth2/v2/userinfo'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::Oauth2V2::UserinfoplusRepresentation
+          command.response_representation = Google::Apis::Oauth2V2::Userinfoplus::Representation
           command.response_class = Google::Apis::Oauth2V2::Userinfoplus
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # 
         # @param [String] fields
@@ -172,7 +167,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -187,7 +182,7 @@ module Google
         def get_userinfo_v2_me(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userinfo/v2/me'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::Oauth2V2::UserinfoplusRepresentation
+          command.response_representation = Google::Apis::Oauth2V2::Userinfoplus::Representation
           command.response_class = Google::Apis::Oauth2V2::Userinfoplus
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

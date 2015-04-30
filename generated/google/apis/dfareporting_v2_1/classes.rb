@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DfareportingV2_1
-
+      
       # Contains properties of a DCM account.
       class Account
         include Google::Apis::Core::Hashable
@@ -174,9 +174,9 @@ module Google
         attr_accessor :nielsen_ocr_enabled
         alias_method :nielsen_ocr_enabled?, :nielsen_ocr_enabled
       
-        # Reporting configuration of this account.
+        # Reporting Configuration
         # Corresponds to the JSON property `reportsConfiguration`
-        # @return [Google::Apis::DfareportingV2_1::ReportsConfiguration]
+        # @return [Google::Apis::DfareportingV2_1::Configuration]
         attr_accessor :reports_configuration
       
         # File size limit in kilobytes of Rich Media teaser creatives. Must be between 1
@@ -186,6 +186,11 @@ module Google
         attr_accessor :teaser_size_limit
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_permission_ids = args[:account_permission_ids] unless args[:account_permission_ids].nil?
           @account_profile = args[:account_profile] unless args[:account_profile].nil?
           @active = args[:active] unless args[:active].nil?
@@ -207,7 +212,7 @@ module Google
           @teaser_size_limit = args[:teaser_size_limit] unless args[:teaser_size_limit].nil?
         end
       end
-
+      
       # Gets a summary of active ads in an account.
       class AccountActiveAdSummary
         include Google::Apis::Core::Hashable
@@ -239,6 +244,11 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @active_ads = args[:active_ads] unless args[:active_ads].nil?
           @active_ads_limit_tier = args[:active_ads_limit_tier] unless args[:active_ads_limit_tier].nil?
@@ -246,7 +256,7 @@ module Google
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # AccountPermissions contains information about a particular account permission.
       # Some features of DCM require an account permission to be present in the
       # account.
@@ -288,6 +298,11 @@ module Google
         attr_accessor :permission_group_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_profiles = args[:account_profiles] unless args[:account_profiles].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -296,7 +311,7 @@ module Google
           @permission_group_id = args[:permission_group_id] unless args[:permission_group_id].nil?
         end
       end
-
+      
       # AccountPermissionGroups contains a mapping of permission group IDs to names. A
       # permission group is a grouping of account permissions.
       class AccountPermissionGroup
@@ -319,14 +334,19 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Account Permission Group List Response
-      class AccountPermissionGroupsListResponse
+      class ListResponse
         include Google::Apis::Core::Hashable
       
         # Account permission group collection.
@@ -341,11 +361,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_permission_groups = args[:account_permission_groups] unless args[:account_permission_groups].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Account Permission List Response
       class AccountPermissionsListResponse
         include Google::Apis::Core::Hashable
@@ -362,11 +387,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_permissions = args[:account_permissions] unless args[:account_permissions].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # AccountUserProfiles contains properties of a DCM user profile. This resource
       # is specifically for managing user profiles, whereas UserProfiles is for
       # accessing the API.
@@ -386,12 +416,12 @@ module Google
         attr_accessor :active
         alias_method :active?, :active
       
-        # Filter that describes which advertisers are visible to the user profile.
+        # Object Filter.
         # Corresponds to the JSON property `advertiserFilter`
         # @return [Google::Apis::DfareportingV2_1::ObjectFilter]
         attr_accessor :advertiser_filter
       
-        # Filter that describes which campaigns are visible to the user profile.
+        # Object Filter.
         # Corresponds to the JSON property `campaignFilter`
         # @return [Google::Apis::DfareportingV2_1::ObjectFilter]
         attr_accessor :campaign_filter
@@ -447,7 +477,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Filter that describes which sites are visible to the user profile.
+        # Object Filter.
         # Corresponds to the JSON property `siteFilter`
         # @return [Google::Apis::DfareportingV2_1::ObjectFilter]
         attr_accessor :site_filter
@@ -469,7 +499,7 @@ module Google
         # @return [String]
         attr_accessor :user_access_type
       
-        # Filter that describes which user roles are visible to the user profile.
+        # Object Filter.
         # Corresponds to the JSON property `userRoleFilter`
         # @return [Google::Apis::DfareportingV2_1::ObjectFilter]
         attr_accessor :user_role_filter
@@ -480,6 +510,11 @@ module Google
         attr_accessor :user_role_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @active = args[:active] unless args[:active].nil?
           @advertiser_filter = args[:advertiser_filter] unless args[:advertiser_filter].nil?
@@ -498,7 +533,7 @@ module Google
           @user_role_id = args[:user_role_id] unless args[:user_role_id].nil?
         end
       end
-
+      
       # Account User Profile List Response
       class AccountUserProfilesListResponse
         include Google::Apis::Core::Hashable
@@ -520,12 +555,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_user_profiles = args[:account_user_profiles] unless args[:account_user_profiles].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Account List Response
       class AccountsListResponse
         include Google::Apis::Core::Hashable
@@ -547,12 +587,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @accounts = args[:accounts] unless args[:accounts].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Represents an activity group.
       class Activities
         include Google::Apis::Core::Hashable
@@ -574,12 +619,17 @@ module Google
         attr_accessor :metric_names
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @filters = args[:filters] unless args[:filters].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @metric_names = args[:metric_names] unless args[:metric_names].nil?
         end
       end
-
+      
       # Contains properties of a DCM ad.
       class Ad
         include Google::Apis::Core::Hashable
@@ -600,8 +650,7 @@ module Google
         # @return [String]
         attr_accessor :advertiser_id
       
-        # Dimension value for the ID of the advertiser. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
@@ -623,20 +672,17 @@ module Google
         # @return [String]
         attr_accessor :campaign_id
       
-        # Dimension value for the ID of the campaign. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `campaignIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :campaign_id_dimension_value
       
-        # Click-through URL for this ad. This is a required field on insertion.
-        # Applicable when type is AD_SERVING_CLICK_TRACKER.
+        # Click-through URL
         # Corresponds to the JSON property `clickThroughUrl`
         # @return [Google::Apis::DfareportingV2_1::ClickThroughUrl]
         attr_accessor :click_through_url
       
-        # Click-through URL suffix properties for this ad. Applies to the URL in the ad
-        # or (if overriding ad properties) the URL in the creative.
+        # Click Through URL Suffix settings.
         # Corresponds to the JSON property `clickThroughUrlSuffixProperties`
         # @return [Google::Apis::DfareportingV2_1::ClickThroughUrlSuffixProperties]
         attr_accessor :click_through_url_suffix_properties
@@ -655,7 +701,7 @@ module Google
         # @return [String]
         attr_accessor :compatibility
       
-        # Information about the creation of this ad.This is a read-only field.
+        # Modification timestamp.
         # Corresponds to the JSON property `createInfo`
         # @return [Google::Apis::DfareportingV2_1::LastModifiedInfo]
         attr_accessor :create_info
@@ -667,28 +713,24 @@ module Google
         # @return [Array<Google::Apis::DfareportingV2_1::CreativeGroupAssignment>]
         attr_accessor :creative_group_assignments
       
-        # Creative rotation for this ad. Applicable when type is AD_SERVING_DEFAULT_AD,
-        # AD_SERVING_STANDARD_AD, or AD_SERVING_TRACKING. When type is
-        # AD_SERVING_DEFAULT_AD, this field should have exactly one creativeAssignment.
+        # Creative Rotation.
         # Corresponds to the JSON property `creativeRotation`
         # @return [Google::Apis::DfareportingV2_1::CreativeRotation]
         attr_accessor :creative_rotation
       
-        # Time and day targeting information for this ad. Applicable when type is
-        # AD_SERVING_STANDARD_AD.
+        # Day Part Targeting.
         # Corresponds to the JSON property `dayPartTargeting`
         # @return [Google::Apis::DfareportingV2_1::DayPartTargeting]
         attr_accessor :day_part_targeting
       
-        # Default click-through event tag properties for this ad.
+        # Properties of inheriting and overriding the default click-through event tag. A
+        # campaign may override the event tag defined at the advertiser level, and an ad
+        # may also override the campaign's setting further.
         # Corresponds to the JSON property `defaultClickThroughEventTagProperties`
         # @return [Google::Apis::DfareportingV2_1::DefaultClickThroughEventTagProperties]
         attr_accessor :default_click_through_event_tag_properties
       
-        # Delivery schedule information for this ad. Applicable when type is
-        # AD_SERVING_STANDARD_AD or AD_SERVING_TRACKING. This field along with subfields
-        # priority and impressionRatio are required on insertion when type is
-        # AD_SERVING_STANDARD_AD.
+        # Delivery Schedule.
         # Corresponds to the JSON property `deliverySchedule`
         # @return [Google::Apis::DfareportingV2_1::DeliverySchedule]
         attr_accessor :delivery_schedule
@@ -712,8 +754,7 @@ module Google
         # @return [Array<Google::Apis::DfareportingV2_1::EventTagOverride>]
         attr_accessor :event_tag_overrides
       
-        # Geographical targeting information for this ad.Applicable when type is
-        # AD_SERVING_STANDARD_AD.
+        # Geographical Targeting.
         # Corresponds to the JSON property `geoTargeting`
         # @return [Google::Apis::DfareportingV2_1::GeoTargeting]
         attr_accessor :geo_targeting
@@ -723,14 +764,12 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Dimension value for the ID of this ad. This is a read-only, auto-generated
-        # field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :id_dimension_value
       
-        # Key-value targeting information for this ad. Applicable when type is
-        # AD_SERVING_STANDARD_AD.
+        # Key Value Targeting Expression.
         # Corresponds to the JSON property `keyValueTargetingExpression`
         # @return [Google::Apis::DfareportingV2_1::KeyValueTargetingExpression]
         attr_accessor :key_value_targeting_expression
@@ -741,8 +780,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Information about the most recent modification of this ad. This is a read-only
-        # field.
+        # Modification timestamp.
         # Corresponds to the JSON property `lastModifiedInfo`
         # @return [Google::Apis::DfareportingV2_1::LastModifiedInfo]
         attr_accessor :last_modified_info
@@ -758,13 +796,12 @@ module Google
         # @return [Array<Google::Apis::DfareportingV2_1::PlacementAssignment>]
         attr_accessor :placement_assignments
       
-        # Applicable when type is AD_SERVING_STANDARD_AD. Remarketing list targeting
-        # expression for this ad.
+        # Remarketing List Targeting Expression.
         # Corresponds to the JSON property `remarketing_list_expression`
         # @return [Google::Apis::DfareportingV2_1::ListTargetingExpression]
         attr_accessor :remarketing_list_expression
       
-        # Size of this ad. Applicable when type is AD_SERVING_DEFAULT_AD.
+        # Represents the dimensions of ads, placements, creatives, or creative assets.
         # Corresponds to the JSON property `size`
         # @return [Google::Apis::DfareportingV2_1::Size]
         attr_accessor :size
@@ -794,8 +831,7 @@ module Google
         # @return [String]
         attr_accessor :subaccount_id
       
-        # Technology platform targeting information for this ad. Applicable when type is
-        # AD_SERVING_STANDARD_AD.
+        # Technology Targeting.
         # Corresponds to the JSON property `technologyTargeting`
         # @return [Google::Apis::DfareportingV2_1::TechnologyTargeting]
         attr_accessor :technology_targeting
@@ -807,6 +843,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @active = args[:active] unless args[:active].nil?
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
@@ -846,7 +887,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Ad Slot
       class AdSlot
         include Google::Apis::Core::Hashable
@@ -896,6 +937,11 @@ module Google
         attr_accessor :width
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @comment = args[:comment] unless args[:comment].nil?
           @compatibility = args[:compatibility] unless args[:compatibility].nil?
           @height = args[:height] unless args[:height].nil?
@@ -906,7 +952,7 @@ module Google
           @width = args[:width] unless args[:width].nil?
         end
       end
-
+      
       # Ad List Response
       class AdsListResponse
         include Google::Apis::Core::Hashable
@@ -928,12 +974,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ads = args[:ads] unless args[:ads].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Contains properties of a DCM advertiser.
       class Advertiser
         include Google::Apis::Core::Hashable
@@ -980,8 +1031,7 @@ module Google
         # @return [String]
         attr_accessor :floodlight_configuration_id
       
-        # Dimension value for the ID of the floodlight configuration. This is a read-
-        # only, auto-generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `floodlightConfigurationIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :floodlight_configuration_id_dimension_value
@@ -991,8 +1041,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Dimension value for the ID of this advertiser. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :id_dimension_value
@@ -1031,6 +1080,11 @@ module Google
         attr_accessor :subaccount_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @advertiser_group_id = args[:advertiser_group_id] unless args[:advertiser_group_id].nil?
           @click_through_url_suffix = args[:click_through_url_suffix] unless args[:click_through_url_suffix].nil?
@@ -1047,7 +1101,7 @@ module Google
           @subaccount_id = args[:subaccount_id] unless args[:subaccount_id].nil?
         end
       end
-
+      
       # Groups advertisers together so that reports can be generated for the entire
       # group at once.
       class AdvertiserGroup
@@ -1077,13 +1131,18 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Advertiser Group List Response
       class AdvertiserGroupsListResponse
         include Google::Apis::Core::Hashable
@@ -1105,12 +1164,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @advertiser_groups = args[:advertiser_groups] unless args[:advertiser_groups].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Advertiser List Response
       class AdvertisersListResponse
         include Google::Apis::Core::Hashable
@@ -1132,12 +1196,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @advertisers = args[:advertisers] unless args[:advertisers].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Audience Segment.
       class AudienceSegment
         include Google::Apis::Core::Hashable
@@ -1161,12 +1230,17 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @allocation = args[:allocation] unless args[:allocation].nil?
           @id = args[:id] unless args[:id].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Audience Segment Group.
       class AudienceSegmentGroup
         include Google::Apis::Core::Hashable
@@ -1189,12 +1263,17 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @audience_segments = args[:audience_segments] unless args[:audience_segments].nil?
           @id = args[:id] unless args[:id].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Contains information about a browser that can be targeted by ads.
       class Browser
         include Google::Apis::Core::Hashable
@@ -1245,6 +1324,11 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @browser_version_id = args[:browser_version_id] unless args[:browser_version_id].nil?
           @dart_id = args[:dart_id] unless args[:dart_id].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1253,7 +1337,7 @@ module Google
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Browser List Response
       class BrowsersListResponse
         include Google::Apis::Core::Hashable
@@ -1270,11 +1354,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @browsers = args[:browsers] unless args[:browsers].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Contains properties of a DCM campaign.
       class Campaign
         include Google::Apis::Core::Hashable
@@ -1299,8 +1388,7 @@ module Google
         # @return [String]
         attr_accessor :advertiser_id
       
-        # Dimension value for the advertiser ID of this campaign. This is a read-only,
-        # auto-generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
@@ -1323,7 +1411,7 @@ module Google
         # @return [String]
         attr_accessor :billing_invoice_code
       
-        # Click-through URL suffix override properties for this campaign.
+        # Click Through URL Suffix settings.
         # Corresponds to the JSON property `clickThroughUrlSuffixProperties`
         # @return [Google::Apis::DfareportingV2_1::ClickThroughUrlSuffixProperties]
         attr_accessor :click_through_url_suffix_properties
@@ -1339,7 +1427,7 @@ module Google
         attr_accessor :comscore_vce_enabled
         alias_method :comscore_vce_enabled?, :comscore_vce_enabled
       
-        # Information about the creation of this campaign. This is a read-only field.
+        # Modification timestamp.
         # Corresponds to the JSON property `createInfo`
         # @return [Google::Apis::DfareportingV2_1::LastModifiedInfo]
         attr_accessor :create_info
@@ -1349,12 +1437,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :creative_group_ids
       
-        # Creative optimization configuration for the campaign.
+        # Creative optimization settings.
         # Corresponds to the JSON property `creativeOptimizationConfiguration`
         # @return [Google::Apis::DfareportingV2_1::CreativeOptimizationConfiguration]
         attr_accessor :creative_optimization_configuration
       
-        # Click-through event tag ID override properties for this campaign.
+        # Properties of inheriting and overriding the default click-through event tag. A
+        # campaign may override the event tag defined at the advertiser level, and an ad
+        # may also override the campaign's setting further.
         # Corresponds to the JSON property `defaultClickThroughEventTagProperties`
         # @return [Google::Apis::DfareportingV2_1::DefaultClickThroughEventTagProperties]
         attr_accessor :default_click_through_event_tag_properties
@@ -1384,8 +1474,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Dimension value for the ID of this campaign. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :id_dimension_value
@@ -1396,13 +1485,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Information about the most recent modification of this campaign. This is a
-        # read-only field.
+        # Modification timestamp.
         # Corresponds to the JSON property `lastModifiedInfo`
         # @return [Google::Apis::DfareportingV2_1::LastModifiedInfo]
         attr_accessor :last_modified_info
       
-        # Lookback window settings for the campaign.
+        # Lookback configuration settings.
         # Corresponds to the JSON property `lookbackConfiguration`
         # @return [Google::Apis::DfareportingV2_1::LookbackConfiguration]
         attr_accessor :lookback_configuration
@@ -1438,6 +1526,11 @@ module Google
         attr_accessor :trafficker_emails
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @additional_creative_optimization_configurations = args[:additional_creative_optimization_configurations] unless args[:additional_creative_optimization_configurations].nil?
           @advertiser_group_id = args[:advertiser_group_id] unless args[:advertiser_group_id].nil?
@@ -1468,7 +1561,7 @@ module Google
           @trafficker_emails = args[:trafficker_emails] unless args[:trafficker_emails].nil?
         end
       end
-
+      
       # Identifies a creative which has been associated with a given campaign.
       class CampaignCreativeAssociation
         include Google::Apis::Core::Hashable
@@ -1485,11 +1578,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creative_id = args[:creative_id] unless args[:creative_id].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Campaign Creative Association List Response
       class CampaignCreativeAssociationsListResponse
         include Google::Apis::Core::Hashable
@@ -1511,12 +1609,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @campaign_creative_associations = args[:campaign_creative_associations] unless args[:campaign_creative_associations].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Campaign List Response
       class CampaignsListResponse
         include Google::Apis::Core::Hashable
@@ -1538,12 +1641,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @campaigns = args[:campaigns] unless args[:campaigns].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Describes a change that a user has made to a resource.
       class ChangeLog
         include Google::Apis::Core::Hashable
@@ -1623,6 +1731,11 @@ module Google
         attr_accessor :user_profile_name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @action = args[:action] unless args[:action].nil?
           @change_time = args[:change_time] unless args[:change_time].nil?
@@ -1639,7 +1752,7 @@ module Google
           @user_profile_name = args[:user_profile_name] unless args[:user_profile_name].nil?
         end
       end
-
+      
       # Change Log List Response
       class ChangeLogsListResponse
         include Google::Apis::Core::Hashable
@@ -1661,12 +1774,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @change_logs = args[:change_logs] unless args[:change_logs].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # City List Response
       class CitiesListResponse
         include Google::Apis::Core::Hashable
@@ -1683,11 +1801,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cities = args[:cities] unless args[:cities].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Contains information about a city that can be targeted by ads.
       class City
         include Google::Apis::Core::Hashable
@@ -1739,6 +1862,11 @@ module Google
         attr_accessor :region_dart_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @country_code = args[:country_code] unless args[:country_code].nil?
           @country_dart_id = args[:country_dart_id] unless args[:country_dart_id].nil?
           @dart_id = args[:dart_id] unless args[:dart_id].nil?
@@ -1750,7 +1878,7 @@ module Google
           @region_dart_id = args[:region_dart_id] unless args[:region_dart_id].nil?
         end
       end
-
+      
       # Creative Click Tag.
       class ClickTag
         include Google::Apis::Core::Hashable
@@ -1775,12 +1903,17 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @event_name = args[:event_name] unless args[:event_name].nil?
           @name = args[:name] unless args[:name].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # Click-through URL
       class ClickThroughUrl
         include Google::Apis::Core::Hashable
@@ -1804,12 +1937,17 @@ module Google
         attr_accessor :landing_page_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @custom_click_through_url = args[:custom_click_through_url] unless args[:custom_click_through_url].nil?
           @default_landing_page = args[:default_landing_page] unless args[:default_landing_page].nil?
           @landing_page_id = args[:landing_page_id] unless args[:landing_page_id].nil?
         end
       end
-
+      
       # Click Through URL Suffix settings.
       class ClickThroughUrlSuffixProperties
         include Google::Apis::Core::Hashable
@@ -1828,16 +1966,21 @@ module Google
         alias_method :override_inherited_suffix?, :override_inherited_suffix
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @click_through_url_suffix = args[:click_through_url_suffix] unless args[:click_through_url_suffix].nil?
           @override_inherited_suffix = args[:override_inherited_suffix] unless args[:override_inherited_suffix].nil?
         end
       end
-
+      
       # Companion Click-through override.
       class CompanionClickThroughOverride
         include Google::Apis::Core::Hashable
       
-        # Click-through URL of this companion click-through override.
+        # Click-through URL
         # Corresponds to the JSON property `clickThroughUrl`
         # @return [Google::Apis::DfareportingV2_1::ClickThroughUrl]
         attr_accessor :click_through_url
@@ -1848,23 +1991,28 @@ module Google
         attr_accessor :creative_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @click_through_url = args[:click_through_url] unless args[:click_through_url].nil?
           @creative_id = args[:creative_id] unless args[:creative_id].nil?
         end
       end
-
+      
       # Represents a response to the queryCompatibleFields method.
       class CompatibleFields
         include Google::Apis::Core::Hashable
       
-        # Contains items that are compatible to be selected for a report of type "
+        # Represents fields that are compatible to be selected for a report of type "
         # CROSS_DIMENSION_REACH".
         # Corresponds to the JSON property `crossDimensionReachReportCompatibleFields`
         # @return [Google::Apis::DfareportingV2_1::CrossDimensionReachReportCompatibleFields]
         attr_accessor :cross_dimension_reach_report_compatible_fields
       
-        # Contains items that are compatible to be selected for a report of type "
-        # FLOODLIGHT".
+        # Represents fields that are compatible to be selected for a report of type "
+        # FlOODLIGHT".
         # Corresponds to the JSON property `floodlightReportCompatibleFields`
         # @return [Google::Apis::DfareportingV2_1::FloodlightReportCompatibleFields]
         attr_accessor :floodlight_report_compatible_fields
@@ -1874,24 +2022,30 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Contains items that are compatible to be selected for a report of type "
+        # Represents fields that are compatible to be selected for a report of type "
         # PATH_TO_CONVERSION".
         # Corresponds to the JSON property `pathToConversionReportCompatibleFields`
         # @return [Google::Apis::DfareportingV2_1::PathToConversionReportCompatibleFields]
         attr_accessor :path_to_conversion_report_compatible_fields
       
-        # Contains items that are compatible to be selected for a report of type "REACH".
+        # Represents fields that are compatible to be selected for a report of type "
+        # REACH".
         # Corresponds to the JSON property `reachReportCompatibleFields`
         # @return [Google::Apis::DfareportingV2_1::ReachReportCompatibleFields]
         attr_accessor :reach_report_compatible_fields
       
-        # Contains items that are compatible to be selected for a report of type "
+        # Represents fields that are compatible to be selected for a report of type "
         # STANDARD".
         # Corresponds to the JSON property `reportCompatibleFields`
         # @return [Google::Apis::DfareportingV2_1::ReportCompatibleFields]
         attr_accessor :report_compatible_fields
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cross_dimension_reach_report_compatible_fields = args[:cross_dimension_reach_report_compatible_fields] unless args[:cross_dimension_reach_report_compatible_fields].nil?
           @floodlight_report_compatible_fields = args[:floodlight_report_compatible_fields] unless args[:floodlight_report_compatible_fields].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1900,7 +2054,7 @@ module Google
           @report_compatible_fields = args[:report_compatible_fields] unless args[:report_compatible_fields].nil?
         end
       end
-
+      
       # Contains information about an internet connection type that can be targeted by
       # ads. Clients can use the connection type to target mobile vs. broadband users.
       class ConnectionType
@@ -1923,12 +2077,17 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Connection Type List Response
       class ConnectionTypesListResponse
         include Google::Apis::Core::Hashable
@@ -1945,11 +2104,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @connection_types = args[:connection_types] unless args[:connection_types].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Content Category List Response
       class ContentCategoriesListResponse
         include Google::Apis::Core::Hashable
@@ -1971,12 +2135,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @content_categories = args[:content_categories] unless args[:content_categories].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Organizes placements according to the contents of their associated webpages.
       class ContentCategory
         include Google::Apis::Core::Hashable
@@ -2005,13 +2174,18 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Country List Response
       class CountriesListResponse
         include Google::Apis::Core::Hashable
@@ -2028,11 +2202,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @countries = args[:countries] unless args[:countries].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Contains information about a country that can be targeted by ads.
       class Country
         include Google::Apis::Core::Hashable
@@ -2066,6 +2245,11 @@ module Google
         alias_method :ssl_enabled?, :ssl_enabled
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @country_code = args[:country_code] unless args[:country_code].nil?
           @dart_id = args[:dart_id] unless args[:dart_id].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -2073,7 +2257,7 @@ module Google
           @ssl_enabled = args[:ssl_enabled] unless args[:ssl_enabled].nil?
         end
       end
-
+      
       # Contains properties of a Creative.
       class Creative
         include Google::Apis::Core::Hashable
@@ -2175,8 +2359,7 @@ module Google
         # @return [String]
         attr_accessor :backup_image_reporting_label
       
-        # Target window for backup image. Applicable to the following creative types:
-        # ENHANCED_BANNER, FLASH_INPAGE, and HTML5_BANNER.
+        # Target Window.
         # Corresponds to the JSON property `backupImageTargetWindow`
         # @return [Google::Apis::DfareportingV2_1::TargetWindow]
         attr_accessor :backup_image_target_window
@@ -2267,10 +2450,7 @@ module Google
         # @return [Array<Google::Apis::DfareportingV2_1::CreativeCustomEvent>]
         attr_accessor :exit_custom_events
       
-        # OpenWindow FSCommand of this creative. This lets the SWF file communicate with
-        # either Flash Player or the program hosting Flash Player, such as a web browser.
-        # This is only triggered if allowScriptAccess field is true. Applicable to the
-        # following creative types: FLASH_INPAGE.
+        # FsCommand.
         # Corresponds to the JSON property `fsCommand`
         # @return [Google::Apis::DfareportingV2_1::FsCommand]
         attr_accessor :fs_command
@@ -2296,8 +2476,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Dimension value for the ID of this creative. This is a read-only field.
-        # Applicable to all creative types.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :id_dimension_value
@@ -2308,8 +2487,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Creative last modification information. This is a read-only field. Applicable
-        # to all creative types.
+        # Modification timestamp.
         # Corresponds to the JSON property `lastModifiedInfo`
         # @return [Google::Apis::DfareportingV2_1::LastModifiedInfo]
         attr_accessor :last_modified_info
@@ -2346,8 +2524,7 @@ module Google
         # @return [String]
         attr_accessor :rendering_id
       
-        # Dimension value for the rendering ID of this creative. This is a read-only
-        # field. Applicable to all creative types.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `renderingIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :rendering_id_dimension_value
@@ -2366,13 +2543,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :required_flash_version
       
-        # Size associated with this creative. When inserting or updating a creative
-        # either the size ID field or size width and height fields can be used. This is
-        # a required field when applicable; however for IMAGE and FLASH_INPAGE creatives,
-        # if left blank, this field will be automatically set using the actual size of
-        # the associated image assets. Applicable to the following creative types:
-        # ENHANCED_BANNER, ENHANCED_IMAGE, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all
-        # RICH_MEDIA.
+        # Represents the dimensions of ads, placements, creatives, or creative assets.
         # Corresponds to the JSON property `size`
         # @return [Google::Apis::DfareportingV2_1::Size]
         attr_accessor :size
@@ -2479,6 +2650,11 @@ module Google
         attr_accessor :video_duration
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @active = args[:active] unless args[:active].nil?
           @ad_parameters = args[:ad_parameters] unless args[:ad_parameters].nil?
@@ -2537,7 +2713,7 @@ module Google
           @video_duration = args[:video_duration] unless args[:video_duration].nil?
         end
       end
-
+      
       # Creative Asset.
       class CreativeAsset
         include Google::Apis::Core::Hashable
@@ -2570,15 +2746,12 @@ module Google
         # @return [String]
         attr_accessor :artwork_type
       
-        # Identifier of this asset. This is the same identifier returned during creative
-        # asset insert operation. This is a required field. Applicable to all but the
-        # following creative types: all REDIRECT and TRACKING_TEXT.
+        # Creative Asset ID.
         # Corresponds to the JSON property `assetIdentifier`
         # @return [Google::Apis::DfareportingV2_1::CreativeAssetId]
         attr_accessor :asset_identifier
       
-        # Exit event configured for the backup image. Applicable to the following
-        # creative types: all RICH_MEDIA.
+        # Creative Custom Event.
         # Corresponds to the JSON property `backupImageExit`
         # @return [Google::Apis::DfareportingV2_1::CreativeCustomEvent]
         attr_accessor :backup_image_exit
@@ -2595,10 +2768,7 @@ module Google
         # @return [String]
         attr_accessor :child_asset_type
       
-        # Size of an asset when collapsed. This is a read-only field. Applicable to the
-        # following creative types: all RICH_MEDIA and all VPAID. Additionally,
-        # applicable to assets whose displayType is ASSET_DISPLAY_TYPE_EXPANDING or
-        # ASSET_DISPLAY_TYPE_PEEL_DOWN.
+        # Represents the dimensions of ads, placements, creatives, or creative assets.
         # Corresponds to the JSON property `collapsedSize`
         # @return [Google::Apis::DfareportingV2_1::Size]
         attr_accessor :collapsed_size
@@ -2636,8 +2806,7 @@ module Google
         # @return [String]
         attr_accessor :duration_type
       
-        # Detected expanded dimension for video asset. This is a read-only field.
-        # Applicable to the following creative types: INSTREAM_VIDEO and all VPAID.
+        # Represents the dimensions of ads, placements, creatives, or creative assets.
         # Corresponds to the JSON property `expandedDimension`
         # @return [Google::Apis::DfareportingV2_1::Size]
         attr_accessor :expanded_dimension
@@ -2690,10 +2859,7 @@ module Google
         # @return [String]
         attr_accessor :mime_type
       
-        # Offset position for an asset in collapsed mode. This is a read-only field.
-        # Applicable to the following creative types: all RICH_MEDIA and all VPAID.
-        # Additionally, only applicable to assets whose displayType is
-        # ASSET_DISPLAY_TYPE_EXPANDING or ASSET_DISPLAY_TYPE_PEEL_DOWN.
+        # Offset Position.
         # Corresponds to the JSON property `offset`
         # @return [Google::Apis::DfareportingV2_1::OffsetPosition]
         attr_accessor :offset
@@ -2705,8 +2871,7 @@ module Google
         attr_accessor :original_backup
         alias_method :original_backup?, :original_backup
       
-        # Offset position for an asset. Applicable to the following creative types: all
-        # RICH_MEDIA.
+        # Offset Position.
         # Corresponds to the JSON property `position`
         # @return [Google::Apis::DfareportingV2_1::OffsetPosition]
         attr_accessor :position
@@ -2773,11 +2938,7 @@ module Google
         # @return [String]
         attr_accessor :role
       
-        # Size associated with this creative asset. This is a required field when
-        # applicable; however for IMAGE and FLASH_INPAGE creatives, if left blank, this
-        # field will be automatically set using the actual size of the associated image
-        # asset. Applicable to the following creative types: ENHANCED_BANNER,
-        # ENHANCED_IMAGE, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all RICH_MEDIA.
+        # Represents the dimensions of ads, placements, creatives, or creative assets.
         # Corresponds to the JSON property `size`
         # @return [Google::Apis::DfareportingV2_1::Size]
         attr_accessor :size
@@ -2849,6 +3010,11 @@ module Google
         attr_accessor :zip_filesize
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @action_script3 = args[:action_script3] unless args[:action_script3].nil?
           @active = args[:active] unless args[:active].nil?
           @alignment = args[:alignment] unless args[:alignment].nil?
@@ -2893,7 +3059,7 @@ module Google
           @zip_filesize = args[:zip_filesize] unless args[:zip_filesize].nil?
         end
       end
-
+      
       # Creative Asset ID.
       class CreativeAssetId
         include Google::Apis::Core::Hashable
@@ -2913,18 +3079,23 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # CreativeAssets contains properties of a creative asset file which will be
       # uploaded or has already been uploaded. Refer to the creative sample code for
       # how to upload assets and insert a creative.
       class CreativeAssetMetadata
         include Google::Apis::Core::Hashable
       
-        # ID of the creative asset. This is a required field.
+        # Creative Asset ID.
         # Corresponds to the JSON property `assetIdentifier`
         # @return [Google::Apis::DfareportingV2_1::CreativeAssetId]
         attr_accessor :asset_identifier
@@ -2978,6 +3149,11 @@ module Google
         attr_accessor :warned_validation_rules
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @asset_identifier = args[:asset_identifier] unless args[:asset_identifier].nil?
           @click_tags = args[:click_tags] unless args[:click_tags].nil?
           @detected_features = args[:detected_features] unless args[:detected_features].nil?
@@ -2985,7 +3161,7 @@ module Google
           @warned_validation_rules = args[:warned_validation_rules] unless args[:warned_validation_rules].nil?
         end
       end
-
+      
       # Creative Assignment.
       class CreativeAssignment
         include Google::Apis::Core::Hashable
@@ -3006,7 +3182,7 @@ module Google
         attr_accessor :apply_event_tags
         alias_method :apply_event_tags?, :apply_event_tags
       
-        # Click-through URL of the creative assignment.
+        # Click-through URL
         # Corresponds to the JSON property `clickThroughUrl`
         # @return [Google::Apis::DfareportingV2_1::ClickThroughUrl]
         attr_accessor :click_through_url
@@ -3028,8 +3204,7 @@ module Google
         # @return [String]
         attr_accessor :creative_id
       
-        # Dimension value for the ID of the creative. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `creativeIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :creative_id_dimension_value
@@ -3082,6 +3257,11 @@ module Google
         attr_accessor :weight
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @active = args[:active] unless args[:active].nil?
           @apply_event_tags = args[:apply_event_tags] unless args[:apply_event_tags].nil?
           @click_through_url = args[:click_through_url] unless args[:click_through_url].nil?
@@ -3097,7 +3277,7 @@ module Google
           @weight = args[:weight] unless args[:weight].nil?
         end
       end
-
+      
       # Creative Custom Event.
       class CreativeCustomEvent
         include Google::Apis::Core::Hashable
@@ -3140,8 +3320,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Properties for rich media popup windows. This field is used only for exit
-        # events.
+        # Popup Window Properties.
         # Corresponds to the JSON property `popupWindowProperties`
         # @return [Google::Apis::DfareportingV2_1::PopupWindowProperties]
         attr_accessor :popup_window_properties
@@ -3157,6 +3336,11 @@ module Google
         attr_accessor :video_reporting_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @active = args[:active] unless args[:active].nil?
           @advertiser_custom_event_name = args[:advertiser_custom_event_name] unless args[:advertiser_custom_event_name].nil?
           @advertiser_custom_event_type = args[:advertiser_custom_event_type] unless args[:advertiser_custom_event_type].nil?
@@ -3169,7 +3353,7 @@ module Google
           @video_reporting_id = args[:video_reporting_id] unless args[:video_reporting_id].nil?
         end
       end
-
+      
       # Contains properties of a creative field.
       class CreativeField
         include Google::Apis::Core::Hashable
@@ -3185,8 +3369,7 @@ module Google
         # @return [String]
         attr_accessor :advertiser_id
       
-        # Dimension value for the ID of the advertiser. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
@@ -3215,6 +3398,11 @@ module Google
         attr_accessor :subaccount_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
           @advertiser_id_dimension_value = args[:advertiser_id_dimension_value] unless args[:advertiser_id_dimension_value].nil?
@@ -3224,7 +3412,7 @@ module Google
           @subaccount_id = args[:subaccount_id] unless args[:subaccount_id].nil?
         end
       end
-
+      
       # Creative Field Assignment.
       class CreativeFieldAssignment
         include Google::Apis::Core::Hashable
@@ -3240,11 +3428,16 @@ module Google
         attr_accessor :creative_field_value_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creative_field_id = args[:creative_field_id] unless args[:creative_field_id].nil?
           @creative_field_value_id = args[:creative_field_value_id] unless args[:creative_field_value_id].nil?
         end
       end
-
+      
       # Contains properties of a creative field value.
       class CreativeFieldValue
         include Google::Apis::Core::Hashable
@@ -3267,12 +3460,17 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # Creative Field Value List Response
       class CreativeFieldValuesListResponse
         include Google::Apis::Core::Hashable
@@ -3294,12 +3492,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creative_field_values = args[:creative_field_values] unless args[:creative_field_values].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Creative Field List Response
       class CreativeFieldsListResponse
         include Google::Apis::Core::Hashable
@@ -3321,12 +3524,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creative_fields = args[:creative_fields] unless args[:creative_fields].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Contains properties of a creative group.
       class CreativeGroup
         include Google::Apis::Core::Hashable
@@ -3342,8 +3550,7 @@ module Google
         # @return [String]
         attr_accessor :advertiser_id
       
-        # Dimension value for the ID of the advertiser. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
@@ -3382,6 +3589,11 @@ module Google
         attr_accessor :subaccount_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
           @advertiser_id_dimension_value = args[:advertiser_id_dimension_value] unless args[:advertiser_id_dimension_value].nil?
@@ -3392,7 +3604,7 @@ module Google
           @subaccount_id = args[:subaccount_id] unless args[:subaccount_id].nil?
         end
       end
-
+      
       # Creative Group Assignment.
       class CreativeGroupAssignment
         include Google::Apis::Core::Hashable
@@ -3408,11 +3620,16 @@ module Google
         attr_accessor :creative_group_number
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creative_group_id = args[:creative_group_id] unless args[:creative_group_id].nil?
           @creative_group_number = args[:creative_group_number] unless args[:creative_group_number].nil?
         end
       end
-
+      
       # Creative Group List Response
       class CreativeGroupsListResponse
         include Google::Apis::Core::Hashable
@@ -3434,12 +3651,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creative_groups = args[:creative_groups] unless args[:creative_groups].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Creative optimization settings.
       class CreativeOptimizationConfiguration
         include Google::Apis::Core::Hashable
@@ -3467,13 +3689,18 @@ module Google
         attr_accessor :optimization_model
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @name = args[:name] unless args[:name].nil?
           @optimization_activitys = args[:optimization_activitys] unless args[:optimization_activitys].nil?
           @optimization_model = args[:optimization_model] unless args[:optimization_model].nil?
         end
       end
-
+      
       # Creative Rotation.
       class CreativeRotation
         include Google::Apis::Core::Hashable
@@ -3503,13 +3730,18 @@ module Google
         attr_accessor :weight_calculation_strategy
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creative_assignments = args[:creative_assignments] unless args[:creative_assignments].nil?
           @creative_optimization_configuration_id = args[:creative_optimization_configuration_id] unless args[:creative_optimization_configuration_id].nil?
           @type = args[:type] unless args[:type].nil?
           @weight_calculation_strategy = args[:weight_calculation_strategy] unless args[:weight_calculation_strategy].nil?
         end
       end
-
+      
       # Creative Settings
       class CreativeSettings
         include Google::Apis::Core::Hashable
@@ -3527,11 +3759,16 @@ module Google
         attr_accessor :i_frame_header
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @i_frame_footer = args[:i_frame_footer] unless args[:i_frame_footer].nil?
           @i_frame_header = args[:i_frame_header] unless args[:i_frame_header].nil?
         end
       end
-
+      
       # Creative List Response
       class CreativesListResponse
         include Google::Apis::Core::Hashable
@@ -3553,12 +3790,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creatives = args[:creatives] unless args[:creatives].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Represents fields that are compatible to be selected for a report of type "
       # CROSS_DIMENSION_REACH".
       class CrossDimensionReachReportCompatibleFields
@@ -3595,6 +3837,11 @@ module Google
         attr_accessor :overlap_metrics
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @breakdown = args[:breakdown] unless args[:breakdown].nil?
           @dimension_filters = args[:dimension_filters] unless args[:dimension_filters].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -3602,7 +3849,7 @@ module Google
           @overlap_metrics = args[:overlap_metrics] unless args[:overlap_metrics].nil?
         end
       end
-
+      
       # Represents a Custom Rich Media Events group.
       class CustomRichMediaEvents
         include Google::Apis::Core::Hashable
@@ -3619,11 +3866,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @filtered_event_ids = args[:filtered_event_ids] unless args[:filtered_event_ids].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Represents a date range.
       class DateRange
         include Google::Apis::Core::Hashable
@@ -3651,13 +3903,18 @@ module Google
         attr_accessor :start_date
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end_date = args[:end_date] unless args[:end_date].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @relative_date_range = args[:relative_date_range] unless args[:relative_date_range].nil?
           @start_date = args[:start_date] unless args[:start_date].nil?
         end
       end
-
+      
       # Day Part Targeting.
       class DayPartTargeting
         include Google::Apis::Core::Hashable
@@ -3693,12 +3950,17 @@ module Google
         alias_method :user_local_time?, :user_local_time
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @days_of_week = args[:days_of_week] unless args[:days_of_week].nil?
           @hours_of_day = args[:hours_of_day] unless args[:hours_of_day].nil?
           @user_local_time = args[:user_local_time] unless args[:user_local_time].nil?
         end
       end
-
+      
       # Properties of inheriting and overriding the default click-through event tag. A
       # campaign may override the event tag defined at the advertiser level, and an ad
       # may also override the campaign's setting further.
@@ -3718,17 +3980,21 @@ module Google
         alias_method :override_inherited_event_tag?, :override_inherited_event_tag
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @default_click_through_event_tag_id = args[:default_click_through_event_tag_id] unless args[:default_click_through_event_tag_id].nil?
           @override_inherited_event_tag = args[:override_inherited_event_tag] unless args[:override_inherited_event_tag].nil?
         end
       end
-
+      
       # Delivery Schedule.
       class DeliverySchedule
         include Google::Apis::Core::Hashable
       
-        # Limit on the number of times an individual user can be served the ad within a
-        # specified period of time.
+        # Frequency Cap.
         # Corresponds to the JSON property `frequencyCap`
         # @return [Google::Apis::DfareportingV2_1::FrequencyCap]
         attr_accessor :frequency_cap
@@ -3756,13 +4022,18 @@ module Google
         attr_accessor :priority
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @frequency_cap = args[:frequency_cap] unless args[:frequency_cap].nil?
           @hard_cutoff = args[:hard_cutoff] unless args[:hard_cutoff].nil?
           @impression_ratio = args[:impression_ratio] unless args[:impression_ratio].nil?
           @priority = args[:priority] unless args[:priority].nil?
         end
       end
-
+      
       # DFP Settings
       class DfpSettings
         include Google::Apis::Core::Hashable
@@ -3796,6 +4067,11 @@ module Google
         alias_method :publisher_portal_only?, :publisher_portal_only
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dfp_network_code = args[:dfp_network_code] unless args[:dfp_network_code].nil?
           @dfp_network_name = args[:dfp_network_name] unless args[:dfp_network_name].nil?
           @programmatic_placement_accepted = args[:programmatic_placement_accepted] unless args[:programmatic_placement_accepted].nil?
@@ -3803,7 +4079,7 @@ module Google
           @publisher_portal_only = args[:publisher_portal_only] unless args[:publisher_portal_only].nil?
         end
       end
-
+      
       # Represents a dimension.
       class Dimension
         include Google::Apis::Core::Hashable
@@ -3819,11 +4095,16 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Represents a dimension filter.
       class DimensionFilter
         include Google::Apis::Core::Hashable
@@ -3844,12 +4125,17 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dimension_name = args[:dimension_name] unless args[:dimension_name].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # Represents a DimensionValue resource.
       class DimensionValue
         include Google::Apis::Core::Hashable
@@ -3889,6 +4175,11 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dimension_name = args[:dimension_name] unless args[:dimension_name].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
@@ -3897,7 +4188,7 @@ module Google
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # Represents the list of DimensionValue resources.
       class DimensionValueList
         include Google::Apis::Core::Hashable
@@ -3926,13 +4217,18 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Represents a DimensionValuesRequest.
       class DimensionValueRequest
         include Google::Apis::Core::Hashable
@@ -3965,6 +4261,11 @@ module Google
         attr_accessor :start_date
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dimension_name = args[:dimension_name] unless args[:dimension_name].nil?
           @end_date = args[:end_date] unless args[:end_date].nil?
           @filters = args[:filters] unless args[:filters].nil?
@@ -3972,7 +4273,7 @@ module Google
           @start_date = args[:start_date] unless args[:start_date].nil?
         end
       end
-
+      
       # DirectorySites contains properties of a website from the Site Directory. Sites
       # need to be added to an account via the Sites resource before they can be
       # assigned to a placement.
@@ -4047,8 +4348,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Dimension value for the ID of this directory site. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :id_dimension_value
@@ -4088,7 +4388,7 @@ module Google
         # @return [String]
         attr_accessor :parent_id
       
-        # Directory site settings.
+        # Directory Site Settings
         # Corresponds to the JSON property `settings`
         # @return [Google::Apis::DfareportingV2_1::DirectorySiteSettings]
         attr_accessor :settings
@@ -4099,6 +4399,11 @@ module Google
         attr_accessor :url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @active = args[:active] unless args[:active].nil?
           @contact_assignments = args[:contact_assignments] unless args[:contact_assignments].nil?
           @country_id = args[:country_id] unless args[:country_id].nil?
@@ -4115,7 +4420,7 @@ module Google
           @url = args[:url] unless args[:url].nil?
         end
       end
-
+      
       # Contains properties of a Site Directory contact.
       class DirectorySiteContact
         include Google::Apis::Core::Hashable
@@ -4172,6 +4477,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @address = args[:address] unless args[:address].nil?
           @email = args[:email] unless args[:email].nil?
           @first_name = args[:first_name] unless args[:first_name].nil?
@@ -4184,7 +4494,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Directory Site Contact Assignment
       class DirectorySiteContactAssignment
         include Google::Apis::Core::Hashable
@@ -4202,11 +4512,16 @@ module Google
         attr_accessor :visibility
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @contact_id = args[:contact_id] unless args[:contact_id].nil?
           @visibility = args[:visibility] unless args[:visibility].nil?
         end
       end
-
+      
       # Directory Site Contact List Response
       class DirectorySiteContactsListResponse
         include Google::Apis::Core::Hashable
@@ -4228,12 +4543,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @directory_site_contacts = args[:directory_site_contacts] unless args[:directory_site_contacts].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Directory Site Settings
       class DirectorySiteSettings
         include Google::Apis::Core::Hashable
@@ -4244,7 +4564,7 @@ module Google
         attr_accessor :active_view_opt_out
         alias_method :active_view_opt_out?, :active_view_opt_out
       
-        # Directory site DFP settings.
+        # DFP Settings
         # Corresponds to the JSON property `dfp_settings`
         # @return [Google::Apis::DfareportingV2_1::DfpSettings]
         attr_accessor :dfp_settings
@@ -4281,6 +4601,11 @@ module Google
         alias_method :video_active_view_opt_out?, :video_active_view_opt_out
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @active_view_opt_out = args[:active_view_opt_out] unless args[:active_view_opt_out].nil?
           @dfp_settings = args[:dfp_settings] unless args[:dfp_settings].nil?
           @instream_video_placement_accepted = args[:instream_video_placement_accepted] unless args[:instream_video_placement_accepted].nil?
@@ -4290,7 +4615,7 @@ module Google
           @video_active_view_opt_out = args[:video_active_view_opt_out] unless args[:video_active_view_opt_out].nil?
         end
       end
-
+      
       # Directory Site List Response
       class DirectorySitesListResponse
         include Google::Apis::Core::Hashable
@@ -4312,12 +4637,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @directory_sites = args[:directory_sites] unless args[:directory_sites].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Contains properties of an event tag.
       class EventTag
         include Google::Apis::Core::Hashable
@@ -4333,8 +4663,7 @@ module Google
         # @return [String]
         attr_accessor :advertiser_id
       
-        # Dimension value for the ID of the advertiser. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
@@ -4345,8 +4674,7 @@ module Google
         # @return [String]
         attr_accessor :campaign_id
       
-        # Dimension value for the ID of the campaign. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `campaignIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :campaign_id_dimension_value
@@ -4427,6 +4755,11 @@ module Google
         attr_accessor :url_escape_levels
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
           @advertiser_id_dimension_value = args[:advertiser_id_dimension_value] unless args[:advertiser_id_dimension_value].nil?
@@ -4446,7 +4779,7 @@ module Google
           @url_escape_levels = args[:url_escape_levels] unless args[:url_escape_levels].nil?
         end
       end
-
+      
       # Event tag override information.
       class EventTagOverride
         include Google::Apis::Core::Hashable
@@ -4463,11 +4796,16 @@ module Google
         attr_accessor :id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @enabled = args[:enabled] unless args[:enabled].nil?
           @id = args[:id] unless args[:id].nil?
         end
       end
-
+      
       # Event Tag List Response
       class EventTagsListResponse
         include Google::Apis::Core::Hashable
@@ -4484,19 +4822,23 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @event_tags = args[:event_tags] unless args[:event_tags].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Represents a File resource. A file contains the metadata for a report run. It
       # shows the status of the run and holds the URLs to the generated report data if
       # the run is finished and the status is "REPORT_AVAILABLE".
       class File
         include Google::Apis::Core::Hashable
       
-        # The date range for which the file has report data. The date range will always
-        # be the absolute date range for which the report is run.
+        # Represents a date range.
         # Corresponds to the JSON property `dateRange`
         # @return [Google::Apis::DfareportingV2_1::DateRange]
         attr_accessor :date_range
@@ -4547,6 +4889,11 @@ module Google
         attr_accessor :urls
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @date_range = args[:date_range] unless args[:date_range].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @file_name = args[:file_name] unless args[:file_name].nil?
@@ -4558,6 +4905,7 @@ module Google
           @status = args[:status] unless args[:status].nil?
           @urls = args[:urls] unless args[:urls].nil?
         end
+        
         # The URLs where the completed report file can be downloaded.
         class Urls
           include Google::Apis::Core::Hashable
@@ -4573,12 +4921,17 @@ module Google
           attr_accessor :browser_url
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @api_url = args[:api_url] unless args[:api_url].nil?
             @browser_url = args[:browser_url] unless args[:browser_url].nil?
           end
         end
       end
-
+      
       # Represents the list of File resources.
       class FileList
         include Google::Apis::Core::Hashable
@@ -4607,13 +4960,18 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Flight
       class Flight
         include Google::Apis::Core::Hashable
@@ -4639,15 +4997,20 @@ module Google
         attr_accessor :units
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end_date = args[:end_date] unless args[:end_date].nil?
           @rate_or_cost = args[:rate_or_cost] unless args[:rate_or_cost].nil?
           @start_date = args[:start_date] unless args[:start_date].nil?
           @units = args[:units] unless args[:units].nil?
         end
       end
-
+      
       # Floodlight Activity GenerateTag Response
-      class FloodlightActivitiesGenerateTagResponse
+      class GenerateTagResponse
         include Google::Apis::Core::Hashable
       
         # Generated tag for this floodlight activity.
@@ -4662,11 +5025,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @floodlight_activity_tag = args[:floodlight_activity_tag] unless args[:floodlight_activity_tag].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Floodlight Activity List Response
       class FloodlightActivitiesListResponse
         include Google::Apis::Core::Hashable
@@ -4688,12 +5056,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @floodlight_activities = args[:floodlight_activities] unless args[:floodlight_activities].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Contains properties of a Floodlight activity.
       class FloodlightActivity
         include Google::Apis::Core::Hashable
@@ -4711,8 +5084,7 @@ module Google
         # @return [String]
         attr_accessor :advertiser_id
       
-        # Dimension value for the ID of the advertiser. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
@@ -4769,8 +5141,7 @@ module Google
         # @return [String]
         attr_accessor :floodlight_configuration_id
       
-        # Dimension value for the ID of the floodlight configuration. This is a read-
-        # only, auto-generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `floodlightConfigurationIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :floodlight_configuration_id_dimension_value
@@ -4786,8 +5157,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Dimension value for the ID of this floodlight activity. This is a read-only,
-        # auto-generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :id_dimension_value
@@ -4889,6 +5259,11 @@ module Google
         attr_accessor :user_defined_variable_types
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
           @advertiser_id_dimension_value = args[:advertiser_id_dimension_value] unless args[:advertiser_id_dimension_value].nil?
@@ -4919,7 +5294,7 @@ module Google
           @user_defined_variable_types = args[:user_defined_variable_types] unless args[:user_defined_variable_types].nil?
         end
       end
-
+      
       # Dynamic Tag
       class FloodlightActivityDynamicTag
         include Google::Apis::Core::Hashable
@@ -4940,12 +5315,17 @@ module Google
         attr_accessor :tag
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @name = args[:name] unless args[:name].nil?
           @tag = args[:tag] unless args[:tag].nil?
         end
       end
-
+      
       # Contains properties of a Floodlight activity group.
       class FloodlightActivityGroup
         include Google::Apis::Core::Hashable
@@ -4963,8 +5343,7 @@ module Google
         # @return [String]
         attr_accessor :advertiser_id
       
-        # Dimension value for the ID of the advertiser. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
@@ -4975,8 +5354,7 @@ module Google
         # @return [String]
         attr_accessor :floodlight_configuration_id
       
-        # Dimension value for the ID of the floodlight configuration. This is a read-
-        # only, auto-generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `floodlightConfigurationIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :floodlight_configuration_id_dimension_value
@@ -4987,8 +5365,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Dimension value for the ID of this floodlight activity group. This is a read-
-        # only, auto-generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :id_dimension_value
@@ -5028,6 +5405,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
           @advertiser_id_dimension_value = args[:advertiser_id_dimension_value] unless args[:advertiser_id_dimension_value].nil?
@@ -5042,7 +5424,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Floodlight Activity Group List Response
       class FloodlightActivityGroupsListResponse
         include Google::Apis::Core::Hashable
@@ -5064,12 +5446,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @floodlight_activity_groups = args[:floodlight_activity_groups] unless args[:floodlight_activity_groups].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Publisher Dynamic Tag
       class FloodlightActivityPublisherDynamicTag
         include Google::Apis::Core::Hashable
@@ -5087,7 +5474,7 @@ module Google
         # @return [String]
         attr_accessor :directory_site_id
       
-        # Dynamic floodlight tag.
+        # Dynamic Tag
         # Corresponds to the JSON property `dynamicTag`
         # @return [Google::Apis::DfareportingV2_1::FloodlightActivityDynamicTag]
         attr_accessor :dynamic_tag
@@ -5097,8 +5484,7 @@ module Google
         # @return [String]
         attr_accessor :site_id
       
-        # Dimension value for the ID of the site. This is a read-only, auto-generated
-        # field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `siteIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :site_id_dimension_value
@@ -5110,6 +5496,11 @@ module Google
         alias_method :view_through?, :view_through
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @click_through = args[:click_through] unless args[:click_through].nil?
           @directory_site_id = args[:directory_site_id] unless args[:directory_site_id].nil?
           @dynamic_tag = args[:dynamic_tag] unless args[:dynamic_tag].nil?
@@ -5118,7 +5509,7 @@ module Google
           @view_through = args[:view_through] unless args[:view_through].nil?
         end
       end
-
+      
       # Contains properties of a Floodlight configuration.
       class FloodlightConfiguration
         include Google::Apis::Core::Hashable
@@ -5134,8 +5525,7 @@ module Google
         # @return [String]
         attr_accessor :advertiser_id
       
-        # Dimension value for the ID of the advertiser. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
@@ -5165,8 +5555,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Dimension value for the ID of this floodlight configuration. This is a read-
-        # only, auto-generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :id_dimension_value
@@ -5177,7 +5566,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Lookback window settings for this floodlight configuration.
+        # Lookback configuration settings.
         # Corresponds to the JSON property `lookbackConfiguration`
         # @return [Google::Apis::DfareportingV2_1::LookbackConfiguration]
         attr_accessor :lookback_configuration
@@ -5187,7 +5576,7 @@ module Google
         # @return [String]
         attr_accessor :natural_search_conversion_attribution_option
       
-        # Settings for DCM Omniture integration.
+        # Omniture Integration Settings.
         # Corresponds to the JSON property `omnitureSettings`
         # @return [Google::Apis::DfareportingV2_1::OmnitureSettings]
         attr_accessor :omniture_settings
@@ -5213,7 +5602,7 @@ module Google
         # @return [String]
         attr_accessor :subaccount_id
       
-        # Configuration settings for dynamic and image floodlight tags.
+        # Dynamic and Image Tag Settings.
         # Corresponds to the JSON property `tagSettings`
         # @return [Google::Apis::DfareportingV2_1::TagSettings]
         attr_accessor :tag_settings
@@ -5224,6 +5613,11 @@ module Google
         attr_accessor :user_defined_variable_configurations
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
           @advertiser_id_dimension_value = args[:advertiser_id_dimension_value] unless args[:advertiser_id_dimension_value].nil?
@@ -5243,7 +5637,7 @@ module Google
           @user_defined_variable_configurations = args[:user_defined_variable_configurations] unless args[:user_defined_variable_configurations].nil?
         end
       end
-
+      
       # Floodlight Configuration List Response
       class FloodlightConfigurationsListResponse
         include Google::Apis::Core::Hashable
@@ -5260,11 +5654,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @floodlight_configurations = args[:floodlight_configurations] unless args[:floodlight_configurations].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Represents fields that are compatible to be selected for a report of type "
       # FlOODLIGHT".
       class FloodlightReportCompatibleFields
@@ -5295,13 +5694,18 @@ module Google
         attr_accessor :metrics
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dimension_filters = args[:dimension_filters] unless args[:dimension_filters].nil?
           @dimensions = args[:dimensions] unless args[:dimensions].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @metrics = args[:metrics] unless args[:metrics].nil?
         end
       end
-
+      
       # Frequency Cap.
       class FrequencyCap
         include Google::Apis::Core::Hashable
@@ -5319,11 +5723,16 @@ module Google
         attr_accessor :impressions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @duration = args[:duration] unless args[:duration].nil?
           @impressions = args[:impressions] unless args[:impressions].nil?
         end
       end
-
+      
       # FsCommand.
       class FsCommand
         include Google::Apis::Core::Hashable
@@ -5356,6 +5765,11 @@ module Google
         attr_accessor :window_width
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @left = args[:left] unless args[:left].nil?
           @position_option = args[:position_option] unless args[:position_option].nil?
           @top = args[:top] unless args[:top].nil?
@@ -5363,7 +5777,7 @@ module Google
           @window_width = args[:window_width] unless args[:window_width].nil?
         end
       end
-
+      
       # Geographical Targeting.
       class GeoTargeting
         include Google::Apis::Core::Hashable
@@ -5416,6 +5830,11 @@ module Google
         attr_accessor :regions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cities = args[:cities] unless args[:cities].nil?
           @countries = args[:countries] unless args[:countries].nil?
           @exclude_countries = args[:exclude_countries] unless args[:exclude_countries].nil?
@@ -5424,7 +5843,7 @@ module Google
           @regions = args[:regions] unless args[:regions].nil?
         end
       end
-
+      
       # Represents a buy from the DoubleClick Planning inventory store.
       class InventoryItem
         include Google::Apis::Core::Hashable
@@ -5479,7 +5898,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Information about the most recent modification of this inventory item.
+        # Modification timestamp.
         # Corresponds to the JSON property `lastModifiedInfo`
         # @return [Google::Apis::DfareportingV2_1::LastModifiedInfo]
         attr_accessor :last_modified_info
@@ -5506,7 +5925,7 @@ module Google
         # @return [String]
         attr_accessor :placement_strategy_id
       
-        # Pricing of this inventory item.
+        # Pricing Information
         # Corresponds to the JSON property `pricing`
         # @return [Google::Apis::DfareportingV2_1::Pricing]
         attr_accessor :pricing
@@ -5532,6 +5951,11 @@ module Google
         attr_accessor :subaccount_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @ad_slots = args[:ad_slots] unless args[:ad_slots].nil?
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
@@ -5553,7 +5977,7 @@ module Google
           @subaccount_id = args[:subaccount_id] unless args[:subaccount_id].nil?
         end
       end
-
+      
       # Inventory item List Response
       class InventoryItemsListResponse
         include Google::Apis::Core::Hashable
@@ -5575,12 +5999,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @inventory_items = args[:inventory_items] unless args[:inventory_items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Key Value Targeting Expression.
       class KeyValueTargetingExpression
         include Google::Apis::Core::Hashable
@@ -5591,10 +6020,15 @@ module Google
         attr_accessor :expression
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @expression = args[:expression] unless args[:expression].nil?
         end
       end
-
+      
       # Contains information about where a user's browser is taken after the user
       # clicks an ad.
       class LandingPage
@@ -5631,6 +6065,11 @@ module Google
         attr_accessor :url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @default = args[:default] unless args[:default].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -5638,7 +6077,7 @@ module Google
           @url = args[:url] unless args[:url].nil?
         end
       end
-
+      
       # Landing Page List Response
       class LandingPagesListResponse
         include Google::Apis::Core::Hashable
@@ -5655,11 +6094,16 @@ module Google
         attr_accessor :landing_pages
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @landing_pages = args[:landing_pages] unless args[:landing_pages].nil?
         end
       end
-
+      
       # Modification timestamp.
       class LastModifiedInfo
         include Google::Apis::Core::Hashable
@@ -5670,10 +6114,15 @@ module Google
         attr_accessor :time
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @time = args[:time] unless args[:time].nil?
         end
       end
-
+      
       # A group clause made up of list population terms representing constraints
       # joined by ORs.
       class ListPopulationClause
@@ -5686,10 +6135,15 @@ module Google
         attr_accessor :terms
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @terms = args[:terms] unless args[:terms].nil?
         end
       end
-
+      
       # Remarketing List Population Rule.
       class ListPopulationRule
         include Google::Apis::Core::Hashable
@@ -5713,12 +6167,17 @@ module Google
         attr_accessor :list_population_clauses
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @floodlight_activity_id = args[:floodlight_activity_id] unless args[:floodlight_activity_id].nil?
           @floodlight_activity_name = args[:floodlight_activity_name] unless args[:floodlight_activity_name].nil?
           @list_population_clauses = args[:list_population_clauses] unless args[:list_population_clauses].nil?
         end
       end
-
+      
       # Remarketing List Population Rule Term.
       class ListPopulationTerm
         include Google::Apis::Core::Hashable
@@ -5780,6 +6239,11 @@ module Google
         attr_accessor :variable_name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @contains = args[:contains] unless args[:contains].nil?
           @negation = args[:negation] unless args[:negation].nil?
           @operator = args[:operator] unless args[:operator].nil?
@@ -5790,7 +6254,7 @@ module Google
           @variable_name = args[:variable_name] unless args[:variable_name].nil?
         end
       end
-
+      
       # Remarketing List Targeting Expression.
       class ListTargetingExpression
         include Google::Apis::Core::Hashable
@@ -5801,10 +6265,15 @@ module Google
         attr_accessor :expression
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @expression = args[:expression] unless args[:expression].nil?
         end
       end
-
+      
       # Lookback configuration settings.
       class LookbackConfiguration
         include Google::Apis::Core::Hashable
@@ -5826,11 +6295,16 @@ module Google
         attr_accessor :post_impression_activities_duration
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @click_duration = args[:click_duration] unless args[:click_duration].nil?
           @post_impression_activities_duration = args[:post_impression_activities_duration] unless args[:post_impression_activities_duration].nil?
         end
       end
-
+      
       # Represents a metric.
       class Metric
         include Google::Apis::Core::Hashable
@@ -5846,11 +6320,16 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Contains information about a metro region that can be targeted by ads.
       class Metro
         include Google::Apis::Core::Hashable
@@ -5893,6 +6372,11 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @country_code = args[:country_code] unless args[:country_code].nil?
           @country_dart_id = args[:country_dart_id] unless args[:country_dart_id].nil?
           @dart_id = args[:dart_id] unless args[:dart_id].nil?
@@ -5902,7 +6386,7 @@ module Google
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Metro List Response
       class MetrosListResponse
         include Google::Apis::Core::Hashable
@@ -5919,11 +6403,16 @@ module Google
         attr_accessor :metros
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @metros = args[:metros] unless args[:metros].nil?
         end
       end
-
+      
       # Contains information about a mobile carrier that can be targeted by ads.
       class MobileCarrier
         include Google::Apis::Core::Hashable
@@ -5955,6 +6444,11 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @country_code = args[:country_code] unless args[:country_code].nil?
           @country_dart_id = args[:country_dart_id] unless args[:country_dart_id].nil?
           @id = args[:id] unless args[:id].nil?
@@ -5962,7 +6456,7 @@ module Google
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Mobile Carrier List Response
       class MobileCarriersListResponse
         include Google::Apis::Core::Hashable
@@ -5979,11 +6473,16 @@ module Google
         attr_accessor :mobile_carriers
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @mobile_carriers = args[:mobile_carriers] unless args[:mobile_carriers].nil?
         end
       end
-
+      
       # Object Filter.
       class ObjectFilter
         include Google::Apis::Core::Hashable
@@ -6008,12 +6507,17 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @object_ids = args[:object_ids] unless args[:object_ids].nil?
           @status = args[:status] unless args[:status].nil?
         end
       end
-
+      
       # Offset Position.
       class OffsetPosition
         include Google::Apis::Core::Hashable
@@ -6029,11 +6533,16 @@ module Google
         attr_accessor :top
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @left = args[:left] unless args[:left].nil?
           @top = args[:top] unless args[:top].nil?
         end
       end
-
+      
       # Omniture Integration Settings.
       class OmnitureSettings
         include Google::Apis::Core::Hashable
@@ -6053,11 +6562,16 @@ module Google
         alias_method :omniture_integration_enabled?, :omniture_integration_enabled
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @omniture_cost_data_enabled = args[:omniture_cost_data_enabled] unless args[:omniture_cost_data_enabled].nil?
           @omniture_integration_enabled = args[:omniture_integration_enabled] unless args[:omniture_integration_enabled].nil?
         end
       end
-
+      
       # Contains information about an operating system that can be targeted by ads.
       class OperatingSystem
         include Google::Apis::Core::Hashable
@@ -6091,6 +6605,11 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dart_id = args[:dart_id] unless args[:dart_id].nil?
           @desktop = args[:desktop] unless args[:desktop].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -6098,7 +6617,7 @@ module Google
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Contains information about a particular version of an operating system that
       # can be targeted by ads.
       class OperatingSystemVersion
@@ -6130,12 +6649,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Operating system of this operating system version.
+        # Contains information about an operating system that can be targeted by ads.
         # Corresponds to the JSON property `operatingSystem`
         # @return [Google::Apis::DfareportingV2_1::OperatingSystem]
         attr_accessor :operating_system
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @major_version = args[:major_version] unless args[:major_version].nil?
@@ -6144,7 +6668,7 @@ module Google
           @operating_system = args[:operating_system] unless args[:operating_system].nil?
         end
       end
-
+      
       # Operating System Version List Response
       class OperatingSystemVersionsListResponse
         include Google::Apis::Core::Hashable
@@ -6161,11 +6685,16 @@ module Google
         attr_accessor :operating_system_versions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @operating_system_versions = args[:operating_system_versions] unless args[:operating_system_versions].nil?
         end
       end
-
+      
       # Operating System List Response
       class OperatingSystemsListResponse
         include Google::Apis::Core::Hashable
@@ -6182,11 +6711,16 @@ module Google
         attr_accessor :operating_systems
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @operating_systems = args[:operating_systems] unless args[:operating_systems].nil?
         end
       end
-
+      
       # Creative optimization activity.
       class OptimizationActivity
         include Google::Apis::Core::Hashable
@@ -6196,8 +6730,7 @@ module Google
         # @return [String]
         attr_accessor :floodlight_activity_id
       
-        # Dimension value for the ID of the floodlight activity. This is a read-only,
-        # auto-generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `floodlightActivityIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :floodlight_activity_id_dimension_value
@@ -6210,12 +6743,17 @@ module Google
         attr_accessor :weight
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @floodlight_activity_id = args[:floodlight_activity_id] unless args[:floodlight_activity_id].nil?
           @floodlight_activity_id_dimension_value = args[:floodlight_activity_id_dimension_value] unless args[:floodlight_activity_id_dimension_value].nil?
           @weight = args[:weight] unless args[:weight].nil?
         end
       end
-
+      
       # Describes properties of a DoubleClick Planning order.
       class Order
         include Google::Apis::Core::Hashable
@@ -6266,7 +6804,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Information about the most recent modification of this order.
+        # Modification timestamp.
         # Corresponds to the JSON property `lastModifiedInfo`
         # @return [Google::Apis::DfareportingV2_1::LastModifiedInfo]
         attr_accessor :last_modified_info
@@ -6322,6 +6860,11 @@ module Google
         attr_accessor :terms_and_conditions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
           @approver_user_profile_ids = args[:approver_user_profile_ids] unless args[:approver_user_profile_ids].nil?
@@ -6344,7 +6887,7 @@ module Google
           @terms_and_conditions = args[:terms_and_conditions] unless args[:terms_and_conditions].nil?
         end
       end
-
+      
       # Contact of an order.
       class OrderContact
         include Google::Apis::Core::Hashable
@@ -6378,6 +6921,11 @@ module Google
         attr_accessor :signature_user_profile_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @contact_info = args[:contact_info] unless args[:contact_info].nil?
           @contact_name = args[:contact_name] unless args[:contact_name].nil?
           @contact_title = args[:contact_title] unless args[:contact_title].nil?
@@ -6385,7 +6933,7 @@ module Google
           @signature_user_profile_id = args[:signature_user_profile_id] unless args[:signature_user_profile_id].nil?
         end
       end
-
+      
       # Contains properties of a DoubleClick Planning order document.
       class OrderDocument
         include Google::Apis::Core::Hashable
@@ -6418,7 +6966,7 @@ module Google
         attr_accessor :cancelled
         alias_method :cancelled?, :cancelled
       
-        # Information about the creation of this order document.
+        # Modification timestamp.
         # Corresponds to the JSON property `createdInfo`
         # @return [Google::Apis::DfareportingV2_1::LastModifiedInfo]
         attr_accessor :created_info
@@ -6471,6 +7019,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
           @amended_order_document_id = args[:amended_order_document_id] unless args[:amended_order_document_id].nil?
@@ -6488,7 +7041,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # Order document List Response
       class OrderDocumentsListResponse
         include Google::Apis::Core::Hashable
@@ -6510,12 +7063,17 @@ module Google
         attr_accessor :order_documents
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @order_documents = args[:order_documents] unless args[:order_documents].nil?
         end
       end
-
+      
       # Order List Response
       class OrdersListResponse
         include Google::Apis::Core::Hashable
@@ -6537,12 +7095,17 @@ module Google
         attr_accessor :orders
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @orders = args[:orders] unless args[:orders].nil?
         end
       end
-
+      
       # Represents fields that are compatible to be selected for a report of type "
       # PATH_TO_CONVERSION".
       class PathToConversionReportCompatibleFields
@@ -6579,6 +7142,11 @@ module Google
         attr_accessor :per_interaction_dimensions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @conversion_dimensions = args[:conversion_dimensions] unless args[:conversion_dimensions].nil?
           @custom_floodlight_variables = args[:custom_floodlight_variables] unless args[:custom_floodlight_variables].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -6586,7 +7154,7 @@ module Google
           @per_interaction_dimensions = args[:per_interaction_dimensions] unless args[:per_interaction_dimensions].nil?
         end
       end
-
+      
       # Contains properties of a placement.
       class Placement
         include Google::Apis::Core::Hashable
@@ -6601,8 +7169,7 @@ module Google
         # @return [String]
         attr_accessor :advertiser_id
       
-        # Dimension value for the ID of the advertiser. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
@@ -6618,8 +7185,7 @@ module Google
         # @return [String]
         attr_accessor :campaign_id
       
-        # Dimension value for the ID of the campaign. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `campaignIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :campaign_id_dimension_value
@@ -6643,7 +7209,7 @@ module Google
         # @return [String]
         attr_accessor :content_category_id
       
-        # Information about the creation of this placement. This is a read-only field.
+        # Modification timestamp.
         # Corresponds to the JSON property `createInfo`
         # @return [Google::Apis::DfareportingV2_1::LastModifiedInfo]
         attr_accessor :create_info
@@ -6655,8 +7221,7 @@ module Google
         # @return [String]
         attr_accessor :directory_site_id
       
-        # Dimension value for the ID of the directory site. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `directorySiteIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :directory_site_id_dimension_value
@@ -6671,8 +7236,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Dimension value for the ID of this placement. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :id_dimension_value
@@ -6688,13 +7252,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Information about the most recent modification of this placement. This is a
-        # read-only field.
+        # Modification timestamp.
         # Corresponds to the JSON property `lastModifiedInfo`
         # @return [Google::Apis::DfareportingV2_1::LastModifiedInfo]
         attr_accessor :last_modified_info
       
-        # Lookback window settings for this placement.
+        # Lookback configuration settings.
         # Corresponds to the JSON property `lookbackConfiguration`
         # @return [Google::Apis::DfareportingV2_1::LookbackConfiguration]
         attr_accessor :lookback_configuration
@@ -6723,8 +7286,7 @@ module Google
         # @return [String]
         attr_accessor :placement_group_id
       
-        # Dimension value for the ID of the placement group. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `placementGroupIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :placement_group_id_dimension_value
@@ -6734,8 +7296,7 @@ module Google
         # @return [String]
         attr_accessor :placement_strategy_id
       
-        # Pricing schedule of this placement. This field is required on insertion,
-        # specifically subfields startDate, endDate and pricingType.
+        # Pricing Schedule
         # Corresponds to the JSON property `pricingSchedule`
         # @return [Google::Apis::DfareportingV2_1::PricingSchedule]
         attr_accessor :pricing_schedule
@@ -6750,7 +7311,7 @@ module Google
         attr_accessor :primary
         alias_method :primary?, :primary
       
-        # Information about the last publisher update. This is a read-only field.
+        # Modification timestamp.
         # Corresponds to the JSON property `publisherUpdateInfo`
         # @return [Google::Apis::DfareportingV2_1::LastModifiedInfo]
         attr_accessor :publisher_update_info
@@ -6762,14 +7323,12 @@ module Google
         # @return [String]
         attr_accessor :site_id
       
-        # Dimension value for the ID of the site. This is a read-only, auto-generated
-        # field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `siteIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :site_id_dimension_value
       
-        # Size associated with this placement. When inserting or updating a placement,
-        # only the size ID field is used. This field is required on insertion.
+        # Represents the dimensions of ads, placements, creatives, or creative assets.
         # Corresponds to the JSON property `size`
         # @return [Google::Apis::DfareportingV2_1::Size]
         attr_accessor :size
@@ -6810,12 +7369,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :tag_formats
       
-        # Tag settings for this placement.
+        # Tag Settings
         # Corresponds to the JSON property `tagSetting`
         # @return [Google::Apis::DfareportingV2_1::TagSetting]
         attr_accessor :tag_setting
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
           @advertiser_id_dimension_value = args[:advertiser_id_dimension_value] unless args[:advertiser_id_dimension_value].nil?
@@ -6854,7 +7418,7 @@ module Google
           @tag_setting = args[:tag_setting] unless args[:tag_setting].nil?
         end
       end
-
+      
       # Placement Assignment.
       class PlacementAssignment
         include Google::Apis::Core::Hashable
@@ -6871,8 +7435,7 @@ module Google
         # @return [String]
         attr_accessor :placement_id
       
-        # Dimension value for the ID of the placement. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `placementIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :placement_id_dimension_value
@@ -6885,13 +7448,18 @@ module Google
         alias_method :ssl_required?, :ssl_required
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @active = args[:active] unless args[:active].nil?
           @placement_id = args[:placement_id] unless args[:placement_id].nil?
           @placement_id_dimension_value = args[:placement_id_dimension_value] unless args[:placement_id_dimension_value].nil?
           @ssl_required = args[:ssl_required] unless args[:ssl_required].nil?
         end
       end
-
+      
       # Contains properties of a package or roadblock.
       class PlacementGroup
         include Google::Apis::Core::Hashable
@@ -6907,8 +7475,7 @@ module Google
         # @return [String]
         attr_accessor :advertiser_id
       
-        # Dimension value for the ID of the advertiser. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
@@ -6924,8 +7491,7 @@ module Google
         # @return [String]
         attr_accessor :campaign_id
       
-        # Dimension value for the ID of the campaign. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `campaignIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :campaign_id_dimension_value
@@ -6946,8 +7512,7 @@ module Google
         # @return [String]
         attr_accessor :content_category_id
       
-        # Information about the creation of this placement group. This is a read-only
-        # field.
+        # Modification timestamp.
         # Corresponds to the JSON property `createInfo`
         # @return [Google::Apis::DfareportingV2_1::LastModifiedInfo]
         attr_accessor :create_info
@@ -6960,8 +7525,7 @@ module Google
         # @return [String]
         attr_accessor :directory_site_id
       
-        # Dimension value for the ID of the directory site. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `directorySiteIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :directory_site_id_dimension_value
@@ -6976,8 +7540,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Dimension value for the ID of this placement group. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :id_dimension_value
@@ -6988,8 +7551,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Information about the most recent modification of this placement group. This
-        # is a read-only field.
+        # Modification timestamp.
         # Corresponds to the JSON property `lastModifiedInfo`
         # @return [Google::Apis::DfareportingV2_1::LastModifiedInfo]
         attr_accessor :last_modified_info
@@ -7015,7 +7577,7 @@ module Google
         # @return [String]
         attr_accessor :placement_strategy_id
       
-        # Pricing schedule of this placement group. This field is required on insertion.
+        # Pricing Schedule
         # Corresponds to the JSON property `pricingSchedule`
         # @return [Google::Apis::DfareportingV2_1::PricingSchedule]
         attr_accessor :pricing_schedule
@@ -7027,13 +7589,12 @@ module Google
         # @return [String]
         attr_accessor :primary_placement_id
       
-        # Dimension value for the ID of the primary placement. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `primaryPlacementIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :primary_placement_id_dimension_value
       
-        # Settings for a programmatic placement.
+        # Programmatic Setting
         # Corresponds to the JSON property `programmaticSetting`
         # @return [Google::Apis::DfareportingV2_1::ProgrammaticSetting]
         attr_accessor :programmatic_setting
@@ -7046,8 +7607,7 @@ module Google
         # @return [String]
         attr_accessor :site_id
       
-        # Dimension value for the ID of the site. This is a read-only, auto-generated
-        # field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `siteIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :site_id_dimension_value
@@ -7059,6 +7619,11 @@ module Google
         attr_accessor :subaccount_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
           @advertiser_id_dimension_value = args[:advertiser_id_dimension_value] unless args[:advertiser_id_dimension_value].nil?
@@ -7088,7 +7653,7 @@ module Google
           @subaccount_id = args[:subaccount_id] unless args[:subaccount_id].nil?
         end
       end
-
+      
       # Placement Group List Response
       class PlacementGroupsListResponse
         include Google::Apis::Core::Hashable
@@ -7110,12 +7675,17 @@ module Google
         attr_accessor :placement_groups
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @placement_groups = args[:placement_groups] unless args[:placement_groups].nil?
         end
       end
-
+      
       # Placement Strategy List Response
       class PlacementStrategiesListResponse
         include Google::Apis::Core::Hashable
@@ -7137,12 +7707,17 @@ module Google
         attr_accessor :placement_strategies
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @placement_strategies = args[:placement_strategies] unless args[:placement_strategies].nil?
         end
       end
-
+      
       # Contains properties of a placement strategy.
       class PlacementStrategy
         include Google::Apis::Core::Hashable
@@ -7172,13 +7747,18 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Placement Tag
       class PlacementTag
         include Google::Apis::Core::Hashable
@@ -7194,13 +7774,18 @@ module Google
         attr_accessor :tag_datas
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @placement_id = args[:placement_id] unless args[:placement_id].nil?
           @tag_datas = args[:tag_datas] unless args[:tag_datas].nil?
         end
       end
-
+      
       # Placement GenerateTags Response
-      class PlacementsGenerateTagsResponse
+      class GenerateTagsResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -7215,11 +7800,16 @@ module Google
         attr_accessor :placement_tags
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @placement_tags = args[:placement_tags] unless args[:placement_tags].nil?
         end
       end
-
+      
       # Placement List Response
       class PlacementsListResponse
         include Google::Apis::Core::Hashable
@@ -7241,12 +7831,17 @@ module Google
         attr_accessor :placements
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @placements = args[:placements] unless args[:placements].nil?
         end
       end
-
+      
       # Contains information about a platform type that can be targeted by ads.
       class PlatformType
         include Google::Apis::Core::Hashable
@@ -7268,12 +7863,17 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Platform Type List Response
       class PlatformTypesListResponse
         include Google::Apis::Core::Hashable
@@ -7290,23 +7890,26 @@ module Google
         attr_accessor :platform_types
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @platform_types = args[:platform_types] unless args[:platform_types].nil?
         end
       end
-
+      
       # Popup Window Properties.
       class PopupWindowProperties
         include Google::Apis::Core::Hashable
       
-        # Popup dimension for a creative. This is a read-only field. Applicable to the
-        # following creative types: all RICH_MEDIA and all VPAID
+        # Represents the dimensions of ads, placements, creatives, or creative assets.
         # Corresponds to the JSON property `dimension`
         # @return [Google::Apis::DfareportingV2_1::Size]
         attr_accessor :dimension
       
-        # Upper-left corner coordinates of the popup window. Applicable if positionType
-        # is COORDINATES.
+        # Offset Position.
         # Corresponds to the JSON property `offset`
         # @return [Google::Apis::DfareportingV2_1::OffsetPosition]
         attr_accessor :offset
@@ -7352,6 +7955,11 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dimension = args[:dimension] unless args[:dimension].nil?
           @offset = args[:offset] unless args[:offset].nil?
           @position_type = args[:position_type] unless args[:position_type].nil?
@@ -7363,7 +7971,7 @@ module Google
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # Contains information about a postal code that can be targeted by ads.
       class PostalCode
         include Google::Apis::Core::Hashable
@@ -7395,6 +8003,11 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @code = args[:code] unless args[:code].nil?
           @country_code = args[:country_code] unless args[:country_code].nil?
           @country_dart_id = args[:country_dart_id] unless args[:country_dart_id].nil?
@@ -7402,7 +8015,7 @@ module Google
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Postal Code List Response
       class PostalCodesListResponse
         include Google::Apis::Core::Hashable
@@ -7419,11 +8032,16 @@ module Google
         attr_accessor :postal_codes
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @postal_codes = args[:postal_codes] unless args[:postal_codes].nil?
         end
       end
-
+      
       # Pricing Information
       class Pricing
         include Google::Apis::Core::Hashable
@@ -7467,6 +8085,11 @@ module Google
         attr_accessor :start_date
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cap_cost_type = args[:cap_cost_type] unless args[:cap_cost_type].nil?
           @end_date = args[:end_date] unless args[:end_date].nil?
           @flights = args[:flights] unless args[:flights].nil?
@@ -7475,7 +8098,7 @@ module Google
           @start_date = args[:start_date] unless args[:start_date].nil?
         end
       end
-
+      
       # Pricing Schedule
       class PricingSchedule
         include Google::Apis::Core::Hashable
@@ -7539,6 +8162,11 @@ module Google
         attr_accessor :testing_start_date
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @cap_cost_option = args[:cap_cost_option] unless args[:cap_cost_option].nil?
           @disregard_overdelivery = args[:disregard_overdelivery] unless args[:disregard_overdelivery].nil?
           @end_date = args[:end_date] unless args[:end_date].nil?
@@ -7550,7 +8178,7 @@ module Google
           @testing_start_date = args[:testing_start_date] unless args[:testing_start_date].nil?
         end
       end
-
+      
       # Pricing Period
       class PricingSchedulePricingPeriod
         include Google::Apis::Core::Hashable
@@ -7588,6 +8216,11 @@ module Google
         attr_accessor :units
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end_date = args[:end_date] unless args[:end_date].nil?
           @pricing_comment = args[:pricing_comment] unless args[:pricing_comment].nil?
           @rate_or_cost_nanos = args[:rate_or_cost_nanos] unless args[:rate_or_cost_nanos].nil?
@@ -7595,7 +8228,7 @@ module Google
           @units = args[:units] unless args[:units].nil?
         end
       end
-
+      
       # Programmatic Setting
       class ProgrammaticSetting
         include Google::Apis::Core::Hashable
@@ -7633,6 +8266,11 @@ module Google
         attr_accessor :trafficker_emails
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @adx_deal_ids = args[:adx_deal_ids] unless args[:adx_deal_ids].nil?
           @insertion_order_id = args[:insertion_order_id] unless args[:insertion_order_id].nil?
           @insertion_order_id_status = args[:insertion_order_id_status] unless args[:insertion_order_id_status].nil?
@@ -7641,7 +8279,7 @@ module Google
           @trafficker_emails = args[:trafficker_emails] unless args[:trafficker_emails].nil?
         end
       end
-
+      
       # Contains properties of a DoubleClick Planning project.
       class Project
         include Google::Apis::Core::Hashable
@@ -7700,7 +8338,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Information about the most recent modification of this project.
+        # Modification timestamp.
         # Corresponds to the JSON property `lastModifiedInfo`
         # @return [Google::Apis::DfareportingV2_1::LastModifiedInfo]
         attr_accessor :last_modified_info
@@ -7756,6 +8394,11 @@ module Google
         attr_accessor :target_impressions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
           @audience_age_group = args[:audience_age_group] unless args[:audience_age_group].nil?
@@ -7779,7 +8422,7 @@ module Google
           @target_impressions = args[:target_impressions] unless args[:target_impressions].nil?
         end
       end
-
+      
       # Project List Response
       class ProjectsListResponse
         include Google::Apis::Core::Hashable
@@ -7801,12 +8444,17 @@ module Google
         attr_accessor :projects
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @projects = args[:projects] unless args[:projects].nil?
         end
       end
-
+      
       # Represents fields that are compatible to be selected for a report of type "
       # REACH".
       class ReachReportCompatibleFields
@@ -7849,6 +8497,11 @@ module Google
         attr_accessor :reach_by_frequency_metrics
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dimension_filters = args[:dimension_filters] unless args[:dimension_filters].nil?
           @dimensions = args[:dimensions] unless args[:dimensions].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -7857,7 +8510,7 @@ module Google
           @reach_by_frequency_metrics = args[:reach_by_frequency_metrics] unless args[:reach_by_frequency_metrics].nil?
         end
       end
-
+      
       # Represents a recipient.
       class Recipient
         include Google::Apis::Core::Hashable
@@ -7878,12 +8531,17 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @delivery_type = args[:delivery_type] unless args[:delivery_type].nil?
           @email = args[:email] unless args[:email].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Contains information about a region that can be targeted by ads.
       class Region
         include Google::Apis::Core::Hashable
@@ -7920,6 +8578,11 @@ module Google
         attr_accessor :region_code
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @country_code = args[:country_code] unless args[:country_code].nil?
           @country_dart_id = args[:country_dart_id] unless args[:country_dart_id].nil?
           @dart_id = args[:dart_id] unless args[:dart_id].nil?
@@ -7928,7 +8591,7 @@ module Google
           @region_code = args[:region_code] unless args[:region_code].nil?
         end
       end
-
+      
       # Region List Response
       class RegionsListResponse
         include Google::Apis::Core::Hashable
@@ -7945,11 +8608,16 @@ module Google
         attr_accessor :regions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @regions = args[:regions] unless args[:regions].nil?
         end
       end
-
+      
       # Contains properties of a remarketing list. Remarketing enables you to create
       # lists of users who have performed specific actions on a site, then target ads
       # to members of those lists. This resource can be used to manage remarketing
@@ -7977,8 +8645,7 @@ module Google
         # @return [String]
         attr_accessor :advertiser_id
       
-        # Dimension value for the ID of the advertiser. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
@@ -8005,7 +8672,7 @@ module Google
         # @return [String]
         attr_accessor :life_span
       
-        # Rule used to populate the remarketing list with users.
+        # Remarketing List Population Rule.
         # Corresponds to the JSON property `listPopulationRule`
         # @return [Google::Apis::DfareportingV2_1::ListPopulationRule]
         attr_accessor :list_population_rule
@@ -8033,6 +8700,11 @@ module Google
         attr_accessor :subaccount_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @active = args[:active] unless args[:active].nil?
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
@@ -8048,7 +8720,7 @@ module Google
           @subaccount_id = args[:subaccount_id] unless args[:subaccount_id].nil?
         end
       end
-
+      
       # Contains properties of a remarketing list's sharing information. Sharing
       # allows other accounts or advertisers to target to your remarketing lists. This
       # resource can be used to manage remarketing list sharing to other accounts and
@@ -8078,13 +8750,18 @@ module Google
         attr_accessor :shared_advertiser_ids
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @remarketing_list_id = args[:remarketing_list_id] unless args[:remarketing_list_id].nil?
           @shared_account_ids = args[:shared_account_ids] unless args[:shared_account_ids].nil?
           @shared_advertiser_ids = args[:shared_advertiser_ids] unless args[:shared_advertiser_ids].nil?
         end
       end
-
+      
       # Remarketing list response
       class RemarketingListsListResponse
         include Google::Apis::Core::Hashable
@@ -8106,12 +8783,17 @@ module Google
         attr_accessor :remarketing_lists
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @remarketing_lists = args[:remarketing_lists] unless args[:remarketing_lists].nil?
         end
       end
-
+      
       # Represents a Report resource.
       class Report
         include Google::Apis::Core::Hashable
@@ -8212,6 +8894,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @criteria = args[:criteria] unless args[:criteria].nil?
           @cross_dimension_reach_criteria = args[:cross_dimension_reach_criteria] unless args[:cross_dimension_reach_criteria].nil?
@@ -8231,21 +8918,22 @@ module Google
           @sub_account_id = args[:sub_account_id] unless args[:sub_account_id].nil?
           @type = args[:type] unless args[:type].nil?
         end
+        
         # The report criteria for a report of type "STANDARD".
         class Criteria
           include Google::Apis::Core::Hashable
         
-          # Activity group.
+          # Represents an activity group.
           # Corresponds to the JSON property `activities`
           # @return [Google::Apis::DfareportingV2_1::Activities]
           attr_accessor :activities
         
-          # Custom Rich Media Events group.
+          # Represents a Custom Rich Media Events group.
           # Corresponds to the JSON property `customRichMediaEvents`
           # @return [Google::Apis::DfareportingV2_1::CustomRichMediaEvents]
           attr_accessor :custom_rich_media_events
         
-          # The date range for which this report should be run.
+          # Represents a date range.
           # Corresponds to the JSON property `dateRange`
           # @return [Google::Apis::DfareportingV2_1::DateRange]
           attr_accessor :date_range
@@ -8268,6 +8956,11 @@ module Google
           attr_accessor :metric_names
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @activities = args[:activities] unless args[:activities].nil?
             @custom_rich_media_events = args[:custom_rich_media_events] unless args[:custom_rich_media_events].nil?
             @date_range = args[:date_range] unless args[:date_range].nil?
@@ -8276,6 +8969,7 @@ module Google
             @metric_names = args[:metric_names] unless args[:metric_names].nil?
           end
         end
+        
         # The report criteria for a report of type "CROSS_DIMENSION_REACH".
         class CrossDimensionReachCriteria
           include Google::Apis::Core::Hashable
@@ -8285,7 +8979,7 @@ module Google
           # @return [Array<Google::Apis::DfareportingV2_1::SortedDimension>]
           attr_accessor :breakdown
         
-          # The date range this report should be run for.
+          # Represents a date range.
           # Corresponds to the JSON property `dateRange`
           # @return [Google::Apis::DfareportingV2_1::DateRange]
           attr_accessor :date_range
@@ -8317,6 +9011,11 @@ module Google
           alias_method :pivoted?, :pivoted
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @breakdown = args[:breakdown] unless args[:breakdown].nil?
             @date_range = args[:date_range] unless args[:date_range].nil?
             @dimension = args[:dimension] unless args[:dimension].nil?
@@ -8326,6 +9025,7 @@ module Google
             @pivoted = args[:pivoted] unless args[:pivoted].nil?
           end
         end
+        
         # The report's email delivery settings.
         class Delivery
           include Google::Apis::Core::Hashable
@@ -8352,12 +9052,18 @@ module Google
           attr_accessor :recipients
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @email_owner = args[:email_owner] unless args[:email_owner].nil?
             @email_owner_delivery_type = args[:email_owner_delivery_type] unless args[:email_owner_delivery_type].nil?
             @message = args[:message] unless args[:message].nil?
             @recipients = args[:recipients] unless args[:recipients].nil?
           end
         end
+        
         # The report criteria for a report of type "FLOODLIGHT".
         class FloodlightCriteria
           include Google::Apis::Core::Hashable
@@ -8367,7 +9073,7 @@ module Google
           # @return [Array<Google::Apis::DfareportingV2_1::DimensionValue>]
           attr_accessor :custom_rich_media_events
         
-          # The date range this report should be run for.
+          # Represents a date range.
           # Corresponds to the JSON property `dateRange`
           # @return [Google::Apis::DfareportingV2_1::DateRange]
           attr_accessor :date_range
@@ -8384,9 +9090,7 @@ module Google
           # @return [Array<Google::Apis::DfareportingV2_1::SortedDimension>]
           attr_accessor :dimensions
         
-          # The floodlight ID for which to show data in this report. All advertisers
-          # associated with that ID will automatically be added. The dimension of the
-          # value needs to be 'dfa:floodlightConfigId'.
+          # Represents a DimensionValue resource.
           # Corresponds to the JSON property `floodlightConfigId`
           # @return [Google::Apis::DfareportingV2_1::DimensionValue]
           attr_accessor :floodlight_config_id
@@ -8402,6 +9106,11 @@ module Google
           attr_accessor :report_properties
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @custom_rich_media_events = args[:custom_rich_media_events] unless args[:custom_rich_media_events].nil?
             @date_range = args[:date_range] unless args[:date_range].nil?
             @dimension_filters = args[:dimension_filters] unless args[:dimension_filters].nil?
@@ -8410,6 +9119,7 @@ module Google
             @metric_names = args[:metric_names] unless args[:metric_names].nil?
             @report_properties = args[:report_properties] unless args[:report_properties].nil?
           end
+          
           # The properties of the report.
           class ReportProperties
             include Google::Apis::Core::Hashable
@@ -8437,12 +9147,18 @@ module Google
             alias_method :include_unattributed_ip_conversions?, :include_unattributed_ip_conversions
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @include_attributed_ip_conversions = args[:include_attributed_ip_conversions] unless args[:include_attributed_ip_conversions].nil?
               @include_unattributed_cookie_conversions = args[:include_unattributed_cookie_conversions] unless args[:include_unattributed_cookie_conversions].nil?
               @include_unattributed_ip_conversions = args[:include_unattributed_ip_conversions] unless args[:include_unattributed_ip_conversions].nil?
             end
           end
         end
+        
         # The report criteria for a report of type "PATH_TO_CONVERSION".
         class PathToConversionCriteria
           include Google::Apis::Core::Hashable
@@ -8467,14 +9183,12 @@ module Google
           # @return [Array<Google::Apis::DfareportingV2_1::DimensionValue>]
           attr_accessor :custom_rich_media_events
         
-          # The date range this report should be run for.
+          # Represents a date range.
           # Corresponds to the JSON property `dateRange`
           # @return [Google::Apis::DfareportingV2_1::DateRange]
           attr_accessor :date_range
         
-          # The floodlight ID for which to show data in this report. All advertisers
-          # associated with that ID will automatically be added. The dimension of the
-          # value needs to be 'dfa:floodlightConfigId'.
+          # Represents a DimensionValue resource.
           # Corresponds to the JSON property `floodlightConfigId`
           # @return [Google::Apis::DfareportingV2_1::DimensionValue]
           attr_accessor :floodlight_config_id
@@ -8495,6 +9209,11 @@ module Google
           attr_accessor :report_properties
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @activity_filters = args[:activity_filters] unless args[:activity_filters].nil?
             @conversion_dimensions = args[:conversion_dimensions] unless args[:conversion_dimensions].nil?
             @custom_floodlight_variables = args[:custom_floodlight_variables] unless args[:custom_floodlight_variables].nil?
@@ -8505,6 +9224,7 @@ module Google
             @per_interaction_dimensions = args[:per_interaction_dimensions] unless args[:per_interaction_dimensions].nil?
             @report_properties = args[:report_properties] unless args[:report_properties].nil?
           end
+          
           # The properties of the report.
           class ReportProperties
             include Google::Apis::Core::Hashable
@@ -8574,6 +9294,11 @@ module Google
             alias_method :pivot_on_interaction_path?, :pivot_on_interaction_path
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @clicks_lookback_window = args[:clicks_lookback_window] unless args[:clicks_lookback_window].nil?
               @impressions_lookback_window = args[:impressions_lookback_window] unless args[:impressions_lookback_window].nil?
               @include_attributed_ip_conversions = args[:include_attributed_ip_conversions] unless args[:include_attributed_ip_conversions].nil?
@@ -8586,21 +9311,22 @@ module Google
             end
           end
         end
+        
         # The report criteria for a report of type "REACH".
         class ReachCriteria
           include Google::Apis::Core::Hashable
         
-          # Activity group.
+          # Represents an activity group.
           # Corresponds to the JSON property `activities`
           # @return [Google::Apis::DfareportingV2_1::Activities]
           attr_accessor :activities
         
-          # Custom Rich Media Events group.
+          # Represents a Custom Rich Media Events group.
           # Corresponds to the JSON property `customRichMediaEvents`
           # @return [Google::Apis::DfareportingV2_1::CustomRichMediaEvents]
           attr_accessor :custom_rich_media_events
         
-          # The date range this report should be run for.
+          # Represents a date range.
           # Corresponds to the JSON property `dateRange`
           # @return [Google::Apis::DfareportingV2_1::DateRange]
           attr_accessor :date_range
@@ -8636,6 +9362,11 @@ module Google
           attr_accessor :reach_by_frequency_metric_names
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @activities = args[:activities] unless args[:activities].nil?
             @custom_rich_media_events = args[:custom_rich_media_events] unless args[:custom_rich_media_events].nil?
             @date_range = args[:date_range] unless args[:date_range].nil?
@@ -8646,6 +9377,7 @@ module Google
             @reach_by_frequency_metric_names = args[:reach_by_frequency_metric_names] unless args[:reach_by_frequency_metric_names].nil?
           end
         end
+        
         # The report's schedule. Can only be set if the report's 'dateRange' is a
         # relative date range and the relative date range is not "TODAY".
         class Schedule
@@ -8697,6 +9429,11 @@ module Google
           attr_accessor :start_date
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @active = args[:active] unless args[:active].nil?
             @every = args[:every] unless args[:every].nil?
             @expiration_date = args[:expiration_date] unless args[:expiration_date].nil?
@@ -8707,7 +9444,7 @@ module Google
           end
         end
       end
-
+      
       # Represents fields that are compatible to be selected for a report of type "
       # STANDARD".
       class ReportCompatibleFields
@@ -8743,6 +9480,11 @@ module Google
         attr_accessor :pivoted_activity_metrics
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dimension_filters = args[:dimension_filters] unless args[:dimension_filters].nil?
           @dimensions = args[:dimensions] unless args[:dimensions].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -8750,7 +9492,7 @@ module Google
           @pivoted_activity_metrics = args[:pivoted_activity_metrics] unless args[:pivoted_activity_metrics].nil?
         end
       end
-
+      
       # Represents the list of reports.
       class ReportList
         include Google::Apis::Core::Hashable
@@ -8779,15 +9521,20 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Reporting Configuration
-      class ReportsConfiguration
+      class Configuration
         include Google::Apis::Core::Hashable
       
         # Whether the exposure to conversion report is enabled. This report shows
@@ -8798,7 +9545,7 @@ module Google
         attr_accessor :exposure_to_conversion_enabled
         alias_method :exposure_to_conversion_enabled?, :exposure_to_conversion_enabled
       
-        # Default lookback windows for new advertisers in this account.
+        # Lookback configuration settings.
         # Corresponds to the JSON property `lookbackConfiguration`
         # @return [Google::Apis::DfareportingV2_1::LookbackConfiguration]
         attr_accessor :lookback_configuration
@@ -8824,12 +9571,17 @@ module Google
         attr_accessor :report_generation_time_zone_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @exposure_to_conversion_enabled = args[:exposure_to_conversion_enabled] unless args[:exposure_to_conversion_enabled].nil?
           @lookback_configuration = args[:lookback_configuration] unless args[:lookback_configuration].nil?
           @report_generation_time_zone_id = args[:report_generation_time_zone_id] unless args[:report_generation_time_zone_id].nil?
         end
       end
-
+      
       # Rich Media Exit Override.
       class RichMediaExitOverride
         include Google::Apis::Core::Hashable
@@ -8852,12 +9604,17 @@ module Google
         alias_method :use_custom_exit_url?, :use_custom_exit_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @custom_exit_url = args[:custom_exit_url] unless args[:custom_exit_url].nil?
           @exit_id = args[:exit_id] unless args[:exit_id].nil?
           @use_custom_exit_url = args[:use_custom_exit_url] unless args[:use_custom_exit_url].nil?
         end
       end
-
+      
       # Contains properties of a site.
       class Site
         include Google::Apis::Core::Hashable
@@ -8879,8 +9636,7 @@ module Google
         # @return [String]
         attr_accessor :directory_site_id
       
-        # Dimension value for the ID of the directory site. This is a read-only, auto-
-        # generated field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `directorySiteIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :directory_site_id_dimension_value
@@ -8890,8 +9646,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Dimension value for the ID of this site. This is a read-only, auto-generated
-        # field.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :id_dimension_value
@@ -8920,7 +9675,7 @@ module Google
         # @return [Array<Google::Apis::DfareportingV2_1::SiteContact>]
         attr_accessor :site_contacts
       
-        # Site-wide settings.
+        # Site Settings
         # Corresponds to the JSON property `siteSettings`
         # @return [Google::Apis::DfareportingV2_1::SiteSettings]
         attr_accessor :site_settings
@@ -8931,6 +9686,11 @@ module Google
         attr_accessor :subaccount_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @approved = args[:approved] unless args[:approved].nil?
           @directory_site_id = args[:directory_site_id] unless args[:directory_site_id].nil?
@@ -8945,7 +9705,7 @@ module Google
           @subaccount_id = args[:subaccount_id] unless args[:subaccount_id].nil?
         end
       end
-
+      
       # Site Contact
       class SiteContact
         include Google::Apis::Core::Hashable
@@ -8991,6 +9751,11 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @address = args[:address] unless args[:address].nil?
           @contact_type = args[:contact_type] unless args[:contact_type].nil?
           @email = args[:email] unless args[:email].nil?
@@ -9001,7 +9766,7 @@ module Google
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # Site Settings
       class SiteSettings
         include Google::Apis::Core::Hashable
@@ -9012,7 +9777,7 @@ module Google
         attr_accessor :active_view_opt_out
         alias_method :active_view_opt_out?, :active_view_opt_out
       
-        # Site-wide creative settings.
+        # Creative Settings
         # Corresponds to the JSON property `creativeSettings`
         # @return [Google::Apis::DfareportingV2_1::CreativeSettings]
         attr_accessor :creative_settings
@@ -9029,17 +9794,22 @@ module Google
         attr_accessor :disable_new_cookie
         alias_method :disable_new_cookie?, :disable_new_cookie
       
-        # Lookback window settings for this site.
+        # Lookback configuration settings.
         # Corresponds to the JSON property `lookbackConfiguration`
         # @return [Google::Apis::DfareportingV2_1::LookbackConfiguration]
         attr_accessor :lookback_configuration
       
-        # Configuration settings for dynamic and image floodlight tags.
+        # Tag Settings
         # Corresponds to the JSON property `tagSetting`
         # @return [Google::Apis::DfareportingV2_1::TagSetting]
         attr_accessor :tag_setting
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @active_view_opt_out = args[:active_view_opt_out] unless args[:active_view_opt_out].nil?
           @creative_settings = args[:creative_settings] unless args[:creative_settings].nil?
           @disable_brand_safe_ads = args[:disable_brand_safe_ads] unless args[:disable_brand_safe_ads].nil?
@@ -9048,7 +9818,7 @@ module Google
           @tag_setting = args[:tag_setting] unless args[:tag_setting].nil?
         end
       end
-
+      
       # Site List Response
       class SitesListResponse
         include Google::Apis::Core::Hashable
@@ -9070,12 +9840,17 @@ module Google
         attr_accessor :sites
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @sites = args[:sites] unless args[:sites].nil?
         end
       end
-
+      
       # Represents the dimensions of ads, placements, creatives, or creative assets.
       class Size
         include Google::Apis::Core::Hashable
@@ -9108,6 +9883,11 @@ module Google
         attr_accessor :width
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @height = args[:height] unless args[:height].nil?
           @iab = args[:iab] unless args[:iab].nil?
           @id = args[:id] unless args[:id].nil?
@@ -9115,7 +9895,7 @@ module Google
           @width = args[:width] unless args[:width].nil?
         end
       end
-
+      
       # Size List Response
       class SizesListResponse
         include Google::Apis::Core::Hashable
@@ -9132,11 +9912,16 @@ module Google
         attr_accessor :sizes
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @sizes = args[:sizes] unless args[:sizes].nil?
         end
       end
-
+      
       # Represents a sorted dimension.
       class SortedDimension
         include Google::Apis::Core::Hashable
@@ -9157,12 +9942,17 @@ module Google
         attr_accessor :sort_order
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
           @sort_order = args[:sort_order] unless args[:sort_order].nil?
         end
       end
-
+      
       # Contains properties of a DCM subaccount.
       class Subaccount
         include Google::Apis::Core::Hashable
@@ -9196,6 +9986,11 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @available_permission_ids = args[:available_permission_ids] unless args[:available_permission_ids].nil?
           @id = args[:id] unless args[:id].nil?
@@ -9203,7 +9998,7 @@ module Google
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # Subaccount List Response
       class SubaccountsListResponse
         include Google::Apis::Core::Hashable
@@ -9225,12 +10020,17 @@ module Google
         attr_accessor :subaccounts
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @subaccounts = args[:subaccounts] unless args[:subaccounts].nil?
         end
       end
-
+      
       # Placement Tag Data
       class TagData
         include Google::Apis::Core::Hashable
@@ -9261,6 +10061,11 @@ module Google
         attr_accessor :impression_tag
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @ad_id = args[:ad_id] unless args[:ad_id].nil?
           @click_tag = args[:click_tag] unless args[:click_tag].nil?
           @creative_id = args[:creative_id] unless args[:creative_id].nil?
@@ -9268,7 +10073,7 @@ module Google
           @impression_tag = args[:impression_tag] unless args[:impression_tag].nil?
         end
       end
-
+      
       # Tag Settings
       class TagSetting
         include Google::Apis::Core::Hashable
@@ -9302,13 +10107,18 @@ module Google
         attr_accessor :keyword_option
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @additional_key_values = args[:additional_key_values] unless args[:additional_key_values].nil?
           @include_click_through_urls = args[:include_click_through_urls] unless args[:include_click_through_urls].nil?
           @include_click_tracking = args[:include_click_tracking] unless args[:include_click_tracking].nil?
           @keyword_option = args[:keyword_option] unless args[:keyword_option].nil?
         end
       end
-
+      
       # Dynamic and Image Tag Settings.
       class TagSettings
         include Google::Apis::Core::Hashable
@@ -9326,11 +10136,16 @@ module Google
         alias_method :image_tag_enabled?, :image_tag_enabled
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @dynamic_tag_enabled = args[:dynamic_tag_enabled] unless args[:dynamic_tag_enabled].nil?
           @image_tag_enabled = args[:image_tag_enabled] unless args[:image_tag_enabled].nil?
         end
       end
-
+      
       # Target Window.
       class TargetWindow
         include Google::Apis::Core::Hashable
@@ -9347,11 +10162,16 @@ module Google
         attr_accessor :target_window_option
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @custom_html = args[:custom_html] unless args[:custom_html].nil?
           @target_window_option = args[:target_window_option] unless args[:target_window_option].nil?
         end
       end
-
+      
       # Contains properties of a targetable remarketing list. Remarketing enables you
       # to create lists of users who have performed specific actions on a site, then
       # target ads to members of those lists. This resource is a read-only view of a
@@ -9381,7 +10201,7 @@ module Google
         # @return [String]
         attr_accessor :advertiser_id
       
-        # Dimension value for the ID of the advertiser.
+        # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
         # @return [Google::Apis::DfareportingV2_1::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
@@ -9431,6 +10251,11 @@ module Google
         attr_accessor :subaccount_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @active = args[:active] unless args[:active].nil?
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
@@ -9445,7 +10270,7 @@ module Google
           @subaccount_id = args[:subaccount_id] unless args[:subaccount_id].nil?
         end
       end
-
+      
       # Targetable remarketing list response
       class TargetableRemarketingListsListResponse
         include Google::Apis::Core::Hashable
@@ -9467,12 +10292,17 @@ module Google
         attr_accessor :targetable_remarketing_lists
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @targetable_remarketing_lists = args[:targetable_remarketing_lists] unless args[:targetable_remarketing_lists].nil?
         end
       end
-
+      
       # Technology Targeting.
       class TechnologyTargeting
         include Google::Apis::Core::Hashable
@@ -9526,6 +10356,11 @@ module Google
         attr_accessor :platform_types
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @browsers = args[:browsers] unless args[:browsers].nil?
           @connection_types = args[:connection_types] unless args[:connection_types].nil?
           @mobile_carriers = args[:mobile_carriers] unless args[:mobile_carriers].nil?
@@ -9534,7 +10369,7 @@ module Google
           @platform_types = args[:platform_types] unless args[:platform_types].nil?
         end
       end
-
+      
       # Third-party Tracking URL.
       class ThirdPartyTrackingUrl
         include Google::Apis::Core::Hashable
@@ -9550,11 +10385,16 @@ module Google
         attr_accessor :url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @third_party_url_type = args[:third_party_url_type] unless args[:third_party_url_type].nil?
           @url = args[:url] unless args[:url].nil?
         end
       end
-
+      
       # User Defined Variable configuration.
       class UserDefinedVariableConfiguration
         include Google::Apis::Core::Hashable
@@ -9577,12 +10417,17 @@ module Google
         attr_accessor :variable_type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @data_type = args[:data_type] unless args[:data_type].nil?
           @report_name = args[:report_name] unless args[:report_name].nil?
           @variable_type = args[:variable_type] unless args[:variable_type].nil?
         end
       end
-
+      
       # Represents a UserProfile resource.
       class UserProfile
         include Google::Apis::Core::Hashable
@@ -9628,6 +10473,11 @@ module Google
         attr_accessor :user_name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @account_name = args[:account_name] unless args[:account_name].nil?
           @etag = args[:etag] unless args[:etag].nil?
@@ -9638,7 +10488,7 @@ module Google
           @user_name = args[:user_name] unless args[:user_name].nil?
         end
       end
-
+      
       # Represents the list of user profiles.
       class UserProfileList
         include Google::Apis::Core::Hashable
@@ -9659,12 +10509,17 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # Contains properties of auser role, which is used to manage user access.
       class UserRole
         include Google::Apis::Core::Hashable
@@ -9720,6 +10575,11 @@ module Google
         attr_accessor :subaccount_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @default_user_role = args[:default_user_role] unless args[:default_user_role].nil?
           @id = args[:id] unless args[:id].nil?
@@ -9730,7 +10590,7 @@ module Google
           @subaccount_id = args[:subaccount_id] unless args[:subaccount_id].nil?
         end
       end
-
+      
       # Contains properties of a user role permission.
       class UserRolePermission
         include Google::Apis::Core::Hashable
@@ -9762,6 +10622,11 @@ module Google
         attr_accessor :permission_group_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @availability = args[:availability] unless args[:availability].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -9769,7 +10634,7 @@ module Google
           @permission_group_id = args[:permission_group_id] unless args[:permission_group_id].nil?
         end
       end
-
+      
       # Represents a grouping of related user role permissions.
       class UserRolePermissionGroup
         include Google::Apis::Core::Hashable
@@ -9791,12 +10656,17 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # User Role Permission Group List Response
       class UserRolePermissionGroupsListResponse
         include Google::Apis::Core::Hashable
@@ -9813,11 +10683,16 @@ module Google
         attr_accessor :user_role_permission_groups
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @user_role_permission_groups = args[:user_role_permission_groups] unless args[:user_role_permission_groups].nil?
         end
       end
-
+      
       # User Role Permission List Response
       class UserRolePermissionsListResponse
         include Google::Apis::Core::Hashable
@@ -9834,11 +10709,16 @@ module Google
         attr_accessor :user_role_permissions
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @user_role_permissions = args[:user_role_permissions] unless args[:user_role_permissions].nil?
         end
       end
-
+      
       # User Role List Response
       class UserRolesListResponse
         include Google::Apis::Core::Hashable
@@ -9860,6 +10740,11 @@ module Google
         attr_accessor :user_roles
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @user_roles = args[:user_roles] unless args[:user_roles].nil?

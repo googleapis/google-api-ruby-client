@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/civic-information
       class CivicInfoService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'civicinfo/v2/')
         end
-
+        
         # Searches for political divisions by their natural name or OCD ID.
         # @param [String] query
         #   The search query. Queries can cover any parts of a OCD ID or a human readable
@@ -68,7 +67,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -83,7 +82,7 @@ module Google
         def search_divisions(query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'divisions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CivicinfoV2::DivisionSearchResponseRepresentation
+          command.response_representation = Google::Apis::CivicinfoV2::DivisionSearchResponse::Representation
           command.response_class = Google::Apis::CivicinfoV2::DivisionSearchResponse
           command.query['query'] = query unless query.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -91,7 +90,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # List of available elections to query.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -102,14 +101,14 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CivicinfoV2::ElectionsQueryResponse] parsed result object
+        # @yieldparam result [Google::Apis::CivicinfoV2::QueryResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::CivicinfoV2::ElectionsQueryResponse]
+        # @return [Google::Apis::CivicinfoV2::QueryResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -117,14 +116,13 @@ module Google
         def election_query_election(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'elections'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CivicinfoV2::ElectionsQueryResponseRepresentation
-          command.response_class = Google::Apis::CivicinfoV2::ElectionsQueryResponse
+          command.response_representation = Google::Apis::CivicinfoV2::QueryResponse::Representation
+          command.response_class = Google::Apis::CivicinfoV2::QueryResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Looks up information relevant to a voter based on the voter's registered
         # address.
@@ -144,7 +142,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -159,7 +157,7 @@ module Google
         def voter_info_query_election(address: nil, election_id: nil, official_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'voterinfo'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CivicinfoV2::VoterInfoResponseRepresentation
+          command.response_representation = Google::Apis::CivicinfoV2::VoterInfoResponse::Representation
           command.response_class = Google::Apis::CivicinfoV2::VoterInfoResponse
           command.query['address'] = address unless address.nil?
           command.query['electionId'] = election_id unless election_id.nil?
@@ -169,7 +167,7 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-
+        
         # Looks up political geography and representative information for a single
         # address.
         # @param [String] address
@@ -195,7 +193,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -210,7 +208,7 @@ module Google
         def representative_info_by_address_representative(address: nil, include_offices: nil, levels: nil, roles: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'representatives'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CivicinfoV2::RepresentativeInfoResponseRepresentation
+          command.response_representation = Google::Apis::CivicinfoV2::RepresentativeInfoResponse::Representation
           command.response_class = Google::Apis::CivicinfoV2::RepresentativeInfoResponse
           command.query['address'] = address unless address.nil?
           command.query['includeOffices'] = include_offices unless include_offices.nil?
@@ -221,7 +219,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Looks up representative information for a single geographic division.
         # @param [String] ocd_id
@@ -247,7 +244,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -262,7 +259,7 @@ module Google
         def representative_info_by_division_representative(ocd_id, levels: nil, recursive: nil, roles: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'representatives/{ocdId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CivicinfoV2::RepresentativeInfoDataRepresentation
+          command.response_representation = Google::Apis::CivicinfoV2::RepresentativeInfoData::Representation
           command.response_class = Google::Apis::CivicinfoV2::RepresentativeInfoData
           command.params['ocdId'] = ocd_id unless ocd_id.nil?
           command.query['levels'] = levels unless levels.nil?

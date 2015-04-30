@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module BloggerV3
-
+      
       # 
       class Blog
         include Google::Apis::Core::Hashable
@@ -92,6 +92,11 @@ module Google
         attr_accessor :url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @custom_meta_data = args[:custom_meta_data] unless args[:custom_meta_data].nil?
           @description = args[:description] unless args[:description].nil?
           @id = args[:id] unless args[:id].nil?
@@ -106,6 +111,7 @@ module Google
           @updated = args[:updated] unless args[:updated].nil?
           @url = args[:url] unless args[:url].nil?
         end
+        
         # The locale this Blog is set to.
         class Locale
           include Google::Apis::Core::Hashable
@@ -126,11 +132,17 @@ module Google
           attr_accessor :variant
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @country = args[:country] unless args[:country].nil?
             @language = args[:language] unless args[:language].nil?
             @variant = args[:variant] unless args[:variant].nil?
           end
         end
+        
         # The container of pages in this blog.
         class Pages
           include Google::Apis::Core::Hashable
@@ -146,10 +158,16 @@ module Google
           attr_accessor :total_items
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @self_link = args[:self_link] unless args[:self_link].nil?
             @total_items = args[:total_items] unless args[:total_items].nil?
           end
         end
+        
         # The container of posts in this blog.
         class Posts
           include Google::Apis::Core::Hashable
@@ -170,13 +188,18 @@ module Google
           attr_accessor :total_items
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @items = args[:items] unless args[:items].nil?
             @self_link = args[:self_link] unless args[:self_link].nil?
             @total_items = args[:total_items] unless args[:total_items].nil?
           end
         end
       end
-
+      
       # 
       class BlogList
         include Google::Apis::Core::Hashable
@@ -197,12 +220,17 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @blog_user_infos = args[:blog_user_infos] unless args[:blog_user_infos].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
       class BlogPerUserInfo
         include Google::Apis::Core::Hashable
@@ -239,6 +267,11 @@ module Google
         attr_accessor :user_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @blog_id = args[:blog_id] unless args[:blog_id].nil?
           @has_admin_access = args[:has_admin_access] unless args[:has_admin_access].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -247,7 +280,7 @@ module Google
           @user_id = args[:user_id] unless args[:user_id].nil?
         end
       end
-
+      
       # 
       class BlogUserInfo
         include Google::Apis::Core::Hashable
@@ -268,12 +301,17 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @blog = args[:blog] unless args[:blog].nil?
           @blog_user_info = args[:blog_user_info] unless args[:blog_user_info].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
       class Comment
         include Google::Apis::Core::Hashable
@@ -334,6 +372,11 @@ module Google
         attr_accessor :updated
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @author = args[:author] unless args[:author].nil?
           @blog = args[:blog] unless args[:blog].nil?
           @content = args[:content] unless args[:content].nil?
@@ -346,6 +389,7 @@ module Google
           @status = args[:status] unless args[:status].nil?
           @updated = args[:updated] unless args[:updated].nil?
         end
+        
         # The author of this Comment.
         class Author
           include Google::Apis::Core::Hashable
@@ -371,11 +415,17 @@ module Google
           attr_accessor :url
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @display_name = args[:display_name] unless args[:display_name].nil?
             @id = args[:id] unless args[:id].nil?
             @image = args[:image] unless args[:image].nil?
             @url = args[:url] unless args[:url].nil?
           end
+          
           # The comment creator's avatar.
           class Image
             include Google::Apis::Core::Hashable
@@ -386,10 +436,16 @@ module Google
             attr_accessor :url
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @url = args[:url] unless args[:url].nil?
             end
           end
         end
+        
         # Data about the blog containing this comment.
         class Blog
           include Google::Apis::Core::Hashable
@@ -400,9 +456,15 @@ module Google
           attr_accessor :id
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @id = args[:id] unless args[:id].nil?
           end
         end
+        
         # Data about the comment this is in reply to.
         class InReplyTo
           include Google::Apis::Core::Hashable
@@ -413,9 +475,15 @@ module Google
           attr_accessor :id
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @id = args[:id] unless args[:id].nil?
           end
         end
+        
         # Data about the post containing this comment.
         class Post
           include Google::Apis::Core::Hashable
@@ -426,11 +494,16 @@ module Google
           attr_accessor :id
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @id = args[:id] unless args[:id].nil?
           end
         end
       end
-
+      
       # 
       class CommentList
         include Google::Apis::Core::Hashable
@@ -461,6 +534,11 @@ module Google
         attr_accessor :prev_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -468,7 +546,7 @@ module Google
           @prev_page_token = args[:prev_page_token] unless args[:prev_page_token].nil?
         end
       end
-
+      
       # 
       class Page
         include Google::Apis::Core::Hashable
@@ -535,6 +613,11 @@ module Google
         attr_accessor :url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @author = args[:author] unless args[:author].nil?
           @blog = args[:blog] unless args[:blog].nil?
           @content = args[:content] unless args[:content].nil?
@@ -548,6 +631,7 @@ module Google
           @updated = args[:updated] unless args[:updated].nil?
           @url = args[:url] unless args[:url].nil?
         end
+        
         # The author of this Page.
         class Author
           include Google::Apis::Core::Hashable
@@ -573,11 +657,17 @@ module Google
           attr_accessor :url
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @display_name = args[:display_name] unless args[:display_name].nil?
             @id = args[:id] unless args[:id].nil?
             @image = args[:image] unless args[:image].nil?
             @url = args[:url] unless args[:url].nil?
           end
+          
           # The page author's avatar.
           class Image
             include Google::Apis::Core::Hashable
@@ -588,10 +678,16 @@ module Google
             attr_accessor :url
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @url = args[:url] unless args[:url].nil?
             end
           end
         end
+        
         # Data about the blog containing this Page.
         class Blog
           include Google::Apis::Core::Hashable
@@ -602,11 +698,16 @@ module Google
           attr_accessor :id
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @id = args[:id] unless args[:id].nil?
           end
         end
       end
-
+      
       # 
       class PageList
         include Google::Apis::Core::Hashable
@@ -632,13 +733,18 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # 
       class Pageviews
         include Google::Apis::Core::Hashable
@@ -659,10 +765,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @blog_id = args[:blog_id] unless args[:blog_id].nil?
           @counts = args[:counts] unless args[:counts].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
+        
         # 
         class Count
           include Google::Apis::Core::Hashable
@@ -678,12 +790,17 @@ module Google
           attr_accessor :time_range
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @count = args[:count] unless args[:count].nil?
             @time_range = args[:time_range] unless args[:time_range].nil?
           end
         end
       end
-
+      
       # 
       class Post
         include Google::Apis::Core::Hashable
@@ -784,6 +901,11 @@ module Google
         attr_accessor :url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @author = args[:author] unless args[:author].nil?
           @blog = args[:blog] unless args[:blog].nil?
           @content = args[:content] unless args[:content].nil?
@@ -804,6 +926,7 @@ module Google
           @updated = args[:updated] unless args[:updated].nil?
           @url = args[:url] unless args[:url].nil?
         end
+        
         # The author of this Post.
         class Author
           include Google::Apis::Core::Hashable
@@ -829,11 +952,17 @@ module Google
           attr_accessor :url
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @display_name = args[:display_name] unless args[:display_name].nil?
             @id = args[:id] unless args[:id].nil?
             @image = args[:image] unless args[:image].nil?
             @url = args[:url] unless args[:url].nil?
           end
+          
           # The Post author's avatar.
           class Image
             include Google::Apis::Core::Hashable
@@ -844,10 +973,16 @@ module Google
             attr_accessor :url
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @url = args[:url] unless args[:url].nil?
             end
           end
         end
+        
         # Data about the blog containing this Post.
         class Blog
           include Google::Apis::Core::Hashable
@@ -858,9 +993,15 @@ module Google
           attr_accessor :id
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @id = args[:id] unless args[:id].nil?
           end
         end
+        
         # 
         class Image
           include Google::Apis::Core::Hashable
@@ -871,9 +1012,15 @@ module Google
           attr_accessor :url
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @url = args[:url] unless args[:url].nil?
           end
         end
+        
         # The location for geotagged posts.
         class Location
           include Google::Apis::Core::Hashable
@@ -899,12 +1046,18 @@ module Google
           attr_accessor :span
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @lat = args[:lat] unless args[:lat].nil?
             @lng = args[:lng] unless args[:lng].nil?
             @name = args[:name] unless args[:name].nil?
             @span = args[:span] unless args[:span].nil?
           end
         end
+        
         # The container of comments on this Post.
         class Replies
           include Google::Apis::Core::Hashable
@@ -925,13 +1078,18 @@ module Google
           attr_accessor :total_items
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @items = args[:items] unless args[:items].nil?
             @self_link = args[:self_link] unless args[:self_link].nil?
             @total_items = args[:total_items] unless args[:total_items].nil?
           end
         end
       end
-
+      
       # 
       class PostList
         include Google::Apis::Core::Hashable
@@ -957,13 +1115,18 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # 
       class PostPerUserInfo
         include Google::Apis::Core::Hashable
@@ -995,6 +1158,11 @@ module Google
         attr_accessor :user_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @blog_id = args[:blog_id] unless args[:blog_id].nil?
           @has_edit_access = args[:has_edit_access] unless args[:has_edit_access].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1002,7 +1170,7 @@ module Google
           @user_id = args[:user_id] unless args[:user_id].nil?
         end
       end
-
+      
       # 
       class PostUserInfo
         include Google::Apis::Core::Hashable
@@ -1023,14 +1191,19 @@ module Google
         attr_accessor :post_user_info
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @post = args[:post] unless args[:post].nil?
           @post_user_info = args[:post_user_info] unless args[:post_user_info].nil?
         end
       end
-
+      
       # 
-      class PostUserInfosList
+      class List
         include Google::Apis::Core::Hashable
       
         # The list of Posts with User information for the post, for this Blog.
@@ -1049,12 +1222,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # 
       class User
         include Google::Apis::Core::Hashable
@@ -1105,6 +1283,11 @@ module Google
         attr_accessor :url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @about = args[:about] unless args[:about].nil?
           @blogs = args[:blogs] unless args[:blogs].nil?
           @created = args[:created] unless args[:created].nil?
@@ -1115,6 +1298,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
           @url = args[:url] unless args[:url].nil?
         end
+        
         # The container of blogs for this user.
         class Blogs
           include Google::Apis::Core::Hashable
@@ -1125,9 +1309,15 @@ module Google
           attr_accessor :self_link
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @self_link = args[:self_link] unless args[:self_link].nil?
           end
         end
+        
         # This user's locale
         class Locale
           include Google::Apis::Core::Hashable
@@ -1148,6 +1338,11 @@ module Google
           attr_accessor :variant
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @country = args[:country] unless args[:country].nil?
             @language = args[:language] unless args[:language].nil?
             @variant = args[:variant] unless args[:variant].nil?

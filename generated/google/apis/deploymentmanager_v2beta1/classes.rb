@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DeploymentmanagerV2beta1
-
+      
       # Next available tag: 8
       class Deployment
         include Google::Apis::Core::Hashable
@@ -56,6 +56,11 @@ module Google
         attr_accessor :target_config
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @description = args[:description] unless args[:description].nil?
           @id = args[:id] unless args[:id].nil?
           @manifest = args[:manifest] unless args[:manifest].nil?
@@ -63,11 +68,11 @@ module Google
           @target_config = args[:target_config] unless args[:target_config].nil?
         end
       end
-
+      
       # ! A response containing a partial list of deployments and a page token used !
       # to build the next request if the request has been truncated. Next available
       # tag: 4
-      class DeploymentsListResponse
+      class ListResponse
         include Google::Apis::Core::Hashable
       
         # ! The deployments contained in this response.
@@ -81,11 +86,16 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @deployments = args[:deployments] unless args[:deployments].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # Next available tag: 10
       class Manifest
         include Google::Apis::Core::Hashable
@@ -118,6 +128,11 @@ module Google
         attr_accessor :self_link
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @config = args[:config] unless args[:config].nil?
           @evaluated_config = args[:evaluated_config] unless args[:evaluated_config].nil?
           @id = args[:id] unless args[:id].nil?
@@ -125,7 +140,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
-
+      
       # ! A response containing a partial list of manifests and a page token used ! to
       # build the next request if the request has been truncated. Next available tag:
       # 4
@@ -143,11 +158,16 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @manifests = args[:manifests] unless args[:manifests].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # ! An operation resource, used to manage asynchronous API requests. Next
       # available tag: 24
       class Operation
@@ -259,6 +279,11 @@ module Google
         attr_accessor :warnings
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @end_time = args[:end_time] unless args[:end_time].nil?
           @error = args[:error] unless args[:error].nil?
@@ -278,6 +303,7 @@ module Google
           @user = args[:user] unless args[:user].nil?
           @warnings = args[:warnings] unless args[:warnings].nil?
         end
+        
         # ! [Output Only] If errors occurred during processing of this operation, ! this
         # field will be populated.
         class Error
@@ -289,8 +315,14 @@ module Google
           attr_accessor :errors
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @errors = args[:errors] unless args[:errors].nil?
           end
+          
           # 
           class Error
             include Google::Apis::Core::Hashable
@@ -312,12 +344,18 @@ module Google
             attr_accessor :message
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @code = args[:code] unless args[:code].nil?
               @location = args[:location] unless args[:location].nil?
               @message = args[:message] unless args[:message].nil?
             end
           end
         end
+        
         # 
         class Warning
           include Google::Apis::Core::Hashable
@@ -338,10 +376,16 @@ module Google
           attr_accessor :message
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @code = args[:code] unless args[:code].nil?
             @data = args[:data] unless args[:data].nil?
             @message = args[:message] unless args[:message].nil?
           end
+          
           # 
           class Datum
             include Google::Apis::Core::Hashable
@@ -357,13 +401,18 @@ module Google
             attr_accessor :value
           
             def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
               @key = args[:key] unless args[:key].nil?
               @value = args[:value] unless args[:value].nil?
             end
           end
         end
       end
-
+      
       # ! A response containing a partial list of operations and a page token used !
       # to build the next request if the request has been truncated. Next available
       # tag: 4
@@ -381,11 +430,16 @@ module Google
         attr_accessor :operations
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @operations = args[:operations] unless args[:operations].nil?
         end
       end
-
+      
       # Next available tag: 12
       class Resource
         include Google::Apis::Core::Hashable
@@ -433,6 +487,11 @@ module Google
         attr_accessor :url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @errors = args[:errors] unless args[:errors].nil?
           @id = args[:id] unless args[:id].nil?
           @intent = args[:intent] unless args[:intent].nil?
@@ -443,7 +502,7 @@ module Google
           @url = args[:url] unless args[:url].nil?
         end
       end
-
+      
       # ! A response containing a partial list of resources and a page token used ! to
       # build the next request if the request has been truncated. Next available tag:
       # 4
@@ -461,11 +520,16 @@ module Google
         attr_accessor :resources
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @resources = args[:resources] unless args[:resources].nil?
         end
       end
-
+      
       # ! A type supported by Deployment Manager. Next available tag: 4
       class Type
         include Google::Apis::Core::Hashable
@@ -476,10 +540,15 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # ! A response that returns all Types supported by Deployment Manager Next
       # available tag: 3
       class TypesListResponse
@@ -491,6 +560,11 @@ module Google
         attr_accessor :types
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @types = args[:types] unless args[:types].nil?
         end
       end

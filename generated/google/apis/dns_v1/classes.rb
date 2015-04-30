@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DnsV1
-
+      
       # An atomic update to a collection of ResourceRecordSets.
       class Change
         include Google::Apis::Core::Hashable
@@ -58,6 +58,11 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @additions = args[:additions] unless args[:additions].nil?
           @deletions = args[:deletions] unless args[:deletions].nil?
           @id = args[:id] unless args[:id].nil?
@@ -66,10 +71,10 @@ module Google
           @status = args[:status] unless args[:status].nil?
         end
       end
-
+      
       # The response to a request to enumerate Changes to a ResourceRecordSets
       # collection.
-      class ChangesListResponse
+      class ListResponse
         include Google::Apis::Core::Hashable
       
         # The requested changes.
@@ -95,12 +100,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @changes = args[:changes] unless args[:changes].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # A zone is a subtree of the DNS namespace under one administrative
       # responsibility. A ManagedZone is a resource that represents a DNS zone hosted
       # by the Cloud DNS service.
@@ -156,6 +166,11 @@ module Google
         attr_accessor :name_servers
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_time = args[:creation_time] unless args[:creation_time].nil?
           @description = args[:description] unless args[:description].nil?
           @dns_name = args[:dns_name] unless args[:dns_name].nil?
@@ -166,7 +181,7 @@ module Google
           @name_servers = args[:name_servers] unless args[:name_servers].nil?
         end
       end
-
+      
       # 
       class ManagedZonesListResponse
         include Google::Apis::Core::Hashable
@@ -195,12 +210,17 @@ module Google
         attr_accessor :next_page_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @managed_zones = args[:managed_zones] unless args[:managed_zones].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
-
+      
       # A project resource. The project is a top level container for resources
       # including Cloud DNS ManagedZones. Projects can be created only in the APIs
       # console.
@@ -224,19 +244,24 @@ module Google
         # @return [String]
         attr_accessor :number
       
-        # Quotas assigned to this project (output only).
+        # Limits associated with a Project.
         # Corresponds to the JSON property `quota`
         # @return [Google::Apis::DnsV1::Quota]
         attr_accessor :quota
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @number = args[:number] unless args[:number].nil?
           @quota = args[:quota] unless args[:quota].nil?
         end
       end
-
+      
       # Limits associated with a Project.
       class Quota
         include Google::Apis::Core::Hashable
@@ -278,6 +303,11 @@ module Google
         attr_accessor :total_rrdata_size_per_change
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @managed_zones = args[:managed_zones] unless args[:managed_zones].nil?
           @resource_records_per_rrset = args[:resource_records_per_rrset] unless args[:resource_records_per_rrset].nil?
@@ -287,7 +317,7 @@ module Google
           @total_rrdata_size_per_change = args[:total_rrdata_size_per_change] unless args[:total_rrdata_size_per_change].nil?
         end
       end
-
+      
       # A unit of data that will be returned by the DNS servers.
       class ResourceRecordSet
         include Google::Apis::Core::Hashable
@@ -320,6 +350,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?
           @rrdatas = args[:rrdatas] unless args[:rrdatas].nil?
@@ -327,7 +362,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # 
       class ResourceRecordSetsListResponse
         include Google::Apis::Core::Hashable
@@ -356,6 +391,11 @@ module Google
         attr_accessor :rrsets
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @rrsets = args[:rrsets] unless args[:rrsets].nil?

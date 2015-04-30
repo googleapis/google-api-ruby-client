@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module GroupssettingsV1
-
+      
       # JSON template for Group resource
       class Groups
         include Google::Apis::Core::Hashable
@@ -181,6 +181,11 @@ module Google
         attr_accessor :who_can_view_membership
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @allow_external_members = args[:allow_external_members] unless args[:allow_external_members].nil?
           @allow_google_communication = args[:allow_google_communication] unless args[:allow_google_communication].nil?
           @allow_web_posting = args[:allow_web_posting] unless args[:allow_web_posting].nil?

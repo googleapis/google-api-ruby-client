@@ -21,23 +21,28 @@ require 'google/apis/errors'
 module Google
   module Apis
     module TranslateV2
-
+      
       # 
-      class DetectionsListResponse
+      class ListResponse
         include Google::Apis::Core::Hashable
       
         # A detections contains detection results of several text
         # Corresponds to the JSON property `detections`
-        # @return [Array<Array<Google::Apis::TranslateV2::DetectionsResource>>]
+        # @return [Array<Array<Google::Apis::TranslateV2::Resource>>]
         attr_accessor :detections
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @detections = args[:detections] unless args[:detections].nil?
         end
       end
-
+      
       # 
-      class DetectionsResource
+      class Resource
         include Google::Apis::Core::Hashable
       
         # The confidence of the detection resul of this language.
@@ -57,12 +62,17 @@ module Google
         attr_accessor :language
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @confidence = args[:confidence] unless args[:confidence].nil?
           @is_reliable = args[:is_reliable] unless args[:is_reliable].nil?
           @language = args[:language] unless args[:language].nil?
         end
       end
-
+      
       # 
       class LanguagesListResponse
         include Google::Apis::Core::Hashable
@@ -76,10 +86,15 @@ module Google
         attr_accessor :languages
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @languages = args[:languages] unless args[:languages].nil?
         end
       end
-
+      
       # 
       class LanguagesResource
         include Google::Apis::Core::Hashable
@@ -95,11 +110,16 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @language = args[:language] unless args[:language].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # 
       class TranslationsListResponse
         include Google::Apis::Core::Hashable
@@ -110,10 +130,15 @@ module Google
         attr_accessor :translations
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @translations = args[:translations] unless args[:translations].nil?
         end
       end
-
+      
       # 
       class TranslationsResource
         include Google::Apis::Core::Hashable
@@ -129,6 +154,11 @@ module Google
         attr_accessor :translated_text
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @detected_source_language = args[:detected_source_language] unless args[:detected_source_language].nil?
           @translated_text = args[:translated_text] unless args[:translated_text].nil?
         end

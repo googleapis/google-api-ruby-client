@@ -32,7 +32,6 @@ module Google
       #
       # @see https://developers.google.com/gmail/api/
       class GmailService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -52,7 +51,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'gmail/v1/users/')
         end
-
+        
         # Gets the current user's Gmail profile.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -66,7 +65,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -81,7 +80,7 @@ module Google
         def get_profile_user(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/profile'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GmailV1::ProfileRepresentation
+          command.response_representation = Google::Apis::GmailV1::Profile::Representation
           command.response_class = Google::Apis::GmailV1::Profile
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -90,13 +89,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Creates a new draft with the DRAFT label.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
-        # @param [Google::Apis::GmailV1::Draft] draft
-        #   
+        # @param [Google::Apis::GmailV1::Draft] draft_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -110,7 +107,7 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -122,7 +119,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_user_draft(user_id, draft = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def create_user_draft(user_id, draft_object = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = '{userId}/drafts'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -131,9 +128,9 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.request_representation = Google::Apis::GmailV1::DraftRepresentation
-          command.request_object = draft
-          command.response_representation = Google::Apis::GmailV1::DraftRepresentation
+          command.request_representation = Google::Apis::GmailV1::Draft::Representation
+          command.request_object = draft_object
+          command.response_representation = Google::Apis::GmailV1::Draft::Representation
           command.response_class = Google::Apis::GmailV1::Draft
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -141,7 +138,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Immediately and permanently deletes the specified draft. Does not simply trash
         # it.
@@ -159,7 +155,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -182,7 +178,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets the specified draft.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -200,7 +195,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -215,7 +210,7 @@ module Google
         def get_user_draft(user_id, id, format: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/drafts/{id}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GmailV1::DraftRepresentation
+          command.response_representation = Google::Apis::GmailV1::Draft::Representation
           command.response_class = Google::Apis::GmailV1::Draft
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?
@@ -225,7 +220,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists the drafts in the user's mailbox.
         # @param [String] user_id
@@ -244,7 +238,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -259,7 +253,7 @@ module Google
         def list_user_drafts(user_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/drafts'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GmailV1::ListDraftsResponseRepresentation
+          command.response_representation = Google::Apis::GmailV1::ListDraftsResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListDraftsResponse
           command.params['userId'] = user_id unless user_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -270,14 +264,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Sends the specified, existing draft to the recipients in the To, Cc, and Bcc
         # headers.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
-        # @param [Google::Apis::GmailV1::Draft] draft
-        #   
+        # @param [Google::Apis::GmailV1::Draft] draft_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -291,7 +283,7 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -303,7 +295,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def send_user_draft(user_id, draft = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def send_user_draft(user_id, draft_object = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = '{userId}/drafts/send'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -312,9 +304,9 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.request_representation = Google::Apis::GmailV1::DraftRepresentation
-          command.request_object = draft
-          command.response_representation = Google::Apis::GmailV1::MessageRepresentation
+          command.request_representation = Google::Apis::GmailV1::Draft::Representation
+          command.request_object = draft_object
+          command.response_representation = Google::Apis::GmailV1::Message::Representation
           command.response_class = Google::Apis::GmailV1::Message
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -323,15 +315,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Replaces a draft's content.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
         # @param [String] id
         #   The ID of the draft to update.
-        # @param [Google::Apis::GmailV1::Draft] draft
-        #   
+        # @param [Google::Apis::GmailV1::Draft] draft_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -345,7 +335,7 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -357,7 +347,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user_draft(user_id, id, draft = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def update_user_draft(user_id, id, draft_object = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = '{userId}/drafts/{id}'
           if upload_source.nil?
             command =  make_simple_command(:put, path, options)
@@ -366,9 +356,9 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.request_representation = Google::Apis::GmailV1::DraftRepresentation
-          command.request_object = draft
-          command.response_representation = Google::Apis::GmailV1::DraftRepresentation
+          command.request_representation = Google::Apis::GmailV1::Draft::Representation
+          command.request_object = draft_object
+          command.response_representation = Google::Apis::GmailV1::Draft::Representation
           command.response_class = Google::Apis::GmailV1::Draft
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?
@@ -377,8 +367,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Lists the history of all changes to the given mailbox. History results are
         # returned in chronological order (increasing historyId).
@@ -411,7 +399,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -426,7 +414,7 @@ module Google
         def list_user_histories(user_id, label_id: nil, max_results: nil, page_token: nil, start_history_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/history'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GmailV1::ListHistoryResponseRepresentation
+          command.response_representation = Google::Apis::GmailV1::ListHistoryResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListHistoryResponse
           command.params['userId'] = user_id unless user_id.nil?
           command.query['labelId'] = label_id unless label_id.nil?
@@ -439,14 +427,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
-        
         # Creates a new label.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
-        # @param [Google::Apis::GmailV1::Label] label
-        #   
+        # @param [Google::Apis::GmailV1::Label] label_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -456,7 +441,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -468,12 +453,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_user_label(user_id, label = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_user_label(user_id, label_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/labels'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GmailV1::LabelRepresentation
-          command.request_object = label
-          command.response_representation = Google::Apis::GmailV1::LabelRepresentation
+          command.request_representation = Google::Apis::GmailV1::Label::Representation
+          command.request_object = label_object
+          command.response_representation = Google::Apis::GmailV1::Label::Representation
           command.response_class = Google::Apis::GmailV1::Label
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -481,7 +466,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Immediately and permanently deletes the specified label and removes it from
         # any messages and threads that it is applied to.
@@ -499,7 +483,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -522,7 +506,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets the specified label.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -538,7 +521,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -553,7 +536,7 @@ module Google
         def get_user_label(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/labels/{id}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GmailV1::LabelRepresentation
+          command.response_representation = Google::Apis::GmailV1::Label::Representation
           command.response_class = Google::Apis::GmailV1::Label
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?
@@ -562,7 +545,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists all labels in the user's mailbox.
         # @param [String] user_id
@@ -577,7 +559,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -592,7 +574,7 @@ module Google
         def list_user_labels(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/labels'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GmailV1::ListLabelsResponseRepresentation
+          command.response_representation = Google::Apis::GmailV1::ListLabelsResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListLabelsResponse
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -601,15 +583,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Updates the specified label. This method supports patch semantics.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
         # @param [String] id
         #   The ID of the label to update.
-        # @param [Google::Apis::GmailV1::Label] label
-        #   
+        # @param [Google::Apis::GmailV1::Label] label_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -619,7 +599,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -631,12 +611,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_user_label(user_id, id, label = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_user_label(user_id, id, label_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/labels/{id}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::GmailV1::LabelRepresentation
-          command.request_object = label
-          command.response_representation = Google::Apis::GmailV1::LabelRepresentation
+          command.request_representation = Google::Apis::GmailV1::Label::Representation
+          command.request_object = label_object
+          command.response_representation = Google::Apis::GmailV1::Label::Representation
           command.response_class = Google::Apis::GmailV1::Label
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?
@@ -645,7 +625,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Updates the specified label.
         # @param [String] user_id
@@ -653,8 +632,7 @@ module Google
         #   authenticated user.
         # @param [String] id
         #   The ID of the label to update.
-        # @param [Google::Apis::GmailV1::Label] label
-        #   
+        # @param [Google::Apis::GmailV1::Label] label_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -664,7 +642,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -676,12 +654,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user_label(user_id, id, label = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_user_label(user_id, id, label_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/labels/{id}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::GmailV1::LabelRepresentation
-          command.request_object = label
-          command.response_representation = Google::Apis::GmailV1::LabelRepresentation
+          command.request_representation = Google::Apis::GmailV1::Label::Representation
+          command.request_object = label_object
+          command.response_representation = Google::Apis::GmailV1::Label::Representation
           command.response_class = Google::Apis::GmailV1::Label
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?
@@ -690,8 +668,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
         
         # Immediately and permanently deletes the specified message. This operation
         # cannot be undone. Prefer messages.trash instead.
@@ -709,7 +685,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -732,7 +708,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets the specified message.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -752,7 +727,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -767,7 +742,7 @@ module Google
         def get_user_message(user_id, id, format: nil, metadata_headers: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/messages/{id}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GmailV1::MessageRepresentation
+          command.response_representation = Google::Apis::GmailV1::Message::Representation
           command.response_class = Google::Apis::GmailV1::Message
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?
@@ -779,15 +754,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Imports a message into only this user's mailbox, with standard email delivery
         # scanning and classification similar to receiving via SMTP. Does not send a
         # message.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
-        # @param [Google::Apis::GmailV1::Message] message
-        #   
+        # @param [Google::Apis::GmailV1::Message] message_object
         # @param [Boolean] deleted
         #   Mark the email as permanently deleted (not TRASH) and only visible in Google
         #   Apps Vault to a Vault administrator. Only used for Google Apps for Work
@@ -813,7 +786,7 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -825,7 +798,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_user_message(user_id, message = nil, deleted: nil, internal_date_source: nil, never_mark_spam: nil, process_for_calendar: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def import_user_message(user_id, message_object = nil, deleted: nil, internal_date_source: nil, never_mark_spam: nil, process_for_calendar: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = '{userId}/messages/import'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -834,9 +807,9 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.request_representation = Google::Apis::GmailV1::MessageRepresentation
-          command.request_object = message
-          command.response_representation = Google::Apis::GmailV1::MessageRepresentation
+          command.request_representation = Google::Apis::GmailV1::Message::Representation
+          command.request_object = message_object
+          command.response_representation = Google::Apis::GmailV1::Message::Representation
           command.response_class = Google::Apis::GmailV1::Message
           command.params['userId'] = user_id unless user_id.nil?
           command.query['deleted'] = deleted unless deleted.nil?
@@ -849,14 +822,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Directly inserts a message into only this user's mailbox similar to IMAP
         # APPEND, bypassing most scanning and classification. Does not send a message.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
-        # @param [Google::Apis::GmailV1::Message] message
-        #   
+        # @param [Google::Apis::GmailV1::Message] message_object
         # @param [Boolean] deleted
         #   Mark the email as permanently deleted (not TRASH) and only visible in Google
         #   Apps Vault to a Vault administrator. Only used for Google Apps for Work
@@ -876,7 +847,7 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -888,7 +859,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_user_message(user_id, message = nil, deleted: nil, internal_date_source: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_user_message(user_id, message_object = nil, deleted: nil, internal_date_source: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = '{userId}/messages'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -897,9 +868,9 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.request_representation = Google::Apis::GmailV1::MessageRepresentation
-          command.request_object = message
-          command.response_representation = Google::Apis::GmailV1::MessageRepresentation
+          command.request_representation = Google::Apis::GmailV1::Message::Representation
+          command.request_object = message_object
+          command.response_representation = Google::Apis::GmailV1::Message::Representation
           command.response_class = Google::Apis::GmailV1::Message
           command.params['userId'] = user_id unless user_id.nil?
           command.query['deleted'] = deleted unless deleted.nil?
@@ -909,7 +880,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists the messages in the user's mailbox.
         # @param [String] user_id
@@ -936,7 +906,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -951,7 +921,7 @@ module Google
         def list_user_messages(user_id, include_spam_trash: nil, label_ids: nil, max_results: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/messages'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GmailV1::ListMessagesResponseRepresentation
+          command.response_representation = Google::Apis::GmailV1::ListMessagesResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListMessagesResponse
           command.params['userId'] = user_id unless user_id.nil?
           command.query['includeSpamTrash'] = include_spam_trash unless include_spam_trash.nil?
@@ -965,15 +935,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Modifies the labels on the specified message.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
         # @param [String] id
         #   The ID of the message to modify.
-        # @param [Google::Apis::GmailV1::ModifyMessageRequest] modify_message_request
-        #   
+        # @param [Google::Apis::GmailV1::ModifyMessageRequest] modify_message_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -983,7 +951,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -995,12 +963,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def modify_message(user_id, id, modify_message_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def modify_message(user_id, id, modify_message_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/messages/{id}/modify'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GmailV1::ModifyMessageRequestRepresentation
-          command.request_object = modify_message_request
-          command.response_representation = Google::Apis::GmailV1::MessageRepresentation
+          command.request_representation = Google::Apis::GmailV1::ModifyMessageRequest::Representation
+          command.request_object = modify_message_request_object
+          command.response_representation = Google::Apis::GmailV1::Message::Representation
           command.response_class = Google::Apis::GmailV1::Message
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?
@@ -1010,13 +978,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Sends the specified message to the recipients in the To, Cc, and Bcc headers.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
         #   authenticated user.
-        # @param [Google::Apis::GmailV1::Message] message
-        #   
+        # @param [Google::Apis::GmailV1::Message] message_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1030,7 +996,7 @@ module Google
         #   IO stream or filename containing content to upload
         # @param [String] content_type
         #   Content type of the uploaded content.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1042,7 +1008,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def send_user_message(user_id, message = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def send_user_message(user_id, message_object = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = '{userId}/messages/send'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -1051,9 +1017,9 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.request_representation = Google::Apis::GmailV1::MessageRepresentation
-          command.request_object = message
-          command.response_representation = Google::Apis::GmailV1::MessageRepresentation
+          command.request_representation = Google::Apis::GmailV1::Message::Representation
+          command.request_object = message_object
+          command.response_representation = Google::Apis::GmailV1::Message::Representation
           command.response_class = Google::Apis::GmailV1::Message
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1061,7 +1027,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Moves the specified message to the trash.
         # @param [String] user_id
@@ -1078,7 +1043,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1093,7 +1058,7 @@ module Google
         def trash_user_message(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/messages/{id}/trash'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::GmailV1::MessageRepresentation
+          command.response_representation = Google::Apis::GmailV1::Message::Representation
           command.response_class = Google::Apis::GmailV1::Message
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?
@@ -1102,7 +1067,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Removes the specified message from the trash.
         # @param [String] user_id
@@ -1119,7 +1083,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1134,7 +1098,7 @@ module Google
         def untrash_user_message(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/messages/{id}/untrash'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::GmailV1::MessageRepresentation
+          command.response_representation = Google::Apis::GmailV1::Message::Representation
           command.response_class = Google::Apis::GmailV1::Message
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?
@@ -1143,7 +1107,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Gets the specified message attachment.
         # @param [String] user_id
@@ -1162,7 +1125,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1177,7 +1140,7 @@ module Google
         def get_user_message_attachment(user_id, message_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/messages/{messageId}/attachments/{id}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GmailV1::MessagePartBodyRepresentation
+          command.response_representation = Google::Apis::GmailV1::MessagePartBody::Representation
           command.response_class = Google::Apis::GmailV1::MessagePartBody
           command.params['userId'] = user_id unless user_id.nil?
           command.params['messageId'] = message_id unless message_id.nil?
@@ -1187,9 +1150,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        
-        
         
         # Immediately and permanently deletes the specified thread. This operation
         # cannot be undone. Prefer threads.trash instead.
@@ -1207,7 +1167,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1230,7 +1190,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Gets the specified thread.
         # @param [String] user_id
         #   The user's email address. The special value me can be used to indicate the
@@ -1250,7 +1209,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1265,7 +1224,7 @@ module Google
         def get_user_thread(user_id, id, format: nil, metadata_headers: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/threads/{id}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GmailV1::ThreadRepresentation
+          command.response_representation = Google::Apis::GmailV1::Thread::Representation
           command.response_class = Google::Apis::GmailV1::Thread
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?
@@ -1276,7 +1235,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Lists the threads in the user's mailbox.
         # @param [String] user_id
@@ -1303,7 +1261,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1318,7 +1276,7 @@ module Google
         def list_user_threads(user_id, include_spam_trash: nil, label_ids: nil, max_results: nil, page_token: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/threads'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GmailV1::ListThreadsResponseRepresentation
+          command.response_representation = Google::Apis::GmailV1::ListThreadsResponse::Representation
           command.response_class = Google::Apis::GmailV1::ListThreadsResponse
           command.params['userId'] = user_id unless user_id.nil?
           command.query['includeSpamTrash'] = include_spam_trash unless include_spam_trash.nil?
@@ -1332,7 +1290,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        
         # Modifies the labels applied to the thread. This applies to all messages in the
         # thread.
         # @param [String] user_id
@@ -1340,8 +1297,7 @@ module Google
         #   authenticated user.
         # @param [String] id
         #   The ID of the thread to modify.
-        # @param [Google::Apis::GmailV1::ModifyThreadRequest] modify_thread_request
-        #   
+        # @param [Google::Apis::GmailV1::ModifyThreadRequest] modify_thread_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1351,7 +1307,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1363,12 +1319,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def modify_thread(user_id, id, modify_thread_request = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def modify_thread(user_id, id, modify_thread_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/threads/{id}/modify'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GmailV1::ModifyThreadRequestRepresentation
-          command.request_object = modify_thread_request
-          command.response_representation = Google::Apis::GmailV1::ThreadRepresentation
+          command.request_representation = Google::Apis::GmailV1::ModifyThreadRequest::Representation
+          command.request_object = modify_thread_request_object
+          command.response_representation = Google::Apis::GmailV1::Thread::Representation
           command.response_class = Google::Apis::GmailV1::Thread
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?
@@ -1377,7 +1333,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Moves the specified thread to the trash.
         # @param [String] user_id
@@ -1394,7 +1349,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1409,7 +1364,7 @@ module Google
         def trash_user_thread(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/threads/{id}/trash'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::GmailV1::ThreadRepresentation
+          command.response_representation = Google::Apis::GmailV1::Thread::Representation
           command.response_class = Google::Apis::GmailV1::Thread
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?
@@ -1418,7 +1373,6 @@ module Google
           command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
-        
         
         # Removes the specified thread from the trash.
         # @param [String] user_id
@@ -1435,7 +1389,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -1450,7 +1404,7 @@ module Google
         def untrash_user_thread(user_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/threads/{id}/untrash'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::GmailV1::ThreadRepresentation
+          command.response_representation = Google::Apis::GmailV1::Thread::Representation
           command.response_class = Google::Apis::GmailV1::Thread
           command.params['userId'] = user_id unless user_id.nil?
           command.params['id'] = id unless id.nil?

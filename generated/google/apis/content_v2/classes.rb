@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ContentV2
-
+      
       # Account data.
       class Account
         include Google::Apis::Core::Hashable
@@ -78,6 +78,11 @@ module Google
         attr_accessor :website_url
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @adult_content = args[:adult_content] unless args[:adult_content].nil?
           @adwords_links = args[:adwords_links] unless args[:adwords_links].nil?
           @id = args[:id] unless args[:id].nil?
@@ -89,7 +94,7 @@ module Google
           @website_url = args[:website_url] unless args[:website_url].nil?
         end
       end
-
+      
       # 
       class AccountAdwordsLink
         include Google::Apis::Core::Hashable
@@ -113,11 +118,16 @@ module Google
         attr_accessor :status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @adwords_id = args[:adwords_id] unless args[:adwords_id].nil?
           @status = args[:status] unless args[:status].nil?
         end
       end
-
+      
       # 
       class AccountIdentifier
         include Google::Apis::Core::Hashable
@@ -134,11 +144,16 @@ module Google
         attr_accessor :merchant_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @aggregator_id = args[:aggregator_id] unless args[:aggregator_id].nil?
           @merchant_id = args[:merchant_id] unless args[:merchant_id].nil?
         end
       end
-
+      
       # The shipping settings of a merchant account.
       class AccountShipping
         include Google::Apis::Core::Hashable
@@ -150,7 +165,7 @@ module Google
       
         # Carrier-based shipping calculations.
         # Corresponds to the JSON property `carrierRates`
-        # @return [Array<Google::Apis::ContentV2::AccountShippingCarrierRate>]
+        # @return [Array<Google::Apis::ContentV2::CarrierRate>]
         attr_accessor :carrier_rates
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -161,20 +176,25 @@ module Google
       
         # Location groups for shipping.
         # Corresponds to the JSON property `locationGroups`
-        # @return [Array<Google::Apis::ContentV2::AccountShippingLocationGroup>]
+        # @return [Array<Google::Apis::ContentV2::LocationGroup>]
         attr_accessor :location_groups
       
         # Rate tables definitions.
         # Corresponds to the JSON property `rateTables`
-        # @return [Array<Google::Apis::ContentV2::AccountShippingRateTable>]
+        # @return [Array<Google::Apis::ContentV2::RateTable>]
         attr_accessor :rate_tables
       
         # Shipping services describing shipping fees calculation.
         # Corresponds to the JSON property `services`
-        # @return [Array<Google::Apis::ContentV2::AccountShippingShippingService>]
+        # @return [Array<Google::Apis::ContentV2::ShippingService>]
         attr_accessor :services
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @carrier_rates = args[:carrier_rates] unless args[:carrier_rates].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -183,9 +203,9 @@ module Google
           @services = args[:services] unless args[:services].nil?
         end
       end
-
+      
       # A carrier-calculated shipping rate.
-      class AccountShippingCarrierRate
+      class CarrierRate
         include Google::Apis::Core::Hashable
       
         # The carrier that is responsible for the shipping, such as "UPS", "FedEx", or "
@@ -227,6 +247,11 @@ module Google
         attr_accessor :shipping_origin
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @carrier = args[:carrier] unless args[:carrier].nil?
           @carrier_service = args[:carrier_service] unless args[:carrier_service].nil?
           @modifier_flat_rate = args[:modifier_flat_rate] unless args[:modifier_flat_rate].nil?
@@ -236,9 +261,9 @@ module Google
           @shipping_origin = args[:shipping_origin] unless args[:shipping_origin].nil?
         end
       end
-
+      
       # 
-      class AccountShippingCondition
+      class Condition
         include Google::Apis::Core::Hashable
       
         # Delivery location in terms of a location group name. A location group with
@@ -258,9 +283,12 @@ module Google
         # @return [String]
         attr_accessor :delivery_postal_code
       
-        # Delivery location in terms of a postal code range.
+        # A postal code range, that can be either:
+        # - A range of postal codes (e.g., start=12340, end=12359)
+        # - A range of postal codes prefixes (e.g., start=1234* end=1235*). Prefixes
+        # must be of the same length (e.g., start=12* end=2* is invalid).
         # Corresponds to the JSON property `deliveryPostalCodeRange`
-        # @return [Google::Apis::ContentV2::AccountShippingPostalCodeRange]
+        # @return [Google::Apis::ContentV2::PostalCodeRange]
         attr_accessor :delivery_postal_code_range
       
         # Maximum shipping price. Forms an interval between the maximum of smaller
@@ -281,6 +309,11 @@ module Google
         attr_accessor :weight_max
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @delivery_location_group = args[:delivery_location_group] unless args[:delivery_location_group].nil?
           @delivery_location_id = args[:delivery_location_id] unless args[:delivery_location_id].nil?
           @delivery_postal_code = args[:delivery_postal_code] unless args[:delivery_postal_code].nil?
@@ -290,10 +323,10 @@ module Google
           @weight_max = args[:weight_max] unless args[:weight_max].nil?
         end
       end
-
+      
       # A user-defined locations group in a given country. All the locations of the
       # group must be of the same type.
-      class AccountShippingLocationGroup
+      class LocationGroup
         include Google::Apis::Core::Hashable
       
         # The country in which this location group is, represented as ISO 3166-1 Alpha-2
@@ -315,7 +348,7 @@ module Google
       
         # A postal code range representing a city or a set of cities.
         # Corresponds to the JSON property `postalCodeRanges`
-        # @return [Array<Google::Apis::ContentV2::AccountShippingPostalCodeRange>]
+        # @return [Array<Google::Apis::ContentV2::PostalCodeRange>]
         attr_accessor :postal_code_ranges
       
         # A postal code representing a city or a set of cities.
@@ -326,6 +359,11 @@ module Google
         attr_accessor :postal_codes
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @country = args[:country] unless args[:country].nil?
           @location_ids = args[:location_ids] unless args[:location_ids].nil?
           @name = args[:name] unless args[:name].nil?
@@ -333,12 +371,12 @@ module Google
           @postal_codes = args[:postal_codes] unless args[:postal_codes].nil?
         end
       end
-
+      
       # A postal code range, that can be either:
       # - A range of postal codes (e.g., start=12340, end=12359)
       # - A range of postal codes prefixes (e.g., start=1234* end=1235*). Prefixes
       # must be of the same length (e.g., start=12* end=2* is invalid).
-      class AccountShippingPostalCodeRange
+      class PostalCodeRange
         include Google::Apis::Core::Hashable
       
         # The last (inclusive) postal code or prefix of the range.
@@ -352,15 +390,20 @@ module Google
         attr_accessor :start
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end = args[:end] unless args[:end].nil?
           @start = args[:start] unless args[:start].nil?
         end
       end
-
+      
       # A single or bi-dimensional table of shipping rates. Each dimension is defined
       # in terms of consecutive price/weight ranges, delivery locations, or shipping
       # labels.
-      class AccountShippingRateTable
+      class RateTable
         include Google::Apis::Core::Hashable
       
         # One-dimensional table cells define one condition along the same dimension. Bi-
@@ -368,7 +411,7 @@ module Google
         # values and must contain exactly M * N cells with distinct conditions (for each
         # possible value pairs).
         # Corresponds to the JSON property `content`
-        # @return [Array<Google::Apis::ContentV2::AccountShippingRateTableCell>]
+        # @return [Array<Google::Apis::ContentV2::RateTableCell>]
         attr_accessor :content
       
         # The name of the rate table.
@@ -383,14 +426,19 @@ module Google
         attr_accessor :sale_country
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @content = args[:content] unless args[:content].nil?
           @name = args[:name] unless args[:name].nil?
           @sale_country = args[:sale_country] unless args[:sale_country].nil?
         end
       end
-
+      
       # 
-      class AccountShippingRateTableCell
+      class RateTableCell
         include Google::Apis::Core::Hashable
       
         # Conditions for which the cell is valid. All cells in a table must use the same
@@ -399,7 +447,7 @@ module Google
         # and matches all the elements that are not matched by other cells in this
         # dimension.
         # Corresponds to the JSON property `condition`
-        # @return [Google::Apis::ContentV2::AccountShippingCondition]
+        # @return [Google::Apis::ContentV2::Condition]
         attr_accessor :condition
       
         # The rate applicable if the cell conditions are matched.
@@ -408,13 +456,18 @@ module Google
         attr_accessor :rate
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @condition = args[:condition] unless args[:condition].nil?
           @rate = args[:rate] unless args[:rate].nil?
         end
       end
-
+      
       # Shipping services provided in a country.
-      class AccountShippingShippingService
+      class ShippingService
         include Google::Apis::Core::Hashable
       
         # Whether the shipping service is available.
@@ -423,14 +476,22 @@ module Google
         attr_accessor :active
         alias_method :active?, :active
       
-        # Calculation method for the "simple" case that needs no rules.
+        # Shipping cost calculation method. Exactly one of the field is set.
         # Corresponds to the JSON property `calculationMethod`
-        # @return [Google::Apis::ContentV2::AccountShippingShippingServiceCalculationMethod]
+        # @return [Google::Apis::ContentV2::ShippingServiceCalculationMethod]
         attr_accessor :calculation_method
       
-        # Decision tree for "complicated" shipping cost calculation.
+        # Building block of the cost calculation decision tree.
+        # - The tree root should have no condition and no calculation method.
+        # - All the children must have a condition on the same dimension. The first
+        # child matching a condition is entered, therefore, price and weight conditions
+        # form contiguous intervals.
+        # - The last child of an element must have no condition and matches all elements
+        # not previously matched.
+        # - Children and calculation method are mutually exclusive, and exactly one of
+        # them must be defined; the root must only have children.
         # Corresponds to the JSON property `costRuleTree`
-        # @return [Google::Apis::ContentV2::AccountShippingShippingServiceCostRule]
+        # @return [Google::Apis::ContentV2::ShippingServiceCostRule]
         attr_accessor :cost_rule_tree
       
         # The name of this shipping service.
@@ -445,6 +506,11 @@ module Google
         attr_accessor :sale_country
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @active = args[:active] unless args[:active].nil?
           @calculation_method = args[:calculation_method] unless args[:calculation_method].nil?
           @cost_rule_tree = args[:cost_rule_tree] unless args[:cost_rule_tree].nil?
@@ -452,9 +518,9 @@ module Google
           @sale_country = args[:sale_country] unless args[:sale_country].nil?
         end
       end
-
+      
       # Shipping cost calculation method. Exactly one of the field is set.
-      class AccountShippingShippingServiceCalculationMethod
+      class ShippingServiceCalculationMethod
         include Google::Apis::Core::Hashable
       
         # Name of the carrier rate to use for the calculation.
@@ -486,6 +552,11 @@ module Google
         attr_accessor :rate_table
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @carrier_rate = args[:carrier_rate] unless args[:carrier_rate].nil?
           @excluded = args[:excluded] unless args[:excluded].nil?
           @flat_rate = args[:flat_rate] unless args[:flat_rate].nil?
@@ -493,7 +564,7 @@ module Google
           @rate_table = args[:rate_table] unless args[:rate_table].nil?
         end
       end
-
+      
       # Building block of the cost calculation decision tree.
       # - The tree root should have no condition and no calculation method.
       # - All the children must have a condition on the same dimension. The first
@@ -503,33 +574,38 @@ module Google
       # not previously matched.
       # - Children and calculation method are mutually exclusive, and exactly one of
       # them must be defined; the root must only have children.
-      class AccountShippingShippingServiceCostRule
+      class ShippingServiceCostRule
         include Google::Apis::Core::Hashable
       
-        # Final calculation method to be used only in leaf nodes.
+        # Shipping cost calculation method. Exactly one of the field is set.
         # Corresponds to the JSON property `calculationMethod`
-        # @return [Google::Apis::ContentV2::AccountShippingShippingServiceCalculationMethod]
+        # @return [Google::Apis::ContentV2::ShippingServiceCalculationMethod]
         attr_accessor :calculation_method
       
         # Subsequent rules to be applied, only for inner nodes. The last child must not
         # specify a condition and acts as a catch-all.
         # Corresponds to the JSON property `children`
-        # @return [Array<Google::Apis::ContentV2::AccountShippingShippingServiceCostRule>]
+        # @return [Array<Google::Apis::ContentV2::ShippingServiceCostRule>]
         attr_accessor :children
       
         # Condition for this rule to be applicable. If no condition is specified, the
         # rule acts as a catch-all.
         # Corresponds to the JSON property `condition`
-        # @return [Google::Apis::ContentV2::AccountShippingCondition]
+        # @return [Google::Apis::ContentV2::Condition]
         attr_accessor :condition
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @calculation_method = args[:calculation_method] unless args[:calculation_method].nil?
           @children = args[:children] unless args[:children].nil?
           @condition = args[:condition] unless args[:condition].nil?
         end
       end
-
+      
       # The status of an account, i.e., information about its products, which is
       # computed offline and not returned immediately at insertion time.
       class AccountStatus
@@ -552,12 +628,17 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @data_quality_issues = args[:data_quality_issues] unless args[:data_quality_issues].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
       class AccountStatusDataQualityIssue
         include Google::Apis::Core::Hashable
@@ -603,6 +684,11 @@ module Google
         attr_accessor :submitted_value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @country = args[:country] unless args[:country].nil?
           @displayed_value = args[:displayed_value] unless args[:displayed_value].nil?
           @example_items = args[:example_items] unless args[:example_items].nil?
@@ -613,7 +699,7 @@ module Google
           @submitted_value = args[:submitted_value] unless args[:submitted_value].nil?
         end
       end
-
+      
       # An example of an item that has poor data quality. An item value on the landing
       # page differs from what is submitted, or conflicts with a policy.
       class AccountStatusExampleItem
@@ -645,6 +731,11 @@ module Google
         attr_accessor :value_on_landing_page
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @item_id = args[:item_id] unless args[:item_id].nil?
           @link = args[:link] unless args[:link].nil?
           @submitted_value = args[:submitted_value] unless args[:submitted_value].nil?
@@ -652,7 +743,7 @@ module Google
           @value_on_landing_page = args[:value_on_landing_page] unless args[:value_on_landing_page].nil?
         end
       end
-
+      
       # The tax settings of a merchant account.
       class AccountTax
         include Google::Apis::Core::Hashable
@@ -671,18 +762,23 @@ module Google
         # Tax rules. Updating the tax rules will enable US taxes (not reversible).
         # Defining no rules is equivalent to not charging tax at all.
         # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::ContentV2::AccountTaxTaxRule>]
+        # @return [Array<Google::Apis::ContentV2::TaxRule>]
         attr_accessor :rules
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @rules = args[:rules] unless args[:rules].nil?
         end
       end
-
+      
       # Tax calculation rule to apply in a state or province (USA only).
-      class AccountTaxTaxRule
+      class TaxRule
         include Google::Apis::Core::Hashable
       
         # Country code in which tax is applicable.
@@ -715,6 +811,11 @@ module Google
         alias_method :use_global_rate?, :use_global_rate
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @country = args[:country] unless args[:country].nil?
           @location_id = args[:location_id] unless args[:location_id].nil?
           @rate_percent = args[:rate_percent] unless args[:rate_percent].nil?
@@ -722,7 +823,7 @@ module Google
           @use_global_rate = args[:use_global_rate] unless args[:use_global_rate].nil?
         end
       end
-
+      
       # 
       class AccountUser
         include Google::Apis::Core::Hashable
@@ -739,13 +840,18 @@ module Google
         attr_accessor :email_address
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @admin = args[:admin] unless args[:admin].nil?
           @email_address = args[:email_address] unless args[:email_address].nil?
         end
       end
-
+      
       # 
-      class AccountsAuthInfoResponse
+      class AuthInfoResponse
         include Google::Apis::Core::Hashable
       
         # The account identifiers corresponding to the authenticated user.
@@ -764,31 +870,40 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_identifiers = args[:account_identifiers] unless args[:account_identifiers].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
-      class AccountsCustomBatchRequest
+      class CustomBatchRequest
         include Google::Apis::Core::Hashable
       
         # The request entries to be processed in the batch.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::AccountsCustomBatchRequestEntry>]
+        # @return [Array<Google::Apis::ContentV2::CustomBatchRequestEntry>]
         attr_accessor :entries
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch accounts request.
-      class AccountsCustomBatchRequestEntry
+      class CustomBatchRequestEntry
         include Google::Apis::Core::Hashable
       
-        # The account to create or update. Only defined if the method is insert or
-        # update.
+        # Account data.
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::ContentV2::Account]
         attr_accessor :account
@@ -815,6 +930,11 @@ module Google
         attr_accessor :method_prop
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account = args[:account] unless args[:account].nil?
           @account_id = args[:account_id] unless args[:account_id].nil?
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
@@ -822,14 +942,14 @@ module Google
           @method_prop = args[:method_prop] unless args[:method_prop].nil?
         end
       end
-
+      
       # 
-      class AccountsCustomBatchResponse
+      class CustomBatchResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::AccountsCustomBatchResponseEntry>]
+        # @return [Array<Google::Apis::ContentV2::CustomBatchResponseEntry>]
         attr_accessor :entries
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -839,17 +959,21 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch accounts response.
-      class AccountsCustomBatchResponseEntry
+      class CustomBatchResponseEntry
         include Google::Apis::Core::Hashable
       
-        # The retrieved, created, or updated account. Not defined if the method was
-        # delete.
+        # Account data.
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::ContentV2::Account]
         attr_accessor :account
@@ -859,7 +983,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # A list of errors defined if and only if the request failed.
+        # A list of errors returned by a failed batch entry.
         # Corresponds to the JSON property `errors`
         # @return [Google::Apis::ContentV2::Errors]
         attr_accessor :errors
@@ -871,15 +995,20 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account = args[:account] unless args[:account].nil?
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
           @errors = args[:errors] unless args[:errors].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
-      class AccountsListResponse
+      class ListResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -899,12 +1028,17 @@ module Google
         attr_accessor :resources
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @resources = args[:resources] unless args[:resources].nil?
         end
       end
-
+      
       # 
       class AccountshippingCustomBatchRequest
         include Google::Apis::Core::Hashable
@@ -915,10 +1049,15 @@ module Google
         attr_accessor :entries
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch accountshipping request.
       class AccountshippingCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
@@ -928,7 +1067,7 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
-        # The account shipping settings to update. Only defined if the method is update.
+        # The shipping settings of a merchant account.
         # Corresponds to the JSON property `accountShipping`
         # @return [Google::Apis::ContentV2::AccountShipping]
         attr_accessor :account_shipping
@@ -949,6 +1088,11 @@ module Google
         attr_accessor :method_prop
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @account_shipping = args[:account_shipping] unless args[:account_shipping].nil?
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
@@ -956,7 +1100,7 @@ module Google
           @method_prop = args[:method_prop] unless args[:method_prop].nil?
         end
       end
-
+      
       # 
       class AccountshippingCustomBatchResponse
         include Google::Apis::Core::Hashable
@@ -973,16 +1117,21 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch accountshipping response.
       class AccountshippingCustomBatchResponseEntry
         include Google::Apis::Core::Hashable
       
-        # The retrieved or updated account shipping settings.
+        # The shipping settings of a merchant account.
         # Corresponds to the JSON property `accountShipping`
         # @return [Google::Apis::ContentV2::AccountShipping]
         attr_accessor :account_shipping
@@ -992,7 +1141,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # A list of errors defined if and only if the request failed.
+        # A list of errors returned by a failed batch entry.
         # Corresponds to the JSON property `errors`
         # @return [Google::Apis::ContentV2::Errors]
         attr_accessor :errors
@@ -1004,13 +1153,18 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_shipping = args[:account_shipping] unless args[:account_shipping].nil?
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
           @errors = args[:errors] unless args[:errors].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
       class AccountshippingListResponse
         include Google::Apis::Core::Hashable
@@ -1032,12 +1186,17 @@ module Google
         attr_accessor :resources
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @resources = args[:resources] unless args[:resources].nil?
         end
       end
-
+      
       # 
       class AccountstatusesCustomBatchRequest
         include Google::Apis::Core::Hashable
@@ -1048,10 +1207,15 @@ module Google
         attr_accessor :entries
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch accountstatuses request.
       class AccountstatusesCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
@@ -1077,13 +1241,18 @@ module Google
         attr_accessor :method_prop
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
           @merchant_id = args[:merchant_id] unless args[:merchant_id].nil?
           @method_prop = args[:method_prop] unless args[:method_prop].nil?
         end
       end
-
+      
       # 
       class AccountstatusesCustomBatchResponse
         include Google::Apis::Core::Hashable
@@ -1100,17 +1269,22 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch accountstatuses response.
       class AccountstatusesCustomBatchResponseEntry
         include Google::Apis::Core::Hashable
       
-        # The requested account status. Defined if and only if the request was
-        # successful.
+        # The status of an account, i.e., information about its products, which is
+        # computed offline and not returned immediately at insertion time.
         # Corresponds to the JSON property `accountStatus`
         # @return [Google::Apis::ContentV2::AccountStatus]
         attr_accessor :account_status
@@ -1120,18 +1294,23 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # A list of errors defined if and only if the request failed.
+        # A list of errors returned by a failed batch entry.
         # Corresponds to the JSON property `errors`
         # @return [Google::Apis::ContentV2::Errors]
         attr_accessor :errors
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_status = args[:account_status] unless args[:account_status].nil?
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
           @errors = args[:errors] unless args[:errors].nil?
         end
       end
-
+      
       # 
       class AccountstatusesListResponse
         include Google::Apis::Core::Hashable
@@ -1153,12 +1332,17 @@ module Google
         attr_accessor :resources
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @resources = args[:resources] unless args[:resources].nil?
         end
       end
-
+      
       # 
       class AccounttaxCustomBatchRequest
         include Google::Apis::Core::Hashable
@@ -1169,10 +1353,15 @@ module Google
         attr_accessor :entries
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch accounttax request.
       class AccounttaxCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
@@ -1182,7 +1371,7 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
-        # The account tax settings to update. Only defined if the method is update.
+        # The tax settings of a merchant account.
         # Corresponds to the JSON property `accountTax`
         # @return [Google::Apis::ContentV2::AccountTax]
         attr_accessor :account_tax
@@ -1203,6 +1392,11 @@ module Google
         attr_accessor :method_prop
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_id = args[:account_id] unless args[:account_id].nil?
           @account_tax = args[:account_tax] unless args[:account_tax].nil?
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
@@ -1210,7 +1404,7 @@ module Google
           @method_prop = args[:method_prop] unless args[:method_prop].nil?
         end
       end
-
+      
       # 
       class AccounttaxCustomBatchResponse
         include Google::Apis::Core::Hashable
@@ -1227,16 +1421,21 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch accounttax response.
       class AccounttaxCustomBatchResponseEntry
         include Google::Apis::Core::Hashable
       
-        # The retrieved or updated account tax settings.
+        # The tax settings of a merchant account.
         # Corresponds to the JSON property `accountTax`
         # @return [Google::Apis::ContentV2::AccountTax]
         attr_accessor :account_tax
@@ -1246,7 +1445,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # A list of errors defined if and only if the request failed.
+        # A list of errors returned by a failed batch entry.
         # Corresponds to the JSON property `errors`
         # @return [Google::Apis::ContentV2::Errors]
         attr_accessor :errors
@@ -1258,13 +1457,18 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @account_tax = args[:account_tax] unless args[:account_tax].nil?
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
           @errors = args[:errors] unless args[:errors].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
       class AccounttaxListResponse
         include Google::Apis::Core::Hashable
@@ -1286,12 +1490,17 @@ module Google
         attr_accessor :resources
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @resources = args[:resources] unless args[:resources].nil?
         end
       end
-
+      
       # Datafeed data.
       class Datafeed
         include Google::Apis::Core::Hashable
@@ -1312,7 +1521,10 @@ module Google
         # @return [String]
         attr_accessor :content_type
       
-        # Fetch schedule for the feed file.
+        # The required fields vary based on the frequency of fetching. For a monthly
+        # fetch schedule, day_of_month and hour are required. For a weekly fetch
+        # schedule, weekday and hour are required. For a daily fetch schedule, only hour
+        # is required.
         # Corresponds to the JSON property `fetchSchedule`
         # @return [Google::Apis::ContentV2::DatafeedFetchSchedule]
         attr_accessor :fetch_schedule
@@ -1356,6 +1568,11 @@ module Google
         attr_accessor :target_country
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @attribute_language = args[:attribute_language] unless args[:attribute_language].nil?
           @content_language = args[:content_language] unless args[:content_language].nil?
           @content_type = args[:content_type] unless args[:content_type].nil?
@@ -1369,7 +1586,7 @@ module Google
           @target_country = args[:target_country] unless args[:target_country].nil?
         end
       end
-
+      
       # The required fields vary based on the frequency of fetching. For a monthly
       # fetch schedule, day_of_month and hour are required. For a weekly fetch
       # schedule, weekday and hour are required. For a daily fetch schedule, only hour
@@ -1416,6 +1633,11 @@ module Google
         attr_accessor :weekday
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @day_of_month = args[:day_of_month] unless args[:day_of_month].nil?
           @fetch_url = args[:fetch_url] unless args[:fetch_url].nil?
           @hour = args[:hour] unless args[:hour].nil?
@@ -1425,7 +1647,7 @@ module Google
           @weekday = args[:weekday] unless args[:weekday].nil?
         end
       end
-
+      
       # 
       class DatafeedFormat
         include Google::Apis::Core::Hashable
@@ -1450,12 +1672,17 @@ module Google
         attr_accessor :quoting_mode
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @column_delimiter = args[:column_delimiter] unless args[:column_delimiter].nil?
           @file_encoding = args[:file_encoding] unless args[:file_encoding].nil?
           @quoting_mode = args[:quoting_mode] unless args[:quoting_mode].nil?
         end
       end
-
+      
       # The status of a datafeed, i.e., the result of the last retrieval of the
       # datafeed computed asynchronously when the feed processing is finished.
       class DatafeedStatus
@@ -1503,6 +1730,11 @@ module Google
         attr_accessor :warnings
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @datafeed_id = args[:datafeed_id] unless args[:datafeed_id].nil?
           @errors = args[:errors] unless args[:errors].nil?
           @items_total = args[:items_total] unless args[:items_total].nil?
@@ -1513,7 +1745,7 @@ module Google
           @warnings = args[:warnings] unless args[:warnings].nil?
         end
       end
-
+      
       # An error occurring in the feed, like "invalid price".
       class DatafeedStatusError
         include Google::Apis::Core::Hashable
@@ -1539,13 +1771,18 @@ module Google
         attr_accessor :message
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @code = args[:code] unless args[:code].nil?
           @count = args[:count] unless args[:count].nil?
           @examples = args[:examples] unless args[:examples].nil?
           @message = args[:message] unless args[:message].nil?
         end
       end
-
+      
       # An example occurrence for a particular error.
       class DatafeedStatusExample
         include Google::Apis::Core::Hashable
@@ -1566,12 +1803,17 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @item_id = args[:item_id] unless args[:item_id].nil?
           @line_number = args[:line_number] unless args[:line_number].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # 
       class DatafeedsCustomBatchRequest
         include Google::Apis::Core::Hashable
@@ -1582,10 +1824,15 @@ module Google
         attr_accessor :entries
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch datafeeds request.
       class DatafeedsCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
@@ -1595,7 +1842,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # The data feed to insert.
+        # Datafeed data.
         # Corresponds to the JSON property `datafeed`
         # @return [Google::Apis::ContentV2::Datafeed]
         attr_accessor :datafeed
@@ -1616,6 +1863,11 @@ module Google
         attr_accessor :method_prop
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
           @datafeed = args[:datafeed] unless args[:datafeed].nil?
           @datafeed_id = args[:datafeed_id] unless args[:datafeed_id].nil?
@@ -1623,7 +1875,7 @@ module Google
           @method_prop = args[:method_prop] unless args[:method_prop].nil?
         end
       end
-
+      
       # 
       class DatafeedsCustomBatchResponse
         include Google::Apis::Core::Hashable
@@ -1640,11 +1892,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch datafeeds response.
       class DatafeedsCustomBatchResponseEntry
         include Google::Apis::Core::Hashable
@@ -1654,23 +1911,28 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # The requested data feed. Defined if and only if the request was successful.
+        # Datafeed data.
         # Corresponds to the JSON property `datafeed`
         # @return [Google::Apis::ContentV2::Datafeed]
         attr_accessor :datafeed
       
-        # A list of errors defined if and only if the request failed.
+        # A list of errors returned by a failed batch entry.
         # Corresponds to the JSON property `errors`
         # @return [Google::Apis::ContentV2::Errors]
         attr_accessor :errors
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
           @datafeed = args[:datafeed] unless args[:datafeed].nil?
           @errors = args[:errors] unless args[:errors].nil?
         end
       end
-
+      
       # 
       class DatafeedsListResponse
         include Google::Apis::Core::Hashable
@@ -1692,12 +1954,17 @@ module Google
         attr_accessor :resources
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @resources = args[:resources] unless args[:resources].nil?
         end
       end
-
+      
       # 
       class DatafeedstatusesCustomBatchRequest
         include Google::Apis::Core::Hashable
@@ -1708,10 +1975,15 @@ module Google
         attr_accessor :entries
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch datafeedstatuses request.
       class DatafeedstatusesCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
@@ -1737,13 +2009,18 @@ module Google
         attr_accessor :method_prop
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
           @datafeed_id = args[:datafeed_id] unless args[:datafeed_id].nil?
           @merchant_id = args[:merchant_id] unless args[:merchant_id].nil?
           @method_prop = args[:method_prop] unless args[:method_prop].nil?
         end
       end
-
+      
       # 
       class DatafeedstatusesCustomBatchResponse
         include Google::Apis::Core::Hashable
@@ -1760,11 +2037,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch datafeedstatuses response.
       class DatafeedstatusesCustomBatchResponseEntry
         include Google::Apis::Core::Hashable
@@ -1774,24 +2056,29 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # The requested data feed status. Defined if and only if the request was
-        # successful.
+        # The status of a datafeed, i.e., the result of the last retrieval of the
+        # datafeed computed asynchronously when the feed processing is finished.
         # Corresponds to the JSON property `datafeedStatus`
         # @return [Google::Apis::ContentV2::DatafeedStatus]
         attr_accessor :datafeed_status
       
-        # A list of errors defined if and only if the request failed.
+        # A list of errors returned by a failed batch entry.
         # Corresponds to the JSON property `errors`
         # @return [Google::Apis::ContentV2::Errors]
         attr_accessor :errors
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
           @datafeed_status = args[:datafeed_status] unless args[:datafeed_status].nil?
           @errors = args[:errors] unless args[:errors].nil?
         end
       end
-
+      
       # 
       class DatafeedstatusesListResponse
         include Google::Apis::Core::Hashable
@@ -1813,12 +2100,17 @@ module Google
         attr_accessor :resources
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @resources = args[:resources] unless args[:resources].nil?
         end
       end
-
+      
       # An error returned by the API.
       class Error
         include Google::Apis::Core::Hashable
@@ -1839,12 +2131,17 @@ module Google
         attr_accessor :reason
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @domain = args[:domain] unless args[:domain].nil?
           @message = args[:message] unless args[:message].nil?
           @reason = args[:reason] unless args[:reason].nil?
         end
       end
-
+      
       # A list of errors returned by a failed batch entry.
       class Errors
         include Google::Apis::Core::Hashable
@@ -1865,12 +2162,17 @@ module Google
         attr_accessor :message
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @code = args[:code] unless args[:code].nil?
           @errors = args[:errors] unless args[:errors].nil?
           @message = args[:message] unless args[:message].nil?
         end
       end
-
+      
       # 
       class Inventory
         include Google::Apis::Core::Hashable
@@ -1910,6 +2212,11 @@ module Google
         attr_accessor :sale_price_effective_date
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @availability = args[:availability] unless args[:availability].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @price = args[:price] unless args[:price].nil?
@@ -1918,7 +2225,7 @@ module Google
           @sale_price_effective_date = args[:sale_price_effective_date] unless args[:sale_price_effective_date].nil?
         end
       end
-
+      
       # 
       class InventoryCustomBatchRequest
         include Google::Apis::Core::Hashable
@@ -1929,10 +2236,15 @@ module Google
         attr_accessor :entries
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch inventory request.
       class InventoryCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
@@ -1964,6 +2276,11 @@ module Google
         attr_accessor :store_code
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
           @inventory = args[:inventory] unless args[:inventory].nil?
           @merchant_id = args[:merchant_id] unless args[:merchant_id].nil?
@@ -1971,7 +2288,7 @@ module Google
           @store_code = args[:store_code] unless args[:store_code].nil?
         end
       end
-
+      
       # 
       class InventoryCustomBatchResponse
         include Google::Apis::Core::Hashable
@@ -1988,11 +2305,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch inventory response.
       class InventoryCustomBatchResponseEntry
         include Google::Apis::Core::Hashable
@@ -2002,7 +2324,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # A list of errors defined if and only if the request failed.
+        # A list of errors returned by a failed batch entry.
         # Corresponds to the JSON property `errors`
         # @return [Google::Apis::ContentV2::Errors]
         attr_accessor :errors
@@ -2014,14 +2336,19 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
           @errors = args[:errors] unless args[:errors].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
-      class InventorySetRequest
+      class SetRequest
         include Google::Apis::Core::Hashable
       
         # The availability of the product.
@@ -2053,6 +2380,11 @@ module Google
         attr_accessor :sale_price_effective_date
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @availability = args[:availability] unless args[:availability].nil?
           @price = args[:price] unless args[:price].nil?
           @quantity = args[:quantity] unless args[:quantity].nil?
@@ -2060,9 +2392,9 @@ module Google
           @sale_price_effective_date = args[:sale_price_effective_date] unless args[:sale_price_effective_date].nil?
         end
       end
-
+      
       # 
-      class InventorySetResponse
+      class SetResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -2072,10 +2404,15 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # 
       class LoyaltyPoints
         include Google::Apis::Core::Hashable
@@ -2098,12 +2435,17 @@ module Google
         attr_accessor :ratio
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @points_value = args[:points_value] unless args[:points_value].nil?
           @ratio = args[:ratio] unless args[:ratio].nil?
         end
       end
-
+      
       # 
       class Price
         include Google::Apis::Core::Hashable
@@ -2119,11 +2461,16 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @currency = args[:currency] unless args[:currency].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # Product data.
       class Product
         include Google::Apis::Core::Hashable
@@ -2491,6 +2838,11 @@ module Google
         attr_accessor :warnings
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @additional_image_links = args[:additional_image_links] unless args[:additional_image_links].nil?
           @adult = args[:adult] unless args[:adult].nil?
           @adwords_grouping = args[:adwords_grouping] unless args[:adwords_grouping].nil?
@@ -2562,7 +2914,7 @@ module Google
           @warnings = args[:warnings] unless args[:warnings].nil?
         end
       end
-
+      
       # 
       class ProductAspect
         include Google::Apis::Core::Hashable
@@ -2583,12 +2935,17 @@ module Google
         attr_accessor :intention
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @aspect_name = args[:aspect_name] unless args[:aspect_name].nil?
           @destination_name = args[:destination_name] unless args[:destination_name].nil?
           @intention = args[:intention] unless args[:intention].nil?
         end
       end
-
+      
       # 
       class ProductCustomAttribute
         include Google::Apis::Core::Hashable
@@ -2616,13 +2973,18 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @name = args[:name] unless args[:name].nil?
           @type = args[:type] unless args[:type].nil?
           @unit = args[:unit] unless args[:unit].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # 
       class ProductCustomGroup
         include Google::Apis::Core::Hashable
@@ -2638,11 +3000,16 @@ module Google
         attr_accessor :name
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @attributes = args[:attributes] unless args[:attributes].nil?
           @name = args[:name] unless args[:name].nil?
         end
       end
-
+      
       # 
       class ProductDestination
         include Google::Apis::Core::Hashable
@@ -2658,11 +3025,16 @@ module Google
         attr_accessor :intention
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @destination_name = args[:destination_name] unless args[:destination_name].nil?
           @intention = args[:intention] unless args[:intention].nil?
         end
       end
-
+      
       # 
       class ProductInstallment
         include Google::Apis::Core::Hashable
@@ -2678,11 +3050,16 @@ module Google
         attr_accessor :months
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @amount = args[:amount] unless args[:amount].nil?
           @months = args[:months] unless args[:months].nil?
         end
       end
-
+      
       # 
       class ProductShipping
         include Google::Apis::Core::Hashable
@@ -2728,6 +3105,11 @@ module Google
         attr_accessor :service
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @country = args[:country] unless args[:country].nil?
           @location_group_name = args[:location_group_name] unless args[:location_group_name].nil?
           @location_id = args[:location_id] unless args[:location_id].nil?
@@ -2737,7 +3119,7 @@ module Google
           @service = args[:service] unless args[:service].nil?
         end
       end
-
+      
       # 
       class ProductShippingDimension
         include Google::Apis::Core::Hashable
@@ -2756,11 +3138,16 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @unit = args[:unit] unless args[:unit].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # 
       class ProductShippingWeight
         include Google::Apis::Core::Hashable
@@ -2776,11 +3163,16 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @unit = args[:unit] unless args[:unit].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # The status of a product, i.e., information about a product computed
       # asynchronously by the data quality analysis.
       class ProductStatus
@@ -2833,6 +3225,11 @@ module Google
         attr_accessor :title
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @creation_date = args[:creation_date] unless args[:creation_date].nil?
           @data_quality_issues = args[:data_quality_issues] unless args[:data_quality_issues].nil?
           @destination_statuses = args[:destination_statuses] unless args[:destination_statuses].nil?
@@ -2844,7 +3241,7 @@ module Google
           @title = args[:title] unless args[:title].nil?
         end
       end
-
+      
       # 
       class ProductStatusDataQualityIssue
         include Google::Apis::Core::Hashable
@@ -2890,6 +3287,11 @@ module Google
         attr_accessor :value_provided
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @detail = args[:detail] unless args[:detail].nil?
           @fetch_status = args[:fetch_status] unless args[:fetch_status].nil?
           @id = args[:id] unless args[:id].nil?
@@ -2900,7 +3302,7 @@ module Google
           @value_provided = args[:value_provided] unless args[:value_provided].nil?
         end
       end
-
+      
       # 
       class ProductStatusDestinationStatus
         include Google::Apis::Core::Hashable
@@ -2922,12 +3324,17 @@ module Google
         attr_accessor :intention
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @approval_status = args[:approval_status] unless args[:approval_status].nil?
           @destination = args[:destination] unless args[:destination].nil?
           @intention = args[:intention] unless args[:intention].nil?
         end
       end
-
+      
       # 
       class ProductTax
         include Google::Apis::Core::Hashable
@@ -2968,6 +3375,11 @@ module Google
         alias_method :tax_ship?, :tax_ship
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @country = args[:country] unless args[:country].nil?
           @location_id = args[:location_id] unless args[:location_id].nil?
           @postal_code = args[:postal_code] unless args[:postal_code].nil?
@@ -2976,7 +3388,7 @@ module Google
           @tax_ship = args[:tax_ship] unless args[:tax_ship].nil?
         end
       end
-
+      
       # 
       class ProductUnitPricingBaseMeasure
         include Google::Apis::Core::Hashable
@@ -2992,11 +3404,16 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @unit = args[:unit] unless args[:unit].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # 
       class ProductUnitPricingMeasure
         include Google::Apis::Core::Hashable
@@ -3012,11 +3429,16 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @unit = args[:unit] unless args[:unit].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # 
       class ProductsCustomBatchRequest
         include Google::Apis::Core::Hashable
@@ -3027,10 +3449,15 @@ module Google
         attr_accessor :entries
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch products request.
       class ProductsCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
@@ -3050,7 +3477,7 @@ module Google
         # @return [String]
         attr_accessor :method_prop
       
-        # The product to insert. Only required if the method is insert.
+        # Product data.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::ContentV2::Product]
         attr_accessor :product
@@ -3062,6 +3489,11 @@ module Google
         attr_accessor :product_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
           @merchant_id = args[:merchant_id] unless args[:merchant_id].nil?
           @method_prop = args[:method_prop] unless args[:method_prop].nil?
@@ -3069,7 +3501,7 @@ module Google
           @product_id = args[:product_id] unless args[:product_id].nil?
         end
       end
-
+      
       # 
       class ProductsCustomBatchResponse
         include Google::Apis::Core::Hashable
@@ -3086,11 +3518,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch products response.
       class ProductsCustomBatchResponseEntry
         include Google::Apis::Core::Hashable
@@ -3100,7 +3537,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # A list of errors defined if and only if the request failed.
+        # A list of errors returned by a failed batch entry.
         # Corresponds to the JSON property `errors`
         # @return [Google::Apis::ContentV2::Errors]
         attr_accessor :errors
@@ -3111,20 +3548,24 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The inserted product. Only defined if the method is insert and if the request
-        # was successful.
+        # Product data.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::ContentV2::Product]
         attr_accessor :product
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
           @errors = args[:errors] unless args[:errors].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @product = args[:product] unless args[:product].nil?
         end
       end
-
+      
       # 
       class ProductsListResponse
         include Google::Apis::Core::Hashable
@@ -3146,12 +3587,17 @@ module Google
         attr_accessor :resources
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @resources = args[:resources] unless args[:resources].nil?
         end
       end
-
+      
       # 
       class ProductstatusesCustomBatchRequest
         include Google::Apis::Core::Hashable
@@ -3162,10 +3608,15 @@ module Google
         attr_accessor :entries
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch productstatuses request.
       class ProductstatusesCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
@@ -3191,13 +3642,18 @@ module Google
         attr_accessor :product_id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
           @merchant_id = args[:merchant_id] unless args[:merchant_id].nil?
           @method_prop = args[:method_prop] unless args[:method_prop].nil?
           @product_id = args[:product_id] unless args[:product_id].nil?
         end
       end
-
+      
       # 
       class ProductstatusesCustomBatchResponse
         include Google::Apis::Core::Hashable
@@ -3214,11 +3670,16 @@ module Google
         attr_accessor :kind
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @entries = args[:entries] unless args[:entries].nil?
           @kind = args[:kind] unless args[:kind].nil?
         end
       end
-
+      
       # A batch entry encoding a single non-batch productstatuses response.
       class ProductstatusesCustomBatchResponseEntry
         include Google::Apis::Core::Hashable
@@ -3228,7 +3689,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # A list of errors, if the request failed.
+        # A list of errors returned by a failed batch entry.
         # Corresponds to the JSON property `errors`
         # @return [Google::Apis::ContentV2::Errors]
         attr_accessor :errors
@@ -3239,19 +3700,25 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The requested product status. Only defined if the request was successful.
+        # The status of a product, i.e., information about a product computed
+        # asynchronously by the data quality analysis.
         # Corresponds to the JSON property `productStatus`
         # @return [Google::Apis::ContentV2::ProductStatus]
         attr_accessor :product_status
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @batch_id = args[:batch_id] unless args[:batch_id].nil?
           @errors = args[:errors] unless args[:errors].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @product_status = args[:product_status] unless args[:product_status].nil?
         end
       end
-
+      
       # 
       class ProductstatusesListResponse
         include Google::Apis::Core::Hashable
@@ -3273,12 +3740,17 @@ module Google
         attr_accessor :resources
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @resources = args[:resources] unless args[:resources].nil?
         end
       end
-
+      
       # 
       class Weight
         include Google::Apis::Core::Hashable
@@ -3294,6 +3766,11 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @unit = args[:unit] unless args[:unit].nil?
           @value = args[:value] unless args[:value].nil?
         end

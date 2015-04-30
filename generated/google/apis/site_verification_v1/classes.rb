@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module SiteVerificationV1
-
+      
       # 
       class GettokenRequest
         include Google::Apis::Core::Hashable
@@ -38,9 +38,15 @@ module Google
         attr_accessor :verification_method
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @site = args[:site] unless args[:site].nil?
           @verification_method = args[:verification_method] unless args[:verification_method].nil?
         end
+        
         # The site for which a verification token will be generated.
         class Site
           include Google::Apis::Core::Hashable
@@ -57,12 +63,17 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @identifier = args[:identifier] unless args[:identifier].nil?
             @type = args[:type] unless args[:type].nil?
           end
         end
       end
-
+      
       # 
       class GettokenResponse
         include Google::Apis::Core::Hashable
@@ -83,11 +94,16 @@ module Google
         attr_accessor :token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @method_prop = args[:method_prop] unless args[:method_prop].nil?
           @token = args[:token] unless args[:token].nil?
         end
       end
-
+      
       # 
       class ListResponse
         include Google::Apis::Core::Hashable
@@ -98,10 +114,15 @@ module Google
         attr_accessor :items
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @items = args[:items] unless args[:items].nil?
         end
       end
-
+      
       # 
       class Resource
         include Google::Apis::Core::Hashable
@@ -123,10 +144,16 @@ module Google
         attr_accessor :site
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
           @owners = args[:owners] unless args[:owners].nil?
           @site = args[:site] unless args[:site].nil?
         end
+        
         # The address and type of a site that is verified or will be verified.
         class Site
           include Google::Apis::Core::Hashable
@@ -143,6 +170,11 @@ module Google
           attr_accessor :type
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @identifier = args[:identifier] unless args[:identifier].nil?
             @type = args[:type] unless args[:type].nil?
           end

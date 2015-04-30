@@ -33,7 +33,6 @@ module Google
       #
       # @see https://developers.google.com/google-apps/admin-audit/get_started
       class AuditService < Google::Apis::Core::BaseService
-
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -53,7 +52,7 @@ module Google
         def initialize
           super('https://www.googleapis.com/', 'apps/reporting/audit/v1/')
         end
-
+        
         # Retrieves a list of activities for a specific customer and application.
         # @param [String] customer_id
         #   Represents the customer who is the owner of target object on which action was
@@ -89,7 +88,7 @@ module Google
         # @param [String] user_ip
         #   IP address of the site where the request originates. Use this if you want to
         #   enforce per-user limits.
-        # @param [Google::Api::RequestOptions] options
+        # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
@@ -104,7 +103,7 @@ module Google
         def list_activities(customer_id, application_id, actor_application_id: nil, actor_email: nil, actor_ip_address: nil, caller: nil, continuation_token: nil, end_time: nil, event_name: nil, max_results: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{customerId}/{applicationId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AuditV1::ActivitiesRepresentation
+          command.response_representation = Google::Apis::AuditV1::Activities::Representation
           command.response_class = Google::Apis::AuditV1::Activities
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.params['applicationId'] = application_id unless application_id.nil?

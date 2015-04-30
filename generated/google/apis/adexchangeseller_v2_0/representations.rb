@@ -22,266 +22,287 @@ module Google
   module Apis
     module AdexchangesellerV2_0
       
-      class AccountRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Account
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AccountsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Accounts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AdClientRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AdClient
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AdClientsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class AdClients
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AlertRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Alert
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AlertsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Alerts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CustomChannelRepresentation < Google::Apis::Core::JsonRepresentation
+      class CustomChannel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class TargetingInfoRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class TargetingInfo
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class CustomChannelsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class CustomChannels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class MetadataRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Metadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PreferredDealRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PreferredDeal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PreferredDealsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class PreferredDeals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ReportRepresentation < Google::Apis::Core::JsonRepresentation
+      class Report
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class HeaderRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Header
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class ReportingMetadataEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ReportingMetadataEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SavedReportRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class SavedReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SavedReportsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class Reports
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UrlChannelRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class UrlChannel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UrlChannelsRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class UrlChannels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
-
+      
       # @private
-      class AccountRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-      end
-
-      # @private
-      class AccountsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::Account, decorator: Google::Apis::AdexchangesellerV2_0::AccountRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-      end
-
-      # @private
-      class AdClientRepresentation < Google::Apis::Core::JsonRepresentation
-        property :arc_opt_in, as: 'arcOptIn'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :product_code, as: 'productCode'
-        property :supports_reporting, as: 'supportsReporting'
-      end
-
-      # @private
-      class AdClientsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::AdClient, decorator: Google::Apis::AdexchangesellerV2_0::AdClientRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-      end
-
-      # @private
-      class AlertRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :message, as: 'message'
-        property :severity, as: 'severity'
-        property :type, as: 'type'
-      end
-
-      # @private
-      class AlertsRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::Alert, decorator: Google::Apis::AdexchangesellerV2_0::AlertRepresentation
-        
-        
-        property :kind, as: 'kind'
-      end
-
-      # @private
-      class CustomChannelRepresentation < Google::Apis::Core::JsonRepresentation
-        class TargetingInfoRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :code, as: 'code'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
-        property :targeting_info, as: 'targetingInfo', class: Google::Apis::AdexchangesellerV2_0::CustomChannel::TargetingInfo, decorator: Google::Apis::AdexchangesellerV2_0::CustomChannelRepresentation::TargetingInfoRepresentation
-        
-        
-        # @private
-        class TargetingInfoRepresentation < Google::Apis::Core::JsonRepresentation
-          property :ads_appear_on, as: 'adsAppearOn'
-          property :description, as: 'description'
-          property :location, as: 'location'
-          property :site_language, as: 'siteLanguage'
-        end
-      end
-
-      # @private
-      class CustomChannelsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::CustomChannel, decorator: Google::Apis::AdexchangesellerV2_0::CustomChannelRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
-      end
-
-      # @private
-      class MetadataRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::ReportingMetadataEntry, decorator: Google::Apis::AdexchangesellerV2_0::ReportingMetadataEntryRepresentation
-        
-        
-        property :kind, as: 'kind'
-      end
-
-      # @private
-      class PreferredDealRepresentation < Google::Apis::Core::JsonRepresentation
-        property :advertiser_name, as: 'advertiserName'
-        property :buyer_network_name, as: 'buyerNetworkName'
-        property :currency_code, as: 'currencyCode'
-        property :end_time, as: 'endTime'
-        property :fixed_cpm, as: 'fixedCpm'
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :start_time, as: 'startTime'
-      end
-
-      # @private
-      class PreferredDealsRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::PreferredDeal, decorator: Google::Apis::AdexchangesellerV2_0::PreferredDealRepresentation
-        
-        
-        property :kind, as: 'kind'
-      end
-
-      # @private
-      class ReportRepresentation < Google::Apis::Core::JsonRepresentation
-        class HeaderRepresentation < Google::Apis::Core::JsonRepresentation; end
-        collection :averages, as: 'averages'
-        
-        collection :headers, as: 'headers', class: Google::Apis::AdexchangesellerV2_0::Report::Header, decorator: Google::Apis::AdexchangesellerV2_0::ReportRepresentation::HeaderRepresentation
-        
-        
-        property :kind, as: 'kind'
-        collection :rows, as: 'rows', :class => Array do
-          include Representable::JSON::Collection
-          items
-        end
-        
-        
-        property :total_matched_rows, as: 'totalMatchedRows'
-        collection :totals, as: 'totals'
-        
-        collection :warnings, as: 'warnings'
-        
-        
-        # @private
-        class HeaderRepresentation < Google::Apis::Core::JsonRepresentation
-          property :currency, as: 'currency'
+      class Account
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
           property :name, as: 'name'
+        end
+      end
+      
+      # @private
+      class Accounts
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::Account, decorator: Google::Apis::AdexchangesellerV2_0::Account::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      # @private
+      class AdClient
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :arc_opt_in, as: 'arcOptIn'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :product_code, as: 'productCode'
+          property :supports_reporting, as: 'supportsReporting'
+        end
+      end
+      
+      # @private
+      class AdClients
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::AdClient, decorator: Google::Apis::AdexchangesellerV2_0::AdClient::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      # @private
+      class Alert
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :message, as: 'message'
+          property :severity, as: 'severity'
           property :type, as: 'type'
         end
       end
-
+      
       # @private
-      class ReportingMetadataEntryRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :compatible_dimensions, as: 'compatibleDimensions'
-        
-        collection :compatible_metrics, as: 'compatibleMetrics'
-        
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        collection :required_dimensions, as: 'requiredDimensions'
-        
-        collection :required_metrics, as: 'requiredMetrics'
-        
-        collection :supported_products, as: 'supportedProducts'
+      class Alerts
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::Alert, decorator: Google::Apis::AdexchangesellerV2_0::Alert::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class SavedReportRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :name, as: 'name'
+      class CustomChannel
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :targeting_info, as: 'targetingInfo', class: Google::Apis::AdexchangesellerV2_0::CustomChannel::TargetingInfo, decorator: Google::Apis::AdexchangesellerV2_0::CustomChannel::TargetingInfo::Representation
+      
+        end
+        
+        # @private
+        class TargetingInfo
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :ads_appear_on, as: 'adsAppearOn'
+            property :description, as: 'description'
+            property :location, as: 'location'
+            property :site_language, as: 'siteLanguage'
+          end
+        end
       end
-
+      
       # @private
-      class SavedReportsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::SavedReport, decorator: Google::Apis::AdexchangesellerV2_0::SavedReportRepresentation
-        
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+      class CustomChannels
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::CustomChannel, decorator: Google::Apis::AdexchangesellerV2_0::CustomChannel::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
-
+      
       # @private
-      class UrlChannelRepresentation < Google::Apis::Core::JsonRepresentation
-        property :id, as: 'id'
-        property :kind, as: 'kind'
-        property :url_pattern, as: 'urlPattern'
+      class Metadata
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::ReportingMetadataEntry, decorator: Google::Apis::AdexchangesellerV2_0::ReportingMetadataEntry::Representation
+      
+          property :kind, as: 'kind'
+        end
       end
-
+      
       # @private
-      class UrlChannelsRepresentation < Google::Apis::Core::JsonRepresentation
-        property :etag, as: 'etag'
-        collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::UrlChannel, decorator: Google::Apis::AdexchangesellerV2_0::UrlChannelRepresentation
+      class PreferredDeal
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertiser_name, as: 'advertiserName'
+          property :buyer_network_name, as: 'buyerNetworkName'
+          property :currency_code, as: 'currencyCode'
+          property :end_time, as: 'endTime'
+          property :fixed_cpm, as: 'fixedCpm'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      # @private
+      class PreferredDeals
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::PreferredDeal, decorator: Google::Apis::AdexchangesellerV2_0::PreferredDeal::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
+      # @private
+      class Report
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :averages, as: 'averages'
+          collection :headers, as: 'headers', class: Google::Apis::AdexchangesellerV2_0::Report::Header, decorator: Google::Apis::AdexchangesellerV2_0::Report::Header::Representation
+      
+          property :kind, as: 'kind'
+          collection :rows, as: 'rows', :class => Array do
+        include Representable::JSON::Collection
+        items
+      end
+      
+          property :total_matched_rows, as: 'totalMatchedRows'
+          collection :totals, as: 'totals'
+          collection :warnings, as: 'warnings'
+        end
         
-        
-        property :kind, as: 'kind'
-        property :next_page_token, as: 'nextPageToken'
+        # @private
+        class Header
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :currency, as: 'currency'
+            property :name, as: 'name'
+            property :type, as: 'type'
+          end
+        end
+      end
+      
+      # @private
+      class ReportingMetadataEntry
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :compatible_dimensions, as: 'compatibleDimensions'
+          collection :compatible_metrics, as: 'compatibleMetrics'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          collection :required_dimensions, as: 'requiredDimensions'
+          collection :required_metrics, as: 'requiredMetrics'
+          collection :supported_products, as: 'supportedProducts'
+        end
+      end
+      
+      # @private
+      class SavedReport
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+        end
+      end
+      
+      # @private
+      class Reports
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::SavedReport, decorator: Google::Apis::AdexchangesellerV2_0::SavedReport::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      # @private
+      class UrlChannel
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :url_pattern, as: 'urlPattern'
+        end
+      end
+      
+      # @private
+      class UrlChannels
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::UrlChannel, decorator: Google::Apis::AdexchangesellerV2_0::UrlChannel::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
     end
   end

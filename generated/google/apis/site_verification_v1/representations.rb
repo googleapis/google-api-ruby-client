@@ -22,66 +22,78 @@ module Google
   module Apis
     module SiteVerificationV1
       
-      class GettokenRequestRepresentation < Google::Apis::Core::JsonRepresentation
+      class GettokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class SiteRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Site
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
       
-      class GettokenResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class GettokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        
+      class ListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ResourceRepresentation < Google::Apis::Core::JsonRepresentation
+      class Resource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class SiteRepresentation < Google::Apis::Core::JsonRepresentation
-          
+        class Site
+          class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
-
+      
       # @private
-      class GettokenRequestRepresentation < Google::Apis::Core::JsonRepresentation
-        class SiteRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :site, as: 'site', class: Google::Apis::SiteVerificationV1::GettokenRequest::Site, decorator: Google::Apis::SiteVerificationV1::GettokenRequestRepresentation::SiteRepresentation
-        
-        property :verification_method, as: 'verificationMethod'
+      class GettokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :site, as: 'site', class: Google::Apis::SiteVerificationV1::GettokenRequest::Site, decorator: Google::Apis::SiteVerificationV1::GettokenRequest::Site::Representation
+      
+          property :verification_method, as: 'verificationMethod'
+        end
         
         # @private
-        class SiteRepresentation < Google::Apis::Core::JsonRepresentation
-          property :identifier, as: 'identifier'
-          property :type, as: 'type'
+        class Site
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :identifier, as: 'identifier'
+            property :type, as: 'type'
+          end
         end
       end
-
+      
       # @private
-      class GettokenResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        property :method_prop, as: 'method'
-        property :token, as: 'token'
+      class GettokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :method_prop, as: 'method'
+          property :token, as: 'token'
+        end
       end
-
+      
       # @private
-      class ListResponseRepresentation < Google::Apis::Core::JsonRepresentation
-        collection :items, as: 'items', class: Google::Apis::SiteVerificationV1::Resource, decorator: Google::Apis::SiteVerificationV1::ResourceRepresentation
+      class ListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::SiteVerificationV1::Resource, decorator: Google::Apis::SiteVerificationV1::Resource::Representation
+      
+        end
       end
-
+      
       # @private
-      class ResourceRepresentation < Google::Apis::Core::JsonRepresentation
-        class SiteRepresentation < Google::Apis::Core::JsonRepresentation; end
-        property :id, as: 'id'
-        collection :owners, as: 'owners'
-        
-        property :site, as: 'site', class: Google::Apis::SiteVerificationV1::Resource::Site, decorator: Google::Apis::SiteVerificationV1::ResourceRepresentation::SiteRepresentation
-        
+      class Resource
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :owners, as: 'owners'
+          property :site, as: 'site', class: Google::Apis::SiteVerificationV1::Resource::Site, decorator: Google::Apis::SiteVerificationV1::Resource::Site::Representation
+      
+        end
         
         # @private
-        class SiteRepresentation < Google::Apis::Core::JsonRepresentation
-          property :identifier, as: 'identifier'
-          property :type, as: 'type'
+        class Site
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :identifier, as: 'identifier'
+            property :type, as: 'type'
+          end
         end
       end
     end
