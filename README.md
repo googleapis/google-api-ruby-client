@@ -205,7 +205,6 @@ A URL can also be specified:
 
 ## TODO
 
-*  Cleanup/refactor code generation
 *  ETag support (if-not-modified)
 *  Auto-paging results (maybe)
 *  Caching

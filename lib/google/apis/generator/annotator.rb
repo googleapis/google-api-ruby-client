@@ -199,7 +199,7 @@ module Google
           prefixes = Array(prefixes)
           suffixes = Array(suffixes)
 
-          apply_name = lambda do |name, type|
+          apply_name = lambda do |_, (name, type)|
             if name != type.generated_class_name
               logger.info do
                 sprintf('Simplified class name from \'%s\' to \'%s\'', type.generated_class_name, name)
@@ -210,9 +210,13 @@ module Google
 
           process_type = lambda do |regexp, alt_names, type|
             alt_name = type.generated_class_name.gsub(regexp, '')
-            alt_name = type.generated_class_name if alt_name.empty? || alt_names.key?(alt_name)
-            fail 'Duplicate' if alt_names.key?(alt_name) # Abort if duplicate
-            alt_names[alt_name] = type
+            key = type.parent.qualified_name + '::' + alt_name
+            if alt_name.empty? || alt_names.key?(key)
+              alt_name = type.generated_class_name
+              key = type.parent.qualified_name + '::' + alt_name
+              fail 'Duplicate' if alt_names.key?(key) # Abort if duplicate
+            end
+            alt_names[key] = [alt_name, type]
             alt_names
           end.curry
 

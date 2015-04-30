@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module <%= api.module_name %>
-<% for cls in api.schemas.values -%>
+<% for cls in api.schemas.values.partition(&:variant).flatten -%>
 <%= indent(include('class', :cls => cls, :api => api), 6) -%>
 <% end -%>
     end
