@@ -2,6 +2,8 @@
 # Usage: script/generate
 # Update packaged APIs
 
+DIR=$(dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ))
+
 APIS=(adexchangebuyer:v1.3 \
 	adexchangeseller:v2.0 \
 	admin:directory_v1 \
@@ -18,7 +20,7 @@ APIS=(adexchangebuyer:v1.3 \
 	bigquery:v2 \
 	blogger:v3 \
 	books:v1 \
-	calendar_v3 \
+	calendar:v3 \
 	civicinfo:v2 \
 	cloudmonitoring:v2beta2 \
 	compute:v1 \
@@ -74,4 +76,4 @@ APIS=(adexchangebuyer:v1.3 \
 	youtubeAnalytics:v1 \
 )
 
-echo 'a' | bundle exec bin/generate-api gen generated --id=${APIS[*]}
+echo 'a' | bundle exec bin/generate-api gen generated --names_out=$DIR/api_names_out.yaml --id=${APIS[*]}

@@ -462,7 +462,7 @@ module Google
         # API-level methods for this API.
         # Corresponds to the JSON property `methods`
         # @return [Hash<String,Google::Apis::DiscoveryV1::RestMethod>]
-        attr_accessor :methods_prop
+        attr_accessor :api_methods
       
         # The name of this API.
         # Corresponds to the JSON property `name`
@@ -551,7 +551,7 @@ module Google
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @labels = args[:labels] unless args[:labels].nil?
-          @methods_prop = args[:methods_prop] unless args[:methods_prop].nil?
+          @api_methods = args[:api_methods] unless args[:api_methods].nil?
           @name = args[:name] unless args[:name].nil?
           @owner_domain = args[:owner_domain] unless args[:owner_domain].nil?
           @owner_name = args[:owner_name] unless args[:owner_name].nil?
@@ -925,7 +925,7 @@ module Google
         # Methods on this resource.
         # Corresponds to the JSON property `methods`
         # @return [Hash<String,Google::Apis::DiscoveryV1::RestMethod>]
-        attr_accessor :methods_prop
+        attr_accessor :api_methods
       
         # Sub-resources on this resource.
         # Corresponds to the JSON property `resources`
@@ -938,7 +938,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @methods_prop = args[:methods_prop] unless args[:methods_prop].nil?
+          @api_methods = args[:api_methods] unless args[:api_methods].nil?
           @resources = args[:resources] unless args[:resources].nil?
         end
       end

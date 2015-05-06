@@ -213,7 +213,7 @@ module Google
           property :id, as: 'id'
           property :kind, as: 'kind'
           collection :labels, as: 'labels'
-          hash :methods_prop, as: 'methods', class: Google::Apis::DiscoveryV1::RestMethod, decorator: Google::Apis::DiscoveryV1::RestMethod::Representation
+          hash :api_methods, as: 'methods', class: Google::Apis::DiscoveryV1::RestMethod, decorator: Google::Apis::DiscoveryV1::RestMethod::Representation
       
           property :name, as: 'name'
           property :owner_domain, as: 'ownerDomain'
@@ -344,7 +344,7 @@ module Google
       # @private
       class RestResource
         class Representation < Google::Apis::Core::JsonRepresentation
-          hash :methods_prop, as: 'methods', class: Google::Apis::DiscoveryV1::RestMethod, decorator: Google::Apis::DiscoveryV1::RestMethod::Representation
+          hash :api_methods, as: 'methods', class: Google::Apis::DiscoveryV1::RestMethod, decorator: Google::Apis::DiscoveryV1::RestMethod::Representation
       
           hash :resources, as: 'resources', class: Google::Apis::DiscoveryV1::RestResource, decorator: Google::Apis::DiscoveryV1::RestResource::Representation
       

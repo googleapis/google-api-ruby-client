@@ -17,6 +17,8 @@ require 'logger'
 
 module Google
   module Apis
+    ROOT = File.expand_path('..', File.dirname(__dir__))
+
     # @!attribute [rw] logger
     # @return [Logger] The logger.
     def self.logger

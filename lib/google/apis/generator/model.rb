@@ -28,6 +28,7 @@ module Google
         attr_accessor :parent
         attr_accessor :discriminant
         attr_accessor :discriminant_value
+        attr_accessor :path
 
         def properties
           @properties ||= {}
@@ -62,6 +63,8 @@ module Google
 
       class RestMethod
         attr_accessor :generated_name
+        attr_accessor :parent
+
         def path_parameters
           return [] if parameter_order.nil? || parameters.nil?
           parameter_order.map { |name| parameters[name] }.select { |param| param.location == 'path' }
@@ -80,9 +83,11 @@ module Google
       end
 
       class RestResource
+        attr_accessor :parent
+
         def all_methods
           m = []
-          m << self.methods_prop.values unless self.methods_prop.nil?
+          m << self.api_methods.values unless self.api_methods.nil?
           m << self.resources.map { |_k, r| r.all_methods } unless self.resources.nil?
           m.flatten
         end
@@ -113,7 +118,7 @@ module Google
 
         def all_methods
           m = []
-          m << self.methods_prop.values unless self.methods_prop.nil?
+          m << self.api_methods.values unless self.api_methods.nil?
           m << self.resources.map { |_k, r| r.all_methods } unless self.resources.nil?
           m.flatten
         end

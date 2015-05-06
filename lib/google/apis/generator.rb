@@ -27,7 +27,8 @@ module Google
       Discovery = Google::Apis::DiscoveryV1
 
       # Load templates
-      def initialize
+      def initialize(api_names: nil)
+        @names = Google::Apis::Generator::Names.new(api_names || File.join(Google::Apis::ROOT, 'api_names.yaml'))
         @module_template = Template.load('module.rb')
         @service_template = Template.load('service.rb')
         @classes_template = Template.load('classes.rb')
@@ -42,7 +43,7 @@ module Google
       #  Hash of generated files keyed by path
       def render(json)
         api = parse_description(json)
-        Annotator.process(api)
+        Annotator.process(api, @names)
         base_path = ActiveSupport::Inflector.underscore(api.qualified_name)
         context = {
           'api' => api
@@ -53,6 +54,12 @@ module Google
         files[File.join(base_path, 'classes.rb')] = @classes_template.render(context)
         files[File.join(base_path, 'representations.rb')] = @representations_template.render(context)
         files
+      end
+
+      # Dump mapping of API names
+      # @return [String] Mapping of paths to ruby names in YAML format
+      def dump_api_names
+        @names.dump
       end
 
       def parse_description(json)

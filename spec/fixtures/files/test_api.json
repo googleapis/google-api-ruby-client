@@ -2,6 +2,7 @@
   "kind": "discovery#describeItem",
   "name": "test",
   "version": "v1",
+  "id": "test:v1",
   "description": "Discovery doc API used for testing the code generator",
   "basePath": "/test/",
   "rootUrl": "https://www.googleapis.com/",

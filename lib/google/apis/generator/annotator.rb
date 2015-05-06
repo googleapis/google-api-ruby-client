@@ -27,133 +27,71 @@ module Google
   module Apis
     # @private
     class Generator
-      # Modifies an API description to support ruby code generation. Primarily does:
-      # - Ensure all names follow appopriate ruby conventions
-      # - Maps types to ruby types, classes, and resolves $refs
-      # - Attempts to simplify names where possible to make APIs more sensible
-      class Annotator
-        include NameHelpers
+
+      # Helper for picking names for methods, properties, types, etc. Performs various normaliations
+      # as well as allows for overriding individual names from a configuration file for cases
+      # where algorithmic approaches produce poor APIs.
+      class Names
         include Google::Apis::Core::Logging
+        include NameHelpers
 
-        # Don't expose these in the API directly
-        PARAMETER_BLACKLIST = %w(alt oauth_token prettyPrint)
-
-        # Prepare the API for the templates.
-        # @param [Google::Apis::DiscoveryV1::RestDescription] description
-        #  API Description
-        def self.process(description)
-          Annotator.new(description).annotate_api
-        end
-
-        # @param [Google::Apis::DiscoveryV1::RestDescription] description
-        #  API Description
-        def initialize(description)
-          @rest_description = description
-          @registered_types = []
-          @deferred_types = []
-          @strip_prefixes = []
-          @all_methods = {}
-        end
-
-        def annotate_api
-          @strip_prefixes << @rest_description.name
-          if @rest_description.auth
-            @rest_description.auth.oauth2.scopes.each do |key, value|
-              value.constant = constantize_scope(key)
-            end
+        def initialize(file_path = nil)
+          if file_path
+            logger.info { sprintf("Loading API names from %s", file_path) }
+            @names = YAML.load(File.read(file_path)) || {}
+           else
+            @names = {}
           end
-          @rest_description.parameters.reject! { |k, _v| PARAMETER_BLACKLIST.include?(k) }
-          annotate_parameters(@rest_description.parameters)
-          annotate_resource(@rest_description.name, @rest_description)
-          @rest_description.schemas.each do |k, v|
-            annotate_type(k, v, @rest_description)
-          end unless @rest_description.schemas.nil?
-          simplify_class_names(@strip_prefixes, @rest_description.version)
-          resolve_type_references
-          resolve_variants
+          @path = []
         end
 
-        def annotate_type(name, type, parent)
-          type.name = name
-          type.generated_name = normalize_property_name(name)
-          if type.type == 'object'
-            type.generated_class_name = ActiveSupport::Inflector.camelize(name)
-            @registered_types << type
-          end
-          type.parent = parent
-          @deferred_types << type if type._ref
-          type.properties.each do |k, v|
-            annotate_type(k, v, type)
-          end unless type.properties.nil?
-          if type.additional_properties
-            type.type = 'hash'
-            annotate_type(ActiveSupport::Inflector.singularize(name), type.additional_properties, parent)
-          end
-          annotate_type(ActiveSupport::Inflector.singularize(name), type.items, parent) if type.items
-        end
-
-        def annotate_resource(name, resource)
-          @strip_prefixes << name
-          resource.methods_prop.each do |_k, v|
-            annotate_method(v)
-          end unless resource.methods_prop.nil?
-
-          resource.resources.each do |k, v|
-            annotate_resource(k, v)
-          end unless resource.resources.nil?
-        end
-
-        def annotate_method(method)
-          method.generated_name = infer_method_name(method)
-          check_duplicate_method(method)
-          annotate_parameters(method.parameters)
-        end
-
-        def annotate_parameters(parameters)
-          parameters.each do |key, value|
-            value.name = key
-            value.generated_name = normalize_param_name(key)
-            @deferred_types << value if value._ref
-          end unless parameters.nil?
-        end
-
-        def resolve_type_references
-          @deferred_types.each do |type|
-            if type._ref
-              ref = @rest_description.schemas[type._ref]
-              ivars = ref.instance_variables - [:@name, :@generated_name]
-              (ivars).each do |var|
-                type.instance_variable_set(var, ref.instance_variable_get(var))
-              end
-            end
+        def with_path(path, &block)
+          @path.push(path)
+          begin
+            yield
+          ensure
+            @path.pop
           end
         end
 
-        def resolve_variants
-          @deferred_types.each do |type|
-            if type.variant
-              type.variant.map.each do |v|
-                ref = @rest_description.schemas[v._ref]
-                ref.base_ref = type
-                ref.discriminant = type.variant.discriminant
-                ref.discriminant_value = v.type_value
-              end
-            end
-          end
-        end
-
-        def check_duplicate_method(m)
-          logger.error("Duplicate method #{name} generated") if @all_methods.include?(m.generated_name)
-          @all_methods[m.generated_name] = m
+        def infer_parameter_name
+          pick_name(normalize_param_name(@path.last))
         end
 
         # Determine the ruby method name to generate for a given method in discovery.
         # @param [Hash] discovery
         #  Fragment of the discovery doc describing the method
         def infer_method_name(method)
-          infer_method_name_for_rpc(method) || infer_method_name_from_id(method)
+          pick_name(infer_method_name_for_rpc(method) || infer_method_name_from_id(method))
         end
 
+        def infer_property_name
+          pick_name(normalize_property_name(@path.last))
+        end
+
+        def pick_name(alt_name)
+          preferred_name = @names[key]
+          if preferred_name && preferred_name == alt_name
+            logger.warn { sprintf("Unnecessary name override '%s': %s", key, alt_name) }
+          elsif preferred_name.nil?
+            preferred_name = @names[key] = alt_name
+          end
+          preferred_name
+        end
+
+        def []=(key, value)
+          @names[key] = value
+        end
+
+        def dump
+          YAML.dump(@names)
+        end
+
+        def key
+          @path.reduce('') {|a,e| a += '/' + e }
+        end
+
+        private
         # For RPC style methods, pick a name based off the request objects.
         # @param [Hash] discovery
         #  Fragment of the discovery doc describing the method
@@ -187,57 +125,146 @@ module Google
           ActiveSupport::Inflector.underscore(method_name)
         end
 
-        # Attempts to simplify schema class names by removing rendudant prefixes and suffixes. Only changes the
-        # names if the results produce unique class names.
-        #
-        # @param [String, Array<String>] prefixes
-        #  Prefixes to remove.
-        # @param [String, Array<String>] suffixes
-        #  Suffixes to remove.
-        # @return [void]
-        def simplify_class_names(prefixes, suffixes)
-          prefixes = Array(prefixes)
-          suffixes = Array(suffixes)
+      end
 
-          apply_name = lambda do |_, (name, type)|
-            if name != type.generated_class_name
-              logger.info do
-                sprintf('Simplified class name from \'%s\' to \'%s\'', type.generated_class_name, name)
+      # Modifies an API description to support ruby code generation. Primarily does:
+      # - Ensure all names follow appopriate ruby conventions
+      # - Maps types to ruby types, classes, and resolves $refs
+      # - Attempts to simplify names where possible to make APIs more sensible
+      class Annotator
+        include NameHelpers
+        include Google::Apis::Core::Logging
+
+        # Don't expose these in the API directly
+        PARAMETER_BLACKLIST = %w(alt oauth_token prettyPrint)
+
+        # Prepare the API for the templates.
+        # @param [Google::Apis::DiscoveryV1::RestDescription] description
+        #  API Description
+        def self.process(description, api_names = nil)
+          Annotator.new(description, api_names).annotate_api
+        end
+
+        # @param [Google::Apis::DiscoveryV1::RestDescription] description
+        #  API Description
+        # @param [Google::Api::Generator::Names] api_names
+        #  Name helper instanace
+        def initialize(description, api_names = nil)
+          api_names = Names.new if api_names.nil?
+          @names = api_names
+          @rest_description = description
+          @registered_types = []
+          @deferred_types = []
+          @strip_prefixes = []
+          @all_methods = {}
+          @path = []
+        end
+
+        def annotate_api
+          @names.with_path(@rest_description.id) do
+            @strip_prefixes << @rest_description.name
+            if @rest_description.auth
+              @rest_description.auth.oauth2.scopes.each do |key, value|
+                value.constant = constantize_scope(key)
               end
-              type.generated_class_name = name
             end
+            @rest_description.parameters.reject! { |k, _v| PARAMETER_BLACKLIST.include?(k) }
+            annotate_parameters(@rest_description.parameters)
+            annotate_resource(@rest_description.name, @rest_description)
+            @rest_description.schemas.each do |k, v|
+              annotate_type(k, v, @rest_description)
+            end unless @rest_description.schemas.nil?
           end
+          resolve_type_references
+          resolve_variants
+        end
 
-          process_type = lambda do |regexp, alt_names, type|
-            alt_name = type.generated_class_name.gsub(regexp, '')
-            key = type.parent.qualified_name + '::' + alt_name
-            if alt_name.empty? || alt_names.key?(key)
-              alt_name = type.generated_class_name
-              key = type.parent.qualified_name + '::' + alt_name
-              fail 'Duplicate' if alt_names.key?(key) # Abort if duplicate
+        def annotate_type(name, type, parent)
+          @names.with_path(name) do
+            type.name = name
+            type.path = @names.key
+            type.generated_name = @names.infer_property_name
+            if type.type == 'object'
+              type.generated_class_name = ActiveSupport::Inflector.camelize(type.generated_name)
+              @registered_types << type
             end
-            alt_names[key] = [alt_name, type]
-            alt_names
-          end.curry
+            type.parent = parent
+            @deferred_types << type if type._ref
+            type.properties.each do |k, v|
+              annotate_type(k, v, type)
+            end unless type.properties.nil?
+            if type.additional_properties
+              type.type = 'hash'
+              annotate_type(ActiveSupport::Inflector.singularize(type.generated_name), type.additional_properties, parent)
+            end
+            annotate_type(ActiveSupport::Inflector.singularize(type.generated_name), type.items, parent) if type.items
+          end
+        end
 
-          suffixes.each do |suffix|
-            begin
-              f = process_type[/(?i:#{Regexp.quote(suffix)})$/]
-              alt_names = @registered_types.inject({}, &f)
-              alt_names.each(&apply_name)
-            rescue
-              logger.debug { sprintf('Unable to remove suffix %s due to potential duplicate name', suffix) }
+        def annotate_resource(name, resource, parent_resource = nil)
+          @strip_prefixes << name
+          resource.parent = parent_resource unless parent_resource.nil?
+          resource.api_methods.each do |_k, v|
+            annotate_method(v, resource)
+          end unless resource.api_methods.nil?
+
+          resource.resources.each do |k, v|
+            annotate_resource(k, v, resource)
+          end unless resource.resources.nil?
+        end
+
+        def annotate_method(method, parent_resource = nil)
+          @names.with_path(method.id) do
+            method.parent = parent_resource
+            method.generated_name = @names.infer_method_name(method)
+            check_duplicate_method(method)
+            annotate_parameters(method.parameters)
+          end
+        end
+
+        def annotate_parameters(parameters)
+          parameters.each do |key, value|
+            @names.with_path(key) do
+              value.name = key
+              value.generated_name = @names.infer_parameter_name
+              @deferred_types << value if value._ref
+            end
+          end unless parameters.nil?
+        end
+
+
+
+        def resolve_type_references
+          @deferred_types.each do |type|
+            if type._ref
+              ref = @rest_description.schemas[type._ref]
+              ivars = ref.instance_variables - [:@name, :@generated_name]
+              (ivars).each do |var|
+                type.instance_variable_set(var, ref.instance_variable_get(var))
+              end
             end
           end
-          prefixes.each do |prefix|
-            begin
-              f = process_type[/^(?i:#{Regexp.quote(prefix)})(?=[A-Z]+)/]
-              alt_names = @registered_types.inject({}, &f)
-              alt_names.each(&apply_name)
-            rescue
-              logger.debug { sprintf('Unable to remove prefix %s due to potential duplicate name', prefix) }
+        end
+
+        def resolve_variants
+          @deferred_types.each do |type|
+            if type.variant
+              type.variant.map.each do |v|
+                ref = @rest_description.schemas[v._ref]
+                ref.base_ref = type
+                ref.discriminant = type.variant.discriminant
+                ref.discriminant_value = v.type_value
+              end
             end
           end
+        end
+
+        def check_duplicate_method(m)
+          if @all_methods.include?(m.generated_name)
+            logger.error("Duplicate method #{m.generated_name} generated")
+            fail "Duplicate name generated"
+          end
+          @all_methods[m.generated_name] = m
         end
       end
     end
