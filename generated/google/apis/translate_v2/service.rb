@@ -68,10 +68,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::TranslateV2::ListResponse] parsed result object
+        # @yieldparam result [Google::Apis::TranslateV2::ListDetectionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::TranslateV2::ListResponse]
+        # @return [Google::Apis::TranslateV2::ListDetectionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -79,8 +79,8 @@ module Google
         def list_detections(q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'v2/detect'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::TranslateV2::ListResponse::Representation
-          command.response_class = Google::Apis::TranslateV2::ListResponse
+          command.response_representation = Google::Apis::TranslateV2::ListDetectionsResponse::Representation
+          command.response_class = Google::Apis::TranslateV2::ListDetectionsResponse
           command.query['q'] = q unless q.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -104,10 +104,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::TranslateV2::LanguagesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::TranslateV2::ListLanguagesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::TranslateV2::LanguagesListResponse]
+        # @return [Google::Apis::TranslateV2::ListLanguagesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -115,8 +115,8 @@ module Google
         def list_languages(target: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'v2/languages'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::TranslateV2::LanguagesListResponse::Representation
-          command.response_class = Google::Apis::TranslateV2::LanguagesListResponse
+          command.response_representation = Google::Apis::TranslateV2::ListLanguagesResponse::Representation
+          command.response_class = Google::Apis::TranslateV2::ListLanguagesResponse
           command.query['target'] = target unless target.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -148,10 +148,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::TranslateV2::TranslationsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::TranslateV2::ListTranslationsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::TranslateV2::TranslationsListResponse]
+        # @return [Google::Apis::TranslateV2::ListTranslationsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -159,8 +159,8 @@ module Google
         def list_translations(cid: nil, format: nil, q: nil, source: nil, target: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'v2'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::TranslateV2::TranslationsListResponse::Representation
-          command.response_class = Google::Apis::TranslateV2::TranslationsListResponse
+          command.response_representation = Google::Apis::TranslateV2::ListTranslationsResponse::Representation
+          command.response_class = Google::Apis::TranslateV2::ListTranslationsResponse
           command.query['cid'] = cid unless cid.nil?
           command.query['format'] = format unless format.nil?
           command.query['q'] = q unless q.nil?

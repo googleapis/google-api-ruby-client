@@ -82,11 +82,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CreateJobRequest
+      class ExperimentalCreateJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CreateJobResponse
+      class ExperimentalCreateJobResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -507,7 +507,7 @@ module Google
       end
       
       # @private
-      class CreateJobRequest
+      class ExperimentalCreateJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :align, as: 'align'
           property :call_variants, as: 'callVariants'
@@ -519,7 +519,7 @@ module Google
       end
       
       # @private
-      class CreateJobResponse
+      class ExperimentalCreateJobResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :job_id, as: 'jobId'
         end

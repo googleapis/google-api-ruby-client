@@ -537,7 +537,7 @@ module Google
       end
       
       # The response to a list request.
-      class List
+      class ZoneViewsList
         include Google::Apis::Core::Hashable
       
         # The result that contains all resource views that meet the criteria.

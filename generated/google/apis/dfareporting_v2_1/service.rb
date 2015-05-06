@@ -146,10 +146,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::ListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListAccountPermissionGroupsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::ListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListAccountPermissionGroupsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -157,8 +157,8 @@ module Google
         def list_account_permission_groups(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/accountPermissionGroups'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::ListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::ListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListAccountPermissionGroupsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListAccountPermissionGroupsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -221,10 +221,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::AccountPermissionsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListAccountPermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::AccountPermissionsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListAccountPermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -232,8 +232,8 @@ module Google
         def list_account_permissions(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/accountPermissions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::AccountPermissionsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::AccountPermissionsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListAccountPermissionsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListAccountPermissionsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -359,10 +359,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::AccountUserProfilesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListAccountUserProfilesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::AccountUserProfilesListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListAccountUserProfilesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -370,8 +370,8 @@ module Google
         def list_account_user_profiles(profile_id, active: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, subaccount_id: nil, user_role_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/accountUserProfiles'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::AccountUserProfilesListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::AccountUserProfilesListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListAccountUserProfilesResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListAccountUserProfilesResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['active'] = active unless active.nil?
           command.query['ids'] = ids unless ids.nil?
@@ -544,10 +544,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::AccountsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListAccountsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::AccountsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListAccountsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -555,8 +555,8 @@ module Google
         def list_accounts(profile_id, active: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/accounts'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::AccountsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::AccountsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListAccountsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListAccountsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['active'] = active unless active.nil?
           command.query['ids'] = ids unless ids.nil?
@@ -805,10 +805,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::AdsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListAdsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::AdsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListAdsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -816,8 +816,8 @@ module Google
         def list_ads(profile_id, active: nil, advertiser_id: nil, archived: nil, audience_segment_ids: nil, campaign_ids: nil, compatibility: nil, creative_ids: nil, creative_optimization_configuration_ids: nil, creative_type: nil, dynamic_click_tracker: nil, ids: nil, landing_page_ids: nil, max_results: nil, overridden_event_tag_id: nil, page_token: nil, placement_ids: nil, remarketing_list_ids: nil, search_string: nil, size_ids: nil, sort_field: nil, sort_order: nil, ssl_compliant: nil, ssl_required: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/ads'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::AdsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::AdsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListAdsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListAdsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['active'] = active unless active.nil?
           command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
@@ -1079,10 +1079,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::AdvertiserGroupsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListAdvertiserGroupsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::AdvertiserGroupsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListAdvertiserGroupsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1090,8 +1090,8 @@ module Google
         def list_advertiser_groups(profile_id, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/advertiserGroups'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::AdvertiserGroupsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::AdvertiserGroupsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListAdvertiserGroupsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListAdvertiserGroupsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['ids'] = ids unless ids.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -1310,10 +1310,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::AdvertisersListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListAdvertisersResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::AdvertisersListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListAdvertisersResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1321,8 +1321,8 @@ module Google
         def list_advertisers(profile_id, advertiser_group_ids: nil, floodlight_configuration_ids: nil, ids: nil, include_advertisers_without_groups_only: nil, max_results: nil, only_parent: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, status: nil, subaccount_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/advertisers'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::AdvertisersListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::AdvertisersListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListAdvertisersResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListAdvertisersResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['advertiserGroupIds'] = advertiser_group_ids unless advertiser_group_ids.nil?
           command.query['floodlightConfigurationIds'] = floodlight_configuration_ids unless floodlight_configuration_ids.nil?
@@ -1439,10 +1439,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::BrowsersListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListBrowsersResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::BrowsersListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListBrowsersResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1450,8 +1450,8 @@ module Google
         def list_browsers(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/browsers'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::BrowsersListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::BrowsersListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListBrowsersResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListBrowsersResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1527,10 +1527,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::CampaignCreativeAssociationsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListCampaignCreativeAssociationsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::CampaignCreativeAssociationsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListCampaignCreativeAssociationsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1538,8 +1538,8 @@ module Google
         def list_campaign_creative_associations(profile_id, campaign_id, max_results: nil, page_token: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::CampaignCreativeAssociationsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::CampaignCreativeAssociationsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListCampaignCreativeAssociationsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListCampaignCreativeAssociationsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['campaignId'] = campaign_id unless campaign_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -1684,10 +1684,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::CampaignsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListCampaignsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::CampaignsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListCampaignsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1695,8 +1695,8 @@ module Google
         def list_campaigns(profile_id, advertiser_group_ids: nil, advertiser_ids: nil, archived: nil, at_least_one_optimization_activity: nil, excluded_ids: nil, ids: nil, max_results: nil, overridden_event_tag_id: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, subaccount_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/campaigns'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::CampaignsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::CampaignsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListCampaignsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListCampaignsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['advertiserGroupIds'] = advertiser_group_ids unless advertiser_group_ids.nil?
           command.query['advertiserIds'] = advertiser_ids unless advertiser_ids.nil?
@@ -1884,10 +1884,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::ChangeLogsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListChangeLogsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::ChangeLogsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListChangeLogsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1895,8 +1895,8 @@ module Google
         def list_change_logs(profile_id, action: nil, ids: nil, max_change_time: nil, max_results: nil, min_change_time: nil, object_ids: nil, object_type: nil, page_token: nil, search_string: nil, user_profile_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/changeLogs'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::ChangeLogsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::ChangeLogsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListChangeLogsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListChangeLogsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['action'] = action unless action.nil?
           command.query['ids'] = ids unless ids.nil?
@@ -1938,10 +1938,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::CitiesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListCitiesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::CitiesListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListCitiesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1949,8 +1949,8 @@ module Google
         def list_cities(profile_id, country_dart_ids: nil, dart_ids: nil, name_prefix: nil, region_dart_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/cities'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::CitiesListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::CitiesListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListCitiesResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListCitiesResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['countryDartIds'] = country_dart_ids unless country_dart_ids.nil?
           command.query['dartIds'] = dart_ids unless dart_ids.nil?
@@ -2017,10 +2017,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::ConnectionTypesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListConnectionTypesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::ConnectionTypesListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListConnectionTypesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2028,8 +2028,8 @@ module Google
         def list_connection_types(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/connectionTypes'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::ConnectionTypesListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::ConnectionTypesListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListConnectionTypesResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListConnectionTypesResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2186,10 +2186,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::ContentCategoriesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListContentCategoriesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::ContentCategoriesListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListContentCategoriesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2197,8 +2197,8 @@ module Google
         def list_content_categories(profile_id, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/contentCategories'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::ContentCategoriesListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::ContentCategoriesListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListContentCategoriesResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListContentCategoriesResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['ids'] = ids unless ids.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -2348,10 +2348,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::CountriesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListCountriesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::CountriesListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListCountriesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2359,8 +2359,8 @@ module Google
         def list_countries(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/countries'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::CountriesListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::CountriesListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListCountriesResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListCountriesResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2575,10 +2575,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::CreativeFieldValuesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListCreativeFieldValuesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::CreativeFieldValuesListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListCreativeFieldValuesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2586,8 +2586,8 @@ module Google
         def list_creative_field_values(profile_id, creative_field_id, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::CreativeFieldValuesListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::CreativeFieldValuesListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListCreativeFieldValuesResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListCreativeFieldValuesResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['creativeFieldId'] = creative_field_id unless creative_field_id.nil?
           command.query['ids'] = ids unless ids.nil?
@@ -2840,10 +2840,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::CreativeFieldsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListCreativeFieldsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::CreativeFieldsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListCreativeFieldsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2851,8 +2851,8 @@ module Google
         def list_creative_fields(profile_id, advertiser_ids: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/creativeFields'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::CreativeFieldsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::CreativeFieldsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListCreativeFieldsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListCreativeFieldsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['advertiserIds'] = advertiser_ids unless advertiser_ids.nil?
           command.query['ids'] = ids unless ids.nil?
@@ -3064,10 +3064,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::CreativeGroupsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListCreativeGroupsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::CreativeGroupsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListCreativeGroupsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -3075,8 +3075,8 @@ module Google
         def list_creative_groups(profile_id, advertiser_ids: nil, group_number: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/creativeGroups'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::CreativeGroupsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::CreativeGroupsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListCreativeGroupsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListCreativeGroupsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['advertiserIds'] = advertiser_ids unless advertiser_ids.nil?
           command.query['groupNumber'] = group_number unless group_number.nil?
@@ -3306,10 +3306,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::CreativesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListCreativesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::CreativesListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListCreativesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -3317,8 +3317,8 @@ module Google
         def list_creatives(profile_id, active: nil, advertiser_id: nil, archived: nil, campaign_id: nil, companion_creative_ids: nil, creative_field_ids: nil, ids: nil, max_results: nil, page_token: nil, rendering_ids: nil, search_string: nil, size_ids: nil, sort_field: nil, sort_order: nil, studio_creative_id: nil, types: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/creatives'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::CreativesListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::CreativesListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListCreativesResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListCreativesResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['active'] = active unless active.nil?
           command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
@@ -3545,10 +3545,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::DirectorySiteContactsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListDirectorySiteContactsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::DirectorySiteContactsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListDirectorySiteContactsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -3556,8 +3556,8 @@ module Google
         def list_directory_site_contacts(profile_id, directory_site_ids: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/directorySiteContacts'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::DirectorySiteContactsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::DirectorySiteContactsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListDirectorySiteContactsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListDirectorySiteContactsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['directorySiteIds'] = directory_site_ids unless directory_site_ids.nil?
           command.query['ids'] = ids unless ids.nil?
@@ -3702,10 +3702,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::DirectorySitesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListDirectorySitesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::DirectorySitesListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListDirectorySitesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -3713,8 +3713,8 @@ module Google
         def list_directory_sites(profile_id, accepts_in_stream_video_placements: nil, accepts_interstitial_placements: nil, accepts_publisher_paid_placements: nil, active: nil, country_id: nil, dfp_network_code: nil, ids: nil, max_results: nil, page_token: nil, parent_id: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/directorySites'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::DirectorySitesListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::DirectorySitesListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListDirectorySitesResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListDirectorySitesResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['acceptsInStreamVideoPlacements'] = accepts_in_stream_video_placements unless accepts_in_stream_video_placements.nil?
           command.query['acceptsInterstitialPlacements'] = accepts_interstitial_placements unless accepts_interstitial_placements.nil?
@@ -3901,10 +3901,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::EventTagsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListEventTagsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::EventTagsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListEventTagsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -3912,8 +3912,8 @@ module Google
         def list_event_tags(profile_id, ad_id: nil, advertiser_id: nil, campaign_id: nil, definitions_only: nil, enabled: nil, event_tag_types: nil, ids: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/eventTags'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::EventTagsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::EventTagsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListEventTagsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListEventTagsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['adId'] = ad_id unless ad_id.nil?
           command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
@@ -4164,19 +4164,19 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::GenerateTagResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::FloodlightActivitiesGenerateTagResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::GenerateTagResponse]
+        # @return [Google::Apis::DfareportingV2_1::FloodlightActivitiesGenerateTagResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generatetag_floodlight_activity(profile_id, floodlight_activity_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def generate_floodlight_activity_tag(profile_id, floodlight_activity_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/floodlightActivities/generatetag'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::GenerateTagResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::GenerateTagResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::FloodlightActivitiesGenerateTagResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::FloodlightActivitiesGenerateTagResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['floodlightActivityId'] = floodlight_activity_id unless floodlight_activity_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -4320,10 +4320,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::FloodlightActivitiesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListFloodlightActivitiesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::FloodlightActivitiesListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListFloodlightActivitiesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -4331,8 +4331,8 @@ module Google
         def list_floodlight_activities(profile_id, advertiser_id: nil, floodlight_activity_group_ids: nil, floodlight_activity_group_name: nil, floodlight_activity_group_tag_string: nil, floodlight_activity_group_type: nil, floodlight_configuration_id: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, tag_string: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/floodlightActivities'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::FloodlightActivitiesListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::FloodlightActivitiesListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListFloodlightActivitiesResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListFloodlightActivitiesResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
           command.query['floodlightActivityGroupIds'] = floodlight_activity_group_ids unless floodlight_activity_group_ids.nil?
@@ -4596,10 +4596,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::FloodlightActivityGroupsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListFloodlightActivityGroupsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::FloodlightActivityGroupsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListFloodlightActivityGroupsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -4607,8 +4607,8 @@ module Google
         def list_floodlight_activity_groups(profile_id, advertiser_id: nil, floodlight_configuration_id: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/floodlightActivityGroups'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::FloodlightActivityGroupsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::FloodlightActivityGroupsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListFloodlightActivityGroupsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListFloodlightActivityGroupsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
           command.query['floodlightConfigurationId'] = floodlight_configuration_id unless floodlight_configuration_id.nil?
@@ -4765,10 +4765,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::FloodlightConfigurationsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListFloodlightConfigurationsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::FloodlightConfigurationsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListFloodlightConfigurationsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -4776,8 +4776,8 @@ module Google
         def list_floodlight_configurations(profile_id, ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/floodlightConfigurations'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::FloodlightConfigurationsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::FloodlightConfigurationsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListFloodlightConfigurationsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListFloodlightConfigurationsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['ids'] = ids unless ids.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -4944,10 +4944,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::InventoryItemsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListInventoryItemsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::InventoryItemsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListInventoryItemsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -4955,8 +4955,8 @@ module Google
         def list_inventory_items(profile_id, project_id, ids: nil, in_plan: nil, max_results: nil, order_id: nil, page_token: nil, site_id: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/projects/{projectId}/inventoryItems'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::InventoryItemsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::InventoryItemsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListInventoryItemsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListInventoryItemsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['ids'] = ids unless ids.nil?
@@ -5115,10 +5115,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::LandingPagesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListLandingPagesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::LandingPagesListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListLandingPagesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -5126,8 +5126,8 @@ module Google
         def list_landing_pages(profile_id, campaign_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/campaigns/{campaignId}/landingPages'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::LandingPagesListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::LandingPagesListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListLandingPagesResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListLandingPagesResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['campaignId'] = campaign_id unless campaign_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -5240,10 +5240,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::MetrosListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListMetrosResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::MetrosListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListMetrosResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -5251,8 +5251,8 @@ module Google
         def list_metros(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/metros'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::MetrosListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::MetrosListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListMetrosResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListMetrosResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -5315,10 +5315,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::MobileCarriersListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListMobileCarriersResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::MobileCarriersListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListMobileCarriersResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -5326,8 +5326,8 @@ module Google
         def list_mobile_carriers(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/mobileCarriers'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::MobileCarriersListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::MobileCarriersListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListMobileCarriersResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListMobileCarriersResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -5390,10 +5390,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::OperatingSystemVersionsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListOperatingSystemVersionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::OperatingSystemVersionsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListOperatingSystemVersionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -5401,8 +5401,8 @@ module Google
         def list_operating_system_versions(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/operatingSystemVersions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::OperatingSystemVersionsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::OperatingSystemVersionsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListOperatingSystemVersionsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListOperatingSystemVersionsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -5465,10 +5465,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::OperatingSystemsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListOperatingSystemsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::OperatingSystemsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListOperatingSystemsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -5476,8 +5476,8 @@ module Google
         def list_operating_systems(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/operatingSystems'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::OperatingSystemsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::OperatingSystemsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListOperatingSystemsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListOperatingSystemsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -5569,10 +5569,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::OrderDocumentsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListOrderDocumentsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::OrderDocumentsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListOrderDocumentsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -5580,8 +5580,8 @@ module Google
         def list_order_documents(profile_id, project_id, approved: nil, ids: nil, max_results: nil, order_id: nil, page_token: nil, search_string: nil, site_id: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/projects/{projectId}/orderDocuments'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::OrderDocumentsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::OrderDocumentsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListOrderDocumentsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListOrderDocumentsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['approved'] = approved unless approved.nil?
@@ -5678,10 +5678,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::OrdersListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListOrdersResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::OrdersListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListOrdersResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -5689,8 +5689,8 @@ module Google
         def list_orders(profile_id, project_id, ids: nil, max_results: nil, page_token: nil, search_string: nil, site_id: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/projects/{projectId}/orders'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::OrdersListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::OrdersListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListOrdersResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListOrdersResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['ids'] = ids unless ids.nil?
@@ -5843,10 +5843,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::PlacementGroupsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListPlacementGroupsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::PlacementGroupsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListPlacementGroupsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -5854,8 +5854,8 @@ module Google
         def list_placement_groups(profile_id, advertiser_ids: nil, archived: nil, campaign_ids: nil, content_category_ids: nil, directory_site_ids: nil, ids: nil, max_results: nil, page_token: nil, placement_group_type: nil, placement_strategy_ids: nil, pricing_types: nil, search_string: nil, site_ids: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/placementGroups'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::PlacementGroupsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::PlacementGroupsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListPlacementGroupsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListPlacementGroupsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['advertiserIds'] = advertiser_ids unless advertiser_ids.nil?
           command.query['archived'] = archived unless archived.nil?
@@ -6108,10 +6108,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::PlacementStrategiesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListPlacementStrategiesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::PlacementStrategiesListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListPlacementStrategiesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -6119,8 +6119,8 @@ module Google
         def list_placement_strategies(profile_id, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/placementStrategies'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::PlacementStrategiesListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::PlacementStrategiesListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListPlacementStrategiesResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListPlacementStrategiesResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['ids'] = ids unless ids.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -6237,19 +6237,19 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::GenerateTagsResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::GeneratePlacementsTagsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::GenerateTagsResponse]
+        # @return [Google::Apis::DfareportingV2_1::GeneratePlacementsTagsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generatetags_placement(profile_id, campaign_id: nil, placement_ids: nil, tag_formats: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def generate_placement_tags(profile_id, campaign_id: nil, placement_ids: nil, tag_formats: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/placements/generatetags'
           command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::GenerateTagsResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::GenerateTagsResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::GeneratePlacementsTagsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::GeneratePlacementsTagsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['campaignId'] = campaign_id unless campaign_id.nil?
           command.query['placementIds'] = placement_ids unless placement_ids.nil?
@@ -6400,10 +6400,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::PlacementsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListPlacementsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::PlacementsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListPlacementsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -6411,8 +6411,8 @@ module Google
         def list_placements(profile_id, advertiser_ids: nil, archived: nil, campaign_ids: nil, compatibilities: nil, content_category_ids: nil, directory_site_ids: nil, group_ids: nil, ids: nil, max_results: nil, page_token: nil, payment_source: nil, placement_strategy_ids: nil, pricing_types: nil, search_string: nil, site_ids: nil, size_ids: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/placements'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::PlacementsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::PlacementsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListPlacementsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListPlacementsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['advertiserIds'] = advertiser_ids unless advertiser_ids.nil?
           command.query['archived'] = archived unless archived.nil?
@@ -6574,10 +6574,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::PlatformTypesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListPlatformTypesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::PlatformTypesListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListPlatformTypesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -6585,8 +6585,8 @@ module Google
         def list_platform_types(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/platformTypes'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::PlatformTypesListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::PlatformTypesListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListPlatformTypesResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListPlatformTypesResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -6649,10 +6649,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::PostalCodesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListPostalCodesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::PostalCodesListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListPostalCodesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -6660,8 +6660,8 @@ module Google
         def list_postal_codes(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/postalCodes'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::PostalCodesListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::PostalCodesListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListPostalCodesResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListPostalCodesResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -6743,10 +6743,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::ProjectsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListProjectsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::ProjectsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListProjectsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -6754,8 +6754,8 @@ module Google
         def list_projects(profile_id, advertiser_ids: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/projects'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::ProjectsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::ProjectsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListProjectsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListProjectsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['advertiserIds'] = advertiser_ids unless advertiser_ids.nil?
           command.query['ids'] = ids unless ids.nil?
@@ -6786,10 +6786,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::RegionsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListRegionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::RegionsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListRegionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -6797,8 +6797,8 @@ module Google
         def list_regions(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/regions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::RegionsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::RegionsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListRegionsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListRegionsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -7043,10 +7043,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::RemarketingListsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListRemarketingListsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::RemarketingListsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListRemarketingListsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -7054,8 +7054,8 @@ module Google
         def list_remarketing_lists(profile_id, active: nil, advertiser_id: nil, floodlight_activity_id: nil, max_results: nil, name: nil, page_token: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/remarketingLists'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::RemarketingListsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::RemarketingListsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListRemarketingListsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListRemarketingListsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['active'] = active unless active.nil?
           command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
@@ -7716,10 +7716,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::SitesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListSitesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::SitesListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListSitesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -7727,8 +7727,8 @@ module Google
         def list_sites(profile_id, accepts_in_stream_video_placements: nil, accepts_interstitial_placements: nil, accepts_publisher_paid_placements: nil, ad_words_site: nil, approved: nil, campaign_ids: nil, directory_site_ids: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, subaccount_id: nil, unmapped_site: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/sites'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::SitesListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::SitesListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListSitesResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListSitesResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['acceptsInStreamVideoPlacements'] = accepts_in_stream_video_placements unless accepts_in_stream_video_placements.nil?
           command.query['acceptsInterstitialPlacements'] = accepts_interstitial_placements unless accepts_interstitial_placements.nil?
@@ -7934,10 +7934,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::SizesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListSizesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::SizesListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListSizesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -7945,8 +7945,8 @@ module Google
         def list_sizes(profile_id, height: nil, iab_standard: nil, ids: nil, width: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/sizes'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::SizesListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::SizesListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListSizesResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListSizesResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['height'] = height unless height.nil?
           command.query['iabStandard'] = iab_standard unless iab_standard.nil?
@@ -8069,10 +8069,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::SubaccountsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListSubaccountsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::SubaccountsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListSubaccountsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -8080,8 +8080,8 @@ module Google
         def list_subaccounts(profile_id, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/subaccounts'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::SubaccountsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::SubaccountsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListSubaccountsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListSubaccountsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['ids'] = ids unless ids.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -8251,10 +8251,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::TargetableRemarketingListsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListTargetableRemarketingListsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::TargetableRemarketingListsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListTargetableRemarketingListsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -8262,8 +8262,8 @@ module Google
         def list_targetable_remarketing_lists(profile_id, active: nil, advertiser_id: nil, max_results: nil, name: nil, page_token: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/targetableRemarketingLists'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::TargetableRemarketingListsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::TargetableRemarketingListsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListTargetableRemarketingListsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListTargetableRemarketingListsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['active'] = active unless active.nil?
           command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
@@ -8402,10 +8402,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::UserRolePermissionGroupsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListUserRolePermissionGroupsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::UserRolePermissionGroupsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListUserRolePermissionGroupsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -8413,8 +8413,8 @@ module Google
         def list_user_role_permission_groups(profile_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/userRolePermissionGroups'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::UserRolePermissionGroupsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::UserRolePermissionGroupsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListUserRolePermissionGroupsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListUserRolePermissionGroupsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -8479,10 +8479,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::UserRolePermissionsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListUserRolePermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::UserRolePermissionsListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListUserRolePermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -8490,8 +8490,8 @@ module Google
         def list_user_role_permissions(profile_id, ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/userRolePermissions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::UserRolePermissionsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::UserRolePermissionsListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListUserRolePermissionsResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListUserRolePermissionsResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['ids'] = ids unless ids.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -8653,10 +8653,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV2_1::UserRolesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DfareportingV2_1::ListUserRolesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DfareportingV2_1::UserRolesListResponse]
+        # @return [Google::Apis::DfareportingV2_1::ListUserRolesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -8664,8 +8664,8 @@ module Google
         def list_user_roles(profile_id, account_user_role_only: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, subaccount_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/userRoles'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DfareportingV2_1::UserRolesListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV2_1::UserRolesListResponse
+          command.response_representation = Google::Apis::DfareportingV2_1::ListUserRolesResponse::Representation
+          command.response_class = Google::Apis::DfareportingV2_1::ListUserRolesResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['accountUserRoleOnly'] = account_user_role_only unless account_user_role_only.nil?
           command.query['ids'] = ids unless ids.nil?

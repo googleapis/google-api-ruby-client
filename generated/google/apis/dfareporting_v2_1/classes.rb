@@ -176,7 +176,7 @@ module Google
       
         # Reporting Configuration
         # Corresponds to the JSON property `reportsConfiguration`
-        # @return [Google::Apis::DfareportingV2_1::Configuration]
+        # @return [Google::Apis::DfareportingV2_1::ReportsConfiguration]
         attr_accessor :reports_configuration
       
         # File size limit in kilobytes of Rich Media teaser creatives. Must be between 1
@@ -346,7 +346,7 @@ module Google
       end
       
       # Account Permission Group List Response
-      class ListResponse
+      class ListAccountPermissionGroupsResponse
         include Google::Apis::Core::Hashable
       
         # Account permission group collection.
@@ -372,7 +372,7 @@ module Google
       end
       
       # Account Permission List Response
-      class AccountPermissionsListResponse
+      class ListAccountPermissionsResponse
         include Google::Apis::Core::Hashable
       
         # Account permission collection.
@@ -535,7 +535,7 @@ module Google
       end
       
       # Account User Profile List Response
-      class AccountUserProfilesListResponse
+      class ListAccountUserProfilesResponse
         include Google::Apis::Core::Hashable
       
         # Account user profile collection.
@@ -567,7 +567,7 @@ module Google
       end
       
       # Account List Response
-      class AccountsListResponse
+      class ListAccountsResponse
         include Google::Apis::Core::Hashable
       
         # Account collection.
@@ -954,7 +954,7 @@ module Google
       end
       
       # Ad List Response
-      class AdsListResponse
+      class ListAdsResponse
         include Google::Apis::Core::Hashable
       
         # Ad collection.
@@ -1144,7 +1144,7 @@ module Google
       end
       
       # Advertiser Group List Response
-      class AdvertiserGroupsListResponse
+      class ListAdvertiserGroupsResponse
         include Google::Apis::Core::Hashable
       
         # Advertiser group collection.
@@ -1176,7 +1176,7 @@ module Google
       end
       
       # Advertiser List Response
-      class AdvertisersListResponse
+      class ListAdvertisersResponse
         include Google::Apis::Core::Hashable
       
         # Advertiser collection.
@@ -1339,7 +1339,7 @@ module Google
       end
       
       # Browser List Response
-      class BrowsersListResponse
+      class ListBrowsersResponse
         include Google::Apis::Core::Hashable
       
         # Browser collection.
@@ -1589,7 +1589,7 @@ module Google
       end
       
       # Campaign Creative Association List Response
-      class CampaignCreativeAssociationsListResponse
+      class ListCampaignCreativeAssociationsResponse
         include Google::Apis::Core::Hashable
       
         # Campaign creative association collection
@@ -1621,7 +1621,7 @@ module Google
       end
       
       # Campaign List Response
-      class CampaignsListResponse
+      class ListCampaignsResponse
         include Google::Apis::Core::Hashable
       
         # Campaign collection.
@@ -1696,7 +1696,7 @@ module Google
         # ad, or other type.
         # Corresponds to the JSON property `objectId`
         # @return [String]
-        attr_accessor :object_id_prop
+        attr_accessor :obj_id
       
         # Object type of the change log.
         # Corresponds to the JSON property `objectType`
@@ -1743,7 +1743,7 @@ module Google
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @new_value = args[:new_value] unless args[:new_value].nil?
-          @object_id_prop = args[:object_id_prop] unless args[:object_id_prop].nil?
+          @obj_id = args[:obj_id] unless args[:obj_id].nil?
           @object_type = args[:object_type] unless args[:object_type].nil?
           @old_value = args[:old_value] unless args[:old_value].nil?
           @subaccount_id = args[:subaccount_id] unless args[:subaccount_id].nil?
@@ -1754,7 +1754,7 @@ module Google
       end
       
       # Change Log List Response
-      class ChangeLogsListResponse
+      class ListChangeLogsResponse
         include Google::Apis::Core::Hashable
       
         # Change log collection.
@@ -1786,7 +1786,7 @@ module Google
       end
       
       # City List Response
-      class CitiesListResponse
+      class ListCitiesResponse
         include Google::Apis::Core::Hashable
       
         # City collection.
@@ -2089,7 +2089,7 @@ module Google
       end
       
       # Connection Type List Response
-      class ConnectionTypesListResponse
+      class ListConnectionTypesResponse
         include Google::Apis::Core::Hashable
       
         # Collection of connection types such as broadband and mobile.
@@ -2115,7 +2115,7 @@ module Google
       end
       
       # Content Category List Response
-      class ContentCategoriesListResponse
+      class ListContentCategoriesResponse
         include Google::Apis::Core::Hashable
       
         # Content category collection.
@@ -2187,7 +2187,7 @@ module Google
       end
       
       # Country List Response
-      class CountriesListResponse
+      class ListCountriesResponse
         include Google::Apis::Core::Hashable
       
         # Country collection.
@@ -3472,7 +3472,7 @@ module Google
       end
       
       # Creative Field Value List Response
-      class CreativeFieldValuesListResponse
+      class ListCreativeFieldValuesResponse
         include Google::Apis::Core::Hashable
       
         # Creative field value collection.
@@ -3504,7 +3504,7 @@ module Google
       end
       
       # Creative Field List Response
-      class CreativeFieldsListResponse
+      class ListCreativeFieldsResponse
         include Google::Apis::Core::Hashable
       
         # Creative field collection.
@@ -3631,7 +3631,7 @@ module Google
       end
       
       # Creative Group List Response
-      class CreativeGroupsListResponse
+      class ListCreativeGroupsResponse
         include Google::Apis::Core::Hashable
       
         # Creative group collection.
@@ -3770,7 +3770,7 @@ module Google
       end
       
       # Creative List Response
-      class CreativesListResponse
+      class ListCreativesResponse
         include Google::Apis::Core::Hashable
       
         # Creative collection.
@@ -4523,7 +4523,7 @@ module Google
       end
       
       # Directory Site Contact List Response
-      class DirectorySiteContactsListResponse
+      class ListDirectorySiteContactsResponse
         include Google::Apis::Core::Hashable
       
         # Directory site contact collection
@@ -4617,7 +4617,7 @@ module Google
       end
       
       # Directory Site List Response
-      class DirectorySitesListResponse
+      class ListDirectorySitesResponse
         include Google::Apis::Core::Hashable
       
         # Directory site collection.
@@ -4807,7 +4807,7 @@ module Google
       end
       
       # Event Tag List Response
-      class EventTagsListResponse
+      class ListEventTagsResponse
         include Google::Apis::Core::Hashable
       
         # Event tag collection.
@@ -5010,7 +5010,7 @@ module Google
       end
       
       # Floodlight Activity GenerateTag Response
-      class GenerateTagResponse
+      class FloodlightActivitiesGenerateTagResponse
         include Google::Apis::Core::Hashable
       
         # Generated tag for this floodlight activity.
@@ -5036,7 +5036,7 @@ module Google
       end
       
       # Floodlight Activity List Response
-      class FloodlightActivitiesListResponse
+      class ListFloodlightActivitiesResponse
         include Google::Apis::Core::Hashable
       
         # Floodlight activity collection.
@@ -5426,7 +5426,7 @@ module Google
       end
       
       # Floodlight Activity Group List Response
-      class FloodlightActivityGroupsListResponse
+      class ListFloodlightActivityGroupsResponse
         include Google::Apis::Core::Hashable
       
         # Floodlight activity group collection.
@@ -5639,7 +5639,7 @@ module Google
       end
       
       # Floodlight Configuration List Response
-      class FloodlightConfigurationsListResponse
+      class ListFloodlightConfigurationsResponse
         include Google::Apis::Core::Hashable
       
         # Floodlight configuration collection.
@@ -5979,7 +5979,7 @@ module Google
       end
       
       # Inventory item List Response
-      class InventoryItemsListResponse
+      class ListInventoryItemsResponse
         include Google::Apis::Core::Hashable
       
         # Inventory item collection
@@ -6079,7 +6079,7 @@ module Google
       end
       
       # Landing Page List Response
-      class LandingPagesListResponse
+      class ListLandingPagesResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -6388,7 +6388,7 @@ module Google
       end
       
       # Metro List Response
-      class MetrosListResponse
+      class ListMetrosResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -6458,7 +6458,7 @@ module Google
       end
       
       # Mobile Carrier List Response
-      class MobileCarriersListResponse
+      class ListMobileCarriersResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -6670,7 +6670,7 @@ module Google
       end
       
       # Operating System Version List Response
-      class OperatingSystemVersionsListResponse
+      class ListOperatingSystemVersionsResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -6696,7 +6696,7 @@ module Google
       end
       
       # Operating System List Response
-      class OperatingSystemsListResponse
+      class ListOperatingSystemsResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -7043,7 +7043,7 @@ module Google
       end
       
       # Order document List Response
-      class OrderDocumentsListResponse
+      class ListOrderDocumentsResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -7075,7 +7075,7 @@ module Google
       end
       
       # Order List Response
-      class OrdersListResponse
+      class ListOrdersResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -7655,7 +7655,7 @@ module Google
       end
       
       # Placement Group List Response
-      class PlacementGroupsListResponse
+      class ListPlacementGroupsResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -7687,7 +7687,7 @@ module Google
       end
       
       # Placement Strategy List Response
-      class PlacementStrategiesListResponse
+      class ListPlacementStrategiesResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -7785,7 +7785,7 @@ module Google
       end
       
       # Placement GenerateTags Response
-      class GenerateTagsResponse
+      class GeneratePlacementsTagsResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -7811,7 +7811,7 @@ module Google
       end
       
       # Placement List Response
-      class PlacementsListResponse
+      class ListPlacementsResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -7875,7 +7875,7 @@ module Google
       end
       
       # Platform Type List Response
-      class PlatformTypesListResponse
+      class ListPlatformTypesResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -8017,7 +8017,7 @@ module Google
       end
       
       # Postal Code List Response
-      class PostalCodesListResponse
+      class ListPostalCodesResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -8424,7 +8424,7 @@ module Google
       end
       
       # Project List Response
-      class ProjectsListResponse
+      class ListProjectsResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -8593,7 +8593,7 @@ module Google
       end
       
       # Region List Response
-      class RegionsListResponse
+      class ListRegionsResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -8763,7 +8763,7 @@ module Google
       end
       
       # Remarketing list response
-      class RemarketingListsListResponse
+      class ListRemarketingListsResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -9534,7 +9534,7 @@ module Google
       end
       
       # Reporting Configuration
-      class Configuration
+      class ReportsConfiguration
         include Google::Apis::Core::Hashable
       
         # Whether the exposure to conversion report is enabled. This report shows
@@ -9820,7 +9820,7 @@ module Google
       end
       
       # Site List Response
-      class SitesListResponse
+      class ListSitesResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -9897,7 +9897,7 @@ module Google
       end
       
       # Size List Response
-      class SizesListResponse
+      class ListSizesResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -10000,7 +10000,7 @@ module Google
       end
       
       # Subaccount List Response
-      class SubaccountsListResponse
+      class ListSubaccountsResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -10272,7 +10272,7 @@ module Google
       end
       
       # Targetable remarketing list response
-      class TargetableRemarketingListsListResponse
+      class ListTargetableRemarketingListsResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -10668,7 +10668,7 @@ module Google
       end
       
       # User Role Permission Group List Response
-      class UserRolePermissionGroupsListResponse
+      class ListUserRolePermissionGroupsResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -10694,7 +10694,7 @@ module Google
       end
       
       # User Role Permission List Response
-      class UserRolePermissionsListResponse
+      class ListUserRolePermissionsResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -10720,7 +10720,7 @@ module Google
       end
       
       # User Role List Response
-      class UserRolesListResponse
+      class ListUserRolesResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "

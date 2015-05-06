@@ -30,7 +30,7 @@ module Google
         end
       end
       
-      class List
+      class AccountsList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -131,7 +131,7 @@ module Google
       end
       
       # @private
-      class List
+      class AccountsList
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AdexchangebuyerV1_3::Account, decorator: Google::Apis::AdexchangebuyerV1_3::Account::Representation
       
@@ -277,9 +277,9 @@ module Google
           collection :creative_status_rate, as: 'creativeStatusRate'
           collection :hosted_match_status_rate, as: 'hostedMatchStatusRate'
           property :kind, as: 'kind'
-          property :latency50th_percentile, as: 'latency50thPercentile'
-          property :latency85th_percentile, as: 'latency85thPercentile'
-          property :latency95th_percentile, as: 'latency95thPercentile'
+          property :latency_50th_percentile, as: 'latency50thPercentile'
+          property :latency_85th_percentile, as: 'latency85thPercentile'
+          property :latency_95th_percentile, as: 'latency95thPercentile'
           property :no_quota_in_region, as: 'noQuotaInRegion'
           property :out_of_quota, as: 'outOfQuota'
           property :pixel_match_requests, as: 'pixelMatchRequests'

@@ -110,7 +110,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class Feed
+      class AudiencesFeed
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -226,7 +226,7 @@ module Google
         end
       end
       
-      class AclentryResource
+      class PlusDomainsAclentryResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -239,7 +239,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :domain_restricted, as: 'domainRestricted'
-          collection :items, as: 'items', class: Google::Apis::PlusDomainsV1::AclentryResource, decorator: Google::Apis::PlusDomainsV1::AclentryResource::Representation
+          collection :items, as: 'items', class: Google::Apis::PlusDomainsV1::PlusDomainsAclentryResource, decorator: Google::Apis::PlusDomainsV1::PlusDomainsAclentryResource::Representation
       
           property :kind, as: 'kind'
         end
@@ -486,7 +486,7 @@ module Google
       class Audience
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
-          property :item, as: 'item', class: Google::Apis::PlusDomainsV1::AclentryResource, decorator: Google::Apis::PlusDomainsV1::AclentryResource::Representation
+          property :item, as: 'item', class: Google::Apis::PlusDomainsV1::PlusDomainsAclentryResource, decorator: Google::Apis::PlusDomainsV1::PlusDomainsAclentryResource::Representation
       
           property :kind, as: 'kind'
           property :member_count, as: 'memberCount'
@@ -495,7 +495,7 @@ module Google
       end
       
       # @private
-      class Feed
+      class AudiencesFeed
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::PlusDomainsV1::Audience, decorator: Google::Apis::PlusDomainsV1::Audience::Representation
@@ -851,7 +851,7 @@ module Google
       end
       
       # @private
-      class AclentryResource
+      class PlusDomainsAclentryResource
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :id, as: 'id'

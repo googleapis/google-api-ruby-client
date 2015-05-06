@@ -161,6 +161,12 @@ module Google
         # @return [Array<Google::Apis::DoubleclicksearchV2::CustomMetric>]
         attr_accessor :custom_metric
       
+        # The type of device on which the conversion occurred. Valid values are "DESKTOP"
+        # , "TABLET", "HIGH_END_MOBILE", "OTHER_DEVICE".
+        # Corresponds to the JSON property `deviceType`
+        # @return [String]
+        attr_accessor :device_type
+      
         # DS conversion ID.
         # Corresponds to the JSON property `dsConversionId`
         # @return [String]
@@ -270,6 +276,7 @@ module Google
           @currency_code = args[:currency_code] unless args[:currency_code].nil?
           @custom_dimension = args[:custom_dimension] unless args[:custom_dimension].nil?
           @custom_metric = args[:custom_metric] unless args[:custom_metric].nil?
+          @device_type = args[:device_type] unless args[:device_type].nil?
           @ds_conversion_id = args[:ds_conversion_id] unless args[:ds_conversion_id].nil?
           @engine_account_id = args[:engine_account_id] unless args[:engine_account_id].nil?
           @feed_id = args[:feed_id] unless args[:feed_id].nil?
@@ -290,7 +297,7 @@ module Google
       end
       
       # A list of conversions.
-      class List
+      class ConversionList
         include Google::Apis::Core::Hashable
       
         # The conversions being requested.

@@ -30,19 +30,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LabelAdded
+      class HistoryLabelAdded
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LabelRemoved
+      class HistoryLabelRemoved
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class MessageAdded
+      class HistoryMessageAdded
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class MessageDeleted
+      class HistoryMessageDeleted
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -115,21 +115,21 @@ module Google
       class History
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
-          collection :labels_added, as: 'labelsAdded', class: Google::Apis::GmailV1::LabelAdded, decorator: Google::Apis::GmailV1::LabelAdded::Representation
+          collection :labels_added, as: 'labelsAdded', class: Google::Apis::GmailV1::HistoryLabelAdded, decorator: Google::Apis::GmailV1::HistoryLabelAdded::Representation
       
-          collection :labels_removed, as: 'labelsRemoved', class: Google::Apis::GmailV1::LabelRemoved, decorator: Google::Apis::GmailV1::LabelRemoved::Representation
+          collection :labels_removed, as: 'labelsRemoved', class: Google::Apis::GmailV1::HistoryLabelRemoved, decorator: Google::Apis::GmailV1::HistoryLabelRemoved::Representation
       
           collection :messages, as: 'messages', class: Google::Apis::GmailV1::Message, decorator: Google::Apis::GmailV1::Message::Representation
       
-          collection :messages_added, as: 'messagesAdded', class: Google::Apis::GmailV1::MessageAdded, decorator: Google::Apis::GmailV1::MessageAdded::Representation
+          collection :messages_added, as: 'messagesAdded', class: Google::Apis::GmailV1::HistoryMessageAdded, decorator: Google::Apis::GmailV1::HistoryMessageAdded::Representation
       
-          collection :messages_deleted, as: 'messagesDeleted', class: Google::Apis::GmailV1::MessageDeleted, decorator: Google::Apis::GmailV1::MessageDeleted::Representation
+          collection :messages_deleted, as: 'messagesDeleted', class: Google::Apis::GmailV1::HistoryMessageDeleted, decorator: Google::Apis::GmailV1::HistoryMessageDeleted::Representation
       
         end
       end
       
       # @private
-      class LabelAdded
+      class HistoryLabelAdded
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :label_ids, as: 'labelIds'
           property :message, as: 'message', class: Google::Apis::GmailV1::Message, decorator: Google::Apis::GmailV1::Message::Representation
@@ -138,7 +138,7 @@ module Google
       end
       
       # @private
-      class LabelRemoved
+      class HistoryLabelRemoved
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :label_ids, as: 'labelIds'
           property :message, as: 'message', class: Google::Apis::GmailV1::Message, decorator: Google::Apis::GmailV1::Message::Representation
@@ -147,7 +147,7 @@ module Google
       end
       
       # @private
-      class MessageAdded
+      class HistoryMessageAdded
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message', class: Google::Apis::GmailV1::Message, decorator: Google::Apis::GmailV1::Message::Representation
       
@@ -155,7 +155,7 @@ module Google
       end
       
       # @private
-      class MessageDeleted
+      class HistoryMessageDeleted
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message', class: Google::Apis::GmailV1::Message, decorator: Google::Apis::GmailV1::Message::Representation
       

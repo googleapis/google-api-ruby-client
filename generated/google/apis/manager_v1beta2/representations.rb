@@ -50,7 +50,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListResponse
+      class ListDeploymentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -158,7 +158,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TemplatesListResponse
+      class ListTemplatesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -232,7 +232,7 @@ module Google
       end
       
       # @private
-      class ListResponse
+      class ListDeploymentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :resources, as: 'resources', class: Google::Apis::ManagerV1beta2::Deployment, decorator: Google::Apis::ManagerV1beta2::Deployment::Representation
@@ -524,7 +524,7 @@ module Google
       end
       
       # @private
-      class TemplatesListResponse
+      class ListTemplatesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :resources, as: 'resources', class: Google::Apis::ManagerV1beta2::Template, decorator: Google::Apis::ManagerV1beta2::Template::Representation

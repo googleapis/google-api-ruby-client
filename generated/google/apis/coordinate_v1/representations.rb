@@ -30,7 +30,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListResponse
+      class ListCustomFieldDefResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -50,7 +50,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class JobListResponse
+      class ListJobResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -62,11 +62,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LocationListResponse
+      class ListLocationResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class Record
+      class LocationRecord
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -78,7 +78,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TeamListResponse
+      class ListTeamResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -90,7 +90,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class WorkerListResponse
+      class ListWorkerResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -118,7 +118,7 @@ module Google
       end
       
       # @private
-      class ListResponse
+      class ListCustomFieldDefResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::CoordinateV1::CustomFieldDef, decorator: Google::Apis::CoordinateV1::CustomFieldDef::Representation
       
@@ -167,7 +167,7 @@ module Google
       end
       
       # @private
-      class JobListResponse
+      class ListJobResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::CoordinateV1::Job, decorator: Google::Apis::CoordinateV1::Job::Representation
       
@@ -204,9 +204,9 @@ module Google
       end
       
       # @private
-      class LocationListResponse
+      class ListLocationResponse
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::CoordinateV1::Record, decorator: Google::Apis::CoordinateV1::Record::Representation
+          collection :items, as: 'items', class: Google::Apis::CoordinateV1::LocationRecord, decorator: Google::Apis::CoordinateV1::LocationRecord::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -216,7 +216,7 @@ module Google
       end
       
       # @private
-      class Record
+      class LocationRecord
         class Representation < Google::Apis::Core::JsonRepresentation
           property :collection_time, as: 'collectionTime'
           property :confidence_radius, as: 'confidenceRadius'
@@ -247,7 +247,7 @@ module Google
       end
       
       # @private
-      class TeamListResponse
+      class ListTeamResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::CoordinateV1::Team, decorator: Google::Apis::CoordinateV1::Team::Representation
       
@@ -273,7 +273,7 @@ module Google
       end
       
       # @private
-      class WorkerListResponse
+      class ListWorkerResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::CoordinateV1::Worker, decorator: Google::Apis::CoordinateV1::Worker::Representation
       

@@ -38,7 +38,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListResponse
+      class ListAssetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -70,7 +70,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class FeaturesBatchInsertRequest
+      class InsertFeaturesBatchRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -78,7 +78,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class FeaturesListResponse
+      class ListFeaturesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -126,7 +126,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class IconsListResponse
+      class ListIconsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -138,7 +138,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LayersListResponse
+      class ListLayersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -166,7 +166,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class MapsListResponse
+      class ListMapsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -174,7 +174,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ParentsListResponse
+      class ListParentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -182,23 +182,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class BatchDeleteRequest
+      class BatchDeletePermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class BatchDeleteResponse
+      class BatchDeletePermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class BatchUpdateRequest
+      class BatchUpdatePermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class BatchUpdateResponse
+      class BatchUpdatePermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PermissionsListResponse
+      class ListPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -218,7 +218,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ProjectsListResponse
+      class ListProjectsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -230,7 +230,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PublishedLayersListResponse
+      class ListPublishedLayersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -238,7 +238,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PublishedMapsListResponse
+      class ListPublishedMapsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -250,7 +250,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RasterCollectionsListResponse
+      class ListRasterCollectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -258,27 +258,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RasterCollectionsRasterBatchDeleteRequest
+      class BatchDeleteRasterCollectionsRasterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RasterCollectionsRastersBatchDeleteResponse
+      class BatchDeleteRasterCollectionsRastersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RasterCollectionsRastersBatchInsertRequest
+      class BatchInsertRasterCollectionsRastersRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RasterCollectionsRastersBatchInsertResponse
+      class BatchInsertRasterCollectionsRastersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RasterCollectionsRastersListResponse
+      class ListRasterCollectionsRastersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RastersListResponse
+      class ListRastersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -306,7 +306,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TablesListResponse
+      class ListTablesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -446,7 +446,7 @@ module Google
       end
       
       # @private
-      class ListResponse
+      class ListAssetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assets, as: 'assets', class: Google::Apis::MapsengineV1::Asset, decorator: Google::Apis::MapsengineV1::Asset::Representation
       
@@ -521,7 +521,7 @@ module Google
       end
       
       # @private
-      class FeaturesBatchInsertRequest
+      class InsertFeaturesBatchRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :features, as: 'features', class: Google::Apis::MapsengineV1::Feature, decorator: Google::Apis::MapsengineV1::Feature::Representation
       
@@ -539,7 +539,7 @@ module Google
       end
       
       # @private
-      class FeaturesListResponse
+      class ListFeaturesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allowed_queries_per_second, as: 'allowedQueriesPerSecond'
           collection :features, as: 'features', class: Google::Apis::MapsengineV1::Feature, decorator: Google::Apis::MapsengineV1::Feature::Representation
@@ -684,7 +684,7 @@ module Google
       end
       
       # @private
-      class IconsListResponse
+      class ListIconsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :icons, as: 'icons', class: Google::Apis::MapsengineV1::Icon, decorator: Google::Apis::MapsengineV1::Icon::Representation
       
@@ -737,7 +737,7 @@ module Google
       end
       
       # @private
-      class LayersListResponse
+      class ListLayersResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :layers, as: 'layers', class: Google::Apis::MapsengineV1::Layer, decorator: Google::Apis::MapsengineV1::Layer::Representation
       
@@ -833,7 +833,7 @@ module Google
       end
       
       # @private
-      class MapsListResponse
+      class ListMapsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :maps, as: 'maps', class: Google::Apis::MapsengineV1::Map, decorator: Google::Apis::MapsengineV1::Map::Representation
       
@@ -849,7 +849,7 @@ module Google
       end
       
       # @private
-      class ParentsListResponse
+      class ListParentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :parents, as: 'parents', class: Google::Apis::MapsengineV1::Parent, decorator: Google::Apis::MapsengineV1::Parent::Representation
@@ -868,20 +868,20 @@ module Google
       end
       
       # @private
-      class BatchDeleteRequest
+      class BatchDeletePermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ids, as: 'ids'
         end
       end
       
       # @private
-      class BatchDeleteResponse
+      class BatchDeletePermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
       # @private
-      class BatchUpdateRequest
+      class BatchUpdatePermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions', class: Google::Apis::MapsengineV1::Permission, decorator: Google::Apis::MapsengineV1::Permission::Representation
       
@@ -889,13 +889,13 @@ module Google
       end
       
       # @private
-      class BatchUpdateResponse
+      class BatchUpdatePermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
       # @private
-      class PermissionsListResponse
+      class ListPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions', class: Google::Apis::MapsengineV1::Permission, decorator: Google::Apis::MapsengineV1::Permission::Representation
       
@@ -939,7 +939,7 @@ module Google
       end
       
       # @private
-      class ProjectsListResponse
+      class ListProjectsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :projects, as: 'projects', class: Google::Apis::MapsengineV1::Project, decorator: Google::Apis::MapsengineV1::Project::Representation
       
@@ -964,7 +964,7 @@ module Google
       end
       
       # @private
-      class PublishedLayersListResponse
+      class ListPublishedLayersResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :layers, as: 'layers', class: Google::Apis::MapsengineV1::PublishedLayer, decorator: Google::Apis::MapsengineV1::PublishedLayer::Representation
       
@@ -986,7 +986,7 @@ module Google
       end
       
       # @private
-      class PublishedMapsListResponse
+      class ListPublishedMapsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :maps, as: 'maps', class: Google::Apis::MapsengineV1::PublishedMap, decorator: Google::Apis::MapsengineV1::PublishedMap::Representation
       
@@ -1049,7 +1049,7 @@ module Google
       end
       
       # @private
-      class RasterCollectionsListResponse
+      class ListRasterCollectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, :base64 => true, as: 'nextPageToken'
           collection :raster_collections, as: 'rasterCollections', class: Google::Apis::MapsengineV1::RasterCollection, decorator: Google::Apis::MapsengineV1::RasterCollection::Representation
@@ -1075,33 +1075,33 @@ module Google
       end
       
       # @private
-      class RasterCollectionsRasterBatchDeleteRequest
+      class BatchDeleteRasterCollectionsRasterRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ids, as: 'ids'
         end
       end
       
       # @private
-      class RasterCollectionsRastersBatchDeleteResponse
+      class BatchDeleteRasterCollectionsRastersResponse
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
       # @private
-      class RasterCollectionsRastersBatchInsertRequest
+      class BatchInsertRasterCollectionsRastersRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ids, as: 'ids'
         end
       end
       
       # @private
-      class RasterCollectionsRastersBatchInsertResponse
+      class BatchInsertRasterCollectionsRastersResponse
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
       # @private
-      class RasterCollectionsRastersListResponse
+      class ListRasterCollectionsRastersResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :rasters, as: 'rasters', class: Google::Apis::MapsengineV1::RasterCollectionsRaster, decorator: Google::Apis::MapsengineV1::RasterCollectionsRaster::Representation
@@ -1110,7 +1110,7 @@ module Google
       end
       
       # @private
-      class RastersListResponse
+      class ListRastersResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :rasters, as: 'rasters', class: Google::Apis::MapsengineV1::Raster, decorator: Google::Apis::MapsengineV1::Raster::Representation
@@ -1196,7 +1196,7 @@ module Google
       end
       
       # @private
-      class TablesListResponse
+      class ListTablesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, :base64 => true, as: 'nextPageToken'
           collection :tables, as: 'tables', class: Google::Apis::MapsengineV1::Table, decorator: Google::Apis::MapsengineV1::Table::Representation

@@ -70,7 +70,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class List
+      class ZoneViewsList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -228,7 +228,7 @@ module Google
       end
       
       # @private
-      class List
+      class ZoneViewsList
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::ResourceviewsV1beta2::ResourceView, decorator: Google::Apis::ResourceviewsV1beta2::ResourceView::Representation
       

@@ -86,7 +86,7 @@ module Google
       end
       
       # 
-      class ListResponse
+      class ListAutoscalerResponse
         include Google::Apis::Core::Hashable
       
         # Autoscaler resources.

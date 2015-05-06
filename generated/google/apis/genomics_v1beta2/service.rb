@@ -578,7 +578,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_callset(call_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_call_set(call_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'callsets'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GenomicsV1beta2::CallSet::Representation
@@ -615,7 +615,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_callset(call_set_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_call_set(call_set_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'callsets/{callSetId}'
           command =  make_simple_command(:delete, path, options)
           command.params['callSetId'] = call_set_id unless call_set_id.nil?
@@ -649,7 +649,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_callset(call_set_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_call_set(call_set_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'callsets/{callSetId}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GenomicsV1beta2::CallSet::Representation
@@ -686,7 +686,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_callset(call_set_id, call_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_call_set(call_set_id, call_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'callsets/{callSetId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::GenomicsV1beta2::CallSet::Representation
@@ -762,7 +762,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_callset(call_set_id, call_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_call_set(call_set_id, call_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'callsets/{callSetId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::GenomicsV1beta2::CallSet::Representation
@@ -1044,7 +1044,7 @@ module Google
         
         # Creates and asynchronously runs an ad-hoc job. This is an experimental call
         # and may be removed or changed at any time.
-        # @param [Google::Apis::GenomicsV1beta2::CreateJobRequest] experimental_create_job_request_object
+        # @param [Google::Apis::GenomicsV1beta2::ExperimentalCreateJobRequest] experimental_create_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1058,10 +1058,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GenomicsV1beta2::CreateJobResponse] parsed result object
+        # @yieldparam result [Google::Apis::GenomicsV1beta2::ExperimentalCreateJobResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GenomicsV1beta2::CreateJobResponse]
+        # @return [Google::Apis::GenomicsV1beta2::ExperimentalCreateJobResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1069,10 +1069,10 @@ module Google
         def create_experimental_job(experimental_create_job_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'experimental/jobs/create'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::CreateJobRequest::Representation
+          command.request_representation = Google::Apis::GenomicsV1beta2::ExperimentalCreateJobRequest::Representation
           command.request_object = experimental_create_job_request_object
-          command.response_representation = Google::Apis::GenomicsV1beta2::CreateJobResponse::Representation
-          command.response_class = Google::Apis::GenomicsV1beta2::CreateJobResponse
+          command.response_representation = Google::Apis::GenomicsV1beta2::ExperimentalCreateJobResponse::Representation
+          command.response_class = Google::Apis::GenomicsV1beta2::ExperimentalCreateJobResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1286,7 +1286,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_readgroupset(read_group_set_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_read_group_set(read_group_set_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'readgroupsets/{readGroupSetId}'
           command =  make_simple_command(:delete, path, options)
           command.params['readGroupSetId'] = read_group_set_id unless read_group_set_id.nil?
@@ -1361,7 +1361,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_readgroupset(read_group_set_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_read_group_set(read_group_set_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'readgroupsets/{readGroupSetId}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GenomicsV1beta2::ReadGroupSet::Representation
@@ -1438,7 +1438,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_readgroupset(read_group_set_id, read_group_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_read_group_set(read_group_set_id, read_group_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'readgroupsets/{readGroupSetId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::GenomicsV1beta2::ReadGroupSet::Representation
@@ -1515,7 +1515,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_readgroupset(read_group_set_id, read_group_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_read_group_set(read_group_set_id, read_group_set_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'readgroupsets/{readGroupSetId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::GenomicsV1beta2::ReadGroupSet::Representation
@@ -1581,7 +1581,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_readgroupset_coveragebuckets(read_group_set_id, page_size: nil, page_token: nil, range_end: nil, range_reference_name: nil, range_start: nil, target_bucket_width: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_coverage_buckets(read_group_set_id, page_size: nil, page_token: nil, range_end: nil, range_reference_name: nil, range_start: nil, target_bucket_width: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'readgroupsets/{readGroupSetId}/coveragebuckets'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GenomicsV1beta2::ListCoverageBucketsResponse::Representation
@@ -1723,7 +1723,7 @@ module Google
         # Implements GlobalAllianceApi.getReferenceBases.
         # @param [String] reference_id
         #   The ID of the reference.
-        # @param [String] end_
+        # @param [String] end_position
         #   The end position (0-based, exclusive) of this query. Defaults to the length of
         #   this reference.
         # @param [Fixnum] page_size
@@ -1732,7 +1732,7 @@ module Google
         #   The continuation token, which is used to page through large result sets. To
         #   get the next page of results, set this parameter to the value of nextPageToken
         #   from the previous response.
-        # @param [String] start
+        # @param [String] start_position
         #   The start position (0-based) of this query. Defaults to 0.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1755,16 +1755,16 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_reference_bases(reference_id, end_: nil, page_size: nil, page_token: nil, start: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_reference_bases(reference_id, end_position: nil, page_size: nil, page_token: nil, start_position: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'references/{referenceId}/bases'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GenomicsV1beta2::ListBasesResponse::Representation
           command.response_class = Google::Apis::GenomicsV1beta2::ListBasesResponse
           command.params['referenceId'] = reference_id unless reference_id.nil?
-          command.query['end'] = end_ unless end_.nil?
+          command.query['end'] = end_position unless end_position.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['start'] = start unless start.nil?
+          command.query['start'] = start_position unless start_position.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1796,7 +1796,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_referenceset(reference_set_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_reference_set(reference_set_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'referencesets/{referenceSetId}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GenomicsV1beta2::ReferenceSet::Representation
@@ -1875,7 +1875,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def streamreads_streaming_readstore(stream_reads_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def stream_reads(stream_reads_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'streamingReadstore/streamreads'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GenomicsV1beta2::StreamReadsRequest::Representation

@@ -38,7 +38,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ScopedList
+      class AddressesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Warning
@@ -90,7 +90,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DiskMoveRequest
+      class MoveDiskRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -210,7 +210,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstanceMoveRequest
+      class MoveInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -450,19 +450,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AddHealthCheckRequest
+      class AddTargetPoolsHealthCheckRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AddInstanceRequest
+      class AddTargetPoolsInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RemoveHealthCheckRequest
+      class RemoveTargetPoolsHealthCheckRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RemoveInstanceRequest
+      class RemoveTargetPoolsInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -530,11 +530,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ValidateRequest
+      class ValidateUrlMapsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ValidateResponse
+      class ValidateUrlMapsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -608,7 +608,7 @@ module Google
       class AddressAggregatedList
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
-          hash :items, as: 'items', class: Google::Apis::ComputeV1::ScopedList, decorator: Google::Apis::ComputeV1::ScopedList::Representation
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::AddressesScopedList, decorator: Google::Apis::ComputeV1::AddressesScopedList::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -629,11 +629,11 @@ module Google
       end
       
       # @private
-      class ScopedList
+      class AddressesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :addresses, as: 'addresses', class: Google::Apis::ComputeV1::Address, decorator: Google::Apis::ComputeV1::Address::Representation
       
-          property :warning, as: 'warning', class: Google::Apis::ComputeV1::ScopedList::Warning, decorator: Google::Apis::ComputeV1::ScopedList::Warning::Representation
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::AddressesScopedList::Warning, decorator: Google::Apis::ComputeV1::AddressesScopedList::Warning::Representation
       
         end
         
@@ -641,7 +641,7 @@ module Google
         class Warning
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
-            collection :data, as: 'data', class: Google::Apis::ComputeV1::ScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::ScopedList::Warning::Datum::Representation
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::AddressesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::AddressesScopedList::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
@@ -796,7 +796,7 @@ module Google
       end
       
       # @private
-      class DiskMoveRequest
+      class MoveDiskRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination_zone, as: 'destinationZone'
           property :target_disk, as: 'targetDisk'
@@ -1163,7 +1163,7 @@ module Google
       end
       
       # @private
-      class InstanceMoveRequest
+      class MoveInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination_zone, as: 'destinationZone'
           property :target_instance, as: 'targetInstance'
@@ -1859,7 +1859,7 @@ module Google
       end
       
       # @private
-      class AddHealthCheckRequest
+      class AddTargetPoolsHealthCheckRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :health_checks, as: 'healthChecks', class: Google::Apis::ComputeV1::HealthCheckReference, decorator: Google::Apis::ComputeV1::HealthCheckReference::Representation
       
@@ -1867,7 +1867,7 @@ module Google
       end
       
       # @private
-      class AddInstanceRequest
+      class AddTargetPoolsInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances', class: Google::Apis::ComputeV1::InstanceReference, decorator: Google::Apis::ComputeV1::InstanceReference::Representation
       
@@ -1875,7 +1875,7 @@ module Google
       end
       
       # @private
-      class RemoveHealthCheckRequest
+      class RemoveTargetPoolsHealthCheckRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :health_checks, as: 'healthChecks', class: Google::Apis::ComputeV1::HealthCheckReference, decorator: Google::Apis::ComputeV1::HealthCheckReference::Representation
       
@@ -1883,7 +1883,7 @@ module Google
       end
       
       # @private
-      class RemoveInstanceRequest
+      class RemoveTargetPoolsInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances', class: Google::Apis::ComputeV1::InstanceReference, decorator: Google::Apis::ComputeV1::InstanceReference::Representation
       
@@ -2065,7 +2065,7 @@ module Google
       end
       
       # @private
-      class ValidateRequest
+      class ValidateUrlMapsRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource, as: 'resource', class: Google::Apis::ComputeV1::UrlMap, decorator: Google::Apis::ComputeV1::UrlMap::Representation
       
@@ -2073,7 +2073,7 @@ module Google
       end
       
       # @private
-      class ValidateResponse
+      class ValidateUrlMapsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :result, as: 'result', class: Google::Apis::ComputeV1::UrlMapValidationResult, decorator: Google::Apis::ComputeV1::UrlMapValidationResult::Representation
       

@@ -59,12 +59,12 @@ module Google
       
         # Labels added to messages in this history record.
         # Corresponds to the JSON property `labelsAdded`
-        # @return [Array<Google::Apis::GmailV1::LabelAdded>]
+        # @return [Array<Google::Apis::GmailV1::HistoryLabelAdded>]
         attr_accessor :labels_added
       
         # Labels removed from messages in this history record.
         # Corresponds to the JSON property `labelsRemoved`
-        # @return [Array<Google::Apis::GmailV1::LabelRemoved>]
+        # @return [Array<Google::Apis::GmailV1::HistoryLabelRemoved>]
         attr_accessor :labels_removed
       
         # List of messages changed in this history record. The fields for specific
@@ -76,12 +76,12 @@ module Google
       
         # Messages added to the mailbox in this history record.
         # Corresponds to the JSON property `messagesAdded`
-        # @return [Array<Google::Apis::GmailV1::MessageAdded>]
+        # @return [Array<Google::Apis::GmailV1::HistoryMessageAdded>]
         attr_accessor :messages_added
       
         # Messages deleted (not Trashed) from the mailbox in this history record.
         # Corresponds to the JSON property `messagesDeleted`
-        # @return [Array<Google::Apis::GmailV1::MessageDeleted>]
+        # @return [Array<Google::Apis::GmailV1::HistoryMessageDeleted>]
         attr_accessor :messages_deleted
       
         def initialize(**args)
@@ -100,7 +100,7 @@ module Google
       end
       
       # 
-      class LabelAdded
+      class HistoryLabelAdded
         include Google::Apis::Core::Hashable
       
         # Label IDs added to the message.
@@ -125,7 +125,7 @@ module Google
       end
       
       # 
-      class LabelRemoved
+      class HistoryLabelRemoved
         include Google::Apis::Core::Hashable
       
         # Label IDs removed from the message.
@@ -150,7 +150,7 @@ module Google
       end
       
       # 
-      class MessageAdded
+      class HistoryMessageAdded
         include Google::Apis::Core::Hashable
       
         # An email message.
@@ -169,7 +169,7 @@ module Google
       end
       
       # 
-      class MessageDeleted
+      class HistoryMessageDeleted
         include Google::Apis::Core::Hashable
       
         # An email message.

@@ -58,7 +58,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DataimportDeleteUploadDataRequest
+      class DeleteUploadDataRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -190,14 +190,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class Data
+      class GaData
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class ColumnHeader
           class Representation < Google::Apis::Core::JsonRepresentation; end
         end
         
-        class Table
+        class DataTable
           class Representation < Google::Apis::Core::JsonRepresentation; end
           
           class Col
@@ -507,7 +507,7 @@ module Google
       end
       
       # @private
-      class DataimportDeleteUploadDataRequest
+      class DeleteUploadDataRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :custom_data_import_uids, as: 'customDataImportUids'
         end
@@ -877,11 +877,14 @@ module Google
             property :extract_a, as: 'extractA'
             property :extract_b, as: 'extractB'
             property :field_a, as: 'fieldA'
+            property :field_a_index, as: 'fieldAIndex'
             property :field_a_required, as: 'fieldARequired'
             property :field_b, as: 'fieldB'
+            property :field_b_index, as: 'fieldBIndex'
             property :field_b_required, as: 'fieldBRequired'
             property :output_constructor, as: 'outputConstructor'
             property :output_to_field, as: 'outputToField'
+            property :output_to_field_index, as: 'outputToFieldIndex'
             property :override_output_field, as: 'overrideOutputField'
           end
         end
@@ -890,6 +893,7 @@ module Google
         class LowercaseDetails
           class Representation < Google::Apis::Core::JsonRepresentation
             property :field, as: 'field'
+            property :field_index, as: 'fieldIndex'
           end
         end
         
@@ -906,6 +910,7 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :case_sensitive, as: 'caseSensitive'
             property :field, as: 'field'
+            property :field_index, as: 'fieldIndex'
             property :replace_string, as: 'replaceString'
             property :search_string, as: 'searchString'
           end
@@ -915,6 +920,7 @@ module Google
         class UppercaseDetails
           class Representation < Google::Apis::Core::JsonRepresentation
             property :field, as: 'field'
+            property :field_index, as: 'fieldIndex'
           end
         end
       end
@@ -925,6 +931,7 @@ module Google
           property :case_sensitive, as: 'caseSensitive'
           property :expression_value, as: 'expressionValue'
           property :field, as: 'field'
+          property :field_index, as: 'fieldIndex'
           property :kind, as: 'kind'
           property :match_type, as: 'matchType'
         end
@@ -957,21 +964,21 @@ module Google
       end
       
       # @private
-      class Data
+      class GaData
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :column_headers, as: 'columnHeaders', class: Google::Apis::AnalyticsV3::Data::ColumnHeader, decorator: Google::Apis::AnalyticsV3::Data::ColumnHeader::Representation
+          collection :column_headers, as: 'columnHeaders', class: Google::Apis::AnalyticsV3::GaData::ColumnHeader, decorator: Google::Apis::AnalyticsV3::GaData::ColumnHeader::Representation
       
           property :contains_sampled_data, as: 'containsSampledData'
-          property :data_table, as: 'dataTable', class: Google::Apis::AnalyticsV3::Data::Table, decorator: Google::Apis::AnalyticsV3::Data::Table::Representation
+          property :data_table, as: 'dataTable', class: Google::Apis::AnalyticsV3::GaData::DataTable, decorator: Google::Apis::AnalyticsV3::GaData::DataTable::Representation
       
           property :id, as: 'id'
           property :items_per_page, as: 'itemsPerPage'
           property :kind, as: 'kind'
           property :next_link, as: 'nextLink'
           property :previous_link, as: 'previousLink'
-          property :profile_info, as: 'profileInfo', class: Google::Apis::AnalyticsV3::Data::ProfileInfo, decorator: Google::Apis::AnalyticsV3::Data::ProfileInfo::Representation
+          property :profile_info, as: 'profileInfo', class: Google::Apis::AnalyticsV3::GaData::ProfileInfo, decorator: Google::Apis::AnalyticsV3::GaData::ProfileInfo::Representation
       
-          property :query, as: 'query', class: Google::Apis::AnalyticsV3::Data::Query, decorator: Google::Apis::AnalyticsV3::Data::Query::Representation
+          property :query, as: 'query', class: Google::Apis::AnalyticsV3::GaData::Query, decorator: Google::Apis::AnalyticsV3::GaData::Query::Representation
       
           collection :rows, as: 'rows', :class => Array do
         include Representable::JSON::Collection
@@ -995,11 +1002,11 @@ module Google
         end
         
         # @private
-        class Table
+        class DataTable
           class Representation < Google::Apis::Core::JsonRepresentation
-            collection :cols, as: 'cols', class: Google::Apis::AnalyticsV3::Data::Table::Col, decorator: Google::Apis::AnalyticsV3::Data::Table::Col::Representation
+            collection :cols, as: 'cols', class: Google::Apis::AnalyticsV3::GaData::DataTable::Col, decorator: Google::Apis::AnalyticsV3::GaData::DataTable::Col::Representation
         
-            collection :rows, as: 'rows', class: Google::Apis::AnalyticsV3::Data::Table::Row, decorator: Google::Apis::AnalyticsV3::Data::Table::Row::Representation
+            collection :rows, as: 'rows', class: Google::Apis::AnalyticsV3::GaData::DataTable::Row, decorator: Google::Apis::AnalyticsV3::GaData::DataTable::Row::Representation
         
           end
           
@@ -1015,7 +1022,7 @@ module Google
           # @private
           class Row
             class Representation < Google::Apis::Core::JsonRepresentation
-              collection :c, as: 'c', class: Google::Apis::AnalyticsV3::Data::Table::Row::C, decorator: Google::Apis::AnalyticsV3::Data::Table::Row::C::Representation
+              collection :c, as: 'c', class: Google::Apis::AnalyticsV3::GaData::DataTable::Row::C, decorator: Google::Apis::AnalyticsV3::GaData::DataTable::Row::C::Representation
           
             end
             
@@ -1497,7 +1504,7 @@ module Google
         class CloudStorageDownloadDetails
           class Representation < Google::Apis::Core::JsonRepresentation
             property :bucket_id, as: 'bucketId'
-            property :object_id_prop, as: 'objectId'
+            property :obj_id, as: 'objectId'
           end
         end
         

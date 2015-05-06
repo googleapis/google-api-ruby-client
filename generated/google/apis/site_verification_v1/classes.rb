@@ -23,12 +23,12 @@ module Google
     module SiteVerificationV1
       
       # 
-      class GettokenRequest
+      class GetWebResourceTokenRequest
         include Google::Apis::Core::Hashable
       
         # The site for which a verification token will be generated.
         # Corresponds to the JSON property `site`
-        # @return [Google::Apis::SiteVerificationV1::GettokenRequest::Site]
+        # @return [Google::Apis::SiteVerificationV1::GetWebResourceTokenRequest::Site]
         attr_accessor :site
       
         # The verification method that will be used to verify this site. For sites, '
@@ -75,7 +75,7 @@ module Google
       end
       
       # 
-      class GettokenResponse
+      class GetWebResourceTokenResponse
         include Google::Apis::Core::Hashable
       
         # The verification method to use in conjunction with this token. For FILE, the
@@ -85,7 +85,7 @@ module Google
         # placed in a TXT record of the domain.
         # Corresponds to the JSON property `method`
         # @return [String]
-        attr_accessor :method_prop
+        attr_accessor :verification_method
       
         # The verification token. The token must be placed appropriately in order for
         # verification to succeed.
@@ -99,18 +99,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @method_prop = args[:method_prop] unless args[:method_prop].nil?
+          @verification_method = args[:verification_method] unless args[:verification_method].nil?
           @token = args[:token] unless args[:token].nil?
         end
       end
       
       # 
-      class ListResponse
+      class ListWebResourceResponse
         include Google::Apis::Core::Hashable
       
         # The list of sites that are owned by the authenticated user.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::SiteVerificationV1::Resource>]
+        # @return [Array<Google::Apis::SiteVerificationV1::SiteVerificationWebResourceResource>]
         attr_accessor :items
       
         def initialize(**args)
@@ -124,7 +124,7 @@ module Google
       end
       
       # 
-      class Resource
+      class SiteVerificationWebResourceResource
         include Google::Apis::Core::Hashable
       
         # The string used to identify this site. This value should be used in the "id"
@@ -140,7 +140,7 @@ module Google
       
         # The address and type of a site that is verified or will be verified.
         # Corresponds to the JSON property `site`
-        # @return [Google::Apis::SiteVerificationV1::Resource::Site]
+        # @return [Google::Apis::SiteVerificationV1::SiteVerificationWebResourceResource::Site]
         attr_accessor :site
       
         def initialize(**args)

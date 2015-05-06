@@ -587,7 +587,7 @@ module Google
       end
       
       # The job creation request.
-      class CreateJobRequest
+      class ExperimentalCreateJobRequest
         include Google::Apis::Core::Hashable
       
         # Specifies whether or not to run the alignment pipeline. Either align or
@@ -646,7 +646,7 @@ module Google
       end
       
       # The job creation response.
-      class CreateJobResponse
+      class ExperimentalCreateJobResponse
         include Google::Apis::Core::Hashable
       
         # A job ID that can be used to get status information.

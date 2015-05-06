@@ -158,7 +158,7 @@ module Google
       
         # [Output Only] A map of scoped address lists.
         # Corresponds to the JSON property `items`
-        # @return [Hash<String,Google::Apis::ComputeV1::ScopedList>]
+        # @return [Hash<String,Google::Apis::ComputeV1::AddressesScopedList>]
         attr_accessor :items
       
         # [Output Only] Type of resource. Always compute#addressAggregatedList for
@@ -236,7 +236,7 @@ module Google
       end
       
       # 
-      class ScopedList
+      class AddressesScopedList
         include Google::Apis::Core::Hashable
       
         # [Output Only] List of addresses contained in this scope.
@@ -247,7 +247,7 @@ module Google
         # [Output Only] Informational warning which replaces the list of addresses when
         # the list is empty.
         # Corresponds to the JSON property `warning`
-        # @return [Google::Apis::ComputeV1::ScopedList::Warning]
+        # @return [Google::Apis::ComputeV1::AddressesScopedList::Warning]
         attr_accessor :warning
       
         def initialize(**args)
@@ -272,7 +272,7 @@ module Google
         
           # [Output Only] Metadata for this warning in key: value format.
           # Corresponds to the JSON property `data`
-          # @return [Array<Google::Apis::ComputeV1::ScopedList::Warning::Datum>]
+          # @return [Array<Google::Apis::ComputeV1::AddressesScopedList::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] Optional human-readable details for this warning.
@@ -1003,7 +1003,7 @@ module Google
       end
       
       # 
-      class DiskMoveRequest
+      class MoveDiskRequest
         include Google::Apis::Core::Hashable
       
         # The URL of the destination zone to move the disk to. This can be a full or
@@ -2468,7 +2468,7 @@ module Google
       end
       
       # 
-      class InstanceMoveRequest
+      class MoveInstanceRequest
         include Google::Apis::Core::Hashable
       
         # The URL of the destination zone to move the instance to. This can be a full or
@@ -5142,7 +5142,7 @@ module Google
       end
       
       # 
-      class AddHealthCheckRequest
+      class AddTargetPoolsHealthCheckRequest
         include Google::Apis::Core::Hashable
       
         # Health check URLs to be added to targetPool.
@@ -5161,7 +5161,7 @@ module Google
       end
       
       # 
-      class AddInstanceRequest
+      class AddTargetPoolsInstanceRequest
         include Google::Apis::Core::Hashable
       
         # URLs of the instances to be added to targetPool.
@@ -5180,7 +5180,7 @@ module Google
       end
       
       # 
-      class RemoveHealthCheckRequest
+      class RemoveTargetPoolsHealthCheckRequest
         include Google::Apis::Core::Hashable
       
         # Health check URLs to be removed from targetPool.
@@ -5199,7 +5199,7 @@ module Google
       end
       
       # 
-      class RemoveInstanceRequest
+      class RemoveTargetPoolsInstanceRequest
         include Google::Apis::Core::Hashable
       
         # URLs of the instances to be removed from targetPool.
@@ -5841,7 +5841,7 @@ module Google
       end
       
       # 
-      class ValidateRequest
+      class ValidateUrlMapsRequest
         include Google::Apis::Core::Hashable
       
         # A UrlMap resource. This resource defines the mapping from URL to the
@@ -5862,7 +5862,7 @@ module Google
       end
       
       # 
-      class ValidateResponse
+      class ValidateUrlMapsResponse
         include Google::Apis::Core::Hashable
       
         # Message representing the validation result for a UrlMap.

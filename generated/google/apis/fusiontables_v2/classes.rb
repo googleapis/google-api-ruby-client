@@ -213,7 +213,7 @@ module Google
       end
       
       # Represents a list of columns in a table.
-      class List
+      class ColumnList
         include Google::Apis::Core::Hashable
       
         # List of all requested columns.
@@ -343,7 +343,7 @@ module Google
       
         # Represents a StyleFunction within a StyleSetting
         # Corresponds to the JSON property `strokeColorStyler`
-        # @return [Google::Apis::FusiontablesV2::Function]
+        # @return [Google::Apis::FusiontablesV2::StyleFunction]
         attr_accessor :stroke_color_styler
       
         # Opacity of the line : 0.0 (transparent) to 1.0 (opaque).
@@ -358,7 +358,7 @@ module Google
       
         # Represents a StyleFunction within a StyleSetting
         # Corresponds to the JSON property `strokeWeightStyler`
-        # @return [Google::Apis::FusiontablesV2::Function]
+        # @return [Google::Apis::FusiontablesV2::StyleFunction]
         attr_accessor :stroke_weight_styler
       
         def initialize(**args)
@@ -412,7 +412,7 @@ module Google
       
         # Represents a StyleFunction within a StyleSetting
         # Corresponds to the JSON property `iconStyler`
-        # @return [Google::Apis::FusiontablesV2::Function]
+        # @return [Google::Apis::FusiontablesV2::StyleFunction]
         attr_accessor :icon_styler
       
         def initialize(**args)
@@ -462,7 +462,7 @@ module Google
       
         # Represents a StyleFunction within a StyleSetting
         # Corresponds to the JSON property `fillColorStyler`
-        # @return [Google::Apis::FusiontablesV2::Function]
+        # @return [Google::Apis::FusiontablesV2::StyleFunction]
         attr_accessor :fill_color_styler
       
         # Opacity of the interior of the polygon: 0.0 (transparent) to 1.0 (opaque).
@@ -477,7 +477,7 @@ module Google
       
         # Represents a StyleFunction within a StyleSetting
         # Corresponds to the JSON property `strokeColorStyler`
-        # @return [Google::Apis::FusiontablesV2::Function]
+        # @return [Google::Apis::FusiontablesV2::StyleFunction]
         attr_accessor :stroke_color_styler
       
         # Opacity of the polygon border: 0.0 (transparent) to 1.0 (opaque).
@@ -492,7 +492,7 @@ module Google
       
         # Represents a StyleFunction within a StyleSetting
         # Corresponds to the JSON property `strokeWeightStyler`
-        # @return [Google::Apis::FusiontablesV2::Function]
+        # @return [Google::Apis::FusiontablesV2::StyleFunction]
         attr_accessor :stroke_weight_styler
       
         def initialize(**args)
@@ -547,7 +547,7 @@ module Google
       end
       
       # Represents a StyleFunction within a StyleSetting
-      class Function
+      class StyleFunction
         include Google::Apis::Core::Hashable
       
         # Bucket function that assigns a style based on the range a column value falls
@@ -563,7 +563,7 @@ module Google
       
         # Gradient function that interpolates a range of colors based on column value.
         # Corresponds to the JSON property `gradient`
-        # @return [Google::Apis::FusiontablesV2::Function::Gradient]
+        # @return [Google::Apis::FusiontablesV2::StyleFunction::Gradient]
         attr_accessor :gradient
       
         # Stylers can be one of three kinds: "fusiontables#fromColumn if the column
@@ -594,7 +594,7 @@ module Google
         
           # Array with two or more colors.
           # Corresponds to the JSON property `colors`
-          # @return [Array<Google::Apis::FusiontablesV2::Function::Gradient::Color>]
+          # @return [Array<Google::Apis::FusiontablesV2::StyleFunction::Gradient::Color>]
           attr_accessor :colors
         
           # Higher-end of the interpolation range: rows with this value will be assigned
@@ -649,7 +649,7 @@ module Google
       
       # Represents a complete StyleSettings object. The primary key is a combination
       # of the tableId and a styleId.
-      class Setting
+      class StyleSetting
         include Google::Apis::Core::Hashable
       
         # The kind of item this is. A StyleSetting contains the style definitions for
@@ -706,12 +706,12 @@ module Google
       end
       
       # Represents a list of styles for a given table.
-      class SettingList
+      class StyleSettingList
         include Google::Apis::Core::Hashable
       
         # All requested style settings.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::FusiontablesV2::Setting>]
+        # @return [Array<Google::Apis::FusiontablesV2::StyleSetting>]
         attr_accessor :items
       
         # The kind of item this is. For a style list, this is always fusiontables#

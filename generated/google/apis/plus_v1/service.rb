@@ -354,10 +354,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PlusV1::Feed] parsed result object
+        # @yieldparam result [Google::Apis::PlusV1::MomentsFeed] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::PlusV1::Feed]
+        # @return [Google::Apis::PlusV1::MomentsFeed]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -365,8 +365,8 @@ module Google
         def list_moments(user_id, collection, max_results: nil, page_token: nil, target_url: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people/{userId}/moments/{collection}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::PlusV1::Feed::Representation
-          command.response_class = Google::Apis::PlusV1::Feed
+          command.response_representation = Google::Apis::PlusV1::MomentsFeed::Representation
+          command.response_class = Google::Apis::PlusV1::MomentsFeed
           command.params['userId'] = user_id unless user_id.nil?
           command.params['collection'] = collection unless collection.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -538,7 +538,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_by_activity_person(activity_id, collection, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_people_by_activity(activity_id, collection, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activities/{activityId}/people/{collection}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::PlusV1::PeopleFeed::Representation

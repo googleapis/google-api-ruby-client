@@ -146,7 +146,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InsertAllRequest
+      class InsertAllTableDataRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Row
@@ -154,7 +154,7 @@ module Google
         end
       end
       
-      class InsertAllResponse
+      class InsertAllTableDataResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class InsertError
@@ -162,7 +162,7 @@ module Google
         end
       end
       
-      class List
+      class TableDataList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -221,6 +221,7 @@ module Google
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :last_modified_time, as: 'lastModifiedTime'
+          property :location, as: 'location'
           property :self_link, as: 'selfLink'
         end
         
@@ -620,11 +621,11 @@ module Google
       end
       
       # @private
-      class InsertAllRequest
+      class InsertAllTableDataRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ignore_unknown_values, as: 'ignoreUnknownValues'
           property :kind, as: 'kind'
-          collection :rows, as: 'rows', class: Google::Apis::BigqueryV2::InsertAllRequest::Row, decorator: Google::Apis::BigqueryV2::InsertAllRequest::Row::Representation
+          collection :rows, as: 'rows', class: Google::Apis::BigqueryV2::InsertAllTableDataRequest::Row, decorator: Google::Apis::BigqueryV2::InsertAllTableDataRequest::Row::Representation
       
           property :skip_invalid_rows, as: 'skipInvalidRows'
         end
@@ -639,9 +640,9 @@ module Google
       end
       
       # @private
-      class InsertAllResponse
+      class InsertAllTableDataResponse
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :insert_errors, as: 'insertErrors', class: Google::Apis::BigqueryV2::InsertAllResponse::InsertError, decorator: Google::Apis::BigqueryV2::InsertAllResponse::InsertError::Representation
+          collection :insert_errors, as: 'insertErrors', class: Google::Apis::BigqueryV2::InsertAllTableDataResponse::InsertError, decorator: Google::Apis::BigqueryV2::InsertAllTableDataResponse::InsertError::Representation
       
           property :kind, as: 'kind'
         end
@@ -657,7 +658,7 @@ module Google
       end
       
       # @private
-      class List
+      class TableDataList
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :kind, as: 'kind'

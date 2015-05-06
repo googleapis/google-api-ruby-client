@@ -427,7 +427,7 @@ module Google
       end
       
       # Request template for the delete upload data request.
-      class DataimportDeleteUploadDataRequest
+      class DeleteUploadDataRequest
         include Google::Apis::Core::Hashable
       
         # A list of upload UIDs.
@@ -1941,6 +1941,11 @@ module Google
           # @return [String]
           attr_accessor :field_a
         
+          # The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+          # Corresponds to the JSON property `fieldAIndex`
+          # @return [Fixnum]
+          attr_accessor :field_a_index
+        
           # Indicates if field A is required to match.
           # Corresponds to the JSON property `fieldARequired`
           # @return [Boolean]
@@ -1951,6 +1956,11 @@ module Google
           # Corresponds to the JSON property `fieldB`
           # @return [String]
           attr_accessor :field_b
+        
+          # The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+          # Corresponds to the JSON property `fieldBIndex`
+          # @return [Fixnum]
+          attr_accessor :field_b_index
         
           # Indicates if field B is required to match.
           # Corresponds to the JSON property `fieldBRequired`
@@ -1967,6 +1977,11 @@ module Google
           # Corresponds to the JSON property `outputToField`
           # @return [String]
           attr_accessor :output_to_field
+        
+          # The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+          # Corresponds to the JSON property `outputToFieldIndex`
+          # @return [Fixnum]
+          attr_accessor :output_to_field_index
         
           # Indicates if the existing value of the output field, if any, should be
           # overridden by the output expression.
@@ -1985,11 +2000,14 @@ module Google
             @extract_a = args[:extract_a] unless args[:extract_a].nil?
             @extract_b = args[:extract_b] unless args[:extract_b].nil?
             @field_a = args[:field_a] unless args[:field_a].nil?
+            @field_a_index = args[:field_a_index] unless args[:field_a_index].nil?
             @field_a_required = args[:field_a_required] unless args[:field_a_required].nil?
             @field_b = args[:field_b] unless args[:field_b].nil?
+            @field_b_index = args[:field_b_index] unless args[:field_b_index].nil?
             @field_b_required = args[:field_b_required] unless args[:field_b_required].nil?
             @output_constructor = args[:output_constructor] unless args[:output_constructor].nil?
             @output_to_field = args[:output_to_field] unless args[:output_to_field].nil?
+            @output_to_field_index = args[:output_to_field_index] unless args[:output_to_field_index].nil?
             @override_output_field = args[:override_output_field] unless args[:override_output_field].nil?
           end
         end
@@ -2003,6 +2021,11 @@ module Google
           # @return [String]
           attr_accessor :field
         
+          # The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+          # Corresponds to the JSON property `fieldIndex`
+          # @return [Fixnum]
+          attr_accessor :field_index
+        
           def initialize(**args)
              update!(**args)
           end
@@ -2010,6 +2033,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @field = args[:field] unless args[:field].nil?
+            @field_index = args[:field_index] unless args[:field_index].nil?
           end
         end
         
@@ -2054,6 +2078,11 @@ module Google
           # @return [String]
           attr_accessor :field
         
+          # The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+          # Corresponds to the JSON property `fieldIndex`
+          # @return [Fixnum]
+          attr_accessor :field_index
+        
           # Term to replace the search term with.
           # Corresponds to the JSON property `replaceString`
           # @return [String]
@@ -2072,6 +2101,7 @@ module Google
           def update!(**args)
             @case_sensitive = args[:case_sensitive] unless args[:case_sensitive].nil?
             @field = args[:field] unless args[:field].nil?
+            @field_index = args[:field_index] unless args[:field_index].nil?
             @replace_string = args[:replace_string] unless args[:replace_string].nil?
             @search_string = args[:search_string] unless args[:search_string].nil?
           end
@@ -2086,6 +2116,11 @@ module Google
           # @return [String]
           attr_accessor :field
         
+          # The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+          # Corresponds to the JSON property `fieldIndex`
+          # @return [Fixnum]
+          attr_accessor :field_index
+        
           def initialize(**args)
              update!(**args)
           end
@@ -2093,6 +2128,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @field = args[:field] unless args[:field].nil?
+            @field_index = args[:field_index] unless args[:field_index].nil?
           end
         end
       end
@@ -2197,9 +2233,17 @@ module Google
         # - SOCIAL_NETWORK,
         # - SOCIAL_ACTION,
         # - SOCIAL_ACTION_TARGET,
+        # - Custom dimension
+        # - CUSTOM_DIMENSION (See accompanying field index),
         # Corresponds to the JSON property `field`
         # @return [String]
         attr_accessor :field
+      
+        # The Index of the custom dimension. Set only if the field is a is
+        # CUSTOM_DIMENSION.
+        # Corresponds to the JSON property `fieldIndex`
+        # @return [Fixnum]
+        attr_accessor :field_index
       
         # Kind value for filter expression
         # Corresponds to the JSON property `kind`
@@ -2225,6 +2269,7 @@ module Google
           @case_sensitive = args[:case_sensitive] unless args[:case_sensitive].nil?
           @expression_value = args[:expression_value] unless args[:expression_value].nil?
           @field = args[:field] unless args[:field].nil?
+          @field_index = args[:field_index] unless args[:field_index].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @match_type = args[:match_type] unless args[:match_type].nil?
         end
@@ -2341,13 +2386,13 @@ module Google
       end
       
       # Analytics data for a given view (profile).
-      class Data
+      class GaData
         include Google::Apis::Core::Hashable
       
         # Column headers that list dimension names followed by the metric names. The
         # order of dimensions and metrics is same as specified in the request.
         # Corresponds to the JSON property `columnHeaders`
-        # @return [Array<Google::Apis::AnalyticsV3::Data::ColumnHeader>]
+        # @return [Array<Google::Apis::AnalyticsV3::GaData::ColumnHeader>]
         attr_accessor :column_headers
       
         # Determines if Analytics data contains samples.
@@ -2358,7 +2403,7 @@ module Google
       
         # 
         # Corresponds to the JSON property `dataTable`
-        # @return [Google::Apis::AnalyticsV3::Data::Table]
+        # @return [Google::Apis::AnalyticsV3::GaData::DataTable]
         attr_accessor :data_table
       
         # Unique ID for this data response.
@@ -2390,12 +2435,12 @@ module Google
       
         # Information for the view (profile), for which the Analytics data was requested.
         # Corresponds to the JSON property `profileInfo`
-        # @return [Google::Apis::AnalyticsV3::Data::ProfileInfo]
+        # @return [Google::Apis::AnalyticsV3::GaData::ProfileInfo]
         attr_accessor :profile_info
       
         # Analytics data request query parameters.
         # Corresponds to the JSON property `query`
-        # @return [Google::Apis::AnalyticsV3::Data::Query]
+        # @return [Google::Apis::AnalyticsV3::GaData::Query]
         attr_accessor :query
       
         # Analytics data rows, where each row contains a list of dimension values
@@ -2491,17 +2536,17 @@ module Google
         end
         
         # 
-        class Table
+        class DataTable
           include Google::Apis::Core::Hashable
         
           # 
           # Corresponds to the JSON property `cols`
-          # @return [Array<Google::Apis::AnalyticsV3::Data::Table::Col>]
+          # @return [Array<Google::Apis::AnalyticsV3::GaData::DataTable::Col>]
           attr_accessor :cols
         
           # 
           # Corresponds to the JSON property `rows`
-          # @return [Array<Google::Apis::AnalyticsV3::Data::Table::Row>]
+          # @return [Array<Google::Apis::AnalyticsV3::GaData::DataTable::Row>]
           attr_accessor :rows
         
           def initialize(**args)
@@ -2551,7 +2596,7 @@ module Google
           
             # 
             # Corresponds to the JSON property `c`
-            # @return [Array<Google::Apis::AnalyticsV3::Data::Table::Row::C>]
+            # @return [Array<Google::Apis::AnalyticsV3::GaData::DataTable::Row::C>]
             attr_accessor :c
           
             def initialize(**args)
@@ -4463,7 +4508,7 @@ module Google
           # Id of the file object containing the report data.
           # Corresponds to the JSON property `objectId`
           # @return [String]
-          attr_accessor :object_id_prop
+          attr_accessor :obj_id
         
           def initialize(**args)
              update!(**args)
@@ -4472,7 +4517,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @bucket_id = args[:bucket_id] unless args[:bucket_id].nil?
-            @object_id_prop = args[:object_id_prop] unless args[:object_id_prop].nil?
+            @obj_id = args[:obj_id] unless args[:obj_id].nil?
           end
         end
         

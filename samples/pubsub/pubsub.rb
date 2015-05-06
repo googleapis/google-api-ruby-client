@@ -27,8 +27,8 @@ topic = "projects/#{project}/topics/foo"
 subscription = "projects/#{project}/subscriptions/bar"
 
 # Create topic & subscription
-pubsub.create_project_topic(topic)
-pubsub.create_project_subscription(subscription, Pubsub::Subscription.new(topic: topic))
+pubsub.create_topic(topic)
+pubsub.create_subscription(subscription, Pubsub::Subscription.new(topic: topic))
 
 # Publish messages
 request = Pubsub::PublishRequest.new(messages: [])
@@ -48,6 +48,6 @@ ack_ids = response.received_messages.map{ |msg| msg.ack_id }
 pubsub.acknowledge(subscription, Pubsub::AcknowledgeRequest.new(ack_ids: ack_ids))
 
 # Delete the subscription & topic
-pubsub.delete_project_subscription(subscription)
-pubsub.delete_project_topic(topic)
+pubsub.delete_subscription(subscription)
+pubsub.delete_topic(topic)
 

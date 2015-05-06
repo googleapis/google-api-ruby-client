@@ -38,11 +38,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CollectionViewersListResponse
+      class ListCollectionViewersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListResponse
+      class ListCollectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -54,7 +54,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DevicesListResponse
+      class ListDevicesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -66,7 +66,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EnterprisesListResponse
+      class ListEnterprisesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -74,7 +74,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EntitlementsListResponse
+      class ListEntitlementsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -82,11 +82,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class GroupLicenseUsersListResponse
+      class ListGroupLicenseUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class GroupLicensesListResponse
+      class ListGroupLicensesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -94,7 +94,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstallsListResponse
+      class ListInstallsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -122,7 +122,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UsersListResponse
+      class ListUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -171,7 +171,7 @@ module Google
       end
       
       # @private
-      class CollectionViewersListResponse
+      class ListCollectionViewersResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :user, as: 'user', class: Google::Apis::AndroidenterpriseV1::User, decorator: Google::Apis::AndroidenterpriseV1::User::Representation
@@ -180,7 +180,7 @@ module Google
       end
       
       # @private
-      class ListResponse
+      class ListCollectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :collection, as: 'collection', class: Google::Apis::AndroidenterpriseV1::Collection, decorator: Google::Apis::AndroidenterpriseV1::Collection::Representation
       
@@ -193,6 +193,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :android_id, as: 'androidId'
           property :kind, as: 'kind'
+          property :management_type, as: 'managementType'
         end
       end
       
@@ -205,7 +206,7 @@ module Google
       end
       
       # @private
-      class DevicesListResponse
+      class ListDevicesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :device, as: 'device', class: Google::Apis::AndroidenterpriseV1::Device, decorator: Google::Apis::AndroidenterpriseV1::Device::Representation
       
@@ -232,7 +233,7 @@ module Google
       end
       
       # @private
-      class EnterprisesListResponse
+      class ListEnterprisesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :enterprise, as: 'enterprise', class: Google::Apis::AndroidenterpriseV1::Enterprise, decorator: Google::Apis::AndroidenterpriseV1::Enterprise::Representation
       
@@ -250,7 +251,7 @@ module Google
       end
       
       # @private
-      class EntitlementsListResponse
+      class ListEntitlementsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :entitlement, as: 'entitlement', class: Google::Apis::AndroidenterpriseV1::Entitlement, decorator: Google::Apis::AndroidenterpriseV1::Entitlement::Representation
       
@@ -271,7 +272,7 @@ module Google
       end
       
       # @private
-      class GroupLicenseUsersListResponse
+      class ListGroupLicenseUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :user, as: 'user', class: Google::Apis::AndroidenterpriseV1::User, decorator: Google::Apis::AndroidenterpriseV1::User::Representation
@@ -280,7 +281,7 @@ module Google
       end
       
       # @private
-      class GroupLicensesListResponse
+      class ListGroupLicensesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :group_license, as: 'groupLicense', class: Google::Apis::AndroidenterpriseV1::GroupLicense, decorator: Google::Apis::AndroidenterpriseV1::GroupLicense::Representation
       
@@ -299,7 +300,7 @@ module Google
       end
       
       # @private
-      class InstallsListResponse
+      class ListInstallsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :install, as: 'install', class: Google::Apis::AndroidenterpriseV1::Install, decorator: Google::Apis::AndroidenterpriseV1::Install::Representation
       
@@ -325,6 +326,7 @@ module Google
           property :icon_url, as: 'iconUrl'
           property :kind, as: 'kind'
           property :product_id, as: 'productId'
+          property :requires_container_app, as: 'requiresContainerApp'
           property :title, as: 'title'
           property :work_details_url, as: 'workDetailsUrl'
         end
@@ -367,7 +369,7 @@ module Google
       end
       
       # @private
-      class UsersListResponse
+      class ListUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :user, as: 'user', class: Google::Apis::AndroidenterpriseV1::User, decorator: Google::Apis::AndroidenterpriseV1::User::Representation

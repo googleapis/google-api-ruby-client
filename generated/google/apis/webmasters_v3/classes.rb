@@ -23,7 +23,7 @@ module Google
     module WebmastersV3
       
       # List of sitemaps.
-      class ListResponse
+      class ListSitemapsResponse
         include Google::Apis::Core::Hashable
       
         # Information about a sitemap entry.
@@ -42,7 +42,7 @@ module Google
       end
       
       # List of sites with access level information.
-      class SitesListResponse
+      class ListSitesResponse
         include Google::Apis::Core::Hashable
       
         # Access level information for a Webmaster Tools site.
@@ -119,7 +119,7 @@ module Google
       
       # A time series of the number of URL crawl errors per error category and
       # platform.
-      class QueryResponse
+      class QueryUrlCrawlErrorsCountsResponse
         include Google::Apis::Core::Hashable
       
         # The time series of the number of URL crawl errors for per error category and
@@ -182,7 +182,7 @@ module Google
       end
       
       # List of crawl error samples.
-      class UrlCrawlErrorsSamplesListResponse
+      class ListUrlCrawlErrorsSamplesResponse
         include Google::Apis::Core::Hashable
       
         # Information about the sample URL and its crawl error.

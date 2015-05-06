@@ -383,7 +383,7 @@ module Google
       end
       
       # The result of a division search query.
-      class DivisionSearchResponse
+      class SearchDivisionResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "civicinfo#
@@ -518,7 +518,7 @@ module Google
       end
       
       # The list of elections available for this version of the API.
-      class QueryResponse
+      class QueryElectionsResponse
         include Google::Apis::Core::Hashable
       
         # A list of available elections

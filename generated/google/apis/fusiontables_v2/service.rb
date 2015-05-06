@@ -187,10 +187,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FusiontablesV2::List] parsed result object
+        # @yieldparam result [Google::Apis::FusiontablesV2::ColumnList] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::FusiontablesV2::List]
+        # @return [Google::Apis::FusiontablesV2::ColumnList]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -198,8 +198,8 @@ module Google
         def list_columns(table_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}/columns'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::FusiontablesV2::List::Representation
-          command.response_class = Google::Apis::FusiontablesV2::List
+          command.response_representation = Google::Apis::FusiontablesV2::ColumnList::Representation
+          command.response_class = Google::Apis::FusiontablesV2::ColumnList
           command.params['tableId'] = table_id unless table_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -469,10 +469,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FusiontablesV2::Setting] parsed result object
+        # @yieldparam result [Google::Apis::FusiontablesV2::StyleSetting] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::FusiontablesV2::Setting]
+        # @return [Google::Apis::FusiontablesV2::StyleSetting]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -480,8 +480,8 @@ module Google
         def get_style(table_id, style_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}/styles/{styleId}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::FusiontablesV2::Setting::Representation
-          command.response_class = Google::Apis::FusiontablesV2::Setting
+          command.response_representation = Google::Apis::FusiontablesV2::StyleSetting::Representation
+          command.response_class = Google::Apis::FusiontablesV2::StyleSetting
           command.params['tableId'] = table_id unless table_id.nil?
           command.params['styleId'] = style_id unless style_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -493,7 +493,7 @@ module Google
         # Adds a new style for the table.
         # @param [String] table_id
         #   Table for which a new style is being added
-        # @param [Google::Apis::FusiontablesV2::Setting] style_setting_object
+        # @param [Google::Apis::FusiontablesV2::StyleSetting] style_setting_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -507,10 +507,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FusiontablesV2::Setting] parsed result object
+        # @yieldparam result [Google::Apis::FusiontablesV2::StyleSetting] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::FusiontablesV2::Setting]
+        # @return [Google::Apis::FusiontablesV2::StyleSetting]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -518,10 +518,10 @@ module Google
         def insert_style(table_id, style_setting_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}/styles'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::FusiontablesV2::Setting::Representation
+          command.request_representation = Google::Apis::FusiontablesV2::StyleSetting::Representation
           command.request_object = style_setting_object
-          command.response_representation = Google::Apis::FusiontablesV2::Setting::Representation
-          command.response_class = Google::Apis::FusiontablesV2::Setting
+          command.response_representation = Google::Apis::FusiontablesV2::StyleSetting::Representation
+          command.response_class = Google::Apis::FusiontablesV2::StyleSetting
           command.params['tableId'] = table_id unless table_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -549,10 +549,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FusiontablesV2::SettingList] parsed result object
+        # @yieldparam result [Google::Apis::FusiontablesV2::StyleSettingList] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::FusiontablesV2::SettingList]
+        # @return [Google::Apis::FusiontablesV2::StyleSettingList]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -560,8 +560,8 @@ module Google
         def list_styles(table_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}/styles'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::FusiontablesV2::SettingList::Representation
-          command.response_class = Google::Apis::FusiontablesV2::SettingList
+          command.response_representation = Google::Apis::FusiontablesV2::StyleSettingList::Representation
+          command.response_class = Google::Apis::FusiontablesV2::StyleSettingList
           command.params['tableId'] = table_id unless table_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -576,7 +576,7 @@ module Google
         #   Table whose style is being updated.
         # @param [Fixnum] style_id
         #   Identifier (within a table) for the style being updated.
-        # @param [Google::Apis::FusiontablesV2::Setting] style_setting_object
+        # @param [Google::Apis::FusiontablesV2::StyleSetting] style_setting_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -590,10 +590,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FusiontablesV2::Setting] parsed result object
+        # @yieldparam result [Google::Apis::FusiontablesV2::StyleSetting] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::FusiontablesV2::Setting]
+        # @return [Google::Apis::FusiontablesV2::StyleSetting]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -601,10 +601,10 @@ module Google
         def patch_style(table_id, style_id, style_setting_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}/styles/{styleId}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::FusiontablesV2::Setting::Representation
+          command.request_representation = Google::Apis::FusiontablesV2::StyleSetting::Representation
           command.request_object = style_setting_object
-          command.response_representation = Google::Apis::FusiontablesV2::Setting::Representation
-          command.response_class = Google::Apis::FusiontablesV2::Setting
+          command.response_representation = Google::Apis::FusiontablesV2::StyleSetting::Representation
+          command.response_class = Google::Apis::FusiontablesV2::StyleSetting
           command.params['tableId'] = table_id unless table_id.nil?
           command.params['styleId'] = style_id unless style_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -618,7 +618,7 @@ module Google
         #   Table whose style is being updated.
         # @param [Fixnum] style_id
         #   Identifier (within a table) for the style being updated.
-        # @param [Google::Apis::FusiontablesV2::Setting] style_setting_object
+        # @param [Google::Apis::FusiontablesV2::StyleSetting] style_setting_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -632,10 +632,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FusiontablesV2::Setting] parsed result object
+        # @yieldparam result [Google::Apis::FusiontablesV2::StyleSetting] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::FusiontablesV2::Setting]
+        # @return [Google::Apis::FusiontablesV2::StyleSetting]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -643,10 +643,10 @@ module Google
         def update_style(table_id, style_id, style_setting_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{tableId}/styles/{styleId}'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::FusiontablesV2::Setting::Representation
+          command.request_representation = Google::Apis::FusiontablesV2::StyleSetting::Representation
           command.request_object = style_setting_object
-          command.response_representation = Google::Apis::FusiontablesV2::Setting::Representation
-          command.response_class = Google::Apis::FusiontablesV2::Setting
+          command.response_representation = Google::Apis::FusiontablesV2::StyleSetting::Representation
+          command.response_class = Google::Apis::FusiontablesV2::StyleSetting
           command.params['tableId'] = table_id unless table_id.nil?
           command.params['styleId'] = style_id unless style_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -809,7 +809,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_rows_table(table_id, delimiter: nil, encoding: nil, end_line: nil, is_strict: nil, start_line: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def import_rows(table_id, delimiter: nil, encoding: nil, end_line: nil, is_strict: nil, start_line: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'tables/{tableId}/import'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -866,7 +866,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_table_table(delimiter: nil, encoding: nil, name: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def import_table(delimiter: nil, encoding: nil, name: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'tables/import'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)

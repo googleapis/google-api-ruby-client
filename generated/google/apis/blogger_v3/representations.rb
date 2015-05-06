@@ -146,7 +146,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class List
+      class PostUserInfosList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -515,7 +515,7 @@ module Google
       end
       
       # @private
-      class List
+      class PostUserInfosList
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::BloggerV3::PostUserInfo, decorator: Google::Apis::BloggerV3::PostUserInfo::Representation
       

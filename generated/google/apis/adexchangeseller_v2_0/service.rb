@@ -242,7 +242,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_customchannel(account_id, ad_client_id, custom_channel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_custom_channel(account_id, ad_client_id, custom_channel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/customchannels/{customChannelId}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdexchangesellerV2_0::CustomChannel::Representation
@@ -290,7 +290,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_customchannels(account_id, ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_custom_channels(account_id, ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/customchannels'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdexchangesellerV2_0::CustomChannels::Representation
@@ -329,7 +329,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_metadatum_dimensions(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_metadata_dimensions(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/metadata/dimensions'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdexchangesellerV2_0::Metadata::Representation
@@ -365,7 +365,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_metadatum_metrics(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_metadata_metrics(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/metadata/metrics'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdexchangesellerV2_0::Metadata::Representation
@@ -403,7 +403,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_account_preferreddeal(account_id, deal_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_preferred_deal(account_id, deal_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/preferreddeals/{dealId}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdexchangesellerV2_0::PreferredDeal::Representation
@@ -440,7 +440,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_preferreddeals(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_preferred_deals(account_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/preferreddeals'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdexchangesellerV2_0::PreferredDeals::Representation
@@ -561,7 +561,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_account_report_saved(account_id, saved_report_id, locale: nil, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def generate_account_saved_report(account_id, saved_report_id, locale: nil, max_results: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/reports/{savedReportId}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdexchangesellerV2_0::Report::Representation
@@ -600,19 +600,19 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AdexchangesellerV2_0::Reports] parsed result object
+        # @yieldparam result [Google::Apis::AdexchangesellerV2_0::SavedReports] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AdexchangesellerV2_0::Reports]
+        # @return [Google::Apis::AdexchangesellerV2_0::SavedReports]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_report_saveds(account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_saved_reports(account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/reports/saved'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AdexchangesellerV2_0::Reports::Representation
-          command.response_class = Google::Apis::AdexchangesellerV2_0::Reports
+          command.response_representation = Google::Apis::AdexchangesellerV2_0::SavedReports::Representation
+          command.response_class = Google::Apis::AdexchangesellerV2_0::SavedReports
           command.params['accountId'] = account_id unless account_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -654,7 +654,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_account_urlchannels(account_id, ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_account_url_channels(account_id, ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/urlchannels'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdexchangesellerV2_0::UrlChannels::Representation

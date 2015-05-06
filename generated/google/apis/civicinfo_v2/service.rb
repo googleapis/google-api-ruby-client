@@ -71,10 +71,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CivicinfoV2::DivisionSearchResponse] parsed result object
+        # @yieldparam result [Google::Apis::CivicinfoV2::SearchDivisionResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::CivicinfoV2::DivisionSearchResponse]
+        # @return [Google::Apis::CivicinfoV2::SearchDivisionResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -82,8 +82,8 @@ module Google
         def search_divisions(query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'divisions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CivicinfoV2::DivisionSearchResponse::Representation
-          command.response_class = Google::Apis::CivicinfoV2::DivisionSearchResponse
+          command.response_representation = Google::Apis::CivicinfoV2::SearchDivisionResponse::Representation
+          command.response_class = Google::Apis::CivicinfoV2::SearchDivisionResponse
           command.query['query'] = query unless query.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -105,19 +105,19 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CivicinfoV2::QueryResponse] parsed result object
+        # @yieldparam result [Google::Apis::CivicinfoV2::QueryElectionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::CivicinfoV2::QueryResponse]
+        # @return [Google::Apis::CivicinfoV2::QueryElectionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def election_query_election(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def query_election(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'elections'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CivicinfoV2::QueryResponse::Representation
-          command.response_class = Google::Apis::CivicinfoV2::QueryResponse
+          command.response_representation = Google::Apis::CivicinfoV2::QueryElectionsResponse::Representation
+          command.response_class = Google::Apis::CivicinfoV2::QueryElectionsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -154,7 +154,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def voter_info_query_election(address: nil, election_id: nil, official_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def query_voter_info(address: nil, election_id: nil, official_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'voterinfo'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::CivicinfoV2::VoterInfoResponse::Representation
@@ -205,7 +205,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def representative_info_by_address_representative(address: nil, include_offices: nil, levels: nil, roles: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def representative_info_by_address(address: nil, include_offices: nil, levels: nil, roles: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'representatives'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::CivicinfoV2::RepresentativeInfoResponse::Representation
@@ -256,7 +256,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def representative_info_by_division_representative(ocd_id, levels: nil, recursive: nil, roles: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def representative_info_by_division(ocd_id, levels: nil, recursive: nil, roles: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'representatives/{ocdId}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::CivicinfoV2::RepresentativeInfoData::Representation

@@ -25,7 +25,7 @@ module Google
       class Bucket
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class Cor
+        class CorsConfiguration
           class Representation < Google::Apis::Core::JsonRepresentation; end
         end
         
@@ -127,7 +127,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :acl, as: 'acl', class: Google::Apis::StorageV1::BucketAccessControl, decorator: Google::Apis::StorageV1::BucketAccessControl::Representation
       
-          collection :cors, as: 'cors', class: Google::Apis::StorageV1::Bucket::Cor, decorator: Google::Apis::StorageV1::Bucket::Cor::Representation
+          collection :cors_configurations, as: 'cors', class: Google::Apis::StorageV1::Bucket::CorsConfiguration, decorator: Google::Apis::StorageV1::Bucket::CorsConfiguration::Representation
       
           collection :default_object_acl, as: 'defaultObjectAcl', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControl::Representation
       
@@ -155,10 +155,10 @@ module Google
         end
         
         # @private
-        class Cor
+        class CorsConfiguration
           class Representation < Google::Apis::Core::JsonRepresentation
             property :max_age_seconds, as: 'maxAgeSeconds'
-            collection :method_prop, as: 'method'
+            collection :http_method, as: 'method'
             collection :origin, as: 'origin'
             collection :response_header, as: 'responseHeader'
           end

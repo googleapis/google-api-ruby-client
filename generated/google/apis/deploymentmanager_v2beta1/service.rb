@@ -193,10 +193,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::ListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::ListDeploymentsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2beta1::ListResponse]
+        # @return [Google::Apis::DeploymentmanagerV2beta1::ListDeploymentsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -204,8 +204,8 @@ module Google
         def list_deployments(project, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ListResponse::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2beta1::ListResponse
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ListDeploymentsResponse::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta1::ListDeploymentsResponse
           command.params['project'] = project unless project.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -281,10 +281,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::ManifestsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::ListManifestsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2beta1::ManifestsListResponse]
+        # @return [Google::Apis::DeploymentmanagerV2beta1::ListManifestsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -292,8 +292,8 @@ module Google
         def list_manifests(project, deployment, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments/{deployment}/manifests'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ManifestsListResponse::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2beta1::ManifestsListResponse
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ListManifestsResponse::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta1::ListManifestsResponse
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -365,10 +365,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::OperationsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::ListOperationsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2beta1::OperationsListResponse]
+        # @return [Google::Apis::DeploymentmanagerV2beta1::ListOperationsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -376,8 +376,8 @@ module Google
         def list_operations(project, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/operations'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::OperationsListResponse::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2beta1::OperationsListResponse
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ListOperationsResponse::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta1::ListOperationsResponse
           command.params['project'] = project unless project.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -453,10 +453,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::ResourcesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::ListResourcesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2beta1::ResourcesListResponse]
+        # @return [Google::Apis::DeploymentmanagerV2beta1::ListResourcesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -464,8 +464,8 @@ module Google
         def list_resources(project, deployment, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments/{deployment}/resources'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ResourcesListResponse::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2beta1::ResourcesListResponse
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ListResourcesResponse::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta1::ListResourcesResponse
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -498,10 +498,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::TypesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::ListTypesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2beta1::TypesListResponse]
+        # @return [Google::Apis::DeploymentmanagerV2beta1::ListTypesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -509,8 +509,8 @@ module Google
         def list_types(project, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/types'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::TypesListResponse::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2beta1::TypesListResponse
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ListTypesResponse::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta1::ListTypesResponse
           command.params['project'] = project unless project.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?

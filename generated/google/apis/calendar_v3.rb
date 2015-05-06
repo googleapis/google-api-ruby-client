@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/google-apps/calendar/firstapp
     module CalendarV3
       VERSION = 'V3'
-      REVISION = '20150326'
+      REVISION = '20150408'
 
       # Manage your calendars
       AUTH_CALENDAR = 'https://www.googleapis.com/auth/calendar'

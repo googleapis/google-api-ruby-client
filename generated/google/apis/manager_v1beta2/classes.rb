@@ -271,7 +271,7 @@ module Google
       end
       
       # 
-      class ListResponse
+      class ListDeploymentsResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -1259,7 +1259,7 @@ module Google
       end
       
       # 
-      class TemplatesListResponse
+      class ListTemplatesResponse
         include Google::Apis::Core::Hashable
       
         # 

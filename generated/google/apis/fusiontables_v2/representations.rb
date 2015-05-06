@@ -34,7 +34,7 @@ module Google
         end
       end
       
-      class List
+      class ColumnList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -74,7 +74,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class Function
+      class StyleFunction
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Gradient
@@ -86,11 +86,11 @@ module Google
         end
       end
       
-      class Setting
+      class StyleSetting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SettingList
+      class StyleSettingList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -158,7 +158,7 @@ module Google
       end
       
       # @private
-      class List
+      class ColumnList
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::FusiontablesV2::Column, decorator: Google::Apis::FusiontablesV2::Column::Representation
       
@@ -201,11 +201,11 @@ module Google
       class LineStyle
         class Representation < Google::Apis::Core::JsonRepresentation
           property :stroke_color, as: 'strokeColor'
-          property :stroke_color_styler, as: 'strokeColorStyler', class: Google::Apis::FusiontablesV2::Function, decorator: Google::Apis::FusiontablesV2::Function::Representation
+          property :stroke_color_styler, as: 'strokeColorStyler', class: Google::Apis::FusiontablesV2::StyleFunction, decorator: Google::Apis::FusiontablesV2::StyleFunction::Representation
       
           property :stroke_opacity, as: 'strokeOpacity'
           property :stroke_weight, as: 'strokeWeight'
-          property :stroke_weight_styler, as: 'strokeWeightStyler', class: Google::Apis::FusiontablesV2::Function, decorator: Google::Apis::FusiontablesV2::Function::Representation
+          property :stroke_weight_styler, as: 'strokeWeightStyler', class: Google::Apis::FusiontablesV2::StyleFunction, decorator: Google::Apis::FusiontablesV2::StyleFunction::Representation
       
         end
       end
@@ -222,7 +222,7 @@ module Google
       class PointStyle
         class Representation < Google::Apis::Core::JsonRepresentation
           property :icon_name, as: 'iconName'
-          property :icon_styler, as: 'iconStyler', class: Google::Apis::FusiontablesV2::Function, decorator: Google::Apis::FusiontablesV2::Function::Representation
+          property :icon_styler, as: 'iconStyler', class: Google::Apis::FusiontablesV2::StyleFunction, decorator: Google::Apis::FusiontablesV2::StyleFunction::Representation
       
         end
       end
@@ -247,15 +247,15 @@ module Google
       class PolygonStyle
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fill_color, as: 'fillColor'
-          property :fill_color_styler, as: 'fillColorStyler', class: Google::Apis::FusiontablesV2::Function, decorator: Google::Apis::FusiontablesV2::Function::Representation
+          property :fill_color_styler, as: 'fillColorStyler', class: Google::Apis::FusiontablesV2::StyleFunction, decorator: Google::Apis::FusiontablesV2::StyleFunction::Representation
       
           property :fill_opacity, as: 'fillOpacity'
           property :stroke_color, as: 'strokeColor'
-          property :stroke_color_styler, as: 'strokeColorStyler', class: Google::Apis::FusiontablesV2::Function, decorator: Google::Apis::FusiontablesV2::Function::Representation
+          property :stroke_color_styler, as: 'strokeColorStyler', class: Google::Apis::FusiontablesV2::StyleFunction, decorator: Google::Apis::FusiontablesV2::StyleFunction::Representation
       
           property :stroke_opacity, as: 'strokeOpacity'
           property :stroke_weight, as: 'strokeWeight'
-          property :stroke_weight_styler, as: 'strokeWeightStyler', class: Google::Apis::FusiontablesV2::Function, decorator: Google::Apis::FusiontablesV2::Function::Representation
+          property :stroke_weight_styler, as: 'strokeWeightStyler', class: Google::Apis::FusiontablesV2::StyleFunction, decorator: Google::Apis::FusiontablesV2::StyleFunction::Representation
       
         end
       end
@@ -274,12 +274,12 @@ module Google
       end
       
       # @private
-      class Function
+      class StyleFunction
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :buckets, as: 'buckets', class: Google::Apis::FusiontablesV2::Bucket, decorator: Google::Apis::FusiontablesV2::Bucket::Representation
       
           property :column_name, as: 'columnName'
-          property :gradient, as: 'gradient', class: Google::Apis::FusiontablesV2::Function::Gradient, decorator: Google::Apis::FusiontablesV2::Function::Gradient::Representation
+          property :gradient, as: 'gradient', class: Google::Apis::FusiontablesV2::StyleFunction::Gradient, decorator: Google::Apis::FusiontablesV2::StyleFunction::Gradient::Representation
       
           property :kind, as: 'kind'
         end
@@ -287,7 +287,7 @@ module Google
         # @private
         class Gradient
           class Representation < Google::Apis::Core::JsonRepresentation
-            collection :colors, as: 'colors', class: Google::Apis::FusiontablesV2::Function::Gradient::Color, decorator: Google::Apis::FusiontablesV2::Function::Gradient::Color::Representation
+            collection :colors, as: 'colors', class: Google::Apis::FusiontablesV2::StyleFunction::Gradient::Color, decorator: Google::Apis::FusiontablesV2::StyleFunction::Gradient::Color::Representation
         
             property :max, as: 'max'
             property :min, as: 'min'
@@ -304,7 +304,7 @@ module Google
       end
       
       # @private
-      class Setting
+      class StyleSetting
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :marker_options, as: 'markerOptions', class: Google::Apis::FusiontablesV2::PointStyle, decorator: Google::Apis::FusiontablesV2::PointStyle::Representation
@@ -320,9 +320,9 @@ module Google
       end
       
       # @private
-      class SettingList
+      class StyleSettingList
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::FusiontablesV2::Setting, decorator: Google::Apis::FusiontablesV2::Setting::Representation
+          collection :items, as: 'items', class: Google::Apis::FusiontablesV2::StyleSetting, decorator: Google::Apis::FusiontablesV2::StyleSetting::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'

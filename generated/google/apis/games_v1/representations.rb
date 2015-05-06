@@ -26,7 +26,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListResponse
+      class ListAchievementDefinitionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -54,11 +54,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementUpdateRequest
+      class UpdateAchievementRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementUpdateResponse
+      class UpdateAchievementResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -82,7 +82,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CategoryListResponse
+      class ListCategoryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -98,7 +98,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EventDefinitionListResponse
+      class ListEventDefinitionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -118,19 +118,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EventUpdateRequest
+      class UpdateEventRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EventUpdateResponse
+      class UpdateEventResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementIncrement
+      class GamesAchievementIncrement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementSetStepsAtLeast
+      class GamesAchievementSetStepsAtLeast
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -162,7 +162,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LeaderboardListResponse
+      class ListLeaderboardResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -174,7 +174,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class Config
+      class MetagameConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -210,7 +210,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerAchievementListResponse
+      class ListPlayerAchievementResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -218,7 +218,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerEventListResponse
+      class ListPlayerEventResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -230,7 +230,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerLeaderboardScoreListResponse
+      class ListPlayerLeaderboardScoreResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -238,7 +238,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerListResponse
+      class ListPlayerResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -246,7 +246,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlayerScoreListResponse
+      class ListPlayerScoreResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -282,7 +282,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class QuestListResponse
+      class ListQuestResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -290,7 +290,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RevisionCheckResponse
+      class CheckRevisionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -310,11 +310,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RoomCreateRequest
+      class CreateRoomRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RoomJoinRequest
+      class JoinRoomRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -322,7 +322,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RoomLeaveRequest
+      class LeaveRoomRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -362,7 +362,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SnapshotListResponse
+      class ListSnapshotResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -374,7 +374,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TurnBasedMatchCreateRequest
+      class CreateTurnBasedMatchRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -434,7 +434,7 @@ module Google
       end
       
       # @private
-      class ListResponse
+      class ListAchievementDefinitionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::AchievementDefinition, decorator: Google::Apis::GamesV1::AchievementDefinition::Representation
       
@@ -481,7 +481,7 @@ module Google
       class AchievementUpdateMultipleRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
-          collection :updates, as: 'updates', class: Google::Apis::GamesV1::AchievementUpdateRequest, decorator: Google::Apis::GamesV1::AchievementUpdateRequest::Representation
+          collection :updates, as: 'updates', class: Google::Apis::GamesV1::UpdateAchievementRequest, decorator: Google::Apis::GamesV1::UpdateAchievementRequest::Representation
       
         end
       end
@@ -490,26 +490,26 @@ module Google
       class AchievementUpdateMultipleResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
-          collection :updated_achievements, as: 'updatedAchievements', class: Google::Apis::GamesV1::AchievementUpdateResponse, decorator: Google::Apis::GamesV1::AchievementUpdateResponse::Representation
+          collection :updated_achievements, as: 'updatedAchievements', class: Google::Apis::GamesV1::UpdateAchievementResponse, decorator: Google::Apis::GamesV1::UpdateAchievementResponse::Representation
       
         end
       end
       
       # @private
-      class AchievementUpdateRequest
+      class UpdateAchievementRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :achievement_id, as: 'achievementId'
-          property :increment_payload, as: 'incrementPayload', class: Google::Apis::GamesV1::AchievementIncrement, decorator: Google::Apis::GamesV1::AchievementIncrement::Representation
+          property :increment_payload, as: 'incrementPayload', class: Google::Apis::GamesV1::GamesAchievementIncrement, decorator: Google::Apis::GamesV1::GamesAchievementIncrement::Representation
       
           property :kind, as: 'kind'
-          property :set_steps_at_least_payload, as: 'setStepsAtLeastPayload', class: Google::Apis::GamesV1::AchievementSetStepsAtLeast, decorator: Google::Apis::GamesV1::AchievementSetStepsAtLeast::Representation
+          property :set_steps_at_least_payload, as: 'setStepsAtLeastPayload', class: Google::Apis::GamesV1::GamesAchievementSetStepsAtLeast, decorator: Google::Apis::GamesV1::GamesAchievementSetStepsAtLeast::Representation
       
           property :update_type, as: 'updateType'
         end
       end
       
       # @private
-      class AchievementUpdateResponse
+      class UpdateAchievementResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :achievement_id, as: 'achievementId'
           property :current_state, as: 'currentState'
@@ -581,7 +581,7 @@ module Google
       end
       
       # @private
-      class CategoryListResponse
+      class ListCategoryResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::Category, decorator: Google::Apis::GamesV1::Category::Representation
       
@@ -624,7 +624,7 @@ module Google
       end
       
       # @private
-      class EventDefinitionListResponse
+      class ListEventDefinitionResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::EventDefinition, decorator: Google::Apis::GamesV1::EventDefinition::Representation
       
@@ -648,7 +648,7 @@ module Google
           property :kind, as: 'kind'
           property :time_period, as: 'timePeriod', class: Google::Apis::GamesV1::EventPeriodRange, decorator: Google::Apis::GamesV1::EventPeriodRange::Representation
       
-          collection :updates, as: 'updates', class: Google::Apis::GamesV1::EventUpdateRequest, decorator: Google::Apis::GamesV1::EventUpdateRequest::Representation
+          collection :updates, as: 'updates', class: Google::Apis::GamesV1::UpdateEventRequest, decorator: Google::Apis::GamesV1::UpdateEventRequest::Representation
       
         end
       end
@@ -674,7 +674,7 @@ module Google
       end
       
       # @private
-      class EventUpdateRequest
+      class UpdateEventRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :definition_id, as: 'definitionId'
           property :kind, as: 'kind'
@@ -683,7 +683,7 @@ module Google
       end
       
       # @private
-      class EventUpdateResponse
+      class UpdateEventResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :batch_failures, as: 'batchFailures', class: Google::Apis::GamesV1::EventBatchRecordFailure, decorator: Google::Apis::GamesV1::EventBatchRecordFailure::Representation
       
@@ -696,7 +696,7 @@ module Google
       end
       
       # @private
-      class AchievementIncrement
+      class GamesAchievementIncrement
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :request_id, as: 'requestId'
@@ -705,7 +705,7 @@ module Google
       end
       
       # @private
-      class AchievementSetStepsAtLeast
+      class GamesAchievementSetStepsAtLeast
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :steps, as: 'steps'
@@ -802,7 +802,7 @@ module Google
       end
       
       # @private
-      class LeaderboardListResponse
+      class ListLeaderboardResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::Leaderboard, decorator: Google::Apis::GamesV1::Leaderboard::Representation
       
@@ -837,7 +837,7 @@ module Google
       end
       
       # @private
-      class Config
+      class MetagameConfig
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_version, as: 'currentVersion'
           property :kind, as: 'kind'
@@ -947,7 +947,7 @@ module Google
       end
       
       # @private
-      class PlayerAchievementListResponse
+      class ListPlayerAchievementResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::PlayerAchievement, decorator: Google::Apis::GamesV1::PlayerAchievement::Representation
       
@@ -968,7 +968,7 @@ module Google
       end
       
       # @private
-      class PlayerEventListResponse
+      class ListPlayerEventResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::PlayerEvent, decorator: Google::Apis::GamesV1::PlayerEvent::Representation
       
@@ -1008,7 +1008,7 @@ module Google
       end
       
       # @private
-      class PlayerLeaderboardScoreListResponse
+      class ListPlayerLeaderboardScoreResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::PlayerLeaderboardScore, decorator: Google::Apis::GamesV1::PlayerLeaderboardScore::Representation
       
@@ -1030,7 +1030,7 @@ module Google
       end
       
       # @private
-      class PlayerListResponse
+      class ListPlayerResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::Player, decorator: Google::Apis::GamesV1::Player::Representation
       
@@ -1051,7 +1051,7 @@ module Google
       end
       
       # @private
-      class PlayerScoreListResponse
+      class ListPlayerScoreResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :submitted_scores, as: 'submittedScores', class: Google::Apis::GamesV1::PlayerScoreResponse, decorator: Google::Apis::GamesV1::PlayerScoreResponse::Representation
@@ -1156,7 +1156,7 @@ module Google
       end
       
       # @private
-      class QuestListResponse
+      class ListQuestResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::Quest, decorator: Google::Apis::GamesV1::Quest::Representation
       
@@ -1178,7 +1178,7 @@ module Google
       end
       
       # @private
-      class RevisionCheckResponse
+      class CheckRevisionResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           property :kind, as: 'kind'
@@ -1237,7 +1237,7 @@ module Google
       end
       
       # @private
-      class RoomCreateRequest
+      class CreateRoomRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::RoomAutoMatchingCriteria, decorator: Google::Apis::GamesV1::RoomAutoMatchingCriteria::Representation
       
@@ -1254,7 +1254,7 @@ module Google
       end
       
       # @private
-      class RoomJoinRequest
+      class JoinRoomRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :capabilities, as: 'capabilities'
           property :client_address, as: 'clientAddress', class: Google::Apis::GamesV1::RoomClientAddress, decorator: Google::Apis::GamesV1::RoomClientAddress::Representation
@@ -1281,7 +1281,7 @@ module Google
       end
       
       # @private
-      class RoomLeaveRequest
+      class LeaveRoomRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :leave_diagnostics, as: 'leaveDiagnostics', class: Google::Apis::GamesV1::RoomLeaveDiagnostics, decorator: Google::Apis::GamesV1::RoomLeaveDiagnostics::Representation
@@ -1405,7 +1405,7 @@ module Google
       end
       
       # @private
-      class SnapshotListResponse
+      class ListSnapshotResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::Snapshot, decorator: Google::Apis::GamesV1::Snapshot::Representation
       
@@ -1458,7 +1458,7 @@ module Google
       end
       
       # @private
-      class TurnBasedMatchCreateRequest
+      class CreateTurnBasedMatchRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria, decorator: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria::Representation
       

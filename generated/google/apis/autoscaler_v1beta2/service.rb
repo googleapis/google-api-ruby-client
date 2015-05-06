@@ -200,10 +200,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AutoscalerV1beta2::ListResponse] parsed result object
+        # @yieldparam result [Google::Apis::AutoscalerV1beta2::ListAutoscalerResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AutoscalerV1beta2::ListResponse]
+        # @return [Google::Apis::AutoscalerV1beta2::ListAutoscalerResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -211,8 +211,8 @@ module Google
         def list_autoscalers(project, zone, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/zones/{zone}/autoscalers'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AutoscalerV1beta2::ListResponse::Representation
-          command.response_class = Google::Apis::AutoscalerV1beta2::ListResponse
+          command.response_representation = Google::Apis::AutoscalerV1beta2::ListAutoscalerResponse::Representation
+          command.response_class = Google::Apis::AutoscalerV1beta2::ListAutoscalerResponse
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.query['filter'] = filter unless filter.nil?

@@ -110,11 +110,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SearchRequest
+      class SearchTripsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SearchResponse
+      class SearchTripsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -404,7 +404,7 @@ module Google
       end
       
       # @private
-      class SearchRequest
+      class SearchTripsRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request, as: 'request', class: Google::Apis::QpxExpressV1::TripOptionsRequest, decorator: Google::Apis::QpxExpressV1::TripOptionsRequest::Representation
       
@@ -412,7 +412,7 @@ module Google
       end
       
       # @private
-      class SearchResponse
+      class SearchTripsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :trips, as: 'trips', class: Google::Apis::QpxExpressV1::TripOptionsResponse, decorator: Google::Apis::QpxExpressV1::TripOptionsResponse::Representation

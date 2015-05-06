@@ -30,7 +30,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class List
+      class ConversionList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -123,6 +123,7 @@ module Google
       
           collection :custom_metric, as: 'customMetric', class: Google::Apis::DoubleclicksearchV2::CustomMetric, decorator: Google::Apis::DoubleclicksearchV2::CustomMetric::Representation
       
+          property :device_type, as: 'deviceType'
           property :ds_conversion_id, as: 'dsConversionId'
           property :engine_account_id, as: 'engineAccountId'
           property :feed_id, as: 'feedId'
@@ -143,7 +144,7 @@ module Google
       end
       
       # @private
-      class List
+      class ConversionList
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :conversion, as: 'conversion', class: Google::Apis::DoubleclicksearchV2::Conversion, decorator: Google::Apis::DoubleclicksearchV2::Conversion::Representation
       

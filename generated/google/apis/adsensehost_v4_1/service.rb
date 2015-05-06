@@ -324,7 +324,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_ad_code_account_adunit(account_id, ad_client_id, ad_unit_id, host_custom_channel_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_account_adunit_ad_code(account_id, ad_client_id, ad_unit_id, host_custom_channel_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/adunits/{adUnitId}/adcode'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdsensehostV4_1::AdCode::Representation
@@ -694,7 +694,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def start_associationsession(product_code: nil, user_locale: nil, website_locale: nil, website_url: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def start_association_session(product_code: nil, user_locale: nil, website_locale: nil, website_url: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'associationsessions/start'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdsensehostV4_1::AssociationSession::Representation
@@ -734,7 +734,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def verify_associationsession(token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def verify_association_session(token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'associationsessions/verify'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdsensehostV4_1::AssociationSession::Representation
@@ -772,7 +772,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_customchannel(ad_client_id, custom_channel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_custom_channel(ad_client_id, custom_channel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/customchannels/{customChannelId}'
           command =  make_simple_command(:delete, path, options)
           command.response_representation = Google::Apis::AdsensehostV4_1::CustomChannel::Representation
@@ -811,7 +811,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_customchannel(ad_client_id, custom_channel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_custom_channel(ad_client_id, custom_channel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/customchannels/{customChannelId}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdsensehostV4_1::CustomChannel::Representation
@@ -849,7 +849,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_customchannel(ad_client_id, custom_channel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_custom_channel(ad_client_id, custom_channel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/customchannels'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdsensehostV4_1::CustomChannel::Representation
@@ -894,7 +894,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_customchannels(ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_custom_channels(ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/customchannels'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdsensehostV4_1::CustomChannels::Representation
@@ -936,7 +936,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_customchannel(ad_client_id, custom_channel_object = nil, custom_channel_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_custom_channel(ad_client_id, custom_channel_object = nil, custom_channel_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/customchannels'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AdsensehostV4_1::CustomChannel::Representation
@@ -976,7 +976,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_customchannel(ad_client_id, custom_channel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_custom_channel(ad_client_id, custom_channel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/customchannels'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AdsensehostV4_1::CustomChannel::Representation
@@ -1081,7 +1081,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_urlchannel(ad_client_id, url_channel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_url_channel(ad_client_id, url_channel_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/urlchannels/{urlChannelId}'
           command =  make_simple_command(:delete, path, options)
           command.response_representation = Google::Apis::AdsensehostV4_1::UrlChannel::Representation
@@ -1119,7 +1119,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_urlchannel(ad_client_id, url_channel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_url_channel(ad_client_id, url_channel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/urlchannels'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AdsensehostV4_1::UrlChannel::Representation
@@ -1163,7 +1163,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_urlchannels(ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_url_channels(ad_client_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/urlchannels'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdsensehostV4_1::UrlChannels::Representation

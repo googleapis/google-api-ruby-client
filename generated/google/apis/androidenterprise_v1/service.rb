@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AndroidenterpriseV1
-      # Google Play MDM API
+      # Google Play EMM API
       #
       # Allows MDMs/EMMs and enterprises to manage the deployment of apps to Android
       #  for Work users.
@@ -184,10 +184,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::ListResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::ListCollectionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidenterpriseV1::ListResponse]
+        # @return [Google::Apis::AndroidenterpriseV1::ListCollectionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -195,8 +195,8 @@ module Google
         def list_collections(enterprise_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/collections'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AndroidenterpriseV1::ListResponse::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::ListResponse
+          command.response_representation = Google::Apis::AndroidenterpriseV1::ListCollectionsResponse::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::ListCollectionsResponse
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -318,7 +318,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_collectionviewer(enterprise_id, collection_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_collection_viewer(enterprise_id, collection_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/collections/{collectionId}/users/{userId}'
           command =  make_simple_command(:delete, path, options)
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
@@ -360,7 +360,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_collectionviewer(enterprise_id, collection_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_collection_viewer(enterprise_id, collection_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/collections/{collectionId}/users/{userId}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AndroidenterpriseV1::User::Representation
@@ -394,19 +394,19 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::CollectionViewersListResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::ListCollectionViewersResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidenterpriseV1::CollectionViewersListResponse]
+        # @return [Google::Apis::AndroidenterpriseV1::ListCollectionViewersResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_collectionviewers(enterprise_id, collection_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_collection_viewers(enterprise_id, collection_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/collections/{collectionId}/users'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AndroidenterpriseV1::CollectionViewersListResponse::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::CollectionViewersListResponse
+          command.response_representation = Google::Apis::AndroidenterpriseV1::ListCollectionViewersResponse::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::ListCollectionViewersResponse
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
           command.params['collectionId'] = collection_id unless collection_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -446,7 +446,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_collectionviewer(enterprise_id, collection_id, user_id, user_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_collection_viewer(enterprise_id, collection_id, user_id, user_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/collections/{collectionId}/users/{userId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::User::Representation
@@ -493,7 +493,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_collectionviewer(enterprise_id, collection_id, user_id, user_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_collection_viewer(enterprise_id, collection_id, user_id, user_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/collections/{collectionId}/users/{userId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::User::Representation
@@ -614,10 +614,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::DevicesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::ListDevicesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidenterpriseV1::DevicesListResponse]
+        # @return [Google::Apis::AndroidenterpriseV1::ListDevicesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -625,8 +625,8 @@ module Google
         def list_devices(enterprise_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/users/{userId}/devices'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AndroidenterpriseV1::DevicesListResponse::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::DevicesListResponse
+          command.response_representation = Google::Apis::AndroidenterpriseV1::ListDevicesResponse::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::ListDevicesResponse
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -850,10 +850,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::EnterprisesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::ListEnterprisesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidenterpriseV1::EnterprisesListResponse]
+        # @return [Google::Apis::AndroidenterpriseV1::ListEnterprisesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -861,8 +861,8 @@ module Google
         def list_enterprises(domain: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AndroidenterpriseV1::EnterprisesListResponse::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::EnterprisesListResponse
+          command.response_representation = Google::Apis::AndroidenterpriseV1::ListEnterprisesResponse::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::ListEnterprisesResponse
           command.query['domain'] = domain unless domain.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1043,10 +1043,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::EntitlementsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::ListEntitlementsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidenterpriseV1::EntitlementsListResponse]
+        # @return [Google::Apis::AndroidenterpriseV1::ListEntitlementsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1054,8 +1054,8 @@ module Google
         def list_entitlements(enterprise_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/users/{userId}/entitlements'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AndroidenterpriseV1::EntitlementsListResponse::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::EntitlementsListResponse
+          command.response_representation = Google::Apis::AndroidenterpriseV1::ListEntitlementsResponse::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::ListEntitlementsResponse
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1194,7 +1194,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_grouplicense(enterprise_id, group_license_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_group_license(enterprise_id, group_license_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AndroidenterpriseV1::GroupLicense::Representation
@@ -1223,19 +1223,19 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::GroupLicensesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::ListGroupLicensesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidenterpriseV1::GroupLicensesListResponse]
+        # @return [Google::Apis::AndroidenterpriseV1::ListGroupLicensesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_grouplicenses(enterprise_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_group_licenses(enterprise_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/groupLicenses'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AndroidenterpriseV1::GroupLicensesListResponse::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::GroupLicensesListResponse
+          command.response_representation = Google::Apis::AndroidenterpriseV1::ListGroupLicensesResponse::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::ListGroupLicensesResponse
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1263,19 +1263,19 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::GroupLicenseUsersListResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::ListGroupLicenseUsersResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidenterpriseV1::GroupLicenseUsersListResponse]
+        # @return [Google::Apis::AndroidenterpriseV1::ListGroupLicenseUsersResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_grouplicenseusers(enterprise_id, group_license_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_group_license_users(enterprise_id, group_license_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}/users'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AndroidenterpriseV1::GroupLicenseUsersListResponse::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::GroupLicenseUsersListResponse
+          command.response_representation = Google::Apis::AndroidenterpriseV1::ListGroupLicenseUsersResponse::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::ListGroupLicenseUsersResponse
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
           command.params['groupLicenseId'] = group_license_id unless group_license_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1395,10 +1395,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::InstallsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::ListInstallsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidenterpriseV1::InstallsListResponse]
+        # @return [Google::Apis::AndroidenterpriseV1::ListInstallsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1406,8 +1406,8 @@ module Google
         def list_installs(enterprise_id, user_id, device_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AndroidenterpriseV1::InstallsListResponse::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::InstallsListResponse
+          command.response_representation = Google::Apis::AndroidenterpriseV1::ListInstallsResponse::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::ListInstallsResponse
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
           command.params['userId'] = user_id unless user_id.nil?
           command.params['deviceId'] = device_id unless device_id.nil?
@@ -1630,7 +1630,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_app_restrictions_schema_product(enterprise_id, product_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_product_app_restrictions_schema(enterprise_id, product_id, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/products/{productId}/appRestrictionsSchema'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AndroidenterpriseV1::AppRestrictionsSchema::Representation
@@ -1670,7 +1670,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_permissions_product(enterprise_id, product_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_product_permissions(enterprise_id, product_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/products/{productId}/permissions'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AndroidenterpriseV1::ProductPermissions::Representation
@@ -1711,7 +1711,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_permissions_product(enterprise_id, product_id, product_permissions_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_product_permissions(enterprise_id, product_id, product_permissions_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/products/{productId}/permissions'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::ProductPermissions::Representation
@@ -1753,7 +1753,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_token_user(enterprise_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def generate_user_token(enterprise_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/users/{userId}/token'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::AndroidenterpriseV1::UserToken::Representation
@@ -1823,10 +1823,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::UsersListResponse] parsed result object
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::ListUsersResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AndroidenterpriseV1::UsersListResponse]
+        # @return [Google::Apis::AndroidenterpriseV1::ListUsersResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1834,8 +1834,8 @@ module Google
         def list_users(enterprise_id, email: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/users'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::AndroidenterpriseV1::UsersListResponse::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::UsersListResponse
+          command.response_representation = Google::Apis::AndroidenterpriseV1::ListUsersResponse::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::ListUsersResponse
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
           command.query['email'] = email unless email.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1870,7 +1870,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def revoke_token_user(enterprise_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def revoke_user_token(enterprise_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/users/{userId}/token'
           command =  make_simple_command(:delete, path, options)
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?

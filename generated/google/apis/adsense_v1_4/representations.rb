@@ -78,7 +78,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class GenerateResponse
+      class GenerateReportResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Header
@@ -126,15 +126,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AdStyles
+      class SavedAdStyles
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class Report
+      class SavedReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class Reports
+      class SavedReports
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -303,11 +303,11 @@ module Google
       end
       
       # @private
-      class GenerateResponse
+      class GenerateReportResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :averages, as: 'averages'
           property :end_date, as: 'endDate'
-          collection :headers, as: 'headers', class: Google::Apis::AdsenseV1_4::GenerateResponse::Header, decorator: Google::Apis::AdsenseV1_4::GenerateResponse::Header::Representation
+          collection :headers, as: 'headers', class: Google::Apis::AdsenseV1_4::GenerateReportResponse::Header, decorator: Google::Apis::AdsenseV1_4::GenerateReportResponse::Header::Representation
       
           property :kind, as: 'kind'
           collection :rows, as: 'rows', :class => Array do
@@ -439,7 +439,7 @@ module Google
       end
       
       # @private
-      class AdStyles
+      class SavedAdStyles
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdsenseV1_4::SavedAdStyle, decorator: Google::Apis::AdsenseV1_4::SavedAdStyle::Representation
@@ -450,7 +450,7 @@ module Google
       end
       
       # @private
-      class Report
+      class SavedReport
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -459,10 +459,10 @@ module Google
       end
       
       # @private
-      class Reports
+      class SavedReports
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
-          collection :items, as: 'items', class: Google::Apis::AdsenseV1_4::Report, decorator: Google::Apis::AdsenseV1_4::Report::Representation
+          collection :items, as: 'items', class: Google::Apis::AdsenseV1_4::SavedReport, decorator: Google::Apis::AdsenseV1_4::SavedReport::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'

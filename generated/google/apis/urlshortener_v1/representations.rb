@@ -38,7 +38,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class History
+      class UrlHistory
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -96,7 +96,7 @@ module Google
       end
       
       # @private
-      class History
+      class UrlHistory
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::UrlshortenerV1::Url, decorator: Google::Apis::UrlshortenerV1::Url::Representation
       

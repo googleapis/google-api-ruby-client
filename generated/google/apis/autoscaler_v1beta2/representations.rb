@@ -26,7 +26,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListResponse
+      class ListAutoscalerResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -102,7 +102,7 @@ module Google
       end
       
       # @private
-      class ListResponse
+      class ListAutoscalerResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AutoscalerV1beta2::Autoscaler, decorator: Google::Apis::AutoscalerV1beta2::Autoscaler::Representation
       

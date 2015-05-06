@@ -22,7 +22,7 @@ module Google
   module Apis
     module SiteVerificationV1
       
-      class GettokenRequest
+      class GetWebResourceTokenRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Site
@@ -30,15 +30,15 @@ module Google
         end
       end
       
-      class GettokenResponse
+      class GetWebResourceTokenResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListResponse
+      class ListWebResourceResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class Resource
+      class SiteVerificationWebResourceResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Site
@@ -47,9 +47,9 @@ module Google
       end
       
       # @private
-      class GettokenRequest
+      class GetWebResourceTokenRequest
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :site, as: 'site', class: Google::Apis::SiteVerificationV1::GettokenRequest::Site, decorator: Google::Apis::SiteVerificationV1::GettokenRequest::Site::Representation
+          property :site, as: 'site', class: Google::Apis::SiteVerificationV1::GetWebResourceTokenRequest::Site, decorator: Google::Apis::SiteVerificationV1::GetWebResourceTokenRequest::Site::Representation
       
           property :verification_method, as: 'verificationMethod'
         end
@@ -64,27 +64,27 @@ module Google
       end
       
       # @private
-      class GettokenResponse
+      class GetWebResourceTokenResponse
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :method_prop, as: 'method'
+          property :verification_method, as: 'method'
           property :token, as: 'token'
         end
       end
       
       # @private
-      class ListResponse
+      class ListWebResourceResponse
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::SiteVerificationV1::Resource, decorator: Google::Apis::SiteVerificationV1::Resource::Representation
+          collection :items, as: 'items', class: Google::Apis::SiteVerificationV1::SiteVerificationWebResourceResource, decorator: Google::Apis::SiteVerificationV1::SiteVerificationWebResourceResource::Representation
       
         end
       end
       
       # @private
-      class Resource
+      class SiteVerificationWebResourceResource
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           collection :owners, as: 'owners'
-          property :site, as: 'site', class: Google::Apis::SiteVerificationV1::Resource::Site, decorator: Google::Apis::SiteVerificationV1::Resource::Site::Representation
+          property :site, as: 'site', class: Google::Apis::SiteVerificationV1::SiteVerificationWebResourceResource::Site, decorator: Google::Apis::SiteVerificationV1::SiteVerificationWebResourceResource::Site::Representation
       
         end
         

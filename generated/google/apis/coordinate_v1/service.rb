@@ -68,10 +68,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CoordinateV1::ListResponse] parsed result object
+        # @yieldparam result [Google::Apis::CoordinateV1::ListCustomFieldDefResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::CoordinateV1::ListResponse]
+        # @return [Google::Apis::CoordinateV1::ListCustomFieldDefResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -79,8 +79,8 @@ module Google
         def list_custom_field_defs(team_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/custom_fields'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CoordinateV1::ListResponse::Representation
-          command.response_class = Google::Apis::CoordinateV1::ListResponse
+          command.response_representation = Google::Apis::CoordinateV1::ListCustomFieldDefResponse::Representation
+          command.response_class = Google::Apis::CoordinateV1::ListCustomFieldDefResponse
           command.params['teamId'] = team_id unless team_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -220,10 +220,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CoordinateV1::JobListResponse] parsed result object
+        # @yieldparam result [Google::Apis::CoordinateV1::ListJobResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::CoordinateV1::JobListResponse]
+        # @return [Google::Apis::CoordinateV1::ListJobResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -231,8 +231,8 @@ module Google
         def list_jobs(team_id, max_results: nil, min_modified_timestamp_ms: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/jobs'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CoordinateV1::JobListResponse::Representation
-          command.response_class = Google::Apis::CoordinateV1::JobListResponse
+          command.response_representation = Google::Apis::CoordinateV1::ListJobResponse::Representation
+          command.response_class = Google::Apis::CoordinateV1::ListJobResponse
           command.params['teamId'] = team_id unless team_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['minModifiedTimestampMs'] = min_modified_timestamp_ms unless min_modified_timestamp_ms.nil?
@@ -422,10 +422,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CoordinateV1::LocationListResponse] parsed result object
+        # @yieldparam result [Google::Apis::CoordinateV1::ListLocationResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::CoordinateV1::LocationListResponse]
+        # @return [Google::Apis::CoordinateV1::ListLocationResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -433,8 +433,8 @@ module Google
         def list_locations(team_id, worker_email, max_results: nil, page_token: nil, start_timestamp_ms: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/workers/{workerEmail}/locations'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CoordinateV1::LocationListResponse::Representation
-          command.response_class = Google::Apis::CoordinateV1::LocationListResponse
+          command.response_representation = Google::Apis::CoordinateV1::ListLocationResponse::Representation
+          command.response_class = Google::Apis::CoordinateV1::ListLocationResponse
           command.params['teamId'] = team_id unless team_id.nil?
           command.params['workerEmail'] = worker_email unless worker_email.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -616,10 +616,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CoordinateV1::TeamListResponse] parsed result object
+        # @yieldparam result [Google::Apis::CoordinateV1::ListTeamResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::CoordinateV1::TeamListResponse]
+        # @return [Google::Apis::CoordinateV1::ListTeamResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -627,8 +627,8 @@ module Google
         def list_teams(admin: nil, dispatcher: nil, worker: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CoordinateV1::TeamListResponse::Representation
-          command.response_class = Google::Apis::CoordinateV1::TeamListResponse
+          command.response_representation = Google::Apis::CoordinateV1::ListTeamResponse::Representation
+          command.response_class = Google::Apis::CoordinateV1::ListTeamResponse
           command.query['admin'] = admin unless admin.nil?
           command.query['dispatcher'] = dispatcher unless dispatcher.nil?
           command.query['worker'] = worker unless worker.nil?
@@ -654,10 +654,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CoordinateV1::WorkerListResponse] parsed result object
+        # @yieldparam result [Google::Apis::CoordinateV1::ListWorkerResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::CoordinateV1::WorkerListResponse]
+        # @return [Google::Apis::CoordinateV1::ListWorkerResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -665,8 +665,8 @@ module Google
         def list_workers(team_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/workers'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::CoordinateV1::WorkerListResponse::Representation
-          command.response_class = Google::Apis::CoordinateV1::WorkerListResponse
+          command.response_representation = Google::Apis::CoordinateV1::ListWorkerResponse::Representation
+          command.response_class = Google::Apis::CoordinateV1::ListWorkerResponse
           command.params['teamId'] = team_id unless team_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -86,7 +86,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class Reports
+      class SavedReports
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -275,7 +275,7 @@ module Google
       end
       
       # @private
-      class Reports
+      class SavedReports
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::SavedReport, decorator: Google::Apis::AdexchangesellerV2_0::SavedReport::Representation

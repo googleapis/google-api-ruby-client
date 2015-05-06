@@ -66,11 +66,11 @@ module Google
         end
       end
       
-      class GroupItemListResponse
+      class ListGroupItemResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class GroupListResponse
+      class ListGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -196,7 +196,7 @@ module Google
       end
       
       # @private
-      class GroupItemListResponse
+      class ListGroupItemResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::YoutubeAnalyticsV1::GroupItem, decorator: Google::Apis::YoutubeAnalyticsV1::GroupItem::Representation
@@ -206,7 +206,7 @@ module Google
       end
       
       # @private
-      class GroupListResponse
+      class ListGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::YoutubeAnalyticsV1::Group, decorator: Google::Apis::YoutubeAnalyticsV1::Group::Representation

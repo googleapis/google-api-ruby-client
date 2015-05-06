@@ -21,7 +21,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CalendarV3
-
+      
       # 
       class Acl
         include Google::Apis::Core::Hashable
@@ -55,6 +55,11 @@ module Google
         attr_accessor :next_sync_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -62,7 +67,7 @@ module Google
           @next_sync_token = args[:next_sync_token] unless args[:next_sync_token].nil?
         end
       end
-
+      
       # 
       class AclRule
         include Google::Apis::Core::Hashable
@@ -102,12 +107,18 @@ module Google
         attr_accessor :scope
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @role = args[:role] unless args[:role].nil?
           @scope = args[:scope] unless args[:scope].nil?
         end
+        
         # The scope of the rule.
         class Scope
           include Google::Apis::Core::Hashable
@@ -129,12 +140,17 @@ module Google
           attr_accessor :value
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @type = args[:type] unless args[:type].nil?
             @value = args[:value] unless args[:value].nil?
           end
         end
       end
-
+      
       # 
       class Calendar
         include Google::Apis::Core::Hashable
@@ -176,6 +192,11 @@ module Google
         attr_accessor :time_zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @description = args[:description] unless args[:description].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
@@ -185,9 +206,9 @@ module Google
           @time_zone = args[:time_zone] unless args[:time_zone].nil?
         end
       end
-
+      
       # 
-      class List
+      class CalendarList
         include Google::Apis::Core::Hashable
       
         # ETag of the collection.
@@ -197,7 +218,7 @@ module Google
       
         # Calendars that are present on the user's calendar list.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::CalendarV3::ListEntry>]
+        # @return [Array<Google::Apis::CalendarV3::CalendarListEntry>]
         attr_accessor :items
       
         # Type of the collection ("calendar#calendarList").
@@ -219,6 +240,11 @@ module Google
         attr_accessor :next_sync_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -226,9 +252,9 @@ module Google
           @next_sync_token = args[:next_sync_token] unless args[:next_sync_token].nil?
         end
       end
-
+      
       # 
-      class ListEntry
+      class CalendarListEntry
         include Google::Apis::Core::Hashable
       
         # The effective access role that the authenticated user has on the calendar.
@@ -309,7 +335,7 @@ module Google
       
         # The notifications that the authenticated user is receiving for this calendar.
         # Corresponds to the JSON property `notificationSettings`
-        # @return [Google::Apis::CalendarV3::ListEntry::NotificationSettings]
+        # @return [Google::Apis::CalendarV3::CalendarListEntry::NotificationSettings]
         attr_accessor :notification_settings
       
         # Whether the calendar is the primary calendar of the authenticated user. Read-
@@ -342,6 +368,11 @@ module Google
         attr_accessor :time_zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @access_role = args[:access_role] unless args[:access_role].nil?
           @background_color = args[:background_color] unless args[:background_color].nil?
           @color_id = args[:color_id] unless args[:color_id].nil?
@@ -361,23 +392,29 @@ module Google
           @summary_override = args[:summary_override] unless args[:summary_override].nil?
           @time_zone = args[:time_zone] unless args[:time_zone].nil?
         end
+        
         # The notifications that the authenticated user is receiving for this calendar.
         class NotificationSettings
           include Google::Apis::Core::Hashable
         
           # The list of notifications set for this calendar.
           # Corresponds to the JSON property `notifications`
-          # @return [Array<Google::Apis::CalendarV3::Notification>]
+          # @return [Array<Google::Apis::CalendarV3::CalendarNotification>]
           attr_accessor :notifications
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @notifications = args[:notifications] unless args[:notifications].nil?
           end
         end
       end
-
+      
       # 
-      class Notification
+      class CalendarNotification
         include Google::Apis::Core::Hashable
       
         # The method used to deliver the notification. Possible values are:
@@ -386,7 +423,7 @@ module Google
         # on inserts and updates.
         # Corresponds to the JSON property `method`
         # @return [String]
-        attr_accessor :method_prop
+        attr_accessor :delivery_method
       
         # The type of notification. Possible values are:
         # - "eventCreation" - Notification sent when a new event is put on the calendar.
@@ -399,11 +436,16 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
-          @method_prop = args[:method_prop] unless args[:method_prop].nil?
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delivery_method = args[:delivery_method] unless args[:delivery_method].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # 
       class Channel
         include Google::Apis::Core::Hashable
@@ -464,6 +506,11 @@ module Google
         attr_accessor :type
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @address = args[:address] unless args[:address].nil?
           @expiration = args[:expiration] unless args[:expiration].nil?
           @id = args[:id] unless args[:id].nil?
@@ -476,7 +523,7 @@ module Google
           @type = args[:type] unless args[:type].nil?
         end
       end
-
+      
       # 
       class ColorDefinition
         include Google::Apis::Core::Hashable
@@ -493,11 +540,16 @@ module Google
         attr_accessor :foreground
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @background = args[:background] unless args[:background].nil?
           @foreground = args[:foreground] unless args[:foreground].nil?
         end
       end
-
+      
       # 
       class Colors
         include Google::Apis::Core::Hashable
@@ -527,13 +579,18 @@ module Google
         attr_accessor :updated
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @calendar = args[:calendar] unless args[:calendar].nil?
           @event = args[:event] unless args[:event].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @updated = args[:updated] unless args[:updated].nil?
         end
       end
-
+      
       # 
       class Error
         include Google::Apis::Core::Hashable
@@ -557,11 +614,16 @@ module Google
         attr_accessor :reason
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @domain = args[:domain] unless args[:domain].nil?
           @reason = args[:reason] unless args[:reason].nil?
         end
       end
-
+      
       # 
       class Event
         include Google::Apis::Core::Hashable
@@ -800,6 +862,11 @@ module Google
         attr_accessor :visibility
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @anyone_can_add_self = args[:anyone_can_add_self] unless args[:anyone_can_add_self].nil?
           @attendees = args[:attendees] unless args[:attendees].nil?
           @attendees_omitted = args[:attendees_omitted] unless args[:attendees_omitted].nil?
@@ -837,6 +904,7 @@ module Google
           @updated = args[:updated] unless args[:updated].nil?
           @visibility = args[:visibility] unless args[:visibility].nil?
         end
+        
         # The creator of the event. Read-only.
         class Creator
           include Google::Apis::Core::Hashable
@@ -864,12 +932,18 @@ module Google
           alias_method :self?, :self
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @display_name = args[:display_name] unless args[:display_name].nil?
             @email = args[:email] unless args[:email].nil?
             @id = args[:id] unless args[:id].nil?
             @self = args[:self] unless args[:self].nil?
           end
         end
+        
         # Extended properties of the event.
         class ExtendedProperties
           include Google::Apis::Core::Hashable
@@ -887,10 +961,16 @@ module Google
           attr_accessor :shared
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @private = args[:private] unless args[:private].nil?
             @shared = args[:shared] unless args[:shared].nil?
           end
         end
+        
         # A gadget that extends this event.
         class Gadget
           include Google::Apis::Core::Hashable
@@ -900,7 +980,7 @@ module Google
           # - "chip" - The gadget displays when the event is clicked.
           # Corresponds to the JSON property `display`
           # @return [String]
-          attr_accessor :display_prop
+          attr_accessor :display_mode
         
           # The gadget's height in pixels. Optional.
           # Corresponds to the JSON property `height`
@@ -938,7 +1018,12 @@ module Google
           attr_accessor :width
         
           def initialize(**args)
-            @display_prop = args[:display_prop] unless args[:display_prop].nil?
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @display_mode = args[:display_mode] unless args[:display_mode].nil?
             @height = args[:height] unless args[:height].nil?
             @icon_link = args[:icon_link] unless args[:icon_link].nil?
             @link = args[:link] unless args[:link].nil?
@@ -948,6 +1033,7 @@ module Google
             @width = args[:width] unless args[:width].nil?
           end
         end
+        
         # The organizer of the event. If the organizer is also an attendee, this is
         # indicated with a separate entry in attendees with the organizer field set to
         # True. To change the organizer, use the move operation. Read-only, except when
@@ -978,12 +1064,18 @@ module Google
           alias_method :self?, :self
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @display_name = args[:display_name] unless args[:display_name].nil?
             @email = args[:email] unless args[:email].nil?
             @id = args[:id] unless args[:id].nil?
             @self = args[:self] unless args[:self].nil?
           end
         end
+        
         # Information about the event's reminders for the authenticated user.
         class Reminders
           include Google::Apis::Core::Hashable
@@ -1002,10 +1094,16 @@ module Google
           alias_method :use_default?, :use_default
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @overrides = args[:overrides] unless args[:overrides].nil?
             @use_default = args[:use_default] unless args[:use_default].nil?
           end
         end
+        
         # Source of an event from which it was created; for example a web page, an email
         # message or any document identifiable by an URL using HTTP/HTTPS protocol.
         # Accessible only by the creator of the event.
@@ -1023,20 +1121,30 @@ module Google
           attr_accessor :url
         
           def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
             @title = args[:title] unless args[:title].nil?
             @url = args[:url] unless args[:url].nil?
           end
         end
       end
-
+      
       # 
       class EventAttachment
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
-
+      
       # 
       class EventAttendee
         include Google::Apis::Core::Hashable
@@ -1103,6 +1211,11 @@ module Google
         alias_method :self?, :self
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @additional_guests = args[:additional_guests] unless args[:additional_guests].nil?
           @comment = args[:comment] unless args[:comment].nil?
           @display_name = args[:display_name] unless args[:display_name].nil?
@@ -1115,7 +1228,7 @@ module Google
           @self = args[:self] unless args[:self].nil?
         end
       end
-
+      
       # 
       class EventDateTime
         include Google::Apis::Core::Hashable
@@ -1142,12 +1255,17 @@ module Google
         attr_accessor :time_zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @date = args[:date] unless args[:date].nil?
           @date_time = args[:date_time] unless args[:date_time].nil?
           @time_zone = args[:time_zone] unless args[:time_zone].nil?
         end
       end
-
+      
       # 
       class EventReminder
         include Google::Apis::Core::Hashable
@@ -1158,7 +1276,7 @@ module Google
         # - "popup" - Reminders are sent via a UI popup.
         # Corresponds to the JSON property `method`
         # @return [String]
-        attr_accessor :method_prop
+        attr_accessor :reminder_method
       
         # Number of minutes before the start of the event when the reminder should
         # trigger.
@@ -1167,11 +1285,16 @@ module Google
         attr_accessor :minutes
       
         def initialize(**args)
-          @method_prop = args[:method_prop] unless args[:method_prop].nil?
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reminder_method = args[:reminder_method] unless args[:reminder_method].nil?
           @minutes = args[:minutes] unless args[:minutes].nil?
         end
       end
-
+      
       # 
       class Events
         include Google::Apis::Core::Hashable
@@ -1247,6 +1370,11 @@ module Google
         attr_accessor :updated
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @access_role = args[:access_role] unless args[:access_role].nil?
           @default_reminders = args[:default_reminders] unless args[:default_reminders].nil?
           @description = args[:description] unless args[:description].nil?
@@ -1260,7 +1388,7 @@ module Google
           @updated = args[:updated] unless args[:updated].nil?
         end
       end
-
+      
       # 
       class FreeBusyCalendar
         include Google::Apis::Core::Hashable
@@ -1276,11 +1404,16 @@ module Google
         attr_accessor :errors
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @busy = args[:busy] unless args[:busy].nil?
           @errors = args[:errors] unless args[:errors].nil?
         end
       end
-
+      
       # 
       class FreeBusyGroup
         include Google::Apis::Core::Hashable
@@ -1296,11 +1429,16 @@ module Google
         attr_accessor :errors
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @calendars = args[:calendars] unless args[:calendars].nil?
           @errors = args[:errors] unless args[:errors].nil?
         end
       end
-
+      
       # 
       class FreeBusyRequest
         include Google::Apis::Core::Hashable
@@ -1339,6 +1477,11 @@ module Google
         attr_accessor :time_zone
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @calendar_expansion_max = args[:calendar_expansion_max] unless args[:calendar_expansion_max].nil?
           @group_expansion_max = args[:group_expansion_max] unless args[:group_expansion_max].nil?
           @items = args[:items] unless args[:items].nil?
@@ -1347,7 +1490,7 @@ module Google
           @time_zone = args[:time_zone] unless args[:time_zone].nil?
         end
       end
-
+      
       # 
       class FreeBusyRequestItem
         include Google::Apis::Core::Hashable
@@ -1358,10 +1501,15 @@ module Google
         attr_accessor :id
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @id = args[:id] unless args[:id].nil?
         end
       end
-
+      
       # 
       class FreeBusyResponse
         include Google::Apis::Core::Hashable
@@ -1392,6 +1540,11 @@ module Google
         attr_accessor :time_min
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @calendars = args[:calendars] unless args[:calendars].nil?
           @groups = args[:groups] unless args[:groups].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1399,7 +1552,7 @@ module Google
           @time_min = args[:time_min] unless args[:time_min].nil?
         end
       end
-
+      
       # 
       class Setting
         include Google::Apis::Core::Hashable
@@ -1426,13 +1579,18 @@ module Google
         attr_accessor :value
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @value = args[:value] unless args[:value].nil?
         end
       end
-
+      
       # 
       class Settings
         include Google::Apis::Core::Hashable
@@ -1466,6 +1624,11 @@ module Google
         attr_accessor :next_sync_token
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1473,7 +1636,7 @@ module Google
           @next_sync_token = args[:next_sync_token] unless args[:next_sync_token].nil?
         end
       end
-
+      
       # 
       class TimePeriod
         include Google::Apis::Core::Hashable
@@ -1489,6 +1652,11 @@ module Google
         attr_accessor :start
       
         def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @end = args[:end] unless args[:end].nil?
           @start = args[:start] unless args[:start].nil?
         end

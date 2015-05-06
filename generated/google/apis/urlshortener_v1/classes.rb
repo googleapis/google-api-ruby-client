@@ -199,7 +199,7 @@ module Google
       end
       
       # 
-      class History
+      class UrlHistory
         include Google::Apis::Core::Hashable
       
         # A list of URL resources.

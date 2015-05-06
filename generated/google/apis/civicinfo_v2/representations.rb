@@ -42,7 +42,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DivisionSearchResponse
+      class SearchDivisionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -58,7 +58,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class QueryResponse
+      class QueryElectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -188,7 +188,7 @@ module Google
       end
       
       # @private
-      class DivisionSearchResponse
+      class SearchDivisionResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :results, as: 'results', class: Google::Apis::CivicinfoV2::DivisionSearchResult, decorator: Google::Apis::CivicinfoV2::DivisionSearchResult::Representation
@@ -226,7 +226,7 @@ module Google
       end
       
       # @private
-      class QueryResponse
+      class QueryElectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :elections, as: 'elections', class: Google::Apis::CivicinfoV2::Election, decorator: Google::Apis::CivicinfoV2::Election::Representation
       

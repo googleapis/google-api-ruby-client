@@ -112,7 +112,7 @@ module Google
       end
       
       # Collection of custom field definitions for a team.
-      class ListResponse
+      class ListCustomFieldDefResponse
         include Google::Apis::Core::Hashable
       
         # Collection of custom field definitions in a team.
@@ -265,7 +265,7 @@ module Google
       end
       
       # Response from a List Jobs request.
-      class JobListResponse
+      class ListJobResponse
         include Google::Apis::Core::Hashable
       
         # Jobs in the collection.
@@ -401,12 +401,12 @@ module Google
       end
       
       # Response from a List Locations request.
-      class LocationListResponse
+      class ListLocationResponse
         include Google::Apis::Core::Hashable
       
         # Locations in the collection.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::CoordinateV1::Record>]
+        # @return [Array<Google::Apis::CoordinateV1::LocationRecord>]
         attr_accessor :items
       
         # Identifies this object as a list of locations.
@@ -438,7 +438,7 @@ module Google
       end
       
       # Recorded location of a worker.
-      class Record
+      class LocationRecord
         include Google::Apis::Core::Hashable
       
         # The collection time in milliseconds since the epoch.
@@ -559,7 +559,7 @@ module Google
       end
       
       # Response from a List Teams request.
-      class TeamListResponse
+      class ListTeamResponse
         include Google::Apis::Core::Hashable
       
         # Teams in the collection.
@@ -641,7 +641,7 @@ module Google
       end
       
       # Response from a List Workers request.
-      class WorkerListResponse
+      class ListWorkerResponse
         include Google::Apis::Core::Hashable
       
         # Workers in the collection.

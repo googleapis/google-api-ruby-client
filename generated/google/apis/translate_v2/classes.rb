@@ -23,12 +23,12 @@ module Google
     module TranslateV2
       
       # 
-      class ListResponse
+      class ListDetectionsResponse
         include Google::Apis::Core::Hashable
       
         # A detections contains detection results of several text
         # Corresponds to the JSON property `detections`
-        # @return [Array<Array<Google::Apis::TranslateV2::Resource>>]
+        # @return [Array<Array<Google::Apis::TranslateV2::DetectionsResource>>]
         attr_accessor :detections
       
         def initialize(**args)
@@ -42,7 +42,7 @@ module Google
       end
       
       # 
-      class Resource
+      class DetectionsResource
         include Google::Apis::Core::Hashable
       
         # The confidence of the detection resul of this language.
@@ -74,7 +74,7 @@ module Google
       end
       
       # 
-      class LanguagesListResponse
+      class ListLanguagesResponse
         include Google::Apis::Core::Hashable
       
         # List of source/target languages supported by the translation API. If target
@@ -121,7 +121,7 @@ module Google
       end
       
       # 
-      class TranslationsListResponse
+      class ListTranslationsResponse
         include Google::Apis::Core::Hashable
       
         # Translations contains list of translation results of given text

@@ -680,7 +680,7 @@ module Google
       end
       
       # 
-      class Reports
+      class SavedReports
         include Google::Apis::Core::Hashable
       
         # ETag of this response for caching purposes.

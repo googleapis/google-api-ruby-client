@@ -33,7 +33,7 @@ module Google
       
         # The list of access entries.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::PlusV1::AclentryResource>]
+        # @return [Array<Google::Apis::PlusV1::PlusAclentryResource>]
         attr_accessor :items
       
         # Identifies this resource as a collection of access controls. Value: "plus#acl".
@@ -1546,7 +1546,7 @@ module Google
       end
       
       # 
-      class Feed
+      class MomentsFeed
         include Google::Apis::Core::Hashable
       
         # ETag of this response for caching purposes.
@@ -2342,7 +2342,7 @@ module Google
       end
       
       # 
-      class AclentryResource
+      class PlusAclentryResource
         include Google::Apis::Core::Hashable
       
         # A descriptive name for this entry. Suitable for display.

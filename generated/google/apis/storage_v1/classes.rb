@@ -33,8 +33,8 @@ module Google
       
         # The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         # Corresponds to the JSON property `cors`
-        # @return [Array<Google::Apis::StorageV1::Bucket::Cor>]
-        attr_accessor :cors
+        # @return [Array<Google::Apis::StorageV1::Bucket::CorsConfiguration>]
+        attr_accessor :cors_configurations
       
         # Default access controls to apply to new objects when no ACL is provided.
         # Corresponds to the JSON property `defaultObjectAcl`
@@ -130,7 +130,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @acl = args[:acl] unless args[:acl].nil?
-          @cors = args[:cors] unless args[:cors].nil?
+          @cors_configurations = args[:cors_configurations] unless args[:cors_configurations].nil?
           @default_object_acl = args[:default_object_acl] unless args[:default_object_acl].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @id = args[:id] unless args[:id].nil?
@@ -150,7 +150,7 @@ module Google
         end
         
         # 
-        class Cor
+        class CorsConfiguration
           include Google::Apis::Core::Hashable
         
           # The value, in seconds, to return in the  Access-Control-Max-Age header used in
@@ -164,7 +164,7 @@ module Google
           # any method".
           # Corresponds to the JSON property `method`
           # @return [Array<String>]
-          attr_accessor :method_prop
+          attr_accessor :http_method
         
           # The list of Origins eligible to receive CORS response headers. Note: "*" is
           # permitted in the list of origins, and means "any Origin".
@@ -185,7 +185,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @max_age_seconds = args[:max_age_seconds] unless args[:max_age_seconds].nil?
-            @method_prop = args[:method_prop] unless args[:method_prop].nil?
+            @http_method = args[:http_method] unless args[:http_method].nil?
             @origin = args[:origin] unless args[:origin].nil?
             @response_header = args[:response_header] unless args[:response_header].nil?
           end

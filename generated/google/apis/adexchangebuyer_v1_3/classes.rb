@@ -127,7 +127,7 @@ module Google
       
       # An account feed lists Ad Exchange buyer accounts that the user has access to.
       # Each entry in the feed corresponds to a single buyer account.
-      class List
+      class AccountsList
         include Google::Apis::Core::Hashable
       
         # A list of accounts.
@@ -704,19 +704,19 @@ module Google
         # for the duration period covered by the report.
         # Corresponds to the JSON property `latency50thPercentile`
         # @return [Float]
-        attr_accessor :latency50th_percentile
+        attr_accessor :latency_50th_percentile
       
         # The 85th percentile round trip latency(ms) as perceived from Google servers
         # for the duration period covered by the report.
         # Corresponds to the JSON property `latency85thPercentile`
         # @return [Float]
-        attr_accessor :latency85th_percentile
+        attr_accessor :latency_85th_percentile
       
         # The 95th percentile round trip latency(ms) as perceived from Google servers
         # for the duration period covered by the report.
         # Corresponds to the JSON property `latency95thPercentile`
         # @return [Float]
-        attr_accessor :latency95th_percentile
+        attr_accessor :latency_95th_percentile
       
         # Rate of various quota account statuses per quota check.
         # Corresponds to the JSON property `noQuotaInRegion`
@@ -769,9 +769,9 @@ module Google
           @creative_status_rate = args[:creative_status_rate] unless args[:creative_status_rate].nil?
           @hosted_match_status_rate = args[:hosted_match_status_rate] unless args[:hosted_match_status_rate].nil?
           @kind = args[:kind] unless args[:kind].nil?
-          @latency50th_percentile = args[:latency50th_percentile] unless args[:latency50th_percentile].nil?
-          @latency85th_percentile = args[:latency85th_percentile] unless args[:latency85th_percentile].nil?
-          @latency95th_percentile = args[:latency95th_percentile] unless args[:latency95th_percentile].nil?
+          @latency_50th_percentile = args[:latency_50th_percentile] unless args[:latency_50th_percentile].nil?
+          @latency_85th_percentile = args[:latency_85th_percentile] unless args[:latency_85th_percentile].nil?
+          @latency_95th_percentile = args[:latency_95th_percentile] unless args[:latency_95th_percentile].nil?
           @no_quota_in_region = args[:no_quota_in_region] unless args[:no_quota_in_region].nil?
           @out_of_quota = args[:out_of_quota] unless args[:out_of_quota].nil?
           @pixel_match_requests = args[:pixel_match_requests] unless args[:pixel_match_requests].nil?

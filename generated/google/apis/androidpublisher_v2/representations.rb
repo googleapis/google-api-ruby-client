@@ -34,19 +34,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListResponse
+      class ListApkListingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AddExternallyHostedRequest
+      class ApksAddExternallyHostedRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AddExternallyHostedResponse
+      class ApksAddExternallyHostedResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ApksListResponse
+      class ListApksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -62,7 +62,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EntitlementsListResponse
+      class ListEntitlementsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -70,7 +70,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UploadResponse
+      class UploadExpansionFilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -86,15 +86,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DeleteAllResponse
+      class ImagesDeleteAllResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ImagesListResponse
+      class ListImagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ImagesUploadResponse
+      class UploadImagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -106,39 +106,39 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class BatchRequest
+      class InAppProductsBatchRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class BatchRequestEntry
+      class InAppProductsBatchRequestEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class BatchResponse
+      class InAppProductsBatchResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class BatchResponseEntry
+      class InAppProductsBatchResponseEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InsertRequest
+      class InsertInAppProductsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InsertResponse
+      class InsertInAppProductsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InappproductsListResponse
+      class ListInAppProductsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UpdateRequest
+      class UpdateInAppProductsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UpdateResponse
+      class UpdateInAppProductsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -146,7 +146,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListingsListResponse
+      class ListListingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -178,11 +178,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SubscriptionPurchasesDeferRequest
+      class DeferSubscriptionPurchasesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SubscriptionPurchasesDeferResponse
+      class DeferSubscriptionPurchasesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -198,7 +198,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TracksListResponse
+      class ListTracksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -227,7 +227,7 @@ module Google
       end
       
       # @private
-      class ListResponse
+      class ListApkListingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :listings, as: 'listings', class: Google::Apis::AndroidpublisherV2::ApkListing, decorator: Google::Apis::AndroidpublisherV2::ApkListing::Representation
@@ -236,7 +236,7 @@ module Google
       end
       
       # @private
-      class AddExternallyHostedRequest
+      class ApksAddExternallyHostedRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :externally_hosted_apk, as: 'externallyHostedApk', class: Google::Apis::AndroidpublisherV2::ExternallyHostedApk, decorator: Google::Apis::AndroidpublisherV2::ExternallyHostedApk::Representation
       
@@ -244,7 +244,7 @@ module Google
       end
       
       # @private
-      class AddExternallyHostedResponse
+      class ApksAddExternallyHostedResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :externally_hosted_apk, as: 'externallyHostedApk', class: Google::Apis::AndroidpublisherV2::ExternallyHostedApk, decorator: Google::Apis::AndroidpublisherV2::ExternallyHostedApk::Representation
       
@@ -252,7 +252,7 @@ module Google
       end
       
       # @private
-      class ApksListResponse
+      class ListApksResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :apks, as: 'apks', class: Google::Apis::AndroidpublisherV2::Apk, decorator: Google::Apis::AndroidpublisherV2::Apk::Representation
       
@@ -289,7 +289,7 @@ module Google
       end
       
       # @private
-      class EntitlementsListResponse
+      class ListEntitlementsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :page_info, as: 'pageInfo', class: Google::Apis::AndroidpublisherV2::PageInfo, decorator: Google::Apis::AndroidpublisherV2::PageInfo::Representation
       
@@ -309,7 +309,7 @@ module Google
       end
       
       # @private
-      class UploadResponse
+      class UploadExpansionFilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expansion_file, as: 'expansionFile', class: Google::Apis::AndroidpublisherV2::ExpansionFile, decorator: Google::Apis::AndroidpublisherV2::ExpansionFile::Representation
       
@@ -356,7 +356,7 @@ module Google
       end
       
       # @private
-      class DeleteAllResponse
+      class ImagesDeleteAllResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :deleted, as: 'deleted', class: Google::Apis::AndroidpublisherV2::Image, decorator: Google::Apis::AndroidpublisherV2::Image::Representation
       
@@ -364,7 +364,7 @@ module Google
       end
       
       # @private
-      class ImagesListResponse
+      class ListImagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :images, as: 'images', class: Google::Apis::AndroidpublisherV2::Image, decorator: Google::Apis::AndroidpublisherV2::Image::Representation
       
@@ -372,7 +372,7 @@ module Google
       end
       
       # @private
-      class ImagesUploadResponse
+      class UploadImagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :image, as: 'image', class: Google::Apis::AndroidpublisherV2::Image, decorator: Google::Apis::AndroidpublisherV2::Image::Representation
       
@@ -409,47 +409,47 @@ module Google
       end
       
       # @private
-      class BatchRequest
+      class InAppProductsBatchRequest
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :entrys, as: 'entrys', class: Google::Apis::AndroidpublisherV2::BatchRequestEntry, decorator: Google::Apis::AndroidpublisherV2::BatchRequestEntry::Representation
+          collection :entrys, as: 'entrys', class: Google::Apis::AndroidpublisherV2::InAppProductsBatchRequestEntry, decorator: Google::Apis::AndroidpublisherV2::InAppProductsBatchRequestEntry::Representation
       
         end
       end
       
       # @private
-      class BatchRequestEntry
+      class InAppProductsBatchRequestEntry
         class Representation < Google::Apis::Core::JsonRepresentation
           property :batch_id, as: 'batchId'
-          property :inappproductsinsertrequest, as: 'inappproductsinsertrequest', class: Google::Apis::AndroidpublisherV2::InsertRequest, decorator: Google::Apis::AndroidpublisherV2::InsertRequest::Representation
+          property :inappproductsinsertrequest, as: 'inappproductsinsertrequest', class: Google::Apis::AndroidpublisherV2::InsertInAppProductsRequest, decorator: Google::Apis::AndroidpublisherV2::InsertInAppProductsRequest::Representation
       
-          property :inappproductsupdaterequest, as: 'inappproductsupdaterequest', class: Google::Apis::AndroidpublisherV2::UpdateRequest, decorator: Google::Apis::AndroidpublisherV2::UpdateRequest::Representation
+          property :inappproductsupdaterequest, as: 'inappproductsupdaterequest', class: Google::Apis::AndroidpublisherV2::UpdateInAppProductsRequest, decorator: Google::Apis::AndroidpublisherV2::UpdateInAppProductsRequest::Representation
       
           property :method_name, as: 'methodName'
         end
       end
       
       # @private
-      class BatchResponse
+      class InAppProductsBatchResponse
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :entrys, as: 'entrys', class: Google::Apis::AndroidpublisherV2::BatchResponseEntry, decorator: Google::Apis::AndroidpublisherV2::BatchResponseEntry::Representation
+          collection :entrys, as: 'entrys', class: Google::Apis::AndroidpublisherV2::InAppProductsBatchResponseEntry, decorator: Google::Apis::AndroidpublisherV2::InAppProductsBatchResponseEntry::Representation
       
           property :kind, as: 'kind'
         end
       end
       
       # @private
-      class BatchResponseEntry
+      class InAppProductsBatchResponseEntry
         class Representation < Google::Apis::Core::JsonRepresentation
           property :batch_id, as: 'batchId'
-          property :inappproductsinsertresponse, as: 'inappproductsinsertresponse', class: Google::Apis::AndroidpublisherV2::InsertResponse, decorator: Google::Apis::AndroidpublisherV2::InsertResponse::Representation
+          property :inappproductsinsertresponse, as: 'inappproductsinsertresponse', class: Google::Apis::AndroidpublisherV2::InsertInAppProductsResponse, decorator: Google::Apis::AndroidpublisherV2::InsertInAppProductsResponse::Representation
       
-          property :inappproductsupdateresponse, as: 'inappproductsupdateresponse', class: Google::Apis::AndroidpublisherV2::UpdateResponse, decorator: Google::Apis::AndroidpublisherV2::UpdateResponse::Representation
+          property :inappproductsupdateresponse, as: 'inappproductsupdateresponse', class: Google::Apis::AndroidpublisherV2::UpdateInAppProductsResponse, decorator: Google::Apis::AndroidpublisherV2::UpdateInAppProductsResponse::Representation
       
         end
       end
       
       # @private
-      class InsertRequest
+      class InsertInAppProductsRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :inappproduct, as: 'inappproduct', class: Google::Apis::AndroidpublisherV2::InAppProduct, decorator: Google::Apis::AndroidpublisherV2::InAppProduct::Representation
       
@@ -457,7 +457,7 @@ module Google
       end
       
       # @private
-      class InsertResponse
+      class InsertInAppProductsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :inappproduct, as: 'inappproduct', class: Google::Apis::AndroidpublisherV2::InAppProduct, decorator: Google::Apis::AndroidpublisherV2::InAppProduct::Representation
       
@@ -465,7 +465,7 @@ module Google
       end
       
       # @private
-      class InappproductsListResponse
+      class ListInAppProductsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :inappproduct, as: 'inappproduct', class: Google::Apis::AndroidpublisherV2::InAppProduct, decorator: Google::Apis::AndroidpublisherV2::InAppProduct::Representation
       
@@ -478,7 +478,7 @@ module Google
       end
       
       # @private
-      class UpdateRequest
+      class UpdateInAppProductsRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :inappproduct, as: 'inappproduct', class: Google::Apis::AndroidpublisherV2::InAppProduct, decorator: Google::Apis::AndroidpublisherV2::InAppProduct::Representation
       
@@ -486,7 +486,7 @@ module Google
       end
       
       # @private
-      class UpdateResponse
+      class UpdateInAppProductsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :inappproduct, as: 'inappproduct', class: Google::Apis::AndroidpublisherV2::InAppProduct, decorator: Google::Apis::AndroidpublisherV2::InAppProduct::Representation
       
@@ -505,7 +505,7 @@ module Google
       end
       
       # @private
-      class ListingsListResponse
+      class ListListingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :listings, as: 'listings', class: Google::Apis::AndroidpublisherV2::Listing, decorator: Google::Apis::AndroidpublisherV2::Listing::Representation
@@ -578,7 +578,7 @@ module Google
       end
       
       # @private
-      class SubscriptionPurchasesDeferRequest
+      class DeferSubscriptionPurchasesRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deferral_info, as: 'deferralInfo', class: Google::Apis::AndroidpublisherV2::SubscriptionDeferralInfo, decorator: Google::Apis::AndroidpublisherV2::SubscriptionDeferralInfo::Representation
       
@@ -586,7 +586,7 @@ module Google
       end
       
       # @private
-      class SubscriptionPurchasesDeferResponse
+      class DeferSubscriptionPurchasesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :new_expiry_time_millis, as: 'newExpiryTimeMillis'
         end
@@ -618,7 +618,7 @@ module Google
       end
       
       # @private
-      class TracksListResponse
+      class ListTracksResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :tracks, as: 'tracks', class: Google::Apis::AndroidpublisherV2::Track, decorator: Google::Apis::AndroidpublisherV2::Track::Representation

@@ -122,7 +122,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_subscription(name, subscription_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_subscription(name, subscription_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+name}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::PubsubV1beta2::Subscription::Representation
@@ -163,7 +163,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_subscription(subscription, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_subscription(subscription, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+subscription}'
           command =  make_simple_command(:delete, path, options)
           command.response_representation = Google::Apis::PubsubV1beta2::Empty::Representation
@@ -198,7 +198,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_subscription(subscription, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_subscription(subscription, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+subscription}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::PubsubV1beta2::Subscription::Representation
@@ -235,7 +235,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_subscriptions(project, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_subscriptions(project, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+project}/subscriptions'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::PubsubV1beta2::ListSubscriptionsResponse::Representation
@@ -395,7 +395,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_topic(name, topic_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_topic(name, topic_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+name}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::PubsubV1beta2::Topic::Representation
@@ -435,7 +435,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_topic(topic, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_topic(topic, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+topic}'
           command =  make_simple_command(:delete, path, options)
           command.response_representation = Google::Apis::PubsubV1beta2::Empty::Representation
@@ -470,7 +470,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_topic(topic, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_topic(topic, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+topic}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::PubsubV1beta2::Topic::Representation
@@ -507,7 +507,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_topics(project, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_topics(project, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+project}/topics'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::PubsubV1beta2::ListTopicsResponse::Representation
@@ -585,7 +585,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_topic_subscriptions(topic, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_topic_subscriptions(topic, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{+topic}/subscriptions'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::PubsubV1beta2::ListTopicSubscriptionsResponse::Representation

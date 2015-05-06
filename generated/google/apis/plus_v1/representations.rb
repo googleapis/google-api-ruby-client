@@ -134,7 +134,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class Feed
+      class MomentsFeed
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -198,7 +198,7 @@ module Google
         end
       end
       
-      class AclentryResource
+      class PlusAclentryResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -206,7 +206,7 @@ module Google
       class Acl
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
-          collection :items, as: 'items', class: Google::Apis::PlusV1::AclentryResource, decorator: Google::Apis::PlusV1::AclentryResource::Representation
+          collection :items, as: 'items', class: Google::Apis::PlusV1::PlusAclentryResource, decorator: Google::Apis::PlusV1::PlusAclentryResource::Representation
       
           property :kind, as: 'kind'
         end
@@ -602,7 +602,7 @@ module Google
       end
       
       # @private
-      class Feed
+      class MomentsFeed
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::PlusV1::Moment, decorator: Google::Apis::PlusV1::Moment::Representation
@@ -800,7 +800,7 @@ module Google
       end
       
       # @private
-      class AclentryResource
+      class PlusAclentryResource
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :id, as: 'id'

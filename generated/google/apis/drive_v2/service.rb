@@ -890,7 +890,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def empty_trash_file(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def empty_trash(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/trash'
           command =  make_simple_command(:delete, path, options)
           command.query['fields'] = fields unless fields.nil?
@@ -1663,7 +1663,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_id_for_email_permission(email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_permission_id_for_email(email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'permissionIds/{email}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::DriveV2::PermissionId::Representation

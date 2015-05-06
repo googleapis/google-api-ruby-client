@@ -140,7 +140,7 @@ module Google
       
         # The returned time series descriptors.
         # Corresponds to the JSON property `timeseries`
-        # @return [Array<Google::Apis::CloudmonitoringV2beta2::Descriptor>]
+        # @return [Array<Google::Apis::CloudmonitoringV2beta2::TimeseriesDescriptor>]
         attr_accessor :timeseries
       
         # The youngest timestamp of the interval of this query, as an RFC 3339 string.
@@ -531,7 +531,7 @@ module Google
       
         # TimeseriesDescriptor identifies a single time series.
         # Corresponds to the JSON property `timeseriesDesc`
-        # @return [Google::Apis::CloudmonitoringV2beta2::Descriptor]
+        # @return [Google::Apis::CloudmonitoringV2beta2::TimeseriesDescriptor]
         attr_accessor :timeseries_desc
       
         def initialize(**args)
@@ -546,7 +546,7 @@ module Google
       end
       
       # TimeseriesDescriptor identifies a single time series.
-      class Descriptor
+      class TimeseriesDescriptor
         include Google::Apis::Core::Hashable
       
         # The label's name.
@@ -577,7 +577,7 @@ module Google
       end
       
       # 
-      class DescriptorLabel
+      class TimeseriesDescriptorLabel
         include Google::Apis::Core::Hashable
       
         # The label's name.
@@ -614,7 +614,7 @@ module Google
       
         # TimeseriesDescriptor identifies a single time series.
         # Corresponds to the JSON property `timeseriesDesc`
-        # @return [Google::Apis::CloudmonitoringV2beta2::Descriptor]
+        # @return [Google::Apis::CloudmonitoringV2beta2::TimeseriesDescriptor]
         attr_accessor :timeseries_desc
       
         def initialize(**args)

@@ -386,10 +386,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ResourceviewsV1beta2::List] parsed result object
+        # @yieldparam result [Google::Apis::ResourceviewsV1beta2::ZoneViewsList] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ResourceviewsV1beta2::List]
+        # @return [Google::Apis::ResourceviewsV1beta2::ZoneViewsList]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -397,8 +397,8 @@ module Google
         def list_zone_views(project, zone, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/resourceViews'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ResourceviewsV1beta2::List::Representation
-          command.response_class = Google::Apis::ResourceviewsV1beta2::List
+          command.response_representation = Google::Apis::ResourceviewsV1beta2::ZoneViewsList::Representation
+          command.response_class = Google::Apis::ResourceviewsV1beta2::ZoneViewsList
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.query['maxResults'] = max_results unless max_results.nil?

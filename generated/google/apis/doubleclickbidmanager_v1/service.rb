@@ -75,7 +75,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def downloadlineitems_lineitem(download_line_items_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def download_line_items(download_line_items_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'lineitems/downloadlineitems'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1::DownloadLineItemsRequest::Representation
@@ -111,7 +111,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def uploadlineitems_lineitem(upload_line_items_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def upload_line_items(upload_line_items_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'lineitems/uploadlineitems'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1::UploadLineItemsRequest::Representation
@@ -147,7 +147,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def createquery_query(query_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_query(query_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'query'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1::Query::Representation
@@ -184,7 +184,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def deletequery_query(query_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def deletequery(query_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'query/{queryId}'
           command =  make_simple_command(:delete, path, options)
           command.params['queryId'] = query_id unless query_id.nil?
@@ -218,7 +218,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def getquery_query(query_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_query(query_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'query/{queryId}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1::Query::Representation
@@ -252,7 +252,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def listqueries_query(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_queries(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'queries'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1::ListQueriesResponse::Representation
@@ -288,7 +288,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def runquery_query(query_id, run_query_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def run_query(query_id, run_query_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'query/{queryId}'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1::RunQueryRequest::Representation
@@ -324,7 +324,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def listreports_report(query_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_reports(query_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'queries/{queryId}/reports'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1::ListReportsResponse::Representation

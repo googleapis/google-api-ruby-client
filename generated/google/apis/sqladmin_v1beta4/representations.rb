@@ -34,7 +34,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListResponse
+      class ListBackupRunsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -58,7 +58,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DatabasesListResponse
+      class ListDatabasesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -78,7 +78,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class FlagsListResponse
+      class ListFlagsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -90,23 +90,23 @@ module Google
         end
       end
       
-      class CloneRequest
+      class CloneInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ExportRequest
+      class ExportInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ImportRequest
+      class ImportInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InstancesListResponse
+      class ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RestoreBackupRequest
+      class RestoreInstancesBackupRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -142,7 +142,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class OperationsListResponse
+      class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -166,15 +166,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InsertRequest
+      class InsertSslCertsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InsertResponse
+      class InsertSslCertsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SslCertsListResponse
+      class ListSslCertsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -182,7 +182,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TiersListResponse
+      class ListTiersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -190,7 +190,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UsersListResponse
+      class ListUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -237,7 +237,7 @@ module Google
       end
       
       # @private
-      class ListResponse
+      class ListBackupRunsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::BackupRun, decorator: Google::Apis::SqladminV1beta4::BackupRun::Representation
       
@@ -319,7 +319,7 @@ module Google
       end
       
       # @private
-      class DatabasesListResponse
+      class ListDatabasesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::Database, decorator: Google::Apis::SqladminV1beta4::Database::Representation
       
@@ -369,7 +369,7 @@ module Google
       end
       
       # @private
-      class FlagsListResponse
+      class ListFlagsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::Flag, decorator: Google::Apis::SqladminV1beta4::Flag::Representation
       
@@ -398,7 +398,7 @@ module Google
       end
       
       # @private
-      class CloneRequest
+      class CloneInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :clone_context, as: 'cloneContext', class: Google::Apis::SqladminV1beta4::CloneContext, decorator: Google::Apis::SqladminV1beta4::CloneContext::Representation
       
@@ -406,7 +406,7 @@ module Google
       end
       
       # @private
-      class ExportRequest
+      class ExportInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :export_context, as: 'exportContext', class: Google::Apis::SqladminV1beta4::ExportContext, decorator: Google::Apis::SqladminV1beta4::ExportContext::Representation
       
@@ -414,7 +414,7 @@ module Google
       end
       
       # @private
-      class ImportRequest
+      class ImportInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :import_context, as: 'importContext', class: Google::Apis::SqladminV1beta4::ImportContext, decorator: Google::Apis::SqladminV1beta4::ImportContext::Representation
       
@@ -422,7 +422,7 @@ module Google
       end
       
       # @private
-      class InstancesListResponse
+      class ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::DatabaseInstance, decorator: Google::Apis::SqladminV1beta4::DatabaseInstance::Representation
       
@@ -432,7 +432,7 @@ module Google
       end
       
       # @private
-      class RestoreBackupRequest
+      class RestoreInstancesBackupRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :restore_backup_context, as: 'restoreBackupContext', class: Google::Apis::SqladminV1beta4::RestoreBackupContext, decorator: Google::Apis::SqladminV1beta4::RestoreBackupContext::Representation
       
@@ -538,7 +538,7 @@ module Google
       end
       
       # @private
-      class OperationsListResponse
+      class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::Operation, decorator: Google::Apis::SqladminV1beta4::Operation::Representation
       
@@ -560,6 +560,7 @@ module Google
       class RestoreBackupContext
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_run_id, as: 'backupRunId'
+          property :instance_id, as: 'instanceId'
           property :kind, as: 'kind'
         end
       end
@@ -614,14 +615,14 @@ module Google
       end
       
       # @private
-      class InsertRequest
+      class InsertSslCertsRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common_name, as: 'commonName'
         end
       end
       
       # @private
-      class InsertResponse
+      class InsertSslCertsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_cert, as: 'clientCert', class: Google::Apis::SqladminV1beta4::SslCertDetail, decorator: Google::Apis::SqladminV1beta4::SslCertDetail::Representation
       
@@ -632,7 +633,7 @@ module Google
       end
       
       # @private
-      class SslCertsListResponse
+      class ListSslCertsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
       
@@ -652,7 +653,7 @@ module Google
       end
       
       # @private
-      class TiersListResponse
+      class ListTiersResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::Tier, decorator: Google::Apis::SqladminV1beta4::Tier::Representation
       
@@ -674,7 +675,7 @@ module Google
       end
       
       # @private
-      class UsersListResponse
+      class ListUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::SqladminV1beta4::User, decorator: Google::Apis::SqladminV1beta4::User::Representation
       

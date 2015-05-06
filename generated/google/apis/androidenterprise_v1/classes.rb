@@ -206,7 +206,7 @@ module Google
       end
       
       # The user resources for the collection.
-      class CollectionViewersListResponse
+      class ListCollectionViewersResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -232,7 +232,7 @@ module Google
       end
       
       # The collection resources for the enterprise.
-      class ListResponse
+      class ListCollectionsResponse
         include Google::Apis::Core::Hashable
       
         # An ordered collection of products which can be made visible on the Google Play
@@ -277,6 +277,15 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The mechanism by which this device is managed by the MDM. "managedDevice"
+        # means that the MDM's app is a device owner. "managedProfile" means that the
+        # MDM's app is the profile owner (and there is a separate personal profile which
+        # is not managed). "containerApp" means that the MDM's app is managing the
+        # Android for Work container app on the device.
+        # Corresponds to the JSON property `managementType`
+        # @return [String]
+        attr_accessor :management_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -285,6 +294,7 @@ module Google
         def update!(**args)
           @android_id = args[:android_id] unless args[:android_id].nil?
           @kind = args[:kind] unless args[:kind].nil?
+          @management_type = args[:management_type] unless args[:management_type].nil?
         end
       end
       
@@ -319,7 +329,7 @@ module Google
       end
       
       # The device resources for the user.
-      class DevicesListResponse
+      class ListDevicesResponse
         include Google::Apis::Core::Hashable
       
         # A managed device.
@@ -433,7 +443,7 @@ module Google
       end
       
       # The matching enterprise resources.
-      class EnterprisesListResponse
+      class ListEnterprisesResponse
         include Google::Apis::Core::Hashable
       
         # An enterprise.
@@ -516,7 +526,7 @@ module Google
       end
       
       # The entitlement resources for the user.
-      class EntitlementsListResponse
+      class ListEntitlementsResponse
         include Google::Apis::Core::Hashable
       
         # An entitlement of a user to a product (e.g. an app). For example, a free app
@@ -621,7 +631,7 @@ module Google
       end
       
       # The user resources for the group license.
-      class GroupLicenseUsersListResponse
+      class ListGroupLicenseUsersResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -647,7 +657,7 @@ module Google
       end
       
       # The grouplicense resources for the enterprise.
-      class GroupLicensesListResponse
+      class ListGroupLicensesResponse
         include Google::Apis::Core::Hashable
       
         # A group license for a product approved for use in the enterprise.
@@ -734,7 +744,7 @@ module Google
       end
       
       # The install resources for the device.
-      class InstallsListResponse
+      class ListInstallsResponse
         include Google::Apis::Core::Hashable
       
         # An installation of an app for a user on a specific device. The existence of an
@@ -841,6 +851,13 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
+        # Whether this app can only be installed on devices using the Android for Work
+        # container app.
+        # Corresponds to the JSON property `requiresContainerApp`
+        # @return [Boolean]
+        attr_accessor :requires_container_app
+        alias_method :requires_container_app?, :requires_container_app
+      
         # The name of the product.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -863,6 +880,7 @@ module Google
           @icon_url = args[:icon_url] unless args[:icon_url].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @product_id = args[:product_id] unless args[:product_id].nil?
+          @requires_container_app = args[:requires_container_app] unless args[:requires_container_app].nil?
           @title = args[:title] unless args[:title].nil?
           @work_details_url = args[:work_details_url] unless args[:work_details_url].nil?
         end
@@ -1006,7 +1024,7 @@ module Google
       end
       
       # The matching user resources.
-      class UsersListResponse
+      class ListUsersResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "

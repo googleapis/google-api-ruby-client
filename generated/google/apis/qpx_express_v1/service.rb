@@ -53,7 +53,7 @@ module Google
         end
         
         # Returns a list of flights.
-        # @param [Google::Apis::QpxExpressV1::SearchRequest] trips_search_request_object
+        # @param [Google::Apis::QpxExpressV1::SearchTripsRequest] trips_search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -67,10 +67,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::QpxExpressV1::SearchResponse] parsed result object
+        # @yieldparam result [Google::Apis::QpxExpressV1::SearchTripsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::QpxExpressV1::SearchResponse]
+        # @return [Google::Apis::QpxExpressV1::SearchTripsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -78,10 +78,10 @@ module Google
         def search_trips(trips_search_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'search'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::QpxExpressV1::SearchRequest::Representation
+          command.request_representation = Google::Apis::QpxExpressV1::SearchTripsRequest::Representation
           command.request_object = trips_search_request_object
-          command.response_representation = Google::Apis::QpxExpressV1::SearchResponse::Representation
-          command.response_class = Google::Apis::QpxExpressV1::SearchResponse
+          command.response_representation = Google::Apis::QpxExpressV1::SearchTripsResponse::Representation
+          command.response_class = Google::Apis::QpxExpressV1::SearchTripsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

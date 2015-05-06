@@ -26,7 +26,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListResponse
+      class ListDeploymentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -34,7 +34,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ManifestsListResponse
+      class ListManifestsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -58,7 +58,7 @@ module Google
         end
       end
       
-      class OperationsListResponse
+      class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -66,7 +66,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ResourcesListResponse
+      class ListResourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -74,7 +74,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TypesListResponse
+      class ListTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -90,7 +90,7 @@ module Google
       end
       
       # @private
-      class ListResponse
+      class ListDeploymentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :deployments, as: 'deployments', class: Google::Apis::DeploymentmanagerV2beta1::Deployment, decorator: Google::Apis::DeploymentmanagerV2beta1::Deployment::Representation
       
@@ -110,7 +110,7 @@ module Google
       end
       
       # @private
-      class ManifestsListResponse
+      class ListManifestsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :manifests, as: 'manifests', class: Google::Apis::DeploymentmanagerV2beta1::Manifest, decorator: Google::Apis::DeploymentmanagerV2beta1::Manifest::Representation
       
@@ -180,7 +180,7 @@ module Google
       end
       
       # @private
-      class OperationsListResponse
+      class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DeploymentmanagerV2beta1::Operation, decorator: Google::Apis::DeploymentmanagerV2beta1::Operation::Representation
@@ -203,7 +203,7 @@ module Google
       end
       
       # @private
-      class ResourcesListResponse
+      class ListResourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :resources, as: 'resources', class: Google::Apis::DeploymentmanagerV2beta1::Resource, decorator: Google::Apis::DeploymentmanagerV2beta1::Resource::Representation
@@ -219,7 +219,7 @@ module Google
       end
       
       # @private
-      class TypesListResponse
+      class ListTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :types, as: 'types', class: Google::Apis::DeploymentmanagerV2beta1::Type, decorator: Google::Apis::DeploymentmanagerV2beta1::Type::Representation
       

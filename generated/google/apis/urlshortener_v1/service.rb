@@ -145,10 +145,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::UrlshortenerV1::History] parsed result object
+        # @yieldparam result [Google::Apis::UrlshortenerV1::UrlHistory] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::UrlshortenerV1::History]
+        # @return [Google::Apis::UrlshortenerV1::UrlHistory]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -156,8 +156,8 @@ module Google
         def list_urls(projection: nil, start_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'url/history'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::UrlshortenerV1::History::Representation
-          command.response_class = Google::Apis::UrlshortenerV1::History
+          command.response_representation = Google::Apis::UrlshortenerV1::UrlHistory::Representation
+          command.response_class = Google::Apis::UrlshortenerV1::UrlHistory
           command.query['projection'] = projection unless projection.nil?
           command.query['start-token'] = start_token unless start_token.nil?
           command.query['fields'] = fields unless fields.nil?

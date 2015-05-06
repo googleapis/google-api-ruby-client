@@ -38,11 +38,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListResponse
+      class ListAccountPermissionGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AccountPermissionsListResponse
+      class ListAccountPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -50,11 +50,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AccountUserProfilesListResponse
+      class ListAccountUserProfilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AccountsListResponse
+      class ListAccountsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -70,7 +70,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AdsListResponse
+      class ListAdsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -82,11 +82,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AdvertiserGroupsListResponse
+      class ListAdvertiserGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AdvertisersListResponse
+      class ListAdvertisersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -102,7 +102,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class BrowsersListResponse
+      class ListBrowsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -114,11 +114,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CampaignCreativeAssociationsListResponse
+      class ListCampaignCreativeAssociationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CampaignsListResponse
+      class ListCampaignsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -126,11 +126,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ChangeLogsListResponse
+      class ListChangeLogsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CitiesListResponse
+      class ListCitiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -162,11 +162,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ConnectionTypesListResponse
+      class ListConnectionTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ContentCategoriesListResponse
+      class ListContentCategoriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -174,7 +174,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CountriesListResponse
+      class ListCountriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -218,11 +218,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CreativeFieldValuesListResponse
+      class ListCreativeFieldValuesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CreativeFieldsListResponse
+      class ListCreativeFieldsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -234,7 +234,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CreativeGroupsListResponse
+      class ListCreativeGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -250,7 +250,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CreativesListResponse
+      class ListCreativesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -314,7 +314,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DirectorySiteContactsListResponse
+      class ListDirectorySiteContactsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -322,7 +322,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DirectorySitesListResponse
+      class ListDirectorySitesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -334,7 +334,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class EventTagsListResponse
+      class ListEventTagsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -354,11 +354,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class GenerateTagResponse
+      class FloodlightActivitiesGenerateTagResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class FloodlightActivitiesListResponse
+      class ListFloodlightActivitiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -374,7 +374,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class FloodlightActivityGroupsListResponse
+      class ListFloodlightActivityGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -386,7 +386,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class FloodlightConfigurationsListResponse
+      class ListFloodlightConfigurationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -410,7 +410,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InventoryItemsListResponse
+      class ListInventoryItemsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -422,7 +422,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LandingPagesListResponse
+      class ListLandingPagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -458,7 +458,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class MetrosListResponse
+      class ListMetrosResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -466,7 +466,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class MobileCarriersListResponse
+      class ListMobileCarriersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -490,11 +490,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class OperatingSystemVersionsListResponse
+      class ListOperatingSystemVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class OperatingSystemsListResponse
+      class ListOperatingSystemsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -514,11 +514,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class OrderDocumentsListResponse
+      class ListOrderDocumentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class OrdersListResponse
+      class ListOrdersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -538,11 +538,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlacementGroupsListResponse
+      class ListPlacementGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlacementStrategiesListResponse
+      class ListPlacementStrategiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -554,11 +554,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class GenerateTagsResponse
+      class GeneratePlacementsTagsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlacementsListResponse
+      class ListPlacementsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -566,7 +566,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlatformTypesListResponse
+      class ListPlatformTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -578,7 +578,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PostalCodesListResponse
+      class ListPostalCodesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -602,7 +602,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ProjectsListResponse
+      class ListProjectsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -618,7 +618,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RegionsListResponse
+      class ListRegionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -630,7 +630,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class RemarketingListsListResponse
+      class ListRemarketingListsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -682,7 +682,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class Configuration
+      class ReportsConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -702,7 +702,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SitesListResponse
+      class ListSitesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -710,7 +710,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SizesListResponse
+      class ListSizesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -722,7 +722,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SubaccountsListResponse
+      class ListSubaccountsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -746,7 +746,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class TargetableRemarketingListsListResponse
+      class ListTargetableRemarketingListsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -782,15 +782,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UserRolePermissionGroupsListResponse
+      class ListUserRolePermissionGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UserRolePermissionsListResponse
+      class ListUserRolePermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class UserRolesListResponse
+      class ListUserRolesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -814,7 +814,7 @@ module Google
           property :maximum_image_size, as: 'maximumImageSize'
           property :name, as: 'name'
           property :nielsen_ocr_enabled, as: 'nielsenOcrEnabled'
-          property :reports_configuration, as: 'reportsConfiguration', class: Google::Apis::DfareportingV2_1::Configuration, decorator: Google::Apis::DfareportingV2_1::Configuration::Representation
+          property :reports_configuration, as: 'reportsConfiguration', class: Google::Apis::DfareportingV2_1::ReportsConfiguration, decorator: Google::Apis::DfareportingV2_1::ReportsConfiguration::Representation
       
           property :teaser_size_limit, as: 'teaserSizeLimit'
         end
@@ -853,7 +853,7 @@ module Google
       end
       
       # @private
-      class ListResponse
+      class ListAccountPermissionGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :account_permission_groups, as: 'accountPermissionGroups', class: Google::Apis::DfareportingV2_1::AccountPermissionGroup, decorator: Google::Apis::DfareportingV2_1::AccountPermissionGroup::Representation
       
@@ -862,7 +862,7 @@ module Google
       end
       
       # @private
-      class AccountPermissionsListResponse
+      class ListAccountPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :account_permissions, as: 'accountPermissions', class: Google::Apis::DfareportingV2_1::AccountPermission, decorator: Google::Apis::DfareportingV2_1::AccountPermission::Representation
       
@@ -897,7 +897,7 @@ module Google
       end
       
       # @private
-      class AccountUserProfilesListResponse
+      class ListAccountUserProfilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :account_user_profiles, as: 'accountUserProfiles', class: Google::Apis::DfareportingV2_1::AccountUserProfile, decorator: Google::Apis::DfareportingV2_1::AccountUserProfile::Representation
       
@@ -907,7 +907,7 @@ module Google
       end
       
       # @private
-      class AccountsListResponse
+      class ListAccountsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accounts, as: 'accounts', class: Google::Apis::DfareportingV2_1::Account, decorator: Google::Apis::DfareportingV2_1::Account::Representation
       
@@ -1005,7 +1005,7 @@ module Google
       end
       
       # @private
-      class AdsListResponse
+      class ListAdsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ads, as: 'ads', class: Google::Apis::DfareportingV2_1::Ad, decorator: Google::Apis::DfareportingV2_1::Ad::Representation
       
@@ -1047,7 +1047,7 @@ module Google
       end
       
       # @private
-      class AdvertiserGroupsListResponse
+      class ListAdvertiserGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :advertiser_groups, as: 'advertiserGroups', class: Google::Apis::DfareportingV2_1::AdvertiserGroup, decorator: Google::Apis::DfareportingV2_1::AdvertiserGroup::Representation
       
@@ -1057,7 +1057,7 @@ module Google
       end
       
       # @private
-      class AdvertisersListResponse
+      class ListAdvertisersResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :advertisers, as: 'advertisers', class: Google::Apis::DfareportingV2_1::Advertiser, decorator: Google::Apis::DfareportingV2_1::Advertiser::Representation
       
@@ -1098,7 +1098,7 @@ module Google
       end
       
       # @private
-      class BrowsersListResponse
+      class ListBrowsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :browsers, as: 'browsers', class: Google::Apis::DfareportingV2_1::Browser, decorator: Google::Apis::DfareportingV2_1::Browser::Representation
       
@@ -1162,7 +1162,7 @@ module Google
       end
       
       # @private
-      class CampaignCreativeAssociationsListResponse
+      class ListCampaignCreativeAssociationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :campaign_creative_associations, as: 'campaignCreativeAssociations', class: Google::Apis::DfareportingV2_1::CampaignCreativeAssociation, decorator: Google::Apis::DfareportingV2_1::CampaignCreativeAssociation::Representation
       
@@ -1172,7 +1172,7 @@ module Google
       end
       
       # @private
-      class CampaignsListResponse
+      class ListCampaignsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :campaigns, as: 'campaigns', class: Google::Apis::DfareportingV2_1::Campaign, decorator: Google::Apis::DfareportingV2_1::Campaign::Representation
       
@@ -1192,7 +1192,7 @@ module Google
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :new_value, as: 'newValue'
-          property :object_id_prop, as: 'objectId'
+          property :obj_id, as: 'objectId'
           property :object_type, as: 'objectType'
           property :old_value, as: 'oldValue'
           property :subaccount_id, as: 'subaccountId'
@@ -1203,7 +1203,7 @@ module Google
       end
       
       # @private
-      class ChangeLogsListResponse
+      class ListChangeLogsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :change_logs, as: 'changeLogs', class: Google::Apis::DfareportingV2_1::ChangeLog, decorator: Google::Apis::DfareportingV2_1::ChangeLog::Representation
       
@@ -1213,7 +1213,7 @@ module Google
       end
       
       # @private
-      class CitiesListResponse
+      class ListCitiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :cities, as: 'cities', class: Google::Apis::DfareportingV2_1::City, decorator: Google::Apis::DfareportingV2_1::City::Representation
       
@@ -1298,7 +1298,7 @@ module Google
       end
       
       # @private
-      class ConnectionTypesListResponse
+      class ListConnectionTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :connection_types, as: 'connectionTypes', class: Google::Apis::DfareportingV2_1::ConnectionType, decorator: Google::Apis::DfareportingV2_1::ConnectionType::Representation
       
@@ -1307,7 +1307,7 @@ module Google
       end
       
       # @private
-      class ContentCategoriesListResponse
+      class ListContentCategoriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :content_categories, as: 'contentCategories', class: Google::Apis::DfareportingV2_1::ContentCategory, decorator: Google::Apis::DfareportingV2_1::ContentCategory::Representation
       
@@ -1327,7 +1327,7 @@ module Google
       end
       
       # @private
-      class CountriesListResponse
+      class ListCountriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :countries, as: 'countries', class: Google::Apis::DfareportingV2_1::Country, decorator: Google::Apis::DfareportingV2_1::Country::Representation
       
@@ -1572,7 +1572,7 @@ module Google
       end
       
       # @private
-      class CreativeFieldValuesListResponse
+      class ListCreativeFieldValuesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :creative_field_values, as: 'creativeFieldValues', class: Google::Apis::DfareportingV2_1::CreativeFieldValue, decorator: Google::Apis::DfareportingV2_1::CreativeFieldValue::Representation
       
@@ -1582,7 +1582,7 @@ module Google
       end
       
       # @private
-      class CreativeFieldsListResponse
+      class ListCreativeFieldsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :creative_fields, as: 'creativeFields', class: Google::Apis::DfareportingV2_1::CreativeField, decorator: Google::Apis::DfareportingV2_1::CreativeField::Representation
       
@@ -1615,7 +1615,7 @@ module Google
       end
       
       # @private
-      class CreativeGroupsListResponse
+      class ListCreativeGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :creative_groups, as: 'creativeGroups', class: Google::Apis::DfareportingV2_1::CreativeGroup, decorator: Google::Apis::DfareportingV2_1::CreativeGroup::Representation
       
@@ -1655,7 +1655,7 @@ module Google
       end
       
       # @private
-      class CreativesListResponse
+      class ListCreativesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :creatives, as: 'creatives', class: Google::Apis::DfareportingV2_1::Creative, decorator: Google::Apis::DfareportingV2_1::Creative::Representation
       
@@ -1841,7 +1841,7 @@ module Google
       end
       
       # @private
-      class DirectorySiteContactsListResponse
+      class ListDirectorySiteContactsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :directory_site_contacts, as: 'directorySiteContacts', class: Google::Apis::DfareportingV2_1::DirectorySiteContact, decorator: Google::Apis::DfareportingV2_1::DirectorySiteContact::Representation
       
@@ -1865,7 +1865,7 @@ module Google
       end
       
       # @private
-      class DirectorySitesListResponse
+      class ListDirectorySitesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :directory_sites, as: 'directorySites', class: Google::Apis::DfareportingV2_1::DirectorySite, decorator: Google::Apis::DfareportingV2_1::DirectorySite::Representation
       
@@ -1908,7 +1908,7 @@ module Google
       end
       
       # @private
-      class EventTagsListResponse
+      class ListEventTagsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :event_tags, as: 'eventTags', class: Google::Apis::DfareportingV2_1::EventTag, decorator: Google::Apis::DfareportingV2_1::EventTag::Representation
       
@@ -1966,7 +1966,7 @@ module Google
       end
       
       # @private
-      class GenerateTagResponse
+      class FloodlightActivitiesGenerateTagResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :floodlight_activity_tag, as: 'floodlightActivityTag'
           property :kind, as: 'kind'
@@ -1974,7 +1974,7 @@ module Google
       end
       
       # @private
-      class FloodlightActivitiesListResponse
+      class ListFloodlightActivitiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :floodlight_activities, as: 'floodlightActivities', class: Google::Apis::DfareportingV2_1::FloodlightActivity, decorator: Google::Apis::DfareportingV2_1::FloodlightActivity::Representation
       
@@ -2053,7 +2053,7 @@ module Google
       end
       
       # @private
-      class FloodlightActivityGroupsListResponse
+      class ListFloodlightActivityGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :floodlight_activity_groups, as: 'floodlightActivityGroups', class: Google::Apis::DfareportingV2_1::FloodlightActivityGroup, decorator: Google::Apis::DfareportingV2_1::FloodlightActivityGroup::Representation
       
@@ -2106,7 +2106,7 @@ module Google
       end
       
       # @private
-      class FloodlightConfigurationsListResponse
+      class ListFloodlightConfigurationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :floodlight_configurations, as: 'floodlightConfigurations', class: Google::Apis::DfareportingV2_1::FloodlightConfiguration, decorator: Google::Apis::DfareportingV2_1::FloodlightConfiguration::Representation
       
@@ -2192,7 +2192,7 @@ module Google
       end
       
       # @private
-      class InventoryItemsListResponse
+      class ListInventoryItemsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :inventory_items, as: 'inventoryItems', class: Google::Apis::DfareportingV2_1::InventoryItem, decorator: Google::Apis::DfareportingV2_1::InventoryItem::Representation
       
@@ -2220,7 +2220,7 @@ module Google
       end
       
       # @private
-      class LandingPagesListResponse
+      class ListLandingPagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :landing_pages, as: 'landingPages', class: Google::Apis::DfareportingV2_1::LandingPage, decorator: Google::Apis::DfareportingV2_1::LandingPage::Representation
@@ -2304,7 +2304,7 @@ module Google
       end
       
       # @private
-      class MetrosListResponse
+      class ListMetrosResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :metros, as: 'metros', class: Google::Apis::DfareportingV2_1::Metro, decorator: Google::Apis::DfareportingV2_1::Metro::Representation
@@ -2324,7 +2324,7 @@ module Google
       end
       
       # @private
-      class MobileCarriersListResponse
+      class ListMobileCarriersResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :mobile_carriers, as: 'mobileCarriers', class: Google::Apis::DfareportingV2_1::MobileCarrier, decorator: Google::Apis::DfareportingV2_1::MobileCarrier::Representation
@@ -2382,7 +2382,7 @@ module Google
       end
       
       # @private
-      class OperatingSystemVersionsListResponse
+      class ListOperatingSystemVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :operating_system_versions, as: 'operatingSystemVersions', class: Google::Apis::DfareportingV2_1::OperatingSystemVersion, decorator: Google::Apis::DfareportingV2_1::OperatingSystemVersion::Representation
@@ -2391,7 +2391,7 @@ module Google
       end
       
       # @private
-      class OperatingSystemsListResponse
+      class ListOperatingSystemsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :operating_systems, as: 'operatingSystems', class: Google::Apis::DfareportingV2_1::OperatingSystem, decorator: Google::Apis::DfareportingV2_1::OperatingSystem::Representation
@@ -2472,7 +2472,7 @@ module Google
       end
       
       # @private
-      class OrderDocumentsListResponse
+      class ListOrderDocumentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -2482,7 +2482,7 @@ module Google
       end
       
       # @private
-      class OrdersListResponse
+      class ListOrdersResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -2616,7 +2616,7 @@ module Google
       end
       
       # @private
-      class PlacementGroupsListResponse
+      class ListPlacementGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -2626,7 +2626,7 @@ module Google
       end
       
       # @private
-      class PlacementStrategiesListResponse
+      class ListPlacementStrategiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -2655,7 +2655,7 @@ module Google
       end
       
       # @private
-      class GenerateTagsResponse
+      class GeneratePlacementsTagsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :placement_tags, as: 'placementTags', class: Google::Apis::DfareportingV2_1::PlacementTag, decorator: Google::Apis::DfareportingV2_1::PlacementTag::Representation
@@ -2664,7 +2664,7 @@ module Google
       end
       
       # @private
-      class PlacementsListResponse
+      class ListPlacementsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -2683,7 +2683,7 @@ module Google
       end
       
       # @private
-      class PlatformTypesListResponse
+      class ListPlatformTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :platform_types, as: 'platformTypes', class: Google::Apis::DfareportingV2_1::PlatformType, decorator: Google::Apis::DfareportingV2_1::PlatformType::Representation
@@ -2720,7 +2720,7 @@ module Google
       end
       
       # @private
-      class PostalCodesListResponse
+      class ListPostalCodesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :postal_codes, as: 'postalCodes', class: Google::Apis::DfareportingV2_1::PostalCode, decorator: Google::Apis::DfareportingV2_1::PostalCode::Representation
@@ -2818,7 +2818,7 @@ module Google
       end
       
       # @private
-      class ProjectsListResponse
+      class ListProjectsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -2866,7 +2866,7 @@ module Google
       end
       
       # @private
-      class RegionsListResponse
+      class ListRegionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :regions, as: 'regions', class: Google::Apis::DfareportingV2_1::Region, decorator: Google::Apis::DfareportingV2_1::Region::Representation
@@ -2906,7 +2906,7 @@ module Google
       end
       
       # @private
-      class RemarketingListsListResponse
+      class ListRemarketingListsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -3117,7 +3117,7 @@ module Google
       end
       
       # @private
-      class Configuration
+      class ReportsConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation
           property :exposure_to_conversion_enabled, as: 'exposureToConversionEnabled'
           property :lookback_configuration, as: 'lookbackConfiguration', class: Google::Apis::DfareportingV2_1::LookbackConfiguration, decorator: Google::Apis::DfareportingV2_1::LookbackConfiguration::Representation
@@ -3187,7 +3187,7 @@ module Google
       end
       
       # @private
-      class SitesListResponse
+      class ListSitesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -3208,7 +3208,7 @@ module Google
       end
       
       # @private
-      class SizesListResponse
+      class ListSizesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :sizes, as: 'sizes', class: Google::Apis::DfareportingV2_1::Size, decorator: Google::Apis::DfareportingV2_1::Size::Representation
@@ -3237,7 +3237,7 @@ module Google
       end
       
       # @private
-      class SubaccountsListResponse
+      class ListSubaccountsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -3303,7 +3303,7 @@ module Google
       end
       
       # @private
-      class TargetableRemarketingListsListResponse
+      class ListTargetableRemarketingListsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -3407,7 +3407,7 @@ module Google
       end
       
       # @private
-      class UserRolePermissionGroupsListResponse
+      class ListUserRolePermissionGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :user_role_permission_groups, as: 'userRolePermissionGroups', class: Google::Apis::DfareportingV2_1::UserRolePermissionGroup, decorator: Google::Apis::DfareportingV2_1::UserRolePermissionGroup::Representation
@@ -3416,7 +3416,7 @@ module Google
       end
       
       # @private
-      class UserRolePermissionsListResponse
+      class ListUserRolePermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :user_role_permissions, as: 'userRolePermissions', class: Google::Apis::DfareportingV2_1::UserRolePermission, decorator: Google::Apis::DfareportingV2_1::UserRolePermission::Representation
@@ -3425,7 +3425,7 @@ module Google
       end
       
       # @private
-      class UserRolesListResponse
+      class ListUserRolesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'

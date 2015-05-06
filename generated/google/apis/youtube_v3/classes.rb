@@ -502,7 +502,7 @@ module Google
       end
       
       # 
-      class ActivityListResponse
+      class ListActivitiesResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -681,7 +681,7 @@ module Google
       end
       
       # 
-      class CaptionListResponse
+      class ListCaptionsResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -1263,7 +1263,7 @@ module Google
       end
       
       # 
-      class ChannelListResponse
+      class ListChannelsResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -1441,7 +1441,7 @@ module Google
       end
       
       # 
-      class ChannelSectionListResponse
+      class ListChannelSectionsResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -1885,7 +1885,7 @@ module Google
       end
       
       # 
-      class CommentListResponse
+      class ListCommentsResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -2117,7 +2117,7 @@ module Google
       end
       
       # 
-      class CommentThreadListResponse
+      class ListCommentThreadsResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -2739,7 +2739,7 @@ module Google
       end
       
       # 
-      class GuideCategoryListResponse
+      class ListGuideCategoriesResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -2877,7 +2877,7 @@ module Google
       end
       
       # 
-      class I18nLanguageListResponse
+      class ListI18nLanguagesResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -2987,7 +2987,7 @@ module Google
       end
       
       # 
-      class I18nRegionListResponse
+      class ListI18nRegionsResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -3557,7 +3557,7 @@ module Google
       end
       
       # 
-      class LiveBroadcastListResponse
+      class ListLiveBroadcastsResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -3851,7 +3851,7 @@ module Google
       end
       
       # 
-      class LiveStreamListResponse
+      class ListLiveStreamsResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -4322,7 +4322,7 @@ module Google
       end
       
       # 
-      class PlaylistItemListResponse
+      class ListPlaylistItemsResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -4484,7 +4484,7 @@ module Google
       end
       
       # 
-      class PlaylistListResponse
+      class ListPlaylistResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -4839,7 +4839,7 @@ module Google
       end
       
       # 
-      class ListResponse
+      class SearchListsResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -4854,7 +4854,7 @@ module Google
       
         # A list of results that match the search criteria.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::YoutubeV3::Result>]
+        # @return [Array<Google::Apis::YoutubeV3::SearchResult>]
         attr_accessor :items
       
         # Identifies what kind of resource this is. Value: the fixed string "youtube#
@@ -4913,7 +4913,7 @@ module Google
       # playlist that matches the search parameters specified in an API request. While
       # a search result points to a uniquely identifiable resource, like a video, it
       # does not have its own persistent data.
-      class Result
+      class SearchResult
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -4935,7 +4935,7 @@ module Google
         # Basic details about a search result, including title, description and
         # thumbnails of the item referenced by the search result.
         # Corresponds to the JSON property `snippet`
-        # @return [Google::Apis::YoutubeV3::ResultSnippet]
+        # @return [Google::Apis::YoutubeV3::SearchResultSnippet]
         attr_accessor :snippet
       
         def initialize(**args)
@@ -4953,7 +4953,7 @@ module Google
       
       # Basic details about a search result, including title, description and
       # thumbnails of the item referenced by the search result.
-      class ResultSnippet
+      class SearchResultSnippet
         include Google::Apis::Core::Hashable
       
         # The value that YouTube uses to uniquely identify the channel that published
@@ -5099,7 +5099,7 @@ module Google
       end
       
       # 
-      class SubscriptionListResponse
+      class ListSubscriptionResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -5339,7 +5339,7 @@ module Google
       end
       
       # 
-      class ThumbnailSetResponse
+      class SetThumbnailResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -5617,7 +5617,7 @@ module Google
       end
       
       # 
-      class VideoAbuseReportReasonListResponse
+      class ListVideoAbuseReportReasonResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -5788,7 +5788,7 @@ module Google
       end
       
       # 
-      class VideoCategoryListResponse
+      class ListVideoCategoryResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -6236,7 +6236,7 @@ module Google
       end
       
       # 
-      class VideoGetRatingResponse
+      class GetVideoRatingResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.
@@ -6280,7 +6280,7 @@ module Google
       end
       
       # 
-      class VideoListResponse
+      class ListVideosResponse
         include Google::Apis::Core::Hashable
       
         # Etag of this resource.

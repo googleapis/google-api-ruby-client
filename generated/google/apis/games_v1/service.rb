@@ -74,10 +74,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesV1::ListResponse] parsed result object
+        # @yieldparam result [Google::Apis::GamesV1::ListAchievementDefinitionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesV1::ListResponse]
+        # @return [Google::Apis::GamesV1::ListAchievementDefinitionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -85,8 +85,8 @@ module Google
         def list_achievement_definitions(language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'achievements'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::ListResponse::Representation
-          command.response_class = Google::Apis::GamesV1::ListResponse
+          command.response_representation = Google::Apis::GamesV1::ListAchievementDefinitionsResponse::Representation
+          command.response_class = Google::Apis::GamesV1::ListAchievementDefinitionsResponse
           command.query['language'] = language unless language.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -170,10 +170,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesV1::PlayerAchievementListResponse] parsed result object
+        # @yieldparam result [Google::Apis::GamesV1::ListPlayerAchievementResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesV1::PlayerAchievementListResponse]
+        # @return [Google::Apis::GamesV1::ListPlayerAchievementResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -181,8 +181,8 @@ module Google
         def list_achievements(player_id, language: nil, max_results: nil, page_token: nil, state: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'players/{playerId}/achievements'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::PlayerAchievementListResponse::Representation
-          command.response_class = Google::Apis::GamesV1::PlayerAchievementListResponse
+          command.response_representation = Google::Apis::GamesV1::ListPlayerAchievementResponse::Representation
+          command.response_class = Google::Apis::GamesV1::ListPlayerAchievementResponse
           command.params['playerId'] = player_id unless player_id.nil?
           command.query['language'] = language unless language.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -332,7 +332,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_multiple_achievement(achievement_update_multiple_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_multiple_achievements(achievement_update_multiple_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'achievements/updateMultiple'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesV1::AchievementUpdateMultipleRequest::Representation
@@ -443,10 +443,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesV1::PlayerEventListResponse] parsed result object
+        # @yieldparam result [Google::Apis::GamesV1::ListPlayerEventResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesV1::PlayerEventListResponse]
+        # @return [Google::Apis::GamesV1::ListPlayerEventResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -454,8 +454,8 @@ module Google
         def list_by_player_event(language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'events'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::PlayerEventListResponse::Representation
-          command.response_class = Google::Apis::GamesV1::PlayerEventListResponse
+          command.response_representation = Google::Apis::GamesV1::ListPlayerEventResponse::Representation
+          command.response_class = Google::Apis::GamesV1::ListPlayerEventResponse
           command.query['language'] = language unless language.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -487,19 +487,19 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesV1::EventDefinitionListResponse] parsed result object
+        # @yieldparam result [Google::Apis::GamesV1::ListEventDefinitionResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesV1::EventDefinitionListResponse]
+        # @return [Google::Apis::GamesV1::ListEventDefinitionResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_definitions_event(language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_event_definitions(language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'eventDefinitions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::EventDefinitionListResponse::Representation
-          command.response_class = Google::Apis::GamesV1::EventDefinitionListResponse
+          command.response_representation = Google::Apis::GamesV1::ListEventDefinitionResponse::Representation
+          command.response_class = Google::Apis::GamesV1::ListEventDefinitionResponse
           command.query['language'] = language unless language.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -527,10 +527,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesV1::EventUpdateResponse] parsed result object
+        # @yieldparam result [Google::Apis::GamesV1::UpdateEventResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesV1::EventUpdateResponse]
+        # @return [Google::Apis::GamesV1::UpdateEventResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -540,8 +540,8 @@ module Google
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesV1::EventRecordRequest::Representation
           command.request_object = event_record_request_object
-          command.response_representation = Google::Apis::GamesV1::EventUpdateResponse::Representation
-          command.response_class = Google::Apis::GamesV1::EventUpdateResponse
+          command.response_representation = Google::Apis::GamesV1::UpdateEventResponse::Representation
+          command.response_class = Google::Apis::GamesV1::UpdateEventResponse
           command.query['language'] = language unless language.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -610,10 +610,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesV1::LeaderboardListResponse] parsed result object
+        # @yieldparam result [Google::Apis::GamesV1::ListLeaderboardResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesV1::LeaderboardListResponse]
+        # @return [Google::Apis::GamesV1::ListLeaderboardResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -621,8 +621,8 @@ module Google
         def list_leaderboards(language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'leaderboards'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::LeaderboardListResponse::Representation
-          command.response_class = Google::Apis::GamesV1::LeaderboardListResponse
+          command.response_representation = Google::Apis::GamesV1::ListLeaderboardResponse::Representation
+          command.response_class = Google::Apis::GamesV1::ListLeaderboardResponse
           command.query['language'] = language unless language.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -646,19 +646,19 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesV1::Config] parsed result object
+        # @yieldparam result [Google::Apis::GamesV1::MetagameConfig] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesV1::Config]
+        # @return [Google::Apis::GamesV1::MetagameConfig]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_metagame_config_metagame(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_metagame_config(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'metagameConfig'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::Config::Representation
-          command.response_class = Google::Apis::GamesV1::Config
+          command.response_representation = Google::Apis::GamesV1::MetagameConfig::Representation
+          command.response_class = Google::Apis::GamesV1::MetagameConfig
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -693,10 +693,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesV1::CategoryListResponse] parsed result object
+        # @yieldparam result [Google::Apis::GamesV1::ListCategoryResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesV1::CategoryListResponse]
+        # @return [Google::Apis::GamesV1::ListCategoryResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -704,8 +704,8 @@ module Google
         def list_categories_by_player_metagame(player_id, collection, language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'players/{playerId}/categories/{collection}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::CategoryListResponse::Representation
-          command.response_class = Google::Apis::GamesV1::CategoryListResponse
+          command.response_representation = Google::Apis::GamesV1::ListCategoryResponse::Representation
+          command.response_class = Google::Apis::GamesV1::ListCategoryResponse
           command.params['playerId'] = player_id unless player_id.nil?
           command.params['collection'] = collection unless collection.nil?
           command.query['language'] = language unless language.nil?
@@ -782,10 +782,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesV1::PlayerListResponse] parsed result object
+        # @yieldparam result [Google::Apis::GamesV1::ListPlayerResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesV1::PlayerListResponse]
+        # @return [Google::Apis::GamesV1::ListPlayerResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -793,8 +793,8 @@ module Google
         def list_players(collection, language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'players/me/players/{collection}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::PlayerListResponse::Representation
-          command.response_class = Google::Apis::GamesV1::PlayerListResponse
+          command.response_representation = Google::Apis::GamesV1::ListPlayerResponse::Representation
+          command.response_class = Google::Apis::GamesV1::ListPlayerResponse
           command.params['collection'] = collection unless collection.nil?
           command.query['language'] = language unless language.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -983,10 +983,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesV1::QuestListResponse] parsed result object
+        # @yieldparam result [Google::Apis::GamesV1::ListQuestResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesV1::QuestListResponse]
+        # @return [Google::Apis::GamesV1::ListQuestResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -994,8 +994,8 @@ module Google
         def list_quests(player_id, language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'players/{playerId}/quests'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::QuestListResponse::Representation
-          command.response_class = Google::Apis::GamesV1::QuestListResponse
+          command.response_representation = Google::Apis::GamesV1::ListQuestResponse::Representation
+          command.response_class = Google::Apis::GamesV1::ListQuestResponse
           command.params['playerId'] = player_id unless player_id.nil?
           command.query['language'] = language unless language.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -1027,10 +1027,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesV1::RevisionCheckResponse] parsed result object
+        # @yieldparam result [Google::Apis::GamesV1::CheckRevisionResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesV1::RevisionCheckResponse]
+        # @return [Google::Apis::GamesV1::CheckRevisionResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1038,8 +1038,8 @@ module Google
         def check_revision(client_revision: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'revisions/check'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::RevisionCheckResponse::Representation
-          command.response_class = Google::Apis::GamesV1::RevisionCheckResponse
+          command.response_representation = Google::Apis::GamesV1::CheckRevisionResponse::Representation
+          command.response_class = Google::Apis::GamesV1::CheckRevisionResponse
           command.query['clientRevision'] = client_revision unless client_revision.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1049,7 +1049,7 @@ module Google
         
         # Create a room. For internal use by the Games SDK only. Calling this method
         # directly is unsupported.
-        # @param [Google::Apis::GamesV1::RoomCreateRequest] room_create_request_object
+        # @param [Google::Apis::GamesV1::CreateRoomRequest] room_create_request_object
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -1076,7 +1076,7 @@ module Google
         def create_room(room_create_request_object = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rooms/create'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GamesV1::RoomCreateRequest::Representation
+          command.request_representation = Google::Apis::GamesV1::CreateRoomRequest::Representation
           command.request_object = room_create_request_object
           command.response_representation = Google::Apis::GamesV1::Room::Representation
           command.response_class = Google::Apis::GamesV1::Room
@@ -1205,7 +1205,7 @@ module Google
         # directly is unsupported.
         # @param [String] room_id
         #   The ID of the room.
-        # @param [Google::Apis::GamesV1::RoomJoinRequest] room_join_request_object
+        # @param [Google::Apis::GamesV1::JoinRoomRequest] room_join_request_object
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -1232,7 +1232,7 @@ module Google
         def join_room(room_id, room_join_request_object = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rooms/{roomId}/join'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GamesV1::RoomJoinRequest::Representation
+          command.request_representation = Google::Apis::GamesV1::JoinRoomRequest::Representation
           command.request_object = room_join_request_object
           command.response_representation = Google::Apis::GamesV1::Room::Representation
           command.response_class = Google::Apis::GamesV1::Room
@@ -1248,7 +1248,7 @@ module Google
         # directly is unsupported.
         # @param [String] room_id
         #   The ID of the room.
-        # @param [Google::Apis::GamesV1::RoomLeaveRequest] room_leave_request_object
+        # @param [Google::Apis::GamesV1::LeaveRoomRequest] room_leave_request_object
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -1275,7 +1275,7 @@ module Google
         def leave_room(room_id, room_leave_request_object = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rooms/{roomId}/leave'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GamesV1::RoomLeaveRequest::Representation
+          command.request_representation = Google::Apis::GamesV1::LeaveRoomRequest::Representation
           command.request_object = room_leave_request_object
           command.response_representation = Google::Apis::GamesV1::Room::Representation
           command.response_class = Google::Apis::GamesV1::Room
@@ -1359,7 +1359,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def report_status_room(room_id, room_p2_p_statuses_object = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def report_room_status(room_id, room_p2_p_statuses_object = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rooms/{roomId}/reportstatus'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesV1::RoomP2PStatuses::Representation
@@ -1411,10 +1411,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesV1::PlayerLeaderboardScoreListResponse] parsed result object
+        # @yieldparam result [Google::Apis::GamesV1::ListPlayerLeaderboardScoreResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesV1::PlayerLeaderboardScoreListResponse]
+        # @return [Google::Apis::GamesV1::ListPlayerLeaderboardScoreResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1422,8 +1422,8 @@ module Google
         def get_score(player_id, leaderboard_id, time_span, include_rank_type: nil, language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'players/{playerId}/leaderboards/{leaderboardId}/scores/{timeSpan}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::PlayerLeaderboardScoreListResponse::Representation
-          command.response_class = Google::Apis::GamesV1::PlayerLeaderboardScoreListResponse
+          command.response_representation = Google::Apis::GamesV1::ListPlayerLeaderboardScoreResponse::Representation
+          command.response_class = Google::Apis::GamesV1::ListPlayerLeaderboardScoreResponse
           command.params['playerId'] = player_id unless player_id.nil?
           command.params['leaderboardId'] = leaderboard_id unless leaderboard_id.nil?
           command.params['timeSpan'] = time_span unless time_span.nil?
@@ -1621,10 +1621,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesV1::PlayerScoreListResponse] parsed result object
+        # @yieldparam result [Google::Apis::GamesV1::ListPlayerScoreResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesV1::PlayerScoreListResponse]
+        # @return [Google::Apis::GamesV1::ListPlayerScoreResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1634,8 +1634,8 @@ module Google
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::GamesV1::PlayerScoreSubmissionList::Representation
           command.request_object = player_score_submission_list_object
-          command.response_representation = Google::Apis::GamesV1::PlayerScoreListResponse::Representation
-          command.response_class = Google::Apis::GamesV1::PlayerScoreListResponse
+          command.response_representation = Google::Apis::GamesV1::ListPlayerScoreResponse::Representation
+          command.response_class = Google::Apis::GamesV1::ListPlayerScoreResponse
           command.query['language'] = language unless language.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1708,10 +1708,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesV1::SnapshotListResponse] parsed result object
+        # @yieldparam result [Google::Apis::GamesV1::ListSnapshotResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::GamesV1::SnapshotListResponse]
+        # @return [Google::Apis::GamesV1::ListSnapshotResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1719,8 +1719,8 @@ module Google
         def list_snapshots(player_id, language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'players/{playerId}/snapshots'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::GamesV1::SnapshotListResponse::Representation
-          command.response_class = Google::Apis::GamesV1::SnapshotListResponse
+          command.response_representation = Google::Apis::GamesV1::ListSnapshotResponse::Representation
+          command.response_class = Google::Apis::GamesV1::ListSnapshotResponse
           command.params['playerId'] = player_id unless player_id.nil?
           command.query['language'] = language unless language.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -1766,7 +1766,7 @@ module Google
         end
         
         # Create a turn-based match.
-        # @param [Google::Apis::GamesV1::TurnBasedMatchCreateRequest] turn_based_match_create_request_object
+        # @param [Google::Apis::GamesV1::CreateTurnBasedMatchRequest] turn_based_match_create_request_object
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [String] fields
@@ -1793,7 +1793,7 @@ module Google
         def create_turn_based_match(turn_based_match_create_request_object = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/create'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GamesV1::TurnBasedMatchCreateRequest::Representation
+          command.request_representation = Google::Apis::GamesV1::CreateTurnBasedMatchRequest::Representation
           command.request_object = turn_based_match_create_request_object
           command.response_representation = Google::Apis::GamesV1::TurnBasedMatch::Representation
           command.response_class = Google::Apis::GamesV1::TurnBasedMatch
@@ -2077,7 +2077,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def leave_turn_turn_based_match(match_id, language: nil, match_version: nil, pending_participant_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def leave_turn(match_id, language: nil, match_version: nil, pending_participant_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/{matchId}/leaveTurn'
           command =  make_simple_command(:put, path, options)
           command.response_representation = Google::Apis::GamesV1::TurnBasedMatch::Representation
@@ -2278,7 +2278,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def take_turn_turn_based_match(match_id, turn_based_match_turn_object = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def take_turn(match_id, turn_based_match_turn_object = nil, language: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/{matchId}/turn'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::GamesV1::TurnBasedMatchTurn::Representation

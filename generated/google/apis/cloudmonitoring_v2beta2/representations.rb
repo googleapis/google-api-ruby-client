@@ -86,11 +86,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class Descriptor
+      class TimeseriesDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class DescriptorLabel
+      class TimeseriesDescriptorLabel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -144,7 +144,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           property :oldest, as: 'oldest', type: DateTime
       
-          collection :timeseries, as: 'timeseries', class: Google::Apis::CloudmonitoringV2beta2::Descriptor, decorator: Google::Apis::CloudmonitoringV2beta2::Descriptor::Representation
+          collection :timeseries, as: 'timeseries', class: Google::Apis::CloudmonitoringV2beta2::TimeseriesDescriptor, decorator: Google::Apis::CloudmonitoringV2beta2::TimeseriesDescriptor::Representation
       
           property :youngest, as: 'youngest', type: DateTime
       
@@ -259,13 +259,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :points, as: 'points', class: Google::Apis::CloudmonitoringV2beta2::Point, decorator: Google::Apis::CloudmonitoringV2beta2::Point::Representation
       
-          property :timeseries_desc, as: 'timeseriesDesc', class: Google::Apis::CloudmonitoringV2beta2::Descriptor, decorator: Google::Apis::CloudmonitoringV2beta2::Descriptor::Representation
+          property :timeseries_desc, as: 'timeseriesDesc', class: Google::Apis::CloudmonitoringV2beta2::TimeseriesDescriptor, decorator: Google::Apis::CloudmonitoringV2beta2::TimeseriesDescriptor::Representation
       
         end
       end
       
       # @private
-      class Descriptor
+      class TimeseriesDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
           property :metric, as: 'metric'
@@ -274,7 +274,7 @@ module Google
       end
       
       # @private
-      class DescriptorLabel
+      class TimeseriesDescriptorLabel
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, as: 'key'
           property :value, as: 'value'
@@ -286,7 +286,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :point, as: 'point', class: Google::Apis::CloudmonitoringV2beta2::Point, decorator: Google::Apis::CloudmonitoringV2beta2::Point::Representation
       
-          property :timeseries_desc, as: 'timeseriesDesc', class: Google::Apis::CloudmonitoringV2beta2::Descriptor, decorator: Google::Apis::CloudmonitoringV2beta2::Descriptor::Representation
+          property :timeseries_desc, as: 'timeseriesDesc', class: Google::Apis::CloudmonitoringV2beta2::TimeseriesDescriptor, decorator: Google::Apis::CloudmonitoringV2beta2::TimeseriesDescriptor::Representation
       
         end
       end

@@ -126,7 +126,7 @@ module Google
       end
       
       # This is a JSON template for a list of achievement definition objects.
-      class ListResponse
+      class ListAchievementDefinitionsResponse
         include Google::Apis::Core::Hashable
       
         # The achievement definitions.
@@ -295,7 +295,7 @@ module Google
       
         # The individual achievement update requests.
         # Corresponds to the JSON property `updates`
-        # @return [Array<Google::Apis::GamesV1::AchievementUpdateRequest>]
+        # @return [Array<Google::Apis::GamesV1::UpdateAchievementRequest>]
         attr_accessor :updates
       
         def initialize(**args)
@@ -321,7 +321,7 @@ module Google
       
         # The updated state of the achievements.
         # Corresponds to the JSON property `updatedAchievements`
-        # @return [Array<Google::Apis::GamesV1::AchievementUpdateResponse>]
+        # @return [Array<Google::Apis::GamesV1::UpdateAchievementResponse>]
         attr_accessor :updated_achievements
       
         def initialize(**args)
@@ -336,7 +336,7 @@ module Google
       end
       
       # This is a JSON template for a request to update an achievement.
-      class AchievementUpdateRequest
+      class UpdateAchievementRequest
         include Google::Apis::Core::Hashable
       
         # The achievement this update is being applied to.
@@ -346,7 +346,7 @@ module Google
       
         # This is a JSON template for the payload to request to increment an achievement.
         # Corresponds to the JSON property `incrementPayload`
-        # @return [Google::Apis::GamesV1::AchievementIncrement]
+        # @return [Google::Apis::GamesV1::GamesAchievementIncrement]
         attr_accessor :increment_payload
       
         # Uniquely identifies the type of this resource. Value is always the fixed
@@ -357,7 +357,7 @@ module Google
       
         # This is a JSON template for the payload to request to increment an achievement.
         # Corresponds to the JSON property `setStepsAtLeastPayload`
-        # @return [Google::Apis::GamesV1::AchievementSetStepsAtLeast]
+        # @return [Google::Apis::GamesV1::GamesAchievementSetStepsAtLeast]
         attr_accessor :set_steps_at_least_payload
       
         # The type of update being applied.
@@ -386,7 +386,7 @@ module Google
       end
       
       # This is a JSON template for an achievement update response.
-      class AchievementUpdateResponse
+      class UpdateAchievementResponse
         include Google::Apis::Core::Hashable
       
         # The achievement this update is was applied to.
@@ -678,7 +678,7 @@ module Google
       end
       
       # This is a JSON template for a list of category data objects.
-      class CategoryListResponse
+      class ListCategoryResponse
         include Google::Apis::Core::Hashable
       
         # The list of categories with usage data.
@@ -847,7 +847,7 @@ module Google
       end
       
       # This is a JSON template for a ListDefinitions response.
-      class EventDefinitionListResponse
+      class ListEventDefinitionResponse
         include Google::Apis::Core::Hashable
       
         # The event definitions.
@@ -928,7 +928,7 @@ module Google
       
         # The updates being made for this time period.
         # Corresponds to the JSON property `updates`
-        # @return [Array<Google::Apis::GamesV1::EventUpdateRequest>]
+        # @return [Array<Google::Apis::GamesV1::UpdateEventRequest>]
         attr_accessor :updates
       
         def initialize(**args)
@@ -1019,7 +1019,7 @@ module Google
       end
       
       # This is a JSON template for an event period update resource.
-      class EventUpdateRequest
+      class UpdateEventRequest
         include Google::Apis::Core::Hashable
       
         # The ID of the event being modified in this update.
@@ -1051,7 +1051,7 @@ module Google
       end
       
       # This is a JSON template for an event period update resource.
-      class EventUpdateResponse
+      class UpdateEventResponse
         include Google::Apis::Core::Hashable
       
         # Any batch-wide failures which occurred applying updates.
@@ -1089,7 +1089,7 @@ module Google
       end
       
       # This is a JSON template for the payload to request to increment an achievement.
-      class AchievementIncrement
+      class GamesAchievementIncrement
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
@@ -1121,7 +1121,7 @@ module Google
       end
       
       # This is a JSON template for the payload to request to increment an achievement.
-      class AchievementSetStepsAtLeast
+      class GamesAchievementSetStepsAtLeast
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
@@ -1531,7 +1531,7 @@ module Google
       end
       
       # This is a JSON template for a list of leaderboard objects.
-      class LeaderboardListResponse
+      class ListLeaderboardResponse
         include Google::Apis::Core::Hashable
       
         # The leaderboards.
@@ -1657,7 +1657,7 @@ module Google
       end
       
       # This is a JSON template for the metagame config resource
-      class Config
+      class MetagameConfig
         include Google::Apis::Core::Hashable
       
         # Current version of the metagame configuration data. When this data is updated,
@@ -2097,7 +2097,7 @@ module Google
       end
       
       # This is a JSON template for a list of achievement objects.
-      class PlayerAchievementListResponse
+      class ListPlayerAchievementResponse
         include Google::Apis::Core::Hashable
       
         # The achievements.
@@ -2175,7 +2175,7 @@ module Google
       end
       
       # This is a JSON template for a ListByPlayer response.
-      class PlayerEventListResponse
+      class ListPlayerEventResponse
         include Google::Apis::Core::Hashable
       
         # The player events.
@@ -2325,7 +2325,7 @@ module Google
       end
       
       # This is a JSON template for a list of player leaderboard scores.
-      class PlayerLeaderboardScoreListResponse
+      class ListPlayerLeaderboardScoreResponse
         include Google::Apis::Core::Hashable
       
         # The leaderboard scores.
@@ -2401,7 +2401,7 @@ module Google
       end
       
       # This is a JSON template for a third party player list response.
-      class PlayerListResponse
+      class ListPlayerResponse
         include Google::Apis::Core::Hashable
       
         # The players.
@@ -2482,7 +2482,7 @@ module Google
       end
       
       # This is a JSON template for a list of score submission statuses.
-      class PlayerScoreListResponse
+      class ListPlayerScoreResponse
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
@@ -2894,7 +2894,7 @@ module Google
       end
       
       # This is a JSON template for a list of quest objects.
-      class QuestListResponse
+      class ListQuestResponse
         include Google::Apis::Core::Hashable
       
         # The quests.
@@ -2978,7 +2978,7 @@ module Google
       end
       
       # This is a JSON template for the result of checking a revision.
-      class RevisionCheckResponse
+      class CheckRevisionResponse
         include Google::Apis::Core::Hashable
       
         # The version of the API this client revision should use when calling API
@@ -3218,7 +3218,7 @@ module Google
       end
       
       # This is a JSON template for a room creation request.
-      class RoomCreateRequest
+      class CreateRoomRequest
         include Google::Apis::Core::Hashable
       
         # This is a JSON template for a room auto-match criteria object.
@@ -3283,7 +3283,7 @@ module Google
       end
       
       # This is a JSON template for a join room request.
-      class RoomJoinRequest
+      class JoinRoomRequest
         include Google::Apis::Core::Hashable
       
         # The capabilities that this client supports for realtime communication.
@@ -3393,7 +3393,7 @@ module Google
       end
       
       # This is a JSON template for a leave room request.
-      class RoomLeaveRequest
+      class LeaveRoomRequest
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
@@ -3940,7 +3940,7 @@ module Google
       end
       
       # This is a JSON template for a list of snapshot objects.
-      class SnapshotListResponse
+      class ListSnapshotResponse
         include Google::Apis::Core::Hashable
       
         # The snapshots.
@@ -4176,7 +4176,7 @@ module Google
       end
       
       # This is a JSON template for a turn-based match creation request.
-      class TurnBasedMatchCreateRequest
+      class CreateTurnBasedMatchRequest
         include Google::Apis::Core::Hashable
       
         # This is a JSON template for an turn-based auto-match criteria object.

@@ -78,7 +78,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ActivityListResponse
+      class ListActivitiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -90,7 +90,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CaptionListResponse
+      class ListCaptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -142,7 +142,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ChannelListResponse
+      class ListChannelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -158,7 +158,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ChannelSectionListResponse
+      class ListChannelSectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -198,7 +198,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CommentListResponse
+      class ListCommentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -210,7 +210,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class CommentThreadListResponse
+      class ListCommentThreadsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -234,7 +234,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class GuideCategoryListResponse
+      class ListGuideCategoriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -246,7 +246,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class I18nLanguageListResponse
+      class ListI18nLanguagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -258,7 +258,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class I18nRegionListResponse
+      class ListI18nRegionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -302,7 +302,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LiveBroadcastListResponse
+      class ListLiveBroadcastsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -322,7 +322,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LiveStreamListResponse
+      class ListLiveStreamsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -366,7 +366,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlaylistItemListResponse
+      class ListPlaylistItemsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -378,7 +378,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class PlaylistListResponse
+      class ListPlaylistResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -414,15 +414,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListResponse
+      class SearchListsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class Result
+      class SearchResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ResultSnippet
+      class SearchResultSnippet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -434,7 +434,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SubscriptionListResponse
+      class ListSubscriptionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -454,7 +454,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ThumbnailSetResponse
+      class SetThumbnailResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -474,7 +474,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class VideoAbuseReportReasonListResponse
+      class ListVideoAbuseReportReasonResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -494,7 +494,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class VideoCategoryListResponse
+      class ListVideoCategoryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -530,11 +530,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class VideoGetRatingResponse
+      class GetVideoRatingResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class VideoListResponse
+      class ListVideosResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -756,7 +756,7 @@ module Google
       end
       
       # @private
-      class ActivityListResponse
+      class ListActivitiesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -801,7 +801,7 @@ module Google
       end
       
       # @private
-      class CaptionListResponse
+      class ListCaptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -959,7 +959,7 @@ module Google
       end
       
       # @private
-      class ChannelListResponse
+      class ListChannelsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1010,7 +1010,7 @@ module Google
       end
       
       # @private
-      class ChannelSectionListResponse
+      class ListChannelSectionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1126,7 +1126,7 @@ module Google
       end
       
       # @private
-      class CommentListResponse
+      class ListCommentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1181,7 +1181,7 @@ module Google
       end
       
       # @private
-      class CommentThreadListResponse
+      class ListCommentThreadsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1309,7 +1309,7 @@ module Google
       end
       
       # @private
-      class GuideCategoryListResponse
+      class ListGuideCategoriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1346,7 +1346,7 @@ module Google
       end
       
       # @private
-      class I18nLanguageListResponse
+      class ListI18nLanguagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1377,7 +1377,7 @@ module Google
       end
       
       # @private
-      class I18nRegionListResponse
+      class ListI18nRegionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1519,7 +1519,7 @@ module Google
       end
       
       # @private
-      class LiveBroadcastListResponse
+      class ListLiveBroadcastsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1594,7 +1594,7 @@ module Google
       end
       
       # @private
-      class LiveStreamListResponse
+      class ListLiveStreamsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1718,7 +1718,7 @@ module Google
       end
       
       # @private
-      class PlaylistItemListResponse
+      class ListPlaylistItemsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1761,7 +1761,7 @@ module Google
       end
       
       # @private
-      class PlaylistListResponse
+      class ListPlaylistResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1859,11 +1859,11 @@ module Google
       end
       
       # @private
-      class ListResponse
+      class SearchListsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
-          collection :items, as: 'items', class: Google::Apis::YoutubeV3::Result, decorator: Google::Apis::YoutubeV3::Result::Representation
+          collection :items, as: 'items', class: Google::Apis::YoutubeV3::SearchResult, decorator: Google::Apis::YoutubeV3::SearchResult::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -1877,19 +1877,19 @@ module Google
       end
       
       # @private
-      class Result
+      class SearchResult
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :id, as: 'id', class: Google::Apis::YoutubeV3::ResourceId, decorator: Google::Apis::YoutubeV3::ResourceId::Representation
       
           property :kind, as: 'kind'
-          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::ResultSnippet, decorator: Google::Apis::YoutubeV3::ResultSnippet::Representation
+          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::SearchResultSnippet, decorator: Google::Apis::YoutubeV3::SearchResultSnippet::Representation
       
         end
       end
       
       # @private
-      class ResultSnippet
+      class SearchResultSnippet
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel_id, as: 'channelId'
           property :channel_title, as: 'channelTitle'
@@ -1928,7 +1928,7 @@ module Google
       end
       
       # @private
-      class SubscriptionListResponse
+      class ListSubscriptionResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1998,7 +1998,7 @@ module Google
       end
       
       # @private
-      class ThumbnailSetResponse
+      class SetThumbnailResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -2079,7 +2079,7 @@ module Google
       end
       
       # @private
-      class VideoAbuseReportReasonListResponse
+      class ListVideoAbuseReportReasonResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -2128,7 +2128,7 @@ module Google
       end
       
       # @private
-      class VideoCategoryListResponse
+      class ListVideoCategoryResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -2239,7 +2239,7 @@ module Google
       end
       
       # @private
-      class VideoGetRatingResponse
+      class GetVideoRatingResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -2251,7 +2251,7 @@ module Google
       end
       
       # @private
-      class VideoListResponse
+      class ListVideosResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'

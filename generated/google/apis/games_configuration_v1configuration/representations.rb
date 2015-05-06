@@ -30,7 +30,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class AchievementConfigurationListResponse
+      class ListAchievementConfigurationResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -54,7 +54,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class LeaderboardConfigurationListResponse
+      class ListLeaderboardConfigurationResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -97,7 +97,7 @@ module Google
       end
       
       # @private
-      class AchievementConfigurationListResponse
+      class ListAchievementConfigurationResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration, decorator: Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration::Representation
       
@@ -175,7 +175,7 @@ module Google
       end
       
       # @private
-      class LeaderboardConfigurationListResponse
+      class ListLeaderboardConfigurationResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration, decorator: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration::Representation
       

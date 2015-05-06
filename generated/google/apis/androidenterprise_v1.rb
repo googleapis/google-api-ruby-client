@@ -18,7 +18,7 @@ require 'google/apis/androidenterprise_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Play MDM API
+    # Google Play EMM API
     #
     # Allows MDMs/EMMs and enterprises to manage the deployment of apps to Android
     # for Work users.
@@ -26,7 +26,7 @@ module Google
     # @see 
     module AndroidenterpriseV1
       VERSION = 'V1'
-      REVISION = '20150309'
+      REVISION = '20141112'
 
       # Manage corporate Android devices
       AUTH_ANDROIDENTERPRISE = 'https://www.googleapis.com/auth/androidenterprise'

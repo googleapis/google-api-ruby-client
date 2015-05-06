@@ -179,7 +179,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_userinfo_v2_me(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_userinfo_v2(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userinfo/v2/me'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::Oauth2V2::Userinfoplus::Representation

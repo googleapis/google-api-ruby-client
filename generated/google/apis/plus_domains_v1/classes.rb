@@ -39,7 +39,7 @@ module Google
       
         # The list of access entries.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::PlusDomainsV1::AclentryResource>]
+        # @return [Array<Google::Apis::PlusDomainsV1::PlusDomainsAclentryResource>]
         attr_accessor :items
       
         # Identifies this resource as a collection of access controls. Value: "plus#acl".
@@ -926,7 +926,7 @@ module Google
       
         # The access control list entry.
         # Corresponds to the JSON property `item`
-        # @return [Google::Apis::PlusDomainsV1::AclentryResource]
+        # @return [Google::Apis::PlusDomainsV1::PlusDomainsAclentryResource]
         attr_accessor :item
       
         # Identifies this resource as an audience. Value: "plus#audience".
@@ -964,7 +964,7 @@ module Google
       end
       
       # 
-      class Feed
+      class AudiencesFeed
         include Google::Apis::Core::Hashable
       
         # ETag of this response for caching purposes.
@@ -2323,7 +2323,7 @@ module Google
       end
       
       # 
-      class AclentryResource
+      class PlusDomainsAclentryResource
         include Google::Apis::Core::Hashable
       
         # A descriptive name for this entry. Suitable for display.

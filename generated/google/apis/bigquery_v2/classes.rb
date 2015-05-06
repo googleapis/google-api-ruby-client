@@ -168,6 +168,12 @@ module Google
         # @return [String]
         attr_accessor :last_modified_time
       
+        # [Experimental] The location where the data resides. If not present, the data
+        # will be stored in the US.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # [Output-only] A URL that can be used to access the resource again. You can use
         # this URL in Get or Update requests to the resource.
         # Corresponds to the JSON property `selfLink`
@@ -190,6 +196,7 @@ module Google
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @last_modified_time = args[:last_modified_time] unless args[:last_modified_time].nil?
+          @location = args[:location] unless args[:location].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
         end
         
@@ -1834,7 +1841,7 @@ module Google
       end
       
       # 
-      class InsertAllRequest
+      class InsertAllTableDataRequest
         include Google::Apis::Core::Hashable
       
         # [Optional] Accept rows that contain values that do not match the schema. The
@@ -1852,7 +1859,7 @@ module Google
       
         # The rows to insert.
         # Corresponds to the JSON property `rows`
-        # @return [Array<Google::Apis::BigqueryV2::InsertAllRequest::Row>]
+        # @return [Array<Google::Apis::BigqueryV2::InsertAllTableDataRequest::Row>]
         attr_accessor :rows
       
         # [Optional] Insert all valid rows of a request, even if invalid rows exist. The
@@ -1903,12 +1910,12 @@ module Google
       end
       
       # 
-      class InsertAllResponse
+      class InsertAllTableDataResponse
         include Google::Apis::Core::Hashable
       
         # An array of errors for rows that were not inserted.
         # Corresponds to the JSON property `insertErrors`
-        # @return [Array<Google::Apis::BigqueryV2::InsertAllResponse::InsertError>]
+        # @return [Array<Google::Apis::BigqueryV2::InsertAllTableDataResponse::InsertError>]
         attr_accessor :insert_errors
       
         # The resource type of the response.
@@ -1953,7 +1960,7 @@ module Google
       end
       
       # 
-      class List
+      class TableDataList
         include Google::Apis::Core::Hashable
       
         # A hash of this page of results.

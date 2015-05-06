@@ -26,7 +26,7 @@ event = Calendar::Event.new(summary: 'A sample event',
                             attendees: ARGV.map { |email| Calendar::EventAttendee.new(email: email) },
                             start: Calendar::EventDateTime.new(date_time: DateTime.parse('2015-12-31T20:00:00')),
                             end: Calendar::EventDateTime.new(date_time: DateTime.parse('2016-01-01T02:00:00')))
-event = calendar.insert_event(event, 'primary', send_notifications: true)
+event = calendar.insert_event('primary', event, send_notifications: true)
 puts "Created event '#{event.summary}' (#{event.id})"
 
 # List upcoming events

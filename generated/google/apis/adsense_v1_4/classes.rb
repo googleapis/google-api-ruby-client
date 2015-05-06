@@ -590,7 +590,7 @@ module Google
       end
       
       # 
-      class GenerateResponse
+      class GenerateReportResponse
         include Google::Apis::Core::Hashable
       
         # The averages of the report. This is the same length as any other row in the
@@ -608,7 +608,7 @@ module Google
         # of headers; one for each dimension in the request, followed by one for each
         # metric in the request.
         # Corresponds to the JSON property `headers`
-        # @return [Array<Google::Apis::AdsenseV1_4::GenerateResponse::Header>]
+        # @return [Array<Google::Apis::AdsenseV1_4::GenerateReportResponse::Header>]
         attr_accessor :headers
       
         # Kind this is, in this case adsense#report.
@@ -1098,7 +1098,7 @@ module Google
       end
       
       # 
-      class AdStyles
+      class SavedAdStyles
         include Google::Apis::Core::Hashable
       
         # ETag of this response for caching purposes.
@@ -1136,7 +1136,7 @@ module Google
       end
       
       # 
-      class Report
+      class SavedReport
         include Google::Apis::Core::Hashable
       
         # Unique identifier of this saved report.
@@ -1167,7 +1167,7 @@ module Google
       end
       
       # 
-      class Reports
+      class SavedReports
         include Google::Apis::Core::Hashable
       
         # ETag of this response for caching purposes.
@@ -1177,7 +1177,7 @@ module Google
       
         # The saved reports returned in this list response.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::AdsenseV1_4::Report>]
+        # @return [Array<Google::Apis::AdsenseV1_4::SavedReport>]
         attr_accessor :items
       
         # Kind of list this is, in this case adsense#savedReports.

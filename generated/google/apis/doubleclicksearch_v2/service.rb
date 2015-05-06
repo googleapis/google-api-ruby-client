@@ -89,10 +89,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DoubleclicksearchV2::List] parsed result object
+        # @yieldparam result [Google::Apis::DoubleclicksearchV2::ConversionList] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DoubleclicksearchV2::List]
+        # @return [Google::Apis::DoubleclicksearchV2::ConversionList]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -100,8 +100,8 @@ module Google
         def get_conversion(agency_id, advertiser_id, engine_account_id, ad_group_id: nil, ad_id: nil, campaign_id: nil, criterion_id: nil, end_date: nil, row_count: nil, start_date: nil, start_row: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DoubleclicksearchV2::List::Representation
-          command.response_class = Google::Apis::DoubleclicksearchV2::List
+          command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
+          command.response_class = Google::Apis::DoubleclicksearchV2::ConversionList
           command.params['agencyId'] = agency_id unless agency_id.nil?
           command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
           command.params['engineAccountId'] = engine_account_id unless engine_account_id.nil?
@@ -120,7 +120,7 @@ module Google
         end
         
         # Inserts a batch of new conversions into DoubleClick Search.
-        # @param [Google::Apis::DoubleclicksearchV2::List] conversion_list_object
+        # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -134,10 +134,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DoubleclicksearchV2::List] parsed result object
+        # @yieldparam result [Google::Apis::DoubleclicksearchV2::ConversionList] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DoubleclicksearchV2::List]
+        # @return [Google::Apis::DoubleclicksearchV2::ConversionList]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -145,10 +145,10 @@ module Google
         def insert_conversion(conversion_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'conversion'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DoubleclicksearchV2::List::Representation
+          command.request_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
           command.request_object = conversion_list_object
-          command.response_representation = Google::Apis::DoubleclicksearchV2::List::Representation
-          command.response_class = Google::Apis::DoubleclicksearchV2::List
+          command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
+          command.response_class = Google::Apis::DoubleclicksearchV2::ConversionList
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -157,7 +157,7 @@ module Google
         
         # Updates a batch of conversions in DoubleClick Search. This method supports
         # patch semantics.
-        # @param [Google::Apis::DoubleclicksearchV2::List] conversion_list_object
+        # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list_object
         # @param [String] advertiser_id
         #   Numeric ID of the advertiser.
         # @param [String] agency_id
@@ -185,10 +185,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DoubleclicksearchV2::List] parsed result object
+        # @yieldparam result [Google::Apis::DoubleclicksearchV2::ConversionList] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DoubleclicksearchV2::List]
+        # @return [Google::Apis::DoubleclicksearchV2::ConversionList]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -196,10 +196,10 @@ module Google
         def patch_conversion(conversion_list_object = nil, advertiser_id: nil, agency_id: nil, end_date: nil, engine_account_id: nil, row_count: nil, start_date: nil, start_row: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'conversion'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::DoubleclicksearchV2::List::Representation
+          command.request_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
           command.request_object = conversion_list_object
-          command.response_representation = Google::Apis::DoubleclicksearchV2::List::Representation
-          command.response_class = Google::Apis::DoubleclicksearchV2::List
+          command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
+          command.response_class = Google::Apis::DoubleclicksearchV2::ConversionList
           command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
           command.query['agencyId'] = agency_id unless agency_id.nil?
           command.query['endDate'] = end_date unless end_date.nil?
@@ -214,7 +214,7 @@ module Google
         end
         
         # Updates a batch of conversions in DoubleClick Search.
-        # @param [Google::Apis::DoubleclicksearchV2::List] conversion_list_object
+        # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -228,10 +228,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DoubleclicksearchV2::List] parsed result object
+        # @yieldparam result [Google::Apis::DoubleclicksearchV2::ConversionList] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DoubleclicksearchV2::List]
+        # @return [Google::Apis::DoubleclicksearchV2::ConversionList]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -239,10 +239,10 @@ module Google
         def update_conversion(conversion_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'conversion'
           command =  make_simple_command(:put, path, options)
-          command.request_representation = Google::Apis::DoubleclicksearchV2::List::Representation
+          command.request_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
           command.request_object = conversion_list_object
-          command.response_representation = Google::Apis::DoubleclicksearchV2::List::Representation
-          command.response_class = Google::Apis::DoubleclicksearchV2::List
+          command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
+          command.response_class = Google::Apis::DoubleclicksearchV2::ConversionList
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

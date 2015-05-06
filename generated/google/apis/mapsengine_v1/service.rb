@@ -146,10 +146,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::ListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListAssetsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::ListResponse]
+        # @return [Google::Apis::MapsengineV1::ListAssetsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -157,8 +157,8 @@ module Google
         def list_assets(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, project_id: nil, role: nil, search: nil, tags: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'assets'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::ListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListAssetsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListAssetsResponse
           command.query['bbox'] = bbox unless bbox.nil?
           command.query['createdAfter'] = created_after unless created_after.nil?
           command.query['createdBefore'] = created_before unless created_before.nil?
@@ -201,10 +201,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::ParentsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListParentsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::ParentsListResponse]
+        # @return [Google::Apis::MapsengineV1::ListParentsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -212,8 +212,8 @@ module Google
         def list_asset_parents(id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'assets/{id}/parents'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ParentsListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::ParentsListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListParentsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListParentsResponse
           command.params['id'] = id unless id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -239,10 +239,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PermissionsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListPermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PermissionsListResponse]
+        # @return [Google::Apis::MapsengineV1::ListPermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -250,8 +250,8 @@ module Google
         def list_asset_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'assets/{id}/permissions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::PermissionsListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListPermissionsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListPermissionsResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -501,10 +501,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::LayersListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListLayersResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::LayersListResponse]
+        # @return [Google::Apis::MapsengineV1::ListLayersResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -512,8 +512,8 @@ module Google
         def list_layers(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, processing_status: nil, project_id: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::LayersListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::LayersListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListLayersResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListLayersResponse
           command.query['bbox'] = bbox unless bbox.nil?
           command.query['createdAfter'] = created_after unless created_after.nil?
           command.query['createdBefore'] = created_before unless created_before.nil?
@@ -559,10 +559,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PublishedLayersListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListPublishedLayersResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PublishedLayersListResponse]
+        # @return [Google::Apis::MapsengineV1::ListPublishedLayersResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -570,8 +570,8 @@ module Google
         def list_published_layer(max_results: nil, page_token: nil, project_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/published'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PublishedLayersListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::PublishedLayersListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListPublishedLayersResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListPublishedLayersResponse
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['projectId'] = project_id unless project_id.nil?
@@ -754,10 +754,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::ParentsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListParentsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::ParentsListResponse]
+        # @return [Google::Apis::MapsengineV1::ListParentsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -765,8 +765,8 @@ module Google
         def list_layer_parents(id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/{id}/parents'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ParentsListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::ParentsListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListParentsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListParentsResponse
           command.params['id'] = id unless id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -779,7 +779,7 @@ module Google
         # Remove permission entries from an already existing asset.
         # @param [String] id
         #   The ID of the asset from which permissions will be removed.
-        # @param [Google::Apis::MapsengineV1::BatchDeleteRequest] permissions_batch_delete_request_object
+        # @param [Google::Apis::MapsengineV1::BatchDeletePermissionsRequest] permissions_batch_delete_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -793,10 +793,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::BatchDeleteResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchDeletePermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::BatchDeleteResponse]
+        # @return [Google::Apis::MapsengineV1::BatchDeletePermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -804,10 +804,10 @@ module Google
         def batch_delete_layer_permission(id, permissions_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/{id}/permissions/batchDelete'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::BatchDeleteRequest::Representation
+          command.request_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsRequest::Representation
           command.request_object = permissions_batch_delete_request_object
-          command.response_representation = Google::Apis::MapsengineV1::BatchDeleteResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::BatchDeleteResponse
+          command.response_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -820,7 +820,7 @@ module Google
         # request is atomic.
         # @param [String] id
         #   The ID of the asset to which permissions will be added.
-        # @param [Google::Apis::MapsengineV1::BatchUpdateRequest] permissions_batch_update_request_object
+        # @param [Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest] permissions_batch_update_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -834,10 +834,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::BatchUpdateResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::BatchUpdateResponse]
+        # @return [Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -845,10 +845,10 @@ module Google
         def batch_update_layer_permission(id, permissions_batch_update_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/{id}/permissions/batchUpdate'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::BatchUpdateRequest::Representation
+          command.request_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest::Representation
           command.request_object = permissions_batch_update_request_object
-          command.response_representation = Google::Apis::MapsengineV1::BatchUpdateResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::BatchUpdateResponse
+          command.response_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -872,10 +872,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PermissionsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListPermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PermissionsListResponse]
+        # @return [Google::Apis::MapsengineV1::ListPermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -883,8 +883,8 @@ module Google
         def list_layer_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/{id}/permissions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::PermissionsListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListPermissionsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListPermissionsResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1095,10 +1095,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::MapsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListMapsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::MapsListResponse]
+        # @return [Google::Apis::MapsengineV1::ListMapsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1106,8 +1106,8 @@ module Google
         def list_maps(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, processing_status: nil, project_id: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::MapsListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::MapsListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListMapsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListMapsResponse
           command.query['bbox'] = bbox unless bbox.nil?
           command.query['createdAfter'] = created_after unless created_after.nil?
           command.query['createdBefore'] = created_before unless created_before.nil?
@@ -1153,10 +1153,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PublishedMapsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListPublishedMapsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PublishedMapsListResponse]
+        # @return [Google::Apis::MapsengineV1::ListPublishedMapsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1164,8 +1164,8 @@ module Google
         def list_published_map(max_results: nil, page_token: nil, project_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps/published'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PublishedMapsListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::PublishedMapsListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListPublishedMapsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListPublishedMapsResponse
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['projectId'] = project_id unless project_id.nil?
@@ -1292,7 +1292,7 @@ module Google
         # Remove permission entries from an already existing asset.
         # @param [String] id
         #   The ID of the asset from which permissions will be removed.
-        # @param [Google::Apis::MapsengineV1::BatchDeleteRequest] permissions_batch_delete_request_object
+        # @param [Google::Apis::MapsengineV1::BatchDeletePermissionsRequest] permissions_batch_delete_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1306,10 +1306,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::BatchDeleteResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchDeletePermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::BatchDeleteResponse]
+        # @return [Google::Apis::MapsengineV1::BatchDeletePermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1317,10 +1317,10 @@ module Google
         def batch_delete_map_permission(id, permissions_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps/{id}/permissions/batchDelete'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::BatchDeleteRequest::Representation
+          command.request_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsRequest::Representation
           command.request_object = permissions_batch_delete_request_object
-          command.response_representation = Google::Apis::MapsengineV1::BatchDeleteResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::BatchDeleteResponse
+          command.response_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1333,7 +1333,7 @@ module Google
         # request is atomic.
         # @param [String] id
         #   The ID of the asset to which permissions will be added.
-        # @param [Google::Apis::MapsengineV1::BatchUpdateRequest] permissions_batch_update_request_object
+        # @param [Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest] permissions_batch_update_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1347,10 +1347,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::BatchUpdateResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::BatchUpdateResponse]
+        # @return [Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1358,10 +1358,10 @@ module Google
         def batch_update_map_permission(id, permissions_batch_update_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps/{id}/permissions/batchUpdate'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::BatchUpdateRequest::Representation
+          command.request_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest::Representation
           command.request_object = permissions_batch_update_request_object
-          command.response_representation = Google::Apis::MapsengineV1::BatchUpdateResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::BatchUpdateResponse
+          command.response_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1385,10 +1385,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PermissionsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListPermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PermissionsListResponse]
+        # @return [Google::Apis::MapsengineV1::ListPermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1396,8 +1396,8 @@ module Google
         def list_map_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps/{id}/permissions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::PermissionsListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListPermissionsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListPermissionsResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1419,10 +1419,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::ProjectsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListProjectsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::ProjectsListResponse]
+        # @return [Google::Apis::MapsengineV1::ListProjectsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1430,8 +1430,8 @@ module Google
         def list_projects(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ProjectsListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::ProjectsListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListProjectsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListProjectsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1556,10 +1556,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::IconsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListIconsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::IconsListResponse]
+        # @return [Google::Apis::MapsengineV1::ListIconsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1567,8 +1567,8 @@ module Google
         def list_project_icons(project_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/icons'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::IconsListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::IconsListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListIconsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListIconsResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -1777,10 +1777,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::RasterCollectionsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListRasterCollectionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::RasterCollectionsListResponse]
+        # @return [Google::Apis::MapsengineV1::ListRasterCollectionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1788,8 +1788,8 @@ module Google
         def list_raster_collections(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, processing_status: nil, project_id: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::RasterCollectionsListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::RasterCollectionsListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListRasterCollectionsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListRasterCollectionsResponse
           command.query['bbox'] = bbox unless bbox.nil?
           command.query['createdAfter'] = created_after unless created_after.nil?
           command.query['createdBefore'] = created_before unless created_before.nil?
@@ -1905,10 +1905,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::ParentsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListParentsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::ParentsListResponse]
+        # @return [Google::Apis::MapsengineV1::ListParentsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1916,8 +1916,8 @@ module Google
         def list_raster_collection_parents(id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/parents'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ParentsListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::ParentsListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListParentsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListParentsResponse
           command.params['id'] = id unless id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -1930,7 +1930,7 @@ module Google
         # Remove permission entries from an already existing asset.
         # @param [String] id
         #   The ID of the asset from which permissions will be removed.
-        # @param [Google::Apis::MapsengineV1::BatchDeleteRequest] permissions_batch_delete_request_object
+        # @param [Google::Apis::MapsengineV1::BatchDeletePermissionsRequest] permissions_batch_delete_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1944,10 +1944,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::BatchDeleteResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchDeletePermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::BatchDeleteResponse]
+        # @return [Google::Apis::MapsengineV1::BatchDeletePermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1955,10 +1955,10 @@ module Google
         def batch_delete_raster_collection_permission(id, permissions_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/permissions/batchDelete'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::BatchDeleteRequest::Representation
+          command.request_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsRequest::Representation
           command.request_object = permissions_batch_delete_request_object
-          command.response_representation = Google::Apis::MapsengineV1::BatchDeleteResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::BatchDeleteResponse
+          command.response_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1971,7 +1971,7 @@ module Google
         # request is atomic.
         # @param [String] id
         #   The ID of the asset to which permissions will be added.
-        # @param [Google::Apis::MapsengineV1::BatchUpdateRequest] permissions_batch_update_request_object
+        # @param [Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest] permissions_batch_update_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1985,10 +1985,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::BatchUpdateResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::BatchUpdateResponse]
+        # @return [Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -1996,10 +1996,10 @@ module Google
         def batch_update_raster_collection_permission(id, permissions_batch_update_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/permissions/batchUpdate'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::BatchUpdateRequest::Representation
+          command.request_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest::Representation
           command.request_object = permissions_batch_update_request_object
-          command.response_representation = Google::Apis::MapsengineV1::BatchUpdateResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::BatchUpdateResponse
+          command.response_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2023,10 +2023,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PermissionsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListPermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PermissionsListResponse]
+        # @return [Google::Apis::MapsengineV1::ListPermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2034,8 +2034,8 @@ module Google
         def list_raster_collection_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/permissions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::PermissionsListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListPermissionsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListPermissionsResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2048,7 +2048,7 @@ module Google
         # batchDelete request is atomic.
         # @param [String] id
         #   The ID of the raster collection to which these rasters belong.
-        # @param [Google::Apis::MapsengineV1::RasterCollectionsRasterBatchDeleteRequest] raster_collections_raster_batch_delete_request_object
+        # @param [Google::Apis::MapsengineV1::BatchDeleteRasterCollectionsRasterRequest] raster_collections_raster_batch_delete_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2062,10 +2062,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::RasterCollectionsRastersBatchDeleteResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchDeleteRasterCollectionsRastersResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::RasterCollectionsRastersBatchDeleteResponse]
+        # @return [Google::Apis::MapsengineV1::BatchDeleteRasterCollectionsRastersResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2073,10 +2073,10 @@ module Google
         def batch_delete_raster_collection_raster(id, raster_collections_raster_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/rasters/batchDelete'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::RasterCollectionsRasterBatchDeleteRequest::Representation
+          command.request_representation = Google::Apis::MapsengineV1::BatchDeleteRasterCollectionsRasterRequest::Representation
           command.request_object = raster_collections_raster_batch_delete_request_object
-          command.response_representation = Google::Apis::MapsengineV1::RasterCollectionsRastersBatchDeleteResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::RasterCollectionsRastersBatchDeleteResponse
+          command.response_representation = Google::Apis::MapsengineV1::BatchDeleteRasterCollectionsRastersResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchDeleteRasterCollectionsRastersResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2090,7 +2090,7 @@ module Google
         # batchInsert request is atomic.
         # @param [String] id
         #   The ID of the raster collection to which these rasters belong.
-        # @param [Google::Apis::MapsengineV1::RasterCollectionsRastersBatchInsertRequest] raster_collections_rasters_batch_insert_request_object
+        # @param [Google::Apis::MapsengineV1::BatchInsertRasterCollectionsRastersRequest] raster_collections_rasters_batch_insert_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2104,10 +2104,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::RasterCollectionsRastersBatchInsertResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchInsertRasterCollectionsRastersResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::RasterCollectionsRastersBatchInsertResponse]
+        # @return [Google::Apis::MapsengineV1::BatchInsertRasterCollectionsRastersResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2115,10 +2115,10 @@ module Google
         def batch_insert_raster_collection_raster(id, raster_collections_rasters_batch_insert_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/rasters/batchInsert'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::RasterCollectionsRastersBatchInsertRequest::Representation
+          command.request_representation = Google::Apis::MapsengineV1::BatchInsertRasterCollectionsRastersRequest::Representation
           command.request_object = raster_collections_rasters_batch_insert_request_object
-          command.response_representation = Google::Apis::MapsengineV1::RasterCollectionsRastersBatchInsertResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::RasterCollectionsRastersBatchInsertResponse
+          command.response_representation = Google::Apis::MapsengineV1::BatchInsertRasterCollectionsRastersResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchInsertRasterCollectionsRastersResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2176,10 +2176,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::RasterCollectionsRastersListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListRasterCollectionsRastersResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::RasterCollectionsRastersListResponse]
+        # @return [Google::Apis::MapsengineV1::ListRasterCollectionsRastersResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2187,8 +2187,8 @@ module Google
         def list_raster_collection_rasters(id, bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/rasters'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::RasterCollectionsRastersListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::RasterCollectionsRastersListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListRasterCollectionsRastersResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListRasterCollectionsRastersResponse
           command.params['id'] = id unless id.nil?
           command.query['bbox'] = bbox unless bbox.nil?
           command.query['createdAfter'] = created_after unless created_after.nil?
@@ -2333,10 +2333,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::RastersListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListRastersResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::RastersListResponse]
+        # @return [Google::Apis::MapsengineV1::ListRastersResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2344,8 +2344,8 @@ module Google
         def list_rasters(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, processing_status: nil, project_id: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasters'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::RastersListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::RastersListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListRastersResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListRastersResponse
           command.query['bbox'] = bbox unless bbox.nil?
           command.query['createdAfter'] = created_after unless created_after.nil?
           command.query['createdBefore'] = created_before unless created_before.nil?
@@ -2544,10 +2544,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::ParentsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListParentsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::ParentsListResponse]
+        # @return [Google::Apis::MapsengineV1::ListParentsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2555,8 +2555,8 @@ module Google
         def list_raster_parents(id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasters/{id}/parents'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ParentsListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::ParentsListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListParentsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListParentsResponse
           command.params['id'] = id unless id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -2569,7 +2569,7 @@ module Google
         # Remove permission entries from an already existing asset.
         # @param [String] id
         #   The ID of the asset from which permissions will be removed.
-        # @param [Google::Apis::MapsengineV1::BatchDeleteRequest] permissions_batch_delete_request_object
+        # @param [Google::Apis::MapsengineV1::BatchDeletePermissionsRequest] permissions_batch_delete_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2583,10 +2583,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::BatchDeleteResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchDeletePermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::BatchDeleteResponse]
+        # @return [Google::Apis::MapsengineV1::BatchDeletePermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2594,10 +2594,10 @@ module Google
         def batch_delete_raster_permission(id, permissions_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasters/{id}/permissions/batchDelete'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::BatchDeleteRequest::Representation
+          command.request_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsRequest::Representation
           command.request_object = permissions_batch_delete_request_object
-          command.response_representation = Google::Apis::MapsengineV1::BatchDeleteResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::BatchDeleteResponse
+          command.response_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2610,7 +2610,7 @@ module Google
         # request is atomic.
         # @param [String] id
         #   The ID of the asset to which permissions will be added.
-        # @param [Google::Apis::MapsengineV1::BatchUpdateRequest] permissions_batch_update_request_object
+        # @param [Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest] permissions_batch_update_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2624,10 +2624,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::BatchUpdateResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::BatchUpdateResponse]
+        # @return [Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2635,10 +2635,10 @@ module Google
         def batch_update_raster_permission(id, permissions_batch_update_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasters/{id}/permissions/batchUpdate'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::BatchUpdateRequest::Representation
+          command.request_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest::Representation
           command.request_object = permissions_batch_update_request_object
-          command.response_representation = Google::Apis::MapsengineV1::BatchUpdateResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::BatchUpdateResponse
+          command.response_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2662,10 +2662,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PermissionsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListPermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PermissionsListResponse]
+        # @return [Google::Apis::MapsengineV1::ListPermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2673,8 +2673,8 @@ module Google
         def list_raster_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasters/{id}/permissions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::PermissionsListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListPermissionsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListPermissionsResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2846,10 +2846,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::TablesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListTablesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::TablesListResponse]
+        # @return [Google::Apis::MapsengineV1::ListTablesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -2857,8 +2857,8 @@ module Google
         def list_tables(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, processing_status: nil, project_id: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::TablesListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::TablesListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListTablesResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListTablesResponse
           command.query['bbox'] = bbox unless bbox.nil?
           command.query['createdAfter'] = created_after unless created_after.nil?
           command.query['createdBefore'] = created_before unless created_before.nil?
@@ -3039,7 +3039,7 @@ module Google
         # Google Maps Engine developer's guide.
         # @param [String] id
         #   The ID of the table to append the features to.
-        # @param [Google::Apis::MapsengineV1::FeaturesBatchInsertRequest] features_batch_insert_request_object
+        # @param [Google::Apis::MapsengineV1::InsertFeaturesBatchRequest] features_batch_insert_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3064,7 +3064,7 @@ module Google
         def batch_insert_table_feature(id, features_batch_insert_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/features/batchInsert'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::FeaturesBatchInsertRequest::Representation
+          command.request_representation = Google::Apis::MapsengineV1::InsertFeaturesBatchRequest::Representation
           command.request_object = features_batch_insert_request_object
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3212,10 +3212,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::FeaturesListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListFeaturesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::FeaturesListResponse]
+        # @return [Google::Apis::MapsengineV1::ListFeaturesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -3223,8 +3223,8 @@ module Google
         def list_table_features(id, include: nil, intersects: nil, limit: nil, max_results: nil, order_by: nil, page_token: nil, select: nil, version: nil, where: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/features'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::FeaturesListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::FeaturesListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListFeaturesResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListFeaturesResponse
           command.params['id'] = id unless id.nil?
           command.query['include'] = include unless include.nil?
           command.query['intersects'] = intersects unless intersects.nil?
@@ -3314,10 +3314,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::ParentsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListParentsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::ParentsListResponse]
+        # @return [Google::Apis::MapsengineV1::ListParentsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -3325,8 +3325,8 @@ module Google
         def list_table_parents(id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/parents'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::ParentsListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::ParentsListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListParentsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListParentsResponse
           command.params['id'] = id unless id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -3339,7 +3339,7 @@ module Google
         # Remove permission entries from an already existing asset.
         # @param [String] id
         #   The ID of the asset from which permissions will be removed.
-        # @param [Google::Apis::MapsengineV1::BatchDeleteRequest] permissions_batch_delete_request_object
+        # @param [Google::Apis::MapsengineV1::BatchDeletePermissionsRequest] permissions_batch_delete_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3353,10 +3353,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::BatchDeleteResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchDeletePermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::BatchDeleteResponse]
+        # @return [Google::Apis::MapsengineV1::BatchDeletePermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -3364,10 +3364,10 @@ module Google
         def batch_delete_table_permission(id, permissions_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/permissions/batchDelete'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::BatchDeleteRequest::Representation
+          command.request_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsRequest::Representation
           command.request_object = permissions_batch_delete_request_object
-          command.response_representation = Google::Apis::MapsengineV1::BatchDeleteResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::BatchDeleteResponse
+          command.response_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -3380,7 +3380,7 @@ module Google
         # request is atomic.
         # @param [String] id
         #   The ID of the asset to which permissions will be added.
-        # @param [Google::Apis::MapsengineV1::BatchUpdateRequest] permissions_batch_update_request_object
+        # @param [Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest] permissions_batch_update_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3394,10 +3394,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::BatchUpdateResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::BatchUpdateResponse]
+        # @return [Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -3405,10 +3405,10 @@ module Google
         def batch_update_table_permission(id, permissions_batch_update_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/permissions/batchUpdate'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::BatchUpdateRequest::Representation
+          command.request_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest::Representation
           command.request_object = permissions_batch_update_request_object
-          command.response_representation = Google::Apis::MapsengineV1::BatchUpdateResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::BatchUpdateResponse
+          command.response_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -3432,10 +3432,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MapsengineV1::PermissionsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MapsengineV1::ListPermissionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MapsengineV1::PermissionsListResponse]
+        # @return [Google::Apis::MapsengineV1::ListPermissionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -3443,8 +3443,8 @@ module Google
         def list_table_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/permissions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MapsengineV1::PermissionsListResponse::Representation
-          command.response_class = Google::Apis::MapsengineV1::PermissionsListResponse
+          command.response_representation = Google::Apis::MapsengineV1::ListPermissionsResponse::Representation
+          command.response_class = Google::Apis::MapsengineV1::ListPermissionsResponse
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -217,10 +217,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MirrorV1::ListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MirrorV1::ListContactsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MirrorV1::ListResponse]
+        # @return [Google::Apis::MirrorV1::ListContactsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -228,8 +228,8 @@ module Google
         def list_contacts(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'contacts'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MirrorV1::ListResponse::Representation
-          command.response_class = Google::Apis::MirrorV1::ListResponse
+          command.response_representation = Google::Apis::MirrorV1::ListContactsResponse::Representation
+          command.response_class = Google::Apis::MirrorV1::ListContactsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -364,10 +364,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MirrorV1::LocationsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MirrorV1::ListLocationsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MirrorV1::LocationsListResponse]
+        # @return [Google::Apis::MirrorV1::ListLocationsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -375,8 +375,8 @@ module Google
         def list_locations(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'locations'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MirrorV1::LocationsListResponse::Representation
-          command.response_class = Google::Apis::MirrorV1::LocationsListResponse
+          command.response_representation = Google::Apis::MirrorV1::ListLocationsResponse::Representation
+          command.response_class = Google::Apis::MirrorV1::ListLocationsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -507,10 +507,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MirrorV1::SubscriptionsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MirrorV1::ListSubscriptionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MirrorV1::SubscriptionsListResponse]
+        # @return [Google::Apis::MirrorV1::ListSubscriptionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -518,8 +518,8 @@ module Google
         def list_subscriptions(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'subscriptions'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MirrorV1::SubscriptionsListResponse::Representation
-          command.response_class = Google::Apis::MirrorV1::SubscriptionsListResponse
+          command.response_representation = Google::Apis::MirrorV1::ListSubscriptionsResponse::Representation
+          command.response_class = Google::Apis::MirrorV1::ListSubscriptionsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -615,10 +615,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MirrorV1::Item] parsed result object
+        # @yieldparam result [Google::Apis::MirrorV1::TimelineItem] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MirrorV1::Item]
+        # @return [Google::Apis::MirrorV1::TimelineItem]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -626,8 +626,8 @@ module Google
         def get_timeline(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'timeline/{id}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MirrorV1::Item::Representation
-          command.response_class = Google::Apis::MirrorV1::Item
+          command.response_representation = Google::Apis::MirrorV1::TimelineItem::Representation
+          command.response_class = Google::Apis::MirrorV1::TimelineItem
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -636,7 +636,7 @@ module Google
         end
         
         # Inserts a new item into the timeline.
-        # @param [Google::Apis::MirrorV1::Item] timeline_item_object
+        # @param [Google::Apis::MirrorV1::TimelineItem] timeline_item_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -654,10 +654,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MirrorV1::Item] parsed result object
+        # @yieldparam result [Google::Apis::MirrorV1::TimelineItem] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MirrorV1::Item]
+        # @return [Google::Apis::MirrorV1::TimelineItem]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -671,10 +671,10 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.request_representation = Google::Apis::MirrorV1::Item::Representation
+          command.request_representation = Google::Apis::MirrorV1::TimelineItem::Representation
           command.request_object = timeline_item_object
-          command.response_representation = Google::Apis::MirrorV1::Item::Representation
-          command.response_class = Google::Apis::MirrorV1::Item
+          command.response_representation = Google::Apis::MirrorV1::TimelineItem::Representation
+          command.response_class = Google::Apis::MirrorV1::TimelineItem
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -709,10 +709,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MirrorV1::TimelineListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MirrorV1::ListTimelineResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MirrorV1::TimelineListResponse]
+        # @return [Google::Apis::MirrorV1::ListTimelineResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -720,8 +720,8 @@ module Google
         def list_timelines(bundle_id: nil, include_deleted: nil, max_results: nil, order_by: nil, page_token: nil, pinned_only: nil, source_item_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'timeline'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MirrorV1::TimelineListResponse::Representation
-          command.response_class = Google::Apis::MirrorV1::TimelineListResponse
+          command.response_representation = Google::Apis::MirrorV1::ListTimelineResponse::Representation
+          command.response_class = Google::Apis::MirrorV1::ListTimelineResponse
           command.query['bundleId'] = bundle_id unless bundle_id.nil?
           command.query['includeDeleted'] = include_deleted unless include_deleted.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -738,7 +738,7 @@ module Google
         # Updates a timeline item in place. This method supports patch semantics.
         # @param [String] id
         #   The ID of the timeline item.
-        # @param [Google::Apis::MirrorV1::Item] timeline_item_object
+        # @param [Google::Apis::MirrorV1::TimelineItem] timeline_item_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -752,10 +752,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MirrorV1::Item] parsed result object
+        # @yieldparam result [Google::Apis::MirrorV1::TimelineItem] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MirrorV1::Item]
+        # @return [Google::Apis::MirrorV1::TimelineItem]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -763,10 +763,10 @@ module Google
         def patch_timeline(id, timeline_item_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'timeline/{id}'
           command =  make_simple_command(:patch, path, options)
-          command.request_representation = Google::Apis::MirrorV1::Item::Representation
+          command.request_representation = Google::Apis::MirrorV1::TimelineItem::Representation
           command.request_object = timeline_item_object
-          command.response_representation = Google::Apis::MirrorV1::Item::Representation
-          command.response_class = Google::Apis::MirrorV1::Item
+          command.response_representation = Google::Apis::MirrorV1::TimelineItem::Representation
+          command.response_class = Google::Apis::MirrorV1::TimelineItem
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -777,7 +777,7 @@ module Google
         # Updates a timeline item in place.
         # @param [String] id
         #   The ID of the timeline item.
-        # @param [Google::Apis::MirrorV1::Item] timeline_item_object
+        # @param [Google::Apis::MirrorV1::TimelineItem] timeline_item_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -795,10 +795,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MirrorV1::Item] parsed result object
+        # @yieldparam result [Google::Apis::MirrorV1::TimelineItem] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MirrorV1::Item]
+        # @return [Google::Apis::MirrorV1::TimelineItem]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -812,10 +812,10 @@ module Google
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
-          command.request_representation = Google::Apis::MirrorV1::Item::Representation
+          command.request_representation = Google::Apis::MirrorV1::TimelineItem::Representation
           command.request_object = timeline_item_object
-          command.response_representation = Google::Apis::MirrorV1::Item::Representation
-          command.response_class = Google::Apis::MirrorV1::Item
+          command.response_representation = Google::Apis::MirrorV1::TimelineItem::Representation
+          command.response_class = Google::Apis::MirrorV1::TimelineItem
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -968,10 +968,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::MirrorV1::AttachmentsListResponse] parsed result object
+        # @yieldparam result [Google::Apis::MirrorV1::ListAttachmentsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::MirrorV1::AttachmentsListResponse]
+        # @return [Google::Apis::MirrorV1::ListAttachmentsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -979,8 +979,8 @@ module Google
         def list_timeline_attachments(item_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'timeline/{itemId}/attachments'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::MirrorV1::AttachmentsListResponse::Representation
-          command.response_class = Google::Apis::MirrorV1::AttachmentsListResponse
+          command.response_representation = Google::Apis::MirrorV1::ListAttachmentsResponse::Representation
+          command.response_class = Google::Apis::MirrorV1::ListAttachmentsResponse
           command.params['itemId'] = item_id unless item_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -145,7 +145,7 @@ module Google
         
           # Range in CFI format for this annotation sent by client.
           # Corresponds to the JSON property `cfiRange`
-          # @return [Google::Apis::BooksV1::Range]
+          # @return [Google::Apis::BooksV1::AnnotatinsRange]
           attr_accessor :cfi_range
         
           # Content version the client sent in.
@@ -155,17 +155,17 @@ module Google
         
           # Range in GB image format for this annotation sent by client.
           # Corresponds to the JSON property `gbImageRange`
-          # @return [Google::Apis::BooksV1::Range]
+          # @return [Google::Apis::BooksV1::AnnotatinsRange]
           attr_accessor :gb_image_range
         
           # Range in GB text format for this annotation sent by client.
           # Corresponds to the JSON property `gbTextRange`
-          # @return [Google::Apis::BooksV1::Range]
+          # @return [Google::Apis::BooksV1::AnnotatinsRange]
           attr_accessor :gb_text_range
         
           # Range in image CFI format for this annotation sent by client.
           # Corresponds to the JSON property `imageCfiRange`
-          # @return [Google::Apis::BooksV1::Range]
+          # @return [Google::Apis::BooksV1::AnnotatinsRange]
           attr_accessor :image_cfi_range
         
           def initialize(**args)
@@ -188,7 +188,7 @@ module Google
         
           # Range in CFI format for this annotation for version above.
           # Corresponds to the JSON property `cfiRange`
-          # @return [Google::Apis::BooksV1::Range]
+          # @return [Google::Apis::BooksV1::AnnotatinsRange]
           attr_accessor :cfi_range
         
           # Content version applicable to ranges below.
@@ -198,17 +198,17 @@ module Google
         
           # Range in GB image format for this annotation for version above.
           # Corresponds to the JSON property `gbImageRange`
-          # @return [Google::Apis::BooksV1::Range]
+          # @return [Google::Apis::BooksV1::AnnotatinsRange]
           attr_accessor :gb_image_range
         
           # Range in GB text format for this annotation for version above.
           # Corresponds to the JSON property `gbTextRange`
-          # @return [Google::Apis::BooksV1::Range]
+          # @return [Google::Apis::BooksV1::AnnotatinsRange]
           attr_accessor :gb_text_range
         
           # Range in image CFI format for this annotation for version above.
           # Corresponds to the JSON property `imageCfiRange`
-          # @return [Google::Apis::BooksV1::Range]
+          # @return [Google::Apis::BooksV1::AnnotatinsRange]
           attr_accessor :image_cfi_range
         
           def initialize(**args)
@@ -259,7 +259,7 @@ module Google
       end
       
       # 
-      class Annotationdata
+      class AnnotationData
         include Google::Apis::Core::Hashable
       
         # The type of annotation this data is for.
@@ -366,7 +366,7 @@ module Google
       end
       
       # 
-      class Summary
+      class AnnotationsSummary
         include Google::Apis::Core::Hashable
       
         # 
@@ -376,7 +376,7 @@ module Google
       
         # 
         # Corresponds to the JSON property `layers`
-        # @return [Array<Google::Apis::BooksV1::Summary::Layer>]
+        # @return [Array<Google::Apis::BooksV1::AnnotationsSummary::Layer>]
         attr_accessor :layers
       
         def initialize(**args)
@@ -434,12 +434,12 @@ module Google
       end
       
       # 
-      class Annotationsdata
+      class AnnotationsData
         include Google::Apis::Core::Hashable
       
         # A list of Annotation Data.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::BooksV1::Annotationdata>]
+        # @return [Array<Google::Apis::BooksV1::AnnotationData>]
         attr_accessor :items
       
         # Resource type
@@ -472,7 +472,7 @@ module Google
       end
       
       # 
-      class Range
+      class AnnotatinsRange
         include Google::Apis::Core::Hashable
       
         # The offset from the ending position.
@@ -509,7 +509,7 @@ module Google
       end
       
       # 
-      class Resource
+      class LoadingResource
         include Google::Apis::Core::Hashable
       
         # 
@@ -546,7 +546,7 @@ module Google
       end
       
       # 
-      class RateResponse
+      class RateRecommendedVolumeResponse
         include Google::Apis::Core::Hashable
       
         # 
@@ -804,17 +804,17 @@ module Google
       end
       
       # 
-      class Dictlayerdata
+      class DictLayerData
         include Google::Apis::Core::Hashable
       
         # 
         # Corresponds to the JSON property `common`
-        # @return [Google::Apis::BooksV1::Dictlayerdata::Common]
+        # @return [Google::Apis::BooksV1::DictLayerData::Common]
         attr_accessor :common
       
         # 
         # Corresponds to the JSON property `dict`
-        # @return [Google::Apis::BooksV1::Dictlayerdata::Dict]
+        # @return [Google::Apis::BooksV1::DictLayerData::Dict]
         attr_accessor :dict
       
         # 
@@ -859,12 +859,12 @@ module Google
         
           # The source, url and attribution for this dictionary data.
           # Corresponds to the JSON property `source`
-          # @return [Google::Apis::BooksV1::Dictlayerdata::Dict::Source]
+          # @return [Google::Apis::BooksV1::DictLayerData::Dict::Source]
           attr_accessor :source
         
           # 
           # Corresponds to the JSON property `words`
-          # @return [Array<Google::Apis::BooksV1::Dictlayerdata::Dict::Word>]
+          # @return [Array<Google::Apis::BooksV1::DictLayerData::Dict::Word>]
           attr_accessor :words
         
           def initialize(**args)
@@ -908,23 +908,23 @@ module Google
           
             # 
             # Corresponds to the JSON property `derivatives`
-            # @return [Array<Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Derivative>]
+            # @return [Array<Google::Apis::BooksV1::DictLayerData::Dict::Word::Derivative>]
             attr_accessor :derivatives
           
             # 
             # Corresponds to the JSON property `examples`
-            # @return [Array<Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Example>]
+            # @return [Array<Google::Apis::BooksV1::DictLayerData::Dict::Word::Example>]
             attr_accessor :examples
           
             # 
             # Corresponds to the JSON property `senses`
-            # @return [Array<Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Sense>]
+            # @return [Array<Google::Apis::BooksV1::DictLayerData::Dict::Word::Sense>]
             attr_accessor :senses
           
             # The words with different meanings but not related words, e.g. "go" (game) and "
             # go" (verb).
             # Corresponds to the JSON property `source`
-            # @return [Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Source]
+            # @return [Google::Apis::BooksV1::DictLayerData::Dict::Word::Source]
             attr_accessor :source
           
             def initialize(**args)
@@ -945,7 +945,7 @@ module Google
             
               # 
               # Corresponds to the JSON property `source`
-              # @return [Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Derivative::Source]
+              # @return [Google::Apis::BooksV1::DictLayerData::Dict::Word::Derivative::Source]
               attr_accessor :source
             
               # 
@@ -995,7 +995,7 @@ module Google
             
               # 
               # Corresponds to the JSON property `source`
-              # @return [Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Example::Source]
+              # @return [Google::Apis::BooksV1::DictLayerData::Dict::Word::Example::Source]
               attr_accessor :source
             
               # 
@@ -1045,12 +1045,12 @@ module Google
             
               # 
               # Corresponds to the JSON property `conjugations`
-              # @return [Array<Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Sense::Conjugation>]
+              # @return [Array<Google::Apis::BooksV1::DictLayerData::Dict::Word::Sense::Conjugation>]
               attr_accessor :conjugations
             
               # 
               # Corresponds to the JSON property `definitions`
-              # @return [Array<Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Sense::Definition>]
+              # @return [Array<Google::Apis::BooksV1::DictLayerData::Dict::Word::Sense::Definition>]
               attr_accessor :definitions
             
               # 
@@ -1070,7 +1070,7 @@ module Google
             
               # 
               # Corresponds to the JSON property `source`
-              # @return [Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Sense::Source]
+              # @return [Google::Apis::BooksV1::DictLayerData::Dict::Word::Sense::Source]
               attr_accessor :source
             
               # 
@@ -1080,7 +1080,7 @@ module Google
             
               # 
               # Corresponds to the JSON property `synonyms`
-              # @return [Array<Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Sense::Synonym>]
+              # @return [Array<Google::Apis::BooksV1::DictLayerData::Dict::Word::Sense::Synonym>]
               attr_accessor :synonyms
             
               def initialize(**args)
@@ -1135,7 +1135,7 @@ module Google
               
                 # 
                 # Corresponds to the JSON property `examples`
-                # @return [Array<Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Sense::Definition::Example>]
+                # @return [Array<Google::Apis::BooksV1::DictLayerData::Dict::Word::Sense::Definition::Example>]
                 attr_accessor :examples
               
                 def initialize(**args)
@@ -1154,7 +1154,7 @@ module Google
                 
                   # 
                   # Corresponds to the JSON property `source`
-                  # @return [Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Sense::Definition::Example::Source]
+                  # @return [Google::Apis::BooksV1::DictLayerData::Dict::Word::Sense::Definition::Example::Source]
                   attr_accessor :source
                 
                   # 
@@ -1230,7 +1230,7 @@ module Google
               
                 # 
                 # Corresponds to the JSON property `source`
-                # @return [Google::Apis::BooksV1::Dictlayerdata::Dict::Word::Sense::Synonym::Source]
+                # @return [Google::Apis::BooksV1::DictLayerData::Dict::Word::Sense::Synonym::Source]
                 attr_accessor :source
               
                 # 
@@ -1422,17 +1422,17 @@ module Google
       end
       
       # 
-      class Geolayerdata
+      class GeoLayerData
         include Google::Apis::Core::Hashable
       
         # 
         # Corresponds to the JSON property `common`
-        # @return [Google::Apis::BooksV1::Geolayerdata::Common]
+        # @return [Google::Apis::BooksV1::GeoLayerData::Common]
         attr_accessor :common
       
         # 
         # Corresponds to the JSON property `geo`
-        # @return [Google::Apis::BooksV1::Geolayerdata::Geo]
+        # @return [Google::Apis::BooksV1::GeoLayerData::Geo]
         attr_accessor :geo
       
         # 
@@ -1502,7 +1502,7 @@ module Google
           # The boundary of the location as a set of loops containing pairs of latitude,
           # longitude coordinates.
           # Corresponds to the JSON property `boundary`
-          # @return [Array<Array<Google::Apis::BooksV1::Geolayerdata::Geo::Boundary>>]
+          # @return [Array<Array<Google::Apis::BooksV1::GeoLayerData::Geo::Boundary>>]
           attr_accessor :boundary
         
           # The cache policy active for this data. EX: UNRESTRICTED, RESTRICTED, NEVER
@@ -1534,7 +1534,7 @@ module Google
           # The viewport for showing this location. This is a latitude, longitude
           # rectangle.
           # Corresponds to the JSON property `viewport`
-          # @return [Google::Apis::BooksV1::Geolayerdata::Geo::Viewport]
+          # @return [Google::Apis::BooksV1::GeoLayerData::Geo::Viewport]
           attr_accessor :viewport
         
           # The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom
@@ -1593,12 +1593,12 @@ module Google
           
             # 
             # Corresponds to the JSON property `hi`
-            # @return [Google::Apis::BooksV1::Geolayerdata::Geo::Viewport::Hi]
+            # @return [Google::Apis::BooksV1::GeoLayerData::Geo::Viewport::Hi]
             attr_accessor :hi
           
             # 
             # Corresponds to the JSON property `lo`
-            # @return [Google::Apis::BooksV1::Geolayerdata::Geo::Viewport::Lo]
+            # @return [Google::Apis::BooksV1::GeoLayerData::Geo::Viewport::Lo]
             attr_accessor :lo
           
             def initialize(**args)
@@ -1665,12 +1665,12 @@ module Google
       end
       
       # 
-      class Layersummaries
+      class LayerSummaries
         include Google::Apis::Core::Hashable
       
         # A list of layer summary items.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::BooksV1::Layersummary>]
+        # @return [Array<Google::Apis::BooksV1::LayerSummary>]
         attr_accessor :items
       
         # Resource type.
@@ -1696,7 +1696,7 @@ module Google
       end
       
       # 
-      class Layersummary
+      class LayerSummary
         include Google::Apis::Core::Hashable
       
         # The number of annotations for this layer.
@@ -2183,7 +2183,7 @@ module Google
       end
       
       # 
-      class Usersettings
+      class UserSettings
         include Google::Apis::Core::Hashable
       
         # Resource type.
@@ -2193,7 +2193,7 @@ module Google
       
         # User settings in sub-objects, each for different purposes.
         # Corresponds to the JSON property `notesExport`
-        # @return [Google::Apis::BooksV1::Usersettings::NotesExport]
+        # @return [Google::Apis::BooksV1::UserSettings::NotesExport]
         attr_accessor :notes_export
       
         def initialize(**args)
@@ -2267,7 +2267,7 @@ module Google
       
         # Recommendation related information for this volume.
         # Corresponds to the JSON property `recommendedInfo`
-        # @return [Google::Apis::BooksV1::Volume::Info]
+        # @return [Google::Apis::BooksV1::Volume::RecommendedInfo]
         attr_accessor :recommended_info
       
         # Any information about a volume related to the eBookstore and/or
@@ -2547,7 +2547,7 @@ module Google
         end
         
         # Recommendation related information for this volume.
-        class Info
+        class RecommendedInfo
           include Google::Apis::Core::Hashable
         
           # A text explaining why this volume is recommended.
@@ -2883,7 +2883,7 @@ module Google
         
           # 
           # Corresponds to the JSON property `userUploadedVolumeInfo`
-          # @return [Google::Apis::BooksV1::Volume::UserInfo::VolumeInfo]
+          # @return [Google::Apis::BooksV1::Volume::UserInfo::UserUploadedVolumeInfo]
           attr_accessor :user_uploaded_volume_info
         
           def initialize(**args)
@@ -2968,7 +2968,7 @@ module Google
           end
           
           # 
-          class VolumeInfo
+          class UserUploadedVolumeInfo
             include Google::Apis::Core::Hashable
           
             # 
@@ -3297,7 +3297,7 @@ module Google
       end
       
       # 
-      class Volumeannotation
+      class VolumeAnnotation
         include Google::Apis::Core::Hashable
       
         # The annotation data id for this volume annotation.
@@ -3317,7 +3317,7 @@ module Google
       
         # The content ranges to identify the selected text.
         # Corresponds to the JSON property `contentRanges`
-        # @return [Google::Apis::BooksV1::Volumeannotation::ContentRanges]
+        # @return [Google::Apis::BooksV1::VolumeAnnotation::ContentRanges]
         attr_accessor :content_ranges
       
         # Data for this annotation.
@@ -3400,7 +3400,7 @@ module Google
         
           # Range in CFI format for this annotation for version above.
           # Corresponds to the JSON property `cfiRange`
-          # @return [Google::Apis::BooksV1::Range]
+          # @return [Google::Apis::BooksV1::AnnotatinsRange]
           attr_accessor :cfi_range
         
           # Content version applicable to ranges below.
@@ -3410,12 +3410,12 @@ module Google
         
           # Range in GB image format for this annotation for version above.
           # Corresponds to the JSON property `gbImageRange`
-          # @return [Google::Apis::BooksV1::Range]
+          # @return [Google::Apis::BooksV1::AnnotatinsRange]
           attr_accessor :gb_image_range
         
           # Range in GB text format for this annotation for version above.
           # Corresponds to the JSON property `gbTextRange`
-          # @return [Google::Apis::BooksV1::Range]
+          # @return [Google::Apis::BooksV1::AnnotatinsRange]
           attr_accessor :gb_text_range
         
           def initialize(**args)
@@ -3438,7 +3438,7 @@ module Google
       
         # A list of volume annotations.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::BooksV1::Volumeannotation>]
+        # @return [Array<Google::Apis::BooksV1::VolumeAnnotation>]
         attr_accessor :items
       
         # Resource type

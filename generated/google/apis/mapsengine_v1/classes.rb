@@ -193,7 +193,7 @@ module Google
       end
       
       # The response returned by a call to resources.List.
-      class ListResponse
+      class ListAssetsResponse
         include Google::Apis::Core::Hashable
       
         # Assets returned.
@@ -420,7 +420,7 @@ module Google
       end
       
       # The request sent to features.Insert.
-      class FeaturesBatchInsertRequest
+      class InsertFeaturesBatchRequest
         include Google::Apis::Core::Hashable
       
         # 
@@ -480,7 +480,7 @@ module Google
       end
       
       # The response returned by a call to features.List.
-      class FeaturesListResponse
+      class ListFeaturesResponse
         include Google::Apis::Core::Hashable
       
         # An indicator of the maximum rate at which queries may be made, if all queries
@@ -847,7 +847,7 @@ module Google
       end
       
       # The response returned by a call to icons.List.
-      class IconsListResponse
+      class ListIconsResponse
         include Google::Apis::Core::Hashable
       
         # Resources returned.
@@ -1095,7 +1095,7 @@ module Google
       # not include all the fields available in a layer. Refer to the layer resource
       # description for details of the fields that are not included. You'll need to
       # send a get request to retrieve the additional fields for each layer.
-      class LayersListResponse
+      class ListLayersResponse
         include Google::Apis::Core::Hashable
       
         # Resources returned.
@@ -1502,7 +1502,7 @@ module Google
       end
       
       # The response returned by a call to maps.List.
-      class MapsListResponse
+      class ListMapsResponse
         include Google::Apis::Core::Hashable
       
         # Resources returned.
@@ -1546,7 +1546,7 @@ module Google
       end
       
       # The response returned by a call to parents.List.
-      class ParentsListResponse
+      class ListParentsResponse
         include Google::Apis::Core::Hashable
       
         # Next page token.
@@ -1614,7 +1614,7 @@ module Google
       end
       
       # The request sent to mapsengine.permissions.batchDelete.
-      class BatchDeleteRequest
+      class BatchDeletePermissionsRequest
         include Google::Apis::Core::Hashable
       
         # An array of permission ids to be removed. This could be the email address of
@@ -1635,7 +1635,7 @@ module Google
       end
       
       # The response returned by a call to mapsengine.permissions.batchDelete.
-      class BatchDeleteResponse
+      class BatchDeletePermissionsResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1648,7 +1648,7 @@ module Google
       end
       
       # The request sent to mapsengine.permissions.batchUpdate.
-      class BatchUpdateRequest
+      class BatchUpdatePermissionsRequest
         include Google::Apis::Core::Hashable
       
         # The permissions to be inserted or updated.
@@ -1667,7 +1667,7 @@ module Google
       end
       
       # The response returned by a call to mapsengine.permissions.batchUpdate.
-      class BatchUpdateResponse
+      class BatchUpdatePermissionsResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1680,7 +1680,7 @@ module Google
       end
       
       # 
-      class PermissionsListResponse
+      class ListPermissionsResponse
         include Google::Apis::Core::Hashable
       
         # The set of permissions associated with this asset.
@@ -1793,7 +1793,7 @@ module Google
       end
       
       # The response returned by a call to projects.List.
-      class ProjectsListResponse
+      class ListProjectsResponse
         include Google::Apis::Core::Hashable
       
         # Projects returned.
@@ -1870,7 +1870,7 @@ module Google
       end
       
       # The response returned by a call to layers.List.published.
-      class PublishedLayersListResponse
+      class ListPublishedLayersResponse
         include Google::Apis::Core::Hashable
       
         # Resources returned.
@@ -1944,7 +1944,7 @@ module Google
       end
       
       # The response returned by a call to maps.List.published.
-      class PublishedMapsListResponse
+      class ListPublishedMapsResponse
         include Google::Apis::Core::Hashable
       
         # Resources returned.
@@ -2247,7 +2247,7 @@ module Google
       # Refer to the RasterCollection resource description for details of the fields
       # that are not included. You'll need to send a get request to retrieve the
       # additional fields for each raster collection.
-      class RasterCollectionsListResponse
+      class ListRasterCollectionsResponse
         include Google::Apis::Core::Hashable
       
         # Next page token.
@@ -2343,7 +2343,7 @@ module Google
       end
       
       # The request sent to rasterCollections.Rasters.BatchDelete.
-      class RasterCollectionsRasterBatchDeleteRequest
+      class BatchDeleteRasterCollectionsRasterRequest
         include Google::Apis::Core::Hashable
       
         # An array of Raster asset IDs to be removed from this RasterCollection.
@@ -2362,7 +2362,7 @@ module Google
       end
       
       # The response returned by a call to rasterCollections.rasters.batchDelete.
-      class RasterCollectionsRastersBatchDeleteResponse
+      class BatchDeleteRasterCollectionsRastersResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -2375,7 +2375,7 @@ module Google
       end
       
       # The request sent to rasterCollections.Rasters.BatchInsert.
-      class RasterCollectionsRastersBatchInsertRequest
+      class BatchInsertRasterCollectionsRastersRequest
         include Google::Apis::Core::Hashable
       
         # An array of Raster asset IDs to be added to this RasterCollection.
@@ -2394,7 +2394,7 @@ module Google
       end
       
       # The response returned by a call to rasterCollections.rasters.batchInsert.
-      class RasterCollectionsRastersBatchInsertResponse
+      class BatchInsertRasterCollectionsRastersResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -2407,7 +2407,7 @@ module Google
       end
       
       # The response returned by a call to rasterCollections.rasters.List.
-      class RasterCollectionsRastersListResponse
+      class ListRasterCollectionsRastersResponse
         include Google::Apis::Core::Hashable
       
         # Next page token.
@@ -2432,7 +2432,7 @@ module Google
       end
       
       # The response returned by a call to rasters.List.
-      class RastersListResponse
+      class ListRastersResponse
         include Google::Apis::Core::Hashable
       
         # Next page token.
@@ -2763,7 +2763,7 @@ module Google
       # not include all the fields available in a table. Refer to the table resource
       # description for details of the fields that are not included. You'll need to
       # send a get request to retrieve the additional fields for each table.
-      class TablesListResponse
+      class ListTablesResponse
         include Google::Apis::Core::Hashable
       
         # Next page token.

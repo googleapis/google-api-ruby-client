@@ -26,7 +26,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListResponse
+      class ListChangesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -34,7 +34,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ManagedZonesListResponse
+      class ListManagedZonesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -50,7 +50,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ResourceRecordSetsListResponse
+      class ListResourceRecordSetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -69,7 +69,7 @@ module Google
       end
       
       # @private
-      class ListResponse
+      class ListChangesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :changes, as: 'changes', class: Google::Apis::DnsV1::Change, decorator: Google::Apis::DnsV1::Change::Representation
       
@@ -93,7 +93,7 @@ module Google
       end
       
       # @private
-      class ManagedZonesListResponse
+      class ListManagedZonesResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :managed_zones, as: 'managedZones', class: Google::Apis::DnsV1::ManagedZone, decorator: Google::Apis::DnsV1::ManagedZone::Representation
@@ -138,7 +138,7 @@ module Google
       end
       
       # @private
-      class ResourceRecordSetsListResponse
+      class ListResourceRecordSetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'

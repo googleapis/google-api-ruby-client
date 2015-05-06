@@ -1203,7 +1203,7 @@ module Google
       end
       
       # 
-      class List
+      class PostUserInfosList
         include Google::Apis::Core::Hashable
       
         # The list of Posts with User information for the post, for this Blog.
