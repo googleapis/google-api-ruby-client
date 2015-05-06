@@ -19,7 +19,7 @@ module Google
     Discovery = Google::Apis::DiscoveryV1
 
     desc 'gen OUTDIR', 'Generate ruby API from an API description'
-    method_options url: :string, file: :string, id: :array, preferred_only: :boolean, verbose: :boolean
+    method_options url: :string, file: :string, id: :array, preferred_only: :boolean, verbose: :boolean, names: :string, names_out: :string
     method_option :preferred_only, default: true
     def gen(dir)
       self.destination_root = dir
@@ -31,6 +31,7 @@ module Google
       else
         generate_from_discovery(preferred_only: options[:preferred_only], id: options[:id] )
       end
+      create_file(options[:names_out]) { |*| generator.dump_api_names } if options[:names_out]
     end
 
     no_commands do
@@ -67,7 +68,7 @@ module Google
       end
 
       def generator
-        @generator ||= Google::Apis::Generator.new
+        @generator ||= Google::Apis::Generator.new(api_names: options[:names])
       end
     end
   end
