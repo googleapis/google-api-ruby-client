@@ -25,7 +25,7 @@ module Google
         'boolean' => 'Boolean',
         'number' => 'Float',
         'integer' => 'Fixnum',
-        'any' => 'object'
+        'any' => 'Object'
       }
 
       class JsonSchema
