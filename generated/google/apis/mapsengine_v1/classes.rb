@@ -395,7 +395,7 @@ module Google
       end
       
       # The request sent to features.BatchDelete.
-      class FeaturesBatchDeleteRequest
+      class BatchDeleteFeaturesRequest
         include Google::Apis::Core::Hashable
       
         # 
@@ -420,7 +420,7 @@ module Google
       end
       
       # The request sent to features.Insert.
-      class InsertFeaturesBatchRequest
+      class BatchInsertFeaturesRequest
         include Google::Apis::Core::Hashable
       
         # 
@@ -450,7 +450,7 @@ module Google
       end
       
       # The request sent to features.BatchPatch.
-      class FeaturesBatchPatchRequest
+      class BatchPatchFeaturesRequest
         include Google::Apis::Core::Hashable
       
         # 

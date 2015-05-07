@@ -77,7 +77,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_profile_user(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_user_profile(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{userId}/profile'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GmailV1::Profile::Representation

@@ -59,7 +59,7 @@ module Google
         end
 
         # Determine the ruby method name to generate for a given method in discovery.
-        # @param [Hash] discovery
+        # @param [Google::Apis::DiscoveryV1::RestMethod] method
         #  Fragment of the discovery doc describing the method
         def infer_method_name(method)
           pick_name(infer_method_name_for_rpc(method) || infer_method_name_from_id(method))
@@ -93,7 +93,7 @@ module Google
 
         private
         # For RPC style methods, pick a name based off the request objects.
-        # @param [Hash] discovery
+        # @param [Google::Apis::DiscoveryV1::RestMethod] method
         #  Fragment of the discovery doc describing the method
         def infer_method_name_for_rpc(method)
           return nil if method.request.nil?
@@ -107,7 +107,7 @@ module Google
 
         # For REST style methods, build a method name from the verb/resource(s) in the method
         # id. IDs are in the form <api>.<resource>.<verb>
-        # @param [Hash] discovery
+        # @param [Google::Apis::DiscoveryV1::RestMethod] method
         #  Fragment of the discovery doc describing the method
         def infer_method_name_from_id(method)
           parts = method.id.split('.')

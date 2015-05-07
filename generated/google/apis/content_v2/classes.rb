@@ -944,7 +944,7 @@ module Google
       end
       
       # 
-      class CustomBatchAccountsResponse
+      class BatchAccountsResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.
@@ -1040,7 +1040,7 @@ module Google
       end
       
       # 
-      class CustomBatchAccountshippingRequest
+      class BatchAccountShippingRequest
         include Google::Apis::Core::Hashable
       
         # The request entries to be processed in the batch.
@@ -1102,7 +1102,7 @@ module Google
       end
       
       # 
-      class CustomBatchAccountshippingResponse
+      class BatchAccountShippingResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.
@@ -1166,7 +1166,7 @@ module Google
       end
       
       # 
-      class ListAccountshippingResponse
+      class ListAccountShippingResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -1198,7 +1198,7 @@ module Google
       end
       
       # 
-      class CustomBatchAccountstatusesRequest
+      class BatchAccountStatusesRequest
         include Google::Apis::Core::Hashable
       
         # The request entries to be processed in the batch.
@@ -1254,7 +1254,7 @@ module Google
       end
       
       # 
-      class CustomBatchAccountstatusesResponse
+      class BatchAccountStatusesResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.
@@ -1312,7 +1312,7 @@ module Google
       end
       
       # 
-      class ListAccountstatusesResponse
+      class ListAccountStatusesResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -1344,7 +1344,7 @@ module Google
       end
       
       # 
-      class CustomBatchAccounttaxRequest
+      class BatchAccountTaxRequest
         include Google::Apis::Core::Hashable
       
         # The request entries to be processed in the batch.
@@ -1406,7 +1406,7 @@ module Google
       end
       
       # 
-      class CustomBatchAccounttaxResponse
+      class BatchAccountTaxResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.
@@ -1470,7 +1470,7 @@ module Google
       end
       
       # 
-      class ListAccounttaxResponse
+      class ListAccountTaxResponse
         include Google::Apis::Core::Hashable
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -1815,7 +1815,7 @@ module Google
       end
       
       # 
-      class CustomBatchDatafeedsRequest
+      class BatchDatafeedsRequest
         include Google::Apis::Core::Hashable
       
         # The request entries to be processed in the batch.
@@ -1877,7 +1877,7 @@ module Google
       end
       
       # 
-      class CustomBatchDatafeedsResponse
+      class BatchDatafeedsResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.
@@ -1966,12 +1966,12 @@ module Google
       end
       
       # 
-      class CustomBatchDatafeedstatusesRequest
+      class BatchDatafeedStatusesRequest
         include Google::Apis::Core::Hashable
       
         # The request entries to be processed in the batch.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::DatafeedstatusesBatchRequestEntry>]
+        # @return [Array<Google::Apis::ContentV2::DatafeedStatusesBatchRequestEntry>]
         attr_accessor :entries
       
         def initialize(**args)
@@ -1985,7 +1985,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch datafeedstatuses request.
-      class DatafeedstatusesBatchRequestEntry
+      class DatafeedStatusesBatchRequestEntry
         include Google::Apis::Core::Hashable
       
         # An entry ID, unique within the batch request.
@@ -2022,12 +2022,12 @@ module Google
       end
       
       # 
-      class CustomBatchDatafeedstatusesResponse
+      class BatchDatafeedStatusesResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.
         # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2::DatafeedstatusesBatchResponseEntry>]
+        # @return [Array<Google::Apis::ContentV2::DatafeedStatusesBatchResponseEntry>]
         attr_accessor :entries
       
         # Identifies what kind of resource this is. Value: the fixed string "content#
@@ -2048,7 +2048,7 @@ module Google
       end
       
       # A batch entry encoding a single non-batch datafeedstatuses response.
-      class DatafeedstatusesBatchResponseEntry
+      class DatafeedStatusesBatchResponseEntry
         include Google::Apis::Core::Hashable
       
         # The ID of the request entry this entry responds to.
@@ -2227,7 +2227,7 @@ module Google
       end
       
       # 
-      class CustomBatchInventoryRequest
+      class BatchInventoryRequest
         include Google::Apis::Core::Hashable
       
         # The request entries to be processed in the batch.
@@ -2290,7 +2290,7 @@ module Google
       end
       
       # 
-      class CustomBatchInventoryResponse
+      class BatchInventoryResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.
@@ -3440,7 +3440,7 @@ module Google
       end
       
       # 
-      class CustomBatchProductsRequest
+      class BatchProductsRequest
         include Google::Apis::Core::Hashable
       
         # The request entries to be processed in the batch.
@@ -3503,7 +3503,7 @@ module Google
       end
       
       # 
-      class CustomBatchProductsResponse
+      class BatchProductsResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.
@@ -3599,7 +3599,7 @@ module Google
       end
       
       # 
-      class CustomBatchProductStatusesRequest
+      class BatchProductStatusesRequest
         include Google::Apis::Core::Hashable
       
         # The request entries to be processed in the batch.
@@ -3655,7 +3655,7 @@ module Google
       end
       
       # 
-      class CustomBatchProductStatusesResponse
+      class BatchProductStatusesResponse
         include Google::Apis::Core::Hashable
       
         # The result of the execution of the batch requests.

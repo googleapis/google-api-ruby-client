@@ -1335,7 +1335,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_moderation_status_comment(ban_author: nil, id: nil, moderation_status: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_comment_moderation_status(ban_author: nil, id: nil, moderation_status: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'comments/setModerationStatus'
           command =  make_simple_command(:post, path, options)
           command.query['banAuthor'] = ban_author unless ban_author.nil?

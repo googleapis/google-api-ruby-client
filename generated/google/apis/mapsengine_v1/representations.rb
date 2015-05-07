@@ -66,15 +66,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class FeaturesBatchDeleteRequest
+      class BatchDeleteFeaturesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class InsertFeaturesBatchRequest
+      class BatchInsertFeaturesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class FeaturesBatchPatchRequest
+      class BatchPatchFeaturesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -513,7 +513,7 @@ module Google
       end
       
       # @private
-      class FeaturesBatchDeleteRequest
+      class BatchDeleteFeaturesRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :gx_ids, as: 'gx_ids'
           collection :primary_keys, as: 'primaryKeys'
@@ -521,7 +521,7 @@ module Google
       end
       
       # @private
-      class InsertFeaturesBatchRequest
+      class BatchInsertFeaturesRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :features, as: 'features', class: Google::Apis::MapsengineV1::Feature, decorator: Google::Apis::MapsengineV1::Feature::Representation
       
@@ -530,7 +530,7 @@ module Google
       end
       
       # @private
-      class FeaturesBatchPatchRequest
+      class BatchPatchFeaturesRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :features, as: 'features', class: Google::Apis::MapsengineV1::Feature, decorator: Google::Apis::MapsengineV1::Feature::Representation
       

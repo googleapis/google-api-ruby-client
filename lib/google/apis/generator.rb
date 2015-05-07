@@ -37,8 +37,8 @@ module Google
 
       # Generates ruby source for an API
       #
-      # @param [Google::Apis::DiscoveryV1::RestDescription] description
-      #  API Description
+      # @param [String] json
+      #  API Description, as JSON text
       # @return [Hash<String,String>]
       #  Hash of generated files keyed by path
       def render(json)

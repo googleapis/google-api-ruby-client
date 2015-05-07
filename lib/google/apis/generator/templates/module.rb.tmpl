@@ -22,7 +22,9 @@ module Google
     #
     # <%= block_comment(api.description, 4, 1) %>
     #
+<% if api.documentation_link -%>
     # @see <%= api.documentation_link %>
+<% end -%>
     module <%= api.module_name %>
       VERSION = '<%= api.version %>'
       REVISION = '<%= api.revision %>'

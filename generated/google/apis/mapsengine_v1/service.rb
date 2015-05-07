@@ -2994,7 +2994,7 @@ module Google
         # Delete all features matching the given IDs.
         # @param [String] id
         #   The ID of the table that contains the features to be deleted.
-        # @param [Google::Apis::MapsengineV1::FeaturesBatchDeleteRequest] features_batch_delete_request_object
+        # @param [Google::Apis::MapsengineV1::BatchDeleteFeaturesRequest] features_batch_delete_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3019,7 +3019,7 @@ module Google
         def batch_delete_table_feature(id, features_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/features/batchDelete'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::FeaturesBatchDeleteRequest::Representation
+          command.request_representation = Google::Apis::MapsengineV1::BatchDeleteFeaturesRequest::Representation
           command.request_object = features_batch_delete_request_object
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3039,7 +3039,7 @@ module Google
         # Google Maps Engine developer's guide.
         # @param [String] id
         #   The ID of the table to append the features to.
-        # @param [Google::Apis::MapsengineV1::InsertFeaturesBatchRequest] features_batch_insert_request_object
+        # @param [Google::Apis::MapsengineV1::BatchInsertFeaturesRequest] features_batch_insert_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3064,7 +3064,7 @@ module Google
         def batch_insert_table_feature(id, features_batch_insert_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/features/batchInsert'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::InsertFeaturesBatchRequest::Representation
+          command.request_representation = Google::Apis::MapsengineV1::BatchInsertFeaturesRequest::Representation
           command.request_object = features_batch_insert_request_object
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3091,7 +3091,7 @@ module Google
         # Google Maps Engine developer's guide.
         # @param [String] id
         #   The ID of the table containing the features to be patched.
-        # @param [Google::Apis::MapsengineV1::FeaturesBatchPatchRequest] features_batch_patch_request_object
+        # @param [Google::Apis::MapsengineV1::BatchPatchFeaturesRequest] features_batch_patch_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3116,7 +3116,7 @@ module Google
         def batch_patch_table_feature(id, features_batch_patch_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/features/batchPatch'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::MapsengineV1::FeaturesBatchPatchRequest::Representation
+          command.request_representation = Google::Apis::MapsengineV1::BatchPatchFeaturesRequest::Representation
           command.request_object = features_batch_patch_request_object
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?

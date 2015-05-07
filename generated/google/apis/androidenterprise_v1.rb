@@ -23,7 +23,6 @@ module Google
     # Allows MDMs/EMMs and enterprises to manage the deployment of apps to Android
     # for Work users.
     #
-    # @see 
     module AndroidenterpriseV1
       VERSION = 'V1'
       REVISION = '20141112'
