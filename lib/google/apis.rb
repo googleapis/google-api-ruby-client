@@ -31,12 +31,16 @@ module Google
 
     private
 
+    # Create and configure a logger
+    # @return [Logger]
     def self.default_logger
       logger = Logger.new($stdout)
       logger.level = Logger::WARN
       logger
     end
 
+    # Check to see if client is being used in a Rails environment and ge the logger if present
+    # @return [Logger]
     def self.rails_logger
       ::Rails.logger if defined?(::Rails) && ::Rails.respond_to?(:logger) && ::Rails.logger
     end

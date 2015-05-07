@@ -37,15 +37,15 @@ module Google
 
         def initialize(file_path = nil)
           if file_path
-            logger.info { sprintf("Loading API names from %s", file_path) }
+            logger.info { sprintf('Loading API names from %s', file_path) }
             @names = YAML.load(File.read(file_path)) || {}
-           else
+          else
             @names = {}
           end
           @path = []
         end
 
-        def with_path(path, &block)
+        def with_path(path)
           @path.push(path)
           begin
             yield
@@ -88,10 +88,11 @@ module Google
         end
 
         def key
-          @path.reduce('') {|a,e| a += '/' + e }
+          @path.reduce('') { |a, e| a + '/' + e }
         end
 
         private
+
         # For RPC style methods, pick a name based off the request objects.
         # @param [Google::Apis::DiscoveryV1::RestMethod] method
         #  Fragment of the discovery doc describing the method
@@ -113,7 +114,7 @@ module Google
           parts = method.id.split('.')
           parts.shift
           verb = parts.pop
-          return ActiveSupport::Inflector.underscore(verb) if parts.empty? # ActiveSupport::Inflector.underscore(verb) != verb || parts.empty?
+          return ActiveSupport::Inflector.underscore(verb) if parts.empty?
           resource_name = parts.pop
           method_name = verb + '_'
           method_name += parts.map { |p| ActiveSupport::Inflector.singularize(p) }.join('_') + '_' unless parts.empty?
@@ -232,8 +233,6 @@ module Google
           end unless parameters.nil?
         end
 
-
-
         def resolve_type_references
           @deferred_types.each do |type|
             if type._ref
@@ -261,8 +260,8 @@ module Google
 
         def check_duplicate_method(m)
           if @all_methods.include?(m.generated_name)
-            logger.error("Duplicate method #{m.generated_name} generated")
-            fail "Duplicate name generated"
+            logger.error { sprintf('Duplicate method %s generated', m.generated_name) }
+            fail 'Duplicate name generated'
           end
           @all_methods[m.generated_name] = m
         end

@@ -20,6 +20,14 @@ require 'google/apis/discovery_v1'
 module Google
   module Apis
     module DiscoveryV1
+      TYPE_MAP = {
+        'string' => 'String',
+        'boolean' => 'Boolean',
+        'number' => 'Float',
+        'integer' => 'Fixnum',
+        'any' => 'object'
+      }
+
       class JsonSchema
         attr_accessor :name
         attr_accessor :generated_name
@@ -39,23 +47,16 @@ module Google
         end
 
         def generated_type
-          if type == 'string'
+          case type
+          when 'string', 'boolean', 'number', 'integer', 'any'
             return 'DateTime' if format == 'date-time'
             return 'Date' if format == 'date'
-            'String'
-          elsif type == 'array'
+            return TYPE_MAP[type]
+          when 'array'
             return sprintf('Array<%s>', items.generated_type)
-          elsif type == 'hash'
+          when 'hash'
             return sprintf('Hash<String,%s>', additional_properties.generated_type)
-          elsif type == 'boolean'
-            return 'Boolean'
-          elsif type == 'number'
-            return 'Float'
-          elsif type == 'integer'
-            return 'Fixnum'
-          elsif type == 'any'
-            return 'Object'
-          elsif type == 'object'
+          when 'object'
             return qualified_name
           end
         end

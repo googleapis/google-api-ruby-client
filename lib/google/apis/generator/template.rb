@@ -84,6 +84,8 @@ module Google
       class Context < OpenStruct
         include TemplateHelpers
 
+        # Get the context for ERB evaluation
+        # @return [Binding]
         def to_binding
           binding
         end
