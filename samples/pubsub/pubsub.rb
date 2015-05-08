@@ -14,7 +14,6 @@
 
 require 'googleauth'
 require 'google/apis/pubsub_v1beta2'
-require 'base64'
 
 Pubsub = Google::Apis::PubsubV1beta2
 
