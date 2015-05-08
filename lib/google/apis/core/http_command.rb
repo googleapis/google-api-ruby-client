@@ -133,6 +133,7 @@ module Google
         # @private
         # @return [void]
         def prepare!
+          self.header.update(options.header) if options && options.header
           self.url = url.expand(params) if url.is_a?(Addressable::Template)
           url.query_values = query
         end

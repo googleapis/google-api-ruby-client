@@ -134,6 +134,26 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
   end
 
+  context('with options') do
+    let(:command) do
+      command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+      command.options.header = { 'X-Foo' => 'bar' }
+      command
+    end
+
+    before(:example) do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .to_return(body: %(Hello world))
+    end
+
+    it 'should send user headers' do
+      result = command.execute(client)
+      expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .with { |req| req.headers['X-Foo'] == 'bar' }).to have_been_made
+    end
+  end
+
+
   context('with redirects') do
     let(:command) do
       Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')

@@ -23,6 +23,7 @@ module Google
     RequestOptions = Struct.new(
       :authorization,
       :retries,
+      :header,
       :timeout_sec)
 
     # General client options
@@ -50,6 +51,8 @@ module Google
       #   @return [Fixnum] Number of times to retry requests on server error
       # @!attribute [rw] timeout_sec
       #   @return [Fixnum] How long, in seconds, before requests time out
+      # @!attribute [rw] header
+      #   @return [Hash<String,String] Additional HTTP headers to include in requests
 
       # Get the default options
       # @return [Google::Apis::RequestOptions]
