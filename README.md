@@ -114,7 +114,7 @@ in parallel and the responses processed once all results are available
 
 ```ruby
 # Fetch a bunch of files by ID
-ids = [id1, id2, id3, id4]
+ids = ['file_id_1', 'file_id_2', 'file_id_3', 'file_id_4']
 drive.batch do |drive|
   ids.each do |id|
     drive.get_file(id) do |res, err|
