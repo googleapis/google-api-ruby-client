@@ -1218,7 +1218,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Copies an object to a specified location. Optionally overrides metadata.
+        # Copies a source object to a destination object. Optionally overrides metadata.
         # @param [String] source_bucket
         #   Name of the bucket in which to find the source object.
         # @param [String] source_object
@@ -1698,19 +1698,18 @@ module Google
         #   Makes the operation conditional on whether the source object's current
         #   metageneration does not match the given value.
         # @param [String] max_bytes_rewritten_per_call
-        #   The maximum number of bytes that will be rewritten per Rewrite request. Most
+        #   The maximum number of bytes that will be rewritten per rewrite request. Most
         #   callers shouldn't need to specify this parameter - it is primarily in place to
         #   support testing. If specified the value must be an integral multiple of 1 MiB (
         #   1048576). Also, this only applies to requests where the source and destination
         #   span locations and/or storage classes. Finally, this value must not change
-        #   across Rewrite calls else you'll get an error that the rewrite token is
-        #   invalid.
+        #   across rewrite calls else you'll get an error that the rewriteToken is invalid.
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl, unless the object resource
         #   specifies the acl property, when it defaults to full.
         # @param [String] rewrite_token
-        #   Include this field (from the previous Rewrite response) on each Rewrite
-        #   request after the first one, until the Rewrite response 'done' flag is true.
+        #   Include this field (from the previous rewrite response) on each rewrite
+        #   request after the first one, until the rewrite response 'done' flag is true.
         #   Calls that provide a rewriteToken can omit all other request fields, but if
         #   included those fields must match the values provided in the first rewrite
         #   request.

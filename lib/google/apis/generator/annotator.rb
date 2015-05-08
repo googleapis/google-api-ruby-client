@@ -137,7 +137,7 @@ module Google
         include Google::Apis::Core::Logging
 
         # Don't expose these in the API directly
-        PARAMETER_BLACKLIST = %w(alt oauth_token prettyPrint)
+        PARAMETER_BLACKLIST = %w(alt oauth_token prettyPrint $.xgafv)
 
         # Prepare the API for the templates.
         # @param [Google::Apis::DiscoveryV1::RestDescription] description

@@ -59,10 +59,6 @@ module Google
         #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
 
-        # @return [String]
-        #  V1 error format.
-        attr_accessor :__xgafv
-
         def initialize
           super('https://logging.googleapis.com/', '')
         end
@@ -103,8 +99,6 @@ module Google
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] __xgafv
-        #   V1 error format.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -117,7 +111,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_logs(projects_id, service_name: nil, service_index_prefix: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def list_logs(projects_id, service_name: nil, service_index_prefix: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::ListLogsResponse::Representation
@@ -133,7 +127,6 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -155,8 +148,6 @@ module Google
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] __xgafv
-        #   V1 error format.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -169,7 +160,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_log(projects_id, logs_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def delete_log(projects_id, logs_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}'
           command =  make_simple_command(:delete, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::Empty::Representation
@@ -182,7 +173,6 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -212,8 +202,6 @@ module Google
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] __xgafv
-        #   V1 error format.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -226,7 +214,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def write_log_entries(projects_id, logs_id, write_log_entries_request_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def write_log_entries(projects_id, logs_id, write_log_entries_request_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/entries:write'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::LoggingV1beta3::WriteLogEntriesRequest::Representation
@@ -241,7 +229,6 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -263,8 +250,6 @@ module Google
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] __xgafv
-        #   V1 error format.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -277,7 +262,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_log_sinks(projects_id, logs_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def list_log_sinks(projects_id, logs_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::ListLogSinksResponse::Representation
@@ -290,7 +275,6 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -314,8 +298,6 @@ module Google
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] __xgafv
-        #   V1 error format.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -328,7 +310,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_log_sink(projects_id, logs_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def get_log_sink(projects_id, logs_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks/{sinksId}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
@@ -342,7 +324,6 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -365,8 +346,6 @@ module Google
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] __xgafv
-        #   V1 error format.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -379,7 +358,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_log_sink(projects_id, logs_id, log_sink_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def create_log_sink(projects_id, logs_id, log_sink_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
@@ -394,7 +373,6 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -419,8 +397,6 @@ module Google
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] __xgafv
-        #   V1 error format.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -433,7 +409,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_log_sink(projects_id, logs_id, sinks_id, log_sink_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def update_log_sink(projects_id, logs_id, sinks_id, log_sink_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks/{sinksId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
@@ -449,7 +425,6 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -473,8 +448,6 @@ module Google
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] __xgafv
-        #   V1 error format.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -487,7 +460,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_log_sink(projects_id, logs_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def delete_log_sink(projects_id, logs_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks/{sinksId}'
           command =  make_simple_command(:delete, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::Empty::Representation
@@ -501,7 +474,6 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -530,8 +502,6 @@ module Google
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] __xgafv
-        #   V1 error format.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -544,7 +514,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_log_services(projects_id, log: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def list_log_services(projects_id, log: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::ListLogServicesResponse::Representation
@@ -559,7 +529,6 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -607,8 +576,6 @@ module Google
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] __xgafv
-        #   V1 error format.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -621,7 +588,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_log_service_indexes(projects_id, log_services_id, index_prefix: nil, depth: nil, log: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def list_log_service_indexes(projects_id, log_services_id, index_prefix: nil, depth: nil, log: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/indexes'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::ListLogServiceIndexesResponse::Representation
@@ -639,7 +606,6 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -661,8 +627,6 @@ module Google
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] __xgafv
-        #   V1 error format.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -675,7 +639,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_log_service_sinks(projects_id, log_services_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def list_log_service_sinks(projects_id, log_services_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::ListLogServiceSinksResponse::Representation
@@ -688,7 +652,6 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -712,8 +675,6 @@ module Google
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] __xgafv
-        #   V1 error format.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -726,7 +687,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_log_service_sink(projects_id, log_services_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def get_log_service_sink(projects_id, log_services_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks/{sinksId}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
@@ -740,7 +701,6 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -763,8 +723,6 @@ module Google
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] __xgafv
-        #   V1 error format.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -777,7 +735,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_log_service_sink(projects_id, log_services_id, log_sink_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def create_log_service_sink(projects_id, log_services_id, log_sink_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
@@ -792,7 +750,6 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -817,8 +774,6 @@ module Google
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] __xgafv
-        #   V1 error format.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -831,7 +786,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_log_service_sink(projects_id, log_services_id, sinks_id, log_sink_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def update_log_service_sink(projects_id, log_services_id, sinks_id, log_sink_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks/{sinksId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
@@ -847,7 +802,6 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -871,8 +825,6 @@ module Google
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [String] __xgafv
-        #   V1 error format.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -885,7 +837,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_log_service_sink(projects_id, log_services_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, __xgafv: nil, options: nil, &block)
+        def delete_log_service_sink(projects_id, log_services_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks/{sinksId}'
           command =  make_simple_command(:delete, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::Empty::Representation
@@ -899,7 +851,6 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
           execute_or_queue_command(command, &block)
         end
 
@@ -912,7 +863,6 @@ module Google
           command.query['key'] = key unless key.nil?
           command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['$.xgafv'] = __xgafv unless __xgafv.nil?
         end
       end
     end

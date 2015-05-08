@@ -1656,6 +1656,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
           property :on_host_maintenance, as: 'onHostMaintenance'
+          property :preemptible, as: 'preemptible'
         end
       end
       

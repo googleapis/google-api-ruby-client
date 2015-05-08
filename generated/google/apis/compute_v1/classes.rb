@@ -2505,31 +2505,29 @@ module Google
       class InstanceProperties
         include Google::Apis::Core::Hashable
       
-        # Allows instances created based on this template to send packets with source IP
-        # addresses other than their own and receive packets with destination IP
-        # addresses other than their own. If these instances will be used as an IP
-        # gateway or it will be set as the next-hop in a Route resource, say true. If
-        # unsure, leave this set to false.
+        # A boolean that specifies if instances created from this template can send
+        # packets with source IP addresses other than their own or receive packets with
+        # destination IP addresses other than their own. If you use these instances as
+        # an IP gateway or as the next-hop in a Route resource, specify true. Otherwise,
+        # specify false.
         # Corresponds to the JSON property `canIpForward`
         # @return [Boolean]
         attr_accessor :can_ip_forward
         alias_method :can_ip_forward?, :can_ip_forward
       
-        # An optional textual description for the instances created based on the
-        # instance template resource; provided by the client when the template is
-        # created.
+        # An optional text description for the instances that are created from this
+        # instance template.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Array of disks associated with instance created based on this template.
+        # An array of disks that are associated with the instances that are created from
+        # this template.
         # Corresponds to the JSON property `disks`
         # @return [Array<Google::Apis::ComputeV1::AttachedDisk>]
         attr_accessor :disks
       
-        # Name of the machine type resource describing which machine type to use to host
-        # the instances created based on this template; provided by the client when the
-        # instance template is created.
+        # The machine type to use for instances that are created from this template.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -2539,11 +2537,12 @@ module Google
         # @return [Google::Apis::ComputeV1::Metadata]
         attr_accessor :metadata
       
-        # Array of configurations for this interface. This specifies how this interface
-        # is configured to interact with other network services, such as connecting to
-        # the internet. Currently, ONE_TO_ONE_NAT is the only access config supported.
-        # If there are no accessConfigs specified, then this instances created based
-        # based on this template will have no external internet access.
+        # An array of network access configurations for this interface. This specifies
+        # how this interface is configured to interact with other network services, such
+        # as connecting to the internet. Currently, ONE_TO_ONE_NAT is the only supported
+        # access configuration. If you do not specify any access configurations, the
+        # instances that are created from this template will have no external internet
+        # access.
         # Corresponds to the JSON property `networkInterfaces`
         # @return [Array<Google::Apis::ComputeV1::NetworkInterface>]
         attr_accessor :network_interfaces
@@ -2553,9 +2552,9 @@ module Google
         # @return [Google::Apis::ComputeV1::Scheduling]
         attr_accessor :scheduling
       
-        # A list of service accounts each with specified scopes, for which access tokens
-        # are to be made available to the instances created based on this template,
-        # through metadata queries.
+        # A list of service accounts with specified scopes. Access tokens for these
+        # service accounts are available to the instances that are created from this
+        # template. Use metadata queries to obtain the access tokens for these instances.
         # Corresponds to the JSON property `serviceAccounts`
         # @return [Array<Google::Apis::ComputeV1::ServiceAccount>]
         attr_accessor :service_accounts
@@ -2606,30 +2605,31 @@ module Google
       class InstanceTemplate
         include Google::Apis::Core::Hashable
       
-        # Creation timestamp in RFC3339 text format (output only).
+        # [Output Only] The creation timestamp for this instance template in RFC3339
+        # text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the instance template resource; provided by
-        # the client when the resource is created.
+        # An optional text description for the instance template.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Unique identifier for the resource; defined by the server (output only).
+        # [Output Only] A unique identifier for this instance template. The server
+        # defines this identifier.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Type of the resource.
+        # [Output Only] The resource type, which is always compute#instanceTemplate for
+        # instance templates.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Name of the instance template resource; provided by the client when the
-        # resource is created. The name must be 1-63 characters long, and comply with
-        # RFC1035
+        # The name of the instance template. The name must be 1-63 characters long, and
+        # comply with RFC1035.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2639,7 +2639,7 @@ module Google
         # @return [Google::Apis::ComputeV1::InstanceProperties]
         attr_accessor :properties
       
-        # Server defined URL for the resource (output only).
+        # [Output Only] The URL for this instance template. The server defines this URL.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -2660,11 +2660,12 @@ module Google
         end
       end
       
-      # Contains a list of instance template resources.
+      # A list of instance templates.
       class InstanceTemplateList
         include Google::Apis::Core::Hashable
       
-        # Unique identifier for the resource; defined by the server (output only).
+        # [Output Only] A unique identifier for this instance template. The server
+        # defines this identifier.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2674,17 +2675,19 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::InstanceTemplate>]
         attr_accessor :items
       
-        # Type of resource.
+        # [Output Only] The resource type, which is always compute#
+        # instanceTemplatesListResponse for instance template lists.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # A token used to continue a truncated list request (output only).
+        # [Output Only] A token that is used to continue a truncated list request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # Server defined URL for this resource (output only).
+        # [Output Only] The URL for this instance template list. The server defines this
+        # URL.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -4334,6 +4337,12 @@ module Google
         # @return [String]
         attr_accessor :on_host_maintenance
       
+        # Whether the Instance is preemptible.
+        # Corresponds to the JSON property `preemptible`
+        # @return [Boolean]
+        attr_accessor :preemptible
+        alias_method :preemptible?, :preemptible
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4342,6 +4351,7 @@ module Google
         def update!(**args)
           @automatic_restart = args[:automatic_restart] unless args[:automatic_restart].nil?
           @on_host_maintenance = args[:on_host_maintenance] unless args[:on_host_maintenance].nil?
+          @preemptible = args[:preemptible] unless args[:preemptible].nil?
         end
       end
       

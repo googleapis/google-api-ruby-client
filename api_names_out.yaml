@@ -7380,6 +7380,7 @@
 "/compute:v1/Scheduling": scheduling
 "/compute:v1/Scheduling/automaticRestart": automatic_restart
 "/compute:v1/Scheduling/onHostMaintenance": on_host_maintenance
+"/compute:v1/Scheduling/preemptible": preemptible
 "/compute:v1/SerialPortOutput": serial_port_output
 "/compute:v1/SerialPortOutput/contents": contents
 "/compute:v1/SerialPortOutput/kind": kind
@@ -14733,7 +14734,6 @@
 "/logging:v1beta3/key": key
 "/logging:v1beta3/pp": pp
 "/logging:v1beta3/quotaUser": quota_user
-"/logging:v1beta3/$.xgafv": __xgafv
 "/logging:v1beta3/logging.projects.logs.list/projectsId": projects_id
 "/logging:v1beta3/logging.projects.logs.list/serviceName": service_name
 "/logging:v1beta3/logging.projects.logs.list/serviceIndexPrefix": service_index_prefix

@@ -2503,11 +2503,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified instance template resource.
+        # Deletes the specified instance template.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   The project ID for this request.
         # @param [String] instance_template
-        #   Name of the instance template resource to delete.
+        #   The name of the instance template to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2544,9 +2544,9 @@ module Google
         
         # Returns the specified instance template resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   The project ID for this request.
         # @param [String] instance_template
-        #   Name of the instance template resource to return.
+        #   The name of the instance template.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2581,10 +2581,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an instance template resource in the specified project using the data
+        # Creates an instance template in the specified project using the data that is
         # included in the request.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   The project ID for this request.
         # @param [Google::Apis::ComputeV1::InstanceTemplate] instance_template_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2621,10 +2621,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of instance template resources contained within the
-        # specified project.
+        # Retrieves a list of instance templates that are contained within the specified
+        # project and zone.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   The project ID for this request.
         # @param [String] filter
         #   Optional. Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
