@@ -54,7 +54,7 @@ Full API definitions including available methods and data classes can be found i
 ## Authorization
 
 In the 0.9 version of this library, the authentication and authorization code was moved
-to the new [googleauth](google-auth-library-ruby) library. While the new library provides
+to the new [googleauth](https://github.com/google/google-auth-library-ruby) library. While the new library provides
 significantly simpler APIs for some use cases, not all features have been migrated. Missing features
 are expected to be added by end of Q2 2015.
 
