@@ -7,7 +7,7 @@ changes when necessary.
 
 ## Migrating from 0.8.x
 
-Version 1.x is not compatible with previous versions. See [MIGRATING](MIGRATING.md) for additional details on how to
+Version 0.9 is not compatible with previous versions. See [MIGRATING](MIGRATING.md) for additional details on how to
 migrate to the latest version.
 
 ## Installation
