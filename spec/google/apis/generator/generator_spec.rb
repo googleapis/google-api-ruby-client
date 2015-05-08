@@ -33,7 +33,6 @@ RSpec.describe Google::Apis::Generator do
         path = File.join(tempdir, key)
         FileUtils.mkdir_p(File.dirname(path))
         File.open(path, 'w') do |f|
-          puts content
           f.write(content)
         end
       end
