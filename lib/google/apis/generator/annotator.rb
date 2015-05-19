@@ -27,7 +27,6 @@ module Google
   module Apis
     # @private
     class Generator
-
       # Helper for picking names for methods, properties, types, etc. Performs various normaliations
       # as well as allows for overriding individual names from a configuration file for cases
       # where algorithmic approaches produce poor APIs.
@@ -125,7 +124,6 @@ module Google
           end
           ActiveSupport::Inflector.underscore(method_name)
         end
-
       end
 
       # Modifies an API description to support ruby code generation. Primarily does:
@@ -136,8 +134,9 @@ module Google
         include NameHelpers
         include Google::Apis::Core::Logging
 
-        # Don't expose these in the API directly
-        PARAMETER_BLACKLIST = %w(alt oauth_token prettyPrint $.xgafv)
+        # Don't expose these in the API directly.
+        PARAMETER_BLACKLIST = %w(alt access_token bearer_token oauth_token pp prettyPrint
+                                 $.xgafv callback upload_protocol uploadType)
 
         # Prepare the API for the templates.
         # @param [Google::Apis::DiscoveryV1::RestDescription] description
@@ -196,7 +195,8 @@ module Google
             end unless type.properties.nil?
             if type.additional_properties
               type.type = 'hash'
-              annotate_type(ActiveSupport::Inflector.singularize(type.generated_name), type.additional_properties, parent)
+              annotate_type(ActiveSupport::Inflector.singularize(type.generated_name), type.additional_properties,
+                            parent)
             end
             annotate_type(ActiveSupport::Inflector.singularize(type.generated_name), type.items, parent) if type.items
           end

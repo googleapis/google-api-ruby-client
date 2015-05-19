@@ -52,11 +52,6 @@ Style/EmptyLines:
 Style/EmptyLinesAroundClassBody:
   Enabled: false
 
-# Offense count: 22
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/FormatString:
-  Enabled: false
-
 # Offense count: 2
 # Configuration parameters: EnforcedStyle, MinBodyLength, SupportedStyles.
 Style/Next:

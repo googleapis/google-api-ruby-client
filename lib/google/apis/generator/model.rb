@@ -78,7 +78,7 @@ module Google
 
         class Request
           def generated_name
-            ActiveSupport::Inflector.underscore(self._ref) + '_object'
+            ActiveSupport::Inflector.underscore(_ref) + '_object'
           end
         end
       end
@@ -88,14 +88,13 @@ module Google
 
         def all_methods
           m = []
-          m << self.api_methods.values unless self.api_methods.nil?
-          m << self.resources.map { |_k, r| r.all_methods } unless self.resources.nil?
+          m << api_methods.values unless api_methods.nil?
+          m << resources.map { |_k, r| r.all_methods } unless resources.nil?
           m.flatten
         end
       end
 
       class RestDescription
-
         def version
           ActiveSupport::Inflector.camelize(@version.gsub(/\W/, '-')).gsub(/-/, '_')
         end
@@ -105,22 +104,22 @@ module Google
         end
 
         def module_name
-          self.name + self.version
+          name + version
         end
 
         def qualified_name
-          sprintf('Google::Apis::%s', self.module_name)
+          sprintf('Google::Apis::%s', module_name)
         end
 
         def service_name
-          class_name = (self.canonical_name || self.name).gsub(/\W/, '')
+          class_name = (canonical_name || name).gsub(/\W/, '')
           ActiveSupport::Inflector.camelize(sprintf('%sService', class_name))
         end
 
         def all_methods
           m = []
-          m << self.api_methods.values unless self.api_methods.nil?
-          m << self.resources.map { |_k, r| r.all_methods } unless self.resources.nil?
+          m << api_methods.values unless api_methods.nil?
+          m << resources.map { |_k, r| r.all_methods } unless resources.nil?
           m.flatten
         end
 

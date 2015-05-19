@@ -40,7 +40,6 @@ module Google
       def self.default
         @options ||= ClientOptions.new
       end
-
     end
 
     # Request options
@@ -63,7 +62,7 @@ module Google
       def merge(options)
         return self if options.nil?
 
-        new_options = self.dup
+        new_options = dup
         %w(authorization retries timeout_sec).each do |opt|
           opt = opt.to_sym
           new_options[opt] = options[opt] unless options[opt].nil?

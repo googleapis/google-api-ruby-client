@@ -133,11 +133,10 @@ module Google
         # @private
         # @return [void]
         def prepare!
-          self.header.update(options.header) if options && options.header
+          header.update(options.header) if options && options.header
           self.url = url.expand(params) if url.is_a?(Addressable::Template)
           url.query_values = query
         end
-
 
         # Release any resources used by this command
         # @private
@@ -267,7 +266,7 @@ module Google
             req.header[:authorization] = sprintf('Bearer %s', options.authorization)
           end
           req.header.update(header)
-          req.options.timeout = self.options.timeout_sec
+          req.options.timeout = options.timeout_sec
         end
       end
     end

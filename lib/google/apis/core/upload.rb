@@ -95,7 +95,7 @@ module Google
 
         # Close IO stream when command done. Only closes the stream if it was opened by the command.
         def release!
-          self.upload_io.close if @close_io_on_finish
+          upload_io.close if @close_io_on_finish
         end
       end
 

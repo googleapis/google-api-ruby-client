@@ -51,7 +51,6 @@ module Google
           super
         end
 
-
         # Close IO stream when command done. Only closes the stream if it was opened by the command.
         def release!
           @download_io.close if @close_io_on_finish

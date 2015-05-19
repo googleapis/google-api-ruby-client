@@ -189,7 +189,7 @@ module Google
         def to_http_response(call_response)
           _, outer_body = split_header_and_body(call_response)
           status_line, payload = outer_body.split(/\n/, 2)
-          _, status, _ = status_line.split(' ', 3)
+          _, status = status_line.split(' ', 3)
 
           header, body = split_header_and_body(payload)
           [status.to_i, header, body]

@@ -93,7 +93,6 @@ module Google
 
       # ERB template for the code generator
       class Template
-
         # Loads a template from the template dir. Automatically
         # appends the .tmpl suffix
         #
