@@ -82,7 +82,7 @@ module Google
     # @options options[Hash] :force_encoding
     #   Experimental option. True if response body should be force encoded into the charset
     #   specified in the Content-Type header. Mostly intended for compressed content.
-    # @options options[Hash] :faraday_options
+    # @options options[Hash] :faraday_option
     #   Pass through of options to set on the Faraday connection
     def initialize(options={})
       logger.debug { "#{self.class} - Initializing client with options #{options}" }
