@@ -82,6 +82,8 @@ module Google
       #   authenticated, `false` otherwise.
       # @option options [TrueClass, FalseClass] :gzip (default: true)
       #   `true` if gzip enabled, `false` otherwise.
+      # @options options[Hash] :faraday_option
+      #   Pass through of options to set on the Faraday connection
       # @option options [Faraday::Connection] :connection
       #   A custom connection to be used for all requests.
       # @option options [ActiveSupport::Cache::Store, :default] :discovery_cache
@@ -103,7 +105,7 @@ module Google
         params = {}
         [:application_name, :application_version, :authorization, :host, :port,
          :discovery_path, :auto_refresh_token, :key, :user_ip,
-         :ca_file].each do |option|
+         :ca_file, :faraday_option].each do |option|
           if options.include? option
             params[option] = options[option]
           end

@@ -27,7 +27,7 @@
 * Batch requests with the service interface now inherit the service's connection
 * `register_discover_document` now returns the API instance
 * Added `:proxy` option to set Faraday's HTTP proxy setting
-* Added `:faraday_options` option to allow passthrough settings to Faraday connection
+* Added `:faraday_option` option to allow passthrough settings to Faraday connection
 * Drop 1.8.x support
 * This will be the last release with 1.9.x support
 
