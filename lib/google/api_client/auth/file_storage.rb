@@ -13,8 +13,9 @@
 # limitations under the License.
 
 require 'signet/oauth_2/client'
-require_relative 'storage'
-require_relative 'storages/file_store'
+require File.join(File.expand_path(File.dirname(__FILE__)), 'storage')
+require File.join(File.expand_path(File.dirname(__FILE__)), 'storages', 'file_store')
+
 
 module Google
   class APIClient
