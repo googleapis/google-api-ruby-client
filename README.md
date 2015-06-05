@@ -119,7 +119,7 @@ For projects running on Google App Engine (GAE) or Google Compute Engine (GCE), 
 
 For other projects, a `GOOGLE_APPLICATION_CREDENTIALS` environment variable must be set that points to a file that defines the credentials.  The simplest way to get a credential for this purpose is to create a service account using the Google Developers Console in the section **APIs & Auth**, in the sub-section **Credentials**. Create a service account or choose an existing one and select **Generate new JSON key**. Set the environment variable to the path of the JSON file downloaded.
 
-This is simpler API to use than in previous versions, although that is still available:
+This is a simpler API to use than in previous versions, although the previous API is still available:
 
 ```ruby
 key = Google::APIClient::KeyUtils.load_from_pkcs12('client.p12', 'notasecret')
