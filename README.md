@@ -105,8 +105,8 @@ Credentials can be managed at the connection level, as shown, or supplied on a p
 Use service accounts for server-to-server interactions, like those between a web application and Google Cloud Storage, Prediction, or BigQuery APIs.
 
 As of version 0.8.3, service accounts can be configured using
-[Application Default Credentials][1], which rely on the credentials being
-available in a well-known location.  If the credentials are not present
+[Application Default Credentials](https://developers.google.com/accounts/docs/application-default-credentials),
+which rely on the credentials being available in a well-known location.  If the credentials are not present
 and it's being used on a Compute Engine VM,  it will use the VM's default credentials.
 
 ```ruby
@@ -214,5 +214,3 @@ See the full list of [samples on Github](https://github.com/google/google-api-ru
 ## Support
 
 Please [report bugs at the project on Github](https://github.com/google/google-api-ruby-client/issues). Don't hesitate to [ask questions](http://stackoverflow.com/questions/tagged/google-api-ruby-client) about the client or APIs on [StackOverflow](http://stackoverflow.com).
-
-[1]: https://developers.google.com/accounts/docs/application-default-credentials
