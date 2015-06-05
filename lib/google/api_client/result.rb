@@ -95,7 +95,7 @@ module Google
       # @return [TrueClass, FalseClass]
       #   true if result of operation was successful
       def success?
-        if self.response.status == 200 || self.response.status == 201
+        if self.response.status == (200..300)
           return true
         else
           return false
