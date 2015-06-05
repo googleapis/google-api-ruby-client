@@ -102,7 +102,7 @@ Most interactions with Google APIs require users to authorize applications via O
 
 Credentials can be managed at the connection level, as shown, or supplied on a per-request basis when calling `execute`.
 
-For server-to-server interactions, like those between a web application and Google Cloud Storage, Prediction, or BigQuery APIs, use service accounts.
+Use service accounts for server-to-server interactions, like those between a web application and Google Cloud Storage, Prediction, or BigQuery APIs.
 
 As of version 0.8.3, service accounts can be configured using
 [Application Default Credentials][1], which rely on the credentials being
