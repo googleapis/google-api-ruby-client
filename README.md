@@ -98,15 +98,15 @@ my_api = client.discovered_api('myapi', 'v1')
 
 ### Authorization
 
-Most interactions with Google APIs require users to authorize applications via OAuth 2.0. The client library uses [Signet](https://github.com/google/signet) to handle most aspects of authorization. For additional details about Google's OAuth support, see [Google Developers](https://developers.google.com/accounts/docs/OAuth2).
+Most interactions with Google APIs require users to authorize applications via OAuth 2.0. The client library uses [Signet](https://github.com/google/signet) to handle most aspects of authorization. For additional details about Google's OAuth support, see [Google Developers OAuth 2.0 documentation](https://developers.google.com/accounts/docs/OAuth2).
 
 Credentials can be managed at the connection level, as shown, or supplied on a per-request basis when calling `execute`.
 
-For server-to-server interactions, like those between a web application and Google Cloud Storage, Prediction, or BigQuery APIs, use service accounts.
+Use service accounts for server-to-server interactions, like those between a web application and Google Cloud Storage, Prediction, or BigQuery APIs.
 
 As of version 0.8.3, service accounts can be configured using
-[Application Default Credentials][1], which rely on the credentials being
-available in a well-known location.  If the credentials are not present
+[Application Default Credentials](https://developers.google.com/accounts/docs/application-default-credentials),
+which rely on the credentials being available in a well-known location.  If the credentials are not present
 and it's being used on a Compute Engine VM,  it will use the VM's default credentials.
 
 ```ruby
@@ -115,7 +115,11 @@ client.authorization.fetch_access_token!
 client.execute(...)
 ```
 
-This is simpler API to use than in previous versions, although that is still available:
+For projects running on Google App Engine (GAE) or Google Compute Engine (GCE), default built-in service accounts will be used.
+
+For other projects, a `GOOGLE_APPLICATION_CREDENTIALS` environment variable must be set that points to a file that defines the credentials.  The simplest way to get a credential for this purpose is to create a service account using the Google Developers Console in the section **APIs & Auth**, in the sub-section **Credentials**. Create a service account or choose an existing one and select **Generate new JSON key**. Set the environment variable to the path of the JSON file downloaded.
+
+This is a simpler API to use than in previous versions, although the previous API is still available:
 
 ```ruby
 key = Google::APIClient::KeyUtils.load_from_pkcs12('client.p12', 'notasecret')
@@ -214,5 +218,3 @@ See the full list of [samples on Github](https://github.com/google/google-api-ru
 ## Support
 
 Please [report bugs at the project on Github](https://github.com/google/google-api-ruby-client/issues). Don't hesitate to [ask questions](http://stackoverflow.com/questions/tagged/google-api-ruby-client) about the client or APIs on [StackOverflow](http://stackoverflow.com).
-
-[1]: https://developers.google.com/accounts/docs/application-default-credentials
