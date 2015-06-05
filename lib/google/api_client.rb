@@ -117,8 +117,9 @@ module Google
       # default authentication mechanisms.
       self.authorization =
         options.key?(:authorization) ? options[:authorization] : :oauth_2
-      if !options['scope'].nil? and self.authorization.respond_to?(:scope=)
-        self.authorization.scope = options['scope']
+      if !options[:scope].nil? and self.authorization.respond_to?(:scope=)
+        @scope = options[:scope]
+        self.authorization.scope = options[:scope]
       end
       self.auto_refresh_token = options.fetch(:auto_refresh_token) { true }
       self.key = options[:key]
@@ -183,6 +184,11 @@ module Google
       when :google_app_default
         require 'googleauth'
         new_authorization = Google::Auth.get_application_default
+        if @scope
+          new_authorization.scope = @scope
+        else
+          raise ValidationError.new("Empty or missing scope not allowed.")
+        end
 
       when :oauth_2
         require 'signet/oauth_2/client'
