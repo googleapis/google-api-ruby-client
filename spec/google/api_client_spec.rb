@@ -349,4 +349,13 @@ RSpec.describe Google::APIClient do
     end
 
   end
+
+  describe 'when using Application Default Credentials' do
+    it 'requires :scope provided to APIClient' do
+      client = Google::APIClient.new(:application_name => 'API Client Tests')
+      expect {
+        client.authorization = :google_app_default
+      }.to raise_error(Google::APIClient::ValidationError, "Empty or missing scope not allowed.")
+    end
+  end
 end
