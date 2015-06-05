@@ -98,7 +98,7 @@ my_api = client.discovered_api('myapi', 'v1')
 
 ### Authorization
 
-Most interactions with Google APIs require users to authorize applications via OAuth 2.0. The client library uses [Signet](https://github.com/google/signet) to handle most aspects of authorization. For additional details about Google's OAuth support, see [Google Developers](https://developers.google.com/accounts/docs/OAuth2).
+Most interactions with Google APIs require users to authorize applications via OAuth 2.0. The client library uses [Signet](https://github.com/google/signet) to handle most aspects of authorization. For additional details about Google's OAuth support, see [Google Developers OAuth 2.0 documentation](https://developers.google.com/accounts/docs/OAuth2).
 
 Credentials can be managed at the connection level, as shown, or supplied on a per-request basis when calling `execute`.
 
