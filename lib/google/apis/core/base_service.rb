@@ -257,8 +257,7 @@ module Google
           client.request_options.timeout = request_options.timeout_sec
           client.request_options.proxy = client_options.proxy_url
           client.request_options.query_class = Hurley::Query::Flat
-          client.ssl_options.ca_file = File.expand_path('../../../cacerts.pem', __FILE__)
-
+          client.ssl_options.ca_file = File.join(Google::Apis::ROOT, 'lib', 'cacerts.pem')
           client.header[:user_agent] = user_agent
           client
         end
