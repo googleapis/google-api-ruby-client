@@ -64,6 +64,36 @@ RSpec.describe Google::Apis::Core::BaseService do
     end
   end
 
+  context 'when making raw http requests' do
+    context 'with :get methods' do
+      before(:example) do
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(body: 'hello world')
+      end
+
+      it 'should return body for get' do
+        response = service.http(:get, 'https://www.googleapis.com/zoo/animals')
+        expect(response).to eq 'hello world'
+      end
+
+      it 'should return allow downloads' do
+        response = service.http(:get, 'https://www.googleapis.com/zoo/animals', download_dest: StringIO.new)
+        expect(response.string).to eq 'hello world'
+      end
+    end
+
+    context 'with :post methods' do
+      before(:example) do
+        stub_request(:post, 'https://www.googleapis.com/zoo/animals').to_return(body: '')
+      end
+
+      it 'should post body' do
+        service.http(:post, 'https://www.googleapis.com/zoo/animals', body: 'hello')
+        expect(a_request(:post, 'https://www.googleapis.com/zoo/animals')
+          .with(body: 'hello')).to have_been_made
+      end
+    end
+  end
+
   context 'when making simple commands' do
     let(:command) { service.send(:make_simple_command, :get, 'zoo/animals', authorization: 'foo') }
 
@@ -89,6 +119,10 @@ RSpec.describe Google::Apis::Core::BaseService do
     it 'should build a correct URL' do
       url = command.url.expand({}).to_s
       expect(url).to eql 'https://www.googleapis.com/zoo/animals'
+    end
+
+    it 'should include alt=media in params' do
+      expect(command.query).to include('alt' => 'media')
     end
 
     include_examples 'with options'

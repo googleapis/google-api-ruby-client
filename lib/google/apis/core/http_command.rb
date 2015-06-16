@@ -20,6 +20,7 @@ require 'retriable'
 require 'hurley'
 require 'hurley/addressable'
 require 'google/apis/core/logging'
+require 'pp'
 
 module Google
   module Apis
@@ -208,7 +209,7 @@ module Google
         # @return [Object] result if no block given
         # @yield [result, nil] if block given
         def success(result, &block)
-          logger.debug { sprintf('Success - %s', result.inspect) }
+          logger.debug { sprintf('Success - %s', PP.pp(result, '')) }
           block.call(result, nil) if block_given?
           result
         end
@@ -222,7 +223,7 @@ module Google
         # @yield [nil, err] if block given
         # @raise [StandardError] if no block
         def error(err, rethrow: false, &block)
-          logger.debug { sprintf('Error - %s', err) }
+          logger.debug { sprintf('Error - %s', PP.pp(err, '')) }
           err = Google::Apis::TransmissionError.new(err) if err.is_a?(Hurley::ClientError)
           block.call(nil, err) if block_given?
           fail err if rethrow || block.nil?

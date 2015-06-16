@@ -23,8 +23,6 @@ module Google
       # Streaming/resumable media download support
       class DownloadCommand < ApiCommand
         RANGE_HEADER = 'range'
-        ALT_PARAM = 'alt'
-        ALT_MEDIA = 'media'
 
         # File or IO to write content to
         # @return [String, File, #write]
@@ -37,7 +35,6 @@ module Google
           @state = :start
           @download_url = nil
           @offset = 0
-          query[ALT_PARAM] = ALT_MEDIA
           if download_dest.respond_to?(:write)
             @download_io = download_dest
             @close_io_on_finish = false

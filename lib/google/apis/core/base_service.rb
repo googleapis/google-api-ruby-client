@@ -154,6 +154,42 @@ module Google
           @client ||= new_client
         end
 
+
+        # Simple escape hatch for making API requests directly to a given
+        # URL. This is not intended to be used as a generic HTTP client
+        # and should be used only in cases where no service method exists
+        # (e.g. fetching an export link for a Google Drive file.)
+        #
+        # @param [Symbol] method
+        #   HTTP method as symbol (e.g. :get, :post, :put, ...)
+        # @param [String] url
+        #   URL to call
+        # @param [Hash<String,String] params
+        #   Optional hash of query parameters
+        # @param [#read] body
+        #   Optional body for POST/PUT
+        # @param [IO, String] download_dest
+        #   IO stream or filename to receive content download
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [String] HTTP response body
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [String] HTTP response body
+        def http(method, url, params: nil, body: nil, download_dest: nil, options: nil, &block)
+          if download_dest
+            command = DownloadCommand.new(method, url, body: body)
+          else
+            command = HttpCommand.new(method, url, body: body)
+          end
+          command.options = request_options.merge(options)
+          apply_command_defaults(command)
+          command.query.merge(Hash(params))
+          execute_or_queue_command(command, &block)
+        end
+
         protected
 
         # Create a new upload command.
@@ -190,6 +226,7 @@ module Google
           template = Addressable::Template.new(root_url + base_path + path)
           command = DownloadCommand.new(method, template)
           command.options = request_options.merge(options)
+          command.query['alt'] = 'media'
           apply_command_defaults(command)
           command
         end

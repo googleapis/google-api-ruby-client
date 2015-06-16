@@ -32,18 +32,13 @@ RSpec.describe Google::Apis::Core::DownloadCommand do
   shared_examples 'should download' do
     context 'with successful response' do
       before(:example) do
-        stub_request(:get, 'https://www.googleapis.com/zoo/animals?alt=media')
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals')
           .to_return(headers: { 'Content-Type' => 'application/json' }, body: %(Hello world))
-      end
-
-      it 'should include the alt=media param' do
-        command.execute(client)
-        expect(a_request(:get, 'https://www.googleapis.com/zoo/animals?alt=media')).to have_been_made
       end
 
       it 'should not include a range header' do
         command.execute(client)
-        expect(a_request(:get, 'https://www.googleapis.com/zoo/animals?alt=media')
+        expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
           .with { |req| !req.headers.key?('Range') }
               ).to have_been_made
       end
@@ -55,7 +50,7 @@ RSpec.describe Google::Apis::Core::DownloadCommand do
 
     context 'with disconnects' do
       before(:example) do
-        stub_request(:get, 'https://www.googleapis.com/zoo/animals?alt=media')
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals')
           .to_return(body: ['Hello ', Timeout::Error])
           .to_return(body: 'world')
       end
