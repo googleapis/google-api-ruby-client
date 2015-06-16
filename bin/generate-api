@@ -34,11 +34,21 @@ module Google
       create_file(options[:names_out]) { |*| generator.dump_api_names } if options[:names_out]
     end
 
+    desc 'list', 'List public APIs'
+    method_options verbose: :boolean, preferred_only: :boolean
+    def list
+      Google::Apis.logger.level = Logger::DEBUG if options[:verbose]
+      discovery = Discovery::DiscoveryService.new
+      apis = discovery.list_apis
+      apis.items.each do |api|
+        say sprintf('%s - %s', api.id, api.description).strip unless options[:preferred_only] && !api.preferred?
+      end
+    end
+
     no_commands do
       def generate_from_url(url)
-        open(url) do |f|
-          generate_api(f.read)
-        end
+        json = discovery.http(:get, url)
+        generate_api(json)
       end
 
       def generate_from_file(file)
@@ -48,14 +58,15 @@ module Google
       end
 
       def generate_from_discovery(preferred_only: false, id: nil)
-        say "Fetching API list"
+        say 'Fetching API list'
         id = Array(id)
-        discovery = Discovery::DiscoveryService.new
         apis = discovery.list_apis
         apis.items.each do |api|
           if (id.empty? && preferred_only && api.preferred?) || id.include?(api.id)
-            say sprintf("Loading %s, version %s from %s", api.name, api.version, api.discovery_rest_url)
+            say sprintf('Loading %s, version %s from %s', api.name, api.version, api.discovery_rest_url)
             generate_from_url(api.discovery_rest_url)
+          else
+            say sprintf('Ignoring disoverable API %s', api.id)
           end
         end
       end
@@ -65,6 +76,10 @@ module Google
         files.each do |file, content|
           create_file(file) { |*| content }
         end
+      end
+
+      def discovery
+        @discovery ||= Discovery::DiscoveryService.new
       end
 
       def generator
