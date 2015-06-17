@@ -15,7 +15,6 @@ APIS=(adexchangebuyer:v1.3 \
 	androidpublisher:v2 \
 	appsactivity:v1 \
 	appstate:v1 \
-	audit:v1 \
 	autoscaler:v1beta2 \
 	bigquery:v2 \
 	blogger:v3 \
@@ -23,13 +22,14 @@ APIS=(adexchangebuyer:v1.3 \
 	calendar:v3 \
 	civicinfo:v2 \
 	cloudmonitoring:v2beta2 \
+	cloudresourcemanager:v1beta1 \
 	compute:v1 \
 	container:v1beta1 \
 	content:v2 \
 	coordinate:v1 \
 	customsearch:v1 \
 	datastore:v1beta2 \
-	deploymentmanager:v2beta1 \
+	deploymentmanager:v2beta2 \
 	dfareporting:v2.1 \
 	discovery:v1 \
 	dns:v1 \
