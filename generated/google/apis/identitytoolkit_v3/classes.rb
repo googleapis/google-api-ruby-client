@@ -411,6 +411,12 @@ module Google
         # @return [String]
         attr_accessor :captcha_response
       
+        # Whether to disable the user.
+        # Corresponds to the JSON property `disableUser`
+        # @return [Boolean]
+        attr_accessor :disable_user
+        alias_method :disable_user?, :disable_user
+      
         # The name of the user.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -458,6 +464,11 @@ module Google
         attr_accessor :upgrade_to_federated_login
         alias_method :upgrade_to_federated_login?, :upgrade_to_federated_login
       
+        # Timestamp in seconds for valid login token.
+        # Corresponds to the JSON property `validSince`
+        # @return [String]
+        attr_accessor :valid_since
+      
         def initialize(**args)
            update!(**args)
         end
@@ -466,6 +477,7 @@ module Google
         def update!(**args)
           @captcha_challenge = args[:captcha_challenge] unless args[:captcha_challenge].nil?
           @captcha_response = args[:captcha_response] unless args[:captcha_response].nil?
+          @disable_user = args[:disable_user] unless args[:disable_user].nil?
           @display_name = args[:display_name] unless args[:display_name].nil?
           @email = args[:email] unless args[:email].nil?
           @email_verified = args[:email_verified] unless args[:email_verified].nil?
@@ -475,6 +487,7 @@ module Google
           @password = args[:password] unless args[:password].nil?
           @provider = args[:provider] unless args[:provider].nil?
           @upgrade_to_federated_login = args[:upgrade_to_federated_login] unless args[:upgrade_to_federated_login].nil?
+          @valid_since = args[:valid_since] unless args[:valid_since].nil?
         end
       end
       
@@ -825,6 +838,12 @@ module Google
       class UserInfo
         include Google::Apis::Core::Hashable
       
+        # Whether the user is disabled.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
         # The name of the user.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -871,6 +890,11 @@ module Google
         # @return [String]
         attr_accessor :salt
       
+        # Timestamp in seconds for valid login token.
+        # Corresponds to the JSON property `validSince`
+        # @return [String]
+        attr_accessor :valid_since
+      
         # Version of the user's password.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
@@ -882,6 +906,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disabled = args[:disabled] unless args[:disabled].nil?
           @display_name = args[:display_name] unless args[:display_name].nil?
           @email = args[:email] unless args[:email].nil?
           @email_verified = args[:email_verified] unless args[:email_verified].nil?
@@ -891,6 +916,7 @@ module Google
           @photo_url = args[:photo_url] unless args[:photo_url].nil?
           @provider_user_info = args[:provider_user_info] unless args[:provider_user_info].nil?
           @salt = args[:salt] unless args[:salt].nil?
+          @valid_since = args[:valid_since] unless args[:valid_since].nil?
           @version = args[:version] unless args[:version].nil?
         end
         

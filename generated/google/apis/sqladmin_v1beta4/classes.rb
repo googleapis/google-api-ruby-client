@@ -478,6 +478,7 @@ module Google
         # billing.
         # PENDING_CREATE: The instance is being created.
         # MAINTENANCE: The instance is down for maintenance.
+        # FAILED: The instance creation failed.
         # UNKNOWN_STATE: The state of the instance is unknown.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1517,7 +1518,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # 
+        # The URI of this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link

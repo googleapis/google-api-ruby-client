@@ -673,6 +673,16 @@ module Google
       class PerformanceReport
         include Google::Apis::Core::Hashable
       
+        # The number of bid responses with an ad.
+        # Corresponds to the JSON property `bidRate`
+        # @return [Float]
+        attr_accessor :bid_rate
+      
+        # The number of bid requests sent to your bidder.
+        # Corresponds to the JSON property `bidRequestRate`
+        # @return [Float]
+        attr_accessor :bid_request_rate
+      
         # Rate of various prefiltering statuses per match. Please refer to the callout-
         # status-codes.txt file for different statuses.
         # Corresponds to the JSON property `calloutStatusRate`
@@ -690,10 +700,21 @@ module Google
         # @return [Array<Object>]
         attr_accessor :creative_status_rate
       
+        # The number of bid responses that were filtered due to a policy violation or
+        # other errors.
+        # Corresponds to the JSON property `filteredBidRate`
+        # @return [Float]
+        attr_accessor :filtered_bid_rate
+      
         # Average QPS for hosted match operations.
         # Corresponds to the JSON property `hostedMatchStatusRate`
         # @return [Array<Object>]
         attr_accessor :hosted_match_status_rate
+      
+        # The number of potential queries based on your pretargeting settings.
+        # Corresponds to the JSON property `inventoryMatchRate`
+        # @return [Float]
+        attr_accessor :inventory_match_rate
       
         # Resource type.
         # Corresponds to the JSON property `kind`
@@ -753,10 +774,22 @@ module Google
         # @return [String]
         attr_accessor :region
       
+        # The number of properly formed bid responses received by our servers within the
+        # deadline.
+        # Corresponds to the JSON property `successfulRequestRate`
+        # @return [Float]
+        attr_accessor :successful_request_rate
+      
         # The unix timestamp of the starting time of this performance data.
         # Corresponds to the JSON property `timestamp`
         # @return [String]
         attr_accessor :timestamp
+      
+        # The number of bid responses that were unsuccessful due to timeouts, incorrect
+        # formatting, etc.
+        # Corresponds to the JSON property `unsuccessfulRequestRate`
+        # @return [Float]
+        attr_accessor :unsuccessful_request_rate
       
         def initialize(**args)
            update!(**args)
@@ -764,10 +797,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bid_rate = args[:bid_rate] unless args[:bid_rate].nil?
+          @bid_request_rate = args[:bid_request_rate] unless args[:bid_request_rate].nil?
           @callout_status_rate = args[:callout_status_rate] unless args[:callout_status_rate].nil?
           @cookie_matcher_status_rate = args[:cookie_matcher_status_rate] unless args[:cookie_matcher_status_rate].nil?
           @creative_status_rate = args[:creative_status_rate] unless args[:creative_status_rate].nil?
+          @filtered_bid_rate = args[:filtered_bid_rate] unless args[:filtered_bid_rate].nil?
           @hosted_match_status_rate = args[:hosted_match_status_rate] unless args[:hosted_match_status_rate].nil?
+          @inventory_match_rate = args[:inventory_match_rate] unless args[:inventory_match_rate].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @latency_50th_percentile = args[:latency_50th_percentile] unless args[:latency_50th_percentile].nil?
           @latency_85th_percentile = args[:latency_85th_percentile] unless args[:latency_85th_percentile].nil?
@@ -779,7 +816,9 @@ module Google
           @quota_configured_limit = args[:quota_configured_limit] unless args[:quota_configured_limit].nil?
           @quota_throttled_limit = args[:quota_throttled_limit] unless args[:quota_throttled_limit].nil?
           @region = args[:region] unless args[:region].nil?
+          @successful_request_rate = args[:successful_request_rate] unless args[:successful_request_rate].nil?
           @timestamp = args[:timestamp] unless args[:timestamp].nil?
+          @unsuccessful_request_rate = args[:unsuccessful_request_rate] unless args[:unsuccessful_request_rate].nil?
         end
       end
       

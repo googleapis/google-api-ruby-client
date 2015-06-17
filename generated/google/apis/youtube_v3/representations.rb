@@ -310,7 +310,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class LiveBroadcastStatistics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class LiveBroadcastStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class LiveBroadcastTopic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class LiveBroadcastTopicDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class LiveBroadcastTopicSnippet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -318,7 +334,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class LiveStreamConfigurationIssue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class LiveStreamContentDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class LiveStreamHealthStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -1498,7 +1522,11 @@ module Google
           property :kind, as: 'kind'
           property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::LiveBroadcastSnippet, decorator: Google::Apis::YoutubeV3::LiveBroadcastSnippet::Representation
       
+          property :statistics, as: 'statistics', class: Google::Apis::YoutubeV3::LiveBroadcastStatistics, decorator: Google::Apis::YoutubeV3::LiveBroadcastStatistics::Representation
+      
           property :status, as: 'status', class: Google::Apis::YoutubeV3::LiveBroadcastStatus, decorator: Google::Apis::YoutubeV3::LiveBroadcastStatus::Representation
+      
+          property :topic_details, as: 'topicDetails', class: Google::Apis::YoutubeV3::LiveBroadcastTopicDetails, decorator: Google::Apis::YoutubeV3::LiveBroadcastTopicDetails::Representation
       
         end
       end
@@ -1511,6 +1539,7 @@ module Google
           property :enable_content_encryption, as: 'enableContentEncryption'
           property :enable_dvr, as: 'enableDvr'
           property :enable_embed, as: 'enableEmbed'
+          property :enable_low_latency, as: 'enableLowLatency'
           property :monitor_stream, as: 'monitorStream', class: Google::Apis::YoutubeV3::MonitorStreamInfo, decorator: Google::Apis::YoutubeV3::MonitorStreamInfo::Representation
       
           property :record_from_start, as: 'recordFromStart'
@@ -1545,6 +1574,7 @@ module Google
       
           property :channel_id, as: 'channelId'
           property :description, as: 'description'
+          property :is_default_broadcast, as: 'isDefaultBroadcast'
           property :published_at, as: 'publishedAt', type: DateTime
       
           property :scheduled_end_time, as: 'scheduledEndTime', type: DateTime
@@ -1558,13 +1588,46 @@ module Google
       end
       
       # @private
+      class LiveBroadcastStatistics
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :concurrent_viewers, as: 'concurrentViewers'
+          property :total_chat_count, as: 'totalChatCount'
+        end
+      end
+      
+      # @private
       class LiveBroadcastStatus
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :is_default_broadcast, as: 'isDefaultBroadcast'
           property :life_cycle_status, as: 'lifeCycleStatus'
           property :live_broadcast_priority, as: 'liveBroadcastPriority'
           property :privacy_status, as: 'privacyStatus'
           property :recording_status, as: 'recordingStatus'
+        end
+      end
+      
+      # @private
+      class LiveBroadcastTopic
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::LiveBroadcastTopicSnippet, decorator: Google::Apis::YoutubeV3::LiveBroadcastTopicSnippet::Representation
+      
+          property :type, as: 'type'
+          property :unmatched, as: 'unmatched'
+        end
+      end
+      
+      # @private
+      class LiveBroadcastTopicDetails
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :topics, as: 'topics', class: Google::Apis::YoutubeV3::LiveBroadcastTopic, decorator: Google::Apis::YoutubeV3::LiveBroadcastTopic::Representation
+      
+        end
+      end
+      
+      # @private
+      class LiveBroadcastTopicSnippet
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :release_date, as: 'releaseDate'
         end
       end
       
@@ -1586,10 +1649,30 @@ module Google
       end
       
       # @private
+      class LiveStreamConfigurationIssue
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :reason, as: 'reason'
+          property :severity, as: 'severity'
+          property :type, as: 'type'
+        end
+      end
+      
+      # @private
       class LiveStreamContentDetails
         class Representation < Google::Apis::Core::JsonRepresentation
           property :closed_captions_ingestion_url, as: 'closedCaptionsIngestionUrl'
           property :is_reusable, as: 'isReusable'
+        end
+      end
+      
+      # @private
+      class LiveStreamHealthStatus
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :configuration_issues, as: 'configurationIssues', class: Google::Apis::YoutubeV3::LiveStreamConfigurationIssue, decorator: Google::Apis::YoutubeV3::LiveStreamConfigurationIssue::Representation
+      
+          property :last_update_time_s, as: 'lastUpdateTimeS'
+          property :status, as: 'status'
         end
       end
       
@@ -1616,6 +1699,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel_id, as: 'channelId'
           property :description, as: 'description'
+          property :is_default_stream, as: 'isDefaultStream'
           property :published_at, as: 'publishedAt', type: DateTime
       
           property :title, as: 'title'
@@ -1625,7 +1709,8 @@ module Google
       # @private
       class LiveStreamStatus
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :is_default_stream, as: 'isDefaultStream'
+          property :health_status, as: 'healthStatus', class: Google::Apis::YoutubeV3::LiveStreamHealthStatus, decorator: Google::Apis::YoutubeV3::LiveStreamHealthStatus::Representation
+      
           property :stream_status, as: 'streamStatus'
         end
       end
@@ -2362,6 +2447,7 @@ module Google
           property :category_id, as: 'categoryId'
           property :channel_id, as: 'channelId'
           property :channel_title, as: 'channelTitle'
+          property :default_audio_language, as: 'defaultAudioLanguage'
           property :default_language, as: 'defaultLanguage'
           property :description, as: 'description'
           property :live_broadcast_content, as: 'liveBroadcastContent'

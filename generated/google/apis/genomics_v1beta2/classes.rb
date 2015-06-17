@@ -110,7 +110,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # A map of additional data for this annotation.
+        # A string which maps to an array of values.
         # Corresponds to the JSON property `info`
         # @return [Hash<String,Array<String>>]
         attr_accessor :info
@@ -176,7 +176,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # A map of additional data for this annotation set.
+        # A string which maps to an array of values.
         # Corresponds to the JSON property `info`
         # @return [Hash<String,Array<String>>]
         attr_accessor :info
@@ -353,7 +353,7 @@ module Google
         # @return [Array<Float>]
         attr_accessor :genotype_likelihood
       
-        # A map of additional variant call information.
+        # A string which maps to an array of values.
         # Corresponds to the JSON property `info`
         # @return [Hash<String,Array<String>>]
         attr_accessor :info
@@ -452,7 +452,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # A map of additional call set information.
+        # A string which maps to an array of values.
         # Corresponds to the JSON property `info`
         # @return [Hash<String,Array<String>>]
         attr_accessor :info
@@ -668,19 +668,19 @@ module Google
       class ExportReadGroupSetsRequest
         include Google::Apis::Core::Hashable
       
-        # A Google Cloud Storage URI for the exported BAM file. The currently
+        # Required. A Google Cloud Storage URI for the exported BAM file. The currently
         # authenticated user must have write access to the new file. An error will be
         # returned if the URI already contains data.
         # Corresponds to the JSON property `exportUri`
         # @return [String]
         attr_accessor :export_uri
       
-        # The Google Developers Console project number that owns this export.
+        # Required. The Google Developers Console project number that owns this export.
         # Corresponds to the JSON property `projectNumber`
         # @return [String]
         attr_accessor :project_number
       
-        # The IDs of the read group sets to export.
+        # Required. The IDs of the read group sets to export.
         # Corresponds to the JSON property `readGroupSetIds`
         # @return [Array<String>]
         attr_accessor :read_group_set_ids
@@ -728,14 +728,14 @@ module Google
       class ExportVariantSetRequest
         include Google::Apis::Core::Hashable
       
-        # The BigQuery dataset to export data to. Note that this is distinct from the
-        # Genomics concept of "dataset".
+        # Required. The BigQuery dataset to export data to. This dataset must already
+        # exist. Note that this is distinct from the Genomics concept of "dataset".
         # Corresponds to the JSON property `bigqueryDataset`
         # @return [String]
         attr_accessor :bigquery_dataset
       
-        # The BigQuery table to export data to. If the table doesn't exist, it will be
-        # created. If it already exists, it will be overwritten.
+        # Required. The BigQuery table to export data to. If the table doesn't exist, it
+        # will be created. If it already exists, it will be overwritten.
         # Corresponds to the JSON property `bigqueryTable`
         # @return [String]
         attr_accessor :bigquery_table
@@ -751,9 +751,9 @@ module Google
         # @return [String]
         attr_accessor :format
       
-        # The Google Cloud project number that owns the destination BigQuery dataset.
-        # The caller must have WRITE access to this project. This project will also own
-        # the resulting export job.
+        # Required. The Google Cloud project number that owns the destination BigQuery
+        # dataset. The caller must have WRITE access to this project. This project will
+        # also own the resulting export job.
         # Corresponds to the JSON property `projectNumber`
         # @return [String]
         attr_accessor :project_number
@@ -926,13 +926,26 @@ module Google
       class ImportVariantsRequest
         include Google::Apis::Core::Hashable
       
-        # The format of the variant data being imported.
+        # The format of the variant data being imported. If unspecified, defaults to to "
+        # VCF".
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
       
-        # A list of URIs pointing at VCF files in Google Cloud Storage. See the VCF
-        # Specification for more details on the input format.
+        # Convert reference names to the canonical representation. hg19 haploytypes (
+        # those reference names containing "_hap") are not modified in any way. All
+        # other reference names are modified according to the following rules: The
+        # reference name is capitalized. The "chr" prefix is dropped for all autosomes
+        # and sex chromsomes. For example "chr17" becomes "17" and "chrX" becomes "X".
+        # All mitochondrial chromosomes ("chrM", "chrMT", etc) become "MT".
+        # Corresponds to the JSON property `normalizeReferenceNames`
+        # @return [Boolean]
+        attr_accessor :normalize_reference_names
+        alias_method :normalize_reference_names?, :normalize_reference_names
+      
+        # A list of URIs referencing variant files in Google Cloud Storage. URIs can
+        # include wildcards as described here. Note that recursive wildcards ('**') are
+        # not supported.
         # Corresponds to the JSON property `sourceUris`
         # @return [Array<String>]
         attr_accessor :source_uris
@@ -944,6 +957,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @format = args[:format] unless args[:format].nil?
+          @normalize_reference_names = args[:normalize_reference_names] unless args[:normalize_reference_names].nil?
           @source_uris = args[:source_uris] unless args[:source_uris].nil?
         end
       end
@@ -967,7 +981,8 @@ module Google
         end
       end
       
-      # Wrapper message for int32.
+      # Wrapper message for `int32`.
+      # The JSON representation for `Int32Value` is JSON number.
       class Int32Value
         include Google::Apis::Core::Hashable
       
@@ -1112,6 +1127,31 @@ module Google
           @destination = args[:destination] unless args[:destination].nil?
           @source = args[:source] unless args[:source].nil?
           @type = args[:type] unless args[:type].nil?
+        end
+      end
+      
+      # Used to hold basic key value information.
+      class KeyValue
+        include Google::Apis::Core::Hashable
+      
+        # A string which maps to an array of values.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The string values.
+        # Corresponds to the JSON property `value`
+        # @return [Array<String>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] unless args[:key].nil?
+          @value = args[:value] unless args[:value].nil?
         end
       end
       
@@ -1287,7 +1327,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Remaining structured metadata key-value pairs.
+        # A string which maps to an array of values.
         # Corresponds to the JSON property `info`
         # @return [Hash<String,Array<String>>]
         attr_accessor :info
@@ -1610,7 +1650,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # A map of additional read alignment information.
+        # A string which maps to an array of values.
         # Corresponds to the JSON property `info`
         # @return [Hash<String,Array<String>>]
         attr_accessor :info
@@ -1730,7 +1770,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # A map of additional read group information.
+        # A string which maps to an array of values.
         # Corresponds to the JSON property `info`
         # @return [Hash<String,Array<String>>]
         attr_accessor :info
@@ -1894,7 +1934,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # A map of additional read group set information.
+        # A string which maps to an array of values.
         # Corresponds to the JSON property `info`
         # @return [Hash<String,Array<String>>]
         attr_accessor :info
@@ -2831,8 +2871,9 @@ module Google
         # @return [String]
         attr_accessor :variant_name
       
-        # Exactly one variant set ID must be provided. Only variants from this variant
-        # set will be returned.
+        # At most one variant set ID must be provided. Only variants from this variant
+        # set will be returned. If omitted, a call set id must be included in the
+        # request.
         # Corresponds to the JSON property `variantSetIds`
         # @return [Array<String>]
         attr_accessor :variant_set_ids
@@ -2879,66 +2920,6 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @variants = args[:variants] unless args[:variants].nil?
-        end
-      end
-      
-      # 
-      class StreamReadsRequest
-        include Google::Apis::Core::Hashable
-      
-        # The end position of the range on the reference, 0-based exclusive. If
-        # specified, referenceName must also be specified.
-        # Corresponds to the JSON property `end`
-        # @return [String]
-        attr_accessor :end
-      
-        # The ID of the read groups set within which to search for reads. Exactly one ID
-        # must be provided.
-        # Corresponds to the JSON property `readGroupSetIds`
-        # @return [Array<String>]
-        attr_accessor :read_group_set_ids
-      
-        # The reference sequence name, for example chr1, 1, or chrX. If set to *, only
-        # unmapped reads are returned.
-        # Corresponds to the JSON property `referenceName`
-        # @return [String]
-        attr_accessor :reference_name
-      
-        # The start position of the range on the reference, 0-based inclusive. If
-        # specified, referenceName must also be specified.
-        # Corresponds to the JSON property `start`
-        # @return [String]
-        attr_accessor :start
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end = args[:end] unless args[:end].nil?
-          @read_group_set_ids = args[:read_group_set_ids] unless args[:read_group_set_ids].nil?
-          @reference_name = args[:reference_name] unless args[:reference_name].nil?
-          @start = args[:start] unless args[:start].nil?
-        end
-      end
-      
-      # 
-      class StreamReadsResponse
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `alignments`
-        # @return [Array<Google::Apis::GenomicsV1beta2::Read>]
-        attr_accessor :alignments
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @alignments = args[:alignments] unless args[:alignments].nil?
         end
       end
       
@@ -3030,7 +3011,8 @@ module Google
         # @return [String]
         attr_accessor :end
       
-        # Wrapper message for int32.
+        # Wrapper message for `int32`.
+        # The JSON representation for `Int32Value` is JSON number.
         # Corresponds to the JSON property `frame`
         # @return [Google::Apis::GenomicsV1beta2::Int32Value]
         attr_accessor :frame
@@ -3099,7 +3081,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # A map of additional variant information.
+        # A string which maps to an array of values.
         # Corresponds to the JSON property `info`
         # @return [Hash<String,Array<String>>]
         attr_accessor :info

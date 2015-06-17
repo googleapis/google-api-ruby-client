@@ -12,26 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/sqladmin_v1beta4/service.rb'
-require 'google/apis/sqladmin_v1beta4/classes.rb'
-require 'google/apis/sqladmin_v1beta4/representations.rb'
+require 'google/apis/cloudresourcemanager_v1beta1/service.rb'
+require 'google/apis/cloudresourcemanager_v1beta1/classes.rb'
+require 'google/apis/cloudresourcemanager_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Cloud SQL Administration API
+    # Google Cloud Resource Manager API
     #
-    # API for Cloud SQL database instance management.
+    # The Google Cloud Resource Manager API provides methods for creating, reading,
+    # and updating of project metadata, including IAM policies, and will shortly
+    # provide the same for other high-level entities (e.g. customers and resource
+    # groups). Longer term, we expect the cloudresourcemanager API to encompass
+    # other Cloud resources as well.
     #
-    # @see https://cloud.google.com/sql/docs/reference/latest
-    module SqladminV1beta4
-      VERSION = 'V1beta4'
-      REVISION = '20150330'
+    # @see https://cloud.google.com/resource-manager
+    module CloudresourcemanagerV1beta1
+      VERSION = 'V1beta1'
+      REVISION = '20150603'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # Manage your Google SQL Service instances
-      AUTH_SQLSERVICE_ADMIN = 'https://www.googleapis.com/auth/sqlservice.admin'
     end
   end
 end

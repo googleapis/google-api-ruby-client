@@ -756,6 +756,8 @@ module Google
           property :description, as: 'description'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          property :last_attach_timestamp, as: 'lastAttachTimestamp'
+          property :last_detach_timestamp, as: 'lastDetachTimestamp'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
           property :options, as: 'options'
@@ -767,6 +769,7 @@ module Google
           property :source_snapshot_id, as: 'sourceSnapshotId'
           property :status, as: 'status'
           property :type, as: 'type'
+          collection :users, as: 'users'
           property :zone, as: 'zone'
         end
       end

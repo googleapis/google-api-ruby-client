@@ -19,20 +19,20 @@ require 'google/apis/errors'
 
 module Google
   module Apis
-    module DeploymentmanagerV2beta1
+    module DeploymentmanagerV2beta2
       # Google Cloud Deployment Manager API V2
       #
       # The Deployment Manager API allows users to declaratively configure, deploy and
       #  run complex solutions on the Google Cloud Platform.
       #
       # @example
-      #    require 'google/apis/deploymentmanager_v2beta1'
+      #    require 'google/apis/deploymentmanager_v2beta2'
       #
-      #    Deploymentmanager = Google::Apis::DeploymentmanagerV2beta1 # Alias the module
-      #    service = Deploymentmanager::DeploymentmanagerService.new
+      #    Deploymentmanager = Google::Apis::DeploymentmanagerV2beta2 # Alias the module
+      #    service = Deploymentmanager::DeploymentManagerService.new
       #
       # @see https://developers.google.com/deployment-manager/
-      class DeploymentmanagerService < Google::Apis::Core::BaseService
+      class DeploymentManagerService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -50,14 +50,14 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'deploymentmanager/v2beta1/projects/')
+          super('https://www.googleapis.com/', 'deploymentmanager/v2beta2/projects/')
         end
         
-        # ! Deletes a deployment and all of the resources in the deployment.
+        # Deletes a deployment and all of the resources in the deployment.
         # @param [String] project
-        #   ! The project ID for this request.
+        #   The project ID for this request.
         # @param [String] deployment
-        #   ! The name of the deployment for this request.
+        #   The name of the deployment for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -71,10 +71,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta2::Operation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2beta1::Operation]
+        # @return [Google::Apis::DeploymentmanagerV2beta2::Operation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -82,8 +82,8 @@ module Google
         def delete_deployment(project, deployment, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments/{deployment}'
           command =  make_simple_command(:delete, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::Operation::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2beta1::Operation
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta2::Operation::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta2::Operation
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -92,11 +92,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ! Gets information about a specific deployment.
+        # Gets information about a specific deployment.
         # @param [String] project
-        #   ! The project ID for this request.
+        #   The project ID for this request.
         # @param [String] deployment
-        #   ! The name of the deployment for this request.
+        #   The name of the deployment for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -110,10 +110,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::Deployment] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta2::Deployment] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2beta1::Deployment]
+        # @return [Google::Apis::DeploymentmanagerV2beta2::Deployment]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -121,8 +121,8 @@ module Google
         def get_deployment(project, deployment, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments/{deployment}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::Deployment::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2beta1::Deployment
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta2::Deployment::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta2::Deployment
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -131,11 +131,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ! Creates a deployment and all of the resources described by the ! deployment
+        # Creates a deployment and all of the resources described by the deployment
         # manifest.
         # @param [String] project
-        #   ! The project ID for this request.
-        # @param [Google::Apis::DeploymentmanagerV2beta1::Deployment] deployment_object
+        #   The project ID for this request.
+        # @param [Google::Apis::DeploymentmanagerV2beta2::Deployment] deployment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -149,10 +149,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta2::Operation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2beta1::Operation]
+        # @return [Google::Apis::DeploymentmanagerV2beta2::Operation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -160,10 +160,10 @@ module Google
         def insert_deployment(project, deployment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments'
           command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::DeploymentmanagerV2beta1::Deployment::Representation
+          command.request_representation = Google::Apis::DeploymentmanagerV2beta2::Deployment::Representation
           command.request_object = deployment_object
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::Operation::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2beta1::Operation
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta2::Operation::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta2::Operation
           command.params['project'] = project unless project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -171,15 +171,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ! Lists all deployments for a given project.
+        # Lists all deployments for a given project.
         # @param [String] project
-        #   ! The project ID for this request.
+        #   The project ID for this request.
+        # @param [String] filter
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   ! Maximum count of results to be returned. ! Acceptable values are 0 to 100,
-        #   inclusive. (Default: 50)
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   ! Specifies a nextPageToken returned by a previous list request. This ! token
-        #   can be used to request the next page of results from a previous ! list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -193,20 +194,21 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::ListDeploymentsResponse] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta2::ListDeploymentsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2beta1::ListDeploymentsResponse]
+        # @return [Google::Apis::DeploymentmanagerV2beta2::ListDeploymentsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_deployments(project, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_deployments(project, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ListDeploymentsResponse::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2beta1::ListDeploymentsResponse
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta2::ListDeploymentsResponse::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta2::ListDeploymentsResponse
           command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -215,13 +217,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ! Gets information about a specific manifest.
+        # Updates a deployment and all of the resources described by the deployment
+        # manifest. This method supports patch semantics.
         # @param [String] project
-        #   ! The project ID for this request.
+        #   The project ID for this request.
         # @param [String] deployment
-        #   ! The name of the deployment for this request.
-        # @param [String] manifest
-        #   ! The name of the manifest for this request.
+        #   The name of the deployment for this request.
+        # @param [Google::Apis::DeploymentmanagerV2beta2::Deployment] deployment_object
+        # @param [String] create_policy
+        #   Sets the policy to use for creating new resources.
+        # @param [String] delete_policy
+        #   Sets the policy to use for deleting resources.
+        # @param [String] update_policy
+        #   Sets the policy to use for updating resources.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -235,10 +243,108 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::Manifest] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta2::Operation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2beta1::Manifest]
+        # @return [Google::Apis::DeploymentmanagerV2beta2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_deployment(project, deployment, deployment_object = nil, create_policy: nil, delete_policy: nil, update_policy: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/global/deployments/{deployment}'
+          command =  make_simple_command(:patch, path, options)
+          command.request_representation = Google::Apis::DeploymentmanagerV2beta2::Deployment::Representation
+          command.request_object = deployment_object
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta2::Operation::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta2::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['deployment'] = deployment unless deployment.nil?
+          command.query['createPolicy'] = create_policy unless create_policy.nil?
+          command.query['deletePolicy'] = delete_policy unless delete_policy.nil?
+          command.query['updatePolicy'] = update_policy unless update_policy.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a deployment and all of the resources described by the deployment
+        # manifest.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] deployment
+        #   The name of the deployment for this request.
+        # @param [Google::Apis::DeploymentmanagerV2beta2::Deployment] deployment_object
+        # @param [String] create_policy
+        #   Sets the policy to use for creating new resources.
+        # @param [String] delete_policy
+        #   Sets the policy to use for deleting resources.
+        # @param [String] update_policy
+        #   Sets the policy to use for updating resources.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta2::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeploymentmanagerV2beta2::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_deployment(project, deployment, deployment_object = nil, create_policy: nil, delete_policy: nil, update_policy: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/global/deployments/{deployment}'
+          command =  make_simple_command(:put, path, options)
+          command.request_representation = Google::Apis::DeploymentmanagerV2beta2::Deployment::Representation
+          command.request_object = deployment_object
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta2::Operation::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta2::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['deployment'] = deployment unless deployment.nil?
+          command.query['createPolicy'] = create_policy unless create_policy.nil?
+          command.query['deletePolicy'] = delete_policy unless delete_policy.nil?
+          command.query['updatePolicy'] = update_policy unless update_policy.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets information about a specific manifest.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] deployment
+        #   The name of the deployment for this request.
+        # @param [String] manifest
+        #   The name of the manifest for this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta2::Manifest] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeploymentmanagerV2beta2::Manifest]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -246,8 +352,8 @@ module Google
         def get_manifest(project, deployment, manifest, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments/{deployment}/manifests/{manifest}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::Manifest::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2beta1::Manifest
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta2::Manifest::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta2::Manifest
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
           command.params['manifest'] = manifest unless manifest.nil?
@@ -257,17 +363,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ! Lists all manifests for a given deployment.
+        # Lists all manifests for a given deployment.
         # @param [String] project
-        #   ! The project ID for this request.
+        #   The project ID for this request.
         # @param [String] deployment
-        #   ! The name of the deployment for this request.
+        #   The name of the deployment for this request.
+        # @param [String] filter
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   ! Maximum count of results to be returned. ! Acceptable values are 0 to 100,
-        #   inclusive. (Default: 50)
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   ! Specifies a nextPageToken returned by a previous list request. This ! token
-        #   can be used to request the next page of results from a previous ! list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -281,21 +388,22 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::ListManifestsResponse] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta2::ListManifestsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2beta1::ListManifestsResponse]
+        # @return [Google::Apis::DeploymentmanagerV2beta2::ListManifestsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_manifests(project, deployment, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_manifests(project, deployment, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments/{deployment}/manifests'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ListManifestsResponse::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2beta1::ListManifestsResponse
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta2::ListManifestsResponse::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta2::ListManifestsResponse
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -304,11 +412,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ! Gets information about a specific Operation.
+        # Gets information about a specific operation.
         # @param [String] project
-        #   ! The project ID for this request.
+        #   The project ID for this request.
         # @param [String] operation
-        #   ! The name of the operation for this request.
+        #   The name of the operation for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -322,10 +430,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::Operation] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta2::Operation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2beta1::Operation]
+        # @return [Google::Apis::DeploymentmanagerV2beta2::Operation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -333,8 +441,8 @@ module Google
         def get_operation(project, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/operations/{operation}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::Operation::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2beta1::Operation
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta2::Operation::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta2::Operation
           command.params['project'] = project unless project.nil?
           command.params['operation'] = operation unless operation.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -343,15 +451,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ! Lists all Operations for a project.
+        # Lists all operations for a project.
         # @param [String] project
-        #   ! The project ID for this request.
+        #   The project ID for this request.
+        # @param [String] filter
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   ! Maximum count of results to be returned. ! Acceptable values are 0 to 100,
-        #   inclusive. (Default: 50)
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   ! Specifies a nextPageToken returned by a previous list request. This ! token
-        #   can be used to request the next page of results from a previous ! list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -365,20 +474,21 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::ListOperationsResponse] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta2::ListOperationsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2beta1::ListOperationsResponse]
+        # @return [Google::Apis::DeploymentmanagerV2beta2::ListOperationsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(project, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_operations(project, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/operations'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ListOperationsResponse::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2beta1::ListOperationsResponse
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta2::ListOperationsResponse::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta2::ListOperationsResponse
           command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -387,13 +497,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ! Gets information about a single resource.
+        # Gets information about a single resource.
         # @param [String] project
-        #   ! The project ID for this request.
+        #   The project ID for this request.
         # @param [String] deployment
-        #   ! The name of the deployment for this request.
+        #   The name of the deployment for this request.
         # @param [String] resource
-        #   ! The name of the resource for this request.
+        #   The name of the resource for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -407,10 +517,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::Resource] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta2::Resource] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2beta1::Resource]
+        # @return [Google::Apis::DeploymentmanagerV2beta2::Resource]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -418,8 +528,8 @@ module Google
         def get_resource(project, deployment, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments/{deployment}/resources/{resource}'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::Resource::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2beta1::Resource
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta2::Resource::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta2::Resource
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
           command.params['resource'] = resource unless resource.nil?
@@ -429,17 +539,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ! Lists all resources in a given deployment.
+        # Lists all resources in a given deployment.
         # @param [String] project
-        #   ! The project ID for this request.
+        #   The project ID for this request.
         # @param [String] deployment
-        #   ! The name of the deployment for this request.
+        #   The name of the deployment for this request.
+        # @param [String] filter
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   ! Maximum count of results to be returned. ! Acceptable values are 0 to 100,
-        #   inclusive. (Default: 50)
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   ! Specifies a nextPageToken returned by a previous list request. This ! token
-        #   can be used to request the next page of results from a previous ! list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -453,21 +564,22 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::ListResourcesResponse] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta2::ListResourcesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2beta1::ListResourcesResponse]
+        # @return [Google::Apis::DeploymentmanagerV2beta2::ListResourcesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_resources(project, deployment, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_resources(project, deployment, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/deployments/{deployment}/resources'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ListResourcesResponse::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2beta1::ListResourcesResponse
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta2::ListResourcesResponse::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta2::ListResourcesResponse
           command.params['project'] = project unless project.nil?
           command.params['deployment'] = deployment unless deployment.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -476,15 +588,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # ! Lists all Types for Deployment Manager.
+        # Lists all resource types for Deployment Manager.
         # @param [String] project
-        #   ! The project ID for this request.
+        #   The project ID for this request.
+        # @param [String] filter
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   ! Maximum count of results to be returned. ! Acceptable values are 0 to 100,
-        #   inclusive. (Default: 50)
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   ! Specifies a nextPageToken returned by a previous list request. This ! token
-        #   can be used to request the next page of results from a previous ! list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -498,20 +611,21 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta1::ListTypesResponse] parsed result object
+        # @yieldparam result [Google::Apis::DeploymentmanagerV2beta2::ListTypesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::DeploymentmanagerV2beta1::ListTypesResponse]
+        # @return [Google::Apis::DeploymentmanagerV2beta2::ListTypesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_types(project, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_types(project, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/types'
           command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::DeploymentmanagerV2beta1::ListTypesResponse::Representation
-          command.response_class = Google::Apis::DeploymentmanagerV2beta1::ListTypesResponse
+          command.response_representation = Google::Apis::DeploymentmanagerV2beta2::ListTypesResponse::Representation
+          command.response_class = Google::Apis::DeploymentmanagerV2beta2::ListTypesResponse
           command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

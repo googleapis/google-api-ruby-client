@@ -272,10 +272,14 @@ module Google
       # @private
       class PerformanceReport
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bid_rate, as: 'bidRate'
+          property :bid_request_rate, as: 'bidRequestRate'
           collection :callout_status_rate, as: 'calloutStatusRate'
           collection :cookie_matcher_status_rate, as: 'cookieMatcherStatusRate'
           collection :creative_status_rate, as: 'creativeStatusRate'
+          property :filtered_bid_rate, as: 'filteredBidRate'
           collection :hosted_match_status_rate, as: 'hostedMatchStatusRate'
+          property :inventory_match_rate, as: 'inventoryMatchRate'
           property :kind, as: 'kind'
           property :latency_50th_percentile, as: 'latency50thPercentile'
           property :latency_85th_percentile, as: 'latency85thPercentile'
@@ -287,7 +291,9 @@ module Google
           property :quota_configured_limit, as: 'quotaConfiguredLimit'
           property :quota_throttled_limit, as: 'quotaThrottledLimit'
           property :region, as: 'region'
+          property :successful_request_rate, as: 'successfulRequestRate'
           property :timestamp, as: 'timestamp'
+          property :unsuccessful_request_rate, as: 'unsuccessfulRequestRate'
         end
       end
       

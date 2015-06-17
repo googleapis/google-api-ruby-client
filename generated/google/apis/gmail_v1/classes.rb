@@ -714,6 +714,71 @@ module Google
           @snippet = args[:snippet] unless args[:snippet].nil?
         end
       end
+      
+      # Set up or update a new push notification watch on this user's mailbox.
+      class WatchRequest
+        include Google::Apis::Core::Hashable
+      
+        # Filtering behavior of labelIds list specified.
+        # Corresponds to the JSON property `labelFilterAction`
+        # @return [String]
+        attr_accessor :label_filter_action
+      
+        # List of label_ids to restrict notifications about. By default, if unspecified,
+        # all changes are pushed out. If specified then dictates which labels are
+        # required for a push notification to be generated.
+        # Corresponds to the JSON property `labelIds`
+        # @return [Array<String>]
+        attr_accessor :label_ids
+      
+        # Fully qualified Cloud PubSub API topic name to publish events to. This topic
+        # name should already exist in Cloud PubSub and you should have already granted
+        # gmail "publish" privileges on it. For example, "projects/my-project-identifier/
+        # topics/my-topic-name" (using the new Cloud PubSub "v1beta2" topic naming
+        # format).
+        # Note that the "my-project-identifier" portion must exactly match your
+        # developer console project id (the one executing this watch request).
+        # Corresponds to the JSON property `topicName`
+        # @return [String]
+        attr_accessor :topic_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_filter_action = args[:label_filter_action] unless args[:label_filter_action].nil?
+          @label_ids = args[:label_ids] unless args[:label_ids].nil?
+          @topic_name = args[:topic_name] unless args[:topic_name].nil?
+        end
+      end
+      
+      # Push notification watch response.
+      class WatchResponse
+        include Google::Apis::Core::Hashable
+      
+        # When Gmail will stop sending notifications for mailbox updates. Call watch
+        # again before this time to renew the subscription.
+        # Corresponds to the JSON property `expiration`
+        # @return [String]
+        attr_accessor :expiration
+      
+        # The ID of the mailbox's current history record.
+        # Corresponds to the JSON property `historyId`
+        # @return [String]
+        attr_accessor :history_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expiration = args[:expiration] unless args[:expiration].nil?
+          @history_id = args[:history_id] unless args[:history_id].nil?
+        end
+      end
     end
   end
 end

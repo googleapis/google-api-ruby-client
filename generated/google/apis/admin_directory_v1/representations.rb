@@ -597,6 +597,7 @@ module Google
           property :relations, as: 'relations'
           property :suspended, as: 'suspended'
           property :suspension_reason, as: 'suspensionReason'
+          property :thumbnail_photo_etag, as: 'thumbnailPhotoEtag'
           property :thumbnail_photo_url, as: 'thumbnailPhotoUrl'
           property :websites, as: 'websites'
         end

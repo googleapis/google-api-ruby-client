@@ -779,7 +779,7 @@ module Google
         # Remove permission entries from an already existing asset.
         # @param [String] id
         #   The ID of the asset from which permissions will be removed.
-        # @param [Google::Apis::MapsengineV1::BatchDeletePermissionsRequest] permissions_batch_delete_request_object
+        # @param [Google::Apis::MapsengineV1::BatchDeletePermissionsRequest] batch_delete_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -801,11 +801,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_delete_layer_permission(id, permissions_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_delete_layer_permission(id, batch_delete_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/{id}/permissions/batchDelete'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsRequest::Representation
-          command.request_object = permissions_batch_delete_request_object
+          command.request_object = batch_delete_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse
           command.params['id'] = id unless id.nil?
@@ -820,7 +820,7 @@ module Google
         # request is atomic.
         # @param [String] id
         #   The ID of the asset to which permissions will be added.
-        # @param [Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest] permissions_batch_update_request_object
+        # @param [Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest] batch_update_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -842,11 +842,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_update_layer_permission(id, permissions_batch_update_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_update_layer_permission(id, batch_update_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'layers/{id}/permissions/batchUpdate'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest::Representation
-          command.request_object = permissions_batch_update_request_object
+          command.request_object = batch_update_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse
           command.params['id'] = id unless id.nil?
@@ -1292,7 +1292,7 @@ module Google
         # Remove permission entries from an already existing asset.
         # @param [String] id
         #   The ID of the asset from which permissions will be removed.
-        # @param [Google::Apis::MapsengineV1::BatchDeletePermissionsRequest] permissions_batch_delete_request_object
+        # @param [Google::Apis::MapsengineV1::BatchDeletePermissionsRequest] batch_delete_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1314,11 +1314,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_delete_map_permission(id, permissions_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_delete_map_permission(id, batch_delete_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps/{id}/permissions/batchDelete'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsRequest::Representation
-          command.request_object = permissions_batch_delete_request_object
+          command.request_object = batch_delete_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse
           command.params['id'] = id unless id.nil?
@@ -1333,7 +1333,7 @@ module Google
         # request is atomic.
         # @param [String] id
         #   The ID of the asset to which permissions will be added.
-        # @param [Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest] permissions_batch_update_request_object
+        # @param [Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest] batch_update_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1355,11 +1355,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_update_map_permission(id, permissions_batch_update_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_update_map_permission(id, batch_update_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'maps/{id}/permissions/batchUpdate'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest::Representation
-          command.request_object = permissions_batch_update_request_object
+          command.request_object = batch_update_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse
           command.params['id'] = id unless id.nil?
@@ -1930,7 +1930,7 @@ module Google
         # Remove permission entries from an already existing asset.
         # @param [String] id
         #   The ID of the asset from which permissions will be removed.
-        # @param [Google::Apis::MapsengineV1::BatchDeletePermissionsRequest] permissions_batch_delete_request_object
+        # @param [Google::Apis::MapsengineV1::BatchDeletePermissionsRequest] batch_delete_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1952,11 +1952,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_delete_raster_collection_permission(id, permissions_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_delete_raster_collection_permission(id, batch_delete_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/permissions/batchDelete'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsRequest::Representation
-          command.request_object = permissions_batch_delete_request_object
+          command.request_object = batch_delete_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse
           command.params['id'] = id unless id.nil?
@@ -1971,7 +1971,7 @@ module Google
         # request is atomic.
         # @param [String] id
         #   The ID of the asset to which permissions will be added.
-        # @param [Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest] permissions_batch_update_request_object
+        # @param [Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest] batch_update_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1993,11 +1993,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_update_raster_collection_permission(id, permissions_batch_update_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_update_raster_collection_permission(id, batch_update_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/permissions/batchUpdate'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest::Representation
-          command.request_object = permissions_batch_update_request_object
+          command.request_object = batch_update_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse
           command.params['id'] = id unless id.nil?
@@ -2048,7 +2048,7 @@ module Google
         # batchDelete request is atomic.
         # @param [String] id
         #   The ID of the raster collection to which these rasters belong.
-        # @param [Google::Apis::MapsengineV1::BatchDeleteRasterCollectionsRasterRequest] raster_collections_raster_batch_delete_request_object
+        # @param [Google::Apis::MapsengineV1::BatchDeleteRasterCollectionsRasterRequest] batch_delete_raster_collections_raster_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2070,11 +2070,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_delete_raster_collection_raster(id, raster_collections_raster_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_delete_raster_collection_raster(id, batch_delete_raster_collections_raster_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/rasters/batchDelete'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MapsengineV1::BatchDeleteRasterCollectionsRasterRequest::Representation
-          command.request_object = raster_collections_raster_batch_delete_request_object
+          command.request_object = batch_delete_raster_collections_raster_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchDeleteRasterCollectionsRastersResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::BatchDeleteRasterCollectionsRastersResponse
           command.params['id'] = id unless id.nil?
@@ -2090,7 +2090,7 @@ module Google
         # batchInsert request is atomic.
         # @param [String] id
         #   The ID of the raster collection to which these rasters belong.
-        # @param [Google::Apis::MapsengineV1::BatchInsertRasterCollectionsRastersRequest] raster_collections_rasters_batch_insert_request_object
+        # @param [Google::Apis::MapsengineV1::BatchInsertRasterCollectionsRastersRequest] batch_insert_raster_collections_rasters_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2112,11 +2112,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_insert_raster_collection_raster(id, raster_collections_rasters_batch_insert_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_insert_raster_collection_raster(id, batch_insert_raster_collections_rasters_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasterCollections/{id}/rasters/batchInsert'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MapsengineV1::BatchInsertRasterCollectionsRastersRequest::Representation
-          command.request_object = raster_collections_rasters_batch_insert_request_object
+          command.request_object = batch_insert_raster_collections_rasters_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchInsertRasterCollectionsRastersResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::BatchInsertRasterCollectionsRastersResponse
           command.params['id'] = id unless id.nil?
@@ -2569,7 +2569,7 @@ module Google
         # Remove permission entries from an already existing asset.
         # @param [String] id
         #   The ID of the asset from which permissions will be removed.
-        # @param [Google::Apis::MapsengineV1::BatchDeletePermissionsRequest] permissions_batch_delete_request_object
+        # @param [Google::Apis::MapsengineV1::BatchDeletePermissionsRequest] batch_delete_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2591,11 +2591,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_delete_raster_permission(id, permissions_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_delete_raster_permission(id, batch_delete_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasters/{id}/permissions/batchDelete'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsRequest::Representation
-          command.request_object = permissions_batch_delete_request_object
+          command.request_object = batch_delete_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse
           command.params['id'] = id unless id.nil?
@@ -2610,7 +2610,7 @@ module Google
         # request is atomic.
         # @param [String] id
         #   The ID of the asset to which permissions will be added.
-        # @param [Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest] permissions_batch_update_request_object
+        # @param [Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest] batch_update_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2632,11 +2632,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_update_raster_permission(id, permissions_batch_update_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_update_raster_permission(id, batch_update_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasters/{id}/permissions/batchUpdate'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest::Representation
-          command.request_object = permissions_batch_update_request_object
+          command.request_object = batch_update_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse
           command.params['id'] = id unless id.nil?
@@ -2994,7 +2994,7 @@ module Google
         # Delete all features matching the given IDs.
         # @param [String] id
         #   The ID of the table that contains the features to be deleted.
-        # @param [Google::Apis::MapsengineV1::BatchDeleteFeaturesRequest] features_batch_delete_request_object
+        # @param [Google::Apis::MapsengineV1::BatchDeleteFeaturesRequest] batch_delete_features_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3016,11 +3016,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_delete_table_feature(id, features_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_delete_table_feature(id, batch_delete_features_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/features/batchDelete'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MapsengineV1::BatchDeleteFeaturesRequest::Representation
-          command.request_object = features_batch_delete_request_object
+          command.request_object = batch_delete_features_request_object
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -3039,7 +3039,7 @@ module Google
         # Google Maps Engine developer's guide.
         # @param [String] id
         #   The ID of the table to append the features to.
-        # @param [Google::Apis::MapsengineV1::BatchInsertFeaturesRequest] features_batch_insert_request_object
+        # @param [Google::Apis::MapsengineV1::BatchInsertFeaturesRequest] batch_insert_features_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3061,11 +3061,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_insert_table_feature(id, features_batch_insert_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_insert_table_feature(id, batch_insert_features_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/features/batchInsert'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MapsengineV1::BatchInsertFeaturesRequest::Representation
-          command.request_object = features_batch_insert_request_object
+          command.request_object = batch_insert_features_request_object
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -3091,7 +3091,7 @@ module Google
         # Google Maps Engine developer's guide.
         # @param [String] id
         #   The ID of the table containing the features to be patched.
-        # @param [Google::Apis::MapsengineV1::BatchPatchFeaturesRequest] features_batch_patch_request_object
+        # @param [Google::Apis::MapsengineV1::BatchPatchFeaturesRequest] batch_patch_features_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3113,11 +3113,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_patch_table_feature(id, features_batch_patch_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_patch_table_feature(id, batch_patch_features_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/features/batchPatch'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MapsengineV1::BatchPatchFeaturesRequest::Representation
-          command.request_object = features_batch_patch_request_object
+          command.request_object = batch_patch_features_request_object
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -3339,7 +3339,7 @@ module Google
         # Remove permission entries from an already existing asset.
         # @param [String] id
         #   The ID of the asset from which permissions will be removed.
-        # @param [Google::Apis::MapsengineV1::BatchDeletePermissionsRequest] permissions_batch_delete_request_object
+        # @param [Google::Apis::MapsengineV1::BatchDeletePermissionsRequest] batch_delete_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3361,11 +3361,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_delete_table_permission(id, permissions_batch_delete_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_delete_table_permission(id, batch_delete_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/permissions/batchDelete'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsRequest::Representation
-          command.request_object = permissions_batch_delete_request_object
+          command.request_object = batch_delete_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse
           command.params['id'] = id unless id.nil?
@@ -3380,7 +3380,7 @@ module Google
         # request is atomic.
         # @param [String] id
         #   The ID of the asset to which permissions will be added.
-        # @param [Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest] permissions_batch_update_request_object
+        # @param [Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest] batch_update_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3402,11 +3402,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_update_table_permission(id, permissions_batch_update_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_update_table_permission(id, batch_update_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'tables/{id}/permissions/batchUpdate'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest::Representation
-          command.request_object = permissions_batch_update_request_object
+          command.request_object = batch_update_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse
           command.params['id'] = id unless id.nil?

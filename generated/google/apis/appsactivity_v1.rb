@@ -25,13 +25,16 @@ module Google
     # @see https://developers.google.com/google-apps/activity/
     module AppsactivityV1
       VERSION = 'V1'
-      REVISION = '20140828'
+      REVISION = '20150326'
 
       # View the activity history of your Google Apps
       AUTH_ACTIVITY = 'https://www.googleapis.com/auth/activity'
 
       # View and manage the files in your Google Drive
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
+
+      # View and manage metadata of files in your Google Drive
+      AUTH_DRIVE_METADATA = 'https://www.googleapis.com/auth/drive.metadata'
 
       # View metadata for files in your Google Drive
       AUTH_DRIVE_METADATA_READONLY = 'https://www.googleapis.com/auth/drive.metadata.readonly'

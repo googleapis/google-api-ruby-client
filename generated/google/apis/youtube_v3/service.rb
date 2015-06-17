@@ -198,6 +198,16 @@ module Google
         #   is a caption track ID as identified by the id property in a caption resource.
         # @param [String] on_behalf_of
         #   ID of the Google+ Page for the channel that the request is be on behalf of
+        # @param [String] on_behalf_of_content_owner
+        #   Note: This parameter is intended exclusively for YouTube content partners.
+        #   The onBehalfOfContentOwner parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The actual CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -219,12 +229,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_caption(debug_project_id_override: nil, id: nil, on_behalf_of: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_caption(debug_project_id_override: nil, id: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'captions'
           command =  make_simple_command(:delete, path, options)
           command.query['debugProjectIdOverride'] = debug_project_id_override unless debug_project_id_override.nil?
           command.query['id'] = id unless id.nil?
           command.query['onBehalfOf'] = on_behalf_of unless on_behalf_of.nil?
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -243,6 +254,16 @@ module Google
         #   for a certain project ID
         # @param [String] on_behalf_of
         #   ID of the Google+ Page for the channel that the request is be on behalf of
+        # @param [String] on_behalf_of_content_owner
+        #   Note: This parameter is intended exclusively for YouTube content partners.
+        #   The onBehalfOfContentOwner parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The actual CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] tfmt
         #   The tfmt parameter specifies that the caption track should be returned in a
         #   specific format. If the parameter is not included in the request, the track is
@@ -276,7 +297,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def download_caption(id, debug_project_id_override: nil, on_behalf_of: nil, tfmt: nil, tlang: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def download_caption(id, debug_project_id_override: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, tfmt: nil, tlang: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           path = 'captions/{id}'
           if download_dest.nil?
             command =  make_simple_command(:get, path, options)
@@ -287,6 +308,7 @@ module Google
           command.params['id'] = id unless id.nil?
           command.query['debugProjectIdOverride'] = debug_project_id_override unless debug_project_id_override.nil?
           command.query['onBehalfOf'] = on_behalf_of unless on_behalf_of.nil?
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['tfmt'] = tfmt unless tfmt.nil?
           command.query['tlang'] = tlang unless tlang.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -302,6 +324,16 @@ module Google
         #   for a certain project ID.
         # @param [String] on_behalf_of
         #   ID of the Google+ Page for the channel that the request is be on behalf of
+        # @param [String] on_behalf_of_content_owner
+        #   Note: This parameter is intended exclusively for YouTube content partners.
+        #   The onBehalfOfContentOwner parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The actual CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] part
         #   The part parameter specifies the caption resource parts that the API response
         #   will include. Set the parameter value to snippet.
@@ -338,7 +370,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_caption(caption_object = nil, debug_project_id_override: nil, on_behalf_of: nil, part: nil, sync: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_caption(caption_object = nil, debug_project_id_override: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, part: nil, sync: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'captions'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -353,6 +385,7 @@ module Google
           command.response_class = Google::Apis::YoutubeV3::Caption
           command.query['debugProjectIdOverride'] = debug_project_id_override unless debug_project_id_override.nil?
           command.query['onBehalfOf'] = on_behalf_of unless on_behalf_of.nil?
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['part'] = part unless part.nil?
           command.query['sync'] = sync unless sync.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -373,6 +406,16 @@ module Google
         #   track associated with the specified video.
         # @param [String] on_behalf_of
         #   ID of the Google+ Page for the channel that the request is on behalf of.
+        # @param [String] on_behalf_of_content_owner
+        #   Note: This parameter is intended exclusively for YouTube content partners.
+        #   The onBehalfOfContentOwner parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The actual CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] part
         #   The part parameter specifies a comma-separated list of one or more caption
         #   resource parts that the API response will include. The part names that you can
@@ -401,7 +444,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_captions(debug_project_id_override: nil, id: nil, on_behalf_of: nil, part: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_captions(debug_project_id_override: nil, id: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, part: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'captions'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListCaptionsResponse::Representation
@@ -409,6 +452,7 @@ module Google
           command.query['debugProjectIdOverride'] = debug_project_id_override unless debug_project_id_override.nil?
           command.query['id'] = id unless id.nil?
           command.query['onBehalfOf'] = on_behalf_of unless on_behalf_of.nil?
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['part'] = part unless part.nil?
           command.query['videoId'] = video_id unless video_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -425,6 +469,16 @@ module Google
         #   for a certain project ID.
         # @param [String] on_behalf_of
         #   ID of the Google+ Page for the channel that the request is be on behalf of
+        # @param [String] on_behalf_of_content_owner
+        #   Note: This parameter is intended exclusively for YouTube content partners.
+        #   The onBehalfOfContentOwner parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The actual CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
         #   properties that the write operation will set as well as the properties that
@@ -462,7 +516,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_caption(caption_object = nil, debug_project_id_override: nil, on_behalf_of: nil, part: nil, sync: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def update_caption(caption_object = nil, debug_project_id_override: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, part: nil, sync: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'captions'
           if upload_source.nil?
             command =  make_simple_command(:put, path, options)
@@ -477,6 +531,7 @@ module Google
           command.response_class = Google::Apis::YoutubeV3::Caption
           command.query['debugProjectIdOverride'] = debug_project_id_override unless debug_project_id_override.nil?
           command.query['onBehalfOf'] = on_behalf_of unless on_behalf_of.nil?
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['part'] = part unless part.nil?
           command.query['sync'] = sync unless sync.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1018,6 +1073,12 @@ module Google
         #   moderation state.
         #   Note: This parameter is not supported for use in conjunction with the id
         #   parameter.
+        # @param [String] order
+        #   The order parameter specifies the order in which the API response should list
+        #   comment threads. Valid values are:
+        #   - time - Comment threads are ordered by time. This is the default behavior.
+        #   - relevance - Comment threads are ordered by relevance.Note: This parameter is
+        #   not supported for use in conjunction with the id parameter.
         # @param [String] page_token
         #   The pageToken parameter identifies a specific page in the result set that
         #   should be returned. In an API response, the nextPageToken property identifies
@@ -1059,7 +1120,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_comment_threads(all_threads_related_to_channel_id: nil, channel_id: nil, id: nil, max_results: nil, moderation_status: nil, page_token: nil, part: nil, search_terms: nil, text_format: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_comment_threads(all_threads_related_to_channel_id: nil, channel_id: nil, id: nil, max_results: nil, moderation_status: nil, order: nil, page_token: nil, part: nil, search_terms: nil, text_format: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'commentThreads'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListCommentThreadsResponse::Representation
@@ -1069,6 +1130,7 @@ module Google
           command.query['id'] = id unless id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['moderationStatus'] = moderation_status unless moderation_status.nil?
+          command.query['order'] = order unless order.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['part'] = part unless part.nil?
           command.query['searchTerms'] = search_terms unless search_terms.nil?
@@ -3621,6 +3683,9 @@ module Google
         # Returns a list of videos that match the API request parameters.
         # @param [String] chart
         #   The chart parameter identifies the chart that you want to retrieve.
+        # @param [String] debug_project_id_override
+        #   The debugProjectIdOverride parameter should be used for mimicking a request
+        #   for a certain project ID
         # @param [String] hl
         #   The hl parameter instructs the API to return a localized version of the video
         #   details. If localized text is nor available for the requested language, the
@@ -3702,12 +3767,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_videos(chart: nil, hl: nil, id: nil, locale: nil, max_results: nil, my_rating: nil, on_behalf_of_content_owner: nil, page_token: nil, part: nil, region_code: nil, video_category_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_videos(chart: nil, debug_project_id_override: nil, hl: nil, id: nil, locale: nil, max_results: nil, my_rating: nil, on_behalf_of_content_owner: nil, page_token: nil, part: nil, region_code: nil, video_category_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'videos'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListVideosResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListVideosResponse
           command.query['chart'] = chart unless chart.nil?
+          command.query['debugProjectIdOverride'] = debug_project_id_override unless debug_project_id_override.nil?
           command.query['hl'] = hl unless hl.nil?
           command.query['id'] = id unless id.nil?
           command.query['locale'] = locale unless locale.nil?

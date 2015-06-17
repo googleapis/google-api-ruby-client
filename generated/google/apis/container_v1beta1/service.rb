@@ -131,8 +131,8 @@ module Google
         # A firewall is added that allows traffic into port 443 on the master, which
         # enables HTTPS. A firewall and a route is added for each node to allow the
         # containers on that node to communicate with all other instances in the cluster.
-        # Finally, a route named k8s-iproute-10-xx-0-0 is created to track that the
-        # cluster's 10.xx.0.0/16 CIDR has been assigned.
+        # Finally, an entry is added to the project's global metadata indicating which
+        # CIDR range is being used by the cluster.
         # @param [String] project_id
         #   The Google Developers Console project ID or  project number.
         # @param [String] zone_id
@@ -375,54 +375,6 @@ module Google
           command.response_class = Google::Apis::ContainerV1beta1::ListOperationsResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['zoneId'] = zone_id unless zone_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets a compute-rw scoped OAuth2 access token for
-        # . Authentication is performed to ensure that the caller is a member of  and
-        # that the request is coming from the expected master VM for the specified
-        # cluster. See go/gke-cross-project-auth for more details.
-        # @param [String] master_project_id
-        #   The hosted master project from which this request is coming.
-        # @param [String] zone_id
-        #   The zone of the specified cluster.
-        # @param [String] project_number
-        #   The project number for which the access token is being requested.
-        # @param [String] cluster_name
-        #   The name of the specified cluster.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContainerV1beta1::Token] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ContainerV1beta1::Token]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_zone_token(master_project_id, zone_id, project_number, cluster_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{masterProjectId}/zones/{zoneId}/tokens/{projectNumber}/{clusterName}'
-          command =  make_simple_command(:get, path, options)
-          command.response_representation = Google::Apis::ContainerV1beta1::Token::Representation
-          command.response_class = Google::Apis::ContainerV1beta1::Token
-          command.params['masterProjectId'] = master_project_id unless master_project_id.nil?
-          command.params['zoneId'] = zone_id unless zone_id.nil?
-          command.params['projectNumber'] = project_number unless project_number.nil?
-          command.params['clusterName'] = cluster_name unless cluster_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

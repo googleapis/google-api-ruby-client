@@ -780,7 +780,8 @@ module Google
         # @return [String]
         attr_accessor :content_type
       
-        # CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64.
+        # CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in
+        # big-endian byte order.
         # Corresponds to the JSON property `crc32c`
         # @return [String]
         attr_accessor :crc32c

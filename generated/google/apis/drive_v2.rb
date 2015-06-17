@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/drive/
     module DriveV2
       VERSION = 'V2'
-      REVISION = '20150326'
+      REVISION = '20150305'
 
       # View and manage the files in your Google Drive
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
@@ -36,7 +36,7 @@ module Google
       # View your Google Drive apps
       AUTH_DRIVE_APPS_READONLY = 'https://www.googleapis.com/auth/drive.apps.readonly'
 
-      # View and manage Google Drive files that you have opened or created with this app
+      # View and manage Google Drive files and folders that you have opened or created with this app
       AUTH_DRIVE_FILE = 'https://www.googleapis.com/auth/drive.file'
 
       # View and manage metadata of files in your Google Drive

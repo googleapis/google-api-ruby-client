@@ -232,6 +232,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :captcha_challenge, as: 'captchaChallenge'
           property :captcha_response, as: 'captchaResponse'
+          property :disable_user, as: 'disableUser'
           property :display_name, as: 'displayName'
           property :email, as: 'email'
           property :email_verified, as: 'emailVerified'
@@ -241,6 +242,7 @@ module Google
           property :password, as: 'password'
           collection :provider, as: 'provider'
           property :upgrade_to_federated_login, as: 'upgradeToFederatedLogin'
+          property :valid_since, as: 'validSince'
         end
       end
       
@@ -341,6 +343,7 @@ module Google
       # @private
       class UserInfo
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
           property :email, as: 'email'
           property :email_verified, as: 'emailVerified'
@@ -351,6 +354,7 @@ module Google
           collection :provider_user_info, as: 'providerUserInfo', class: Google::Apis::IdentitytoolkitV3::UserInfo::ProviderUserInfo, decorator: Google::Apis::IdentitytoolkitV3::UserInfo::ProviderUserInfo::Representation
       
           property :salt, :base64 => true, as: 'salt'
+          property :valid_since, as: 'validSince'
           property :version, as: 'version'
         end
         

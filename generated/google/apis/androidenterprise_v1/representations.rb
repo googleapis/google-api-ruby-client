@@ -34,6 +34,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class AppVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class ApprovalUrlInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class Collection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -114,6 +122,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class ApproveProductRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class GenerateProductApprovalUrlResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class User
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -156,6 +172,22 @@ module Google
           property :value_integer, as: 'valueInteger'
           collection :value_multiselect, as: 'valueMultiselect'
           property :value_string, as: 'valueString'
+        end
+      end
+      
+      # @private
+      class AppVersion
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version_code, as: 'versionCode'
+          property :version_string, as: 'versionString'
+        end
+      end
+      
+      # @private
+      class ApprovalUrlInfo
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval_url, as: 'approvalUrl'
+          property :kind, as: 'kind'
         end
       end
       
@@ -321,8 +353,11 @@ module Google
       # @private
       class Product
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_version, as: 'appVersion', class: Google::Apis::AndroidenterpriseV1::AppVersion, decorator: Google::Apis::AndroidenterpriseV1::AppVersion::Representation
+      
           property :author_name, as: 'authorName'
           property :details_url, as: 'detailsUrl'
+          property :distribution_channel, as: 'distributionChannel'
           property :icon_url, as: 'iconUrl'
           property :kind, as: 'kind'
           property :product_id, as: 'productId'
@@ -347,6 +382,21 @@ module Google
           collection :permission, as: 'permission', class: Google::Apis::AndroidenterpriseV1::ProductPermission, decorator: Google::Apis::AndroidenterpriseV1::ProductPermission::Representation
       
           property :product_id, as: 'productId'
+        end
+      end
+      
+      # @private
+      class ApproveProductRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval_url_info, as: 'approvalUrlInfo', class: Google::Apis::AndroidenterpriseV1::ApprovalUrlInfo, decorator: Google::Apis::AndroidenterpriseV1::ApprovalUrlInfo::Representation
+      
+        end
+      end
+      
+      # @private
+      class GenerateProductApprovalUrlResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :url, as: 'url'
         end
       end
       

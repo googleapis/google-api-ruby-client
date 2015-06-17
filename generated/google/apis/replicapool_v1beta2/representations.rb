@@ -74,9 +74,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class ReplicaPoolAutoHealingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       # @private
       class InstanceGroupManager
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_healing_policies, as: 'autoHealingPolicies', class: Google::Apis::ReplicapoolV1beta2::ReplicaPoolAutoHealingPolicy, decorator: Google::Apis::ReplicapoolV1beta2::ReplicaPoolAutoHealingPolicy::Representation
+      
           property :base_instance_name, as: 'baseInstanceName'
           property :creation_timestamp, as: 'creationTimestamp'
           property :current_size, as: 'currentSize'
@@ -215,6 +221,13 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      # @private
+      class ReplicaPoolAutoHealingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_check, as: 'healthCheck'
         end
       end
     end

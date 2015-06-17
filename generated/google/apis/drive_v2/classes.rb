@@ -32,7 +32,11 @@ module Google
         # @return [Array<Google::Apis::DriveV2::About::AdditionalRoleInfo>]
         attr_accessor :additional_role_info
       
-        # The domain sharing policy for the current user.
+        # The domain sharing policy for the current user. Possible values are:
+        # - ALLOWED
+        # - ALLOWED_WITH_WARNING
+        # - INCOMING_ONLY
+        # - DISALLOWED
         # Corresponds to the JSON property `domainSharingPolicy`
         # @return [String]
         attr_accessor :domain_sharing_policy
@@ -1433,6 +1437,12 @@ module Google
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :sharing_user
       
+        # The list of spaces which contain the file. Supported values are 'drive' and '
+        # appDataFolder'.
+        # Corresponds to the JSON property `spaces`
+        # @return [Array<String>]
+        attr_accessor :spaces
+      
         # Thumbnail for the file. Only accepted on upload and for files that are not
         # already thumbnailed by Google.
         # Corresponds to the JSON property `thumbnail`
@@ -1534,6 +1544,7 @@ module Google
           @shared = args[:shared] unless args[:shared].nil?
           @shared_with_me_date = args[:shared_with_me_date] unless args[:shared_with_me_date].nil?
           @sharing_user = args[:sharing_user] unless args[:sharing_user].nil?
+          @spaces = args[:spaces] unless args[:spaces].nil?
           @thumbnail = args[:thumbnail] unless args[:thumbnail].nil?
           @thumbnail_link = args[:thumbnail_link] unless args[:thumbnail_link].nil?
           @title = args[:title] unless args[:title].nil?

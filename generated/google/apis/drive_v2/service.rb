@@ -230,6 +230,9 @@ module Google
         #   Maximum number of changes to return.
         # @param [String] page_token
         #   Page token for changes.
+        # @param [String] spaces
+        #   A comma-separated list of spaces to query. Supported values are 'drive' and '
+        #   appDataFolder'.
         # @param [String] start_change_id
         #   Change ID to start listing changes from.
         # @param [String] fields
@@ -253,7 +256,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_changes(include_deleted: nil, include_subscribed: nil, max_results: nil, page_token: nil, start_change_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_changes(include_deleted: nil, include_subscribed: nil, max_results: nil, page_token: nil, spaces: nil, start_change_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'changes'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::DriveV2::ChangeList::Representation
@@ -262,6 +265,7 @@ module Google
           command.query['includeSubscribed'] = include_subscribed unless include_subscribed.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['spaces'] = spaces unless spaces.nil?
           command.query['startChangeId'] = start_change_id unless start_change_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -281,6 +285,9 @@ module Google
         #   Maximum number of changes to return.
         # @param [String] page_token
         #   Page token for changes.
+        # @param [String] spaces
+        #   A comma-separated list of spaces to query. Supported values are 'drive' and '
+        #   appDataFolder'.
         # @param [String] start_change_id
         #   Change ID to start listing changes from.
         # @param [String] fields
@@ -304,7 +311,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_change(channel_object = nil, include_deleted: nil, include_subscribed: nil, max_results: nil, page_token: nil, start_change_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_change(channel_object = nil, include_deleted: nil, include_subscribed: nil, max_results: nil, page_token: nil, spaces: nil, start_change_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'changes/watch'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DriveV2::Channel::Representation
@@ -315,6 +322,7 @@ module Google
           command.query['includeSubscribed'] = include_subscribed unless include_subscribed.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['spaces'] = spaces unless spaces.nil?
           command.query['startChangeId'] = start_change_id unless start_change_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -780,7 +788,7 @@ module Google
         # @param [Boolean] ocr
         #   Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
         # @param [String] ocr_language
-        #   If ocr is true, hints at the language to use. Valid values are ISO 639-1 codes.
+        #   If ocr is true, hints at the language to use. Valid values are BCP 47 codes.
         # @param [Boolean] pinned
         #   Whether to pin the head revision of the new copy. A file can have a maximum of
         #   200 pinned revisions.
@@ -963,7 +971,7 @@ module Google
         # @param [Boolean] ocr
         #   Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
         # @param [String] ocr_language
-        #   If ocr is true, hints at the language to use. Valid values are ISO 639-1 codes.
+        #   If ocr is true, hints at the language to use. Valid values are BCP 47 codes.
         # @param [Boolean] pinned
         #   Whether to pin the head revision of the uploaded file. A file can have a
         #   maximum of 200 pinned revisions.
@@ -1039,6 +1047,9 @@ module Google
         #   This parameter is deprecated and has no function.
         # @param [String] q
         #   Query string for searching files.
+        # @param [String] spaces
+        #   A comma-separated list of spaces to query. Supported values are 'drive' and '
+        #   appDataFolder'.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1060,7 +1071,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_files(corpus: nil, max_results: nil, page_token: nil, projection: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_files(corpus: nil, max_results: nil, page_token: nil, projection: nil, q: nil, spaces: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::DriveV2::FileList::Representation
@@ -1070,6 +1081,7 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['projection'] = projection unless projection.nil?
           command.query['q'] = q unless q.nil?
+          command.query['spaces'] = spaces unless spaces.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1087,12 +1099,13 @@ module Google
         # @param [Boolean] new_revision
         #   Whether a blob upload should create a new revision. If false, the blob data in
         #   the current head revision is replaced. If true or not set, a new blob is
-        #   created as head revision, and previous revisions are preserved (causing
-        #   increased use of the user's data storage quota).
+        #   created as head revision, and previous unpinned revisions are preserved for a
+        #   short period of time. Pinned revisions are stored indefinitely, using
+        #   additional storage quota, up to a maximum of 200 revisions.
         # @param [Boolean] ocr
         #   Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
         # @param [String] ocr_language
-        #   If ocr is true, hints at the language to use. Valid values are ISO 639-1 codes.
+        #   If ocr is true, hints at the language to use. Valid values are BCP 47 codes.
         # @param [Boolean] pinned
         #   Whether to pin the new revision. A file can have a maximum of 200 pinned
         #   revisions.
@@ -1274,12 +1287,13 @@ module Google
         # @param [Boolean] new_revision
         #   Whether a blob upload should create a new revision. If false, the blob data in
         #   the current head revision is replaced. If true or not set, a new blob is
-        #   created as head revision, and previous revisions are preserved (causing
-        #   increased use of the user's data storage quota).
+        #   created as head revision, and previous unpinned revisions are preserved for a
+        #   short period of time. Pinned revisions are stored indefinitely, using
+        #   additional storage quota, up to a maximum of 200 revisions.
         # @param [Boolean] ocr
         #   Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
         # @param [String] ocr_language
-        #   If ocr is true, hints at the language to use. Valid values are ISO 639-1 codes.
+        #   If ocr is true, hints at the language to use. Valid values are BCP 47 codes.
         # @param [Boolean] pinned
         #   Whether to pin the new revision. A file can have a maximum of 200 pinned
         #   revisions.

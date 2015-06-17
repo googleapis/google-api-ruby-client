@@ -34,25 +34,9 @@ module Google
       # @see 
       class LoggingService < Google::Apis::Core::BaseService
         # @return [String]
-        #  OAuth access token.
-        attr_accessor :access_token
-
-        # @return [String]
-        #  OAuth bearer token.
-        attr_accessor :bearer_token
-
-        # @return [String]
-        #  JSONP
-        attr_accessor :callback
-
-        # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
         attr_accessor :key
-
-        # @return [Boolean]
-        #  Pretty-print response.
-        attr_accessor :pp
 
         # @return [String]
         #  Available to use for quota purposes for server-side applications. Can be any
@@ -86,16 +70,8 @@ module Google
         #   An opaque token, returned as `nextPageToken` by a prior `ListLogs` operation.
         #   If `pageToken` is supplied, then the other fields of this request are ignored,
         #   and instead the previous `ListLogs` operation is continued.
-        # @param [String] access_token
-        #   OAuth access token.
-        # @param [String] bearer_token
-        #   OAuth bearer token.
-        # @param [String] callback
-        #   JSONP
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
-        # @param [Boolean] pp
-        #   Pretty-print response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -111,7 +87,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_logs(projects_id, service_name: nil, service_index_prefix: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
+        def list_logs(projects_id, service_name: nil, service_index_prefix: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::ListLogsResponse::Representation
@@ -121,11 +97,7 @@ module Google
           command.query['serviceIndexPrefix'] = service_index_prefix unless service_index_prefix.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['access_token'] = access_token unless access_token.nil?
-          command.query['bearer_token'] = bearer_token unless bearer_token.nil?
-          command.query['callback'] = callback unless callback.nil?
           command.query['fields'] = fields unless fields.nil?
-          command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
@@ -135,16 +107,8 @@ module Google
         #   Part of `logName`. The log resource to delete.
         # @param [String] logs_id
         #   Part of `logName`. See documentation of `projectsId`.
-        # @param [String] access_token
-        #   OAuth access token.
-        # @param [String] bearer_token
-        #   OAuth bearer token.
-        # @param [String] callback
-        #   JSONP
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
-        # @param [Boolean] pp
-        #   Pretty-print response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -160,18 +124,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_log(projects_id, logs_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
+        def delete_log(projects_id, logs_id, fields: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}'
           command =  make_simple_command(:delete, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::Empty::Representation
           command.response_class = Google::Apis::LoggingV1beta3::Empty
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logsId'] = logs_id unless logs_id.nil?
-          command.query['access_token'] = access_token unless access_token.nil?
-          command.query['bearer_token'] = bearer_token unless bearer_token.nil?
-          command.query['callback'] = callback unless callback.nil?
           command.query['fields'] = fields unless fields.nil?
-          command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
@@ -189,16 +149,8 @@ module Google
         # @param [String] logs_id
         #   Part of `logName`. See documentation of `projectsId`.
         # @param [Google::Apis::LoggingV1beta3::WriteLogEntriesRequest] write_log_entries_request_object
-        # @param [String] access_token
-        #   OAuth access token.
-        # @param [String] bearer_token
-        #   OAuth bearer token.
-        # @param [String] callback
-        #   JSONP
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
-        # @param [Boolean] pp
-        #   Pretty-print response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -214,7 +166,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def write_log_entries(projects_id, logs_id, write_log_entries_request_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
+        def write_log_entries(projects_id, logs_id, write_log_entries_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/entries:write'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::LoggingV1beta3::WriteLogEntriesRequest::Representation
@@ -223,11 +175,7 @@ module Google
           command.response_class = Google::Apis::LoggingV1beta3::WriteLogEntriesResponse
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logsId'] = logs_id unless logs_id.nil?
-          command.query['access_token'] = access_token unless access_token.nil?
-          command.query['bearer_token'] = bearer_token unless bearer_token.nil?
-          command.query['callback'] = callback unless callback.nil?
           command.query['fields'] = fields unless fields.nil?
-          command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
@@ -237,16 +185,8 @@ module Google
         #   Part of `logName`. The log for which to list sinks.
         # @param [String] logs_id
         #   Part of `logName`. See documentation of `projectsId`.
-        # @param [String] access_token
-        #   OAuth access token.
-        # @param [String] bearer_token
-        #   OAuth bearer token.
-        # @param [String] callback
-        #   JSONP
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
-        # @param [Boolean] pp
-        #   Pretty-print response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -262,18 +202,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_log_sinks(projects_id, logs_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
+        def list_log_sinks(projects_id, logs_id, fields: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::ListLogSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV1beta3::ListLogSinksResponse
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logsId'] = logs_id unless logs_id.nil?
-          command.query['access_token'] = access_token unless access_token.nil?
-          command.query['bearer_token'] = bearer_token unless bearer_token.nil?
-          command.query['callback'] = callback unless callback.nil?
           command.query['fields'] = fields unless fields.nil?
-          command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
@@ -285,16 +221,8 @@ module Google
         #   Part of `sinkName`. See documentation of `projectsId`.
         # @param [String] sinks_id
         #   Part of `sinkName`. See documentation of `projectsId`.
-        # @param [String] access_token
-        #   OAuth access token.
-        # @param [String] bearer_token
-        #   OAuth bearer token.
-        # @param [String] callback
-        #   JSONP
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
-        # @param [Boolean] pp
-        #   Pretty-print response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -310,7 +238,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_log_sink(projects_id, logs_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
+        def get_log_sink(projects_id, logs_id, sinks_id, fields: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks/{sinksId}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
@@ -318,11 +246,7 @@ module Google
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logsId'] = logs_id unless logs_id.nil?
           command.params['sinksId'] = sinks_id unless sinks_id.nil?
-          command.query['access_token'] = access_token unless access_token.nil?
-          command.query['bearer_token'] = bearer_token unless bearer_token.nil?
-          command.query['callback'] = callback unless callback.nil?
           command.query['fields'] = fields unless fields.nil?
-          command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
@@ -333,16 +257,8 @@ module Google
         # @param [String] logs_id
         #   Part of `logName`. See documentation of `projectsId`.
         # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink_object
-        # @param [String] access_token
-        #   OAuth access token.
-        # @param [String] bearer_token
-        #   OAuth bearer token.
-        # @param [String] callback
-        #   JSONP
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
-        # @param [Boolean] pp
-        #   Pretty-print response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -358,7 +274,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_log_sink(projects_id, logs_id, log_sink_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
+        def create_log_sink(projects_id, logs_id, log_sink_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
@@ -367,11 +283,7 @@ module Google
           command.response_class = Google::Apis::LoggingV1beta3::LogSink
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logsId'] = logs_id unless logs_id.nil?
-          command.query['access_token'] = access_token unless access_token.nil?
-          command.query['bearer_token'] = bearer_token unless bearer_token.nil?
-          command.query['callback'] = callback unless callback.nil?
           command.query['fields'] = fields unless fields.nil?
-          command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
@@ -384,16 +296,8 @@ module Google
         # @param [String] sinks_id
         #   Part of `sinkName`. See documentation of `projectsId`.
         # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink_object
-        # @param [String] access_token
-        #   OAuth access token.
-        # @param [String] bearer_token
-        #   OAuth bearer token.
-        # @param [String] callback
-        #   JSONP
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
-        # @param [Boolean] pp
-        #   Pretty-print response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -409,7 +313,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_log_sink(projects_id, logs_id, sinks_id, log_sink_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
+        def update_log_sink(projects_id, logs_id, sinks_id, log_sink_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks/{sinksId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
@@ -419,11 +323,7 @@ module Google
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logsId'] = logs_id unless logs_id.nil?
           command.params['sinksId'] = sinks_id unless sinks_id.nil?
-          command.query['access_token'] = access_token unless access_token.nil?
-          command.query['bearer_token'] = bearer_token unless bearer_token.nil?
-          command.query['callback'] = callback unless callback.nil?
           command.query['fields'] = fields unless fields.nil?
-          command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
@@ -435,16 +335,8 @@ module Google
         #   Part of `sinkName`. See documentation of `projectsId`.
         # @param [String] sinks_id
         #   Part of `sinkName`. See documentation of `projectsId`.
-        # @param [String] access_token
-        #   OAuth access token.
-        # @param [String] bearer_token
-        #   OAuth bearer token.
-        # @param [String] callback
-        #   JSONP
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
-        # @param [Boolean] pp
-        #   Pretty-print response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -460,7 +352,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_log_sink(projects_id, logs_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
+        def delete_log_sink(projects_id, logs_id, sinks_id, fields: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logs/{logsId}/sinks/{sinksId}'
           command =  make_simple_command(:delete, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::Empty::Representation
@@ -468,11 +360,7 @@ module Google
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logsId'] = logs_id unless logs_id.nil?
           command.params['sinksId'] = sinks_id unless sinks_id.nil?
-          command.query['access_token'] = access_token unless access_token.nil?
-          command.query['bearer_token'] = bearer_token unless bearer_token.nil?
-          command.query['callback'] = callback unless callback.nil?
           command.query['fields'] = fields unless fields.nil?
-          command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
@@ -489,16 +377,8 @@ module Google
         #   An opaque token, returned as `nextPageToken` by a prior `ListLogServices`
         #   operation. If `pageToken` is supplied, then the other fields of this request
         #   are ignored, and instead the previous `ListLogServices` operation is continued.
-        # @param [String] access_token
-        #   OAuth access token.
-        # @param [String] bearer_token
-        #   OAuth bearer token.
-        # @param [String] callback
-        #   JSONP
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
-        # @param [Boolean] pp
-        #   Pretty-print response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -514,7 +394,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_log_services(projects_id, log: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
+        def list_log_services(projects_id, log: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::ListLogServicesResponse::Representation
@@ -523,11 +403,7 @@ module Google
           command.query['log'] = log unless log.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['access_token'] = access_token unless access_token.nil?
-          command.query['bearer_token'] = bearer_token unless bearer_token.nil?
-          command.query['callback'] = callback unless callback.nil?
           command.query['fields'] = fields unless fields.nil?
-          command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
@@ -563,16 +439,8 @@ module Google
         #   operation. If `pageToken` is supplied, then the other fields of this request
         #   are ignored, and instead the previous `ListLogServiceIndexes` operation is
         #   continued.
-        # @param [String] access_token
-        #   OAuth access token.
-        # @param [String] bearer_token
-        #   OAuth bearer token.
-        # @param [String] callback
-        #   JSONP
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
-        # @param [Boolean] pp
-        #   Pretty-print response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -588,7 +456,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_log_service_indexes(projects_id, log_services_id, index_prefix: nil, depth: nil, log: nil, page_size: nil, page_token: nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
+        def list_log_service_indexes(projects_id, log_services_id, index_prefix: nil, depth: nil, log: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/indexes'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::ListLogServiceIndexesResponse::Representation
@@ -600,11 +468,7 @@ module Google
           command.query['log'] = log unless log.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['access_token'] = access_token unless access_token.nil?
-          command.query['bearer_token'] = bearer_token unless bearer_token.nil?
-          command.query['callback'] = callback unless callback.nil?
           command.query['fields'] = fields unless fields.nil?
-          command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
@@ -614,16 +478,8 @@ module Google
         #   Part of `serviceName`. The name of the service for which to list sinks.
         # @param [String] log_services_id
         #   Part of `serviceName`. See documentation of `projectsId`.
-        # @param [String] access_token
-        #   OAuth access token.
-        # @param [String] bearer_token
-        #   OAuth bearer token.
-        # @param [String] callback
-        #   JSONP
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
-        # @param [Boolean] pp
-        #   Pretty-print response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -639,18 +495,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_log_service_sinks(projects_id, log_services_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
+        def list_log_service_sinks(projects_id, log_services_id, fields: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::ListLogServiceSinksResponse::Representation
           command.response_class = Google::Apis::LoggingV1beta3::ListLogServiceSinksResponse
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logServicesId'] = log_services_id unless log_services_id.nil?
-          command.query['access_token'] = access_token unless access_token.nil?
-          command.query['bearer_token'] = bearer_token unless bearer_token.nil?
-          command.query['callback'] = callback unless callback.nil?
           command.query['fields'] = fields unless fields.nil?
-          command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
@@ -662,16 +514,8 @@ module Google
         #   Part of `sinkName`. See documentation of `projectsId`.
         # @param [String] sinks_id
         #   Part of `sinkName`. See documentation of `projectsId`.
-        # @param [String] access_token
-        #   OAuth access token.
-        # @param [String] bearer_token
-        #   OAuth bearer token.
-        # @param [String] callback
-        #   JSONP
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
-        # @param [Boolean] pp
-        #   Pretty-print response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -687,7 +531,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_log_service_sink(projects_id, log_services_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
+        def get_log_service_sink(projects_id, log_services_id, sinks_id, fields: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks/{sinksId}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
@@ -695,11 +539,7 @@ module Google
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logServicesId'] = log_services_id unless log_services_id.nil?
           command.params['sinksId'] = sinks_id unless sinks_id.nil?
-          command.query['access_token'] = access_token unless access_token.nil?
-          command.query['bearer_token'] = bearer_token unless bearer_token.nil?
-          command.query['callback'] = callback unless callback.nil?
           command.query['fields'] = fields unless fields.nil?
-          command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
@@ -710,16 +550,8 @@ module Google
         # @param [String] log_services_id
         #   Part of `serviceName`. See documentation of `projectsId`.
         # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink_object
-        # @param [String] access_token
-        #   OAuth access token.
-        # @param [String] bearer_token
-        #   OAuth bearer token.
-        # @param [String] callback
-        #   JSONP
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
-        # @param [Boolean] pp
-        #   Pretty-print response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -735,7 +567,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_log_service_sink(projects_id, log_services_id, log_sink_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
+        def create_log_service_sink(projects_id, log_services_id, log_sink_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
@@ -744,11 +576,7 @@ module Google
           command.response_class = Google::Apis::LoggingV1beta3::LogSink
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logServicesId'] = log_services_id unless log_services_id.nil?
-          command.query['access_token'] = access_token unless access_token.nil?
-          command.query['bearer_token'] = bearer_token unless bearer_token.nil?
-          command.query['callback'] = callback unless callback.nil?
           command.query['fields'] = fields unless fields.nil?
-          command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
@@ -761,16 +589,8 @@ module Google
         # @param [String] sinks_id
         #   Part of `sinkName`. See documentation of `projectsId`.
         # @param [Google::Apis::LoggingV1beta3::LogSink] log_sink_object
-        # @param [String] access_token
-        #   OAuth access token.
-        # @param [String] bearer_token
-        #   OAuth bearer token.
-        # @param [String] callback
-        #   JSONP
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
-        # @param [Boolean] pp
-        #   Pretty-print response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -786,7 +606,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_log_service_sink(projects_id, log_services_id, sinks_id, log_sink_object = nil, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
+        def update_log_service_sink(projects_id, log_services_id, sinks_id, log_sink_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks/{sinksId}'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::LoggingV1beta3::LogSink::Representation
@@ -796,11 +616,7 @@ module Google
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logServicesId'] = log_services_id unless log_services_id.nil?
           command.params['sinksId'] = sinks_id unless sinks_id.nil?
-          command.query['access_token'] = access_token unless access_token.nil?
-          command.query['bearer_token'] = bearer_token unless bearer_token.nil?
-          command.query['callback'] = callback unless callback.nil?
           command.query['fields'] = fields unless fields.nil?
-          command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
@@ -812,16 +628,8 @@ module Google
         #   Part of `sinkName`. See documentation of `projectsId`.
         # @param [String] sinks_id
         #   Part of `sinkName`. See documentation of `projectsId`.
-        # @param [String] access_token
-        #   OAuth access token.
-        # @param [String] bearer_token
-        #   OAuth bearer token.
-        # @param [String] callback
-        #   JSONP
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
-        # @param [Boolean] pp
-        #   Pretty-print response.
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
@@ -837,7 +645,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_log_service_sink(projects_id, log_services_id, sinks_id, access_token: nil, bearer_token: nil, callback: nil, fields: nil, pp: nil, quota_user: nil, options: nil, &block)
+        def delete_log_service_sink(projects_id, log_services_id, sinks_id, fields: nil, quota_user: nil, options: nil, &block)
           path = 'v1beta3/projects/{projectsId}/logServices/{logServicesId}/sinks/{sinksId}'
           command =  make_simple_command(:delete, path, options)
           command.response_representation = Google::Apis::LoggingV1beta3::Empty::Representation
@@ -845,11 +653,7 @@ module Google
           command.params['projectsId'] = projects_id unless projects_id.nil?
           command.params['logServicesId'] = log_services_id unless log_services_id.nil?
           command.params['sinksId'] = sinks_id unless sinks_id.nil?
-          command.query['access_token'] = access_token unless access_token.nil?
-          command.query['bearer_token'] = bearer_token unless bearer_token.nil?
-          command.query['callback'] = callback unless callback.nil?
           command.query['fields'] = fields unless fields.nil?
-          command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
@@ -857,11 +661,7 @@ module Google
         protected
 
         def apply_command_defaults(command)
-          command.query['access_token'] = access_token unless access_token.nil?
-          command.query['bearer_token'] = bearer_token unless bearer_token.nil?
-          command.query['callback'] = callback unless callback.nil?
           command.query['key'] = key unless key.nil?
-          command.query['pp'] = pp unless pp.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
         end
       end

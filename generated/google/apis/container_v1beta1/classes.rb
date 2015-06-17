@@ -35,9 +35,9 @@ module Google
         # @return [String]
         attr_accessor :cluster_api_version
       
-        # The IP addresses of the container pods in this cluster, in  CIDR notation (e.g.
-        # 10.96.0.0/14). Leave blank to have one automatically chosen or specify a /14
-        # block in 10.0.0.0/8 or 172.16.0.0/12.
+        # The IP address range of the container pods in this cluster, in  CIDR notation (
+        # e.g. 10.96.0.0/14). Leave blank to have one automatically chosen or specify a /
+        # 14 block in 10.0.0.0/8 or 172.16.0.0/12.
         # Corresponds to the JSON property `containerIpv4Cidr`
         # @return [String]
         attr_accessor :container_ipv4_cidr
@@ -60,6 +60,13 @@ module Google
         attr_accessor :enable_cloud_logging
         alias_method :enable_cloud_logging?, :enable_cloud_logging
       
+        # Whether metrics from the cluster should be made available via the Google Cloud
+        # Monitoring service.
+        # Corresponds to the JSON property `enableCloudMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_cloud_monitoring
+        alias_method :enable_cloud_monitoring?, :enable_cloud_monitoring
+      
         # [Output only] The IP address of this cluster's Kubernetes master. The endpoint
         # can be accessed from the internet at https://username:password@endpoint/.
         # See the masterAuth property of this resource for username and password
@@ -67,6 +74,12 @@ module Google
         # Corresponds to the JSON property `endpoint`
         # @return [String]
         attr_accessor :endpoint
+      
+        # [Output only] The resource URLs of [instance groups](/compute/docs/instance-
+        # groups/) associated with this cluster.
+        # Corresponds to the JSON property `instanceGroupUrls`
+        # @return [Array<String>]
+        attr_accessor :instance_group_urls
       
         # The authentication information for accessing the master. Authentication is
         # either done using HTTP basic authentication or using a bearer token.
@@ -114,9 +127,9 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output only] The IP addresses of the Kubernetes services in this cluster, in
-        # CIDR notation (e.g. 1.2.3.4/29). Service addresses are always in the 10.0.0.0/
-        # 16 range.
+        # [Output only] The IP address range of the Kubernetes services in this cluster,
+        # in  CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in
+        # the last /16 from the container CIDR.
         # Corresponds to the JSON property `servicesIpv4Cidr`
         # @return [String]
         attr_accessor :services_ipv4_cidr
@@ -149,7 +162,9 @@ module Google
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @description = args[:description] unless args[:description].nil?
           @enable_cloud_logging = args[:enable_cloud_logging] unless args[:enable_cloud_logging].nil?
+          @enable_cloud_monitoring = args[:enable_cloud_monitoring] unless args[:enable_cloud_monitoring].nil?
           @endpoint = args[:endpoint] unless args[:endpoint].nil?
+          @instance_group_urls = args[:instance_group_urls] unless args[:instance_group_urls].nil?
           @master_auth = args[:master_auth] unless args[:master_auth].nil?
           @name = args[:name] unless args[:name].nil?
           @network = args[:network] unless args[:network].nil?
@@ -264,12 +279,30 @@ module Google
       class MasterAuth
         include Google::Apis::Core::Hashable
       
-        # The token used to authenticate API requests to the master. The token is be
-        # included in an HTTP Authorization Header included in all requests to the
-        # master endpoint. The format of the header is: "Authorization: Bearer ".
+        # The token used to authenticate API requests to the master. The token is to be
+        # included in an HTTP Authorization Header in all requests to the master
+        # endpoint. The format of the header is: "Authorization: Bearer ".
         # Corresponds to the JSON property `bearerToken`
         # @return [String]
         attr_accessor :bearer_token
+      
+        # [Output only] Base64 encoded public certificate used by clients to
+        # authenticate to the cluster endpoint.
+        # Corresponds to the JSON property `clientCertificate`
+        # @return [String]
+        attr_accessor :client_certificate
+      
+        # [Output only] Base64 encoded private key used by clients to authenticate to
+        # the cluster endpoint.
+        # Corresponds to the JSON property `clientKey`
+        # @return [String]
+        attr_accessor :client_key
+      
+        # [Output only] Base64 encoded public certificate that is the root of trust for
+        # the cluster.
+        # Corresponds to the JSON property `clusterCaCertificate`
+        # @return [String]
+        attr_accessor :cluster_ca_certificate
       
         # The password to use for HTTP basic authentication when accessing the
         # Kubernetes master endpoint. Because the master endpoint is open to the
@@ -291,6 +324,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bearer_token = args[:bearer_token] unless args[:bearer_token].nil?
+          @client_certificate = args[:client_certificate] unless args[:client_certificate].nil?
+          @client_key = args[:client_key] unless args[:client_key].nil?
+          @cluster_ca_certificate = args[:cluster_ca_certificate] unless args[:cluster_ca_certificate].nil?
           @password = args[:password] unless args[:password].nil?
           @user = args[:user] unless args[:user].nil?
         end
@@ -347,8 +383,7 @@ module Google
         # @return [String]
         attr_accessor :error_message
       
-        # The server-assigned ID for this operation. If the operation is fulfilled
-        # upfront, it may not have a resource name.
+        # The server-assigned ID for the operation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -424,31 +459,6 @@ module Google
         def update!(**args)
           @email = args[:email] unless args[:email].nil?
           @scopes = args[:scopes] unless args[:scopes].nil?
-        end
-      end
-      
-      # 
-      class Token
-        include Google::Apis::Core::Hashable
-      
-        # The OAuth2 access token
-        # Corresponds to the JSON property `accessToken`
-        # @return [String]
-        attr_accessor :access_token
-      
-        # The expiration time of the token in seconds since the unix epoch.
-        # Corresponds to the JSON property `expiryTimeSeconds`
-        # @return [String]
-        attr_accessor :expiry_time_seconds
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @access_token = args[:access_token] unless args[:access_token].nil?
-          @expiry_time_seconds = args[:expiry_time_seconds] unless args[:expiry_time_seconds].nil?
         end
       end
     end

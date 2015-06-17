@@ -22,7 +22,7 @@ module Google
     #
     # Provides reliable, many-to-many, asynchronous messaging between applications.
     #
-    # @see 
+    # @see https://cloud.google.com/pubsub/docs
     module PubsubV1beta2
       VERSION = 'V1beta2'
       REVISION = '20150427'

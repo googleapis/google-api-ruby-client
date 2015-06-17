@@ -25,10 +25,13 @@ module Google
     # @see https://developers.google.com/genomics/v1beta2/reference
     module GenomicsV1beta2
       VERSION = 'V1beta2'
-      REVISION = '20150415'
+      REVISION = '20150526'
 
       # View and manage your data in Google BigQuery
       AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
       # Manage your data in Google Cloud Storage
       AUTH_DEVSTORAGE_READ_WRITE = 'https://www.googleapis.com/auth/devstorage.read_write'

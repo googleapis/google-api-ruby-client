@@ -263,7 +263,7 @@ module Google
         end
         
         # 
-        # @param [Google::Apis::BooksV1::LoadingResource] books_cloudloading_resource_object
+        # @param [Google::Apis::BooksV1::LoadingResource] loading_resource_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -285,11 +285,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_book(books_cloudloading_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_book(loading_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'cloudloading/updateBook'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::BooksV1::LoadingResource::Representation
-          command.request_object = books_cloudloading_resource_object
+          command.request_object = loading_resource_object
           command.response_representation = Google::Apis::BooksV1::LoadingResource::Representation
           command.response_class = Google::Apis::BooksV1::LoadingResource
           command.query['fields'] = fields unless fields.nil?
@@ -888,7 +888,7 @@ module Google
         # Sets the settings for the user. If a sub-object is specified, it will
         # overwrite the existing sub-object stored in the server. Unspecified sub-
         # objects will retain the existing value.
-        # @param [Google::Apis::BooksV1::UserSettings] usersettings_object
+        # @param [Google::Apis::BooksV1::UserSettings] user_settings_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -910,11 +910,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user_settings(usersettings_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_user_settings(user_settings_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'myconfig/updateUserSettings'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::BooksV1::UserSettings::Representation
-          command.request_object = usersettings_object
+          command.request_object = user_settings_object
           command.response_representation = Google::Apis::BooksV1::UserSettings::Representation
           command.response_class = Google::Apis::BooksV1::UserSettings
           command.query['fields'] = fields unless fields.nil?

@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/deploymentmanager_v2beta1/service.rb'
-require 'google/apis/deploymentmanager_v2beta1/classes.rb'
-require 'google/apis/deploymentmanager_v2beta1/representations.rb'
+require 'google/apis/deploymentmanager_v2beta2/service.rb'
+require 'google/apis/deploymentmanager_v2beta2/classes.rb'
+require 'google/apis/deploymentmanager_v2beta2/representations.rb'
 
 module Google
   module Apis
@@ -24,9 +24,9 @@ module Google
     # run complex solutions on the Google Cloud Platform.
     #
     # @see https://developers.google.com/deployment-manager/
-    module DeploymentmanagerV2beta1
-      VERSION = 'V2beta1'
-      REVISION = '20150427'
+    module DeploymentmanagerV2beta2
+      VERSION = 'V2beta2'
+      REVISION = '20150616'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -1845,49 +1845,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a stream of reads for one or more read group sets. Reads search operates
-        # over a genomic coordinate space of reference sequence & position defined over
-        # the reference sequences to which the requested read group sets are aligned.
-        # If a target positional range is specified, all reads whose alignment to the
-        # reference genome overlap the range are returned.
-        # All reads returned are ordered by genomic coordinate (reference sequence &
-        # position). Reads with equivalent genomic coordinates are returned in a
-        # deterministic order.
-        # @param [Google::Apis::GenomicsV1beta2::StreamReadsRequest] stream_reads_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GenomicsV1beta2::StreamReadsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GenomicsV1beta2::StreamReadsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stream_reads(stream_reads_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'streamingReadstore/streamreads'
-          command =  make_simple_command(:post, path, options)
-          command.request_representation = Google::Apis::GenomicsV1beta2::StreamReadsRequest::Representation
-          command.request_object = stream_reads_request_object
-          command.response_representation = Google::Apis::GenomicsV1beta2::StreamReadsResponse::Representation
-          command.response_class = Google::Apis::GenomicsV1beta2::StreamReadsResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Creates a new variant.
         # @param [Google::Apis::GenomicsV1beta2::Variant] variant_object
         # @param [String] fields
@@ -2273,7 +2230,7 @@ module Google
         # Updates a variant set's metadata. All other modifications are silently ignored.
         # This method supports patch semantics.
         # @param [String] variant_set_id
-        #   The ID of the variant to be updated.
+        #   The ID of the variant to be updated (must already exist).
         # @param [Google::Apis::GenomicsV1beta2::VariantSet] variant_set_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2349,7 +2306,7 @@ module Google
         
         # Updates a variant set's metadata. All other modifications are silently ignored.
         # @param [String] variant_set_id
-        #   The ID of the variant to be updated.
+        #   The ID of the variant to be updated (must already exist).
         # @param [Google::Apis::GenomicsV1beta2::VariantSet] variant_set_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

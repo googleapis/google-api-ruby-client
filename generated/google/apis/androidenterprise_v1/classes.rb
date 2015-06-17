@@ -145,6 +145,59 @@ module Google
         end
       end
       
+      # App version represents a single APK version.
+      class AppVersion
+        include Google::Apis::Core::Hashable
+      
+        # Unique increasing identifier for the apk version.
+        # Corresponds to the JSON property `versionCode`
+        # @return [Fixnum]
+        attr_accessor :version_code
+      
+        # The string used in the Play Store by the app developer to identify a version
+        # of an app. The string is not necessarily unique or localized (e.g. "1.4").
+        # Corresponds to the JSON property `versionString`
+        # @return [String]
+        attr_accessor :version_string
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version_code = args[:version_code] unless args[:version_code].nil?
+          @version_string = args[:version_string] unless args[:version_string].nil?
+        end
+      end
+      
+      # Information on an approval URL.
+      class ApprovalUrlInfo
+        include Google::Apis::Core::Hashable
+      
+        # A URL that displays a product's permissions and that can also be used to
+        # approve the product with the Products.approve call.
+        # Corresponds to the JSON property `approvalUrl`
+        # @return [String]
+        attr_accessor :approval_url
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#approvalUrlInfo".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approval_url = args[:approval_url] unless args[:approval_url].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+        end
+      end
+      
       # A collection resource defines a named set of apps that is visible to a set of
       # users in the Google Play Store app running on those users' managed devices.
       # Those users can then install any of those apps if they wish (which will
@@ -824,6 +877,12 @@ module Google
       class Product
         include Google::Apis::Core::Hashable
       
+        # List of app versions available for this product. The returned list contains
+        # only public versions. E.g. alpha, beta or canary versions will not be included.
+        # Corresponds to the JSON property `appVersion`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::AppVersion>]
+        attr_accessor :app_version
+      
         # The name of the author of the product (e.g. the app developer).
         # Corresponds to the JSON property `authorName`
         # @return [String]
@@ -833,6 +892,11 @@ module Google
         # Corresponds to the JSON property `detailsUrl`
         # @return [String]
         attr_accessor :details_url
+      
+        # How and to whom the package is made available.
+        # Corresponds to the JSON property `distributionChannel`
+        # @return [String]
+        attr_accessor :distribution_channel
       
         # A link to an image that can be used as an icon for the product.
         # Corresponds to the JSON property `iconUrl`
@@ -875,8 +939,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_version = args[:app_version] unless args[:app_version].nil?
           @author_name = args[:author_name] unless args[:author_name].nil?
           @details_url = args[:details_url] unless args[:details_url].nil?
+          @distribution_channel = args[:distribution_channel] unless args[:distribution_channel].nil?
           @icon_url = args[:icon_url] unless args[:icon_url].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @product_id = args[:product_id] unless args[:product_id].nil?
@@ -945,6 +1011,49 @@ module Google
           @kind = args[:kind] unless args[:kind].nil?
           @permission = args[:permission] unless args[:permission].nil?
           @product_id = args[:product_id] unless args[:product_id].nil?
+        end
+      end
+      
+      # 
+      class ApproveProductRequest
+        include Google::Apis::Core::Hashable
+      
+        # Information on an approval URL.
+        # Corresponds to the JSON property `approvalUrlInfo`
+        # @return [Google::Apis::AndroidenterpriseV1::ApprovalUrlInfo]
+        attr_accessor :approval_url_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approval_url_info = args[:approval_url_info] unless args[:approval_url_info].nil?
+        end
+      end
+      
+      # 
+      class GenerateProductApprovalUrlResponse
+        include Google::Apis::Core::Hashable
+      
+        # A iframe-able URL that displays a product's permissions (if any). This URL can
+        # be used to approve the product only once and for a limited time (1 hour),
+        # using the Products.approve call. If the product is not currently approved and
+        # has no permissions, this URL will point to an empty page. If the product is
+        # currently approved and all of its permissions (if any) are also approved, this
+        # field will not be populated.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url = args[:url] unless args[:url].nil?
         end
       end
       

@@ -98,7 +98,7 @@ module Google
         # @return [String]
         attr_accessor :agency_id
       
-        # Attribution model name. This field is ignored.
+        # This field is ignored.
         # Corresponds to the JSON property `attributionModel`
         # @return [String]
         attr_accessor :attribution_model
@@ -108,7 +108,9 @@ module Google
         # @return [String]
         attr_accessor :campaign_id
       
-        # Channel of the product: local or online.
+        # Sales channel for the product. Acceptable values are:
+        # - "local": a physical store
+        # - "online": an online store
         # Corresponds to the JSON property `channel`
         # @return [String]
         attr_accessor :channel
@@ -118,7 +120,11 @@ module Google
         # @return [String]
         attr_accessor :click_id
       
-        # Advertiser-provided ID for the conversion, also known as the order ID.
+        # For offline conversions, this is an ID provided by advertisers. Advertisers
+        # can use this property to specify an ID that is meaningful to them. If an
+        # advertiser doesn't specify a conversionId, DoubleClick Search generates one.
+        # For online conversions, DS copies the dsConversionId or floodlightOrderId into
+        # this property depending on the advertiser's Floodlight instructions.
         # Corresponds to the JSON property `conversionId`
         # @return [String]
         attr_accessor :conversion_id
@@ -133,8 +139,7 @@ module Google
         # @return [String]
         attr_accessor :conversion_timestamp
       
-        # The number of conversions, formatted in millis (conversions multiplied by 1000)
-        # . This field is ignored.
+        # This field is ignored.
         # Corresponds to the JSON property `countMillis`
         # @return [String]
         attr_accessor :count_millis
@@ -161,13 +166,12 @@ module Google
         # @return [Array<Google::Apis::DoubleclicksearchV2::CustomMetric>]
         attr_accessor :custom_metric
       
-        # The type of device on which the conversion occurred. Valid values are "DESKTOP"
-        # , "TABLET", "HIGH_END_MOBILE", "OTHER_DEVICE".
+        # The type of device on which the conversion occurred.
         # Corresponds to the JSON property `deviceType`
         # @return [String]
         attr_accessor :device_type
       
-        # DS conversion ID.
+        # ID that DoubleClick Search generates for each conversion.
         # Corresponds to the JSON property `dsConversionId`
         # @return [String]
         attr_accessor :ds_conversion_id
@@ -177,17 +181,19 @@ module Google
         # @return [String]
         attr_accessor :engine_account_id
       
-        # DS inventory feed ID.
-        # Corresponds to the JSON property `feedId`
-        # @return [String]
-        attr_accessor :feed_id
-      
-        # The advertiser-provided order id for the conversion.
+        # The Floodlight order ID provided by the advertiser for the conversion.
         # Corresponds to the JSON property `floodlightOrderId`
         # @return [String]
         attr_accessor :floodlight_order_id
       
-        # ISO 3166 code of the product country.
+        # ID that DS generates and uses to uniquely identify the inventory account that
+        # contains the product.
+        # Corresponds to the JSON property `inventoryAccountId`
+        # @return [String]
+        attr_accessor :inventory_account_id
+      
+        # The country registered for the Merchant Center feed that contains the product.
+        # Use an ISO 3166 code to specify a country.
         # Corresponds to the JSON property `productCountry`
         # @return [String]
         attr_accessor :product_country
@@ -202,7 +208,8 @@ module Google
         # @return [String]
         attr_accessor :product_id
       
-        # ISO 639 code of the product language.
+        # The language registered for the Merchant Center feed that contains the product.
+        # Use an ISO 639 code to specify a language.
         # Corresponds to the JSON property `productLanguage`
         # @return [String]
         attr_accessor :product_language
@@ -240,7 +247,8 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # The store id for which the product was advertised, when the channel is "local".
+        # The ID of the local store for which the product was advertised. Applicable
+        # only when the channel is "local".
         # Corresponds to the JSON property `storeId`
         # @return [String]
         attr_accessor :store_id
@@ -279,8 +287,8 @@ module Google
           @device_type = args[:device_type] unless args[:device_type].nil?
           @ds_conversion_id = args[:ds_conversion_id] unless args[:ds_conversion_id].nil?
           @engine_account_id = args[:engine_account_id] unless args[:engine_account_id].nil?
-          @feed_id = args[:feed_id] unless args[:feed_id].nil?
           @floodlight_order_id = args[:floodlight_order_id] unless args[:floodlight_order_id].nil?
+          @inventory_account_id = args[:inventory_account_id] unless args[:inventory_account_id].nil?
           @product_country = args[:product_country] unless args[:product_country].nil?
           @product_group_id = args[:product_group_id] unless args[:product_group_id].nil?
           @product_id = args[:product_id] unless args[:product_id].nil?

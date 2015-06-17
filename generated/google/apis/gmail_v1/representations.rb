@@ -102,6 +102,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class WatchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class WatchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       # @private
       class Draft
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -306,6 +314,23 @@ module Google
           collection :messages, as: 'messages', class: Google::Apis::GmailV1::Message, decorator: Google::Apis::GmailV1::Message::Representation
       
           property :snippet, as: 'snippet'
+        end
+      end
+      
+      # @private
+      class WatchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_filter_action, as: 'labelFilterAction'
+          collection :label_ids, as: 'labelIds'
+          property :topic_name, as: 'topicName'
+        end
+      end
+      
+      # @private
+      class WatchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expiration, as: 'expiration'
+          property :history_id, as: 'historyId'
         end
       end
     end

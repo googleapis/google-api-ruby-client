@@ -488,9 +488,9 @@ module Google
         # @return [String]
         attr_accessor :balancing_mode
       
-        # The multiplier (a value between 0 and 1e6) of the max capacity (CPU or RPS,
+        # The multiplier (a value between 0.0 and 1.0) of the max capacity (CPU or RPS,
         # depending on 'balancingMode') the group should serve up to. 0 means the group
-        # is totally drained. Default value is 1. Valid range is [0, 1e6].
+        # is totally drained. Default value is 1. Valid range is [0.0, 1.0].
         # Corresponds to the JSON property `capacityScaler`
         # @return [Float]
         attr_accessor :capacity_scaler
@@ -547,6 +547,16 @@ module Google
       
       # A BackendService resource. This resource defines a group of backend VMs
       # together with their serving capacity.
+      # If you add field foo, you probably need to also add: com.google.cloud.cluster.
+      # manager.api.BackendServiceResource: foo com.google.cloud.cluster.manager.
+      # networking.entities: BackendService, BackendServiceEntity: getFoo, setFoo:
+      # Converters/mappers will need to be updated: com.google.cloud.cluster.manager.
+      # networking.services.backendservice.BackendServiceResourceConverter: toResource,
+      # updateEntity: copy foo com.google.cloud.cluster.mixer.protomappers.
+      # BackendServiceMappers.ResourceMapper: ResourceMapper: add a new map call
+      # Tests to update: com.google.cloud.cluster.manager.networking.services.
+      # backendservice.BackendServiceResourceConverterTest com.google.cloud.cluster.
+      # mixer.protomappers.BackendServiceMappersTest.testResourceMapping
       class BackendService
         include Google::Apis::Core::Hashable
       
@@ -792,6 +802,16 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # [Output Only] Last attach timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `lastAttachTimestamp`
+        # @return [String]
+        attr_accessor :last_attach_timestamp
+      
+        # [Output Only] Last detach timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `lastDetachTimestamp`
+        # @return [String]
+        attr_accessor :last_detach_timestamp
+      
         # Any applicable publicly visible licenses.
         # Corresponds to the JSON property `licenses`
         # @return [Array<String>]
@@ -885,6 +905,12 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # Links to the users of the disk (attached instances) in form: project/zones/
+        # zone/instances/instance
+        # Corresponds to the JSON property `users`
+        # @return [Array<String>]
+        attr_accessor :users
+      
         # [Output Only] URL of the zone where the disk resides.
         # Corresponds to the JSON property `zone`
         # @return [String]
@@ -900,6 +926,8 @@ module Google
           @description = args[:description] unless args[:description].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
+          @last_attach_timestamp = args[:last_attach_timestamp] unless args[:last_attach_timestamp].nil?
+          @last_detach_timestamp = args[:last_detach_timestamp] unless args[:last_detach_timestamp].nil?
           @licenses = args[:licenses] unless args[:licenses].nil?
           @name = args[:name] unless args[:name].nil?
           @options = args[:options] unless args[:options].nil?
@@ -911,6 +939,7 @@ module Google
           @source_snapshot_id = args[:source_snapshot_id] unless args[:source_snapshot_id].nil?
           @status = args[:status] unless args[:status].nil?
           @type = args[:type] unless args[:type].nil?
+          @users = args[:users] unless args[:users].nil?
           @zone = args[:zone] unless args[:zone].nil?
         end
       end
@@ -2332,7 +2361,7 @@ module Google
         attr_accessor :service_accounts
       
         # [Output Only] The status of the instance. One of the following values:
-        # PROVISIONING, STAGING, RUNNING, STOPPING, STOPPED, TERMINATED.
+        # PROVISIONING, STAGING, RUNNING, STOPPING, and TERMINATED.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -3356,7 +3385,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # [Output Only] An optional identifier specified by the client when the mutation
-        # was initiated. Must be unique for all operation resources in the project
+        # was initiated. Must be unique for all operation resources in the project.
         # Corresponds to the JSON property `clientOperationId`
         # @return [String]
         attr_accessor :client_operation_id
@@ -3420,7 +3449,7 @@ module Google
         # [Output Only] An optional progress indicator that ranges from 0 to 100. There
         # is no requirement that this be linear or support any granularity of operations.
         # This should not be used to guess at when the operation will be complete. This
-        # number should be monotonically increasing as the operation progresses.
+        # number should monotonically increase as the operation progresses.
         # Corresponds to the JSON property `progress`
         # @return [Fixnum]
         attr_accessor :progress
@@ -4175,7 +4204,8 @@ module Google
         attr_accessor :next_hop_vpn_tunnel
       
         # Breaks ties between Routes of equal specificity. Routes with smaller values
-        # win when tied with routes with larger values.
+        # win when tied with routes with larger values. Default value is 1000. A valid
+        # range is between 0 and 65535.
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority

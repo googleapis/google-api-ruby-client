@@ -29,7 +29,7 @@ module Google
       class Dataset
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
-        class Acces
+        class Access
           class Representation < Google::Apis::Core::JsonRepresentation; end
         end
       end
@@ -59,6 +59,10 @@ module Google
       end
       
       class Job
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class CancelJobResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -209,7 +213,7 @@ module Google
       # @private
       class Dataset
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :access, as: 'access', class: Google::Apis::BigqueryV2::Dataset::Acces, decorator: Google::Apis::BigqueryV2::Dataset::Acces::Representation
+          collection :access, as: 'access', class: Google::Apis::BigqueryV2::Dataset::Access, decorator: Google::Apis::BigqueryV2::Dataset::Access::Representation
       
           property :creation_time, as: 'creationTime'
           property :dataset_reference, as: 'datasetReference', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
@@ -226,7 +230,7 @@ module Google
         end
         
         # @private
-        class Acces
+        class Access
           class Representation < Google::Apis::Core::JsonRepresentation
             property :domain, as: 'domain'
             property :group_by_email, as: 'groupByEmail'
@@ -329,6 +333,15 @@ module Google
           property :status, as: 'status', class: Google::Apis::BigqueryV2::JobStatus, decorator: Google::Apis::BigqueryV2::JobStatus::Representation
       
           property :user_email, as: 'user_email'
+        end
+      end
+      
+      # @private
+      class CancelJobResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job, as: 'job', class: Google::Apis::BigqueryV2::Job, decorator: Google::Apis::BigqueryV2::Job::Representation
+      
+          property :kind, as: 'kind'
         end
       end
       
@@ -441,7 +454,6 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
-          property :total_items, as: 'totalItems'
         end
         
         # @private

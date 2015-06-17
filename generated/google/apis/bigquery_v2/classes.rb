@@ -106,7 +106,7 @@ module Google
         # access.role: OWNER; access.userByEmail: [dataset creator email]; access.role:
         # OWNER;
         # Corresponds to the JSON property `access`
-        # @return [Array<Google::Apis::BigqueryV2::Dataset::Acces>]
+        # @return [Array<Google::Apis::BigqueryV2::Dataset::Access>]
         attr_accessor :access
       
         # [Output-only] The time when this dataset was created, in milliseconds since
@@ -201,7 +201,7 @@ module Google
         end
         
         # 
-        class Acces
+        class Access
           include Google::Apis::Core::Hashable
         
           # [Pick one] A domain to grant access to. Any users signed in with the domain
@@ -630,6 +630,31 @@ module Google
       end
       
       # 
+      class CancelJobResponse
+        include Google::Apis::Core::Hashable
+      
+        # The final state of the job.
+        # Corresponds to the JSON property `job`
+        # @return [Google::Apis::BigqueryV2::Job]
+        attr_accessor :job
+      
+        # The resource type of the response.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job = args[:job] unless args[:job].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+        end
+      end
+      
+      # 
       class JobConfiguration
         include Google::Apis::Core::Hashable
       
@@ -931,7 +956,7 @@ module Google
         # already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table
         # already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the
         # table already exists and contains data, a 'duplicate' error is returned in the
-        # job result. The default value is WRITE_EMPTY. Each action is atomic and only
+        # job result. The default value is WRITE_APPEND. Each action is atomic and only
         # occurs if BigQuery is able to complete the job successfully. Creation,
         # truncation and append actions occur as one atomic update upon job completion.
         # Corresponds to the JSON property `writeDisposition`
@@ -1032,7 +1057,7 @@ module Google
         # [Optional] Whether to look for the result in the query cache. The query cache
         # is a best-effort cache that will be flushed whenever tables in the query are
         # modified. Moreover, the query cache is only available when a query does not
-        # have a destination table specified.
+        # have a destination table specified. The default value is true.
         # Corresponds to the JSON property `useQueryCache`
         # @return [Boolean]
         attr_accessor :use_query_cache
@@ -1149,11 +1174,6 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Total number of jobs in this collection.
-        # Corresponds to the JSON property `totalItems`
-        # @return [Fixnum]
-        attr_accessor :total_items
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1164,7 +1184,6 @@ module Google
           @jobs = args[:jobs] unless args[:jobs].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
-          @total_items = args[:total_items] unless args[:total_items].nil?
         end
         
         # 
@@ -1819,9 +1838,7 @@ module Google
         end
       end
       
-      # Represents a single cell in the result set. Users of the java client can
-      # detect whether their value result is null by calling 'com.google.api.client.
-      # util.Data.isNull(cell.getV())'.
+      # 
       class TableCell
         include Google::Apis::Core::Hashable
       
@@ -2171,11 +2188,11 @@ module Google
         end
       end
       
-      # Represents a single row in the result set, consisting of one or more fields.
+      # 
       class TableRow
         include Google::Apis::Core::Hashable
       
-        # 
+        # Represents a single row in the result set, consisting of one or more fields.
         # Corresponds to the JSON property `f`
         # @return [Array<Google::Apis::BigqueryV2::TableCell>]
         attr_accessor :f

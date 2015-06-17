@@ -62,10 +62,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class Token
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
       # @private
       class Cluster
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -74,7 +70,9 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :enable_cloud_logging, as: 'enableCloudLogging'
+          property :enable_cloud_monitoring, as: 'enableCloudMonitoring'
           property :endpoint, as: 'endpoint'
+          collection :instance_group_urls, as: 'instanceGroupUrls'
           property :master_auth, as: 'masterAuth', class: Google::Apis::ContainerV1beta1::MasterAuth, decorator: Google::Apis::ContainerV1beta1::MasterAuth::Representation
       
           property :name, as: 'name'
@@ -135,6 +133,9 @@ module Google
       class MasterAuth
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bearer_token, as: 'bearerToken'
+          property :client_certificate, as: 'clientCertificate'
+          property :client_key, as: 'clientKey'
+          property :cluster_ca_certificate, as: 'clusterCaCertificate'
           property :password, as: 'password'
           property :user, as: 'user'
         end
@@ -169,14 +170,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           collection :scopes, as: 'scopes'
-        end
-      end
-      
-      # @private
-      class Token
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :access_token, as: 'accessToken'
-          property :expiry_time_seconds, as: 'expiryTimeSeconds'
         end
       end
     end

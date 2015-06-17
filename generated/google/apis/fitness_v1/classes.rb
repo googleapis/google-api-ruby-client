@@ -22,6 +22,168 @@ module Google
   module Apis
     module FitnessV1
       
+      # 
+      class AggregateBucket
+        include Google::Apis::Core::Hashable
+      
+        # available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT
+        # Corresponds to the JSON property `activity`
+        # @return [Fixnum]
+        attr_accessor :activity
+      
+        # There will be one dataset per datatype/datasource
+        # Corresponds to the JSON property `dataset`
+        # @return [Array<Google::Apis::FitnessV1::Dataset>]
+        attr_accessor :dataset
+      
+        # 
+        # Corresponds to the JSON property `endTimeMillis`
+        # @return [String]
+        attr_accessor :end_time_millis
+      
+        # Sessions contain metadata, such as a user-friendly name and time interval
+        # information.
+        # Corresponds to the JSON property `session`
+        # @return [Google::Apis::FitnessV1::Session]
+        attr_accessor :session
+      
+        # 
+        # Corresponds to the JSON property `startTimeMillis`
+        # @return [String]
+        attr_accessor :start_time_millis
+      
+        # The type of a bucket signifies how the data aggregation is performed in the
+        # bucket.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activity = args[:activity] unless args[:activity].nil?
+          @dataset = args[:dataset] unless args[:dataset].nil?
+          @end_time_millis = args[:end_time_millis] unless args[:end_time_millis].nil?
+          @session = args[:session] unless args[:session].nil?
+          @start_time_millis = args[:start_time_millis] unless args[:start_time_millis].nil?
+          @type = args[:type] unless args[:type].nil?
+        end
+      end
+      
+      # 
+      class AggregateBy
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `dataSourceId`
+        # @return [String]
+        attr_accessor :data_source_id
+      
+        # by dataype or by datasource
+        # Corresponds to the JSON property `dataTypeName`
+        # @return [String]
+        attr_accessor :data_type_name
+      
+        # 
+        # Corresponds to the JSON property `outputDataSourceId`
+        # @return [String]
+        attr_accessor :output_data_source_id
+      
+        # 
+        # Corresponds to the JSON property `outputDataTypeName`
+        # @return [String]
+        attr_accessor :output_data_type_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source_id = args[:data_source_id] unless args[:data_source_id].nil?
+          @data_type_name = args[:data_type_name] unless args[:data_type_name].nil?
+          @output_data_source_id = args[:output_data_source_id] unless args[:output_data_source_id].nil?
+          @output_data_type_name = args[:output_data_type_name] unless args[:output_data_type_name].nil?
+        end
+      end
+      
+      # 
+      class AggregateRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `aggregateBy`
+        # @return [Array<Google::Apis::FitnessV1::AggregateBy>]
+        attr_accessor :aggregate_by
+      
+        # 
+        # Corresponds to the JSON property `bucketByActivitySegment`
+        # @return [Google::Apis::FitnessV1::BucketByActivity]
+        attr_accessor :bucket_by_activity_segment
+      
+        # 
+        # Corresponds to the JSON property `bucketByActivityType`
+        # @return [Google::Apis::FitnessV1::BucketByActivity]
+        attr_accessor :bucket_by_activity_type
+      
+        # 
+        # Corresponds to the JSON property `bucketBySession`
+        # @return [Google::Apis::FitnessV1::BucketBySession]
+        attr_accessor :bucket_by_session
+      
+        # apparently oneof is not supported by reduced_nano_proto
+        # Corresponds to the JSON property `bucketByTime`
+        # @return [Google::Apis::FitnessV1::BucketByTime]
+        attr_accessor :bucket_by_time
+      
+        # 
+        # Corresponds to the JSON property `endTimeMillis`
+        # @return [String]
+        attr_accessor :end_time_millis
+      
+        # required time range
+        # Corresponds to the JSON property `startTimeMillis`
+        # @return [String]
+        attr_accessor :start_time_millis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregate_by = args[:aggregate_by] unless args[:aggregate_by].nil?
+          @bucket_by_activity_segment = args[:bucket_by_activity_segment] unless args[:bucket_by_activity_segment].nil?
+          @bucket_by_activity_type = args[:bucket_by_activity_type] unless args[:bucket_by_activity_type].nil?
+          @bucket_by_session = args[:bucket_by_session] unless args[:bucket_by_session].nil?
+          @bucket_by_time = args[:bucket_by_time] unless args[:bucket_by_time].nil?
+          @end_time_millis = args[:end_time_millis] unless args[:end_time_millis].nil?
+          @start_time_millis = args[:start_time_millis] unless args[:start_time_millis].nil?
+        end
+      end
+      
+      # 
+      class AggregateResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `bucket`
+        # @return [Array<Google::Apis::FitnessV1::AggregateBucket>]
+        attr_accessor :bucket
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] unless args[:bucket].nil?
+        end
+      end
+      
       # See: google3/java/com/google/android/apps/heart/platform/api/Application.java
       class Application
         include Google::Apis::Core::Hashable
@@ -63,6 +225,69 @@ module Google
           @name = args[:name] unless args[:name].nil?
           @package_name = args[:package_name] unless args[:package_name].nil?
           @version = args[:version] unless args[:version].nil?
+        end
+      end
+      
+      # 
+      class BucketByActivity
+        include Google::Apis::Core::Hashable
+      
+        # default activity stream will be used if not specified
+        # Corresponds to the JSON property `activityDataSourceId`
+        # @return [String]
+        attr_accessor :activity_data_source_id
+      
+        # Only activity segments of duration longer than this is used
+        # Corresponds to the JSON property `minDurationMillis`
+        # @return [String]
+        attr_accessor :min_duration_millis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activity_data_source_id = args[:activity_data_source_id] unless args[:activity_data_source_id].nil?
+          @min_duration_millis = args[:min_duration_millis] unless args[:min_duration_millis].nil?
+        end
+      end
+      
+      # 
+      class BucketBySession
+        include Google::Apis::Core::Hashable
+      
+        # Only sessions of duration longer than this is used
+        # Corresponds to the JSON property `minDurationMillis`
+        # @return [String]
+        attr_accessor :min_duration_millis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min_duration_millis = args[:min_duration_millis] unless args[:min_duration_millis].nil?
+        end
+      end
+      
+      # 
+      class BucketByTime
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `durationMillis`
+        # @return [String]
+        attr_accessor :duration_millis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration_millis = args[:duration_millis] unless args[:duration_millis].nil?
         end
       end
       

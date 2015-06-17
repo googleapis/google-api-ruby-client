@@ -309,6 +309,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Requests that a job be cancelled. This call will return immediately, and the
+        # client will need to poll for the job status to see if the cancel completed
+        # successfully.
+        # @param [String] project_id
+        #   Project ID of the job to cancel
+        # @param [String] job_id
+        #   Job ID of the job to cancel
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryV2::CancelJobResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryV2::CancelJobResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_job(project_id, job_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = 'project/{projectId}/jobs/{jobId}/cancel'
+          command =  make_simple_command(:post, path, options)
+          command.response_representation = Google::Apis::BigqueryV2::CancelJobResponse::Representation
+          command.response_class = Google::Apis::BigqueryV2::CancelJobResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['jobId'] = job_id unless job_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns information about a specific job. Job information is available for a
         # six month period after creation. Requires that you're the person who ran the
         # job, or have the Is Owner project role.
@@ -593,7 +634,7 @@ module Google
         #   Dataset ID of the destination table.
         # @param [String] table_id
         #   Table ID of the destination table.
-        # @param [Google::Apis::BigqueryV2::InsertAllTableDataRequest] table_data_insert_all_request_object
+        # @param [Google::Apis::BigqueryV2::InsertAllTableDataRequest] insert_all_table_data_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -615,11 +656,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_all_table_data(project_id, dataset_id, table_id, table_data_insert_all_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_all_table_data(project_id, dataset_id, table_id, insert_all_table_data_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{projectId}/datasets/{datasetId}/tables/{tableId}/insertAll'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::BigqueryV2::InsertAllTableDataRequest::Representation
-          command.request_object = table_data_insert_all_request_object
+          command.request_object = insert_all_table_data_request_object
           command.response_representation = Google::Apis::BigqueryV2::InsertAllTableDataResponse::Representation
           command.response_class = Google::Apis::BigqueryV2::InsertAllTableDataResponse
           command.params['projectId'] = project_id unless project_id.nil?

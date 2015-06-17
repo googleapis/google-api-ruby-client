@@ -3448,10 +3448,21 @@ module Google
         # @return [Google::Apis::YoutubeV3::LiveBroadcastSnippet]
         attr_accessor :snippet
       
+        # Statistics about the live broadcast. These represent a snapshot of the values
+        # at the time of the request. Statistics are only returned for live broadcasts.
+        # Corresponds to the JSON property `statistics`
+        # @return [Google::Apis::YoutubeV3::LiveBroadcastStatistics]
+        attr_accessor :statistics
+      
         # The status object contains information about the event's status.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::YoutubeV3::LiveBroadcastStatus]
         attr_accessor :status
+      
+        # 
+        # Corresponds to the JSON property `topicDetails`
+        # @return [Google::Apis::YoutubeV3::LiveBroadcastTopicDetails]
+        attr_accessor :topic_details
       
         def initialize(**args)
            update!(**args)
@@ -3464,7 +3475,9 @@ module Google
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @snippet = args[:snippet] unless args[:snippet].nil?
+          @statistics = args[:statistics] unless args[:statistics].nil?
           @status = args[:status] unless args[:status].nil?
+          @topic_details = args[:topic_details] unless args[:topic_details].nil?
         end
       end
       
@@ -3512,6 +3525,12 @@ module Google
         attr_accessor :enable_embed
         alias_method :enable_embed?, :enable_embed
       
+        # 
+        # Corresponds to the JSON property `enableLowLatency`
+        # @return [Boolean]
+        attr_accessor :enable_low_latency
+        alias_method :enable_low_latency?, :enable_low_latency
+      
         # Settings and Info of the monitor stream
         # Corresponds to the JSON property `monitorStream`
         # @return [Google::Apis::YoutubeV3::MonitorStreamInfo]
@@ -3550,6 +3569,7 @@ module Google
           @enable_content_encryption = args[:enable_content_encryption] unless args[:enable_content_encryption].nil?
           @enable_dvr = args[:enable_dvr] unless args[:enable_dvr].nil?
           @enable_embed = args[:enable_embed] unless args[:enable_embed].nil?
+          @enable_low_latency = args[:enable_low_latency] unless args[:enable_low_latency].nil?
           @monitor_stream = args[:monitor_stream] unless args[:monitor_stream].nil?
           @record_from_start = args[:record_from_start] unless args[:record_from_start].nil?
           @start_with_slate = args[:start_with_slate] unless args[:start_with_slate].nil?
@@ -3658,6 +3678,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # 
+        # Corresponds to the JSON property `isDefaultBroadcast`
+        # @return [Boolean]
+        attr_accessor :is_default_broadcast
+        alias_method :is_default_broadcast?, :is_default_broadcast
+      
         # The date and time that the broadcast was added to YouTube's live broadcast
         # schedule. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
         # Corresponds to the JSON property `publishedAt`
@@ -3698,6 +3724,7 @@ module Google
           @actual_start_time = args[:actual_start_time] unless args[:actual_start_time].nil?
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
           @description = args[:description] unless args[:description].nil?
+          @is_default_broadcast = args[:is_default_broadcast] unless args[:is_default_broadcast].nil?
           @published_at = args[:published_at] unless args[:published_at].nil?
           @scheduled_end_time = args[:scheduled_end_time] unless args[:scheduled_end_time].nil?
           @scheduled_start_time = args[:scheduled_start_time] unless args[:scheduled_start_time].nil?
@@ -3706,15 +3733,45 @@ module Google
         end
       end
       
+      # Statistics about the live broadcast. These represent a snapshot of the values
+      # at the time of the request. Statistics are only returned for live broadcasts.
+      class LiveBroadcastStatistics
+        include Google::Apis::Core::Hashable
+      
+        # The number of viewers currently watching the broadcast. The property and its
+        # value will be present if the broadcast has current viewers and the broadcast
+        # owner has not hidden the viewcount for the video. Note that YouTube stops
+        # tracking the number of concurrent viewers for a broadcast when the broadcast
+        # ends. So, this property would not identify the number of viewers watching an
+        # archived video of a live broadcast that already ended.
+        # Corresponds to the JSON property `concurrentViewers`
+        # @return [String]
+        attr_accessor :concurrent_viewers
+      
+        # The total number of live chat messages currently on the broadcast. The
+        # property and its value will be present if the broadcast is public, has the
+        # live chat feature enabled, and has at least one message. Note that this field
+        # will not be filled after the broadcast ends. So this property would not
+        # identify the number of chat messages for an archived video of a completed live
+        # broadcast.
+        # Corresponds to the JSON property `totalChatCount`
+        # @return [String]
+        attr_accessor :total_chat_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @concurrent_viewers = args[:concurrent_viewers] unless args[:concurrent_viewers].nil?
+          @total_chat_count = args[:total_chat_count] unless args[:total_chat_count].nil?
+        end
+      end
+      
       # 
       class LiveBroadcastStatus
         include Google::Apis::Core::Hashable
-      
-        # Whether or not this broadcast is the default broadcast
-        # Corresponds to the JSON property `isDefaultBroadcast`
-        # @return [Boolean]
-        attr_accessor :is_default_broadcast
-        alias_method :is_default_broadcast?, :is_default_broadcast
       
         # The broadcast's status. The status can be updated using the API's
         # liveBroadcasts.transition method.
@@ -3747,11 +3804,87 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @is_default_broadcast = args[:is_default_broadcast] unless args[:is_default_broadcast].nil?
           @life_cycle_status = args[:life_cycle_status] unless args[:life_cycle_status].nil?
           @live_broadcast_priority = args[:live_broadcast_priority] unless args[:live_broadcast_priority].nil?
           @privacy_status = args[:privacy_status] unless args[:privacy_status].nil?
           @recording_status = args[:recording_status] unless args[:recording_status].nil?
+        end
+      end
+      
+      # 
+      class LiveBroadcastTopic
+        include Google::Apis::Core::Hashable
+      
+        # Information about the topic matched.
+        # Corresponds to the JSON property `snippet`
+        # @return [Google::Apis::YoutubeV3::LiveBroadcastTopicSnippet]
+        attr_accessor :snippet
+      
+        # The type of the topic.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # If this flag is set it means that we have not been able to match the topic
+        # title and type provided to a known entity.
+        # Corresponds to the JSON property `unmatched`
+        # @return [Boolean]
+        attr_accessor :unmatched
+        alias_method :unmatched?, :unmatched
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snippet = args[:snippet] unless args[:snippet].nil?
+          @type = args[:type] unless args[:type].nil?
+          @unmatched = args[:unmatched] unless args[:unmatched].nil?
+        end
+      end
+      
+      # 
+      class LiveBroadcastTopicDetails
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `topics`
+        # @return [Array<Google::Apis::YoutubeV3::LiveBroadcastTopic>]
+        attr_accessor :topics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @topics = args[:topics] unless args[:topics].nil?
+        end
+      end
+      
+      # 
+      class LiveBroadcastTopicSnippet
+        include Google::Apis::Core::Hashable
+      
+        # The name of the topic.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The date at which the topic was released. Filled for types: videoGame
+        # Corresponds to the JSON property `releaseDate`
+        # @return [String]
+        attr_accessor :release_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] unless args[:name].nil?
+          @release_date = args[:release_date] unless args[:release_date].nil?
         end
       end
       
@@ -3812,6 +3945,43 @@ module Google
         end
       end
       
+      # 
+      class LiveStreamConfigurationIssue
+        include Google::Apis::Core::Hashable
+      
+        # The long-form description of the issue and how to resolve it.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The short-form reason for this issue.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # How severe this issue is to the stream.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # The kind of error happening.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] unless args[:description].nil?
+          @reason = args[:reason] unless args[:reason].nil?
+          @severity = args[:severity] unless args[:severity].nil?
+          @type = args[:type] unless args[:type].nil?
+        end
+      end
+      
       # Detailed settings of a stream.
       class LiveStreamContentDetails
         include Google::Apis::Core::Hashable
@@ -3847,6 +4017,37 @@ module Google
         def update!(**args)
           @closed_captions_ingestion_url = args[:closed_captions_ingestion_url] unless args[:closed_captions_ingestion_url].nil?
           @is_reusable = args[:is_reusable] unless args[:is_reusable].nil?
+        end
+      end
+      
+      # 
+      class LiveStreamHealthStatus
+        include Google::Apis::Core::Hashable
+      
+        # The configurations issues on this stream
+        # Corresponds to the JSON property `configurationIssues`
+        # @return [Array<Google::Apis::YoutubeV3::LiveStreamConfigurationIssue>]
+        attr_accessor :configuration_issues
+      
+        # The last time this status was updated (in seconds)
+        # Corresponds to the JSON property `lastUpdateTimeS`
+        # @return [String]
+        attr_accessor :last_update_time_s
+      
+        # The status code of this stream
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @configuration_issues = args[:configuration_issues] unless args[:configuration_issues].nil?
+          @last_update_time_s = args[:last_update_time_s] unless args[:last_update_time_s].nil?
+          @status = args[:status] unless args[:status].nil?
         end
       end
       
@@ -3936,6 +4137,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # 
+        # Corresponds to the JSON property `isDefaultStream`
+        # @return [Boolean]
+        attr_accessor :is_default_stream
+        alias_method :is_default_stream?, :is_default_stream
+      
         # The date and time that the stream was created. The value is specified in ISO
         # 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
         # Corresponds to the JSON property `publishedAt`
@@ -3955,6 +4162,7 @@ module Google
         def update!(**args)
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
           @description = args[:description] unless args[:description].nil?
+          @is_default_stream = args[:is_default_stream] unless args[:is_default_stream].nil?
           @published_at = args[:published_at] unless args[:published_at].nil?
           @title = args[:title] unless args[:title].nil?
         end
@@ -3964,11 +4172,10 @@ module Google
       class LiveStreamStatus
         include Google::Apis::Core::Hashable
       
-        # 
-        # Corresponds to the JSON property `isDefaultStream`
-        # @return [Boolean]
-        attr_accessor :is_default_stream
-        alias_method :is_default_stream?, :is_default_stream
+        # The health status of the stream.
+        # Corresponds to the JSON property `healthStatus`
+        # @return [Google::Apis::YoutubeV3::LiveStreamHealthStatus]
+        attr_accessor :health_status
       
         # 
         # Corresponds to the JSON property `streamStatus`
@@ -3981,7 +4188,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @is_default_stream = args[:is_default_stream] unless args[:is_default_stream].nil?
+          @health_status = args[:health_status] unless args[:health_status].nil?
           @stream_status = args[:stream_status] unless args[:stream_status].nil?
         end
       end
@@ -6683,6 +6890,12 @@ module Google
         # @return [String]
         attr_accessor :channel_title
       
+        # The default_audio_language property specifies the language spoken in the video'
+        # s default audio track.
+        # Corresponds to the JSON property `defaultAudioLanguage`
+        # @return [String]
+        attr_accessor :default_audio_language
+      
         # The language of the videos's default snippet.
         # Corresponds to the JSON property `defaultLanguage`
         # @return [String]
@@ -6735,6 +6948,7 @@ module Google
           @category_id = args[:category_id] unless args[:category_id].nil?
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
           @channel_title = args[:channel_title] unless args[:channel_title].nil?
+          @default_audio_language = args[:default_audio_language] unless args[:default_audio_language].nil?
           @default_language = args[:default_language] unless args[:default_language].nil?
           @description = args[:description] unless args[:description].nil?
           @live_broadcast_content = args[:live_broadcast_content] unless args[:live_broadcast_content].nil?

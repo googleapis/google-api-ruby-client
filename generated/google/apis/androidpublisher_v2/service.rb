@@ -1823,7 +1823,7 @@ module Google
         end
         
         # 
-        # @param [Google::Apis::AndroidpublisherV2::InAppProductsBatchRequest] inappproducts_batch_request_object
+        # @param [Google::Apis::AndroidpublisherV2::InAppProductsBatchRequest] in_app_products_batch_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1845,11 +1845,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_update_in_app_products(inappproducts_batch_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def batch_update_in_app_products(in_app_products_batch_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'inappproducts/batch'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::InAppProductsBatchRequest::Representation
-          command.request_object = inappproducts_batch_request_object
+          command.request_object = in_app_products_batch_request_object
           command.response_representation = Google::Apis::AndroidpublisherV2::InAppProductsBatchResponse::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::InAppProductsBatchResponse
           command.query['fields'] = fields unless fields.nil?
@@ -2211,7 +2211,7 @@ module Google
         #   The purchased subscription ID (for example, 'monthly001').
         # @param [String] token
         #   The token provided to the user's device when the subscription was purchased.
-        # @param [Google::Apis::AndroidpublisherV2::DeferSubscriptionPurchasesRequest] subscription_purchases_defer_request_object
+        # @param [Google::Apis::AndroidpublisherV2::DeferSubscriptionPurchasesRequest] defer_subscription_purchases_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2233,11 +2233,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def defer_purchase_subscription(package_name, subscription_id, token, subscription_purchases_defer_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def defer_purchase_subscription(package_name, subscription_id, token, defer_subscription_purchases_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:defer'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AndroidpublisherV2::DeferSubscriptionPurchasesRequest::Representation
-          command.request_object = subscription_purchases_defer_request_object
+          command.request_object = defer_subscription_purchases_request_object
           command.response_representation = Google::Apis::AndroidpublisherV2::DeferSubscriptionPurchasesResponse::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::DeferSubscriptionPurchasesResponse
           command.params['packageName'] = package_name unless package_name.nil?

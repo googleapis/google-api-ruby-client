@@ -2688,7 +2688,7 @@ module Google
         #   Web property Id for the uploads to be deleted.
         # @param [String] custom_data_source_id
         #   Custom data source Id for the uploads to be deleted.
-        # @param [Google::Apis::AnalyticsV3::DeleteUploadDataRequest] analytics_dataimport_delete_upload_data_request_object
+        # @param [Google::Apis::AnalyticsV3::DeleteUploadDataRequest] delete_upload_data_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2710,11 +2710,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_upload_data(account_id, web_property_id, custom_data_source_id, analytics_dataimport_delete_upload_data_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_upload_data(account_id, web_property_id, custom_data_source_id, delete_upload_data_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/deleteUploadData'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AnalyticsV3::DeleteUploadDataRequest::Representation
-          command.request_object = analytics_dataimport_delete_upload_data_request_object
+          command.request_object = delete_upload_data_request_object
           command.params['accountId'] = account_id unless account_id.nil?
           command.params['webPropertyId'] = web_property_id unless web_property_id.nil?
           command.params['customDataSourceId'] = custom_data_source_id unless custom_data_source_id.nil?

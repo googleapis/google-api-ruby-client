@@ -146,6 +146,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class KeyValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class LinearAlignment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -299,14 +303,6 @@ module Google
       end
       
       class SearchVariantsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
-      class StreamReadsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
-      class StreamReadsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -600,6 +596,7 @@ module Google
       class ImportVariantsRequest
         class Representation < Google::Apis::Core::JsonRepresentation
           property :format, as: 'format'
+          property :normalize_reference_names, as: 'normalizeReferenceNames'
           collection :source_uris, as: 'sourceUris'
         end
       end
@@ -649,6 +646,14 @@ module Google
           collection :destination, as: 'destination'
           collection :source, as: 'source'
           property :type, as: 'type'
+        end
+      end
+      
+      # @private
+      class KeyValue
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          collection :value, as: 'value'
         end
       end
       
@@ -1090,24 +1095,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :variants, as: 'variants', class: Google::Apis::GenomicsV1beta2::Variant, decorator: Google::Apis::GenomicsV1beta2::Variant::Representation
-      
-        end
-      end
-      
-      # @private
-      class StreamReadsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end, as: 'end'
-          collection :read_group_set_ids, as: 'readGroupSetIds'
-          property :reference_name, as: 'referenceName'
-          property :start, as: 'start'
-        end
-      end
-      
-      # @private
-      class StreamReadsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :alignments, as: 'alignments', class: Google::Apis::GenomicsV1beta2::Read, decorator: Google::Apis::GenomicsV1beta2::Read::Representation
       
         end
       end

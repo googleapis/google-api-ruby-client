@@ -319,6 +319,11 @@ module Google
         # @return [String]
         attr_accessor :subscription_id
       
+        # Suspension Reasons
+        # Corresponds to the JSON property `suspensionReasons`
+        # @return [Array<String>]
+        attr_accessor :suspension_reasons
+      
         # Transfer related information for the subscription.
         # Corresponds to the JSON property `transferInfo`
         # @return [Google::Apis::ResellerV1::Subscription::TransferInfo]
@@ -347,6 +352,7 @@ module Google
           @sku_id = args[:sku_id] unless args[:sku_id].nil?
           @status = args[:status] unless args[:status].nil?
           @subscription_id = args[:subscription_id] unless args[:subscription_id].nil?
+          @suspension_reasons = args[:suspension_reasons] unless args[:suspension_reasons].nil?
           @transfer_info = args[:transfer_info] unless args[:transfer_info].nil?
           @trial_settings = args[:trial_settings] unless args[:trial_settings].nil?
         end

@@ -338,7 +338,7 @@ module Google
         # @return [String]
         attr_accessor :insert_time
       
-        # [Output Only] Type of the resource. Always kind#operation for Operation
+        # [Output Only] Type of the resource. Always compute#Operation for Operation
         # resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -560,7 +560,8 @@ module Google
         # @return [Array<Google::Apis::AutoscalerV1beta2::Operation>]
         attr_accessor :items
       
-        # Type of resource. Always compute#operations for Operations resource.
+        # [Output Only] Type of resource. Always compute#operations for Operations
+        # resource.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -613,7 +614,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Type of the resource.
+        # [Output Only] Type of the resource. Always kind#zone for zones.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -633,7 +634,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Server defined URL for the resource (output only).
+        # [Output Only] Server defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link

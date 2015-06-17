@@ -123,7 +123,7 @@ module Google
         end
         
         # Get a verification token for placing on a website or domain.
-        # @param [Google::Apis::SiteVerificationV1::GetWebResourceTokenRequest] site_verification_web_resource_gettoken_request_object
+        # @param [Google::Apis::SiteVerificationV1::GetWebResourceTokenRequest] get_web_resource_token_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -145,11 +145,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_token_web_resource(site_verification_web_resource_gettoken_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_token_web_resource(get_web_resource_token_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'token'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::SiteVerificationV1::GetWebResourceTokenRequest::Representation
-          command.request_object = site_verification_web_resource_gettoken_request_object
+          command.request_object = get_web_resource_token_request_object
           command.response_representation = Google::Apis::SiteVerificationV1::GetWebResourceTokenResponse::Representation
           command.response_class = Google::Apis::SiteVerificationV1::GetWebResourceTokenResponse
           command.query['fields'] = fields unless fields.nil?

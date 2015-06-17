@@ -26,6 +26,12 @@ module Google
       class InstanceGroupManager
         include Google::Apis::Core::Hashable
       
+        # The autohealing policy for this managed instance group. You can specify only
+        # one value.
+        # Corresponds to the JSON property `autoHealingPolicies`
+        # @return [Array<Google::Apis::ReplicapoolV1beta2::ReplicaPoolAutoHealingPolicy>]
+        attr_accessor :auto_healing_policies
+      
         # The base instance name to use for instances in this group. The value must be a
         # valid RFC1035 name. Supported characters are lowercase letters, numbers, and
         # hyphens (-). Instances are named by appending a hyphen and a random four-
@@ -113,6 +119,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_healing_policies = args[:auto_healing_policies] unless args[:auto_healing_policies].nil?
           @base_instance_name = args[:base_instance_name] unless args[:base_instance_name].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
           @current_size = args[:current_size] unless args[:current_size].nil?
@@ -588,6 +595,25 @@ module Google
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
+        end
+      end
+      
+      # 
+      class ReplicaPoolAutoHealingPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The URL for the HealthCheck that signals autohealing.
+        # Corresponds to the JSON property `healthCheck`
+        # @return [String]
+        attr_accessor :health_check
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @health_check = args[:health_check] unless args[:health_check].nil?
         end
       end
     end

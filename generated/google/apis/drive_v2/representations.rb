@@ -532,6 +532,7 @@ module Google
       
           property :sharing_user, as: 'sharingUser', class: Google::Apis::DriveV2::User, decorator: Google::Apis::DriveV2::User::Representation
       
+          collection :spaces, as: 'spaces'
           property :thumbnail, as: 'thumbnail', class: Google::Apis::DriveV2::File::Thumbnail, decorator: Google::Apis::DriveV2::File::Thumbnail::Representation
       
           property :thumbnail_link, as: 'thumbnailLink'

@@ -1634,6 +1634,11 @@ module Google
         # @return [String]
         attr_accessor :suspension_reason
       
+        # ETag of the user's photo (Read-only)
+        # Corresponds to the JSON property `thumbnailPhotoEtag`
+        # @return [String]
+        attr_accessor :thumbnail_photo_etag
+      
         # Photo Url of the user (Read-only)
         # Corresponds to the JSON property `thumbnailPhotoUrl`
         # @return [String]
@@ -1682,6 +1687,7 @@ module Google
           @relations = args[:relations] unless args[:relations].nil?
           @suspended = args[:suspended] unless args[:suspended].nil?
           @suspension_reason = args[:suspension_reason] unless args[:suspension_reason].nil?
+          @thumbnail_photo_etag = args[:thumbnail_photo_etag] unless args[:thumbnail_photo_etag].nil?
           @thumbnail_photo_url = args[:thumbnail_photo_url] unless args[:thumbnail_photo_url].nil?
           @websites = args[:websites] unless args[:websites].nil?
         end

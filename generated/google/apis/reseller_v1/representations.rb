@@ -143,6 +143,7 @@ module Google
           property :sku_id, as: 'skuId'
           property :status, as: 'status'
           property :subscription_id, as: 'subscriptionId'
+          collection :suspension_reasons, as: 'suspensionReasons'
           property :transfer_info, as: 'transferInfo', class: Google::Apis::ResellerV1::Subscription::TransferInfo, decorator: Google::Apis::ResellerV1::Subscription::TransferInfo::Representation
       
           property :trial_settings, as: 'trialSettings', class: Google::Apis::ResellerV1::Subscription::TrialSettings, decorator: Google::Apis::ResellerV1::Subscription::TrialSettings::Representation

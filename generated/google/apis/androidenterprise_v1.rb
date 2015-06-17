@@ -25,7 +25,7 @@ module Google
     #
     module AndroidenterpriseV1
       VERSION = 'V1'
-      REVISION = '20141112'
+      REVISION = '20150303'
 
       # Manage corporate Android devices
       AUTH_ANDROIDENTERPRISE = 'https://www.googleapis.com/auth/androidenterprise'

@@ -56,13 +56,12 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -232,13 +231,12 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -440,13 +438,12 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -572,13 +569,12 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -663,13 +659,12 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -711,13 +706,12 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -935,13 +929,12 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1101,13 +1094,12 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1233,13 +1225,12 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1410,13 +1401,12 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1621,13 +1611,12 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1787,13 +1776,12 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1876,13 +1864,12 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2000,13 +1987,12 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2166,13 +2152,12 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2460,13 +2445,12 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2626,13 +2610,12 @@ module Google
         # @param [String] project
         #   The project ID for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2721,13 +2704,12 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3081,13 +3063,12 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3404,7 +3385,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] instance
-        #   Name of the instance resource to start.
+        #   Name of the instance resource to stop.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3483,13 +3464,12 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3575,13 +3555,12 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3741,13 +3720,12 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3823,7 +3801,7 @@ module Google
         # Moves a persistent disk from one zone to another.
         # @param [String] project
         #   Project ID for this request.
-        # @param [Google::Apis::ComputeV1::MoveDiskRequest] disk_move_request_object
+        # @param [Google::Apis::ComputeV1::MoveDiskRequest] move_disk_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3845,11 +3823,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def move_disk(project, disk_move_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def move_disk(project, move_disk_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/moveDisk'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::MoveDiskRequest::Representation
-          command.request_object = disk_move_request_object
+          command.request_object = move_disk_request_object
           command.response_representation = Google::Apis::ComputeV1::Operation::Representation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -3862,7 +3840,7 @@ module Google
         # Moves an instance and its attached persistent disks from one zone to another.
         # @param [String] project
         #   Project ID for this request.
-        # @param [Google::Apis::ComputeV1::MoveInstanceRequest] instance_move_request_object
+        # @param [Google::Apis::ComputeV1::MoveInstanceRequest] move_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3884,11 +3862,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def move_instance(project, instance_move_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def move_instance(project, move_instance_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/moveInstance'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::MoveInstanceRequest::Representation
-          command.request_object = instance_move_request_object
+          command.request_object = move_instance_request_object
           command.response_representation = Google::Apis::ComputeV1::Operation::Representation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -4068,13 +4046,12 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4155,13 +4132,12 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4320,13 +4296,12 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4446,13 +4421,12 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4612,13 +4586,12 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4701,13 +4674,12 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4878,13 +4850,12 @@ module Google
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4928,7 +4899,7 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] target_pool
         #   Name of the TargetPool resource to which health_check_url is to be added.
-        # @param [Google::Apis::ComputeV1::AddTargetPoolsHealthCheckRequest] target_pools_add_health_check_request_object
+        # @param [Google::Apis::ComputeV1::AddTargetPoolsHealthCheckRequest] add_target_pools_health_check_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4950,11 +4921,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_target_pool_health_check(project, region, target_pool, target_pools_add_health_check_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_target_pool_health_check(project, region, target_pool, add_target_pools_health_check_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/regions/{region}/targetPools/{targetPool}/addHealthCheck'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::AddTargetPoolsHealthCheckRequest::Representation
-          command.request_object = target_pools_add_health_check_request_object
+          command.request_object = add_target_pools_health_check_request_object
           command.response_representation = Google::Apis::ComputeV1::Operation::Representation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -4972,7 +4943,7 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] target_pool
         #   Name of the TargetPool resource to which instance_url is to be added.
-        # @param [Google::Apis::ComputeV1::AddTargetPoolsInstanceRequest] target_pools_add_instance_request_object
+        # @param [Google::Apis::ComputeV1::AddTargetPoolsInstanceRequest] add_target_pools_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4994,11 +4965,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_target_pool_instance(project, region, target_pool, target_pools_add_instance_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def add_target_pool_instance(project, region, target_pool, add_target_pools_instance_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/regions/{region}/targetPools/{targetPool}/addInstance'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::AddTargetPoolsInstanceRequest::Representation
-          command.request_object = target_pools_add_instance_request_object
+          command.request_object = add_target_pools_instance_request_object
           command.response_representation = Google::Apis::ComputeV1::Operation::Representation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -5014,13 +4985,12 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5236,13 +5206,12 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5286,7 +5255,7 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] target_pool
         #   Name of the TargetPool resource to which health_check_url is to be removed.
-        # @param [Google::Apis::ComputeV1::RemoveTargetPoolsHealthCheckRequest] target_pools_remove_health_check_request_object
+        # @param [Google::Apis::ComputeV1::RemoveTargetPoolsHealthCheckRequest] remove_target_pools_health_check_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5308,11 +5277,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_target_pool_health_check(project, region, target_pool, target_pools_remove_health_check_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def remove_target_pool_health_check(project, region, target_pool, remove_target_pools_health_check_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/regions/{region}/targetPools/{targetPool}/removeHealthCheck'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::RemoveTargetPoolsHealthCheckRequest::Representation
-          command.request_object = target_pools_remove_health_check_request_object
+          command.request_object = remove_target_pools_health_check_request_object
           command.response_representation = Google::Apis::ComputeV1::Operation::Representation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -5330,7 +5299,7 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] target_pool
         #   Name of the TargetPool resource to which instance_url is to be removed.
-        # @param [Google::Apis::ComputeV1::RemoveTargetPoolsInstanceRequest] target_pools_remove_instance_request_object
+        # @param [Google::Apis::ComputeV1::RemoveTargetPoolsInstanceRequest] remove_target_pools_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5352,11 +5321,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_target_pool_instance(project, region, target_pool, target_pools_remove_instance_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def remove_target_pool_instance(project, region, target_pool, remove_target_pools_instance_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/regions/{region}/targetPools/{targetPool}/removeInstance'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::RemoveTargetPoolsInstanceRequest::Representation
-          command.request_object = target_pools_remove_instance_request_object
+          command.request_object = remove_target_pools_instance_request_object
           command.response_representation = Google::Apis::ComputeV1::Operation::Representation
           command.response_class = Google::Apis::ComputeV1::Operation
           command.params['project'] = project unless project.nil?
@@ -5420,13 +5389,12 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5597,13 +5565,12 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5763,13 +5730,12 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5897,7 +5863,7 @@ module Google
         #   Name of the project scoping this request.
         # @param [String] url_map
         #   Name of the UrlMap resource to be validated as.
-        # @param [Google::Apis::ComputeV1::ValidateUrlMapsRequest] url_maps_validate_request_object
+        # @param [Google::Apis::ComputeV1::ValidateUrlMapsRequest] validate_url_maps_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5919,11 +5885,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def validate_url_map(project, url_map, url_maps_validate_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def validate_url_map(project, url_map, validate_url_maps_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/global/urlMaps/{urlMap}/validate'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::ComputeV1::ValidateUrlMapsRequest::Representation
-          command.request_object = url_maps_validate_request_object
+          command.request_object = validate_url_maps_request_object
           command.response_representation = Google::Apis::ComputeV1::ValidateUrlMapsResponse::Representation
           command.response_class = Google::Apis::ComputeV1::ValidateUrlMapsResponse
           command.params['project'] = project unless project.nil?
@@ -5938,13 +5904,12 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6115,13 +6080,12 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6247,13 +6211,12 @@ module Google
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6334,13 +6297,12 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Optional. Filter expression for filtering listed resources.
+        #   Filter expression for filtering listed resources.
         # @param [Fixnum] max_results
-        #   Optional. Maximum count of results to be returned. Maximum value is 500 and
-        #   default value is 500.
+        #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Optional. Tag returned by a previous list request truncated by maxResults.
-        #   Used to continue a previous list request.
+        #   Tag returned by a previous list request when that list was truncated to
+        #   maxResults. Used to continue a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
