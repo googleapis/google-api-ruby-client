@@ -75,12 +75,6 @@ module Google
           return [] if parameters.nil?
           parameters.values.select { |param| param.location == 'query' }
         end
-
-        class Request
-          def generated_name
-            ActiveSupport::Inflector.underscore(_ref) + '_object'
-          end
-        end
       end
 
       class RestResource
