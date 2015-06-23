@@ -1,218 +1,226 @@
 # Google API Client
 
-<dl>
-  <dt>Homepage</dt><dd><a href="http://www.github.com/google/google-api-ruby-client">http://www.github.com/google/google-api-ruby-client</a></dd>
-  <dt>Authors</dt><dd>Bob Aman, <a href="mailto:sbazyl@google.com">Steven Bazyl</a></dd>
-  <dt>Copyright</dt><dd>Copyright © 2011 Google, Inc.</dd>
-  <dt>License</dt><dd>Apache 2.0</dd>
-</dl>
-
-[![Build Status](https://secure.travis-ci.org/google/google-api-ruby-client.png)](http://travis-ci.org/google/google-api-ruby-client)
-[![Dependency Status](https://gemnasium.com/google/google-api-ruby-client.png)](https://gemnasium.com/google/google-api-ruby-client)
-
-## Description
-
-The Google API Ruby Client makes it trivial to discover and access supported
-APIs.
-
 ## Alpha
 
-This library is in Alpha. We will make an effort to support the library, but we reserve the right to make incompatible changes when necessary.
+This library is in Alpha. We will make an effort to support the library, but we reserve the right to make incompatible
+changes when necessary.
 
-## Install
+## Migrating from 0.8.x
 
-Be sure `https://rubygems.org/` is in your gem sources.
+Version 0.9 is not compatible with previous versions. See [MIGRATING](MIGRATING.md) for additional details on how to
+migrate to the latest version.
 
-For normal client usage, this is sufficient:
+## Installation
 
-```bash
-$ gem install google-api-client
-```
-
-## Example Usage
+Add this line to your application's Gemfile:
 
 ```ruby
-require 'google/api_client'
-require 'google/api_client/client_secrets'
-require 'google/api_client/auth/installed_app'
-
-# Initialize the client.
-client = Google::APIClient.new(
-  :application_name => 'Example Ruby application',
-  :application_version => '1.0.0'
-)
-
-# Initialize Google+ API. Note this will make a request to the
-# discovery service every time, so be sure to use serialization
-# in your production code. Check the samples for more details.
-plus = client.discovered_api('plus')
-
-# Load client secrets from your client_secrets.json.
-client_secrets = Google::APIClient::ClientSecrets.load
-
-# Run installed application flow. Check the samples for a more
-# complete example that saves the credentials between runs.
-flow = Google::APIClient::InstalledAppFlow.new(
-  :client_id => client_secrets.client_id,
-  :client_secret => client_secrets.client_secret,
-  :scope => ['https://www.googleapis.com/auth/plus.me']
-)
-client.authorization = flow.authorize
-
-# Make an API call.
-result = client.execute(
-  :api_method => plus.activities.list,
-  :parameters => {'collection' => 'public', 'userId' => 'me'}
-)
-
-puts result.data
+gem 'google-api-client'
 ```
 
-## API Features
+And then execute:
 
-### API Discovery
+    $ bundle
 
-To take full advantage of the client, load API definitions prior to use. To load an API:
+Or install it yourself as:
 
-```ruby
-urlshortener = client.discovered_api('urlshortener')
-```
+    $ gem install google-api-client
 
-Specific versions of the API can be loaded as well:
+## Usage
 
-```ruby
-drive = client.discovered_api('drive', 'v2')
-```
+### Basic usage
 
-Locally cached discovery documents may be used as well. To load an API from a local file:
+To use an API, include the corresponding generated file and instantiate the service. For example to use the Drive API:
 
 ```ruby
-# Output discovery document to JSON
-File.open('my-api.json', 'w') do |f| f.puts MultiJson.dump(client.discovery_document('myapi', 'v1')) end
+require 'google/apis/drive_v2'
 
-# Read discovery document and load API
-doc = File.read('my-api.json')
-client.register_discovery_document('myapi', 'v1', doc)
-my_api = client.discovered_api('myapi', 'v1')
-```
+Drive = Google::Apis::DriveV2 # Alias the module
+drive = Drive::DriveService.new
+drive.authorization = authorization # See Googleauth or Signet libraries
 
-### Authorization
-
-Most interactions with Google APIs require users to authorize applications via OAuth 2.0. The client library uses [Signet](https://github.com/google/signet) to handle most aspects of authorization. For additional details about Google's OAuth support, see [Google Developers](https://developers.google.com/accounts/docs/OAuth2).
-
-Credentials can be managed at the connection level, as shown, or supplied on a per-request basis when calling `execute`.
-
-For server-to-server interactions, like those between a web application and Google Cloud Storage, Prediction, or BigQuery APIs, use service accounts.
-
-As of version 0.8.3, service accounts can be configured using
-[Application Default Credentials][1], which rely on the credentials being
-available in a well-known location.  If the credentials are not present
-and it's being used on a Compute Engine VM,  it will use the VM's default credentials.
-
-```ruby
-client.authorization = :google_app_default  # in a later version, this will become the default
-client.authorization.fetch_access_token!
-client.execute(...)
-```
-
-This is simpler API to use than in previous versions, although that is still available:
-
-```ruby
-key = Google::APIClient::KeyUtils.load_from_pkcs12('client.p12', 'notasecret')
-client.authorization = Signet::OAuth2::Client.new(
-  :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
-  :audience => 'https://accounts.google.com/o/oauth2/token',
-  :scope => 'https://www.googleapis.com/auth/prediction',
-  :issuer => '123456-abcdef@developer.gserviceaccount.com',
-  :signing_key => key)
-client.authorization.fetch_access_token!
-client.execute(...)
-```
-
-Service accounts are also used for delegation in Google Apps domains. The target user for impersonation is specified by setting the `:person` parameter to the user's email address
-in the credentials. Detailed instructions on how to enable delegation for your domain can be found at [developers.google.com](https://developers.google.com/drive/delegation).
-
-### Automatic Retries & Backoff
-
-The API client can automatically retry requests for recoverable errors. To enable retries, set the `client.retries` property to
-the number of additional attempts. To avoid flooding servers, retries invovle a 1 second delay that increases on each subsequent retry.
-In the case of authentication token expiry, the API client will attempt to refresh the token and retry the failed operation - this
-is a specific exception to the retry rules.
-
-The default value for retries is 0, but will be enabled by default in future releases.
-
-### Batching Requests
-
-Some Google APIs support batching requests into a single HTTP request. Use `Google::APIClient::BatchRequest`
-to bundle multiple requests together.
-
-Example:
-
-```ruby
-client = Google::APIClient.new
-urlshortener = client.discovered_api('urlshortener')
-
-batch = Google::APIClient::BatchRequest.new do |result|
-    puts result.data
+# Search for files in Drive (first page only)
+files = drive.list_files(q: "title contains 'finances'")
+files.items.each do |file|
+  puts file.title
 end
 
-batch.add(:api_method => urlshortener.url.insert,
-          :body_object => { 'longUrl' => 'http://example.com/foo' })
-batch.add(:api_method => urlshortener.url.insert,
-          :body_object => { 'longUrl' => 'http://example.com/bar' })
-client.execute(batch)
+# Upload a file
+metadata = Drive::File.new(title: 'My document')
+metadata = drive.insert_file(metadata, upload_source: 'test.txt', content_type: 'text/plain')
+
+# Download a file
+drive.get_file(metadata.id, download_dest: '/tmp/myfile.txt')
 ```
 
-Blocks for handling responses can be specified either at the batch level or when adding an individual API call. For example:
+### Media
+
+Methods that allow media operations have additional parameters to specify the upload source or download destination.
+
+For uploads, the `upload_source` parameter can be specified with either a path to a file, an `IO` stream, or `StringIO`
+instance.
+
+For downloads, the `download_dest` parameter can also be either a path to a file, an `IO` stream, or `StringIO` instance.
+
+Both uploads & downloads are resumable. If an error occurs during transmission the request will be automatically
+retried from the last received byte.
+
+### Errors & Retries
+
+Retries are disabled by default, but enabling retries is strongly encouraged. The number of retries can be configured
+via `Google::Apis::RequestOptions`. Any number greater than 0 will enable retries.
+
+To enable retries for all services:
 
 ```ruby
-batch.add(:api_method=>urlshortener.url.insert, :body_object => { 'longUrl' => 'http://example.com/bar' }) do |result|
-   puts result.data
+Google::Apis::RequestOptions.default.retries = 5
+```
+
+With retries enabled globally, retries can be disabled for specific calls by including a retry value of 0 in the
+request options:
+
+```ruby
+drive.insert_file(metadata, upload_source: 'test.txt', content_type: 'text/plain', options: { retries: 0 })
+```
+
+When retries are enabled, if a server or rate limit error occurs during a request it is automatically retried with
+an exponentially increasing delay on subsequent retries. If a request can not be retried or if the maximum number
+of retries is exceeded, an exception is thrown.
+
+### Callbacks
+
+A block an be specified when making calls. If present, the block will be called with the result or error, rather than
+returning the result from the call or raising the error. Example:
+
+```ruby
+# Search for files in Drive (first page only)
+drive.list_files(q: "title contains 'finances'") do |res, err|
+  if err
+    # Handle error
+  else
+    # Handle response
+  end
 end
 ```
 
-### Media Upload
+This calling style is required when making batch requests as responses are not available until the entire batch
+is complete.
 
-For APIs that support file uploads, use `Google::APIClient::UploadIO` to load the stream. Both multipart and resumable
-uploads can be used. For example, to upload a file to Google Drive using multipart
+### Batches
 
-```ruby
-drive = client.discovered_api('drive', 'v2')
+Multiple requests can be batched together into a single HTTP request to reduce overhead. Batched calls are executed
+in parallel and the responses processed once all results are available
 
-media = Google::APIClient::UploadIO.new('mymovie.m4v', 'video/mp4')
-metadata = {
-    'title' => 'My movie',
-    'description' => 'The best home movie ever made'
-}
-client.execute(:api_method => drive.files.insert,
-               :parameters => { 'uploadType' => 'multipart' },
-               :body_object => metadata,
-               :media => media )
-```
-
-To use resumable uploads, change the `uploadType` parameter to `resumable`. To check the status of the upload
-and continue if necessary, check `result.resumable_upload`.
 
 ```ruby
-client.execute(:api_method => drive.files.insert,
-           :parameters => { 'uploadType' => 'resumable' },
-           :body_object => metadata,
-           :media => media )
-upload = result.resumable_upload
-
-# Resume if needed
-if upload.resumable?
-    client.execute(upload)
+# Fetch a bunch of files by ID
+ids = ['file_id_1', 'file_id_2', 'file_id_3', 'file_id_4']
+drive.batch do |drive|
+  ids.each do |id|
+    drive.get_file(id) do |res, err|
+      # Handle response
+    end
+  end
 end
 ```
 
-## Samples
+Media operations -- uploads & downloads -- can not be included in batch with other requests.
 
-See the full list of [samples on Github](https://github.com/google/google-api-ruby-client-samples).
+However, some APIs support batch uploads. To upload multiple files in a batch, use the `batch_upload` method instead.
+Batch uploads should only be used when uploading multiple small files. For large files, upload files individually to
+take advantage of the libraries built-in reusmable upload support.
 
+### Hashes
+
+While the API will always return instances of schema classes, plain hashes are accepted in method calls for
+convenience. Hash keys must be symbols matching the attribute names on the corresponding object the hash is meant
+to replace. For example:
+
+```ruby
+file = {id: '123', title: 'My document', labels: { starred: true }}
+file = drive.insert_file(file) # Returns a Drive::File instance
+```
+
+is equivalent to:
+
+```ruby
+file = Drive::File.new(id: '123', title: 'My document')
+file.labels = Drive::File::Labels.new(starred: true)
+file = drive.update_file(file) # Returns a Drive::File instance
+```
+
+## Authorization
+
+[OAuth 2](https://developers.google.com/accounts/docs/OAuth2) is used to authorize applications. This library uses
+both [Signet](https://github.com/google/signet) and
+[Google Auth Library for Ruby](https://github.com/google/google-auth-library-ruby) for OAuth 2 support.
+
+The [Google Auth Library for Ruby](https://github.com/google/google-auth-library-ruby) provides an implementation of
+[application default credentials] for Ruby. It offers a simple way to get authorization credentials for use in
+calling Google APIs, best suited for cases when the call needs to have the same identity
+and authorization level for the application independent of the user. This is
+the recommended approach to authorize calls to Cloud APIs, particularly when
+you're building an application that uses Google Compute Engine.
+
+For per-user authorization, use [Signet](https://github.com/google/signet) to obtain user authorization.
+
+### Passing authorization to requests
+
+Authorization can be specified for the entire client, for an individual service instance, or on a per-request basis.
+
+Set authorization for all service:
+
+```ruby
+Google::Apis::RequestOptions.default.authorization = authorization
+# Services instantiated after this will inherit the authorization
+```
+
+On a per-service level:
+
+```ruby
+drive = Google::Apis::DriveV2::DriveService.new
+drive.authorization = authorization
+
+# All requests made with this service will use the same authorization
+```
+
+Per-request:
+
+```ruby
+drive.get_file('123', options: { authorization: authorization })
+```
+
+## Generating APIs
+
+For [Cloud Endpoints](https://cloud.google.com/endpoints/) or other APIs not included in the gem, ruby code can be
+generated from the discovery document.
+
+To generate from a local discovery file:
+
+    $ generate-api gen <outdir> --file=<path>
+
+A URL can also be specified:
+
+    $ generate-api gen <outdir> --url=<url>
+
+## TODO
+
+*  ETag support (if-not-modified)
+*  Auto-paging results (maybe)
+*  Caching
+*  Model validations
+
+## License
+
+This library is licensed under Apache 2.0. Full license text is
+available in [LICENSE.txt](LICENSE.txt).
+
+## Contributing
+
+See [CONTRIBUTING](contributing).
 
 ## Support
 
-Please [report bugs at the project on Github](https://github.com/google/google-api-ruby-client/issues). Don't hesitate to [ask questions](http://stackoverflow.com/questions/tagged/google-api-ruby-client) about the client or APIs on [StackOverflow](http://stackoverflow.com).
-
-[1]: https://developers.google.com/accounts/docs/application-default-credentials
+Please [report bugs at the project on Github](https://github.com/google/google-api-ruby-client/issues). Don't
+hesitate to [ask questions](http://stackoverflow.com/questions/tagged/google-api-ruby-client) about the client or APIs
+on [StackOverflow](http://stackoverflow.com).

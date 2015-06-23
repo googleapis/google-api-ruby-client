@@ -1,43 +1,31 @@
-# -*- encoding: utf-8 -*-
-require File.join(File.dirname(__FILE__), 'lib/google/api_client', 'version')
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'google/apis/version'
 
-Gem::Specification.new do |s|
-  s.name = "google-api-client"
-  s.version = Google::APIClient::VERSION::STRING
+Gem::Specification.new do |spec|
+  spec.name          = 'google-api-client'
+  spec.version       = Google::Apis::VERSION
+  spec.authors       = ['Steven Bazyl', 'Tim Emiola', 'Sergio Gomes', 'Bob Aman']
+  spec.email         = ['sbazyl@google.com']
+  spec.summary       = %q{Client for accessing Google APIs}
+  spec.homepage      = 'https://github.com/google/google-api-ruby-client'
+  spec.license       = 'Apache 2.0'
 
-  s.required_rubygems_version = ">= 1.3.5"
-  s.require_paths = ["lib"]
-  s.authors = ["Bob Aman", "Steven Bazyl"]
-  s.license = "Apache-2.0"
-  s.description = "The Google API Ruby Client makes it trivial to discover and access supported APIs."
-  s.email = "sbazyl@google.com"
-  s.extra_rdoc_files = ["README.md"]
-  s.files = %w(google-api-client.gemspec Rakefile LICENSE CHANGELOG.md README.md Gemfile)
-  s.files += Dir.glob("lib/**/*.rb")
-  s.files += Dir.glob("lib/cacerts.pem")
-  s.files += Dir.glob("spec/**/*.{rb,opts}")
-  s.files += Dir.glob("vendor/**/*.rb")
-  s.files += Dir.glob("tasks/**/*")
-  s.files += Dir.glob("website/**/*")
-  s.homepage = "https://github.com/google/google-api-ruby-client/"
-  s.rdoc_options = ["--main", "README.md"]
-  s.summary = "The Google API Ruby Client makes it trivial to discover and access Google's REST APIs."
+  spec.files         = `git ls-files -z`.split("\x0")
+  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.require_paths = ['lib', 'generated']
 
-  s.add_runtime_dependency 'addressable', '~> 2.3'
-  s.add_runtime_dependency 'signet', '~> 0.6'
-  s.add_runtime_dependency 'faraday', '~> 0.9'
-  s.add_runtime_dependency 'googleauth', '~> 0.3'
-  s.add_runtime_dependency 'multi_json', '~> 1.10'
-  s.add_runtime_dependency 'autoparse', '~> 0.3'
-  s.add_runtime_dependency 'extlib', '~> 0.9'
-  s.add_runtime_dependency 'launchy', '~> 2.4'
-  s.add_runtime_dependency 'retriable', '~> 1.4'
-  s.add_runtime_dependency 'activesupport', '>= 3.2'
-
-  s.add_development_dependency 'rake', '~> 10.0'
-  s.add_development_dependency 'yard', '~> 0.8'
-  s.add_development_dependency 'rspec', '~> 3.1'
-  s.add_development_dependency 'kramdown', '~> 1.5'
-  s.add_development_dependency 'simplecov', '~> 0.9.2'
-  s.add_development_dependency 'coveralls', '~> 0.7.11'
+  spec.add_runtime_dependency 'representable', '~> 2.1'
+  spec.add_runtime_dependency 'multi_json', '~> 1.11'
+  spec.add_runtime_dependency 'retriable', '~> 2.0'
+  spec.add_runtime_dependency 'activesupport', '>= 3.2'
+  spec.add_runtime_dependency 'addressable', '~> 2.3'
+  spec.add_runtime_dependency 'mime-types', '>= 1.6'
+  spec.add_runtime_dependency 'hurley', '~> 0.1'
+  spec.add_runtime_dependency 'googleauth', '~> 0.2'
+  spec.add_runtime_dependency 'thor', '~> 0.19'
+  spec.add_runtime_dependency 'memoist', '~> 0.11'
+  spec.add_runtime_dependency 'virtus', '~> 1.0'
 end
