@@ -1,4 +1,5 @@
-age: script/release
+#!/usr/bin/env bash
+# Usage: script/release
 # Build the package, tag a commit, push it to origin, and then release the
 # package publicly.
 

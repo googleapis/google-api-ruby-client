@@ -2,7 +2,7 @@
 
 ## Contributor License Agreements
 
-We'd love to accept your sample apps and patches! Before we can take them, we 
+We'd love to accept your sample apps and patches! Before we can take them, we
 have to jump a couple of legal hurdles.
 
 Please fill out either the individual or corporate Contributor License Agreement
@@ -29,4 +29,3 @@ accept your pull requests.
 1. Ensure that your code is clear and comprehensible.
 1. Ensure that your code has an appropriate set of unit tests which all pass.
 1. Submit a pull request.
-

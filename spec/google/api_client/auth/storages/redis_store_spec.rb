@@ -1,8 +1,6 @@
 require 'spec_helper'
 
-require 'google/api_client'
-require 'google/api_client/version'
-
+require 'google/api_client/auth/storages/redis_store'
 
 describe Google::APIClient::RedisStore do
   let(:root_path) { File.expand_path(File.join(__FILE__, '..', '..', '..', '..', '..')) }
