@@ -5,7 +5,7 @@ library to bring it to `0.9`. If you are starting a new project or haven't used
 this library before version `0.9`, see the [README][readme] to get started
 as you won't need to migrate anything.
 
-Code written against the `0.8.x` version of this library will not with the `0.9`
+Code written against the `0.8.x` version of this library will not work with the `0.9`
 version without modification.
 
 ## Discovery
@@ -49,7 +49,7 @@ In `0.9` the same thing can be accomplished like this:
 file = drive.get_file('abc123')
 ```
 
-Full API definitions including available methods and data classes can be found in the `generated` directory.
+Full API definitions including available methods, parameters, and data classes can be found in the `generated` directory.
 
 ## Authorization
 
