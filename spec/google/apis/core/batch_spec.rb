@@ -28,14 +28,14 @@ RSpec.describe Google::Apis::Core::BatchCommand do
   let(:get_command) { Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals/1') }
 
   let(:post_with_string_command) do
-    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals/2')
+    command = Google::Apis::Core::HttpCommand.new(:post, 'https://www.googleapis.com/zoo/animals/2')
     command.body = 'Hello world'
     command.header[:content_type] = 'text/plain'
     command
   end
 
   let(:post_with_io_command) do
-    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals/3')
+    command = Google::Apis::Core::HttpCommand.new(:post, 'https://www.googleapis.com/zoo/animals/3')
     command.body = StringIO.new('Goodbye!')
     command.header[:content_type] = 'text/plain'
     command
@@ -79,28 +79,30 @@ EOF
 
     expected_body = <<EOF.gsub(/\n/, "\r\n")
 --RubyApiBatchRequest
-Content-Length: 54
+Content-Length: 58
 Content-Type: application/http
 Content-Transfer-Encoding: binary
 
 GET /zoo/animals/1? HTTP/1.1
 Host: www.googleapis.com
+
+
 --RubyApiBatchRequest
-Content-Length: 95
+Content-Length: 96
 Content-Type: application/http
 Content-Transfer-Encoding: binary
 
-GET /zoo/animals/2? HTTP/1.1
+POST /zoo/animals/2? HTTP/1.1
 Content-Type: text/plain
 Host: www.googleapis.com
 
 Hello world
 --RubyApiBatchRequest
-Content-Length: 92
+Content-Length: 93
 Content-Type: application/http
 Content-Transfer-Encoding: binary
 
-GET /zoo/animals/3? HTTP/1.1
+POST /zoo/animals/3? HTTP/1.1
 Content-Type: text/plain
 Host: www.googleapis.com
 

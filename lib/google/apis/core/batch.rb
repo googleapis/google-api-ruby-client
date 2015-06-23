@@ -166,7 +166,7 @@ module Google
             request_head << sprintf("\r\n%s: %s", key, value)
           end
           request_head << sprintf("\r\nHost: %s", call.url.host)
-          request_head << "\r\n\r\n" unless call.body.nil?
+          request_head << "\r\n\r\n"
           StringIO.new(request_head)
         end
 
