@@ -13,6 +13,7 @@ group :development do
   gem 'simplecov', '~> 0.9'
   gem 'coveralls', '~> 0.7.11'
   gem 'rubocop', '~> 0.29'
+  gem 'launchy', '~> 2.4'
 end
 
 platforms :jruby do
