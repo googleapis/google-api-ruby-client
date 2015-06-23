@@ -5645,10 +5645,12 @@
 "/calendar:v3/calendar.events.get/timeZone": time_zone
 "/calendar:v3/calendar.events.import": import_event
 "/calendar:v3/calendar.events.import/calendarId": calendar_id
+"/calendar:v3/calendar.events.import/supportsAttachments": supports_attachments
 "/calendar:v3/calendar.events.insert": insert_event
 "/calendar:v3/calendar.events.insert/calendarId": calendar_id
 "/calendar:v3/calendar.events.insert/maxAttendees": max_attendees
 "/calendar:v3/calendar.events.insert/sendNotifications": send_notifications
+"/calendar:v3/calendar.events.insert/supportsAttachments": supports_attachments
 "/calendar:v3/calendar.events.instances": instances_event
 "/calendar:v3/calendar.events.instances/alwaysIncludeEmail": always_include_email
 "/calendar:v3/calendar.events.instances/calendarId": calendar_id
@@ -5691,6 +5693,7 @@
 "/calendar:v3/calendar.events.patch/eventId": event_id
 "/calendar:v3/calendar.events.patch/maxAttendees": max_attendees
 "/calendar:v3/calendar.events.patch/sendNotifications": send_notifications
+"/calendar:v3/calendar.events.patch/supportsAttachments": supports_attachments
 "/calendar:v3/calendar.events.quickAdd": quick_add_event
 "/calendar:v3/calendar.events.quickAdd/calendarId": calendar_id
 "/calendar:v3/calendar.events.quickAdd/sendNotifications": send_notifications
@@ -5701,6 +5704,7 @@
 "/calendar:v3/calendar.events.update/eventId": event_id
 "/calendar:v3/calendar.events.update/maxAttendees": max_attendees
 "/calendar:v3/calendar.events.update/sendNotifications": send_notifications
+"/calendar:v3/calendar.events.update/supportsAttachments": supports_attachments
 "/calendar:v3/calendar.events.watch": watch_event
 "/calendar:v3/calendar.events.watch/alwaysIncludeEmail": always_include_email
 "/calendar:v3/calendar.events.watch/calendarId": calendar_id
@@ -5812,6 +5816,8 @@
 "/calendar:v3/Error/reason": reason
 "/calendar:v3/Event": event
 "/calendar:v3/Event/anyoneCanAddSelf": anyone_can_add_self
+"/calendar:v3/Event/attachments": attachments
+"/calendar:v3/Event/attachments/attachment": attachment
 "/calendar:v3/Event/attendees": attendees
 "/calendar:v3/Event/attendees/attendee": attendee
 "/calendar:v3/Event/attendeesOmitted": attendees_omitted
@@ -5875,6 +5881,10 @@
 "/calendar:v3/Event/updated": updated
 "/calendar:v3/Event/visibility": visibility
 "/calendar:v3/EventAttachment": event_attachment
+"/calendar:v3/EventAttachment/fileUrl": file_url
+"/calendar:v3/EventAttachment/iconLink": icon_link
+"/calendar:v3/EventAttachment/mimeType": mime_type
+"/calendar:v3/EventAttachment/title": title
 "/calendar:v3/EventAttendee": event_attendee
 "/calendar:v3/EventAttendee/additionalGuests": additional_guests
 "/calendar:v3/EventAttendee/comment": comment
@@ -12209,6 +12219,7 @@
 "/drive:v2/File": file
 "/drive:v2/File/alternateLink": alternate_link
 "/drive:v2/File/appDataContents": app_data_contents
+"/drive:v2/File/canComment": can_comment
 "/drive:v2/File/copyable": copyable
 "/drive:v2/File/createdDate": created_date
 "/drive:v2/File/defaultOpenWithLink": default_open_with_link
@@ -12271,6 +12282,7 @@
 "/drive:v2/File/openWithLinks": open_with_links
 "/drive:v2/File/openWithLinks/open_with_link": open_with_link
 "/drive:v2/File/originalFilename": original_filename
+"/drive:v2/File/ownedByMe": owned_by_me
 "/drive:v2/File/ownerNames": owner_names
 "/drive:v2/File/ownerNames/owner_name": owner_name
 "/drive:v2/File/owners": owners
@@ -12283,6 +12295,7 @@
 "/drive:v2/File/properties/property": property
 "/drive:v2/File/quotaBytesUsed": quota_bytes_used
 "/drive:v2/File/selfLink": self_link
+"/drive:v2/File/shareable": shareable
 "/drive:v2/File/shared": shared
 "/drive:v2/File/sharedWithMeDate": shared_with_me_date
 "/drive:v2/File/sharingUser": sharing_user
@@ -14155,6 +14168,7 @@
 "/genomics:v1beta2/CoverageBucket/meanCoverage": mean_coverage
 "/genomics:v1beta2/CoverageBucket/range": range
 "/genomics:v1beta2/Dataset": dataset
+"/genomics:v1beta2/Dataset/createTime": create_time
 "/genomics:v1beta2/Dataset/id": id
 "/genomics:v1beta2/Dataset/isPublic": is_public
 "/genomics:v1beta2/Dataset/name": name
@@ -14727,6 +14741,7 @@
 "/gmail:v1/Message": message
 "/gmail:v1/Message/historyId": history_id
 "/gmail:v1/Message/id": id
+"/gmail:v1/Message/internalDate": internal_date
 "/gmail:v1/Message/labelIds": label_ids
 "/gmail:v1/Message/labelIds/label_id": label_id
 "/gmail:v1/Message/payload": payload
@@ -19713,7 +19728,6 @@
 "/youtube:v3/youtube.videos.list/videoCategoryId": video_category_id
 "/youtube:v3/youtube.videos.rate": rate_video
 "/youtube:v3/youtube.videos.rate/id": id
-"/youtube:v3/youtube.videos.rate/onBehalfOfContentOwner": on_behalf_of_content_owner
 "/youtube:v3/youtube.videos.rate/rating": rating
 "/youtube:v3/youtube.videos.reportAbuse": report_abuse_video
 "/youtube:v3/youtube.videos.reportAbuse/onBehalfOfContentOwner": on_behalf_of_content_owner

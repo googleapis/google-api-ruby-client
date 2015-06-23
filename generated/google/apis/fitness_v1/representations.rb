@@ -1,0 +1,295 @@
+# Copyright 2015 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+require 'date'
+require 'google/apis/core/base_service'
+require 'google/apis/core/json_representation'
+require 'google/apis/core/hashable'
+require 'google/apis/errors'
+
+module Google
+  module Apis
+    module FitnessV1
+      
+      class AggregateBucket
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class AggregateBy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class AggregateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class AggregateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Application
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class BucketByActivity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class BucketBySession
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class BucketByTime
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class DataPoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class DataSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class DataType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class DataTypeField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Dataset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Device
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class ListDataSourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class ListSessionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Session
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Value
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      # @private
+      class AggregateBucket
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activity, as: 'activity'
+          collection :dataset, as: 'dataset', class: Google::Apis::FitnessV1::Dataset, decorator: Google::Apis::FitnessV1::Dataset::Representation
+      
+          property :end_time_millis, as: 'endTimeMillis'
+          property :session, as: 'session', class: Google::Apis::FitnessV1::Session, decorator: Google::Apis::FitnessV1::Session::Representation
+      
+          property :start_time_millis, as: 'startTimeMillis'
+          property :type, as: 'type'
+        end
+      end
+      
+      # @private
+      class AggregateBy
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_id, as: 'dataSourceId'
+          property :data_type_name, as: 'dataTypeName'
+          property :output_data_source_id, as: 'outputDataSourceId'
+          property :output_data_type_name, as: 'outputDataTypeName'
+        end
+      end
+      
+      # @private
+      class AggregateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aggregate_by, as: 'aggregateBy', class: Google::Apis::FitnessV1::AggregateBy, decorator: Google::Apis::FitnessV1::AggregateBy::Representation
+      
+          property :bucket_by_activity_segment, as: 'bucketByActivitySegment', class: Google::Apis::FitnessV1::BucketByActivity, decorator: Google::Apis::FitnessV1::BucketByActivity::Representation
+      
+          property :bucket_by_activity_type, as: 'bucketByActivityType', class: Google::Apis::FitnessV1::BucketByActivity, decorator: Google::Apis::FitnessV1::BucketByActivity::Representation
+      
+          property :bucket_by_session, as: 'bucketBySession', class: Google::Apis::FitnessV1::BucketBySession, decorator: Google::Apis::FitnessV1::BucketBySession::Representation
+      
+          property :bucket_by_time, as: 'bucketByTime', class: Google::Apis::FitnessV1::BucketByTime, decorator: Google::Apis::FitnessV1::BucketByTime::Representation
+      
+          property :end_time_millis, as: 'endTimeMillis'
+          property :start_time_millis, as: 'startTimeMillis'
+        end
+      end
+      
+      # @private
+      class AggregateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bucket, as: 'bucket', class: Google::Apis::FitnessV1::AggregateBucket, decorator: Google::Apis::FitnessV1::AggregateBucket::Representation
+      
+        end
+      end
+      
+      # @private
+      class Application
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details_url, as: 'detailsUrl'
+          property :name, as: 'name'
+          property :package_name, as: 'packageName'
+          property :version, as: 'version'
+        end
+      end
+      
+      # @private
+      class BucketByActivity
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activity_data_source_id, as: 'activityDataSourceId'
+          property :min_duration_millis, as: 'minDurationMillis'
+        end
+      end
+      
+      # @private
+      class BucketBySession
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_duration_millis, as: 'minDurationMillis'
+        end
+      end
+      
+      # @private
+      class BucketByTime
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration_millis, as: 'durationMillis'
+        end
+      end
+      
+      # @private
+      class DataPoint
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :computation_time_millis, as: 'computationTimeMillis'
+          property :data_type_name, as: 'dataTypeName'
+          property :end_time_nanos, as: 'endTimeNanos'
+          property :modified_time_millis, as: 'modifiedTimeMillis'
+          property :origin_data_source_id, as: 'originDataSourceId'
+          property :raw_timestamp_nanos, as: 'rawTimestampNanos'
+          property :start_time_nanos, as: 'startTimeNanos'
+          collection :value, as: 'value', class: Google::Apis::FitnessV1::Value, decorator: Google::Apis::FitnessV1::Value::Representation
+      
+        end
+      end
+      
+      # @private
+      class DataSource
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application, as: 'application', class: Google::Apis::FitnessV1::Application, decorator: Google::Apis::FitnessV1::Application::Representation
+      
+          property :data_stream_id, as: 'dataStreamId'
+          property :data_stream_name, as: 'dataStreamName'
+          property :data_type, as: 'dataType', class: Google::Apis::FitnessV1::DataType, decorator: Google::Apis::FitnessV1::DataType::Representation
+      
+          property :device, as: 'device', class: Google::Apis::FitnessV1::Device, decorator: Google::Apis::FitnessV1::Device::Representation
+      
+          property :name, as: 'name'
+          property :type, as: 'type'
+        end
+      end
+      
+      # @private
+      class DataType
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field, as: 'field', class: Google::Apis::FitnessV1::DataTypeField, decorator: Google::Apis::FitnessV1::DataTypeField::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      # @private
+      class DataTypeField
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :format, as: 'format'
+          property :name, as: 'name'
+          property :optional, as: 'optional'
+        end
+      end
+      
+      # @private
+      class Dataset
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_id, as: 'dataSourceId'
+          property :max_end_time_ns, as: 'maxEndTimeNs'
+          property :min_start_time_ns, as: 'minStartTimeNs'
+          property :next_page_token, as: 'nextPageToken'
+          collection :point, as: 'point', class: Google::Apis::FitnessV1::DataPoint, decorator: Google::Apis::FitnessV1::DataPoint::Representation
+      
+        end
+      end
+      
+      # @private
+      class Device
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :manufacturer, as: 'manufacturer'
+          property :model, as: 'model'
+          property :type, as: 'type'
+          property :uid, as: 'uid'
+          property :version, as: 'version'
+        end
+      end
+      
+      # @private
+      class ListDataSourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_source, as: 'dataSource', class: Google::Apis::FitnessV1::DataSource, decorator: Google::Apis::FitnessV1::DataSource::Representation
+      
+        end
+      end
+      
+      # @private
+      class ListSessionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deleted_session, as: 'deletedSession', class: Google::Apis::FitnessV1::Session, decorator: Google::Apis::FitnessV1::Session::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :session, as: 'session', class: Google::Apis::FitnessV1::Session, decorator: Google::Apis::FitnessV1::Session::Representation
+      
+        end
+      end
+      
+      # @private
+      class Session
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_time_millis, as: 'activeTimeMillis'
+          property :activity_type, as: 'activityType'
+          property :application, as: 'application', class: Google::Apis::FitnessV1::Application, decorator: Google::Apis::FitnessV1::Application::Representation
+      
+          property :description, as: 'description'
+          property :end_time_millis, as: 'endTimeMillis'
+          property :id, as: 'id'
+          property :modified_time_millis, as: 'modifiedTimeMillis'
+          property :name, as: 'name'
+          property :start_time_millis, as: 'startTimeMillis'
+        end
+      end
+      
+      # @private
+      class Value
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fp_val, as: 'fpVal'
+          property :int_val, as: 'intVal'
+        end
+      end
+    end
+  end
+end
