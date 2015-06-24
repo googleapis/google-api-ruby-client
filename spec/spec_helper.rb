@@ -115,3 +115,8 @@ module Net
     end
   end
 end
+
+def run_integration_tests?
+  ENV['GOOGLE_APPLICATION_CREDENTIALS'] && ENV['GOOGLE_PROJECT_ID']
+end
+
