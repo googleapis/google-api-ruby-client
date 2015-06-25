@@ -1,7 +1,7 @@
 <% if cls.type == 'object' -%>
 
-# @private
 class <%= cls.generated_class_name %>
+  # @private
   class Representation < Google::Apis::Core::JsonRepresentation
 <%   if api.features && api.features.include?('dataWrapper') -%>
     self.representation_wrap = lambda { |args| :data if args[:unwrap] == <%= cls.generated_type %> }
