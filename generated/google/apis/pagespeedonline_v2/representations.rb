@@ -78,16 +78,16 @@ module Google
         end
       end
       
-      # @private
       class FormatString
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :args, as: 'args', class: Google::Apis::PagespeedonlineV2::FormatString::Arg, decorator: Google::Apis::PagespeedonlineV2::FormatString::Arg::Representation
       
           property :format, as: 'format'
         end
         
-        # @private
         class Arg
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :key, as: 'key'
             collection :rects, as: 'rects', class: Google::Apis::PagespeedonlineV2::FormatString::Arg::Rect, decorator: Google::Apis::PagespeedonlineV2::FormatString::Arg::Rect::Representation
@@ -98,8 +98,8 @@ module Google
             property :value, as: 'value'
           end
           
-          # @private
           class Rect
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :height, as: 'height'
               property :left, as: 'left'
@@ -108,8 +108,8 @@ module Google
             end
           end
           
-          # @private
           class SecondaryRect
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :height, as: 'height'
               property :left, as: 'left'
@@ -120,8 +120,8 @@ module Google
         end
       end
       
-      # @private
       class Image
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, :base64 => true, as: 'data'
           property :height, as: 'height'
@@ -132,8 +132,8 @@ module Google
           property :width, as: 'width'
         end
         
-        # @private
         class PageRect
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :height, as: 'height'
             property :left, as: 'left'
@@ -143,8 +143,8 @@ module Google
         end
       end
       
-      # @private
       class Result
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :formatted_results, as: 'formattedResults', class: Google::Apis::PagespeedonlineV2::Result::FormattedResults, decorator: Google::Apis::PagespeedonlineV2::Result::FormattedResults::Representation
       
@@ -163,16 +163,16 @@ module Google
       
         end
         
-        # @private
         class FormattedResults
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :locale, as: 'locale'
             hash :rule_results, as: 'ruleResults', class: Google::Apis::PagespeedonlineV2::Result::FormattedResults::RuleResult, decorator: Google::Apis::PagespeedonlineV2::Result::FormattedResults::RuleResult::Representation
         
           end
           
-          # @private
           class RuleResult
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               collection :groups, as: 'groups'
               property :localized_rule_name, as: 'localizedRuleName'
@@ -183,8 +183,8 @@ module Google
           
             end
             
-            # @private
             class UrlBlock
+              # @private
               class Representation < Google::Apis::Core::JsonRepresentation
                 property :header, as: 'header', class: Google::Apis::PagespeedonlineV2::FormatString, decorator: Google::Apis::PagespeedonlineV2::FormatString::Representation
             
@@ -192,8 +192,8 @@ module Google
             
               end
               
-              # @private
               class Url
+                # @private
                 class Representation < Google::Apis::Core::JsonRepresentation
                   collection :details, as: 'details', class: Google::Apis::PagespeedonlineV2::FormatString, decorator: Google::Apis::PagespeedonlineV2::FormatString::Representation
               
@@ -205,8 +205,8 @@ module Google
           end
         end
         
-        # @private
         class PageStats
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :css_response_bytes, as: 'cssResponseBytes'
             property :flash_response_bytes, as: 'flashResponseBytes'
@@ -224,15 +224,15 @@ module Google
           end
         end
         
-        # @private
         class RuleGroup
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :score, as: 'score'
           end
         end
         
-        # @private
         class Version
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :major, as: 'major'
             property :minor, as: 'minor'

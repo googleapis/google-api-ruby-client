@@ -94,8 +94,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class CustomField
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_field_id, as: 'customFieldId'
           property :kind, as: 'kind'
@@ -103,8 +103,8 @@ module Google
         end
       end
       
-      # @private
       class CustomFieldDef
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           collection :enumitems, as: 'enumitems', class: Google::Apis::CoordinateV1::EnumItemDef, decorator: Google::Apis::CoordinateV1::EnumItemDef::Representation
@@ -117,8 +117,8 @@ module Google
         end
       end
       
-      # @private
       class ListCustomFieldDefResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::CoordinateV1::CustomFieldDef, decorator: Google::Apis::CoordinateV1::CustomFieldDef::Representation
       
@@ -126,8 +126,8 @@ module Google
         end
       end
       
-      # @private
       class CustomFields
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :custom_field, as: 'customField', class: Google::Apis::CoordinateV1::CustomField, decorator: Google::Apis::CoordinateV1::CustomField::Representation
       
@@ -135,8 +135,8 @@ module Google
         end
       end
       
-      # @private
       class EnumItemDef
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active, as: 'active'
           property :kind, as: 'kind'
@@ -144,8 +144,8 @@ module Google
         end
       end
       
-      # @private
       class Job
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           collection :job_change, as: 'jobChange', class: Google::Apis::CoordinateV1::JobChange, decorator: Google::Apis::CoordinateV1::JobChange::Representation
@@ -156,8 +156,8 @@ module Google
         end
       end
       
-      # @private
       class JobChange
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :state, as: 'state', class: Google::Apis::CoordinateV1::JobState, decorator: Google::Apis::CoordinateV1::JobState::Representation
@@ -166,8 +166,8 @@ module Google
         end
       end
       
-      # @private
       class ListJobResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::CoordinateV1::Job, decorator: Google::Apis::CoordinateV1::Job::Representation
       
@@ -176,8 +176,8 @@ module Google
         end
       end
       
-      # @private
       class JobState
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :assignee, as: 'assignee'
           property :custom_fields, as: 'customFields', class: Google::Apis::CoordinateV1::CustomFields, decorator: Google::Apis::CoordinateV1::CustomFields::Representation
@@ -193,8 +193,8 @@ module Google
         end
       end
       
-      # @private
       class Location
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :address_line, as: 'addressLine'
           property :kind, as: 'kind'
@@ -203,8 +203,8 @@ module Google
         end
       end
       
-      # @private
       class ListLocationResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::CoordinateV1::LocationRecord, decorator: Google::Apis::CoordinateV1::LocationRecord::Representation
       
@@ -215,8 +215,8 @@ module Google
         end
       end
       
-      # @private
       class LocationRecord
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :collection_time, as: 'collectionTime'
           property :confidence_radius, as: 'confidenceRadius'
@@ -226,8 +226,8 @@ module Google
         end
       end
       
-      # @private
       class Schedule
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :all_day, as: 'allDay'
           property :duration, as: 'duration'
@@ -237,8 +237,8 @@ module Google
         end
       end
       
-      # @private
       class Team
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -246,8 +246,8 @@ module Google
         end
       end
       
-      # @private
       class ListTeamResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::CoordinateV1::Team, decorator: Google::Apis::CoordinateV1::Team::Representation
       
@@ -255,8 +255,8 @@ module Google
         end
       end
       
-      # @private
       class TokenPagination
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -264,16 +264,16 @@ module Google
         end
       end
       
-      # @private
       class Worker
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
         end
       end
       
-      # @private
       class ListWorkerResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::CoordinateV1::Worker, decorator: Google::Apis::CoordinateV1::Worker::Representation
       

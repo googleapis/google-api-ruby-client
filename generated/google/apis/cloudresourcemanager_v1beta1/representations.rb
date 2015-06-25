@@ -34,8 +34,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class Project
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :project_number, as: 'projectNumber'
           property :project_id, as: 'projectId'
@@ -46,8 +46,8 @@ module Google
         end
       end
       
-      # @private
       class ListProjectsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :projects, as: 'projects', class: Google::Apis::CloudresourcemanagerV1beta1::Project, decorator: Google::Apis::CloudresourcemanagerV1beta1::Project::Representation
       
@@ -55,8 +55,8 @@ module Google
         end
       end
       
-      # @private
       class Empty
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end

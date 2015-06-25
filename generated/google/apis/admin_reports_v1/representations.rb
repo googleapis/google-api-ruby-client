@@ -74,8 +74,8 @@ module Google
         end
       end
       
-      # @private
       class Activities
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdminReportsV1::Activity, decorator: Google::Apis::AdminReportsV1::Activity::Representation
@@ -85,8 +85,8 @@ module Google
         end
       end
       
-      # @private
       class Activity
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :actor, as: 'actor', class: Google::Apis::AdminReportsV1::Activity::Actor, decorator: Google::Apis::AdminReportsV1::Activity::Actor::Representation
       
@@ -100,8 +100,8 @@ module Google
           property :owner_domain, as: 'ownerDomain'
         end
         
-        # @private
         class Actor
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :caller_type, as: 'callerType'
             property :email, as: 'email'
@@ -110,8 +110,8 @@ module Google
           end
         end
         
-        # @private
         class Event
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :name, as: 'name'
             collection :parameters, as: 'parameters', class: Google::Apis::AdminReportsV1::Activity::Event::Parameter, decorator: Google::Apis::AdminReportsV1::Activity::Event::Parameter::Representation
@@ -119,8 +119,8 @@ module Google
             property :type, as: 'type'
           end
           
-          # @private
           class Parameter
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :bool_value, as: 'boolValue'
               property :int_value, as: 'intValue'
@@ -132,8 +132,8 @@ module Google
           end
         end
         
-        # @private
         class Id
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :application_name, as: 'applicationName'
             property :customer_id, as: 'customerId'
@@ -144,8 +144,8 @@ module Google
         end
       end
       
-      # @private
       class Channel
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
           property :expiration, as: 'expiration'
@@ -160,8 +160,8 @@ module Google
         end
       end
       
-      # @private
       class UsageReport
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :date, as: 'date'
           property :entity, as: 'entity', class: Google::Apis::AdminReportsV1::UsageReport::Entity, decorator: Google::Apis::AdminReportsV1::UsageReport::Entity::Representation
@@ -172,8 +172,8 @@ module Google
       
         end
         
-        # @private
         class Entity
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :customer_id, as: 'customerId'
             property :profile_id, as: 'profileId'
@@ -182,8 +182,8 @@ module Google
           end
         end
         
-        # @private
         class Parameter
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :bool_value, as: 'boolValue'
             property :datetime_value, as: 'datetimeValue', type: DateTime
@@ -196,8 +196,8 @@ module Google
         end
       end
       
-      # @private
       class UsageReports
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :kind, as: 'kind'
@@ -208,8 +208,8 @@ module Google
       
         end
         
-        # @private
         class Warning
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::AdminReportsV1::UsageReports::Warning::Datum, decorator: Google::Apis::AdminReportsV1::UsageReports::Warning::Datum::Representation
@@ -217,8 +217,8 @@ module Google
             property :message, as: 'message'
           end
           
-          # @private
           class Datum
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :key, as: 'key'
               property :value, as: 'value'

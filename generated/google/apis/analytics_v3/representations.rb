@@ -398,8 +398,8 @@ module Google
         end
       end
       
-      # @private
       class Account
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :child_link, as: 'childLink', class: Google::Apis::AnalyticsV3::Account::ChildLink, decorator: Google::Apis::AnalyticsV3::Account::ChildLink::Representation
       
@@ -415,24 +415,24 @@ module Google
       
         end
         
-        # @private
         class ChildLink
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :href, as: 'href'
             property :type, as: 'type'
           end
         end
         
-        # @private
         class Permissions
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :effective, as: 'effective'
           end
         end
       end
       
-      # @private
       class AccountRef
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :href, as: 'href'
           property :id, as: 'id'
@@ -441,8 +441,8 @@ module Google
         end
       end
       
-      # @private
       class AccountSummaries
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AnalyticsV3::AccountSummary, decorator: Google::Apis::AnalyticsV3::AccountSummary::Representation
       
@@ -456,8 +456,8 @@ module Google
         end
       end
       
-      # @private
       class AccountSummary
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -467,8 +467,8 @@ module Google
         end
       end
       
-      # @private
       class AccountTicket
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account, as: 'account', class: Google::Apis::AnalyticsV3::Account, decorator: Google::Apis::AnalyticsV3::Account::Representation
       
@@ -482,8 +482,8 @@ module Google
         end
       end
       
-      # @private
       class Accounts
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AnalyticsV3::Account, decorator: Google::Apis::AnalyticsV3::Account::Representation
       
@@ -497,8 +497,8 @@ module Google
         end
       end
       
-      # @private
       class AdWordsAccount
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_tagging_enabled, as: 'autoTaggingEnabled'
           property :customer_id, as: 'customerId'
@@ -506,15 +506,15 @@ module Google
         end
       end
       
-      # @private
       class DeleteUploadDataRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :custom_data_import_uids, as: 'customDataImportUids'
         end
       end
       
-      # @private
       class Column
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :attributes, as: 'attributes'
           property :id, as: 'id'
@@ -522,8 +522,8 @@ module Google
         end
       end
       
-      # @private
       class Columns
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :attribute_names, as: 'attributeNames'
           property :etag, as: 'etag'
@@ -534,8 +534,8 @@ module Google
         end
       end
       
-      # @private
       class CustomDataSource
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :child_link, as: 'childLink', class: Google::Apis::AnalyticsV3::CustomDataSource::ChildLink, decorator: Google::Apis::AnalyticsV3::CustomDataSource::ChildLink::Representation
@@ -558,16 +558,16 @@ module Google
           property :web_property_id, as: 'webPropertyId'
         end
         
-        # @private
         class ChildLink
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :href, as: 'href'
             property :type, as: 'type'
           end
         end
         
-        # @private
         class ParentLink
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :href, as: 'href'
             property :type, as: 'type'
@@ -575,8 +575,8 @@ module Google
         end
       end
       
-      # @private
       class CustomDataSources
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AnalyticsV3::CustomDataSource, decorator: Google::Apis::AnalyticsV3::CustomDataSource::Representation
       
@@ -590,8 +590,8 @@ module Google
         end
       end
       
-      # @private
       class CustomDimension
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :active, as: 'active'
@@ -610,8 +610,8 @@ module Google
           property :web_property_id, as: 'webPropertyId'
         end
         
-        # @private
         class ParentLink
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :href, as: 'href'
             property :type, as: 'type'
@@ -619,8 +619,8 @@ module Google
         end
       end
       
-      # @private
       class CustomDimensions
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AnalyticsV3::CustomDimension, decorator: Google::Apis::AnalyticsV3::CustomDimension::Representation
       
@@ -634,8 +634,8 @@ module Google
         end
       end
       
-      # @private
       class CustomMetric
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :active, as: 'active'
@@ -657,8 +657,8 @@ module Google
           property :web_property_id, as: 'webPropertyId'
         end
         
-        # @private
         class ParentLink
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :href, as: 'href'
             property :type, as: 'type'
@@ -666,8 +666,8 @@ module Google
         end
       end
       
-      # @private
       class CustomMetrics
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AnalyticsV3::CustomMetric, decorator: Google::Apis::AnalyticsV3::CustomMetric::Representation
       
@@ -681,8 +681,8 @@ module Google
         end
       end
       
-      # @private
       class EntityAdWordsLink
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ad_words_accounts, as: 'adWordsAccounts', class: Google::Apis::AnalyticsV3::AdWordsAccount, decorator: Google::Apis::AnalyticsV3::AdWordsAccount::Representation
       
@@ -695,8 +695,8 @@ module Google
           property :self_link, as: 'selfLink'
         end
         
-        # @private
         class Entity
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :web_property_ref, as: 'webPropertyRef', class: Google::Apis::AnalyticsV3::WebPropertyRef, decorator: Google::Apis::AnalyticsV3::WebPropertyRef::Representation
         
@@ -704,8 +704,8 @@ module Google
         end
       end
       
-      # @private
       class EntityAdWordsLinks
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AnalyticsV3::EntityAdWordsLink, decorator: Google::Apis::AnalyticsV3::EntityAdWordsLink::Representation
       
@@ -718,8 +718,8 @@ module Google
         end
       end
       
-      # @private
       class EntityUserLink
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :entity, as: 'entity', class: Google::Apis::AnalyticsV3::EntityUserLink::Entity, decorator: Google::Apis::AnalyticsV3::EntityUserLink::Entity::Representation
       
@@ -732,8 +732,8 @@ module Google
       
         end
         
-        # @private
         class Entity
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :account_ref, as: 'accountRef', class: Google::Apis::AnalyticsV3::AccountRef, decorator: Google::Apis::AnalyticsV3::AccountRef::Representation
         
@@ -744,8 +744,8 @@ module Google
           end
         end
         
-        # @private
         class Permissions
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :effective, as: 'effective'
             collection :local, as: 'local'
@@ -753,8 +753,8 @@ module Google
         end
       end
       
-      # @private
       class EntityUserLinks
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AnalyticsV3::EntityUserLink, decorator: Google::Apis::AnalyticsV3::EntityUserLink::Representation
       
@@ -767,8 +767,8 @@ module Google
         end
       end
       
-      # @private
       class Experiment
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :created, as: 'created', type: DateTime
@@ -806,16 +806,16 @@ module Google
           property :winner_found, as: 'winnerFound'
         end
         
-        # @private
         class ParentLink
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :href, as: 'href'
             property :type, as: 'type'
           end
         end
         
-        # @private
         class Variation
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :name, as: 'name'
             property :status, as: 'status'
@@ -826,8 +826,8 @@ module Google
         end
       end
       
-      # @private
       class Experiments
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AnalyticsV3::Experiment, decorator: Google::Apis::AnalyticsV3::Experiment::Representation
       
@@ -841,8 +841,8 @@ module Google
         end
       end
       
-      # @private
       class Filter
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :advanced_details, as: 'advancedDetails', class: Google::Apis::AnalyticsV3::Filter::AdvancedDetails, decorator: Google::Apis::AnalyticsV3::Filter::AdvancedDetails::Representation
@@ -870,8 +870,8 @@ module Google
       
         end
         
-        # @private
         class AdvancedDetails
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :case_sensitive, as: 'caseSensitive'
             property :extract_a, as: 'extractA'
@@ -889,24 +889,24 @@ module Google
           end
         end
         
-        # @private
         class LowercaseDetails
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :field, as: 'field'
             property :field_index, as: 'fieldIndex'
           end
         end
         
-        # @private
         class ParentLink
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :href, as: 'href'
             property :type, as: 'type'
           end
         end
         
-        # @private
         class SearchAndReplaceDetails
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :case_sensitive, as: 'caseSensitive'
             property :field, as: 'field'
@@ -916,8 +916,8 @@ module Google
           end
         end
         
-        # @private
         class UppercaseDetails
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :field, as: 'field'
             property :field_index, as: 'fieldIndex'
@@ -925,8 +925,8 @@ module Google
         end
       end
       
-      # @private
       class FilterExpression
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :case_sensitive, as: 'caseSensitive'
           property :expression_value, as: 'expressionValue'
@@ -937,8 +937,8 @@ module Google
         end
       end
       
-      # @private
       class FilterRef
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :href, as: 'href'
@@ -948,8 +948,8 @@ module Google
         end
       end
       
-      # @private
       class Filters
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AnalyticsV3::Filter, decorator: Google::Apis::AnalyticsV3::Filter::Representation
       
@@ -963,8 +963,8 @@ module Google
         end
       end
       
-      # @private
       class GaData
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :column_headers, as: 'columnHeaders', class: Google::Apis::AnalyticsV3::GaData::ColumnHeader, decorator: Google::Apis::AnalyticsV3::GaData::ColumnHeader::Representation
       
@@ -992,8 +992,8 @@ module Google
           hash :totals_for_all_results, as: 'totalsForAllResults'
         end
         
-        # @private
         class ColumnHeader
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :column_type, as: 'columnType'
             property :data_type, as: 'dataType'
@@ -1001,8 +1001,8 @@ module Google
           end
         end
         
-        # @private
         class DataTable
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :cols, as: 'cols', class: Google::Apis::AnalyticsV3::GaData::DataTable::Col, decorator: Google::Apis::AnalyticsV3::GaData::DataTable::Col::Representation
         
@@ -1010,8 +1010,8 @@ module Google
         
           end
           
-          # @private
           class Col
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :id, as: 'id'
               property :label, as: 'label'
@@ -1019,15 +1019,15 @@ module Google
             end
           end
           
-          # @private
           class Row
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               collection :c, as: 'c', class: Google::Apis::AnalyticsV3::GaData::DataTable::Row::C, decorator: Google::Apis::AnalyticsV3::GaData::DataTable::Row::C::Representation
           
             end
             
-            # @private
             class C
+              # @private
               class Representation < Google::Apis::Core::JsonRepresentation
                 property :v, as: 'v'
               end
@@ -1035,8 +1035,8 @@ module Google
           end
         end
         
-        # @private
         class ProfileInfo
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :account_id, as: 'accountId'
             property :internal_web_property_id, as: 'internalWebPropertyId'
@@ -1047,8 +1047,8 @@ module Google
           end
         end
         
-        # @private
         class Query
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :dimensions, as: 'dimensions'
             property :end_date, as: 'end-date'
@@ -1065,8 +1065,8 @@ module Google
         end
       end
       
-      # @private
       class Goal
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :active, as: 'active'
@@ -1095,16 +1095,16 @@ module Google
           property :web_property_id, as: 'webPropertyId'
         end
         
-        # @private
         class EventDetails
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :event_conditions, as: 'eventConditions', class: Google::Apis::AnalyticsV3::Goal::EventDetails::EventCondition, decorator: Google::Apis::AnalyticsV3::Goal::EventDetails::EventCondition::Representation
         
             property :use_event_value, as: 'useEventValue'
           end
           
-          # @private
           class EventCondition
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :comparison_type, as: 'comparisonType'
               property :comparison_value, as: 'comparisonValue'
@@ -1115,16 +1115,16 @@ module Google
           end
         end
         
-        # @private
         class ParentLink
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :href, as: 'href'
             property :type, as: 'type'
           end
         end
         
-        # @private
         class UrlDestinationDetails
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :case_sensitive, as: 'caseSensitive'
             property :first_step_required, as: 'firstStepRequired'
@@ -1134,8 +1134,8 @@ module Google
             property :url, as: 'url'
           end
           
-          # @private
           class Step
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :name, as: 'name'
               property :number, as: 'number'
@@ -1144,16 +1144,16 @@ module Google
           end
         end
         
-        # @private
         class VisitNumPagesDetails
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :comparison_type, as: 'comparisonType'
             property :comparison_value, as: 'comparisonValue'
           end
         end
         
-        # @private
         class VisitTimeOnSiteDetails
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :comparison_type, as: 'comparisonType'
             property :comparison_value, as: 'comparisonValue'
@@ -1161,8 +1161,8 @@ module Google
         end
       end
       
-      # @private
       class Goals
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AnalyticsV3::Goal, decorator: Google::Apis::AnalyticsV3::Goal::Representation
       
@@ -1176,8 +1176,8 @@ module Google
         end
       end
       
-      # @private
       class McfData
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :column_headers, as: 'columnHeaders', class: Google::Apis::AnalyticsV3::McfData::ColumnHeader, decorator: Google::Apis::AnalyticsV3::McfData::ColumnHeader::Representation
       
@@ -1204,8 +1204,8 @@ module Google
           hash :totals_for_all_results, as: 'totalsForAllResults'
         end
         
-        # @private
         class ColumnHeader
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :column_type, as: 'columnType'
             property :data_type, as: 'dataType'
@@ -1213,8 +1213,8 @@ module Google
           end
         end
         
-        # @private
         class ProfileInfo
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :account_id, as: 'accountId'
             property :internal_web_property_id, as: 'internalWebPropertyId'
@@ -1225,8 +1225,8 @@ module Google
           end
         end
         
-        # @private
         class Query
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :dimensions, as: 'dimensions'
             property :end_date, as: 'end-date'
@@ -1242,16 +1242,16 @@ module Google
           end
         end
         
-        # @private
         class Row
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :conversion_path_value, as: 'conversionPathValue', class: Google::Apis::AnalyticsV3::McfData::Row::ConversionPathValue, decorator: Google::Apis::AnalyticsV3::McfData::Row::ConversionPathValue::Representation
         
             property :primitive_value, as: 'primitiveValue'
           end
           
-          # @private
           class ConversionPathValue
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :interaction_type, as: 'interactionType'
               property :node_value, as: 'nodeValue'
@@ -1260,8 +1260,8 @@ module Google
         end
       end
       
-      # @private
       class Profile
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :child_link, as: 'childLink', class: Google::Apis::AnalyticsV3::Profile::ChildLink, decorator: Google::Apis::AnalyticsV3::Profile::ChildLink::Representation
@@ -1294,32 +1294,32 @@ module Google
           property :website_url, as: 'websiteUrl'
         end
         
-        # @private
         class ChildLink
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :href, as: 'href'
             property :type, as: 'type'
           end
         end
         
-        # @private
         class ParentLink
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :href, as: 'href'
             property :type, as: 'type'
           end
         end
         
-        # @private
         class Permissions
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :effective, as: 'effective'
           end
         end
       end
       
-      # @private
       class ProfileFilterLink
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :filter_ref, as: 'filterRef', class: Google::Apis::AnalyticsV3::FilterRef, decorator: Google::Apis::AnalyticsV3::FilterRef::Representation
       
@@ -1332,8 +1332,8 @@ module Google
         end
       end
       
-      # @private
       class ProfileFilterLinks
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AnalyticsV3::ProfileFilterLink, decorator: Google::Apis::AnalyticsV3::ProfileFilterLink::Representation
       
@@ -1347,8 +1347,8 @@ module Google
         end
       end
       
-      # @private
       class ProfileRef
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :href, as: 'href'
@@ -1360,8 +1360,8 @@ module Google
         end
       end
       
-      # @private
       class ProfileSummary
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -1370,8 +1370,8 @@ module Google
         end
       end
       
-      # @private
       class Profiles
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AnalyticsV3::Profile, decorator: Google::Apis::AnalyticsV3::Profile::Representation
       
@@ -1385,8 +1385,8 @@ module Google
         end
       end
       
-      # @private
       class RealtimeData
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :column_headers, as: 'columnHeaders', class: Google::Apis::AnalyticsV3::RealtimeData::ColumnHeader, decorator: Google::Apis::AnalyticsV3::RealtimeData::ColumnHeader::Representation
       
@@ -1406,8 +1406,8 @@ module Google
           hash :totals_for_all_results, as: 'totalsForAllResults'
         end
         
-        # @private
         class ColumnHeader
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :column_type, as: 'columnType'
             property :data_type, as: 'dataType'
@@ -1415,8 +1415,8 @@ module Google
           end
         end
         
-        # @private
         class ProfileInfo
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :account_id, as: 'accountId'
             property :internal_web_property_id, as: 'internalWebPropertyId'
@@ -1427,8 +1427,8 @@ module Google
           end
         end
         
-        # @private
         class Query
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :dimensions, as: 'dimensions'
             property :filters, as: 'filters'
@@ -1440,8 +1440,8 @@ module Google
         end
       end
       
-      # @private
       class Segment
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :created, as: 'created', type: DateTime
       
@@ -1457,8 +1457,8 @@ module Google
         end
       end
       
-      # @private
       class Segments
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AnalyticsV3::Segment, decorator: Google::Apis::AnalyticsV3::Segment::Representation
       
@@ -1472,8 +1472,8 @@ module Google
         end
       end
       
-      # @private
       class UnsampledReport
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :cloud_storage_download_details, as: 'cloudStorageDownloadDetails', class: Google::Apis::AnalyticsV3::UnsampledReport::CloudStorageDownloadDetails, decorator: Google::Apis::AnalyticsV3::UnsampledReport::CloudStorageDownloadDetails::Representation
@@ -1500,24 +1500,24 @@ module Google
           property :web_property_id, as: 'webPropertyId'
         end
         
-        # @private
         class CloudStorageDownloadDetails
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :bucket_id, as: 'bucketId'
             property :obj_id, as: 'objectId'
           end
         end
         
-        # @private
         class DriveDownloadDetails
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :document_id, as: 'documentId'
           end
         end
       end
       
-      # @private
       class UnsampledReports
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AnalyticsV3::UnsampledReport, decorator: Google::Apis::AnalyticsV3::UnsampledReport::Representation
       
@@ -1531,8 +1531,8 @@ module Google
         end
       end
       
-      # @private
       class Upload
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :custom_data_source_id, as: 'customDataSourceId'
@@ -1543,8 +1543,8 @@ module Google
         end
       end
       
-      # @private
       class Uploads
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AnalyticsV3::Upload, decorator: Google::Apis::AnalyticsV3::Upload::Representation
       
@@ -1557,8 +1557,8 @@ module Google
         end
       end
       
-      # @private
       class UserRef
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           property :id, as: 'id'
@@ -1566,8 +1566,8 @@ module Google
         end
       end
       
-      # @private
       class WebPropertyRef
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :href, as: 'href'
@@ -1578,8 +1578,8 @@ module Google
         end
       end
       
-      # @private
       class WebPropertySummary
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :internal_web_property_id, as: 'internalWebPropertyId'
@@ -1592,8 +1592,8 @@ module Google
         end
       end
       
-      # @private
       class Webproperties
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AnalyticsV3::Webproperty, decorator: Google::Apis::AnalyticsV3::Webproperty::Representation
       
@@ -1607,8 +1607,8 @@ module Google
         end
       end
       
-      # @private
       class Webproperty
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :child_link, as: 'childLink', class: Google::Apis::AnalyticsV3::Webproperty::ChildLink, decorator: Google::Apis::AnalyticsV3::Webproperty::ChildLink::Representation
@@ -1633,24 +1633,24 @@ module Google
           property :website_url, as: 'websiteUrl'
         end
         
-        # @private
         class ChildLink
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :href, as: 'href'
             property :type, as: 'type'
           end
         end
         
-        # @private
         class ParentLink
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :href, as: 'href'
             property :type, as: 'type'
           end
         end
         
-        # @private
         class Permissions
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :effective, as: 'effective'
           end

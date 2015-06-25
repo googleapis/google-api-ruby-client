@@ -94,8 +94,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class AggregateBucket
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :activity, as: 'activity'
           collection :dataset, as: 'dataset', class: Google::Apis::FitnessV1::Dataset, decorator: Google::Apis::FitnessV1::Dataset::Representation
@@ -108,8 +108,8 @@ module Google
         end
       end
       
-      # @private
       class AggregateBy
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_source_id, as: 'dataSourceId'
           property :data_type_name, as: 'dataTypeName'
@@ -118,8 +118,8 @@ module Google
         end
       end
       
-      # @private
       class AggregateRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :aggregate_by, as: 'aggregateBy', class: Google::Apis::FitnessV1::AggregateBy, decorator: Google::Apis::FitnessV1::AggregateBy::Representation
       
@@ -136,16 +136,16 @@ module Google
         end
       end
       
-      # @private
       class AggregateResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bucket, as: 'bucket', class: Google::Apis::FitnessV1::AggregateBucket, decorator: Google::Apis::FitnessV1::AggregateBucket::Representation
       
         end
       end
       
-      # @private
       class Application
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :details_url, as: 'detailsUrl'
           property :name, as: 'name'
@@ -154,30 +154,30 @@ module Google
         end
       end
       
-      # @private
       class BucketByActivity
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :activity_data_source_id, as: 'activityDataSourceId'
           property :min_duration_millis, as: 'minDurationMillis'
         end
       end
       
-      # @private
       class BucketBySession
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :min_duration_millis, as: 'minDurationMillis'
         end
       end
       
-      # @private
       class BucketByTime
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duration_millis, as: 'durationMillis'
         end
       end
       
-      # @private
       class DataPoint
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :computation_time_millis, as: 'computationTimeMillis'
           property :data_type_name, as: 'dataTypeName'
@@ -191,8 +191,8 @@ module Google
         end
       end
       
-      # @private
       class DataSource
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :application, as: 'application', class: Google::Apis::FitnessV1::Application, decorator: Google::Apis::FitnessV1::Application::Representation
       
@@ -207,8 +207,8 @@ module Google
         end
       end
       
-      # @private
       class DataType
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :field, as: 'field', class: Google::Apis::FitnessV1::DataTypeField, decorator: Google::Apis::FitnessV1::DataTypeField::Representation
       
@@ -216,8 +216,8 @@ module Google
         end
       end
       
-      # @private
       class DataTypeField
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :format, as: 'format'
           property :name, as: 'name'
@@ -225,8 +225,8 @@ module Google
         end
       end
       
-      # @private
       class Dataset
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_source_id, as: 'dataSourceId'
           property :max_end_time_ns, as: 'maxEndTimeNs'
@@ -237,8 +237,8 @@ module Google
         end
       end
       
-      # @private
       class Device
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :manufacturer, as: 'manufacturer'
           property :model, as: 'model'
@@ -248,16 +248,16 @@ module Google
         end
       end
       
-      # @private
       class ListDataSourcesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :data_source, as: 'dataSource', class: Google::Apis::FitnessV1::DataSource, decorator: Google::Apis::FitnessV1::DataSource::Representation
       
         end
       end
       
-      # @private
       class ListSessionsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :deleted_session, as: 'deletedSession', class: Google::Apis::FitnessV1::Session, decorator: Google::Apis::FitnessV1::Session::Representation
       
@@ -267,8 +267,8 @@ module Google
         end
       end
       
-      # @private
       class Session
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active_time_millis, as: 'activeTimeMillis'
           property :activity_type, as: 'activityType'
@@ -283,8 +283,8 @@ module Google
         end
       end
       
-      # @private
       class Value
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fp_val, as: 'fpVal'
           property :int_val, as: 'intVal'

@@ -54,8 +54,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class Change
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additions, as: 'additions', class: Google::Apis::DnsV1::ResourceRecordSet, decorator: Google::Apis::DnsV1::ResourceRecordSet::Representation
       
@@ -68,8 +68,8 @@ module Google
         end
       end
       
-      # @private
       class ListChangesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :changes, as: 'changes', class: Google::Apis::DnsV1::Change, decorator: Google::Apis::DnsV1::Change::Representation
       
@@ -78,8 +78,8 @@ module Google
         end
       end
       
-      # @private
       class ManagedZone
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_time, as: 'creationTime'
           property :description, as: 'description'
@@ -92,8 +92,8 @@ module Google
         end
       end
       
-      # @private
       class ListManagedZonesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :managed_zones, as: 'managedZones', class: Google::Apis::DnsV1::ManagedZone, decorator: Google::Apis::DnsV1::ManagedZone::Representation
@@ -102,8 +102,8 @@ module Google
         end
       end
       
-      # @private
       class Project
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -113,8 +113,8 @@ module Google
         end
       end
       
-      # @private
       class Quota
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :managed_zones, as: 'managedZones'
@@ -126,8 +126,8 @@ module Google
         end
       end
       
-      # @private
       class ResourceRecordSet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -137,8 +137,8 @@ module Google
         end
       end
       
-      # @private
       class ListResourceRecordSetsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'

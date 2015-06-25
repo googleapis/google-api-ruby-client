@@ -94,8 +94,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class Deployment
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
@@ -113,16 +113,16 @@ module Google
         end
       end
       
-      # @private
       class DeploymentUpdate
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :errors, as: 'errors'
           property :manifest, as: 'manifest'
         end
       end
       
-      # @private
       class ListDeploymentsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :deployments, as: 'deployments', class: Google::Apis::DeploymentmanagerV2beta2::Deployment, decorator: Google::Apis::DeploymentmanagerV2beta2::Deployment::Representation
       
@@ -130,16 +130,16 @@ module Google
         end
       end
       
-      # @private
       class ImportFile
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
           property :name, as: 'name'
         end
       end
       
-      # @private
       class Manifest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config, as: 'config'
           property :evaluated_config, as: 'evaluatedConfig'
@@ -153,8 +153,8 @@ module Google
         end
       end
       
-      # @private
       class ListManifestsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :manifests, as: 'manifests', class: Google::Apis::DeploymentmanagerV2beta2::Manifest, decorator: Google::Apis::DeploymentmanagerV2beta2::Manifest::Representation
       
@@ -162,8 +162,8 @@ module Google
         end
       end
       
-      # @private
       class Operation
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_operation_id, as: 'clientOperationId'
           property :creation_timestamp, as: 'creationTimestamp'
@@ -191,15 +191,15 @@ module Google
           property :zone, as: 'zone'
         end
         
-        # @private
         class Error
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :errors, as: 'errors', class: Google::Apis::DeploymentmanagerV2beta2::Operation::Error::Error, decorator: Google::Apis::DeploymentmanagerV2beta2::Operation::Error::Error::Representation
         
           end
           
-          # @private
           class Error
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :code, as: 'code'
               property :location, as: 'location'
@@ -208,8 +208,8 @@ module Google
           end
         end
         
-        # @private
         class Warning
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::DeploymentmanagerV2beta2::Operation::Warning::Datum, decorator: Google::Apis::DeploymentmanagerV2beta2::Operation::Warning::Datum::Representation
@@ -217,8 +217,8 @@ module Google
             property :message, as: 'message'
           end
           
-          # @private
           class Datum
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :key, as: 'key'
               property :value, as: 'value'
@@ -227,8 +227,8 @@ module Google
         end
       end
       
-      # @private
       class ListOperationsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DeploymentmanagerV2beta2::Operation, decorator: Google::Apis::DeploymentmanagerV2beta2::Operation::Representation
@@ -236,8 +236,8 @@ module Google
         end
       end
       
-      # @private
       class Resource
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :final_properties, as: 'finalProperties'
           property :id, as: 'id'
@@ -253,8 +253,8 @@ module Google
         end
       end
       
-      # @private
       class ResourceUpdate
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :errors, as: 'errors'
           property :final_properties, as: 'finalProperties'
@@ -265,8 +265,8 @@ module Google
         end
       end
       
-      # @private
       class ListResourcesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :resources, as: 'resources', class: Google::Apis::DeploymentmanagerV2beta2::Resource, decorator: Google::Apis::DeploymentmanagerV2beta2::Resource::Representation
@@ -274,8 +274,8 @@ module Google
         end
       end
       
-      # @private
       class TargetConfiguration
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config, as: 'config'
           collection :imports, as: 'imports', class: Google::Apis::DeploymentmanagerV2beta2::ImportFile, decorator: Google::Apis::DeploymentmanagerV2beta2::ImportFile::Representation
@@ -283,15 +283,15 @@ module Google
         end
       end
       
-      # @private
       class Type
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
         end
       end
       
-      # @private
       class ListTypesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :types, as: 'types', class: Google::Apis::DeploymentmanagerV2beta2::Type, decorator: Google::Apis::DeploymentmanagerV2beta2::Type::Representation

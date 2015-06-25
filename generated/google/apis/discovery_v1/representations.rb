@@ -102,8 +102,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class DirectoryList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :discovery_version, as: 'discoveryVersion'
           collection :items, as: 'items', class: Google::Apis::DiscoveryV1::DirectoryList::Item, decorator: Google::Apis::DiscoveryV1::DirectoryList::Item::Representation
@@ -111,8 +111,8 @@ module Google
           property :kind, as: 'kind'
         end
         
-        # @private
         class Item
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :description, as: 'description'
             property :discovery_link, as: 'discoveryLink'
@@ -129,8 +129,8 @@ module Google
             property :version, as: 'version'
           end
           
-          # @private
           class Icons
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :x16, as: 'x16'
               property :x32, as: 'x32'
@@ -139,8 +139,8 @@ module Google
         end
       end
       
-      # @private
       class JsonSchema
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :_ref, as: '$ref'
           property :additional_properties, as: 'additionalProperties', class: Google::Apis::DiscoveryV1::JsonSchema, decorator: Google::Apis::DiscoveryV1::JsonSchema::Representation
@@ -169,23 +169,23 @@ module Google
       
         end
         
-        # @private
         class Annotations
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :required, as: 'required'
           end
         end
         
-        # @private
         class Variant
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :discriminant, as: 'discriminant'
             collection :map, as: 'map', class: Google::Apis::DiscoveryV1::JsonSchema::Variant::Map, decorator: Google::Apis::DiscoveryV1::JsonSchema::Variant::Map::Representation
         
           end
           
-          # @private
           class Map
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :_ref, as: '$ref'
               property :type_value, as: 'type_value'
@@ -194,8 +194,8 @@ module Google
         end
       end
       
-      # @private
       class RestDescription
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auth, as: 'auth', class: Google::Apis::DiscoveryV1::RestDescription::Auth, decorator: Google::Apis::DiscoveryV1::RestDescription::Auth::Representation
       
@@ -233,22 +233,22 @@ module Google
           property :version, as: 'version'
         end
         
-        # @private
         class Auth
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :oauth2, as: 'oauth2', class: Google::Apis::DiscoveryV1::RestDescription::Auth::Oauth2, decorator: Google::Apis::DiscoveryV1::RestDescription::Auth::Oauth2::Representation
         
           end
           
-          # @private
           class Oauth2
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               hash :scopes, as: 'scopes', class: Google::Apis::DiscoveryV1::RestDescription::Auth::Oauth2::Scope, decorator: Google::Apis::DiscoveryV1::RestDescription::Auth::Oauth2::Scope::Representation
           
             end
             
-            # @private
             class Scope
+              # @private
               class Representation < Google::Apis::Core::JsonRepresentation
                 property :description, as: 'description'
               end
@@ -256,8 +256,8 @@ module Google
           end
         end
         
-        # @private
         class Icons
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :x16, as: 'x16'
             property :x32, as: 'x32'
@@ -265,8 +265,8 @@ module Google
         end
       end
       
-      # @private
       class RestMethod
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :etag_required, as: 'etagRequired'
@@ -289,8 +289,8 @@ module Google
           property :use_media_download_service, as: 'useMediaDownloadService'
         end
         
-        # @private
         class MediaUpload
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :accept, as: 'accept'
             property :max_size, as: 'maxSize'
@@ -298,8 +298,8 @@ module Google
         
           end
           
-          # @private
           class Protocols
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :resumable, as: 'resumable', class: Google::Apis::DiscoveryV1::RestMethod::MediaUpload::Protocols::Resumable, decorator: Google::Apis::DiscoveryV1::RestMethod::MediaUpload::Protocols::Resumable::Representation
           
@@ -307,16 +307,16 @@ module Google
           
             end
             
-            # @private
             class Resumable
+              # @private
               class Representation < Google::Apis::Core::JsonRepresentation
                 property :multipart, as: 'multipart'
                 property :path, as: 'path'
               end
             end
             
-            # @private
             class Simple
+              # @private
               class Representation < Google::Apis::Core::JsonRepresentation
                 property :multipart, as: 'multipart'
                 property :path, as: 'path'
@@ -325,24 +325,24 @@ module Google
           end
         end
         
-        # @private
         class Request
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :_ref, as: '$ref'
             property :parameter_name, as: 'parameterName'
           end
         end
         
-        # @private
         class Response
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :_ref, as: '$ref'
           end
         end
       end
       
-      # @private
       class RestResource
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :api_methods, as: 'methods', class: Google::Apis::DiscoveryV1::RestMethod, decorator: Google::Apis::DiscoveryV1::RestMethod::Representation
       

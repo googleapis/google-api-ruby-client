@@ -414,8 +414,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class AchievementDefinition
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :achievement_type, as: 'achievementType'
           property :description, as: 'description'
@@ -433,8 +433,8 @@ module Google
         end
       end
       
-      # @private
       class ListAchievementDefinitionsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::AchievementDefinition, decorator: Google::Apis::GamesV1::AchievementDefinition::Representation
       
@@ -443,8 +443,8 @@ module Google
         end
       end
       
-      # @private
       class AchievementIncrementResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_steps, as: 'currentSteps'
           property :kind, as: 'kind'
@@ -452,16 +452,16 @@ module Google
         end
       end
       
-      # @private
       class AchievementRevealResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_state, as: 'currentState'
           property :kind, as: 'kind'
         end
       end
       
-      # @private
       class AchievementSetStepsAtLeastResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_steps, as: 'currentSteps'
           property :kind, as: 'kind'
@@ -469,16 +469,16 @@ module Google
         end
       end
       
-      # @private
       class AchievementUnlockResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :newly_unlocked, as: 'newlyUnlocked'
         end
       end
       
-      # @private
       class AchievementUpdateMultipleRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :updates, as: 'updates', class: Google::Apis::GamesV1::UpdateAchievementRequest, decorator: Google::Apis::GamesV1::UpdateAchievementRequest::Representation
@@ -486,8 +486,8 @@ module Google
         end
       end
       
-      # @private
       class AchievementUpdateMultipleResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :updated_achievements, as: 'updatedAchievements', class: Google::Apis::GamesV1::UpdateAchievementResponse, decorator: Google::Apis::GamesV1::UpdateAchievementResponse::Representation
@@ -495,8 +495,8 @@ module Google
         end
       end
       
-      # @private
       class UpdateAchievementRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :achievement_id, as: 'achievementId'
           property :increment_payload, as: 'incrementPayload', class: Google::Apis::GamesV1::GamesAchievementIncrement, decorator: Google::Apis::GamesV1::GamesAchievementIncrement::Representation
@@ -508,8 +508,8 @@ module Google
         end
       end
       
-      # @private
       class UpdateAchievementResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :achievement_id, as: 'achievementId'
           property :current_state, as: 'currentState'
@@ -520,8 +520,8 @@ module Google
         end
       end
       
-      # @private
       class AggregateStats
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
           property :kind, as: 'kind'
@@ -531,8 +531,8 @@ module Google
         end
       end
       
-      # @private
       class AnonymousPlayer
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :avatar_image_url, as: 'avatarImageUrl'
           property :display_name, as: 'displayName'
@@ -540,8 +540,8 @@ module Google
         end
       end
       
-      # @private
       class Application
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :achievement_count, as: 'achievement_count'
           collection :assets, as: 'assets', class: Google::Apis::GamesV1::ImageAsset, decorator: Google::Apis::GamesV1::ImageAsset::Representation
@@ -562,8 +562,8 @@ module Google
         end
       end
       
-      # @private
       class ApplicationCategory
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :primary, as: 'primary'
@@ -571,8 +571,8 @@ module Google
         end
       end
       
-      # @private
       class Category
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :category, as: 'category'
           property :experience_points, as: 'experiencePoints'
@@ -580,8 +580,8 @@ module Google
         end
       end
       
-      # @private
       class ListCategoryResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::Category, decorator: Google::Apis::GamesV1::Category::Representation
       
@@ -590,8 +590,8 @@ module Google
         end
       end
       
-      # @private
       class EventBatchRecordFailure
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :failure_cause, as: 'failureCause'
           property :kind, as: 'kind'
@@ -600,16 +600,16 @@ module Google
         end
       end
       
-      # @private
       class EventChild
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :child_id, as: 'childId'
           property :kind, as: 'kind'
         end
       end
       
-      # @private
       class EventDefinition
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :child_events, as: 'childEvents', class: Google::Apis::GamesV1::EventChild, decorator: Google::Apis::GamesV1::EventChild::Representation
       
@@ -623,8 +623,8 @@ module Google
         end
       end
       
-      # @private
       class ListEventDefinitionResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::EventDefinition, decorator: Google::Apis::GamesV1::EventDefinition::Representation
       
@@ -633,8 +633,8 @@ module Google
         end
       end
       
-      # @private
       class EventPeriodRange
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :period_end_millis, as: 'periodEndMillis'
@@ -642,8 +642,8 @@ module Google
         end
       end
       
-      # @private
       class EventPeriodUpdate
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :time_period, as: 'timePeriod', class: Google::Apis::GamesV1::EventPeriodRange, decorator: Google::Apis::GamesV1::EventPeriodRange::Representation
@@ -653,8 +653,8 @@ module Google
         end
       end
       
-      # @private
       class EventRecordFailure
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :event_id, as: 'eventId'
           property :failure_cause, as: 'failureCause'
@@ -662,8 +662,8 @@ module Google
         end
       end
       
-      # @private
       class EventRecordRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_time_millis, as: 'currentTimeMillis'
           property :kind, as: 'kind'
@@ -673,8 +673,8 @@ module Google
         end
       end
       
-      # @private
       class UpdateEventRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :definition_id, as: 'definitionId'
           property :kind, as: 'kind'
@@ -682,8 +682,8 @@ module Google
         end
       end
       
-      # @private
       class UpdateEventResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :batch_failures, as: 'batchFailures', class: Google::Apis::GamesV1::EventBatchRecordFailure, decorator: Google::Apis::GamesV1::EventBatchRecordFailure::Representation
       
@@ -695,8 +695,8 @@ module Google
         end
       end
       
-      # @private
       class GamesAchievementIncrement
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :request_id, as: 'requestId'
@@ -704,16 +704,16 @@ module Google
         end
       end
       
-      # @private
       class GamesAchievementSetStepsAtLeast
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :steps, as: 'steps'
         end
       end
       
-      # @private
       class ImageAsset
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :height, as: 'height'
           property :kind, as: 'kind'
@@ -723,8 +723,8 @@ module Google
         end
       end
       
-      # @private
       class Instance
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acquisition_uri, as: 'acquisitionUri'
           property :android_instance, as: 'androidInstance', class: Google::Apis::GamesV1::InstanceAndroidDetails, decorator: Google::Apis::GamesV1::InstanceAndroidDetails::Representation
@@ -741,8 +741,8 @@ module Google
         end
       end
       
-      # @private
       class InstanceAndroidDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_piracy_check, as: 'enablePiracyCheck'
           property :kind, as: 'kind'
@@ -751,8 +751,8 @@ module Google
         end
       end
       
-      # @private
       class InstanceIosDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bundle_identifier, as: 'bundleIdentifier'
           property :itunes_app_id, as: 'itunesAppId'
@@ -764,8 +764,8 @@ module Google
         end
       end
       
-      # @private
       class InstanceWebDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :launch_url, as: 'launchUrl'
@@ -773,8 +773,8 @@ module Google
         end
       end
       
-      # @private
       class Leaderboard
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :icon_url, as: 'iconUrl'
           property :id, as: 'id'
@@ -785,8 +785,8 @@ module Google
         end
       end
       
-      # @private
       class LeaderboardEntry
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :formatted_score, as: 'formattedScore'
           property :formatted_score_rank, as: 'formattedScoreRank'
@@ -801,8 +801,8 @@ module Google
         end
       end
       
-      # @private
       class ListLeaderboardResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::Leaderboard, decorator: Google::Apis::GamesV1::Leaderboard::Representation
       
@@ -811,8 +811,8 @@ module Google
         end
       end
       
-      # @private
       class LeaderboardScoreRank
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :formatted_num_scores, as: 'formattedNumScores'
           property :formatted_rank, as: 'formattedRank'
@@ -822,8 +822,8 @@ module Google
         end
       end
       
-      # @private
       class LeaderboardScores
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::LeaderboardEntry, decorator: Google::Apis::GamesV1::LeaderboardEntry::Representation
       
@@ -836,8 +836,8 @@ module Google
         end
       end
       
-      # @private
       class MetagameConfig
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_version, as: 'currentVersion'
           property :kind, as: 'kind'
@@ -846,8 +846,8 @@ module Google
         end
       end
       
-      # @private
       class NetworkDiagnostics
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :android_network_subtype, as: 'androidNetworkSubtype'
           property :android_network_type, as: 'androidNetworkType'
@@ -859,8 +859,8 @@ module Google
         end
       end
       
-      # @private
       class ParticipantResult
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :participant_id, as: 'participantId'
@@ -869,8 +869,8 @@ module Google
         end
       end
       
-      # @private
       class PeerChannelDiagnostics
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bytes_received, as: 'bytesReceived', class: Google::Apis::GamesV1::AggregateStats, decorator: Google::Apis::GamesV1::AggregateStats::Representation
       
@@ -886,8 +886,8 @@ module Google
         end
       end
       
-      # @private
       class PeerSessionDiagnostics
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connected_timestamp_millis, as: 'connectedTimestampMillis'
           property :kind, as: 'kind'
@@ -899,8 +899,8 @@ module Google
         end
       end
       
-      # @private
       class Played
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_matched, as: 'autoMatched'
           property :kind, as: 'kind'
@@ -908,8 +908,8 @@ module Google
         end
       end
       
-      # @private
       class Player
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :avatar_image_url, as: 'avatarImageUrl'
           property :display_name, as: 'displayName'
@@ -924,8 +924,8 @@ module Google
           property :title, as: 'title'
         end
         
-        # @private
         class Name
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :family_name, as: 'familyName'
             property :given_name, as: 'givenName'
@@ -933,8 +933,8 @@ module Google
         end
       end
       
-      # @private
       class PlayerAchievement
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :achievement_state, as: 'achievementState'
           property :current_steps, as: 'currentSteps'
@@ -946,8 +946,8 @@ module Google
         end
       end
       
-      # @private
       class ListPlayerAchievementResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::PlayerAchievement, decorator: Google::Apis::GamesV1::PlayerAchievement::Representation
       
@@ -956,8 +956,8 @@ module Google
         end
       end
       
-      # @private
       class PlayerEvent
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :definition_id, as: 'definitionId'
           property :formatted_num_events, as: 'formattedNumEvents'
@@ -967,8 +967,8 @@ module Google
         end
       end
       
-      # @private
       class ListPlayerEventResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::PlayerEvent, decorator: Google::Apis::GamesV1::PlayerEvent::Representation
       
@@ -977,8 +977,8 @@ module Google
         end
       end
       
-      # @private
       class PlayerExperienceInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_experience_points, as: 'currentExperiencePoints'
           property :current_level, as: 'currentLevel', class: Google::Apis::GamesV1::PlayerLevel, decorator: Google::Apis::GamesV1::PlayerLevel::Representation
@@ -990,8 +990,8 @@ module Google
         end
       end
       
-      # @private
       class PlayerLeaderboardScore
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :leaderboard_id, as: 'leaderboard_id'
@@ -1007,8 +1007,8 @@ module Google
         end
       end
       
-      # @private
       class ListPlayerLeaderboardScoreResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::PlayerLeaderboardScore, decorator: Google::Apis::GamesV1::PlayerLeaderboardScore::Representation
       
@@ -1019,8 +1019,8 @@ module Google
         end
       end
       
-      # @private
       class PlayerLevel
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :level, as: 'level'
@@ -1029,8 +1029,8 @@ module Google
         end
       end
       
-      # @private
       class ListPlayerResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::Player, decorator: Google::Apis::GamesV1::Player::Representation
       
@@ -1039,8 +1039,8 @@ module Google
         end
       end
       
-      # @private
       class PlayerScore
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :formatted_score, as: 'formattedScore'
           property :kind, as: 'kind'
@@ -1050,8 +1050,8 @@ module Google
         end
       end
       
-      # @private
       class ListPlayerScoreResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :submitted_scores, as: 'submittedScores', class: Google::Apis::GamesV1::PlayerScoreResponse, decorator: Google::Apis::GamesV1::PlayerScoreResponse::Representation
@@ -1059,8 +1059,8 @@ module Google
         end
       end
       
-      # @private
       class PlayerScoreResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :beaten_score_time_spans, as: 'beatenScoreTimeSpans'
           property :formatted_score, as: 'formattedScore'
@@ -1072,8 +1072,8 @@ module Google
         end
       end
       
-      # @private
       class PlayerScoreSubmissionList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :scores, as: 'scores', class: Google::Apis::GamesV1::ScoreSubmission, decorator: Google::Apis::GamesV1::ScoreSubmission::Representation
@@ -1081,8 +1081,8 @@ module Google
         end
       end
       
-      # @private
       class PushToken
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_revision, as: 'clientRevision'
           property :id, as: 'id', class: Google::Apis::GamesV1::PushTokenId, decorator: Google::Apis::GamesV1::PushTokenId::Representation
@@ -1092,16 +1092,16 @@ module Google
         end
       end
       
-      # @private
       class PushTokenId
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ios, as: 'ios', class: Google::Apis::GamesV1::PushTokenId::Ios, decorator: Google::Apis::GamesV1::PushTokenId::Ios::Representation
       
           property :kind, as: 'kind'
         end
         
-        # @private
         class Ios
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :apns_device_token, :base64 => true, as: 'apns_device_token'
             property :apns_environment, as: 'apns_environment'
@@ -1109,8 +1109,8 @@ module Google
         end
       end
       
-      # @private
       class Quest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accepted_timestamp_millis, as: 'acceptedTimestampMillis'
           property :application_id, as: 'applicationId'
@@ -1132,8 +1132,8 @@ module Google
         end
       end
       
-      # @private
       class QuestContribution
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :formatted_value, as: 'formattedValue'
           property :kind, as: 'kind'
@@ -1141,8 +1141,8 @@ module Google
         end
       end
       
-      # @private
       class QuestCriterion
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :completion_contribution, as: 'completionContribution', class: Google::Apis::GamesV1::QuestContribution, decorator: Google::Apis::GamesV1::QuestContribution::Representation
       
@@ -1155,8 +1155,8 @@ module Google
         end
       end
       
-      # @private
       class ListQuestResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::Quest, decorator: Google::Apis::GamesV1::Quest::Representation
       
@@ -1165,8 +1165,8 @@ module Google
         end
       end
       
-      # @private
       class QuestMilestone
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :completion_reward_data, :base64 => true, as: 'completionRewardData'
           collection :criteria, as: 'criteria', class: Google::Apis::GamesV1::QuestCriterion, decorator: Google::Apis::GamesV1::QuestCriterion::Representation
@@ -1177,8 +1177,8 @@ module Google
         end
       end
       
-      # @private
       class CheckRevisionResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           property :kind, as: 'kind'
@@ -1186,8 +1186,8 @@ module Google
         end
       end
       
-      # @private
       class Room
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :application_id, as: 'applicationId'
           property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::RoomAutoMatchingCriteria, decorator: Google::Apis::GamesV1::RoomAutoMatchingCriteria::Representation
@@ -1210,16 +1210,16 @@ module Google
         end
       end
       
-      # @private
       class RoomAutoMatchStatus
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :wait_estimate_seconds, as: 'waitEstimateSeconds'
         end
       end
       
-      # @private
       class RoomAutoMatchingCriteria
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :exclusive_bitmask, as: 'exclusiveBitmask'
           property :kind, as: 'kind'
@@ -1228,16 +1228,16 @@ module Google
         end
       end
       
-      # @private
       class RoomClientAddress
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :xmpp_address, as: 'xmppAddress'
         end
       end
       
-      # @private
       class CreateRoomRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::RoomAutoMatchingCriteria, decorator: Google::Apis::GamesV1::RoomAutoMatchingCriteria::Representation
       
@@ -1253,8 +1253,8 @@ module Google
         end
       end
       
-      # @private
       class JoinRoomRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :capabilities, as: 'capabilities'
           property :client_address, as: 'clientAddress', class: Google::Apis::GamesV1::RoomClientAddress, decorator: Google::Apis::GamesV1::RoomClientAddress::Representation
@@ -1265,8 +1265,8 @@ module Google
         end
       end
       
-      # @private
       class RoomLeaveDiagnostics
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :android_network_subtype, as: 'androidNetworkSubtype'
           property :android_network_type, as: 'androidNetworkType'
@@ -1280,8 +1280,8 @@ module Google
         end
       end
       
-      # @private
       class LeaveRoomRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :leave_diagnostics, as: 'leaveDiagnostics', class: Google::Apis::GamesV1::RoomLeaveDiagnostics, decorator: Google::Apis::GamesV1::RoomLeaveDiagnostics::Representation
@@ -1290,8 +1290,8 @@ module Google
         end
       end
       
-      # @private
       class RoomList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::Room, decorator: Google::Apis::GamesV1::Room::Representation
       
@@ -1300,8 +1300,8 @@ module Google
         end
       end
       
-      # @private
       class RoomModification
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :modified_timestamp_millis, as: 'modifiedTimestampMillis'
@@ -1309,8 +1309,8 @@ module Google
         end
       end
       
-      # @private
       class RoomP2PStatus
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection_setup_latency_millis, as: 'connectionSetupLatencyMillis'
           property :error, as: 'error'
@@ -1322,8 +1322,8 @@ module Google
         end
       end
       
-      # @private
       class RoomP2PStatuses
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :updates, as: 'updates', class: Google::Apis::GamesV1::RoomP2PStatus, decorator: Google::Apis::GamesV1::RoomP2PStatus::Representation
@@ -1331,8 +1331,8 @@ module Google
         end
       end
       
-      # @private
       class RoomParticipant
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_matched, as: 'autoMatched'
           property :auto_matched_player, as: 'autoMatchedPlayer', class: Google::Apis::GamesV1::AnonymousPlayer, decorator: Google::Apis::GamesV1::AnonymousPlayer::Representation
@@ -1350,8 +1350,8 @@ module Google
         end
       end
       
-      # @private
       class RoomStatus
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_matching_status, as: 'autoMatchingStatus', class: Google::Apis::GamesV1::RoomAutoMatchStatus, decorator: Google::Apis::GamesV1::RoomAutoMatchStatus::Representation
       
@@ -1364,8 +1364,8 @@ module Google
         end
       end
       
-      # @private
       class ScoreSubmission
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :leaderboard_id, as: 'leaderboardId'
@@ -1375,8 +1375,8 @@ module Google
         end
       end
       
-      # @private
       class Snapshot
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cover_image, as: 'coverImage', class: Google::Apis::GamesV1::SnapshotImage, decorator: Google::Apis::GamesV1::SnapshotImage::Representation
       
@@ -1393,8 +1393,8 @@ module Google
         end
       end
       
-      # @private
       class SnapshotImage
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :height, as: 'height'
           property :kind, as: 'kind'
@@ -1404,8 +1404,8 @@ module Google
         end
       end
       
-      # @private
       class ListSnapshotResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::Snapshot, decorator: Google::Apis::GamesV1::Snapshot::Representation
       
@@ -1414,8 +1414,8 @@ module Google
         end
       end
       
-      # @private
       class TurnBasedAutoMatchingCriteria
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :exclusive_bitmask, as: 'exclusiveBitmask'
           property :kind, as: 'kind'
@@ -1424,8 +1424,8 @@ module Google
         end
       end
       
-      # @private
       class TurnBasedMatch
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :application_id, as: 'applicationId'
           property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria, decorator: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria::Representation
@@ -1457,8 +1457,8 @@ module Google
         end
       end
       
-      # @private
       class CreateTurnBasedMatchRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_matching_criteria, as: 'autoMatchingCriteria', class: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria, decorator: Google::Apis::GamesV1::TurnBasedAutoMatchingCriteria::Representation
       
@@ -1469,8 +1469,8 @@ module Google
         end
       end
       
-      # @private
       class TurnBasedMatchData
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, :base64 => true, as: 'data'
           property :data_available, as: 'dataAvailable'
@@ -1478,16 +1478,16 @@ module Google
         end
       end
       
-      # @private
       class TurnBasedMatchDataRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, :base64 => true, as: 'data'
           property :kind, as: 'kind'
         end
       end
       
-      # @private
       class TurnBasedMatchList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::TurnBasedMatch, decorator: Google::Apis::GamesV1::TurnBasedMatch::Representation
       
@@ -1496,8 +1496,8 @@ module Google
         end
       end
       
-      # @private
       class TurnBasedMatchModification
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :modified_timestamp_millis, as: 'modifiedTimestampMillis'
@@ -1505,8 +1505,8 @@ module Google
         end
       end
       
-      # @private
       class TurnBasedMatchParticipant
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_matched, as: 'autoMatched'
           property :auto_matched_player, as: 'autoMatchedPlayer', class: Google::Apis::GamesV1::AnonymousPlayer, decorator: Google::Apis::GamesV1::AnonymousPlayer::Representation
@@ -1519,8 +1519,8 @@ module Google
         end
       end
       
-      # @private
       class TurnBasedMatchRematch
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :previous_match, as: 'previousMatch', class: Google::Apis::GamesV1::TurnBasedMatch, decorator: Google::Apis::GamesV1::TurnBasedMatch::Representation
@@ -1530,8 +1530,8 @@ module Google
         end
       end
       
-      # @private
       class TurnBasedMatchResults
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, as: 'data', class: Google::Apis::GamesV1::TurnBasedMatchDataRequest, decorator: Google::Apis::GamesV1::TurnBasedMatchDataRequest::Representation
       
@@ -1542,8 +1542,8 @@ module Google
         end
       end
       
-      # @private
       class TurnBasedMatchSync
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesV1::TurnBasedMatch, decorator: Google::Apis::GamesV1::TurnBasedMatch::Representation
       
@@ -1553,8 +1553,8 @@ module Google
         end
       end
       
-      # @private
       class TurnBasedMatchTurn
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, as: 'data', class: Google::Apis::GamesV1::TurnBasedMatchDataRequest, decorator: Google::Apis::GamesV1::TurnBasedMatchDataRequest::Representation
       

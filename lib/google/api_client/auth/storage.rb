@@ -35,7 +35,8 @@ module Google
       ##
       # Initializes the Storage object.
       #
-      # @params [Object] Storage object
+      # @param [Object] store
+      #  Storage object
       def initialize(store)
         @store= store
         @authorization = nil
@@ -44,7 +45,7 @@ module Google
       ##
       # Write the credentials to the specified store.
       #
-      # @params [Signet::OAuth2::Client] authorization
+      # @param [Signet::OAuth2::Client] authorization
       #    Optional authorization instance. If not provided, the authorization
       #    already associated with this instance will be written.
       def write_credentials(authorization=nil)

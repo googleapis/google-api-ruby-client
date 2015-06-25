@@ -794,8 +794,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class Account
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :account_permission_ids, as: 'accountPermissionIds'
           property :account_profile, as: 'accountProfile'
@@ -820,8 +820,8 @@ module Google
         end
       end
       
-      # @private
       class AccountActiveAdSummary
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :active_ads, as: 'activeAds'
@@ -831,8 +831,8 @@ module Google
         end
       end
       
-      # @private
       class AccountPermission
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :account_profiles, as: 'accountProfiles'
           property :id, as: 'id'
@@ -843,8 +843,8 @@ module Google
         end
       end
       
-      # @private
       class AccountPermissionGroup
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -852,8 +852,8 @@ module Google
         end
       end
       
-      # @private
       class ListAccountPermissionGroupsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :account_permission_groups, as: 'accountPermissionGroups', class: Google::Apis::DfareportingV2_1::AccountPermissionGroup, decorator: Google::Apis::DfareportingV2_1::AccountPermissionGroup::Representation
       
@@ -861,8 +861,8 @@ module Google
         end
       end
       
-      # @private
       class ListAccountPermissionsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :account_permissions, as: 'accountPermissions', class: Google::Apis::DfareportingV2_1::AccountPermission, decorator: Google::Apis::DfareportingV2_1::AccountPermission::Representation
       
@@ -870,8 +870,8 @@ module Google
         end
       end
       
-      # @private
       class AccountUserProfile
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :active, as: 'active'
@@ -896,8 +896,8 @@ module Google
         end
       end
       
-      # @private
       class ListAccountUserProfilesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :account_user_profiles, as: 'accountUserProfiles', class: Google::Apis::DfareportingV2_1::AccountUserProfile, decorator: Google::Apis::DfareportingV2_1::AccountUserProfile::Representation
       
@@ -906,8 +906,8 @@ module Google
         end
       end
       
-      # @private
       class ListAccountsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accounts, as: 'accounts', class: Google::Apis::DfareportingV2_1::Account, decorator: Google::Apis::DfareportingV2_1::Account::Representation
       
@@ -916,8 +916,8 @@ module Google
         end
       end
       
-      # @private
       class Activities
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :filters, as: 'filters', class: Google::Apis::DfareportingV2_1::DimensionValue, decorator: Google::Apis::DfareportingV2_1::DimensionValue::Representation
       
@@ -926,8 +926,8 @@ module Google
         end
       end
       
-      # @private
       class Ad
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :active, as: 'active'
@@ -990,8 +990,8 @@ module Google
         end
       end
       
-      # @private
       class AdSlot
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :comment, as: 'comment'
           property :compatibility, as: 'compatibility'
@@ -1004,8 +1004,8 @@ module Google
         end
       end
       
-      # @private
       class ListAdsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ads, as: 'ads', class: Google::Apis::DfareportingV2_1::Ad, decorator: Google::Apis::DfareportingV2_1::Ad::Representation
       
@@ -1014,8 +1014,8 @@ module Google
         end
       end
       
-      # @private
       class Advertiser
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :advertiser_group_id, as: 'advertiserGroupId'
@@ -1036,8 +1036,8 @@ module Google
         end
       end
       
-      # @private
       class AdvertiserGroup
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :id, as: 'id'
@@ -1046,8 +1046,8 @@ module Google
         end
       end
       
-      # @private
       class ListAdvertiserGroupsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :advertiser_groups, as: 'advertiserGroups', class: Google::Apis::DfareportingV2_1::AdvertiserGroup, decorator: Google::Apis::DfareportingV2_1::AdvertiserGroup::Representation
       
@@ -1056,8 +1056,8 @@ module Google
         end
       end
       
-      # @private
       class ListAdvertisersResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :advertisers, as: 'advertisers', class: Google::Apis::DfareportingV2_1::Advertiser, decorator: Google::Apis::DfareportingV2_1::Advertiser::Representation
       
@@ -1066,8 +1066,8 @@ module Google
         end
       end
       
-      # @private
       class AudienceSegment
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allocation, as: 'allocation'
           property :id, as: 'id'
@@ -1075,8 +1075,8 @@ module Google
         end
       end
       
-      # @private
       class AudienceSegmentGroup
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :audience_segments, as: 'audienceSegments', class: Google::Apis::DfareportingV2_1::AudienceSegment, decorator: Google::Apis::DfareportingV2_1::AudienceSegment::Representation
       
@@ -1085,8 +1085,8 @@ module Google
         end
       end
       
-      # @private
       class Browser
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :browser_version_id, as: 'browserVersionId'
           property :dart_id, as: 'dartId'
@@ -1097,8 +1097,8 @@ module Google
         end
       end
       
-      # @private
       class ListBrowsersResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :browsers, as: 'browsers', class: Google::Apis::DfareportingV2_1::Browser, decorator: Google::Apis::DfareportingV2_1::Browser::Representation
       
@@ -1106,8 +1106,8 @@ module Google
         end
       end
       
-      # @private
       class Campaign
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           collection :additional_creative_optimization_configurations, as: 'additionalCreativeOptimizationConfigurations', class: Google::Apis::DfareportingV2_1::CreativeOptimizationConfiguration, decorator: Google::Apis::DfareportingV2_1::CreativeOptimizationConfiguration::Representation
@@ -1153,16 +1153,16 @@ module Google
         end
       end
       
-      # @private
       class CampaignCreativeAssociation
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creative_id, as: 'creativeId'
           property :kind, as: 'kind'
         end
       end
       
-      # @private
       class ListCampaignCreativeAssociationsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :campaign_creative_associations, as: 'campaignCreativeAssociations', class: Google::Apis::DfareportingV2_1::CampaignCreativeAssociation, decorator: Google::Apis::DfareportingV2_1::CampaignCreativeAssociation::Representation
       
@@ -1171,8 +1171,8 @@ module Google
         end
       end
       
-      # @private
       class ListCampaignsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :campaigns, as: 'campaigns', class: Google::Apis::DfareportingV2_1::Campaign, decorator: Google::Apis::DfareportingV2_1::Campaign::Representation
       
@@ -1181,8 +1181,8 @@ module Google
         end
       end
       
-      # @private
       class ChangeLog
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :action, as: 'action'
@@ -1202,8 +1202,8 @@ module Google
         end
       end
       
-      # @private
       class ListChangeLogsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :change_logs, as: 'changeLogs', class: Google::Apis::DfareportingV2_1::ChangeLog, decorator: Google::Apis::DfareportingV2_1::ChangeLog::Representation
       
@@ -1212,8 +1212,8 @@ module Google
         end
       end
       
-      # @private
       class ListCitiesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :cities, as: 'cities', class: Google::Apis::DfareportingV2_1::City, decorator: Google::Apis::DfareportingV2_1::City::Representation
       
@@ -1221,8 +1221,8 @@ module Google
         end
       end
       
-      # @private
       class City
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country_code, as: 'countryCode'
           property :country_dart_id, as: 'countryDartId'
@@ -1236,8 +1236,8 @@ module Google
         end
       end
       
-      # @private
       class ClickTag
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :event_name, as: 'eventName'
           property :name, as: 'name'
@@ -1245,8 +1245,8 @@ module Google
         end
       end
       
-      # @private
       class ClickThroughUrl
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_click_through_url, as: 'customClickThroughUrl'
           property :default_landing_page, as: 'defaultLandingPage'
@@ -1254,16 +1254,16 @@ module Google
         end
       end
       
-      # @private
       class ClickThroughUrlSuffixProperties
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :click_through_url_suffix, as: 'clickThroughUrlSuffix'
           property :override_inherited_suffix, as: 'overrideInheritedSuffix'
         end
       end
       
-      # @private
       class CompanionClickThroughOverride
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :click_through_url, as: 'clickThroughUrl', class: Google::Apis::DfareportingV2_1::ClickThroughUrl, decorator: Google::Apis::DfareportingV2_1::ClickThroughUrl::Representation
       
@@ -1271,8 +1271,8 @@ module Google
         end
       end
       
-      # @private
       class CompatibleFields
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cross_dimension_reach_report_compatible_fields, as: 'crossDimensionReachReportCompatibleFields', class: Google::Apis::DfareportingV2_1::CrossDimensionReachReportCompatibleFields, decorator: Google::Apis::DfareportingV2_1::CrossDimensionReachReportCompatibleFields::Representation
       
@@ -1288,8 +1288,8 @@ module Google
         end
       end
       
-      # @private
       class ConnectionType
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -1297,8 +1297,8 @@ module Google
         end
       end
       
-      # @private
       class ListConnectionTypesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :connection_types, as: 'connectionTypes', class: Google::Apis::DfareportingV2_1::ConnectionType, decorator: Google::Apis::DfareportingV2_1::ConnectionType::Representation
       
@@ -1306,8 +1306,8 @@ module Google
         end
       end
       
-      # @private
       class ListContentCategoriesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :content_categories, as: 'contentCategories', class: Google::Apis::DfareportingV2_1::ContentCategory, decorator: Google::Apis::DfareportingV2_1::ContentCategory::Representation
       
@@ -1316,8 +1316,8 @@ module Google
         end
       end
       
-      # @private
       class ContentCategory
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :id, as: 'id'
@@ -1326,8 +1326,8 @@ module Google
         end
       end
       
-      # @private
       class ListCountriesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :countries, as: 'countries', class: Google::Apis::DfareportingV2_1::Country, decorator: Google::Apis::DfareportingV2_1::Country::Representation
       
@@ -1335,8 +1335,8 @@ module Google
         end
       end
       
-      # @private
       class Country
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country_code, as: 'countryCode'
           property :dart_id, as: 'dartId'
@@ -1346,8 +1346,8 @@ module Google
         end
       end
       
-      # @private
       class Creative
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :active, as: 'active'
@@ -1421,8 +1421,8 @@ module Google
         end
       end
       
-      # @private
       class CreativeAsset
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action_script3, as: 'actionScript3'
           property :active, as: 'active'
@@ -1476,16 +1476,16 @@ module Google
         end
       end
       
-      # @private
       class CreativeAssetId
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :type, as: 'type'
         end
       end
       
-      # @private
       class CreativeAssetMetadata
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :asset_identifier, as: 'assetIdentifier', class: Google::Apis::DfareportingV2_1::CreativeAssetId, decorator: Google::Apis::DfareportingV2_1::CreativeAssetId::Representation
       
@@ -1497,8 +1497,8 @@ module Google
         end
       end
       
-      # @private
       class CreativeAssignment
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active, as: 'active'
           property :apply_event_tags, as: 'applyEventTags'
@@ -1523,8 +1523,8 @@ module Google
         end
       end
       
-      # @private
       class CreativeCustomEvent
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active, as: 'active'
           property :advertiser_custom_event_name, as: 'advertiserCustomEventName'
@@ -1540,8 +1540,8 @@ module Google
         end
       end
       
-      # @private
       class CreativeField
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :advertiser_id, as: 'advertiserId'
@@ -1554,16 +1554,16 @@ module Google
         end
       end
       
-      # @private
       class CreativeFieldAssignment
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creative_field_id, as: 'creativeFieldId'
           property :creative_field_value_id, as: 'creativeFieldValueId'
         end
       end
       
-      # @private
       class CreativeFieldValue
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -1571,8 +1571,8 @@ module Google
         end
       end
       
-      # @private
       class ListCreativeFieldValuesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :creative_field_values, as: 'creativeFieldValues', class: Google::Apis::DfareportingV2_1::CreativeFieldValue, decorator: Google::Apis::DfareportingV2_1::CreativeFieldValue::Representation
       
@@ -1581,8 +1581,8 @@ module Google
         end
       end
       
-      # @private
       class ListCreativeFieldsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :creative_fields, as: 'creativeFields', class: Google::Apis::DfareportingV2_1::CreativeField, decorator: Google::Apis::DfareportingV2_1::CreativeField::Representation
       
@@ -1591,8 +1591,8 @@ module Google
         end
       end
       
-      # @private
       class CreativeGroup
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :advertiser_id, as: 'advertiserId'
@@ -1606,16 +1606,16 @@ module Google
         end
       end
       
-      # @private
       class CreativeGroupAssignment
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creative_group_id, as: 'creativeGroupId'
           property :creative_group_number, as: 'creativeGroupNumber'
         end
       end
       
-      # @private
       class ListCreativeGroupsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :creative_groups, as: 'creativeGroups', class: Google::Apis::DfareportingV2_1::CreativeGroup, decorator: Google::Apis::DfareportingV2_1::CreativeGroup::Representation
       
@@ -1624,8 +1624,8 @@ module Google
         end
       end
       
-      # @private
       class CreativeOptimizationConfiguration
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :name, as: 'name'
@@ -1635,8 +1635,8 @@ module Google
         end
       end
       
-      # @private
       class CreativeRotation
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :creative_assignments, as: 'creativeAssignments', class: Google::Apis::DfareportingV2_1::CreativeAssignment, decorator: Google::Apis::DfareportingV2_1::CreativeAssignment::Representation
       
@@ -1646,16 +1646,16 @@ module Google
         end
       end
       
-      # @private
       class CreativeSettings
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :i_frame_footer, as: 'iFrameFooter'
           property :i_frame_header, as: 'iFrameHeader'
         end
       end
       
-      # @private
       class ListCreativesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :creatives, as: 'creatives', class: Google::Apis::DfareportingV2_1::Creative, decorator: Google::Apis::DfareportingV2_1::Creative::Representation
       
@@ -1664,8 +1664,8 @@ module Google
         end
       end
       
-      # @private
       class CrossDimensionReachReportCompatibleFields
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :breakdown, as: 'breakdown', class: Google::Apis::DfareportingV2_1::Dimension, decorator: Google::Apis::DfareportingV2_1::Dimension::Representation
       
@@ -1679,8 +1679,8 @@ module Google
         end
       end
       
-      # @private
       class CustomRichMediaEvents
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :filtered_event_ids, as: 'filteredEventIds', class: Google::Apis::DfareportingV2_1::DimensionValue, decorator: Google::Apis::DfareportingV2_1::DimensionValue::Representation
       
@@ -1688,8 +1688,8 @@ module Google
         end
       end
       
-      # @private
       class DateRange
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_date, as: 'endDate', type: Date
       
@@ -1700,8 +1700,8 @@ module Google
         end
       end
       
-      # @private
       class DayPartTargeting
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :days_of_week, as: 'daysOfWeek'
           collection :hours_of_day, as: 'hoursOfDay'
@@ -1709,16 +1709,16 @@ module Google
         end
       end
       
-      # @private
       class DefaultClickThroughEventTagProperties
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_click_through_event_tag_id, as: 'defaultClickThroughEventTagId'
           property :override_inherited_event_tag, as: 'overrideInheritedEventTag'
         end
       end
       
-      # @private
       class DeliverySchedule
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :frequency_cap, as: 'frequencyCap', class: Google::Apis::DfareportingV2_1::FrequencyCap, decorator: Google::Apis::DfareportingV2_1::FrequencyCap::Representation
       
@@ -1728,8 +1728,8 @@ module Google
         end
       end
       
-      # @private
       class DfpSettings
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dfp_network_code, as: 'dfp_network_code'
           property :dfp_network_name, as: 'dfp_network_name'
@@ -1739,16 +1739,16 @@ module Google
         end
       end
       
-      # @private
       class Dimension
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :name, as: 'name'
         end
       end
       
-      # @private
       class DimensionFilter
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dimension_name, as: 'dimensionName'
           property :kind, as: 'kind'
@@ -1756,8 +1756,8 @@ module Google
         end
       end
       
-      # @private
       class DimensionValue
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dimension_name, as: 'dimensionName'
           property :etag, as: 'etag'
@@ -1768,8 +1768,8 @@ module Google
         end
       end
       
-      # @private
       class DimensionValueList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::DfareportingV2_1::DimensionValue, decorator: Google::Apis::DfareportingV2_1::DimensionValue::Representation
@@ -1779,8 +1779,8 @@ module Google
         end
       end
       
-      # @private
       class DimensionValueRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dimension_name, as: 'dimensionName'
           property :end_date, as: 'endDate', type: Date
@@ -1793,8 +1793,8 @@ module Google
         end
       end
       
-      # @private
       class DirectorySite
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active, as: 'active'
           collection :contact_assignments, as: 'contactAssignments', class: Google::Apis::DfareportingV2_1::DirectorySiteContactAssignment, decorator: Google::Apis::DfareportingV2_1::DirectorySiteContactAssignment::Representation
@@ -1816,8 +1816,8 @@ module Google
         end
       end
       
-      # @private
       class DirectorySiteContact
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
           property :email, as: 'email'
@@ -1832,16 +1832,16 @@ module Google
         end
       end
       
-      # @private
       class DirectorySiteContactAssignment
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contact_id, as: 'contactId'
           property :visibility, as: 'visibility'
         end
       end
       
-      # @private
       class ListDirectorySiteContactsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :directory_site_contacts, as: 'directorySiteContacts', class: Google::Apis::DfareportingV2_1::DirectorySiteContact, decorator: Google::Apis::DfareportingV2_1::DirectorySiteContact::Representation
       
@@ -1850,8 +1850,8 @@ module Google
         end
       end
       
-      # @private
       class DirectorySiteSettings
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active_view_opt_out, as: 'activeViewOptOut'
           property :dfp_settings, as: 'dfp_settings', class: Google::Apis::DfareportingV2_1::DfpSettings, decorator: Google::Apis::DfareportingV2_1::DfpSettings::Representation
@@ -1864,8 +1864,8 @@ module Google
         end
       end
       
-      # @private
       class ListDirectorySitesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :directory_sites, as: 'directorySites', class: Google::Apis::DfareportingV2_1::DirectorySite, decorator: Google::Apis::DfareportingV2_1::DirectorySite::Representation
       
@@ -1874,8 +1874,8 @@ module Google
         end
       end
       
-      # @private
       class EventTag
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :advertiser_id, as: 'advertiserId'
@@ -1899,16 +1899,16 @@ module Google
         end
       end
       
-      # @private
       class EventTagOverride
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :id, as: 'id'
         end
       end
       
-      # @private
       class ListEventTagsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :event_tags, as: 'eventTags', class: Google::Apis::DfareportingV2_1::EventTag, decorator: Google::Apis::DfareportingV2_1::EventTag::Representation
       
@@ -1916,8 +1916,8 @@ module Google
         end
       end
       
-      # @private
       class File
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :date_range, as: 'dateRange', class: Google::Apis::DfareportingV2_1::DateRange, decorator: Google::Apis::DfareportingV2_1::DateRange::Representation
       
@@ -1933,8 +1933,8 @@ module Google
       
         end
         
-        # @private
         class Urls
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :api_url, as: 'apiUrl'
             property :browser_url, as: 'browserUrl'
@@ -1942,8 +1942,8 @@ module Google
         end
       end
       
-      # @private
       class FileList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::DfareportingV2_1::File, decorator: Google::Apis::DfareportingV2_1::File::Representation
@@ -1953,8 +1953,8 @@ module Google
         end
       end
       
-      # @private
       class Flight
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_date, as: 'endDate', type: Date
       
@@ -1965,16 +1965,16 @@ module Google
         end
       end
       
-      # @private
       class FloodlightActivitiesGenerateTagResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :floodlight_activity_tag, as: 'floodlightActivityTag'
           property :kind, as: 'kind'
         end
       end
       
-      # @private
       class ListFloodlightActivitiesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :floodlight_activities, as: 'floodlightActivities', class: Google::Apis::DfareportingV2_1::FloodlightActivity, decorator: Google::Apis::DfareportingV2_1::FloodlightActivity::Representation
       
@@ -1983,8 +1983,8 @@ module Google
         end
       end
       
-      # @private
       class FloodlightActivity
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :advertiser_id, as: 'advertiserId'
@@ -2022,8 +2022,8 @@ module Google
         end
       end
       
-      # @private
       class FloodlightActivityDynamicTag
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :name, as: 'name'
@@ -2031,8 +2031,8 @@ module Google
         end
       end
       
-      # @private
       class FloodlightActivityGroup
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :advertiser_id, as: 'advertiserId'
@@ -2052,8 +2052,8 @@ module Google
         end
       end
       
-      # @private
       class ListFloodlightActivityGroupsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :floodlight_activity_groups, as: 'floodlightActivityGroups', class: Google::Apis::DfareportingV2_1::FloodlightActivityGroup, decorator: Google::Apis::DfareportingV2_1::FloodlightActivityGroup::Representation
       
@@ -2062,8 +2062,8 @@ module Google
         end
       end
       
-      # @private
       class FloodlightActivityPublisherDynamicTag
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :click_through, as: 'clickThrough'
           property :directory_site_id, as: 'directorySiteId'
@@ -2076,8 +2076,8 @@ module Google
         end
       end
       
-      # @private
       class FloodlightConfiguration
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :advertiser_id, as: 'advertiserId'
@@ -2105,8 +2105,8 @@ module Google
         end
       end
       
-      # @private
       class ListFloodlightConfigurationsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :floodlight_configurations, as: 'floodlightConfigurations', class: Google::Apis::DfareportingV2_1::FloodlightConfiguration, decorator: Google::Apis::DfareportingV2_1::FloodlightConfiguration::Representation
       
@@ -2114,8 +2114,8 @@ module Google
         end
       end
       
-      # @private
       class FloodlightReportCompatibleFields
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :dimension_filters, as: 'dimensionFilters', class: Google::Apis::DfareportingV2_1::Dimension, decorator: Google::Apis::DfareportingV2_1::Dimension::Representation
       
@@ -2127,16 +2127,16 @@ module Google
         end
       end
       
-      # @private
       class FrequencyCap
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duration, as: 'duration'
           property :impressions, as: 'impressions'
         end
       end
       
-      # @private
       class FsCommand
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :left, as: 'left'
           property :position_option, as: 'positionOption'
@@ -2146,8 +2146,8 @@ module Google
         end
       end
       
-      # @private
       class GeoTargeting
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :cities, as: 'cities', class: Google::Apis::DfareportingV2_1::City, decorator: Google::Apis::DfareportingV2_1::City::Representation
       
@@ -2163,8 +2163,8 @@ module Google
         end
       end
       
-      # @private
       class InventoryItem
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           collection :ad_slots, as: 'adSlots', class: Google::Apis::DfareportingV2_1::AdSlot, decorator: Google::Apis::DfareportingV2_1::AdSlot::Representation
@@ -2191,8 +2191,8 @@ module Google
         end
       end
       
-      # @private
       class ListInventoryItemsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :inventory_items, as: 'inventoryItems', class: Google::Apis::DfareportingV2_1::InventoryItem, decorator: Google::Apis::DfareportingV2_1::InventoryItem::Representation
       
@@ -2201,15 +2201,15 @@ module Google
         end
       end
       
-      # @private
       class KeyValueTargetingExpression
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expression, as: 'expression'
         end
       end
       
-      # @private
       class LandingPage
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default, as: 'default'
           property :id, as: 'id'
@@ -2219,8 +2219,8 @@ module Google
         end
       end
       
-      # @private
       class ListLandingPagesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :landing_pages, as: 'landingPages', class: Google::Apis::DfareportingV2_1::LandingPage, decorator: Google::Apis::DfareportingV2_1::LandingPage::Representation
@@ -2228,23 +2228,23 @@ module Google
         end
       end
       
-      # @private
       class LastModifiedInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :time, as: 'time'
         end
       end
       
-      # @private
       class ListPopulationClause
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :terms, as: 'terms', class: Google::Apis::DfareportingV2_1::ListPopulationTerm, decorator: Google::Apis::DfareportingV2_1::ListPopulationTerm::Representation
       
         end
       end
       
-      # @private
       class ListPopulationRule
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :floodlight_activity_id, as: 'floodlightActivityId'
           property :floodlight_activity_name, as: 'floodlightActivityName'
@@ -2253,8 +2253,8 @@ module Google
         end
       end
       
-      # @private
       class ListPopulationTerm
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contains, as: 'contains'
           property :negation, as: 'negation'
@@ -2267,31 +2267,31 @@ module Google
         end
       end
       
-      # @private
       class ListTargetingExpression
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :expression, as: 'expression'
         end
       end
       
-      # @private
       class LookbackConfiguration
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :click_duration, as: 'clickDuration'
           property :post_impression_activities_duration, as: 'postImpressionActivitiesDuration'
         end
       end
       
-      # @private
       class Metric
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :name, as: 'name'
         end
       end
       
-      # @private
       class Metro
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country_code, as: 'countryCode'
           property :country_dart_id, as: 'countryDartId'
@@ -2303,8 +2303,8 @@ module Google
         end
       end
       
-      # @private
       class ListMetrosResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :metros, as: 'metros', class: Google::Apis::DfareportingV2_1::Metro, decorator: Google::Apis::DfareportingV2_1::Metro::Representation
@@ -2312,8 +2312,8 @@ module Google
         end
       end
       
-      # @private
       class MobileCarrier
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country_code, as: 'countryCode'
           property :country_dart_id, as: 'countryDartId'
@@ -2323,8 +2323,8 @@ module Google
         end
       end
       
-      # @private
       class ListMobileCarriersResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :mobile_carriers, as: 'mobileCarriers', class: Google::Apis::DfareportingV2_1::MobileCarrier, decorator: Google::Apis::DfareportingV2_1::MobileCarrier::Representation
@@ -2332,8 +2332,8 @@ module Google
         end
       end
       
-      # @private
       class ObjectFilter
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :object_ids, as: 'objectIds'
@@ -2341,24 +2341,24 @@ module Google
         end
       end
       
-      # @private
       class OffsetPosition
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :left, as: 'left'
           property :top, as: 'top'
         end
       end
       
-      # @private
       class OmnitureSettings
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :omniture_cost_data_enabled, as: 'omnitureCostDataEnabled'
           property :omniture_integration_enabled, as: 'omnitureIntegrationEnabled'
         end
       end
       
-      # @private
       class OperatingSystem
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dart_id, as: 'dartId'
           property :desktop, as: 'desktop'
@@ -2368,8 +2368,8 @@ module Google
         end
       end
       
-      # @private
       class OperatingSystemVersion
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -2381,8 +2381,8 @@ module Google
         end
       end
       
-      # @private
       class ListOperatingSystemVersionsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :operating_system_versions, as: 'operatingSystemVersions', class: Google::Apis::DfareportingV2_1::OperatingSystemVersion, decorator: Google::Apis::DfareportingV2_1::OperatingSystemVersion::Representation
@@ -2390,8 +2390,8 @@ module Google
         end
       end
       
-      # @private
       class ListOperatingSystemsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :operating_systems, as: 'operatingSystems', class: Google::Apis::DfareportingV2_1::OperatingSystem, decorator: Google::Apis::DfareportingV2_1::OperatingSystem::Representation
@@ -2399,8 +2399,8 @@ module Google
         end
       end
       
-      # @private
       class OptimizationActivity
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :floodlight_activity_id, as: 'floodlightActivityId'
           property :floodlight_activity_id_dimension_value, as: 'floodlightActivityIdDimensionValue', class: Google::Apis::DfareportingV2_1::DimensionValue, decorator: Google::Apis::DfareportingV2_1::DimensionValue::Representation
@@ -2409,8 +2409,8 @@ module Google
         end
       end
       
-      # @private
       class Order
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :advertiser_id, as: 'advertiserId'
@@ -2437,8 +2437,8 @@ module Google
         end
       end
       
-      # @private
       class OrderContact
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contact_info, as: 'contactInfo'
           property :contact_name, as: 'contactName'
@@ -2448,8 +2448,8 @@ module Google
         end
       end
       
-      # @private
       class OrderDocument
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :advertiser_id, as: 'advertiserId'
@@ -2471,8 +2471,8 @@ module Google
         end
       end
       
-      # @private
       class ListOrderDocumentsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -2481,8 +2481,8 @@ module Google
         end
       end
       
-      # @private
       class ListOrdersResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -2491,8 +2491,8 @@ module Google
         end
       end
       
-      # @private
       class PathToConversionReportCompatibleFields
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :conversion_dimensions, as: 'conversionDimensions', class: Google::Apis::DfareportingV2_1::Dimension, decorator: Google::Apis::DfareportingV2_1::Dimension::Representation
       
@@ -2506,8 +2506,8 @@ module Google
         end
       end
       
-      # @private
       class Placement
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :advertiser_id, as: 'advertiserId'
@@ -2561,8 +2561,8 @@ module Google
         end
       end
       
-      # @private
       class PlacementAssignment
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active, as: 'active'
           property :placement_id, as: 'placementId'
@@ -2572,8 +2572,8 @@ module Google
         end
       end
       
-      # @private
       class PlacementGroup
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :advertiser_id, as: 'advertiserId'
@@ -2615,8 +2615,8 @@ module Google
         end
       end
       
-      # @private
       class ListPlacementGroupsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -2625,8 +2625,8 @@ module Google
         end
       end
       
-      # @private
       class ListPlacementStrategiesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -2635,8 +2635,8 @@ module Google
         end
       end
       
-      # @private
       class PlacementStrategy
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :id, as: 'id'
@@ -2645,8 +2645,8 @@ module Google
         end
       end
       
-      # @private
       class PlacementTag
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :placement_id, as: 'placementId'
           collection :tag_datas, as: 'tagDatas', class: Google::Apis::DfareportingV2_1::TagData, decorator: Google::Apis::DfareportingV2_1::TagData::Representation
@@ -2654,8 +2654,8 @@ module Google
         end
       end
       
-      # @private
       class GeneratePlacementsTagsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :placement_tags, as: 'placementTags', class: Google::Apis::DfareportingV2_1::PlacementTag, decorator: Google::Apis::DfareportingV2_1::PlacementTag::Representation
@@ -2663,8 +2663,8 @@ module Google
         end
       end
       
-      # @private
       class ListPlacementsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -2673,8 +2673,8 @@ module Google
         end
       end
       
-      # @private
       class PlatformType
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -2682,8 +2682,8 @@ module Google
         end
       end
       
-      # @private
       class ListPlatformTypesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :platform_types, as: 'platformTypes', class: Google::Apis::DfareportingV2_1::PlatformType, decorator: Google::Apis::DfareportingV2_1::PlatformType::Representation
@@ -2691,8 +2691,8 @@ module Google
         end
       end
       
-      # @private
       class PopupWindowProperties
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dimension, as: 'dimension', class: Google::Apis::DfareportingV2_1::Size, decorator: Google::Apis::DfareportingV2_1::Size::Representation
       
@@ -2708,8 +2708,8 @@ module Google
         end
       end
       
-      # @private
       class PostalCode
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :country_code, as: 'countryCode'
@@ -2719,8 +2719,8 @@ module Google
         end
       end
       
-      # @private
       class ListPostalCodesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :postal_codes, as: 'postalCodes', class: Google::Apis::DfareportingV2_1::PostalCode, decorator: Google::Apis::DfareportingV2_1::PostalCode::Representation
@@ -2728,8 +2728,8 @@ module Google
         end
       end
       
-      # @private
       class Pricing
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cap_cost_type, as: 'capCostType'
           property :end_date, as: 'endDate', type: Date
@@ -2743,8 +2743,8 @@ module Google
         end
       end
       
-      # @private
       class PricingSchedule
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cap_cost_option, as: 'capCostOption'
           property :disregard_overdelivery, as: 'disregardOverdelivery'
@@ -2762,8 +2762,8 @@ module Google
         end
       end
       
-      # @private
       class PricingSchedulePricingPeriod
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_date, as: 'endDate', type: Date
       
@@ -2775,8 +2775,8 @@ module Google
         end
       end
       
-      # @private
       class ProgrammaticSetting
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :adx_deal_ids, as: 'adxDealIds'
           property :insertion_order_id, as: 'insertionOrderId'
@@ -2787,8 +2787,8 @@ module Google
         end
       end
       
-      # @private
       class Project
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :advertiser_id, as: 'advertiserId'
@@ -2817,8 +2817,8 @@ module Google
         end
       end
       
-      # @private
       class ListProjectsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -2827,8 +2827,8 @@ module Google
         end
       end
       
-      # @private
       class ReachReportCompatibleFields
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :dimension_filters, as: 'dimensionFilters', class: Google::Apis::DfareportingV2_1::Dimension, decorator: Google::Apis::DfareportingV2_1::Dimension::Representation
       
@@ -2844,8 +2844,8 @@ module Google
         end
       end
       
-      # @private
       class Recipient
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :delivery_type, as: 'deliveryType'
           property :email, as: 'email'
@@ -2853,8 +2853,8 @@ module Google
         end
       end
       
-      # @private
       class Region
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country_code, as: 'countryCode'
           property :country_dart_id, as: 'countryDartId'
@@ -2865,8 +2865,8 @@ module Google
         end
       end
       
-      # @private
       class ListRegionsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :regions, as: 'regions', class: Google::Apis::DfareportingV2_1::Region, decorator: Google::Apis::DfareportingV2_1::Region::Representation
@@ -2874,8 +2874,8 @@ module Google
         end
       end
       
-      # @private
       class RemarketingList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :active, as: 'active'
@@ -2895,8 +2895,8 @@ module Google
         end
       end
       
-      # @private
       class RemarketingListShare
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :remarketing_list_id, as: 'remarketingListId'
@@ -2905,8 +2905,8 @@ module Google
         end
       end
       
-      # @private
       class ListRemarketingListsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -2915,8 +2915,8 @@ module Google
         end
       end
       
-      # @private
       class Report
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :criteria, as: 'criteria', class: Google::Apis::DfareportingV2_1::Report::Criteria, decorator: Google::Apis::DfareportingV2_1::Report::Criteria::Representation
@@ -2945,8 +2945,8 @@ module Google
           property :type, as: 'type'
         end
         
-        # @private
         class Criteria
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :activities, as: 'activities', class: Google::Apis::DfareportingV2_1::Activities, decorator: Google::Apis::DfareportingV2_1::Activities::Representation
         
@@ -2962,8 +2962,8 @@ module Google
           end
         end
         
-        # @private
         class CrossDimensionReachCriteria
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :breakdown, as: 'breakdown', class: Google::Apis::DfareportingV2_1::SortedDimension, decorator: Google::Apis::DfareportingV2_1::SortedDimension::Representation
         
@@ -2978,8 +2978,8 @@ module Google
           end
         end
         
-        # @private
         class Delivery
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :email_owner, as: 'emailOwner'
             property :email_owner_delivery_type, as: 'emailOwnerDeliveryType'
@@ -2989,8 +2989,8 @@ module Google
           end
         end
         
-        # @private
         class FloodlightCriteria
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :custom_rich_media_events, as: 'customRichMediaEvents', class: Google::Apis::DfareportingV2_1::DimensionValue, decorator: Google::Apis::DfareportingV2_1::DimensionValue::Representation
         
@@ -3007,8 +3007,8 @@ module Google
         
           end
           
-          # @private
           class ReportProperties
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :include_attributed_ip_conversions, as: 'includeAttributedIPConversions'
               property :include_unattributed_cookie_conversions, as: 'includeUnattributedCookieConversions'
@@ -3017,8 +3017,8 @@ module Google
           end
         end
         
-        # @private
         class PathToConversionCriteria
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :activity_filters, as: 'activityFilters', class: Google::Apis::DfareportingV2_1::DimensionValue, decorator: Google::Apis::DfareportingV2_1::DimensionValue::Representation
         
@@ -3039,8 +3039,8 @@ module Google
         
           end
           
-          # @private
           class ReportProperties
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :clicks_lookback_window, as: 'clicksLookbackWindow'
               property :impressions_lookback_window, as: 'impressionsLookbackWindow'
@@ -3055,8 +3055,8 @@ module Google
           end
         end
         
-        # @private
         class ReachCriteria
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :activities, as: 'activities', class: Google::Apis::DfareportingV2_1::Activities, decorator: Google::Apis::DfareportingV2_1::Activities::Representation
         
@@ -3074,8 +3074,8 @@ module Google
           end
         end
         
-        # @private
         class Schedule
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :active, as: 'active'
             property :every, as: 'every'
@@ -3090,8 +3090,8 @@ module Google
         end
       end
       
-      # @private
       class ReportCompatibleFields
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :dimension_filters, as: 'dimensionFilters', class: Google::Apis::DfareportingV2_1::Dimension, decorator: Google::Apis::DfareportingV2_1::Dimension::Representation
       
@@ -3105,8 +3105,8 @@ module Google
         end
       end
       
-      # @private
       class ReportList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::DfareportingV2_1::Report, decorator: Google::Apis::DfareportingV2_1::Report::Representation
@@ -3116,8 +3116,8 @@ module Google
         end
       end
       
-      # @private
       class ReportsConfiguration
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :exposure_to_conversion_enabled, as: 'exposureToConversionEnabled'
           property :lookback_configuration, as: 'lookbackConfiguration', class: Google::Apis::DfareportingV2_1::LookbackConfiguration, decorator: Google::Apis::DfareportingV2_1::LookbackConfiguration::Representation
@@ -3126,8 +3126,8 @@ module Google
         end
       end
       
-      # @private
       class RichMediaExitOverride
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_exit_url, as: 'customExitUrl'
           property :exit_id, as: 'exitId'
@@ -3135,8 +3135,8 @@ module Google
         end
       end
       
-      # @private
       class Site
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :approved, as: 'approved'
@@ -3157,8 +3157,8 @@ module Google
         end
       end
       
-      # @private
       class SiteContact
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
           property :contact_type, as: 'contactType'
@@ -3171,8 +3171,8 @@ module Google
         end
       end
       
-      # @private
       class SiteSettings
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active_view_opt_out, as: 'activeViewOptOut'
           property :creative_settings, as: 'creativeSettings', class: Google::Apis::DfareportingV2_1::CreativeSettings, decorator: Google::Apis::DfareportingV2_1::CreativeSettings::Representation
@@ -3186,8 +3186,8 @@ module Google
         end
       end
       
-      # @private
       class ListSitesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -3196,8 +3196,8 @@ module Google
         end
       end
       
-      # @private
       class Size
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :height, as: 'height'
           property :iab, as: 'iab'
@@ -3207,8 +3207,8 @@ module Google
         end
       end
       
-      # @private
       class ListSizesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :sizes, as: 'sizes', class: Google::Apis::DfareportingV2_1::Size, decorator: Google::Apis::DfareportingV2_1::Size::Representation
@@ -3216,8 +3216,8 @@ module Google
         end
       end
       
-      # @private
       class SortedDimension
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -3225,8 +3225,8 @@ module Google
         end
       end
       
-      # @private
       class Subaccount
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           collection :available_permission_ids, as: 'availablePermissionIds'
@@ -3236,8 +3236,8 @@ module Google
         end
       end
       
-      # @private
       class ListSubaccountsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -3246,8 +3246,8 @@ module Google
         end
       end
       
-      # @private
       class TagData
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_id, as: 'adId'
           property :click_tag, as: 'clickTag'
@@ -3257,8 +3257,8 @@ module Google
         end
       end
       
-      # @private
       class TagSetting
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :additional_key_values, as: 'additionalKeyValues'
           property :include_click_through_urls, as: 'includeClickThroughUrls'
@@ -3267,24 +3267,24 @@ module Google
         end
       end
       
-      # @private
       class TagSettings
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dynamic_tag_enabled, as: 'dynamicTagEnabled'
           property :image_tag_enabled, as: 'imageTagEnabled'
         end
       end
       
-      # @private
       class TargetWindow
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_html, as: 'customHtml'
           property :target_window_option, as: 'targetWindowOption'
         end
       end
       
-      # @private
       class TargetableRemarketingList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :active, as: 'active'
@@ -3302,8 +3302,8 @@ module Google
         end
       end
       
-      # @private
       class ListTargetableRemarketingListsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -3312,8 +3312,8 @@ module Google
         end
       end
       
-      # @private
       class TechnologyTargeting
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :browsers, as: 'browsers', class: Google::Apis::DfareportingV2_1::Browser, decorator: Google::Apis::DfareportingV2_1::Browser::Representation
       
@@ -3330,16 +3330,16 @@ module Google
         end
       end
       
-      # @private
       class ThirdPartyTrackingUrl
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :third_party_url_type, as: 'thirdPartyUrlType'
           property :url, as: 'url'
         end
       end
       
-      # @private
       class UserDefinedVariableConfiguration
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_type, as: 'dataType'
           property :report_name, as: 'reportName'
@@ -3347,8 +3347,8 @@ module Google
         end
       end
       
-      # @private
       class UserProfile
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :account_name, as: 'accountName'
@@ -3361,8 +3361,8 @@ module Google
         end
       end
       
-      # @private
       class UserProfileList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::DfareportingV2_1::UserProfile, decorator: Google::Apis::DfareportingV2_1::UserProfile::Representation
@@ -3371,8 +3371,8 @@ module Google
         end
       end
       
-      # @private
       class UserRole
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :default_user_role, as: 'defaultUserRole'
@@ -3386,8 +3386,8 @@ module Google
         end
       end
       
-      # @private
       class UserRolePermission
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability, as: 'availability'
           property :id, as: 'id'
@@ -3397,8 +3397,8 @@ module Google
         end
       end
       
-      # @private
       class UserRolePermissionGroup
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -3406,8 +3406,8 @@ module Google
         end
       end
       
-      # @private
       class ListUserRolePermissionGroupsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :user_role_permission_groups, as: 'userRolePermissionGroups', class: Google::Apis::DfareportingV2_1::UserRolePermissionGroup, decorator: Google::Apis::DfareportingV2_1::UserRolePermissionGroup::Representation
@@ -3415,8 +3415,8 @@ module Google
         end
       end
       
-      # @private
       class ListUserRolePermissionsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :user_role_permissions, as: 'userRolePermissions', class: Google::Apis::DfareportingV2_1::UserRolePermission, decorator: Google::Apis::DfareportingV2_1::UserRolePermission::Representation
@@ -3424,8 +3424,8 @@ module Google
         end
       end
       
-      # @private
       class ListUserRolesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'

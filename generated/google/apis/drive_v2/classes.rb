@@ -1235,8 +1235,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Short lived download URL for the file. This is only populated for files with
-        # content stored in Drive.
+        # 
         # Corresponds to the JSON property `downloadUrl`
         # @return [String]
         attr_accessor :download_url
@@ -1258,7 +1257,7 @@ module Google
         attr_accessor :etag
       
         # Whether this file has been explicitly trashed, as opposed to recursively
-        # trashed. This will only be populated if the file is trashed.
+        # trashed.
         # Corresponds to the JSON property `explicitlyTrashed`
         # @return [Boolean]
         attr_accessor :explicitly_trashed

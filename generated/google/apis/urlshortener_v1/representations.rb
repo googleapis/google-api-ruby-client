@@ -42,8 +42,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class AnalyticsSnapshot
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :browsers, as: 'browsers', class: Google::Apis::UrlshortenerV1::StringCount, decorator: Google::Apis::UrlshortenerV1::StringCount::Representation
       
@@ -58,8 +58,8 @@ module Google
         end
       end
       
-      # @private
       class AnalyticsSummary
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :all_time, as: 'allTime', class: Google::Apis::UrlshortenerV1::AnalyticsSnapshot, decorator: Google::Apis::UrlshortenerV1::AnalyticsSnapshot::Representation
       
@@ -74,16 +74,16 @@ module Google
         end
       end
       
-      # @private
       class StringCount
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
           property :id, as: 'id'
         end
       end
       
-      # @private
       class Url
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :analytics, as: 'analytics', class: Google::Apis::UrlshortenerV1::AnalyticsSummary, decorator: Google::Apis::UrlshortenerV1::AnalyticsSummary::Representation
       
@@ -95,8 +95,8 @@ module Google
         end
       end
       
-      # @private
       class UrlHistory
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::UrlshortenerV1::Url, decorator: Google::Apis::UrlshortenerV1::Url::Representation
       

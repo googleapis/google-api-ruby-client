@@ -25,7 +25,10 @@ module Google
       ##
       # Initializes the RedisStore object.
       #
-      # @params [Object] Redis instance
+      # @param [Object] redis
+      #  Redis instance
+      # @param [Object] key
+      #  Optional key to store credentials under. Defaults to 'google_api_credentials'
       def initialize(redis, key = nil)
         @redis= redis
         @redis_credentials_key = key
@@ -33,6 +36,7 @@ module Google
 
       ##
       # Attempt to read in credentials from redis.
+      # @return [Hash]
       def load_credentials
         credentials = redis.get redis_credentials_key
         JSON.parse(credentials) if credentials
@@ -45,7 +49,7 @@ module Google
       ##
       # Write the credentials to redis.
       #
-      # @params [Hash] credentials
+      # @param [Hash] credentials_hash
       def write_credentials(credentials_hash)
         redis.set(redis_credentials_key, credentials_hash.to_json)
       end

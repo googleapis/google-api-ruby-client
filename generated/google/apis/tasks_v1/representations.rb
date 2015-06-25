@@ -42,8 +42,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class Task
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :completed, as: 'completed', type: DateTime
       
@@ -66,8 +66,8 @@ module Google
       
         end
         
-        # @private
         class Link
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :description, as: 'description'
             property :link, as: 'link'
@@ -76,8 +76,8 @@ module Google
         end
       end
       
-      # @private
       class TaskList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :id, as: 'id'
@@ -89,8 +89,8 @@ module Google
         end
       end
       
-      # @private
       class TaskLists
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::TasksV1::TaskList, decorator: Google::Apis::TasksV1::TaskList::Representation
@@ -100,8 +100,8 @@ module Google
         end
       end
       
-      # @private
       class Tasks
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::TasksV1::Task, decorator: Google::Apis::TasksV1::Task::Representation

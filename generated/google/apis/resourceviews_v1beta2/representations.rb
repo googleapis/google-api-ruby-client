@@ -86,16 +86,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class Label
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, as: 'key'
           property :value, as: 'value'
         end
       end
       
-      # @private
       class ListResourceResponseItem
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :endpoints, as: 'endpoints', :class => Array do
         include Representable::JSON::Collection
@@ -106,8 +106,8 @@ module Google
         end
       end
       
-      # @private
       class Operation
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_operation_id, as: 'clientOperationId'
           property :creation_timestamp, as: 'creationTimestamp'
@@ -135,15 +135,15 @@ module Google
           property :zone, as: 'zone'
         end
         
-        # @private
         class Error
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :errors, as: 'errors', class: Google::Apis::ResourceviewsV1beta2::Operation::Error::Error, decorator: Google::Apis::ResourceviewsV1beta2::Operation::Error::Error::Representation
         
           end
           
-          # @private
           class Error
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :code, as: 'code'
               property :location, as: 'location'
@@ -152,8 +152,8 @@ module Google
           end
         end
         
-        # @private
         class Warning
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ResourceviewsV1beta2::Operation::Warning::Datum, decorator: Google::Apis::ResourceviewsV1beta2::Operation::Warning::Datum::Representation
@@ -161,8 +161,8 @@ module Google
             property :message, as: 'message'
           end
           
-          # @private
           class Datum
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :key, as: 'key'
               property :value, as: 'value'
@@ -171,8 +171,8 @@ module Google
         end
       end
       
-      # @private
       class OperationList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           collection :items, as: 'items', class: Google::Apis::ResourceviewsV1beta2::Operation, decorator: Google::Apis::ResourceviewsV1beta2::Operation::Representation
@@ -183,8 +183,8 @@ module Google
         end
       end
       
-      # @private
       class ResourceView
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
@@ -203,23 +203,23 @@ module Google
         end
       end
       
-      # @private
       class ServiceEndpoint
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :port, as: 'port'
         end
       end
       
-      # @private
       class AddResourcesRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :resources, as: 'resources'
         end
       end
       
-      # @private
       class GetServiceResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :endpoints, as: 'endpoints', class: Google::Apis::ResourceviewsV1beta2::ServiceEndpoint, decorator: Google::Apis::ResourceviewsV1beta2::ServiceEndpoint::Representation
       
@@ -227,8 +227,8 @@ module Google
         end
       end
       
-      # @private
       class ZoneViewsList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::ResourceviewsV1beta2::ResourceView, decorator: Google::Apis::ResourceviewsV1beta2::ResourceView::Representation
       
@@ -238,8 +238,8 @@ module Google
         end
       end
       
-      # @private
       class ListResourcesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::ResourceviewsV1beta2::ListResourceResponseItem, decorator: Google::Apis::ResourceviewsV1beta2::ListResourceResponseItem::Representation
       
@@ -248,15 +248,15 @@ module Google
         end
       end
       
-      # @private
       class RemoveResourcesRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :resources, as: 'resources'
         end
       end
       
-      # @private
       class SetServiceRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :endpoints, as: 'endpoints', class: Google::Apis::ResourceviewsV1beta2::ServiceEndpoint, decorator: Google::Apis::ResourceviewsV1beta2::ServiceEndpoint::Representation
       

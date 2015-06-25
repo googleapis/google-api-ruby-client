@@ -66,8 +66,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class AchievementConfiguration
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :achievement_type, as: 'achievementType'
           property :draft, as: 'draft', class: Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationDetail, decorator: Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationDetail::Representation
@@ -82,8 +82,8 @@ module Google
         end
       end
       
-      # @private
       class AchievementConfigurationDetail
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle::Representation
       
@@ -96,8 +96,8 @@ module Google
         end
       end
       
-      # @private
       class ListAchievementConfigurationResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration, decorator: Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration::Representation
       
@@ -106,8 +106,8 @@ module Google
         end
       end
       
-      # @private
       class GamesNumberAffixConfiguration
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :few, as: 'few', class: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle::Representation
       
@@ -124,8 +124,8 @@ module Google
         end
       end
       
-      # @private
       class GamesNumberFormatConfiguration
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :currency_code, as: 'currencyCode'
           property :num_decimal_places, as: 'numDecimalPlaces'
@@ -135,8 +135,8 @@ module Google
         end
       end
       
-      # @private
       class ImageConfiguration
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :image_type, as: 'imageType'
           property :kind, as: 'kind'
@@ -145,8 +145,8 @@ module Google
         end
       end
       
-      # @private
       class LeaderboardConfiguration
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :draft, as: 'draft', class: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationDetail, decorator: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationDetail::Representation
       
@@ -161,8 +161,8 @@ module Google
         end
       end
       
-      # @private
       class LeaderboardConfigurationDetail
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :icon_url, as: 'iconUrl'
           property :kind, as: 'kind'
@@ -174,8 +174,8 @@ module Google
         end
       end
       
-      # @private
       class ListLeaderboardConfigurationResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration, decorator: Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration::Representation
       
@@ -184,8 +184,8 @@ module Google
         end
       end
       
-      # @private
       class LocalizedString
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :locale, as: 'locale'
@@ -193,8 +193,8 @@ module Google
         end
       end
       
-      # @private
       class LocalizedStringBundle
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :translations, as: 'translations', class: Google::Apis::GamesConfigurationV1configuration::LocalizedString, decorator: Google::Apis::GamesConfigurationV1configuration::LocalizedString::Representation

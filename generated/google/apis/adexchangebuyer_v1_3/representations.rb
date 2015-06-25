@@ -106,8 +106,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class Account
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bidder_location, as: 'bidderLocation', class: Google::Apis::AdexchangebuyerV1_3::Account::BidderLocation, decorator: Google::Apis::AdexchangebuyerV1_3::Account::BidderLocation::Representation
       
@@ -120,8 +120,8 @@ module Google
           property :number_active_creatives, as: 'numberActiveCreatives'
         end
         
-        # @private
         class BidderLocation
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :maximum_qps, as: 'maximumQps'
             property :region, as: 'region'
@@ -130,8 +130,8 @@ module Google
         end
       end
       
-      # @private
       class AccountsList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AdexchangebuyerV1_3::Account, decorator: Google::Apis::AdexchangebuyerV1_3::Account::Representation
       
@@ -139,8 +139,8 @@ module Google
         end
       end
       
-      # @private
       class BillingInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :account_name, as: 'accountName'
@@ -149,8 +149,8 @@ module Google
         end
       end
       
-      # @private
       class BillingInfoList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AdexchangebuyerV1_3::BillingInfo, decorator: Google::Apis::AdexchangebuyerV1_3::BillingInfo::Representation
       
@@ -158,8 +158,8 @@ module Google
         end
       end
       
-      # @private
       class Budget
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :billing_id, as: 'billingId'
@@ -170,8 +170,8 @@ module Google
         end
       end
       
-      # @private
       class Creative
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :html_snippet, as: 'HTMLSnippet'
           property :account_id, as: 'accountId'
@@ -198,32 +198,32 @@ module Google
           property :width, as: 'width'
         end
         
-        # @private
         class Correction
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :details, as: 'details'
             property :reason, as: 'reason'
           end
         end
         
-        # @private
         class DisapprovalReason
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :details, as: 'details'
             property :reason, as: 'reason'
           end
         end
         
-        # @private
         class FilteringReasons
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :date, as: 'date'
             collection :reasons, as: 'reasons', class: Google::Apis::AdexchangebuyerV1_3::Creative::FilteringReasons::Reason, decorator: Google::Apis::AdexchangebuyerV1_3::Creative::FilteringReasons::Reason::Representation
         
           end
           
-          # @private
           class Reason
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :filtering_count, as: 'filteringCount'
               property :filtering_status, as: 'filteringStatus'
@@ -232,8 +232,8 @@ module Google
         end
       end
       
-      # @private
       class CreativesList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AdexchangebuyerV1_3::Creative, decorator: Google::Apis::AdexchangebuyerV1_3::Creative::Representation
       
@@ -242,8 +242,8 @@ module Google
         end
       end
       
-      # @private
       class DirectDeal
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           property :advertiser, as: 'advertiser'
@@ -260,8 +260,8 @@ module Google
         end
       end
       
-      # @private
       class DirectDealsList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :direct_deals, as: 'directDeals', class: Google::Apis::AdexchangebuyerV1_3::DirectDeal, decorator: Google::Apis::AdexchangebuyerV1_3::DirectDeal::Representation
       
@@ -269,8 +269,8 @@ module Google
         end
       end
       
-      # @private
       class PerformanceReport
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bid_rate, as: 'bidRate'
           property :bid_request_rate, as: 'bidRequestRate'
@@ -297,8 +297,8 @@ module Google
         end
       end
       
-      # @private
       class PerformanceReportList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :performance_report, as: 'performanceReport', class: Google::Apis::AdexchangebuyerV1_3::PerformanceReport, decorator: Google::Apis::AdexchangebuyerV1_3::PerformanceReport::Representation
@@ -306,8 +306,8 @@ module Google
         end
       end
       
-      # @private
       class PretargetingConfig
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billing_id, as: 'billingId'
           property :config_id, as: 'configId'
@@ -337,24 +337,24 @@ module Google
           collection :verticals, as: 'verticals'
         end
         
-        # @private
         class Dimension
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :height, as: 'height'
             property :width, as: 'width'
           end
         end
         
-        # @private
         class ExcludedPlacement
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :token, as: 'token'
             property :type, as: 'type'
           end
         end
         
-        # @private
         class Placement
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :token, as: 'token'
             property :type, as: 'type'
@@ -362,8 +362,8 @@ module Google
         end
       end
       
-      # @private
       class PretargetingConfigList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AdexchangebuyerV1_3::PretargetingConfig, decorator: Google::Apis::AdexchangebuyerV1_3::PretargetingConfig::Representation
       

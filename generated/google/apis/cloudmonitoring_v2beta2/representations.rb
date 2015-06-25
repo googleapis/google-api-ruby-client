@@ -106,22 +106,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class DeleteMetricDescriptorResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
         end
       end
       
-      # @private
       class ListMetricDescriptorsRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
         end
       end
       
-      # @private
       class ListMetricDescriptorsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :metrics, as: 'metrics', class: Google::Apis::CloudmonitoringV2beta2::MetricDescriptor, decorator: Google::Apis::CloudmonitoringV2beta2::MetricDescriptor::Representation
@@ -130,15 +130,15 @@ module Google
         end
       end
       
-      # @private
       class ListTimeseriesDescriptorsRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
         end
       end
       
-      # @private
       class ListTimeseriesDescriptorsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -151,15 +151,15 @@ module Google
         end
       end
       
-      # @private
       class ListTimeseriesRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
         end
       end
       
-      # @private
       class ListTimeseriesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -172,8 +172,8 @@ module Google
         end
       end
       
-      # @private
       class MetricDescriptor
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           collection :labels, as: 'labels', class: Google::Apis::CloudmonitoringV2beta2::MetricDescriptorLabelDescriptor, decorator: Google::Apis::CloudmonitoringV2beta2::MetricDescriptorLabelDescriptor::Representation
@@ -185,24 +185,24 @@ module Google
         end
       end
       
-      # @private
       class MetricDescriptorLabelDescriptor
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :key, as: 'key'
         end
       end
       
-      # @private
       class MetricDescriptorTypeDescriptor
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :metric_type, as: 'metricType'
           property :value_type, as: 'valueType'
         end
       end
       
-      # @private
       class Point
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bool_value, as: 'boolValue'
           property :distribution_value, as: 'distributionValue', class: Google::Apis::CloudmonitoringV2beta2::PointDistribution, decorator: Google::Apis::CloudmonitoringV2beta2::PointDistribution::Representation
@@ -217,8 +217,8 @@ module Google
         end
       end
       
-      # @private
       class PointDistribution
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :buckets, as: 'buckets', class: Google::Apis::CloudmonitoringV2beta2::PointDistributionBucket, decorator: Google::Apis::CloudmonitoringV2beta2::PointDistributionBucket::Representation
       
@@ -229,8 +229,8 @@ module Google
         end
       end
       
-      # @private
       class PointDistributionBucket
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
           property :lower_bound, as: 'lowerBound'
@@ -238,24 +238,24 @@ module Google
         end
       end
       
-      # @private
       class PointDistributionOverflowBucket
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
           property :lower_bound, as: 'lowerBound'
         end
       end
       
-      # @private
       class PointDistributionUnderflowBucket
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
           property :upper_bound, as: 'upperBound'
         end
       end
       
-      # @private
       class Timeseries
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :points, as: 'points', class: Google::Apis::CloudmonitoringV2beta2::Point, decorator: Google::Apis::CloudmonitoringV2beta2::Point::Representation
       
@@ -264,8 +264,8 @@ module Google
         end
       end
       
-      # @private
       class TimeseriesDescriptor
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
           property :metric, as: 'metric'
@@ -273,16 +273,16 @@ module Google
         end
       end
       
-      # @private
       class TimeseriesDescriptorLabel
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, as: 'key'
           property :value, as: 'value'
         end
       end
       
-      # @private
       class TimeseriesPoint
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :point, as: 'point', class: Google::Apis::CloudmonitoringV2beta2::Point, decorator: Google::Apis::CloudmonitoringV2beta2::Point::Representation
       
@@ -291,8 +291,8 @@ module Google
         end
       end
       
-      # @private
       class WriteTimeseriesRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :common_labels, as: 'commonLabels'
           collection :timeseries, as: 'timeseries', class: Google::Apis::CloudmonitoringV2beta2::TimeseriesPoint, decorator: Google::Apis::CloudmonitoringV2beta2::TimeseriesPoint::Representation
@@ -300,8 +300,8 @@ module Google
         end
       end
       
-      # @private
       class WriteTimeseriesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
         end

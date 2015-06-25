@@ -158,16 +158,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class AllocateIdsRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :keys, as: 'keys', class: Google::Apis::DatastoreV1beta2::Key, decorator: Google::Apis::DatastoreV1beta2::Key::Representation
       
         end
       end
       
-      # @private
       class AllocateIdsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :header, as: 'header', class: Google::Apis::DatastoreV1beta2::ResponseHeader, decorator: Google::Apis::DatastoreV1beta2::ResponseHeader::Representation
       
@@ -176,15 +176,15 @@ module Google
         end
       end
       
-      # @private
       class BeginTransactionRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :isolation_level, as: 'isolationLevel'
         end
       end
       
-      # @private
       class BeginTransactionResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :header, as: 'header', class: Google::Apis::DatastoreV1beta2::ResponseHeader, decorator: Google::Apis::DatastoreV1beta2::ResponseHeader::Representation
       
@@ -192,8 +192,8 @@ module Google
         end
       end
       
-      # @private
       class CommitRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ignore_read_only, as: 'ignoreReadOnly'
           property :mode, as: 'mode'
@@ -203,8 +203,8 @@ module Google
         end
       end
       
-      # @private
       class CommitResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :header, as: 'header', class: Google::Apis::DatastoreV1beta2::ResponseHeader, decorator: Google::Apis::DatastoreV1beta2::ResponseHeader::Representation
       
@@ -213,8 +213,8 @@ module Google
         end
       end
       
-      # @private
       class CompositeFilter
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :filters, as: 'filters', class: Google::Apis::DatastoreV1beta2::Filter, decorator: Google::Apis::DatastoreV1beta2::Filter::Representation
       
@@ -222,8 +222,8 @@ module Google
         end
       end
       
-      # @private
       class Entity
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, as: 'key', class: Google::Apis::DatastoreV1beta2::Key, decorator: Google::Apis::DatastoreV1beta2::Key::Representation
       
@@ -232,16 +232,16 @@ module Google
         end
       end
       
-      # @private
       class EntityResult
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :entity, as: 'entity', class: Google::Apis::DatastoreV1beta2::Entity, decorator: Google::Apis::DatastoreV1beta2::Entity::Representation
       
         end
       end
       
-      # @private
       class Filter
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :composite_filter, as: 'compositeFilter', class: Google::Apis::DatastoreV1beta2::CompositeFilter, decorator: Google::Apis::DatastoreV1beta2::CompositeFilter::Representation
       
@@ -250,8 +250,8 @@ module Google
         end
       end
       
-      # @private
       class GqlQuery
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_literal, as: 'allowLiteral'
           collection :name_args, as: 'nameArgs', class: Google::Apis::DatastoreV1beta2::GqlQueryArg, decorator: Google::Apis::DatastoreV1beta2::GqlQueryArg::Representation
@@ -262,8 +262,8 @@ module Google
         end
       end
       
-      # @private
       class GqlQueryArg
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cursor, :base64 => true, as: 'cursor'
           property :name, as: 'name'
@@ -272,8 +272,8 @@ module Google
         end
       end
       
-      # @private
       class Key
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :partition_id, as: 'partitionId', class: Google::Apis::DatastoreV1beta2::PartitionId, decorator: Google::Apis::DatastoreV1beta2::PartitionId::Representation
       
@@ -282,8 +282,8 @@ module Google
         end
       end
       
-      # @private
       class KeyPathElement
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -291,15 +291,15 @@ module Google
         end
       end
       
-      # @private
       class KindExpression
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
         end
       end
       
-      # @private
       class LookupRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :keys, as: 'keys', class: Google::Apis::DatastoreV1beta2::Key, decorator: Google::Apis::DatastoreV1beta2::Key::Representation
       
@@ -308,8 +308,8 @@ module Google
         end
       end
       
-      # @private
       class LookupResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :deferred, as: 'deferred', class: Google::Apis::DatastoreV1beta2::Key, decorator: Google::Apis::DatastoreV1beta2::Key::Representation
       
@@ -322,8 +322,8 @@ module Google
         end
       end
       
-      # @private
       class Mutation
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :delete, as: 'delete', class: Google::Apis::DatastoreV1beta2::Key, decorator: Google::Apis::DatastoreV1beta2::Key::Representation
       
@@ -339,8 +339,8 @@ module Google
         end
       end
       
-      # @private
       class MutationResult
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :index_updates, as: 'indexUpdates'
           collection :insert_auto_id_keys, as: 'insertAutoIdKeys', class: Google::Apis::DatastoreV1beta2::Key, decorator: Google::Apis::DatastoreV1beta2::Key::Representation
@@ -348,16 +348,16 @@ module Google
         end
       end
       
-      # @private
       class PartitionId
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset_id, as: 'datasetId'
           property :namespace, as: 'namespace'
         end
       end
       
-      # @private
       class Property
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blob_key_value, as: 'blobKeyValue'
           property :blob_value, :base64 => true, as: 'blobValue'
@@ -378,8 +378,8 @@ module Google
         end
       end
       
-      # @private
       class PropertyExpression
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aggregation_function, as: 'aggregationFunction'
           property :property, as: 'property', class: Google::Apis::DatastoreV1beta2::PropertyReference, decorator: Google::Apis::DatastoreV1beta2::PropertyReference::Representation
@@ -387,8 +387,8 @@ module Google
         end
       end
       
-      # @private
       class PropertyFilter
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :operator, as: 'operator'
           property :property, as: 'property', class: Google::Apis::DatastoreV1beta2::PropertyReference, decorator: Google::Apis::DatastoreV1beta2::PropertyReference::Representation
@@ -398,8 +398,8 @@ module Google
         end
       end
       
-      # @private
       class PropertyOrder
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :direction, as: 'direction'
           property :property, as: 'property', class: Google::Apis::DatastoreV1beta2::PropertyReference, decorator: Google::Apis::DatastoreV1beta2::PropertyReference::Representation
@@ -407,15 +407,15 @@ module Google
         end
       end
       
-      # @private
       class PropertyReference
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
         end
       end
       
-      # @private
       class Query
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_cursor, :base64 => true, as: 'endCursor'
           property :filter, as: 'filter', class: Google::Apis::DatastoreV1beta2::Filter, decorator: Google::Apis::DatastoreV1beta2::Filter::Representation
@@ -434,8 +434,8 @@ module Google
         end
       end
       
-      # @private
       class QueryResultBatch
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_cursor, :base64 => true, as: 'endCursor'
           property :entity_result_type, as: 'entityResultType'
@@ -446,38 +446,38 @@ module Google
         end
       end
       
-      # @private
       class ReadOptions
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :read_consistency, as: 'readConsistency'
           property :transaction, :base64 => true, as: 'transaction'
         end
       end
       
-      # @private
       class ResponseHeader
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
         end
       end
       
-      # @private
       class RollbackRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :transaction, :base64 => true, as: 'transaction'
         end
       end
       
-      # @private
       class RollbackResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :header, as: 'header', class: Google::Apis::DatastoreV1beta2::ResponseHeader, decorator: Google::Apis::DatastoreV1beta2::ResponseHeader::Representation
       
         end
       end
       
-      # @private
       class RunQueryRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gql_query, as: 'gqlQuery', class: Google::Apis::DatastoreV1beta2::GqlQuery, decorator: Google::Apis::DatastoreV1beta2::GqlQuery::Representation
       
@@ -490,8 +490,8 @@ module Google
         end
       end
       
-      # @private
       class RunQueryResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :batch, as: 'batch', class: Google::Apis::DatastoreV1beta2::QueryResultBatch, decorator: Google::Apis::DatastoreV1beta2::QueryResultBatch::Representation
       
@@ -500,8 +500,8 @@ module Google
         end
       end
       
-      # @private
       class Value
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blob_key_value, as: 'blobKeyValue'
           property :blob_value, :base64 => true, as: 'blobValue'

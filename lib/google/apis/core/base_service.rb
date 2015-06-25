@@ -164,7 +164,7 @@ module Google
         #   HTTP method as symbol (e.g. :get, :post, :put, ...)
         # @param [String] url
         #   URL to call
-        # @param [Hash<String,String] params
+        # @param [Hash<String,String>] params
         #   Optional hash of query parameters
         # @param [#read] body
         #   Optional body for POST/PUT

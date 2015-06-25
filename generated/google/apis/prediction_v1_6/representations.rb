@@ -106,8 +106,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class Analyze
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_description, as: 'dataDescription', class: Google::Apis::PredictionV1_6::Analyze::DataDescription, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::Representation
       
@@ -119,8 +119,8 @@ module Google
           property :self_link, as: 'selfLink'
         end
         
-        # @private
         class DataDescription
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :features, as: 'features', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Representation
         
@@ -128,8 +128,8 @@ module Google
         
           end
           
-          # @private
           class Feature
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :categorical, as: 'categorical', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Categorical, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Categorical::Representation
           
@@ -140,16 +140,16 @@ module Google
           
             end
             
-            # @private
             class Categorical
+              # @private
               class Representation < Google::Apis::Core::JsonRepresentation
                 property :count, as: 'count'
                 collection :values, as: 'values', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Categorical::Value, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::Feature::Categorical::Value::Representation
             
               end
               
-              # @private
               class Value
+                # @private
                 class Representation < Google::Apis::Core::JsonRepresentation
                   property :count, as: 'count'
                   property :value, as: 'value'
@@ -157,8 +157,8 @@ module Google
               end
             end
             
-            # @private
             class Numeric
+              # @private
               class Representation < Google::Apis::Core::JsonRepresentation
                 property :count, as: 'count'
                 property :mean, as: 'mean'
@@ -166,16 +166,16 @@ module Google
               end
             end
             
-            # @private
             class Text
+              # @private
               class Representation < Google::Apis::Core::JsonRepresentation
                 property :count, as: 'count'
               end
             end
           end
           
-          # @private
           class OutputFeature
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :numeric, as: 'numeric', class: Google::Apis::PredictionV1_6::Analyze::DataDescription::OutputFeature::Numeric, decorator: Google::Apis::PredictionV1_6::Analyze::DataDescription::OutputFeature::Numeric::Representation
           
@@ -183,8 +183,8 @@ module Google
           
             end
             
-            # @private
             class Numeric
+              # @private
               class Representation < Google::Apis::Core::JsonRepresentation
                 property :count, as: 'count'
                 property :mean, as: 'mean'
@@ -192,8 +192,8 @@ module Google
               end
             end
             
-            # @private
             class Text
+              # @private
               class Representation < Google::Apis::Core::JsonRepresentation
                 property :count, as: 'count'
                 property :value, as: 'value'
@@ -202,8 +202,8 @@ module Google
           end
         end
         
-        # @private
         class ModelDescription
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             hash :confusion_matrix, as: 'confusionMatrix'
             hash :confusion_matrix_row_totals, as: 'confusionMatrixRowTotals'
@@ -213,23 +213,23 @@ module Google
         end
       end
       
-      # @private
       class Input
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :input, as: 'input', class: Google::Apis::PredictionV1_6::Input::Input, decorator: Google::Apis::PredictionV1_6::Input::Input::Representation
       
         end
         
-        # @private
         class Input
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :csv_instance, as: 'csvInstance'
           end
         end
       end
       
-      # @private
       class Insert
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :model_type, as: 'modelType'
@@ -242,8 +242,8 @@ module Google
           collection :utility, as: 'utility'
         end
         
-        # @private
         class TrainingInstance
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :csv_instance, as: 'csvInstance'
             property :output, as: 'output'
@@ -251,8 +251,8 @@ module Google
         end
       end
       
-      # @private
       class Insert2
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :created, as: 'created', type: DateTime
       
@@ -270,8 +270,8 @@ module Google
           property :training_status, as: 'trainingStatus'
         end
         
-        # @private
         class ModelInfo
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :class_weighted_accuracy, as: 'classWeightedAccuracy'
             property :classification_accuracy, as: 'classificationAccuracy'
@@ -283,8 +283,8 @@ module Google
         end
       end
       
-      # @private
       class List
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::PredictionV1_6::Insert2, decorator: Google::Apis::PredictionV1_6::Insert2::Representation
       
@@ -294,8 +294,8 @@ module Google
         end
       end
       
-      # @private
       class Output
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -306,8 +306,8 @@ module Google
           property :self_link, as: 'selfLink'
         end
         
-        # @private
         class OutputMulti
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :label, as: 'label'
             property :score, as: 'score'
@@ -315,8 +315,8 @@ module Google
         end
       end
       
-      # @private
       class Update
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :csv_instance, as: 'csvInstance'
           property :output, as: 'output'

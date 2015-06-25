@@ -198,8 +198,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class Alias
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alias, as: 'alias'
           property :etag, as: 'etag'
@@ -209,8 +209,8 @@ module Google
         end
       end
       
-      # @private
       class Aliases
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :aliases, as: 'aliases', class: Google::Apis::AdminDirectoryV1::Alias, decorator: Google::Apis::AdminDirectoryV1::Alias::Representation
       
@@ -219,8 +219,8 @@ module Google
         end
       end
       
-      # @private
       class Asp
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code_id, as: 'codeId'
           property :creation_time, as: 'creationTime'
@@ -232,8 +232,8 @@ module Google
         end
       end
       
-      # @private
       class Asps
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::Asp, decorator: Google::Apis::AdminDirectoryV1::Asp::Representation
@@ -242,8 +242,8 @@ module Google
         end
       end
       
-      # @private
       class Channel
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
           property :expiration, as: 'expiration'
@@ -258,8 +258,8 @@ module Google
         end
       end
       
-      # @private
       class ChromeOsDevice
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :active_time_ranges, as: 'activeTimeRanges', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::ActiveTimeRange, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::ActiveTimeRange::Representation
       
@@ -293,8 +293,8 @@ module Google
           property :will_auto_renew, as: 'willAutoRenew'
         end
         
-        # @private
         class ActiveTimeRange
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :active_time, as: 'activeTime'
             property :date, as: 'date', type: Date
@@ -302,8 +302,8 @@ module Google
           end
         end
         
-        # @private
         class RecentUser
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :email, as: 'email'
             property :type, as: 'type'
@@ -311,8 +311,8 @@ module Google
         end
       end
       
-      # @private
       class ChromeOsDevices
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :chromeosdevices, as: 'chromeosdevices', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::Representation
       
@@ -322,8 +322,8 @@ module Google
         end
       end
       
-      # @private
       class Group
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :admin_created, as: 'adminCreated'
           collection :aliases, as: 'aliases'
@@ -338,8 +338,8 @@ module Google
         end
       end
       
-      # @private
       class Groups
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :groups, as: 'groups', class: Google::Apis::AdminDirectoryV1::Group, decorator: Google::Apis::AdminDirectoryV1::Group::Representation
@@ -349,8 +349,8 @@ module Google
         end
       end
       
-      # @private
       class Member
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           property :etag, as: 'etag'
@@ -361,8 +361,8 @@ module Google
         end
       end
       
-      # @private
       class Members
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :kind, as: 'kind'
@@ -372,8 +372,8 @@ module Google
         end
       end
       
-      # @private
       class MobileDevice
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :applications, as: 'applications', class: Google::Apis::AdminDirectoryV1::MobileDevice::Application, decorator: Google::Apis::AdminDirectoryV1::MobileDevice::Application::Representation
       
@@ -406,8 +406,8 @@ module Google
           property :wifi_mac_address, as: 'wifiMacAddress'
         end
         
-        # @private
         class Application
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :display_name, as: 'displayName'
             property :package_name, as: 'packageName'
@@ -418,15 +418,15 @@ module Google
         end
       end
       
-      # @private
       class MobileDeviceAction
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
         end
       end
       
-      # @private
       class MobileDevices
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :kind, as: 'kind'
@@ -436,8 +436,8 @@ module Google
         end
       end
       
-      # @private
       class Notification
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :body, as: 'body'
           property :etag, as: 'etag'
@@ -451,8 +451,8 @@ module Google
         end
       end
       
-      # @private
       class Notifications
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::Notification, decorator: Google::Apis::AdminDirectoryV1::Notification::Representation
@@ -463,8 +463,8 @@ module Google
         end
       end
       
-      # @private
       class OrgUnit
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :block_inheritance, as: 'blockInheritance'
           property :description, as: 'description'
@@ -478,8 +478,8 @@ module Google
         end
       end
       
-      # @private
       class OrgUnits
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :kind, as: 'kind'
@@ -488,8 +488,8 @@ module Google
         end
       end
       
-      # @private
       class Schema
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :fields, as: 'fields', class: Google::Apis::AdminDirectoryV1::SchemaFieldSpec, decorator: Google::Apis::AdminDirectoryV1::SchemaFieldSpec::Representation
@@ -500,8 +500,8 @@ module Google
         end
       end
       
-      # @private
       class SchemaFieldSpec
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :field_id, as: 'fieldId'
@@ -515,8 +515,8 @@ module Google
           property :read_access_type, as: 'readAccessType'
         end
         
-        # @private
         class NumericIndexingSpec
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :max_value, as: 'maxValue'
             property :min_value, as: 'minValue'
@@ -524,8 +524,8 @@ module Google
         end
       end
       
-      # @private
       class Schemas
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :kind, as: 'kind'
@@ -534,8 +534,8 @@ module Google
         end
       end
       
-      # @private
       class Token
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :anonymous, as: 'anonymous'
           property :client_id, as: 'clientId'
@@ -548,8 +548,8 @@ module Google
         end
       end
       
-      # @private
       class Tokens
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::Token, decorator: Google::Apis::AdminDirectoryV1::Token::Representation
@@ -558,8 +558,8 @@ module Google
         end
       end
       
-      # @private
       class User
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :addresses, as: 'addresses'
           property :agreed_to_terms, as: 'agreedToTerms'
@@ -603,16 +603,16 @@ module Google
         end
       end
       
-      # @private
       class UserAbout
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_type, as: 'contentType'
           property :value, as: 'value'
         end
       end
       
-      # @private
       class UserAddress
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country, as: 'country'
           property :country_code, as: 'countryCode'
@@ -630,8 +630,8 @@ module Google
         end
       end
       
-      # @private
       class UserEmail
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
           property :custom_type, as: 'customType'
@@ -640,8 +640,8 @@ module Google
         end
       end
       
-      # @private
       class UserExternalId
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_type, as: 'customType'
           property :type, as: 'type'
@@ -649,8 +649,8 @@ module Google
         end
       end
       
-      # @private
       class UserIm
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_protocol, as: 'customProtocol'
           property :custom_type, as: 'customType'
@@ -661,15 +661,15 @@ module Google
         end
       end
       
-      # @private
       class UserMakeAdmin
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :status, as: 'status'
         end
       end
       
-      # @private
       class UserName
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :family_name, as: 'familyName'
           property :full_name, as: 'fullName'
@@ -677,8 +677,8 @@ module Google
         end
       end
       
-      # @private
       class UserOrganization
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cost_center, as: 'costCenter'
           property :custom_type, as: 'customType'
@@ -694,8 +694,8 @@ module Google
         end
       end
       
-      # @private
       class UserPhone
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_type, as: 'customType'
           property :primary, as: 'primary'
@@ -704,8 +704,8 @@ module Google
         end
       end
       
-      # @private
       class UserPhoto
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :height, as: 'height'
@@ -718,8 +718,8 @@ module Google
         end
       end
       
-      # @private
       class UserRelation
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_type, as: 'customType'
           property :type, as: 'type'
@@ -727,15 +727,15 @@ module Google
         end
       end
       
-      # @private
       class UserUndelete
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :org_unit_path, as: 'orgUnitPath'
         end
       end
       
-      # @private
       class UserWebsite
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_type, as: 'customType'
           property :primary, as: 'primary'
@@ -744,8 +744,8 @@ module Google
         end
       end
       
-      # @private
       class Users
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :kind, as: 'kind'
@@ -756,8 +756,8 @@ module Google
         end
       end
       
-      # @private
       class VerificationCode
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :kind, as: 'kind'
@@ -766,8 +766,8 @@ module Google
         end
       end
       
-      # @private
       class VerificationCodes
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::VerificationCode, decorator: Google::Apis::AdminDirectoryV1::VerificationCode::Representation

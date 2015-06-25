@@ -66,8 +66,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class Address
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address_line1, as: 'addressLine1'
           property :address_line2, as: 'addressLine2'
@@ -82,8 +82,8 @@ module Google
         end
       end
       
-      # @private
       class ChangePlanRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :plan_name, as: 'planName'
@@ -93,8 +93,8 @@ module Google
         end
       end
       
-      # @private
       class Customer
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alternate_email, as: 'alternateEmail'
           property :customer_domain, as: 'customerDomain'
@@ -107,16 +107,16 @@ module Google
         end
       end
       
-      # @private
       class RenewalSettings
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :renewal_type, as: 'renewalType'
         end
       end
       
-      # @private
       class Seats
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :licensed_number_of_seats, as: 'licensedNumberOfSeats'
@@ -125,8 +125,8 @@ module Google
         end
       end
       
-      # @private
       class Subscription
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billing_method, as: 'billingMethod'
           property :creation_time, as: 'creationTime'
@@ -150,8 +150,8 @@ module Google
       
         end
         
-        # @private
         class Plan
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :commitment_interval, as: 'commitmentInterval', class: Google::Apis::ResellerV1::Subscription::Plan::CommitmentInterval, decorator: Google::Apis::ResellerV1::Subscription::Plan::CommitmentInterval::Representation
         
@@ -159,8 +159,8 @@ module Google
             property :plan_name, as: 'planName'
           end
           
-          # @private
           class CommitmentInterval
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :end_time, as: 'endTime'
               property :start_time, as: 'startTime'
@@ -168,16 +168,16 @@ module Google
           end
         end
         
-        # @private
         class TransferInfo
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :minimum_transferable_seats, as: 'minimumTransferableSeats'
             property :transferability_expiration_time, as: 'transferabilityExpirationTime'
           end
         end
         
-        # @private
         class TrialSettings
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :is_in_trial, as: 'isInTrial'
             property :trial_end_time, as: 'trialEndTime'
@@ -185,8 +185,8 @@ module Google
         end
       end
       
-      # @private
       class Subscriptions
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'

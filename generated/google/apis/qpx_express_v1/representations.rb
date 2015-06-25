@@ -118,8 +118,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class AircraftData
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :kind, as: 'kind'
@@ -127,8 +127,8 @@ module Google
         end
       end
       
-      # @private
       class AirportData
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :city, as: 'city'
           property :code, as: 'code'
@@ -137,8 +137,8 @@ module Google
         end
       end
       
-      # @private
       class BagDescriptor
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :commercial_name, as: 'commercialName'
           property :count, as: 'count'
@@ -148,8 +148,8 @@ module Google
         end
       end
       
-      # @private
       class CarrierData
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :kind, as: 'kind'
@@ -157,8 +157,8 @@ module Google
         end
       end
       
-      # @private
       class CityData
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :country, as: 'country'
@@ -167,8 +167,8 @@ module Google
         end
       end
       
-      # @private
       class Data
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :aircraft, as: 'aircraft', class: Google::Apis::QpxExpressV1::AircraftData, decorator: Google::Apis::QpxExpressV1::AircraftData::Representation
       
@@ -184,8 +184,8 @@ module Google
         end
       end
       
-      # @private
       class FareInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :basis_code, as: 'basisCode'
           property :carrier, as: 'carrier'
@@ -197,16 +197,16 @@ module Google
         end
       end
       
-      # @private
       class FlightInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :carrier, as: 'carrier'
           property :number, as: 'number'
         end
       end
       
-      # @private
       class FreeBaggageAllowance
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bag_descriptor, as: 'bagDescriptor', class: Google::Apis::QpxExpressV1::BagDescriptor, decorator: Google::Apis::QpxExpressV1::BagDescriptor::Representation
       
@@ -218,8 +218,8 @@ module Google
         end
       end
       
-      # @private
       class LegInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aircraft, as: 'aircraft'
           property :arrival_time, as: 'arrivalTime'
@@ -241,8 +241,8 @@ module Google
         end
       end
       
-      # @private
       class PassengerCounts
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adult_count, as: 'adultCount'
           property :child_count, as: 'childCount'
@@ -253,8 +253,8 @@ module Google
         end
       end
       
-      # @private
       class PricingInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :base_fare_total, as: 'baseFareTotal'
           collection :fare, as: 'fare', class: Google::Apis::QpxExpressV1::FareInfo, decorator: Google::Apis::QpxExpressV1::FareInfo::Representation
@@ -276,8 +276,8 @@ module Google
         end
       end
       
-      # @private
       class SegmentInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :booking_code, as: 'bookingCode'
           property :booking_code_count, as: 'bookingCodeCount'
@@ -295,8 +295,8 @@ module Google
         end
       end
       
-      # @private
       class SegmentPricing
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fare_id, as: 'fareId'
           collection :free_baggage_option, as: 'freeBaggageOption', class: Google::Apis::QpxExpressV1::FreeBaggageAllowance, decorator: Google::Apis::QpxExpressV1::FreeBaggageAllowance::Representation
@@ -306,8 +306,8 @@ module Google
         end
       end
       
-      # @private
       class SliceInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duration, as: 'duration'
           property :kind, as: 'kind'
@@ -316,8 +316,8 @@ module Google
         end
       end
       
-      # @private
       class SliceInput
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alliance, as: 'alliance'
           property :date, as: 'date'
@@ -334,8 +334,8 @@ module Google
         end
       end
       
-      # @private
       class TaxData
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -343,8 +343,8 @@ module Google
         end
       end
       
-      # @private
       class TaxInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :charge_type, as: 'chargeType'
           property :code, as: 'code'
@@ -355,8 +355,8 @@ module Google
         end
       end
       
-      # @private
       class TimeOfDayRange
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :earliest_time, as: 'earliestTime'
           property :kind, as: 'kind'
@@ -364,8 +364,8 @@ module Google
         end
       end
       
-      # @private
       class TripOption
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -377,8 +377,8 @@ module Google
         end
       end
       
-      # @private
       class TripOptionsRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_price, as: 'maxPrice'
           property :passengers, as: 'passengers', class: Google::Apis::QpxExpressV1::PassengerCounts, decorator: Google::Apis::QpxExpressV1::PassengerCounts::Representation
@@ -391,8 +391,8 @@ module Google
         end
       end
       
-      # @private
       class TripOptionsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, as: 'data', class: Google::Apis::QpxExpressV1::Data, decorator: Google::Apis::QpxExpressV1::Data::Representation
       
@@ -403,16 +403,16 @@ module Google
         end
       end
       
-      # @private
       class SearchTripsRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request, as: 'request', class: Google::Apis::QpxExpressV1::TripOptionsRequest, decorator: Google::Apis::QpxExpressV1::TripOptionsRequest::Representation
       
         end
       end
       
-      # @private
       class SearchTripsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :trips, as: 'trips', class: Google::Apis::QpxExpressV1::TripOptionsResponse, decorator: Google::Apis::QpxExpressV1::TripOptionsResponse::Representation

@@ -30,7 +30,7 @@ module Google
       #    Webmasters = Google::Apis::WebmastersV3 # Alias the module
       #    service = Webmasters::WebmastersService.new
       #
-      # @see https://developers.google.com/webmaster-tools/v3/welcome
+      # @see https://developers.google.com/webmaster-tools/
       class WebmastersService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -52,11 +52,57 @@ module Google
           super('https://www.googleapis.com/', 'webmasters/v3/')
         end
         
+        # [LIMITED ACCESS]
+        # Query your data with filters and parameters that you define. Returns zero or
+        # more rows grouped by the row keys that you define. You must define a date
+        # range of one or more days.
+        # When date is one of the group by values, any days without data are omitted
+        # from the result list. If you need to know which days have data, issue a broad
+        # date range query grouped by date for any metric, and see which day rows are
+        # returned.
+        # @param [String] site_url
+        #   The site's URL, including protocol. For example: http://www.example.com/
+        # @param [Google::Apis::WebmastersV3::SearchAnalyticsQueryRequest] search_analytics_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WebmastersV3::SearchAnalyticsQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WebmastersV3::SearchAnalyticsQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_search_analytics(site_url, search_analytics_query_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = 'sites/{siteUrl}/searchAnalytics/query'
+          command =  make_simple_command(:post, path, options)
+          command.request_representation = Google::Apis::WebmastersV3::SearchAnalyticsQueryRequest::Representation
+          command.request_object = search_analytics_query_request_object
+          command.response_representation = Google::Apis::WebmastersV3::SearchAnalyticsQueryResponse::Representation
+          command.response_class = Google::Apis::WebmastersV3::SearchAnalyticsQueryResponse
+          command.params['siteUrl'] = site_url unless site_url.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a sitemap from this site.
         # @param [String] site_url
-        #   The site's URL, including protocol, for example 'http://www.example.com/'
+        #   The site's URL, including protocol. For example: http://www.example.com/
         # @param [String] feedpath
-        #   The URL of the actual sitemap (for example http://www.example.com/sitemap.xml).
+        #   The URL of the actual sitemap. For example: http://www.example.com/sitemap.xml
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -91,9 +137,9 @@ module Google
         
         # Retrieves information about a specific sitemap.
         # @param [String] site_url
-        #   The site's URL, including protocol, for example 'http://www.example.com/'
+        #   The site's URL, including protocol. For example: http://www.example.com/
         # @param [String] feedpath
-        #   The URL of the actual sitemap (for example http://www.example.com/sitemap.xml).
+        #   The URL of the actual sitemap. For example: http://www.example.com/sitemap.xml
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -128,11 +174,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists sitemaps uploaded to the site.
+        # Lists the sitemaps-entries submitted for this site, or included in the sitemap
+        # index file (if sitemapIndex is specified in the request).
         # @param [String] site_url
-        #   The site's URL, including protocol, for example 'http://www.example.com/'
+        #   The site's URL, including protocol. For example: http://www.example.com/
         # @param [String] sitemap_index
-        #   A URL of a site's sitemap index.
+        #   A URL of a site's sitemap index. For example: http://www.example.com/
+        #   sitemapindex.xml
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -169,9 +217,9 @@ module Google
         
         # Submits a sitemap for a site.
         # @param [String] site_url
-        #   The site's URL, including protocol, for example 'http://www.example.com/'
+        #   The site's URL, including protocol. For example: http://www.example.com/
         # @param [String] feedpath
-        #   The URL of the sitemap to add.
+        #   The URL of the sitemap to add. For example: http://www.example.com/sitemap.xml
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -240,7 +288,8 @@ module Google
         
         # Removes a site from the set of the user's Webmaster Tools sites.
         # @param [String] site_url
-        #   The site's URL, including protocol, for example 'http://www.example.com/'
+        #   The URI of the property as defined in Search Console. Examples: http://www.
+        #   example.com/ or android-app://com.example/
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -274,7 +323,8 @@ module Google
         
         # Retrieves information about specific site.
         # @param [String] site_url
-        #   The site's URL, including protocol, for example 'http://www.example.com/'
+        #   The URI of the property as defined in Search Console. Examples: http://www.
+        #   example.com/ or android-app://com.example/
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -308,7 +358,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists your Webmaster Tools sites.
+        # Lists the user's Webmaster Tools sites.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -344,15 +394,15 @@ module Google
         # Retrieves a time series of the number of URL crawl errors per error category
         # and platform.
         # @param [String] site_url
-        #   The site's URL, including protocol, for example 'http://www.example.com/'
+        #   The site's URL, including protocol. For example: http://www.example.com/
         # @param [String] category
-        #   The crawl error category, for example 'serverError'. If not specified, we
-        #   return results for all categories.
+        #   The crawl error category. For example: serverError. If not specified, returns
+        #   results for all categories.
         # @param [Boolean] latest_counts_only
         #   If true, returns only the latest crawl error counts.
         # @param [String] platform
-        #   The user agent type (platform) that made the request, for example 'web'. If
-        #   not specified, we return results for all platforms.
+        #   The user agent type (platform) that made the request. For example: web. If not
+        #   specified, returns results for all platforms.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -391,14 +441,15 @@ module Google
         
         # Retrieves details about crawl errors for a site's sample URL.
         # @param [String] site_url
-        #   The site's URL, including protocol, for example 'http://www.example.com/'
+        #   The site's URL, including protocol. For example: http://www.example.com/
         # @param [String] url
-        #   The relative path (without the site) of the sample URL; must be one of the
-        #   URLs returned by list
+        #   The relative path (without the site) of the sample URL. It must be one of the
+        #   URLs returned by list(). For example, for the URL https://www.example.com/
+        #   pagename on the site https://www.example.com/, the url value is pagename
         # @param [String] category
-        #   The crawl error category, for example 'authPermissions'
+        #   The crawl error category. For example: authPermissions
         # @param [String] platform
-        #   The user agent type (platform) that made the request, for example 'web'
+        #   The user agent type (platform) that made the request. For example: web
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -437,11 +488,11 @@ module Google
         
         # Lists a site's sample URLs for the specified crawl error category and platform.
         # @param [String] site_url
-        #   The site's URL, including protocol, for example 'http://www.example.com/'
+        #   The site's URL, including protocol. For example: http://www.example.com/
         # @param [String] category
-        #   The crawl error category, for example 'authPermissions'
+        #   The crawl error category. For example: authPermissions
         # @param [String] platform
-        #   The user agent type (platform) that made the request, for example 'web'
+        #   The user agent type (platform) that made the request. For example: web
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -480,14 +531,15 @@ module Google
         # Marks the provided site's sample URL as fixed, and removes it from the samples
         # list.
         # @param [String] site_url
-        #   The site's URL, including protocol, for example 'http://www.example.com/'
+        #   The site's URL, including protocol. For example: http://www.example.com/
         # @param [String] url
-        #   The relative path (without the site) of the sample URL; must be one of the
-        #   URLs returned by list
+        #   The relative path (without the site) of the sample URL. It must be one of the
+        #   URLs returned by list(). For example, for the URL https://www.example.com/
+        #   pagename on the site https://www.example.com/, the url value is pagename
         # @param [String] category
-        #   The crawl error category, for example 'authPermissions'
+        #   The crawl error category. For example: authPermissions
         # @param [String] platform
-        #   The user agent type (platform) that made the request, for example 'web'
+        #   The user agent type (platform) that made the request. For example: web
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

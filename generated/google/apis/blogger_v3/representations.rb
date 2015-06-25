@@ -162,8 +162,8 @@ module Google
         end
       end
       
-      # @private
       class Blog
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_meta_data, as: 'customMetaData'
           property :description, as: 'description'
@@ -185,8 +185,8 @@ module Google
           property :url, as: 'url'
         end
         
-        # @private
         class Locale
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :country, as: 'country'
             property :language, as: 'language'
@@ -194,16 +194,16 @@ module Google
           end
         end
         
-        # @private
         class Pages
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :self_link, as: 'selfLink'
             property :total_items, as: 'totalItems'
           end
         end
         
-        # @private
         class Posts
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :items, as: 'items', class: Google::Apis::BloggerV3::Post, decorator: Google::Apis::BloggerV3::Post::Representation
         
@@ -213,8 +213,8 @@ module Google
         end
       end
       
-      # @private
       class BlogList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :blog_user_infos, as: 'blogUserInfos', class: Google::Apis::BloggerV3::BlogUserInfo, decorator: Google::Apis::BloggerV3::BlogUserInfo::Representation
       
@@ -224,8 +224,8 @@ module Google
         end
       end
       
-      # @private
       class BlogPerUserInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blog_id, as: 'blogId'
           property :has_admin_access, as: 'hasAdminAccess'
@@ -236,8 +236,8 @@ module Google
         end
       end
       
-      # @private
       class BlogUserInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blog, as: 'blog', class: Google::Apis::BloggerV3::Blog, decorator: Google::Apis::BloggerV3::Blog::Representation
       
@@ -247,8 +247,8 @@ module Google
         end
       end
       
-      # @private
       class Comment
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :author, as: 'author', class: Google::Apis::BloggerV3::Comment::Author, decorator: Google::Apis::BloggerV3::Comment::Author::Representation
       
@@ -269,8 +269,8 @@ module Google
       
         end
         
-        # @private
         class Author
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :display_name, as: 'displayName'
             property :id, as: 'id'
@@ -279,38 +279,38 @@ module Google
             property :url, as: 'url'
           end
           
-          # @private
           class Image
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :url, as: 'url'
             end
           end
         end
         
-        # @private
         class Blog
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :id, as: 'id'
           end
         end
         
-        # @private
         class InReplyTo
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :id, as: 'id'
           end
         end
         
-        # @private
         class Post
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :id, as: 'id'
           end
         end
       end
       
-      # @private
       class CommentList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::BloggerV3::Comment, decorator: Google::Apis::BloggerV3::Comment::Representation
@@ -321,8 +321,8 @@ module Google
         end
       end
       
-      # @private
       class Page
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :author, as: 'author', class: Google::Apis::BloggerV3::Page::Author, decorator: Google::Apis::BloggerV3::Page::Author::Representation
       
@@ -342,8 +342,8 @@ module Google
           property :url, as: 'url'
         end
         
-        # @private
         class Author
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :display_name, as: 'displayName'
             property :id, as: 'id'
@@ -352,24 +352,24 @@ module Google
             property :url, as: 'url'
           end
           
-          # @private
           class Image
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :url, as: 'url'
             end
           end
         end
         
-        # @private
         class Blog
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :id, as: 'id'
           end
         end
       end
       
-      # @private
       class PageList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::BloggerV3::Page, decorator: Google::Apis::BloggerV3::Page::Representation
@@ -379,8 +379,8 @@ module Google
         end
       end
       
-      # @private
       class Pageviews
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blog_id, as: 'blogId'
           collection :counts, as: 'counts', class: Google::Apis::BloggerV3::Pageviews::Count, decorator: Google::Apis::BloggerV3::Pageviews::Count::Representation
@@ -388,8 +388,8 @@ module Google
           property :kind, as: 'kind'
         end
         
-        # @private
         class Count
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :count, as: 'count'
             property :time_range, as: 'timeRange'
@@ -397,8 +397,8 @@ module Google
         end
       end
       
-      # @private
       class Post
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :author, as: 'author', class: Google::Apis::BloggerV3::Post::Author, decorator: Google::Apis::BloggerV3::Post::Author::Representation
       
@@ -428,8 +428,8 @@ module Google
           property :url, as: 'url'
         end
         
-        # @private
         class Author
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :display_name, as: 'displayName'
             property :id, as: 'id'
@@ -438,30 +438,30 @@ module Google
             property :url, as: 'url'
           end
           
-          # @private
           class Image
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :url, as: 'url'
             end
           end
         end
         
-        # @private
         class Blog
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :id, as: 'id'
           end
         end
         
-        # @private
         class Image
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :url, as: 'url'
           end
         end
         
-        # @private
         class Location
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :lat, as: 'lat'
             property :lng, as: 'lng'
@@ -470,8 +470,8 @@ module Google
           end
         end
         
-        # @private
         class Replies
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :items, as: 'items', class: Google::Apis::BloggerV3::Comment, decorator: Google::Apis::BloggerV3::Comment::Representation
         
@@ -481,8 +481,8 @@ module Google
         end
       end
       
-      # @private
       class PostList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::BloggerV3::Post, decorator: Google::Apis::BloggerV3::Post::Representation
@@ -492,8 +492,8 @@ module Google
         end
       end
       
-      # @private
       class PostPerUserInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blog_id, as: 'blogId'
           property :has_edit_access, as: 'hasEditAccess'
@@ -503,8 +503,8 @@ module Google
         end
       end
       
-      # @private
       class PostUserInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :post, as: 'post', class: Google::Apis::BloggerV3::Post, decorator: Google::Apis::BloggerV3::Post::Representation
@@ -514,8 +514,8 @@ module Google
         end
       end
       
-      # @private
       class PostUserInfosList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::BloggerV3::PostUserInfo, decorator: Google::Apis::BloggerV3::PostUserInfo::Representation
       
@@ -524,8 +524,8 @@ module Google
         end
       end
       
-      # @private
       class User
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :about, as: 'about'
           property :blogs, as: 'blogs', class: Google::Apis::BloggerV3::User::Blogs, decorator: Google::Apis::BloggerV3::User::Blogs::Representation
@@ -541,15 +541,15 @@ module Google
           property :url, as: 'url'
         end
         
-        # @private
         class Blogs
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :self_link, as: 'selfLink'
           end
         end
         
-        # @private
         class Locale
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :country, as: 'country'
             property :language, as: 'language'

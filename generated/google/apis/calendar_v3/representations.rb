@@ -150,8 +150,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class Acl
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::CalendarV3::AclRule, decorator: Google::Apis::CalendarV3::AclRule::Representation
@@ -162,8 +162,8 @@ module Google
         end
       end
       
-      # @private
       class AclRule
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :id, as: 'id'
@@ -173,8 +173,8 @@ module Google
       
         end
         
-        # @private
         class Scope
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :type, as: 'type'
             property :value, as: 'value'
@@ -182,8 +182,8 @@ module Google
         end
       end
       
-      # @private
       class Calendar
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :etag, as: 'etag'
@@ -195,8 +195,8 @@ module Google
         end
       end
       
-      # @private
       class CalendarList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::CalendarV3::CalendarListEntry, decorator: Google::Apis::CalendarV3::CalendarListEntry::Representation
@@ -207,8 +207,8 @@ module Google
         end
       end
       
-      # @private
       class CalendarListEntry
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_role, as: 'accessRole'
           property :background_color, as: 'backgroundColor'
@@ -232,8 +232,8 @@ module Google
           property :time_zone, as: 'timeZone'
         end
         
-        # @private
         class NotificationSettings
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :notifications, as: 'notifications', class: Google::Apis::CalendarV3::CalendarNotification, decorator: Google::Apis::CalendarV3::CalendarNotification::Representation
         
@@ -241,16 +241,16 @@ module Google
         end
       end
       
-      # @private
       class CalendarNotification
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :delivery_method, as: 'method'
           property :type, as: 'type'
         end
       end
       
-      # @private
       class Channel
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
           property :expiration, as: 'expiration'
@@ -265,16 +265,16 @@ module Google
         end
       end
       
-      # @private
       class ColorDefinition
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :background, as: 'background'
           property :foreground, as: 'foreground'
         end
       end
       
-      # @private
       class Colors
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :calendar, as: 'calendar', class: Google::Apis::CalendarV3::ColorDefinition, decorator: Google::Apis::CalendarV3::ColorDefinition::Representation
       
@@ -286,16 +286,16 @@ module Google
         end
       end
       
-      # @private
       class Error
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :domain, as: 'domain'
           property :reason, as: 'reason'
         end
       end
       
-      # @private
       class Event
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :anyone_can_add_self, as: 'anyoneCanAddSelf'
           collection :attachments, as: 'attachments', class: Google::Apis::CalendarV3::EventAttachment, decorator: Google::Apis::CalendarV3::EventAttachment::Representation
@@ -349,8 +349,8 @@ module Google
           property :visibility, as: 'visibility'
         end
         
-        # @private
         class Creator
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :display_name, as: 'displayName'
             property :email, as: 'email'
@@ -359,16 +359,16 @@ module Google
           end
         end
         
-        # @private
         class ExtendedProperties
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             hash :private, as: 'private'
             hash :shared, as: 'shared'
           end
         end
         
-        # @private
         class Gadget
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :display_mode, as: 'display'
             property :height, as: 'height'
@@ -381,8 +381,8 @@ module Google
           end
         end
         
-        # @private
         class Organizer
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :display_name, as: 'displayName'
             property :email, as: 'email'
@@ -391,8 +391,8 @@ module Google
           end
         end
         
-        # @private
         class Reminders
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :overrides, as: 'overrides', class: Google::Apis::CalendarV3::EventReminder, decorator: Google::Apis::CalendarV3::EventReminder::Representation
         
@@ -400,8 +400,8 @@ module Google
           end
         end
         
-        # @private
         class Source
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :title, as: 'title'
             property :url, as: 'url'
@@ -409,8 +409,8 @@ module Google
         end
       end
       
-      # @private
       class EventAttachment
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :file_url, as: 'fileUrl'
           property :icon_link, as: 'iconLink'
@@ -419,8 +419,8 @@ module Google
         end
       end
       
-      # @private
       class EventAttendee
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :additional_guests, as: 'additionalGuests'
           property :comment, as: 'comment'
@@ -435,8 +435,8 @@ module Google
         end
       end
       
-      # @private
       class EventDateTime
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :date, as: 'date', type: Date
       
@@ -446,16 +446,16 @@ module Google
         end
       end
       
-      # @private
       class EventReminder
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :reminder_method, as: 'method'
           property :minutes, as: 'minutes'
         end
       end
       
-      # @private
       class Events
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_role, as: 'accessRole'
           collection :default_reminders, as: 'defaultReminders', class: Google::Apis::CalendarV3::EventReminder, decorator: Google::Apis::CalendarV3::EventReminder::Representation
@@ -474,8 +474,8 @@ module Google
         end
       end
       
-      # @private
       class FreeBusyCalendar
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :busy, as: 'busy', class: Google::Apis::CalendarV3::TimePeriod, decorator: Google::Apis::CalendarV3::TimePeriod::Representation
       
@@ -484,8 +484,8 @@ module Google
         end
       end
       
-      # @private
       class FreeBusyGroup
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :calendars, as: 'calendars'
           collection :errors, as: 'errors', class: Google::Apis::CalendarV3::Error, decorator: Google::Apis::CalendarV3::Error::Representation
@@ -493,8 +493,8 @@ module Google
         end
       end
       
-      # @private
       class FreeBusyRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :calendar_expansion_max, as: 'calendarExpansionMax'
           property :group_expansion_max, as: 'groupExpansionMax'
@@ -508,15 +508,15 @@ module Google
         end
       end
       
-      # @private
       class FreeBusyRequestItem
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
         end
       end
       
-      # @private
       class FreeBusyResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :calendars, as: 'calendars', class: Google::Apis::CalendarV3::FreeBusyCalendar, decorator: Google::Apis::CalendarV3::FreeBusyCalendar::Representation
       
@@ -530,8 +530,8 @@ module Google
         end
       end
       
-      # @private
       class Setting
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :id, as: 'id'
@@ -540,8 +540,8 @@ module Google
         end
       end
       
-      # @private
       class Settings
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::CalendarV3::Setting, decorator: Google::Apis::CalendarV3::Setting::Representation
@@ -552,8 +552,8 @@ module Google
         end
       end
       
-      # @private
       class TimePeriod
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end, as: 'end', type: DateTime
       
