@@ -45,9 +45,7 @@ module Google
       ##
       # Write the credentials to the specified file.
       #
-      # @param [Signet::OAuth2::Client] authorization
-      #    Optional authorization instance. If not provided, the authorization
-      #    already associated with this instance will be written.
+      # @param [Hash] credentials_hash
       def write_credentials(credentials_hash)
         open(self.path, 'w+') do |f|
           f.write(credentials_hash.to_json)
