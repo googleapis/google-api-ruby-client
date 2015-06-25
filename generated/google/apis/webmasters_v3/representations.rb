@@ -22,6 +22,26 @@ module Google
   module Apis
     module WebmastersV3
       
+      class ApiDataRow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class ApiDimensionFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class ApiDimensionFilterGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class SearchAnalyticsQueryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class SearchAnalyticsQueryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class ListSitemapsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -66,24 +86,76 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
+      class ApiDataRow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :clicks, as: 'clicks'
+          property :ctr, as: 'ctr'
+          property :impressions, as: 'impressions'
+          collection :keys, as: 'keys'
+          property :position, as: 'position'
+        end
+      end
+      
+      class ApiDimensionFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dimension, as: 'dimension'
+          property :expression, as: 'expression'
+          property :operator, as: 'operator'
+        end
+      end
+      
+      class ApiDimensionFilterGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :filters, as: 'filters', class: Google::Apis::WebmastersV3::ApiDimensionFilter, decorator: Google::Apis::WebmastersV3::ApiDimensionFilter::Representation
+      
+          property :group_type, as: 'groupType'
+        end
+      end
+      
+      class SearchAnalyticsQueryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_type, as: 'aggregationType'
+          collection :dimension_filter_groups, as: 'dimensionFilterGroups', class: Google::Apis::WebmastersV3::ApiDimensionFilterGroup, decorator: Google::Apis::WebmastersV3::ApiDimensionFilterGroup::Representation
+      
+          collection :dimensions, as: 'dimensions'
+          property :end_date, as: 'endDate'
+          property :row_limit, as: 'rowLimit'
+          property :search_type, as: 'searchType'
+          property :start_date, as: 'startDate'
+        end
+      end
+      
+      class SearchAnalyticsQueryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :response_aggregation_type, as: 'responseAggregationType'
+          collection :rows, as: 'rows', class: Google::Apis::WebmastersV3::ApiDataRow, decorator: Google::Apis::WebmastersV3::ApiDataRow::Representation
+      
+        end
+      end
+      
       class ListSitemapsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :sitemap, as: 'sitemap', class: Google::Apis::WebmastersV3::WmxSitemap, decorator: Google::Apis::WebmastersV3::WmxSitemap::Representation
       
         end
       end
       
-      # @private
       class ListSitesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :site_entry, as: 'siteEntry', class: Google::Apis::WebmastersV3::WmxSite, decorator: Google::Apis::WebmastersV3::WmxSite::Representation
       
         end
       end
       
-      # @private
       class UrlCrawlErrorCount
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
           property :timestamp, as: 'timestamp', type: DateTime
@@ -91,8 +163,8 @@ module Google
         end
       end
       
-      # @private
       class UrlCrawlErrorCountsPerType
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :category, as: 'category'
           collection :entries, as: 'entries', class: Google::Apis::WebmastersV3::UrlCrawlErrorCount, decorator: Google::Apis::WebmastersV3::UrlCrawlErrorCount::Representation
@@ -101,16 +173,16 @@ module Google
         end
       end
       
-      # @private
       class QueryUrlCrawlErrorsCountsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :count_per_types, as: 'countPerTypes', class: Google::Apis::WebmastersV3::UrlCrawlErrorCountsPerType, decorator: Google::Apis::WebmastersV3::UrlCrawlErrorCountsPerType::Representation
       
         end
       end
       
-      # @private
       class UrlCrawlErrorsSample
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :first_detected, as: 'first_detected', type: DateTime
       
@@ -123,32 +195,32 @@ module Google
         end
       end
       
-      # @private
       class ListUrlCrawlErrorsSamplesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :url_crawl_error_sample, as: 'urlCrawlErrorSample', class: Google::Apis::WebmastersV3::UrlCrawlErrorsSample, decorator: Google::Apis::WebmastersV3::UrlCrawlErrorsSample::Representation
       
         end
       end
       
-      # @private
       class UrlSampleDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :containing_sitemaps, as: 'containingSitemaps'
           collection :linked_from_urls, as: 'linkedFromUrls'
         end
       end
       
-      # @private
       class WmxSite
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :permission_level, as: 'permissionLevel'
           property :site_url, as: 'siteUrl'
         end
       end
       
-      # @private
       class WmxSitemap
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :contents, as: 'contents', class: Google::Apis::WebmastersV3::WmxSitemapContent, decorator: Google::Apis::WebmastersV3::WmxSitemapContent::Representation
       
@@ -165,8 +237,8 @@ module Google
         end
       end
       
-      # @private
       class WmxSitemapContent
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :indexed, as: 'indexed'
           property :submitted, as: 'submitted'

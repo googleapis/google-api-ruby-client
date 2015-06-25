@@ -122,8 +122,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class CreateAuthUriResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auth_uri, as: 'authUri'
           property :captcha_required, as: 'captchaRequired'
@@ -134,15 +134,15 @@ module Google
         end
       end
       
-      # @private
       class DeleteAccountResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
         end
       end
       
-      # @private
       class DownloadAccountResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -151,8 +151,8 @@ module Google
         end
       end
       
-      # @private
       class GetAccountInfoResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :users, as: 'users', class: Google::Apis::IdentitytoolkitV3::UserInfo, decorator: Google::Apis::IdentitytoolkitV3::UserInfo::Representation
@@ -160,16 +160,16 @@ module Google
         end
       end
       
-      # @private
       class GetOobConfirmationCodeResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :oob_code, as: 'oobCode'
         end
       end
       
-      # @private
       class GetRecaptchaParamResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :recaptcha_site_key, as: 'recaptchaSiteKey'
@@ -177,8 +177,8 @@ module Google
         end
       end
       
-      # @private
       class CreateAuthUriRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_id, as: 'appId'
           property :client_id, as: 'clientId'
@@ -193,23 +193,23 @@ module Google
         end
       end
       
-      # @private
       class DeleteAccountRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :local_id, as: 'localId'
         end
       end
       
-      # @private
       class DownloadAccountRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_results, as: 'maxResults'
           property :next_page_token, as: 'nextPageToken'
         end
       end
       
-      # @private
       class GetAccountInfoRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :email, as: 'email'
           property :id_token, as: 'idToken'
@@ -217,8 +217,8 @@ module Google
         end
       end
       
-      # @private
       class ResetPasswordRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           property :new_password, as: 'newPassword'
@@ -227,8 +227,8 @@ module Google
         end
       end
       
-      # @private
       class SetAccountInfoRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :captcha_challenge, as: 'captchaChallenge'
           property :captcha_response, as: 'captchaResponse'
@@ -246,8 +246,8 @@ module Google
         end
       end
       
-      # @private
       class UploadAccountRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :hash_algorithm, as: 'hashAlgorithm'
           property :memory_cost, as: 'memoryCost'
@@ -259,8 +259,8 @@ module Google
         end
       end
       
-      # @private
       class VerifyAssertionRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :pending_id_token, as: 'pendingIdToken'
           property :post_body, as: 'postBody'
@@ -269,8 +269,8 @@ module Google
         end
       end
       
-      # @private
       class VerifyPasswordRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :captcha_challenge, as: 'captchaChallenge'
           property :captcha_response, as: 'captchaResponse'
@@ -280,8 +280,8 @@ module Google
         end
       end
       
-      # @private
       class Relyingparty
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :captcha_resp, as: 'captchaResp'
           property :challenge, as: 'challenge'
@@ -294,16 +294,16 @@ module Google
         end
       end
       
-      # @private
       class ResetPasswordResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           property :kind, as: 'kind'
         end
       end
       
-      # @private
       class SetAccountInfoResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :email, as: 'email'
@@ -313,8 +313,8 @@ module Google
       
         end
         
-        # @private
         class ProviderUserInfo
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :display_name, as: 'displayName'
             property :photo_url, as: 'photoUrl'
@@ -323,16 +323,16 @@ module Google
         end
       end
       
-      # @private
       class UploadAccountResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :error, as: 'error', class: Google::Apis::IdentitytoolkitV3::UploadAccountResponse::Error, decorator: Google::Apis::IdentitytoolkitV3::UploadAccountResponse::Error::Representation
       
           property :kind, as: 'kind'
         end
         
-        # @private
         class Error
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :index, as: 'index'
             property :message, as: 'message'
@@ -340,8 +340,8 @@ module Google
         end
       end
       
-      # @private
       class UserInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
@@ -358,8 +358,8 @@ module Google
           property :version, as: 'version'
         end
         
-        # @private
         class ProviderUserInfo
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :display_name, as: 'displayName'
             property :federated_id, as: 'federatedId'
@@ -369,8 +369,8 @@ module Google
         end
       end
       
-      # @private
       class VerifyAssertionResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
           property :app_installation_url, as: 'appInstallationUrl'
@@ -405,8 +405,8 @@ module Google
         end
       end
       
-      # @private
       class VerifyPasswordResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :email, as: 'email'

@@ -838,6 +838,7 @@
 "/translate:v2/DetectionsListResponse": list_detections_response
 "/translate:v2/LanguagesListResponse": list_languages_response
 "/translate:v2/TranslationsListResponse": list_translations_response
+"/webmasters:v3/webmasters.searchanalytics.query": query_search_analytics
 "/webmasters:v3/SitemapsListResponse": list_sitemaps_response
 "/webmasters:v3/SitesListResponse": list_sites_response
 "/webmasters:v3/UrlCrawlErrorsCountsQueryResponse": query_url_crawl_errors_counts_response

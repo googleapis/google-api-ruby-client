@@ -1775,6 +1775,11 @@ module Google
         # @return [String]
         attr_accessor :last_modified_time
       
+        # [Optional] The backing storage location.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # [Output-only] The size of the table in bytes. This property is unavailable for
         # tables that are actively receiving streaming inserts.
         # Corresponds to the JSON property `numBytes`
@@ -1828,6 +1833,7 @@ module Google
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @last_modified_time = args[:last_modified_time] unless args[:last_modified_time].nil?
+          @location = args[:location] unless args[:location].nil?
           @num_bytes = args[:num_bytes] unless args[:num_bytes].nil?
           @num_rows = args[:num_rows] unless args[:num_rows].nil?
           @schema = args[:schema] unless args[:schema].nil?

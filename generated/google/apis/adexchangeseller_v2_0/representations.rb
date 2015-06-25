@@ -98,8 +98,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class Account
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -107,8 +107,8 @@ module Google
         end
       end
       
-      # @private
       class Accounts
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::Account, decorator: Google::Apis::AdexchangesellerV2_0::Account::Representation
@@ -118,8 +118,8 @@ module Google
         end
       end
       
-      # @private
       class AdClient
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :arc_opt_in, as: 'arcOptIn'
           property :id, as: 'id'
@@ -129,8 +129,8 @@ module Google
         end
       end
       
-      # @private
       class AdClients
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::AdClient, decorator: Google::Apis::AdexchangesellerV2_0::AdClient::Representation
@@ -140,8 +140,8 @@ module Google
         end
       end
       
-      # @private
       class Alert
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -151,8 +151,8 @@ module Google
         end
       end
       
-      # @private
       class Alerts
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::Alert, decorator: Google::Apis::AdexchangesellerV2_0::Alert::Representation
       
@@ -160,8 +160,8 @@ module Google
         end
       end
       
-      # @private
       class CustomChannel
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :id, as: 'id'
@@ -171,8 +171,8 @@ module Google
       
         end
         
-        # @private
         class TargetingInfo
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :ads_appear_on, as: 'adsAppearOn'
             property :description, as: 'description'
@@ -182,8 +182,8 @@ module Google
         end
       end
       
-      # @private
       class CustomChannels
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::CustomChannel, decorator: Google::Apis::AdexchangesellerV2_0::CustomChannel::Representation
@@ -193,8 +193,8 @@ module Google
         end
       end
       
-      # @private
       class Metadata
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::ReportingMetadataEntry, decorator: Google::Apis::AdexchangesellerV2_0::ReportingMetadataEntry::Representation
       
@@ -202,8 +202,8 @@ module Google
         end
       end
       
-      # @private
       class PreferredDeal
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advertiser_name, as: 'advertiserName'
           property :buyer_network_name, as: 'buyerNetworkName'
@@ -216,8 +216,8 @@ module Google
         end
       end
       
-      # @private
       class PreferredDeals
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::PreferredDeal, decorator: Google::Apis::AdexchangesellerV2_0::PreferredDeal::Representation
       
@@ -225,8 +225,8 @@ module Google
         end
       end
       
-      # @private
       class Report
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :averages, as: 'averages'
           collection :headers, as: 'headers', class: Google::Apis::AdexchangesellerV2_0::Report::Header, decorator: Google::Apis::AdexchangesellerV2_0::Report::Header::Representation
@@ -242,8 +242,8 @@ module Google
           collection :warnings, as: 'warnings'
         end
         
-        # @private
         class Header
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :currency, as: 'currency'
             property :name, as: 'name'
@@ -252,8 +252,8 @@ module Google
         end
       end
       
-      # @private
       class ReportingMetadataEntry
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :compatible_dimensions, as: 'compatibleDimensions'
           collection :compatible_metrics, as: 'compatibleMetrics'
@@ -265,8 +265,8 @@ module Google
         end
       end
       
-      # @private
       class SavedReport
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -274,8 +274,8 @@ module Google
         end
       end
       
-      # @private
       class SavedReports
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::SavedReport, decorator: Google::Apis::AdexchangesellerV2_0::SavedReport::Representation
@@ -285,8 +285,8 @@ module Google
         end
       end
       
-      # @private
       class UrlChannel
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -294,8 +294,8 @@ module Google
         end
       end
       
-      # @private
       class UrlChannels
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::AdexchangesellerV2_0::UrlChannel, decorator: Google::Apis::AdexchangesellerV2_0::UrlChannel::Representation

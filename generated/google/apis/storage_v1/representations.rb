@@ -122,8 +122,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class Bucket
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :acl, as: 'acl', class: Google::Apis::StorageV1::BucketAccessControl, decorator: Google::Apis::StorageV1::BucketAccessControl::Representation
       
@@ -154,8 +154,8 @@ module Google
       
         end
         
-        # @private
         class CorsConfiguration
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :max_age_seconds, as: 'maxAgeSeconds'
             collection :http_method, as: 'method'
@@ -164,15 +164,15 @@ module Google
           end
         end
         
-        # @private
         class Lifecycle
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :rule, as: 'rule', class: Google::Apis::StorageV1::Bucket::Lifecycle::Rule, decorator: Google::Apis::StorageV1::Bucket::Lifecycle::Rule::Representation
         
           end
           
-          # @private
           class Rule
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :action, as: 'action', class: Google::Apis::StorageV1::Bucket::Lifecycle::Rule::Action, decorator: Google::Apis::StorageV1::Bucket::Lifecycle::Rule::Action::Representation
           
@@ -180,15 +180,15 @@ module Google
           
             end
             
-            # @private
             class Action
+              # @private
               class Representation < Google::Apis::Core::JsonRepresentation
                 property :type, as: 'type'
               end
             end
             
-            # @private
             class Condition
+              # @private
               class Representation < Google::Apis::Core::JsonRepresentation
                 property :age, as: 'age'
                 property :created_before, as: 'createdBefore', type: Date
@@ -200,31 +200,31 @@ module Google
           end
         end
         
-        # @private
         class Logging
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :log_bucket, as: 'logBucket'
             property :log_object_prefix, as: 'logObjectPrefix'
           end
         end
         
-        # @private
         class Owner
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :entity, as: 'entity'
             property :entity_id, as: 'entityId'
           end
         end
         
-        # @private
         class Versioning
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :enabled, as: 'enabled'
           end
         end
         
-        # @private
         class Website
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :main_page_suffix, as: 'mainPageSuffix'
             property :not_found_page, as: 'notFoundPage'
@@ -232,8 +232,8 @@ module Google
         end
       end
       
-      # @private
       class BucketAccessControl
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket, as: 'bucket'
           property :domain, as: 'domain'
@@ -249,8 +249,8 @@ module Google
           property :self_link, as: 'selfLink'
         end
         
-        # @private
         class ProjectTeam
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :project_number, as: 'projectNumber'
             property :team, as: 'team'
@@ -258,8 +258,8 @@ module Google
         end
       end
       
-      # @private
       class BucketAccessControls
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::StorageV1::BucketAccessControl, decorator: Google::Apis::StorageV1::BucketAccessControl::Representation
       
@@ -267,8 +267,8 @@ module Google
         end
       end
       
-      # @private
       class Buckets
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::StorageV1::Bucket, decorator: Google::Apis::StorageV1::Bucket::Representation
       
@@ -277,8 +277,8 @@ module Google
         end
       end
       
-      # @private
       class Channel
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
           property :expiration, as: 'expiration'
@@ -293,8 +293,8 @@ module Google
         end
       end
       
-      # @private
       class ComposeRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination, as: 'destination', class: Google::Apis::StorageV1::Object, decorator: Google::Apis::StorageV1::Object::Representation
       
@@ -303,8 +303,8 @@ module Google
       
         end
         
-        # @private
         class SourceObject
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :generation, as: 'generation'
             property :name, as: 'name'
@@ -312,8 +312,8 @@ module Google
         
           end
           
-          # @private
           class ObjectPreconditions
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :if_generation_match, as: 'ifGenerationMatch'
             end
@@ -321,8 +321,8 @@ module Google
         end
       end
       
-      # @private
       class Object
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :acl, as: 'acl', class: Google::Apis::StorageV1::ObjectAccessControl, decorator: Google::Apis::StorageV1::ObjectAccessControl::Representation
       
@@ -354,8 +354,8 @@ module Google
       
         end
         
-        # @private
         class Owner
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :entity, as: 'entity'
             property :entity_id, as: 'entityId'
@@ -363,8 +363,8 @@ module Google
         end
       end
       
-      # @private
       class ObjectAccessControl
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket, as: 'bucket'
           property :domain, as: 'domain'
@@ -382,8 +382,8 @@ module Google
           property :self_link, as: 'selfLink'
         end
         
-        # @private
         class ProjectTeam
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :project_number, as: 'projectNumber'
             property :team, as: 'team'
@@ -391,16 +391,16 @@ module Google
         end
       end
       
-      # @private
       class ObjectAccessControls
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items'
           property :kind, as: 'kind'
         end
       end
       
-      # @private
       class Objects
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::StorageV1::Object, decorator: Google::Apis::StorageV1::Object::Representation
       
@@ -410,8 +410,8 @@ module Google
         end
       end
       
-      # @private
       class RewriteResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :done, as: 'done'
           property :kind, as: 'kind'

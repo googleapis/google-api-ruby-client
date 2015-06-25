@@ -891,7 +891,7 @@ module Google
         #   get the next page of results, set this parameter to the value of nextPageToken
         #   from the previous response.
         # @param [String] project_number
-        #   The project to list datasets for.
+        #   Required. The project to list datasets for.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

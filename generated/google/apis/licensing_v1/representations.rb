@@ -34,8 +34,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class LicenseAssignment
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etags, as: 'etags'
           property :kind, as: 'kind'
@@ -46,15 +46,15 @@ module Google
         end
       end
       
-      # @private
       class LicenseAssignmentInsert
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :user_id, as: 'userId'
         end
       end
       
-      # @private
       class LicenseAssignmentList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::LicensingV1::LicenseAssignment, decorator: Google::Apis::LicensingV1::LicenseAssignment::Representation

@@ -26,8 +26,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class Groups
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_external_members, as: 'allowExternalMembers'
           property :allow_google_communication, as: 'allowGoogleCommunication'

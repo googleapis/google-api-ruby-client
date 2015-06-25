@@ -102,8 +102,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class AdministrationRegion
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :election_administration_body, as: 'electionAdministrationBody', class: Google::Apis::CivicinfoV2::AdministrativeBody, decorator: Google::Apis::CivicinfoV2::AdministrativeBody::Representation
       
@@ -116,8 +116,8 @@ module Google
         end
       end
       
-      # @private
       class AdministrativeBody
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :absentee_voting_info_url, as: 'absenteeVotingInfoUrl'
           property :ballot_info_url, as: 'ballotInfoUrl'
@@ -138,8 +138,8 @@ module Google
         end
       end
       
-      # @private
       class Candidate
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :candidate_url, as: 'candidateUrl'
           collection :channels, as: 'channels', class: Google::Apis::CivicinfoV2::Channel, decorator: Google::Apis::CivicinfoV2::Channel::Representation
@@ -153,16 +153,16 @@ module Google
         end
       end
       
-      # @private
       class Channel
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :type, as: 'type'
         end
       end
       
-      # @private
       class Contest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ballot_placement, as: 'ballotPlacement'
           collection :candidates, as: 'candidates', class: Google::Apis::CivicinfoV2::Candidate, decorator: Google::Apis::CivicinfoV2::Candidate::Representation
@@ -187,8 +187,8 @@ module Google
         end
       end
       
-      # @private
       class SearchDivisionResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :results, as: 'results', class: Google::Apis::CivicinfoV2::DivisionSearchResult, decorator: Google::Apis::CivicinfoV2::DivisionSearchResult::Representation
@@ -196,8 +196,8 @@ module Google
         end
       end
       
-      # @private
       class DivisionSearchResult
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :aliases, as: 'aliases'
           property :name, as: 'name'
@@ -205,8 +205,8 @@ module Google
         end
       end
       
-      # @private
       class Election
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :election_day, as: 'electionDay'
           property :id, as: 'id'
@@ -214,8 +214,8 @@ module Google
         end
       end
       
-      # @private
       class ElectionOfficial
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email_address, as: 'emailAddress'
           property :fax_number, as: 'faxNumber'
@@ -225,8 +225,8 @@ module Google
         end
       end
       
-      # @private
       class QueryElectionsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :elections, as: 'elections', class: Google::Apis::CivicinfoV2::Election, decorator: Google::Apis::CivicinfoV2::Election::Representation
       
@@ -234,8 +234,8 @@ module Google
         end
       end
       
-      # @private
       class ElectoralDistrict
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :name, as: 'name'
@@ -243,8 +243,8 @@ module Google
         end
       end
       
-      # @private
       class GeographicDivision
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :also_known_as, as: 'alsoKnownAs'
           property :name, as: 'name'
@@ -252,8 +252,8 @@ module Google
         end
       end
       
-      # @private
       class Office
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :division_id, as: 'divisionId'
           collection :levels, as: 'levels'
@@ -265,8 +265,8 @@ module Google
         end
       end
       
-      # @private
       class Official
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :address, as: 'address', class: Google::Apis::CivicinfoV2::SimpleAddressType, decorator: Google::Apis::CivicinfoV2::SimpleAddressType::Representation
       
@@ -281,8 +281,8 @@ module Google
         end
       end
       
-      # @private
       class PollingLocation
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address', class: Google::Apis::CivicinfoV2::SimpleAddressType, decorator: Google::Apis::CivicinfoV2::SimpleAddressType::Representation
       
@@ -298,8 +298,8 @@ module Google
         end
       end
       
-      # @private
       class RepresentativeInfoData
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :divisions, as: 'divisions', class: Google::Apis::CivicinfoV2::GeographicDivision, decorator: Google::Apis::CivicinfoV2::GeographicDivision::Representation
       
@@ -310,8 +310,8 @@ module Google
         end
       end
       
-      # @private
       class RepresentativeInfoResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :divisions, as: 'divisions', class: Google::Apis::CivicinfoV2::GeographicDivision, decorator: Google::Apis::CivicinfoV2::GeographicDivision::Representation
       
@@ -325,8 +325,8 @@ module Google
         end
       end
       
-      # @private
       class SimpleAddressType
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :city, as: 'city'
           property :line1, as: 'line1'
@@ -338,16 +338,16 @@ module Google
         end
       end
       
-      # @private
       class Source
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :official, as: 'official'
         end
       end
       
-      # @private
       class VoterInfoResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :contests, as: 'contests', class: Google::Apis::CivicinfoV2::Contest, decorator: Google::Apis::CivicinfoV2::Contest::Representation
       

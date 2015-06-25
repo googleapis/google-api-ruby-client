@@ -82,8 +82,8 @@ module Google
         end
       end
       
-      # @private
       class BatchReport
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -96,8 +96,8 @@ module Google
       
         end
         
-        # @private
         class Output
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :download_url, as: 'downloadUrl'
             property :format, as: 'format'
@@ -105,8 +105,8 @@ module Google
           end
         end
         
-        # @private
         class TimeSpan
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :end_time, as: 'endTime', type: DateTime
         
@@ -116,8 +116,8 @@ module Google
         end
       end
       
-      # @private
       class BatchReportDefinition
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -127,8 +127,8 @@ module Google
         end
       end
       
-      # @private
       class BatchReportDefinitionList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::YoutubeAnalyticsV1::BatchReportDefinition, decorator: Google::Apis::YoutubeAnalyticsV1::BatchReportDefinition::Representation
       
@@ -136,8 +136,8 @@ module Google
         end
       end
       
-      # @private
       class BatchReportList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::YoutubeAnalyticsV1::BatchReport, decorator: Google::Apis::YoutubeAnalyticsV1::BatchReport::Representation
       
@@ -145,8 +145,8 @@ module Google
         end
       end
       
-      # @private
       class Group
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_details, as: 'contentDetails', class: Google::Apis::YoutubeAnalyticsV1::Group::ContentDetails, decorator: Google::Apis::YoutubeAnalyticsV1::Group::ContentDetails::Representation
       
@@ -157,16 +157,16 @@ module Google
       
         end
         
-        # @private
         class ContentDetails
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :item_count, as: 'itemCount'
             property :item_type, as: 'itemType'
           end
         end
         
-        # @private
         class Snippet
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :published_at, as: 'publishedAt', type: DateTime
         
@@ -175,8 +175,8 @@ module Google
         end
       end
       
-      # @private
       class GroupItem
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :group_id, as: 'groupId'
@@ -186,8 +186,8 @@ module Google
       
         end
         
-        # @private
         class Resource
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :id, as: 'id'
             property :kind, as: 'kind'
@@ -195,8 +195,8 @@ module Google
         end
       end
       
-      # @private
       class ListGroupItemResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::YoutubeAnalyticsV1::GroupItem, decorator: Google::Apis::YoutubeAnalyticsV1::GroupItem::Representation
@@ -205,8 +205,8 @@ module Google
         end
       end
       
-      # @private
       class ListGroupsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           collection :items, as: 'items', class: Google::Apis::YoutubeAnalyticsV1::Group, decorator: Google::Apis::YoutubeAnalyticsV1::Group::Representation
@@ -215,8 +215,8 @@ module Google
         end
       end
       
-      # @private
       class ResultTable
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :column_headers, as: 'columnHeaders', class: Google::Apis::YoutubeAnalyticsV1::ResultTable::ColumnHeader, decorator: Google::Apis::YoutubeAnalyticsV1::ResultTable::ColumnHeader::Representation
       
@@ -228,8 +228,8 @@ module Google
       
         end
         
-        # @private
         class ColumnHeader
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :column_type, as: 'columnType'
             property :data_type, as: 'dataType'

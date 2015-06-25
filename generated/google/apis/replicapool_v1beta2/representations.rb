@@ -78,8 +78,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class InstanceGroupManager
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :auto_healing_policies, as: 'autoHealingPolicies', class: Google::Apis::ReplicapoolV1beta2::ReplicaPoolAutoHealingPolicy, decorator: Google::Apis::ReplicapoolV1beta2::ReplicaPoolAutoHealingPolicy::Representation
       
@@ -99,8 +99,8 @@ module Google
         end
       end
       
-      # @private
       class InstanceGroupManagerList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           collection :items, as: 'items', class: Google::Apis::ReplicapoolV1beta2::InstanceGroupManager, decorator: Google::Apis::ReplicapoolV1beta2::InstanceGroupManager::Representation
@@ -111,44 +111,44 @@ module Google
         end
       end
       
-      # @private
       class AbandonInstancesRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
         end
       end
       
-      # @private
       class DeleteInstancesRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
         end
       end
       
-      # @private
       class RecreateInstancesRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
         end
       end
       
-      # @private
       class SetInstanceTemplateRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_template, as: 'instanceTemplate'
         end
       end
       
-      # @private
       class SetTargetPoolsRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :target_pools, as: 'targetPools'
         end
       end
       
-      # @private
       class Operation
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_operation_id, as: 'clientOperationId'
           property :creation_timestamp, as: 'creationTimestamp'
@@ -176,15 +176,15 @@ module Google
           property :zone, as: 'zone'
         end
         
-        # @private
         class Error
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :errors, as: 'errors', class: Google::Apis::ReplicapoolV1beta2::Operation::Error::Error, decorator: Google::Apis::ReplicapoolV1beta2::Operation::Error::Error::Representation
         
           end
           
-          # @private
           class Error
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :code, as: 'code'
               property :location, as: 'location'
@@ -193,8 +193,8 @@ module Google
           end
         end
         
-        # @private
         class Warning
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ReplicapoolV1beta2::Operation::Warning::Datum, decorator: Google::Apis::ReplicapoolV1beta2::Operation::Warning::Datum::Representation
@@ -202,8 +202,8 @@ module Google
             property :message, as: 'message'
           end
           
-          # @private
           class Datum
+            # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :key, as: 'key'
               property :value, as: 'value'
@@ -212,8 +212,8 @@ module Google
         end
       end
       
-      # @private
       class OperationList
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           collection :items, as: 'items', class: Google::Apis::ReplicapoolV1beta2::Operation, decorator: Google::Apis::ReplicapoolV1beta2::Operation::Representation
@@ -224,8 +224,8 @@ module Google
         end
       end
       
-      # @private
       class ReplicaPoolAutoHealingPolicy
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :health_check, as: 'healthCheck'
         end

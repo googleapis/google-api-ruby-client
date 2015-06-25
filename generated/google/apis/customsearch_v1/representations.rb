@@ -74,8 +74,8 @@ module Google
         end
       end
       
-      # @private
       class Context
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :facets, as: 'facets', :class => Array do
         include Representable::JSON::Collection
@@ -86,8 +86,8 @@ module Google
           property :title, as: 'title'
         end
         
-        # @private
         class Facet
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :anchor, as: 'anchor'
             property :label, as: 'label'
@@ -96,8 +96,8 @@ module Google
         end
       end
       
-      # @private
       class Promotion
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :body_lines, as: 'bodyLines', class: Google::Apis::CustomsearchV1::Promotion::BodyLine, decorator: Google::Apis::CustomsearchV1::Promotion::BodyLine::Representation
       
@@ -109,8 +109,8 @@ module Google
           property :title, as: 'title'
         end
         
-        # @private
         class BodyLine
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :html_title, as: 'htmlTitle'
             property :link, as: 'link'
@@ -119,8 +119,8 @@ module Google
           end
         end
         
-        # @private
         class Image
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :height, as: 'height'
             property :source, as: 'source'
@@ -129,8 +129,8 @@ module Google
         end
       end
       
-      # @private
       class Query
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
           property :cr, as: 'cr'
@@ -172,8 +172,8 @@ module Google
         end
       end
       
-      # @private
       class Result
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cache_id, as: 'cacheId'
           property :display_link, as: 'displayLink'
@@ -198,8 +198,8 @@ module Google
           property :title, as: 'title'
         end
         
-        # @private
         class Image
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :byte_size, as: 'byteSize'
             property :context_link, as: 'contextLink'
@@ -211,8 +211,8 @@ module Google
           end
         end
         
-        # @private
         class Label
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :display_name, as: 'displayName'
             property :label_with_op, as: 'label_with_op'
@@ -221,8 +221,8 @@ module Google
         end
       end
       
-      # @private
       class Search
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :context, as: 'context', class: Google::Apis::CustomsearchV1::Context, decorator: Google::Apis::CustomsearchV1::Context::Representation
       
@@ -245,8 +245,8 @@ module Google
       
         end
         
-        # @private
         class SearchInformation
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :formatted_search_time, as: 'formattedSearchTime'
             property :formatted_total_results, as: 'formattedTotalResults'
@@ -255,16 +255,16 @@ module Google
           end
         end
         
-        # @private
         class Spelling
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :corrected_query, as: 'correctedQuery'
             property :html_corrected_query, as: 'htmlCorrectedQuery'
           end
         end
         
-        # @private
         class Url
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :template, as: 'template'
             property :type, as: 'type'

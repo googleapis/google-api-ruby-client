@@ -22,10 +22,10 @@ module Google
     #
     # Lets you view Google Webmaster Tools data for your verified sites.
     #
-    # @see https://developers.google.com/webmaster-tools/v3/welcome
+    # @see https://developers.google.com/webmaster-tools/
     module WebmastersV3
       VERSION = 'V3'
-      REVISION = '20140908'
+      REVISION = '20150624'
 
       # View and modify Webmaster Tools data for your verified sites
       AUTH_WEBMASTERS = 'https://www.googleapis.com/auth/webmasters'

@@ -626,16 +626,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class AccessPolicy
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allowed, as: 'allowed'
           collection :exception, as: 'exception'
         end
       end
       
-      # @private
       class Activity
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_details, as: 'contentDetails', class: Google::Apis::YoutubeV3::ActivityContentDetails, decorator: Google::Apis::YoutubeV3::ActivityContentDetails::Representation
       
@@ -647,8 +647,8 @@ module Google
         end
       end
       
-      # @private
       class ActivityContentDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bulletin, as: 'bulletin', class: Google::Apis::YoutubeV3::ActivityContentDetailsBulletin, decorator: Google::Apis::YoutubeV3::ActivityContentDetailsBulletin::Representation
       
@@ -675,48 +675,48 @@ module Google
         end
       end
       
-      # @private
       class ActivityContentDetailsBulletin
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_id, as: 'resourceId', class: Google::Apis::YoutubeV3::ResourceId, decorator: Google::Apis::YoutubeV3::ResourceId::Representation
       
         end
       end
       
-      # @private
       class ActivityContentDetailsChannelItem
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_id, as: 'resourceId', class: Google::Apis::YoutubeV3::ResourceId, decorator: Google::Apis::YoutubeV3::ResourceId::Representation
       
         end
       end
       
-      # @private
       class ActivityContentDetailsComment
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_id, as: 'resourceId', class: Google::Apis::YoutubeV3::ResourceId, decorator: Google::Apis::YoutubeV3::ResourceId::Representation
       
         end
       end
       
-      # @private
       class ActivityContentDetailsFavorite
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_id, as: 'resourceId', class: Google::Apis::YoutubeV3::ResourceId, decorator: Google::Apis::YoutubeV3::ResourceId::Representation
       
         end
       end
       
-      # @private
       class ActivityContentDetailsLike
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_id, as: 'resourceId', class: Google::Apis::YoutubeV3::ResourceId, decorator: Google::Apis::YoutubeV3::ResourceId::Representation
       
         end
       end
       
-      # @private
       class ActivityContentDetailsPlaylistItem
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :playlist_id, as: 'playlistId'
           property :playlist_item_id, as: 'playlistItemId'
@@ -725,8 +725,8 @@ module Google
         end
       end
       
-      # @private
       class ActivityContentDetailsPromotedItem
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_tag, as: 'adTag'
           property :click_tracking_url, as: 'clickTrackingUrl'
@@ -741,8 +741,8 @@ module Google
         end
       end
       
-      # @private
       class ActivityContentDetailsRecommendation
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :reason, as: 'reason'
           property :resource_id, as: 'resourceId', class: Google::Apis::YoutubeV3::ResourceId, decorator: Google::Apis::YoutubeV3::ResourceId::Representation
@@ -752,8 +752,8 @@ module Google
         end
       end
       
-      # @private
       class ActivityContentDetailsSocial
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :author, as: 'author'
           property :image_url, as: 'imageUrl'
@@ -764,23 +764,23 @@ module Google
         end
       end
       
-      # @private
       class ActivityContentDetailsSubscription
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_id, as: 'resourceId', class: Google::Apis::YoutubeV3::ResourceId, decorator: Google::Apis::YoutubeV3::ResourceId::Representation
       
         end
       end
       
-      # @private
       class ActivityContentDetailsUpload
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :video_id, as: 'videoId'
         end
       end
       
-      # @private
       class ListActivitiesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -797,8 +797,8 @@ module Google
         end
       end
       
-      # @private
       class ActivitySnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel_id, as: 'channelId'
           property :channel_title, as: 'channelTitle'
@@ -813,8 +813,8 @@ module Google
         end
       end
       
-      # @private
       class Caption
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :id, as: 'id'
@@ -824,8 +824,8 @@ module Google
         end
       end
       
-      # @private
       class ListCaptionsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -836,8 +836,8 @@ module Google
         end
       end
       
-      # @private
       class CaptionSnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_track_type, as: 'audioTrackType'
           property :failure_reason, as: 'failureReason'
@@ -856,8 +856,8 @@ module Google
         end
       end
       
-      # @private
       class CdnSettings
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :format, as: 'format'
           property :ingestion_info, as: 'ingestionInfo', class: Google::Apis::YoutubeV3::IngestionInfo, decorator: Google::Apis::YoutubeV3::IngestionInfo::Representation
@@ -866,8 +866,8 @@ module Google
         end
       end
       
-      # @private
       class Channel
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audit_details, as: 'auditDetails', class: Google::Apis::YoutubeV3::ChannelAuditDetails, decorator: Google::Apis::YoutubeV3::ChannelAuditDetails::Representation
       
@@ -897,8 +897,8 @@ module Google
         end
       end
       
-      # @private
       class ChannelAuditDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :community_guidelines_good_standing, as: 'communityGuidelinesGoodStanding'
           property :content_id_claims_good_standing, as: 'contentIdClaimsGoodStanding'
@@ -907,8 +907,8 @@ module Google
         end
       end
       
-      # @private
       class ChannelBannerResource
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :kind, as: 'kind'
@@ -916,8 +916,8 @@ module Google
         end
       end
       
-      # @private
       class ChannelBrandingSettings
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel, as: 'channel', class: Google::Apis::YoutubeV3::ChannelSettings, decorator: Google::Apis::YoutubeV3::ChannelSettings::Representation
       
@@ -930,16 +930,16 @@ module Google
         end
       end
       
-      # @private
       class ChannelContentDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :google_plus_user_id, as: 'googlePlusUserId'
           property :related_playlists, as: 'relatedPlaylists', class: Google::Apis::YoutubeV3::ChannelContentDetails::RelatedPlaylists, decorator: Google::Apis::YoutubeV3::ChannelContentDetails::RelatedPlaylists::Representation
       
         end
         
-        # @private
         class RelatedPlaylists
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :favorites, as: 'favorites'
             property :likes, as: 'likes'
@@ -950,8 +950,8 @@ module Google
         end
       end
       
-      # @private
       class ChannelContentOwnerDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_owner, as: 'contentOwner'
           property :time_linked, as: 'timeLinked', type: DateTime
@@ -959,31 +959,31 @@ module Google
         end
       end
       
-      # @private
       class ChannelConversionPing
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :context, as: 'context'
           property :conversion_url, as: 'conversionUrl'
         end
       end
       
-      # @private
       class ChannelConversionPings
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :pings, as: 'pings', class: Google::Apis::YoutubeV3::ChannelConversionPing, decorator: Google::Apis::YoutubeV3::ChannelConversionPing::Representation
       
         end
       end
       
-      # @private
       class ChannelId
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :value, as: 'value'
         end
       end
       
-      # @private
       class ListChannelsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1000,16 +1000,16 @@ module Google
         end
       end
       
-      # @private
       class ChannelLocalization
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :title, as: 'title'
         end
       end
       
-      # @private
       class ChannelSection
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_details, as: 'contentDetails', class: Google::Apis::YoutubeV3::ChannelSectionContentDetails, decorator: Google::Apis::YoutubeV3::ChannelSectionContentDetails::Representation
       
@@ -1025,16 +1025,16 @@ module Google
         end
       end
       
-      # @private
       class ChannelSectionContentDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :channels, as: 'channels'
           collection :playlists, as: 'playlists'
         end
       end
       
-      # @private
       class ListChannelSectionsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1045,15 +1045,15 @@ module Google
         end
       end
       
-      # @private
       class ChannelSectionLocalization
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :title, as: 'title'
         end
       end
       
-      # @private
       class ChannelSectionSnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel_id, as: 'channelId'
           property :default_language, as: 'defaultLanguage'
@@ -1066,8 +1066,8 @@ module Google
         end
       end
       
-      # @private
       class ChannelSectionTargeting
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :countries, as: 'countries'
           collection :languages, as: 'languages'
@@ -1075,8 +1075,8 @@ module Google
         end
       end
       
-      # @private
       class ChannelSettings
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country, as: 'country'
           property :default_language, as: 'defaultLanguage'
@@ -1095,8 +1095,8 @@ module Google
         end
       end
       
-      # @private
       class ChannelSnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country, as: 'country'
           property :default_language, as: 'defaultLanguage'
@@ -1111,8 +1111,8 @@ module Google
         end
       end
       
-      # @private
       class ChannelStatistics
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :comment_count, as: 'commentCount'
           property :hidden_subscriber_count, as: 'hiddenSubscriberCount'
@@ -1122,8 +1122,8 @@ module Google
         end
       end
       
-      # @private
       class ChannelStatus
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_linked, as: 'isLinked'
           property :long_uploads_status, as: 'longUploadsStatus'
@@ -1131,15 +1131,15 @@ module Google
         end
       end
       
-      # @private
       class ChannelTopicDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :topic_ids, as: 'topicIds'
         end
       end
       
-      # @private
       class Comment
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :id, as: 'id'
@@ -1149,8 +1149,8 @@ module Google
         end
       end
       
-      # @private
       class ListCommentsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1166,8 +1166,8 @@ module Google
         end
       end
       
-      # @private
       class CommentSnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :author_channel_id, as: 'authorChannelId', class: Google::Apis::YoutubeV3::ChannelId, decorator: Google::Apis::YoutubeV3::ChannelId::Representation
       
@@ -1191,8 +1191,8 @@ module Google
         end
       end
       
-      # @private
       class CommentThread
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :id, as: 'id'
@@ -1204,8 +1204,8 @@ module Google
         end
       end
       
-      # @private
       class ListCommentThreadsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1221,16 +1221,16 @@ module Google
         end
       end
       
-      # @private
       class CommentThreadReplies
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :comments, as: 'comments', class: Google::Apis::YoutubeV3::Comment, decorator: Google::Apis::YoutubeV3::Comment::Representation
       
         end
       end
       
-      # @private
       class CommentThreadSnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :can_reply, as: 'canReply'
           property :channel_id, as: 'channelId'
@@ -1242,8 +1242,8 @@ module Google
         end
       end
       
-      # @private
       class ContentRating
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acb_rating, as: 'acbRating'
           property :agcom_rating, as: 'agcomRating'
@@ -1312,8 +1312,8 @@ module Google
         end
       end
       
-      # @private
       class GeoPoint
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :altitude, as: 'altitude'
           property :latitude, as: 'latitude'
@@ -1321,8 +1321,8 @@ module Google
         end
       end
       
-      # @private
       class GuideCategory
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :id, as: 'id'
@@ -1332,8 +1332,8 @@ module Google
         end
       end
       
-      # @private
       class ListGuideCategoriesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1350,16 +1350,16 @@ module Google
         end
       end
       
-      # @private
       class GuideCategorySnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel_id, as: 'channelId'
           property :title, as: 'title'
         end
       end
       
-      # @private
       class I18nLanguage
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :id, as: 'id'
@@ -1369,8 +1369,8 @@ module Google
         end
       end
       
-      # @private
       class ListI18nLanguagesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1381,16 +1381,16 @@ module Google
         end
       end
       
-      # @private
       class I18nLanguageSnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :hl, as: 'hl'
           property :name, as: 'name'
         end
       end
       
-      # @private
       class I18nRegion
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :id, as: 'id'
@@ -1400,8 +1400,8 @@ module Google
         end
       end
       
-      # @private
       class ListI18nRegionsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1412,16 +1412,16 @@ module Google
         end
       end
       
-      # @private
       class I18nRegionSnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gl, as: 'gl'
           property :name, as: 'name'
         end
       end
       
-      # @private
       class ImageSettings
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :background_image_url, as: 'backgroundImageUrl', class: Google::Apis::YoutubeV3::LocalizedProperty, decorator: Google::Apis::YoutubeV3::LocalizedProperty::Representation
       
@@ -1453,8 +1453,8 @@ module Google
         end
       end
       
-      # @private
       class IngestionInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_ingestion_address, as: 'backupIngestionAddress'
           property :ingestion_address, as: 'ingestionAddress'
@@ -1462,8 +1462,8 @@ module Google
         end
       end
       
-      # @private
       class InvideoBranding
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :image_bytes, :base64 => true, as: 'imageBytes'
           property :image_url, as: 'imageUrl'
@@ -1475,16 +1475,16 @@ module Google
         end
       end
       
-      # @private
       class InvideoPosition
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :corner_position, as: 'cornerPosition'
           property :type, as: 'type'
         end
       end
       
-      # @private
       class InvideoPromotion
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_timing, as: 'defaultTiming', class: Google::Apis::YoutubeV3::InvideoTiming, decorator: Google::Apis::YoutubeV3::InvideoTiming::Representation
       
@@ -1496,8 +1496,8 @@ module Google
         end
       end
       
-      # @private
       class InvideoTiming
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duration_ms, as: 'durationMs'
           property :offset_ms, as: 'offsetMs'
@@ -1505,15 +1505,15 @@ module Google
         end
       end
       
-      # @private
       class LanguageTag
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :value, as: 'value'
         end
       end
       
-      # @private
       class LiveBroadcast
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_details, as: 'contentDetails', class: Google::Apis::YoutubeV3::LiveBroadcastContentDetails, decorator: Google::Apis::YoutubeV3::LiveBroadcastContentDetails::Representation
       
@@ -1531,8 +1531,8 @@ module Google
         end
       end
       
-      # @private
       class LiveBroadcastContentDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bound_stream_id, as: 'boundStreamId'
           property :enable_closed_captions, as: 'enableClosedCaptions'
@@ -1547,8 +1547,8 @@ module Google
         end
       end
       
-      # @private
       class ListLiveBroadcastsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1565,8 +1565,8 @@ module Google
         end
       end
       
-      # @private
       class LiveBroadcastSnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :actual_end_time, as: 'actualEndTime', type: DateTime
       
@@ -1587,16 +1587,16 @@ module Google
         end
       end
       
-      # @private
       class LiveBroadcastStatistics
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :concurrent_viewers, as: 'concurrentViewers'
           property :total_chat_count, as: 'totalChatCount'
         end
       end
       
-      # @private
       class LiveBroadcastStatus
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :life_cycle_status, as: 'lifeCycleStatus'
           property :live_broadcast_priority, as: 'liveBroadcastPriority'
@@ -1605,8 +1605,8 @@ module Google
         end
       end
       
-      # @private
       class LiveBroadcastTopic
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::LiveBroadcastTopicSnippet, decorator: Google::Apis::YoutubeV3::LiveBroadcastTopicSnippet::Representation
       
@@ -1615,24 +1615,24 @@ module Google
         end
       end
       
-      # @private
       class LiveBroadcastTopicDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :topics, as: 'topics', class: Google::Apis::YoutubeV3::LiveBroadcastTopic, decorator: Google::Apis::YoutubeV3::LiveBroadcastTopic::Representation
       
         end
       end
       
-      # @private
       class LiveBroadcastTopicSnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :release_date, as: 'releaseDate'
         end
       end
       
-      # @private
       class LiveStream
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cdn, as: 'cdn', class: Google::Apis::YoutubeV3::CdnSettings, decorator: Google::Apis::YoutubeV3::CdnSettings::Representation
       
@@ -1648,8 +1648,8 @@ module Google
         end
       end
       
-      # @private
       class LiveStreamConfigurationIssue
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :reason, as: 'reason'
@@ -1658,16 +1658,16 @@ module Google
         end
       end
       
-      # @private
       class LiveStreamContentDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :closed_captions_ingestion_url, as: 'closedCaptionsIngestionUrl'
           property :is_reusable, as: 'isReusable'
         end
       end
       
-      # @private
       class LiveStreamHealthStatus
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :configuration_issues, as: 'configurationIssues', class: Google::Apis::YoutubeV3::LiveStreamConfigurationIssue, decorator: Google::Apis::YoutubeV3::LiveStreamConfigurationIssue::Representation
       
@@ -1676,8 +1676,8 @@ module Google
         end
       end
       
-      # @private
       class ListLiveStreamsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1694,8 +1694,8 @@ module Google
         end
       end
       
-      # @private
       class LiveStreamSnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel_id, as: 'channelId'
           property :description, as: 'description'
@@ -1706,8 +1706,8 @@ module Google
         end
       end
       
-      # @private
       class LiveStreamStatus
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :health_status, as: 'healthStatus', class: Google::Apis::YoutubeV3::LiveStreamHealthStatus, decorator: Google::Apis::YoutubeV3::LiveStreamHealthStatus::Representation
       
@@ -1715,8 +1715,8 @@ module Google
         end
       end
       
-      # @private
       class LocalizedProperty
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default, as: 'default'
           property :default_language, as: 'defaultLanguage', class: Google::Apis::YoutubeV3::LanguageTag, decorator: Google::Apis::YoutubeV3::LanguageTag::Representation
@@ -1726,16 +1726,16 @@ module Google
         end
       end
       
-      # @private
       class LocalizedString
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :language, as: 'language'
           property :value, as: 'value'
         end
       end
       
-      # @private
       class MonitorStreamInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :broadcast_stream_delay_ms, as: 'broadcastStreamDelayMs'
           property :embed_html, as: 'embedHtml'
@@ -1743,16 +1743,16 @@ module Google
         end
       end
       
-      # @private
       class PageInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :results_per_page, as: 'resultsPerPage'
           property :total_results, as: 'totalResults'
         end
       end
       
-      # @private
       class Playlist
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_details, as: 'contentDetails', class: Google::Apis::YoutubeV3::PlaylistContentDetails, decorator: Google::Apis::YoutubeV3::PlaylistContentDetails::Representation
       
@@ -1770,15 +1770,15 @@ module Google
         end
       end
       
-      # @private
       class PlaylistContentDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :item_count, as: 'itemCount'
         end
       end
       
-      # @private
       class PlaylistItem
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_details, as: 'contentDetails', class: Google::Apis::YoutubeV3::PlaylistItemContentDetails, decorator: Google::Apis::YoutubeV3::PlaylistItemContentDetails::Representation
       
@@ -1792,8 +1792,8 @@ module Google
         end
       end
       
-      # @private
       class PlaylistItemContentDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_at, as: 'endAt'
           property :note, as: 'note'
@@ -1802,8 +1802,8 @@ module Google
         end
       end
       
-      # @private
       class ListPlaylistItemsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1820,8 +1820,8 @@ module Google
         end
       end
       
-      # @private
       class PlaylistItemSnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel_id, as: 'channelId'
           property :channel_title, as: 'channelTitle'
@@ -1838,15 +1838,15 @@ module Google
         end
       end
       
-      # @private
       class PlaylistItemStatus
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :privacy_status, as: 'privacyStatus'
         end
       end
       
-      # @private
       class ListPlaylistResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1863,23 +1863,23 @@ module Google
         end
       end
       
-      # @private
       class PlaylistLocalization
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :title, as: 'title'
         end
       end
       
-      # @private
       class PlaylistPlayer
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :embed_html, as: 'embedHtml'
         end
       end
       
-      # @private
       class PlaylistSnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel_id, as: 'channelId'
           property :channel_title, as: 'channelTitle'
@@ -1896,15 +1896,15 @@ module Google
         end
       end
       
-      # @private
       class PlaylistStatus
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :privacy_status, as: 'privacyStatus'
         end
       end
       
-      # @private
       class PromotedItem
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_message, as: 'customMessage'
           property :id, as: 'id', class: Google::Apis::YoutubeV3::PromotedItemId, decorator: Google::Apis::YoutubeV3::PromotedItemId::Representation
@@ -1915,8 +1915,8 @@ module Google
         end
       end
       
-      # @private
       class PromotedItemId
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :recently_uploaded_by, as: 'recentlyUploadedBy'
           property :type, as: 'type'
@@ -1925,16 +1925,16 @@ module Google
         end
       end
       
-      # @private
       class PropertyValue
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :property, as: 'property'
           property :value, as: 'value'
         end
       end
       
-      # @private
       class ResourceId
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel_id, as: 'channelId'
           property :kind, as: 'kind'
@@ -1943,8 +1943,8 @@ module Google
         end
       end
       
-      # @private
       class SearchListsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -1961,8 +1961,8 @@ module Google
         end
       end
       
-      # @private
       class SearchResult
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :id, as: 'id', class: Google::Apis::YoutubeV3::ResourceId, decorator: Google::Apis::YoutubeV3::ResourceId::Representation
@@ -1973,8 +1973,8 @@ module Google
         end
       end
       
-      # @private
       class SearchResultSnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel_id, as: 'channelId'
           property :channel_title, as: 'channelTitle'
@@ -1988,8 +1988,8 @@ module Google
         end
       end
       
-      # @private
       class Subscription
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_details, as: 'contentDetails', class: Google::Apis::YoutubeV3::SubscriptionContentDetails, decorator: Google::Apis::YoutubeV3::SubscriptionContentDetails::Representation
       
@@ -2003,8 +2003,8 @@ module Google
         end
       end
       
-      # @private
       class SubscriptionContentDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :activity_type, as: 'activityType'
           property :new_item_count, as: 'newItemCount'
@@ -2012,8 +2012,8 @@ module Google
         end
       end
       
-      # @private
       class ListSubscriptionResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -2030,8 +2030,8 @@ module Google
         end
       end
       
-      # @private
       class SubscriptionSnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel_id, as: 'channelId'
           property :channel_title, as: 'channelTitle'
@@ -2046,8 +2046,8 @@ module Google
         end
       end
       
-      # @private
       class SubscriptionSubscriberSnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :channel_id, as: 'channelId'
           property :description, as: 'description'
@@ -2057,8 +2057,8 @@ module Google
         end
       end
       
-      # @private
       class Thumbnail
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :height, as: 'height'
           property :url, as: 'url'
@@ -2066,8 +2066,8 @@ module Google
         end
       end
       
-      # @private
       class ThumbnailDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default, as: 'default', class: Google::Apis::YoutubeV3::Thumbnail, decorator: Google::Apis::YoutubeV3::Thumbnail::Representation
       
@@ -2082,8 +2082,8 @@ module Google
         end
       end
       
-      # @private
       class SetThumbnailResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -2094,14 +2094,14 @@ module Google
         end
       end
       
-      # @private
       class TokenPagination
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
-      # @private
       class Video
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :age_gating, as: 'ageGating', class: Google::Apis::YoutubeV3::VideoAgeGating, decorator: Google::Apis::YoutubeV3::VideoAgeGating::Representation
       
@@ -2141,8 +2141,8 @@ module Google
         end
       end
       
-      # @private
       class VideoAbuseReport
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :comments, as: 'comments'
           property :language, as: 'language'
@@ -2152,8 +2152,8 @@ module Google
         end
       end
       
-      # @private
       class VideoAbuseReportReason
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :id, as: 'id'
@@ -2163,8 +2163,8 @@ module Google
         end
       end
       
-      # @private
       class ListVideoAbuseReportReasonResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -2175,8 +2175,8 @@ module Google
         end
       end
       
-      # @private
       class VideoAbuseReportReasonSnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :label, as: 'label'
           collection :secondary_reasons, as: 'secondaryReasons', class: Google::Apis::YoutubeV3::VideoAbuseReportSecondaryReason, decorator: Google::Apis::YoutubeV3::VideoAbuseReportSecondaryReason::Representation
@@ -2184,16 +2184,16 @@ module Google
         end
       end
       
-      # @private
       class VideoAbuseReportSecondaryReason
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :label, as: 'label'
         end
       end
       
-      # @private
       class VideoAgeGating
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alcohol_content, as: 'alcoholContent'
           property :restricted, as: 'restricted'
@@ -2201,8 +2201,8 @@ module Google
         end
       end
       
-      # @private
       class VideoCategory
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :id, as: 'id'
@@ -2212,8 +2212,8 @@ module Google
         end
       end
       
-      # @private
       class ListVideoCategoryResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -2230,8 +2230,8 @@ module Google
         end
       end
       
-      # @private
       class VideoCategorySnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :assignable, as: 'assignable'
           property :channel_id, as: 'channelId'
@@ -2239,8 +2239,8 @@ module Google
         end
       end
       
-      # @private
       class VideoContentDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :caption, as: 'caption'
           property :content_rating, as: 'contentRating', class: Google::Apis::YoutubeV3::ContentRating, decorator: Google::Apis::YoutubeV3::ContentRating::Representation
@@ -2256,32 +2256,32 @@ module Google
         end
       end
       
-      # @private
       class VideoContentDetailsRegionRestriction
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed, as: 'allowed'
           collection :blocked, as: 'blocked'
         end
       end
       
-      # @private
       class VideoConversionPing
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :context, as: 'context'
           property :conversion_url, as: 'conversionUrl'
         end
       end
       
-      # @private
       class VideoConversionPings
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :pings, as: 'pings', class: Google::Apis::YoutubeV3::VideoConversionPing, decorator: Google::Apis::YoutubeV3::VideoConversionPing::Representation
       
         end
       end
       
-      # @private
       class VideoFileDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :audio_streams, as: 'audioStreams', class: Google::Apis::YoutubeV3::VideoFileDetailsAudioStream, decorator: Google::Apis::YoutubeV3::VideoFileDetailsAudioStream::Representation
       
@@ -2299,8 +2299,8 @@ module Google
         end
       end
       
-      # @private
       class VideoFileDetailsAudioStream
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bitrate_bps, as: 'bitrateBps'
           property :channel_count, as: 'channelCount'
@@ -2309,8 +2309,8 @@ module Google
         end
       end
       
-      # @private
       class VideoFileDetailsVideoStream
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aspect_ratio, as: 'aspectRatio'
           property :bitrate_bps, as: 'bitrateBps'
@@ -2323,8 +2323,8 @@ module Google
         end
       end
       
-      # @private
       class GetVideoRatingResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -2335,8 +2335,8 @@ module Google
         end
       end
       
-      # @private
       class ListVideosResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :event_id, as: 'eventId'
@@ -2353,8 +2353,8 @@ module Google
         end
       end
       
-      # @private
       class VideoLiveStreamingDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :actual_end_time, as: 'actualEndTime', type: DateTime
       
@@ -2368,31 +2368,31 @@ module Google
         end
       end
       
-      # @private
       class VideoLocalization
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :title, as: 'title'
         end
       end
       
-      # @private
       class VideoMonetizationDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access, as: 'access', class: Google::Apis::YoutubeV3::AccessPolicy, decorator: Google::Apis::YoutubeV3::AccessPolicy::Representation
       
         end
       end
       
-      # @private
       class VideoPlayer
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :embed_html, as: 'embedHtml'
         end
       end
       
-      # @private
       class VideoProcessingDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :editor_suggestions_availability, as: 'editorSuggestionsAvailability'
           property :file_details_availability, as: 'fileDetailsAvailability'
@@ -2406,8 +2406,8 @@ module Google
         end
       end
       
-      # @private
       class VideoProcessingDetailsProcessingProgress
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :parts_processed, as: 'partsProcessed'
           property :parts_total, as: 'partsTotal'
@@ -2415,23 +2415,23 @@ module Google
         end
       end
       
-      # @private
       class VideoProjectDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :tags, as: 'tags'
         end
       end
       
-      # @private
       class VideoRating
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :rating, as: 'rating'
           property :video_id, as: 'videoId'
         end
       end
       
-      # @private
       class VideoRecordingDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :location, as: 'location', class: Google::Apis::YoutubeV3::GeoPoint, decorator: Google::Apis::YoutubeV3::GeoPoint::Representation
       
@@ -2441,8 +2441,8 @@ module Google
         end
       end
       
-      # @private
       class VideoSnippet
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :category_id, as: 'categoryId'
           property :channel_id, as: 'channelId'
@@ -2462,8 +2462,8 @@ module Google
         end
       end
       
-      # @private
       class VideoStatistics
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :comment_count, as: 'commentCount'
           property :dislike_count, as: 'dislikeCount'
@@ -2473,8 +2473,8 @@ module Google
         end
       end
       
-      # @private
       class VideoStatus
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :embeddable, as: 'embeddable'
           property :failure_reason, as: 'failureReason'
@@ -2488,8 +2488,8 @@ module Google
         end
       end
       
-      # @private
       class VideoSuggestions
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :editor_suggestions, as: 'editorSuggestions'
           collection :processing_errors, as: 'processingErrors'
@@ -2500,24 +2500,24 @@ module Google
         end
       end
       
-      # @private
       class VideoSuggestionsTagSuggestion
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :category_restricts, as: 'categoryRestricts'
           property :tag, as: 'tag'
         end
       end
       
-      # @private
       class VideoTopicDetails
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :relevant_topic_ids, as: 'relevantTopicIds'
           collection :topic_ids, as: 'topicIds'
         end
       end
       
-      # @private
       class WatchSettings
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :background_color, as: 'backgroundColor'
           property :featured_playlist_id, as: 'featuredPlaylistId'

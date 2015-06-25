@@ -322,8 +322,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class GeoJsonGeometry
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           def from_hash(hash, *args)
             case hash['type']
@@ -379,8 +379,8 @@ module Google
         end
       end
       
-      # @private
       class MapItem
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           def from_hash(hash, *args)
             case hash['type']
@@ -412,8 +412,8 @@ module Google
         end
       end
       
-      # @private
       class AcquisitionTime
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end, as: 'end', type: DateTime
       
@@ -423,8 +423,8 @@ module Google
         end
       end
       
-      # @private
       class Asset
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bbox, as: 'bbox'
           property :creation_time, as: 'creationTime', type: DateTime
@@ -445,8 +445,8 @@ module Google
         end
       end
       
-      # @private
       class ListAssetsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assets, as: 'assets', class: Google::Apis::MapsengineV1::Asset, decorator: Google::Apis::MapsengineV1::Asset::Representation
       
@@ -454,8 +454,8 @@ module Google
         end
       end
       
-      # @private
       class Border
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :color, as: 'color'
           property :opacity, as: 'opacity'
@@ -463,23 +463,23 @@ module Google
         end
       end
       
-      # @private
       class Color
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :color, as: 'color'
           property :opacity, as: 'opacity'
         end
       end
       
-      # @private
       class Datasource
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
         end
       end
       
-      # @private
       class DisplayRule
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :filters, as: 'filters', class: Google::Apis::MapsengineV1::Filter, decorator: Google::Apis::MapsengineV1::Filter::Representation
       
@@ -495,8 +495,8 @@ module Google
         end
       end
       
-      # @private
       class Feature
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :geometry, as: 'geometry', class: Google::Apis::MapsengineV1::GeoJsonGeometry, decorator: Google::Apis::MapsengineV1::GeoJsonGeometry::Representation
       
@@ -505,23 +505,23 @@ module Google
         end
       end
       
-      # @private
       class FeatureInfo
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
         end
       end
       
-      # @private
       class BatchDeleteFeaturesRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :gx_ids, as: 'gx_ids'
           collection :primary_keys, as: 'primaryKeys'
         end
       end
       
-      # @private
       class BatchInsertFeaturesRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :features, as: 'features', class: Google::Apis::MapsengineV1::Feature, decorator: Google::Apis::MapsengineV1::Feature::Representation
       
@@ -529,8 +529,8 @@ module Google
         end
       end
       
-      # @private
       class BatchPatchFeaturesRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :features, as: 'features', class: Google::Apis::MapsengineV1::Feature, decorator: Google::Apis::MapsengineV1::Feature::Representation
       
@@ -538,8 +538,8 @@ module Google
         end
       end
       
-      # @private
       class ListFeaturesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allowed_queries_per_second, as: 'allowedQueriesPerSecond'
           collection :features, as: 'features', class: Google::Apis::MapsengineV1::Feature, decorator: Google::Apis::MapsengineV1::Feature::Representation
@@ -551,8 +551,8 @@ module Google
         end
       end
       
-      # @private
       class File
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :filename, as: 'filename'
           property :size, as: 'size'
@@ -560,8 +560,8 @@ module Google
         end
       end
       
-      # @private
       class Filter
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :column, as: 'column'
           property :operator, as: 'operator'
@@ -569,8 +569,8 @@ module Google
         end
       end
       
-      # @private
       class GeoJsonGeometryCollection
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :geometries, as: 'geometries', class: Google::Apis::MapsengineV1::GeoJsonGeometry, decorator: Google::Apis::MapsengineV1::GeoJsonGeometry::Representation
       
@@ -578,8 +578,8 @@ module Google
         end
       end
       
-      # @private
       class GeoJsonLineString
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :coordinates, as: 'coordinates', :class => Array do
         include Representable::JSON::Collection
@@ -590,8 +590,8 @@ module Google
         end
       end
       
-      # @private
       class GeoJsonMultiLineString
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :coordinates, as: 'coordinates', :class => Array do
         include Representable::JSON::Collection
@@ -606,8 +606,8 @@ module Google
         end
       end
       
-      # @private
       class GeoJsonMultiPoint
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :coordinates, as: 'coordinates', :class => Array do
         include Representable::JSON::Collection
@@ -618,8 +618,8 @@ module Google
         end
       end
       
-      # @private
       class GeoJsonMultiPolygon
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :coordinates, as: 'coordinates', :class => Array do
         include Representable::JSON::Collection
@@ -638,16 +638,16 @@ module Google
         end
       end
       
-      # @private
       class GeoJsonPoint
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :coordinates, as: 'coordinates'
           property :type, as: 'type'
         end
       end
       
-      # @private
       class GeoJsonPolygon
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :coordinates, as: 'coordinates', :class => Array do
         include Representable::JSON::Collection
@@ -662,8 +662,8 @@ module Google
         end
       end
       
-      # @private
       class Icon
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :id, as: 'id'
@@ -671,8 +671,8 @@ module Google
         end
       end
       
-      # @private
       class IconStyle
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :name, as: 'name'
@@ -683,8 +683,8 @@ module Google
         end
       end
       
-      # @private
       class ListIconsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :icons, as: 'icons', class: Google::Apis::MapsengineV1::Icon, decorator: Google::Apis::MapsengineV1::Icon::Representation
       
@@ -692,8 +692,8 @@ module Google
         end
       end
       
-      # @private
       class LabelStyle
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :color, as: 'color'
           property :column, as: 'column'
@@ -706,8 +706,8 @@ module Google
         end
       end
       
-      # @private
       class Layer
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bbox, as: 'bbox'
           property :creation_time, as: 'creationTime', type: DateTime
@@ -736,8 +736,8 @@ module Google
         end
       end
       
-      # @private
       class ListLayersResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :layers, as: 'layers', class: Google::Apis::MapsengineV1::Layer, decorator: Google::Apis::MapsengineV1::Layer::Representation
       
@@ -745,8 +745,8 @@ module Google
         end
       end
       
-      # @private
       class LineStyle
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :border, as: 'border', class: Google::Apis::MapsengineV1::Border, decorator: Google::Apis::MapsengineV1::Border::Representation
       
@@ -757,8 +757,8 @@ module Google
       
         end
         
-        # @private
         class Stroke
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :color, as: 'color'
             property :opacity, as: 'opacity'
@@ -767,8 +767,8 @@ module Google
         end
       end
       
-      # @private
       class Map
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bbox, as: 'bbox'
           collection :contents, as: 'contents', class: Google::Apis::MapsengineV1::MapItem, decorator: Google::Apis::MapsengineV1::MapItem::Representation
@@ -795,8 +795,8 @@ module Google
         end
       end
       
-      # @private
       class MapFolder
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :contents, as: 'contents', class: Google::Apis::MapsengineV1::MapItem, decorator: Google::Apis::MapsengineV1::MapItem::Representation
       
@@ -809,8 +809,8 @@ module Google
         end
       end
       
-      # @private
       class MapKmlLink
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :default_viewport, as: 'defaultViewport'
           property :kml_url, as: 'kmlUrl'
@@ -820,8 +820,8 @@ module Google
         end
       end
       
-      # @private
       class MapLayer
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :default_viewport, as: 'defaultViewport'
           property :id, as: 'id'
@@ -832,8 +832,8 @@ module Google
         end
       end
       
-      # @private
       class ListMapsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :maps, as: 'maps', class: Google::Apis::MapsengineV1::Map, decorator: Google::Apis::MapsengineV1::Map::Representation
       
@@ -841,15 +841,15 @@ module Google
         end
       end
       
-      # @private
       class Parent
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
         end
       end
       
-      # @private
       class ListParentsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :parents, as: 'parents', class: Google::Apis::MapsengineV1::Parent, decorator: Google::Apis::MapsengineV1::Parent::Representation
@@ -857,8 +857,8 @@ module Google
         end
       end
       
-      # @private
       class Permission
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :discoverable, as: 'discoverable'
           property :id, as: 'id'
@@ -867,43 +867,43 @@ module Google
         end
       end
       
-      # @private
       class BatchDeletePermissionsRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ids, as: 'ids'
         end
       end
       
-      # @private
       class BatchDeletePermissionsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
-      # @private
       class BatchUpdatePermissionsRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions', class: Google::Apis::MapsengineV1::Permission, decorator: Google::Apis::MapsengineV1::Permission::Representation
       
         end
       end
       
-      # @private
       class BatchUpdatePermissionsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
-      # @private
       class ListPermissionsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions', class: Google::Apis::MapsengineV1::Permission, decorator: Google::Apis::MapsengineV1::Permission::Representation
       
         end
       end
       
-      # @private
       class PointStyle
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :icon, as: 'icon', class: Google::Apis::MapsengineV1::IconStyle, decorator: Google::Apis::MapsengineV1::IconStyle::Representation
       
@@ -912,8 +912,8 @@ module Google
         end
       end
       
-      # @private
       class PolygonStyle
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fill, as: 'fill', class: Google::Apis::MapsengineV1::Color, decorator: Google::Apis::MapsengineV1::Color::Representation
       
@@ -924,36 +924,36 @@ module Google
         end
       end
       
-      # @private
       class ProcessResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
-      # @private
       class Project
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :name, as: 'name'
         end
       end
       
-      # @private
       class ListProjectsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :projects, as: 'projects', class: Google::Apis::MapsengineV1::Project, decorator: Google::Apis::MapsengineV1::Project::Representation
       
         end
       end
       
-      # @private
       class PublishResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
-      # @private
       class PublishedLayer
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :id, as: 'id'
@@ -963,8 +963,8 @@ module Google
         end
       end
       
-      # @private
       class ListPublishedLayersResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :layers, as: 'layers', class: Google::Apis::MapsengineV1::PublishedLayer, decorator: Google::Apis::MapsengineV1::PublishedLayer::Representation
       
@@ -972,8 +972,8 @@ module Google
         end
       end
       
-      # @private
       class PublishedMap
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :contents, as: 'contents', class: Google::Apis::MapsengineV1::MapItem, decorator: Google::Apis::MapsengineV1::MapItem::Representation
       
@@ -985,8 +985,8 @@ module Google
         end
       end
       
-      # @private
       class ListPublishedMapsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :maps, as: 'maps', class: Google::Apis::MapsengineV1::PublishedMap, decorator: Google::Apis::MapsengineV1::PublishedMap::Representation
       
@@ -994,8 +994,8 @@ module Google
         end
       end
       
-      # @private
       class Raster
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acquisition_time, as: 'acquisitionTime', class: Google::Apis::MapsengineV1::AcquisitionTime, decorator: Google::Apis::MapsengineV1::AcquisitionTime::Representation
       
@@ -1023,8 +1023,8 @@ module Google
         end
       end
       
-      # @private
       class RasterCollection
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attribution, as: 'attribution'
           collection :bbox, as: 'bbox'
@@ -1048,8 +1048,8 @@ module Google
         end
       end
       
-      # @private
       class ListRasterCollectionsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, :base64 => true, as: 'nextPageToken'
           collection :raster_collections, as: 'rasterCollections', class: Google::Apis::MapsengineV1::RasterCollection, decorator: Google::Apis::MapsengineV1::RasterCollection::Representation
@@ -1057,8 +1057,8 @@ module Google
         end
       end
       
-      # @private
       class RasterCollectionsRaster
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bbox, as: 'bbox'
           property :creation_time, as: 'creationTime', type: DateTime
@@ -1074,34 +1074,34 @@ module Google
         end
       end
       
-      # @private
       class BatchDeleteRasterCollectionsRasterRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ids, as: 'ids'
         end
       end
       
-      # @private
       class BatchDeleteRasterCollectionsRastersResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
-      # @private
       class BatchInsertRasterCollectionsRastersRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :ids, as: 'ids'
         end
       end
       
-      # @private
       class BatchInsertRasterCollectionsRastersResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
-      # @private
       class ListRasterCollectionsRastersResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :rasters, as: 'rasters', class: Google::Apis::MapsengineV1::RasterCollectionsRaster, decorator: Google::Apis::MapsengineV1::RasterCollectionsRaster::Representation
@@ -1109,8 +1109,8 @@ module Google
         end
       end
       
-      # @private
       class ListRastersResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :rasters, as: 'rasters', class: Google::Apis::MapsengineV1::Raster, decorator: Google::Apis::MapsengineV1::Raster::Representation
@@ -1118,8 +1118,8 @@ module Google
         end
       end
       
-      # @private
       class ScaledShape
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :border, as: 'border', class: Google::Apis::MapsengineV1::Border, decorator: Google::Apis::MapsengineV1::Border::Representation
       
@@ -1129,8 +1129,8 @@ module Google
         end
       end
       
-      # @private
       class ScalingFunction
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :column, as: 'column'
           property :scaling_type, as: 'scalingType'
@@ -1141,8 +1141,8 @@ module Google
         end
       end
       
-      # @private
       class Schema
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :columns, as: 'columns', class: Google::Apis::MapsengineV1::TableColumn, decorator: Google::Apis::MapsengineV1::TableColumn::Representation
       
@@ -1151,16 +1151,16 @@ module Google
         end
       end
       
-      # @private
       class SizeRange
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max, as: 'max'
           property :min, as: 'min'
         end
       end
       
-      # @private
       class Table
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bbox, as: 'bbox'
           property :creation_time, as: 'creationTime', type: DateTime
@@ -1187,16 +1187,16 @@ module Google
         end
       end
       
-      # @private
       class TableColumn
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :type, as: 'type'
         end
       end
       
-      # @private
       class ListTablesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, :base64 => true, as: 'nextPageToken'
           collection :tables, as: 'tables', class: Google::Apis::MapsengineV1::Table, decorator: Google::Apis::MapsengineV1::Table::Representation
@@ -1204,16 +1204,16 @@ module Google
         end
       end
       
-      # @private
       class ValueRange
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max, as: 'max'
           property :min, as: 'min'
         end
       end
       
-      # @private
       class VectorStyle
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :display_rules, as: 'displayRules', class: Google::Apis::MapsengineV1::DisplayRule, decorator: Google::Apis::MapsengineV1::DisplayRule::Representation
       
@@ -1223,8 +1223,8 @@ module Google
         end
       end
       
-      # @private
       class ZoomLevels
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max, as: 'max'
           property :min, as: 'min'

@@ -82,8 +82,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class ListLogsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :logs, as: 'logs', class: Google::Apis::LoggingV1beta3::Log, decorator: Google::Apis::LoggingV1beta3::Log::Representation
       
@@ -91,8 +91,8 @@ module Google
         end
       end
       
-      # @private
       class Log
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :display_name, as: 'displayName'
@@ -100,14 +100,14 @@ module Google
         end
       end
       
-      # @private
       class Empty
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
-      # @private
       class WriteLogEntriesRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :common_labels, as: 'commonLabels'
           collection :entries, as: 'entries', class: Google::Apis::LoggingV1beta3::LogEntry, decorator: Google::Apis::LoggingV1beta3::LogEntry::Representation
@@ -115,8 +115,8 @@ module Google
         end
       end
       
-      # @private
       class LogEntry
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :metadata, as: 'metadata', class: Google::Apis::LoggingV1beta3::LogEntryMetadata, decorator: Google::Apis::LoggingV1beta3::LogEntryMetadata::Representation
       
@@ -128,8 +128,8 @@ module Google
         end
       end
       
-      # @private
       class LogEntryMetadata
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :timestamp, as: 'timestamp'
           property :severity, as: 'severity'
@@ -142,14 +142,14 @@ module Google
         end
       end
       
-      # @private
       class WriteLogEntriesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
-      # @private
       class ListLogServicesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :log_services, as: 'logServices', class: Google::Apis::LoggingV1beta3::LogService, decorator: Google::Apis::LoggingV1beta3::LogService::Representation
       
@@ -157,32 +157,32 @@ module Google
         end
       end
       
-      # @private
       class LogService
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           collection :index_keys, as: 'indexKeys'
         end
       end
       
-      # @private
       class ListLogServiceIndexesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :service_index_prefixes, as: 'serviceIndexPrefixes'
           property :next_page_token, as: 'nextPageToken'
         end
       end
       
-      # @private
       class ListLogSinksResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :sinks, as: 'sinks', class: Google::Apis::LoggingV1beta3::LogSink, decorator: Google::Apis::LoggingV1beta3::LogSink::Representation
       
         end
       end
       
-      # @private
       class LogSink
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :destination, as: 'destination'
@@ -191,8 +191,8 @@ module Google
         end
       end
       
-      # @private
       class LogError
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource, as: 'resource'
           property :status, as: 'status', class: Google::Apis::LoggingV1beta3::Status, decorator: Google::Apis::LoggingV1beta3::Status::Representation
@@ -201,8 +201,8 @@ module Google
         end
       end
       
-      # @private
       class Status
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :message, as: 'message'
@@ -210,8 +210,8 @@ module Google
         end
       end
       
-      # @private
       class ListLogServiceSinksResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :sinks, as: 'sinks', class: Google::Apis::LoggingV1beta3::LogSink, decorator: Google::Apis::LoggingV1beta3::LogSink::Representation
       

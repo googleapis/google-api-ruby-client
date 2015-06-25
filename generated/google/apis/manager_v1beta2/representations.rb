@@ -162,8 +162,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class AccessConfig
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :nat_ip, as: 'natIp'
@@ -171,24 +171,24 @@ module Google
         end
       end
       
-      # @private
       class Action
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :commands, as: 'commands'
           property :timeout_ms, as: 'timeoutMs'
         end
       end
       
-      # @private
       class AllowedRule
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_protocol, as: 'IPProtocol'
           collection :ports, as: 'ports'
         end
       end
       
-      # @private
       class AutoscalingModule
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cool_down_period_sec, as: 'coolDownPeriodSec'
           property :description, as: 'description'
@@ -200,23 +200,23 @@ module Google
         end
       end
       
-      # @private
       class AutoscalingModuleStatus
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :autoscaling_config_url, as: 'autoscalingConfigUrl'
         end
       end
       
-      # @private
       class DeployState
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :details, as: 'details'
           property :status, as: 'status'
         end
       end
       
-      # @private
       class Deployment
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_date, as: 'creationDate'
           property :description, as: 'description'
@@ -231,8 +231,8 @@ module Google
         end
       end
       
-      # @private
       class ListDeploymentsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :resources, as: 'resources', class: Google::Apis::ManagerV1beta2::Deployment, decorator: Google::Apis::ManagerV1beta2::Deployment::Representation
@@ -240,24 +240,24 @@ module Google
         end
       end
       
-      # @private
       class DiskAttachment
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_name, as: 'deviceName'
           property :index, as: 'index'
         end
       end
       
-      # @private
       class EnvVariable
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :hidden, as: 'hidden'
           property :value, as: 'value'
         end
       end
       
-      # @private
       class ExistingDisk
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attachment, as: 'attachment', class: Google::Apis::ManagerV1beta2::DiskAttachment, decorator: Google::Apis::ManagerV1beta2::DiskAttachment::Representation
       
@@ -265,8 +265,8 @@ module Google
         end
       end
       
-      # @private
       class FirewallModule
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed, as: 'allowed', class: Google::Apis::ManagerV1beta2::AllowedRule, decorator: Google::Apis::ManagerV1beta2::AllowedRule::Representation
       
@@ -278,15 +278,15 @@ module Google
         end
       end
       
-      # @private
       class FirewallModuleStatus
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :firewall_url, as: 'firewallUrl'
         end
       end
       
-      # @private
       class HealthCheckModule
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :check_interval_sec, as: 'checkIntervalSec'
           property :description, as: 'description'
@@ -299,15 +299,15 @@ module Google
         end
       end
       
-      # @private
       class HealthCheckModuleStatus
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :health_check_url, as: 'healthCheckUrl'
         end
       end
       
-      # @private
       class LbModule
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           collection :health_checks, as: 'healthChecks'
@@ -319,16 +319,16 @@ module Google
         end
       end
       
-      # @private
       class LbModuleStatus
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :forwarding_rule_url, as: 'forwardingRuleUrl'
           property :target_pool_url, as: 'targetPoolUrl'
         end
       end
       
-      # @private
       class Metadata
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :finger_print, as: 'fingerPrint'
           collection :items, as: 'items', class: Google::Apis::ManagerV1beta2::MetadataItem, decorator: Google::Apis::ManagerV1beta2::MetadataItem::Representation
@@ -336,16 +336,16 @@ module Google
         end
       end
       
-      # @private
       class MetadataItem
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, as: 'key'
           property :value, as: 'value'
         end
       end
       
-      # @private
       class Module
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :autoscaling_module, as: 'autoscalingModule', class: Google::Apis::ManagerV1beta2::AutoscalingModule, decorator: Google::Apis::ManagerV1beta2::AutoscalingModule::Representation
       
@@ -363,8 +363,8 @@ module Google
         end
       end
       
-      # @private
       class ModuleStatus
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :autoscaling_module_status, as: 'autoscalingModuleStatus', class: Google::Apis::ManagerV1beta2::AutoscalingModuleStatus, decorator: Google::Apis::ManagerV1beta2::AutoscalingModuleStatus::Representation
       
@@ -384,8 +384,8 @@ module Google
         end
       end
       
-      # @private
       class NetworkInterface
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :access_configs, as: 'accessConfigs', class: Google::Apis::ManagerV1beta2::AccessConfig, decorator: Google::Apis::ManagerV1beta2::AccessConfig::Representation
       
@@ -395,8 +395,8 @@ module Google
         end
       end
       
-      # @private
       class NetworkModule
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :i_pv4_range, as: 'IPv4Range'
           property :description, as: 'description'
@@ -404,15 +404,15 @@ module Google
         end
       end
       
-      # @private
       class NetworkModuleStatus
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :network_url, as: 'networkUrl'
         end
       end
       
-      # @private
       class NewDisk
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attachment, as: 'attachment', class: Google::Apis::ManagerV1beta2::DiskAttachment, decorator: Google::Apis::ManagerV1beta2::DiskAttachment::Representation
       
@@ -423,8 +423,8 @@ module Google
         end
       end
       
-      # @private
       class NewDiskInitializeParams
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
@@ -432,16 +432,16 @@ module Google
         end
       end
       
-      # @private
       class ParamOverride
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :path, as: 'path'
           property :value, as: 'value'
         end
       end
       
-      # @private
       class ReplicaPoolModule
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :env_variables, as: 'envVariables', class: Google::Apis::ManagerV1beta2::EnvVariable, decorator: Google::Apis::ManagerV1beta2::EnvVariable::Representation
       
@@ -453,24 +453,24 @@ module Google
         end
       end
       
-      # @private
       class ReplicaPoolModuleStatus
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :replica_pool_url, as: 'replicaPoolUrl'
           property :resource_view_url, as: 'resourceViewUrl'
         end
       end
       
-      # @private
       class ReplicaPoolParams
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :v1beta1, as: 'v1beta1', class: Google::Apis::ManagerV1beta2::ReplicaPoolParamsV1Beta1, decorator: Google::Apis::ManagerV1beta2::ReplicaPoolParamsV1Beta1::Representation
       
         end
       end
       
-      # @private
       class ReplicaPoolParamsV1Beta1
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_restart, as: 'autoRestart'
           property :base_instance_name, as: 'baseInstanceName'
@@ -495,24 +495,24 @@ module Google
         end
       end
       
-      # @private
       class ServiceAccount
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           collection :scopes, as: 'scopes'
         end
       end
       
-      # @private
       class Tag
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :finger_print, as: 'fingerPrint'
           collection :items, as: 'items'
         end
       end
       
-      # @private
       class Template
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :actions, as: 'actions', class: Google::Apis::ManagerV1beta2::Action, decorator: Google::Apis::ManagerV1beta2::Action::Representation
       
@@ -523,8 +523,8 @@ module Google
         end
       end
       
-      # @private
       class ListTemplatesResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :resources, as: 'resources', class: Google::Apis::ManagerV1beta2::Template, decorator: Google::Apis::ManagerV1beta2::Template::Representation

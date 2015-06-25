@@ -102,8 +102,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class Account
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :auth_tokens, as: 'authTokens', class: Google::Apis::MirrorV1::AuthToken, decorator: Google::Apis::MirrorV1::AuthToken::Representation
       
@@ -114,8 +114,8 @@ module Google
         end
       end
       
-      # @private
       class Attachment
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_type, as: 'contentType'
           property :content_url, as: 'contentUrl'
@@ -124,8 +124,8 @@ module Google
         end
       end
       
-      # @private
       class ListAttachmentsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::MirrorV1::Attachment, decorator: Google::Apis::MirrorV1::Attachment::Representation
       
@@ -133,23 +133,23 @@ module Google
         end
       end
       
-      # @private
       class AuthToken
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auth_token, as: 'authToken'
           property :type, as: 'type'
         end
       end
       
-      # @private
       class Command
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
         end
       end
       
-      # @private
       class Contact
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accept_commands, as: 'acceptCommands', class: Google::Apis::MirrorV1::Command, decorator: Google::Apis::MirrorV1::Command::Representation
       
@@ -167,8 +167,8 @@ module Google
         end
       end
       
-      # @private
       class ListContactsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::MirrorV1::Contact, decorator: Google::Apis::MirrorV1::Contact::Representation
       
@@ -176,8 +176,8 @@ module Google
         end
       end
       
-      # @private
       class Location
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accuracy, as: 'accuracy'
           property :address, as: 'address'
@@ -191,8 +191,8 @@ module Google
         end
       end
       
-      # @private
       class ListLocationsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::MirrorV1::Location, decorator: Google::Apis::MirrorV1::Location::Representation
       
@@ -200,8 +200,8 @@ module Google
         end
       end
       
-      # @private
       class MenuItem
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
           property :contextual_command, as: 'contextual_command'
@@ -213,8 +213,8 @@ module Google
         end
       end
       
-      # @private
       class MenuValue
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :icon_url, as: 'iconUrl'
@@ -222,8 +222,8 @@ module Google
         end
       end
       
-      # @private
       class Notification
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :collection, as: 'collection'
           property :item_id, as: 'itemId'
@@ -235,8 +235,8 @@ module Google
         end
       end
       
-      # @private
       class NotificationConfig
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :delivery_time, as: 'deliveryTime', type: DateTime
       
@@ -244,8 +244,8 @@ module Google
         end
       end
       
-      # @private
       class Setting
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :kind, as: 'kind'
@@ -253,8 +253,8 @@ module Google
         end
       end
       
-      # @private
       class Subscription
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :callback_url, as: 'callbackUrl'
           property :collection, as: 'collection'
@@ -270,8 +270,8 @@ module Google
         end
       end
       
-      # @private
       class ListSubscriptionsResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::MirrorV1::Subscription, decorator: Google::Apis::MirrorV1::Subscription::Representation
       
@@ -279,8 +279,8 @@ module Google
         end
       end
       
-      # @private
       class TimelineItem
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :attachments, as: 'attachments', class: Google::Apis::MirrorV1::Attachment, decorator: Google::Apis::MirrorV1::Attachment::Representation
       
@@ -320,8 +320,8 @@ module Google
         end
       end
       
-      # @private
       class ListTimelineResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::MirrorV1::TimelineItem, decorator: Google::Apis::MirrorV1::TimelineItem::Representation
       
@@ -330,16 +330,16 @@ module Google
         end
       end
       
-      # @private
       class UserAction
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :payload, as: 'payload'
           property :type, as: 'type'
         end
       end
       
-      # @private
       class UserData
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, as: 'key'
           property :value, as: 'value'

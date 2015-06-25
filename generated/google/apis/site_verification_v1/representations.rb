@@ -46,16 +46,16 @@ module Google
         end
       end
       
-      # @private
       class GetWebResourceTokenRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :site, as: 'site', class: Google::Apis::SiteVerificationV1::GetWebResourceTokenRequest::Site, decorator: Google::Apis::SiteVerificationV1::GetWebResourceTokenRequest::Site::Representation
       
           property :verification_method, as: 'verificationMethod'
         end
         
-        # @private
         class Site
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :identifier, as: 'identifier'
             property :type, as: 'type'
@@ -63,24 +63,24 @@ module Google
         end
       end
       
-      # @private
       class GetWebResourceTokenResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :verification_method, as: 'method'
           property :token, as: 'token'
         end
       end
       
-      # @private
       class ListWebResourceResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::SiteVerificationV1::SiteVerificationWebResourceResource, decorator: Google::Apis::SiteVerificationV1::SiteVerificationWebResourceResource::Representation
       
         end
       end
       
-      # @private
       class SiteVerificationWebResourceResource
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           collection :owners, as: 'owners'
@@ -88,8 +88,8 @@ module Google
       
         end
         
-        # @private
         class Site
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :identifier, as: 'identifier'
             property :type, as: 'type'

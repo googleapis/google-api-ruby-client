@@ -46,8 +46,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class Task
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enqueue_timestamp, as: 'enqueueTimestamp'
           property :id, as: 'id'
@@ -60,8 +60,8 @@ module Google
         end
       end
       
-      # @private
       class TaskQueue
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acl, as: 'acl', class: Google::Apis::TaskqueueV1beta2::TaskQueue::Acl, decorator: Google::Apis::TaskqueueV1beta2::TaskQueue::Acl::Representation
       
@@ -72,8 +72,8 @@ module Google
       
         end
         
-        # @private
         class Acl
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :admin_emails, as: 'adminEmails'
             collection :consumer_emails, as: 'consumerEmails'
@@ -81,8 +81,8 @@ module Google
           end
         end
         
-        # @private
         class Stats
+          # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :leased_last_hour, as: 'leasedLastHour'
             property :leased_last_minute, as: 'leasedLastMinute'
@@ -92,8 +92,8 @@ module Google
         end
       end
       
-      # @private
       class Tasks
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::TaskqueueV1beta2::Task, decorator: Google::Apis::TaskqueueV1beta2::Task::Representation
       
@@ -101,8 +101,8 @@ module Google
         end
       end
       
-      # @private
       class Tasks2
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::TaskqueueV1beta2::Task, decorator: Google::Apis::TaskqueueV1beta2::Task::Representation
       

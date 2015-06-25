@@ -38,8 +38,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      # @private
       class GetResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_state_version, as: 'currentStateVersion'
           property :data, as: 'data'
@@ -48,8 +48,8 @@ module Google
         end
       end
       
-      # @private
       class ListResponse
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::AppstateV1::GetResponse, decorator: Google::Apis::AppstateV1::GetResponse::Representation
       
@@ -58,16 +58,16 @@ module Google
         end
       end
       
-      # @private
       class UpdateRequest
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, as: 'data'
           property :kind, as: 'kind'
         end
       end
       
-      # @private
       class WriteResult
+        # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :current_state_version, as: 'currentStateVersion'
           property :kind, as: 'kind'
