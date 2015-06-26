@@ -1,4 +1,4 @@
-# 0.9.0
+# 0.9.0.pre1
 * WARNING: Please see [MIGRATING](MIGRATING.md) for important information.
 * API classes are now generated ahead of time instead of at runtime.
 * Drop support for Ruby versions < 2.0
