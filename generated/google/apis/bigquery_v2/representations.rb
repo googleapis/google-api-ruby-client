@@ -194,6 +194,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class UserDefinedFunctionResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class ViewDefinition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -428,6 +432,8 @@ module Google
           hash :table_definitions, as: 'tableDefinitions', class: Google::Apis::BigqueryV2::ExternalDataConfiguration, decorator: Google::Apis::BigqueryV2::ExternalDataConfiguration::Representation
       
           property :use_query_cache, as: 'useQueryCache'
+          collection :user_defined_function_resources, as: 'userDefinedFunctionResources', class: Google::Apis::BigqueryV2::UserDefinedFunctionResource, decorator: Google::Apis::BigqueryV2::UserDefinedFunctionResource::Representation
+      
           property :write_disposition, as: 'writeDisposition'
         end
       end
@@ -740,6 +746,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :fields, as: 'fields', class: Google::Apis::BigqueryV2::TableFieldSchema, decorator: Google::Apis::BigqueryV2::TableFieldSchema::Representation
       
+        end
+      end
+      
+      class UserDefinedFunctionResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inline_code, as: 'inlineCode'
+          property :resource_uri, as: 'resourceUri'
         end
       end
       

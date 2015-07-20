@@ -21,10 +21,11 @@ APIS=(adexchangebuyer:v1.3 \
 	books:v1 \
 	calendar:v3 \
 	civicinfo:v2 \
-	cloudmonitoring:v2beta2 \
+	classroom:v1beta1 \
+  cloudmonitoring:v2beta2 \
 	cloudresourcemanager:v1beta1 \
 	compute:v1 \
-	container:v1beta1 \
+	container:v1 \
 	content:v2 \
 	coordinate:v1 \
 	customsearch:v1 \
@@ -42,7 +43,7 @@ APIS=(adexchangebuyer:v1.3 \
 	gamesConfiguration:v1configuration \
 	gamesConfiguration:v1management \
 	gan:v1beta1 \
-	genomics:v1beta2 \
+	genomics:v1 \
 	gmail:v1 \
 	groupsmigration:v1 \
 	groupssettings:v1 \

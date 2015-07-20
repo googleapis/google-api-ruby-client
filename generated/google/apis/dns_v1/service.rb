@@ -314,6 +314,8 @@ module Google
         # Enumerate ManagedZones that have been created but not yet deleted.
         # @param [String] project
         #   Identifies the project addressed by this request.
+        # @param [String] dns_name
+        #   Restricts the list to return only zones with this domain name.
         # @param [Fixnum] max_results
         #   Optional. Maximum number of results to be returned. If unspecified, the server
         #   will decide how many results to return.
@@ -341,12 +343,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_managed_zones(project, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_managed_zones(project, dns_name: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/managedZones'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::DnsV1::ListManagedZonesResponse::Representation
           command.response_class = Google::Apis::DnsV1::ListManagedZonesResponse
           command.params['project'] = project unless project.nil?
+          command.query['dnsName'] = dns_name unless dns_name.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

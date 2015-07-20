@@ -23,9 +23,10 @@ module Google
     # Allows MDMs/EMMs and enterprises to manage the deployment of apps to Android
     # for Work users.
     #
+    # @see https://developers.google.com/play/enterprise
     module AndroidenterpriseV1
       VERSION = 'V1'
-      REVISION = '20150303'
+      REVISION = '20150715'
 
       # Manage corporate Android devices
       AUTH_ANDROIDENTERPRISE = 'https://www.googleapis.com/auth/androidenterprise'

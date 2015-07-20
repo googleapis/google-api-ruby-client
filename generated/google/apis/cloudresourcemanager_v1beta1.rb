@@ -21,15 +21,12 @@ module Google
     # Google Cloud Resource Manager API
     #
     # The Google Cloud Resource Manager API provides methods for creating, reading,
-    # and updating of project metadata, including IAM policies, and will shortly
-    # provide the same for other high-level entities (e.g. customers and resource
-    # groups). Longer term, we expect the cloudresourcemanager API to encompass
-    # other Cloud resources as well.
+    # and updating of project metadata.
     #
     # @see https://cloud.google.com/resource-manager
     module CloudresourcemanagerV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20150603'
+      REVISION = '20150711'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

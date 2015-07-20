@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/compute/
     module ResourceviewsV1beta2
       VERSION = 'V1beta2'
-      REVISION = '20150326'
+      REVISION = '20150708'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

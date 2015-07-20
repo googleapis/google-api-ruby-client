@@ -434,6 +434,12 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Enable exponential backoff for suitable methods in the generated clients.
+        # Corresponds to the JSON property `exponentialBackoffDefault`
+        # @return [Boolean]
+        attr_accessor :exponential_backoff_default
+        alias_method :exponential_backoff_default?, :exponential_backoff_default
+      
         # A list of supported features for this API.
         # Corresponds to the JSON property `features`
         # @return [Array<String>]
@@ -546,6 +552,7 @@ module Google
           @discovery_version = args[:discovery_version] unless args[:discovery_version].nil?
           @documentation_link = args[:documentation_link] unless args[:documentation_link].nil?
           @etag = args[:etag] unless args[:etag].nil?
+          @exponential_backoff_default = args[:exponential_backoff_default] unless args[:exponential_backoff_default].nil?
           @features = args[:features] unless args[:features].nil?
           @icons = args[:icons] unless args[:icons].nil?
           @id = args[:id] unless args[:id].nil?

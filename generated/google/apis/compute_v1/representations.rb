@@ -58,6 +58,46 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class Autoscaler
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class AutoscalerAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class AutoscalerList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class AutoscalersScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          end
+        end
+      end
+      
+      class AutoscalingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class AutoscalingPolicyCpuUtilization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class AutoscalingPolicyCustomMetricUtilization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class AutoscalingPolicyLoadBalancingUtilization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class Backend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -206,6 +246,106 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class InstanceGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupManager
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupManagerActionsSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupManagerAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupManagerAutoHealingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupManagerList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupManagersAbandonInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupManagersDeleteInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupManagersListManagedInstancesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupManagersRecreateInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupManagersScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          end
+        end
+      end
+      
+      class InstanceGroupManagersSetInstanceTemplateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupManagersSetTargetPoolsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupsAddInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupsListInstances
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupsListInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupsRemoveInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceGroupsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          end
+        end
+      end
+      
+      class InstanceGroupsSetNamedPortsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class InstanceList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -227,6 +367,10 @@ module Google
       end
       
       class InstanceTemplateList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class InstanceWithNamedPorts
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -274,12 +418,32 @@ module Google
         end
       end
       
+      class ManagedInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class ManagedInstanceLastAttempt
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Errors
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          end
+        end
+      end
+      
       class Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Item
           class Representation < Google::Apis::Core::JsonRepresentation; end
         end
+      end
+      
+      class NamedPort
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
       class Network
@@ -681,6 +845,112 @@ module Google
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
           property :source_image, as: 'sourceImage'
+        end
+      end
+      
+      class Autoscaler
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_policy, as: 'autoscalingPolicy', class: Google::Apis::ComputeV1::AutoscalingPolicy, decorator: Google::Apis::ComputeV1::AutoscalingPolicy::Representation
+      
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :target, as: 'target'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class AutoscalerAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::AutoscalersScopedList, decorator: Google::Apis::ComputeV1::AutoscalersScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class AutoscalerList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Autoscaler, decorator: Google::Apis::ComputeV1::Autoscaler::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class AutoscalersScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :autoscalers, as: 'autoscalers', class: Google::Apis::ComputeV1::Autoscaler, decorator: Google::Apis::ComputeV1::Autoscaler::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::AutoscalersScopedList::Warning, decorator: Google::Apis::ComputeV1::AutoscalersScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::AutoscalersScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::AutoscalersScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class AutoscalingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cool_down_period_sec, as: 'coolDownPeriodSec'
+          property :cpu_utilization, as: 'cpuUtilization', class: Google::Apis::ComputeV1::AutoscalingPolicyCpuUtilization, decorator: Google::Apis::ComputeV1::AutoscalingPolicyCpuUtilization::Representation
+      
+          collection :custom_metric_utilizations, as: 'customMetricUtilizations', class: Google::Apis::ComputeV1::AutoscalingPolicyCustomMetricUtilization, decorator: Google::Apis::ComputeV1::AutoscalingPolicyCustomMetricUtilization::Representation
+      
+          property :load_balancing_utilization, as: 'loadBalancingUtilization', class: Google::Apis::ComputeV1::AutoscalingPolicyLoadBalancingUtilization, decorator: Google::Apis::ComputeV1::AutoscalingPolicyLoadBalancingUtilization::Representation
+      
+          property :max_num_replicas, as: 'maxNumReplicas'
+          property :min_num_replicas, as: 'minNumReplicas'
+        end
+      end
+      
+      class AutoscalingPolicyCpuUtilization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :utilization_target, as: 'utilizationTarget'
+        end
+      end
+      
+      class AutoscalingPolicyCustomMetricUtilization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric, as: 'metric'
+          property :utilization_target, as: 'utilizationTarget'
+          property :utilization_target_type, as: 'utilizationTargetType'
+        end
+      end
+      
+      class AutoscalingPolicyLoadBalancingUtilization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :utilization_target, as: 'utilizationTarget'
         end
       end
       
@@ -1153,6 +1423,261 @@ module Google
         end
       end
       
+      class InstanceGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeV1::NamedPort, decorator: Google::Apis::ComputeV1::NamedPort::Representation
+      
+          property :network, as: 'network'
+          property :self_link, as: 'selfLink'
+          property :size, as: 'size'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class InstanceGroupAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::InstanceGroupsScopedList, decorator: Google::Apis::ComputeV1::InstanceGroupsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class InstanceGroupList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::InstanceGroup, decorator: Google::Apis::ComputeV1::InstanceGroup::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class InstanceGroupManager
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_healing_policies, as: 'autoHealingPolicies', class: Google::Apis::ComputeV1::InstanceGroupManagerAutoHealingPolicy, decorator: Google::Apis::ComputeV1::InstanceGroupManagerAutoHealingPolicy::Representation
+      
+          property :base_instance_name, as: 'baseInstanceName'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :current_actions, as: 'currentActions', class: Google::Apis::ComputeV1::InstanceGroupManagerActionsSummary, decorator: Google::Apis::ComputeV1::InstanceGroupManagerActionsSummary::Representation
+      
+          property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :id, as: 'id'
+          property :instance_group, as: 'instanceGroup'
+          property :instance_template, as: 'instanceTemplate'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          collection :target_pools, as: 'targetPools'
+          property :target_size, as: 'targetSize'
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class InstanceGroupManagerActionsSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :abandoning, as: 'abandoning'
+          property :creating, as: 'creating'
+          property :deleting, as: 'deleting'
+          property :none, as: 'none'
+          property :recreating, as: 'recreating'
+          property :refreshing, as: 'refreshing'
+          property :restarting, as: 'restarting'
+        end
+      end
+      
+      class InstanceGroupManagerAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::InstanceGroupManagersScopedList, decorator: Google::Apis::ComputeV1::InstanceGroupManagersScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class InstanceGroupManagerAutoHealingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_type, as: 'actionType'
+          property :health_check, as: 'healthCheck'
+        end
+      end
+      
+      class InstanceGroupManagerList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::InstanceGroupManager, decorator: Google::Apis::ComputeV1::InstanceGroupManager::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class InstanceGroupManagersAbandonInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class InstanceGroupManagersDeleteInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class InstanceGroupManagersListManagedInstancesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :managed_instances, as: 'managedInstances', class: Google::Apis::ComputeV1::ManagedInstance, decorator: Google::Apis::ComputeV1::ManagedInstance::Representation
+      
+        end
+      end
+      
+      class InstanceGroupManagersRecreateInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances'
+        end
+      end
+      
+      class InstanceGroupManagersScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instance_group_managers, as: 'instanceGroupManagers', class: Google::Apis::ComputeV1::InstanceGroupManager, decorator: Google::Apis::ComputeV1::InstanceGroupManager::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::InstanceGroupManagersScopedList::Warning, decorator: Google::Apis::ComputeV1::InstanceGroupManagersScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::InstanceGroupManagersScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::InstanceGroupManagersScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class InstanceGroupManagersSetInstanceTemplateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_template, as: 'instanceTemplate'
+        end
+      end
+      
+      class InstanceGroupManagersSetTargetPoolsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          collection :target_pools, as: 'targetPools'
+        end
+      end
+      
+      class InstanceGroupsAddInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::ComputeV1::InstanceReference, decorator: Google::Apis::ComputeV1::InstanceReference::Representation
+      
+        end
+      end
+      
+      class InstanceGroupsListInstances
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::InstanceWithNamedPorts, decorator: Google::Apis::ComputeV1::InstanceWithNamedPorts::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class InstanceGroupsListInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_state, as: 'instanceState'
+          property :port_name, as: 'portName'
+        end
+      end
+      
+      class InstanceGroupsRemoveInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::ComputeV1::InstanceReference, decorator: Google::Apis::ComputeV1::InstanceReference::Representation
+      
+        end
+      end
+      
+      class InstanceGroupsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instance_groups, as: 'instanceGroups', class: Google::Apis::ComputeV1::InstanceGroup, decorator: Google::Apis::ComputeV1::InstanceGroup::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::InstanceGroupsScopedList::Warning, decorator: Google::Apis::ComputeV1::InstanceGroupsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::InstanceGroupsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::InstanceGroupsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class InstanceGroupsSetNamedPortsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeV1::NamedPort, decorator: Google::Apis::ComputeV1::NamedPort::Representation
+      
+        end
+      end
+      
       class InstanceList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1224,6 +1749,16 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class InstanceWithNamedPorts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance'
+          collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeV1::NamedPort, decorator: Google::Apis::ComputeV1::NamedPort::Representation
+      
+          property :status, as: 'status'
         end
       end
       
@@ -1346,6 +1881,43 @@ module Google
         end
       end
       
+      class ManagedInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_action, as: 'currentAction'
+          property :id, as: 'id'
+          property :instance, as: 'instance'
+          property :instance_status, as: 'instanceStatus'
+          property :last_attempt, as: 'lastAttempt', class: Google::Apis::ComputeV1::ManagedInstanceLastAttempt, decorator: Google::Apis::ComputeV1::ManagedInstanceLastAttempt::Representation
+      
+        end
+      end
+      
+      class ManagedInstanceLastAttempt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :errors, as: 'errors', class: Google::Apis::ComputeV1::ManagedInstanceLastAttempt::Errors, decorator: Google::Apis::ComputeV1::ManagedInstanceLastAttempt::Errors::Representation
+      
+        end
+        
+        class Errors
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::ComputeV1::ManagedInstanceLastAttempt::Errors::Error, decorator: Google::Apis::ComputeV1::ManagedInstanceLastAttempt::Errors::Error::Representation
+        
+          end
+          
+          class Error
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+          end
+        end
+      end
+      
       class Metadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1361,6 +1933,14 @@ module Google
             property :key, as: 'key'
             property :value, as: 'value'
           end
+        end
+      end
+      
+      class NamedPort
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :port, as: 'port'
         end
       end
       

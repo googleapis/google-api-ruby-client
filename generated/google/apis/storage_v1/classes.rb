@@ -781,7 +781,8 @@ module Google
         attr_accessor :content_type
       
         # CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in
-        # big-endian byte order.
+        # big-endian byte order. For more information about using the CRC32c checksum,
+        # see Hashes and ETags: Best Practices.
         # Corresponds to the JSON property `crc32c`
         # @return [String]
         attr_accessor :crc32c
@@ -806,7 +807,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # MD5 hash of the data; encoded using base64.
+        # MD5 hash of the data; encoded using base64. For more information about using
+        # the MD5 hash, see Hashes and ETags: Best Practices.
         # Corresponds to the JSON property `md5Hash`
         # @return [String]
         attr_accessor :md5_hash

@@ -1663,6 +1663,84 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Binds a YouTube broadcast to a stream or removes an existing binding between a
+        # broadcast and a stream. A broadcast can only be bound to one video stream,
+        # though a video stream may be bound to more than one broadcast.
+        # @param [String] id
+        #   The id parameter specifies the unique ID of the broadcast that is being bound
+        #   to a video stream.
+        # @param [String] on_behalf_of_content_owner
+        #   Note: This parameter is intended exclusively for YouTube content partners.
+        #   The onBehalfOfContentOwner parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
+        # @param [String] on_behalf_of_content_owner_channel
+        #   This parameter can only be used in a properly authorized request. Note: This
+        #   parameter is intended exclusively for YouTube content partners.
+        #   The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel ID
+        #   of the channel to which a video is being added. This parameter is required
+        #   when a request specifies a value for the onBehalfOfContentOwner parameter, and
+        #   it can only be used in conjunction with that parameter. In addition, the
+        #   request must be authorized using a CMS account that is linked to the content
+        #   owner that the onBehalfOfContentOwner parameter specifies. Finally, the
+        #   channel that the onBehalfOfContentOwnerChannel parameter value specifies must
+        #   be linked to the content owner that the onBehalfOfContentOwner parameter
+        #   specifies.
+        #   This parameter is intended for YouTube content partners that own and manage
+        #   many different YouTube channels. It allows content owners to authenticate once
+        #   and perform actions on behalf of the channel specified in the parameter value,
+        #   without having to provide authentication credentials for each separate channel.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more
+        #   liveBroadcast resource properties that the API response will include. The part
+        #   names that you can include in the parameter value are id, snippet,
+        #   contentDetails, and status.
+        # @param [String] stream_id
+        #   The streamId parameter specifies the unique ID of the video stream that is
+        #   being bound to a broadcast. If this parameter is omitted, the API will remove
+        #   any existing binding between the broadcast and a video stream.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::LiveBroadcast] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::LiveBroadcast]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bind_direct_live_broadcast(id: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, stream_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = 'liveBroadcasts/bind/direct'
+          command =  make_simple_command(:post, path, options)
+          command.response_representation = Google::Apis::YoutubeV3::LiveBroadcast::Representation
+          command.response_class = Google::Apis::YoutubeV3::LiveBroadcast
+          command.query['id'] = id unless id.nil?
+          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
+          command.query['onBehalfOfContentOwnerChannel'] = on_behalf_of_content_owner_channel unless on_behalf_of_content_owner_channel.nil?
+          command.query['part'] = part unless part.nil?
+          command.query['streamId'] = stream_id unless stream_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Controls the settings for a slate that can be displayed in the broadcast
         # stream.
         # @param [Boolean] display_slate

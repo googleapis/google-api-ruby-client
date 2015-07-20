@@ -1146,6 +1146,13 @@ module Google
       class EventAttachment
         include Google::Apis::Core::Hashable
       
+        # ID of the attached file. Read-only.
+        # E.g. for Google Drive files this is the ID of the corresponding Files resource
+        # entry in the Drive API.
+        # Corresponds to the JSON property `fileId`
+        # @return [String]
+        attr_accessor :file_id
+      
         # URL link to the attachment.
         # For adding Google Drive file attachments use the same format as in
         # alternateLink property of the Files resource in the Drive API.
@@ -1174,6 +1181,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @file_id = args[:file_id] unless args[:file_id].nil?
           @file_url = args[:file_url] unless args[:file_url].nil?
           @icon_link = args[:icon_link] unless args[:icon_link].nil?
           @mime_type = args[:mime_type] unless args[:mime_type].nil?

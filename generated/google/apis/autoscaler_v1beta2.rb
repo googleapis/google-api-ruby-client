@@ -26,7 +26,7 @@ module Google
     # @see http://developers.google.com/compute/docs/autoscaler
     module AutoscalerV1beta2
       VERSION = 'V1beta2'
-      REVISION = '20150617'
+      REVISION = '20150629'
 
       # View and manage your Google Compute Engine resources
       AUTH_COMPUTE = 'https://www.googleapis.com/auth/compute'

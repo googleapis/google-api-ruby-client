@@ -26,20 +26,20 @@ module Google
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
       
-        # # Overview The `Policy` defines an access control policy language. It can be
-        # used to define policies that can be attached to resources like files, folders,
-        # VMs, etc. # Policy structure A `Policy` consists of a list of bindings. A `
-        # Binding` binds a set of members to a role, where the members can include user
-        # accounts, user groups, user domains, and service accounts. A role is a named
-        # set of permissions, defined by the IAM system. The definition of a role is
-        # outside the policy. A permission check involves determining the roles that
-        # include the specified permission, and then determining if the principal
-        # specified by the check is a member of a binding to at least one of these roles.
-        # The membership check is recursive when a group is bound to a role. Policy
-        # examples: ``` ` "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@
-        # example.com", "group::admins@example.com", "domain:google.com", "
-        # serviceAccount:frontend@example.iam.gserviceaccounts.com"] `, ` "role": "roles/
-        # viewer", "members": ["user:sean@example.com"] ` ] ` ```
+        # # Overview The `Policy` defines an access control policy language. It is used
+        # to define policies that are attached to resources like files, folders, VMs,
+        # etc. # Policy structure A `Policy` consists of a list of bindings. A `Binding`
+        # binds a set of members to a role, where the members include user accounts,
+        # user groups, user domains, and service accounts. A 'role' is a named set of
+        # permissions, defined by IAM. The definition of a role is outside the policy. A
+        # permission check first determines the roles that include the specified
+        # permission, and then determines if the principal specified is a member of a
+        # binding to at least one of these roles. The membership check is recursive when
+        # a group is bound to a role. Policy examples: ``` ` "bindings": [ ` "role": "
+        # roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
+        # "domain:google.com", "serviceAccount:frontend@example.iam.gserviceaccounts.
+        # com"] `, ` "role": "roles/viewer", "members": ["user:sean@example.com"] ` ] ` `
+        # ``
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::PubsubV1beta2::Policy]
         attr_accessor :policy
@@ -54,25 +54,25 @@ module Google
         end
       end
       
-      # # Overview The `Policy` defines an access control policy language. It can be
-      # used to define policies that can be attached to resources like files, folders,
-      # VMs, etc. # Policy structure A `Policy` consists of a list of bindings. A `
-      # Binding` binds a set of members to a role, where the members can include user
-      # accounts, user groups, user domains, and service accounts. A role is a named
-      # set of permissions, defined by the IAM system. The definition of a role is
-      # outside the policy. A permission check involves determining the roles that
-      # include the specified permission, and then determining if the principal
-      # specified by the check is a member of a binding to at least one of these roles.
-      # The membership check is recursive when a group is bound to a role. Policy
-      # examples: ``` ` "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@
-      # example.com", "group::admins@example.com", "domain:google.com", "
-      # serviceAccount:frontend@example.iam.gserviceaccounts.com"] `, ` "role": "roles/
-      # viewer", "members": ["user:sean@example.com"] ` ] ` ```
+      # # Overview The `Policy` defines an access control policy language. It is used
+      # to define policies that are attached to resources like files, folders, VMs,
+      # etc. # Policy structure A `Policy` consists of a list of bindings. A `Binding`
+      # binds a set of members to a role, where the members include user accounts,
+      # user groups, user domains, and service accounts. A 'role' is a named set of
+      # permissions, defined by IAM. The definition of a role is outside the policy. A
+      # permission check first determines the roles that include the specified
+      # permission, and then determines if the principal specified is a member of a
+      # binding to at least one of these roles. The membership check is recursive when
+      # a group is bound to a role. Policy examples: ``` ` "bindings": [ ` "role": "
+      # roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
+      # "domain:google.com", "serviceAccount:frontend@example.iam.gserviceaccounts.
+      # com"] `, ` "role": "roles/viewer", "members": ["user:sean@example.com"] ` ] ` `
+      # ``
       class Policy
         include Google::Apis::Core::Hashable
       
-        # The policy language version. The version of the policy itself is represented
-        # by the etag. The current version is 0.
+        # The policy language version. The version of the policy is represented by the
+        # etag. The default version is 0.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -106,8 +106,7 @@ module Google
         end
       end
       
-      # Associates members of various types with roles. See below for details of the
-      # various objects that can be included as members.
+      # Associates members with roles. See below for allowed formats of members.
       class Binding
         include Google::Apis::Core::Hashable
       
@@ -387,10 +386,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name of the topic. It must have the format "projects/`project`/topics/`
-        # topic`" for Google Cloud Pub/Sub API v1beta2. `topic` must start with a letter,
-        # and contain only letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (
-        # _), periods (.), tildes (~), plus (+) or percent signs (%). It must be between
-        # 3 and 255 characters in length, and it must not start with "goog".
+        # topic`" for Google Cloud Pub/Sub API v1 and v1beta2. `topic` must start with a
+        # letter, and contain only letters ([A-Za-z]), numbers ([0-9], dashes (-),
+        # underscores (_), periods (.), tildes (~), plus (+) or percent signs (%). It
+        # must be between 3 and 255 characters in length, and it must not start with "
+        # goog".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -535,7 +535,8 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); `
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -553,7 +554,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name of the subscription. It must have the format "projects/`project`/
-        # subscriptions/`subscription`" for Google Cloud Pub/Sub API v1beta2. `
+        # subscriptions/`subscription`" for Google Cloud Pub/Sub API v1 and v1beta2. `
         # subscription` must start with a letter, and contain only letters ([A-Za-z]),
         # numbers ([0-9], dashes (-), underscores (_), periods (.), tildes (~), plus (+)
         # or percent signs (%). It must be between 3 and 255 characters in length, and
@@ -562,9 +563,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The name of the topic from which this subscription is receiving messages. This
-        # will be present if and only if the subscription has not been detached from its
-        # topic.
+        # The name of the topic from which this subscription is receiving messages. The
+        # value of this field will be `_deleted-topic_` if the topic has been deleted.
         # Corresponds to the JSON property `topic`
         # @return [String]
         attr_accessor :topic
@@ -672,7 +672,7 @@ module Google
       class ModifyAckDeadlineRequest
         include Google::Apis::Core::Hashable
       
-        # The acknowledgment ID.
+        # The acknowledgment ID. Either this or ack_ids must be populated, but not both.
         # Corresponds to the JSON property `ackId`
         # @return [String]
         attr_accessor :ack_id

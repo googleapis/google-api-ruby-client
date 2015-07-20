@@ -31,6 +31,7 @@ module Google
       #    Androidenterprise = Google::Apis::AndroidenterpriseV1 # Alias the module
       #    service = Androidenterprise::AndroidEnterpriseService.new
       #
+      # @see https://developers.google.com/play/enterprise
       class AndroidEnterpriseService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -1597,17 +1598,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates a URL that can be used to display an iframe to view the product's
-        # permissions (if any) and approve the product. This URL can be used to approve
-        # the product for a limited time (currently 1 hour) using the Products.approve
-        # call.
+        # Generates a URL that can be rendered in an iframe to display the permissions (
+        # if any) of a product. An enterprise admin must view these permissions and
+        # accept them on behalf of their organization in order to approve that product.
+        # Admins should accept the displayed permissions by interacting with a separate
+        # UI element in the EMM console, which in turn should trigger the use of this
+        # URL as the approvalUrlInfo.approvalUrl property in a Products.approve call to
+        # approve the product. This URL can only be used to display permissions for up
+        # to 1 day.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] product_id
         #   The ID of the product.
         # @param [String] language_code
-        #   The language code that will be used for permission names and descriptions in
-        #   the returned iframe.
+        #   The BCP 47 language code used for permission names and descriptions in the
+        #   returned iframe, for instance "en-US".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

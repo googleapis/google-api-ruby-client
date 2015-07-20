@@ -145,17 +145,18 @@ module Google
         end
       end
       
-      # App version represents a single APK version.
+      # This represents a single version of the app.
       class AppVersion
         include Google::Apis::Core::Hashable
       
-        # Unique increasing identifier for the apk version.
+        # Unique increasing identifier for the app version.
         # Corresponds to the JSON property `versionCode`
         # @return [Fixnum]
         attr_accessor :version_code
       
-        # The string used in the Play Store by the app developer to identify a version
-        # of an app. The string is not necessarily unique or localized (e.g. "1.4").
+        # The string used in the Play Store by the app developer to identify the version.
+        # The string is not necessarily unique or localized (for example, the string
+        # could be "1.4").
         # Corresponds to the JSON property `versionString`
         # @return [String]
         attr_accessor :version_string
@@ -612,17 +613,16 @@ module Google
       # admin approves a product in Google Play, if the product is added to a
       # collection, or if an entitlement for the product is created for a user via the
       # API. For paid products, a group license object is only created as part of the
-      # first bulk purchase of that product in Google Play done by the enterprise
-      # admin.
+      # first bulk purchase of that product in Google Play by the enterprise admin.
       # The API can be used to query group licenses; the available information
       # includes the total number of licenses purchased (for paid products) and the
-      # total number of licenses that have been provisioned, i.e. the total number of
-      # user entitlements in existence for the product.
-      # Group license objects are never deleted; if e.g. a free app is added to a
-      # collection and then removed, the group license will remain, allowing to keep
-      # track of any remaining entitlements. An enterprise admin may indicate they are
-      # no longer interested in the group license by marking it as unapproved in
-      # Google Play.
+      # total number of licenses that have been provisioned, that is, the total number
+      # of user entitlements in existence for the product.
+      # Group license objects are never deleted. If, for example, a free app is added
+      # to a collection and then removed, the group license will remain, allowing the
+      # enterprise admin to keep track of any remaining entitlements. An enterprise
+      # admin may indicate they are no longer interested in the group license by
+      # marking it as unapproved in Google Play.
       class GroupLicense
         include Google::Apis::Core::Hashable
       
@@ -877,8 +877,8 @@ module Google
       class Product
         include Google::Apis::Core::Hashable
       
-        # List of app versions available for this product. The returned list contains
-        # only public versions. E.g. alpha, beta or canary versions will not be included.
+        # App versions currently available for this product. The returned list contains
+        # only public versions. Alpha and beta versions are not included.
         # Corresponds to the JSON property `appVersion`
         # @return [Array<Google::Apis::AndroidenterpriseV1::AppVersion>]
         attr_accessor :app_version
@@ -893,7 +893,12 @@ module Google
         # @return [String]
         attr_accessor :details_url
       
-        # How and to whom the package is made available.
+        # How and to whom the package is made available. The value publicGoogleHosted
+        # means that the package is available through the Play Store and not restricted
+        # to a specific enterprise. The value privateGoogleHosted means that the package
+        # is a private app (restricted to an enterprise) but hosted by Google. The value
+        # privateSelfHosted means that the package is a private app (restricted to an
+        # enterprise) and is privately hosted.
         # Corresponds to the JSON property `distributionChannel`
         # @return [String]
         attr_accessor :distribution_channel
@@ -909,8 +914,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # A string of the form "app:
-        # " - e.g. "app:com.google.android.gm" represents the GMail app.
+        # A string of the form app:
+        # . For example, app:com.google.android.gm represents the Gmail app.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -1037,12 +1042,14 @@ module Google
       class GenerateProductApprovalUrlResponse
         include Google::Apis::Core::Hashable
       
-        # A iframe-able URL that displays a product's permissions (if any). This URL can
-        # be used to approve the product only once and for a limited time (1 hour),
-        # using the Products.approve call. If the product is not currently approved and
-        # has no permissions, this URL will point to an empty page. If the product is
-        # currently approved and all of its permissions (if any) are also approved, this
-        # field will not be populated.
+        # A URL that can be rendered in an iframe to display the permissions (if any) of
+        # a product. This URL can be used to approve the product only once and only
+        # within 24 hours of being generated, using the Products.approve call. If the
+        # product is currently unapproved and has no permissions, this URL will point to
+        # an empty page. If the product is currently approved, a URL will only be
+        # generated if that product has added permissions since it was last approved,
+        # and the URL will only display those new permissions that have not yet been
+        # accepted.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url

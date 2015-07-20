@@ -176,7 +176,14 @@ module Google
           property :number_voting_for, as: 'numberVotingFor'
           property :office, as: 'office'
           property :primary_party, as: 'primaryParty'
+          collection :referendum_ballot_responses, as: 'referendumBallotResponses'
+          property :referendum_brief, as: 'referendumBrief'
+          property :referendum_con_statement, as: 'referendumConStatement'
+          property :referendum_effect_of_abstain, as: 'referendumEffectOfAbstain'
+          property :referendum_passage_threshold, as: 'referendumPassageThreshold'
+          property :referendum_pro_statement, as: 'referendumProStatement'
           property :referendum_subtitle, as: 'referendumSubtitle'
+          property :referendum_text, as: 'referendumText'
           property :referendum_title, as: 'referendumTitle'
           property :referendum_url, as: 'referendumUrl'
           collection :roles, as: 'roles'
@@ -358,6 +365,7 @@ module Google
           property :election, as: 'election', class: Google::Apis::CivicinfoV2::Election, decorator: Google::Apis::CivicinfoV2::Election::Representation
       
           property :kind, as: 'kind'
+          property :mail_only, as: 'mailOnly'
           property :normalized_input, as: 'normalizedInput', class: Google::Apis::CivicinfoV2::SimpleAddressType, decorator: Google::Apis::CivicinfoV2::SimpleAddressType::Representation
       
           collection :other_elections, as: 'otherElections', class: Google::Apis::CivicinfoV2::Election, decorator: Google::Apis::CivicinfoV2::Election::Representation

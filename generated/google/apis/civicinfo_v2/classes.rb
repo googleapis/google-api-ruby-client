@@ -315,11 +315,57 @@ module Google
         # @return [String]
         attr_accessor :primary_party
       
+        # The set of ballot responses for the referendum. A ballot response represents a
+        # line on the ballot. Common examples might include "yes" or "no" for referenda,
+        # or a judge's name for a retention contest. This field is only populated for
+        # contests of type 'Referendum'.
+        # Corresponds to the JSON property `referendumBallotResponses`
+        # @return [Array<String>]
+        attr_accessor :referendum_ballot_responses
+      
+        # Specifies a short summary of the referendum that is on the ballot below the
+        # title but above the text. This field is only populated for contests of type '
+        # Referendum'.
+        # Corresponds to the JSON property `referendumBrief`
+        # @return [String]
+        attr_accessor :referendum_brief
+      
+        # A statement in opposition to the referendum. It does not necessarily appear on
+        # the ballot. This field is only populated for contests of type 'Referendum'.
+        # Corresponds to the JSON property `referendumConStatement`
+        # @return [String]
+        attr_accessor :referendum_con_statement
+      
+        # Specifies what effect abstaining (not voting) on the proposition will have (i.
+        # e. whether abstaining is considered a vote against it). This field is only
+        # populated for contests of type 'Referendum'.
+        # Corresponds to the JSON property `referendumEffectOfAbstain`
+        # @return [String]
+        attr_accessor :referendum_effect_of_abstain
+      
+        # The threshold of votes that the referendum needs in order to pass, e.g. "two-
+        # thirds". This field is only populated for contests of type 'Referendum'.
+        # Corresponds to the JSON property `referendumPassageThreshold`
+        # @return [String]
+        attr_accessor :referendum_passage_threshold
+      
+        # A statement in favor of the referendum. It does not necessarily appear on the
+        # ballot. This field is only populated for contests of type 'Referendum'.
+        # Corresponds to the JSON property `referendumProStatement`
+        # @return [String]
+        attr_accessor :referendum_pro_statement
+      
         # A brief description of the referendum. This field is only populated for
         # contests of type 'Referendum'.
         # Corresponds to the JSON property `referendumSubtitle`
         # @return [String]
         attr_accessor :referendum_subtitle
+      
+        # The full text of the referendum. This field is only populated for contests of
+        # type 'Referendum'.
+        # Corresponds to the JSON property `referendumText`
+        # @return [String]
+        attr_accessor :referendum_text
       
         # The title of the referendum (e.g. 'Proposition 42'). This field is only
         # populated for contests of type 'Referendum'.
@@ -372,7 +418,14 @@ module Google
           @number_voting_for = args[:number_voting_for] unless args[:number_voting_for].nil?
           @office = args[:office] unless args[:office].nil?
           @primary_party = args[:primary_party] unless args[:primary_party].nil?
+          @referendum_ballot_responses = args[:referendum_ballot_responses] unless args[:referendum_ballot_responses].nil?
+          @referendum_brief = args[:referendum_brief] unless args[:referendum_brief].nil?
+          @referendum_con_statement = args[:referendum_con_statement] unless args[:referendum_con_statement].nil?
+          @referendum_effect_of_abstain = args[:referendum_effect_of_abstain] unless args[:referendum_effect_of_abstain].nil?
+          @referendum_passage_threshold = args[:referendum_passage_threshold] unless args[:referendum_passage_threshold].nil?
+          @referendum_pro_statement = args[:referendum_pro_statement] unless args[:referendum_pro_statement].nil?
           @referendum_subtitle = args[:referendum_subtitle] unless args[:referendum_subtitle].nil?
+          @referendum_text = args[:referendum_text] unless args[:referendum_text].nil?
           @referendum_title = args[:referendum_title] unless args[:referendum_title].nil?
           @referendum_url = args[:referendum_url] unless args[:referendum_url].nil?
           @roles = args[:roles] unless args[:roles].nil?
@@ -1006,6 +1059,13 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Specifies whether voters in the precinct vote only by mailing their ballots (
+        # with the possible option of dropping off their ballots as well).
+        # Corresponds to the JSON property `mailOnly`
+        # @return [Boolean]
+        attr_accessor :mail_only
+        alias_method :mail_only?, :mail_only
+      
         # A simple representation of an address.
         # Corresponds to the JSON property `normalizedInput`
         # @return [Google::Apis::CivicinfoV2::SimpleAddressType]
@@ -1045,6 +1105,7 @@ module Google
           @early_vote_sites = args[:early_vote_sites] unless args[:early_vote_sites].nil?
           @election = args[:election] unless args[:election].nil?
           @kind = args[:kind] unless args[:kind].nil?
+          @mail_only = args[:mail_only] unless args[:mail_only].nil?
           @normalized_input = args[:normalized_input] unless args[:normalized_input].nil?
           @other_elections = args[:other_elections] unless args[:other_elections].nil?
           @polling_locations = args[:polling_locations] unless args[:polling_locations].nil?

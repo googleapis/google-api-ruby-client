@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/container-engine/docs/v1beta1/
     module ContainerV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20150617'
+      REVISION = '20150713'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

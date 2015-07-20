@@ -36,7 +36,7 @@ module Google
       # View and manage your assets and associated content on YouTube
       AUTH_YOUTUBEPARTNER = 'https://www.googleapis.com/auth/youtubepartner'
 
-      # View YouTube Analytics monetary reports for your YouTube content
+      # View monetary and non-monetary YouTube Analytics reports for your YouTube content
       AUTH_YT_ANALYTICS_MONETARY_READONLY = 'https://www.googleapis.com/auth/yt-analytics-monetary.readonly'
 
       # View YouTube Analytics reports for your YouTube content

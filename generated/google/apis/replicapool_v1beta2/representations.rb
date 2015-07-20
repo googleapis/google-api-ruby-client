@@ -227,6 +227,7 @@ module Google
       class ReplicaPoolAutoHealingPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_type, as: 'actionType'
           property :health_check, as: 'healthCheck'
         end
       end

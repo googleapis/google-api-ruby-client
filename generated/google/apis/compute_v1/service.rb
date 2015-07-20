@@ -56,12 +56,31 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -231,12 +250,31 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -268,6 +306,358 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the list of autoscalers grouped by scope.
+        # @param [String] project
+        #   Name of the project scoping this request.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
+        # @param [Fixnum] max_results
+        #   Maximum count of results to be returned.
+        # @param [String] page_token
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::AutoscalerAggregatedList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::AutoscalerAggregatedList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def aggregated_list_autoscaler(project, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/aggregated/autoscalers'
+          command =  make_simple_command(:get, path, options)
+          command.response_representation = Google::Apis::ComputeV1::AutoscalerAggregatedList::Representation
+          command.response_class = Google::Apis::ComputeV1::AutoscalerAggregatedList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified autoscaler resource.
+        # @param [String] project
+        #   Name of the project scoping this request.
+        # @param [String] zone
+        #   Name of the zone scoping this request.
+        # @param [String] autoscaler
+        #   Name of the persistent autoscaler resource to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_autoscaler(project, zone, autoscaler, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/autoscalers/{autoscaler}'
+          command =  make_simple_command(:delete, path, options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['autoscaler'] = autoscaler unless autoscaler.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified autoscaler resource.
+        # @param [String] project
+        #   Name of the project scoping this request.
+        # @param [String] zone
+        #   Name of the zone scoping this request.
+        # @param [String] autoscaler
+        #   Name of the persistent autoscaler resource to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Autoscaler] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Autoscaler]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_autoscaler(project, zone, autoscaler, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/autoscalers/{autoscaler}'
+          command =  make_simple_command(:get, path, options)
+          command.response_representation = Google::Apis::ComputeV1::Autoscaler::Representation
+          command.response_class = Google::Apis::ComputeV1::Autoscaler
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['autoscaler'] = autoscaler unless autoscaler.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an autoscaler resource in the specified project using the data
+        # included in the request.
+        # @param [String] project
+        #   Name of the project scoping this request.
+        # @param [String] zone
+        #   Name of the zone scoping this request.
+        # @param [Google::Apis::ComputeV1::Autoscaler] autoscaler_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_autoscaler(project, zone, autoscaler_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/autoscalers'
+          command =  make_simple_command(:post, path, options)
+          command.request_representation = Google::Apis::ComputeV1::Autoscaler::Representation
+          command.request_object = autoscaler_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the list of autoscaler resources contained within the specified zone.
+        # @param [String] project
+        #   Name of the project scoping this request.
+        # @param [String] zone
+        #   Name of the zone scoping this request.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
+        # @param [Fixnum] max_results
+        #   Maximum count of results to be returned.
+        # @param [String] page_token
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::AutoscalerList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::AutoscalerList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_autoscalers(project, zone, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/autoscalers'
+          command =  make_simple_command(:get, path, options)
+          command.response_representation = Google::Apis::ComputeV1::AutoscalerList::Representation
+          command.response_class = Google::Apis::ComputeV1::AutoscalerList
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an autoscaler resource in the specified project using the data
+        # included in the request. This method supports patch semantics.
+        # @param [String] project
+        #   Name of the project scoping this request.
+        # @param [String] zone
+        #   Name of the zone scoping this request.
+        # @param [Google::Apis::ComputeV1::Autoscaler] autoscaler_object
+        # @param [String] autoscaler
+        #   Name of the autoscaler resource to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_autoscaler(project, zone, autoscaler_object = nil, autoscaler: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/autoscalers'
+          command =  make_simple_command(:patch, path, options)
+          command.request_representation = Google::Apis::ComputeV1::Autoscaler::Representation
+          command.request_object = autoscaler_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['autoscaler'] = autoscaler unless autoscaler.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an autoscaler resource in the specified project using the data
+        # included in the request.
+        # @param [String] project
+        #   Name of the project scoping this request.
+        # @param [String] zone
+        #   Name of the zone scoping this request.
+        # @param [Google::Apis::ComputeV1::Autoscaler] autoscaler_object
+        # @param [String] autoscaler
+        #   Name of the autoscaler resource to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_autoscaler(project, zone, autoscaler_object = nil, autoscaler: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/autoscalers'
+          command =  make_simple_command(:put, path, options)
+          command.request_representation = Google::Apis::ComputeV1::Autoscaler::Representation
+          command.request_object = autoscaler_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['autoscaler'] = autoscaler unless autoscaler.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -438,12 +828,31 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -569,12 +978,31 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -659,12 +1087,31 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -706,12 +1153,31 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -793,7 +1259,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified persistent disk.
+        # Deletes the specified persistent disk. Deleting a disk removes its data
+        # permanently and is irreversible. However, deleting a disk does not delete any
+        # snapshots previously made from the disk. You must separately delete snapshots.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -929,12 +1397,31 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1094,12 +1581,31 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1225,12 +1731,31 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1401,12 +1926,31 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1611,12 +2155,31 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1776,12 +2339,31 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1864,12 +2446,31 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1906,11 +2507,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified operation resource.
+        # Deletes the specified Operations resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] operation
-        #   Name of the operation resource to delete.
+        #   Name of the Operations resource to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1943,11 +2544,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the specified operation resource.
+        # Retrieves the specified Operations resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] operation
-        #   Name of the operation resource to return.
+        #   Name of the Operations resource to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1982,17 +2583,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of operation resources contained within the specified
+        # Retrieves the list of Operation resources contained within the specified
         # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2152,12 +2772,31 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2445,12 +3084,31 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2481,6 +3139,1069 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes the specified instances from the managed instance group, and from any
+        # target pools where they are a member. The instances are not deleted. The
+        # managed instance group automatically reduces its targetSize value by the
+        # number of instances that you abandon from the group.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the managed instance group is located.
+        # @param [String] instance_group_manager
+        #   The name of the instance group manager.
+        # @param [Google::Apis::ComputeV1::InstanceGroupManagersAbandonInstancesRequest] instance_group_managers_abandon_instances_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def abandon_instance_group_manager_instances(project, zone, instance_group_manager, instance_group_managers_abandon_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/abandonInstances'
+          command =  make_simple_command(:post, path, options)
+          command.request_representation = Google::Apis::ComputeV1::InstanceGroupManagersAbandonInstancesRequest::Representation
+          command.request_object = instance_group_managers_abandon_instances_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the list of managed instance groups, and groups them by project and
+        # zone.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
+        # @param [Fixnum] max_results
+        #   Maximum count of results to be returned.
+        # @param [String] page_token
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::InstanceGroupManagerAggregatedList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagerAggregatedList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_aggregated_instance_group_managers(project, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/aggregated/instanceGroupManagers'
+          command =  make_simple_command(:get, path, options)
+          command.response_representation = Google::Apis::ComputeV1::InstanceGroupManagerAggregatedList::Representation
+          command.response_class = Google::Apis::ComputeV1::InstanceGroupManagerAggregatedList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified managed instance group resource.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the managed instance group is located.
+        # @param [String] instance_group_manager
+        #   The name of the instance group manager to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_instance_group_manager(project, zone, instance_group_manager, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}'
+          command =  make_simple_command(:delete, path, options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified instances. The instances are deleted and removed from
+        # the instance group and any target pools where they are a member. The managed
+        # instance group automatically reduces its targetSize value by the number of
+        # instances that you delete.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the managed instance group is located.
+        # @param [String] instance_group_manager
+        #   The name of the instance group manager.
+        # @param [Google::Apis::ComputeV1::InstanceGroupManagersDeleteInstancesRequest] instance_group_managers_delete_instances_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_instance_group_manager_instances(project, zone, instance_group_manager, instance_group_managers_delete_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/deleteInstances'
+          command =  make_simple_command(:post, path, options)
+          command.request_representation = Google::Apis::ComputeV1::InstanceGroupManagersDeleteInstancesRequest::Representation
+          command.request_object = instance_group_managers_delete_instances_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified managed instance group resource.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the managed instance group is located.
+        # @param [String] instance_group_manager
+        #   The name of the instance group manager resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::InstanceGroupManager] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::InstanceGroupManager]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_instance_group_manager(project, zone, instance_group_manager, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}'
+          command =  make_simple_command(:get, path, options)
+          command.response_representation = Google::Apis::ComputeV1::InstanceGroupManager::Representation
+          command.response_class = Google::Apis::ComputeV1::InstanceGroupManager
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a managed instance group resource in the specified project using the
+        # data that is included in the request.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the managed instance group is located.
+        # @param [Google::Apis::ComputeV1::InstanceGroupManager] instance_group_manager_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_instance_group_manager(project, zone, instance_group_manager_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroupManagers'
+          command =  make_simple_command(:post, path, options)
+          command.request_representation = Google::Apis::ComputeV1::InstanceGroupManager::Representation
+          command.request_object = instance_group_manager_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of managed instance groups that are contained within the
+        # specified project and zone.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the managed instance group is located.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
+        # @param [Fixnum] max_results
+        #   Maximum count of results to be returned.
+        # @param [String] page_token
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::InstanceGroupManagerList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagerList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_instance_group_managers(project, zone, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroupManagers'
+          command =  make_simple_command(:get, path, options)
+          command.response_representation = Google::Apis::ComputeV1::InstanceGroupManagerList::Representation
+          command.response_class = Google::Apis::ComputeV1::InstanceGroupManagerList
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists managed instances.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the managed instance group is located.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::InstanceGroupManagersListManagedInstancesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagersListManagedInstancesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_instance_group_manager_managed_instances(project, zone, instance_group_manager, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/listManagedInstances'
+          command =  make_simple_command(:post, path, options)
+          command.response_representation = Google::Apis::ComputeV1::InstanceGroupManagersListManagedInstancesResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::InstanceGroupManagersListManagedInstancesResponse
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Recreates the specified instances. The instances are deleted, then recreated
+        # using the managed instance group's current instance template.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the managed instance group is located.
+        # @param [String] instance_group_manager
+        #   The name of the instance group manager.
+        # @param [Google::Apis::ComputeV1::InstanceGroupManagersRecreateInstancesRequest] instance_group_managers_recreate_instances_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def recreate_instance_group_manager_instances(project, zone, instance_group_manager, instance_group_managers_recreate_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/recreateInstances'
+          command =  make_simple_command(:post, path, options)
+          command.request_representation = Google::Apis::ComputeV1::InstanceGroupManagersRecreateInstancesRequest::Representation
+          command.request_object = instance_group_managers_recreate_instances_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resizes the managed instance group. If you increase the size, the group
+        # creates new instances using the current instance template. If you decrease the
+        # size, the group removes instances in the order that is outlined in Resizing a
+        # managed instance group.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the managed instance group is located.
+        # @param [String] instance_group_manager
+        #   The name of the instance group manager.
+        # @param [Fixnum] size
+        #   The number of running instances that the managed instance group should
+        #   maintain at any given time. The group automatically adds or removes instances
+        #   to maintain the number of instances specified by this parameter.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resize_instance_group_manager(project, zone, instance_group_manager, size: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resize'
+          command =  make_simple_command(:post, path, options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['size'] = size unless size.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Specifies the instance template to use when creating new instances in this
+        # group. The templates for existing instances in the group do not change unless
+        # you recreate them.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the managed instance group is located.
+        # @param [String] instance_group_manager
+        #   The name of the instance group manager.
+        # @param [Google::Apis::ComputeV1::InstanceGroupManagersSetInstanceTemplateRequest] instance_group_managers_set_instance_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_instance_group_manager_instance_template(project, zone, instance_group_manager, instance_group_managers_set_instance_template_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setInstanceTemplate'
+          command =  make_simple_command(:post, path, options)
+          command.request_representation = Google::Apis::ComputeV1::InstanceGroupManagersSetInstanceTemplateRequest::Representation
+          command.request_object = instance_group_managers_set_instance_template_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Modifies the target pools to which all new instances in this group are
+        # assigned. The target pools for existing instances in the group do not change
+        # unless you recreate them.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the managed instance group is located.
+        # @param [String] instance_group_manager
+        #   The name of the instance group manager.
+        # @param [Google::Apis::ComputeV1::InstanceGroupManagersSetTargetPoolsRequest] instance_group_managers_set_target_pools_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_instance_group_manager_target_pools(project, zone, instance_group_manager, instance_group_managers_set_target_pools_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setTargetPools'
+          command =  make_simple_command(:post, path, options)
+          command.request_representation = Google::Apis::ComputeV1::InstanceGroupManagersSetTargetPoolsRequest::Representation
+          command.request_object = instance_group_managers_set_target_pools_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Adds a list of instances to an instance group. All of the instances in the
+        # instance group must be in the same network.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the instance group is located.
+        # @param [String] instance_group
+        #   The name of the instance group where you are adding instances.
+        # @param [Google::Apis::ComputeV1::InstanceGroupsAddInstancesRequest] instance_groups_add_instances_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_instance_group_instances(project, zone, instance_group, instance_groups_add_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroups/{instanceGroup}/addInstances'
+          command =  make_simple_command(:post, path, options)
+          command.request_representation = Google::Apis::ComputeV1::InstanceGroupsAddInstancesRequest::Representation
+          command.request_object = instance_groups_add_instances_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroup'] = instance_group unless instance_group.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the list of instance groups, and sorts them by zone.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
+        # @param [Fixnum] max_results
+        #   Maximum count of results to be returned.
+        # @param [String] page_token
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::InstanceGroupAggregatedList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::InstanceGroupAggregatedList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_aggregated_instance_groups(project, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/aggregated/instanceGroups'
+          command =  make_simple_command(:get, path, options)
+          command.response_representation = Google::Apis::ComputeV1::InstanceGroupAggregatedList::Representation
+          command.response_class = Google::Apis::ComputeV1::InstanceGroupAggregatedList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified instance group.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the instance group is located.
+        # @param [String] instance_group
+        #   The name of the instance group to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_instance_group(project, zone, instance_group, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroups/{instanceGroup}'
+          command =  make_simple_command(:delete, path, options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroup'] = instance_group unless instance_group.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified instance group resource.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the instance group is located.
+        # @param [String] instance_group
+        #   The name of the instance group.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::InstanceGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::InstanceGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_instance_group(project, zone, instance_group, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroups/{instanceGroup}'
+          command =  make_simple_command(:get, path, options)
+          command.response_representation = Google::Apis::ComputeV1::InstanceGroup::Representation
+          command.response_class = Google::Apis::ComputeV1::InstanceGroup
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroup'] = instance_group unless instance_group.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an instance group in the specified project using the parameters that
+        # are included in the request.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the instance group is located.
+        # @param [Google::Apis::ComputeV1::InstanceGroup] instance_group_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_instance_group(project, zone, instance_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroups'
+          command =  make_simple_command(:post, path, options)
+          command.request_representation = Google::Apis::ComputeV1::InstanceGroup::Representation
+          command.request_object = instance_group_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the list of instance groups that are located in the specified
+        # project and zone.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the instance group is located.
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
+        # @param [Fixnum] max_results
+        #   Maximum count of results to be returned.
+        # @param [String] page_token
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::InstanceGroupList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::InstanceGroupList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_instance_groups(project, zone, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroups'
+          command =  make_simple_command(:get, path, options)
+          command.response_representation = Google::Apis::ComputeV1::InstanceGroupList::Representation
+          command.response_class = Google::Apis::ComputeV1::InstanceGroupList
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists instances in an instance group. The parameters for this method specify
+        # whether the list filters instances by state and named ports information.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the instance group is located.
+        # @param [String] instance_group
+        #   The name of the instance group from which you want to generate a list of
+        #   included instances.
+        # @param [Google::Apis::ComputeV1::InstanceGroupsListInstancesRequest] instance_groups_list_instances_request_object
+        # @param [String] filter
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
+        # @param [Fixnum] max_results
+        #   Maximum count of results to be returned.
+        # @param [String] page_token
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::InstanceGroupsListInstances] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::InstanceGroupsListInstances]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_instance_group_instances(project, zone, instance_group, instance_groups_list_instances_request_object = nil, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroups/{instanceGroup}/listInstances'
+          command =  make_simple_command(:post, path, options)
+          command.request_representation = Google::Apis::ComputeV1::InstanceGroupsListInstancesRequest::Representation
+          command.request_object = instance_groups_list_instances_request_object
+          command.response_representation = Google::Apis::ComputeV1::InstanceGroupsListInstances::Representation
+          command.response_class = Google::Apis::ComputeV1::InstanceGroupsListInstances
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroup'] = instance_group unless instance_group.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes a list of instances from an instance group.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the instance group is located.
+        # @param [String] instance_group
+        #   The name of the instance group where the specified instances will be removed.
+        # @param [Google::Apis::ComputeV1::InstanceGroupsRemoveInstancesRequest] instance_groups_remove_instances_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_instance_group_instances(project, zone, instance_group, instance_groups_remove_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroups/{instanceGroup}/removeInstances'
+          command =  make_simple_command(:post, path, options)
+          command.request_representation = Google::Apis::ComputeV1::InstanceGroupsRemoveInstancesRequest::Representation
+          command.request_object = instance_groups_remove_instances_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroup'] = instance_group unless instance_group.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the named ports in an instance group.
+        # @param [String] project
+        #   The project ID for this request.
+        # @param [String] zone
+        #   The URL of the zone where the instance group is located.
+        # @param [String] instance_group
+        #   The name of the instance group where the named ports are updated.
+        # @param [Google::Apis::ComputeV1::InstanceGroupsSetNamedPortsRequest] instance_groups_set_named_ports_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_instance_group_named_ports(project, zone, instance_group, instance_groups_set_named_ports_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          path = '{project}/zones/{zone}/instanceGroups/{instanceGroup}/setNamedPorts'
+          command =  make_simple_command(:post, path, options)
+          command.request_representation = Google::Apis::ComputeV1::InstanceGroupsSetNamedPortsRequest::Representation
+          command.request_object = instance_groups_set_named_ports_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroup'] = instance_group unless instance_group.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2610,12 +4331,31 @@ module Google
         # @param [String] project
         #   The project ID for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2704,12 +4444,31 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2977,7 +4736,7 @@ module Google
         # @param [String] instance
         #   Name of the instance scoping this request.
         # @param [Fixnum] port
-        #   Which COM port to retrieve data from.
+        #   Specifies which COM or serial port to retrieve data from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3063,12 +4822,31 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3464,12 +5242,31 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3555,12 +5352,31 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3720,12 +5536,31 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3957,13 +5792,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified region-specific operation resource.
+        # Deletes the specified region-specific Operations resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] operation
-        #   Name of the operation resource to delete.
+        #   Name of the Operations resource to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3997,13 +5832,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the specified region-specific operation resource.
+        # Retrieves the specified region-specific Operations resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
         #   Name of the zone scoping this request.
         # @param [String] operation
-        #   Name of the operation resource to return.
+        #   Name of the Operations resource to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4039,19 +5874,38 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of operation resources contained within the specified
+        # Retrieves the list of Operation resources contained within the specified
         # region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4132,12 +5986,31 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4296,12 +6169,31 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4338,11 +6230,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified persistent disk snapshot resource.
+        # Deletes the specified Snapshot resource. Keep in mind that deleting a single
+        # snapshot might not necessarily delete all the data on that snapshot. If any
+        # data on the snapshot that is marked for deletion is needed for subsequent
+        # snapshots, the data will be moved to the next corresponding snapshot.
+        # For more information, see Deleting snaphots.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] snapshot
-        #   Name of the persistent disk snapshot resource to delete.
+        #   Name of the Snapshot resource to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4377,11 +6273,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified persistent disk snapshot resource.
+        # Returns the specified Snapshot resource.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] snapshot
-        #   Name of the persistent disk snapshot resource to return.
+        #   Name of the Snapshot resource to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4416,17 +6312,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of persistent disk snapshot resources contained within the
-        # specified project.
+        # Retrieves the list of Snapshot resources contained within the specified
+        # project.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4586,12 +6501,31 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4674,12 +6608,31 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4850,12 +6803,31 @@ module Google
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4985,12 +6957,31 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5206,12 +7197,31 @@ module Google
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5389,12 +7399,31 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5565,12 +7594,31 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5730,12 +7778,31 @@ module Google
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5904,12 +7971,31 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6080,12 +8166,31 @@ module Google
         # @param [String] region
         #   The name of the region for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6123,13 +8228,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified zone-specific operation resource.
+        # Deletes the specified zone-specific Operations resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [String] operation
-        #   Name of the operation resource to delete.
+        #   Name of the Operations resource to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6163,13 +8268,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the specified zone-specific operation resource.
+        # Retrieves the specified zone-specific Operations resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [String] operation
-        #   Name of the operation resource to return.
+        #   Name of the Operations resource to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6205,18 +8310,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of operation resources contained within the specified zone.
+        # Retrieves the list of Operation resources contained within the specified zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6297,12 +8421,31 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
-        #   Filter expression for filtering listed resources.
+        #   Sets a filter expression for filtering listed resources, in the form filter=`
+        #   expression`. Your `expression` must contain the following:
+        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
+        #   
+        #   - FIELD_NAME: The name of the field you want to compare. The field name must
+        #   be valid for the type of resource being filtered. Only atomic field types are
+        #   supported (string, number, boolean). Array and object fields are not currently
+        #   supported.
+        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
+        #   equals).
+        #   - LITERAL_STRING: The literal string value to filter to. The literal value
+        #   must be valid for the type of field (string, number, boolean). For string
+        #   fields, the literal value is interpreted as a regular expression using RE2
+        #   syntax. The literal value must match the entire field.  For example, you can
+        #   filter by the name of a resource:
+        #   filter=name ne example-instance
+        #   The above filter returns only results whose name field does not equal example-
+        #   instance. You can also enclose your literal string in single, double, or no
+        #   quotes.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
-        #   Tag returned by a previous list request when that list was truncated to
-        #   maxResults. Used to continue a previous list request.
+        #   Specifies a page token to use. Use this parameter if you want to list the next
+        #   page of results. Set pageToken to the nextPageToken returned by a previous
+        #   list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

@@ -25,7 +25,10 @@ module Google
     # @see https://cloud.google.com/monitoring/v2beta2/
     module CloudmonitoringV2beta2
       VERSION = 'V2beta2'
-      REVISION = '20150622'
+      REVISION = '20150713'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
       # View and write monitoring data for all of your Google and third-party Cloud and API projects
       AUTH_MONITORING = 'https://www.googleapis.com/auth/monitoring'

@@ -23,10 +23,7 @@ module Google
       # Google Cloud Resource Manager API
       #
       # The Google Cloud Resource Manager API provides methods for creating, reading,
-      #  and updating of project metadata, including IAM policies, and will shortly
-      #  provide the same for other high-level entities (e.g. customers and resource
-      #  groups). Longer term, we expect the cloudresourcemanager API to encompass
-      #  other Cloud resources as well.
+      #  and updating of project metadata.
       #
       # @example
       #    require 'google/apis/cloudresourcemanager_v1beta1'
@@ -98,13 +95,14 @@ module Google
         #   this field. Optional.
         # @param [String] filter
         #   An expression for filtering the results of the request. Filter rules are case
-        #   insensitive. The fields eligible for filtering are: name id labels. where  is
-        #   a the name of a label Examples: name:* ==> The project has a name. name:Howl ==
-        #   > The project’s name is `Howl` or 'howl'. name:HOWL ==> Equivalent to above.
-        #   NAME:howl ==> Equivalent to above. labels.color:* ==> The project has the
-        #   label "color". labels.color:red ==> The project’s label `color` has the value `
-        #   red`. labels.color:red label.size:big ==> The project's label `color` has the
-        #   value `red` and its label `size` has the value `big`. Optional.
+        #   insensitive. The fields eligible for filtering are: + `name` + `id` + labels.
+        #   key where *key* is the name of a label Some examples of using labels as
+        #   filters: |Filter|Description| |------|-----------| |name:*|The project has a
+        #   name.| |name:Howl|The project's name is `Howl` or `howl`.| |name:HOWL|
+        #   Equivalent to above.| |NAME:howl|Equivalent to above.| |labels.color:*|The
+        #   project has the label `color`.| |labels.color:red|The project's label `color`
+        #   has the value `red`.| |labels.color:red label.size:big|The project's label `
+        #   color` has the value `red` and its label `size` has the value `big`. Optional.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -204,24 +202,26 @@ module Google
         end
         
         # Marks the project identified by the specified `project_id` (for example, `my-
-        # project-123`) for deletion. This method will only affect the project if it has
-        # a lifecycle state of [ACTIVE][cloudresourcemanager.projects.v1beta2.
-        # LifecycleState.ACTIVE] when this method is called. Otherwise this method does
-        # nothing (since all other states are phases of deletion). This method changes
-        # the project's lifecycle state from [ACTIVE][cloudresourcemanager.projects.
-        # v1beta2.LifecycleState.ACTIVE] to [DELETE_REQUESTED] [cloudresourcemanager.
-        # projects.v1beta2.LifecycleState.DELETE_REQUESTED]. The deletion starts at an
-        # unspecified time, at which point the lifecycle state changes to [
-        # DELETE_IN_PROGRESS] [cloudresourcemanager.projects.v1beta2.LifecycleState.
-        # DELETE_IN_PROGRESS]. Until the deletion completes, you can check the lifecycle
-        # state checked by retrieving the project with [GetProject] [
-        # cloudresourcemanager.projects.v1beta2.Projects.GetProject], and the project
-        # remains visible to [ListProjects] [cloudresourcemanager.projects.v1beta2.
-        # Projects.ListProjects]. However, you cannot update the project. After the
-        # deletion completes, the project is not retrievable by the [GetProject] [
-        # cloudresourcemanager.projects.v1beta2.Projects.GetProject] and [ListProjects] [
-        # cloudresourcemanager.projects.v1beta2.Projects.ListProjects] methods. The
-        # caller must have modify permissions for this project.
+        # project-123`) for deletion. This method will only affect the project if the
+        # following criteria are met: + The project does not have a billing account
+        # associated with it. + The project has a lifecycle state of [ACTIVE][google.
+        # cloudresourcemanager.projects.v1beta1.LifecycleState.ACTIVE]. This method
+        # changes the project's lifecycle state from [ACTIVE][google.
+        # cloudresourcemanager.projects.v1beta1.LifecycleState.ACTIVE] to [
+        # DELETE_REQUESTED] [google.cloudresourcemanager.projects.v1beta1.LifecycleState.
+        # DELETE_REQUESTED]. The deletion starts at an unspecified time, at which point
+        # the lifecycle state changes to [DELETE_IN_PROGRESS] [google.
+        # cloudresourcemanager.projects.v1beta1.LifecycleState.DELETE_IN_PROGRESS].
+        # Until the deletion completes, you can check the lifecycle state checked by
+        # retrieving the project with [GetProject] [google.cloudresourcemanager.projects.
+        # v1beta1.DeveloperProjects.GetProject], and the project remains visible to [
+        # ListProjects] [google.cloudresourcemanager.projects.v1beta1.DeveloperProjects.
+        # ListProjects]. However, you cannot update the project. After the deletion
+        # completes, the project is not retrievable by the [GetProject] [google.
+        # cloudresourcemanager.projects.v1beta1.DeveloperProjects.GetProject] and [
+        # ListProjects] [google.cloudresourcemanager.projects.v1beta1.DeveloperProjects.
+        # ListProjects] methods. The caller must have modify permissions for this
+        # project.
         # @param [String] project_id
         #   The project ID (for example, `foo-bar-123`). Required.
         # @param [String] fields
@@ -254,11 +254,11 @@ module Google
         
         # Restores the project identified by the specified `project_id` (for example, `
         # my-project-123`). You can only use this method for a project that has a
-        # lifecycle state of [DELETE_REQUESTED] [cloudresourcemanager.projects.v1beta2.
-        # LifecycleState.DELETE_REQUESTED]. After deletion starts, as indicated by a
-        # lifecycle state of [DELETE_IN_PROGRESS] [cloudresourcemanager.projects.v1beta2.
-        # LifecycleState.DELETE_IN_PROGRESS], the project cannot be restored. The caller
-        # must have modify permissions for this project.
+        # lifecycle state of [DELETE_REQUESTED] [google.cloudresourcemanager.projects.
+        # v1beta1.LifecycleState.DELETE_REQUESTED]. After deletion starts, as indicated
+        # by a lifecycle state of [DELETE_IN_PROGRESS] [google.cloudresourcemanager.
+        # projects.v1beta1.LifecycleState.DELETE_IN_PROGRESS], the project cannot be
+        # restored. The caller must have modify permissions for this project.
         # @param [String] project_id
         #   The project ID (for example, `foo-bar-123`). Required.
         # @param [String] fields

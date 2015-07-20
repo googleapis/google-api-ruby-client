@@ -207,6 +207,7 @@ module Google
           property :discovery_version, as: 'discoveryVersion'
           property :documentation_link, as: 'documentationLink'
           property :etag, as: 'etag'
+          property :exponential_backoff_default, as: 'exponentialBackoffDefault'
           collection :features, as: 'features'
           property :icons, as: 'icons', class: Google::Apis::DiscoveryV1::RestDescription::Icons, decorator: Google::Apis::DiscoveryV1::RestDescription::Icons::Representation
       

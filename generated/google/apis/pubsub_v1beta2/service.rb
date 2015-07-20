@@ -49,8 +49,9 @@ module Google
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy is being specified. Usually some path
-        #   like projects/`project`/zones/`zone`/disks/`disk`.
+        #   REQUIRED: The resource for which policy is being specified. Resource is
+        #   usually specified as a path, such as, projects/`project`/zones/`zone`/disks/`
+        #   disk`.
         # @param [Google::Apis::PubsubV1beta2::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -82,11 +83,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource. May be empty if no such policy
-        # or resource exists.
+        # Gets the access control policy for a resource. Is empty if the policy or the
+        # resource does not exist.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy is being requested. Usually some path
-        #   like projects/`project`.
+        #   REQUIRED: The resource for which policy is being requested. Resource is
+        #   usually specified as a path, such as, projects/`project`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -117,8 +118,8 @@ module Google
         
         # Returns permissions that a caller has on the specified resource.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy detail is being requested. Usually
-        #   some path like projects/`project`.
+        #   REQUIRED: The resource for which policy detail is being requested. Resource is
+        #   usually specified as a path, such as, projects/`project`.
         # @param [Google::Apis::PubsubV1beta2::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -153,10 +154,11 @@ module Google
         # Creates the given topic with the given name.
         # @param [String] name
         #   The name of the topic. It must have the format "projects/`project`/topics/`
-        #   topic`" for Google Cloud Pub/Sub API v1beta2. `topic` must start with a letter,
-        #   and contain only letters ([A-Za-z]), numbers ([0-9], dashes (-), underscores (
-        #   _), periods (.), tildes (~), plus (+) or percent signs (%). It must be between
-        #   3 and 255 characters in length, and it must not start with "goog".
+        #   topic`" for Google Cloud Pub/Sub API v1 and v1beta2. `topic` must start with a
+        #   letter, and contain only letters ([A-Za-z]), numbers ([0-9], dashes (-),
+        #   underscores (_), periods (.), tildes (~), plus (+) or percent signs (%). It
+        #   must be between 3 and 255 characters in length, and it must not start with "
+        #   goog".
         # @param [Google::Apis::PubsubV1beta2::Topic] topic_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -296,7 +298,8 @@ module Google
         # Deletes the topic with the given name. Returns NOT_FOUND if the topic does not
         # exist. After a topic is deleted, a new topic may be created with the same name;
         # this is an entirely new topic with none of the old configuration or
-        # subscriptions. Existing subscriptions to this topic are not deleted.
+        # subscriptions. Existing subscriptions to this topic are not deleted, but their
+        # `topic` field is set to `_deleted-topic_`.
         # @param [String] topic
         #   Name of the topic to delete.
         # @param [String] fields
@@ -369,8 +372,9 @@ module Google
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy is being specified. Usually some path
-        #   like projects/`project`/zones/`zone`/disks/`disk`.
+        #   REQUIRED: The resource for which policy is being specified. Resource is
+        #   usually specified as a path, such as, projects/`project`/zones/`zone`/disks/`
+        #   disk`.
         # @param [Google::Apis::PubsubV1beta2::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -402,11 +406,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource. May be empty if no such policy
-        # or resource exists.
+        # Gets the access control policy for a resource. Is empty if the policy or the
+        # resource does not exist.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy is being requested. Usually some path
-        #   like projects/`project`.
+        #   REQUIRED: The resource for which policy is being requested. Resource is
+        #   usually specified as a path, such as, projects/`project`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -437,8 +441,8 @@ module Google
         
         # Returns permissions that a caller has on the specified resource.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy detail is being requested. Usually
-        #   some path like projects/`project`.
+        #   REQUIRED: The resource for which policy detail is being requested. Resource is
+        #   usually specified as a path, such as, projects/`project`.
         # @param [Google::Apis::PubsubV1beta2::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -477,7 +481,7 @@ module Google
         # same project as the topic.
         # @param [String] name
         #   The name of the subscription. It must have the format "projects/`project`/
-        #   subscriptions/`subscription`" for Google Cloud Pub/Sub API v1beta2. `
+        #   subscriptions/`subscription`" for Google Cloud Pub/Sub API v1 and v1beta2. `
         #   subscription` must start with a letter, and contain only letters ([A-Za-z]),
         #   numbers ([0-9], dashes (-), underscores (_), periods (.), tildes (~), plus (+)
         #   or percent signs (%). It must be between 3 and 255 characters in length, and

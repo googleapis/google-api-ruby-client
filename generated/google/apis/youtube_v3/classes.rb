@@ -4029,9 +4029,9 @@ module Google
         attr_accessor :configuration_issues
       
         # The last time this status was updated (in seconds)
-        # Corresponds to the JSON property `lastUpdateTimeS`
+        # Corresponds to the JSON property `lastUpdateTimeSeconds`
         # @return [String]
-        attr_accessor :last_update_time_s
+        attr_accessor :last_update_time_seconds
       
         # The status code of this stream
         # Corresponds to the JSON property `status`
@@ -4045,7 +4045,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @configuration_issues = args[:configuration_issues] unless args[:configuration_issues].nil?
-          @last_update_time_s = args[:last_update_time_s] unless args[:last_update_time_s].nil?
+          @last_update_time_seconds = args[:last_update_time_seconds] unless args[:last_update_time_seconds].nil?
           @status = args[:status] unless args[:status].nil?
         end
       end

@@ -404,8 +404,8 @@ module Google
         #   Zero-based index of the starting row
         # @param [Fixnum] timeout_ms
         #   How long to wait for the query to complete, in milliseconds, before returning.
-        #   Default is to return immediately. If the timeout passes before the job
-        #   completes, the request will fail with a TIMEOUT error
+        #   Default is 10 seconds. If the timeout passes before the job completes, the '
+        #   jobComplete' field in the response will be false
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

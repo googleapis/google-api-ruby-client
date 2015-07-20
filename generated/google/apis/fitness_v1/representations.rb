@@ -86,11 +86,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class MapValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class Session
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
       class Value
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class ValueMapValEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -267,6 +275,13 @@ module Google
         end
       end
       
+      class MapValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fp_val, as: 'fpVal'
+        end
+      end
+      
       class Session
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -288,6 +303,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fp_val, as: 'fpVal'
           property :int_val, as: 'intVal'
+          collection :map_val, as: 'mapVal', class: Google::Apis::FitnessV1::ValueMapValEntry, decorator: Google::Apis::FitnessV1::ValueMapValEntry::Representation
+      
+          property :string_val, as: 'stringVal'
+        end
+      end
+      
+      class ValueMapValEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value', class: Google::Apis::FitnessV1::MapValue, decorator: Google::Apis::FitnessV1::MapValue::Representation
+      
         end
       end
     end

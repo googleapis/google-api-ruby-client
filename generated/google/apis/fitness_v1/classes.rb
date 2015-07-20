@@ -705,6 +705,26 @@ module Google
         end
       end
       
+      # Holder object for the value of an entry in a map field of a data point.
+      # A map value supports a subset of the formats that the regular Value supports.
+      class MapValue
+        include Google::Apis::Core::Hashable
+      
+        # Floating point value.
+        # Corresponds to the JSON property `fpVal`
+        # @return [Float]
+        attr_accessor :fp_val
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fp_val = args[:fp_val] unless args[:fp_val].nil?
+        end
+      end
+      
       # Sessions contain metadata, such as a user-friendly name and time interval
       # information.
       class Session
@@ -784,15 +804,30 @@ module Google
       class Value
         include Google::Apis::Core::Hashable
       
-        # Floating point value. When this is set, intVal must not be set.
+        # Floating point value. When this is set, other values must not be set.
         # Corresponds to the JSON property `fpVal`
         # @return [Float]
         attr_accessor :fp_val
       
-        # Integer value. When this is set, fpVal must not be set.
+        # Integer value. When this is set, other values must not be set.
         # Corresponds to the JSON property `intVal`
         # @return [Fixnum]
         attr_accessor :int_val
+      
+        # Map value. The valid key space and units for the corresponding value of each
+        # entry should be documented as part of the data type definition. Keys should be
+        # kept small whenever possible. Data streams with large keys and high data
+        # frequency may be down sampled.
+        # Corresponds to the JSON property `mapVal`
+        # @return [Array<Google::Apis::FitnessV1::ValueMapValEntry>]
+        attr_accessor :map_val
+      
+        # String value. When this is set, other values must not be set. Strings should
+        # be kept small whenever possible. Data streams with large string values and
+        # high data frequency may be down sampled.
+        # Corresponds to the JSON property `stringVal`
+        # @return [String]
+        attr_accessor :string_val
       
         def initialize(**args)
            update!(**args)
@@ -802,6 +837,34 @@ module Google
         def update!(**args)
           @fp_val = args[:fp_val] unless args[:fp_val].nil?
           @int_val = args[:int_val] unless args[:int_val].nil?
+          @map_val = args[:map_val] unless args[:map_val].nil?
+          @string_val = args[:string_val] unless args[:string_val].nil?
+        end
+      end
+      
+      # 
+      class ValueMapValEntry
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Holder object for the value of an entry in a map field of a data point.
+        # A map value supports a subset of the formats that the regular Value supports.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::FitnessV1::MapValue]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] unless args[:key].nil?
+          @value = args[:value] unless args[:value].nil?
         end
       end
     end

@@ -1063,6 +1063,11 @@ module Google
         attr_accessor :use_query_cache
         alias_method :use_query_cache?, :use_query_cache
       
+        # [Experimental] Describes user-defined function resources used in the query.
+        # Corresponds to the JSON property `userDefinedFunctionResources`
+        # @return [Array<Google::Apis::BigqueryV2::UserDefinedFunctionResource>]
+        attr_accessor :user_defined_function_resources
+      
         # [Optional] Specifies the action that occurs if the destination table already
         # exists. The following values are supported: WRITE_TRUNCATE: If the table
         # already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table
@@ -1091,6 +1096,7 @@ module Google
           @query = args[:query] unless args[:query].nil?
           @table_definitions = args[:table_definitions] unless args[:table_definitions].nil?
           @use_query_cache = args[:use_query_cache] unless args[:use_query_cache].nil?
+          @user_defined_function_resources = args[:user_defined_function_resources] unless args[:user_defined_function_resources].nil?
           @write_disposition = args[:write_disposition] unless args[:write_disposition].nil?
         end
       end
@@ -2229,6 +2235,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @fields = args[:fields] unless args[:fields].nil?
+        end
+      end
+      
+      # 
+      class UserDefinedFunctionResource
+        include Google::Apis::Core::Hashable
+      
+        # [Pick one] An inline resource that contains code for a user-defined function (
+        # UDF). Providing a inline code resource is equivalent to providing a URI for a
+        # file containing the same code.
+        # Corresponds to the JSON property `inlineCode`
+        # @return [String]
+        attr_accessor :inline_code
+      
+        # [Pick one] A code resource to load from a Google Cloud Storage URI (gs://
+        # bucket/path).
+        # Corresponds to the JSON property `resourceUri`
+        # @return [String]
+        attr_accessor :resource_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inline_code = args[:inline_code] unless args[:inline_code].nil?
+          @resource_uri = args[:resource_uri] unless args[:resource_uri].nil?
         end
       end
       

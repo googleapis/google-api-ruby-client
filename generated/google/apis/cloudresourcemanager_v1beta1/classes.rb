@@ -24,18 +24,17 @@ module Google
       
       # A Project is a high-level Google Cloud Platform entity. It is a container for
       # ACLs, APIs, AppEngine Apps, VMs, and other Google Cloud Platform resources.
-      # Projects are subordinate to Customers.
       class Project
         include Google::Apis::Core::Hashable
       
-        # The number uniquely identifying the project. Example: 415104041262. Read-only.
+        # The number uniquely identifying the project. Example: 415104041262 Read-only.
         # Corresponds to the JSON property `projectNumber`
         # @return [String]
         attr_accessor :project_number
       
-        # The unique, user-assigned id of the project. It must be 6 to 30 lowercase
+        # The unique, user-assigned ID of the project. It must be 6 to 30 lowercase
         # letters, digits, or hyphens. It must start with a letter. Trailing hyphens are
-        # prohibited. Example: "tokyo-rain-123" Read-only after creation.
+        # prohibited. Example: tokyo-rain-123 Read-only after creation.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -46,9 +45,9 @@ module Google
         attr_accessor :lifecycle_state
       
         # The user-assigned name of the project. This field is optional and can remain
-        # unset. Allowed characters are: lower- and upper-case letters, numbers, hyphen,
-        # single-quote, double-quotes, space, and exclamation point. Example: "My
-        # Project" Read-write.
+        # unset. Allowed characters are: lowercase and uppercase letters, numbers,
+        # hyphen, single-quote, double-quote, space, and exclamation point. Example: My
+        # Project Read-write.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -59,13 +58,13 @@ module Google
         attr_accessor :create_time
       
         # The labels associated with this project. Label keys must be between 1 and 63
-        # characters long and must conform to the following regular expression: [a-z]([-
-        # a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63 characters long and
-        # must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more
-        # than 256 labels can be associated with a given resource. Note that additional
-        # character may be included in labels in the future. Clients should store labels
-        # in a representation such as JSON that does not depend on specific characters
-        # being disallowed. Example: "environment" : "dev" Read-write.
+        # characters long and must conform to the following regular expression: \[a-z\](\
+        # [-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63 characters long
+        # and must conform to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
+        # No more than 256 labels can be associated with a given resource. Clients
+        # should store labels in a representation such as JSON that does not depend on
+        # specific characters being disallowed. Example: "environment" : "dev" Read-
+        # write.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -85,10 +84,11 @@ module Google
         end
       end
       
-      # A page of the response received from the [ListProjects][cloudresourcemanager.
-      # projects.v1beta1.Projects.ListProjects] method. A paginated response where
-      # more pages are available has `next_page_token` set. This token can be used in
-      # a subsequent request to retrieve the next request page.
+      # A page of the response received from the [ListProjects][google.
+      # cloudresourcemanager.projects.v1beta1.DeveloperProjects.ListProjects] method.
+      # A paginated response where more pages are available has `next_page_token` set.
+      # This token can be used in a subsequent request to retrieve the next request
+      # page.
       class ListProjectsResponse
         include Google::Apis::Core::Hashable
       
@@ -122,7 +122,8 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); `
+      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
+      # `Empty` is empty JSON object ````.
       class Empty
         include Google::Apis::Core::Hashable
       

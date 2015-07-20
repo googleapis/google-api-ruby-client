@@ -1671,7 +1671,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :configuration_issues, as: 'configurationIssues', class: Google::Apis::YoutubeV3::LiveStreamConfigurationIssue, decorator: Google::Apis::YoutubeV3::LiveStreamConfigurationIssue::Representation
       
-          property :last_update_time_s, as: 'lastUpdateTimeS'
+          property :last_update_time_seconds, as: 'lastUpdateTimeSeconds'
           property :status, as: 'status'
         end
       end

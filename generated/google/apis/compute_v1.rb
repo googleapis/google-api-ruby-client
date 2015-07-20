@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/compute/docs/reference/latest/
     module ComputeV1
       VERSION = 'V1'
-      REVISION = '20150617'
+      REVISION = '20150713'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

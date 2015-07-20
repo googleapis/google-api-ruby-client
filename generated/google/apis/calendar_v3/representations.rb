@@ -412,6 +412,7 @@ module Google
       class EventAttachment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_id, as: 'fileId'
           property :file_url, as: 'fileUrl'
           property :icon_link, as: 'iconLink'
           property :mime_type, as: 'mimeType'
