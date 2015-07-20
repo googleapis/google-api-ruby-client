@@ -216,9 +216,9 @@ A URL can also be specified:
 This library is licensed under Apache 2.0. Full license text is
 available in [LICENSE.txt](LICENSE.txt).
 
-## Contributing
+## contributing
 
-See [CONTRIBUTING](contributing).
+See [CONTRIBUTING](CONTRIBUTING.md).
 
 ## Support
 
