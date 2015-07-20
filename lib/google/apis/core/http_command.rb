@@ -159,7 +159,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def process_response(status, header, body)
-          check_status(status, body)
+          check_status(status, header, body)
           decode_response_body(header[:content_type], body)
         end
 
@@ -167,28 +167,38 @@ module Google
         #
         # @param [Fixnum] status
         #   HTTP status code of response
+        # @param 
+        # @param [Hurley::Header] header
+        #   HTTP response headers
         # @param [String] body
         #   HTTP response body
+        # @param [String] message
+        #   Error message text
         # @return [void]
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def check_status(status, body = nil)
+        def check_status(status, header = nil, body = nil, message = nil)
           # TODO: 304 Not Modified depends on context...
           case status
           when 200...300
             nil
           when 301, 302, 303, 307
-            fail Google::Apis::RedirectError, header[:location]
+            message ||= sprintf('Redirect to %s', header[:location]) 
+            raise Google::Apis::RedirectError.new(message, status_code: status, header: header, body: body)
           when 401
-            fail Google::Apis::AuthorizationError, body
+            message ||= 'Unauthorized'
+            raise Google::Apis::AuthorizationError.new(message, status_code: status, header: header, body: body)
           when 304, 400, 402...500
-            fail Google::Apis::ClientError, body
+            message ||= 'Invalid request' 
+            raise Google::Apis::ClientError.new(message, status_code: status, header: header, body: body)
           when 500...600
-            fail Google::Apis::ServerError, body
+            message ||= 'Server error' 
+            raise Google::Apis::ServerError.new(message, status_code: status, header: header, body: body)
           else
             logger.warn(sprintf('Encountered unexpected status code %s', status))
-            fail Google::Apis::TransmissionError, body
+            message ||= 'Unknown error'
+            raise Google::Apis::TransmissionError.new(message, status_code: status, header: header, body: body)
           end
         end
 

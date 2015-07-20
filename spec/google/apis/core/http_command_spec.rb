@@ -123,7 +123,27 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       command.options.retries = 1
       expect { command.execute(client) }.to raise_error(Google::Apis::ServerError)
     end
+    
 
+    context('with retries exceeded') do
+      before(:example) do
+        command.options.retries = 1
+      end
+      
+      let(:err) do
+        begin
+          command.execute(client)
+        rescue Google::Apis::Error => e
+          e
+        end
+      end
+      
+      it 'should raise error with HTTP status code' do
+        expect(err.status_code).to eq 500
+      end
+      
+    end
+    
     context('with callbacks') do
       it 'should return the response body after retries' do
         expect { |b| command.execute(client, &b) }.to yield_successive_args(

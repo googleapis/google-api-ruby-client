@@ -16,7 +16,11 @@ module Google
   module Apis
     # Base error, capable of wrapping another
     class Error < StandardError
-      def initialize(err)
+      attr_reader :status_code
+      attr_reader :header
+      attr_reader :body
+      
+      def initialize(err, status_code: nil, header: nil, body: nil)
         @cause = nil
 
         if err.respond_to?(:backtrace)
@@ -25,6 +29,9 @@ module Google
         else
           super(err.to_s)
         end
+        @status_code = status_code
+        @header = header.dup unless header.nil?
+        @body = body
       end
 
       def backtrace
@@ -35,7 +42,7 @@ module Google
         end
       end
     end
-
+    
     # An error which is raised when there is an unexpected response or other
     # transport error that prevents an operation from succeeding.
     class TransmissionError < Error

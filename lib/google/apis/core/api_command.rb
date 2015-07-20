@@ -79,23 +79,30 @@ module Google
         #
         # @param [Fixnum] status
         #   HTTP status code of response
+        # @param [Hurley::Header] header
+        #   HTTP response headers
         # @param [String] body
         #   HTTP response body
+        # @param [String] message
+        #   Error message text
         # @return [void]
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def check_status(status, body = nil)
+        def check_status(status, header = nil, body = nil, message = nil)
           case status
           when 400, 402...500
             error = parse_error(body)
             if error
-              logger.debug { error }
-              fail Google::Apis::RateLimitError, error if RATE_LIMIT_ERRORS.include?(error['reason'])
+              message = error['reason'] if error.has_key?('reason')
+              raise Google::Apis::RateLimitError.new(message,
+                                                     status_code: status, 
+                                                     header: header, 
+                                                     body: body) if RATE_LIMIT_ERRORS.include?(message)
             end
-            super(status, error)
+            super(status, header, body, message)
           else
-            super(status, body)
+            super(status, header, body, message)
           end
         end
 
