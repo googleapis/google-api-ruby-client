@@ -1,3 +1,8 @@
+# 0.9.0.pre2
+* Add raw HTTP status code & body to errors
+* Allow signet options to be passed in InstalledAppFlow.authorize
+* Update DateTime serialization to include milliseconds
+
 # 0.9.0.pre1
 * WARNING: Please see [MIGRATING](MIGRATING.md) for important information.
 * API classes are now generated ahead of time instead of at runtime.
