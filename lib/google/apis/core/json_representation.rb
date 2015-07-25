@@ -14,8 +14,8 @@
 
 require 'representable/json'
 require 'representable/json/hash'
-require 'representable/coercion'
 require 'base64'
+require 'date'
 
 module Google
   module Apis
@@ -72,6 +72,11 @@ module Google
               options[:render_filter] = ->(value, _doc, *_args) { Base64.urlsafe_encode64(value) }
               options[:parse_filter] = ->(fragment, _doc, *_args) { Base64.urlsafe_decode64(fragment) }
             end
+            if options[:type] == DateTime
+              options[:render_filter] = ->(value, _doc, *_args) { value.is_a?(DateTime) ? value.rfc3339(3) : value.to_s }
+              options[:parse_filter] = ->(fragment, _doc, *_args) { DateTime.parse(fragment) }
+            end
+            
             options[:render_nil] = true
             options[:getter] = getter_fn(name)
             options[:if] = if_fn(name)
@@ -114,7 +119,6 @@ module Google
       # @see https://github.com/apotonick/representable
       class JsonRepresentation < Representable::Decorator
         include Representable::JSON
-        include Representable::Coercion
         feature JsonRepresentationSupport
       end
     end

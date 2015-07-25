@@ -79,7 +79,7 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
     end
 
     it 'serializes date values' do
-      expect(json).to be_json_eql(%("2015-05-01T12:00:00+00:00")).at_path('dateValue')
+      expect(json).to be_json_eql(%("2015-05-01T12:00:00.000+00:00")).at_path('dateValue')
     end
 
     it 'serializes byte values to base64' do

@@ -27,5 +27,4 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'googleauth', '~> 0.2'
   spec.add_runtime_dependency 'thor', '~> 0.19'
   spec.add_runtime_dependency 'memoist', '~> 0.11'
-  spec.add_runtime_dependency 'virtus', '~> 1.0'
 end
