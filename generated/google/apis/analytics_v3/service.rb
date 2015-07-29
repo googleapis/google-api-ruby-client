@@ -56,7 +56,7 @@ module Google
         # @param [String] dimensions
         #   A comma-separated list of Analytics dimensions. E.g., 'ga:browser,ga:city'.
         # @param [String] end_date
-        #   End date for fetching Analytics data. Request can should specify an end date
+        #   End date for fetching Analytics data. Request must specify an end date
         #   formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or
         #   7daysAgo). The default value is yesterday.
         # @param [String] filters
@@ -80,7 +80,7 @@ module Google
         #   A comma-separated list of dimensions or metrics that determine the sort order
         #   for Analytics data.
         # @param [String] start_date
-        #   Start date for fetching Analytics data. Requests can specify a start date
+        #   Start date for fetching Analytics data. Requests must specify a start date
         #   formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or
         #   7daysAgo). The default value is 7daysAgo.
         # @param [Fixnum] start_index
@@ -107,7 +107,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_ga_data(dimensions: nil, end_date: nil, filters: nil, ids: nil, max_results: nil, metrics: nil, output: nil, sampling_level: nil, segment: nil, sort: nil, start_date: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_ga_data(dimensions: nil, start_date: nil, end_date: nil, filters: nil, ids: nil, max_results: nil, metrics: nil, output: nil, sampling_level: nil, segment: nil, sort: nil, start_date: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'data/ga'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AnalyticsV3::GaData::Representation
