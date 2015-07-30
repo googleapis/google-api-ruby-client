@@ -140,14 +140,17 @@ module Google
       #   the HTTP response.
       def process_http_response(response)
         content_type = find_header('Content-Type', response.headers)
-        boundary = /.*boundary=(.+)/.match(content_type)[1]
-        parts = response.body.split(/--#{Regexp.escape(boundary)}/)
-        parts = parts[1...-1]
-        parts.each do |part|
-          call_response = deserialize_call_response(part)
-          _, call, callback = @calls.assoc(call_response.call_id)
-          result = Google::APIClient::Result.new(call, call_response)
-          callback.call(result) if callback
+        m = /.*boundary=(.+)/.match(content_type)
+        if m
+          boundary = m[1]
+          parts = response.body.split(/--#{Regexp.escape(boundary)}/)
+          parts = parts[1...-1]
+          parts.each do |part|
+            call_response = deserialize_call_response(part)
+            _, call, callback = @calls.assoc(call_response.call_id)
+            result = Google::APIClient::Result.new(call, call_response)
+            callback.call(result) if callback
+          end
         end
         Google::APIClient::Result.new(self, response)
       end
