@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/drive/
     module DriveV2
       VERSION = 'V2'
-      REVISION = '20150702'
+      REVISION = '20150716'
 
       # View and manage the files in your Google Drive
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
@@ -44,6 +44,9 @@ module Google
 
       # View metadata for files in your Google Drive
       AUTH_DRIVE_METADATA_READONLY = 'https://www.googleapis.com/auth/drive.metadata.readonly'
+
+      # View the photos, videos and albums in your Google Photos
+      AUTH_DRIVE_PHOTOS_READONLY = 'https://www.googleapis.com/auth/drive.photos.readonly'
 
       # View the files in your Google Drive
       AUTH_DRIVE_READONLY = 'https://www.googleapis.com/auth/drive.readonly'

@@ -159,9 +159,9 @@ module Google
         end
         
         # Attempt verification of a website or domain.
-        # @param [Google::Apis::SiteVerificationV1::SiteVerificationWebResourceResource] site_verification_web_resource_resource_object
         # @param [String] verification_method
         #   The method to use for verifying a site or domain.
+        # @param [Google::Apis::SiteVerificationV1::SiteVerificationWebResourceResource] site_verification_web_resource_resource_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -183,7 +183,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_web_resource(site_verification_web_resource_resource_object = nil, verification_method: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_web_resource(verification_method, site_verification_web_resource_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'webResource'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::SiteVerificationV1::SiteVerificationWebResourceResource::Representation

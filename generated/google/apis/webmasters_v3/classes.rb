@@ -125,12 +125,12 @@ module Google
       class SearchAnalyticsQueryRequest
         include Google::Apis::Core::Hashable
       
-        # [Optional; Default is AUTO] How data is aggregated. If aggregated by property,
-        # all data for the same property is aggregated; if aggregated by page, all data
-        # is aggregated by canonical URI. If you filter or group by page, choose AUTO;
-        # otherwise you can aggregate either by property or by page, depending on how
-        # you want your data calculated; see  the help documentation to learn how data
-        # is calculated differently by site versus by page.
+        # [Optional; Default is "auto"] How data is aggregated. If aggregated by
+        # property, all data for the same property is aggregated; if aggregated by page,
+        # all data is aggregated by canonical URI. If you filter or group by page,
+        # choose AUTO; otherwise you can aggregate either by property or by page,
+        # depending on how you want your data calculated; see  the help documentation to
+        # learn how data is calculated differently by site versus by page.
         # Note: If you group or filter by page, you cannot aggregate by property.
         # If you specify any value other than AUTO, the aggregation type in the result
         # will match the requested type, or if you request an invalid type, you will get
@@ -141,9 +141,9 @@ module Google
         attr_accessor :aggregation_type
       
         # [Optional] Zero or more filters to apply to the dimension grouping values; for
-        # example, 'Country CONTAINS "Guinea"' to see only data where the country
-        # contains the substring "Guinea". You can filter by a dimension without
-        # grouping by it.
+        # example, 'query contains "buy"' to see only data where the query string
+        # contains the substring "buy" (not case-sensitive). You can filter by a
+        # dimension without grouping by it.
         # Corresponds to the JSON property `dimensionFilterGroups`
         # @return [Array<Google::Apis::WebmastersV3::ApiDimensionFilterGroup>]
         attr_accessor :dimension_filter_groups
@@ -164,12 +164,12 @@ module Google
         attr_accessor :end_date
       
         # [Optional; Default is 1000] The maximum number of rows to return. Must be a
-        # number from 1 to 1,000 (inclusive).
+        # number from 1 to 5,000 (inclusive).
         # Corresponds to the JSON property `rowLimit`
         # @return [Fixnum]
         attr_accessor :row_limit
       
-        # [Optional; Default is WEB] The search type to filter for.
+        # [Optional; Default is "web"] The search type to filter for.
         # Corresponds to the JSON property `searchType`
         # @return [String]
         attr_accessor :search_type

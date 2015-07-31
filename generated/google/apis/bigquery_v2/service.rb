@@ -493,10 +493,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all jobs that you started in the specified project. The job list returns
-        # in reverse chronological order of when the jobs were created, starting with
-        # the most recent job created. Requires the Can View project role, or the Is
-        # Owner project role if you set the allUsers property.
+        # Lists all jobs that you started in the specified project. Job information is
+        # available for a six month period after creation. The job list is sorted in
+        # reverse chronological order, by job creation time. Requires the Can View
+        # project role, or the Is Owner project role if you set the allUsers property.
         # @param [String] project_id
         #   Project ID of the jobs to list
         # @param [Boolean] all_users

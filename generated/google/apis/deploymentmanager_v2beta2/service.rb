@@ -176,24 +176,16 @@ module Google
         #   The project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must contain the following:
-        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
-        #   
-        #   - FIELD_NAME: The name of the field you want to compare. The field name must
-        #   be valid for the type of resource being filtered. Only atomic field types are
-        #   supported (string, number, boolean). Array and object fields are not currently
-        #   supported.
-        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-        #   equals).
-        #   - LITERAL_STRING: The literal string value to filter to. The literal value
-        #   must be valid for the type of field (string, number, boolean). For string
-        #   fields, the literal value is interpreted as a regular expression using RE2
-        #   syntax. The literal value must match the entire field.  For example, you can
-        #   filter by the name of a resource:
-        #   filter=name ne example-instance
-        #   The above filter returns only results whose name field does not equal example-
-        #   instance. You can also enclose your literal string in single, double, or no
-        #   quotes.
+        #   expression`. Your `expression` must be in the format: FIELD_NAME
+        #   COMPARISON_STRING LITERAL_STRING.
+        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
+        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
+        #   to filter to. The literal value must be valid for the type of field (string,
+        #   number, boolean). For string fields, the literal value is interpreted as a
+        #   regular expression using RE2 syntax. The literal value must match the entire
+        #   field.
+        #   For example, filter=name ne example-instance.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
@@ -389,24 +381,16 @@ module Google
         #   The name of the deployment for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must contain the following:
-        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
-        #   
-        #   - FIELD_NAME: The name of the field you want to compare. The field name must
-        #   be valid for the type of resource being filtered. Only atomic field types are
-        #   supported (string, number, boolean). Array and object fields are not currently
-        #   supported.
-        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-        #   equals).
-        #   - LITERAL_STRING: The literal string value to filter to. The literal value
-        #   must be valid for the type of field (string, number, boolean). For string
-        #   fields, the literal value is interpreted as a regular expression using RE2
-        #   syntax. The literal value must match the entire field.  For example, you can
-        #   filter by the name of a resource:
-        #   filter=name ne example-instance
-        #   The above filter returns only results whose name field does not equal example-
-        #   instance. You can also enclose your literal string in single, double, or no
-        #   quotes.
+        #   expression`. Your `expression` must be in the format: FIELD_NAME
+        #   COMPARISON_STRING LITERAL_STRING.
+        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
+        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
+        #   to filter to. The literal value must be valid for the type of field (string,
+        #   number, boolean). For string fields, the literal value is interpreted as a
+        #   regular expression using RE2 syntax. The literal value must match the entire
+        #   field.
+        #   For example, filter=name ne example-instance.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
@@ -494,24 +478,16 @@ module Google
         #   The project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must contain the following:
-        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
-        #   
-        #   - FIELD_NAME: The name of the field you want to compare. The field name must
-        #   be valid for the type of resource being filtered. Only atomic field types are
-        #   supported (string, number, boolean). Array and object fields are not currently
-        #   supported.
-        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-        #   equals).
-        #   - LITERAL_STRING: The literal string value to filter to. The literal value
-        #   must be valid for the type of field (string, number, boolean). For string
-        #   fields, the literal value is interpreted as a regular expression using RE2
-        #   syntax. The literal value must match the entire field.  For example, you can
-        #   filter by the name of a resource:
-        #   filter=name ne example-instance
-        #   The above filter returns only results whose name field does not equal example-
-        #   instance. You can also enclose your literal string in single, double, or no
-        #   quotes.
+        #   expression`. Your `expression` must be in the format: FIELD_NAME
+        #   COMPARISON_STRING LITERAL_STRING.
+        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
+        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
+        #   to filter to. The literal value must be valid for the type of field (string,
+        #   number, boolean). For string fields, the literal value is interpreted as a
+        #   regular expression using RE2 syntax. The literal value must match the entire
+        #   field.
+        #   For example, filter=name ne example-instance.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
@@ -603,24 +579,16 @@ module Google
         #   The name of the deployment for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must contain the following:
-        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
-        #   
-        #   - FIELD_NAME: The name of the field you want to compare. The field name must
-        #   be valid for the type of resource being filtered. Only atomic field types are
-        #   supported (string, number, boolean). Array and object fields are not currently
-        #   supported.
-        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-        #   equals).
-        #   - LITERAL_STRING: The literal string value to filter to. The literal value
-        #   must be valid for the type of field (string, number, boolean). For string
-        #   fields, the literal value is interpreted as a regular expression using RE2
-        #   syntax. The literal value must match the entire field.  For example, you can
-        #   filter by the name of a resource:
-        #   filter=name ne example-instance
-        #   The above filter returns only results whose name field does not equal example-
-        #   instance. You can also enclose your literal string in single, double, or no
-        #   quotes.
+        #   expression`. Your `expression` must be in the format: FIELD_NAME
+        #   COMPARISON_STRING LITERAL_STRING.
+        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
+        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
+        #   to filter to. The literal value must be valid for the type of field (string,
+        #   number, boolean). For string fields, the literal value is interpreted as a
+        #   regular expression using RE2 syntax. The literal value must match the entire
+        #   field.
+        #   For example, filter=name ne example-instance.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token
@@ -669,24 +637,16 @@ module Google
         #   The project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must contain the following:
-        #   FIELD_NAME COMPARISON_STRING LITERAL_STRING
-        #   
-        #   - FIELD_NAME: The name of the field you want to compare. The field name must
-        #   be valid for the type of resource being filtered. Only atomic field types are
-        #   supported (string, number, boolean). Array and object fields are not currently
-        #   supported.
-        #   - COMPARISON_STRING: The comparison string, either eq (equals) or ne (not
-        #   equals).
-        #   - LITERAL_STRING: The literal string value to filter to. The literal value
-        #   must be valid for the type of field (string, number, boolean). For string
-        #   fields, the literal value is interpreted as a regular expression using RE2
-        #   syntax. The literal value must match the entire field.  For example, you can
-        #   filter by the name of a resource:
-        #   filter=name ne example-instance
-        #   The above filter returns only results whose name field does not equal example-
-        #   instance. You can also enclose your literal string in single, double, or no
-        #   quotes.
+        #   expression`. Your `expression` must be in the format: FIELD_NAME
+        #   COMPARISON_STRING LITERAL_STRING.
+        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
+        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
+        #   to filter to. The literal value must be valid for the type of field (string,
+        #   number, boolean). For string fields, the literal value is interpreted as a
+        #   regular expression using RE2 syntax. The literal value must match the entire
+        #   field.
+        #   For example, filter=name ne example-instance.
         # @param [Fixnum] max_results
         #   Maximum count of results to be returned.
         # @param [String] page_token

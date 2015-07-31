@@ -391,9 +391,9 @@ module Google
         # Updates an existing account user profile. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::AccountUserProfile] account_user_profile_object
         # @param [String] id
         #   User profile ID.
+        # @param [Google::Apis::DfareportingV2_1::AccountUserProfile] account_user_profile_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -415,7 +415,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_account_user_profile(profile_id, account_user_profile_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_account_user_profile(profile_id, id, account_user_profile_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/accountUserProfiles'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::AccountUserProfile::Representation
@@ -574,9 +574,9 @@ module Google
         # Updates an existing account. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::Account] account_object
         # @param [String] id
         #   Account ID.
+        # @param [Google::Apis::DfareportingV2_1::Account] account_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -598,7 +598,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_account(profile_id, account_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_account(profile_id, id, account_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/accounts'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::Account::Representation
@@ -852,9 +852,9 @@ module Google
         # Updates an existing ad. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::Ad] ad_object
         # @param [String] id
         #   Ad ID.
+        # @param [Google::Apis::DfareportingV2_1::Ad] ad_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -876,7 +876,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_ad(profile_id, ad_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_ad(profile_id, id, ad_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/ads'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::Ad::Representation
@@ -1108,9 +1108,9 @@ module Google
         # Updates an existing advertiser group. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::AdvertiserGroup] advertiser_group_object
         # @param [String] id
         #   Advertiser group ID.
+        # @param [Google::Apis::DfareportingV2_1::AdvertiserGroup] advertiser_group_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1132,7 +1132,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_advertiser_group(profile_id, advertiser_group_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_advertiser_group(profile_id, id, advertiser_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/advertiserGroups'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::AdvertiserGroup::Representation
@@ -1345,9 +1345,9 @@ module Google
         # Updates an existing advertiser. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::Advertiser] advertiser_object
         # @param [String] id
         #   Advertiser ID.
+        # @param [Google::Apis::DfareportingV2_1::Advertiser] advertiser_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1369,7 +1369,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_advertiser(profile_id, advertiser_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_advertiser(profile_id, id, advertiser_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/advertisers'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::Advertiser::Representation
@@ -1593,12 +1593,12 @@ module Google
         # Inserts a new campaign.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::Campaign] campaign_object
         # @param [String] default_landing_page_name
         #   Default landing page name for this new campaign. Must be less than 256
         #   characters long.
         # @param [String] default_landing_page_url
         #   Default landing page URL for this new campaign.
+        # @param [Google::Apis::DfareportingV2_1::Campaign] campaign_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1620,7 +1620,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_campaign(profile_id, campaign_object = nil, default_landing_page_name: nil, default_landing_page_url: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_campaign(profile_id, default_landing_page_name, default_landing_page_url, campaign_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/campaigns'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::Campaign::Representation
@@ -1720,9 +1720,9 @@ module Google
         # Updates an existing campaign. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::Campaign] campaign_object
         # @param [String] id
         #   Campaign ID.
+        # @param [Google::Apis::DfareportingV2_1::Campaign] campaign_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1744,7 +1744,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_campaign(profile_id, campaign_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_campaign(profile_id, id, campaign_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/campaigns'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::Campaign::Representation
@@ -2215,9 +2215,9 @@ module Google
         # Updates an existing content category. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::ContentCategory] content_category_object
         # @param [String] id
         #   Content category ID.
+        # @param [Google::Apis::DfareportingV2_1::ContentCategory] content_category_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2239,7 +2239,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_content_category(profile_id, content_category_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_content_category(profile_id, id, content_category_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/contentCategories'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::ContentCategory::Representation
@@ -2607,9 +2607,9 @@ module Google
         #   User profile ID associated with this request.
         # @param [String] creative_field_id
         #   Creative field ID for this creative field value.
-        # @param [Google::Apis::DfareportingV2_1::CreativeFieldValue] creative_field_value_object
         # @param [String] id
         #   Creative Field Value ID
+        # @param [Google::Apis::DfareportingV2_1::CreativeFieldValue] creative_field_value_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2631,7 +2631,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_creative_field_value(profile_id, creative_field_id, creative_field_value_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_creative_field_value(profile_id, creative_field_id, id, creative_field_value_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::CreativeFieldValue::Representation
@@ -2870,9 +2870,9 @@ module Google
         # Updates an existing creative field. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::CreativeField] creative_field_object
         # @param [String] id
         #   Creative Field ID
+        # @param [Google::Apis::DfareportingV2_1::CreativeField] creative_field_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2894,7 +2894,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_creative_field(profile_id, creative_field_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_creative_field(profile_id, id, creative_field_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/creativeFields'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::CreativeField::Representation
@@ -3095,9 +3095,9 @@ module Google
         # Updates an existing creative group. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::CreativeGroup] creative_group_object
         # @param [String] id
         #   Creative group ID.
+        # @param [Google::Apis::DfareportingV2_1::CreativeGroup] creative_group_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3119,7 +3119,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_creative_group(profile_id, creative_group_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_creative_group(profile_id, id, creative_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/creativeGroups'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::CreativeGroup::Representation
@@ -3345,9 +3345,9 @@ module Google
         # Updates an existing creative. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::Creative] creative_object
         # @param [String] id
         #   Creative ID.
+        # @param [Google::Apis::DfareportingV2_1::Creative] creative_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3369,7 +3369,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_creative(profile_id, creative_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_creative(profile_id, id, creative_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/creatives'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::Creative::Representation
@@ -3860,13 +3860,16 @@ module Google
         # @param [String] campaign_id
         #   Select only event tags that belong to this campaign.
         # @param [Boolean] definitions_only
-        #   Examine only the specified ad or campaign or advertiser's event tags for
-        #   matching selector criteria. When set to false, the parent advertiser and
-        #   parent campaign is examined as well. In addition, when set to false, the
-        #   status field is examined as well along with the enabledByDefault field.
+        #   Examine only the specified campaign or advertiser's event tags for matching
+        #   selector criteria. When set to false, the parent advertiser and parent
+        #   campaign of the specified ad or campaign is examined as well. In addition,
+        #   when set to false, the status field is examined as well, along with the
+        #   enabledByDefault field. This parameter can not be set to true when adId is
+        #   specified as ads do not define their own even tags.
         # @param [Boolean] enabled
-        #   Select only enabled event tags. When definitionsOnly is set to true, only the
-        #   specified advertiser or campaign's event tags' enabledByDefault field is
+        #   Select only enabled event tags. What is considered enabled or disabled depends
+        #   on the definitionsOnly parameter. When definitionsOnly is set to true, only
+        #   the specified advertiser or campaign's event tags' enabledByDefault field is
         #   examined. When definitionsOnly is set to false, the specified ad or specified
         #   campaign's parent advertiser's or parent campaign's event tags'
         #   enabledByDefault and status fields are examined as well.
@@ -3934,9 +3937,9 @@ module Google
         # Updates an existing event tag. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::EventTag] event_tag_object
         # @param [String] id
         #   Event tag ID.
+        # @param [Google::Apis::DfareportingV2_1::EventTag] event_tag_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3958,7 +3961,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_event_tag(profile_id, event_tag_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_event_tag(profile_id, id, event_tag_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/eventTags'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::EventTag::Representation
@@ -4356,9 +4359,9 @@ module Google
         # Updates an existing floodlight activity. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::FloodlightActivity] floodlight_activity_object
         # @param [String] id
         #   Floodlight activity ID.
+        # @param [Google::Apis::DfareportingV2_1::FloodlightActivity] floodlight_activity_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4380,7 +4383,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_floodlight_activity(profile_id, floodlight_activity_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_floodlight_activity(profile_id, id, floodlight_activity_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/floodlightActivities'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::FloodlightActivity::Representation
@@ -4629,9 +4632,9 @@ module Google
         # semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::FloodlightActivityGroup] floodlight_activity_group_object
         # @param [String] id
         #   Floodlight activity Group ID.
+        # @param [Google::Apis::DfareportingV2_1::FloodlightActivityGroup] floodlight_activity_group_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4653,7 +4656,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_floodlight_activity_group(profile_id, floodlight_activity_group_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_floodlight_activity_group(profile_id, id, floodlight_activity_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/floodlightActivityGroups'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::FloodlightActivityGroup::Representation
@@ -4790,9 +4793,9 @@ module Google
         # semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::FloodlightConfiguration] floodlight_configuration_object
         # @param [String] id
         #   Floodlight configuration ID.
+        # @param [Google::Apis::DfareportingV2_1::FloodlightConfiguration] floodlight_configuration_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4814,7 +4817,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_floodlight_configuration(profile_id, floodlight_configuration_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_floodlight_configuration(profile_id, id, floodlight_configuration_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/floodlightConfigurations'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::FloodlightConfiguration::Representation
@@ -5142,9 +5145,9 @@ module Google
         #   User profile ID associated with this request.
         # @param [String] campaign_id
         #   Landing page campaign ID.
-        # @param [Google::Apis::DfareportingV2_1::LandingPage] landing_page_object
         # @param [String] id
         #   Landing page ID.
+        # @param [Google::Apis::DfareportingV2_1::LandingPage] landing_page_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5166,7 +5169,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_landing_page(profile_id, campaign_id, landing_page_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_landing_page(profile_id, campaign_id, id, landing_page_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/campaigns/{campaignId}/landingPages'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::LandingPage::Representation
@@ -5881,9 +5884,9 @@ module Google
         # Updates an existing placement group. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::PlacementGroup] placement_group_object
         # @param [String] id
         #   Placement group ID.
+        # @param [Google::Apis::DfareportingV2_1::PlacementGroup] placement_group_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5905,7 +5908,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_placement_group(profile_id, placement_group_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_placement_group(profile_id, id, placement_group_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/placementGroups'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::PlacementGroup::Representation
@@ -6137,9 +6140,9 @@ module Google
         # Updates an existing placement strategy. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::PlacementStrategy] placement_strategy_object
         # @param [String] id
         #   Placement strategy ID.
+        # @param [Google::Apis::DfareportingV2_1::PlacementStrategy] placement_strategy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6161,7 +6164,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_placement_strategy(profile_id, placement_strategy_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_placement_strategy(profile_id, id, placement_strategy_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/placementStrategies'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::PlacementStrategy::Representation
@@ -6441,9 +6444,9 @@ module Google
         # Updates an existing placement. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::Placement] placement_object
         # @param [String] id
         #   Placement ID.
+        # @param [Google::Apis::DfareportingV2_1::Placement] placement_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6465,7 +6468,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_placement(profile_id, placement_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_placement(profile_id, id, placement_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/placements'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::Placement::Representation
@@ -6849,9 +6852,9 @@ module Google
         # semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::RemarketingListShare] remarketing_list_share_object
         # @param [String] remarketing_list_id
         #   Remarketing list ID.
+        # @param [Google::Apis::DfareportingV2_1::RemarketingListShare] remarketing_list_share_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6873,7 +6876,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_remarketing_list_share(profile_id, remarketing_list_share_object = nil, remarketing_list_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_remarketing_list_share(profile_id, remarketing_list_id, remarketing_list_share_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/remarketingListShares'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::RemarketingListShare::Representation
@@ -7008,10 +7011,10 @@ module Google
         # Retrieves a list of remarketing lists, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Boolean] active
-        #   Select only active or only inactive remarketing lists.
         # @param [String] advertiser_id
         #   Select only remarketing lists owned by this advertiser.
+        # @param [Boolean] active
+        #   Select only active or only inactive remarketing lists.
         # @param [String] floodlight_activity_id
         #   Select only remarketing lists that have this floodlight activity ID.
         # @param [Fixnum] max_results
@@ -7051,7 +7054,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_remarketing_lists(profile_id, active: nil, advertiser_id: nil, floodlight_activity_id: nil, max_results: nil, name: nil, page_token: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_remarketing_lists(profile_id, advertiser_id, active: nil, floodlight_activity_id: nil, max_results: nil, name: nil, page_token: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/remarketingLists'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::DfareportingV2_1::ListRemarketingListsResponse::Representation
@@ -7074,9 +7077,9 @@ module Google
         # Updates an existing remarketing list. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::RemarketingList] remarketing_list_object
         # @param [String] id
         #   Remarketing list ID.
+        # @param [Google::Apis::DfareportingV2_1::RemarketingList] remarketing_list_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7098,7 +7101,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_remarketing_list(profile_id, remarketing_list_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_remarketing_list(profile_id, id, remarketing_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/remarketingLists'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::RemarketingList::Representation
@@ -7754,9 +7757,9 @@ module Google
         # Updates an existing site. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::Site] site_object
         # @param [String] id
         #   Site ID.
+        # @param [Google::Apis::DfareportingV2_1::Site] site_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7778,7 +7781,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_site(profile_id, site_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_site(profile_id, id, site_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/sites'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::Site::Representation
@@ -8098,9 +8101,9 @@ module Google
         # Updates an existing subaccount. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::Subaccount] subaccount_object
         # @param [String] id
         #   Subaccount ID.
+        # @param [Google::Apis::DfareportingV2_1::Subaccount] subaccount_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8122,7 +8125,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_subaccount(profile_id, subaccount_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_subaccount(profile_id, id, subaccount_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/subaccounts'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::Subaccount::Representation
@@ -8218,10 +8221,10 @@ module Google
         # Retrieves a list of targetable remarketing lists, possibly filtered.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Boolean] active
-        #   Select only active or only inactive targetable remarketing lists.
         # @param [String] advertiser_id
         #   Select only targetable remarketing lists targetable by these advertisers.
+        # @param [Boolean] active
+        #   Select only active or only inactive targetable remarketing lists.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] name
@@ -8259,7 +8262,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_targetable_remarketing_lists(profile_id, active: nil, advertiser_id: nil, max_results: nil, name: nil, page_token: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_targetable_remarketing_lists(profile_id, advertiser_id, active: nil, max_results: nil, name: nil, page_token: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/targetableRemarketingLists'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::DfareportingV2_1::ListTargetableRemarketingListsResponse::Representation
@@ -8684,9 +8687,9 @@ module Google
         # Updates an existing user role. This method supports patch semantics.
         # @param [String] profile_id
         #   User profile ID associated with this request.
-        # @param [Google::Apis::DfareportingV2_1::UserRole] user_role_object
         # @param [String] id
         #   User role ID.
+        # @param [Google::Apis::DfareportingV2_1::UserRole] user_role_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8708,7 +8711,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_user_role(profile_id, user_role_object = nil, id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_user_role(profile_id, id, user_role_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'userprofiles/{profileId}/userRoles'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DfareportingV2_1::UserRole::Representation

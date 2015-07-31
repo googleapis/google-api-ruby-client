@@ -1124,7 +1124,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(project, instance: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_operations(project, instance, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/operations'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::SqladminV1beta4::ListOperationsResponse::Representation
@@ -1377,7 +1377,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_user(project, instance, host: nil, name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_user(project, instance, host, name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/users'
           command =  make_simple_command(:delete, path, options)
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
@@ -1478,11 +1478,11 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Database instance ID. This does not include the project ID.
-        # @param [Google::Apis::SqladminV1beta4::User] user_object
         # @param [String] host
         #   Host of the user in the instance.
         # @param [String] name
         #   Name of the user in the instance.
+        # @param [Google::Apis::SqladminV1beta4::User] user_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1504,7 +1504,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user(project, instance, user_object = nil, host: nil, name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_user(project, instance, host, name, user_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'projects/{project}/instances/{instance}/users'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::SqladminV1beta4::User::Representation

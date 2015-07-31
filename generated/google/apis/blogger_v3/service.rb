@@ -165,7 +165,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_blog_by_url(url: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_blog_by_url(url, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/byurl'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::BloggerV3::Blog::Representation
@@ -1157,10 +1157,10 @@ module Google
         # Retrieve a Post by Path.
         # @param [String] blog_id
         #   ID of the blog to fetch the post from.
-        # @param [Fixnum] max_comments
-        #   Maximum number of comments to pull back on a post.
         # @param [String] path
         #   Path of the Post to retrieve.
+        # @param [Fixnum] max_comments
+        #   Maximum number of comments to pull back on a post.
         # @param [String] view
         #   Access level with which to view the returned result. Note that some fields
         #   require elevated access.
@@ -1185,7 +1185,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_post_by_path(blog_id, max_comments: nil, path: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_post_by_path(blog_id, path, max_comments: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/bypath'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::BloggerV3::Post::Representation
@@ -1467,13 +1467,13 @@ module Google
         # Search for a post.
         # @param [String] blog_id
         #   ID of the blog to fetch the post from.
+        # @param [String] q
+        #   Query terms to search this blog for matching posts.
         # @param [Boolean] fetch_bodies
         #   Whether the body content of posts is included (default: true). This should be
         #   set to false when the post bodies are not required, to help minimize traffic.
         # @param [String] order_by
         #   Sort search results
-        # @param [String] q
-        #   Query terms to search this blog for matching posts.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1495,7 +1495,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_posts(blog_id, fetch_bodies: nil, order_by: nil, q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def search_posts(blog_id, q, fetch_bodies: nil, order_by: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'blogs/{blogId}/posts/search'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::BloggerV3::PostList::Representation

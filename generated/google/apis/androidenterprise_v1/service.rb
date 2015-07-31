@@ -720,9 +720,9 @@ module Google
         end
         
         # Enrolls an enterprise with the calling MDM.
-        # @param [Google::Apis::AndroidenterpriseV1::Enterprise] enterprise_object
         # @param [String] token
         #   The token provided by the enterprise to register the MDM.
+        # @param [Google::Apis::AndroidenterpriseV1::Enterprise] enterprise_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -744,7 +744,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def enroll_enterprise(enterprise_object = nil, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def enroll_enterprise(token, enterprise_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/enroll'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::Enterprise::Representation
@@ -796,9 +796,9 @@ module Google
         
         # Establishes the binding between the MDM and an enterprise. This is now
         # deprecated; use enroll instead.
-        # @param [Google::Apis::AndroidenterpriseV1::Enterprise] enterprise_object
         # @param [String] token
         #   The token provided by the enterprise to register the MDM.
+        # @param [Google::Apis::AndroidenterpriseV1::Enterprise] enterprise_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -820,7 +820,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_enterprise(enterprise_object = nil, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_enterprise(token, enterprise_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::AndroidenterpriseV1::Enterprise::Representation
@@ -858,7 +858,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_enterprises(domain: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_enterprises(domain, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AndroidenterpriseV1::ListEnterprisesResponse::Representation
@@ -1921,7 +1921,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_users(enterprise_id, email: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_users(enterprise_id, email, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'enterprises/{enterpriseId}/users'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AndroidenterpriseV1::ListUsersResponse::Representation

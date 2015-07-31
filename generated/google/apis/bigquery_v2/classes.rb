@@ -168,8 +168,8 @@ module Google
         # @return [String]
         attr_accessor :last_modified_time
       
-        # [Experimental] The location where the data resides. If not present, the data
-        # will be stored in the US.
+        # [Experimental] The geographic location where the dataset should reside.
+        # Possible values include EU and US. The default value is US.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -1585,9 +1585,10 @@ module Google
         # @return [Google::Apis::BigqueryV2::DatasetReference]
         attr_accessor :default_dataset
       
-        # [Optional] If set, don't actually run this job. A valid query will return a
-        # mostly empty response with some processing statistics, while an invalid query
-        # will return the same error it would if it wasn't a dry run.
+        # [Optional] If set to true, BigQuery doesn't run the job. Instead, if the query
+        # is valid, BigQuery returns statistics about the job such as how many bytes
+        # would be processed. If the query is invalid, an error returns. The default
+        # value is false.
         # Corresponds to the JSON property `dryRun`
         # @return [Boolean]
         attr_accessor :dry_run
@@ -1760,6 +1761,13 @@ module Google
         # @return [String]
         attr_accessor :expiration_time
       
+        # [Experimental] Describes the data format, location, and other properties of a
+        # table stored outside of BigQuery. By defining these properties, the data
+        # source can then be queried as if it were a standard BigQuery table.
+        # Corresponds to the JSON property `externalDataConfiguration`
+        # @return [Google::Apis::BigqueryV2::ExternalDataConfiguration]
+        attr_accessor :external_data_configuration
+      
         # [Optional] A descriptive name for this table.
         # Corresponds to the JSON property `friendlyName`
         # @return [String]
@@ -1781,7 +1789,8 @@ module Google
         # @return [String]
         attr_accessor :last_modified_time
       
-        # [Optional] The backing storage location.
+        # [Output-only] The geographic location where the table resides. This value is
+        # inherited from the dataset.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -1835,6 +1844,7 @@ module Google
           @description = args[:description] unless args[:description].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @expiration_time = args[:expiration_time] unless args[:expiration_time].nil?
+          @external_data_configuration = args[:external_data_configuration] unless args[:external_data_configuration].nil?
           @friendly_name = args[:friendly_name] unless args[:friendly_name].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?

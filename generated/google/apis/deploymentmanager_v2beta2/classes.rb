@@ -686,7 +686,7 @@ module Google
         # @return [String]
         attr_accessor :final_properties
       
-        # [Output Only] The intent of the resource, PREVIEW, UPDATE, or CANCEL.
+        # [Output Only] The intent of the resource: PREVIEW, UPDATE, or CANCEL.
         # Corresponds to the JSON property `intent`
         # @return [String]
         attr_accessor :intent

@@ -56,6 +56,8 @@ module Google
         # Runs PageSpeed analysis on the page at the specified URL, and returns
         # PageSpeed scores, a list of suggestions to make that page faster, and other
         # information.
+        # @param [String] url
+        #   The URL to fetch and analyze
         # @param [Boolean] filter_third_party_resources
         #   Indicates if third party resources should be filtered out before PageSpeed
         #   analysis.
@@ -67,8 +69,6 @@ module Google
         #   Indicates if binary data containing a screenshot should be included
         # @param [String] strategy
         #   The analysis strategy to use
-        # @param [String] url
-        #   The URL to fetch and analyze
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -90,7 +90,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def run_pagespeed(filter_third_party_resources: nil, locale: nil, rule: nil, screenshot: nil, strategy: nil, url: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def run_pagespeed(url, filter_third_party_resources: nil, locale: nil, rule: nil, screenshot: nil, strategy: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'runPagespeed'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::PagespeedonlineV2::Result::Representation

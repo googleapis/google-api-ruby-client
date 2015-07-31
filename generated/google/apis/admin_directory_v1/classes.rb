@@ -716,6 +716,12 @@ module Google
       class MobileDevice
         include Google::Apis::Core::Hashable
       
+        # Adb (USB debugging) enabled or disabled on device (Read-only)
+        # Corresponds to the JSON property `adbStatus`
+        # @return [Boolean]
+        attr_accessor :adb_status
+        alias_method :adb_status?, :adb_status
+      
         # List of applications installed on Mobile Device
         # Corresponds to the JSON property `applications`
         # @return [Array<Google::Apis::AdminDirectoryV1::MobileDevice::Application>]
@@ -735,6 +741,12 @@ module Google
         # Corresponds to the JSON property `defaultLanguage`
         # @return [String]
         attr_accessor :default_language
+      
+        # Developer options enabled or disabled on device (Read-only)
+        # Corresponds to the JSON property `developerOptionsStatus`
+        # @return [Boolean]
+        attr_accessor :developer_options_status
+        alias_method :developer_options_status?, :developer_options_status
       
         # Mobile Device compromised status (Read-only)
         # Corresponds to the JSON property `deviceCompromisedStatus`
@@ -820,6 +832,11 @@ module Google
         # @return [String]
         attr_accessor :os
       
+        # List of accounts added on device (Read-only)
+        # Corresponds to the JSON property `otherAccountsInfo`
+        # @return [Array<String>]
+        attr_accessor :other_accounts_info
+      
         # Unique identifier of Mobile Device (Read-only)
         # Corresponds to the JSON property `resourceId`
         # @return [String]
@@ -835,10 +852,22 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # Work profile supported on device (Read-only)
+        # Corresponds to the JSON property `supportsWorkProfile`
+        # @return [Boolean]
+        attr_accessor :supports_work_profile
+        alias_method :supports_work_profile?, :supports_work_profile
+      
         # The type of device (Read-only)
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
+      
+        # Unknown sources enabled or disabled on device (Read-only)
+        # Corresponds to the JSON property `unknownSourcesStatus`
+        # @return [Boolean]
+        attr_accessor :unknown_sources_status
+        alias_method :unknown_sources_status?, :unknown_sources_status
       
         # Mobile Device user agent
         # Corresponds to the JSON property `userAgent`
@@ -856,10 +885,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @adb_status = args[:adb_status] unless args[:adb_status].nil?
           @applications = args[:applications] unless args[:applications].nil?
           @baseband_version = args[:baseband_version] unless args[:baseband_version].nil?
           @build_number = args[:build_number] unless args[:build_number].nil?
           @default_language = args[:default_language] unless args[:default_language].nil?
+          @developer_options_status = args[:developer_options_status] unless args[:developer_options_status].nil?
           @device_compromised_status = args[:device_compromised_status] unless args[:device_compromised_status].nil?
           @device_id = args[:device_id] unless args[:device_id].nil?
           @email = args[:email] unless args[:email].nil?
@@ -876,10 +907,13 @@ module Google
           @name = args[:name] unless args[:name].nil?
           @network_operator = args[:network_operator] unless args[:network_operator].nil?
           @os = args[:os] unless args[:os].nil?
+          @other_accounts_info = args[:other_accounts_info] unless args[:other_accounts_info].nil?
           @resource_id = args[:resource_id] unless args[:resource_id].nil?
           @serial_number = args[:serial_number] unless args[:serial_number].nil?
           @status = args[:status] unless args[:status].nil?
+          @supports_work_profile = args[:supports_work_profile] unless args[:supports_work_profile].nil?
           @type = args[:type] unless args[:type].nil?
+          @unknown_sources_status = args[:unknown_sources_status] unless args[:unknown_sources_status].nil?
           @user_agent = args[:user_agent] unless args[:user_agent].nil?
           @wifi_mac_address = args[:wifi_mac_address] unless args[:wifi_mac_address].nil?
         end

@@ -614,6 +614,8 @@ module Google
           property :description, as: 'description'
           property :etag, as: 'etag'
           property :expiration_time, as: 'expirationTime'
+          property :external_data_configuration, as: 'externalDataConfiguration', class: Google::Apis::BigqueryV2::ExternalDataConfiguration, decorator: Google::Apis::BigqueryV2::ExternalDataConfiguration::Representation
+      
           property :friendly_name, as: 'friendlyName'
           property :id, as: 'id'
           property :kind, as: 'kind'

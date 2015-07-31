@@ -59,11 +59,11 @@ module Google
         # other API methods to generate those activity resources. For example, you would
         # use the API's videos.rate() method to rate a video and the playlistItems.
         # insert() method to mark a video as a favorite.
-        # @param [Google::Apis::YoutubeV3::Activity] activity_object
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
         #   properties that the write operation will set as well as the properties that
         #   the API response will include.
+        # @param [Google::Apis::YoutubeV3::Activity] activity_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -85,7 +85,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_activity(activity_object = nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_activity(part, activity_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activities'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::Activity::Representation
@@ -103,6 +103,15 @@ module Google
         # example, you can retrieve events associated with a particular channel, events
         # associated with the user's subscriptions and Google+ friends, or the YouTube
         # home page feed, which is customized for each user.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more activity
+        #   resource properties that the API response will include.
+        #   If the parameter identifies a property that contains child properties, the
+        #   child properties will be included in the response. For example, in an activity
+        #   resource, the snippet property contains other properties that identify the
+        #   type of activity, a display title for the activity, and so forth. If you set
+        #   part=snippet, the API response will also contain all of those nested
+        #   properties.
         # @param [String] channel_id
         #   The channelId parameter specifies a unique YouTube channel ID. The API will
         #   then return a list of that channel's activities.
@@ -119,15 +128,6 @@ module Google
         #   The pageToken parameter identifies a specific page in the result set that
         #   should be returned. In an API response, the nextPageToken and prevPageToken
         #   properties identify other pages that could be retrieved.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more activity
-        #   resource properties that the API response will include.
-        #   If the parameter identifies a property that contains child properties, the
-        #   child properties will be included in the response. For example, in an activity
-        #   resource, the snippet property contains other properties that identify the
-        #   type of activity, a display title for the activity, and so forth. If you set
-        #   part=snippet, the API response will also contain all of those nested
-        #   properties.
         # @param [DateTime] published_after
         #   The publishedAfter parameter specifies the earliest date and time that an
         #   activity could have occurred for that activity to be included in the API
@@ -166,7 +166,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_activities(channel_id: nil, home: nil, max_results: nil, mine: nil, page_token: nil, part: nil, published_after: nil, published_before: nil, region_code: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_activities(part, channel_id: nil, home: nil, max_results: nil, mine: nil, page_token: nil, published_after: nil, published_before: nil, region_code: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activities'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListActivitiesResponse::Representation
@@ -187,12 +187,12 @@ module Google
         end
         
         # Deletes a specified caption track.
-        # @param [String] debug_project_id_override
-        #   The debugProjectIdOverride parameter should be used for mimicking a request
-        #   for a certain project ID
         # @param [String] id
         #   The id parameter identifies the caption track that is being deleted. The value
         #   is a caption track ID as identified by the id property in a caption resource.
+        # @param [String] debug_project_id_override
+        #   The debugProjectIdOverride parameter should be used for mimicking a request
+        #   for a certain project ID
         # @param [String] on_behalf_of
         #   ID of the Google+ Page for the channel that the request is be on behalf of
         # @param [String] on_behalf_of_content_owner
@@ -226,7 +226,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_caption(debug_project_id_override: nil, id: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_caption(id, debug_project_id_override: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'captions'
           command =  make_simple_command(:delete, path, options)
           command.query['debugProjectIdOverride'] = debug_project_id_override unless debug_project_id_override.nil?
@@ -315,6 +315,9 @@ module Google
         end
         
         # Uploads a caption track.
+        # @param [String] part
+        #   The part parameter specifies the caption resource parts that the API response
+        #   will include. Set the parameter value to snippet.
         # @param [Google::Apis::YoutubeV3::Caption] caption_object
         # @param [String] debug_project_id_override
         #   The debugProjectIdOverride parameter should be used for mimicking a request
@@ -331,9 +334,6 @@ module Google
         #   to all their video and channel data, without having to provide authentication
         #   credentials for each individual channel. The actual CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
-        # @param [String] part
-        #   The part parameter specifies the caption resource parts that the API response
-        #   will include. Set the parameter value to snippet.
         # @param [Boolean] sync
         #   The sync parameter indicates whether YouTube should automatically synchronize
         #   the caption file with the audio track of the video. If you set the value to
@@ -367,7 +367,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_caption(caption_object = nil, debug_project_id_override: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, part: nil, sync: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_caption(part, caption_object = nil, debug_project_id_override: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, sync: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'captions'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -394,6 +394,13 @@ module Google
         # Returns a list of caption tracks that are associated with a specified video.
         # Note that the API response does not contain the actual captions and that the
         # captions.download method provides the ability to retrieve a caption track.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more caption
+        #   resource parts that the API response will include. The part names that you can
+        #   include in the parameter value are id and snippet.
+        # @param [String] video_id
+        #   The videoId parameter specifies the YouTube video ID of the video for which
+        #   the API should return caption tracks.
         # @param [String] debug_project_id_override
         #   The debugProjectIdOverride parameter should be used for mimicking a request
         #   for a certain project ID.
@@ -413,13 +420,6 @@ module Google
         #   to all their video and channel data, without having to provide authentication
         #   credentials for each individual channel. The actual CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more caption
-        #   resource parts that the API response will include. The part names that you can
-        #   include in the parameter value are id and snippet.
-        # @param [String] video_id
-        #   The videoId parameter specifies the YouTube video ID of the video for which
-        #   the API should return caption tracks.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -441,7 +441,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_captions(debug_project_id_override: nil, id: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, part: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_captions(part, video_id, debug_project_id_override: nil, id: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'captions'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListCaptionsResponse::Representation
@@ -460,6 +460,11 @@ module Google
         
         # Updates a caption track. When updating a caption track, you can change the
         # track's draft status, upload a new caption file for the track, or both.
+        # @param [String] part
+        #   The part parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include. Set the property value to snippet if you are
+        #   updating the track's draft status. Otherwise, set the property value to id.
         # @param [Google::Apis::YoutubeV3::Caption] caption_object
         # @param [String] debug_project_id_override
         #   The debugProjectIdOverride parameter should be used for mimicking a request
@@ -476,11 +481,6 @@ module Google
         #   to all their video and channel data, without having to provide authentication
         #   credentials for each individual channel. The actual CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
-        # @param [String] part
-        #   The part parameter serves two purposes in this operation. It identifies the
-        #   properties that the write operation will set as well as the properties that
-        #   the API response will include. Set the property value to snippet if you are
-        #   updating the track's draft status. Otherwise, set the property value to id.
         # @param [Boolean] sync
         #   Note: The API server only processes the parameter value if the request
         #   contains an updated caption file.
@@ -513,7 +513,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_caption(caption_object = nil, debug_project_id_override: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, part: nil, sync: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def update_caption(part, caption_object = nil, debug_project_id_override: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, sync: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'captions'
           if upload_source.nil?
             command =  make_simple_command(:put, path, options)
@@ -639,7 +639,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_channel_section(id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_channel_section(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'channelSections'
           command =  make_simple_command(:delete, path, options)
           command.query['id'] = id unless id.nil?
@@ -651,6 +651,12 @@ module Google
         end
         
         # Adds a channelSection for the authenticated user's channel.
+        # @param [String] part
+        #   The part parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include.
+        #   The part names that you can include in the parameter value are snippet and
+        #   contentDetails.
         # @param [Google::Apis::YoutubeV3::ChannelSection] channel_section_object
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -678,12 +684,6 @@ module Google
         #   many different YouTube channels. It allows content owners to authenticate once
         #   and perform actions on behalf of the channel specified in the parameter value,
         #   without having to provide authentication credentials for each separate channel.
-        # @param [String] part
-        #   The part parameter serves two purposes in this operation. It identifies the
-        #   properties that the write operation will set as well as the properties that
-        #   the API response will include.
-        #   The part names that you can include in the parameter value are snippet and
-        #   contentDetails.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -705,7 +705,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_channel_section(channel_section_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_channel_section(part, channel_section_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'channelSections'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::ChannelSection::Representation
@@ -722,6 +722,16 @@ module Google
         end
         
         # Returns channelSection resources that match the API request criteria.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more
+        #   channelSection resource properties that the API response will include. The
+        #   part names that you can include in the parameter value are id, snippet, and
+        #   contentDetails.
+        #   If the parameter identifies a property that contains child properties, the
+        #   child properties will be included in the response. For example, in a
+        #   channelSection resource, the snippet property contains other properties, such
+        #   as a display title for the channelSection. If you set part=snippet, the API
+        #   response will also contain all of those nested properties.
         # @param [String] channel_id
         #   The channelId parameter specifies a YouTube channel ID. The API will only
         #   return that channel's channelSections.
@@ -751,16 +761,6 @@ module Google
         #   to all their video and channel data, without having to provide authentication
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more
-        #   channelSection resource properties that the API response will include. The
-        #   part names that you can include in the parameter value are id, snippet, and
-        #   contentDetails.
-        #   If the parameter identifies a property that contains child properties, the
-        #   child properties will be included in the response. For example, in a
-        #   channelSection resource, the snippet property contains other properties, such
-        #   as a display title for the channelSection. If you set part=snippet, the API
-        #   response will also contain all of those nested properties.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -782,7 +782,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_channel_sections(channel_id: nil, hl: nil, id: nil, mine: nil, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_channel_sections(part, channel_id: nil, hl: nil, id: nil, mine: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'channelSections'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListChannelSectionsResponse::Representation
@@ -800,6 +800,12 @@ module Google
         end
         
         # Update a channelSection.
+        # @param [String] part
+        #   The part parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include.
+        #   The part names that you can include in the parameter value are snippet and
+        #   contentDetails.
         # @param [Google::Apis::YoutubeV3::ChannelSection] channel_section_object
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -811,12 +817,6 @@ module Google
         #   to all their video and channel data, without having to provide authentication
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
-        # @param [String] part
-        #   The part parameter serves two purposes in this operation. It identifies the
-        #   properties that the write operation will set as well as the properties that
-        #   the API response will include.
-        #   The part names that you can include in the parameter value are snippet and
-        #   contentDetails.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -838,7 +838,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_channel_section(channel_section_object = nil, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_channel_section(part, channel_section_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'channelSections'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::ChannelSection::Representation
@@ -855,6 +855,14 @@ module Google
         
         # Returns a collection of zero or more channel resources that match the request
         # criteria.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more channel
+        #   resource properties that the API response will include.
+        #   If the parameter identifies a property that contains child properties, the
+        #   child properties will be included in the response. For example, in a channel
+        #   resource, the contentDetails property contains other properties, such as the
+        #   uploads properties. As such, if you set part=contentDetails, the API response
+        #   will also contain all of those nested properties.
         # @param [String] category_id
         #   The categoryId parameter specifies a YouTube guide category, thereby
         #   requesting YouTube channels associated with that category.
@@ -897,14 +905,6 @@ module Google
         #   The pageToken parameter identifies a specific page in the result set that
         #   should be returned. In an API response, the nextPageToken and prevPageToken
         #   properties identify other pages that could be retrieved.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more channel
-        #   resource properties that the API response will include.
-        #   If the parameter identifies a property that contains child properties, the
-        #   child properties will be included in the response. For example, in a channel
-        #   resource, the contentDetails property contains other properties, such as the
-        #   uploads properties. As such, if you set part=contentDetails, the API response
-        #   will also contain all of those nested properties.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -926,7 +926,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_channels(category_id: nil, for_username: nil, hl: nil, id: nil, managed_by_me: nil, max_results: nil, mine: nil, my_subscribers: nil, on_behalf_of_content_owner: nil, page_token: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_channels(part, category_id: nil, for_username: nil, hl: nil, id: nil, managed_by_me: nil, max_results: nil, mine: nil, my_subscribers: nil, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'channels'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListChannelsResponse::Representation
@@ -951,6 +951,15 @@ module Google
         # Updates a channel's metadata. Note that this method currently only supports
         # updates to the channel resource's brandingSettings and invideoPromotion
         # objects and their child properties.
+        # @param [String] part
+        #   The part parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include.
+        #   The API currently only allows the parameter value to be set to either
+        #   brandingSettings or invideoPromotion. (You cannot update both of those parts
+        #   with a single request.)
+        #   Note that this method overrides the existing values for all of the mutable
+        #   properties that are contained in any parts that the parameter value specifies.
         # @param [Google::Apis::YoutubeV3::Channel] channel_object
         # @param [String] on_behalf_of_content_owner
         #   The onBehalfOfContentOwner parameter indicates that the authenticated user is
@@ -961,15 +970,6 @@ module Google
         #   authentication credentials for each individual channel. The actual CMS account
         #   that the user authenticates with needs to be linked to the specified YouTube
         #   content owner.
-        # @param [String] part
-        #   The part parameter serves two purposes in this operation. It identifies the
-        #   properties that the write operation will set as well as the properties that
-        #   the API response will include.
-        #   The API currently only allows the parameter value to be set to either
-        #   brandingSettings or invideoPromotion. (You cannot update both of those parts
-        #   with a single request.)
-        #   Note that this method overrides the existing values for all of the mutable
-        #   properties that are contained in any parts that the parameter value specifies.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -991,7 +991,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_channel(channel_object = nil, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_channel(part, channel_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'channels'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::Channel::Representation
@@ -1008,11 +1008,11 @@ module Google
         
         # Creates a new top-level comment. To add a reply to an existing comment, use
         # the comments.insert method instead.
-        # @param [Google::Apis::YoutubeV3::CommentThread] comment_thread_object
         # @param [String] part
         #   The part parameter identifies the properties that the API response will
         #   include. Set the parameter value to snippet. The snippet part has a quota cost
         #   of 2 units.
+        # @param [Google::Apis::YoutubeV3::CommentThread] comment_thread_object
         # @param [Boolean] share_on_google_plus
         #   The shareOnGooglePlus parameter indicates whether the top-level comment and
         #   any replies that are made to that comment should also be posted to the author'
@@ -1038,7 +1038,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_comment_thread(comment_thread_object = nil, part: nil, share_on_google_plus: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_comment_thread(part, comment_thread_object = nil, share_on_google_plus: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'commentThreads'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::CommentThread::Representation
@@ -1054,6 +1054,9 @@ module Google
         end
         
         # Returns a list of comment threads that match the API request parameters.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more
+        #   commentThread resource properties that the API response will include.
         # @param [String] all_threads_related_to_channel_id
         #   The allThreadsRelatedToChannelId parameter instructs the API to return all
         #   comment threads associated with the specified channel. The response can
@@ -1087,9 +1090,6 @@ module Google
         #   the next page of the result that can be retrieved.
         #   Note: This parameter is not supported for use in conjunction with the id
         #   parameter.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more
-        #   commentThread resource properties that the API response will include.
         # @param [String] search_terms
         #   The searchTerms parameter instructs the API to limit the API response to only
         #   contain comments that contain the specified search terms.
@@ -1122,7 +1122,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_comment_threads(all_threads_related_to_channel_id: nil, channel_id: nil, id: nil, max_results: nil, moderation_status: nil, order: nil, page_token: nil, part: nil, search_terms: nil, text_format: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_comment_threads(part, all_threads_related_to_channel_id: nil, channel_id: nil, id: nil, max_results: nil, moderation_status: nil, order: nil, page_token: nil, search_terms: nil, text_format: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'commentThreads'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListCommentThreadsResponse::Representation
@@ -1145,12 +1145,12 @@ module Google
         end
         
         # Modifies the top-level comment in a comment thread.
-        # @param [Google::Apis::YoutubeV3::CommentThread] comment_thread_object
         # @param [String] part
         #   The part parameter specifies a comma-separated list of commentThread resource
         #   properties that the API response will include. You must at least include the
         #   snippet part in the parameter value since that part contains all of the
         #   properties that the API request can update.
+        # @param [Google::Apis::YoutubeV3::CommentThread] comment_thread_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1172,7 +1172,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_comment_thread(comment_thread_object = nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_comment_thread(part, comment_thread_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'commentThreads'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::CommentThread::Representation
@@ -1211,7 +1211,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_comment(id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_comment(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'comments'
           command =  make_simple_command(:delete, path, options)
           command.query['id'] = id unless id.nil?
@@ -1223,11 +1223,11 @@ module Google
         
         # Creates a reply to an existing comment. Note: To create a top-level comment,
         # use the commentThreads.insert method.
-        # @param [Google::Apis::YoutubeV3::Comment] comment_object
         # @param [String] part
         #   The part parameter identifies the properties that the API response will
         #   include. Set the parameter value to snippet. The snippet part has a quota cost
         #   of 2 units.
+        # @param [Google::Apis::YoutubeV3::Comment] comment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1249,7 +1249,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_comment(comment_object = nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_comment(part, comment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'comments'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::Comment::Representation
@@ -1264,6 +1264,9 @@ module Google
         end
         
         # Returns a list of comments that match the API request parameters.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more comment
+        #   resource properties that the API response will include.
         # @param [String] id
         #   The id parameter specifies a comma-separated list of comment IDs for the
         #   resources that are being retrieved. In a comment resource, the id property
@@ -1284,9 +1287,6 @@ module Google
         #   should be retrieved.
         #   Note: YouTube currently supports replies only for top-level comments. However,
         #   replies to replies may be supported in the future.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more comment
-        #   resource properties that the API response will include.
         # @param [String] text_format
         #   This parameter indicates whether the API should return comments formatted as
         #   HTML or as plain text.
@@ -1311,7 +1311,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_comments(id: nil, max_results: nil, page_token: nil, parent_id: nil, part: nil, text_format: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_comments(part, id: nil, max_results: nil, page_token: nil, parent_id: nil, text_format: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'comments'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListCommentsResponse::Representation
@@ -1354,7 +1354,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def mark_as_spam_comment(id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def mark_as_spam_comment(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'comments/markAsSpam'
           command =  make_simple_command(:post, path, options)
           command.query['id'] = id unless id.nil?
@@ -1366,17 +1366,17 @@ module Google
         
         # Sets the moderation status of one or more comments. The API request must be
         # authorized by the owner of the channel or video associated with the comments.
+        # @param [String] id
+        #   The id parameter specifies a comma-separated list of IDs that identify the
+        #   comments for which you are updating the moderation status.
+        # @param [String] moderation_status
+        #   Identifies the new moderation status of the specified comments.
         # @param [Boolean] ban_author
         #   The banAuthor parameter lets you indicate that you want to automatically
         #   reject any additional comments written by the comment's author. Set the
         #   parameter value to true to ban the author.
         #   Note: This parameter is only valid if the moderationStatus parameter is also
         #   set to rejected.
-        # @param [String] id
-        #   The id parameter specifies a comma-separated list of IDs that identify the
-        #   comments for which you are updating the moderation status.
-        # @param [String] moderation_status
-        #   Identifies the new moderation status of the specified comments.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1398,7 +1398,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_comment_moderation_status(ban_author: nil, id: nil, moderation_status: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_comment_moderation_status(id, moderation_status, ban_author: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'comments/setModerationStatus'
           command =  make_simple_command(:post, path, options)
           command.query['banAuthor'] = ban_author unless ban_author.nil?
@@ -1411,11 +1411,11 @@ module Google
         end
         
         # Modifies a comment.
-        # @param [Google::Apis::YoutubeV3::Comment] comment_object
         # @param [String] part
         #   The part parameter identifies the properties that the API response will
         #   include. You must at least include the snippet part in the parameter value
         #   since that part contains all of the properties that the API request can update.
+        # @param [Google::Apis::YoutubeV3::Comment] comment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1437,7 +1437,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_comment(comment_object = nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_comment(part, comment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'comments'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::Comment::Representation
@@ -1452,6 +1452,9 @@ module Google
         end
         
         # Returns a list of categories that can be associated with YouTube channels.
+        # @param [String] part
+        #   The part parameter specifies the guideCategory resource properties that the
+        #   API response will include. Set the parameter value to snippet.
         # @param [String] hl
         #   The hl parameter specifies the language that will be used for text values in
         #   the API response.
@@ -1460,9 +1463,6 @@ module Google
         #   category ID(s) for the resource(s) that are being retrieved. In a
         #   guideCategory resource, the id property specifies the YouTube channel category
         #   ID.
-        # @param [String] part
-        #   The part parameter specifies the guideCategory resource properties that the
-        #   API response will include. Set the parameter value to snippet.
         # @param [String] region_code
         #   The regionCode parameter instructs the API to return the list of guide
         #   categories available in the specified country. The parameter value is an ISO
@@ -1488,7 +1488,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_guide_categories(hl: nil, id: nil, part: nil, region_code: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_guide_categories(part, hl: nil, id: nil, region_code: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'guideCategories'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListGuideCategoriesResponse::Representation
@@ -1504,12 +1504,12 @@ module Google
         end
         
         # Returns a list of application languages that the YouTube website supports.
-        # @param [String] hl
-        #   The hl parameter specifies the language that should be used for text values in
-        #   the API response.
         # @param [String] part
         #   The part parameter specifies the i18nLanguage resource properties that the API
         #   response will include. Set the parameter value to snippet.
+        # @param [String] hl
+        #   The hl parameter specifies the language that should be used for text values in
+        #   the API response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1531,7 +1531,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_i18n_languages(hl: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_i18n_languages(part, hl: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'i18nLanguages'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListI18nLanguagesResponse::Representation
@@ -1545,12 +1545,12 @@ module Google
         end
         
         # Returns a list of content regions that the YouTube website supports.
-        # @param [String] hl
-        #   The hl parameter specifies the language that should be used for text values in
-        #   the API response.
         # @param [String] part
         #   The part parameter specifies the i18nRegion resource properties that the API
         #   response will include. Set the parameter value to snippet.
+        # @param [String] hl
+        #   The hl parameter specifies the language that should be used for text values in
+        #   the API response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1572,7 +1572,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_i18n_regions(hl: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_i18n_regions(part, hl: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'i18nRegions'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListI18nRegionsResponse::Representation
@@ -1591,6 +1591,11 @@ module Google
         # @param [String] id
         #   The id parameter specifies the unique ID of the broadcast that is being bound
         #   to a video stream.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more
+        #   liveBroadcast resource properties that the API response will include. The part
+        #   names that you can include in the parameter value are id, snippet,
+        #   contentDetails, and status.
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
         #   The onBehalfOfContentOwner parameter indicates that the request's
@@ -1617,11 +1622,6 @@ module Google
         #   many different YouTube channels. It allows content owners to authenticate once
         #   and perform actions on behalf of the channel specified in the parameter value,
         #   without having to provide authentication credentials for each separate channel.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more
-        #   liveBroadcast resource properties that the API response will include. The part
-        #   names that you can include in the parameter value are id, snippet,
-        #   contentDetails, and status.
         # @param [String] stream_id
         #   The streamId parameter specifies the unique ID of the video stream that is
         #   being bound to a broadcast. If this parameter is omitted, the API will remove
@@ -1647,7 +1647,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def bind_live_broadcast(id: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, stream_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def bind_live_broadcast(id, part, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, stream_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'liveBroadcasts/bind'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::YoutubeV3::LiveBroadcast::Representation
@@ -1669,6 +1669,11 @@ module Google
         # @param [String] id
         #   The id parameter specifies the unique ID of the broadcast that is being bound
         #   to a video stream.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more
+        #   liveBroadcast resource properties that the API response will include. The part
+        #   names that you can include in the parameter value are id, snippet,
+        #   contentDetails, and status.
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
         #   The onBehalfOfContentOwner parameter indicates that the request's
@@ -1695,11 +1700,6 @@ module Google
         #   many different YouTube channels. It allows content owners to authenticate once
         #   and perform actions on behalf of the channel specified in the parameter value,
         #   without having to provide authentication credentials for each separate channel.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more
-        #   liveBroadcast resource properties that the API response will include. The part
-        #   names that you can include in the parameter value are id, snippet,
-        #   contentDetails, and status.
         # @param [String] stream_id
         #   The streamId parameter specifies the unique ID of the video stream that is
         #   being bound to a broadcast. If this parameter is omitted, the API will remove
@@ -1725,7 +1725,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def bind_direct_live_broadcast(id: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, stream_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def bind_direct_live_broadcast(id, part, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, stream_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'liveBroadcasts/bind/direct'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::YoutubeV3::LiveBroadcast::Representation
@@ -1743,12 +1743,17 @@ module Google
         
         # Controls the settings for a slate that can be displayed in the broadcast
         # stream.
-        # @param [Boolean] display_slate
-        #   The displaySlate parameter specifies whether the slate is being enabled or
-        #   disabled.
         # @param [String] id
         #   The id parameter specifies the YouTube live broadcast ID that uniquely
         #   identifies the broadcast in which the slate is being updated.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more
+        #   liveBroadcast resource properties that the API response will include. The part
+        #   names that you can include in the parameter value are id, snippet,
+        #   contentDetails, and status.
+        # @param [Boolean] display_slate
+        #   The displaySlate parameter specifies whether the slate is being enabled or
+        #   disabled.
         # @param [String] offset_time_ms
         #   The offsetTimeMs parameter specifies a positive time offset when the specified
         #   slate change will occur. The value is measured in milliseconds from the
@@ -1786,11 +1791,6 @@ module Google
         #   many different YouTube channels. It allows content owners to authenticate once
         #   and perform actions on behalf of the channel specified in the parameter value,
         #   without having to provide authentication credentials for each separate channel.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more
-        #   liveBroadcast resource properties that the API response will include. The part
-        #   names that you can include in the parameter value are id, snippet,
-        #   contentDetails, and status.
         # @param [DateTime] walltime
         #   The walltime parameter specifies the wall clock time at which the specified
         #   slate change will occur. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:
@@ -1816,7 +1816,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def control_live_broadcast(display_slate: nil, id: nil, offset_time_ms: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, walltime: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def control_live_broadcast(id, part, display_slate: nil, offset_time_ms: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, walltime: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'liveBroadcasts/control'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::YoutubeV3::LiveBroadcast::Representation
@@ -1885,7 +1885,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_live_broadcast(id: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_live_broadcast(id, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'liveBroadcasts'
           command =  make_simple_command(:delete, path, options)
           command.query['id'] = id unless id.nil?
@@ -1898,6 +1898,12 @@ module Google
         end
         
         # Creates a broadcast.
+        # @param [String] part
+        #   The part parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include.
+        #   The part properties that you can include in the parameter value are id,
+        #   snippet, contentDetails, and status.
         # @param [Google::Apis::YoutubeV3::LiveBroadcast] live_broadcast_object
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -1925,12 +1931,6 @@ module Google
         #   many different YouTube channels. It allows content owners to authenticate once
         #   and perform actions on behalf of the channel specified in the parameter value,
         #   without having to provide authentication credentials for each separate channel.
-        # @param [String] part
-        #   The part parameter serves two purposes in this operation. It identifies the
-        #   properties that the write operation will set as well as the properties that
-        #   the API response will include.
-        #   The part properties that you can include in the parameter value are id,
-        #   snippet, contentDetails, and status.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1952,7 +1952,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_live_broadcast(live_broadcast_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_live_broadcast(part, live_broadcast_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'liveBroadcasts'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::LiveBroadcast::Representation
@@ -1969,6 +1969,11 @@ module Google
         end
         
         # Returns a list of YouTube broadcasts that match the API request parameters.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more
+        #   liveBroadcast resource properties that the API response will include. The part
+        #   names that you can include in the parameter value are id, snippet,
+        #   contentDetails, and status.
         # @param [String] broadcast_status
         #   The broadcastStatus parameter filters the API response to only include
         #   broadcasts with the specified status.
@@ -2013,11 +2018,6 @@ module Google
         #   The pageToken parameter identifies a specific page in the result set that
         #   should be returned. In an API response, the nextPageToken and prevPageToken
         #   properties identify other pages that could be retrieved.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more
-        #   liveBroadcast resource properties that the API response will include. The part
-        #   names that you can include in the parameter value are id, snippet,
-        #   contentDetails, and status.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2039,7 +2039,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_live_broadcasts(broadcast_status: nil, id: nil, max_results: nil, mine: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, page_token: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_live_broadcasts(part, broadcast_status: nil, id: nil, max_results: nil, mine: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'liveBroadcasts'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListLiveBroadcastsResponse::Representation
@@ -2072,6 +2072,11 @@ module Google
         # @param [String] id
         #   The id parameter specifies the unique ID of the broadcast that is
         #   transitioning to another status.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more
+        #   liveBroadcast resource properties that the API response will include. The part
+        #   names that you can include in the parameter value are id, snippet,
+        #   contentDetails, and status.
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
         #   The onBehalfOfContentOwner parameter indicates that the request's
@@ -2098,11 +2103,6 @@ module Google
         #   many different YouTube channels. It allows content owners to authenticate once
         #   and perform actions on behalf of the channel specified in the parameter value,
         #   without having to provide authentication credentials for each separate channel.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more
-        #   liveBroadcast resource properties that the API response will include. The part
-        #   names that you can include in the parameter value are id, snippet,
-        #   contentDetails, and status.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2124,7 +2124,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def transition_live_broadcast(broadcast_status: nil, id: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def transition_live_broadcast(broadcast_status, id, part, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'liveBroadcasts/transition'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::YoutubeV3::LiveBroadcast::Representation
@@ -2142,6 +2142,20 @@ module Google
         
         # Updates a broadcast. For example, you could modify the broadcast settings
         # defined in the liveBroadcast resource's contentDetails object.
+        # @param [String] part
+        #   The part parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include.
+        #   The part properties that you can include in the parameter value are id,
+        #   snippet, contentDetails, and status.
+        #   Note that this method will override the existing values for all of the mutable
+        #   properties that are contained in any parts that the parameter value specifies.
+        #   For example, a broadcast's privacy status is defined in the status part. As
+        #   such, if your request is updating a private or unlisted broadcast, and the
+        #   request's part parameter value includes the status part, the broadcast's
+        #   privacy setting will be updated to whatever value the request body specifies.
+        #   If the request body does not specify a value, the existing privacy setting
+        #   will be removed and the broadcast will revert to the default privacy setting.
         # @param [Google::Apis::YoutubeV3::LiveBroadcast] live_broadcast_object
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -2169,20 +2183,6 @@ module Google
         #   many different YouTube channels. It allows content owners to authenticate once
         #   and perform actions on behalf of the channel specified in the parameter value,
         #   without having to provide authentication credentials for each separate channel.
-        # @param [String] part
-        #   The part parameter serves two purposes in this operation. It identifies the
-        #   properties that the write operation will set as well as the properties that
-        #   the API response will include.
-        #   The part properties that you can include in the parameter value are id,
-        #   snippet, contentDetails, and status.
-        #   Note that this method will override the existing values for all of the mutable
-        #   properties that are contained in any parts that the parameter value specifies.
-        #   For example, a broadcast's privacy status is defined in the status part. As
-        #   such, if your request is updating a private or unlisted broadcast, and the
-        #   request's part parameter value includes the status part, the broadcast's
-        #   privacy setting will be updated to whatever value the request body specifies.
-        #   If the request body does not specify a value, the existing privacy setting
-        #   will be removed and the broadcast will revert to the default privacy setting.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2204,7 +2204,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_live_broadcast(live_broadcast_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_live_broadcast(part, live_broadcast_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'liveBroadcasts'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::LiveBroadcast::Representation
@@ -2271,7 +2271,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_live_stream(id: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_live_stream(id, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'liveStreams'
           command =  make_simple_command(:delete, path, options)
           command.query['id'] = id unless id.nil?
@@ -2285,6 +2285,12 @@ module Google
         
         # Creates a video stream. The stream enables you to send your video to YouTube,
         # which can then broadcast the video to your audience.
+        # @param [String] part
+        #   The part parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include.
+        #   The part properties that you can include in the parameter value are id,
+        #   snippet, cdn, and status.
         # @param [Google::Apis::YoutubeV3::LiveStream] live_stream_object
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -2312,12 +2318,6 @@ module Google
         #   many different YouTube channels. It allows content owners to authenticate once
         #   and perform actions on behalf of the channel specified in the parameter value,
         #   without having to provide authentication credentials for each separate channel.
-        # @param [String] part
-        #   The part parameter serves two purposes in this operation. It identifies the
-        #   properties that the write operation will set as well as the properties that
-        #   the API response will include.
-        #   The part properties that you can include in the parameter value are id,
-        #   snippet, cdn, and status.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2339,7 +2339,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_live_stream(live_stream_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_live_stream(part, live_stream_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'liveStreams'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::LiveStream::Representation
@@ -2356,6 +2356,10 @@ module Google
         end
         
         # Returns a list of video streams that match the API request parameters.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more liveStream
+        #   resource properties that the API response will include. The part names that
+        #   you can include in the parameter value are id, snippet, cdn, and status.
         # @param [String] id
         #   The id parameter specifies a comma-separated list of YouTube stream IDs that
         #   identify the streams being retrieved. In a liveStream resource, the id
@@ -2397,10 +2401,6 @@ module Google
         #   The pageToken parameter identifies a specific page in the result set that
         #   should be returned. In an API response, the nextPageToken and prevPageToken
         #   properties identify other pages that could be retrieved.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more liveStream
-        #   resource properties that the API response will include. The part names that
-        #   you can include in the parameter value are id, snippet, cdn, and status.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2422,7 +2422,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_live_streams(id: nil, max_results: nil, mine: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, page_token: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_live_streams(part, id: nil, max_results: nil, mine: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'liveStreams'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListLiveStreamsResponse::Representation
@@ -2442,6 +2442,16 @@ module Google
         
         # Updates a video stream. If the properties that you want to change cannot be
         # updated, then you need to create a new stream with the proper settings.
+        # @param [String] part
+        #   The part parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include.
+        #   The part properties that you can include in the parameter value are id,
+        #   snippet, cdn, and status.
+        #   Note that this method will override the existing values for all of the mutable
+        #   properties that are contained in any parts that the parameter value specifies.
+        #   If the request body does not specify a value for a mutable property, the
+        #   existing value for that property will be removed.
         # @param [Google::Apis::YoutubeV3::LiveStream] live_stream_object
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -2469,16 +2479,6 @@ module Google
         #   many different YouTube channels. It allows content owners to authenticate once
         #   and perform actions on behalf of the channel specified in the parameter value,
         #   without having to provide authentication credentials for each separate channel.
-        # @param [String] part
-        #   The part parameter serves two purposes in this operation. It identifies the
-        #   properties that the write operation will set as well as the properties that
-        #   the API response will include.
-        #   The part properties that you can include in the parameter value are id,
-        #   snippet, cdn, and status.
-        #   Note that this method will override the existing values for all of the mutable
-        #   properties that are contained in any parts that the parameter value specifies.
-        #   If the request body does not specify a value for a mutable property, the
-        #   existing value for that property will be removed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2500,7 +2500,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_live_stream(live_stream_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_live_stream(part, live_stream_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'liveStreams'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::LiveStream::Representation
@@ -2542,7 +2542,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_playlist_item(id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_playlist_item(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'playlistItems'
           command =  make_simple_command(:delete, path, options)
           command.query['id'] = id unless id.nil?
@@ -2553,6 +2553,10 @@ module Google
         end
         
         # Adds a resource to a playlist.
+        # @param [String] part
+        #   The part parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include.
         # @param [Google::Apis::YoutubeV3::PlaylistItem] playlist_item_object
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -2564,10 +2568,6 @@ module Google
         #   to all their video and channel data, without having to provide authentication
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
-        # @param [String] part
-        #   The part parameter serves two purposes in this operation. It identifies the
-        #   properties that the write operation will set as well as the properties that
-        #   the API response will include.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2589,7 +2589,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_playlist_item(playlist_item_object = nil, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_playlist_item(part, playlist_item_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'playlistItems'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::PlaylistItem::Representation
@@ -2607,6 +2607,15 @@ module Google
         # Returns a collection of playlist items that match the API request parameters.
         # You can retrieve all of the playlist items in a specified playlist or retrieve
         # one or more playlist items by their unique IDs.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more
+        #   playlistItem resource properties that the API response will include.
+        #   If the parameter identifies a property that contains child properties, the
+        #   child properties will be included in the response. For example, in a
+        #   playlistItem resource, the snippet property contains numerous fields,
+        #   including the title, description, position, and resourceId properties. As such,
+        #   if you set part=snippet, the API response will contain all of those
+        #   properties.
         # @param [String] id
         #   The id parameter specifies a comma-separated list of one or more unique
         #   playlist item IDs.
@@ -2627,15 +2636,6 @@ module Google
         #   The pageToken parameter identifies a specific page in the result set that
         #   should be returned. In an API response, the nextPageToken and prevPageToken
         #   properties identify other pages that could be retrieved.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more
-        #   playlistItem resource properties that the API response will include.
-        #   If the parameter identifies a property that contains child properties, the
-        #   child properties will be included in the response. For example, in a
-        #   playlistItem resource, the snippet property contains numerous fields,
-        #   including the title, description, position, and resourceId properties. As such,
-        #   if you set part=snippet, the API response will contain all of those
-        #   properties.
         # @param [String] playlist_id
         #   The playlistId parameter specifies the unique ID of the playlist for which you
         #   want to retrieve playlist items. Note that even though this is an optional
@@ -2665,7 +2665,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_playlist_items(id: nil, max_results: nil, on_behalf_of_content_owner: nil, page_token: nil, part: nil, playlist_id: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_playlist_items(part, id: nil, max_results: nil, on_behalf_of_content_owner: nil, page_token: nil, playlist_id: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'playlistItems'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListPlaylistItemsResponse::Representation
@@ -2685,7 +2685,6 @@ module Google
         
         # Modifies a playlist item. For example, you could update the item's position in
         # the playlist.
-        # @param [Google::Apis::YoutubeV3::PlaylistItem] playlist_item_object
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
         #   properties that the write operation will set as well as the properties that
@@ -2700,6 +2699,7 @@ module Google
         #   to whatever value the request body specifies. If the request body does not
         #   specify values, the existing start and end times will be removed and replaced
         #   with the default settings.
+        # @param [Google::Apis::YoutubeV3::PlaylistItem] playlist_item_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2721,7 +2721,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_playlist_item(playlist_item_object = nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_playlist_item(part, playlist_item_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'playlistItems'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::PlaylistItem::Representation
@@ -2771,7 +2771,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_playlist(id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_playlist(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'playlists'
           command =  make_simple_command(:delete, path, options)
           command.query['id'] = id unless id.nil?
@@ -2783,6 +2783,10 @@ module Google
         end
         
         # Creates a playlist.
+        # @param [String] part
+        #   The part parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include.
         # @param [Google::Apis::YoutubeV3::Playlist] playlist_object
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -2810,10 +2814,6 @@ module Google
         #   many different YouTube channels. It allows content owners to authenticate once
         #   and perform actions on behalf of the channel specified in the parameter value,
         #   without having to provide authentication credentials for each separate channel.
-        # @param [String] part
-        #   The part parameter serves two purposes in this operation. It identifies the
-        #   properties that the write operation will set as well as the properties that
-        #   the API response will include.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2835,7 +2835,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_playlist(playlist_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_playlist(part, playlist_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'playlists'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::Playlist::Representation
@@ -2854,6 +2854,14 @@ module Google
         # Returns a collection of playlists that match the API request parameters. For
         # example, you can retrieve all playlists that the authenticated user owns, or
         # you can retrieve one or more playlists by their unique IDs.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more playlist
+        #   resource properties that the API response will include.
+        #   If the parameter identifies a property that contains child properties, the
+        #   child properties will be included in the response. For example, in a playlist
+        #   resource, the snippet property contains properties like author, title,
+        #   description, tags, and timeCreated. As such, if you set part=snippet, the API
+        #   response will contain all of those properties.
         # @param [String] channel_id
         #   This value indicates that the API should only return the specified channel's
         #   playlists.
@@ -2900,14 +2908,6 @@ module Google
         #   The pageToken parameter identifies a specific page in the result set that
         #   should be returned. In an API response, the nextPageToken and prevPageToken
         #   properties identify other pages that could be retrieved.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more playlist
-        #   resource properties that the API response will include.
-        #   If the parameter identifies a property that contains child properties, the
-        #   child properties will be included in the response. For example, in a playlist
-        #   resource, the snippet property contains properties like author, title,
-        #   description, tags, and timeCreated. As such, if you set part=snippet, the API
-        #   response will contain all of those properties.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2929,7 +2929,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_playlists(channel_id: nil, hl: nil, id: nil, max_results: nil, mine: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, page_token: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_playlists(part, channel_id: nil, hl: nil, id: nil, max_results: nil, mine: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'playlists'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListPlaylistResponse::Representation
@@ -2951,6 +2951,16 @@ module Google
         
         # Modifies a playlist. For example, you could change a playlist's title,
         # description, or privacy status.
+        # @param [String] part
+        #   The part parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include.
+        #   Note that this method will override the existing values for mutable properties
+        #   that are contained in any parts that the request body specifies. For example,
+        #   a playlist's description is contained in the snippet part, which must be
+        #   included in the request body. If the request does not specify a value for the
+        #   snippet.description property, the playlist's existing description will be
+        #   deleted.
         # @param [Google::Apis::YoutubeV3::Playlist] playlist_object
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
@@ -2962,16 +2972,6 @@ module Google
         #   to all their video and channel data, without having to provide authentication
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
-        # @param [String] part
-        #   The part parameter serves two purposes in this operation. It identifies the
-        #   properties that the write operation will set as well as the properties that
-        #   the API response will include.
-        #   Note that this method will override the existing values for mutable properties
-        #   that are contained in any parts that the request body specifies. For example,
-        #   a playlist's description is contained in the snippet part, which must be
-        #   included in the request body. If the request does not specify a value for the
-        #   snippet.description property, the playlist's existing description will be
-        #   deleted.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2993,7 +2993,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_playlist(playlist_object = nil, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_playlist(part, playlist_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'playlists'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::Playlist::Representation
@@ -3012,6 +3012,10 @@ module Google
         # specified in the API request. By default, a search result set identifies
         # matching video, channel, and playlist resources, but you can also configure
         # queries to only retrieve a specific type of resource.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more search
+        #   resource properties that the API response will include. Set the parameter
+        #   value to snippet.
         # @param [String] channel_id
         #   The channelId parameter indicates that the API response should only contain
         #   resources created by the channel
@@ -3078,10 +3082,6 @@ module Google
         #   The pageToken parameter identifies a specific page in the result set that
         #   should be returned. In an API response, the nextPageToken and prevPageToken
         #   properties identify other pages that could be retrieved.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more search
-        #   resource properties that the API response will include. Set the parameter
-        #   value to snippet.
         # @param [DateTime] published_after
         #   The publishedAfter parameter indicates that the API response should only
         #   contain resources created after the specified time. The value is an RFC 3339
@@ -3186,7 +3186,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_searches(channel_id: nil, channel_type: nil, event_type: nil, for_content_owner: nil, for_developer: nil, for_mine: nil, location: nil, location_radius: nil, max_results: nil, on_behalf_of_content_owner: nil, order: nil, page_token: nil, part: nil, published_after: nil, published_before: nil, q: nil, region_code: nil, related_to_video_id: nil, relevance_language: nil, safe_search: nil, topic_id: nil, type: nil, video_caption: nil, video_category_id: nil, video_definition: nil, video_dimension: nil, video_duration: nil, video_embeddable: nil, video_license: nil, video_syndicated: nil, video_type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_searches(part, channel_id: nil, channel_type: nil, event_type: nil, for_content_owner: nil, for_developer: nil, for_mine: nil, location: nil, location_radius: nil, max_results: nil, on_behalf_of_content_owner: nil, order: nil, page_token: nil, published_after: nil, published_before: nil, q: nil, region_code: nil, related_to_video_id: nil, relevance_language: nil, safe_search: nil, topic_id: nil, type: nil, video_caption: nil, video_category_id: nil, video_definition: nil, video_dimension: nil, video_duration: nil, video_embeddable: nil, video_license: nil, video_syndicated: nil, video_type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'search'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::SearchListsResponse::Representation
@@ -3254,7 +3254,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_subscription(id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_subscription(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'subscriptions'
           command =  make_simple_command(:delete, path, options)
           command.query['id'] = id unless id.nil?
@@ -3265,11 +3265,11 @@ module Google
         end
         
         # Adds a subscription for the authenticated user's channel.
-        # @param [Google::Apis::YoutubeV3::Subscription] subscription_object
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
         #   properties that the write operation will set as well as the properties that
         #   the API response will include.
+        # @param [Google::Apis::YoutubeV3::Subscription] subscription_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3291,7 +3291,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_subscription(subscription_object = nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_subscription(part, subscription_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'subscriptions'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::YoutubeV3::Subscription::Representation
@@ -3306,6 +3306,14 @@ module Google
         end
         
         # Returns subscription resources that match the API request criteria.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more
+        #   subscription resource properties that the API response will include.
+        #   If the parameter identifies a property that contains child properties, the
+        #   child properties will be included in the response. For example, in a
+        #   subscription resource, the snippet property contains other properties, such as
+        #   a display title for the subscription. If you set part=snippet, the API
+        #   response will also contain all of those nested properties.
         # @param [String] channel_id
         #   The channelId parameter specifies a YouTube channel ID. The API will only
         #   return that channel's subscriptions.
@@ -3358,14 +3366,6 @@ module Google
         #   The pageToken parameter identifies a specific page in the result set that
         #   should be returned. In an API response, the nextPageToken and prevPageToken
         #   properties identify other pages that could be retrieved.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more
-        #   subscription resource properties that the API response will include.
-        #   If the parameter identifies a property that contains child properties, the
-        #   child properties will be included in the response. For example, in a
-        #   subscription resource, the snippet property contains other properties, such as
-        #   a display title for the subscription. If you set part=snippet, the API
-        #   response will also contain all of those nested properties.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3387,7 +3387,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_subscriptions(channel_id: nil, for_channel_id: nil, id: nil, max_results: nil, mine: nil, my_subscribers: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, order: nil, page_token: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_subscriptions(part, channel_id: nil, for_channel_id: nil, id: nil, max_results: nil, mine: nil, my_subscribers: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, order: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'subscriptions'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListSubscriptionResponse::Representation
@@ -3410,6 +3410,9 @@ module Google
         end
         
         # Uploads a custom video thumbnail to YouTube and sets it for a video.
+        # @param [String] video_id
+        #   The videoId parameter specifies a YouTube video ID for which the custom video
+        #   thumbnail is being provided.
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
         #   The onBehalfOfContentOwner parameter indicates that the request's
@@ -3420,9 +3423,6 @@ module Google
         #   to all their video and channel data, without having to provide authentication
         #   credentials for each individual channel. The actual CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
-        # @param [String] video_id
-        #   The videoId parameter specifies a YouTube video ID for which the custom video
-        #   thumbnail is being provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3448,7 +3448,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_thumbnail(on_behalf_of_content_owner: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def set_thumbnail(video_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'thumbnails/set'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -3468,12 +3468,12 @@ module Google
         end
         
         # Returns a list of abuse reasons that can be used for reporting abusive videos.
-        # @param [String] hl
-        #   The hl parameter specifies the language that should be used for text values in
-        #   the API response.
         # @param [String] part
         #   The part parameter specifies the videoCategory resource parts that the API
         #   response will include. Supported values are id and snippet.
+        # @param [String] hl
+        #   The hl parameter specifies the language that should be used for text values in
+        #   the API response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3495,7 +3495,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_video_abuse_report_reasons(hl: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_video_abuse_report_reasons(part, hl: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'videoAbuseReportReasons'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListVideoAbuseReportReasonResponse::Representation
@@ -3509,15 +3509,15 @@ module Google
         end
         
         # Returns a list of categories that can be associated with YouTube videos.
+        # @param [String] part
+        #   The part parameter specifies the videoCategory resource properties that the
+        #   API response will include. Set the parameter value to snippet.
         # @param [String] hl
         #   The hl parameter specifies the language that should be used for text values in
         #   the API response.
         # @param [String] id
         #   The id parameter specifies a comma-separated list of video category IDs for
         #   the resources that you are retrieving.
-        # @param [String] part
-        #   The part parameter specifies the videoCategory resource properties that the
-        #   API response will include. Set the parameter value to snippet.
         # @param [String] region_code
         #   The regionCode parameter instructs the API to return the list of video
         #   categories available in the specified country. The parameter value is an ISO
@@ -3543,7 +3543,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_video_categories(hl: nil, id: nil, part: nil, region_code: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_video_categories(part, hl: nil, id: nil, region_code: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'videoCategories'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListVideoCategoryResponse::Representation
@@ -3593,7 +3593,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_video(id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_video(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'videos'
           command =  make_simple_command(:delete, path, options)
           command.query['id'] = id unless id.nil?
@@ -3641,7 +3641,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_rating_video(id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_rating_video(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'videos/getRating'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::GetVideoRatingResponse::Representation
@@ -3655,6 +3655,15 @@ module Google
         end
         
         # Uploads a video to YouTube and optionally sets the video's metadata.
+        # @param [String] part
+        #   The part parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response will include.
+        #   Note that not all parts contain properties that can be set when inserting or
+        #   updating a video. For example, the statistics object encapsulates statistics
+        #   that YouTube calculates for a video and does not contain values that you can
+        #   set or modify. If the parameter value specifies a part that does not contain
+        #   mutable values, that part will still be included in the API response.
         # @param [Google::Apis::YoutubeV3::Video] video_object
         # @param [Boolean] auto_levels
         #   The autoLevels parameter indicates whether YouTube should automatically
@@ -3692,15 +3701,6 @@ module Google
         #   many different YouTube channels. It allows content owners to authenticate once
         #   and perform actions on behalf of the channel specified in the parameter value,
         #   without having to provide authentication credentials for each separate channel.
-        # @param [String] part
-        #   The part parameter serves two purposes in this operation. It identifies the
-        #   properties that the write operation will set as well as the properties that
-        #   the API response will include.
-        #   Note that not all parts contain properties that can be set when inserting or
-        #   updating a video. For example, the statistics object encapsulates statistics
-        #   that YouTube calculates for a video and does not contain values that you can
-        #   set or modify. If the parameter value specifies a part that does not contain
-        #   mutable values, that part will still be included in the API response.
         # @param [Boolean] stabilize
         #   The stabilize parameter indicates whether YouTube should adjust the video to
         #   remove shaky camera motions.
@@ -3729,7 +3729,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_video(video_object = nil, auto_levels: nil, notify_subscribers: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, part: nil, stabilize: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_video(part, video_object = nil, auto_levels: nil, notify_subscribers: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, stabilize: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'videos'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -3755,6 +3755,14 @@ module Google
         end
         
         # Returns a list of videos that match the API request parameters.
+        # @param [String] part
+        #   The part parameter specifies a comma-separated list of one or more video
+        #   resource properties that the API response will include.
+        #   If the parameter identifies a property that contains child properties, the
+        #   child properties will be included in the response. For example, in a video
+        #   resource, the snippet property contains the channelId, title, description,
+        #   tags, and categoryId properties. As such, if you set part=snippet, the API
+        #   response will contain all of those properties.
         # @param [String] chart
         #   The chart parameter identifies the chart that you want to retrieve.
         # @param [String] debug_project_id_override
@@ -3801,14 +3809,6 @@ module Google
         #   Note: This parameter is supported for use in conjunction with the myRating
         #   parameter, but it is not supported for use in conjunction with the id
         #   parameter.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more video
-        #   resource properties that the API response will include.
-        #   If the parameter identifies a property that contains child properties, the
-        #   child properties will be included in the response. For example, in a video
-        #   resource, the snippet property contains the channelId, title, description,
-        #   tags, and categoryId properties. As such, if you set part=snippet, the API
-        #   response will contain all of those properties.
         # @param [String] region_code
         #   The regionCode parameter instructs the API to select a video chart available
         #   in the specified region. This parameter can only be used in conjunction with
@@ -3839,7 +3839,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_videos(chart: nil, debug_project_id_override: nil, hl: nil, id: nil, locale: nil, max_results: nil, my_rating: nil, on_behalf_of_content_owner: nil, page_token: nil, part: nil, region_code: nil, video_category_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_videos(part, chart: nil, debug_project_id_override: nil, hl: nil, id: nil, locale: nil, max_results: nil, my_rating: nil, on_behalf_of_content_owner: nil, page_token: nil, region_code: nil, video_category_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'videos'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeV3::ListVideosResponse::Representation
@@ -3889,7 +3889,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def rate_video(id: nil, rating: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def rate_video(id, rating, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'videos/rate'
           command =  make_simple_command(:post, path, options)
           command.query['id'] = id unless id.nil?
@@ -3946,17 +3946,6 @@ module Google
         end
         
         # Updates a video's metadata.
-        # @param [Google::Apis::YoutubeV3::Video] video_object
-        # @param [String] on_behalf_of_content_owner
-        #   Note: This parameter is intended exclusively for YouTube content partners.
-        #   The onBehalfOfContentOwner parameter indicates that the request's
-        #   authorization credentials identify a YouTube CMS user who is acting on behalf
-        #   of the content owner specified in the parameter value. This parameter is
-        #   intended for YouTube content partners that own and manage many different
-        #   YouTube channels. It allows content owners to authenticate once and get access
-        #   to all their video and channel data, without having to provide authentication
-        #   credentials for each individual channel. The actual CMS account that the user
-        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] part
         #   The part parameter serves two purposes in this operation. It identifies the
         #   properties that the write operation will set as well as the properties that
@@ -3975,6 +3964,17 @@ module Google
         #   that you can set or modify. If the parameter value specifies a part that does
         #   not contain mutable values, that part will still be included in the API
         #   response.
+        # @param [Google::Apis::YoutubeV3::Video] video_object
+        # @param [String] on_behalf_of_content_owner
+        #   Note: This parameter is intended exclusively for YouTube content partners.
+        #   The onBehalfOfContentOwner parameter indicates that the request's
+        #   authorization credentials identify a YouTube CMS user who is acting on behalf
+        #   of the content owner specified in the parameter value. This parameter is
+        #   intended for YouTube content partners that own and manage many different
+        #   YouTube channels. It allows content owners to authenticate once and get access
+        #   to all their video and channel data, without having to provide authentication
+        #   credentials for each individual channel. The actual CMS account that the user
+        #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3996,7 +3996,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_video(video_object = nil, on_behalf_of_content_owner: nil, part: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_video(part, video_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'videos'
           command =  make_simple_command(:put, path, options)
           command.request_representation = Google::Apis::YoutubeV3::Video::Representation
@@ -4012,10 +4012,10 @@ module Google
         end
         
         # Uploads a watermark image to YouTube and sets it for a channel.
-        # @param [Google::Apis::YoutubeV3::InvideoBranding] invideo_branding_object
         # @param [String] channel_id
         #   The channelId parameter specifies the YouTube channel ID for which the
         #   watermark is being provided.
+        # @param [Google::Apis::YoutubeV3::InvideoBranding] invideo_branding_object
         # @param [String] on_behalf_of_content_owner
         #   Note: This parameter is intended exclusively for YouTube content partners.
         #   The onBehalfOfContentOwner parameter indicates that the request's
@@ -4051,7 +4051,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_watermark(invideo_branding_object = nil, channel_id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def set_watermark(channel_id, invideo_branding_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'watermarks/set'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -4105,7 +4105,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def unset_watermark(channel_id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def unset_watermark(channel_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'watermarks/unset'
           command =  make_simple_command(:post, path, options)
           command.query['channelId'] = channel_id unless channel_id.nil?

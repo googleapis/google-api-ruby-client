@@ -400,7 +400,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_subscription(customer_id, subscription_id, deletion_type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_subscription(customer_id, subscription_id, deletion_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'customers/{customerId}/subscriptions/{subscriptionId}'
           command =  make_simple_command(:delete, path, options)
           command.params['customerId'] = customer_id unless customer_id.nil?

@@ -77,7 +77,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_batch_report_definitions(on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_batch_report_definitions(on_behalf_of_content_owner, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'batchReportDefinitions'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeAnalyticsV1::BatchReportDefinitionList::Representation
@@ -117,7 +117,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_batch_reports(batch_report_definition_id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_batch_reports(batch_report_definition_id, on_behalf_of_content_owner, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'batchReports'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeAnalyticsV1::BatchReportList::Representation
@@ -165,7 +165,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_group_item(id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_group_item(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'groupItems'
           command =  make_simple_command(:delete, path, options)
           command.query['id'] = id unless id.nil?
@@ -258,7 +258,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_group_items(group_id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_group_items(group_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'groupItems'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeAnalyticsV1::ListGroupItemResponse::Representation
@@ -306,7 +306,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_group(id: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_group(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'groups'
           command =  make_simple_command(:delete, path, options)
           command.query['id'] = id unless id.nil?
@@ -467,6 +467,25 @@ module Google
         end
         
         # Retrieve your YouTube Analytics reports.
+        # @param [String] ids
+        #   Identifies the YouTube channel or content owner for which you are retrieving
+        #   YouTube Analytics data.
+        #   - To request data for a YouTube user, set the ids parameter value to channel==
+        #   CHANNEL_ID, where CHANNEL_ID specifies the unique YouTube channel ID.
+        #   - To request data for a YouTube CMS content owner, set the ids parameter value
+        #   to contentOwner==OWNER_NAME, where OWNER_NAME is the CMS name of the content
+        #   owner.
+        # @param [String] start_date
+        #   The start date for fetching YouTube Analytics data. The value should be in
+        #   YYYY-MM-DD format.
+        # @param [String] end_date
+        #   The end date for fetching YouTube Analytics data. The value should be in YYYY-
+        #   MM-DD format.
+        # @param [String] metrics
+        #   A comma-separated list of YouTube Analytics metrics, such as views or likes,
+        #   dislikes. See the Available Reports document for a list of the reports that
+        #   you can retrieve and the metrics available in each report, and see the Metrics
+        #   document for definitions of those metrics.
         # @param [String] currency
         #   The currency to which financial metrics should be converted. The default is US
         #   Dollar (USD). If the result contains no financial metrics, this flag will be
@@ -476,9 +495,6 @@ module Google
         #   ageGroup,gender. See the Available Reports document for a list of the reports
         #   that you can retrieve and the dimensions used for those reports. Also see the
         #   Dimensions document for definitions of those dimensions.
-        # @param [String] end_date
-        #   The end date for fetching YouTube Analytics data. The value should be in YYYY-
-        #   MM-DD format.
         # @param [String] filters
         #   A list of filters that should be applied when retrieving YouTube Analytics
         #   data. The Available Reports document identifies the dimensions that can be
@@ -487,28 +503,12 @@ module Google
         #   semicolon (;), and the returned result table will satisfy both filters. For
         #   example, a filters parameter value of video==dMH0bHeiRNg;country==IT restricts
         #   the result set to include data for the given video in Italy.
-        # @param [String] ids
-        #   Identifies the YouTube channel or content owner for which you are retrieving
-        #   YouTube Analytics data.
-        #   - To request data for a YouTube user, set the ids parameter value to channel==
-        #   CHANNEL_ID, where CHANNEL_ID specifies the unique YouTube channel ID.
-        #   - To request data for a YouTube CMS content owner, set the ids parameter value
-        #   to contentOwner==OWNER_NAME, where OWNER_NAME is the CMS name of the content
-        #   owner.
         # @param [Fixnum] max_results
         #   The maximum number of rows to include in the response.
-        # @param [String] metrics
-        #   A comma-separated list of YouTube Analytics metrics, such as views or likes,
-        #   dislikes. See the Available Reports document for a list of the reports that
-        #   you can retrieve and the metrics available in each report, and see the Metrics
-        #   document for definitions of those metrics.
         # @param [String] sort
         #   A comma-separated list of dimensions or metrics that determine the sort order
         #   for YouTube Analytics data. By default the sort order is ascending. The '-'
         #   prefix causes descending sort order.
-        # @param [String] start_date
-        #   The start date for fetching YouTube Analytics data. The value should be in
-        #   YYYY-MM-DD format.
         # @param [Fixnum] start_index
         #   An index of the first entity to retrieve. Use this parameter as a pagination
         #   mechanism along with the max-results parameter (one-based, inclusive).
@@ -533,7 +533,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def query_report(currency: nil, dimensions: nil, end_date: nil, filters: nil, ids: nil, max_results: nil, metrics: nil, sort: nil, start_date: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def query_report(ids, start_date, end_date, metrics, currency: nil, dimensions: nil, filters: nil, max_results: nil, sort: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'reports'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::YoutubeAnalyticsV1::ResultTable::Representation

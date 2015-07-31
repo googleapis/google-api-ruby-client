@@ -26,17 +26,17 @@ module Google
       class AggregateBucket
         include Google::Apis::Core::Hashable
       
-        # available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT
+        # Available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT
         # Corresponds to the JSON property `activity`
         # @return [Fixnum]
         attr_accessor :activity
       
-        # There will be one dataset per datatype/datasource
+        # There will be one dataset per AggregateBy in the request.
         # Corresponds to the JSON property `dataset`
         # @return [Array<Google::Apis::FitnessV1::Dataset>]
         attr_accessor :dataset
       
-        # 
+        # The end time for the aggregated data, in milliseconds since epoch, inclusive.
         # Corresponds to the JSON property `endTimeMillis`
         # @return [String]
         attr_accessor :end_time_millis
@@ -47,7 +47,7 @@ module Google
         # @return [Google::Apis::FitnessV1::Session]
         attr_accessor :session
       
-        # 
+        # The start time for the aggregated data, in milliseconds since epoch, inclusive.
         # Corresponds to the JSON property `startTimeMillis`
         # @return [String]
         attr_accessor :start_time_millis
@@ -73,29 +73,24 @@ module Google
         end
       end
       
-      # 
+      # The specification of which data to aggregate.
       class AggregateBy
         include Google::Apis::Core::Hashable
       
-        # 
+        # A data source ID to aggregate. Mutually exclusive of dataTypeName. Only data
+        # from the specified data source ID will be included in the aggregation. The
+        # dataset in the response will have the same data source ID.
         # Corresponds to the JSON property `dataSourceId`
         # @return [String]
         attr_accessor :data_source_id
       
-        # by dataype or by datasource
+        # The data type to aggregate. All data sources providing this data type will
+        # contribute data to the aggregation. The response will contain a single dataset
+        # for this data type name. The dataset will have a data source ID of derived:com.
+        # google.:com.google.android.gms:aggregated
         # Corresponds to the JSON property `dataTypeName`
         # @return [String]
         attr_accessor :data_type_name
-      
-        # 
-        # Corresponds to the JSON property `outputDataSourceId`
-        # @return [String]
-        attr_accessor :output_data_source_id
-      
-        # 
-        # Corresponds to the JSON property `outputDataTypeName`
-        # @return [String]
-        attr_accessor :output_data_type_name
       
         def initialize(**args)
            update!(**args)
@@ -105,8 +100,6 @@ module Google
         def update!(**args)
           @data_source_id = args[:data_source_id] unless args[:data_source_id].nil?
           @data_type_name = args[:data_type_name] unless args[:data_type_name].nil?
-          @output_data_source_id = args[:output_data_source_id] unless args[:output_data_source_id].nil?
-          @output_data_type_name = args[:output_data_type_name] unless args[:output_data_type_name].nil?
         end
       end
       
@@ -114,37 +107,52 @@ module Google
       class AggregateRequest
         include Google::Apis::Core::Hashable
       
-        # 
+        # The specification of data to be aggregated. At least one aggregateBy spec must
+        # be provided. All data that is specified will be aggregated using the same
+        # bucketing criteria. There will be one dataset in the response for every
+        # aggregateBy spec.
         # Corresponds to the JSON property `aggregateBy`
         # @return [Array<Google::Apis::FitnessV1::AggregateBy>]
         attr_accessor :aggregate_by
       
-        # 
+        # Specifies that data be aggregated each activity segment recored for a user.
+        # Similar to bucketByActivitySegment, but bucketing is done for each activity
+        # segment rather than all segments of the same type. Mutually exclusive of other
+        # bucketing specifications.
         # Corresponds to the JSON property `bucketByActivitySegment`
         # @return [Google::Apis::FitnessV1::BucketByActivity]
         attr_accessor :bucket_by_activity_segment
       
-        # 
+        # Specifies that data be aggregated by the type of activity being performed when
+        # the data was recorded. All data that was recorded during a certain activity
+        # type (for the given time range) will be aggregated into the same bucket. Data
+        # that was recorded while the user was not active will not be included in the
+        # response. Mutually exclusive of other bucketing specifications.
         # Corresponds to the JSON property `bucketByActivityType`
         # @return [Google::Apis::FitnessV1::BucketByActivity]
         attr_accessor :bucket_by_activity_type
       
-        # 
+        # Specifies that data be aggregated by user sessions. Data that does not fall
+        # within the time range of a session will not be included in the response.
+        # Mutually exclusive of other bucketing specifications.
         # Corresponds to the JSON property `bucketBySession`
         # @return [Google::Apis::FitnessV1::BucketBySession]
         attr_accessor :bucket_by_session
       
-        # apparently oneof is not supported by reduced_nano_proto
+        # Specifies that data be aggregated by a single time interval. Mutually
+        # exclusive of other bucketing specifications.
         # Corresponds to the JSON property `bucketByTime`
         # @return [Google::Apis::FitnessV1::BucketByTime]
         attr_accessor :bucket_by_time
       
-        # 
+        # The end of a window of time. Data that intersects with this time window will
+        # be aggregated. The time is in milliseconds since epoch, inclusive.
         # Corresponds to the JSON property `endTimeMillis`
         # @return [String]
         attr_accessor :end_time_millis
       
-        # required time range
+        # The start of a window of time. Data that intersects with this time window will
+        # be aggregated. The time is in milliseconds since epoch, inclusive.
         # Corresponds to the JSON property `startTimeMillis`
         # @return [String]
         attr_accessor :start_time_millis
@@ -169,7 +177,7 @@ module Google
       class AggregateResponse
         include Google::Apis::Core::Hashable
       
-        # 
+        # A list of buckets containing the aggregated data.
         # Corresponds to the JSON property `bucket`
         # @return [Array<Google::Apis::FitnessV1::AggregateBucket>]
         attr_accessor :bucket
@@ -232,12 +240,14 @@ module Google
       class BucketByActivity
         include Google::Apis::Core::Hashable
       
-        # default activity stream will be used if not specified
+        # The default activity stream will be used if a specific activityDataSourceId is
+        # not specified.
         # Corresponds to the JSON property `activityDataSourceId`
         # @return [String]
         attr_accessor :activity_data_source_id
       
-        # Only activity segments of duration longer than this is used
+        # Specifies that only activity segments of duration longer than
+        # minDurationMillis are considered and used as a container for aggregated data.
         # Corresponds to the JSON property `minDurationMillis`
         # @return [String]
         attr_accessor :min_duration_millis
@@ -257,7 +267,8 @@ module Google
       class BucketBySession
         include Google::Apis::Core::Hashable
       
-        # Only sessions of duration longer than this is used
+        # Specifies that only sessions of duration longer than minDurationMillis are
+        # considered and used as a container for aggregated data.
         # Corresponds to the JSON property `minDurationMillis`
         # @return [String]
         attr_accessor :min_duration_millis
@@ -276,7 +287,9 @@ module Google
       class BucketByTime
         include Google::Apis::Core::Hashable
       
-        # 
+        # Specifies that result buckets aggregate data by exactly durationMillis time
+        # frames. Time frames that contain no data will be included in the response with
+        # an empty dataset.
         # Corresponds to the JSON property `durationMillis`
         # @return [String]
         attr_accessor :duration_millis

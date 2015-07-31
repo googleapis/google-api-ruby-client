@@ -53,10 +53,10 @@ module Google
         end
         
         # Expands a short URL or gets creation time and analytics.
-        # @param [String] projection
-        #   Additional information to return.
         # @param [String] short_url
         #   The short URL, including the protocol.
+        # @param [String] projection
+        #   Additional information to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -78,7 +78,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_url(projection: nil, short_url: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_url(short_url, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'url'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::UrlshortenerV1::Url::Representation

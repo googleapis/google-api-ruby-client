@@ -375,11 +375,13 @@ module Google
       class MobileDevice
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :adb_status, as: 'adbStatus'
           collection :applications, as: 'applications', class: Google::Apis::AdminDirectoryV1::MobileDevice::Application, decorator: Google::Apis::AdminDirectoryV1::MobileDevice::Application::Representation
       
           property :baseband_version, as: 'basebandVersion'
           property :build_number, as: 'buildNumber'
           property :default_language, as: 'defaultLanguage'
+          property :developer_options_status, as: 'developerOptionsStatus'
           property :device_compromised_status, as: 'deviceCompromisedStatus'
           property :device_id, as: 'deviceId'
           collection :email, as: 'email'
@@ -398,10 +400,13 @@ module Google
           collection :name, as: 'name'
           property :network_operator, as: 'networkOperator'
           property :os, as: 'os'
+          collection :other_accounts_info, as: 'otherAccountsInfo'
           property :resource_id, as: 'resourceId'
           property :serial_number, as: 'serialNumber'
           property :status, as: 'status'
+          property :supports_work_profile, as: 'supportsWorkProfile'
           property :type, as: 'type'
+          property :unknown_sources_status, as: 'unknownSourcesStatus'
           property :user_agent, as: 'userAgent'
           property :wifi_mac_address, as: 'wifiMacAddress'
         end

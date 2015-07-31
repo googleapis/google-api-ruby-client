@@ -301,7 +301,7 @@ module Google
         #   The maximum number of results to return. If unspecified, defaults to 256. The
         #   maximum value is 2048.
         # @param [String] page_token
-        #   The standard List page token.
+        #   The standard list page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

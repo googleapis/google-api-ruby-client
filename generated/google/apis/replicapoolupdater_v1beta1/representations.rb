@@ -194,6 +194,7 @@ module Google
           property :instance_group_manager, as: 'instanceGroupManager'
           property :instance_template, as: 'instanceTemplate'
           property :kind, as: 'kind'
+          property :old_instance_template, as: 'oldInstanceTemplate'
           property :policy, as: 'policy', class: Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdate::Policy, decorator: Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdate::Policy::Representation
       
           property :progress, as: 'progress'

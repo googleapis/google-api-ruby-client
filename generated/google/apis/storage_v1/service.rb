@@ -382,13 +382,13 @@ module Google
         end
         
         # Creates a new bucket.
+        # @param [String] project
+        #   A valid API project identifier.
         # @param [Google::Apis::StorageV1::Bucket] bucket_object
         # @param [String] predefined_acl
         #   Apply a predefined set of access controls to this bucket.
         # @param [String] predefined_default_object_acl
         #   Apply a predefined set of default object access controls to this bucket.
-        # @param [String] project
-        #   A valid API project identifier.
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl, unless the bucket resource
         #   specifies acl or defaultObjectAcl properties, when it defaults to full.
@@ -413,7 +413,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_bucket(bucket_object = nil, predefined_acl: nil, predefined_default_object_acl: nil, project: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_bucket(project, bucket_object = nil, predefined_acl: nil, predefined_default_object_acl: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::StorageV1::Bucket::Representation
@@ -431,6 +431,8 @@ module Google
         end
         
         # Retrieves a list of buckets for a given project.
+        # @param [String] project
+        #   A valid API project identifier.
         # @param [Fixnum] max_results
         #   Maximum number of buckets to return.
         # @param [String] page_token
@@ -438,8 +440,6 @@ module Google
         #   results to view.
         # @param [String] prefix
         #   Filter results to buckets whose names begin with this prefix.
-        # @param [String] project
-        #   A valid API project identifier.
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl.
         # @param [String] fields
@@ -463,7 +463,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_buckets(max_results: nil, page_token: nil, prefix: nil, project: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_buckets(project, max_results: nil, page_token: nil, prefix: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'b'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::StorageV1::Buckets::Representation

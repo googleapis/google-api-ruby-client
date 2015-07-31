@@ -153,12 +153,11 @@ module Google
         
         # Creates the given topic with the given name.
         # @param [String] name
-        #   The name of the topic. It must have the format "projects/`project`/topics/`
-        #   topic`" for Google Cloud Pub/Sub API v1 and v1beta2. `topic` must start with a
-        #   letter, and contain only letters ([A-Za-z]), numbers ([0-9], dashes (-),
-        #   underscores (_), periods (.), tildes (~), plus (+) or percent signs (%). It
-        #   must be between 3 and 255 characters in length, and it must not start with "
-        #   goog".
+        #   The name of the topic. It must have the format `"projects/`project`/topics/`
+        #   topic`"`. ``topic`` must start with a letter, and contain only letters (`[A-Za-
+        #   z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`),
+        #   tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255
+        #   characters in length, and it must not start with `"goog"`.
         # @param [Google::Apis::PubsubV1beta2::Topic] topic_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -191,7 +190,8 @@ module Google
         end
         
         # Adds one or more messages to the topic. Returns NOT_FOUND if the topic does
-        # not exist.
+        # not exist. The message payload must not be empty; it must contain either a non-
+        # empty data field, or at least one attribute.
         # @param [String] topic
         #   The messages in the request will be published on this topic.
         # @param [Google::Apis::PubsubV1beta2::PublishRequest] publish_request_object
@@ -480,12 +480,12 @@ module Google
         # request, the server will assign a random name for this subscription on the
         # same project as the topic.
         # @param [String] name
-        #   The name of the subscription. It must have the format "projects/`project`/
-        #   subscriptions/`subscription`" for Google Cloud Pub/Sub API v1 and v1beta2. `
-        #   subscription` must start with a letter, and contain only letters ([A-Za-z]),
-        #   numbers ([0-9], dashes (-), underscores (_), periods (.), tildes (~), plus (+)
-        #   or percent signs (%). It must be between 3 and 255 characters in length, and
-        #   it must not start with "goog".
+        #   The name of the subscription. It must have the format `"projects/`project`/
+        #   subscriptions/`subscription`"`. ``subscription`` must start with a letter, and
+        #   contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+        #   underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%
+        #   `). It must be between 3 and 255 characters in length, and it must not start
+        #   with `"goog"`.
         # @param [Google::Apis::PubsubV1beta2::Subscription] subscription_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

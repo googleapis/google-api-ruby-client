@@ -113,7 +113,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_accounts(filter_ad_client_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_accounts(filter_ad_client_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdsensehostV4_1::Accounts::Representation
@@ -436,9 +436,9 @@ module Google
         #   Account which contains the ad client.
         # @param [String] ad_client_id
         #   Ad client which contains the ad unit.
-        # @param [Google::Apis::AdsensehostV4_1::AdUnit] ad_unit_object
         # @param [String] ad_unit_id
         #   Ad unit to get.
+        # @param [Google::Apis::AdsensehostV4_1::AdUnit] ad_unit_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -460,7 +460,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_account_ad_unit(account_id, ad_client_id, ad_unit_object = nil, ad_unit_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_account_ad_unit(account_id, ad_client_id, ad_unit_id, ad_unit_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/adclients/{adClientId}/adunits'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AdsensehostV4_1::AdUnit::Representation
@@ -523,10 +523,12 @@ module Google
         # specify "alt=csv" as a query parameter.
         # @param [String] account_id
         #   Hosted account upon which to report.
-        # @param [Array<String>, String] dimension
-        #   Dimensions to base the report on.
+        # @param [String] start_date
+        #   Start of the date range to report on in "YYYY-MM-DD" format, inclusive.
         # @param [String] end_date
         #   End of the date range to report on in "YYYY-MM-DD" format, inclusive.
+        # @param [Array<String>, String] dimension
+        #   Dimensions to base the report on.
         # @param [Array<String>, String] filter
         #   Filters to be run on the report.
         # @param [String] locale
@@ -540,8 +542,6 @@ module Google
         #   The name of a dimension or metric to sort the resulting report on, optionally
         #   prefixed with "+" to sort ascending or "-" to sort descending. If no prefix is
         #   specified, the column is sorted ascending.
-        # @param [String] start_date
-        #   Start of the date range to report on in "YYYY-MM-DD" format, inclusive.
         # @param [Fixnum] start_index
         #   Index of the first row of report data to return.
         # @param [String] fields
@@ -565,7 +565,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_account_report(account_id, dimension: nil, end_date: nil, filter: nil, locale: nil, max_results: nil, metric: nil, sort: nil, start_date: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def generate_account_report(account_id, start_date, end_date, dimension: nil, filter: nil, locale: nil, max_results: nil, metric: nil, sort: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'accounts/{accountId}/reports'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdsensehostV4_1::Report::Representation
@@ -667,12 +667,12 @@ module Google
         # user.
         # @param [Array<String>, String] product_code
         #   Products to associate with the user.
+        # @param [String] website_url
+        #   The URL of the user's hosted website.
         # @param [String] user_locale
         #   The preferred locale of the user.
         # @param [String] website_locale
         #   The locale of the user's hosted website.
-        # @param [String] website_url
-        #   The URL of the user's hosted website.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -694,7 +694,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def start_association_session(product_code: nil, user_locale: nil, website_locale: nil, website_url: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def start_association_session(product_code, website_url, user_locale: nil, website_locale: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'associationsessions/start'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdsensehostV4_1::AssociationSession::Representation
@@ -734,7 +734,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def verify_association_session(token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def verify_association_session(token, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'associationsessions/verify'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdsensehostV4_1::AssociationSession::Representation
@@ -912,9 +912,9 @@ module Google
         # patch semantics.
         # @param [String] ad_client_id
         #   Ad client in which the custom channel will be updated.
-        # @param [Google::Apis::AdsensehostV4_1::CustomChannel] custom_channel_object
         # @param [String] custom_channel_id
         #   Custom channel to get.
+        # @param [Google::Apis::AdsensehostV4_1::CustomChannel] custom_channel_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -936,7 +936,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_custom_channel(ad_client_id, custom_channel_object = nil, custom_channel_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_custom_channel(ad_client_id, custom_channel_id, custom_channel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'adclients/{adClientId}/customchannels'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::AdsensehostV4_1::CustomChannel::Representation
@@ -993,10 +993,12 @@ module Google
         # Generate an AdSense report based on the report request sent in the query
         # parameters. Returns the result as JSON; to retrieve output in CSV format
         # specify "alt=csv" as a query parameter.
-        # @param [Array<String>, String] dimension
-        #   Dimensions to base the report on.
+        # @param [String] start_date
+        #   Start of the date range to report on in "YYYY-MM-DD" format, inclusive.
         # @param [String] end_date
         #   End of the date range to report on in "YYYY-MM-DD" format, inclusive.
+        # @param [Array<String>, String] dimension
+        #   Dimensions to base the report on.
         # @param [Array<String>, String] filter
         #   Filters to be run on the report.
         # @param [String] locale
@@ -1010,8 +1012,6 @@ module Google
         #   The name of a dimension or metric to sort the resulting report on, optionally
         #   prefixed with "+" to sort ascending or "-" to sort descending. If no prefix is
         #   specified, the column is sorted ascending.
-        # @param [String] start_date
-        #   Start of the date range to report on in "YYYY-MM-DD" format, inclusive.
         # @param [Fixnum] start_index
         #   Index of the first row of report data to return.
         # @param [String] fields
@@ -1035,7 +1035,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_report(dimension: nil, end_date: nil, filter: nil, locale: nil, max_results: nil, metric: nil, sort: nil, start_date: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def generate_report(start_date, end_date, dimension: nil, filter: nil, locale: nil, max_results: nil, metric: nil, sort: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'reports'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdsensehostV4_1::Report::Representation

@@ -1454,8 +1454,8 @@ module Google
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :sharing_user
       
-        # The list of spaces which contain the file. Supported values are 'drive' and '
-        # appDataFolder'.
+        # The list of spaces which contain the file. Supported values are 'drive', '
+        # appDataFolder' and 'photos'.
         # Corresponds to the JSON property `spaces`
         # @return [Array<String>]
         attr_accessor :spaces

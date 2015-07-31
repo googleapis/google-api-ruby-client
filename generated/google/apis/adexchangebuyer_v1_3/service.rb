@@ -599,6 +599,8 @@ module Google
         #   The account id to get the reports.
         # @param [String] end_date_time
         #   The end time of the report in ISO 8601 timestamp format using UTC.
+        # @param [String] start_date_time
+        #   The start time of the report in ISO 8601 timestamp format using UTC.
         # @param [Fixnum] max_results
         #   Maximum number of entries returned on one result page. If not set, the default
         #   is 100. Optional.
@@ -606,8 +608,6 @@ module Google
         #   A continuation token, used to page through performance reports. To retrieve
         #   the next page, set this parameter to the value of "nextPageToken" from the
         #   previous response. Optional.
-        # @param [String] start_date_time
-        #   The start time of the report in ISO 8601 timestamp format using UTC.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -629,7 +629,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_performance_reports(account_id: nil, end_date_time: nil, max_results: nil, page_token: nil, start_date_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_performance_reports(account_id, end_date_time, start_date_time, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'performancereport'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AdexchangebuyerV1_3::PerformanceReportList::Representation

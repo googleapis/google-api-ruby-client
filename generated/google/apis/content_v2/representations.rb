@@ -1030,6 +1030,7 @@ module Google
           property :sale_price, as: 'salePrice', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
           property :sale_price_effective_date, as: 'salePriceEffectiveDate'
+          property :sell_on_google_quantity, as: 'sellOnGoogleQuantity'
         end
       end
       
@@ -1082,6 +1083,7 @@ module Google
           property :sale_price, as: 'salePrice', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
           property :sale_price_effective_date, as: 'salePriceEffectiveDate'
+          property :sell_on_google_quantity, as: 'sellOnGoogleQuantity'
         end
       end
       

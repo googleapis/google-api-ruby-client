@@ -188,9 +188,6 @@ module Google
         #   The name of the zone in which the update's target resides.
         # @param [String] filter
         #   Optional. Filter expression for filtering listed resources.
-        # @param [String] instance_group_manager
-        #   The name of the instance group manager. Use this parameter to return only
-        #   updates to instances that are part of a specific instance group.
         # @param [Fixnum] max_results
         #   Optional. Maximum count of results to be returned. Maximum value is 500 and
         #   default value is 500.
@@ -218,7 +215,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_rolling_updates(project, zone, filter: nil, instance_group_manager: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_rolling_updates(project, zone, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/zones/{zone}/rollingUpdates'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdateList::Representation
@@ -226,7 +223,6 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.query['filter'] = filter unless filter.nil?
-          command.query['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

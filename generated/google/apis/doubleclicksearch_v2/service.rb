@@ -60,14 +60,6 @@ module Google
         #   Numeric ID of the advertiser.
         # @param [String] engine_account_id
         #   Numeric ID of the engine account.
-        # @param [String] ad_group_id
-        #   Numeric ID of the ad group.
-        # @param [String] ad_id
-        #   Numeric ID of the ad.
-        # @param [String] campaign_id
-        #   Numeric ID of the campaign.
-        # @param [String] criterion_id
-        #   Numeric ID of the criterion.
         # @param [Fixnum] end_date
         #   Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd.
         # @param [Fixnum] row_count
@@ -76,6 +68,14 @@ module Google
         #   First date (inclusive) on which to retrieve conversions. Format is yyyymmdd.
         # @param [Fixnum] start_row
         #   The 0-based starting index for retrieving conversions results.
+        # @param [String] ad_group_id
+        #   Numeric ID of the ad group.
+        # @param [String] ad_id
+        #   Numeric ID of the ad.
+        # @param [String] campaign_id
+        #   Numeric ID of the campaign.
+        # @param [String] criterion_id
+        #   Numeric ID of the criterion.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -97,7 +97,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_conversion(agency_id, advertiser_id, engine_account_id, ad_group_id: nil, ad_id: nil, campaign_id: nil, criterion_id: nil, end_date: nil, row_count: nil, start_date: nil, start_row: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_conversion(agency_id, advertiser_id, engine_account_id, end_date, row_count, start_date, start_row, ad_group_id: nil, ad_id: nil, campaign_id: nil, criterion_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
@@ -157,7 +157,6 @@ module Google
         
         # Updates a batch of conversions in DoubleClick Search. This method supports
         # patch semantics.
-        # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list_object
         # @param [String] advertiser_id
         #   Numeric ID of the advertiser.
         # @param [String] agency_id
@@ -172,6 +171,7 @@ module Google
         #   First date (inclusive) on which to retrieve conversions. Format is yyyymmdd.
         # @param [Fixnum] start_row
         #   The 0-based starting index for retrieving conversions results.
+        # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -193,7 +193,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_conversion(conversion_list_object = nil, advertiser_id: nil, agency_id: nil, end_date: nil, engine_account_id: nil, row_count: nil, start_date: nil, start_row: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_conversion(advertiser_id, agency_id, end_date, engine_account_id, row_count, start_date, start_row, conversion_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'conversion'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation

@@ -202,6 +202,9 @@ module Google
         # @param [String] metric
         #   Metric names are protocol-free URLs as listed in the Supported Metrics page.
         #   For example, compute.googleapis.com/instance/disk/read_ops_count.
+        # @param [String] youngest
+        #   End of the time interval (inclusive), which is expressed as an RFC 3339
+        #   timestamp.
         # @param [Google::Apis::CloudmonitoringV2beta2::ListTimeseriesRequest] list_timeseries_request_object
         # @param [String] aggregator
         #   The aggregation function that will reduce the data points in each window to a
@@ -248,9 +251,6 @@ module Google
         #   - d: day
         #   - w: week  Examples: 3m, 4w. Only one unit is allowed, for example: 2w3d is
         #   not allowed; you should use 17d instead.
-        # @param [String] youngest
-        #   End of the time interval (inclusive), which is expressed as an RFC 3339
-        #   timestamp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -272,7 +272,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_timeseries(project, metric, list_timeseries_request_object = nil, aggregator: nil, count: nil, labels: nil, oldest: nil, page_token: nil, timespan: nil, window: nil, youngest: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_timeseries(project, metric, youngest, list_timeseries_request_object = nil, aggregator: nil, count: nil, labels: nil, oldest: nil, page_token: nil, timespan: nil, window: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/timeseries/{metric}'
           command =  make_simple_command(:get, path, options)
           command.request_representation = Google::Apis::CloudmonitoringV2beta2::ListTimeseriesRequest::Representation
@@ -352,6 +352,9 @@ module Google
         # @param [String] metric
         #   Metric names are protocol-free URLs as listed in the Supported Metrics page.
         #   For example, compute.googleapis.com/instance/disk/read_ops_count.
+        # @param [String] youngest
+        #   End of the time interval (inclusive), which is expressed as an RFC 3339
+        #   timestamp.
         # @param [Google::Apis::CloudmonitoringV2beta2::ListTimeseriesDescriptorsRequest] list_timeseries_descriptors_request_object
         # @param [String] aggregator
         #   The aggregation function that will reduce the data points in each window to a
@@ -398,9 +401,6 @@ module Google
         #   - d: day
         #   - w: week  Examples: 3m, 4w. Only one unit is allowed, for example: 2w3d is
         #   not allowed; you should use 17d instead.
-        # @param [String] youngest
-        #   End of the time interval (inclusive), which is expressed as an RFC 3339
-        #   timestamp.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -422,7 +422,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_timeseries_descriptors(project, metric, list_timeseries_descriptors_request_object = nil, aggregator: nil, count: nil, labels: nil, oldest: nil, page_token: nil, timespan: nil, window: nil, youngest: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_timeseries_descriptors(project, metric, youngest, list_timeseries_descriptors_request_object = nil, aggregator: nil, count: nil, labels: nil, oldest: nil, page_token: nil, timespan: nil, window: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/timeseriesDescriptors/{metric}'
           command =  make_simple_command(:get, path, options)
           command.request_representation = Google::Apis::CloudmonitoringV2beta2::ListTimeseriesDescriptorsRequest::Representation

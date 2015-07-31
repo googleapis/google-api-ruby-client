@@ -100,12 +100,12 @@ module Google
         # authenticated player.
         # @param [String] achievement_id
         #   The ID of the achievement used by this method.
+        # @param [Fixnum] steps_to_increment
+        #   The number of steps to increment.
         # @param [String] request_id
         #   A randomly generated numeric ID for each request specified by the caller. This
         #   number is used at the server to ensure that the request is handled correctly
         #   across retries.
-        # @param [Fixnum] steps_to_increment
-        #   The number of steps to increment.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -127,7 +127,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def increment_achievement(achievement_id, request_id: nil, steps_to_increment: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def increment_achievement(achievement_id, steps_to_increment, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'achievements/{achievementId}/increment'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::GamesV1::AchievementIncrementResponse::Representation
@@ -260,7 +260,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_steps_at_least_achievement(achievement_id, steps: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def set_steps_at_least_achievement(achievement_id, steps, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'achievements/{achievementId}/setStepsAtLeast'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::GamesV1::AchievementSetStepsAtLeastResponse::Representation
@@ -905,7 +905,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def claim_quest_milestone(quest_id, milestone_id, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def claim_quest_milestone(quest_id, milestone_id, request_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'quests/{questId}/milestones/{milestoneId}/claim'
           command =  make_simple_command(:put, path, options)
           command.params['questId'] = quest_id unless quest_id.nil?
@@ -1035,7 +1035,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def check_revision(client_revision: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def check_revision(client_revision, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'revisions/check'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GamesV1::CheckRevisionResponse::Representation
@@ -1442,6 +1442,8 @@ module Google
         #   The ID of the leaderboard.
         # @param [String] collection
         #   The collection of scores you're requesting.
+        # @param [String] time_span
+        #   The time span for the scores and ranks you're requesting.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [Fixnum] max_results
@@ -1450,8 +1452,6 @@ module Google
         #   the specified maxResults.
         # @param [String] page_token
         #   The token returned by the previous request.
-        # @param [String] time_span
-        #   The time span for the scores and ranks you're requesting.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1473,7 +1473,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_scores(leaderboard_id, collection, language: nil, max_results: nil, page_token: nil, time_span: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_scores(leaderboard_id, collection, time_span, language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'leaderboards/{leaderboardId}/scores/{collection}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GamesV1::LeaderboardScores::Representation
@@ -1495,6 +1495,8 @@ module Google
         #   The ID of the leaderboard.
         # @param [String] collection
         #   The collection of scores you're requesting.
+        # @param [String] time_span
+        #   The time span for the scores and ranks you're requesting.
         # @param [String] language
         #   The preferred language to use for strings returned by this method.
         # @param [Fixnum] max_results
@@ -1511,8 +1513,6 @@ module Google
         # @param [Boolean] return_top_if_absent
         #   True if the top scores should be returned when the player is not in the
         #   leaderboard. Defaults to true.
-        # @param [String] time_span
-        #   The time span for the scores and ranks you're requesting.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1534,7 +1534,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_window_score(leaderboard_id, collection, language: nil, max_results: nil, page_token: nil, results_above: nil, return_top_if_absent: nil, time_span: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_window_score(leaderboard_id, collection, time_span, language: nil, max_results: nil, page_token: nil, results_above: nil, return_top_if_absent: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'leaderboards/{leaderboardId}/window/{collection}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::GamesV1::LeaderboardScores::Representation
@@ -1556,8 +1556,6 @@ module Google
         # Submits a score to the specified leaderboard.
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
-        # @param [String] language
-        #   The preferred language to use for strings returned by this method.
         # @param [String] score
         #   The score you're submitting. The submitted score is ignored if it is worse
         #   than a previously submitted score, where worse depends on the leaderboard sort
@@ -1565,6 +1563,8 @@ module Google
         #   For fixed-point, the score represents the raw value. For time, the score
         #   represents elapsed time in milliseconds. For currency, the score represents a
         #   value in micro units.
+        # @param [String] language
+        #   The preferred language to use for strings returned by this method.
         # @param [String] score_tag
         #   Additional information about the score you're submitting. Values must contain
         #   no more than 64 URI-safe characters as defined by section 2.3 of RFC 3986.
@@ -1589,7 +1589,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def submit_score(leaderboard_id, language: nil, score: nil, score_tag: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def submit_score(leaderboard_id, score, language: nil, score_tag: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'leaderboards/{leaderboardId}/scores'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::GamesV1::PlayerScoreResponse::Representation
@@ -2047,10 +2047,10 @@ module Google
         # the match.
         # @param [String] match_id
         #   The ID of the match.
-        # @param [String] language
-        #   The preferred language to use for strings returned by this method.
         # @param [Fixnum] match_version
         #   The version of the match being updated.
+        # @param [String] language
+        #   The preferred language to use for strings returned by this method.
         # @param [String] pending_participant_id
         #   The ID of another participant who should take their turn next. If not set, the
         #   match will wait for other player(s) to join via automatching; this is only
@@ -2077,7 +2077,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def leave_turn(match_id, language: nil, match_version: nil, pending_participant_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def leave_turn(match_id, match_version, language: nil, pending_participant_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'turnbasedmatches/{matchId}/leaveTurn'
           command =  make_simple_command(:put, path, options)
           command.response_representation = Google::Apis::GamesV1::TurnBasedMatch::Representation

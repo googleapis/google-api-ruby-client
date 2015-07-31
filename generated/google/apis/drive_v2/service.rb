@@ -231,8 +231,8 @@ module Google
         # @param [String] page_token
         #   Page token for changes.
         # @param [String] spaces
-        #   A comma-separated list of spaces to query. Supported values are 'drive' and '
-        #   appDataFolder'.
+        #   A comma-separated list of spaces to query. Supported values are 'drive', '
+        #   appDataFolder' and 'photos'.
         # @param [String] start_change_id
         #   Change ID to start listing changes from.
         # @param [String] fields
@@ -286,8 +286,8 @@ module Google
         # @param [String] page_token
         #   Page token for changes.
         # @param [String] spaces
-        #   A comma-separated list of spaces to query. Supported values are 'drive' and '
-        #   appDataFolder'.
+        #   A comma-separated list of spaces to query. Supported values are 'drive', '
+        #   appDataFolder' and 'photos'.
         # @param [String] start_change_id
         #   Change ID to start listing changes from.
         # @param [String] fields
@@ -1048,8 +1048,8 @@ module Google
         # @param [String] q
         #   Query string for searching files.
         # @param [String] spaces
-        #   A comma-separated list of spaces to query. Supported values are 'drive' and '
-        #   appDataFolder'.
+        #   A comma-separated list of spaces to query. Supported values are 'drive', '
+        #   appDataFolder' and 'photos'.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1096,6 +1096,8 @@ module Google
         #   Comma-separated list of parent IDs to add.
         # @param [Boolean] convert
         #   Whether to convert this file to the corresponding Google Docs format.
+        # @param [String] modified_date_behavior
+        #   How the modifiedDate field should be updated. This overrides setModifiedDate.
         # @param [Boolean] new_revision
         #   Whether a blob upload should create a new revision. If false, the blob data in
         #   the current head revision is replaced. If true or not set, a new blob is
@@ -1142,7 +1144,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_file(file_id, file_object = nil, add_parents: nil, convert: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_file(file_id, file_object = nil, add_parents: nil, convert: nil, modified_date_behavior: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'files/{fileId}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::DriveV2::File::Representation
@@ -1152,6 +1154,7 @@ module Google
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['addParents'] = add_parents unless add_parents.nil?
           command.query['convert'] = convert unless convert.nil?
+          command.query['modifiedDateBehavior'] = modified_date_behavior unless modified_date_behavior.nil?
           command.query['newRevision'] = new_revision unless new_revision.nil?
           command.query['ocr'] = ocr unless ocr.nil?
           command.query['ocrLanguage'] = ocr_language unless ocr_language.nil?
@@ -1204,7 +1207,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Moves a file to the trash.
+        # Moves a file to the trash. The currently authenticated user must own the file.
         # @param [String] file_id
         #   The ID of the file to trash.
         # @param [String] fields
@@ -1284,6 +1287,8 @@ module Google
         #   Comma-separated list of parent IDs to add.
         # @param [Boolean] convert
         #   Whether to convert this file to the corresponding Google Docs format.
+        # @param [String] modified_date_behavior
+        #   How the modifiedDate field should be updated. This overrides setModifiedDate.
         # @param [Boolean] new_revision
         #   Whether a blob upload should create a new revision. If false, the blob data in
         #   the current head revision is replaced. If true or not set, a new blob is
@@ -1334,7 +1339,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_file(file_id, file_object = nil, add_parents: nil, convert: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def update_file(file_id, file_object = nil, add_parents: nil, convert: nil, modified_date_behavior: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'files/{fileId}'
           if upload_source.nil?
             command =  make_simple_command(:put, path, options)
@@ -1350,6 +1355,7 @@ module Google
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['addParents'] = add_parents unless add_parents.nil?
           command.query['convert'] = convert unless convert.nil?
+          command.query['modifiedDateBehavior'] = modified_date_behavior unless modified_date_behavior.nil?
           command.query['newRevision'] = new_revision unless new_revision.nil?
           command.query['ocr'] = ocr unless ocr.nil?
           command.query['ocrLanguage'] = ocr_language unless ocr_language.nil?

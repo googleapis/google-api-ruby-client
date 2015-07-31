@@ -139,6 +139,8 @@ module Google
         end
         
         # Search public activities.
+        # @param [String] query
+        #   Full-text search query string.
         # @param [String] language
         #   Specify the preferred language to search with. See search language codes for
         #   available values.
@@ -152,8 +154,6 @@ module Google
         #   The continuation token, which is used to page through large result sets. To
         #   get the next page of results, set this parameter to the value of "
         #   nextPageToken" from the previous response. This token can be of any length.
-        # @param [String] query
-        #   Full-text search query string.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -175,7 +175,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_activities(language: nil, max_results: nil, order_by: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def search_activities(query, language: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'activities'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::PlusV1::ActivityFeed::Representation
@@ -554,6 +554,8 @@ module Google
         end
         
         # Search all public profiles.
+        # @param [String] query
+        #   Specify a query string for full text search of public text in all profiles.
         # @param [String] language
         #   Specify the preferred language to search with. See search language codes for
         #   available values.
@@ -565,8 +567,6 @@ module Google
         #   The continuation token, which is used to page through large result sets. To
         #   get the next page of results, set this parameter to the value of "
         #   nextPageToken" from the previous response. This token can be of any length.
-        # @param [String] query
-        #   Specify a query string for full text search of public text in all profiles.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -588,7 +588,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_people(language: nil, max_results: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def search_people(query, language: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'people'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::PlusV1::PeopleFeed::Representation

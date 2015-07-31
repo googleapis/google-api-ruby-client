@@ -130,9 +130,15 @@ module Google
         # Inserts a new job. Only the state field of the job should be set.
         # @param [String] team_id
         #   Team ID
-        # @param [Google::Apis::CoordinateV1::Job] job_object
         # @param [String] address
         #   Job address as newline (Unix) separated string
+        # @param [Float] lat
+        #   The latitude coordinate of this job's location.
+        # @param [Float] lng
+        #   The longitude coordinate of this job's location.
+        # @param [String] title
+        #   Job title
+        # @param [Google::Apis::CoordinateV1::Job] job_object
         # @param [String] assignee
         #   Assignee email address, or empty string to unassign.
         # @param [Array<String>, String] custom_field
@@ -146,14 +152,8 @@ module Google
         #   Customer name
         # @param [String] customer_phone_number
         #   Customer phone number
-        # @param [Float] lat
-        #   The latitude coordinate of this job's location.
-        # @param [Float] lng
-        #   The longitude coordinate of this job's location.
         # @param [String] note
         #   Job note as newline (Unix) separated string
-        # @param [String] title
-        #   Job title
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -175,7 +175,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_job(team_id, job_object = nil, address: nil, assignee: nil, custom_field: nil, customer_name: nil, customer_phone_number: nil, lat: nil, lng: nil, note: nil, title: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_job(team_id, address, lat, lng, title, job_object = nil, assignee: nil, custom_field: nil, customer_name: nil, customer_phone_number: nil, note: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/jobs'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::CoordinateV1::Job::Representation
@@ -403,12 +403,12 @@ module Google
         #   Team ID
         # @param [String] worker_email
         #   Worker email address.
+        # @param [String] start_timestamp_ms
+        #   Start timestamp in milliseconds since the epoch.
         # @param [Fixnum] max_results
         #   Maximum number of results to return in one page.
         # @param [String] page_token
         #   Continuation token
-        # @param [String] start_timestamp_ms
-        #   Start timestamp in milliseconds since the epoch.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -430,7 +430,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_locations(team_id, worker_email, max_results: nil, page_token: nil, start_timestamp_ms: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_locations(team_id, worker_email, start_timestamp_ms, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'teams/{teamId}/workers/{workerEmail}/locations'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::CoordinateV1::ListLocationResponse::Representation

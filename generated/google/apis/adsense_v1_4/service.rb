@@ -624,13 +624,15 @@ module Google
         # specify "alt=csv" as a query parameter.
         # @param [String] account_id
         #   Account upon which to report.
+        # @param [String] start_date
+        #   Start of the date range to report on in "YYYY-MM-DD" format, inclusive.
+        # @param [String] end_date
+        #   End of the date range to report on in "YYYY-MM-DD" format, inclusive.
         # @param [String] currency
         #   Optional currency to use when reporting on monetary metrics. Defaults to the
         #   account's currency if not set.
         # @param [Array<String>, String] dimension
         #   Dimensions to base the report on.
-        # @param [String] end_date
-        #   End of the date range to report on in "YYYY-MM-DD" format, inclusive.
         # @param [Array<String>, String] filter
         #   Filters to be run on the report.
         # @param [String] locale
@@ -644,8 +646,6 @@ module Google
         #   The name of a dimension or metric to sort the resulting report on, optionally
         #   prefixed with "+" to sort ascending or "-" to sort descending. If no prefix is
         #   specified, the column is sorted ascending.
-        # @param [String] start_date
-        #   Start of the date range to report on in "YYYY-MM-DD" format, inclusive.
         # @param [Fixnum] start_index
         #   Index of the first row of report data to return.
         # @param [Boolean] use_timezone_reporting
@@ -674,7 +674,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_account_report(account_id, currency: nil, dimension: nil, end_date: nil, filter: nil, locale: nil, max_results: nil, metric: nil, sort: nil, start_date: nil, start_index: nil, use_timezone_reporting: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def generate_account_report(account_id, start_date, end_date, currency: nil, dimension: nil, filter: nil, locale: nil, max_results: nil, metric: nil, sort: nil, start_index: nil, use_timezone_reporting: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           path = 'accounts/{accountId}/reports'
           if download_dest.nil?
             command =  make_simple_command(:get, path, options)
@@ -1448,6 +1448,10 @@ module Google
         # Generate an AdSense report based on the report request sent in the query
         # parameters. Returns the result as JSON; to retrieve output in CSV format
         # specify "alt=csv" as a query parameter.
+        # @param [String] start_date
+        #   Start of the date range to report on in "YYYY-MM-DD" format, inclusive.
+        # @param [String] end_date
+        #   End of the date range to report on in "YYYY-MM-DD" format, inclusive.
         # @param [Array<String>, String] account_id
         #   Accounts upon which to report.
         # @param [String] currency
@@ -1455,8 +1459,6 @@ module Google
         #   account's currency if not set.
         # @param [Array<String>, String] dimension
         #   Dimensions to base the report on.
-        # @param [String] end_date
-        #   End of the date range to report on in "YYYY-MM-DD" format, inclusive.
         # @param [Array<String>, String] filter
         #   Filters to be run on the report.
         # @param [String] locale
@@ -1470,8 +1472,6 @@ module Google
         #   The name of a dimension or metric to sort the resulting report on, optionally
         #   prefixed with "+" to sort ascending or "-" to sort descending. If no prefix is
         #   specified, the column is sorted ascending.
-        # @param [String] start_date
-        #   Start of the date range to report on in "YYYY-MM-DD" format, inclusive.
         # @param [Fixnum] start_index
         #   Index of the first row of report data to return.
         # @param [Boolean] use_timezone_reporting
@@ -1500,7 +1500,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_report(account_id: nil, currency: nil, dimension: nil, end_date: nil, filter: nil, locale: nil, max_results: nil, metric: nil, sort: nil, start_date: nil, start_index: nil, use_timezone_reporting: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def generate_report(start_date, end_date, account_id: nil, currency: nil, dimension: nil, filter: nil, locale: nil, max_results: nil, metric: nil, sort: nil, start_index: nil, use_timezone_reporting: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           path = 'reports'
           if download_dest.nil?
             command =  make_simple_command(:get, path, options)

@@ -1321,7 +1321,7 @@ module Google
         end
         
         # Updates price and availability for multiple products or stores in a single
-        # request.
+        # request. This operation does not update the expiration date of the products.
         # @param [Google::Apis::ContentV2::BatchInventoryRequest] batch_inventory_request_object
         # @param [Boolean] dry_run
         #   Flag to run the request in dry-run mode.
@@ -1361,6 +1361,7 @@ module Google
         end
         
         # Updates price and availability of a product in your Merchant Center account.
+        # This operation does not update the expiration date of the product.
         # @param [String] merchant_id
         #   The ID of the managing account.
         # @param [String] store_code

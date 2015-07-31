@@ -1221,10 +1221,12 @@ module Google
         #   singleEvents is False. Optional. The default is False.
         # @param [DateTime] time_max
         #   Upper bound (exclusive) for an event's start time to filter by. Optional. The
-        #   default is not to filter by start time.
+        #   default is not to filter by start time. Must be an RFC3339 timestamp with
+        #   mandatory time zone offset.
         # @param [DateTime] time_min
         #   Lower bound (inclusive) for an event's end time to filter by. Optional. The
-        #   default is not to filter by end time.
+        #   default is not to filter by end time. Must be an RFC3339 timestamp with
+        #   mandatory time zone offset.
         # @param [String] time_zone
         #   Time zone used in the response. Optional. The default is the time zone of the
         #   calendar.
@@ -1343,10 +1345,14 @@ module Google
         #   Optional. The default is to return all entries.
         # @param [DateTime] time_max
         #   Upper bound (exclusive) for an event's start time to filter by. Optional. The
-        #   default is not to filter by start time.
+        #   default is not to filter by start time. Must be an RFC3339 timestamp with
+        #   mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:
+        #   00Z. Milliseconds may be provided but will be ignored.
         # @param [DateTime] time_min
         #   Lower bound (inclusive) for an event's end time to filter by. Optional. The
-        #   default is not to filter by end time.
+        #   default is not to filter by end time. Must be an RFC3339 timestamp with
+        #   mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:
+        #   00Z. Milliseconds may be provided but will be ignored.
         # @param [String] time_zone
         #   Time zone used in the response. Optional. The default is the time zone of the
         #   calendar.
@@ -1436,7 +1442,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def move_event(calendar_id, event_id, destination: nil, send_notifications: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def move_event(calendar_id, event_id, destination, send_notifications: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'calendars/{calendarId}/events/{eventId}/move'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::CalendarV3::Event::Representation
@@ -1516,11 +1522,11 @@ module Google
         # Creates an event based on a simple text string.
         # @param [String] calendar_id
         #   Calendar identifier.
+        # @param [String] text
+        #   The text describing the event to be created.
         # @param [Boolean] send_notifications
         #   Whether to send notifications about the creation of the event. Optional. The
         #   default is False.
-        # @param [String] text
-        #   The text describing the event to be created.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1542,7 +1548,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def quick_add_event(calendar_id, send_notifications: nil, text: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def quick_add_event(calendar_id, text, send_notifications: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'calendars/{calendarId}/events/quickAdd'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::CalendarV3::Event::Representation
@@ -1691,10 +1697,14 @@ module Google
         #   Optional. The default is to return all entries.
         # @param [DateTime] time_max
         #   Upper bound (exclusive) for an event's start time to filter by. Optional. The
-        #   default is not to filter by start time.
+        #   default is not to filter by start time. Must be an RFC3339 timestamp with
+        #   mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:
+        #   00Z. Milliseconds may be provided but will be ignored.
         # @param [DateTime] time_min
         #   Lower bound (inclusive) for an event's end time to filter by. Optional. The
-        #   default is not to filter by end time.
+        #   default is not to filter by end time. Must be an RFC3339 timestamp with
+        #   mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:
+        #   00Z. Milliseconds may be provided but will be ignored.
         # @param [String] time_zone
         #   Time zone used in the response. Optional. The default is the time zone of the
         #   calendar.

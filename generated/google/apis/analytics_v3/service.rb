@@ -53,23 +53,27 @@ module Google
         end
         
         # Returns Analytics data for a view (profile).
-        # @param [String] dimensions
-        #   A comma-separated list of Analytics dimensions. E.g., 'ga:browser,ga:city'.
+        # @param [String] ids
+        #   Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX,
+        #   where XXXX is the Analytics view (profile) ID.
+        # @param [String] start_date
+        #   Start date for fetching Analytics data. Requests can specify a start date
+        #   formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or
+        #   7daysAgo). The default value is 7daysAgo.
         # @param [String] end_date
         #   End date for fetching Analytics data. Request can should specify an end date
         #   formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or
         #   7daysAgo). The default value is yesterday.
-        # @param [String] filters
-        #   A comma-separated list of dimension or metric filters to be applied to
-        #   Analytics data.
-        # @param [String] ids
-        #   Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX,
-        #   where XXXX is the Analytics view (profile) ID.
-        # @param [Fixnum] max_results
-        #   The maximum number of entries to include in this feed.
         # @param [String] metrics
         #   A comma-separated list of Analytics metrics. E.g., 'ga:sessions,ga:pageviews'.
         #   At least one metric must be specified.
+        # @param [String] dimensions
+        #   A comma-separated list of Analytics dimensions. E.g., 'ga:browser,ga:city'.
+        # @param [String] filters
+        #   A comma-separated list of dimension or metric filters to be applied to
+        #   Analytics data.
+        # @param [Fixnum] max_results
+        #   The maximum number of entries to include in this feed.
         # @param [String] output
         #   The selected format for the response. Default format is JSON.
         # @param [String] sampling_level
@@ -79,10 +83,6 @@ module Google
         # @param [String] sort
         #   A comma-separated list of dimensions or metrics that determine the sort order
         #   for Analytics data.
-        # @param [String] start_date
-        #   Start date for fetching Analytics data. Requests can specify a start date
-        #   formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or
-        #   7daysAgo). The default value is 7daysAgo.
         # @param [Fixnum] start_index
         #   An index of the first entity to retrieve. Use this parameter as a pagination
         #   mechanism along with the max-results parameter.
@@ -107,7 +107,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_ga_data(dimensions: nil, end_date: nil, filters: nil, ids: nil, max_results: nil, metrics: nil, output: nil, sampling_level: nil, segment: nil, sort: nil, start_date: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_ga_data(ids, start_date, end_date, metrics, dimensions: nil, filters: nil, max_results: nil, output: nil, sampling_level: nil, segment: nil, sort: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'data/ga'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AnalyticsV3::GaData::Representation
@@ -131,34 +131,34 @@ module Google
         end
         
         # Returns Analytics Multi-Channel Funnels data for a view (profile).
-        # @param [String] dimensions
-        #   A comma-separated list of Multi-Channel Funnels dimensions. E.g., 'mcf:source,
-        #   mcf:medium'.
+        # @param [String] ids
+        #   Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX,
+        #   where XXXX is the Analytics view (profile) ID.
+        # @param [String] start_date
+        #   Start date for fetching Analytics data. Requests can specify a start date
+        #   formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or
+        #   7daysAgo). The default value is 7daysAgo.
         # @param [String] end_date
         #   End date for fetching Analytics data. Requests can specify a start date
         #   formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or
         #   7daysAgo). The default value is 7daysAgo.
-        # @param [String] filters
-        #   A comma-separated list of dimension or metric filters to be applied to the
-        #   Analytics data.
-        # @param [String] ids
-        #   Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX,
-        #   where XXXX is the Analytics view (profile) ID.
-        # @param [Fixnum] max_results
-        #   The maximum number of entries to include in this feed.
         # @param [String] metrics
         #   A comma-separated list of Multi-Channel Funnels metrics. E.g., 'mcf:
         #   totalConversions,mcf:totalConversionValue'. At least one metric must be
         #   specified.
+        # @param [String] dimensions
+        #   A comma-separated list of Multi-Channel Funnels dimensions. E.g., 'mcf:source,
+        #   mcf:medium'.
+        # @param [String] filters
+        #   A comma-separated list of dimension or metric filters to be applied to the
+        #   Analytics data.
+        # @param [Fixnum] max_results
+        #   The maximum number of entries to include in this feed.
         # @param [String] sampling_level
         #   The desired sampling level.
         # @param [String] sort
         #   A comma-separated list of dimensions or metrics that determine the sort order
         #   for the Analytics data.
-        # @param [String] start_date
-        #   Start date for fetching Analytics data. Requests can specify a start date
-        #   formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or
-        #   7daysAgo). The default value is 7daysAgo.
         # @param [Fixnum] start_index
         #   An index of the first entity to retrieve. Use this parameter as a pagination
         #   mechanism along with the max-results parameter.
@@ -183,7 +183,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_mcf_data(dimensions: nil, end_date: nil, filters: nil, ids: nil, max_results: nil, metrics: nil, sampling_level: nil, sort: nil, start_date: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_mcf_data(ids, start_date, end_date, metrics, dimensions: nil, filters: nil, max_results: nil, sampling_level: nil, sort: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'data/mcf'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AnalyticsV3::McfData::Representation
@@ -205,19 +205,19 @@ module Google
         end
         
         # Returns real time data for a view (profile).
+        # @param [String] ids
+        #   Unique table ID for retrieving real time data. Table ID is of the form ga:XXXX,
+        #   where XXXX is the Analytics view (profile) ID.
+        # @param [String] metrics
+        #   A comma-separated list of real time metrics. E.g., 'rt:activeUsers'. At least
+        #   one metric must be specified.
         # @param [String] dimensions
         #   A comma-separated list of real time dimensions. E.g., 'rt:medium,rt:city'.
         # @param [String] filters
         #   A comma-separated list of dimension or metric filters to be applied to real
         #   time data.
-        # @param [String] ids
-        #   Unique table ID for retrieving real time data. Table ID is of the form ga:XXXX,
-        #   where XXXX is the Analytics view (profile) ID.
         # @param [Fixnum] max_results
         #   The maximum number of entries to include in this feed.
-        # @param [String] metrics
-        #   A comma-separated list of real time metrics. E.g., 'rt:activeUsers'. At least
-        #   one metric must be specified.
         # @param [String] sort
         #   A comma-separated list of dimensions or metrics that determine the sort order
         #   for real time data.
@@ -242,7 +242,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_realtime_data(dimensions: nil, filters: nil, ids: nil, max_results: nil, metrics: nil, sort: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_realtime_data(ids, metrics, dimensions: nil, filters: nil, max_results: nil, sort: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'data/realtime'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::AnalyticsV3::RealtimeData::Representation

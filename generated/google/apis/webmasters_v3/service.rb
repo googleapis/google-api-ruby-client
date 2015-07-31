@@ -471,7 +471,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_errors_sample(site_url, url, category: nil, platform: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_errors_sample(site_url, url, category, platform, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'sites/{siteUrl}/urlCrawlErrorsSamples/{url}'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::WebmastersV3::UrlCrawlErrorsSample::Representation
@@ -514,7 +514,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_errors_samples(site_url, category: nil, platform: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_errors_samples(site_url, category, platform, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'sites/{siteUrl}/urlCrawlErrorsSamples'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::WebmastersV3::ListUrlCrawlErrorsSamplesResponse::Representation
@@ -561,7 +561,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def mark_as_fixed(site_url, url, category: nil, platform: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def mark_as_fixed(site_url, url, category, platform, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'sites/{siteUrl}/urlCrawlErrorsSamples/{url}'
           command =  make_simple_command(:delete, path, options)
           command.params['siteUrl'] = site_url unless site_url.nil?

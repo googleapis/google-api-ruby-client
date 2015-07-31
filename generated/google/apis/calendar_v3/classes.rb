@@ -272,13 +272,17 @@ module Google
         attr_accessor :access_role
       
         # The main color of the calendar in the hexadecimal format "#0088aa". This
-        # property supersedes the index-based colorId property. Optional.
+        # property supersedes the index-based colorId property. To set or change this
+        # property, you need to specify colorRgbFormat=true in the parameters of the
+        # insert, update and patch methods. Optional.
         # Corresponds to the JSON property `backgroundColor`
         # @return [String]
         attr_accessor :background_color
       
         # The color of the calendar. This is an ID referring to an entry in the calendar
-        # section of the colors definition (see the colors endpoint). Optional.
+        # section of the colors definition (see the colors endpoint). This property is
+        # superseded by the backgroundColor and foregroundColor properties and can be
+        # ignored when using these properties. Optional.
         # Corresponds to the JSON property `colorId`
         # @return [String]
         attr_accessor :color_id
@@ -306,7 +310,9 @@ module Google
         attr_accessor :etag
       
         # The foreground color of the calendar in the hexadecimal format "#ffffff". This
-        # property supersedes the index-based colorId property. Optional.
+        # property supersedes the index-based colorId property. To set or change this
+        # property, you need to specify colorRgbFormat=true in the parameters of the
+        # insert, update and patch methods. Optional.
         # Corresponds to the JSON property `foregroundColor`
         # @return [String]
         attr_accessor :foreground_color
@@ -420,7 +426,8 @@ module Google
         # The method used to deliver the notification. Possible values are:
         # - "email" - Reminders are sent via email.
         # - "sms" - Reminders are sent via SMS. This value is read-only and is ignored
-        # on inserts and updates.
+        # on inserts and updates. SMS reminders are only available for Google Apps for
+        # Work, Education, and Government customers.
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :delivery_method
@@ -554,15 +561,16 @@ module Google
       class Colors
         include Google::Apis::Core::Hashable
       
-        # Palette of calendar colors, mapping from the color ID to its definition. A
-        # calendarListEntry resource refers to one of these color IDs in its color field.
-        # Read-only.
+        # A global palette of calendar colors, mapping from the color ID to its
+        # definition. A calendarListEntry resource refers to one of these color IDs in
+        # its color field. Read-only.
         # Corresponds to the JSON property `calendar`
         # @return [Hash<String,Google::Apis::CalendarV3::ColorDefinition>]
         attr_accessor :calendar
       
-        # Palette of event colors, mapping from the color ID to its definition. An event
-        # resource may refer to one of these color IDs in its color field. Read-only.
+        # A global palette of event colors, mapping from the color ID to its definition.
+        # An event resource may refer to one of these color IDs in its color field. Read-
+        # only.
         # Corresponds to the JSON property `event`
         # @return [Hash<String,Google::Apis::CalendarV3::ColorDefinition>]
         attr_accessor :event
@@ -644,7 +652,8 @@ module Google
         # @return [Array<Google::Apis::CalendarV3::EventAttachment>]
         attr_accessor :attachments
       
-        # The attendees of the event.
+        # The attendees of the event. See the Events with attendees guide for more
+        # information on scheduling events with other calendar users.
         # Corresponds to the JSON property `attendees`
         # @return [Array<Google::Apis::CalendarV3::EventAttendee>]
         attr_accessor :attendees
@@ -797,8 +806,11 @@ module Google
         attr_accessor :private_copy
         alias_method :private_copy?, :private_copy
       
-        # List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event. This
-        # field is omitted for single events or instances of recurring events.
+        # List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as
+        # specified in RFC5545. Note that DTSTART and DTEND lines are not allowed in
+        # this field; event start and end times are specified in the start and end
+        # fields. This field is omitted for single events or instances of recurring
+        # events.
         # Corresponds to the JSON property `recurrence`
         # @return [Array<String>]
         attr_accessor :recurrence
@@ -819,9 +831,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :sequence
       
-        # Source of an event from which it was created; for example a web page, an email
-        # message or any document identifiable by an URL using HTTP/HTTPS protocol.
-        # Accessible only by the creator of the event.
+        # Source from which the event was created. For example, a web page, an email
+        # message or any document identifiable by an URL with HTTP or HTTPS scheme. Can
+        # only be seen or modified by the creator of the event.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::CalendarV3::Event::Source]
         attr_accessor :source
@@ -992,17 +1004,18 @@ module Google
           # @return [String]
           attr_accessor :display_mode
         
-          # The gadget's height in pixels. Optional.
+          # The gadget's height in pixels. The height must be an integer greater than 0.
+          # Optional.
           # Corresponds to the JSON property `height`
           # @return [Fixnum]
           attr_accessor :height
         
-          # The gadget's icon URL.
+          # The gadget's icon URL. The URL scheme must be HTTPS.
           # Corresponds to the JSON property `iconLink`
           # @return [String]
           attr_accessor :icon_link
         
-          # The gadget's URL.
+          # The gadget's URL. The URL scheme must be HTTPS.
           # Corresponds to the JSON property `link`
           # @return [String]
           attr_accessor :link
@@ -1022,7 +1035,8 @@ module Google
           # @return [String]
           attr_accessor :type
         
-          # The gadget's width in pixels. Optional.
+          # The gadget's width in pixels. The width must be an integer greater than 0.
+          # Optional.
           # Corresponds to the JSON property `width`
           # @return [Fixnum]
           attr_accessor :width
@@ -1092,7 +1106,7 @@ module Google
         
           # If the event doesn't use the default reminders, this lists the reminders
           # specific to the event, or, if not set, indicates that no reminders are set for
-          # this event.
+          # this event. The maximum number of override reminders is 5.
           # Corresponds to the JSON property `overrides`
           # @return [Array<Google::Apis::CalendarV3::EventReminder>]
           attr_accessor :overrides
@@ -1114,9 +1128,9 @@ module Google
           end
         end
         
-        # Source of an event from which it was created; for example a web page, an email
-        # message or any document identifiable by an URL using HTTP/HTTPS protocol.
-        # Accessible only by the creator of the event.
+        # Source from which the event was created. For example, a web page, an email
+        # message or any document identifiable by an URL with HTTP or HTTPS scheme. Can
+        # only be seen or modified by the creator of the event.
         class Source
           include Google::Apis::Core::Hashable
         
@@ -1125,7 +1139,7 @@ module Google
           # @return [String]
           attr_accessor :title
         
-          # URL of the source pointing to a resource. URL's protocol must be HTTP or HTTPS.
+          # URL of the source pointing to a resource. The URL scheme must be HTTP or HTTPS.
           # Corresponds to the JSON property `url`
           # @return [String]
           attr_accessor :url
@@ -1147,7 +1161,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # ID of the attached file. Read-only.
-        # E.g. for Google Drive files this is the ID of the corresponding Files resource
+        # For Google Drive files, this is the ID of the corresponding Files resource
         # entry in the Drive API.
         # Corresponds to the JSON property `fileId`
         # @return [String]
@@ -1316,14 +1330,16 @@ module Google
       
         # The method used by this reminder. Possible values are:
         # - "email" - Reminders are sent via email.
-        # - "sms" - Reminders are sent via SMS.
+        # - "sms" - Reminders are sent via SMS. These are only available for Google Apps
+        # for Work, Education, and Government customers. Requests to set SMS reminders
+        # for other account types are ignored.
         # - "popup" - Reminders are sent via a UI popup.
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :reminder_method
       
         # Number of minutes before the start of the event when the reminder should
-        # trigger.
+        # trigger. Valid values are between 0 and 40320 (4 weeks in minutes).
         # Corresponds to the JSON property `minutes`
         # @return [Fixnum]
         attr_accessor :minutes

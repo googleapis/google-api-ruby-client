@@ -31,7 +31,7 @@ module Google
         # @return [Google::Apis::ReplicapoolupdaterV1beta1::InstanceUpdate::Error]
         attr_accessor :error
       
-        # URL of the instance being updated.
+        # Fully-qualified URL of the instance being updated.
         # Corresponds to the JSON property `instance`
         # @return [String]
         attr_accessor :instance
@@ -468,6 +468,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Fully-qualified URL of the instance template encountered while starting the
+        # update.
+        # Corresponds to the JSON property `oldInstanceTemplate`
+        # @return [String]
+        attr_accessor :old_instance_template
+      
         # Parameters of the update process.
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::ReplicapoolupdaterV1beta1::RollingUpdate::Policy]
@@ -526,6 +532,7 @@ module Google
           @instance_group_manager = args[:instance_group_manager] unless args[:instance_group_manager].nil?
           @instance_template = args[:instance_template] unless args[:instance_template].nil?
           @kind = args[:kind] unless args[:kind].nil?
+          @old_instance_template = args[:old_instance_template] unless args[:old_instance_template].nil?
           @policy = args[:policy] unless args[:policy].nil?
           @progress = args[:progress] unless args[:progress].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?

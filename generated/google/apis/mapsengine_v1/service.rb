@@ -2280,6 +2280,11 @@ module Google
         end
         
         # Return all rasters readable by the current user.
+        # @param [String] project_id
+        #   The ID of a Maps Engine project, used to filter the response. To list all
+        #   available projects with their IDs, send a Projects: list request. You can also
+        #   find your project ID as the value of the DashboardPlace:cid URL parameter when
+        #   signed in to mapsengine.google.com.
         # @param [String] bbox
         #   A bounding box, expressed as "west,south,east,north". If set, only assets
         #   which intersect this bounding box will be returned.
@@ -2306,11 +2311,6 @@ module Google
         #   next page of results, set this parameter to the value of nextPageToken from
         #   the previous response.
         # @param [String] processing_status
-        # @param [String] project_id
-        #   The ID of a Maps Engine project, used to filter the response. To list all
-        #   available projects with their IDs, send a Projects: list request. You can also
-        #   find your project ID as the value of the DashboardPlace:cid URL parameter when
-        #   signed in to mapsengine.google.com.
         # @param [String] role
         #   The role parameter indicates that the response should only contain assets
         #   where the current user has the specified level of access.
@@ -2341,7 +2341,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_rasters(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, processing_status: nil, project_id: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_rasters(project_id, bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, processing_status: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'rasters'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::MapsengineV1::ListRastersResponse::Representation
@@ -2504,7 +2504,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_raster_file(id, filename: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_raster_file(id, filename, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'rasters/{id}/files'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)
@@ -3274,7 +3274,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_table_file(id, filename: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_table_file(id, filename, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'tables/{id}/files'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)

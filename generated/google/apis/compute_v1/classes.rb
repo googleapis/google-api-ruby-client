@@ -3095,7 +3095,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # The URL of all TargetPool resources to which new instances in the
+        # The URLs of all TargetPool resources to which new instances in the
         # instanceGroup field are added. Updating the target pool values does not affect
         # existing instances.
         # Corresponds to the JSON property `targetPools`
@@ -3142,37 +3142,48 @@ module Google
       class InstanceGroupManagerActionsSummary
         include Google::Apis::Core::Hashable
       
-        # 
+        # [Output Only] Total number of instances in the managed instance group that are
+        # scheduled to be abandoned. Abandoning an instance removes it from the managed
+        # instance group without deleting it.
         # Corresponds to the JSON property `abandoning`
         # @return [Fixnum]
         attr_accessor :abandoning
       
-        # 
+        # [Output Only] The number of instances in the managed instance group that are
+        # scheduled to be created or are currently being created.
         # Corresponds to the JSON property `creating`
         # @return [Fixnum]
         attr_accessor :creating
       
-        # 
+        # [Output Only] The number of instances in the managed instance group that are
+        # scheduled to be deleted or are currently being deleted.
         # Corresponds to the JSON property `deleting`
         # @return [Fixnum]
         attr_accessor :deleting
       
-        # 
+        # [Output Only] The number of instances in the managed instance group that
+        # currently have no scheduled actions.
         # Corresponds to the JSON property `none`
         # @return [Fixnum]
         attr_accessor :none
       
-        # 
+        # [Output Only] The number of instances in the managed instance group that are
+        # scheduled to be recreated or are currently being being recreated. Recreating
+        # an instance deletes the existing root persistent disk and creates a new disk
+        # from the image that is defined in the instance template.
         # Corresponds to the JSON property `recreating`
         # @return [Fixnum]
         attr_accessor :recreating
       
-        # 
+        # [Output Only] The number of instances in the managed instance group that are
+        # being reconfigured with properties that do not require a restart or a recreate
+        # action. For example, setting or removing target pools for the instance.
         # Corresponds to the JSON property `refreshing`
         # @return [Fixnum]
         attr_accessor :refreshing
       
-        # 
+        # [Output Only] The number of instances in the managed instance group that are
+        # scheduled to be restarted or are currently being restarted.
         # Corresponds to the JSON property `restarting`
         # @return [Fixnum]
         attr_accessor :restarting
@@ -4761,8 +4772,8 @@ module Google
       class NetworkInterface
         include Google::Apis::Core::Hashable
       
-        # An array of configurations for this interface. Currently, <codeONE_TO_ONE_NAT
-        # is the only access config supported. If there are no accessConfigs specified,
+        # An array of configurations for this interface. Currently, ONE_TO_ONE_NAT is
+        # the only access config supported. If there are no accessConfigs specified,
         # then this instance will have no external internet access.
         # Corresponds to the JSON property `accessConfigs`
         # @return [Array<Google::Apis::ComputeV1::AccessConfig>]
@@ -7476,13 +7487,6 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # IKE networks to use when establishing the VPN tunnel with peer VPN gateway.
-        # The value should be a CIDR formatted string, for example: 192.168.0.0/16. The
-        # ranges should be disjoint.
-        # Corresponds to the JSON property `ikeNetworks`
-        # @return [Array<String>]
-        attr_accessor :ike_networks
-      
         # IKE protocol version to use when establishing the VPN tunnel with peer VPN
         # gateway. Acceptable IKE versions are 1 or 2. Default version is 2.
         # Corresponds to the JSON property `ikeVersion`
@@ -7551,7 +7555,6 @@ module Google
           @description = args[:description] unless args[:description].nil?
           @detailed_status = args[:detailed_status] unless args[:detailed_status].nil?
           @id = args[:id] unless args[:id].nil?
-          @ike_networks = args[:ike_networks] unless args[:ike_networks].nil?
           @ike_version = args[:ike_version] unless args[:ike_version].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?

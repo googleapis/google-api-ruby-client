@@ -76,7 +76,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_detections(q: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_detections(q, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'v2/detect'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::TranslateV2::ListDetectionsResponse::Representation
@@ -125,16 +125,16 @@ module Google
         end
         
         # Returns text translations from one language to another.
+        # @param [Array<String>, String] q
+        #   The text to translate
+        # @param [String] target
+        #   The target language into which the text should be translated
         # @param [Array<String>, String] cid
         #   The customization id for translate
         # @param [String] format
         #   The format of the text
-        # @param [Array<String>, String] q
-        #   The text to translate
         # @param [String] source
         #   The source language of the text
-        # @param [String] target
-        #   The target language into which the text should be translated
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -156,7 +156,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_translations(cid: nil, format: nil, q: nil, source: nil, target: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_translations(q, target, cid: nil, format: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = 'v2'
           command =  make_simple_command(:get, path, options)
           command.response_representation = Google::Apis::TranslateV2::ListTranslationsResponse::Representation

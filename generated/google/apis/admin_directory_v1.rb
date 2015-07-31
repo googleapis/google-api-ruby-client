@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/admin-sdk/directory/
     module AdminDirectoryV1
       VERSION = 'DirectoryV1'
-      REVISION = '20150326'
+      REVISION = '20150720'
 
       # View and manage your Chrome OS devices' metadata
       AUTH_ADMIN_DIRECTORY_DEVICE_CHROMEOS = 'https://www.googleapis.com/auth/admin.directory.device.chromeos'

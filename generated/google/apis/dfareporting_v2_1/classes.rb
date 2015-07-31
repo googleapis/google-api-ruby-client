@@ -4715,7 +4715,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :site_ids
       
-        # Whether this tag is SSL-compliant or not.
+        # Whether this tag is SSL-compliant or not. This is a read-only field.
         # Corresponds to the JSON property `sslCompliant`
         # @return [Boolean]
         attr_accessor :ssl_compliant
@@ -8623,7 +8623,7 @@ module Google
       # to members of those lists. This resource can be used to manage remarketing
       # lists that are owned by your advertisers. To see all remarketing lists that
       # are visible to your advertisers, including those that are shared to your
-      # advertiser or account, use the TargetableRemarketingList resource.
+      # advertiser or account, use the TargetableRemarketingLists resource.
       class RemarketingList
         include Google::Apis::Core::Hashable
       
@@ -9834,7 +9834,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Site collection
+        # Site collection.
         # Corresponds to the JSON property `sites`
         # @return [Array<Google::Apis::DfareportingV2_1::Site>]
         attr_accessor :sites
@@ -10178,7 +10178,7 @@ module Google
       # remarketing list to be used to faciliate targeting ads to specific lists.
       # Remarketing lists that are owned by your advertisers and those that are shared
       # to your advertisers or account are accessible via this resource. To manage
-      # remarketing lists that are owned by your advertisers, use the RemarketingList
+      # remarketing lists that are owned by your advertisers, use the RemarketingLists
       # resource.
       class TargetableRemarketingList
         include Google::Apis::Core::Hashable

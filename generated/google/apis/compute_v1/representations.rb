@@ -2679,7 +2679,6 @@ module Google
           property :description, as: 'description'
           property :detailed_status, as: 'detailedStatus'
           property :id, as: 'id'
-          collection :ike_networks, as: 'ikeNetworks'
           property :ike_version, as: 'ikeVersion'
           property :kind, as: 'kind'
           property :name, as: 'name'

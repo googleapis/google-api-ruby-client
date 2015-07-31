@@ -235,8 +235,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Sale country for which this carrier rate is valid, represented as an ISO 3166-
-        # 1 Alpha-2 code.
+        # The sale country for which this carrier rate is valid, represented as a CLDR
+        # territory code.
         # Corresponds to the JSON property `saleCountry`
         # @return [String]
         attr_accessor :sale_country
@@ -329,8 +329,7 @@ module Google
       class AccountShippingLocationGroup
         include Google::Apis::Core::Hashable
       
-        # The country in which this location group is, represented as ISO 3166-1 Alpha-2
-        # code.
+        # The CLDR territory code of the country in which this location group is.
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
@@ -419,8 +418,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Sale country for which this table is valid, represented as an ISO 3166-1 Alpha-
-        # 2 code.
+        # The sale country for which this table is valid, represented as a CLDR
+        # territory code.
         # Corresponds to the JSON property `saleCountry`
         # @return [String]
         attr_accessor :sale_country
@@ -499,8 +498,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Sale country for which this service can be used, represented as an ISO 3166-1
-        # Alpha-2 code.
+        # The CLDR territory code of the sale country for which this service can be used.
         # Corresponds to the JSON property `saleCountry`
         # @return [String]
         attr_accessor :sale_country
@@ -1561,8 +1559,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The two-letter ISO 3166 country where the items in the feed will be included
-        # in the search index.
+        # The country where the items in the feed will be included in the search index,
+        # represented as a CLDR territory code.
         # Corresponds to the JSON property `targetCountry`
         # @return [String]
         attr_accessor :target_country
@@ -2211,6 +2209,12 @@ module Google
         # @return [String]
         attr_accessor :sale_price_effective_date
       
+        # The quantity of the product that is reserved for sell-on-google ads. Supported
+        # only for online products.
+        # Corresponds to the JSON property `sellOnGoogleQuantity`
+        # @return [Fixnum]
+        attr_accessor :sell_on_google_quantity
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2223,6 +2227,7 @@ module Google
           @quantity = args[:quantity] unless args[:quantity].nil?
           @sale_price = args[:sale_price] unless args[:sale_price].nil?
           @sale_price_effective_date = args[:sale_price_effective_date] unless args[:sale_price_effective_date].nil?
+          @sell_on_google_quantity = args[:sell_on_google_quantity] unless args[:sell_on_google_quantity].nil?
         end
       end
       
@@ -2379,6 +2384,12 @@ module Google
         # @return [String]
         attr_accessor :sale_price_effective_date
       
+        # The quantity of the product that is reserved for sell-on-google ads. Supported
+        # only for online products.
+        # Corresponds to the JSON property `sellOnGoogleQuantity`
+        # @return [Fixnum]
+        attr_accessor :sell_on_google_quantity
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2390,6 +2401,7 @@ module Google
           @quantity = args[:quantity] unless args[:quantity].nil?
           @sale_price = args[:sale_price] unless args[:sale_price].nil?
           @sale_price_effective_date = args[:sale_price_effective_date] unless args[:sale_price_effective_date].nil?
+          @sell_on_google_quantity = args[:sell_on_google_quantity] unless args[:sell_on_google_quantity].nil?
         end
       end
       
@@ -2802,7 +2814,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :sizes
       
-        # The two-letter ISO 3166 country code for the item.
+        # The CLDR territory code for the item.
         # Corresponds to the JSON property `targetCountry`
         # @return [String]
         attr_accessor :target_country
@@ -3064,8 +3076,7 @@ module Google
       class ProductShipping
         include Google::Apis::Core::Hashable
       
-        # The two-letter ISO 3166 country code for the country to which an item will
-        # ship.
+        # The CLDR territory code of the country to which an item will ship.
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
@@ -3339,8 +3350,7 @@ module Google
       class ProductTax
         include Google::Apis::Core::Hashable
       
-        # The country within which the item is taxed, specified with a two-letter ISO
-        # 3166 country code.
+        # The country within which the item is taxed, specified as a CLDR territory code.
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country

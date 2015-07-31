@@ -223,12 +223,12 @@ module Google
         #   The project under which the queue lies.
         # @param [String] taskqueue
         #   The taskqueue to lease a task from.
-        # @param [Boolean] group_by_tag
-        #   When true, all returned tasks will have the same tag
-        # @param [Fixnum] lease_secs
-        #   The lease in seconds.
         # @param [Fixnum] num_tasks
         #   The number of tasks to lease.
+        # @param [Fixnum] lease_secs
+        #   The lease in seconds.
+        # @param [Boolean] group_by_tag
+        #   When true, all returned tasks will have the same tag
         # @param [String] tag
         #   The tag allowed for tasks in the response. Must only be specified if
         #   group_by_tag is true. If group_by_tag is true and tag is not specified the tag
@@ -254,7 +254,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def lease_task(project, taskqueue, group_by_tag: nil, lease_secs: nil, num_tasks: nil, tag: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def lease_task(project, taskqueue, num_tasks, lease_secs, group_by_tag: nil, tag: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/taskqueues/{taskqueue}/tasks/lease'
           command =  make_simple_command(:post, path, options)
           command.response_representation = Google::Apis::TaskqueueV1beta2::Tasks::Representation
@@ -316,9 +316,9 @@ module Google
         #   The project under which the queue lies.
         # @param [String] taskqueue
         # @param [String] task
-        # @param [Google::Apis::TaskqueueV1beta2::Task] task_object
         # @param [Fixnum] new_lease_seconds
         #   The new lease in seconds.
+        # @param [Google::Apis::TaskqueueV1beta2::Task] task_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -340,7 +340,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_task(project, taskqueue, task, task_object = nil, new_lease_seconds: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_task(project, taskqueue, task, new_lease_seconds, task_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/taskqueues/{taskqueue}/tasks/{task}'
           command =  make_simple_command(:patch, path, options)
           command.request_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
@@ -362,9 +362,9 @@ module Google
         #   The project under which the queue lies.
         # @param [String] taskqueue
         # @param [String] task
-        # @param [Google::Apis::TaskqueueV1beta2::Task] task_object
         # @param [Fixnum] new_lease_seconds
         #   The new lease in seconds.
+        # @param [Google::Apis::TaskqueueV1beta2::Task] task_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -386,7 +386,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_task(project, taskqueue, task, task_object = nil, new_lease_seconds: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_task(project, taskqueue, task, new_lease_seconds, task_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           path = '{project}/taskqueues/{taskqueue}/tasks/{task}'
           command =  make_simple_command(:post, path, options)
           command.request_representation = Google::Apis::TaskqueueV1beta2::Task::Representation

@@ -121,8 +121,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_source_id, as: 'dataSourceId'
           property :data_type_name, as: 'dataTypeName'
-          property :output_data_source_id, as: 'outputDataSourceId'
-          property :output_data_type_name, as: 'outputDataTypeName'
         end
       end
       

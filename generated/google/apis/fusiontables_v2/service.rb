@@ -302,8 +302,6 @@ module Google
         # - SHOW
         # - DESCRIBE
         # - CREATE statement.
-        # @param [Boolean] hdrs
-        #   Whether column names are included in the first row. Default is true.
         # @param [String] sql
         #   A Fusion Tables SQL statement, which can be any of
         #   - SELECT
@@ -313,6 +311,8 @@ module Google
         #   - SHOW
         #   - DESCRIBE
         #   - CREATE
+        # @param [Boolean] hdrs
+        #   Whether column names are included in the first row. Default is true.
         # @param [Boolean] typed
         #   Whether typed values are returned in the (JSON) response: numbers for numeric
         #   values and parsed geometries for KML values. Default is true.
@@ -339,7 +339,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def sql_query(hdrs: nil, sql: nil, typed: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def sql_query(sql, hdrs: nil, typed: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           path = 'query'
           if download_dest.nil?
             command =  make_simple_command(:post, path, options)
@@ -362,13 +362,13 @@ module Google
         # - SELECT
         # - SHOW
         # - DESCRIBE
-        # @param [Boolean] hdrs
-        #   Whether column names are included (in the first row). Default is true.
         # @param [String] sql
         #   A SQL statement which can be any of
         #   - SELECT
         #   - SHOW
         #   - DESCRIBE
+        # @param [Boolean] hdrs
+        #   Whether column names are included (in the first row). Default is true.
         # @param [Boolean] typed
         #   Whether typed values are returned in the (JSON) response: numbers for numeric
         #   values and parsed geometries for KML values. Default is true.
@@ -395,7 +395,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def sql_get_query(hdrs: nil, sql: nil, typed: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
+        def sql_get_query(sql, hdrs: nil, typed: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           path = 'query'
           if download_dest.nil?
             command =  make_simple_command(:get, path, options)
@@ -833,14 +833,14 @@ module Google
         end
         
         # Imports a new table.
+        # @param [String] name
+        #   The name to be assigned to the new table.
         # @param [String] delimiter
         #   The delimiter used to separate cell values. This can only consist of a single
         #   character. Default is ,.
         # @param [String] encoding
         #   The encoding of the content. Default is UTF-8. Use auto-detect if you are
         #   unsure of the encoding.
-        # @param [String] name
-        #   The name to be assigned to the new table.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -866,7 +866,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_table(delimiter: nil, encoding: nil, name: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def import_table(name, delimiter: nil, encoding: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           path = 'tables/import'
           if upload_source.nil?
             command =  make_simple_command(:post, path, options)

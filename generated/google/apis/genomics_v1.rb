@@ -26,7 +26,7 @@ module Google
     # @see 
     module GenomicsV1
       VERSION = 'V1'
-      REVISION = '20150716'
+      REVISION = '20150723'
 
       # View and manage your data in Google BigQuery
       AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'
