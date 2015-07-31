@@ -1,3 +1,6 @@
+# 0.9.0.pre3
+* (Breaking change) Update method signatures to include require query parameters in the list of non-keyword args
+
 # 0.9.0.pre2
 * Add raw HTTP status code & body to errors
 * Allow signet options to be passed in InstalledAppFlow.authorize
