@@ -75,6 +75,16 @@ module Google
           return [] if parameters.nil?
           parameters.values.select { |param| param.location == 'query' }
         end
+        
+        def required_parameters
+          return [] if parameter_order.nil? || parameters.nil?
+          parameter_order.map { |name| parameters[name] }.select { |param| param.location == 'path' || param.required }
+        end
+        
+        def optional_query_parameters
+          query_parameters.select { |param| param.required != true }
+        end
+        
       end
 
       class RestResource
