@@ -33,7 +33,7 @@ puts "Created event '#{event.summary}' (#{event.id})"
 events = calendar.list_events('primary', max_results: 10, single_events: true,
                               order_by: 'startTime', time_min: Time.now.iso8601)
 puts "Upcoming events:"
-events.items.each do |evt|
+events.items.each do |event|
   start = event.start.date || event.start.date_time
   puts "- #{event.summary} (#{start}) (ID: #{event.id})"
 end
