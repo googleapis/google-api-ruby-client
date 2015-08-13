@@ -6,7 +6,7 @@ module Google
       module NameHelpers
         KEYWORDS = %w(__ENCODING__ def in self __LINE__ defined? module super __FILE__ do next then BEGIN
                       else nil true END elsif not undef alias end or unless and ensure redo until begin
-                      false rescue when break for retry while case if return yield class)
+                      false rescue when break for retry while case if return yield class command)
         PLURAL_METHODS = %w(list search)
 
         # Check to see if the method name should be plauralized

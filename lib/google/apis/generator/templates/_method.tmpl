@@ -50,24 +50,23 @@
 # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
 # @raise [Google::Apis::AuthorizationError] Authorization is required
 def <%= api_method.generated_name %>(<% for param in api_method.required_parameters %><%= param.generated_name %>, <% end %><% if api_method.request %><%= api.schemas[api_method.request._ref].generated_name %>_object = nil, <% end %><% for param in api_method.optional_query_parameters %><%= param.generated_name %>: nil, <% end %><% for param in api.parameters.values.reject {|p| p.name == 'key'} %><%= param.generated_name %>: nil, <% end %><% if api_method.supports_media_upload? %>upload_source: nil, content_type: nil, <% elsif api_method.supports_media_download? %>download_dest: nil, <%  end  %>options: nil, &block)
-  path = '<%= api_method.path %>'
 <% if api_method.supports_media_upload? -%>
   if upload_source.nil?
-    command =  make_simple_command(:<%= api_method.http_method.downcase %>, path, options)
+    command =  make_simple_command(:<%= api_method.http_method.downcase %>, '<%= api_method.path %>', options)
   else
-    command = make_upload_command(:<%= api_method.http_method.downcase %>, path, options)
+    command = make_upload_command(:<%= api_method.http_method.downcase %>, '<%= api_method.path %>', options)
     command.upload_source = upload_source
     command.upload_content_type = content_type
   end
 <% elsif api_method.supports_media_download? -%>
   if download_dest.nil?
-    command =  make_simple_command(:<%= api_method.http_method.downcase %>, path, options)
+    command =  make_simple_command(:<%= api_method.http_method.downcase %>, '<%= api_method.path %>', options)
   else
-    command = make_download_command(:<%= api_method.http_method.downcase %>, path, options)
+    command = make_download_command(:<%= api_method.http_method.downcase %>, '<%= api_method.path %>', options)
     command.download_dest = download_dest
   end
 <% else -%>
-  command =  make_simple_command(:<%= api_method.http_method.downcase %>, path, options)
+  command =  make_simple_command(:<%= api_method.http_method.downcase %>, '<%= api_method.path %>', options)
 <% end -%>
 <% if api_method.request -%>
   command.request_representation = <%= api.schemas[api_method.request._ref].generated_type %>::Representation
