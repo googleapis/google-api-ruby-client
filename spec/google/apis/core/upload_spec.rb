@@ -47,6 +47,12 @@ RSpec.describe Google::Apis::Core::UploadIO do
         io = Google::Apis::Core::UploadIO.from_file(file, content_type: 'application/json')
         expect(io.content_type).to eql('application/json')
       end
+
+      it 'should setup length of the stream' do
+        upload_io = Google::Apis::Core::UploadIO.from_file(file) 
+        expect(upload_io.length).to eq File.size(file)
+      end
+
     end
   end
 
@@ -63,6 +69,11 @@ RSpec.describe Google::Apis::Core::UploadIO do
       it 'should allow overring the mime type' do
         upload_io = Google::Apis::Core::UploadIO.from_io(io, content_type: 'application/x-gzip')
         expect(upload_io.content_type).to eq('application/x-gzip')
+      end
+
+      it 'should setup length of the stream' do
+        upload_io = Google::Apis::Core::UploadIO.from_io(io) 
+        expect(upload_io.length).to eq 'Hello google'.length
       end
     end
 
@@ -95,6 +106,12 @@ RSpec.describe Google::Apis::Core::RawUploadCommand do
       command.execute(client)
       expect(a_request(:post, 'https://www.googleapis.com/zoo/animals')
         .with { |req| req.headers['X-Goog-Upload-Protocol'] == 'raw' }).to have_been_made
+    end
+
+    it 'should send content-type header' do
+      command.execute(client)
+      expect(a_request(:post, 'https://www.googleapis.com/zoo/animals')
+        .with { |req| req.headers['X-Goog-Upload-Header-Content-Type'] == 'text/plain' }).to have_been_made
     end
   end
 
