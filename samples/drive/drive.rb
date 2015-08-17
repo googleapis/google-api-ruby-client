@@ -12,6 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Pass all auth variables to .env file
+# Read more about auth on https://developers.google.com/drive/web/about-auth
+# For example, in my case I added GOOGLE_APPLICATION_CREDENTIALS=credentials.json
+
+require 'dotenv'
+Dotenv.load
+
 require 'tempfile'
 require 'googleauth'
 require 'google/apis/drive_v2'
@@ -22,7 +29,7 @@ drive = Drive::DriveService.new
 drive.authorization = Google::Auth.get_application_default([Drive::AUTH_DRIVE])
 
 # Insert a file
-file = drive.insert_file({title: 'drive.rb'}, upload_source: 'drive.rb')
+file = drive.insert_file({title: 'drive.rb'}, upload_source: __FILE__)
 puts "Created file #{file.title} (#{file.id})"
 
 # Search for it
