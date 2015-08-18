@@ -44,7 +44,7 @@ module Google
 
     # Request options
     class RequestOptions
-      # @!attribute [rw] credentials
+      # @!attribute [rw] authorization
       #   @return [Signet::OAuth2::Client, #apply(Hash)] OAuth2 credentials
       # @!attribute [rw] retries
       #   @return [Fixnum] Number of times to retry requests on server error
@@ -63,7 +63,7 @@ module Google
         return self if options.nil?
 
         new_options = dup
-        %w(authorization retries timeout_sec).each do |opt|
+        members.each do |opt|
           opt = opt.to_sym
           new_options[opt] = options[opt] unless options[opt].nil?
         end
