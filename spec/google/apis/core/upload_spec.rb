@@ -22,30 +22,50 @@ require 'hurley/test'
 # TODO: Upload from file
 
 RSpec.describe Google::Apis::Core::UploadIO do
-  let(:upload_io) { Google::Apis::Core::UploadIO.from_file(file) }
+  context 'from_file' do
+    let(:upload_io) { Google::Apis::Core::UploadIO.from_file(file) }
 
-  context 'with text file' do
-    let(:file) { File.join(FIXTURES_DIR, 'files', 'test.txt') }
-    it 'should infer content type from file' do
-      expect(upload_io.content_type).to eql('text/plain')
+    context 'with text file' do
+      let(:file) { File.join(FIXTURES_DIR, 'files', 'test.txt') }
+      it 'should infer content type from file' do
+        expect(upload_io.content_type).to eql('text/plain')
+      end
+
+      it 'should allow overriding the mime type' do
+        io = Google::Apis::Core::UploadIO.from_file(file, content_type: 'application/json')
+        expect(io.content_type).to eql('application/json')
+      end
     end
 
-    it 'should allow overriding the mime type' do
-      io = Google::Apis::Core::UploadIO.from_file(file, content_type: 'application/json')
-      expect(io.content_type).to eql('application/json')
+    context 'with unknown type' do
+      let(:file) { File.join(FIXTURES_DIR, 'files', 'test.blah') }
+      it 'should use the default mime type' do
+        expect(upload_io.content_type).to eql('application/octet-stream')
+      end
+
+      it 'should allow overriding the mime type' do
+        io = Google::Apis::Core::UploadIO.from_file(file, content_type: 'application/json')
+        expect(io.content_type).to eql('application/json')
+      end
     end
   end
 
-  context 'with unknown type' do
-    let(:file) { File.join(FIXTURES_DIR, 'files', 'test.blah') }
-    it 'should use the default mime type' do
-      expect(upload_io.content_type).to eql('application/octet-stream')
+  context 'from_io' do
+
+    context 'with i/o stream' do
+      let(:io) { StringIO.new 'Hello google' }
+      
+      it 'should setup default content-type' do
+        upload_io = Google::Apis::Core::UploadIO.from_io(io)  
+        expect(upload_io.content_type).to eql Google::Apis::Core::UploadIO::OCTET_STREAM_CONTENT_TYPE
+      end
+
+      it 'should allow overring the mime type' do
+        upload_io = Google::Apis::Core::UploadIO.from_io(io, content_type: 'application/x-gzip')
+        expect(upload_io.content_type).to eq('application/x-gzip')
+      end
     end
 
-    it 'should allow overriding the mime type' do
-      io = Google::Apis::Core::UploadIO.from_file(file, content_type: 'application/json')
-      expect(io.content_type).to eql('application/json')
-    end
   end
 end
 
