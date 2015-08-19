@@ -48,6 +48,21 @@ RSpec.describe Google::APIClient::ClientSecrets do
         expect(hash["installed"]["client_secret"]).to be == 'i8YaXdGgiQ4_KrTVNGsB7QP1'
       end
 
+      it 'should remove empty value' do
+        expect(hash["installed"]["redirect_uris"]).to be nil
+      end
+
+      it 'should remove nil values' do
+        expect(hash["installed"]["issued_at"]).to be nil
+      end
     end
   end
+
+  context 'with folder wihout client_secrets.json' do
+    it "should raise exception" do
+      folder = File.join(FIXTURES_PATH)
+      expect { Google::APIClient::ClientSecrets.load(folder) }.to raise_exception(ArgumentError)
+    end
+  end
+
 end
