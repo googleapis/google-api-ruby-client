@@ -129,7 +129,7 @@ Media operations -- uploads & downloads -- can not be included in batch with oth
 
 However, some APIs support batch uploads. To upload multiple files in a batch, use the `batch_upload` method instead.
 Batch uploads should only be used when uploading multiple small files. For large files, upload files individually to
-take advantage of the libraries built-in reusmable upload support.
+take advantage of the libraries built-in resumable upload support.
 
 ### Hashes
 
