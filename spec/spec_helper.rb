@@ -43,6 +43,7 @@ end
 
 require 'rspec'
 require 'webmock/rspec'
+require 'fakefs/spec_helpers'
 require 'json_spec'
 require 'logging'
 require 'rspec/logging_helper'
@@ -53,6 +54,7 @@ require 'google/apis/core/base_service'
 # logs will be stored in the @log_output variable. It is a StringIO instance.
 RSpec.configure do |config|
   include RSpec::LoggingHelper
+  config.include FakeFS::SpecHelpers, fakefs: true
   config.include JsonSpec::Helpers
   config.include WebMock::API
   config.capture_log_messages
