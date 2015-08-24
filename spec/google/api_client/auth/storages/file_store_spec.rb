@@ -3,8 +3,7 @@ require 'spec_helper'
 require 'google/api_client/auth/storages/file_store'
 
 describe Google::APIClient::FileStore do
-  let(:root_path) { File.expand_path(File.join(__FILE__, '..','..','..', '..','..')) }
-  let(:json_file) { File.expand_path(File.join(root_path, 'fixtures', 'files', 'auth_stored_credentials.json')) }
+  let(:json_file) { File.join(FIXTURES_DIR, 'files', 'auth_stored_credentials.json') }
 
   let(:credentials_hash) {{
       "access_token"=>"my_access_token",
@@ -36,4 +35,12 @@ describe Google::APIClient::FileStore do
     expect(subject).to receive(:open).and_return(io_stub)
     subject.write_credentials(credentials_hash)
   end
+  
+  it 'should not load credentials' do
+    file = StringIO.new
+    file.write "{invalid_hash}"
+    invalid_subject = Google::APIClient::FileStore.new(file) 
+    expect(invalid_subject.load_credentials).to be_nil
+  end
+  
 end
