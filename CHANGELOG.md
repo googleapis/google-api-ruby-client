@@ -35,7 +35,7 @@
 
 # 0.8.0
 * Refactored credential storage, added support for redis
-* Update gem depdendencies
+* Update gem dependencies
 * Fixed retry logic to allow for auth retries independent of the overall number of retries
 * Added `:force_encoding` option to set body content encoding based on the Content-Type header
 * Batch requests with the service interface now inherit the service's connection
