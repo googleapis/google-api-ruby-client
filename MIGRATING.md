@@ -2,7 +2,7 @@
 
 Many changes and improvements have been made to the `google-api-ruby-client`
 library to bring it to `0.9`. If you are starting a new project or haven't used
-this library before version `0.9`, see the [README][readme] to get started
+this library before version `0.9`, see the [README](README.md) to get started
 as you won't need to migrate anything.
 
 Code written against the `0.8.x` version of this library will not work with the `0.9`
