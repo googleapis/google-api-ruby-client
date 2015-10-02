@@ -292,6 +292,7 @@ module Google
         def new_client
           client = Hurley::Client.new
           client.request_options.timeout = request_options.timeout_sec
+          client.request_options.open_timeout = request_options.open_timeout_sec
           client.request_options.proxy = client_options.proxy_url
           client.request_options.query_class = Hurley::Query::Flat
           client.ssl_options.ca_file = File.join(Google::Apis::ROOT, 'lib', 'cacerts.pem')

@@ -24,7 +24,8 @@ module Google
       :authorization,
       :retries,
       :header,
-      :timeout_sec)
+      :timeout_sec,
+      :open_timeout_sec)
 
     # General client options
     class ClientOptions
@@ -50,6 +51,8 @@ module Google
       #   @return [Fixnum] Number of times to retry requests on server error
       # @!attribute [rw] timeout_sec
       #   @return [Fixnum] How long, in seconds, before requests time out
+      # @!attribute [rw] open_timeout_sec
+      #   @return [Fixnum] How long, in seconds, before failed connections time out
       # @!attribute [rw] header
       #   @return [Hash<String,String] Additional HTTP headers to include in requests
 
@@ -75,5 +78,6 @@ module Google
     ClientOptions.default.application_version = '0.0.0'
 
     RequestOptions.default.retries = 0
+    RequestOptions.default.open_timeout_sec = 20
   end
 end
