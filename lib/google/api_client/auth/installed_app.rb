@@ -85,7 +85,7 @@ module Google
       #
       # @return [Signet::OAuth2::Client]
       #  Authorization instance, nil if user cancelled.
-      def authorize(storage=nil, options=nil)
+      def authorize(storage=nil, options={})
         auth = @authorization
 
         server = WEBrick::HTTPServer.new(
@@ -125,4 +125,3 @@ module Google
 
   end
 end
-
