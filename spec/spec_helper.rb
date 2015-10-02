@@ -60,6 +60,7 @@ RSpec.configure do |config|
   config.capture_log_messages
 
   Google::Apis.logger.level = Logger::DEBUG
+  WebMock::Config.instance.query_values_notation = :flat_array
 end
 
 [JsonSpec::Matchers::BeJsonEql,
@@ -121,4 +122,3 @@ end
 def run_integration_tests?
   ENV['GOOGLE_APPLICATION_CREDENTIALS'] && ENV['GOOGLE_PROJECT_ID']
 end
-

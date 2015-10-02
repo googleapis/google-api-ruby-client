@@ -123,13 +123,13 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       command.options.retries = 1
       expect { command.execute(client) }.to raise_error(Google::Apis::ServerError)
     end
-    
+
 
     context('with retries exceeded') do
       before(:example) do
         command.options.retries = 1
       end
-      
+
       let(:err) do
         begin
           command.execute(client)
@@ -137,13 +137,13 @@ RSpec.describe Google::Apis::Core::HttpCommand do
           e
         end
       end
-      
+
       it 'should raise error with HTTP status code' do
         expect(err.status_code).to eq 500
       end
-      
+
     end
-    
+
     context('with callbacks') do
       it 'should return the response body after retries' do
         expect { |b| command.execute(client, &b) }.to yield_successive_args(
@@ -254,5 +254,13 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     it 'should call block if present' do
       expect { |b| command.execute(client, &b) }.to yield_with_args(nil, an_instance_of(Google::Apis::ClientError))
     end
+  end
+
+  it 'should send repeated query parameters' do
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3')
+      .to_return(status: [200, ''])
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    command.query['a'] = [1,2,3]
+    command.execute(client)
   end
 end

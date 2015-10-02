@@ -167,7 +167,7 @@ module Google
         #
         # @param [Fixnum] status
         #   HTTP status code of response
-        # @param 
+        # @param
         # @param [Hurley::Header] header
         #   HTTP response headers
         # @param [String] body
@@ -184,16 +184,16 @@ module Google
           when 200...300
             nil
           when 301, 302, 303, 307
-            message ||= sprintf('Redirect to %s', header[:location]) 
+            message ||= sprintf('Redirect to %s', header[:location])
             raise Google::Apis::RedirectError.new(message, status_code: status, header: header, body: body)
           when 401
             message ||= 'Unauthorized'
             raise Google::Apis::AuthorizationError.new(message, status_code: status, header: header, body: body)
           when 304, 400, 402...500
-            message ||= 'Invalid request' 
+            message ||= 'Invalid request'
             raise Google::Apis::ClientError.new(message, status_code: status, header: header, body: body)
           when 500...600
-            message ||= 'Server error' 
+            message ||= 'Server error'
             raise Google::Apis::ServerError.new(message, status_code: status, header: header, body: body)
           else
             logger.warn(sprintf('Encountered unexpected status code %s', status))
@@ -254,6 +254,11 @@ module Google
           begin
             logger.debug { sprintf('Sending HTTP %s %s', method, url) }
             response = client.send(method, url, body) do |req|
+              # Temporary workaround for Hurley bug where the connection preference
+              # is ignored and it uses nested anyway
+              req.url.query_class = Hurley::Query::Flat
+              query.each { | k, v| req.url.query[k] = v }
+              # End workaround
               apply_request_options(req)
             end
             logger.debug { response.status_code }
