@@ -31,7 +31,7 @@ module Google
         #   Multipart boundary
         # @param [String] value
         #   JSON content
-        def initialize(boundary, value)
+        def initialize(boundary, value, header = {})
           @part = build_part(boundary, value)
           @length = @part.bytesize
           @io = StringIO.new(@part)
@@ -95,19 +95,25 @@ module Google
         # @param [Hash] header
         #  Headers for the part
         def build_head(boundary, type, content_len, header)
+          content_id = ''
+          if header[:content_id]
+            content_id = sprintf(CID_FORMAT, header[:content_id])
+          end
           sprintf(HEAD_FORMAT,
                   boundary,
                   content_len.to_i,
+                  content_id,
                   header[:content_type] || type,
                   header[:content_transfer_encoding] || DEFAULT_TR_ENCODING)
         end
 
         DEFAULT_TR_ENCODING = 'binary'.freeze
         FOOT = "\r\n".freeze
+        CID_FORMAT = "Content-ID: %s\r\n"
         HEAD_FORMAT = <<-END
 --%s\r
 Content-Length: %d\r
-Content-Type: %s\r
+%sContent-Type: %s\r
 Content-Transfer-Encoding: %s\r
 \r
         END
@@ -137,9 +143,12 @@ Content-Transfer-Encoding: %s\r
         #
         # @param [String] body
         #   JSON text
+        # @param [String] content_id
+        #   Optional unique ID of this part
         # @return [self]
-        def add_json(body)
-          @parts << Google::Apis::Core::JsonPart.new(@boundary, body)
+        def add_json(body, content_id: nil)
+          header = { :content_id => content_id }
+          @parts << Google::Apis::Core::JsonPart.new(@boundary, body, header)
           self
         end
 
@@ -147,9 +156,14 @@ Content-Transfer-Encoding: %s\r
         #
         # @param [Google::Apis::Core::UploadIO] upload_io
         #   IO stream
+        # @param [String] content_id
+        #   Optional unique ID of this part
         # @return [self]
-        def add_upload(upload_io)
-          @parts << Google::Apis::Core::FilePart.new(@boundary, upload_io)
+        def add_upload(upload_io, content_id: nil)
+          header = { :content_id => content_id }
+          @parts << Google::Apis::Core::FilePart.new(@boundary,
+                                                     upload_io,
+                                                     header)
           self
         end
 

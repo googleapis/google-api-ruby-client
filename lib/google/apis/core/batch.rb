@@ -31,7 +31,7 @@ require 'google/apis/core/http_command'
 require 'google/apis/core/upload'
 require 'google/apis/core/download'
 require 'addressable/uri'
-
+require 'securerandom'
 module Google
   module Apis
     module Core
@@ -47,6 +47,7 @@ module Google
         def initialize(method, url)
           super(method, url)
           @calls = []
+          @base_id = SecureRandom.uuid
         end
 
         ##
@@ -78,9 +79,12 @@ module Google
             parts = split_parts(body, m[1])
             deserializer = CallDeserializer.new
             parts.each_index do |index|
-              call, callback = @calls[index]
+              response = deserializer.to_http_response(parts[index])
+              outer_header = response.shift
+              call_id = header_to_id(outer_header[:content_id]) || index
+              call, callback = @calls[call_id]
               begin
-                result = call.process_response(*deserializer.to_http_response(parts[index])) unless call.nil?
+                result = call.process_response(*response) unless call.nil?
                 success(result, &callback)
               rescue => e
                 error(e, &callback)
@@ -103,9 +107,11 @@ module Google
 
           serializer = CallSerializer.new
           multipart = Multipart.new(boundary: BATCH_BOUNDARY, content_type: MULTIPART_MIXED)
-          @calls.each do |(call, _)|
+          @calls.each_index do |index|
+            call, _ = @calls[index]
+            content_id = id_to_header(index)
             io = serializer.to_upload_io(call)
-            multipart.add_upload(io)
+            multipart.add_upload(io, content_id: content_id)
           end
           self.body = multipart.assemble
 
@@ -120,6 +126,17 @@ module Google
           end
           fail Google::Apis::ClientError, 'Invalid command object' unless command.is_a?(HttpCommand)
         end
+
+        def id_to_header(call_id)
+          return sprintf('<%s+%i>', @base_id, call_id)
+        end
+
+        def header_to_id(content_id)
+          match = /<response-.*\+(\d+)>/.match(content_id)
+          return match[1].to_i if match
+          return nil
+        end
+
       end
 
       # Wrapper request for batching multiple uploads in a single server request
@@ -180,19 +197,19 @@ module Google
       # Deconstructs a raw HTTP response part
       # @private
       class CallDeserializer
-        # Convert a single batched response into a BatchedCallResponse object.
+        # Parse a batched response.
         #
         # @param [String] call_response
         #   the response to parse.
         # @return [Array<(Fixnum, Hurley::Header, String)>]
         #   Status, header, and response body.
         def to_http_response(call_response)
-          _, outer_body = split_header_and_body(call_response)
+          outer_header, outer_body = split_header_and_body(call_response)
           status_line, payload = outer_body.split(/\n/, 2)
           _, status = status_line.split(' ', 3)
 
           header, body = split_header_and_body(payload)
-          [status.to_i, header, body]
+          [outer_header, status.to_i, header, body]
         end
 
         protected

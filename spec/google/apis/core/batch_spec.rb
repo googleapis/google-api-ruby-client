@@ -42,9 +42,12 @@ RSpec.describe Google::Apis::Core::BatchCommand do
   end
 
   before(:example) do
+    allow(SecureRandom).to receive(:uuid).and_return('ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f')
+
     response = <<EOF
 --batch123
 Content-Type: application/http
+Content-ID: <response-ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+0>
 
 HTTP/1.1 200 OK
 Content-Type: text/plain; charset=UTF-8
@@ -52,18 +55,20 @@ Content-Type: text/plain; charset=UTF-8
 Hello
 --batch123
 Content-Type: application/http
-
-HTTP/1.1 200 OK
-Content-Type: text/plain; charset=UTF-8
-
-world
---batch123
-Content-Type: application/http
+Content-ID: <response-ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+2>
 
 HTTP/1.1 500 Server Error
 Content-Type: text/plain; charset=UTF-8
 
 Error!
+--batch123
+Content-Type: application/http
+Content-ID: <response-ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+1>
+
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=UTF-8
+
+world
 --batch123--
 EOF
     stub_request(:post, 'https://www.googleapis.com/batch')
@@ -80,6 +85,7 @@ EOF
     expected_body = <<EOF.gsub(/\n/, "\r\n")
 --RubyApiBatchRequest
 Content-Length: 58
+Content-ID: <ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+0>
 Content-Type: application/http
 Content-Transfer-Encoding: binary
 
@@ -89,6 +95,7 @@ Host: www.googleapis.com
 
 --RubyApiBatchRequest
 Content-Length: 96
+Content-ID: <ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+1>
 Content-Type: application/http
 Content-Transfer-Encoding: binary
 
@@ -99,6 +106,7 @@ Host: www.googleapis.com
 Hello world
 --RubyApiBatchRequest
 Content-Length: 93
+Content-ID: <ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+2>
 Content-Type: application/http
 Content-Transfer-Encoding: binary
 
@@ -115,11 +123,17 @@ EOF
 
   it 'should send decode responses' do
     expect do |b|
-      command.add(get_command, &b)
-      command.add(post_with_string_command, &b)
-      command.add(post_with_io_command, &b)
+      command.add(get_command) do |res, err|
+        b.to_proc.call(1, res, err)
+      end
+      command.add(post_with_string_command) do |res, err|
+        b.to_proc.call(2, res, err)
+      end
+      command.add(post_with_io_command) do |res, err|
+        b.to_proc.call(3, res, err)
+      end
       command.execute(client)
-    end.to yield_successive_args(['Hello', nil], ['world', nil], [nil, an_instance_of(Google::Apis::ServerError)])
+    end.to yield_successive_args([1, 'Hello', nil], [3, nil, an_instance_of(Google::Apis::ServerError)], [2, 'world', nil],)
   end
 
   it 'should raise error if batch is empty' do
