@@ -146,10 +146,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
 
     context('with callbacks') do
       it 'should return the response body after retries' do
-        expect { |b| command.execute(client, &b) }.to yield_successive_args(
-          [nil, an_instance_of(Google::Apis::ServerError)],
-          [nil, an_instance_of(Google::Apis::ServerError)],
-          ['Hello world', nil])
+        expect { |b| command.execute(client, &b) }.to yield_with_args('Hello world', nil)
       end
     end
   end
@@ -253,6 +250,10 @@ RSpec.describe Google::Apis::Core::HttpCommand do
 
     it 'should call block if present' do
       expect { |b| command.execute(client, &b) }.to yield_with_args(nil, an_instance_of(Google::Apis::ClientError))
+    end
+
+    it 'should not swallow errors raised in block' do
+      expect { command.execute(client) { raise "Potatoes detected in tailpipe" } }.to raise_error("Potatoes detected in tailpipe")
     end
   end
 

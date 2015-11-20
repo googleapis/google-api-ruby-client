@@ -91,7 +91,6 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def execute(client)
           prepare!
-          proc = block_given? ? Proc.new : nil
           begin
             Retriable.retriable tries: options.retries + 1,
                                 base_interval: 1,
@@ -104,11 +103,19 @@ module Google
               Retriable.retriable tries: auth_tries,
                                   on: [Google::Apis::AuthorizationError],
                                   on_retry: proc { |*| refresh_authorization } do
-                return execute_once(client, &proc)
+                execute_once(client).tap do |result|
+                  if block_given?
+                    yield result, nil
+                  end
+                end
               end
             end
           rescue => e
-            raise e if proc.nil?
+            if block_given?
+              yield nil, e
+            else
+              raise e
+            end
           end
         ensure
           release!
@@ -244,12 +251,11 @@ module Google
         # @private
         # @param [Hurley::Client] client
         #   HTTP client
-        # @yield [result, err] Result or error if block supplied
         # @return [Object]
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def execute_once(client, &block)
+        def execute_once(client)
           body.rewind if body.respond_to?(:rewind)
           begin
             logger.debug { sprintf('Sending HTTP %s %s', method, url) }
@@ -264,10 +270,10 @@ module Google
             logger.debug { response.status_code }
             logger.debug { response.inspect }
             response = process_response(response.status_code, response.header, response.body)
-            success(response, &block)
+            success(response)
           rescue => e
             logger.debug { sprintf('Caught error %s', e) }
-            error(e, rethrow: true, &block)
+            error(e, rethrow: true)
           end
         end
 
