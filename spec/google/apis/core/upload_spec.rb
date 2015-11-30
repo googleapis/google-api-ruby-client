@@ -49,7 +49,7 @@ RSpec.describe Google::Apis::Core::UploadIO do
       end
 
       it 'should setup length of the stream' do
-        upload_io = Google::Apis::Core::UploadIO.from_file(file) 
+        upload_io = Google::Apis::Core::UploadIO.from_file(file)
         expect(upload_io.length).to eq File.size(file)
       end
 
@@ -60,9 +60,9 @@ RSpec.describe Google::Apis::Core::UploadIO do
 
     context 'with i/o stream' do
       let(:io) { StringIO.new 'Hello google' }
-      
+
       it 'should setup default content-type' do
-        upload_io = Google::Apis::Core::UploadIO.from_io(io)  
+        upload_io = Google::Apis::Core::UploadIO.from_io(io)
         expect(upload_io.content_type).to eql Google::Apis::Core::UploadIO::OCTET_STREAM_CONTENT_TYPE
       end
 
@@ -72,7 +72,7 @@ RSpec.describe Google::Apis::Core::UploadIO do
       end
 
       it 'should setup length of the stream' do
-        upload_io = Google::Apis::Core::UploadIO.from_io(io) 
+        upload_io = Google::Apis::Core::UploadIO.from_io(io)
         expect(upload_io.length).to eq 'Hello google'.length
       end
     end
@@ -241,6 +241,17 @@ RSpec.describe Google::Apis::Core::ResumableUploadCommand do
       command.execute(client)
       expect(a_request(:post, 'https://www.googleapis.com/zoo/animals')
         .with(body: 'Hello world')).to have_been_made
+    end
+  end
+
+  context 'with non-retriable authorization error on start' do
+    before(:example) do
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals')
+        .to_return(status: [401, 'unauthorized'], headers: { 'X-Goog-Upload-Status' => 'final' }, body: %(unauthorized))
+    end
+
+    it 'should propagate the original error' do
+      expect { command.execute(client) }.to raise_error Google::Apis::AuthorizationError
     end
   end
 

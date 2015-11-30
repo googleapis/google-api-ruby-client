@@ -178,7 +178,6 @@ module Google
         def process_response(status, header, body)
           @offset = Integer(header[BYTES_RECEIVED_HEADER]) if header.key?(BYTES_RECEIVED_HEADER)
           @upload_url = header[UPLOAD_URL_HEADER] if header.key?(UPLOAD_URL_HEADER)
-
           upload_status = header[UPLOAD_STATUS_HEADER]
           logger.debug { sprintf('Upload status %s', upload_status) }
           if upload_status == STATUS_ACTIVE
@@ -254,12 +253,16 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def execute_once(client, &block)
-          if @state == :start
+          case @state
+          when :start
             response = send_start_command(client)
-          else
+            result = process_response(response.status_code, response.header, response.body)
+          when :active
             response = send_query_command(client)
+            result = process_response(response.status_code, response.header, response.body)
+          when :cancelled, :final
+            error(@last_error, rethrow: true, &block)
           end
-          result = process_response(response.status_code, response.header, response.body)
           if @state == :active
             response = send_upload_command(client)
             result = process_response(response.status_code, response.header, response.body)
@@ -267,6 +270,10 @@ module Google
 
           success(result, &block) if @state == :final
         rescue => e
+          # Some APIs like Youtube generate non-retriable 401 errors and mark
+          # the upload as finalized. Save the error just in case we get
+          # retried.
+          @last_error = e
           error(e, rethrow: true, &block)
         end
       end
