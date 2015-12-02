@@ -191,6 +191,20 @@ Per-request:
 drive.get_file('123', options: { authorization: authorization })
 ```
 
+### Authorization using API keys
+
+Some APIs allow using an API key instead of OAuth2 tokens. For these APIs, set
+the `key` attribute of the service instance. For example:
+
+```ruby
+require 'google/apis/translate_v2'
+
+translate = Google::Apis::TranslateV2::TranslateService.new
+translate.key = 'YOUR_API_KEY_HERE'
+result = translate.list_translations(source: 'en', target: 'es', q: 'Hello world!')
+puts result.translations.first.translated_text
+```
+
 ## Generating APIs
 
 For [Cloud Endpoints](https://cloud.google.com/endpoints/) or other APIs not included in the gem, ruby code can be
