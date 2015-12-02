@@ -59,6 +59,19 @@ RSpec.describe Google::Apis::Core::DownloadCommand do
         expect(received).to eql('Hello world')
       end
     end
+
+    context 'with redirect' do
+      before(:example) do
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+          .to_return(status: [302, 'Content moved'], headers: { 'Location' => 'https://content.googleapis.com/files/12345' }, body: %(Content moved))
+        stub_request(:get, 'https://content.googleapis.com/files/12345')
+          .to_return(headers: { 'Content-Type' => 'application/json' }, body: %(Hello world))
+      end
+
+      it 'should receive content' do
+        expect(received).to eql 'Hello world'
+      end
+    end
   end
 
   context 'with default destination' do

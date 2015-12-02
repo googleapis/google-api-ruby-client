@@ -71,7 +71,7 @@ module Google
               logger.debug { sprintf('Resuming download from offset %d', @offset) }
               req.header[RANGE_HEADER] = sprintf('bytes=%d-', @offset)
             end
-            req.on_body do |res, chunk|
+            req.on_body(200, 201) do |res, chunk|
               check_status(res.status_code, chunk) unless res.status_code.nil?
               logger.debug { sprintf('Writing chunk (%d bytes)', chunk.length) }
               @offset += chunk.length

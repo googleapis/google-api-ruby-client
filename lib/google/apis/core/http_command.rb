@@ -19,6 +19,7 @@ require 'google/apis/errors'
 require 'retriable'
 require 'hurley'
 require 'hurley/addressable'
+require 'hurley_patches'
 require 'google/apis/core/logging'
 require 'pp'
 
