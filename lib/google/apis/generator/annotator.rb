@@ -97,11 +97,20 @@ module Google
         #  Fragment of the discovery doc describing the method
         def infer_method_name_for_rpc(method)
           return nil if method.request.nil?
-          verb = ActiveSupport::Inflector.underscore(method.id.split('.').last)
+          parts = method.id.split('.')
+          parts.shift
+          verb = ActiveSupport::Inflector.underscore(parts.pop)
           match = method.request._ref.match(/(.*)(?i:request)/)
           return nil if match.nil?
           name = ActiveSupport::Inflector.underscore(match[1])
           return nil unless name == verb || name.start_with?(verb + '_')
+          if !parts.empty?
+            resource_name = ActiveSupport::Inflector.singularize(parts.pop)
+            resource_name = ActiveSupport::Inflector.underscore(resource_name)
+            if !name.include?(resource_name)
+              name = name.split('_').insert(1, resource_name).join('_')
+            end
+          end
           name
         end
 
@@ -112,17 +121,24 @@ module Google
         def infer_method_name_from_id(method)
           parts = method.id.split('.')
           parts.shift
-          verb = parts.pop
-          return ActiveSupport::Inflector.underscore(verb) if parts.empty?
-          resource_name = parts.pop
-          method_name = verb + '_'
-          method_name += parts.map { |p| ActiveSupport::Inflector.singularize(p) }.join('_') + '_' unless parts.empty?
+          verb = ActiveSupport::Inflector.underscore(parts.pop)
+          return verb if parts.empty?
+          resource_name = ActiveSupport::Inflector.underscore(parts.pop)
           if pluralize_method?(verb)
-            method_name += ActiveSupport::Inflector.pluralize(resource_name)
+            resource_name = ActiveSupport::Inflector.pluralize(resource_name)
           else
-            method_name += ActiveSupport::Inflector.singularize(resource_name)
+            resource_name = ActiveSupport::Inflector.singularize(resource_name)
           end
-          ActiveSupport::Inflector.underscore(method_name)
+          if parts.empty?
+            resource_path = resource_name
+          else
+            resource_path = parts.map do |p|
+              p = ActiveSupport::Inflector.singularize(p)
+              ActiveSupport::Inflector.underscore(p)
+            end.join('_') + '_' + resource_name
+          end
+          method_name = verb.split('_').insert(1, resource_path.split('_')).join('_')
+          method_name
         end
       end
 
@@ -260,7 +276,10 @@ module Google
 
         def check_duplicate_method(m)
           if @all_methods.include?(m.generated_name)
-            logger.error { sprintf('Duplicate method %s generated', m.generated_name) }
+            logger.error do
+              sprintf('Duplicate method %s generated, path %s',
+                m.generated_name, @names.key)
+            end
             fail 'Duplicate name generated'
           end
           @all_methods[m.generated_name] = m
