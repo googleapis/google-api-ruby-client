@@ -108,10 +108,15 @@ module Google
         # @return [String]
         attr_accessor :storage_class
       
-        # Creation time of the bucket in RFC 3339 format.
+        # The creation time of the bucket in RFC 3339 format.
         # Corresponds to the JSON property `timeCreated`
         # @return [DateTime]
         attr_accessor :time_created
+      
+        # The modification time of the bucket in RFC 3339 format.
+        # Corresponds to the JSON property `updated`
+        # @return [DateTime]
+        attr_accessor :updated
       
         # The bucket's versioning configuration.
         # Corresponds to the JSON property `versioning`
@@ -145,6 +150,7 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
           @storage_class = args[:storage_class] unless args[:storage_class].nil?
           @time_created = args[:time_created] unless args[:time_created].nil?
+          @updated = args[:updated] unless args[:updated].nil?
           @versioning = args[:versioning] unless args[:versioning].nil?
           @website = args[:website] unless args[:website].nil?
         end
@@ -787,6 +793,12 @@ module Google
         # @return [String]
         attr_accessor :crc32c
       
+        # Metadata of customer-supplied encryption key, if the object is encrypted by
+        # such a key.
+        # Corresponds to the JSON property `customerEncryption`
+        # @return [Google::Apis::StorageV1::Object::CustomerEncryption]
+        attr_accessor :customer_encryption
+      
         # HTTP 1.1 Entity tag for the object.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -856,15 +868,18 @@ module Google
         # @return [String]
         attr_accessor :storage_class
       
+        # The creation time of the object in RFC 3339 format.
+        # Corresponds to the JSON property `timeCreated`
+        # @return [DateTime]
+        attr_accessor :time_created
+      
         # The deletion time of the object in RFC 3339 format. Will be returned if and
         # only if this version of the object has been deleted.
         # Corresponds to the JSON property `timeDeleted`
         # @return [DateTime]
         attr_accessor :time_deleted
       
-        # The creation or modification time of the object in RFC 3339 format. For
-        # buckets with versioning enabled, changing an object's metadata does not change
-        # this property.
+        # The modification time of the object metadata in RFC 3339 format.
         # Corresponds to the JSON property `updated`
         # @return [DateTime]
         attr_accessor :updated
@@ -884,6 +899,7 @@ module Google
           @content_language = args[:content_language] unless args[:content_language].nil?
           @content_type = args[:content_type] unless args[:content_type].nil?
           @crc32c = args[:crc32c] unless args[:crc32c].nil?
+          @customer_encryption = args[:customer_encryption] unless args[:customer_encryption].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @generation = args[:generation] unless args[:generation].nil?
           @id = args[:id] unless args[:id].nil?
@@ -897,8 +913,35 @@ module Google
           @self_link = args[:self_link] unless args[:self_link].nil?
           @size = args[:size] unless args[:size].nil?
           @storage_class = args[:storage_class] unless args[:storage_class].nil?
+          @time_created = args[:time_created] unless args[:time_created].nil?
           @time_deleted = args[:time_deleted] unless args[:time_deleted].nil?
           @updated = args[:updated] unless args[:updated].nil?
+        end
+        
+        # Metadata of customer-supplied encryption key, if the object is encrypted by
+        # such a key.
+        class CustomerEncryption
+          include Google::Apis::Core::Hashable
+        
+          # The encryption algorithm.
+          # Corresponds to the JSON property `encryptionAlgorithm`
+          # @return [String]
+          attr_accessor :encryption_algorithm
+        
+          # SHA256 hash value of the encryption key.
+          # Corresponds to the JSON property `keySha256`
+          # @return [String]
+          attr_accessor :key_sha256
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @encryption_algorithm = args[:encryption_algorithm] unless args[:encryption_algorithm].nil?
+            @key_sha256 = args[:key_sha256] unless args[:key_sha256].nil?
+          end
         end
         
         # The owner of the object. This will always be the uploader of the object.

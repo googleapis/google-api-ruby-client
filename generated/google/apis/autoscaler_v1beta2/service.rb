@@ -82,8 +82,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_autoscaler(project, zone, autoscaler, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/zones/{zone}/autoscalers/{autoscaler}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'projects/{project}/zones/{zone}/autoscalers/{autoscaler}', options)
           command.response_representation = Google::Apis::AutoscalerV1beta2::Operation::Representation
           command.response_class = Google::Apis::AutoscalerV1beta2::Operation
           command.params['project'] = project unless project.nil?
@@ -124,8 +123,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_autoscaler(project, zone, autoscaler, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/zones/{zone}/autoscalers/{autoscaler}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'projects/{project}/zones/{zone}/autoscalers/{autoscaler}', options)
           command.response_representation = Google::Apis::AutoscalerV1beta2::Autoscaler::Representation
           command.response_class = Google::Apis::AutoscalerV1beta2::Autoscaler
           command.params['project'] = project unless project.nil?
@@ -165,8 +163,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_autoscaler(project, zone, autoscaler_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/zones/{zone}/autoscalers'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'projects/{project}/zones/{zone}/autoscalers', options)
           command.request_representation = Google::Apis::AutoscalerV1beta2::Autoscaler::Representation
           command.request_object = autoscaler_object
           command.response_representation = Google::Apis::AutoscalerV1beta2::Operation::Representation
@@ -209,8 +206,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_autoscalers(project, zone, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/zones/{zone}/autoscalers'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'projects/{project}/zones/{zone}/autoscalers', options)
           command.response_representation = Google::Apis::AutoscalerV1beta2::ListAutoscalerResponse::Representation
           command.response_class = Google::Apis::AutoscalerV1beta2::ListAutoscalerResponse
           command.params['project'] = project unless project.nil?
@@ -255,8 +251,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_autoscaler(project, zone, autoscaler, autoscaler_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/zones/{zone}/autoscalers/{autoscaler}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'projects/{project}/zones/{zone}/autoscalers/{autoscaler}', options)
           command.request_representation = Google::Apis::AutoscalerV1beta2::Autoscaler::Representation
           command.request_object = autoscaler_object
           command.response_representation = Google::Apis::AutoscalerV1beta2::Operation::Representation
@@ -300,8 +295,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_autoscaler(project, zone, autoscaler, autoscaler_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/zones/{zone}/autoscalers/{autoscaler}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'projects/{project}/zones/{zone}/autoscalers/{autoscaler}', options)
           command.request_representation = Google::Apis::AutoscalerV1beta2::Autoscaler::Representation
           command.request_object = autoscaler_object
           command.response_representation = Google::Apis::AutoscalerV1beta2::Operation::Representation
@@ -341,8 +335,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_zone_operation(project, zone, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/zones/{zone}/operations/{operation}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{project}/zones/{zone}/operations/{operation}', options)
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['operation'] = operation unless operation.nil?
@@ -378,8 +371,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_zone_operation(project, zone, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/zones/{zone}/operations/{operation}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/operations/{operation}', options)
           command.response_representation = Google::Apis::AutoscalerV1beta2::Operation::Representation
           command.response_class = Google::Apis::AutoscalerV1beta2::Operation
           command.params['project'] = project unless project.nil?
@@ -419,8 +411,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_zone_operations(project, zone, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/zones/{zone}/operations'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/operations', options)
           command.response_representation = Google::Apis::AutoscalerV1beta2::OperationList::Representation
           command.response_class = Google::Apis::AutoscalerV1beta2::OperationList
           command.params['project'] = project unless project.nil?
@@ -461,8 +452,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_zones(project, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/zones'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/zones', options)
           command.response_representation = Google::Apis::AutoscalerV1beta2::ZoneList::Representation
           command.response_class = Google::Apis::AutoscalerV1beta2::ZoneList
           command.params['project'] = project unless project.nil?

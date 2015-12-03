@@ -514,6 +514,318 @@ module Google
         end
       end
       
+      # JSON template for Customer Resource object in Directory API.
+      class Customer
+        include Google::Apis::Core::Hashable
+      
+        # The customer's secondary contact email address. This email address cannot be
+        # on the same domain as the customerDomain
+        # Corresponds to the JSON property `alternateEmail`
+        # @return [String]
+        attr_accessor :alternate_email
+      
+        # The customer's creation time (Readonly)
+        # Corresponds to the JSON property `customerCreationTime`
+        # @return [DateTime]
+        attr_accessor :customer_creation_time
+      
+        # The customer's primary domain name string. Do not include the www prefix when
+        # creating a new customer.
+        # Corresponds to the JSON property `customerDomain`
+        # @return [String]
+        attr_accessor :customer_domain
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The unique ID for the customer's Google account. (Readonly)
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifies the resource as a customer. Value: admin#directory#customer
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The customer's ISO 639-2 language code. The default value is en-US
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        # The customer's contact phone number in E.164 format.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # JSON template for postal address of a customer.
+        # Corresponds to the JSON property `postalAddress`
+        # @return [Google::Apis::AdminDirectoryV1::CustomerPostalAddress]
+        attr_accessor :postal_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternate_email = args[:alternate_email] unless args[:alternate_email].nil?
+          @customer_creation_time = args[:customer_creation_time] unless args[:customer_creation_time].nil?
+          @customer_domain = args[:customer_domain] unless args[:customer_domain].nil?
+          @etag = args[:etag] unless args[:etag].nil?
+          @id = args[:id] unless args[:id].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @language = args[:language] unless args[:language].nil?
+          @phone_number = args[:phone_number] unless args[:phone_number].nil?
+          @postal_address = args[:postal_address] unless args[:postal_address].nil?
+        end
+      end
+      
+      # JSON template for postal address of a customer.
+      class CustomerPostalAddress
+        include Google::Apis::Core::Hashable
+      
+        # A customer's physical address. The address can be composed of one to three
+        # lines.
+        # Corresponds to the JSON property `addressLine1`
+        # @return [String]
+        attr_accessor :address_line1
+      
+        # Address line 2 of the address.
+        # Corresponds to the JSON property `addressLine2`
+        # @return [String]
+        attr_accessor :address_line2
+      
+        # Address line 3 of the address.
+        # Corresponds to the JSON property `addressLine3`
+        # @return [String]
+        attr_accessor :address_line3
+      
+        # The customer contact's name.
+        # Corresponds to the JSON property `contactName`
+        # @return [String]
+        attr_accessor :contact_name
+      
+        # This is a required property. For countryCode information see the ISO 3166
+        # country code elements.
+        # Corresponds to the JSON property `countryCode`
+        # @return [String]
+        attr_accessor :country_code
+      
+        # Name of the locality. An example of a locality value is the city of San
+        # Francisco.
+        # Corresponds to the JSON property `locality`
+        # @return [String]
+        attr_accessor :locality
+      
+        # The company or company division name.
+        # Corresponds to the JSON property `organizationName`
+        # @return [String]
+        attr_accessor :organization_name
+      
+        # The postal code. A postalCode example is a postal zip code such as 10009. This
+        # is in accordance with - http://portablecontacts.net/draft-spec.html#
+        # address_element.
+        # Corresponds to the JSON property `postalCode`
+        # @return [String]
+        attr_accessor :postal_code
+      
+        # Name of the region. An example of a region value is NY for the state of New
+        # York.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address_line1 = args[:address_line1] unless args[:address_line1].nil?
+          @address_line2 = args[:address_line2] unless args[:address_line2].nil?
+          @address_line3 = args[:address_line3] unless args[:address_line3].nil?
+          @contact_name = args[:contact_name] unless args[:contact_name].nil?
+          @country_code = args[:country_code] unless args[:country_code].nil?
+          @locality = args[:locality] unless args[:locality].nil?
+          @organization_name = args[:organization_name] unless args[:organization_name].nil?
+          @postal_code = args[:postal_code] unless args[:postal_code].nil?
+          @region = args[:region] unless args[:region].nil?
+        end
+      end
+      
+      # JSON template for Domain Alias object in Directory API.
+      class DomainAlias
+        include Google::Apis::Core::Hashable
+      
+        # The creation time of the domain alias. (Read-only).
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # The domain alias name.
+        # Corresponds to the JSON property `domainAliasName`
+        # @return [String]
+        attr_accessor :domain_alias_name
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Kind of resource this is.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The parent domain name that the domain alias is associated with. This can
+        # either be a primary or secondary domain name within a customer.
+        # Corresponds to the JSON property `parentDomainName`
+        # @return [String]
+        attr_accessor :parent_domain_name
+      
+        # Indicates the verification state of a domain alias. (Read-only)
+        # Corresponds to the JSON property `verified`
+        # @return [Boolean]
+        attr_accessor :verified
+        alias_method :verified?, :verified
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_time = args[:creation_time] unless args[:creation_time].nil?
+          @domain_alias_name = args[:domain_alias_name] unless args[:domain_alias_name].nil?
+          @etag = args[:etag] unless args[:etag].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @parent_domain_name = args[:parent_domain_name] unless args[:parent_domain_name].nil?
+          @verified = args[:verified] unless args[:verified].nil?
+        end
+      end
+      
+      # JSON response template to list domain aliases in Directory API.
+      class DomainAliases
+        include Google::Apis::Core::Hashable
+      
+        # List of domain alias objects.
+        # Corresponds to the JSON property `domainAliases`
+        # @return [Array<Google::Apis::AdminDirectoryV1::DomainAlias>]
+        attr_accessor :domain_aliases
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Kind of resource this is.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain_aliases = args[:domain_aliases] unless args[:domain_aliases].nil?
+          @etag = args[:etag] unless args[:etag].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+        end
+      end
+      
+      # JSON template for Domain object in Directory API.
+      class Domains
+        include Google::Apis::Core::Hashable
+      
+        # Creation time of the domain. (Read-only).
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # List of domain alias objects. (Read-only)
+        # Corresponds to the JSON property `domainAliases`
+        # @return [Array<Google::Apis::AdminDirectoryV1::DomainAlias>]
+        attr_accessor :domain_aliases
+      
+        # The domain name of the customer.
+        # Corresponds to the JSON property `domainName`
+        # @return [String]
+        attr_accessor :domain_name
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Indicates if the domain is a primary domain (Read-only).
+        # Corresponds to the JSON property `isPrimary`
+        # @return [Boolean]
+        attr_accessor :is_primary
+        alias_method :is_primary?, :is_primary
+      
+        # Kind of resource this is.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Indicates the verification state of a domain. (Read-only).
+        # Corresponds to the JSON property `verified`
+        # @return [Boolean]
+        attr_accessor :verified
+        alias_method :verified?, :verified
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_time = args[:creation_time] unless args[:creation_time].nil?
+          @domain_aliases = args[:domain_aliases] unless args[:domain_aliases].nil?
+          @domain_name = args[:domain_name] unless args[:domain_name].nil?
+          @etag = args[:etag] unless args[:etag].nil?
+          @is_primary = args[:is_primary] unless args[:is_primary].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @verified = args[:verified] unless args[:verified].nil?
+        end
+      end
+      
+      # JSON response template to list Domains in Directory API.
+      class Domains2
+        include Google::Apis::Core::Hashable
+      
+        # List of domain objects.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<Google::Apis::AdminDirectoryV1::Domains>]
+        attr_accessor :domains
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Kind of resource this is.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domains = args[:domains] unless args[:domains].nil?
+          @etag = args[:etag] unless args[:etag].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+        end
+      end
+      
       # JSON template for Group resource in Directory API.
       class Group
         include Google::Apis::Core::Hashable
@@ -1220,6 +1532,315 @@ module Google
           @etag = args[:etag] unless args[:etag].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @organization_units = args[:organization_units] unless args[:organization_units].nil?
+        end
+      end
+      
+      # JSON template for privilege resource in Directory API.
+      class Privilege
+        include Google::Apis::Core::Hashable
+      
+        # A list of child privileges. Privileges for a service form a tree. Each
+        # privilege can have a list of child privileges; this list is empty for a leaf
+        # privilege.
+        # Corresponds to the JSON property `childPrivileges`
+        # @return [Array<Google::Apis::AdminDirectoryV1::Privilege>]
+        attr_accessor :child_privileges
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # If the privilege can be restricted to an organization unit.
+        # Corresponds to the JSON property `isOuScopable`
+        # @return [Boolean]
+        attr_accessor :is_ou_scopable
+        alias_method :is_ou_scopable?, :is_ou_scopable
+      
+        # The type of the API resource. This is always admin#directory#privilege.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The name of the privilege.
+        # Corresponds to the JSON property `privilegeName`
+        # @return [String]
+        attr_accessor :privilege_name
+      
+        # The obfuscated ID of the service this privilege is for.
+        # Corresponds to the JSON property `serviceId`
+        # @return [String]
+        attr_accessor :service_id
+      
+        # The name of the service this privilege is for.
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @child_privileges = args[:child_privileges] unless args[:child_privileges].nil?
+          @etag = args[:etag] unless args[:etag].nil?
+          @is_ou_scopable = args[:is_ou_scopable] unless args[:is_ou_scopable].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @privilege_name = args[:privilege_name] unless args[:privilege_name].nil?
+          @service_id = args[:service_id] unless args[:service_id].nil?
+          @service_name = args[:service_name] unless args[:service_name].nil?
+        end
+      end
+      
+      # JSON response template for List privileges operation in Directory API.
+      class Privileges
+        include Google::Apis::Core::Hashable
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # A list of Privilege resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::AdminDirectoryV1::Privilege>]
+        attr_accessor :items
+      
+        # The type of the API resource. This is always admin#directory#privileges.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] unless args[:etag].nil?
+          @items = args[:items] unless args[:items].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+        end
+      end
+      
+      # JSON template for role resource in Directory API.
+      class Role
+        include Google::Apis::Core::Hashable
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Returns true if the role is a super admin role.
+        # Corresponds to the JSON property `isSuperAdminRole`
+        # @return [Boolean]
+        attr_accessor :is_super_admin_role
+        alias_method :is_super_admin_role?, :is_super_admin_role
+      
+        # Returns true if this is a pre-defined system role.
+        # Corresponds to the JSON property `isSystemRole`
+        # @return [Boolean]
+        attr_accessor :is_system_role
+        alias_method :is_system_role?, :is_system_role
+      
+        # The type of the API resource. This is always admin#directory#role.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A short description of the role.
+        # Corresponds to the JSON property `roleDescription`
+        # @return [String]
+        attr_accessor :role_description
+      
+        # ID of the role.
+        # Corresponds to the JSON property `roleId`
+        # @return [String]
+        attr_accessor :role_id
+      
+        # Name of the role.
+        # Corresponds to the JSON property `roleName`
+        # @return [String]
+        attr_accessor :role_name
+      
+        # The set of privileges that are granted to this role.
+        # Corresponds to the JSON property `rolePrivileges`
+        # @return [Array<Google::Apis::AdminDirectoryV1::Role::RolePrivilege>]
+        attr_accessor :role_privileges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] unless args[:etag].nil?
+          @is_super_admin_role = args[:is_super_admin_role] unless args[:is_super_admin_role].nil?
+          @is_system_role = args[:is_system_role] unless args[:is_system_role].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @role_description = args[:role_description] unless args[:role_description].nil?
+          @role_id = args[:role_id] unless args[:role_id].nil?
+          @role_name = args[:role_name] unless args[:role_name].nil?
+          @role_privileges = args[:role_privileges] unless args[:role_privileges].nil?
+        end
+        
+        # 
+        class RolePrivilege
+          include Google::Apis::Core::Hashable
+        
+          # The name of the privilege.
+          # Corresponds to the JSON property `privilegeName`
+          # @return [String]
+          attr_accessor :privilege_name
+        
+          # The obfuscated ID of the service this privilege is for.
+          # Corresponds to the JSON property `serviceId`
+          # @return [String]
+          attr_accessor :service_id
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @privilege_name = args[:privilege_name] unless args[:privilege_name].nil?
+            @service_id = args[:service_id] unless args[:service_id].nil?
+          end
+        end
+      end
+      
+      # JSON template for roleAssignment resource in Directory API.
+      class RoleAssignment
+        include Google::Apis::Core::Hashable
+      
+        # The unique ID of the user this role is assigned to.
+        # Corresponds to the JSON property `assignedTo`
+        # @return [String]
+        attr_accessor :assigned_to
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The type of the API resource. This is always admin#directory#roleAssignment.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # If the role is restricted to an organization unit, this contains the ID for
+        # the organization unit the exercise of this role is restricted to.
+        # Corresponds to the JSON property `orgUnitId`
+        # @return [String]
+        attr_accessor :org_unit_id
+      
+        # ID of this roleAssignment.
+        # Corresponds to the JSON property `roleAssignmentId`
+        # @return [String]
+        attr_accessor :role_assignment_id
+      
+        # The ID of the role that is assigned.
+        # Corresponds to the JSON property `roleId`
+        # @return [String]
+        attr_accessor :role_id
+      
+        # The scope in which this role is assigned. Possible values are:
+        # - CUSTOMER
+        # - ORG_UNIT
+        # Corresponds to the JSON property `scopeType`
+        # @return [String]
+        attr_accessor :scope_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_to = args[:assigned_to] unless args[:assigned_to].nil?
+          @etag = args[:etag] unless args[:etag].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @org_unit_id = args[:org_unit_id] unless args[:org_unit_id].nil?
+          @role_assignment_id = args[:role_assignment_id] unless args[:role_assignment_id].nil?
+          @role_id = args[:role_id] unless args[:role_id].nil?
+          @scope_type = args[:scope_type] unless args[:scope_type].nil?
+        end
+      end
+      
+      # JSON response template for List roleAssignments operation in Directory API.
+      class RoleAssignments
+        include Google::Apis::Core::Hashable
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # A list of RoleAssignment resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::AdminDirectoryV1::RoleAssignment>]
+        attr_accessor :items
+      
+        # The type of the API resource. This is always admin#directory#roleAssignments.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] unless args[:etag].nil?
+          @items = args[:items] unless args[:items].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+        end
+      end
+      
+      # JSON response template for List roles operation in Directory API.
+      class Roles
+        include Google::Apis::Core::Hashable
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # A list of Role resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::AdminDirectoryV1::Role>]
+        attr_accessor :items
+      
+        # The type of the API resource. This is always admin#directory#roles.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] unless args[:etag].nil?
+          @items = args[:items] unless args[:items].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
       

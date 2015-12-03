@@ -79,8 +79,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_deployment(project_id, region, deployment_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{projectId}/regions/{region}/deployments/{deploymentName}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{projectId}/regions/{region}/deployments/{deploymentName}', options)
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['region'] = region unless region.nil?
           command.params['deploymentName'] = deployment_name unless deployment_name.nil?
@@ -116,8 +115,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_deployment(project_id, region, deployment_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{projectId}/regions/{region}/deployments/{deploymentName}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{projectId}/regions/{region}/deployments/{deploymentName}', options)
           command.response_representation = Google::Apis::ManagerV1beta2::Deployment::Representation
           command.response_class = Google::Apis::ManagerV1beta2::Deployment
           command.params['projectId'] = project_id unless project_id.nil?
@@ -155,8 +153,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_deployment(project_id, region, deployment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{projectId}/regions/{region}/deployments'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{projectId}/regions/{region}/deployments', options)
           command.request_representation = Google::Apis::ManagerV1beta2::Deployment::Representation
           command.request_object = deployment_object
           command.response_representation = Google::Apis::ManagerV1beta2::Deployment::Representation
@@ -200,8 +197,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_deployments(project_id, region, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{projectId}/regions/{region}/deployments'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{projectId}/regions/{region}/deployments', options)
           command.response_representation = Google::Apis::ManagerV1beta2::ListDeploymentsResponse::Representation
           command.response_class = Google::Apis::ManagerV1beta2::ListDeploymentsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -239,8 +235,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_template(project_id, template_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{projectId}/templates/{templateName}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{projectId}/templates/{templateName}', options)
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['templateName'] = template_name unless template_name.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -274,8 +269,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_template(project_id, template_name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{projectId}/templates/{templateName}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{projectId}/templates/{templateName}', options)
           command.response_representation = Google::Apis::ManagerV1beta2::Template::Representation
           command.response_class = Google::Apis::ManagerV1beta2::Template
           command.params['projectId'] = project_id unless project_id.nil?
@@ -311,8 +305,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_template(project_id, template_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{projectId}/templates'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{projectId}/templates', options)
           command.request_representation = Google::Apis::ManagerV1beta2::Template::Representation
           command.request_object = template_object
           command.response_representation = Google::Apis::ManagerV1beta2::Template::Representation
@@ -354,8 +347,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_templates(project_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{projectId}/templates'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{projectId}/templates', options)
           command.response_representation = Google::Apis::ManagerV1beta2::ListTemplatesResponse::Representation
           command.response_class = Google::Apis::ManagerV1beta2::ListTemplatesResponse
           command.params['projectId'] = project_id unless project_id.nil?

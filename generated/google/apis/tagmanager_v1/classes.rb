@@ -88,7 +88,7 @@ module Google
         # Notes:
         # - For binary operators, include parameters named arg0 and arg1 for specifying
         # the left and right operands, respectively.
-        # - At this time, the left operand (arg0) must be a reference to a macro.
+        # - At this time, the left operand (arg0) must be a reference to a variable.
         # - For case-insensitive Regex matching, include a boolean parameter named
         # ignore_case that is set to true. If not specified or set to any other value,
         # the matching will be case sensitive.
@@ -262,6 +262,11 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
+        # The folders in the container that this version was taken from.
+        # Corresponds to the JSON property `folder`
+        # @return [Array<Google::Apis::TagmanagerV1::Folder>]
+        attr_accessor :folder
+      
         # The macros in the container that this version was taken from.
         # Corresponds to the JSON property `macro`
         # @return [Array<Google::Apis::TagmanagerV1::Macro>]
@@ -309,6 +314,7 @@ module Google
           @container_version_id = args[:container_version_id] unless args[:container_version_id].nil?
           @deleted = args[:deleted] unless args[:deleted].nil?
           @fingerprint = args[:fingerprint] unless args[:fingerprint].nil?
+          @folder = args[:folder] unless args[:folder].nil?
           @macro = args[:macro] unless args[:macro].nil?
           @name = args[:name] unless args[:name].nil?
           @notes = args[:notes] unless args[:notes].nil?
@@ -451,6 +457,81 @@ module Google
         end
       end
       
+      # Represents a Google Tag Manager Folder.
+      class Folder
+        include Google::Apis::Core::Hashable
+      
+        # GTM Account ID.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # GTM Container ID.
+        # Corresponds to the JSON property `containerId`
+        # @return [String]
+        attr_accessor :container_id
+      
+        # The fingerprint of the GTM Folder as computed at storage time. This value is
+        # recomputed whenever the folder is modified.
+        # Corresponds to the JSON property `fingerprint`
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # The Folder ID uniquely identifies the GTM Folder.
+        # Corresponds to the JSON property `folderId`
+        # @return [String]
+        attr_accessor :folder_id
+      
+        # Folder display name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] unless args[:account_id].nil?
+          @container_id = args[:container_id] unless args[:container_id].nil?
+          @fingerprint = args[:fingerprint] unless args[:fingerprint].nil?
+          @folder_id = args[:folder_id] unless args[:folder_id].nil?
+          @name = args[:name] unless args[:name].nil?
+        end
+      end
+      
+      # Represents a Google Tag Manager Folder's contents.
+      class FolderEntities
+        include Google::Apis::Core::Hashable
+      
+        # The list of tags inside the folder.
+        # Corresponds to the JSON property `tag`
+        # @return [Array<Google::Apis::TagmanagerV1::Tag>]
+        attr_accessor :tag
+      
+        # The list of triggers inside the folder.
+        # Corresponds to the JSON property `trigger`
+        # @return [Array<Google::Apis::TagmanagerV1::Trigger>]
+        attr_accessor :trigger
+      
+        # The list of variables inside the folder.
+        # Corresponds to the JSON property `variable`
+        # @return [Array<Google::Apis::TagmanagerV1::Variable>]
+        attr_accessor :variable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tag = args[:tag] unless args[:tag].nil?
+          @trigger = args[:trigger] unless args[:trigger].nil?
+          @variable = args[:variable] unless args[:variable].nil?
+        end
+      end
+      
       # List AccountUsers Response.
       class ListAccountUsersResponse
         include Google::Apis::Core::Hashable
@@ -533,14 +614,14 @@ module Google
         end
       end
       
-      # List Macros Response.
-      class ListMacrosResponse
+      # List Folders Response.
+      class ListFoldersResponse
         include Google::Apis::Core::Hashable
       
-        # All GTM Macros of a GTM Container.
-        # Corresponds to the JSON property `macros`
-        # @return [Array<Google::Apis::TagmanagerV1::Macro>]
-        attr_accessor :macros
+        # All GTM Folders of a GTM Container.
+        # Corresponds to the JSON property `folders`
+        # @return [Array<Google::Apis::TagmanagerV1::Folder>]
+        attr_accessor :folders
       
         def initialize(**args)
            update!(**args)
@@ -548,26 +629,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @macros = args[:macros] unless args[:macros].nil?
-        end
-      end
-      
-      # List Rules Response.
-      class ListRulesResponse
-        include Google::Apis::Core::Hashable
-      
-        # All GTM Rules of a GTM Container.
-        # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::TagmanagerV1::Rule>]
-        attr_accessor :rules
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @rules = args[:rules] unless args[:rules].nil?
+          @folders = args[:folders] unless args[:folders].nil?
         end
       end
       
@@ -682,6 +744,11 @@ module Google
         # @return [Array<Google::Apis::TagmanagerV1::Parameter>]
         attr_accessor :parameter
       
+        # Parent folder id.
+        # Corresponds to the JSON property `parentFolderId`
+        # @return [String]
+        attr_accessor :parent_folder_id
+      
         # The end timestamp in milliseconds to schedule a macro.
         # Corresponds to the JSON property `scheduleEndMs`
         # @return [String]
@@ -712,6 +779,7 @@ module Google
           @name = args[:name] unless args[:name].nil?
           @notes = args[:notes] unless args[:notes].nil?
           @parameter = args[:parameter] unless args[:parameter].nil?
+          @parent_folder_id = args[:parent_folder_id] unless args[:parent_folder_id].nil?
           @schedule_end_ms = args[:schedule_end_ms] unless args[:schedule_end_ms].nil?
           @schedule_start_ms = args[:schedule_start_ms] unless args[:schedule_start_ms].nil?
           @type = args[:type] unless args[:type].nil?
@@ -743,14 +811,14 @@ module Google
         # - integer: The value represents a 64-bit signed integer value, in base 10
         # - list: A list of parameters should be specified
         # - map: A map of parameters should be specified
-        # - template: The value represents any text; this can include macro references (
-        # even macro references that might return non-string types)
+        # - template: The value represents any text; this can include variable
+        # references (even variable references that might return non-string types)
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # A parameter's value (may contain macro references such as "``myMacro``") as
-        # appropriate to the specified type.
+        # A parameter's value (may contain variable references such as "``myVariable``")
+        # as appropriate to the specified type.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -851,6 +919,33 @@ module Google
         end
       end
       
+      # 
+      class SetupTag
+        include Google::Apis::Core::Hashable
+      
+        # If true, fire the main tag if and only if the setup tag fires successfully. If
+        # false, fire the main tag regardless of setup tag firing status.
+        # Corresponds to the JSON property `stopOnSetupFailure`
+        # @return [Boolean]
+        attr_accessor :stop_on_setup_failure
+        alias_method :stop_on_setup_failure?, :stop_on_setup_failure
+      
+        # The name of the setup tag.
+        # Corresponds to the JSON property `tagName`
+        # @return [String]
+        attr_accessor :tag_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stop_on_setup_failure = args[:stop_on_setup_failure] unless args[:stop_on_setup_failure].nil?
+          @tag_name = args[:tag_name] unless args[:tag_name].nil?
+        end
+      end
+      
       # Represents a Google Tag Manager Tag.
       class Tag
         include Google::Apis::Core::Hashable
@@ -917,6 +1012,11 @@ module Google
         # @return [Array<Google::Apis::TagmanagerV1::Parameter>]
         attr_accessor :parameter
       
+        # Parent folder id.
+        # Corresponds to the JSON property `parentFolderId`
+        # @return [String]
+        attr_accessor :parent_folder_id
+      
         # Represents a Google Tag Manager Parameter.
         # Corresponds to the JSON property `priority`
         # @return [Google::Apis::TagmanagerV1::Parameter]
@@ -932,10 +1032,25 @@ module Google
         # @return [String]
         attr_accessor :schedule_start_ms
       
+        # The list of setup tags. Currently we only allow one.
+        # Corresponds to the JSON property `setupTag`
+        # @return [Array<Google::Apis::TagmanagerV1::SetupTag>]
+        attr_accessor :setup_tag
+      
+        # Option to fire this tag.
+        # Corresponds to the JSON property `tagFiringOption`
+        # @return [String]
+        attr_accessor :tag_firing_option
+      
         # The Tag ID uniquely identifies the GTM Tag.
         # Corresponds to the JSON property `tagId`
         # @return [String]
         attr_accessor :tag_id
+      
+        # The list of teardown tags. Currently we only allow one.
+        # Corresponds to the JSON property `teardownTag`
+        # @return [Array<Google::Apis::TagmanagerV1::TeardownTag>]
+        attr_accessor :teardown_tag
       
         # GTM Tag Type.
         # Corresponds to the JSON property `type`
@@ -959,11 +1074,42 @@ module Google
           @name = args[:name] unless args[:name].nil?
           @notes = args[:notes] unless args[:notes].nil?
           @parameter = args[:parameter] unless args[:parameter].nil?
+          @parent_folder_id = args[:parent_folder_id] unless args[:parent_folder_id].nil?
           @priority = args[:priority] unless args[:priority].nil?
           @schedule_end_ms = args[:schedule_end_ms] unless args[:schedule_end_ms].nil?
           @schedule_start_ms = args[:schedule_start_ms] unless args[:schedule_start_ms].nil?
+          @setup_tag = args[:setup_tag] unless args[:setup_tag].nil?
+          @tag_firing_option = args[:tag_firing_option] unless args[:tag_firing_option].nil?
           @tag_id = args[:tag_id] unless args[:tag_id].nil?
+          @teardown_tag = args[:teardown_tag] unless args[:teardown_tag].nil?
           @type = args[:type] unless args[:type].nil?
+        end
+      end
+      
+      # 
+      class TeardownTag
+        include Google::Apis::Core::Hashable
+      
+        # If true, fire the teardown tag if and only if the main tag fires successfully.
+        # If false, fire the teardown tag regardless of main tag firing status.
+        # Corresponds to the JSON property `stopTeardownOnFailure`
+        # @return [Boolean]
+        attr_accessor :stop_teardown_on_failure
+        alias_method :stop_teardown_on_failure?, :stop_teardown_on_failure
+      
+        # The name of the teardown tag.
+        # Corresponds to the JSON property `tagName`
+        # @return [String]
+        attr_accessor :tag_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stop_teardown_on_failure = args[:stop_teardown_on_failure] unless args[:stop_teardown_on_failure].nil?
+          @tag_name = args[:tag_name] unless args[:tag_name].nil?
         end
       end
       
@@ -1032,6 +1178,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Parent folder id.
+        # Corresponds to the JSON property `parentFolderId`
+        # @return [String]
+        attr_accessor :parent_folder_id
+      
         # The Trigger ID uniquely identifies the GTM Trigger.
         # Corresponds to the JSON property `triggerId`
         # @return [String]
@@ -1080,6 +1231,7 @@ module Google
           @interval = args[:interval] unless args[:interval].nil?
           @limit = args[:limit] unless args[:limit].nil?
           @name = args[:name] unless args[:name].nil?
+          @parent_folder_id = args[:parent_folder_id] unless args[:parent_folder_id].nil?
           @trigger_id = args[:trigger_id] unless args[:trigger_id].nil?
           @type = args[:type] unless args[:type].nil?
           @unique_trigger_id = args[:unique_trigger_id] unless args[:unique_trigger_id].nil?
@@ -1181,6 +1333,11 @@ module Google
         # @return [Array<Google::Apis::TagmanagerV1::Parameter>]
         attr_accessor :parameter
       
+        # Parent folder id.
+        # Corresponds to the JSON property `parentFolderId`
+        # @return [String]
+        attr_accessor :parent_folder_id
+      
         # The end timestamp in milliseconds to schedule a variable.
         # Corresponds to the JSON property `scheduleEndMs`
         # @return [String]
@@ -1215,6 +1372,7 @@ module Google
           @name = args[:name] unless args[:name].nil?
           @notes = args[:notes] unless args[:notes].nil?
           @parameter = args[:parameter] unless args[:parameter].nil?
+          @parent_folder_id = args[:parent_folder_id] unless args[:parent_folder_id].nil?
           @schedule_end_ms = args[:schedule_end_ms] unless args[:schedule_end_ms].nil?
           @schedule_start_ms = args[:schedule_start_ms] unless args[:schedule_start_ms].nil?
           @type = args[:type] unless args[:type].nil?

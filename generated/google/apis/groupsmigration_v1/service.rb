@@ -81,11 +81,10 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_archive(group_id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          path = '{groupId}/archive'
           if upload_source.nil?
-            command =  make_simple_command(:post, path, options)
+            command =  make_simple_command(:post, '{groupId}/archive', options)
           else
-            command = make_upload_command(:post, path, options)
+            command = make_upload_command(:post, '{groupId}/archive', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end

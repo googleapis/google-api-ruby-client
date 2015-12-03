@@ -54,7 +54,9 @@ module Google
         
         # Deletes an access control rule.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [String] rule_id
         #   ACL rule identifier.
         # @param [String] fields
@@ -79,8 +81,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_acl(calendar_id, rule_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/acl/{ruleId}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'calendars/{calendarId}/acl/{ruleId}', options)
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
           command.params['ruleId'] = rule_id unless rule_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -91,7 +92,9 @@ module Google
         
         # Returns an access control rule.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [String] rule_id
         #   ACL rule identifier.
         # @param [String] fields
@@ -116,8 +119,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_acl(calendar_id, rule_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/acl/{ruleId}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'calendars/{calendarId}/acl/{ruleId}', options)
           command.response_representation = Google::Apis::CalendarV3::AclRule::Representation
           command.response_class = Google::Apis::CalendarV3::AclRule
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
@@ -130,7 +132,9 @@ module Google
         
         # Creates an access control rule.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [Google::Apis::CalendarV3::AclRule] acl_rule_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -154,8 +158,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_acl(calendar_id, acl_rule_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/acl'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'calendars/{calendarId}/acl', options)
           command.request_representation = Google::Apis::CalendarV3::AclRule::Representation
           command.request_object = acl_rule_object
           command.response_representation = Google::Apis::CalendarV3::AclRule::Representation
@@ -169,7 +172,9 @@ module Google
         
         # Returns the rules in the access control list for the calendar.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [Fixnum] max_results
         #   Maximum number of entries returned on one result page. By default the value is
         #   100 entries. The page size can never be larger than 250 entries. Optional.
@@ -212,8 +217,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_acls(calendar_id, max_results: nil, page_token: nil, show_deleted: nil, sync_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/acl'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'calendars/{calendarId}/acl', options)
           command.response_representation = Google::Apis::CalendarV3::Acl::Representation
           command.response_class = Google::Apis::CalendarV3::Acl
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
@@ -229,7 +233,9 @@ module Google
         
         # Updates an access control rule. This method supports patch semantics.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [String] rule_id
         #   ACL rule identifier.
         # @param [Google::Apis::CalendarV3::AclRule] acl_rule_object
@@ -255,8 +261,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_acl(calendar_id, rule_id, acl_rule_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/acl/{ruleId}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'calendars/{calendarId}/acl/{ruleId}', options)
           command.request_representation = Google::Apis::CalendarV3::AclRule::Representation
           command.request_object = acl_rule_object
           command.response_representation = Google::Apis::CalendarV3::AclRule::Representation
@@ -271,7 +276,9 @@ module Google
         
         # Updates an access control rule.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [String] rule_id
         #   ACL rule identifier.
         # @param [Google::Apis::CalendarV3::AclRule] acl_rule_object
@@ -297,8 +304,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_acl(calendar_id, rule_id, acl_rule_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/acl/{ruleId}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'calendars/{calendarId}/acl/{ruleId}', options)
           command.request_representation = Google::Apis::CalendarV3::AclRule::Representation
           command.request_object = acl_rule_object
           command.response_representation = Google::Apis::CalendarV3::AclRule::Representation
@@ -313,7 +319,9 @@ module Google
         
         # Watch for changes to ACL resources.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [Google::Apis::CalendarV3::Channel] channel_object
         # @param [Fixnum] max_results
         #   Maximum number of entries returned on one result page. By default the value is
@@ -357,8 +365,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def watch_acl(calendar_id, channel_object = nil, max_results: nil, page_token: nil, show_deleted: nil, sync_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/acl/watch'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'calendars/{calendarId}/acl/watch', options)
           command.request_representation = Google::Apis::CalendarV3::Channel::Representation
           command.request_object = channel_object
           command.response_representation = Google::Apis::CalendarV3::Channel::Representation
@@ -376,7 +383,9 @@ module Google
         
         # Deletes an entry on the user's calendar list.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -399,8 +408,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_calendar_list(calendar_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'users/me/calendarList/{calendarId}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'users/me/calendarList/{calendarId}', options)
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -410,7 +418,9 @@ module Google
         
         # Returns an entry on the user's calendar list.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -433,8 +443,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_calendar_list(calendar_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'users/me/calendarList/{calendarId}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'users/me/calendarList/{calendarId}', options)
           command.response_representation = Google::Apis::CalendarV3::CalendarListEntry::Representation
           command.response_class = Google::Apis::CalendarV3::CalendarListEntry
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
@@ -473,8 +482,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_calendar_list(calendar_list_entry_object = nil, color_rgb_format: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'users/me/calendarList'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'users/me/calendarList', options)
           command.request_representation = Google::Apis::CalendarV3::CalendarListEntry::Representation
           command.request_object = calendar_list_entry_object
           command.response_representation = Google::Apis::CalendarV3::CalendarListEntry::Representation
@@ -537,8 +545,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_calendar_lists(max_results: nil, min_access_role: nil, page_token: nil, show_deleted: nil, show_hidden: nil, sync_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'users/me/calendarList'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'users/me/calendarList', options)
           command.response_representation = Google::Apis::CalendarV3::CalendarList::Representation
           command.response_class = Google::Apis::CalendarV3::CalendarList
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -556,7 +563,9 @@ module Google
         # Updates an entry on the user's calendar list. This method supports patch
         # semantics.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [Google::Apis::CalendarV3::CalendarListEntry] calendar_list_entry_object
         # @param [Boolean] color_rgb_format
         #   Whether to use the foregroundColor and backgroundColor fields to write the
@@ -585,8 +594,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_calendar_list(calendar_id, calendar_list_entry_object = nil, color_rgb_format: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'users/me/calendarList/{calendarId}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'users/me/calendarList/{calendarId}', options)
           command.request_representation = Google::Apis::CalendarV3::CalendarListEntry::Representation
           command.request_object = calendar_list_entry_object
           command.response_representation = Google::Apis::CalendarV3::CalendarListEntry::Representation
@@ -601,7 +609,9 @@ module Google
         
         # Updates an entry on the user's calendar list.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [Google::Apis::CalendarV3::CalendarListEntry] calendar_list_entry_object
         # @param [Boolean] color_rgb_format
         #   Whether to use the foregroundColor and backgroundColor fields to write the
@@ -630,8 +640,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_calendar_list(calendar_id, calendar_list_entry_object = nil, color_rgb_format: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'users/me/calendarList/{calendarId}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'users/me/calendarList/{calendarId}', options)
           command.request_representation = Google::Apis::CalendarV3::CalendarListEntry::Representation
           command.request_object = calendar_list_entry_object
           command.response_representation = Google::Apis::CalendarV3::CalendarListEntry::Representation
@@ -696,8 +705,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def watch_calendar_list(channel_object = nil, max_results: nil, min_access_role: nil, page_token: nil, show_deleted: nil, show_hidden: nil, sync_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'users/me/calendarList/watch'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'users/me/calendarList/watch', options)
           command.request_representation = Google::Apis::CalendarV3::Channel::Representation
           command.request_object = channel_object
           command.response_representation = Google::Apis::CalendarV3::Channel::Representation
@@ -717,7 +725,9 @@ module Google
         # Clears a primary calendar. This operation deletes all events associated with
         # the primary calendar of an account.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -740,8 +750,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def clear_calendar(calendar_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/clear'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'calendars/{calendarId}/clear', options)
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -752,7 +761,9 @@ module Google
         # Deletes a secondary calendar. Use calendars.clear for clearing all events on
         # primary calendars.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -775,8 +786,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_calendar(calendar_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'calendars/{calendarId}', options)
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -786,7 +796,9 @@ module Google
         
         # Returns metadata for a calendar.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -809,8 +821,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_calendar(calendar_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'calendars/{calendarId}', options)
           command.response_representation = Google::Apis::CalendarV3::Calendar::Representation
           command.response_class = Google::Apis::CalendarV3::Calendar
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
@@ -844,8 +855,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_calendar(calendar_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'calendars', options)
           command.request_representation = Google::Apis::CalendarV3::Calendar::Representation
           command.request_object = calendar_object
           command.response_representation = Google::Apis::CalendarV3::Calendar::Representation
@@ -858,7 +868,9 @@ module Google
         
         # Updates metadata for a calendar. This method supports patch semantics.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [Google::Apis::CalendarV3::Calendar] calendar_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -882,8 +894,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_calendar(calendar_id, calendar_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'calendars/{calendarId}', options)
           command.request_representation = Google::Apis::CalendarV3::Calendar::Representation
           command.request_object = calendar_object
           command.response_representation = Google::Apis::CalendarV3::Calendar::Representation
@@ -897,7 +908,9 @@ module Google
         
         # Updates metadata for a calendar.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [Google::Apis::CalendarV3::Calendar] calendar_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -921,8 +934,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_calendar(calendar_id, calendar_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'calendars/{calendarId}', options)
           command.request_representation = Google::Apis::CalendarV3::Calendar::Representation
           command.request_object = calendar_object
           command.response_representation = Google::Apis::CalendarV3::Calendar::Representation
@@ -958,8 +970,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def stop_channel(channel_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'channels/stop'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'channels/stop', options)
           command.request_representation = Google::Apis::CalendarV3::Channel::Representation
           command.request_object = channel_object
           command.query['fields'] = fields unless fields.nil?
@@ -991,8 +1002,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_color(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'colors'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'colors', options)
           command.response_representation = Google::Apis::CalendarV3::Colors::Representation
           command.response_class = Google::Apis::CalendarV3::Colors
           command.query['fields'] = fields unless fields.nil?
@@ -1003,7 +1013,9 @@ module Google
         
         # Deletes an event.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [String] event_id
         #   Event identifier.
         # @param [Boolean] send_notifications
@@ -1031,8 +1043,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_event(calendar_id, event_id, send_notifications: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/events/{eventId}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'calendars/{calendarId}/events/{eventId}', options)
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
           command.params['eventId'] = event_id unless event_id.nil?
           command.query['sendNotifications'] = send_notifications unless send_notifications.nil?
@@ -1044,7 +1055,9 @@ module Google
         
         # Returns an event.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [String] event_id
         #   Event identifier.
         # @param [Boolean] always_include_email
@@ -1082,8 +1095,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_event(calendar_id, event_id, always_include_email: nil, max_attendees: nil, time_zone: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/events/{eventId}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'calendars/{calendarId}/events/{eventId}', options)
           command.response_representation = Google::Apis::CalendarV3::Event::Representation
           command.response_class = Google::Apis::CalendarV3::Event
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
@@ -1100,7 +1112,9 @@ module Google
         # Imports an event. This operation is used to add a private copy of an existing
         # event to a calendar.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [Google::Apis::CalendarV3::Event] event_object
         # @param [Boolean] supports_attachments
         #   Whether API client performing operation supports event attachments. Optional.
@@ -1127,8 +1141,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def import_event(calendar_id, event_object = nil, supports_attachments: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/events/import'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'calendars/{calendarId}/events/import', options)
           command.request_representation = Google::Apis::CalendarV3::Event::Representation
           command.request_object = event_object
           command.response_representation = Google::Apis::CalendarV3::Event::Representation
@@ -1143,7 +1156,9 @@ module Google
         
         # Creates an event.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [Google::Apis::CalendarV3::Event] event_object
         # @param [Fixnum] max_attendees
         #   The maximum number of attendees to include in the response. If there are more
@@ -1177,8 +1192,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_event(calendar_id, event_object = nil, max_attendees: nil, send_notifications: nil, supports_attachments: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/events'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'calendars/{calendarId}/events', options)
           command.request_representation = Google::Apis::CalendarV3::Event::Representation
           command.request_object = event_object
           command.response_representation = Google::Apis::CalendarV3::Event::Representation
@@ -1195,7 +1209,9 @@ module Google
         
         # Returns instances of the specified recurring event.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [String] event_id
         #   Recurring event identifier.
         # @param [Boolean] always_include_email
@@ -1252,8 +1268,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def instances_event(calendar_id, event_id, always_include_email: nil, max_attendees: nil, max_results: nil, original_start: nil, page_token: nil, show_deleted: nil, time_max: nil, time_min: nil, time_zone: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/events/{eventId}/instances'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'calendars/{calendarId}/events/{eventId}/instances', options)
           command.response_representation = Google::Apis::CalendarV3::Events::Representation
           command.response_class = Google::Apis::CalendarV3::Events
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
@@ -1275,7 +1290,9 @@ module Google
         
         # Returns events on the specified calendar.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [Boolean] always_include_email
         #   Whether to always include a value in the email field for the organizer,
         #   creator and attendees, even if no real email is available (i.e. a generated,
@@ -1357,7 +1374,7 @@ module Google
         #   Time zone used in the response. Optional. The default is the time zone of the
         #   calendar.
         # @param [DateTime] updated_min
-        #   Lower bound for an event's last modification time (as a RFC 3339 timestamp) to
+        #   Lower bound for an event's last modification time (as a RFC3339 timestamp) to
         #   filter by. When specified, entries deleted since this time will always be
         #   included regardless of showDeleted. Optional. The default is not to filter by
         #   last modification time.
@@ -1383,8 +1400,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_events(calendar_id, always_include_email: nil, i_cal_uid: nil, max_attendees: nil, max_results: nil, order_by: nil, page_token: nil, private_extended_property: nil, q: nil, shared_extended_property: nil, show_deleted: nil, show_hidden_invitations: nil, single_events: nil, sync_token: nil, time_max: nil, time_min: nil, time_zone: nil, updated_min: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/events'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'calendars/{calendarId}/events', options)
           command.response_representation = Google::Apis::CalendarV3::Events::Representation
           command.response_class = Google::Apis::CalendarV3::Events
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
@@ -1443,8 +1459,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def move_event(calendar_id, event_id, destination, send_notifications: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/events/{eventId}/move'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'calendars/{calendarId}/events/{eventId}/move', options)
           command.response_representation = Google::Apis::CalendarV3::Event::Representation
           command.response_class = Google::Apis::CalendarV3::Event
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
@@ -1459,7 +1474,9 @@ module Google
         
         # Updates an event. This method supports patch semantics.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [String] event_id
         #   Event identifier.
         # @param [Google::Apis::CalendarV3::Event] event_object
@@ -1501,8 +1518,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_event(calendar_id, event_id, event_object = nil, always_include_email: nil, max_attendees: nil, send_notifications: nil, supports_attachments: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/events/{eventId}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'calendars/{calendarId}/events/{eventId}', options)
           command.request_representation = Google::Apis::CalendarV3::Event::Representation
           command.request_object = event_object
           command.response_representation = Google::Apis::CalendarV3::Event::Representation
@@ -1521,7 +1537,9 @@ module Google
         
         # Creates an event based on a simple text string.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [String] text
         #   The text describing the event to be created.
         # @param [Boolean] send_notifications
@@ -1548,9 +1566,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def quick_add_event(calendar_id, text, send_notifications: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/events/quickAdd'
-          command =  make_simple_command(:post, path, options)
+        def quick_event_add(calendar_id, text, send_notifications: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'calendars/{calendarId}/events/quickAdd', options)
           command.response_representation = Google::Apis::CalendarV3::Event::Representation
           command.response_class = Google::Apis::CalendarV3::Event
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
@@ -1564,7 +1581,9 @@ module Google
         
         # Updates an event.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [String] event_id
         #   Event identifier.
         # @param [Google::Apis::CalendarV3::Event] event_object
@@ -1606,8 +1625,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_event(calendar_id, event_id, event_object = nil, always_include_email: nil, max_attendees: nil, send_notifications: nil, supports_attachments: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/events/{eventId}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'calendars/{calendarId}/events/{eventId}', options)
           command.request_representation = Google::Apis::CalendarV3::Event::Representation
           command.request_object = event_object
           command.response_representation = Google::Apis::CalendarV3::Event::Representation
@@ -1626,7 +1644,9 @@ module Google
         
         # Watch for changes to Events resources.
         # @param [String] calendar_id
-        #   Calendar identifier.
+        #   Calendar identifier. To retrieve calendar IDs call the calendarList.list
+        #   method. If you want to access the primary calendar of the currently logged in
+        #   user, use the "primary" keyword.
         # @param [Google::Apis::CalendarV3::Channel] channel_object
         # @param [Boolean] always_include_email
         #   Whether to always include a value in the email field for the organizer,
@@ -1709,7 +1729,7 @@ module Google
         #   Time zone used in the response. Optional. The default is the time zone of the
         #   calendar.
         # @param [DateTime] updated_min
-        #   Lower bound for an event's last modification time (as a RFC 3339 timestamp) to
+        #   Lower bound for an event's last modification time (as a RFC3339 timestamp) to
         #   filter by. When specified, entries deleted since this time will always be
         #   included regardless of showDeleted. Optional. The default is not to filter by
         #   last modification time.
@@ -1735,8 +1755,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def watch_event(calendar_id, channel_object = nil, always_include_email: nil, i_cal_uid: nil, max_attendees: nil, max_results: nil, order_by: nil, page_token: nil, private_extended_property: nil, q: nil, shared_extended_property: nil, show_deleted: nil, show_hidden_invitations: nil, single_events: nil, sync_token: nil, time_max: nil, time_min: nil, time_zone: nil, updated_min: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'calendars/{calendarId}/events/watch'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'calendars/{calendarId}/events/watch', options)
           command.request_representation = Google::Apis::CalendarV3::Channel::Representation
           command.request_object = channel_object
           command.response_representation = Google::Apis::CalendarV3::Channel::Representation
@@ -1789,8 +1808,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def query_freebusy(free_busy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'freeBusy'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'freeBusy', options)
           command.request_representation = Google::Apis::CalendarV3::FreeBusyRequest::Representation
           command.request_object = free_busy_request_object
           command.response_representation = Google::Apis::CalendarV3::FreeBusyResponse::Representation
@@ -1826,8 +1844,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_setting(setting, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'users/me/settings/{setting}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'users/me/settings/{setting}', options)
           command.response_representation = Google::Apis::CalendarV3::Setting::Representation
           command.response_class = Google::Apis::CalendarV3::Setting
           command.params['setting'] = setting unless setting.nil?
@@ -1874,8 +1891,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_settings(max_results: nil, page_token: nil, sync_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'users/me/settings'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'users/me/settings', options)
           command.response_representation = Google::Apis::CalendarV3::Settings::Representation
           command.response_class = Google::Apis::CalendarV3::Settings
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -1925,8 +1941,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def watch_setting(channel_object = nil, max_results: nil, page_token: nil, sync_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'users/me/settings/watch'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'users/me/settings/watch', options)
           command.request_representation = Google::Apis::CalendarV3::Channel::Representation
           command.request_object = channel_object
           command.response_representation = Google::Apis::CalendarV3::Channel::Representation

@@ -78,6 +78,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class SendTestPushNotificationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class Entitlement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -122,6 +126,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class ProductSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class ApproveProductRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -145,6 +153,7 @@ module Google
       class AppRestrictionsSchema
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
           collection :restrictions, as: 'restrictions', class: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestriction, decorator: Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestriction::Representation
       
         end
@@ -273,6 +282,14 @@ module Google
         end
       end
       
+      class SendTestPushNotificationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message_id, as: 'messageId'
+          property :topic_name, as: 'topicName'
+        end
+      end
+      
       class Entitlement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -382,6 +399,14 @@ module Google
           collection :permission, as: 'permission', class: Google::Apis::AndroidenterpriseV1::ProductPermission, decorator: Google::Apis::AndroidenterpriseV1::ProductPermission::Representation
       
           property :product_id, as: 'productId'
+        end
+      end
+      
+      class ProductSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :product_id, as: 'productId'
         end
       end
       

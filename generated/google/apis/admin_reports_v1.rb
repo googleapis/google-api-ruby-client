@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/admin-sdk/reports/
     module AdminReportsV1
       VERSION = 'ReportsV1'
-      REVISION = '20150429'
+      REVISION = '20151113'
 
       # View audit reports of Google Apps for your domain
       AUTH_ADMIN_REPORTS_AUDIT_READONLY = 'https://www.googleapis.com/auth/admin.reports.audit.readonly'

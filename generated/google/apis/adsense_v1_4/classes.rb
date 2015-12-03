@@ -26,6 +26,11 @@ module Google
       class Account
         include Google::Apis::Core::Hashable
       
+        # 
+        # Corresponds to the JSON property `creation_time`
+        # @return [String]
+        attr_accessor :creation_time
+      
         # Unique identifier of this account.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -63,6 +68,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @creation_time = args[:creation_time] unless args[:creation_time].nil?
           @id = args[:id] unless args[:id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @name = args[:name] unless args[:name].nil?

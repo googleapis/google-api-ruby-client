@@ -86,8 +86,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_activity(part, activity_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'activities'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'activities', options)
           command.request_representation = Google::Apis::YoutubeV3::Activity::Representation
           command.request_object = activity_object
           command.response_representation = Google::Apis::YoutubeV3::Activity::Representation
@@ -167,8 +166,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_activities(part, channel_id: nil, home: nil, max_results: nil, mine: nil, page_token: nil, published_after: nil, published_before: nil, region_code: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'activities'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'activities', options)
           command.response_representation = Google::Apis::YoutubeV3::ListActivitiesResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListActivitiesResponse
           command.query['channelId'] = channel_id unless channel_id.nil?
@@ -190,9 +188,6 @@ module Google
         # @param [String] id
         #   The id parameter identifies the caption track that is being deleted. The value
         #   is a caption track ID as identified by the id property in a caption resource.
-        # @param [String] debug_project_id_override
-        #   The debugProjectIdOverride parameter should be used for mimicking a request
-        #   for a certain project ID
         # @param [String] on_behalf_of
         #   ID of the Google+ Page for the channel that the request is be on behalf of
         # @param [String] on_behalf_of_content_owner
@@ -226,10 +221,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_caption(id, debug_project_id_override: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'captions'
-          command =  make_simple_command(:delete, path, options)
-          command.query['debugProjectIdOverride'] = debug_project_id_override unless debug_project_id_override.nil?
+        def delete_caption(id, on_behalf_of: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'captions', options)
           command.query['id'] = id unless id.nil?
           command.query['onBehalfOf'] = on_behalf_of unless on_behalf_of.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -246,9 +239,6 @@ module Google
         #   The id parameter identifies the caption track that is being retrieved. The
         #   value is a caption track ID as identified by the id property in a caption
         #   resource.
-        # @param [String] debug_project_id_override
-        #   The debugProjectIdOverride parameter should be used for mimicking a request
-        #   for a certain project ID
         # @param [String] on_behalf_of
         #   ID of the Google+ Page for the channel that the request is be on behalf of
         # @param [String] on_behalf_of_content_owner
@@ -294,16 +284,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def download_caption(id, debug_project_id_override: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, tfmt: nil, tlang: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
-          path = 'captions/{id}'
+        def download_caption(id, on_behalf_of: nil, on_behalf_of_content_owner: nil, tfmt: nil, tlang: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
-            command =  make_simple_command(:get, path, options)
+            command =  make_simple_command(:get, 'captions/{id}', options)
           else
-            command = make_download_command(:get, path, options)
+            command = make_download_command(:get, 'captions/{id}', options)
             command.download_dest = download_dest
           end
           command.params['id'] = id unless id.nil?
-          command.query['debugProjectIdOverride'] = debug_project_id_override unless debug_project_id_override.nil?
           command.query['onBehalfOf'] = on_behalf_of unless on_behalf_of.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['tfmt'] = tfmt unless tfmt.nil?
@@ -319,9 +307,6 @@ module Google
         #   The part parameter specifies the caption resource parts that the API response
         #   will include. Set the parameter value to snippet.
         # @param [Google::Apis::YoutubeV3::Caption] caption_object
-        # @param [String] debug_project_id_override
-        #   The debugProjectIdOverride parameter should be used for mimicking a request
-        #   for a certain project ID.
         # @param [String] on_behalf_of
         #   ID of the Google+ Page for the channel that the request is be on behalf of
         # @param [String] on_behalf_of_content_owner
@@ -367,12 +352,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_caption(part, caption_object = nil, debug_project_id_override: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, sync: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          path = 'captions'
+        def insert_caption(part, caption_object = nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, sync: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, path, options)
+            command =  make_simple_command(:post, 'captions', options)
           else
-            command = make_upload_command(:post, path, options)
+            command = make_upload_command(:post, 'captions', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -380,7 +364,6 @@ module Google
           command.request_object = caption_object
           command.response_representation = Google::Apis::YoutubeV3::Caption::Representation
           command.response_class = Google::Apis::YoutubeV3::Caption
-          command.query['debugProjectIdOverride'] = debug_project_id_override unless debug_project_id_override.nil?
           command.query['onBehalfOf'] = on_behalf_of unless on_behalf_of.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['part'] = part unless part.nil?
@@ -401,9 +384,6 @@ module Google
         # @param [String] video_id
         #   The videoId parameter specifies the YouTube video ID of the video for which
         #   the API should return caption tracks.
-        # @param [String] debug_project_id_override
-        #   The debugProjectIdOverride parameter should be used for mimicking a request
-        #   for a certain project ID.
         # @param [String] id
         #   The id parameter specifies a comma-separated list of IDs that identify the
         #   caption resources that should be retrieved. Each ID must identify a caption
@@ -441,12 +421,10 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_captions(part, video_id, debug_project_id_override: nil, id: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'captions'
-          command =  make_simple_command(:get, path, options)
+        def list_captions(part, video_id, id: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'captions', options)
           command.response_representation = Google::Apis::YoutubeV3::ListCaptionsResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListCaptionsResponse
-          command.query['debugProjectIdOverride'] = debug_project_id_override unless debug_project_id_override.nil?
           command.query['id'] = id unless id.nil?
           command.query['onBehalfOf'] = on_behalf_of unless on_behalf_of.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -466,9 +444,6 @@ module Google
         #   the API response will include. Set the property value to snippet if you are
         #   updating the track's draft status. Otherwise, set the property value to id.
         # @param [Google::Apis::YoutubeV3::Caption] caption_object
-        # @param [String] debug_project_id_override
-        #   The debugProjectIdOverride parameter should be used for mimicking a request
-        #   for a certain project ID.
         # @param [String] on_behalf_of
         #   ID of the Google+ Page for the channel that the request is be on behalf of
         # @param [String] on_behalf_of_content_owner
@@ -513,12 +488,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_caption(part, caption_object = nil, debug_project_id_override: nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, sync: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          path = 'captions'
+        def update_caption(part, caption_object = nil, on_behalf_of: nil, on_behalf_of_content_owner: nil, sync: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:put, path, options)
+            command =  make_simple_command(:put, 'captions', options)
           else
-            command = make_upload_command(:put, path, options)
+            command = make_upload_command(:put, 'captions', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -526,7 +500,6 @@ module Google
           command.request_object = caption_object
           command.response_representation = Google::Apis::YoutubeV3::Caption::Representation
           command.response_class = Google::Apis::YoutubeV3::Caption
-          command.query['debugProjectIdOverride'] = debug_project_id_override unless debug_project_id_override.nil?
           command.query['onBehalfOf'] = on_behalf_of unless on_behalf_of.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['part'] = part unless part.nil?
@@ -584,11 +557,10 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_channel_banner(channel_banner_resource_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          path = 'channelBanners/insert'
           if upload_source.nil?
-            command =  make_simple_command(:post, path, options)
+            command =  make_simple_command(:post, 'channelBanners/insert', options)
           else
-            command = make_upload_command(:post, path, options)
+            command = make_upload_command(:post, 'channelBanners/insert', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -640,8 +612,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_channel_section(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'channelSections'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'channelSections', options)
           command.query['id'] = id unless id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -706,8 +677,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_channel_section(part, channel_section_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'channelSections'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'channelSections', options)
           command.request_representation = Google::Apis::YoutubeV3::ChannelSection::Representation
           command.request_object = channel_section_object
           command.response_representation = Google::Apis::YoutubeV3::ChannelSection::Representation
@@ -783,8 +753,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_channel_sections(part, channel_id: nil, hl: nil, id: nil, mine: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'channelSections'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'channelSections', options)
           command.response_representation = Google::Apis::YoutubeV3::ListChannelSectionsResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListChannelSectionsResponse
           command.query['channelId'] = channel_id unless channel_id.nil?
@@ -839,8 +808,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_channel_section(part, channel_section_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'channelSections'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'channelSections', options)
           command.request_representation = Google::Apis::YoutubeV3::ChannelSection::Representation
           command.request_object = channel_section_object
           command.response_representation = Google::Apis::YoutubeV3::ChannelSection::Representation
@@ -927,8 +895,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_channels(part, category_id: nil, for_username: nil, hl: nil, id: nil, managed_by_me: nil, max_results: nil, mine: nil, my_subscribers: nil, on_behalf_of_content_owner: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'channels'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'channels', options)
           command.response_representation = Google::Apis::YoutubeV3::ListChannelsResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListChannelsResponse
           command.query['categoryId'] = category_id unless category_id.nil?
@@ -992,8 +959,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_channel(part, channel_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'channels'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'channels', options)
           command.request_representation = Google::Apis::YoutubeV3::Channel::Representation
           command.request_object = channel_object
           command.response_representation = Google::Apis::YoutubeV3::Channel::Representation
@@ -1013,10 +979,6 @@ module Google
         #   include. Set the parameter value to snippet. The snippet part has a quota cost
         #   of 2 units.
         # @param [Google::Apis::YoutubeV3::CommentThread] comment_thread_object
-        # @param [Boolean] share_on_google_plus
-        #   The shareOnGooglePlus parameter indicates whether the top-level comment and
-        #   any replies that are made to that comment should also be posted to the author'
-        #   s Google+ profile.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1038,15 +1000,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_comment_thread(part, comment_thread_object = nil, share_on_google_plus: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'commentThreads'
-          command =  make_simple_command(:post, path, options)
+        def insert_comment_thread(part, comment_thread_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'commentThreads', options)
           command.request_representation = Google::Apis::YoutubeV3::CommentThread::Representation
           command.request_object = comment_thread_object
           command.response_representation = Google::Apis::YoutubeV3::CommentThread::Representation
           command.response_class = Google::Apis::YoutubeV3::CommentThread
           command.query['part'] = part unless part.nil?
-          command.query['shareOnGooglePlus'] = share_on_google_plus unless share_on_google_plus.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1123,8 +1083,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_comment_threads(part, all_threads_related_to_channel_id: nil, channel_id: nil, id: nil, max_results: nil, moderation_status: nil, order: nil, page_token: nil, search_terms: nil, text_format: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'commentThreads'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'commentThreads', options)
           command.response_representation = Google::Apis::YoutubeV3::ListCommentThreadsResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListCommentThreadsResponse
           command.query['allThreadsRelatedToChannelId'] = all_threads_related_to_channel_id unless all_threads_related_to_channel_id.nil?
@@ -1173,8 +1132,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_comment_thread(part, comment_thread_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'commentThreads'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'commentThreads', options)
           command.request_representation = Google::Apis::YoutubeV3::CommentThread::Representation
           command.request_object = comment_thread_object
           command.response_representation = Google::Apis::YoutubeV3::CommentThread::Representation
@@ -1212,8 +1170,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_comment(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'comments'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'comments', options)
           command.query['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1250,8 +1207,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_comment(part, comment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'comments'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'comments', options)
           command.request_representation = Google::Apis::YoutubeV3::Comment::Representation
           command.request_object = comment_object
           command.response_representation = Google::Apis::YoutubeV3::Comment::Representation
@@ -1312,8 +1268,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_comments(part, id: nil, max_results: nil, page_token: nil, parent_id: nil, text_format: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'comments'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'comments', options)
           command.response_representation = Google::Apis::YoutubeV3::ListCommentsResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListCommentsResponse
           command.query['id'] = id unless id.nil?
@@ -1354,9 +1309,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def mark_as_spam_comment(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'comments/markAsSpam'
-          command =  make_simple_command(:post, path, options)
+        def mark_comment_as_spam(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'comments/markAsSpam', options)
           command.query['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1399,8 +1353,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_comment_moderation_status(id, moderation_status, ban_author: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'comments/setModerationStatus'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'comments/setModerationStatus', options)
           command.query['banAuthor'] = ban_author unless ban_author.nil?
           command.query['id'] = id unless id.nil?
           command.query['moderationStatus'] = moderation_status unless moderation_status.nil?
@@ -1438,8 +1391,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_comment(part, comment_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'comments'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'comments', options)
           command.request_representation = Google::Apis::YoutubeV3::Comment::Representation
           command.request_object = comment_object
           command.response_representation = Google::Apis::YoutubeV3::Comment::Representation
@@ -1489,8 +1441,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_guide_categories(part, hl: nil, id: nil, region_code: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'guideCategories'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'guideCategories', options)
           command.response_representation = Google::Apis::YoutubeV3::ListGuideCategoriesResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListGuideCategoriesResponse
           command.query['hl'] = hl unless hl.nil?
@@ -1532,8 +1483,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_i18n_languages(part, hl: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'i18nLanguages'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'i18nLanguages', options)
           command.response_representation = Google::Apis::YoutubeV3::ListI18nLanguagesResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListI18nLanguagesResponse
           command.query['hl'] = hl unless hl.nil?
@@ -1573,8 +1523,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_i18n_regions(part, hl: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'i18nRegions'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'i18nRegions', options)
           command.response_representation = Google::Apis::YoutubeV3::ListI18nRegionsResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListI18nRegionsResponse
           command.query['hl'] = hl unless hl.nil?
@@ -1648,86 +1597,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def bind_live_broadcast(id, part, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, stream_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'liveBroadcasts/bind'
-          command =  make_simple_command(:post, path, options)
-          command.response_representation = Google::Apis::YoutubeV3::LiveBroadcast::Representation
-          command.response_class = Google::Apis::YoutubeV3::LiveBroadcast
-          command.query['id'] = id unless id.nil?
-          command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
-          command.query['onBehalfOfContentOwnerChannel'] = on_behalf_of_content_owner_channel unless on_behalf_of_content_owner_channel.nil?
-          command.query['part'] = part unless part.nil?
-          command.query['streamId'] = stream_id unless stream_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Binds a YouTube broadcast to a stream or removes an existing binding between a
-        # broadcast and a stream. A broadcast can only be bound to one video stream,
-        # though a video stream may be bound to more than one broadcast.
-        # @param [String] id
-        #   The id parameter specifies the unique ID of the broadcast that is being bound
-        #   to a video stream.
-        # @param [String] part
-        #   The part parameter specifies a comma-separated list of one or more
-        #   liveBroadcast resource properties that the API response will include. The part
-        #   names that you can include in the parameter value are id, snippet,
-        #   contentDetails, and status.
-        # @param [String] on_behalf_of_content_owner
-        #   Note: This parameter is intended exclusively for YouTube content partners.
-        #   The onBehalfOfContentOwner parameter indicates that the request's
-        #   authorization credentials identify a YouTube CMS user who is acting on behalf
-        #   of the content owner specified in the parameter value. This parameter is
-        #   intended for YouTube content partners that own and manage many different
-        #   YouTube channels. It allows content owners to authenticate once and get access
-        #   to all their video and channel data, without having to provide authentication
-        #   credentials for each individual channel. The CMS account that the user
-        #   authenticates with must be linked to the specified YouTube content owner.
-        # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. Note: This
-        #   parameter is intended exclusively for YouTube content partners.
-        #   The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel ID
-        #   of the channel to which a video is being added. This parameter is required
-        #   when a request specifies a value for the onBehalfOfContentOwner parameter, and
-        #   it can only be used in conjunction with that parameter. In addition, the
-        #   request must be authorized using a CMS account that is linked to the content
-        #   owner that the onBehalfOfContentOwner parameter specifies. Finally, the
-        #   channel that the onBehalfOfContentOwnerChannel parameter value specifies must
-        #   be linked to the content owner that the onBehalfOfContentOwner parameter
-        #   specifies.
-        #   This parameter is intended for YouTube content partners that own and manage
-        #   many different YouTube channels. It allows content owners to authenticate once
-        #   and perform actions on behalf of the channel specified in the parameter value,
-        #   without having to provide authentication credentials for each separate channel.
-        # @param [String] stream_id
-        #   The streamId parameter specifies the unique ID of the video stream that is
-        #   being bound to a broadcast. If this parameter is omitted, the API will remove
-        #   any existing binding between the broadcast and a video stream.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        #   Overrides userIp if both are provided.
-        # @param [String] user_ip
-        #   IP address of the site where the request originates. Use this if you want to
-        #   enforce per-user limits.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::YoutubeV3::LiveBroadcast] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::YoutubeV3::LiveBroadcast]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def bind_direct_live_broadcast(id, part, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, stream_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'liveBroadcasts/bind/direct'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'liveBroadcasts/bind', options)
           command.response_representation = Google::Apis::YoutubeV3::LiveBroadcast::Representation
           command.response_class = Google::Apis::YoutubeV3::LiveBroadcast
           command.query['id'] = id unless id.nil?
@@ -1817,8 +1687,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def control_live_broadcast(id, part, display_slate: nil, offset_time_ms: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, walltime: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'liveBroadcasts/control'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'liveBroadcasts/control', options)
           command.response_representation = Google::Apis::YoutubeV3::LiveBroadcast::Representation
           command.response_class = Google::Apis::YoutubeV3::LiveBroadcast
           command.query['displaySlate'] = display_slate unless display_slate.nil?
@@ -1886,8 +1755,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_live_broadcast(id, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'liveBroadcasts'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'liveBroadcasts', options)
           command.query['id'] = id unless id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['onBehalfOfContentOwnerChannel'] = on_behalf_of_content_owner_channel unless on_behalf_of_content_owner_channel.nil?
@@ -1953,8 +1821,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_live_broadcast(part, live_broadcast_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'liveBroadcasts'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'liveBroadcasts', options)
           command.request_representation = Google::Apis::YoutubeV3::LiveBroadcast::Representation
           command.request_object = live_broadcast_object
           command.response_representation = Google::Apis::YoutubeV3::LiveBroadcast::Representation
@@ -2040,8 +1907,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_live_broadcasts(part, broadcast_status: nil, id: nil, max_results: nil, mine: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'liveBroadcasts'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'liveBroadcasts', options)
           command.response_representation = Google::Apis::YoutubeV3::ListLiveBroadcastsResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListLiveBroadcastsResponse
           command.query['broadcastStatus'] = broadcast_status unless broadcast_status.nil?
@@ -2125,8 +1991,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def transition_live_broadcast(broadcast_status, id, part, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'liveBroadcasts/transition'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'liveBroadcasts/transition', options)
           command.response_representation = Google::Apis::YoutubeV3::LiveBroadcast::Representation
           command.response_class = Google::Apis::YoutubeV3::LiveBroadcast
           command.query['broadcastStatus'] = broadcast_status unless broadcast_status.nil?
@@ -2205,8 +2070,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_live_broadcast(part, live_broadcast_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'liveBroadcasts'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'liveBroadcasts', options)
           command.request_representation = Google::Apis::YoutubeV3::LiveBroadcast::Representation
           command.request_object = live_broadcast_object
           command.response_representation = Google::Apis::YoutubeV3::LiveBroadcast::Representation
@@ -2272,8 +2136,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_live_stream(id, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'liveStreams'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'liveStreams', options)
           command.query['id'] = id unless id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['onBehalfOfContentOwnerChannel'] = on_behalf_of_content_owner_channel unless on_behalf_of_content_owner_channel.nil?
@@ -2340,8 +2203,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_live_stream(part, live_stream_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'liveStreams'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'liveStreams', options)
           command.request_representation = Google::Apis::YoutubeV3::LiveStream::Representation
           command.request_object = live_stream_object
           command.response_representation = Google::Apis::YoutubeV3::LiveStream::Representation
@@ -2423,8 +2285,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_live_streams(part, id: nil, max_results: nil, mine: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'liveStreams'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'liveStreams', options)
           command.response_representation = Google::Apis::YoutubeV3::ListLiveStreamsResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListLiveStreamsResponse
           command.query['id'] = id unless id.nil?
@@ -2501,8 +2362,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_live_stream(part, live_stream_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'liveStreams'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'liveStreams', options)
           command.request_representation = Google::Apis::YoutubeV3::LiveStream::Representation
           command.request_object = live_stream_object
           command.response_representation = Google::Apis::YoutubeV3::LiveStream::Representation
@@ -2543,8 +2403,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_playlist_item(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'playlistItems'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'playlistItems', options)
           command.query['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2590,8 +2449,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_playlist_item(part, playlist_item_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'playlistItems'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'playlistItems', options)
           command.request_representation = Google::Apis::YoutubeV3::PlaylistItem::Representation
           command.request_object = playlist_item_object
           command.response_representation = Google::Apis::YoutubeV3::PlaylistItem::Representation
@@ -2666,8 +2524,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_playlist_items(part, id: nil, max_results: nil, on_behalf_of_content_owner: nil, page_token: nil, playlist_id: nil, video_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'playlistItems'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'playlistItems', options)
           command.response_representation = Google::Apis::YoutubeV3::ListPlaylistItemsResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListPlaylistItemsResponse
           command.query['id'] = id unless id.nil?
@@ -2722,8 +2579,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_playlist_item(part, playlist_item_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'playlistItems'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'playlistItems', options)
           command.request_representation = Google::Apis::YoutubeV3::PlaylistItem::Representation
           command.request_object = playlist_item_object
           command.response_representation = Google::Apis::YoutubeV3::PlaylistItem::Representation
@@ -2772,8 +2628,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_playlist(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'playlists'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'playlists', options)
           command.query['id'] = id unless id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2836,8 +2691,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_playlist(part, playlist_object = nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'playlists'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'playlists', options)
           command.request_representation = Google::Apis::YoutubeV3::Playlist::Representation
           command.request_object = playlist_object
           command.response_representation = Google::Apis::YoutubeV3::Playlist::Representation
@@ -2930,8 +2784,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_playlists(part, channel_id: nil, hl: nil, id: nil, max_results: nil, mine: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'playlists'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'playlists', options)
           command.response_representation = Google::Apis::YoutubeV3::ListPlaylistResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListPlaylistResponse
           command.query['channelId'] = channel_id unless channel_id.nil?
@@ -2994,8 +2847,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_playlist(part, playlist_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'playlists'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'playlists', options)
           command.request_representation = Google::Apis::YoutubeV3::Playlist::Representation
           command.request_object = playlist_object
           command.response_representation = Google::Apis::YoutubeV3::Playlist::Representation
@@ -3187,8 +3039,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_searches(part, channel_id: nil, channel_type: nil, event_type: nil, for_content_owner: nil, for_developer: nil, for_mine: nil, location: nil, location_radius: nil, max_results: nil, on_behalf_of_content_owner: nil, order: nil, page_token: nil, published_after: nil, published_before: nil, q: nil, region_code: nil, related_to_video_id: nil, relevance_language: nil, safe_search: nil, topic_id: nil, type: nil, video_caption: nil, video_category_id: nil, video_definition: nil, video_dimension: nil, video_duration: nil, video_embeddable: nil, video_license: nil, video_syndicated: nil, video_type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'search'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'search', options)
           command.response_representation = Google::Apis::YoutubeV3::SearchListsResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::SearchListsResponse
           command.query['channelId'] = channel_id unless channel_id.nil?
@@ -3255,8 +3106,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_subscription(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'subscriptions'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'subscriptions', options)
           command.query['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -3292,8 +3142,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_subscription(part, subscription_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'subscriptions'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'subscriptions', options)
           command.request_representation = Google::Apis::YoutubeV3::Subscription::Representation
           command.request_object = subscription_object
           command.response_representation = Google::Apis::YoutubeV3::Subscription::Representation
@@ -3388,8 +3237,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_subscriptions(part, channel_id: nil, for_channel_id: nil, id: nil, max_results: nil, mine: nil, my_subscribers: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, order: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'subscriptions'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'subscriptions', options)
           command.response_representation = Google::Apis::YoutubeV3::ListSubscriptionResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListSubscriptionResponse
           command.query['channelId'] = channel_id unless channel_id.nil?
@@ -3449,11 +3297,10 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_thumbnail(video_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          path = 'thumbnails/set'
           if upload_source.nil?
-            command =  make_simple_command(:post, path, options)
+            command =  make_simple_command(:post, 'thumbnails/set', options)
           else
-            command = make_upload_command(:post, path, options)
+            command = make_upload_command(:post, 'thumbnails/set', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -3496,8 +3343,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_video_abuse_report_reasons(part, hl: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'videoAbuseReportReasons'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'videoAbuseReportReasons', options)
           command.response_representation = Google::Apis::YoutubeV3::ListVideoAbuseReportReasonResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListVideoAbuseReportReasonResponse
           command.query['hl'] = hl unless hl.nil?
@@ -3544,8 +3390,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_video_categories(part, hl: nil, id: nil, region_code: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'videoCategories'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'videoCategories', options)
           command.response_representation = Google::Apis::YoutubeV3::ListVideoCategoryResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListVideoCategoryResponse
           command.query['hl'] = hl unless hl.nil?
@@ -3594,8 +3439,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_video(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'videos'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'videos', options)
           command.query['id'] = id unless id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3641,9 +3485,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_rating_video(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'videos/getRating'
-          command =  make_simple_command(:get, path, options)
+        def get_video_rating(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'videos/getRating', options)
           command.response_representation = Google::Apis::YoutubeV3::GetVideoRatingResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::GetVideoRatingResponse
           command.query['id'] = id unless id.nil?
@@ -3730,11 +3573,10 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_video(part, video_object = nil, auto_levels: nil, notify_subscribers: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, stabilize: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          path = 'videos'
           if upload_source.nil?
-            command =  make_simple_command(:post, path, options)
+            command =  make_simple_command(:post, 'videos', options)
           else
-            command = make_upload_command(:post, path, options)
+            command = make_upload_command(:post, 'videos', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -3765,9 +3607,6 @@ module Google
         #   response will contain all of those properties.
         # @param [String] chart
         #   The chart parameter identifies the chart that you want to retrieve.
-        # @param [String] debug_project_id_override
-        #   The debugProjectIdOverride parameter should be used for mimicking a request
-        #   for a certain project ID
         # @param [String] hl
         #   The hl parameter instructs the API to retrieve localized resource metadata for
         #   a specific application language that the YouTube website supports. The
@@ -3839,13 +3678,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_videos(part, chart: nil, debug_project_id_override: nil, hl: nil, id: nil, locale: nil, max_results: nil, my_rating: nil, on_behalf_of_content_owner: nil, page_token: nil, region_code: nil, video_category_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'videos'
-          command =  make_simple_command(:get, path, options)
+        def list_videos(part, chart: nil, hl: nil, id: nil, locale: nil, max_results: nil, my_rating: nil, on_behalf_of_content_owner: nil, page_token: nil, region_code: nil, video_category_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'videos', options)
           command.response_representation = Google::Apis::YoutubeV3::ListVideosResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListVideosResponse
           command.query['chart'] = chart unless chart.nil?
-          command.query['debugProjectIdOverride'] = debug_project_id_override unless debug_project_id_override.nil?
           command.query['hl'] = hl unless hl.nil?
           command.query['id'] = id unless id.nil?
           command.query['locale'] = locale unless locale.nil?
@@ -3890,8 +3727,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def rate_video(id, rating, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'videos/rate'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'videos/rate', options)
           command.query['id'] = id unless id.nil?
           command.query['rating'] = rating unless rating.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -3933,9 +3769,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def report_abuse_video(video_abuse_report_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'videos/reportAbuse'
-          command =  make_simple_command(:post, path, options)
+        def report_video_abuse(video_abuse_report_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'videos/reportAbuse', options)
           command.request_representation = Google::Apis::YoutubeV3::VideoAbuseReport::Representation
           command.request_object = video_abuse_report_object
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -3997,8 +3832,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_video(part, video_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'videos'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'videos', options)
           command.request_representation = Google::Apis::YoutubeV3::Video::Representation
           command.request_object = video_object
           command.response_representation = Google::Apis::YoutubeV3::Video::Representation
@@ -4052,11 +3886,10 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_watermark(channel_id, invideo_branding_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          path = 'watermarks/set'
           if upload_source.nil?
-            command =  make_simple_command(:post, path, options)
+            command =  make_simple_command(:post, 'watermarks/set', options)
           else
-            command = make_upload_command(:post, path, options)
+            command = make_upload_command(:post, 'watermarks/set', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -4106,8 +3939,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def unset_watermark(channel_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'watermarks/unset'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'watermarks/unset', options)
           command.query['channelId'] = channel_id unless channel_id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?

@@ -532,10 +532,16 @@ module Google
         attr_accessor :header_text
       
         # The platform that is used to provide data for the custom dimension. Acceptable
-        # values are "Floodlight".
+        # values are "floodlight".
         # Corresponds to the JSON property `platformSource`
         # @return [String]
         attr_accessor :platform_source
+      
+        # Provide different source for product items. Acceptable values are "advertised"
+        # and "sold".
+        # Corresponds to the JSON property `productReportPerspective`
+        # @return [String]
+        attr_accessor :product_report_perspective
       
         # Name of a saved column to include in the report. The report must be scoped at
         # advertiser or lower, and this saved column must already be created in the
@@ -564,6 +570,7 @@ module Google
           @group_by_column = args[:group_by_column] unless args[:group_by_column].nil?
           @header_text = args[:header_text] unless args[:header_text].nil?
           @platform_source = args[:platform_source] unless args[:platform_source].nil?
+          @product_report_perspective = args[:product_report_perspective] unless args[:product_report_perspective].nil?
           @saved_column_name = args[:saved_column_name] unless args[:saved_column_name].nil?
           @start_date = args[:start_date] unless args[:start_date].nil?
         end

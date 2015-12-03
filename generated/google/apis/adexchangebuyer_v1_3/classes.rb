@@ -231,8 +231,8 @@ module Google
         # @return [String]
         attr_accessor :billing_id
       
-        # The budget amount to apply for the billingId provided. This is required for
-        # update requests.
+        # The daily budget amount in unit amount of the account currency to apply for
+        # the billingId provided. This is required for update requests.
         # Corresponds to the JSON property `budgetAmount`
         # @return [String]
         attr_accessor :budget_amount
@@ -298,6 +298,13 @@ module Google
         # @return [String]
         attr_accessor :agency_id
       
+        # The last upload timestamp of this creative if it was uploaded via API. Read-
+        # only. The value of this field is generated, and will be ignored for uploads. (
+        # formatted RFC 3339 timestamp).
+        # Corresponds to the JSON property `apiUploadTimestamp`
+        # @return [DateTime]
+        attr_accessor :api_upload_timestamp
+      
         # All attributes for the ads that may be shown from this snippet.
         # Corresponds to the JSON property `attribute`
         # @return [Array<Fixnum>]
@@ -339,10 +346,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :height
       
+        # The set of urls to be called to record an impression.
+        # Corresponds to the JSON property `impressionTrackingUrl`
+        # @return [Array<String>]
+        attr_accessor :impression_tracking_url
+      
         # Resource type.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # If nativeAd is set, HTMLSnippet and videoURL should not be set.
+        # Corresponds to the JSON property `nativeAd`
+        # @return [Google::Apis::AdexchangebuyerV1_3::Creative::NativeAd]
+        attr_accessor :native_ad
       
         # Detected product categories, if any. Read-only. This field should not be set
         # in requests.
@@ -371,6 +388,12 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :vendor_type
       
+        # The version for this creative. Read-only. This field should not be set in
+        # requests.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
         # The url to fetch a video ad. If set, HTMLSnippet should not be set.
         # Corresponds to the JSON property `videoURL`
         # @return [String]
@@ -392,6 +415,7 @@ module Google
           @advertiser_id = args[:advertiser_id] unless args[:advertiser_id].nil?
           @advertiser_name = args[:advertiser_name] unless args[:advertiser_name].nil?
           @agency_id = args[:agency_id] unless args[:agency_id].nil?
+          @api_upload_timestamp = args[:api_upload_timestamp] unless args[:api_upload_timestamp].nil?
           @attribute = args[:attribute] unless args[:attribute].nil?
           @buyer_creative_id = args[:buyer_creative_id] unless args[:buyer_creative_id].nil?
           @click_through_url = args[:click_through_url] unless args[:click_through_url].nil?
@@ -399,12 +423,15 @@ module Google
           @disapproval_reasons = args[:disapproval_reasons] unless args[:disapproval_reasons].nil?
           @filtering_reasons = args[:filtering_reasons] unless args[:filtering_reasons].nil?
           @height = args[:height] unless args[:height].nil?
+          @impression_tracking_url = args[:impression_tracking_url] unless args[:impression_tracking_url].nil?
           @kind = args[:kind] unless args[:kind].nil?
+          @native_ad = args[:native_ad] unless args[:native_ad].nil?
           @product_categories = args[:product_categories] unless args[:product_categories].nil?
           @restricted_categories = args[:restricted_categories] unless args[:restricted_categories].nil?
           @sensitive_categories = args[:sensitive_categories] unless args[:sensitive_categories].nil?
           @status = args[:status] unless args[:status].nil?
           @vendor_type = args[:vendor_type] unless args[:vendor_type].nil?
+          @version = args[:version] unless args[:version].nil?
           @video_url = args[:video_url] unless args[:video_url].nil?
           @width = args[:width] unless args[:width].nil?
         end
@@ -512,6 +539,184 @@ module Google
             end
           end
         end
+        
+        # If nativeAd is set, HTMLSnippet and videoURL should not be set.
+        class NativeAd
+          include Google::Apis::Core::Hashable
+        
+          # 
+          # Corresponds to the JSON property `advertiser`
+          # @return [String]
+          attr_accessor :advertiser
+        
+          # The app icon, for app download ads.
+          # Corresponds to the JSON property `appIcon`
+          # @return [Google::Apis::AdexchangebuyerV1_3::Creative::NativeAd::AppIcon]
+          attr_accessor :app_icon
+        
+          # A long description of the ad.
+          # Corresponds to the JSON property `body`
+          # @return [String]
+          attr_accessor :body
+        
+          # A label for the button that the user is supposed to click.
+          # Corresponds to the JSON property `callToAction`
+          # @return [String]
+          attr_accessor :call_to_action
+        
+          # The URL to use for click tracking.
+          # Corresponds to the JSON property `clickTrackingUrl`
+          # @return [String]
+          attr_accessor :click_tracking_url
+        
+          # A short title for the ad.
+          # Corresponds to the JSON property `headline`
+          # @return [String]
+          attr_accessor :headline
+        
+          # A large image.
+          # Corresponds to the JSON property `image`
+          # @return [Google::Apis::AdexchangebuyerV1_3::Creative::NativeAd::Image]
+          attr_accessor :image
+        
+          # The URLs are called when the impression is rendered.
+          # Corresponds to the JSON property `impressionTrackingUrl`
+          # @return [Array<String>]
+          attr_accessor :impression_tracking_url
+        
+          # A smaller image, for the advertiser logo.
+          # Corresponds to the JSON property `logo`
+          # @return [Google::Apis::AdexchangebuyerV1_3::Creative::NativeAd::Logo]
+          attr_accessor :logo
+        
+          # The price of the promoted app including the currency info.
+          # Corresponds to the JSON property `price`
+          # @return [String]
+          attr_accessor :price
+        
+          # The app rating in the app store. Must be in the range [0-5].
+          # Corresponds to the JSON property `starRating`
+          # @return [Float]
+          attr_accessor :star_rating
+        
+          # The URL to the app store to purchase/download the promoted app.
+          # Corresponds to the JSON property `store`
+          # @return [String]
+          attr_accessor :store
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @advertiser = args[:advertiser] unless args[:advertiser].nil?
+            @app_icon = args[:app_icon] unless args[:app_icon].nil?
+            @body = args[:body] unless args[:body].nil?
+            @call_to_action = args[:call_to_action] unless args[:call_to_action].nil?
+            @click_tracking_url = args[:click_tracking_url] unless args[:click_tracking_url].nil?
+            @headline = args[:headline] unless args[:headline].nil?
+            @image = args[:image] unless args[:image].nil?
+            @impression_tracking_url = args[:impression_tracking_url] unless args[:impression_tracking_url].nil?
+            @logo = args[:logo] unless args[:logo].nil?
+            @price = args[:price] unless args[:price].nil?
+            @star_rating = args[:star_rating] unless args[:star_rating].nil?
+            @store = args[:store] unless args[:store].nil?
+          end
+          
+          # The app icon, for app download ads.
+          class AppIcon
+            include Google::Apis::Core::Hashable
+          
+            # 
+            # Corresponds to the JSON property `height`
+            # @return [Fixnum]
+            attr_accessor :height
+          
+            # 
+            # Corresponds to the JSON property `url`
+            # @return [String]
+            attr_accessor :url
+          
+            # 
+            # Corresponds to the JSON property `width`
+            # @return [Fixnum]
+            attr_accessor :width
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @height = args[:height] unless args[:height].nil?
+              @url = args[:url] unless args[:url].nil?
+              @width = args[:width] unless args[:width].nil?
+            end
+          end
+          
+          # A large image.
+          class Image
+            include Google::Apis::Core::Hashable
+          
+            # 
+            # Corresponds to the JSON property `height`
+            # @return [Fixnum]
+            attr_accessor :height
+          
+            # 
+            # Corresponds to the JSON property `url`
+            # @return [String]
+            attr_accessor :url
+          
+            # 
+            # Corresponds to the JSON property `width`
+            # @return [Fixnum]
+            attr_accessor :width
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @height = args[:height] unless args[:height].nil?
+              @url = args[:url] unless args[:url].nil?
+              @width = args[:width] unless args[:width].nil?
+            end
+          end
+          
+          # A smaller image, for the advertiser logo.
+          class Logo
+            include Google::Apis::Core::Hashable
+          
+            # 
+            # Corresponds to the JSON property `height`
+            # @return [Fixnum]
+            attr_accessor :height
+          
+            # 
+            # Corresponds to the JSON property `url`
+            # @return [String]
+            attr_accessor :url
+          
+            # 
+            # Corresponds to the JSON property `width`
+            # @return [Fixnum]
+            attr_accessor :width
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @height = args[:height] unless args[:height].nil?
+              @url = args[:url] unless args[:url].nil?
+              @width = args[:width] unless args[:width].nil?
+            end
+          end
+        end
       end
       
       # The creatives feed lists the active creatives for the Ad Exchange buyer
@@ -567,6 +772,11 @@ module Google
         # Corresponds to the JSON property `currencyCode`
         # @return [String]
         attr_accessor :currency_code
+      
+        # The deal type such as programmatic reservation or fixed price and so on.
+        # Corresponds to the JSON property `dealTier`
+        # @return [String]
+        attr_accessor :deal_tier
       
         # End time for when this deal stops being active. If not set then this deal is
         # valid until manually disabled by the publisher. In seconds since the epoch.
@@ -630,6 +840,7 @@ module Google
           @account_id = args[:account_id] unless args[:account_id].nil?
           @advertiser = args[:advertiser] unless args[:advertiser].nil?
           @currency_code = args[:currency_code] unless args[:currency_code].nil?
+          @deal_tier = args[:deal_tier] unless args[:deal_tier].nil?
           @end_time = args[:end_time] unless args[:end_time].nil?
           @fixed_cpm = args[:fixed_cpm] unless args[:fixed_cpm].nil?
           @id = args[:id] unless args[:id].nil?

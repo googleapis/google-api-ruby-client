@@ -537,6 +537,12 @@ module Google
         # @return [String]
         attr_accessor :version
       
+        # 
+        # Corresponds to the JSON property `version_module`
+        # @return [Boolean]
+        attr_accessor :version_module
+        alias_method :version_module?, :version_module
+      
         def initialize(**args)
            update!(**args)
         end
@@ -572,6 +578,7 @@ module Google
           @service_path = args[:service_path] unless args[:service_path].nil?
           @title = args[:title] unless args[:title].nil?
           @version = args[:version] unless args[:version].nil?
+          @version_module = args[:version_module] unless args[:version_module].nil?
         end
         
         # Authentication information.

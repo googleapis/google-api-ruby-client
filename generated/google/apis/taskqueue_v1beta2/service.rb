@@ -81,8 +81,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_taskqueue(project, taskqueue, get_stats: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/taskqueues/{taskqueue}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/taskqueues/{taskqueue}', options)
           command.response_representation = Google::Apis::TaskqueueV1beta2::TaskQueue::Representation
           command.response_class = Google::Apis::TaskqueueV1beta2::TaskQueue
           command.params['project'] = project unless project.nil?
@@ -123,8 +122,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_task(project, taskqueue, task, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/taskqueues/{taskqueue}/tasks/{task}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{project}/taskqueues/{taskqueue}/tasks/{task}', options)
           command.params['project'] = project unless project.nil?
           command.params['taskqueue'] = taskqueue unless taskqueue.nil?
           command.params['task'] = task unless task.nil?
@@ -163,8 +161,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_task(project, taskqueue, task, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/taskqueues/{taskqueue}/tasks/{task}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/taskqueues/{taskqueue}/tasks/{task}', options)
           command.response_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
           command.response_class = Google::Apis::TaskqueueV1beta2::Task
           command.params['project'] = project unless project.nil?
@@ -204,8 +201,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_task(project, taskqueue, task_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/taskqueues/{taskqueue}/tasks'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{project}/taskqueues/{taskqueue}/tasks', options)
           command.request_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
           command.request_object = task_object
           command.response_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
@@ -255,8 +251,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def lease_task(project, taskqueue, num_tasks, lease_secs, group_by_tag: nil, tag: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/taskqueues/{taskqueue}/tasks/lease'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{project}/taskqueues/{taskqueue}/tasks/lease', options)
           command.response_representation = Google::Apis::TaskqueueV1beta2::Tasks::Representation
           command.response_class = Google::Apis::TaskqueueV1beta2::Tasks
           command.params['project'] = project unless project.nil?
@@ -298,8 +293,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_tasks(project, taskqueue, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/taskqueues/{taskqueue}/tasks'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/taskqueues/{taskqueue}/tasks', options)
           command.response_representation = Google::Apis::TaskqueueV1beta2::Tasks2::Representation
           command.response_class = Google::Apis::TaskqueueV1beta2::Tasks2
           command.params['project'] = project unless project.nil?
@@ -341,8 +335,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_task(project, taskqueue, task, new_lease_seconds, task_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/taskqueues/{taskqueue}/tasks/{task}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, '{project}/taskqueues/{taskqueue}/tasks/{task}', options)
           command.request_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
           command.request_object = task_object
           command.response_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
@@ -387,8 +380,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_task(project, taskqueue, task, new_lease_seconds, task_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/taskqueues/{taskqueue}/tasks/{task}'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{project}/taskqueues/{taskqueue}/tasks/{task}', options)
           command.request_representation = Google::Apis::TaskqueueV1beta2::Task::Representation
           command.request_object = task_object
           command.response_representation = Google::Apis::TaskqueueV1beta2::Task::Representation

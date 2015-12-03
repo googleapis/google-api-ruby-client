@@ -77,8 +77,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_detections(q, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'v2/detect'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'v2/detect', options)
           command.response_representation = Google::Apis::TranslateV2::ListDetectionsResponse::Representation
           command.response_class = Google::Apis::TranslateV2::ListDetectionsResponse
           command.query['q'] = q unless q.nil?
@@ -113,8 +112,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_languages(target: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'v2/languages'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'v2/languages', options)
           command.response_representation = Google::Apis::TranslateV2::ListLanguagesResponse::Representation
           command.response_class = Google::Apis::TranslateV2::ListLanguagesResponse
           command.query['target'] = target unless target.nil?
@@ -157,8 +155,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_translations(q, target, cid: nil, format: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'v2'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'v2', options)
           command.response_representation = Google::Apis::TranslateV2::ListTranslationsResponse::Representation
           command.response_class = Google::Apis::TranslateV2::ListTranslationsResponse
           command.query['cid'] = cid unless cid.nil?

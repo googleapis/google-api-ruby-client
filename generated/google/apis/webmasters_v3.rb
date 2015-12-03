@@ -25,12 +25,12 @@ module Google
     # @see https://developers.google.com/webmaster-tools/
     module WebmastersV3
       VERSION = 'V3'
-      REVISION = '20150715'
+      REVISION = '20151102'
 
-      # View and modify Webmaster Tools data for your verified sites
+      # View and manage Search Console data for your verified sites
       AUTH_WEBMASTERS = 'https://www.googleapis.com/auth/webmasters'
 
-      # View Webmaster Tools data for your verified sites
+      # View Search Console data for your verified sites
       AUTH_WEBMASTERS_READONLY = 'https://www.googleapis.com/auth/webmasters.readonly'
     end
   end

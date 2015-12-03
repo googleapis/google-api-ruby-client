@@ -101,6 +101,7 @@ module Google
       class DownloadLineItemsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_spec, as: 'fileSpec'
           collection :filter_ids, as: 'filterIds'
           property :filter_type, as: 'filterType'
           property :format, as: 'format'

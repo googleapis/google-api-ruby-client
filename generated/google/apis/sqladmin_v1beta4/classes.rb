@@ -386,6 +386,12 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # The name and status of the failover replica. Only applies to Second Generation
+        # instances.
+        # Corresponds to the JSON property `failoverReplica`
+        # @return [Google::Apis::SqladminV1beta4::DatabaseInstance::FailoverReplica]
+        attr_accessor :failover_replica
+      
         # The instance type. This can be one of the following.
         # CLOUD_SQL_INSTANCE: A Cloud SQL instance that is not replicating from a master.
         # ON_PREMISES_INSTANCE: An instance running on the customer's premises.
@@ -493,6 +499,7 @@ module Google
           @current_disk_size = args[:current_disk_size] unless args[:current_disk_size].nil?
           @database_version = args[:database_version] unless args[:database_version].nil?
           @etag = args[:etag] unless args[:etag].nil?
+          @failover_replica = args[:failover_replica] unless args[:failover_replica].nil?
           @instance_type = args[:instance_type] unless args[:instance_type].nil?
           @ip_addresses = args[:ip_addresses] unless args[:ip_addresses].nil?
           @ipv6_address = args[:ipv6_address] unless args[:ipv6_address].nil?
@@ -510,6 +517,33 @@ module Google
           @service_account_email_address = args[:service_account_email_address] unless args[:service_account_email_address].nil?
           @settings = args[:settings] unless args[:settings].nil?
           @state = args[:state] unless args[:state].nil?
+        end
+        
+        # The name and status of the failover replica. Only applies to Second Generation
+        # instances.
+        class FailoverReplica
+          include Google::Apis::Core::Hashable
+        
+          # 
+          # Corresponds to the JSON property `available`
+          # @return [Boolean]
+          attr_accessor :available
+          alias_method :available?, :available
+        
+          # 
+          # Corresponds to the JSON property `name`
+          # @return [String]
+          attr_accessor :name
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @available = args[:available] unless args[:available].nil?
+            @name = args[:name] unless args[:name].nil?
+          end
         end
       end
       
@@ -618,6 +652,12 @@ module Google
         class SqlExportOptions
           include Google::Apis::Core::Hashable
         
+          # Export only schemas.
+          # Corresponds to the JSON property `schemaOnly`
+          # @return [Boolean]
+          attr_accessor :schema_only
+          alias_method :schema_only?, :schema_only
+        
           # Tables to export, or that were exported, from the specified database. If you
           # specify tables, specify one and only one database.
           # Corresponds to the JSON property `tables`
@@ -630,8 +670,35 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @schema_only = args[:schema_only] unless args[:schema_only].nil?
             @tables = args[:tables] unless args[:tables].nil?
           end
+        end
+      end
+      
+      # Database instance failover context.
+      class FailoverContext
+        include Google::Apis::Core::Hashable
+      
+        # This is always sql#failoverContext.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The current settings version of this instance. Request will be rejected if
+        # this version doesn't match the current settings version.
+        # Corresponds to the JSON property `settingsVersion`
+        # @return [String]
+        attr_accessor :settings_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] unless args[:kind].nil?
+          @settings_version = args[:settings_version] unless args[:settings_version].nil?
         end
       end
       
@@ -644,8 +711,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_string_values
       
-        # The database version this flag applies to. Currently this can only be [
-        # MYSQL_5_5].
+        # The database version this flag applies to. Can be MYSQL_5_5, MYSQL_5_6, or
+        # both.
         # Corresponds to the JSON property `appliesTo`
         # @return [Array<String>]
         attr_accessor :applies_to
@@ -671,6 +738,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Indicates whether changing this flag will trigger a database restart. Only
+        # applicable to Second Generation instances.
+        # Corresponds to the JSON property `requiresRestart`
+        # @return [Boolean]
+        attr_accessor :requires_restart
+        alias_method :requires_restart?, :requires_restart
+      
         # The type of the flag. Flags are typed to being BOOLEAN, STRING, INTEGER or
         # NONE. NONE is used for flags which do not take a value, such as
         # skip_grant_tables.
@@ -690,6 +764,7 @@ module Google
           @max_value = args[:max_value] unless args[:max_value].nil?
           @min_value = args[:min_value] unless args[:min_value].nil?
           @name = args[:name] unless args[:name].nil?
+          @requires_restart = args[:requires_restart] unless args[:requires_restart].nil?
           @type = args[:type] unless args[:type].nil?
         end
       end
@@ -829,6 +904,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @export_context = args[:export_context] unless args[:export_context].nil?
+        end
+      end
+      
+      # Instance failover request.
+      class InstancesFailoverRequest
+        include Google::Apis::Core::Hashable
+      
+        # Database instance failover context.
+        # Corresponds to the JSON property `failoverContext`
+        # @return [Google::Apis::SqladminV1beta4::FailoverContext]
+        attr_accessor :failover_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failover_context = args[:failover_context] unless args[:failover_context].nil?
         end
       end
       
@@ -998,6 +1092,44 @@ module Google
           @follow_gae_application = args[:follow_gae_application] unless args[:follow_gae_application].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @zone = args[:zone] unless args[:zone].nil?
+        end
+      end
+      
+      # Maintenance window. This specifies when a v2 Cloud SQL instance should
+      # preferably be restarted for system maintenance puruposes.
+      class MaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # day of week (1-7), starting on Monday.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # hour of day - 0 to 23.
+        # Corresponds to the JSON property `hour`
+        # @return [Fixnum]
+        attr_accessor :hour
+      
+        # This is always sql#maintenanceWindow.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `updateTrack`
+        # @return [String]
+        attr_accessor :update_track
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] unless args[:day].nil?
+          @hour = args[:hour] unless args[:hour].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @update_track = args[:update_track] unless args[:update_track].nil?
         end
       end
       
@@ -1316,6 +1448,17 @@ module Google
       class ReplicaConfiguration
         include Google::Apis::Core::Hashable
       
+        # Specifies if the replica is the failover target. If the field is set to true
+        # the replica will be designated as a failover replica. In case the master
+        # instance fails, the replica instance will be promoted as the new master
+        # instance.
+        # Only one replica can be specified as failover target, and the replica has to
+        # be in different zone with the master instance.
+        # Corresponds to the JSON property `failoverTarget`
+        # @return [Boolean]
+        attr_accessor :failover_target
+        alias_method :failover_target?, :failover_target
+      
         # This is always sql#replicaConfiguration.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -1332,6 +1475,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @failover_target = args[:failover_target] unless args[:failover_target].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @mysql_replica_configuration = args[:mysql_replica_configuration] unless args[:mysql_replica_configuration].nil?
         end
@@ -1399,6 +1543,18 @@ module Google
         attr_accessor :crash_safe_replication_enabled
         alias_method :crash_safe_replication_enabled?, :crash_safe_replication_enabled
       
+        # The size of data disk, in GB. Only supported for 2nd Generation instances. The
+        # data disk size minimum is 10GB.
+        # Corresponds to the JSON property `dataDiskSizeGb`
+        # @return [String]
+        attr_accessor :data_disk_size_gb
+      
+        # The type of data disk. Only supported for 2nd Generation instances. The
+        # default type is SSD.
+        # Corresponds to the JSON property `dataDiskType`
+        # @return [String]
+        attr_accessor :data_disk_type
+      
         # The database flags passed to the instance at startup.
         # Corresponds to the JSON property `databaseFlags`
         # @return [Array<Google::Apis::SqladminV1beta4::DatabaseFlags>]
@@ -1429,6 +1585,12 @@ module Google
         # Corresponds to the JSON property `locationPreference`
         # @return [Google::Apis::SqladminV1beta4::LocationPreference]
         attr_accessor :location_preference
+      
+        # Maintenance window. This specifies when a v2 Cloud SQL instance should
+        # preferably be restarted for system maintenance puruposes.
+        # Corresponds to the JSON property `maintenanceWindow`
+        # @return [Google::Apis::SqladminV1beta4::MaintenanceWindow]
+        attr_accessor :maintenance_window
       
         # The pricing plan for this instance. This can be either PER_USE or PACKAGE.
         # Corresponds to the JSON property `pricingPlan`
@@ -1465,11 +1627,14 @@ module Google
           @authorized_gae_applications = args[:authorized_gae_applications] unless args[:authorized_gae_applications].nil?
           @backup_configuration = args[:backup_configuration] unless args[:backup_configuration].nil?
           @crash_safe_replication_enabled = args[:crash_safe_replication_enabled] unless args[:crash_safe_replication_enabled].nil?
+          @data_disk_size_gb = args[:data_disk_size_gb] unless args[:data_disk_size_gb].nil?
+          @data_disk_type = args[:data_disk_type] unless args[:data_disk_type].nil?
           @database_flags = args[:database_flags] unless args[:database_flags].nil?
           @database_replication_enabled = args[:database_replication_enabled] unless args[:database_replication_enabled].nil?
           @ip_configuration = args[:ip_configuration] unless args[:ip_configuration].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @location_preference = args[:location_preference] unless args[:location_preference].nil?
+          @maintenance_window = args[:maintenance_window] unless args[:maintenance_window].nil?
           @pricing_plan = args[:pricing_plan] unless args[:pricing_plan].nil?
           @replication_type = args[:replication_type] unless args[:replication_type].nil?
           @settings_version = args[:settings_version] unless args[:settings_version].nil?
@@ -1569,6 +1734,25 @@ module Google
         def update!(**args)
           @cert_info = args[:cert_info] unless args[:cert_info].nil?
           @cert_private_key = args[:cert_private_key] unless args[:cert_private_key].nil?
+        end
+      end
+      
+      # SslCerts create ephemeral certificate request.
+      class SslCertsCreateEphemeralRequest
+        include Google::Apis::Core::Hashable
+      
+        # PEM encoded public key to include in the signed certificate.
+        # Corresponds to the JSON property `public_key`
+        # @return [String]
+        attr_accessor :public_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_key = args[:public_key] unless args[:public_key].nil?
         end
       end
       

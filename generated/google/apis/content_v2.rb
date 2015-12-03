@@ -23,10 +23,10 @@ module Google
     # Manage product items, inventory, and Merchant Center accounts for Google
     # Shopping.
     #
-    # @see https://developers.google.com/shopping-content/v2/
+    # @see https://developers.google.com/shopping-content
     module ContentV2
       VERSION = 'V2'
-      REVISION = '20150729'
+      REVISION = '20151112'
 
       # Manage your product listings and accounts for Google Shopping
       AUTH_CONTENT = 'https://www.googleapis.com/auth/content'

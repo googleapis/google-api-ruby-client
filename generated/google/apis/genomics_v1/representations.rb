@@ -38,6 +38,30 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class GetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class TestIamPermissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -194,10 +218,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class MergeVariantsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
       class SearchCallSetsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -254,6 +274,52 @@ module Google
       class UndeleteDatasetRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::GenomicsV1::Policy, decorator: Google::Apis::GenomicsV1::Policy::Representation
+      
+        end
+      end
+      
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version'
+          collection :bindings, as: 'bindings', class: Google::Apis::GenomicsV1::Binding, decorator: Google::Apis::GenomicsV1::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+        end
+      end
+      
+      class Binding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :role, as: 'role'
+          collection :members, as: 'members'
+        end
+      end
+      
+      class GetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class TestIamPermissionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class TestIamPermissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
         end
       end
       
@@ -591,6 +657,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset_id, as: 'datasetId'
           property :id, as: 'id'
+          property :reference_set_id, as: 'referenceSetId'
           collection :reference_bounds, as: 'referenceBounds', class: Google::Apis::GenomicsV1::ReferenceBound, decorator: Google::Apis::GenomicsV1::ReferenceBound::Representation
       
           collection :metadata, as: 'metadata', class: Google::Apis::GenomicsV1::VariantSetMetadata, decorator: Google::Apis::GenomicsV1::VariantSetMetadata::Representation
@@ -712,15 +779,6 @@ module Google
         include Representable::JSON::Collection
         items
       end
-      
-        end
-      end
-      
-      class MergeVariantsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :variant_set_id, as: 'variantSetId'
-          collection :variants, as: 'variants', class: Google::Apis::GenomicsV1::Variant, decorator: Google::Apis::GenomicsV1::Variant::Representation
       
         end
       end

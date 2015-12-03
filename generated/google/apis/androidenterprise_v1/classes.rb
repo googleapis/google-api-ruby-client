@@ -27,6 +27,12 @@ module Google
       class AppRestrictionsSchema
         include Google::Apis::Core::Hashable
       
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#appRestrictionsSchema".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
         # The set of restrictions that make up this schema.
         # Corresponds to the JSON property `restrictions`
         # @return [Array<Google::Apis::AndroidenterpriseV1::AppRestrictionsSchemaRestriction>]
@@ -38,6 +44,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @kind = args[:kind] unless args[:kind].nil?
           @restrictions = args[:restrictions] unless args[:restrictions].nil?
         end
       end
@@ -237,10 +244,11 @@ module Google
         attr_accessor :product_id
       
         # Whether this collection is visible to all users, or only to the users that
-        # have been granted access through the collection_viewers api. Even if a
-        # collection is visible to allUsers, it is possible to add and remove viewers,
-        # but this will have no effect until the collection's visibility changes to
-        # viewersOnly.
+        # have been granted access through the "Collectionviewers" API. With the launch
+        # of the "setAvailableProductSet" API, this property should always be set to "
+        # viewersOnly", as the "allUsers" option will bypass the "availableProductSet"
+        # for all users within a domain.
+        # The "allUsers" setting is deprecated, and will be removed.
         # Corresponds to the JSON property `visibility`
         # @return [String]
         attr_accessor :visibility
@@ -290,7 +298,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An ordered collection of products which can be made visible on the Google Play
-        # Store app to a selected group of users.
+        # Store to a selected group of users.
         # Corresponds to the JSON property `collection`
         # @return [Array<Google::Apis::AndroidenterpriseV1::Collection>]
         attr_accessor :collection
@@ -519,6 +527,32 @@ module Google
         def update!(**args)
           @enterprise = args[:enterprise] unless args[:enterprise].nil?
           @kind = args[:kind] unless args[:kind].nil?
+        end
+      end
+      
+      # 
+      class SendTestPushNotificationResponse
+        include Google::Apis::Core::Hashable
+      
+        # The message ID of the test push notification that was sent.
+        # Corresponds to the JSON property `messageId`
+        # @return [String]
+        attr_accessor :message_id
+      
+        # The name of the Cloud Pub/Sub topic to which notifications for this enterprise'
+        # s enrolled account will be sent.
+        # Corresponds to the JSON property `topicName`
+        # @return [String]
+        attr_accessor :topic_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_id = args[:message_id] unless args[:message_id].nil?
+          @topic_name = args[:topic_name] unless args[:topic_name].nil?
         end
       end
       
@@ -914,8 +948,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # A string of the form app:
-        # . For example, app:com.google.android.gm represents the Gmail app.
+        # A string of the form app:<package name>. For example, app:com.google.android.
+        # gm represents the Gmail app.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -1015,6 +1049,32 @@ module Google
         def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @permission = args[:permission] unless args[:permission].nil?
+          @product_id = args[:product_id] unless args[:product_id].nil?
+        end
+      end
+      
+      # A set of products.
+      class ProductSet
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#productSet".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The list of product IDs making up the set of products.
+        # Corresponds to the JSON property `productId`
+        # @return [Array<String>]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] unless args[:kind].nil?
           @product_id = args[:product_id] unless args[:product_id].nil?
         end
       end

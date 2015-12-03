@@ -79,8 +79,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_metric_descriptor(project, metric_descriptor_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/metricDescriptors'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{project}/metricDescriptors', options)
           command.request_representation = Google::Apis::CloudmonitoringV2beta2::MetricDescriptor::Representation
           command.request_object = metric_descriptor_object
           command.response_representation = Google::Apis::CloudmonitoringV2beta2::MetricDescriptor::Representation
@@ -119,8 +118,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_metric_descriptor(project, metric, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/metricDescriptors/{metric}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{project}/metricDescriptors/{metric}', options)
           command.response_representation = Google::Apis::CloudmonitoringV2beta2::DeleteMetricDescriptorResponse::Representation
           command.response_class = Google::Apis::CloudmonitoringV2beta2::DeleteMetricDescriptorResponse
           command.params['project'] = project unless project.nil?
@@ -175,8 +173,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_metric_descriptors(project, list_metric_descriptors_request_object = nil, count: nil, page_token: nil, query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/metricDescriptors'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/metricDescriptors', options)
           command.request_representation = Google::Apis::CloudmonitoringV2beta2::ListMetricDescriptorsRequest::Representation
           command.request_object = list_metric_descriptors_request_object
           command.response_representation = Google::Apis::CloudmonitoringV2beta2::ListMetricDescriptorsResponse::Representation
@@ -273,8 +270,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_timeseries(project, metric, youngest, list_timeseries_request_object = nil, aggregator: nil, count: nil, labels: nil, oldest: nil, page_token: nil, timespan: nil, window: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/timeseries/{metric}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/timeseries/{metric}', options)
           command.request_representation = Google::Apis::CloudmonitoringV2beta2::ListTimeseriesRequest::Representation
           command.request_object = list_timeseries_request_object
           command.response_representation = Google::Apis::CloudmonitoringV2beta2::ListTimeseriesResponse::Representation
@@ -328,8 +324,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def write_timeseries(project, write_timeseries_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/timeseries:write'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{project}/timeseries:write', options)
           command.request_representation = Google::Apis::CloudmonitoringV2beta2::WriteTimeseriesRequest::Representation
           command.request_object = write_timeseries_request_object
           command.response_representation = Google::Apis::CloudmonitoringV2beta2::WriteTimeseriesResponse::Representation
@@ -423,8 +418,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_timeseries_descriptors(project, metric, youngest, list_timeseries_descriptors_request_object = nil, aggregator: nil, count: nil, labels: nil, oldest: nil, page_token: nil, timespan: nil, window: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/timeseriesDescriptors/{metric}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/timeseriesDescriptors/{metric}', options)
           command.request_representation = Google::Apis::CloudmonitoringV2beta2::ListTimeseriesDescriptorsRequest::Representation
           command.request_object = list_timeseries_descriptors_request_object
           command.response_representation = Google::Apis::CloudmonitoringV2beta2::ListTimeseriesDescriptorsResponse::Representation

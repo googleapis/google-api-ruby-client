@@ -84,8 +84,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_advertiser(role, role_id, advertiser_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{role}/{roleId}/advertiser'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{role}/{roleId}/advertiser', options)
           command.response_representation = Google::Apis::GanV1beta1::Advertiser::Representation
           command.response_class = Google::Apis::GanV1beta1::Advertiser
           command.params['role'] = role unless role.nil?
@@ -149,8 +148,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_advertisers(role, role_id, advertiser_category: nil, max_results: nil, min_ninety_day_epc: nil, min_payout_rank: nil, min_seven_day_epc: nil, page_token: nil, relationship_status: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{role}/{roleId}/advertisers'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{role}/{roleId}/advertisers', options)
           command.response_representation = Google::Apis::GanV1beta1::Advertisers::Representation
           command.response_class = Google::Apis::GanV1beta1::Advertisers
           command.params['role'] = role unless role.nil?
@@ -198,8 +196,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_cc_offers(publisher, advertiser: nil, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'publishers/{publisher}/ccOffers'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'publishers/{publisher}/ccOffers', options)
           command.response_representation = Google::Apis::GanV1beta1::CcOffers::Representation
           command.response_class = Google::Apis::GanV1beta1::CcOffers
           command.params['publisher'] = publisher unless publisher.nil?
@@ -287,8 +284,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_events(role, role_id, advertiser_id: nil, charge_type: nil, event_date_max: nil, event_date_min: nil, link_id: nil, max_results: nil, member_id: nil, modify_date_max: nil, modify_date_min: nil, order_id: nil, page_token: nil, product_category: nil, publisher_id: nil, sku: nil, status: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{role}/{roleId}/events'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{role}/{roleId}/events', options)
           command.response_representation = Google::Apis::GanV1beta1::Events::Representation
           command.response_class = Google::Apis::GanV1beta1::Events
           command.params['role'] = role unless role.nil?
@@ -347,8 +343,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_link(role, role_id, link_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{role}/{roleId}/link/{linkId}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{role}/{roleId}/link/{linkId}', options)
           command.response_representation = Google::Apis::GanV1beta1::Link::Representation
           command.response_class = Google::Apis::GanV1beta1::Link
           command.params['role'] = role unless role.nil?
@@ -388,8 +383,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_link(role, role_id, link_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{role}/{roleId}/link'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{role}/{roleId}/link', options)
           command.request_representation = Google::Apis::GanV1beta1::Link::Representation
           command.request_object = link_object
           command.response_representation = Google::Apis::GanV1beta1::Link::Representation
@@ -456,8 +450,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_links(role, role_id, advertiser_id: nil, asset_size: nil, authorship: nil, create_date_max: nil, create_date_min: nil, link_type: nil, max_results: nil, page_token: nil, promotion_type: nil, relationship_status: nil, search_text: nil, start_date_max: nil, start_date_min: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{role}/{roleId}/links'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{role}/{roleId}/links', options)
           command.response_representation = Google::Apis::GanV1beta1::Links::Representation
           command.response_class = Google::Apis::GanV1beta1::Links
           command.params['role'] = role unless role.nil?
@@ -513,8 +506,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_publisher(role, role_id, publisher_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{role}/{roleId}/publisher'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{role}/{roleId}/publisher', options)
           command.response_representation = Google::Apis::GanV1beta1::Publisher::Representation
           command.response_class = Google::Apis::GanV1beta1::Publisher
           command.params['role'] = role unless role.nil?
@@ -578,8 +570,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_publishers(role, role_id, max_results: nil, min_ninety_day_epc: nil, min_payout_rank: nil, min_seven_day_epc: nil, page_token: nil, publisher_category: nil, relationship_status: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{role}/{roleId}/publishers'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{role}/{roleId}/publishers', options)
           command.response_representation = Google::Apis::GanV1beta1::Publishers::Representation
           command.response_class = Google::Apis::GanV1beta1::Publishers
           command.params['role'] = role unless role.nil?
@@ -655,8 +646,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_report(role, role_id, report_type, advertiser_id: nil, calculate_totals: nil, end_date: nil, event_type: nil, link_id: nil, max_results: nil, order_id: nil, publisher_id: nil, start_date: nil, start_index: nil, status: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{role}/{roleId}/report/{reportType}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{role}/{roleId}/report/{reportType}', options)
           command.response_representation = Google::Apis::GanV1beta1::Report::Representation
           command.response_class = Google::Apis::GanV1beta1::Report
           command.params['role'] = role unless role.nil?

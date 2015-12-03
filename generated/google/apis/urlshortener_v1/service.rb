@@ -79,8 +79,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_url(short_url, projection: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'url'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'url', options)
           command.response_representation = Google::Apis::UrlshortenerV1::Url::Representation
           command.response_class = Google::Apis::UrlshortenerV1::Url
           command.query['projection'] = projection unless projection.nil?
@@ -115,8 +114,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_url(url_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'url'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'url', options)
           command.request_representation = Google::Apis::UrlshortenerV1::Url::Representation
           command.request_object = url_object
           command.response_representation = Google::Apis::UrlshortenerV1::Url::Representation
@@ -154,8 +152,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_urls(projection: nil, start_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'url/history'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'url/history', options)
           command.response_representation = Google::Apis::UrlshortenerV1::UrlHistory::Representation
           command.response_class = Google::Apis::UrlshortenerV1::UrlHistory
           command.query['projection'] = projection unless projection.nil?

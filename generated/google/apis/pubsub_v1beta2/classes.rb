@@ -26,20 +26,16 @@ module Google
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
       
-        # # Overview The `Policy` defines an access control policy language. It is used
-        # to define policies that are attached to resources like files, folders, VMs,
-        # etc. # Policy structure A `Policy` consists of a list of bindings. A `Binding`
-        # binds a set of members to a role, where the members include user accounts,
-        # user groups, user domains, and service accounts. A 'role' is a named set of
-        # permissions, defined by IAM. The definition of a role is outside the policy. A
-        # permission check first determines the roles that include the specified
-        # permission, and then determines if the principal specified is a member of a
-        # binding to at least one of these roles. The membership check is recursive when
-        # a group is bound to a role. Policy examples: ``` ` "bindings": [ ` "role": "
-        # roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
-        # "domain:google.com", "serviceAccount:frontend@example.iam.gserviceaccounts.
-        # com"] `, ` "role": "roles/viewer", "members": ["user:sean@example.com"] ` ] ` `
-        # ``
+        # Defines an Identity and Access Management (IAM) policy. It is used to specify
+        # access control policies for Cloud Platform resources. A `Policy` consists of a
+        # list of `bindings`. A `Binding` binds a list of `members` to a `role`, where
+        # the members can be user accounts, Google groups, Google domains, and service
+        # accounts. A `role` is a named list of permissions defined by IAM. **Example** `
+        # "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com", "
+        # group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
+        # appspot.gserviceaccount.com"] `, ` "role": "roles/viewer", "members": ["user:
+        # sean@example.com"] ` ] ` For a description of IAM and its features, see the [
+        # IAM developer's guide](https://cloud.google.com/iam).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::PubsubV1beta2::Policy]
         attr_accessor :policy
@@ -54,39 +50,30 @@ module Google
         end
       end
       
-      # # Overview The `Policy` defines an access control policy language. It is used
-      # to define policies that are attached to resources like files, folders, VMs,
-      # etc. # Policy structure A `Policy` consists of a list of bindings. A `Binding`
-      # binds a set of members to a role, where the members include user accounts,
-      # user groups, user domains, and service accounts. A 'role' is a named set of
-      # permissions, defined by IAM. The definition of a role is outside the policy. A
-      # permission check first determines the roles that include the specified
-      # permission, and then determines if the principal specified is a member of a
-      # binding to at least one of these roles. The membership check is recursive when
-      # a group is bound to a role. Policy examples: ``` ` "bindings": [ ` "role": "
-      # roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
-      # "domain:google.com", "serviceAccount:frontend@example.iam.gserviceaccounts.
-      # com"] `, ` "role": "roles/viewer", "members": ["user:sean@example.com"] ` ] ` `
-      # ``
+      # Defines an Identity and Access Management (IAM) policy. It is used to specify
+      # access control policies for Cloud Platform resources. A `Policy` consists of a
+      # list of `bindings`. A `Binding` binds a list of `members` to a `role`, where
+      # the members can be user accounts, Google groups, Google domains, and service
+      # accounts. A `role` is a named list of permissions defined by IAM. **Example** `
+      # "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com", "
+      # group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
+      # appspot.gserviceaccount.com"] `, ` "role": "roles/viewer", "members": ["user:
+      # sean@example.com"] ` ] ` For a description of IAM and its features, see the [
+      # IAM developer's guide](https://cloud.google.com/iam).
       class Policy
         include Google::Apis::Core::Hashable
       
-        # The policy language version. The version of the policy is represented by the
-        # etag. The default version is 0.
+        # Version of the `Policy`. The default version is 0.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
       
-        # It is an error to specify multiple bindings for the same role. It is an error
-        # to specify a binding with no members.
+        # Associates a list of `members` to a `role`. Multiple `bindings` must not be
+        # specified for the same `role`. `bindings` with no members will result in an
+        # error.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::PubsubV1beta2::Binding>]
         attr_accessor :bindings
-      
-        # 
-        # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::PubsubV1beta2::Rule>]
-        attr_accessor :rules
       
         # Can be used to perform a read-modify-write.
         # Corresponds to the JSON property `etag`
@@ -101,29 +88,32 @@ module Google
         def update!(**args)
           @version = args[:version] unless args[:version].nil?
           @bindings = args[:bindings] unless args[:bindings].nil?
-          @rules = args[:rules] unless args[:rules].nil?
           @etag = args[:etag] unless args[:etag].nil?
         end
       end
       
-      # Associates members with roles. See below for allowed formats of members.
+      # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
       
-        # The name of the role to which the members should be bound. Examples: "roles/
-        # viewer", "roles/editor", "roles/owner". Required
+        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
+        # , or `roles/owner`. Required
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
       
-        # Format of member entries: 1. allUsers Matches any requesting principal (users,
-        # service accounts or anonymous). 2. allAuthenticatedUsers Matches any
-        # requesting authenticated principal (users or service accounts). 3. user:`
-        # emailid` A google user account using an email address. For example alice@gmail.
-        # com, joe@example.com 4. serviceAccount:`emailid` An service account email. 5.
-        # group:`emailid` A google group with an email address. For example auth-ti-
-        # cloud@google.com 6. domain:`domain` A Google Apps domain name. For example
-        # google.com, example.com
+        # Specifies the identities requesting access for a Cloud Platform resource. `
+        # members` can have the following formats: * `allUsers`: A special identifier
+        # that represents anyone who is on the internet; with or without a Google
+        # account. * `allAuthenticatedUsers`: A special identifier that represents
+        # anyone who is authenticated with a Google account or a service account. * `
+        # user:`emailid``: An email address that represents a specific Google account.
+        # For example, `alice@gmail.com` or `joe@example.com`. * `serviceAccount:`
+        # emailid``: An email address that represents a service account. For example, `
+        # my-other-app@appspot.gserviceaccount.com`. * `group:`emailid``: An email
+        # address that represents a Google group. For example, `admins@example.com`. * `
+        # domain:`domain``: A Google Apps domain name that represents all the users of
+        # that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -139,214 +129,11 @@ module Google
         end
       end
       
-      # A rule to be applied in a Policy.
-      class Rule
-        include Google::Apis::Core::Hashable
-      
-        # Human-readable description of the rule.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value
-        # of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.
-        # *') matches all verbs.
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        # Required
-        # Corresponds to the JSON property `action`
-        # @return [String]
-        attr_accessor :action
-      
-        # The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in this set of entries.
-        # Corresponds to the JSON property `in`
-        # @return [Array<String>]
-        attr_accessor :in
-      
-        # The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is not in this set of
-        # entries. The formation for in and not_in entries is the same as members in a
-        # Binding above.
-        # Corresponds to the JSON property `notIn`
-        # @return [Array<String>]
-        attr_accessor :not_in
-      
-        # Additional restrictions that must be met
-        # Corresponds to the JSON property `conditions`
-        # @return [Array<Google::Apis::PubsubV1beta2::Condition>]
-        attr_accessor :conditions
-      
-        # The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
-        # that match the LOG action.
-        # Corresponds to the JSON property `logConfig`
-        # @return [Array<Google::Apis::PubsubV1beta2::LogConfig>]
-        attr_accessor :log_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] unless args[:description].nil?
-          @permissions = args[:permissions] unless args[:permissions].nil?
-          @action = args[:action] unless args[:action].nil?
-          @in = args[:in] unless args[:in].nil?
-          @not_in = args[:not_in] unless args[:not_in].nil?
-          @conditions = args[:conditions] unless args[:conditions].nil?
-          @log_config = args[:log_config] unless args[:log_config].nil?
-        end
-      end
-      
-      # A condition to be met.
-      class Condition
-        include Google::Apis::Core::Hashable
-      
-        # Trusted attributes supplied by the IAM system.
-        # Corresponds to the JSON property `iam`
-        # @return [String]
-        attr_accessor :iam
-      
-        # Trusted attributes supplied by any service that owns resources and uses the
-        # IAM system for access control.
-        # Corresponds to the JSON property `sys`
-        # @return [String]
-        attr_accessor :sys
-      
-        # Trusted attributes discharged by the service.
-        # Corresponds to the JSON property `svc`
-        # @return [String]
-        attr_accessor :svc
-      
-        # An operator to apply the subject with.
-        # Corresponds to the JSON property `op`
-        # @return [String]
-        attr_accessor :op
-      
-        # The object of the condition. Exactly one of these must be set.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        # The objects of the condition. This is mutually exclusive with 'value'.
-        # Corresponds to the JSON property `values`
-        # @return [Array<String>]
-        attr_accessor :values
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @iam = args[:iam] unless args[:iam].nil?
-          @sys = args[:sys] unless args[:sys].nil?
-          @svc = args[:svc] unless args[:svc].nil?
-          @op = args[:op] unless args[:op].nil?
-          @value = args[:value] unless args[:value].nil?
-          @values = args[:values] unless args[:values].nil?
-        end
-      end
-      
-      # Specifies what kind of log the caller must write Increment a streamz counter
-      # with the specified metric and field names. Metric names should start with a '/'
-      # , generally be lowercase-only, and end in "_count". Field names should not
-      # contain an initial slash. The actual exported metric names will have "/iam/
-      # policy" prepended. Field names correspond to IAM request parameters and field
-      # values are their respective values. At present only "iam_principal",
-      # corresponding to IAMContext.principal, is supported. Examples: counter `
-      # metric: "/debug_access_count" field: "iam_principal" ` ==> increment counter /
-      # iam/policy/backend_debug_access_count `iam_principal=[value of IAMContext.
-      # principal]` At this time we do not support: * multiple field names (though
-      # this may be supported in the future) * decrementing the counter * incrementing
-      # it by anything other than 1
-      class LogConfig
-        include Google::Apis::Core::Hashable
-      
-        # Options for counters
-        # Corresponds to the JSON property `counter`
-        # @return [Google::Apis::PubsubV1beta2::CounterOptions]
-        attr_accessor :counter
-      
-        # Write a Data Access (Gin) log
-        # Corresponds to the JSON property `dataAccess`
-        # @return [Google::Apis::PubsubV1beta2::DataAccessOptions]
-        attr_accessor :data_access
-      
-        # Write a Cloud Audit log
-        # Corresponds to the JSON property `cloudAudit`
-        # @return [Google::Apis::PubsubV1beta2::CloudAuditOptions]
-        attr_accessor :cloud_audit
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @counter = args[:counter] unless args[:counter].nil?
-          @data_access = args[:data_access] unless args[:data_access].nil?
-          @cloud_audit = args[:cloud_audit] unless args[:cloud_audit].nil?
-        end
-      end
-      
-      # Options for counters
-      class CounterOptions
-        include Google::Apis::Core::Hashable
-      
-        # The metric to update.
-        # Corresponds to the JSON property `metric`
-        # @return [String]
-        attr_accessor :metric
-      
-        # The field value to attribute.
-        # Corresponds to the JSON property `field`
-        # @return [String]
-        attr_accessor :field
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @metric = args[:metric] unless args[:metric].nil?
-          @field = args[:field] unless args[:field].nil?
-        end
-      end
-      
-      # Write a Data Access (Gin) log
-      class DataAccessOptions
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Write a Cloud Audit log
-      class CloudAuditOptions
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Request message for `TestIamPermissions` method.
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
       
-        # The set of permissions to check for the 'resource'. Permissions with wildcards
+        # The set of permissions to check for the `resource`. Permissions with wildcards
         # (such as '*' or 'storage.*') are not allowed.
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
@@ -439,13 +226,20 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :attributes
       
-        # ID of this message assigned by the server at publication time. Guaranteed to
-        # be unique within the topic. This value may be read by a subscriber that
-        # receives a PubsubMessage via a Pull call or a push delivery. It must not be
-        # populated by a publisher in a Publish call.
+        # ID of this message, assigned by the server when the message is published.
+        # Guaranteed to be unique within the topic. This value may be read by a
+        # subscriber that receives a `PubsubMessage` via a `Pull` call or a push
+        # delivery. It must not be populated by the publisher in a `Publish` call.
         # Corresponds to the JSON property `messageId`
         # @return [String]
         attr_accessor :message_id
+      
+        # The time at which the message was published, populated by the server when it
+        # receives the `Publish` call. It must not be populated by the publisher in a `
+        # Publish` call.
+        # Corresponds to the JSON property `publishTime`
+        # @return [String]
+        attr_accessor :publish_time
       
         def initialize(**args)
            update!(**args)
@@ -456,10 +250,11 @@ module Google
           @data = args[:data] unless args[:data].nil?
           @attributes = args[:attributes] unless args[:attributes].nil?
           @message_id = args[:message_id] unless args[:message_id].nil?
+          @publish_time = args[:publish_time] unless args[:publish_time].nil?
         end
       end
       
-      # Response for the Publish method.
+      # Response for the `Publish` method.
       class PublishResponse
         include Google::Apis::Core::Hashable
       
@@ -479,7 +274,7 @@ module Google
         end
       end
       
-      # Response for the ListTopics method.
+      # Response for the `ListTopics` method.
       class ListTopicsResponse
         include Google::Apis::Core::Hashable
       
@@ -489,7 +284,7 @@ module Google
         attr_accessor :topics
       
         # If not empty, indicates that there may be more topics that match the request;
-        # this value should be passed in a new ListTopicsRequest.
+        # this value should be passed in a new `ListTopicsRequest`.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -505,7 +300,7 @@ module Google
         end
       end
       
-      # Response for the ListTopicSubscriptions method.
+      # Response for the `ListTopicSubscriptions` method.
       class ListTopicSubscriptionsResponse
         include Google::Apis::Core::Hashable
       
@@ -515,8 +310,8 @@ module Google
         attr_accessor :subscriptions
       
         # If not empty, indicates that there may be more subscriptions that match the
-        # request; this value should be passed in a new ListTopicSubscriptionsRequest to
-        # get more subscriptions.
+        # request; this value should be passed in a new `ListTopicSubscriptionsRequest`
+        # to get more subscriptions.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -579,12 +374,12 @@ module Google
         # before the ack deadline expires and before the message is acknowledged, it is
         # an outstanding message and will not be delivered again during that time (on a
         # best-effort basis). For pull delivery this value is used as the initial value
-        # for the ack deadline. To override this value for a given message, call
-        # ModifyAckDeadline with the corresponding ack_id. For push delivery, this value
-        # is also used to set the request timeout for the call to the push endpoint. If
-        # the subscriber never acknowledges the message, the Pub/Sub system will
-        # eventually redeliver the message. If this parameter is not set, the default
-        # value of 10 seconds is used.
+        # for the ack deadline. To override this value for a given message, call `
+        # ModifyAckDeadline` with the corresponding `ack_id`. For push delivery, this
+        # value is also used to set the request timeout for the call to the push
+        # endpoint. If the subscriber never acknowledges the message, the Pub/Sub system
+        # will eventually redeliver the message. If this parameter is not set, the
+        # default value of 10 seconds is used.
         # Corresponds to the JSON property `ackDeadlineSeconds`
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
@@ -618,10 +413,10 @@ module Google
         # use to change the format of the push message. This attribute indicates the
         # version of the data expected by the endpoint. This controls the shape of the
         # envelope (i.e. its fields and metadata). The endpoint version is based on the
-        # version of the Pub/Sub API. If not present during the CreateSubscription call,
-        # it will default to the version of the API used to make such call. If not
-        # present during a ModifyPushConfig call, its value will not be changed.
-        # GetSubscription calls will always return a valid version, even if the
+        # version of the Pub/Sub API. If not present during the `CreateSubscription`
+        # call, it will default to the version of the API used to make such call. If not
+        # present during a `ModifyPushConfig` call, its value will not be changed. `
+        # GetSubscription` calls will always return a valid version, even if the
         # subscription was created without this attribute. The possible values for this
         # attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/
         # Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub
@@ -641,7 +436,7 @@ module Google
         end
       end
       
-      # Response for the ListSubscriptions method.
+      # Response for the `ListSubscriptions` method.
       class ListSubscriptionsResponse
         include Google::Apis::Core::Hashable
       
@@ -651,8 +446,8 @@ module Google
         attr_accessor :subscriptions
       
         # If not empty, indicates that there may be more subscriptions that match the
-        # request; this value should be passed in a new ListSubscriptionsRequest to get
-        # more subscriptions.
+        # request; this value should be passed in a new `ListSubscriptionsRequest` to
+        # get more subscriptions.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -684,7 +479,7 @@ module Google
       
         # The new ack deadline with respect to the time this request was sent to the Pub/
         # Sub system. Must be >= 0. For example, if the value is 10, the new ack
-        # deadline will expire 10 seconds after the ModifyAckDeadline call was made.
+        # deadline will expire 10 seconds after the `ModifyAckDeadline` call was made.
         # Specifying zero may immediately make the message available for another pull
         # request.
         # Corresponds to the JSON property `ackDeadlineSeconds`
@@ -708,7 +503,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The acknowledgment ID for the messages being acknowledged that was returned by
-        # the Pub/Sub system in the Pull response. Must not be empty.
+        # the Pub/Sub system in the `Pull` response. Must not be empty.
         # Corresponds to the JSON property `ackIds`
         # @return [Array<String>]
         attr_accessor :ack_ids
@@ -723,12 +518,12 @@ module Google
         end
       end
       
-      # Request for the Pull method.
+      # Request for the `Pull` method.
       class PullRequest
         include Google::Apis::Core::Hashable
       
         # If this is specified as true the system will respond immediately even if it is
-        # not able to return a message in the Pull response. Otherwise the system is
+        # not able to return a message in the `Pull` response. Otherwise the system is
         # allowed to wait until at least one message is available rather than returning
         # no messages. The client may cancel the request if it does not wish to wait any
         # longer for the response.
@@ -754,14 +549,14 @@ module Google
         end
       end
       
-      # Response for the Pull method.
+      # Response for the `Pull` method.
       class PullResponse
         include Google::Apis::Core::Hashable
       
         # Received Pub/Sub messages. The Pub/Sub system will return zero messages if
         # there are no more available in the backlog. The Pub/Sub system may return
-        # fewer than the maxMessages requested even if there are more messages available
-        # in the backlog.
+        # fewer than the `maxMessages` requested even if there are more messages
+        # available in the backlog.
         # Corresponds to the JSON property `receivedMessages`
         # @return [Array<Google::Apis::PubsubV1beta2::ReceivedMessage>]
         attr_accessor :received_messages

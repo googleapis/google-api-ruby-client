@@ -162,6 +162,18 @@ module Google
         end
       end
       
+      class Discoveryclusters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Cluster
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class BannerWithContentContainer
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          end
+        end
+      end
+      
       class DownloadAccessRestriction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -214,6 +226,10 @@ module Google
         end
       end
       
+      class Notification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class Offers
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -246,11 +262,31 @@ module Google
         end
       end
       
+      class Series
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Series
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        end
+      end
+      
+      class SeriesMembership
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class UserSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class NotesExport
           class Representation < Google::Apis::Core::JsonRepresentation; end
+        end
+        
+        class Notification
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class MoreFromAuthors
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          end
         end
       end
       
@@ -364,6 +400,18 @@ module Google
       
       class Volumes
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Volumeseriesinfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class VolumeSeries
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Issue
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          end
+        end
       end
       
       class Annotation
@@ -751,6 +799,42 @@ module Google
         end
       end
       
+      class Discoveryclusters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :clusters, as: 'clusters', class: Google::Apis::BooksV1::Discoveryclusters::Cluster, decorator: Google::Apis::BooksV1::Discoveryclusters::Cluster::Representation
+      
+          property :kind, as: 'kind'
+          property :total_clusters, as: 'totalClusters'
+        end
+        
+        class Cluster
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :banner_with_content_container, as: 'banner_with_content_container', class: Google::Apis::BooksV1::Discoveryclusters::Cluster::BannerWithContentContainer, decorator: Google::Apis::BooksV1::Discoveryclusters::Cluster::BannerWithContentContainer::Representation
+        
+            property :sub_title, as: 'subTitle'
+            property :title, as: 'title'
+            property :total_volumes, as: 'totalVolumes'
+            property :uid, as: 'uid'
+            collection :volumes, as: 'volumes', class: Google::Apis::BooksV1::Volume, decorator: Google::Apis::BooksV1::Volume::Representation
+        
+          end
+          
+          class BannerWithContentContainer
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :fill_color_argb, as: 'fillColorArgb'
+              property :image_url, as: 'imageUrl'
+              property :mask_color_argb, as: 'maskColorArgb'
+              property :more_button_text, as: 'moreButtonText'
+              property :more_button_url, as: 'moreButtonUrl'
+              property :text_color_argb, as: 'textColorArgb'
+            end
+          end
+        end
+      end
+      
       class DownloadAccessRestriction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -904,6 +988,19 @@ module Google
         end
       end
       
+      class Notification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :body, as: 'body'
+          property :icon_url, as: 'iconUrl'
+          property :kind, as: 'kind'
+          property :notification_type, as: 'notification_type'
+          property :show_notification_settings_action, as: 'show_notification_settings_action'
+          property :target_url, as: 'targetUrl'
+          property :title, as: 'title'
+        end
+      end
+      
       class Offers
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -995,11 +1092,42 @@ module Google
         end
       end
       
+      class Series
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :series, as: 'series', class: Google::Apis::BooksV1::Series::Series, decorator: Google::Apis::BooksV1::Series::Series::Representation
+      
+        end
+        
+        class Series
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :banner_image_url, as: 'bannerImageUrl'
+            property :image_url, as: 'imageUrl'
+            property :series_id, as: 'seriesId'
+            property :title, as: 'title'
+          end
+        end
+      end
+      
+      class SeriesMembership
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :member, as: 'member', class: Google::Apis::BooksV1::Volume, decorator: Google::Apis::BooksV1::Volume::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class UserSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :notes_export, as: 'notesExport', class: Google::Apis::BooksV1::UserSettings::NotesExport, decorator: Google::Apis::BooksV1::UserSettings::NotesExport::Representation
+      
+          property :notification, as: 'notification', class: Google::Apis::BooksV1::UserSettings::Notification, decorator: Google::Apis::BooksV1::UserSettings::Notification::Representation
       
         end
         
@@ -1008,6 +1136,21 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :folder_name, as: 'folderName'
             property :is_enabled, as: 'isEnabled'
+          end
+        end
+        
+        class Notification
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :more_from_authors, as: 'moreFromAuthors', class: Google::Apis::BooksV1::UserSettings::Notification::MoreFromAuthors, decorator: Google::Apis::BooksV1::UserSettings::Notification::MoreFromAuthors::Representation
+        
+          end
+          
+          class MoreFromAuthors
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :opted_state, as: 'opted_state'
+            end
           end
         end
       end
@@ -1180,8 +1323,10 @@ module Google
         class UserInfo
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :acquisition_type, as: 'acquisitionType'
             property :copy, as: 'copy', class: Google::Apis::BooksV1::Volume::UserInfo::Copy, decorator: Google::Apis::BooksV1::Volume::UserInfo::Copy::Representation
         
+            property :entitlement_type, as: 'entitlementType'
             property :is_in_my_books, as: 'isInMyBooks'
             property :is_preordered, as: 'isPreordered'
             property :is_purchased, as: 'isPurchased'
@@ -1255,6 +1400,8 @@ module Google
             property :ratings_count, as: 'ratingsCount'
             property :reading_modes, as: 'readingModes'
             property :sample_page_count, as: 'samplePageCount'
+            property :series_info, as: 'seriesInfo', class: Google::Apis::BooksV1::Volumeseriesinfo, decorator: Google::Apis::BooksV1::Volumeseriesinfo::Representation
+        
             property :subtitle, as: 'subtitle'
             property :title, as: 'title'
           end
@@ -1354,6 +1501,36 @@ module Google
       
           property :kind, as: 'kind'
           property :total_items, as: 'totalItems'
+        end
+      end
+      
+      class Volumeseriesinfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :book_display_number, as: 'bookDisplayNumber'
+          property :kind, as: 'kind'
+          property :short_series_book_title, as: 'shortSeriesBookTitle'
+          collection :volume_series, as: 'volumeSeries', class: Google::Apis::BooksV1::Volumeseriesinfo::VolumeSeries, decorator: Google::Apis::BooksV1::Volumeseriesinfo::VolumeSeries::Representation
+      
+        end
+        
+        class VolumeSeries
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :issue, as: 'issue', class: Google::Apis::BooksV1::Volumeseriesinfo::VolumeSeries::Issue, decorator: Google::Apis::BooksV1::Volumeseriesinfo::VolumeSeries::Issue::Representation
+        
+            property :order_number, as: 'orderNumber'
+            property :series_book_type, as: 'seriesBookType'
+            property :series_id, as: 'seriesId'
+          end
+          
+          class Issue
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :issue_display_number, as: 'issueDisplayNumber'
+              property :issue_order_number, as: 'issueOrderNumber'
+            end
+          end
         end
       end
     end

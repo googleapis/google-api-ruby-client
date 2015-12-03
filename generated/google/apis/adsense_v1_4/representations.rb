@@ -149,6 +149,7 @@ module Google
       class Account
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_time, as: 'creation_time'
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'

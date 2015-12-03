@@ -203,6 +203,7 @@ module Google
           property :group_by_column, as: 'groupByColumn'
           property :header_text, as: 'headerText'
           property :platform_source, as: 'platformSource'
+          property :product_report_perspective, as: 'productReportPerspective'
           property :saved_column_name, as: 'savedColumnName'
           property :start_date, as: 'startDate'
         end

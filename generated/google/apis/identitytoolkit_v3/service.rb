@@ -76,8 +76,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_auth_uri(create_auth_uri_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'createAuthUri'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'createAuthUri', options)
           command.request_representation = Google::Apis::IdentitytoolkitV3::CreateAuthUriRequest::Representation
           command.request_object = create_auth_uri_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::CreateAuthUriResponse::Representation
@@ -112,8 +111,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_account(delete_account_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'deleteAccount'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'deleteAccount', options)
           command.request_representation = Google::Apis::IdentitytoolkitV3::DeleteAccountRequest::Representation
           command.request_object = delete_account_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::DeleteAccountResponse::Representation
@@ -148,8 +146,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def download_account(download_account_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'downloadAccount'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'downloadAccount', options)
           command.request_representation = Google::Apis::IdentitytoolkitV3::DownloadAccountRequest::Representation
           command.request_object = download_account_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::DownloadAccountResponse::Representation
@@ -184,8 +181,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_account_info(get_account_info_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'getAccountInfo'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'getAccountInfo', options)
           command.request_representation = Google::Apis::IdentitytoolkitV3::GetAccountInfoRequest::Representation
           command.request_object = get_account_info_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::GetAccountInfoResponse::Representation
@@ -220,12 +216,43 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_oob_confirmation_code(relyingparty_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'getOobConfirmationCode'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'getOobConfirmationCode', options)
           command.request_representation = Google::Apis::IdentitytoolkitV3::Relyingparty::Representation
           command.request_object = relyingparty_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::GetOobConfirmationCodeResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::GetOobConfirmationCodeResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get project configuration.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IdentitytoolkitV3::GetProjectConfigResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IdentitytoolkitV3::GetProjectConfigResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_relyingparty_project_config(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'getProjectConfig', options)
+          command.response_representation = Google::Apis::IdentitytoolkitV3::GetProjectConfigResponse::Representation
+          command.response_class = Google::Apis::IdentitytoolkitV3::GetProjectConfigResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -255,8 +282,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_public_keys(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'publicKeys'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'publicKeys', options)
           command.response_representation = Hash<String,String>::Representation
           command.response_class = Hash<String,String>
           command.query['fields'] = fields unless fields.nil?
@@ -288,8 +314,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_recaptcha_param(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'getRecaptchaParam'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'getRecaptchaParam', options)
           command.response_representation = Google::Apis::IdentitytoolkitV3::GetRecaptchaParamResponse::Representation
           command.response_class = Google::Apis::IdentitytoolkitV3::GetRecaptchaParamResponse
           command.query['fields'] = fields unless fields.nil?
@@ -322,8 +347,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def reset_password(reset_password_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'resetPassword'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'resetPassword', options)
           command.request_representation = Google::Apis::IdentitytoolkitV3::ResetPasswordRequest::Representation
           command.request_object = reset_password_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::ResetPasswordResponse::Representation
@@ -358,8 +382,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_account_info(set_account_info_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'setAccountInfo'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'setAccountInfo', options)
           command.request_representation = Google::Apis::IdentitytoolkitV3::SetAccountInfoRequest::Representation
           command.request_object = set_account_info_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::SetAccountInfoResponse::Representation
@@ -394,8 +417,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def upload_account(upload_account_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'uploadAccount'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'uploadAccount', options)
           command.request_representation = Google::Apis::IdentitytoolkitV3::UploadAccountRequest::Representation
           command.request_object = upload_account_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::UploadAccountResponse::Representation
@@ -430,8 +452,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def verify_assertion(verify_assertion_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'verifyAssertion'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'verifyAssertion', options)
           command.request_representation = Google::Apis::IdentitytoolkitV3::VerifyAssertionRequest::Representation
           command.request_object = verify_assertion_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::VerifyAssertionResponse::Representation
@@ -466,8 +487,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def verify_password(verify_password_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'verifyPassword'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'verifyPassword', options)
           command.request_representation = Google::Apis::IdentitytoolkitV3::VerifyPasswordRequest::Representation
           command.request_object = verify_password_request_object
           command.response_representation = Google::Apis::IdentitytoolkitV3::VerifyPasswordResponse::Representation

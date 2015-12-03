@@ -78,9 +78,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def allocate_ids(dataset_id, allocate_ids_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{datasetId}/allocateIds'
-          command =  make_simple_command(:post, path, options)
+        def allocate_dataset_ids(dataset_id, allocate_ids_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{datasetId}/allocateIds', options)
           command.request_representation = Google::Apis::DatastoreV1beta2::AllocateIdsRequest::Representation
           command.request_object = allocate_ids_request_object
           command.response_representation = Google::Apis::DatastoreV1beta2::AllocateIdsResponse::Representation
@@ -117,9 +116,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def begin_transaction(dataset_id, begin_transaction_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{datasetId}/beginTransaction'
-          command =  make_simple_command(:post, path, options)
+        def begin_dataset_transaction(dataset_id, begin_transaction_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{datasetId}/beginTransaction', options)
           command.request_representation = Google::Apis::DatastoreV1beta2::BeginTransactionRequest::Representation
           command.request_object = begin_transaction_request_object
           command.response_representation = Google::Apis::DatastoreV1beta2::BeginTransactionResponse::Representation
@@ -156,9 +154,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def commit(dataset_id, commit_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{datasetId}/commit'
-          command =  make_simple_command(:post, path, options)
+        def commit_dataset(dataset_id, commit_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{datasetId}/commit', options)
           command.request_representation = Google::Apis::DatastoreV1beta2::CommitRequest::Representation
           command.request_object = commit_request_object
           command.response_representation = Google::Apis::DatastoreV1beta2::CommitResponse::Representation
@@ -195,9 +192,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def lookup(dataset_id, lookup_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{datasetId}/lookup'
-          command =  make_simple_command(:post, path, options)
+        def lookup_dataset(dataset_id, lookup_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{datasetId}/lookup', options)
           command.request_representation = Google::Apis::DatastoreV1beta2::LookupRequest::Representation
           command.request_object = lookup_request_object
           command.response_representation = Google::Apis::DatastoreV1beta2::LookupResponse::Representation
@@ -234,9 +230,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def rollback(dataset_id, rollback_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{datasetId}/rollback'
-          command =  make_simple_command(:post, path, options)
+        def rollback_dataset(dataset_id, rollback_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{datasetId}/rollback', options)
           command.request_representation = Google::Apis::DatastoreV1beta2::RollbackRequest::Representation
           command.request_object = rollback_request_object
           command.response_representation = Google::Apis::DatastoreV1beta2::RollbackResponse::Representation
@@ -273,9 +268,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def run_query(dataset_id, run_query_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{datasetId}/runQuery'
-          command =  make_simple_command(:post, path, options)
+        def run_dataset_query(dataset_id, run_query_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{datasetId}/runQuery', options)
           command.request_representation = Google::Apis::DatastoreV1beta2::RunQueryRequest::Representation
           command.request_object = run_query_request_object
           command.response_representation = Google::Apis::DatastoreV1beta2::RunQueryResponse::Representation

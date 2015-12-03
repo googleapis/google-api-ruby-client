@@ -2172,6 +2172,31 @@ module Google
       end
       
       # 
+      class Installment
+        include Google::Apis::Core::Hashable
+      
+        # The amount the buyer has to pay per month.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount
+      
+        # The number of installments the buyer has to pay.
+        # Corresponds to the JSON property `months`
+        # @return [String]
+        attr_accessor :months
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] unless args[:amount].nil?
+          @months = args[:months] unless args[:months].nil?
+        end
+      end
+      
+      # 
       class Inventory
         include Google::Apis::Core::Hashable
       
@@ -2180,11 +2205,21 @@ module Google
         # @return [String]
         attr_accessor :availability
       
+        # Number and amount of installments to pay for an item. Brazil only.
+        # Corresponds to the JSON property `installment`
+        # @return [Google::Apis::ContentV2::Installment]
+        attr_accessor :installment
+      
         # Identifies what kind of resource this is. Value: the fixed string "content#
         # inventory".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # Loyalty points that users receive after purchasing the item. Japan only.
+        # Corresponds to the JSON property `loyaltyPoints`
+        # @return [Google::Apis::ContentV2::LoyaltyPoints]
+        attr_accessor :loyalty_points
       
         # The price of the product.
         # Corresponds to the JSON property `price`
@@ -2222,7 +2257,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @availability = args[:availability] unless args[:availability].nil?
+          @installment = args[:installment] unless args[:installment].nil?
           @kind = args[:kind] unless args[:kind].nil?
+          @loyalty_points = args[:loyalty_points] unless args[:loyalty_points].nil?
           @price = args[:price] unless args[:price].nil?
           @quantity = args[:quantity] unless args[:quantity].nil?
           @sale_price = args[:sale_price] unless args[:sale_price].nil?
@@ -2361,6 +2398,16 @@ module Google
         # @return [String]
         attr_accessor :availability
       
+        # Number and amount of installments to pay for an item. Brazil only.
+        # Corresponds to the JSON property `installment`
+        # @return [Google::Apis::ContentV2::Installment]
+        attr_accessor :installment
+      
+        # Loyalty points that users receive after purchasing the item. Japan only.
+        # Corresponds to the JSON property `loyaltyPoints`
+        # @return [Google::Apis::ContentV2::LoyaltyPoints]
+        attr_accessor :loyalty_points
+      
         # The price of the product.
         # Corresponds to the JSON property `price`
         # @return [Google::Apis::ContentV2::Price]
@@ -2397,6 +2444,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @availability = args[:availability] unless args[:availability].nil?
+          @installment = args[:installment] unless args[:installment].nil?
+          @loyalty_points = args[:loyalty_points] unless args[:loyalty_points].nil?
           @price = args[:price] unless args[:price].nil?
           @quantity = args[:quantity] unless args[:quantity].nil?
           @sale_price = args[:sale_price] unless args[:sale_price].nil?
@@ -2455,6 +2504,1879 @@ module Google
           @name = args[:name] unless args[:name].nil?
           @points_value = args[:points_value] unless args[:points_value].nil?
           @ratio = args[:ratio] unless args[:ratio].nil?
+        end
+      end
+      
+      # 
+      class Order
+        include Google::Apis::Core::Hashable
+      
+        # Whether the order was acknowledged.
+        # Corresponds to the JSON property `acknowledged`
+        # @return [Boolean]
+        attr_accessor :acknowledged
+        alias_method :acknowledged?, :acknowledged
+      
+        # The details of the customer who placed the order.
+        # Corresponds to the JSON property `customer`
+        # @return [Google::Apis::ContentV2::OrderCustomer]
+        attr_accessor :customer
+      
+        # The details for the delivery.
+        # Corresponds to the JSON property `deliveryDetails`
+        # @return [Google::Apis::ContentV2::OrderDeliveryDetails]
+        attr_accessor :delivery_details
+      
+        # The REST id of the order. Globally unique.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # order".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Line items that are ordered.
+        # Corresponds to the JSON property `lineItems`
+        # @return [Array<Google::Apis::ContentV2::OrderLineItem>]
+        attr_accessor :line_items
+      
+        # 
+        # Corresponds to the JSON property `merchantId`
+        # @return [String]
+        attr_accessor :merchant_id
+      
+        # Merchant-provided id of the order.
+        # Corresponds to the JSON property `merchantOrderId`
+        # @return [String]
+        attr_accessor :merchant_order_id
+      
+        # The net amount for the order. For example, if an order was originally for a
+        # grand total of $100 and a refund was issued for $20, the net amount will be $
+        # 80.
+        # Corresponds to the JSON property `netAmount`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :net_amount
+      
+        # The details of the payment method.
+        # Corresponds to the JSON property `paymentMethod`
+        # @return [Google::Apis::ContentV2::OrderPaymentMethod]
+        attr_accessor :payment_method
+      
+        # The status of the payment.
+        # Corresponds to the JSON property `paymentStatus`
+        # @return [String]
+        attr_accessor :payment_status
+      
+        # The date when the order was placed, in ISO 8601 format.
+        # Corresponds to the JSON property `placedDate`
+        # @return [String]
+        attr_accessor :placed_date
+      
+        # Refunds for the order.
+        # Corresponds to the JSON property `refunds`
+        # @return [Array<Google::Apis::ContentV2::OrderRefund>]
+        attr_accessor :refunds
+      
+        # Shipments of the order.
+        # Corresponds to the JSON property `shipments`
+        # @return [Array<Google::Apis::ContentV2::OrderShipment>]
+        attr_accessor :shipments
+      
+        # The total cost of shipping for all items.
+        # Corresponds to the JSON property `shippingCost`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :shipping_cost
+      
+        # The tax for the total shipping cost.
+        # Corresponds to the JSON property `shippingCostTax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :shipping_cost_tax
+      
+        # The requested shipping option.
+        # Corresponds to the JSON property `shippingOption`
+        # @return [String]
+        attr_accessor :shipping_option
+      
+        # The status of the order.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acknowledged = args[:acknowledged] unless args[:acknowledged].nil?
+          @customer = args[:customer] unless args[:customer].nil?
+          @delivery_details = args[:delivery_details] unless args[:delivery_details].nil?
+          @id = args[:id] unless args[:id].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @line_items = args[:line_items] unless args[:line_items].nil?
+          @merchant_id = args[:merchant_id] unless args[:merchant_id].nil?
+          @merchant_order_id = args[:merchant_order_id] unless args[:merchant_order_id].nil?
+          @net_amount = args[:net_amount] unless args[:net_amount].nil?
+          @payment_method = args[:payment_method] unless args[:payment_method].nil?
+          @payment_status = args[:payment_status] unless args[:payment_status].nil?
+          @placed_date = args[:placed_date] unless args[:placed_date].nil?
+          @refunds = args[:refunds] unless args[:refunds].nil?
+          @shipments = args[:shipments] unless args[:shipments].nil?
+          @shipping_cost = args[:shipping_cost] unless args[:shipping_cost].nil?
+          @shipping_cost_tax = args[:shipping_cost_tax] unless args[:shipping_cost_tax].nil?
+          @shipping_option = args[:shipping_option] unless args[:shipping_option].nil?
+          @status = args[:status] unless args[:status].nil?
+        end
+      end
+      
+      # 
+      class OrderAddress
+        include Google::Apis::Core::Hashable
+      
+        # CLDR country code (e.g. "US").
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # Strings representing the lines of the printed label for mailing the order, for
+        # example:
+        # John Smith
+        # 1600 Amphitheatre Parkway
+        # Mountain View, CA, 94043
+        # United States
+        # Corresponds to the JSON property `fullAddress`
+        # @return [Array<String>]
+        attr_accessor :full_address
+      
+        # Whether the address is a post office box.
+        # Corresponds to the JSON property `isPostOfficeBox`
+        # @return [Boolean]
+        attr_accessor :is_post_office_box
+        alias_method :is_post_office_box?, :is_post_office_box
+      
+        # City, town or commune. May also include dependent localities or sublocalities (
+        # e.g. neighborhoods or suburbs).
+        # Corresponds to the JSON property `locality`
+        # @return [String]
+        attr_accessor :locality
+      
+        # Postal Code or ZIP (e.g. "94043").
+        # Corresponds to the JSON property `postalCode`
+        # @return [String]
+        attr_accessor :postal_code
+      
+        # Name of the recipient.
+        # Corresponds to the JSON property `recipientName`
+        # @return [String]
+        attr_accessor :recipient_name
+      
+        # Top-level administrative subdivision of the country (e.g. "CA").
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Street-level part of the address.
+        # Corresponds to the JSON property `streetAddress`
+        # @return [Array<String>]
+        attr_accessor :street_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country = args[:country] unless args[:country].nil?
+          @full_address = args[:full_address] unless args[:full_address].nil?
+          @is_post_office_box = args[:is_post_office_box] unless args[:is_post_office_box].nil?
+          @locality = args[:locality] unless args[:locality].nil?
+          @postal_code = args[:postal_code] unless args[:postal_code].nil?
+          @recipient_name = args[:recipient_name] unless args[:recipient_name].nil?
+          @region = args[:region] unless args[:region].nil?
+          @street_address = args[:street_address] unless args[:street_address].nil?
+        end
+      end
+      
+      # 
+      class OrderCancellation
+        include Google::Apis::Core::Hashable
+      
+        # The actor that created the cancellation.
+        # Corresponds to the JSON property `actor`
+        # @return [String]
+        attr_accessor :actor
+      
+        # Date on which the cancellation has been created, in ISO 8601 format.
+        # Corresponds to the JSON property `creationDate`
+        # @return [String]
+        attr_accessor :creation_date
+      
+        # The quantity that was canceled.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The reason for the cancellation.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actor = args[:actor] unless args[:actor].nil?
+          @creation_date = args[:creation_date] unless args[:creation_date].nil?
+          @quantity = args[:quantity] unless args[:quantity].nil?
+          @reason = args[:reason] unless args[:reason].nil?
+          @reason_text = args[:reason_text] unless args[:reason_text].nil?
+        end
+      end
+      
+      # 
+      class OrderCustomer
+        include Google::Apis::Core::Hashable
+      
+        # Email address of the customer.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # If set, this indicates the user had a choice to opt in or out of providing
+        # marketing rights to the merchant. If unset, this indicates the user has
+        # already made this choice in a previous purchase, and was thus not shown the
+        # marketing right opt in/out checkbox during the Purchases on Google checkout
+        # flow.
+        # Corresponds to the JSON property `explicitMarketingPreference`
+        # @return [Boolean]
+        attr_accessor :explicit_marketing_preference
+        alias_method :explicit_marketing_preference?, :explicit_marketing_preference
+      
+        # Full name of the customer.
+        # Corresponds to the JSON property `fullName`
+        # @return [String]
+        attr_accessor :full_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] unless args[:email].nil?
+          @explicit_marketing_preference = args[:explicit_marketing_preference] unless args[:explicit_marketing_preference].nil?
+          @full_name = args[:full_name] unless args[:full_name].nil?
+        end
+      end
+      
+      # 
+      class OrderDeliveryDetails
+        include Google::Apis::Core::Hashable
+      
+        # The delivery address
+        # Corresponds to the JSON property `address`
+        # @return [Google::Apis::ContentV2::OrderAddress]
+        attr_accessor :address
+      
+        # The phone number of the person receiving the delivery.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] unless args[:address].nil?
+          @phone_number = args[:phone_number] unless args[:phone_number].nil?
+        end
+      end
+      
+      # 
+      class OrderLineItem
+        include Google::Apis::Core::Hashable
+      
+        # Cancellations of the line item.
+        # Corresponds to the JSON property `cancellations`
+        # @return [Array<Google::Apis::ContentV2::OrderCancellation>]
+        attr_accessor :cancellations
+      
+        # The id of the line item.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Total price for the line item. For example, if two items for $10 are purchased,
+        # the total price will be $20.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :price
+      
+        # Product data from the time of the order placement.
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::ContentV2::OrderLineItemProduct]
+        attr_accessor :product
+      
+        # Number of items canceled.
+        # Corresponds to the JSON property `quantityCanceled`
+        # @return [Fixnum]
+        attr_accessor :quantity_canceled
+      
+        # Number of items delivered.
+        # Corresponds to the JSON property `quantityDelivered`
+        # @return [Fixnum]
+        attr_accessor :quantity_delivered
+      
+        # Number of items ordered.
+        # Corresponds to the JSON property `quantityOrdered`
+        # @return [Fixnum]
+        attr_accessor :quantity_ordered
+      
+        # Number of items pending.
+        # Corresponds to the JSON property `quantityPending`
+        # @return [Fixnum]
+        attr_accessor :quantity_pending
+      
+        # Number of items returned.
+        # Corresponds to the JSON property `quantityReturned`
+        # @return [Fixnum]
+        attr_accessor :quantity_returned
+      
+        # Number of items shipped.
+        # Corresponds to the JSON property `quantityShipped`
+        # @return [Fixnum]
+        attr_accessor :quantity_shipped
+      
+        # Details of the return policy for the line item.
+        # Corresponds to the JSON property `returnInfo`
+        # @return [Google::Apis::ContentV2::OrderLineItemReturnInfo]
+        attr_accessor :return_info
+      
+        # Returns of the line item.
+        # Corresponds to the JSON property `returns`
+        # @return [Array<Google::Apis::ContentV2::OrderReturn>]
+        attr_accessor :returns
+      
+        # Details of the requested shipping for the line item.
+        # Corresponds to the JSON property `shippingDetails`
+        # @return [Google::Apis::ContentV2::OrderLineItemShippingDetails]
+        attr_accessor :shipping_details
+      
+        # Total tax amount for the line item. For example, if two items are purchased,
+        # and each have a cost tax of $2, the total tax amount will be $4.
+        # Corresponds to the JSON property `tax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :tax
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancellations = args[:cancellations] unless args[:cancellations].nil?
+          @id = args[:id] unless args[:id].nil?
+          @price = args[:price] unless args[:price].nil?
+          @product = args[:product] unless args[:product].nil?
+          @quantity_canceled = args[:quantity_canceled] unless args[:quantity_canceled].nil?
+          @quantity_delivered = args[:quantity_delivered] unless args[:quantity_delivered].nil?
+          @quantity_ordered = args[:quantity_ordered] unless args[:quantity_ordered].nil?
+          @quantity_pending = args[:quantity_pending] unless args[:quantity_pending].nil?
+          @quantity_returned = args[:quantity_returned] unless args[:quantity_returned].nil?
+          @quantity_shipped = args[:quantity_shipped] unless args[:quantity_shipped].nil?
+          @return_info = args[:return_info] unless args[:return_info].nil?
+          @returns = args[:returns] unless args[:returns].nil?
+          @shipping_details = args[:shipping_details] unless args[:shipping_details].nil?
+          @tax = args[:tax] unless args[:tax].nil?
+        end
+      end
+      
+      # 
+      class OrderLineItemProduct
+        include Google::Apis::Core::Hashable
+      
+        # Brand of the item.
+        # Corresponds to the JSON property `brand`
+        # @return [String]
+        attr_accessor :brand
+      
+        # The item's channel (online or local).
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
+        # Condition or state of the item.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # The two-letter ISO 639-1 language code for the item.
+        # Corresponds to the JSON property `contentLanguage`
+        # @return [String]
+        attr_accessor :content_language
+      
+        # Global Trade Item Number (GTIN) of the item.
+        # Corresponds to the JSON property `gtin`
+        # @return [String]
+        attr_accessor :gtin
+      
+        # The REST id of the product.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # URL of an image of the item.
+        # Corresponds to the JSON property `imageLink`
+        # @return [String]
+        attr_accessor :image_link
+      
+        # Shared identifier for all variants of the same product.
+        # Corresponds to the JSON property `itemGroupId`
+        # @return [String]
+        attr_accessor :item_group_id
+      
+        # Manufacturer Part Number (MPN) of the item.
+        # Corresponds to the JSON property `mpn`
+        # @return [String]
+        attr_accessor :mpn
+      
+        # An identifier of the item.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # Price of the item.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :price
+      
+        # URL to the cached image shown to the user when order was placed.
+        # Corresponds to the JSON property `shownImage`
+        # @return [String]
+        attr_accessor :shown_image
+      
+        # The CLDR territory code of the target country of the product.
+        # Corresponds to the JSON property `targetCountry`
+        # @return [String]
+        attr_accessor :target_country
+      
+        # The title of the product.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Variant attributes for the item. These are dimensions of the product, such as
+        # color, gender, material, pattern, and size. You can find a comprehensive list
+        # of variant attributes here.
+        # Corresponds to the JSON property `variantAttributes`
+        # @return [Array<Google::Apis::ContentV2::OrderLineItemProductVariantAttribute>]
+        attr_accessor :variant_attributes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @brand = args[:brand] unless args[:brand].nil?
+          @channel = args[:channel] unless args[:channel].nil?
+          @condition = args[:condition] unless args[:condition].nil?
+          @content_language = args[:content_language] unless args[:content_language].nil?
+          @gtin = args[:gtin] unless args[:gtin].nil?
+          @id = args[:id] unless args[:id].nil?
+          @image_link = args[:image_link] unless args[:image_link].nil?
+          @item_group_id = args[:item_group_id] unless args[:item_group_id].nil?
+          @mpn = args[:mpn] unless args[:mpn].nil?
+          @offer_id = args[:offer_id] unless args[:offer_id].nil?
+          @price = args[:price] unless args[:price].nil?
+          @shown_image = args[:shown_image] unless args[:shown_image].nil?
+          @target_country = args[:target_country] unless args[:target_country].nil?
+          @title = args[:title] unless args[:title].nil?
+          @variant_attributes = args[:variant_attributes] unless args[:variant_attributes].nil?
+        end
+      end
+      
+      # 
+      class OrderLineItemProductVariantAttribute
+        include Google::Apis::Core::Hashable
+      
+        # The dimension of the variant.
+        # Corresponds to the JSON property `dimension`
+        # @return [String]
+        attr_accessor :dimension
+      
+        # The value for the dimension.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dimension = args[:dimension] unless args[:dimension].nil?
+          @value = args[:value] unless args[:value].nil?
+        end
+      end
+      
+      # 
+      class OrderLineItemReturnInfo
+        include Google::Apis::Core::Hashable
+      
+        # How many days later the item can be returned.
+        # Corresponds to the JSON property `daysToReturn`
+        # @return [Fixnum]
+        attr_accessor :days_to_return
+      
+        # Whether the item is returnable.
+        # Corresponds to the JSON property `isReturnable`
+        # @return [Boolean]
+        attr_accessor :is_returnable
+        alias_method :is_returnable?, :is_returnable
+      
+        # URL of the item return policy.
+        # Corresponds to the JSON property `policyUrl`
+        # @return [String]
+        attr_accessor :policy_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @days_to_return = args[:days_to_return] unless args[:days_to_return].nil?
+          @is_returnable = args[:is_returnable] unless args[:is_returnable].nil?
+          @policy_url = args[:policy_url] unless args[:policy_url].nil?
+        end
+      end
+      
+      # 
+      class OrderLineItemShippingDetails
+        include Google::Apis::Core::Hashable
+      
+        # The delivery by date, in ISO 8601 format.
+        # Corresponds to the JSON property `deliverByDate`
+        # @return [String]
+        attr_accessor :deliver_by_date
+      
+        # Details of the shipping method.
+        # Corresponds to the JSON property `method`
+        # @return [Google::Apis::ContentV2::OrderLineItemShippingDetailsMethod]
+        attr_accessor :method_prop
+      
+        # The ship by date, in ISO 8601 format.
+        # Corresponds to the JSON property `shipByDate`
+        # @return [String]
+        attr_accessor :ship_by_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deliver_by_date = args[:deliver_by_date] unless args[:deliver_by_date].nil?
+          @method_prop = args[:method_prop] unless args[:method_prop].nil?
+          @ship_by_date = args[:ship_by_date] unless args[:ship_by_date].nil?
+        end
+      end
+      
+      # 
+      class OrderLineItemShippingDetailsMethod
+        include Google::Apis::Core::Hashable
+      
+        # The carrier for the shipping. Optional.
+        # Corresponds to the JSON property `carrier`
+        # @return [String]
+        attr_accessor :carrier
+      
+        # Maximum transit time.
+        # Corresponds to the JSON property `maxDaysInTransit`
+        # @return [Fixnum]
+        attr_accessor :max_days_in_transit
+      
+        # The name of the shipping method.
+        # Corresponds to the JSON property `methodName`
+        # @return [String]
+        attr_accessor :method_name
+      
+        # Minimum transit time.
+        # Corresponds to the JSON property `minDaysInTransit`
+        # @return [Fixnum]
+        attr_accessor :min_days_in_transit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier = args[:carrier] unless args[:carrier].nil?
+          @max_days_in_transit = args[:max_days_in_transit] unless args[:max_days_in_transit].nil?
+          @method_name = args[:method_name] unless args[:method_name].nil?
+          @min_days_in_transit = args[:min_days_in_transit] unless args[:min_days_in_transit].nil?
+        end
+      end
+      
+      # 
+      class OrderPaymentMethod
+        include Google::Apis::Core::Hashable
+      
+        # The billing address.
+        # Corresponds to the JSON property `billingAddress`
+        # @return [Google::Apis::ContentV2::OrderAddress]
+        attr_accessor :billing_address
+      
+        # The card expiration month (January = 1, February = 2 etc.).
+        # Corresponds to the JSON property `expirationMonth`
+        # @return [Fixnum]
+        attr_accessor :expiration_month
+      
+        # The card expiration year (4-digit, e.g. 2015).
+        # Corresponds to the JSON property `expirationYear`
+        # @return [Fixnum]
+        attr_accessor :expiration_year
+      
+        # The last four digits of the card number.
+        # Corresponds to the JSON property `lastFourDigits`
+        # @return [String]
+        attr_accessor :last_four_digits
+      
+        # The billing phone number.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # The type of instrument (VISA, Mastercard, etc).
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_address = args[:billing_address] unless args[:billing_address].nil?
+          @expiration_month = args[:expiration_month] unless args[:expiration_month].nil?
+          @expiration_year = args[:expiration_year] unless args[:expiration_year].nil?
+          @last_four_digits = args[:last_four_digits] unless args[:last_four_digits].nil?
+          @phone_number = args[:phone_number] unless args[:phone_number].nil?
+          @type = args[:type] unless args[:type].nil?
+        end
+      end
+      
+      # 
+      class OrderRefund
+        include Google::Apis::Core::Hashable
+      
+        # The actor that created the refund.
+        # Corresponds to the JSON property `actor`
+        # @return [String]
+        attr_accessor :actor
+      
+        # The amount that is refunded.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount
+      
+        # Date on which the item has been created, in ISO 8601 format.
+        # Corresponds to the JSON property `creationDate`
+        # @return [String]
+        attr_accessor :creation_date
+      
+        # The reason for the refund.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actor = args[:actor] unless args[:actor].nil?
+          @amount = args[:amount] unless args[:amount].nil?
+          @creation_date = args[:creation_date] unless args[:creation_date].nil?
+          @reason = args[:reason] unless args[:reason].nil?
+          @reason_text = args[:reason_text] unless args[:reason_text].nil?
+        end
+      end
+      
+      # 
+      class OrderReturn
+        include Google::Apis::Core::Hashable
+      
+        # The actor that created the refund.
+        # Corresponds to the JSON property `actor`
+        # @return [String]
+        attr_accessor :actor
+      
+        # Date on which the item has been created, in ISO 8601 format.
+        # Corresponds to the JSON property `creationDate`
+        # @return [String]
+        attr_accessor :creation_date
+      
+        # Quantity that is returned.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The reason for the return.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actor = args[:actor] unless args[:actor].nil?
+          @creation_date = args[:creation_date] unless args[:creation_date].nil?
+          @quantity = args[:quantity] unless args[:quantity].nil?
+          @reason = args[:reason] unless args[:reason].nil?
+          @reason_text = args[:reason_text] unless args[:reason_text].nil?
+        end
+      end
+      
+      # 
+      class OrderShipment
+        include Google::Apis::Core::Hashable
+      
+        # The carrier handling the shipment.
+        # Corresponds to the JSON property `carrier`
+        # @return [String]
+        attr_accessor :carrier
+      
+        # Date on which the shipment has been created, in ISO 8601 format.
+        # Corresponds to the JSON property `creationDate`
+        # @return [String]
+        attr_accessor :creation_date
+      
+        # Date on which the shipment has been delivered, in ISO 8601 format. Present
+        # only if status is delievered
+        # Corresponds to the JSON property `deliveryDate`
+        # @return [String]
+        attr_accessor :delivery_date
+      
+        # The id of the shipment.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The line items that are shipped.
+        # Corresponds to the JSON property `lineItems`
+        # @return [Array<Google::Apis::ContentV2::OrderShipmentLineItemShipment>]
+        attr_accessor :line_items
+      
+        # The status of the shipment.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The tracking id for the shipment.
+        # Corresponds to the JSON property `trackingId`
+        # @return [String]
+        attr_accessor :tracking_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier = args[:carrier] unless args[:carrier].nil?
+          @creation_date = args[:creation_date] unless args[:creation_date].nil?
+          @delivery_date = args[:delivery_date] unless args[:delivery_date].nil?
+          @id = args[:id] unless args[:id].nil?
+          @line_items = args[:line_items] unless args[:line_items].nil?
+          @status = args[:status] unless args[:status].nil?
+          @tracking_id = args[:tracking_id] unless args[:tracking_id].nil?
+        end
+      end
+      
+      # 
+      class OrderShipmentLineItemShipment
+        include Google::Apis::Core::Hashable
+      
+        # The id of the line item that is shipped.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The quantity that is shipped.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_item_id = args[:line_item_id] unless args[:line_item_id].nil?
+          @quantity = args[:quantity] unless args[:quantity].nil?
+        end
+      end
+      
+      # 
+      class OrdersAcknowledgeRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the operation. Unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_id = args[:operation_id] unless args[:operation_id].nil?
+        end
+      end
+      
+      # 
+      class OrdersAcknowledgeResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersAcknowledgeResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] unless args[:execution_status].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+        end
+      end
+      
+      # 
+      class OrdersAdvanceTestOrderResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersAdvanceTestOrderResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] unless args[:kind].nil?
+        end
+      end
+      
+      # 
+      class OrdersCancelLineItemRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the line item to cancel.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The ID of the operation. Unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # The quantity to cancel.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The reason for the cancellation.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_item_id = args[:line_item_id] unless args[:line_item_id].nil?
+          @operation_id = args[:operation_id] unless args[:operation_id].nil?
+          @quantity = args[:quantity] unless args[:quantity].nil?
+          @reason = args[:reason] unless args[:reason].nil?
+          @reason_text = args[:reason_text] unless args[:reason_text].nil?
+        end
+      end
+      
+      # 
+      class OrdersCancelLineItemResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersCancelLineItemResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] unless args[:execution_status].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+        end
+      end
+      
+      # 
+      class OrdersCancelRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the operation. Unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # The reason for the cancellation.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_id = args[:operation_id] unless args[:operation_id].nil?
+          @reason = args[:reason] unless args[:reason].nil?
+          @reason_text = args[:reason_text] unless args[:reason_text].nil?
+        end
+      end
+      
+      # 
+      class OrdersCancelResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersCancelResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] unless args[:execution_status].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+        end
+      end
+      
+      # 
+      class OrdersCreateTestOrderRequest
+        include Google::Apis::Core::Hashable
+      
+        # The test order template to use. Specify as an alternative to testOrder as a
+        # shortcut for retrieving a template and then creating an order using that
+        # template.
+        # Corresponds to the JSON property `templateName`
+        # @return [String]
+        attr_accessor :template_name
+      
+        # The test order to create.
+        # Corresponds to the JSON property `testOrder`
+        # @return [Google::Apis::ContentV2::TestOrder]
+        attr_accessor :test_order
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @template_name = args[:template_name] unless args[:template_name].nil?
+          @test_order = args[:test_order] unless args[:test_order].nil?
+        end
+      end
+      
+      # 
+      class OrdersCreateTestOrderResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersCreateTestOrderResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The ID of the newly created test order.
+        # Corresponds to the JSON property `orderId`
+        # @return [String]
+        attr_accessor :order_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] unless args[:kind].nil?
+          @order_id = args[:order_id] unless args[:order_id].nil?
+        end
+      end
+      
+      # 
+      class OrdersCustomBatchRequest
+        include Google::Apis::Core::Hashable
+      
+        # The request entries to be processed in the batch.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::ContentV2::OrdersCustomBatchRequestEntry>]
+        attr_accessor :entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] unless args[:entries].nil?
+        end
+      end
+      
+      # 
+      class OrdersCustomBatchRequestEntry
+        include Google::Apis::Core::Hashable
+      
+        # An entry ID, unique within the batch request.
+        # Corresponds to the JSON property `batchId`
+        # @return [Fixnum]
+        attr_accessor :batch_id
+      
+        # Required for cancel method.
+        # Corresponds to the JSON property `cancel`
+        # @return [Google::Apis::ContentV2::OrdersCustomBatchRequestEntryCancel]
+        attr_accessor :cancel
+      
+        # Required for cancelLineItem method.
+        # Corresponds to the JSON property `cancelLineItem`
+        # @return [Google::Apis::ContentV2::OrdersCustomBatchRequestEntryCancelLineItem]
+        attr_accessor :cancel_line_item
+      
+        # The ID of the managing account.
+        # Corresponds to the JSON property `merchantId`
+        # @return [String]
+        attr_accessor :merchant_id
+      
+        # The merchant order id. Required for updateMerchantOrderId and
+        # getByMerchantOrderId methods.
+        # Corresponds to the JSON property `merchantOrderId`
+        # @return [String]
+        attr_accessor :merchant_order_id
+      
+        # The method to apply.
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # The ID of the operation. Unique across all operations for a given order.
+        # Required for all methods beside get and getByMerchantOrderId.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # The ID of the order. Required for all methods beside getByMerchantOrderId.
+        # Corresponds to the JSON property `orderId`
+        # @return [String]
+        attr_accessor :order_id
+      
+        # Required for refund method.
+        # Corresponds to the JSON property `refund`
+        # @return [Google::Apis::ContentV2::OrdersCustomBatchRequestEntryRefund]
+        attr_accessor :refund
+      
+        # Required for returnLineItem method.
+        # Corresponds to the JSON property `returnLineItem`
+        # @return [Google::Apis::ContentV2::OrdersCustomBatchRequestEntryReturnLineItem]
+        attr_accessor :return_line_item
+      
+        # Required for shipLineItems method.
+        # Corresponds to the JSON property `shipLineItems`
+        # @return [Google::Apis::ContentV2::OrdersCustomBatchRequestEntryShipLineItems]
+        attr_accessor :ship_line_items
+      
+        # Required for updateShipment method.
+        # Corresponds to the JSON property `updateShipment`
+        # @return [Google::Apis::ContentV2::OrdersCustomBatchRequestEntryUpdateShipment]
+        attr_accessor :update_shipment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch_id = args[:batch_id] unless args[:batch_id].nil?
+          @cancel = args[:cancel] unless args[:cancel].nil?
+          @cancel_line_item = args[:cancel_line_item] unless args[:cancel_line_item].nil?
+          @merchant_id = args[:merchant_id] unless args[:merchant_id].nil?
+          @merchant_order_id = args[:merchant_order_id] unless args[:merchant_order_id].nil?
+          @method_prop = args[:method_prop] unless args[:method_prop].nil?
+          @operation_id = args[:operation_id] unless args[:operation_id].nil?
+          @order_id = args[:order_id] unless args[:order_id].nil?
+          @refund = args[:refund] unless args[:refund].nil?
+          @return_line_item = args[:return_line_item] unless args[:return_line_item].nil?
+          @ship_line_items = args[:ship_line_items] unless args[:ship_line_items].nil?
+          @update_shipment = args[:update_shipment] unless args[:update_shipment].nil?
+        end
+      end
+      
+      # 
+      class OrdersCustomBatchRequestEntryCancel
+        include Google::Apis::Core::Hashable
+      
+        # The reason for the cancellation.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] unless args[:reason].nil?
+          @reason_text = args[:reason_text] unless args[:reason_text].nil?
+        end
+      end
+      
+      # 
+      class OrdersCustomBatchRequestEntryCancelLineItem
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the line item to cancel.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The quantity to cancel.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The reason for the cancellation.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_item_id = args[:line_item_id] unless args[:line_item_id].nil?
+          @quantity = args[:quantity] unless args[:quantity].nil?
+          @reason = args[:reason] unless args[:reason].nil?
+          @reason_text = args[:reason_text] unless args[:reason_text].nil?
+        end
+      end
+      
+      # 
+      class OrdersCustomBatchRequestEntryRefund
+        include Google::Apis::Core::Hashable
+      
+        # The amount that is refunded.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount
+      
+        # The reason for the refund.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] unless args[:amount].nil?
+          @reason = args[:reason] unless args[:reason].nil?
+          @reason_text = args[:reason_text] unless args[:reason_text].nil?
+        end
+      end
+      
+      # 
+      class OrdersCustomBatchRequestEntryReturnLineItem
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the line item to return.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The quantity to return.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The reason for the return.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_item_id = args[:line_item_id] unless args[:line_item_id].nil?
+          @quantity = args[:quantity] unless args[:quantity].nil?
+          @reason = args[:reason] unless args[:reason].nil?
+          @reason_text = args[:reason_text] unless args[:reason_text].nil?
+        end
+      end
+      
+      # 
+      class OrdersCustomBatchRequestEntryShipLineItems
+        include Google::Apis::Core::Hashable
+      
+        # The carrier handling the shipment.
+        # Corresponds to the JSON property `carrier`
+        # @return [String]
+        attr_accessor :carrier
+      
+        # Line items to ship.
+        # Corresponds to the JSON property `lineItems`
+        # @return [Array<Google::Apis::ContentV2::OrderShipmentLineItemShipment>]
+        attr_accessor :line_items
+      
+        # The ID of the shipment.
+        # Corresponds to the JSON property `shipmentId`
+        # @return [String]
+        attr_accessor :shipment_id
+      
+        # The tracking id for the shipment.
+        # Corresponds to the JSON property `trackingId`
+        # @return [String]
+        attr_accessor :tracking_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier = args[:carrier] unless args[:carrier].nil?
+          @line_items = args[:line_items] unless args[:line_items].nil?
+          @shipment_id = args[:shipment_id] unless args[:shipment_id].nil?
+          @tracking_id = args[:tracking_id] unless args[:tracking_id].nil?
+        end
+      end
+      
+      # 
+      class OrdersCustomBatchRequestEntryUpdateShipment
+        include Google::Apis::Core::Hashable
+      
+        # The carrier handling the shipment. Not updated if missing.
+        # Corresponds to the JSON property `carrier`
+        # @return [String]
+        attr_accessor :carrier
+      
+        # The ID of the shipment.
+        # Corresponds to the JSON property `shipmentId`
+        # @return [String]
+        attr_accessor :shipment_id
+      
+        # New status for the shipment. Not updated if missing.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The tracking id for the shipment. Not updated if missing.
+        # Corresponds to the JSON property `trackingId`
+        # @return [String]
+        attr_accessor :tracking_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier = args[:carrier] unless args[:carrier].nil?
+          @shipment_id = args[:shipment_id] unless args[:shipment_id].nil?
+          @status = args[:status] unless args[:status].nil?
+          @tracking_id = args[:tracking_id] unless args[:tracking_id].nil?
+        end
+      end
+      
+      # 
+      class OrdersCustomBatchResponse
+        include Google::Apis::Core::Hashable
+      
+        # The result of the execution of the batch requests.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::ContentV2::OrdersCustomBatchResponseEntry>]
+        attr_accessor :entries
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersCustomBatchResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] unless args[:entries].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+        end
+      end
+      
+      # 
+      class OrdersCustomBatchResponseEntry
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the request entry this entry responds to.
+        # Corresponds to the JSON property `batchId`
+        # @return [Fixnum]
+        attr_accessor :batch_id
+      
+        # A list of errors returned by a failed batch entry.
+        # Corresponds to the JSON property `errors`
+        # @return [Google::Apis::ContentV2::Errors]
+        attr_accessor :errors
+      
+        # The status of the execution. Only defined if the method is not get or
+        # getByMerchantOrderId and if the request was successful.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersCustomBatchResponseEntry".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The retrieved order. Only defined if the method is get and if the request was
+        # successful.
+        # Corresponds to the JSON property `order`
+        # @return [Google::Apis::ContentV2::Order]
+        attr_accessor :order
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @batch_id = args[:batch_id] unless args[:batch_id].nil?
+          @errors = args[:errors] unless args[:errors].nil?
+          @execution_status = args[:execution_status] unless args[:execution_status].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @order = args[:order] unless args[:order].nil?
+        end
+      end
+      
+      # 
+      class OrdersGetByMerchantOrderIdResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersGetByMerchantOrderIdResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The requested order.
+        # Corresponds to the JSON property `order`
+        # @return [Google::Apis::ContentV2::Order]
+        attr_accessor :order
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] unless args[:kind].nil?
+          @order = args[:order] unless args[:order].nil?
+        end
+      end
+      
+      # 
+      class OrdersGetTestOrderTemplateResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersGetTestOrderTemplateResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The requested test order template.
+        # Corresponds to the JSON property `template`
+        # @return [Google::Apis::ContentV2::TestOrder]
+        attr_accessor :template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] unless args[:kind].nil?
+          @template = args[:template] unless args[:template].nil?
+        end
+      end
+      
+      # 
+      class OrdersListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The token for the retrieval of the next page of orders.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # 
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ContentV2::Order>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] unless args[:kind].nil?
+          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @resources = args[:resources] unless args[:resources].nil?
+        end
+      end
+      
+      # 
+      class OrdersRefundRequest
+        include Google::Apis::Core::Hashable
+      
+        # The amount that is refunded.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount
+      
+        # The ID of the operation. Unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # The reason for the refund.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] unless args[:amount].nil?
+          @operation_id = args[:operation_id] unless args[:operation_id].nil?
+          @reason = args[:reason] unless args[:reason].nil?
+          @reason_text = args[:reason_text] unless args[:reason_text].nil?
+        end
+      end
+      
+      # 
+      class OrdersRefundResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersRefundResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] unless args[:execution_status].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+        end
+      end
+      
+      # 
+      class OrdersReturnLineItemRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the line item to return.
+        # Corresponds to the JSON property `lineItemId`
+        # @return [String]
+        attr_accessor :line_item_id
+      
+        # The ID of the operation. Unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # The quantity to return.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The reason for the return.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_item_id = args[:line_item_id] unless args[:line_item_id].nil?
+          @operation_id = args[:operation_id] unless args[:operation_id].nil?
+          @quantity = args[:quantity] unless args[:quantity].nil?
+          @reason = args[:reason] unless args[:reason].nil?
+          @reason_text = args[:reason_text] unless args[:reason_text].nil?
+        end
+      end
+      
+      # 
+      class OrdersReturnLineItemResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersReturnLineItemResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] unless args[:execution_status].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+        end
+      end
+      
+      # 
+      class OrdersShipLineItemsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The carrier handling the shipment.
+        # Corresponds to the JSON property `carrier`
+        # @return [String]
+        attr_accessor :carrier
+      
+        # Line items to ship.
+        # Corresponds to the JSON property `lineItems`
+        # @return [Array<Google::Apis::ContentV2::OrderShipmentLineItemShipment>]
+        attr_accessor :line_items
+      
+        # The ID of the operation. Unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # The ID of the shipment.
+        # Corresponds to the JSON property `shipmentId`
+        # @return [String]
+        attr_accessor :shipment_id
+      
+        # The tracking id for the shipment.
+        # Corresponds to the JSON property `trackingId`
+        # @return [String]
+        attr_accessor :tracking_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier = args[:carrier] unless args[:carrier].nil?
+          @line_items = args[:line_items] unless args[:line_items].nil?
+          @operation_id = args[:operation_id] unless args[:operation_id].nil?
+          @shipment_id = args[:shipment_id] unless args[:shipment_id].nil?
+          @tracking_id = args[:tracking_id] unless args[:tracking_id].nil?
+        end
+      end
+      
+      # 
+      class OrdersShipLineItemsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersShipLineItemsResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] unless args[:execution_status].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+        end
+      end
+      
+      # 
+      class OrdersUpdateMerchantOrderIdRequest
+        include Google::Apis::Core::Hashable
+      
+        # The merchant order id to be assigned to the order. Must be unique per merchant.
+        # Corresponds to the JSON property `merchantOrderId`
+        # @return [String]
+        attr_accessor :merchant_order_id
+      
+        # The ID of the operation. Unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @merchant_order_id = args[:merchant_order_id] unless args[:merchant_order_id].nil?
+          @operation_id = args[:operation_id] unless args[:operation_id].nil?
+        end
+      end
+      
+      # 
+      class OrdersUpdateMerchantOrderIdResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersUpdateMerchantOrderIdResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] unless args[:execution_status].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+        end
+      end
+      
+      # 
+      class OrdersUpdateShipmentRequest
+        include Google::Apis::Core::Hashable
+      
+        # The carrier handling the shipment. Not updated if missing.
+        # Corresponds to the JSON property `carrier`
+        # @return [String]
+        attr_accessor :carrier
+      
+        # The ID of the operation. Unique across all operations for a given order.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # The ID of the shipment.
+        # Corresponds to the JSON property `shipmentId`
+        # @return [String]
+        attr_accessor :shipment_id
+      
+        # New status for the shipment. Not updated if missing.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The tracking id for the shipment. Not updated if missing.
+        # Corresponds to the JSON property `trackingId`
+        # @return [String]
+        attr_accessor :tracking_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier = args[:carrier] unless args[:carrier].nil?
+          @operation_id = args[:operation_id] unless args[:operation_id].nil?
+          @shipment_id = args[:shipment_id] unless args[:shipment_id].nil?
+          @status = args[:status] unless args[:status].nil?
+          @tracking_id = args[:tracking_id] unless args[:tracking_id].nil?
+        end
+      end
+      
+      # 
+      class OrdersUpdateShipmentResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # ordersUpdateShipmentResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] unless args[:execution_status].nil?
+          @kind = args[:kind] unless args[:kind].nil?
         end
       end
       
@@ -2681,7 +4603,7 @@ module Google
       
         # Number and amount of installments to pay for an item. Brazil only.
         # Corresponds to the JSON property `installment`
-        # @return [Google::Apis::ContentV2::ProductInstallment]
+        # @return [Google::Apis::ContentV2::Installment]
         attr_accessor :installment
       
         # Whether the item is a merchant-defined bundle. A bundle is a custom grouping
@@ -2767,6 +4689,11 @@ module Google
         # Corresponds to the JSON property `salePriceEffectiveDate`
         # @return [String]
         attr_accessor :sale_price_effective_date
+      
+        # The quantity of the product that is reserved for sell-on-google ads.
+        # Corresponds to the JSON property `sellOnGoogleQuantity`
+        # @return [String]
+        attr_accessor :sell_on_google_quantity
       
         # Shipping rules.
         # Corresponds to the JSON property `shipping`
@@ -2908,6 +4835,7 @@ module Google
           @product_type = args[:product_type] unless args[:product_type].nil?
           @sale_price = args[:sale_price] unless args[:sale_price].nil?
           @sale_price_effective_date = args[:sale_price_effective_date] unless args[:sale_price_effective_date].nil?
+          @sell_on_google_quantity = args[:sell_on_google_quantity] unless args[:sell_on_google_quantity].nil?
           @shipping = args[:shipping] unless args[:shipping].nil?
           @shipping_height = args[:shipping_height] unless args[:shipping_height].nil?
           @shipping_label = args[:shipping_label] unless args[:shipping_label].nil?
@@ -3044,31 +4972,6 @@ module Google
         def update!(**args)
           @destination_name = args[:destination_name] unless args[:destination_name].nil?
           @intention = args[:intention] unless args[:intention].nil?
-        end
-      end
-      
-      # 
-      class ProductInstallment
-        include Google::Apis::Core::Hashable
-      
-        # The amount the buyer has to pay per month.
-        # Corresponds to the JSON property `amount`
-        # @return [Google::Apis::ContentV2::Price]
-        attr_accessor :amount
-      
-        # The number of installments the buyer has to pay.
-        # Corresponds to the JSON property `months`
-        # @return [String]
-        attr_accessor :months
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @amount = args[:amount] unless args[:amount].nil?
-          @months = args[:months] unless args[:months].nil?
         end
       end
       
@@ -3758,6 +5661,282 @@ module Google
           @kind = args[:kind] unless args[:kind].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @resources = args[:resources] unless args[:resources].nil?
+        end
+      end
+      
+      # 
+      class TestOrder
+        include Google::Apis::Core::Hashable
+      
+        # The details of the customer who placed the order.
+        # Corresponds to the JSON property `customer`
+        # @return [Google::Apis::ContentV2::TestOrderCustomer]
+        attr_accessor :customer
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # testOrder".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Line items that are ordered. At least one line item must be provided.
+        # Corresponds to the JSON property `lineItems`
+        # @return [Array<Google::Apis::ContentV2::TestOrderLineItem>]
+        attr_accessor :line_items
+      
+        # The details of the payment method.
+        # Corresponds to the JSON property `paymentMethod`
+        # @return [Google::Apis::ContentV2::TestOrderPaymentMethod]
+        attr_accessor :payment_method
+      
+        # Identifier of one of the predefined delivery addresses for the delivery.
+        # Corresponds to the JSON property `predefinedDeliveryAddress`
+        # @return [String]
+        attr_accessor :predefined_delivery_address
+      
+        # The total cost of shipping for all items.
+        # Corresponds to the JSON property `shippingCost`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :shipping_cost
+      
+        # The tax for the total shipping cost.
+        # Corresponds to the JSON property `shippingCostTax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :shipping_cost_tax
+      
+        # The requested shipping option.
+        # Corresponds to the JSON property `shippingOption`
+        # @return [String]
+        attr_accessor :shipping_option
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] unless args[:customer].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @line_items = args[:line_items] unless args[:line_items].nil?
+          @payment_method = args[:payment_method] unless args[:payment_method].nil?
+          @predefined_delivery_address = args[:predefined_delivery_address] unless args[:predefined_delivery_address].nil?
+          @shipping_cost = args[:shipping_cost] unless args[:shipping_cost].nil?
+          @shipping_cost_tax = args[:shipping_cost_tax] unless args[:shipping_cost_tax].nil?
+          @shipping_option = args[:shipping_option] unless args[:shipping_option].nil?
+        end
+      end
+      
+      # 
+      class TestOrderCustomer
+        include Google::Apis::Core::Hashable
+      
+        # Email address of the customer.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # If set, this indicates the user had a choice to opt in or out of providing
+        # marketing rights to the merchant. If unset, this indicates the user has
+        # already made this choice in a previous purchase, and was thus not shown the
+        # marketing right opt in/out checkbox during the Purchases on Google checkout
+        # flow. Optional.
+        # Corresponds to the JSON property `explicitMarketingPreference`
+        # @return [Boolean]
+        attr_accessor :explicit_marketing_preference
+        alias_method :explicit_marketing_preference?, :explicit_marketing_preference
+      
+        # Full name of the customer.
+        # Corresponds to the JSON property `fullName`
+        # @return [String]
+        attr_accessor :full_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] unless args[:email].nil?
+          @explicit_marketing_preference = args[:explicit_marketing_preference] unless args[:explicit_marketing_preference].nil?
+          @full_name = args[:full_name] unless args[:full_name].nil?
+        end
+      end
+      
+      # 
+      class TestOrderLineItem
+        include Google::Apis::Core::Hashable
+      
+        # Product data from the time of the order placement.
+        # Corresponds to the JSON property `product`
+        # @return [Google::Apis::ContentV2::TestOrderLineItemProduct]
+        attr_accessor :product
+      
+        # Number of items ordered.
+        # Corresponds to the JSON property `quantityOrdered`
+        # @return [Fixnum]
+        attr_accessor :quantity_ordered
+      
+        # Details of the return policy for the line item.
+        # Corresponds to the JSON property `returnInfo`
+        # @return [Google::Apis::ContentV2::OrderLineItemReturnInfo]
+        attr_accessor :return_info
+      
+        # Details of the requested shipping for the line item.
+        # Corresponds to the JSON property `shippingDetails`
+        # @return [Google::Apis::ContentV2::OrderLineItemShippingDetails]
+        attr_accessor :shipping_details
+      
+        # Unit tax for the line item.
+        # Corresponds to the JSON property `unitTax`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :unit_tax
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product = args[:product] unless args[:product].nil?
+          @quantity_ordered = args[:quantity_ordered] unless args[:quantity_ordered].nil?
+          @return_info = args[:return_info] unless args[:return_info].nil?
+          @shipping_details = args[:shipping_details] unless args[:shipping_details].nil?
+          @unit_tax = args[:unit_tax] unless args[:unit_tax].nil?
+        end
+      end
+      
+      # 
+      class TestOrderLineItemProduct
+        include Google::Apis::Core::Hashable
+      
+        # Brand of the item.
+        # Corresponds to the JSON property `brand`
+        # @return [String]
+        attr_accessor :brand
+      
+        # The item's channel.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
+        # Condition or state of the item.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # The two-letter ISO 639-1 language code for the item.
+        # Corresponds to the JSON property `contentLanguage`
+        # @return [String]
+        attr_accessor :content_language
+      
+        # Global Trade Item Number (GTIN) of the item. Optional.
+        # Corresponds to the JSON property `gtin`
+        # @return [String]
+        attr_accessor :gtin
+      
+        # URL of an image of the item.
+        # Corresponds to the JSON property `imageLink`
+        # @return [String]
+        attr_accessor :image_link
+      
+        # Shared identifier for all variants of the same product. Optional.
+        # Corresponds to the JSON property `itemGroupId`
+        # @return [String]
+        attr_accessor :item_group_id
+      
+        # Manufacturer Part Number (MPN) of the item. Optional.
+        # Corresponds to the JSON property `mpn`
+        # @return [String]
+        attr_accessor :mpn
+      
+        # An identifier of the item.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # The price for the product.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :price
+      
+        # The CLDR territory code of the target country of the product.
+        # Corresponds to the JSON property `targetCountry`
+        # @return [String]
+        attr_accessor :target_country
+      
+        # The title of the product.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Variant attributes for the item. Optional.
+        # Corresponds to the JSON property `variantAttributes`
+        # @return [Array<Google::Apis::ContentV2::OrderLineItemProductVariantAttribute>]
+        attr_accessor :variant_attributes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @brand = args[:brand] unless args[:brand].nil?
+          @channel = args[:channel] unless args[:channel].nil?
+          @condition = args[:condition] unless args[:condition].nil?
+          @content_language = args[:content_language] unless args[:content_language].nil?
+          @gtin = args[:gtin] unless args[:gtin].nil?
+          @image_link = args[:image_link] unless args[:image_link].nil?
+          @item_group_id = args[:item_group_id] unless args[:item_group_id].nil?
+          @mpn = args[:mpn] unless args[:mpn].nil?
+          @offer_id = args[:offer_id] unless args[:offer_id].nil?
+          @price = args[:price] unless args[:price].nil?
+          @target_country = args[:target_country] unless args[:target_country].nil?
+          @title = args[:title] unless args[:title].nil?
+          @variant_attributes = args[:variant_attributes] unless args[:variant_attributes].nil?
+        end
+      end
+      
+      # 
+      class TestOrderPaymentMethod
+        include Google::Apis::Core::Hashable
+      
+        # The card expiration month (January = 1, February = 2 etc.).
+        # Corresponds to the JSON property `expirationMonth`
+        # @return [Fixnum]
+        attr_accessor :expiration_month
+      
+        # The card expiration year (4-digit, e.g. 2015).
+        # Corresponds to the JSON property `expirationYear`
+        # @return [Fixnum]
+        attr_accessor :expiration_year
+      
+        # The last four digits of the card number.
+        # Corresponds to the JSON property `lastFourDigits`
+        # @return [String]
+        attr_accessor :last_four_digits
+      
+        # The billing address.
+        # Corresponds to the JSON property `predefinedBillingAddress`
+        # @return [String]
+        attr_accessor :predefined_billing_address
+      
+        # The type of instrument. Note that real orders might have different values than
+        # the four values accepted by createTestOrder.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expiration_month = args[:expiration_month] unless args[:expiration_month].nil?
+          @expiration_year = args[:expiration_year] unless args[:expiration_year].nil?
+          @last_four_digits = args[:last_four_digits] unless args[:last_four_digits].nil?
+          @predefined_billing_address = args[:predefined_billing_address] unless args[:predefined_billing_address].nil?
+          @type = args[:type] unless args[:type].nil?
         end
       end
       

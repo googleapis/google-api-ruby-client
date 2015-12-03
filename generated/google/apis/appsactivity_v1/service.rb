@@ -99,8 +99,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_activities(drive_ancestor_id: nil, drive_file_id: nil, grouping_strategy: nil, page_size: nil, page_token: nil, source: nil, user_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'activities'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'activities', options)
           command.response_representation = Google::Apis::AppsactivityV1::ListActivitiesResponse::Representation
           command.response_class = Google::Apis::AppsactivityV1::ListActivitiesResponse
           command.query['drive.ancestorId'] = drive_ancestor_id unless drive_ancestor_id.nil?

@@ -58,6 +58,30 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class Customer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class CustomerPostalAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class DomainAlias
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class DomainAliases
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Domains
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Domains2
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class Group
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -103,6 +127,34 @@ module Google
       end
       
       class OrgUnits
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Privilege
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Privileges
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Role
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class RolePrivilege
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        end
+      end
+      
+      class RoleAssignment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class RoleAssignments
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Roles
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -322,6 +374,84 @@ module Google
         end
       end
       
+      class Customer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alternate_email, as: 'alternateEmail'
+          property :customer_creation_time, as: 'customerCreationTime', type: DateTime
+      
+          property :customer_domain, as: 'customerDomain'
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :language, as: 'language'
+          property :phone_number, as: 'phoneNumber'
+          property :postal_address, as: 'postalAddress', class: Google::Apis::AdminDirectoryV1::CustomerPostalAddress, decorator: Google::Apis::AdminDirectoryV1::CustomerPostalAddress::Representation
+      
+        end
+      end
+      
+      class CustomerPostalAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address_line1, as: 'addressLine1'
+          property :address_line2, as: 'addressLine2'
+          property :address_line3, as: 'addressLine3'
+          property :contact_name, as: 'contactName'
+          property :country_code, as: 'countryCode'
+          property :locality, as: 'locality'
+          property :organization_name, as: 'organizationName'
+          property :postal_code, as: 'postalCode'
+          property :region, as: 'region'
+        end
+      end
+      
+      class DomainAlias
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_time, as: 'creationTime'
+          property :domain_alias_name, as: 'domainAliasName'
+          property :etag, as: 'etag'
+          property :kind, as: 'kind'
+          property :parent_domain_name, as: 'parentDomainName'
+          property :verified, as: 'verified'
+        end
+      end
+      
+      class DomainAliases
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :domain_aliases, as: 'domainAliases', class: Google::Apis::AdminDirectoryV1::DomainAlias, decorator: Google::Apis::AdminDirectoryV1::DomainAlias::Representation
+      
+          property :etag, as: 'etag'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class Domains
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_time, as: 'creationTime'
+          collection :domain_aliases, as: 'domainAliases', class: Google::Apis::AdminDirectoryV1::DomainAlias, decorator: Google::Apis::AdminDirectoryV1::DomainAlias::Representation
+      
+          property :domain_name, as: 'domainName'
+          property :etag, as: 'etag'
+          property :is_primary, as: 'isPrimary'
+          property :kind, as: 'kind'
+          property :verified, as: 'verified'
+        end
+      end
+      
+      class Domains2
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :domains, as: 'domains', class: Google::Apis::AdminDirectoryV1::Domains, decorator: Google::Apis::AdminDirectoryV1::Domains::Representation
+      
+          property :etag, as: 'etag'
+          property :kind, as: 'kind'
+        end
+      end
+      
       class Group
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -490,6 +620,88 @@ module Google
           property :kind, as: 'kind'
           collection :organization_units, as: 'organizationUnits', class: Google::Apis::AdminDirectoryV1::OrgUnit, decorator: Google::Apis::AdminDirectoryV1::OrgUnit::Representation
       
+        end
+      end
+      
+      class Privilege
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :child_privileges, as: 'childPrivileges', class: Google::Apis::AdminDirectoryV1::Privilege, decorator: Google::Apis::AdminDirectoryV1::Privilege::Representation
+      
+          property :etag, as: 'etag'
+          property :is_ou_scopable, as: 'isOuScopable'
+          property :kind, as: 'kind'
+          property :privilege_name, as: 'privilegeName'
+          property :service_id, as: 'serviceId'
+          property :service_name, as: 'serviceName'
+        end
+      end
+      
+      class Privileges
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::Privilege, decorator: Google::Apis::AdminDirectoryV1::Privilege::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class Role
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :is_super_admin_role, as: 'isSuperAdminRole'
+          property :is_system_role, as: 'isSystemRole'
+          property :kind, as: 'kind'
+          property :role_description, as: 'roleDescription'
+          property :role_id, as: 'roleId'
+          property :role_name, as: 'roleName'
+          collection :role_privileges, as: 'rolePrivileges', class: Google::Apis::AdminDirectoryV1::Role::RolePrivilege, decorator: Google::Apis::AdminDirectoryV1::Role::RolePrivilege::Representation
+      
+        end
+        
+        class RolePrivilege
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :privilege_name, as: 'privilegeName'
+            property :service_id, as: 'serviceId'
+          end
+        end
+      end
+      
+      class RoleAssignment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assigned_to, as: 'assignedTo'
+          property :etag, as: 'etag'
+          property :kind, as: 'kind'
+          property :org_unit_id, as: 'orgUnitId'
+          property :role_assignment_id, as: 'roleAssignmentId'
+          property :role_id, as: 'roleId'
+          property :scope_type, as: 'scopeType'
+        end
+      end
+      
+      class RoleAssignments
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::RoleAssignment, decorator: Google::Apis::AdminDirectoryV1::RoleAssignment::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class Roles
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::Role, decorator: Google::Apis::AdminDirectoryV1::Role::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

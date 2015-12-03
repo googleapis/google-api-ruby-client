@@ -49,9 +49,10 @@ module Google
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy is being specified. Resource is
-        #   usually specified as a path, such as, projects/`project`/zones/`zone`/disks/`
-        #   disk`.
+        #   REQUIRED: The resource for which policy is being specified. `resource` is
+        #   usually specified as a path, such as, `projects/`project`/zones/`zone`/disks/`
+        #   disk``. The format for the path specified in this value is resource specific
+        #   and is specified in the documentation for the respective SetIamPolicy rpc.
         # @param [Google::Apis::PubsubV1beta2::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -71,8 +72,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_topic_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+resource}:setIamPolicy'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::PubsubV1beta2::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::PubsubV1beta2::Policy::Representation
@@ -83,11 +83,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource. Is empty if the policy or the
+        # Gets the access control policy for a `resource`. Is empty if the policy or the
         # resource does not exist.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy is being requested. Resource is
-        #   usually specified as a path, such as, projects/`project`.
+        #   REQUIRED: The resource for which policy is being requested. `resource` is
+        #   usually specified as a path, such as, `projects/`project`/zones/`zone`/disks/`
+        #   disk``. The format for the path specified in this value is resource specific
+        #   and is specified in the documentation for the respective GetIamPolicy rpc.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -106,8 +108,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_iam_policy_project_topic(resource, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+resource}:getIamPolicy'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'v1beta2/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::PubsubV1beta2::Policy::Representation
           command.response_class = Google::Apis::PubsubV1beta2::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -118,8 +119,11 @@ module Google
         
         # Returns permissions that a caller has on the specified resource.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy detail is being requested. Resource is
-        #   usually specified as a path, such as, projects/`project`.
+        #   REQUIRED: The resource for which policy detail is being requested. `resource`
+        #   is usually specified as a path, such as, `projects/`project`/zones/`zone`/
+        #   disks/`disk``. The format for the path specified in this value is resource
+        #   specific and is specified in the documentation for the respective
+        #   TestIamPermissions rpc.
         # @param [Google::Apis::PubsubV1beta2::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -139,8 +143,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_topic_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+resource}:testIamPermissions'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::PubsubV1beta2::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::PubsubV1beta2::TestIamPermissionsResponse::Representation
@@ -177,8 +180,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_topic(name, topic_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+name}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'v1beta2/{+name}', options)
           command.request_representation = Google::Apis::PubsubV1beta2::Topic::Representation
           command.request_object = topic_object
           command.response_representation = Google::Apis::PubsubV1beta2::Topic::Representation
@@ -189,7 +191,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds one or more messages to the topic. Returns NOT_FOUND if the topic does
+        # Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic does
         # not exist. The message payload must not be empty; it must contain either a non-
         # empty data field, or at least one attribute.
         # @param [String] topic
@@ -212,9 +214,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def publish(topic, publish_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+topic}:publish'
-          command =  make_simple_command(:post, path, options)
+        def publish_topic(topic, publish_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta2/{+topic}:publish', options)
           command.request_representation = Google::Apis::PubsubV1beta2::PublishRequest::Representation
           command.request_object = publish_request_object
           command.response_representation = Google::Apis::PubsubV1beta2::PublishResponse::Representation
@@ -246,8 +247,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_topic(topic, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+topic}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'v1beta2/{+topic}', options)
           command.response_representation = Google::Apis::PubsubV1beta2::Topic::Representation
           command.response_class = Google::Apis::PubsubV1beta2::Topic
           command.params['topic'] = topic unless topic.nil?
@@ -262,9 +262,9 @@ module Google
         # @param [Fixnum] page_size
         #   Maximum number of topics to return.
         # @param [String] page_token
-        #   The value returned by the last ListTopicsResponse; indicates that this is a
-        #   continuation of a prior ListTopics call, and that the system should return the
-        #   next page of data.
+        #   The value returned by the last `ListTopicsResponse`; indicates that this is a
+        #   continuation of a prior `ListTopics` call, and that the system should return
+        #   the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -283,8 +283,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_topics(project, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+project}/topics'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'v1beta2/{+project}/topics', options)
           command.response_representation = Google::Apis::PubsubV1beta2::ListTopicsResponse::Representation
           command.response_class = Google::Apis::PubsubV1beta2::ListTopicsResponse
           command.params['project'] = project unless project.nil?
@@ -295,9 +294,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the topic with the given name. Returns NOT_FOUND if the topic does not
-        # exist. After a topic is deleted, a new topic may be created with the same name;
-        # this is an entirely new topic with none of the old configuration or
+        # Deletes the topic with the given name. Returns `NOT_FOUND` if the topic does
+        # not exist. After a topic is deleted, a new topic may be created with the same
+        # name; this is an entirely new topic with none of the old configuration or
         # subscriptions. Existing subscriptions to this topic are not deleted, but their
         # `topic` field is set to `_deleted-topic_`.
         # @param [String] topic
@@ -320,8 +319,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_topic(topic, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+topic}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'v1beta2/{+topic}', options)
           command.response_representation = Google::Apis::PubsubV1beta2::Empty::Representation
           command.response_class = Google::Apis::PubsubV1beta2::Empty
           command.params['topic'] = topic unless topic.nil?
@@ -336,9 +334,9 @@ module Google
         # @param [Fixnum] page_size
         #   Maximum number of subscription names to return.
         # @param [String] page_token
-        #   The value returned by the last ListTopicSubscriptionsResponse; indicates that
-        #   this is a continuation of a prior ListTopicSubscriptions call, and that the
-        #   system should return the next page of data.
+        #   The value returned by the last `ListTopicSubscriptionsResponse`; indicates
+        #   that this is a continuation of a prior `ListTopicSubscriptions` call, and that
+        #   the system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -357,8 +355,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_topic_subscriptions(topic, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+topic}/subscriptions'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'v1beta2/{+topic}/subscriptions', options)
           command.response_representation = Google::Apis::PubsubV1beta2::ListTopicSubscriptionsResponse::Representation
           command.response_class = Google::Apis::PubsubV1beta2::ListTopicSubscriptionsResponse
           command.params['topic'] = topic unless topic.nil?
@@ -372,9 +369,10 @@ module Google
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy is being specified. Resource is
-        #   usually specified as a path, such as, projects/`project`/zones/`zone`/disks/`
-        #   disk`.
+        #   REQUIRED: The resource for which policy is being specified. `resource` is
+        #   usually specified as a path, such as, `projects/`project`/zones/`zone`/disks/`
+        #   disk``. The format for the path specified in this value is resource specific
+        #   and is specified in the documentation for the respective SetIamPolicy rpc.
         # @param [Google::Apis::PubsubV1beta2::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -394,8 +392,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_subscription_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+resource}:setIamPolicy'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'v1beta2/{+resource}:setIamPolicy', options)
           command.request_representation = Google::Apis::PubsubV1beta2::SetIamPolicyRequest::Representation
           command.request_object = set_iam_policy_request_object
           command.response_representation = Google::Apis::PubsubV1beta2::Policy::Representation
@@ -406,11 +403,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a resource. Is empty if the policy or the
+        # Gets the access control policy for a `resource`. Is empty if the policy or the
         # resource does not exist.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy is being requested. Resource is
-        #   usually specified as a path, such as, projects/`project`.
+        #   REQUIRED: The resource for which policy is being requested. `resource` is
+        #   usually specified as a path, such as, `projects/`project`/zones/`zone`/disks/`
+        #   disk``. The format for the path specified in this value is resource specific
+        #   and is specified in the documentation for the respective GetIamPolicy rpc.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -429,8 +428,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_iam_policy_project_subscription(resource, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+resource}:getIamPolicy'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'v1beta2/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::PubsubV1beta2::Policy::Representation
           command.response_class = Google::Apis::PubsubV1beta2::Policy
           command.params['resource'] = resource unless resource.nil?
@@ -441,8 +439,11 @@ module Google
         
         # Returns permissions that a caller has on the specified resource.
         # @param [String] resource
-        #   REQUIRED: The resource for which policy detail is being requested. Resource is
-        #   usually specified as a path, such as, projects/`project`.
+        #   REQUIRED: The resource for which policy detail is being requested. `resource`
+        #   is usually specified as a path, such as, `projects/`project`/zones/`zone`/
+        #   disks/`disk``. The format for the path specified in this value is resource
+        #   specific and is specified in the documentation for the respective
+        #   TestIamPermissions rpc.
         # @param [Google::Apis::PubsubV1beta2::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -462,8 +463,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def test_subscription_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+resource}:testIamPermissions'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'v1beta2/{+resource}:testIamPermissions', options)
           command.request_representation = Google::Apis::PubsubV1beta2::TestIamPermissionsRequest::Representation
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::PubsubV1beta2::TestIamPermissionsResponse::Representation
@@ -475,8 +475,8 @@ module Google
         end
         
         # Creates a subscription to a given topic for a given subscriber. If the
-        # subscription already exists, returns ALREADY_EXISTS. If the corresponding
-        # topic doesn't exist, returns NOT_FOUND. If the name is not provided in the
+        # subscription already exists, returns `ALREADY_EXISTS`. If the corresponding
+        # topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the
         # request, the server will assign a random name for this subscription on the
         # same project as the topic.
         # @param [String] name
@@ -505,8 +505,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_subscription(name, subscription_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+name}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'v1beta2/{+name}', options)
           command.request_representation = Google::Apis::PubsubV1beta2::Subscription::Representation
           command.request_object = subscription_object
           command.response_representation = Google::Apis::PubsubV1beta2::Subscription::Representation
@@ -538,8 +537,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_subscription(subscription, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+subscription}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'v1beta2/{+subscription}', options)
           command.response_representation = Google::Apis::PubsubV1beta2::Subscription::Representation
           command.response_class = Google::Apis::PubsubV1beta2::Subscription
           command.params['subscription'] = subscription unless subscription.nil?
@@ -554,9 +552,9 @@ module Google
         # @param [Fixnum] page_size
         #   Maximum number of subscriptions to return.
         # @param [String] page_token
-        #   The value returned by the last ListSubscriptionsResponse; indicates that this
-        #   is a continuation of a prior ListSubscriptions call, and that the system
-        #   should return the next page of data.
+        #   The value returned by the last `ListSubscriptionsResponse`; indicates that
+        #   this is a continuation of a prior `ListSubscriptions` call, and that the
+        #   system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -575,8 +573,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_subscriptions(project, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+project}/subscriptions'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'v1beta2/{+project}/subscriptions', options)
           command.response_representation = Google::Apis::PubsubV1beta2::ListSubscriptionsResponse::Representation
           command.response_class = Google::Apis::PubsubV1beta2::ListSubscriptionsResponse
           command.params['project'] = project unless project.nil?
@@ -588,10 +585,10 @@ module Google
         end
         
         # Deletes an existing subscription. All pending messages in the subscription are
-        # immediately dropped. Calls to Pull after deletion will return NOT_FOUND. After
-        # a subscription is deleted, a new one may be created with the same name, but
-        # the new one has no association with the old subscription, or its topic unless
-        # the same topic is specified.
+        # immediately dropped. Calls to `Pull` after deletion will return `NOT_FOUND`.
+        # After a subscription is deleted, a new one may be created with the same name,
+        # but the new one has no association with the old subscription, or its topic
+        # unless the same topic is specified.
         # @param [String] subscription
         #   The subscription to delete.
         # @param [String] fields
@@ -612,8 +609,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_subscription(subscription, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+subscription}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'v1beta2/{+subscription}', options)
           command.response_representation = Google::Apis::PubsubV1beta2::Empty::Representation
           command.response_class = Google::Apis::PubsubV1beta2::Empty
           command.params['subscription'] = subscription unless subscription.nil?
@@ -645,9 +641,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def modify_ack_deadline(subscription, modify_ack_deadline_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+subscription}:modifyAckDeadline'
-          command =  make_simple_command(:post, path, options)
+        def modify_subscription_ack_deadline(subscription, modify_ack_deadline_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta2/{+subscription}:modifyAckDeadline', options)
           command.request_representation = Google::Apis::PubsubV1beta2::ModifyAckDeadlineRequest::Representation
           command.request_object = modify_ack_deadline_request_object
           command.response_representation = Google::Apis::PubsubV1beta2::Empty::Representation
@@ -658,8 +653,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Acknowledges the messages associated with the ack tokens in the
-        # AcknowledgeRequest. The Pub/Sub system can remove the relevant messages from
+        # Acknowledges the messages associated with the `ack_ids` in the `
+        # AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages from
         # the subscription. Acknowledging a message whose ack deadline has expired may
         # succeed, but such a message may be redelivered later. Acknowledging a message
         # more than once will not result in an error.
@@ -683,9 +678,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def acknowledge(subscription, acknowledge_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+subscription}:acknowledge'
-          command =  make_simple_command(:post, path, options)
+        def acknowledge_subscription(subscription, acknowledge_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta2/{+subscription}:acknowledge', options)
           command.request_representation = Google::Apis::PubsubV1beta2::AcknowledgeRequest::Representation
           command.request_object = acknowledge_request_object
           command.response_representation = Google::Apis::PubsubV1beta2::Empty::Representation
@@ -697,7 +691,7 @@ module Google
         end
         
         # Pulls messages from the server. Returns an empty list if there are no messages
-        # available in the backlog. The server may return UNAVAILABLE if there are too
+        # available in the backlog. The server may return `UNAVAILABLE` if there are too
         # many concurrent pull requests pending for the given subscription.
         # @param [String] subscription
         #   The subscription from which messages should be pulled.
@@ -719,9 +713,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def pull(subscription, pull_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+subscription}:pull'
-          command =  make_simple_command(:post, path, options)
+        def pull_subscription(subscription, pull_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta2/{+subscription}:pull', options)
           command.request_representation = Google::Apis::PubsubV1beta2::PullRequest::Representation
           command.request_object = pull_request_object
           command.response_representation = Google::Apis::PubsubV1beta2::PullResponse::Representation
@@ -732,11 +725,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies the PushConfig for a specified subscription. This may be used to
-        # change a push subscription to a pull one (signified by an empty PushConfig) or
-        # vice versa, or change the endpoint URL and other attributes of a push
+        # Modifies the `PushConfig` for a specified subscription. This may be used to
+        # change a push subscription to a pull one (signified by an empty `PushConfig`)
+        # or vice versa, or change the endpoint URL and other attributes of a push
         # subscription. Messages will accumulate for delivery continuously through the
-        # call regardless of changes to the PushConfig.
+        # call regardless of changes to the `PushConfig`.
         # @param [String] subscription
         #   The name of the subscription.
         # @param [Google::Apis::PubsubV1beta2::ModifyPushConfigRequest] modify_push_config_request_object
@@ -757,9 +750,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def modify_push_config(subscription, modify_push_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          path = 'v1beta2/{+subscription}:modifyPushConfig'
-          command =  make_simple_command(:post, path, options)
+        def modify_subscription_push_config(subscription, modify_push_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1beta2/{+subscription}:modifyPushConfig', options)
           command.request_representation = Google::Apis::PubsubV1beta2::ModifyPushConfigRequest::Representation
           command.request_object = modify_push_config_request_object
           command.response_representation = Google::Apis::PubsubV1beta2::Empty::Representation

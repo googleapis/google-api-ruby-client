@@ -138,6 +138,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class GeneratedIds
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class ParentList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -492,6 +496,7 @@ module Google
           property :file_extension, as: 'fileExtension'
           property :file_size, as: 'fileSize'
           property :folder_color_rgb, as: 'folderColorRgb'
+          property :full_file_extension, as: 'fullFileExtension'
           property :head_revision_id, as: 'headRevisionId'
           property :icon_link, as: 'iconLink'
           property :id, as: 'id'
@@ -633,6 +638,15 @@ module Google
           property :next_link, as: 'nextLink'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class GeneratedIds
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ids, as: 'ids'
+          property :kind, as: 'kind'
+          property :space, as: 'space'
         end
       end
       

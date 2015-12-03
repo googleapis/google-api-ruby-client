@@ -44,10 +44,9 @@ module Google
         # @return [String]
         attr_accessor :lifecycle_state
       
-        # The user-assigned name of the project. This field is optional and can remain
-        # unset. Allowed characters are: lowercase and uppercase letters, numbers,
-        # hyphen, single-quote, double-quote, space, and exclamation point. Example: My
-        # Project Read-write.
+        # The user-assigned name of the project. It must be 4 to 30 characters. Allowed
+        # characters are: lowercase and uppercase letters, numbers, hyphen, single-quote,
+        # double-quote, space, and exclamation point. Example: My Project Read-write.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -69,6 +68,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # A container to reference an id for any resource type. A 'resource' in Google
+        # Cloud Platform is a generic term for something you (a developer) may want to
+        # interact with through one of our API's. Some examples are an AppEngine app, a
+        # Compute Engine instance, Cloud SQL database, ...
+        # Corresponds to the JSON property `parent`
+        # @return [Google::Apis::CloudresourcemanagerV1beta1::ResourceId]
+        attr_accessor :parent
+      
         def initialize(**args)
            update!(**args)
         end
@@ -81,14 +88,43 @@ module Google
           @name = args[:name] unless args[:name].nil?
           @create_time = args[:create_time] unless args[:create_time].nil?
           @labels = args[:labels] unless args[:labels].nil?
+          @parent = args[:parent] unless args[:parent].nil?
         end
       end
       
-      # A page of the response received from the [ListProjects][google.
-      # cloudresourcemanager.projects.v1beta1.DeveloperProjects.ListProjects] method.
-      # A paginated response where more pages are available has `next_page_token` set.
-      # This token can be used in a subsequent request to retrieve the next request
-      # page.
+      # A container to reference an id for any resource type. A 'resource' in Google
+      # Cloud Platform is a generic term for something you (a developer) may want to
+      # interact with through one of our API's. Some examples are an AppEngine app, a
+      # Compute Engine instance, Cloud SQL database, ...
+      class ResourceId
+        include Google::Apis::Core::Hashable
+      
+        # Required field representing the resource type this id is for. At present, the
+        # only valid type is "organization".
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Required field for the type-specific id. This should correspond to the id used
+        # in the type-specific API's.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] unless args[:type].nil?
+          @id = args[:id] unless args[:id].nil?
+        end
+      end
+      
+      # A page of the response received from the ListProjects method. A paginated
+      # response where more pages are available has `next_page_token` set. This token
+      # can be used in a subsequent request to retrieve the next request page.
       class ListProjectsResponse
         include Google::Apis::Core::Hashable
       
@@ -102,8 +138,7 @@ module Google
         # Feeding this value into a new list request with the `page_token` parameter
         # gives the next page of the results. When `next_page_token` is not filled in,
         # there is no next page and the list returned is the last page in the result set.
-        # Pagination tokens have a limited lifetime. Note: pagination is not yet
-        # supported; the server will not set this field.
+        # Pagination tokens have a limited lifetime.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -149,41 +184,39 @@ module Google
         end
       end
       
-      # # Overview The `Policy` defines an access control policy language. It is used
-      # to define policies that are attached to resources like files, folders, VMs,
-      # etc. # Policy structure A `Policy` consists of a list of bindings. A `Binding`
-      # binds a set of members to a role, where the members include user accounts,
-      # user groups, user domains, and service accounts. A 'role' is a named set of
-      # permissions, defined by IAM. The definition of a role is outside the policy. A
-      # permission check first determines the roles that include the specified
-      # permission, and then determines if the principal specified is a member of a
-      # binding to at least one of these roles. The membership check is recursive when
-      # a group is bound to a role. Policy examples: ``` ` "bindings": [ ` "role": "
-      # roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
-      # "domain:google.com", "serviceAccount:frontend@example.iam.gserviceaccounts.
-      # com"] `, ` "role": "roles/viewer", "members": ["user:sean@example.com"] ` ] ` `
-      # ``
+      # Defines an Identity and Access Management (IAM) policy. It is used to specify
+      # access control policies for Cloud Platform resources. A `Policy` consists of a
+      # list of `bindings`. A `Binding` binds a list of `members` to a `role`, where
+      # the members can be user accounts, Google groups, Google domains, and service
+      # accounts. A `role` is a named list of permissions defined by IAM. **Example** `
+      # "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com", "
+      # group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
+      # appspot.gserviceaccount.com"] `, ` "role": "roles/viewer", "members": ["user:
+      # sean@example.com"] ` ] ` For a description of IAM and its features, see the [
+      # IAM developer's guide](https://cloud.google.com/iam).
       class Policy
         include Google::Apis::Core::Hashable
       
-        # The policy language version. The version of the policy is represented by the
-        # etag. The default version is 0.
+        # Version of the `Policy`. The default version is 0. 0 =
+        # resourcemanager_projects only support legacy roles. 1 = supports non-legacy
+        # roles 2 = supports AuditConfig
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
       
-        # It is an error to specify multiple bindings for the same role. It is an error
-        # to specify a binding with no members.
+        # Associates a list of `members` to a `role`. Multiple `bindings` must not be
+        # specified for the same `role`. `bindings` with no members will result in an
+        # error.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::CloudresourcemanagerV1beta1::Binding>]
         attr_accessor :bindings
       
-        # 
-        # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1beta1::Rule>]
-        attr_accessor :rules
-      
-        # Can be used to perform a read-modify-write.
+        # The etag is used for optimistic concurrency control as a way to help prevent
+        # simultaneous updates of a policy from overwriting each other. It is strongly
+        # suggested that systems make use of the etag in the read-modify-write cycle to
+        # perform policy updates in order to avoid race conditions. If no etag is
+        # provided in the call to SetIamPolicy, then the existing policy is overwritten
+        # blindly.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -196,29 +229,32 @@ module Google
         def update!(**args)
           @version = args[:version] unless args[:version].nil?
           @bindings = args[:bindings] unless args[:bindings].nil?
-          @rules = args[:rules] unless args[:rules].nil?
           @etag = args[:etag] unless args[:etag].nil?
         end
       end
       
-      # Associates members with roles. See below for allowed formats of members.
+      # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
       
-        # The name of the role to which the members should be bound. Examples: "roles/
-        # viewer", "roles/editor", "roles/owner". Required
+        # Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`
+        # , or `roles/owner`. Required
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
       
-        # Format of member entries: 1. allUsers Matches any requesting principal (users,
-        # service accounts or anonymous). 2. allAuthenticatedUsers Matches any
-        # requesting authenticated principal (users or service accounts). 3. user:`
-        # emailid` A google user account using an email address. For example alice@gmail.
-        # com, joe@example.com 4. serviceAccount:`emailid` An service account email. 5.
-        # group:`emailid` A google group with an email address. For example auth-ti-
-        # cloud@google.com 6. domain:`domain` A Google Apps domain name. For example
-        # google.com, example.com
+        # Specifies the identities requesting access for a Cloud Platform resource. `
+        # members` can have the following formats: * `allUsers`: A special identifier
+        # that represents anyone who is on the internet; with or without a Google
+        # account. * `allAuthenticatedUsers`: A special identifier that represents
+        # anyone who is authenticated with a Google account or a service account. * `
+        # user:`emailid``: An email address that represents a specific Google account.
+        # For example, `alice@gmail.com` or `joe@example.com`. * `serviceAccount:`
+        # emailid``: An email address that represents a service account. For example, `
+        # my-other-app@appspot.gserviceaccount.com`. * `group:`emailid``: An email
+        # address that represents a Google group. For example, `admins@example.com`. * `
+        # domain:`domain``: A Google Apps domain name that represents all the users of
+        # that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
         # @return [Array<String>]
         attr_accessor :members
@@ -234,227 +270,20 @@ module Google
         end
       end
       
-      # A rule to be applied in a Policy.
-      class Rule
-        include Google::Apis::Core::Hashable
-      
-        # Human-readable description of the rule.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value
-        # of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.
-        # *') matches all verbs.
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        # Required
-        # Corresponds to the JSON property `action`
-        # @return [String]
-        attr_accessor :action
-      
-        # The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in this set of entries.
-        # Corresponds to the JSON property `in`
-        # @return [Array<String>]
-        attr_accessor :in
-      
-        # The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is not in this set of
-        # entries. The formation for in and not_in entries is the same as members in a
-        # Binding above.
-        # Corresponds to the JSON property `notIn`
-        # @return [Array<String>]
-        attr_accessor :not_in
-      
-        # Additional restrictions that must be met
-        # Corresponds to the JSON property `conditions`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1beta1::Condition>]
-        attr_accessor :conditions
-      
-        # The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
-        # that match the LOG action.
-        # Corresponds to the JSON property `logConfig`
-        # @return [Array<Google::Apis::CloudresourcemanagerV1beta1::LogConfig>]
-        attr_accessor :log_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] unless args[:description].nil?
-          @permissions = args[:permissions] unless args[:permissions].nil?
-          @action = args[:action] unless args[:action].nil?
-          @in = args[:in] unless args[:in].nil?
-          @not_in = args[:not_in] unless args[:not_in].nil?
-          @conditions = args[:conditions] unless args[:conditions].nil?
-          @log_config = args[:log_config] unless args[:log_config].nil?
-        end
-      end
-      
-      # A condition to be met.
-      class Condition
-        include Google::Apis::Core::Hashable
-      
-        # Trusted attributes supplied by the IAM system.
-        # Corresponds to the JSON property `iam`
-        # @return [String]
-        attr_accessor :iam
-      
-        # Trusted attributes supplied by any service that owns resources and uses the
-        # IAM system for access control.
-        # Corresponds to the JSON property `sys`
-        # @return [String]
-        attr_accessor :sys
-      
-        # Trusted attributes discharged by the service.
-        # Corresponds to the JSON property `svc`
-        # @return [String]
-        attr_accessor :svc
-      
-        # An operator to apply the subject with.
-        # Corresponds to the JSON property `op`
-        # @return [String]
-        attr_accessor :op
-      
-        # The object of the condition. Exactly one of these must be set.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        # The objects of the condition. This is mutually exclusive with 'value'.
-        # Corresponds to the JSON property `values`
-        # @return [Array<String>]
-        attr_accessor :values
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @iam = args[:iam] unless args[:iam].nil?
-          @sys = args[:sys] unless args[:sys].nil?
-          @svc = args[:svc] unless args[:svc].nil?
-          @op = args[:op] unless args[:op].nil?
-          @value = args[:value] unless args[:value].nil?
-          @values = args[:values] unless args[:values].nil?
-        end
-      end
-      
-      # Specifies what kind of log the caller must write Increment a streamz counter
-      # with the specified metric and field names. Metric names should start with a '/'
-      # , generally be lowercase-only, and end in "_count". Field names should not
-      # contain an initial slash. The actual exported metric names will have "/iam/
-      # policy" prepended. Field names correspond to IAM request parameters and field
-      # values are their respective values. At present only "iam_principal",
-      # corresponding to IAMContext.principal, is supported. Examples: counter `
-      # metric: "/debug_access_count" field: "iam_principal" ` ==> increment counter /
-      # iam/policy/backend_debug_access_count `iam_principal=[value of IAMContext.
-      # principal]` At this time we do not support: * multiple field names (though
-      # this may be supported in the future) * decrementing the counter * incrementing
-      # it by anything other than 1
-      class LogConfig
-        include Google::Apis::Core::Hashable
-      
-        # Options for counters
-        # Corresponds to the JSON property `counter`
-        # @return [Google::Apis::CloudresourcemanagerV1beta1::CounterOptions]
-        attr_accessor :counter
-      
-        # Write a Data Access (Gin) log
-        # Corresponds to the JSON property `dataAccess`
-        # @return [Google::Apis::CloudresourcemanagerV1beta1::DataAccessOptions]
-        attr_accessor :data_access
-      
-        # Write a Cloud Audit log
-        # Corresponds to the JSON property `cloudAudit`
-        # @return [Google::Apis::CloudresourcemanagerV1beta1::CloudAuditOptions]
-        attr_accessor :cloud_audit
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @counter = args[:counter] unless args[:counter].nil?
-          @data_access = args[:data_access] unless args[:data_access].nil?
-          @cloud_audit = args[:cloud_audit] unless args[:cloud_audit].nil?
-        end
-      end
-      
-      # Options for counters
-      class CounterOptions
-        include Google::Apis::Core::Hashable
-      
-        # The metric to update.
-        # Corresponds to the JSON property `metric`
-        # @return [String]
-        attr_accessor :metric
-      
-        # The field value to attribute.
-        # Corresponds to the JSON property `field`
-        # @return [String]
-        attr_accessor :field
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @metric = args[:metric] unless args[:metric].nil?
-          @field = args[:field] unless args[:field].nil?
-        end
-      end
-      
-      # Write a Data Access (Gin) log
-      class DataAccessOptions
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
-      # Write a Cloud Audit log
-      class CloudAuditOptions
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
       
-        # # Overview The `Policy` defines an access control policy language. It is used
-        # to define policies that are attached to resources like files, folders, VMs,
-        # etc. # Policy structure A `Policy` consists of a list of bindings. A `Binding`
-        # binds a set of members to a role, where the members include user accounts,
-        # user groups, user domains, and service accounts. A 'role' is a named set of
-        # permissions, defined by IAM. The definition of a role is outside the policy. A
-        # permission check first determines the roles that include the specified
-        # permission, and then determines if the principal specified is a member of a
-        # binding to at least one of these roles. The membership check is recursive when
-        # a group is bound to a role. Policy examples: ``` ` "bindings": [ ` "role": "
-        # roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
-        # "domain:google.com", "serviceAccount:frontend@example.iam.gserviceaccounts.
-        # com"] `, ` "role": "roles/viewer", "members": ["user:sean@example.com"] ` ] ` `
-        # ``
+        # Defines an Identity and Access Management (IAM) policy. It is used to specify
+        # access control policies for Cloud Platform resources. A `Policy` consists of a
+        # list of `bindings`. A `Binding` binds a list of `members` to a `role`, where
+        # the members can be user accounts, Google groups, Google domains, and service
+        # accounts. A `role` is a named list of permissions defined by IAM. **Example** `
+        # "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com", "
+        # group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
+        # appspot.gserviceaccount.com"] `, ` "role": "roles/viewer", "members": ["user:
+        # sean@example.com"] ` ] ` For a description of IAM and its features, see the [
+        # IAM developer's guide](https://cloud.google.com/iam).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::CloudresourcemanagerV1beta1::Policy]
         attr_accessor :policy
@@ -473,7 +302,7 @@ module Google
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
       
-        # The set of permissions to check for the 'resource'. Permissions with wildcards
+        # The set of permissions to check for the `resource`. Permissions with wildcards
         # (such as '*' or 'storage.*') are not allowed.
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
@@ -505,6 +334,101 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] unless args[:permissions].nil?
+        end
+      end
+      
+      # The response returned from the ListOrganizations method.
+      class ListOrganizationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Organizations that matched the list query, possibly paginated.
+        # Corresponds to the JSON property `organizations`
+        # @return [Array<Google::Apis::CloudresourcemanagerV1beta1::Organization>]
+        attr_accessor :organizations
+      
+        # A pagination token to be used to retrieve the next page of results. If the
+        # result is too large to fit within the page size specified in the request, this
+        # field will be set with a token that can be used to fetch the next page of
+        # results. If this field is empty, it indicates that this response contains the
+        # last page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @organizations = args[:organizations] unless args[:organizations].nil?
+          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+        end
+      end
+      
+      # The root node in the resource hierarchy to which a particular entity's (e.g.,
+      # company) resources belong.
+      class Organization
+        include Google::Apis::Core::Hashable
+      
+        # An immutable id for the Organization that is assigned on creation. This should
+        # be omitted when creating a new Organization. This field is read-only.
+        # Corresponds to the JSON property `organizationId`
+        # @return [String]
+        attr_accessor :organization_id
+      
+        # A friendly string to be used to refer to the Organization in the UI. This
+        # field is required.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The entity that owns an Organization. The lifetime of the Organization and all
+        # of its descendants are bound to the OrganizationOwner. If the
+        # OrganizationOwner is deleted, the Organization and all its descendants will be
+        # deleted.
+        # Corresponds to the JSON property `owner`
+        # @return [Google::Apis::CloudresourcemanagerV1beta1::OrganizationOwner]
+        attr_accessor :owner
+      
+        # Timestamp when the Organization was created. Assigned by the server. @
+        # OutputOnly
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @organization_id = args[:organization_id] unless args[:organization_id].nil?
+          @display_name = args[:display_name] unless args[:display_name].nil?
+          @owner = args[:owner] unless args[:owner].nil?
+          @creation_time = args[:creation_time] unless args[:creation_time].nil?
+        end
+      end
+      
+      # The entity that owns an Organization. The lifetime of the Organization and all
+      # of its descendants are bound to the OrganizationOwner. If the
+      # OrganizationOwner is deleted, the Organization and all its descendants will be
+      # deleted.
+      class OrganizationOwner
+        include Google::Apis::Core::Hashable
+      
+        # The Google for Work customer id used in the Directory API.
+        # Corresponds to the JSON property `directoryCustomerId`
+        # @return [String]
+        attr_accessor :directory_customer_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @directory_customer_id = args[:directory_customer_id] unless args[:directory_customer_id].nil?
         end
       end
     end

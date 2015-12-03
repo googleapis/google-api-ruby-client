@@ -286,7 +286,10 @@ module Google
       class Type
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :insert_time, as: 'insertTime'
           property :name, as: 'name'
+          property :self_link, as: 'selfLink'
         end
       end
       

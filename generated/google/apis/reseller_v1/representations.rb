@@ -98,6 +98,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alternate_email, as: 'alternateEmail'
           property :customer_domain, as: 'customerDomain'
+          property :customer_domain_verified, as: 'customerDomainVerified'
           property :customer_id, as: 'customerId'
           property :kind, as: 'kind'
           property :phone_number, as: 'phoneNumber'

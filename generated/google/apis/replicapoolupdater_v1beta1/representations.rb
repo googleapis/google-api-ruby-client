@@ -58,6 +58,10 @@ module Google
         end
       end
       
+      class OperationList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class RollingUpdate
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -178,6 +182,18 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class OperationList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ReplicapoolupdaterV1beta1::Operation, decorator: Google::Apis::ReplicapoolupdaterV1beta1::Operation::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
         end
       end
       

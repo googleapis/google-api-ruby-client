@@ -50,6 +50,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class ExplainQueryStage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class ExplainQueryStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class ExternalDataConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -139,6 +147,10 @@ module Google
       end
       
       class QueryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class Streamingbuffer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -287,6 +299,34 @@ module Google
         end
       end
       
+      class ExplainQueryStage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compute_ratio_avg, as: 'computeRatioAvg'
+          property :compute_ratio_max, as: 'computeRatioMax'
+          property :id, as: 'id'
+          property :name, as: 'name'
+          property :read_ratio_avg, as: 'readRatioAvg'
+          property :read_ratio_max, as: 'readRatioMax'
+          property :records_read, as: 'recordsRead'
+          property :records_written, as: 'recordsWritten'
+          collection :steps, as: 'steps', class: Google::Apis::BigqueryV2::ExplainQueryStep, decorator: Google::Apis::BigqueryV2::ExplainQueryStep::Representation
+      
+          property :wait_ratio_avg, as: 'waitRatioAvg'
+          property :wait_ratio_max, as: 'waitRatioMax'
+          property :write_ratio_avg, as: 'writeRatioAvg'
+          property :write_ratio_max, as: 'writeRatioMax'
+        end
+      end
+      
+      class ExplainQueryStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :substeps, as: 'substeps'
+        end
+      end
+      
       class ExternalDataConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -306,6 +346,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cache_hit, as: 'cacheHit'
+          collection :errors, as: 'errors', class: Google::Apis::BigqueryV2::ErrorProto, decorator: Google::Apis::BigqueryV2::ErrorProto::Representation
+      
           property :etag, as: 'etag'
           property :job_complete, as: 'jobComplete'
           property :job_reference, as: 'jobReference', class: Google::Apis::BigqueryV2::JobReference, decorator: Google::Apis::BigqueryV2::JobReference::Representation
@@ -510,7 +552,11 @@ module Google
       class JobStatistics2
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_tier, as: 'billingTier'
           property :cache_hit, as: 'cacheHit'
+          collection :query_plan, as: 'queryPlan', class: Google::Apis::BigqueryV2::ExplainQueryStage, decorator: Google::Apis::BigqueryV2::ExplainQueryStage::Representation
+      
+          property :total_bytes_billed, as: 'totalBytesBilled'
           property :total_bytes_processed, as: 'totalBytesProcessed'
         end
       end
@@ -593,6 +639,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cache_hit, as: 'cacheHit'
+          collection :errors, as: 'errors', class: Google::Apis::BigqueryV2::ErrorProto, decorator: Google::Apis::BigqueryV2::ErrorProto::Representation
+      
           property :job_complete, as: 'jobComplete'
           property :job_reference, as: 'jobReference', class: Google::Apis::BigqueryV2::JobReference, decorator: Google::Apis::BigqueryV2::JobReference::Representation
       
@@ -604,6 +652,15 @@ module Google
       
           property :total_bytes_processed, as: 'totalBytesProcessed'
           property :total_rows, as: 'totalRows'
+        end
+      end
+      
+      class Streamingbuffer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :estimated_bytes, as: 'estimatedBytes'
+          property :estimated_rows, as: 'estimatedRows'
+          property :oldest_entry_time, as: 'oldestEntryTime'
         end
       end
       
@@ -626,6 +683,8 @@ module Google
           property :schema, as: 'schema', class: Google::Apis::BigqueryV2::TableSchema, decorator: Google::Apis::BigqueryV2::TableSchema::Representation
       
           property :self_link, as: 'selfLink'
+          property :streaming_buffer, as: 'streamingBuffer', class: Google::Apis::BigqueryV2::Streamingbuffer, decorator: Google::Apis::BigqueryV2::Streamingbuffer::Representation
+      
           property :table_reference, as: 'tableReference', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
           property :type, as: 'type'
@@ -649,6 +708,7 @@ module Google
           collection :rows, as: 'rows', class: Google::Apis::BigqueryV2::InsertAllTableDataRequest::Row, decorator: Google::Apis::BigqueryV2::InsertAllTableDataRequest::Row::Representation
       
           property :skip_invalid_rows, as: 'skipInvalidRows'
+          property :template_suffix, as: 'templateSuffix'
         end
         
         class Row
@@ -763,6 +823,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :query, as: 'query'
+          collection :user_defined_function_resources, as: 'userDefinedFunctionResources', class: Google::Apis::BigqueryV2::UserDefinedFunctionResource, decorator: Google::Apis::BigqueryV2::UserDefinedFunctionResource::Representation
+      
         end
       end
     end

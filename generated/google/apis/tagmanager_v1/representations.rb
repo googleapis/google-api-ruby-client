@@ -58,6 +58,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class Folder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class FolderEntities
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class ListAccountUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -74,11 +82,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class ListMacrosResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
-      class ListRulesResponse
+      class ListFoldersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -110,7 +114,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class SetupTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class Tag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class TeardownTag
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -187,6 +199,8 @@ module Google
           property :container_version_id, as: 'containerVersionId'
           property :deleted, as: 'deleted'
           property :fingerprint, as: 'fingerprint'
+          collection :folder, as: 'folder', class: Google::Apis::TagmanagerV1::Folder, decorator: Google::Apis::TagmanagerV1::Folder::Representation
+      
           collection :macro, as: 'macro', class: Google::Apis::TagmanagerV1::Macro, decorator: Google::Apis::TagmanagerV1::Macro::Representation
       
           property :name, as: 'name'
@@ -236,6 +250,29 @@ module Google
         end
       end
       
+      class Folder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :container_id, as: 'containerId'
+          property :fingerprint, as: 'fingerprint'
+          property :folder_id, as: 'folderId'
+          property :name, as: 'name'
+        end
+      end
+      
+      class FolderEntities
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tag, as: 'tag', class: Google::Apis::TagmanagerV1::Tag, decorator: Google::Apis::TagmanagerV1::Tag::Representation
+      
+          collection :trigger, as: 'trigger', class: Google::Apis::TagmanagerV1::Trigger, decorator: Google::Apis::TagmanagerV1::Trigger::Representation
+      
+          collection :variable, as: 'variable', class: Google::Apis::TagmanagerV1::Variable, decorator: Google::Apis::TagmanagerV1::Variable::Representation
+      
+        end
+      end
+      
       class ListAccountUsersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -270,18 +307,10 @@ module Google
         end
       end
       
-      class ListMacrosResponse
+      class ListFoldersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :macros, as: 'macros', class: Google::Apis::TagmanagerV1::Macro, decorator: Google::Apis::TagmanagerV1::Macro::Representation
-      
-        end
-      end
-      
-      class ListRulesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :rules, as: 'rules', class: Google::Apis::TagmanagerV1::Rule, decorator: Google::Apis::TagmanagerV1::Rule::Representation
+          collection :folders, as: 'folders', class: Google::Apis::TagmanagerV1::Folder, decorator: Google::Apis::TagmanagerV1::Folder::Representation
       
         end
       end
@@ -323,6 +352,7 @@ module Google
           property :notes, as: 'notes'
           collection :parameter, as: 'parameter', class: Google::Apis::TagmanagerV1::Parameter, decorator: Google::Apis::TagmanagerV1::Parameter::Representation
       
+          property :parent_folder_id, as: 'parentFolderId'
           property :schedule_end_ms, as: 'scheduleEndMs'
           property :schedule_start_ms, as: 'scheduleStartMs'
           property :type, as: 'type'
@@ -365,6 +395,14 @@ module Google
         end
       end
       
+      class SetupTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stop_on_setup_failure, as: 'stopOnSetupFailure'
+          property :tag_name, as: 'tagName'
+        end
+      end
+      
       class Tag
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -380,12 +418,26 @@ module Google
           property :notes, as: 'notes'
           collection :parameter, as: 'parameter', class: Google::Apis::TagmanagerV1::Parameter, decorator: Google::Apis::TagmanagerV1::Parameter::Representation
       
+          property :parent_folder_id, as: 'parentFolderId'
           property :priority, as: 'priority', class: Google::Apis::TagmanagerV1::Parameter, decorator: Google::Apis::TagmanagerV1::Parameter::Representation
       
           property :schedule_end_ms, as: 'scheduleEndMs'
           property :schedule_start_ms, as: 'scheduleStartMs'
+          collection :setup_tag, as: 'setupTag', class: Google::Apis::TagmanagerV1::SetupTag, decorator: Google::Apis::TagmanagerV1::SetupTag::Representation
+      
+          property :tag_firing_option, as: 'tagFiringOption'
           property :tag_id, as: 'tagId'
+          collection :teardown_tag, as: 'teardownTag', class: Google::Apis::TagmanagerV1::TeardownTag, decorator: Google::Apis::TagmanagerV1::TeardownTag::Representation
+      
           property :type, as: 'type'
+        end
+      end
+      
+      class TeardownTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stop_teardown_on_failure, as: 'stopTeardownOnFailure'
+          property :tag_name, as: 'tagName'
         end
       end
       
@@ -412,6 +464,7 @@ module Google
           property :limit, as: 'limit', class: Google::Apis::TagmanagerV1::Parameter, decorator: Google::Apis::TagmanagerV1::Parameter::Representation
       
           property :name, as: 'name'
+          property :parent_folder_id, as: 'parentFolderId'
           property :trigger_id, as: 'triggerId'
           property :type, as: 'type'
           property :unique_trigger_id, as: 'uniqueTriggerId', class: Google::Apis::TagmanagerV1::Parameter, decorator: Google::Apis::TagmanagerV1::Parameter::Representation
@@ -450,6 +503,7 @@ module Google
           property :notes, as: 'notes'
           collection :parameter, as: 'parameter', class: Google::Apis::TagmanagerV1::Parameter, decorator: Google::Apis::TagmanagerV1::Parameter::Representation
       
+          property :parent_folder_id, as: 'parentFolderId'
           property :schedule_end_ms, as: 'scheduleEndMs'
           property :schedule_start_ms, as: 'scheduleStartMs'
           property :type, as: 'type'

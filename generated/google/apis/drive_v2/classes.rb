@@ -33,10 +33,10 @@ module Google
         attr_accessor :additional_role_info
       
         # The domain sharing policy for the current user. Possible values are:
-        # - ALLOWED
-        # - ALLOWED_WITH_WARNING
-        # - INCOMING_ONLY
-        # - DISALLOWED
+        # - allowed
+        # - allowedWithWarning
+        # - incomingOnly
+        # - disallowed
         # Corresponds to the JSON property `domainSharingPolicy`
         # @return [String]
         attr_accessor :domain_sharing_policy
@@ -1268,15 +1268,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :export_links
       
-        # The file extension used when downloading this file. This field is read only.
-        # To set the extension, include it in the title when creating the file. This is
-        # only populated for files with content stored in Drive.
+        # The final component of fullFileExtension with trailing text that does not
+        # appear to be part of the extension removed. This field is only populated for
+        # files with content stored in Drive; it is not populated for Google Docs or
+        # shortcut files.
         # Corresponds to the JSON property `fileExtension`
         # @return [String]
         attr_accessor :file_extension
       
-        # The size of the file in bytes. This is only populated for files with content
-        # stored in Drive.
+        # The size of the file in bytes. This field is only populated for files with
+        # content stored in Drive; it is not populated for Google Docs or shortcut files.
         # Corresponds to the JSON property `fileSize`
         # @return [String]
         attr_accessor :file_size
@@ -1289,8 +1290,18 @@ module Google
         # @return [String]
         attr_accessor :folder_color_rgb
       
-        # The ID of the file's head revision. This will only be populated for files with
-        # content stored in Drive.
+        # The full file extension; extracted from the title. May contain multiple
+        # concatenated extensions, such as "tar.gz". Removing an extension from the
+        # title does not clear this field; however, changing the extension on the title
+        # does update this field. This field is only populated for files with content
+        # stored in Drive; it is not populated for Google Docs or shortcut files.
+        # Corresponds to the JSON property `fullFileExtension`
+        # @return [String]
+        attr_accessor :full_file_extension
+      
+        # The ID of the file's head revision. This field is only populated for files
+        # with content stored in Drive; it is not populated for Google Docs or shortcut
+        # files.
         # Corresponds to the JSON property `headRevisionId`
         # @return [String]
         attr_accessor :head_revision_id
@@ -1341,14 +1352,14 @@ module Google
         # @return [DateTime]
         attr_accessor :last_viewed_by_me_date
       
-        # Time this file was explicitly marked viewed by the user (formatted RFC 3339
-        # timestamp).
+        # Deprecated.
         # Corresponds to the JSON property `markedViewedByMeDate`
         # @return [DateTime]
         attr_accessor :marked_viewed_by_me_date
       
-        # An MD5 checksum for the content of this file. This is populated only for files
-        # with content stored in Drive.
+        # An MD5 checksum for the content of this file. This field is only populated for
+        # files with content stored in Drive; it is not populated for Google Docs or
+        # shortcut files.
         # Corresponds to the JSON property `md5Checksum`
         # @return [String]
         attr_accessor :md5_checksum
@@ -1381,8 +1392,8 @@ module Google
       
         # The original filename if the file was uploaded manually, or the original title
         # if the file was inserted through the API. Note that renames of the title will
-        # not change the original filename. This will only be populated on files with
-        # content stored in Drive.
+        # not change the original filename. This field is only populated for files with
+        # content stored in Drive; it is not populated for Google Docs or shortcut files.
         # Corresponds to the JSON property `originalFilename`
         # @return [String]
         attr_accessor :original_filename
@@ -1535,6 +1546,7 @@ module Google
           @file_extension = args[:file_extension] unless args[:file_extension].nil?
           @file_size = args[:file_size] unless args[:file_size].nil?
           @folder_color_rgb = args[:folder_color_rgb] unless args[:folder_color_rgb].nil?
+          @full_file_extension = args[:full_file_extension] unless args[:full_file_extension].nil?
           @head_revision_id = args[:head_revision_id] unless args[:head_revision_id].nil?
           @icon_link = args[:icon_link] unless args[:icon_link].nil?
           @id = args[:id] unless args[:id].nil?
@@ -1778,7 +1790,8 @@ module Google
           attr_accessor :hidden
           alias_method :hidden?, :hidden
         
-          # Whether viewers are prevented from downloading this file.
+          # Whether viewers and commenters are prevented from downloading, printing, and
+          # copying this file.
           # Corresponds to the JSON property `restricted`
           # @return [Boolean]
           attr_accessor :restricted
@@ -1922,6 +1935,37 @@ module Google
           @next_link = args[:next_link] unless args[:next_link].nil?
           @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
+        end
+      end
+      
+      # A list of generated IDs which can be provided in insert requests
+      class GeneratedIds
+        include Google::Apis::Core::Hashable
+      
+        # The IDs generated for the requesting user in the specified space.
+        # Corresponds to the JSON property `ids`
+        # @return [Array<String>]
+        attr_accessor :ids
+      
+        # This is always drive#generatedIds
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The type of file that can be created with these IDs.
+        # Corresponds to the JSON property `space`
+        # @return [String]
+        attr_accessor :space
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ids = args[:ids] unless args[:ids].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @space = args[:space] unless args[:space].nil?
         end
       end
       

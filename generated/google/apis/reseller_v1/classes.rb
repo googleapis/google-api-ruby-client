@@ -149,6 +149,12 @@ module Google
         # @return [String]
         attr_accessor :customer_domain
       
+        # Whether the customer's primary domain has been verified.
+        # Corresponds to the JSON property `customerDomainVerified`
+        # @return [Boolean]
+        attr_accessor :customer_domain_verified
+        alias_method :customer_domain_verified?, :customer_domain_verified
+      
         # The id of the customer.
         # Corresponds to the JSON property `customerId`
         # @return [String]
@@ -182,6 +188,7 @@ module Google
         def update!(**args)
           @alternate_email = args[:alternate_email] unless args[:alternate_email].nil?
           @customer_domain = args[:customer_domain] unless args[:customer_domain].nil?
+          @customer_domain_verified = args[:customer_domain_verified] unless args[:customer_domain_verified].nil?
           @customer_id = args[:customer_id] unless args[:customer_id].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @phone_number = args[:phone_number] unless args[:phone_number].nil?
@@ -319,7 +326,18 @@ module Google
         # @return [String]
         attr_accessor :subscription_id
       
-        # Suspension Reasons
+        # field listing all current reasons the subscription is suspended. It is
+        # possible for a subscription to have multiple suspension reasons. A
+        # subscription's status is SUSPENDED until all pending suspensions are removed.
+        # Possible options include:
+        # - PENDING_TOS_ACCEPTANCE — The customer has not logged in and accepted the
+        # Google Apps Resold Terms of Services.
+        # - RENEWAL_WITH_TYPE_CANCEL — The customer's commitment ended and their service
+        # was cancelled at the end of their term.
+        # - RESELLER_INITIATED — A manual suspension invoked by a Reseller.
+        # - TRIAL_ENDED — The customer's trial expired without a plan selected.
+        # - OTHER — The customer is suspended for an internal Google reason (e.g. abuse
+        # or otherwise).
         # Corresponds to the JSON property `suspensionReasons`
         # @return [Array<String>]
         attr_accessor :suspension_reasons

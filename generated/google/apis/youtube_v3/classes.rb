@@ -2258,335 +2258,361 @@ module Google
       end
       
       # Ratings schemes. The country-specific ratings are mostly for movies and shows.
-      # NEXT_ID: 65
+      # NEXT_ID: 66
       class ContentRating
         include Google::Apis::Core::Hashable
       
-        # Rating system in Australia - Australian Classification Board
+        # The video's Australian Classification Board (ACB) or Australian Communications
+        # and Media Authority (ACMA) rating. ACMA ratings are used to classify children'
+        # s television programming.
         # Corresponds to the JSON property `acbRating`
         # @return [String]
         attr_accessor :acb_rating
       
-        # Rating system for Italy - Autorit� per le Garanzie nelle Comunicazioni
+        # The video's rating from Italy's Autorità per le Garanzie nelle Comunicazioni (
+        # AGCOM).
         # Corresponds to the JSON property `agcomRating`
         # @return [String]
         attr_accessor :agcom_rating
       
-        # Rating system for Chile - Asociaci�n Nacional de Televisi�n
+        # The video's Anatel (Asociación Nacional de Televisión) rating for Chilean
+        # television.
         # Corresponds to the JSON property `anatelRating`
         # @return [String]
         attr_accessor :anatel_rating
       
-        # British Board of Film Classification
+        # The video's British Board of Film Classification (BBFC) rating.
         # Corresponds to the JSON property `bbfcRating`
         # @return [String]
         attr_accessor :bbfc_rating
       
-        # Rating system for Thailand - Board of Filmand Video Censors
+        # The video's rating from Thailand's Board of Film and Video Censors.
         # Corresponds to the JSON property `bfvcRating`
         # @return [String]
         attr_accessor :bfvc_rating
       
-        # Rating system for Austria - Bundesministerium f�r Unterricht, Kunst und Kultur
+        # The video's rating from the Austrian Board of Media Classification (
+        # Bundesministerium für Unterricht, Kunst und Kultur).
         # Corresponds to the JSON property `bmukkRating`
         # @return [String]
         attr_accessor :bmukk_rating
       
-        # Rating system for Canadian TV - Canadian TV Classification System
+        # Rating system for Canadian TV - Canadian TV Classification System The video's
+        # rating from the Canadian Radio-Television and Telecommunications Commission (
+        # CRTC) for Canadian English-language broadcasts. For more information, see the
+        # Canadian Broadcast Standards Council website.
         # Corresponds to the JSON property `catvRating`
         # @return [String]
         attr_accessor :catv_rating
       
-        # Rating system for French Canadian TV - Regie du cinema
+        # The video's rating from the Canadian Radio-Television and Telecommunications
+        # Commission (CRTC) for Canadian French-language broadcasts. For more
+        # information, see the Canadian Broadcast Standards Council website.
         # Corresponds to the JSON property `catvfrRating`
         # @return [String]
         attr_accessor :catvfr_rating
       
-        # Rating system in India - Central Board of Film Certification
+        # The video's Central Board of Film Certification (CBFC - India) rating.
         # Corresponds to the JSON property `cbfcRating`
         # @return [String]
         attr_accessor :cbfc_rating
       
-        # Rating system for Chile - Consejo de Calificaci�n Cinematogr�fica
+        # The video's Consejo de Calificación Cinematográfica (Chile) rating.
         # Corresponds to the JSON property `cccRating`
         # @return [String]
         attr_accessor :ccc_rating
       
-        # Rating system for Portugal - Comiss�o de Classifica��o de Espect�culos
+        # The video's rating from Portugal's Comissão de Classificação de Espect´culos.
         # Corresponds to the JSON property `cceRating`
         # @return [String]
         attr_accessor :cce_rating
       
-        # Rating system for Switzerland - Switzerland Rating System
+        # The video's rating in Switzerland.
         # Corresponds to the JSON property `chfilmRating`
         # @return [String]
         attr_accessor :chfilm_rating
       
-        # Canadian Home Video Rating System
+        # The video's Canadian Home Video Rating System (CHVRS) rating.
         # Corresponds to the JSON property `chvrsRating`
         # @return [String]
         attr_accessor :chvrs_rating
       
-        # Rating system for Belgium - Belgium Rating System
+        # The video's rating from the Commission de Contrôle des Films (Belgium).
         # Corresponds to the JSON property `cicfRating`
         # @return [String]
         attr_accessor :cicf_rating
       
-        # Rating system for Romania - CONSILIUL NATIONAL AL AUDIOVIZUALULUI - CNA
+        # The video's rating from Romania's CONSILIUL NATIONAL AL AUDIOVIZUALULUI (CNA).
         # Corresponds to the JSON property `cnaRating`
         # @return [String]
         attr_accessor :cna_rating
       
-        # Rating system for France - Conseil sup�rieur de l?audiovisuel
+        # Rating system in France - Commission de classification cinematographique
+        # Corresponds to the JSON property `cncRating`
+        # @return [String]
+        attr_accessor :cnc_rating
+      
+        # The video's rating from France's Conseil supérieur de l?audiovisuel, which
+        # rates broadcast content.
         # Corresponds to the JSON property `csaRating`
         # @return [String]
         attr_accessor :csa_rating
       
-        # Rating system for Luxembourg - Commission de surveillance de la classification
-        # des films
+        # The video's rating from Luxembourg's Commission de surveillance de la
+        # classification des films (CSCF).
         # Corresponds to the JSON property `cscfRating`
         # @return [String]
         attr_accessor :cscf_rating
       
-        # Rating system for Czech republic - Czech republic Rating System
+        # The video's rating in the Czech Republic.
         # Corresponds to the JSON property `czfilmRating`
         # @return [String]
         attr_accessor :czfilm_rating
       
-        # Rating system in Brazil - Department of Justice, Rating, Titles and
-        # Qualification
+        # The video's Departamento de Justiça, Classificação, Qualificação e Títulos (
+        # DJCQT - Brazil) rating.
         # Corresponds to the JSON property `djctqRating`
         # @return [String]
         attr_accessor :djctq_rating
       
-        # 
+        # Reasons that explain why the video received its DJCQT (Brazil) rating.
         # Corresponds to the JSON property `djctqRatingReasons`
         # @return [Array<String>]
         attr_accessor :djctq_rating_reasons
       
-        # Rating system for Estonia - Estonia Rating System
+        # The video's rating in Estonia.
         # Corresponds to the JSON property `eefilmRating`
         # @return [String]
         attr_accessor :eefilm_rating
       
-        # Rating system for Egypt - Egypt Rating System
+        # The video's rating in Egypt.
         # Corresponds to the JSON property `egfilmRating`
         # @return [String]
         attr_accessor :egfilm_rating
       
-        # Rating system in Japan - Eiga Rinri Kanri Iinkai
+        # The video's Eirin (映倫) rating. Eirin is the Japanese rating system.
         # Corresponds to the JSON property `eirinRating`
         # @return [String]
         attr_accessor :eirin_rating
       
-        # Rating system for Malaysia - Film Censorship Board of Malaysia
+        # The video's rating from Malaysia's Film Censorship Board.
         # Corresponds to the JSON property `fcbmRating`
         # @return [String]
         attr_accessor :fcbm_rating
       
-        # Rating system for Hong kong - Office for Film, Newspaper and Article
-        # Administration
+        # The video's rating from Hong Kong's Office for Film, Newspaper and Article
+        # Administration.
         # Corresponds to the JSON property `fcoRating`
         # @return [String]
         attr_accessor :fco_rating
       
-        # Rating system in France - French Minister of Culture
+        # This property has been deprecated. Use the contentDetails.contentRating.
+        # cncRating instead.
         # Corresponds to the JSON property `fmocRating`
         # @return [String]
         attr_accessor :fmoc_rating
       
-        # Rating system for South africa - Film & Publication Board
+        # The video's rating from South Africa's Film and Publication Board.
         # Corresponds to the JSON property `fpbRating`
         # @return [String]
         attr_accessor :fpb_rating
       
-        # Rating system in Germany - Voluntary Self Regulation of the Movie Industry
+        # The video's Freiwillige Selbstkontrolle der Filmwirtschaft (FSK - Germany)
+        # rating.
         # Corresponds to the JSON property `fskRating`
         # @return [String]
         attr_accessor :fsk_rating
       
-        # Rating system for Greece - Greece Rating System
+        # The video's rating in Greece.
         # Corresponds to the JSON property `grfilmRating`
         # @return [String]
         attr_accessor :grfilm_rating
       
-        # Rating system in Spain - Instituto de Cinematografia y de las Artes
-        # Audiovisuales
+        # The video's Instituto de la Cinematografía y de las Artes Audiovisuales (ICAA -
+        # Spain) rating.
         # Corresponds to the JSON property `icaaRating`
         # @return [String]
         attr_accessor :icaa_rating
       
-        # Rating system in Ireland - Irish Film Classification Office
+        # The video's Irish Film Classification Office (IFCO - Ireland) rating. See the
+        # IFCO website for more information.
         # Corresponds to the JSON property `ifcoRating`
         # @return [String]
         attr_accessor :ifco_rating
       
-        # Rating system for Israel - Israel Rating System
+        # The video's rating in Israel.
         # Corresponds to the JSON property `ilfilmRating`
         # @return [String]
         attr_accessor :ilfilm_rating
       
-        # Rating system for Argentina - Instituto Nacional de Cine y Artes Audiovisuales
+        # The video's INCAA (Instituto Nacional de Cine y Artes Audiovisuales -
+        # Argentina) rating.
         # Corresponds to the JSON property `incaaRating`
         # @return [String]
         attr_accessor :incaa_rating
       
-        # Rating system for Kenya - Kenya Film Classification Board
+        # The video's rating from the Kenya Film Classification Board.
         # Corresponds to the JSON property `kfcbRating`
         # @return [String]
         attr_accessor :kfcb_rating
       
-        # Rating system for Netherlands - Nederlands Instituut voor de Classificatie van
-        # Audiovisuele Media
+        # voor de Classificatie van Audiovisuele Media (Netherlands).
         # Corresponds to the JSON property `kijkwijzerRating`
         # @return [String]
         attr_accessor :kijkwijzer_rating
       
-        # Rating system in South Korea - Korea Media Rating Board
+        # The video's Korea Media Rating Board (영상물등급위원회) rating. The KMRB rates videos
+        # in South Korea.
         # Corresponds to the JSON property `kmrbRating`
         # @return [String]
         attr_accessor :kmrb_rating
       
-        # Rating system for Indonesia - Lembaga Sensor Film
+        # The video's rating from Indonesia's Lembaga Sensor Film.
         # Corresponds to the JSON property `lsfRating`
         # @return [String]
         attr_accessor :lsf_rating
       
-        # Rating system for Malta - Film Age-Classification Board
+        # The video's rating from Malta's Film Age-Classification Board.
         # Corresponds to the JSON property `mccaaRating`
         # @return [String]
         attr_accessor :mccaa_rating
       
-        # Rating system for Denmark - The Media Council for Children and Young People
+        # The video's rating from the Danish Film Institute's (Det Danske Filminstitut)
+        # Media Council for Children and Young People.
         # Corresponds to the JSON property `mccypRating`
         # @return [String]
         attr_accessor :mccyp_rating
       
-        # Rating system for Singapore - Media Development Authority
+        # The video's rating from Singapore's Media Development Authority (MDA) and,
+        # specifically, it's Board of Film Censors (BFC).
         # Corresponds to the JSON property `mdaRating`
         # @return [String]
         attr_accessor :mda_rating
       
-        # Rating system for Norway - Medietilsynet
+        # The video's rating from Medietilsynet, the Norwegian Media Authority.
         # Corresponds to the JSON property `medietilsynetRating`
         # @return [String]
         attr_accessor :medietilsynet_rating
       
-        # Rating system for Finland - Finnish Centre for Media Education and Audiovisual
-        # Media
+        # The video's rating from Finland's Kansallinen Audiovisuaalinen Instituutti (
+        # National Audiovisual Institute).
         # Corresponds to the JSON property `mekuRating`
         # @return [String]
         attr_accessor :meku_rating
       
-        # Rating system in Italy - Ministero dei Beni e delle Attivita Culturali e del
-        # Turismo
+        # The video's rating from the Ministero dei Beni e delle Attività Culturali e
+        # del Turismo (Italy).
         # Corresponds to the JSON property `mibacRating`
         # @return [String]
         attr_accessor :mibac_rating
       
-        # Rating system for Colombia - MoC
+        # The video's Ministerio de Cultura (Colombia) rating.
         # Corresponds to the JSON property `mocRating`
         # @return [String]
         attr_accessor :moc_rating
       
-        # Rating system for Taiwan - Ministry of Culture - Tawan
+        # The video's rating from Taiwan's Ministry of Culture (文化部).
         # Corresponds to the JSON property `moctwRating`
         # @return [String]
         attr_accessor :moctw_rating
       
-        # Motion Picture Association of America rating for the content.
+        # The video's Motion Picture Association of America (MPAA) rating.
         # Corresponds to the JSON property `mpaaRating`
         # @return [String]
         attr_accessor :mpaa_rating
       
-        # Rating system for Philippines - MOVIE AND TELEVISION REVIEW AND CLASSIFICATION
-        # BOARD
+        # The video's rating from the Movie and Television Review and Classification
+        # Board (Philippines).
         # Corresponds to the JSON property `mtrcbRating`
         # @return [String]
         attr_accessor :mtrcb_rating
       
-        # Rating system for Maldives - National Bureau of Classification
+        # The video's rating from the Maldives National Bureau of Classification.
         # Corresponds to the JSON property `nbcRating`
         # @return [String]
         attr_accessor :nbc_rating
       
-        # Rating system for Poland - National Broadcasting Council
+        # The video's rating in Poland.
         # Corresponds to the JSON property `nbcplRating`
         # @return [String]
         attr_accessor :nbcpl_rating
       
-        # Rating system for Bulgaria - National Film Centre
+        # The video's rating from the Bulgarian National Film Center.
         # Corresponds to the JSON property `nfrcRating`
         # @return [String]
         attr_accessor :nfrc_rating
       
-        # Rating system for Nigeria - National Film and Video Censors Board
+        # The video's rating from Nigeria's National Film and Video Censors Board.
         # Corresponds to the JSON property `nfvcbRating`
         # @return [String]
         attr_accessor :nfvcb_rating
       
-        # Rating system for Latvia - National Film Center of Latvia
+        # The video's rating from the Nacionãlais Kino centrs (National Film Centre of
+        # Latvia).
         # Corresponds to the JSON property `nkclvRating`
         # @return [String]
         attr_accessor :nkclv_rating
       
-        # Rating system in New Zealand - Office of Film and Literature Classification
+        # The video's Office of Film and Literature Classification (OFLC - New Zealand)
+        # rating.
         # Corresponds to the JSON property `oflcRating`
         # @return [String]
         attr_accessor :oflc_rating
       
-        # Rating system for Peru - Peru Rating System
+        # The video's rating in Peru.
         # Corresponds to the JSON property `pefilmRating`
         # @return [String]
         attr_accessor :pefilm_rating
       
-        # Rating system for Hungary - Rating Committee of the National Office of Film
+        # The video's rating from the Hungarian Nemzeti Filmiroda, the Rating Committee
+        # of the National Office of Film.
         # Corresponds to the JSON property `rcnofRating`
         # @return [String]
         attr_accessor :rcnof_rating
       
-        # Rating system for Venezuela - SiBCI
+        # The video's rating in Venezuela.
         # Corresponds to the JSON property `resorteviolenciaRating`
         # @return [String]
         attr_accessor :resorteviolencia_rating
       
-        # Rating system in Mexico - General Directorate of Radio, Television and
-        # Cinematography
+        # The video's General Directorate of Radio, Television and Cinematography (
+        # Mexico) rating.
         # Corresponds to the JSON property `rtcRating`
         # @return [String]
         attr_accessor :rtc_rating
       
-        # Rating system for Ireland - Raidi� Teilif�s �ireann
+        # The video's rating from Ireland's Raidió Teilifís Éireann.
         # Corresponds to the JSON property `rteRating`
         # @return [String]
         attr_accessor :rte_rating
       
-        # Rating system in Russia
+        # The video's National Film Registry of the Russian Federation (MKRF - Russia)
+        # rating.
         # Corresponds to the JSON property `russiaRating`
         # @return [String]
         attr_accessor :russia_rating
       
-        # Rating system for Slovakia - Slovakia Rating System
+        # The video's rating in Slovakia.
         # Corresponds to the JSON property `skfilmRating`
         # @return [String]
         attr_accessor :skfilm_rating
       
-        # Rating system for Iceland - SMAIS
+        # The video's rating in Iceland.
         # Corresponds to the JSON property `smaisRating`
         # @return [String]
         attr_accessor :smais_rating
       
-        # Rating system for Sweden - Statens medier�d (National Media Council)
+        # The video's rating from Statens medieråd (Sweden's National Media Council).
         # Corresponds to the JSON property `smsaRating`
         # @return [String]
         attr_accessor :smsa_rating
       
-        # TV Parental Guidelines rating of the content.
+        # The video's TV Parental Guidelines (TVPG) rating.
         # Corresponds to the JSON property `tvpgRating`
         # @return [String]
         attr_accessor :tvpg_rating
       
-        # Internal YouTube rating.
+        # A rating that YouTube uses to identify age-restricted content.
         # Corresponds to the JSON property `ytRating`
         # @return [String]
         attr_accessor :yt_rating
@@ -2612,6 +2638,7 @@ module Google
           @chvrs_rating = args[:chvrs_rating] unless args[:chvrs_rating].nil?
           @cicf_rating = args[:cicf_rating] unless args[:cicf_rating].nil?
           @cna_rating = args[:cna_rating] unless args[:cna_rating].nil?
+          @cnc_rating = args[:cnc_rating] unless args[:cnc_rating].nil?
           @csa_rating = args[:csa_rating] unless args[:csa_rating].nil?
           @cscf_rating = args[:cscf_rating] unless args[:cscf_rating].nil?
           @czfilm_rating = args[:czfilm_rating] unless args[:czfilm_rating].nil?
@@ -3524,7 +3551,7 @@ module Google
         attr_accessor :enable_embed
         alias_method :enable_embed?, :enable_embed
       
-        # 
+        # Indicates whether this broadcast has low latency enabled.
         # Corresponds to the JSON property `enableLowLatency`
         # @return [Boolean]
         attr_accessor :enable_low_latency
@@ -3683,6 +3710,11 @@ module Google
         attr_accessor :is_default_broadcast
         alias_method :is_default_broadcast?, :is_default_broadcast
       
+        # The id of the live chat for this broadcast.
+        # Corresponds to the JSON property `liveChatId`
+        # @return [String]
+        attr_accessor :live_chat_id
+      
         # The date and time that the broadcast was added to YouTube's live broadcast
         # schedule. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
         # Corresponds to the JSON property `publishedAt`
@@ -3724,6 +3756,7 @@ module Google
           @channel_id = args[:channel_id] unless args[:channel_id].nil?
           @description = args[:description] unless args[:description].nil?
           @is_default_broadcast = args[:is_default_broadcast] unless args[:is_default_broadcast].nil?
+          @live_chat_id = args[:live_chat_id] unless args[:live_chat_id].nil?
           @published_at = args[:published_at] unless args[:published_at].nil?
           @scheduled_end_time = args[:scheduled_end_time] unless args[:scheduled_end_time].nil?
           @scheduled_start_time = args[:scheduled_start_time] unless args[:scheduled_start_time].nil?
@@ -5605,7 +5638,8 @@ module Google
       class Video
         include Google::Apis::Core::Hashable
       
-        # Age restriction details related to a video.
+        # Age restriction details related to a video. This data can only be retrieved by
+        # the video owner.
         # Corresponds to the JSON property `ageGating`
         # @return [Google::Apis::YoutubeV3::VideoAgeGating]
         attr_accessor :age_gating
@@ -6108,7 +6142,7 @@ module Google
         attr_accessor :caption
       
         # Ratings schemes. The country-specific ratings are mostly for movies and shows.
-        # NEXT_ID: 65
+        # NEXT_ID: 66
         # Corresponds to the JSON property `contentRating`
         # @return [Google::Apis::YoutubeV3::ContentRating]
         attr_accessor :content_rating
@@ -6923,7 +6957,6 @@ module Google
         attr_accessor :published_at
       
         # A list of keyword tags associated with the video. Tags may contain spaces.
-        # This field is only visible to the video's uploader.
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags

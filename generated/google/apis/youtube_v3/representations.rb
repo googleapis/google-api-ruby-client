@@ -1260,6 +1260,7 @@ module Google
           property :chvrs_rating, as: 'chvrsRating'
           property :cicf_rating, as: 'cicfRating'
           property :cna_rating, as: 'cnaRating'
+          property :cnc_rating, as: 'cncRating'
           property :csa_rating, as: 'csaRating'
           property :cscf_rating, as: 'cscfRating'
           property :czfilm_rating, as: 'czfilmRating'
@@ -1575,6 +1576,7 @@ module Google
           property :channel_id, as: 'channelId'
           property :description, as: 'description'
           property :is_default_broadcast, as: 'isDefaultBroadcast'
+          property :live_chat_id, as: 'liveChatId'
           property :published_at, as: 'publishedAt', type: DateTime
       
           property :scheduled_end_time, as: 'scheduledEndTime', type: DateTime

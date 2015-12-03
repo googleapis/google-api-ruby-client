@@ -84,8 +84,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def abandon_instances(project, zone, instance_group_manager, abandon_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/abandonInstances'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/abandonInstances', options)
           command.request_representation = Google::Apis::ReplicapoolV1beta2::AbandonInstancesRequest::Representation
           command.request_object = abandon_instances_request_object
           command.response_representation = Google::Apis::ReplicapoolV1beta2::Operation::Representation
@@ -130,8 +129,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_instance_group_manager(project, zone, instance_group_manager, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}', options)
           command.response_representation = Google::Apis::ReplicapoolV1beta2::Operation::Representation
           command.response_class = Google::Apis::ReplicapoolV1beta2::Operation
           command.params['project'] = project unless project.nil?
@@ -176,8 +174,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_instances(project, zone, instance_group_manager, delete_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/deleteInstances'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/deleteInstances', options)
           command.request_representation = Google::Apis::ReplicapoolV1beta2::DeleteInstancesRequest::Representation
           command.request_object = delete_instances_request_object
           command.response_representation = Google::Apis::ReplicapoolV1beta2::Operation::Representation
@@ -220,8 +217,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_instance_group_manager(project, zone, instance_group_manager, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}', options)
           command.response_representation = Google::Apis::ReplicapoolV1beta2::InstanceGroupManager::Representation
           command.response_class = Google::Apis::ReplicapoolV1beta2::InstanceGroupManager
           command.params['project'] = project unless project.nil?
@@ -264,8 +260,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_instance_group_manager(project, zone, size, instance_group_manager_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/zones/{zone}/instanceGroupManagers'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers', options)
           command.request_representation = Google::Apis::ReplicapoolV1beta2::InstanceGroupManager::Representation
           command.request_object = instance_group_manager_object
           command.response_representation = Google::Apis::ReplicapoolV1beta2::Operation::Representation
@@ -315,8 +310,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_instance_group_managers(project, zone, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/zones/{zone}/instanceGroupManagers'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/instanceGroupManagers', options)
           command.response_representation = Google::Apis::ReplicapoolV1beta2::InstanceGroupManagerList::Representation
           command.response_class = Google::Apis::ReplicapoolV1beta2::InstanceGroupManagerList
           command.params['project'] = project unless project.nil?
@@ -361,8 +355,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def recreate_instances(project, zone, instance_group_manager, recreate_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/recreateInstances'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/recreateInstances', options)
           command.request_representation = Google::Apis::ReplicapoolV1beta2::RecreateInstancesRequest::Representation
           command.request_object = recreate_instances_request_object
           command.response_representation = Google::Apis::ReplicapoolV1beta2::Operation::Representation
@@ -409,8 +402,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def resize_instance(project, zone, instance_group_manager, size, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resize'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resize', options)
           command.response_representation = Google::Apis::ReplicapoolV1beta2::Operation::Representation
           command.response_class = Google::Apis::ReplicapoolV1beta2::Operation
           command.params['project'] = project unless project.nil?
@@ -454,8 +446,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_instance_template(project, zone, instance_group_manager, set_instance_template_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setInstanceTemplate'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setInstanceTemplate', options)
           command.request_representation = Google::Apis::ReplicapoolV1beta2::SetInstanceTemplateRequest::Representation
           command.request_object = set_instance_template_request_object
           command.response_representation = Google::Apis::ReplicapoolV1beta2::Operation::Representation
@@ -500,8 +491,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def set_target_pools(project, zone, instance_group_manager, set_target_pools_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setTargetPools'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setTargetPools', options)
           command.request_representation = Google::Apis::ReplicapoolV1beta2::SetTargetPoolsRequest::Representation
           command.request_object = set_target_pools_request_object
           command.response_representation = Google::Apis::ReplicapoolV1beta2::Operation::Representation
@@ -544,8 +534,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_zone_operation(project, zone, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/zones/{zone}/operations/{operation}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/operations/{operation}', options)
           command.response_representation = Google::Apis::ReplicapoolV1beta2::Operation::Representation
           command.response_class = Google::Apis::ReplicapoolV1beta2::Operation
           command.params['project'] = project unless project.nil?
@@ -592,8 +581,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_zone_operations(project, zone, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/zones/{zone}/operations'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/zones/{zone}/operations', options)
           command.response_representation = Google::Apis::ReplicapoolV1beta2::OperationList::Representation
           command.response_class = Google::Apis::ReplicapoolV1beta2::OperationList
           command.params['project'] = project unless project.nil?

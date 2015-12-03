@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/coordinate/
     module CoordinateV1
       VERSION = 'V1'
-      REVISION = '20141215'
+      REVISION = '20150811'
 
       # View and manage your Google Maps Coordinate jobs
       AUTH_COORDINATE = 'https://www.googleapis.com/auth/coordinate'

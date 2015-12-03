@@ -97,6 +97,10 @@ module Google
       class Object
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
+        class CustomerEncryption
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        end
+        
         class Owner
           class Representation < Google::Apis::Core::JsonRepresentation; end
         end
@@ -147,6 +151,8 @@ module Google
           property :self_link, as: 'selfLink'
           property :storage_class, as: 'storageClass'
           property :time_created, as: 'timeCreated', type: DateTime
+      
+          property :updated, as: 'updated', type: DateTime
       
           property :versioning, as: 'versioning', class: Google::Apis::StorageV1::Bucket::Versioning, decorator: Google::Apis::StorageV1::Bucket::Versioning::Representation
       
@@ -334,6 +340,8 @@ module Google
           property :content_language, as: 'contentLanguage'
           property :content_type, as: 'contentType'
           property :crc32c, as: 'crc32c'
+          property :customer_encryption, as: 'customerEncryption', class: Google::Apis::StorageV1::Object::CustomerEncryption, decorator: Google::Apis::StorageV1::Object::CustomerEncryption::Representation
+      
           property :etag, as: 'etag'
           property :generation, as: 'generation'
           property :id, as: 'id'
@@ -348,10 +356,20 @@ module Google
           property :self_link, as: 'selfLink'
           property :size, as: 'size'
           property :storage_class, as: 'storageClass'
+          property :time_created, as: 'timeCreated', type: DateTime
+      
           property :time_deleted, as: 'timeDeleted', type: DateTime
       
           property :updated, as: 'updated', type: DateTime
       
+        end
+        
+        class CustomerEncryption
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :encryption_algorithm, as: 'encryptionAlgorithm'
+            property :key_sha256, as: 'keySha256'
+          end
         end
         
         class Owner

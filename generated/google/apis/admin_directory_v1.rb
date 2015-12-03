@@ -26,7 +26,13 @@ module Google
     # @see https://developers.google.com/admin-sdk/directory/
     module AdminDirectoryV1
       VERSION = 'DirectoryV1'
-      REVISION = '20150720'
+      REVISION = '20151005'
+
+      # View and manage customer related information
+      AUTH_ADMIN_DIRECTORY_CUSTOMER = 'https://www.googleapis.com/auth/admin.directory.customer'
+
+      # View customer related information
+      AUTH_ADMIN_DIRECTORY_CUSTOMER_READONLY = 'https://www.googleapis.com/auth/admin.directory.customer.readonly'
 
       # View and manage your Chrome OS devices' metadata
       AUTH_ADMIN_DIRECTORY_DEVICE_CHROMEOS = 'https://www.googleapis.com/auth/admin.directory.device.chromeos'
@@ -42,6 +48,12 @@ module Google
 
       # View your mobile devices' metadata
       AUTH_ADMIN_DIRECTORY_DEVICE_MOBILE_READONLY = 'https://www.googleapis.com/auth/admin.directory.device.mobile.readonly'
+
+      # View and manage the provisioning of domains for your customers
+      AUTH_ADMIN_DIRECTORY_DOMAIN = 'https://www.googleapis.com/auth/admin.directory.domain'
+
+      # View domains related to your customers
+      AUTH_ADMIN_DIRECTORY_DOMAIN_READONLY = 'https://www.googleapis.com/auth/admin.directory.domain.readonly'
 
       # View and manage the provisioning of groups on your domain
       AUTH_ADMIN_DIRECTORY_GROUP = 'https://www.googleapis.com/auth/admin.directory.group'
@@ -63,6 +75,12 @@ module Google
 
       # View organization units on your domain
       AUTH_ADMIN_DIRECTORY_ORGUNIT_READONLY = 'https://www.googleapis.com/auth/admin.directory.orgunit.readonly'
+
+      # Manage delegated admin roles for your domain
+      AUTH_ADMIN_DIRECTORY_ROLEMANAGEMENT = 'https://www.googleapis.com/auth/admin.directory.rolemanagement'
+
+      # View delegated admin roles for your domain
+      AUTH_ADMIN_DIRECTORY_ROLEMANAGEMENT_READONLY = 'https://www.googleapis.com/auth/admin.directory.rolemanagement.readonly'
 
       # View and manage the provisioning of users on your domain
       AUTH_ADMIN_DIRECTORY_USER = 'https://www.googleapis.com/auth/admin.directory.user'

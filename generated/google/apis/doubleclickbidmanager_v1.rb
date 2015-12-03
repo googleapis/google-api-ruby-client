@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/bid-manager/
     module DoubleclickbidmanagerV1
       VERSION = 'V1'
-      REVISION = '20150326'
+      REVISION = '20150925'
     end
   end
 end

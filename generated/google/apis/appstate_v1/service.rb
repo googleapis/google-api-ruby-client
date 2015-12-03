@@ -82,8 +82,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def clear_state(state_key, current_data_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'states/{stateKey}/clear'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'states/{stateKey}/clear', options)
           command.response_representation = Google::Apis::AppstateV1::WriteResult::Representation
           command.response_class = Google::Apis::AppstateV1::WriteResult
           command.params['stateKey'] = state_key unless state_key.nil?
@@ -123,8 +122,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_state(state_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'states/{stateKey}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'states/{stateKey}', options)
           command.params['stateKey'] = state_key unless state_key.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -158,8 +156,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_state(state_key, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'states/{stateKey}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'states/{stateKey}', options)
           command.response_representation = Google::Apis::AppstateV1::GetResponse::Representation
           command.response_class = Google::Apis::AppstateV1::GetResponse
           command.params['stateKey'] = state_key unless state_key.nil?
@@ -194,8 +191,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_states(include_data: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'states'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'states', options)
           command.response_representation = Google::Apis::AppstateV1::ListResponse::Representation
           command.response_class = Google::Apis::AppstateV1::ListResponse
           command.query['includeData'] = include_data unless include_data.nil?
@@ -237,9 +233,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update(state_key, update_request_object = nil, current_state_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'states/{stateKey}'
-          command =  make_simple_command(:put, path, options)
+        def update_state(state_key, update_request_object = nil, current_state_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'states/{stateKey}', options)
           command.request_representation = Google::Apis::AppstateV1::UpdateRequest::Representation
           command.request_object = update_request_object
           command.response_representation = Google::Apis::AppstateV1::WriteResult::Representation

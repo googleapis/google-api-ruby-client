@@ -86,8 +86,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_user_data_source(user_id, data_source_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{userId}/dataSources'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{userId}/dataSources', options)
           command.request_representation = Google::Apis::FitnessV1::DataSource::Representation
           command.request_object = data_source_object
           command.response_representation = Google::Apis::FitnessV1::DataSource::Representation
@@ -127,8 +126,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_data_source(user_id, data_source_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{userId}/dataSources/{dataSourceId}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{userId}/dataSources/{dataSourceId}', options)
           command.response_representation = Google::Apis::FitnessV1::DataSource::Representation
           command.response_class = Google::Apis::FitnessV1::DataSource
           command.params['userId'] = user_id unless user_id.nil?
@@ -167,8 +165,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_data_source(user_id, data_source_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{userId}/dataSources/{dataSourceId}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{userId}/dataSources/{dataSourceId}', options)
           command.response_representation = Google::Apis::FitnessV1::DataSource::Representation
           command.response_class = Google::Apis::FitnessV1::DataSource
           command.params['userId'] = user_id unless user_id.nil?
@@ -210,8 +207,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_data_sources(user_id, data_type_name: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{userId}/dataSources'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{userId}/dataSources', options)
           command.response_representation = Google::Apis::FitnessV1::ListDataSourcesResponse::Representation
           command.response_class = Google::Apis::FitnessV1::ListDataSourcesResponse
           command.params['userId'] = user_id unless user_id.nil?
@@ -256,8 +252,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_user_data_source(user_id, data_source_id, data_source_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{userId}/dataSources/{dataSourceId}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, '{userId}/dataSources/{dataSourceId}', options)
           command.request_representation = Google::Apis::FitnessV1::DataSource::Representation
           command.request_object = data_source_object
           command.response_representation = Google::Apis::FitnessV1::DataSource::Representation
@@ -303,8 +298,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_user_data_source(user_id, data_source_id, data_source_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{userId}/dataSources/{dataSourceId}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, '{userId}/dataSources/{dataSourceId}', options)
           command.request_representation = Google::Apis::FitnessV1::DataSource::Representation
           command.request_object = data_source_object
           command.response_representation = Google::Apis::FitnessV1::DataSource::Representation
@@ -359,8 +353,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_data_source_dataset(user_id, data_source_id, dataset_id, current_time_millis: nil, modified_time_millis: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{userId}/dataSources/{dataSourceId}/datasets/{datasetId}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{userId}/dataSources/{dataSourceId}/datasets/{datasetId}', options)
           command.params['userId'] = user_id unless user_id.nil?
           command.params['dataSourceId'] = data_source_id unless data_source_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
@@ -419,8 +412,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_user_data_source_dataset(user_id, data_source_id, dataset_id, limit: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{userId}/dataSources/{dataSourceId}/datasets/{datasetId}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{userId}/dataSources/{dataSourceId}/datasets/{datasetId}', options)
           command.response_representation = Google::Apis::FitnessV1::Dataset::Representation
           command.response_class = Google::Apis::FitnessV1::Dataset
           command.params['userId'] = user_id unless user_id.nil?
@@ -475,8 +467,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_user_data_source_dataset(user_id, data_source_id, dataset_id, dataset_object = nil, current_time_millis: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{userId}/dataSources/{dataSourceId}/datasets/{datasetId}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, '{userId}/dataSources/{dataSourceId}/datasets/{datasetId}', options)
           command.request_representation = Google::Apis::FitnessV1::Dataset::Representation
           command.request_object = dataset_object
           command.response_representation = Google::Apis::FitnessV1::Dataset::Representation
@@ -519,9 +510,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregate(user_id, aggregate_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{userId}/dataset:aggregate'
-          command =  make_simple_command(:post, path, options)
+        def aggregate_dataset(user_id, aggregate_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, '{userId}/dataset:aggregate', options)
           command.request_representation = Google::Apis::FitnessV1::AggregateRequest::Representation
           command.request_object = aggregate_request_object
           command.response_representation = Google::Apis::FitnessV1::AggregateResponse::Representation
@@ -563,8 +553,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user_session(user_id, session_id, current_time_millis: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{userId}/sessions/{sessionId}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{userId}/sessions/{sessionId}', options)
           command.params['userId'] = user_id unless user_id.nil?
           command.params['sessionId'] = session_id unless session_id.nil?
           command.query['currentTimeMillis'] = current_time_millis unless current_time_millis.nil?
@@ -614,8 +603,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_user_sessions(user_id, end_time: nil, include_deleted: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{userId}/sessions'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{userId}/sessions', options)
           command.response_representation = Google::Apis::FitnessV1::ListSessionsResponse::Representation
           command.response_class = Google::Apis::FitnessV1::ListSessionsResponse
           command.params['userId'] = user_id unless user_id.nil?
@@ -660,8 +648,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_user_session(user_id, session_id, session_object = nil, current_time_millis: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{userId}/sessions/{sessionId}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, '{userId}/sessions/{sessionId}', options)
           command.request_representation = Google::Apis::FitnessV1::Session::Representation
           command.request_object = session_object
           command.response_representation = Google::Apis::FitnessV1::Session::Representation

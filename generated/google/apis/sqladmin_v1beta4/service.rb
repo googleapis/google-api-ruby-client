@@ -52,6 +52,48 @@ module Google
           super('https://www.googleapis.com/', 'sql/v1beta4/')
         end
         
+        # Deletes the backup taken by a backup run.
+        # @param [String] project
+        #   Project ID of the project that contains the instance.
+        # @param [String] instance
+        #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] id
+        #   The ID of the Backup Run to delete. To find a Backup Run ID, use the list
+        #   method.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1beta4::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1beta4::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_backup_run(project, instance, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'projects/{project}/instances/{instance}/backupRuns/{id}', options)
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves a resource containing information about a backup run.
         # @param [String] project
         #   Project ID of the project that contains the instance.
@@ -81,8 +123,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_backup_run(project, instance, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/backupRuns/{id}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'projects/{project}/instances/{instance}/backupRuns/{id}', options)
           command.response_representation = Google::Apis::SqladminV1beta4::BackupRun::Representation
           command.response_class = Google::Apis::SqladminV1beta4::BackupRun
           command.params['project'] = project unless project.nil?
@@ -127,8 +168,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_backup_runs(project, instance, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/backupRuns'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'projects/{project}/instances/{instance}/backupRuns', options)
           command.response_representation = Google::Apis::SqladminV1beta4::ListBackupRunsResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::ListBackupRunsResponse
           command.params['project'] = project unless project.nil?
@@ -171,8 +211,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_database(project, instance, database, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/databases/{database}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'projects/{project}/instances/{instance}/databases/{database}', options)
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -214,8 +253,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_database(project, instance, database, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/databases/{database}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'projects/{project}/instances/{instance}/databases/{database}', options)
           command.response_representation = Google::Apis::SqladminV1beta4::Database::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Database
           command.params['project'] = project unless project.nil?
@@ -256,8 +294,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_database(project, instance, database_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/databases'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'projects/{project}/instances/{instance}/databases', options)
           command.request_representation = Google::Apis::SqladminV1beta4::Database::Representation
           command.request_object = database_object
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
@@ -297,8 +334,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_databases(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/databases'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'projects/{project}/instances/{instance}/databases', options)
           command.response_representation = Google::Apis::SqladminV1beta4::ListDatabasesResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::ListDatabasesResponse
           command.params['project'] = project unless project.nil?
@@ -340,8 +376,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_database(project, instance, database, database_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/databases/{database}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'projects/{project}/instances/{instance}/databases/{database}', options)
           command.request_representation = Google::Apis::SqladminV1beta4::Database::Representation
           command.request_object = database_object
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
@@ -386,8 +421,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_database(project, instance, database, database_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/databases/{database}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'projects/{project}/instances/{instance}/databases/{database}', options)
           command.request_representation = Google::Apis::SqladminV1beta4::Database::Representation
           command.request_object = database_object
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
@@ -424,8 +458,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_flags(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'flags'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'flags', options)
           command.response_representation = Google::Apis::SqladminV1beta4::ListFlagsResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::ListFlagsResponse
           command.query['fields'] = fields unless fields.nil?
@@ -463,8 +496,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def clone_instance(project, instance, clone_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/clone'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'projects/{project}/instances/{instance}/clone', options)
           command.request_representation = Google::Apis::SqladminV1beta4::CloneInstancesRequest::Representation
           command.request_object = clone_instances_request_object
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
@@ -504,8 +536,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'projects/{project}/instances/{instance}', options)
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -545,10 +576,50 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def export_instance(project, instance, export_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/export'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'projects/{project}/instances/{instance}/export', options)
           command.request_representation = Google::Apis::SqladminV1beta4::ExportInstancesRequest::Representation
           command.request_object = export_instances_request_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Failover the instance to its failover replica instance.
+        # @param [String] project
+        #   ID of the project that contains the read replica.
+        # @param [String] instance
+        #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [Google::Apis::SqladminV1beta4::InstancesFailoverRequest] instances_failover_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1beta4::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1beta4::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def failover_instance(project, instance, instances_failover_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'projects/{project}/instances/{instance}/failover', options)
+          command.request_representation = Google::Apis::SqladminV1beta4::InstancesFailoverRequest::Representation
+          command.request_object = instances_failover_request_object
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -586,8 +657,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'projects/{project}/instances/{instance}', options)
           command.response_representation = Google::Apis::SqladminV1beta4::DatabaseInstance::Representation
           command.response_class = Google::Apis::SqladminV1beta4::DatabaseInstance
           command.params['project'] = project unless project.nil?
@@ -627,8 +697,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def import_instance(project, instance, import_instances_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/import'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'projects/{project}/instances/{instance}/import', options)
           command.request_representation = Google::Apis::SqladminV1beta4::ImportInstancesRequest::Representation
           command.request_object = import_instances_request_object
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
@@ -668,8 +737,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_instance(project, database_instance_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'projects/{project}/instances', options)
           command.request_representation = Google::Apis::SqladminV1beta4::DatabaseInstance::Representation
           command.request_object = database_instance_object
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
@@ -712,8 +780,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_instances(project, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'projects/{project}/instances', options)
           command.response_representation = Google::Apis::SqladminV1beta4::ListInstancesResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::ListInstancesResponse
           command.params['project'] = project unless project.nil?
@@ -755,8 +822,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_instance(project, instance, database_instance_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'projects/{project}/instances/{instance}', options)
           command.request_representation = Google::Apis::SqladminV1beta4::DatabaseInstance::Representation
           command.request_object = database_instance_object
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
@@ -795,9 +861,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def promote_replica_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/promoteReplica'
-          command =  make_simple_command(:post, path, options)
+        def promote_instance_replica(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'projects/{project}/instances/{instance}/promoteReplica', options)
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -837,9 +902,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def reset_ssl_config_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/resetSslConfig'
-          command =  make_simple_command(:post, path, options)
+        def reset_instance_ssl_config(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'projects/{project}/instances/{instance}/resetSslConfig', options)
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -877,8 +941,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def restart_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/restart'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'projects/{project}/instances/{instance}/restart', options)
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -916,9 +979,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def restore_backup_instance(project, instance, restore_instances_backup_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/restoreBackup'
-          command =  make_simple_command(:post, path, options)
+        def restore_instance_backup(project, instance, restore_instances_backup_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'projects/{project}/instances/{instance}/restoreBackup', options)
           command.request_representation = Google::Apis::SqladminV1beta4::RestoreInstancesBackupRequest::Representation
           command.request_object = restore_instances_backup_request_object
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
@@ -957,9 +1019,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def start_replica_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/startReplica'
-          command =  make_simple_command(:post, path, options)
+        def start_instance_replica(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'projects/{project}/instances/{instance}/startReplica', options)
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -996,9 +1057,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_replica_instance(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/stopReplica'
-          command =  make_simple_command(:post, path, options)
+        def stop_instance_replica(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'projects/{project}/instances/{instance}/stopReplica', options)
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -1039,8 +1099,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_instance(project, instance, database_instance_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'projects/{project}/instances/{instance}', options)
           command.request_representation = Google::Apis::SqladminV1beta4::DatabaseInstance::Representation
           command.request_object = database_instance_object
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
@@ -1080,8 +1139,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_operation(project, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/operations/{operation}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'projects/{project}/operations/{operation}', options)
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -1125,14 +1183,56 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_operations(project, instance, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/operations'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'projects/{project}/operations', options)
           command.response_representation = Google::Apis::SqladminV1beta4::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::ListOperationsResponse
           command.params['project'] = project unless project.nil?
           command.query['instance'] = instance unless instance.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates a short-lived X509 certificate containing the provided public key
+        # and signed by a private key specific to the target instance. Users may use the
+        # certificate to authenticate as themselves when connecting to the database.
+        # @param [String] project
+        #   Project ID of the Cloud SQL project.
+        # @param [String] instance
+        #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [Google::Apis::SqladminV1beta4::SslCertsCreateEphemeralRequest] ssl_certs_create_ephemeral_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1beta4::SslCert] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1beta4::SslCert]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_ssl_cert_ephemeral(project, instance, ssl_certs_create_ephemeral_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'projects/{project}/instances/{instance}/createEphemeral', options)
+          command.request_representation = Google::Apis::SqladminV1beta4::SslCertsCreateEphemeralRequest::Representation
+          command.request_object = ssl_certs_create_ephemeral_request_object
+          command.response_representation = Google::Apis::SqladminV1beta4::SslCert::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::SslCert
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1169,8 +1269,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_ssl_cert(project, instance, sha1_fingerprint, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}', options)
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -1213,8 +1312,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_ssl_cert(project, instance, sha1_fingerprint, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}', options)
           command.response_representation = Google::Apis::SqladminV1beta4::SslCert::Representation
           command.response_class = Google::Apis::SqladminV1beta4::SslCert
           command.params['project'] = project unless project.nil?
@@ -1257,8 +1355,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_ssl_cert(project, instance, insert_ssl_certs_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/sslCerts'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'projects/{project}/instances/{instance}/sslCerts', options)
           command.request_representation = Google::Apis::SqladminV1beta4::InsertSslCertsRequest::Representation
           command.request_object = insert_ssl_certs_request_object
           command.response_representation = Google::Apis::SqladminV1beta4::InsertSslCertsResponse::Representation
@@ -1298,8 +1395,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_ssl_certs(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/sslCerts'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'projects/{project}/instances/{instance}/sslCerts', options)
           command.response_representation = Google::Apis::SqladminV1beta4::ListSslCertsResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::ListSslCertsResponse
           command.params['project'] = project unless project.nil?
@@ -1336,8 +1432,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_tiers(project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/tiers'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'projects/{project}/tiers', options)
           command.response_representation = Google::Apis::SqladminV1beta4::ListTiersResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::ListTiersResponse
           command.params['project'] = project unless project.nil?
@@ -1378,8 +1473,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_user(project, instance, host, name, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/users'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'projects/{project}/instances/{instance}/users', options)
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
@@ -1420,8 +1514,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_user(project, instance, user_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/users'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'projects/{project}/instances/{instance}/users', options)
           command.request_representation = Google::Apis::SqladminV1beta4::User::Representation
           command.request_object = user_object
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
@@ -1461,8 +1554,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_users(project, instance, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/users'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'projects/{project}/instances/{instance}/users', options)
           command.response_representation = Google::Apis::SqladminV1beta4::ListUsersResponse::Representation
           command.response_class = Google::Apis::SqladminV1beta4::ListUsersResponse
           command.params['project'] = project unless project.nil?
@@ -1505,8 +1597,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_user(project, instance, host, name, user_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{project}/instances/{instance}/users'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'projects/{project}/instances/{instance}/users', options)
           command.request_representation = Google::Apis::SqladminV1beta4::User::Representation
           command.request_object = user_object
           command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation

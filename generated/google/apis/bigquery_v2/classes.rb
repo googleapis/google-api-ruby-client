@@ -407,11 +407,129 @@ module Google
       end
       
       # 
+      class ExplainQueryStage
+        include Google::Apis::Core::Hashable
+      
+        # Relative amount of time the average shard spent on CPU-bound tasks.
+        # Corresponds to the JSON property `computeRatioAvg`
+        # @return [Float]
+        attr_accessor :compute_ratio_avg
+      
+        # Relative amount of time the slowest shard spent on CPU-bound tasks.
+        # Corresponds to the JSON property `computeRatioMax`
+        # @return [Float]
+        attr_accessor :compute_ratio_max
+      
+        # Unique ID for stage within plan.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Human-readable name for stage.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Relative amount of time the average shard spent reading input.
+        # Corresponds to the JSON property `readRatioAvg`
+        # @return [Float]
+        attr_accessor :read_ratio_avg
+      
+        # Relative amount of time the slowest shard spent reading input.
+        # Corresponds to the JSON property `readRatioMax`
+        # @return [Float]
+        attr_accessor :read_ratio_max
+      
+        # Number of records read into the stage.
+        # Corresponds to the JSON property `recordsRead`
+        # @return [String]
+        attr_accessor :records_read
+      
+        # Number of records written by the stage.
+        # Corresponds to the JSON property `recordsWritten`
+        # @return [String]
+        attr_accessor :records_written
+      
+        # List of operations within the stage in dependency order (approximately
+        # chronological).
+        # Corresponds to the JSON property `steps`
+        # @return [Array<Google::Apis::BigqueryV2::ExplainQueryStep>]
+        attr_accessor :steps
+      
+        # Relative amount of time the average shard spent waiting to be scheduled.
+        # Corresponds to the JSON property `waitRatioAvg`
+        # @return [Float]
+        attr_accessor :wait_ratio_avg
+      
+        # Relative amount of time the slowest shard spent waiting to be scheduled.
+        # Corresponds to the JSON property `waitRatioMax`
+        # @return [Float]
+        attr_accessor :wait_ratio_max
+      
+        # Relative amount of time the average shard spent on writing output.
+        # Corresponds to the JSON property `writeRatioAvg`
+        # @return [Float]
+        attr_accessor :write_ratio_avg
+      
+        # Relative amount of time the slowest shard spent on writing output.
+        # Corresponds to the JSON property `writeRatioMax`
+        # @return [Float]
+        attr_accessor :write_ratio_max
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compute_ratio_avg = args[:compute_ratio_avg] unless args[:compute_ratio_avg].nil?
+          @compute_ratio_max = args[:compute_ratio_max] unless args[:compute_ratio_max].nil?
+          @id = args[:id] unless args[:id].nil?
+          @name = args[:name] unless args[:name].nil?
+          @read_ratio_avg = args[:read_ratio_avg] unless args[:read_ratio_avg].nil?
+          @read_ratio_max = args[:read_ratio_max] unless args[:read_ratio_max].nil?
+          @records_read = args[:records_read] unless args[:records_read].nil?
+          @records_written = args[:records_written] unless args[:records_written].nil?
+          @steps = args[:steps] unless args[:steps].nil?
+          @wait_ratio_avg = args[:wait_ratio_avg] unless args[:wait_ratio_avg].nil?
+          @wait_ratio_max = args[:wait_ratio_max] unless args[:wait_ratio_max].nil?
+          @write_ratio_avg = args[:write_ratio_avg] unless args[:write_ratio_avg].nil?
+          @write_ratio_max = args[:write_ratio_max] unless args[:write_ratio_max].nil?
+        end
+      end
+      
+      # 
+      class ExplainQueryStep
+        include Google::Apis::Core::Hashable
+      
+        # Machine-readable operation type.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Human-readable stage descriptions.
+        # Corresponds to the JSON property `substeps`
+        # @return [Array<String>]
+        attr_accessor :substeps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] unless args[:kind].nil?
+          @substeps = args[:substeps] unless args[:substeps].nil?
+        end
+      end
+      
+      # 
       class ExternalDataConfiguration
         include Google::Apis::Core::Hashable
       
         # [Optional] The compression type of the data source. Possible values include
-        # GZIP and NONE. The default value is NONE.
+        # GZIP and NONE. The default value is NONE. This setting is ignored for Google
+        # Cloud Datastore backups.
         # Corresponds to the JSON property `compression`
         # @return [String]
         attr_accessor :compression
@@ -426,7 +544,8 @@ module Google
         # false, records with extra columns are treated as bad records, and if there are
         # too many bad records, an invalid error is returned in the job result. The
         # default value is false. The sourceFormat property determines what BigQuery
-        # treats as an extra value: CSV: Trailing columns
+        # treats as an extra value: CSV: Trailing columns JSON: Named values that don't
+        # match any column names Google Cloud Datastore backups: This setting is ignored.
         # Corresponds to the JSON property `ignoreUnknownValues`
         # @return [Boolean]
         attr_accessor :ignore_unknown_values
@@ -435,26 +554,31 @@ module Google
         # [Optional] The maximum number of bad records that BigQuery can ignore when
         # reading data. If the number of bad records exceeds this value, an invalid
         # error is returned in the job result. The default value is 0, which requires
-        # that all records are valid.
+        # that all records are valid. This setting is ignored for Google Cloud Datastore
+        # backups.
         # Corresponds to the JSON property `maxBadRecords`
         # @return [Fixnum]
         attr_accessor :max_bad_records
       
-        # [Required] The schema for the data.
+        # [Optional] The schema for the data. Schema is required for CSV and JSON
+        # formats. Schema is disallowed for Google Cloud Datastore backups.
         # Corresponds to the JSON property `schema`
         # @return [Google::Apis::BigqueryV2::TableSchema]
         attr_accessor :schema
       
-        # [Optional] The data format. External data sources must be in CSV format. The
-        # default value is CSV.
+        # [Required] The data format. For CSV files, specify "CSV". For newline-
+        # delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Google Cloud Datastore
+        # backups, specify "DATASTORE_BACKUP".
         # Corresponds to the JSON property `sourceFormat`
         # @return [String]
         attr_accessor :source_format
       
         # [Required] The fully-qualified URIs that point to your data in Google Cloud
         # Storage. Each URI can contain one '*' wildcard character and it must come
-        # after the 'bucket' name. CSV limits related to load jobs apply to external
+        # after the 'bucket' name. Size limits related to load jobs apply to external
         # data sources, plus an additional limit of 10 GB maximum size across all URIs.
+        # For Google Cloud Datastore backups, exactly one URI can be specified, and it
+        # must end with '.backup_info'. Also, the '*' wildcard character is not allowed.
         # Corresponds to the JSON property `sourceUris`
         # @return [Array<String>]
         attr_accessor :source_uris
@@ -484,6 +608,13 @@ module Google
         # @return [Boolean]
         attr_accessor :cache_hit
         alias_method :cache_hit?, :cache_hit
+      
+        # [Output-only] All errors and warnings encountered during the running of the
+        # job. Errors here do not necessarily mean that the job has completed or was
+        # unsuccessful.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::BigqueryV2::ErrorProto>]
+        attr_accessor :errors
       
         # A hash of this response.
         # Corresponds to the JSON property `etag`
@@ -548,6 +679,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cache_hit = args[:cache_hit] unless args[:cache_hit].nil?
+          @errors = args[:errors] unless args[:errors].nil?
           @etag = args[:etag] unless args[:etag].nil?
           @job_complete = args[:job_complete] unless args[:job_complete].nil?
           @job_reference = args[:job_reference] unless args[:job_reference].nil?
@@ -1353,13 +1485,29 @@ module Google
       class JobStatistics2
         include Google::Apis::Core::Hashable
       
+        # [Output-only] Billing tier for the job.
+        # Corresponds to the JSON property `billingTier`
+        # @return [Fixnum]
+        attr_accessor :billing_tier
+      
         # [Output-only] Whether the query result was fetched from the query cache.
         # Corresponds to the JSON property `cacheHit`
         # @return [Boolean]
         attr_accessor :cache_hit
         alias_method :cache_hit?, :cache_hit
       
-        # [Output-only] Total bytes processed for this job.
+        # [Output-only, Experimental] Describes execution plan for the query as a list
+        # of stages.
+        # Corresponds to the JSON property `queryPlan`
+        # @return [Array<Google::Apis::BigqueryV2::ExplainQueryStage>]
+        attr_accessor :query_plan
+      
+        # [Output-only] Total bytes billed for the job.
+        # Corresponds to the JSON property `totalBytesBilled`
+        # @return [String]
+        attr_accessor :total_bytes_billed
+      
+        # [Output-only] Total bytes processed for the job.
         # Corresponds to the JSON property `totalBytesProcessed`
         # @return [String]
         attr_accessor :total_bytes_processed
@@ -1370,7 +1518,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @billing_tier = args[:billing_tier] unless args[:billing_tier].nil?
           @cache_hit = args[:cache_hit] unless args[:cache_hit].nil?
+          @query_plan = args[:query_plan] unless args[:query_plan].nil?
+          @total_bytes_billed = args[:total_bytes_billed] unless args[:total_bytes_billed].nil?
           @total_bytes_processed = args[:total_bytes_processed] unless args[:total_bytes_processed].nil?
         end
       end
@@ -1379,7 +1530,7 @@ module Google
       class JobStatistics3
         include Google::Apis::Core::Hashable
       
-        # [Output-only] Number of bytes of source data in a joad job.
+        # [Output-only] Number of bytes of source data in a load job.
         # Corresponds to the JSON property `inputFileBytes`
         # @return [String]
         attr_accessor :input_file_bytes
@@ -1389,8 +1540,8 @@ module Google
         # @return [String]
         attr_accessor :input_files
       
-        # [Output-only] Size of the loaded data in bytes. Note that while an import job
-        # is in the running state, this value may change.
+        # [Output-only] Size of the loaded data in bytes. Note that while a load job is
+        # in the running state, this value may change.
         # Corresponds to the JSON property `outputBytes`
         # @return [String]
         attr_accessor :output_bytes
@@ -1418,7 +1569,7 @@ module Google
       class JobStatistics4
         include Google::Apis::Core::Hashable
       
-        # [Experimental] Number of files per destination URI or URI pattern specified in
+        # [Output-only] Number of files per destination URI or URI pattern specified in
         # the extract configuration. These values will be in the same order as the URIs
         # specified in the 'destinationUris' field.
         # Corresponds to the JSON property `destinationUriFileCounts`
@@ -1666,6 +1817,13 @@ module Google
         attr_accessor :cache_hit
         alias_method :cache_hit?, :cache_hit
       
+        # [Output-only] All errors and warnings encountered during the running of the
+        # job. Errors here do not necessarily mean that the job has completed or was
+        # unsuccessful.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::BigqueryV2::ErrorProto>]
+        attr_accessor :errors
+      
         # Whether the query has completed or not. If rows or totalRows are present, this
         # will always be true. If this is false, totalRows will not be available.
         # Corresponds to the JSON property `jobComplete`
@@ -1723,6 +1881,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cache_hit = args[:cache_hit] unless args[:cache_hit].nil?
+          @errors = args[:errors] unless args[:errors].nil?
           @job_complete = args[:job_complete] unless args[:job_complete].nil?
           @job_reference = args[:job_reference] unless args[:job_reference].nil?
           @kind = args[:kind] unless args[:kind].nil?
@@ -1731,6 +1890,40 @@ module Google
           @schema = args[:schema] unless args[:schema].nil?
           @total_bytes_processed = args[:total_bytes_processed] unless args[:total_bytes_processed].nil?
           @total_rows = args[:total_rows] unless args[:total_rows].nil?
+        end
+      end
+      
+      # 
+      class Streamingbuffer
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only] A lower-bound estimate of the number of bytes currently in the
+        # streaming buffer.
+        # Corresponds to the JSON property `estimatedBytes`
+        # @return [String]
+        attr_accessor :estimated_bytes
+      
+        # [Output-only] A lower-bound estimate of the number of rows currently in the
+        # streaming buffer.
+        # Corresponds to the JSON property `estimatedRows`
+        # @return [String]
+        attr_accessor :estimated_rows
+      
+        # [Output-only] Contains the timestamp of the oldest entry in the streaming
+        # buffer, in milliseconds since the epoch, if the streaming buffer is available.
+        # Corresponds to the JSON property `oldestEntryTime`
+        # @return [String]
+        attr_accessor :oldest_entry_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @estimated_bytes = args[:estimated_bytes] unless args[:estimated_bytes].nil?
+          @estimated_rows = args[:estimated_rows] unless args[:estimated_rows].nil?
+          @oldest_entry_time = args[:oldest_entry_time] unless args[:oldest_entry_time].nil?
         end
       end
       
@@ -1795,14 +1988,14 @@ module Google
         # @return [String]
         attr_accessor :location
       
-        # [Output-only] The size of the table in bytes. This property is unavailable for
-        # tables that are actively receiving streaming inserts.
+        # [Output-only] The size of this table in bytes, excluding any data in the
+        # streaming buffer.
         # Corresponds to the JSON property `numBytes`
         # @return [String]
         attr_accessor :num_bytes
       
-        # [Output-only] The number of rows of data in this table. This property is
-        # unavailable for tables that are actively receiving streaming inserts.
+        # [Output-only] The number of rows of data in this table, excluding any data in
+        # the streaming buffer.
         # Corresponds to the JSON property `numRows`
         # @return [String]
         attr_accessor :num_rows
@@ -1816,6 +2009,13 @@ module Google
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
+      
+        # [Output-only] Contains information regarding this table's streaming buffer, if
+        # one is present. This field will be absent if the table is not being streamed
+        # to or if there is no data in the streaming buffer.
+        # Corresponds to the JSON property `streamingBuffer`
+        # @return [Google::Apis::BigqueryV2::Streamingbuffer]
+        attr_accessor :streaming_buffer
       
         # [Required] Reference describing the ID of this table.
         # Corresponds to the JSON property `tableReference`
@@ -1854,6 +2054,7 @@ module Google
           @num_rows = args[:num_rows] unless args[:num_rows].nil?
           @schema = args[:schema] unless args[:schema].nil?
           @self_link = args[:self_link] unless args[:self_link].nil?
+          @streaming_buffer = args[:streaming_buffer] unless args[:streaming_buffer].nil?
           @table_reference = args[:table_reference] unless args[:table_reference].nil?
           @type = args[:type] unless args[:type].nil?
           @view = args[:view] unless args[:view].nil?
@@ -1909,6 +2110,13 @@ module Google
         attr_accessor :skip_invalid_rows
         alias_method :skip_invalid_rows?, :skip_invalid_rows
       
+        # [Experimental] If specified, treats the destination table as a base template,
+        # and inserts the rows into an instance table named "". BigQuery will manage
+        # creation of the instance table, using the schema of the base template table.
+        # Corresponds to the JSON property `templateSuffix`
+        # @return [String]
+        attr_accessor :template_suffix
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1919,6 +2127,7 @@ module Google
           @kind = args[:kind] unless args[:kind].nil?
           @rows = args[:rows] unless args[:rows].nil?
           @skip_invalid_rows = args[:skip_invalid_rows] unless args[:skip_invalid_rows].nil?
+          @template_suffix = args[:template_suffix] unless args[:template_suffix].nil?
         end
         
         # 
@@ -2285,6 +2494,11 @@ module Google
         # @return [String]
         attr_accessor :query
       
+        # [Experimental] Describes user-defined function resources used in the query.
+        # Corresponds to the JSON property `userDefinedFunctionResources`
+        # @return [Array<Google::Apis::BigqueryV2::UserDefinedFunctionResource>]
+        attr_accessor :user_defined_function_resources
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2292,6 +2506,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @query = args[:query] unless args[:query].nil?
+          @user_defined_function_resources = args[:user_defined_function_resources] unless args[:user_defined_function_resources].nil?
         end
       end
     end

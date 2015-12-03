@@ -59,6 +59,11 @@ module Google
         attr_accessor :registered
         alias_method :registered?, :registered
       
+        # Session ID which should be passed in the following verifyAssertion request.
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -71,6 +76,7 @@ module Google
           @kind = args[:kind] unless args[:kind].nil?
           @provider_id = args[:provider_id] unless args[:provider_id].nil?
           @registered = args[:registered] unless args[:registered].nil?
+          @session_id = args[:session_id] unless args[:session_id].nil?
         end
       end
       
@@ -155,6 +161,11 @@ module Google
       class GetOobConfirmationCodeResponse
         include Google::Apis::Core::Hashable
       
+        # The email address that the email is sent to.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
         # The fixed string "identitytoolkit#GetOobConfirmationCodeResponse".
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -171,6 +182,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @email = args[:email] unless args[:email].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @oob_code = args[:oob_code] unless args[:oob_code].nil?
         end
@@ -357,6 +369,44 @@ module Google
           @email = args[:email] unless args[:email].nil?
           @id_token = args[:id_token] unless args[:id_token].nil?
           @local_id = args[:local_id] unless args[:local_id].nil?
+        end
+      end
+      
+      # Response of getting the project configuration.
+      class GetProjectConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # Whether to allow password user sign in or sign up.
+        # Corresponds to the JSON property `allowPasswordUser`
+        # @return [Boolean]
+        attr_accessor :allow_password_user
+        alias_method :allow_password_user?, :allow_password_user
+      
+        # Browser API key, needed when making http request to Apiary.
+        # Corresponds to the JSON property `apiKey`
+        # @return [String]
+        attr_accessor :api_key
+      
+        # OAuth2 provider configuration.
+        # Corresponds to the JSON property `idpConfig`
+        # @return [Array<Google::Apis::IdentitytoolkitV3::IdpConfig>]
+        attr_accessor :idp_config
+      
+        # Project ID of the relying party.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_password_user = args[:allow_password_user] unless args[:allow_password_user].nil?
+          @api_key = args[:api_key] unless args[:api_key].nil?
+          @idp_config = args[:idp_config] unless args[:idp_config].nil?
+          @project_id = args[:project_id] unless args[:project_id].nil?
         end
       end
       
@@ -566,6 +616,11 @@ module Google
         attr_accessor :return_refresh_token
         alias_method :return_refresh_token?, :return_refresh_token
       
+        # Session ID, which should match the one in previous createAuthUri request.
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -576,6 +631,7 @@ module Google
           @post_body = args[:post_body] unless args[:post_body].nil?
           @request_uri = args[:request_uri] unless args[:request_uri].nil?
           @return_refresh_token = args[:return_refresh_token] unless args[:return_refresh_token].nil?
+          @session_id = args[:session_id] unless args[:session_id].nil?
         end
       end
       
@@ -619,6 +675,44 @@ module Google
           @email = args[:email] unless args[:email].nil?
           @password = args[:password] unless args[:password].nil?
           @pending_id_token = args[:pending_id_token] unless args[:pending_id_token].nil?
+        end
+      end
+      
+      # Template for a single idp configuration.
+      class IdpConfig
+        include Google::Apis::Core::Hashable
+      
+        # OAuth2 client ID.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Whether this IDP is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Percent of users who will be prompted/redirected federated login for this IDP.
+        # Corresponds to the JSON property `experimentPercent`
+        # @return [Fixnum]
+        attr_accessor :experiment_percent
+      
+        # OAuth2 provider.
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] unless args[:client_id].nil?
+          @enabled = args[:enabled] unless args[:enabled].nil?
+          @experiment_percent = args[:experiment_percent] unless args[:experiment_percent].nil?
+          @provider = args[:provider] unless args[:provider].nil?
         end
       end
       
@@ -733,6 +827,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The new email the user attempts to change to.
+        # Corresponds to the JSON property `newEmail`
+        # @return [String]
+        attr_accessor :new_email
+      
         # The user's profiles at the associated IdPs.
         # Corresponds to the JSON property `providerUserInfo`
         # @return [Array<Google::Apis::IdentitytoolkitV3::SetAccountInfoResponse::ProviderUserInfo>]
@@ -748,6 +847,7 @@ module Google
           @email = args[:email] unless args[:email].nil?
           @id_token = args[:id_token] unless args[:id_token].nil?
           @kind = args[:kind] unless args[:kind].nil?
+          @new_email = args[:new_email] unless args[:new_email].nil?
           @provider_user_info = args[:provider_user_info] unless args[:provider_user_info].nil?
         end
         
@@ -1068,6 +1168,12 @@ module Google
         attr_accessor :need_confirmation
         alias_method :need_confirmation?, :need_confirmation
       
+        # Whether need client to supply email to complete the federated login flow.
+        # Corresponds to the JSON property `needEmail`
+        # @return [Boolean]
+        attr_accessor :need_email
+        alias_method :need_email?, :need_email
+      
         # The nick name of the user.
         # Corresponds to the JSON property `nickName`
         # @return [String]
@@ -1153,6 +1259,7 @@ module Google
           @last_name = args[:last_name] unless args[:last_name].nil?
           @local_id = args[:local_id] unless args[:local_id].nil?
           @need_confirmation = args[:need_confirmation] unless args[:need_confirmation].nil?
+          @need_email = args[:need_email] unless args[:need_email].nil?
           @nick_name = args[:nick_name] unless args[:nick_name].nil?
           @oauth_access_token = args[:oauth_access_token] unless args[:oauth_access_token].nil?
           @oauth_authorization_code = args[:oauth_authorization_code] unless args[:oauth_authorization_code].nil?
@@ -1198,6 +1305,21 @@ module Google
         # @return [String]
         attr_accessor :local_id
       
+        # The OAuth2 access token.
+        # Corresponds to the JSON property `oauthAccessToken`
+        # @return [String]
+        attr_accessor :oauth_access_token
+      
+        # The OAuth2 authorization code.
+        # Corresponds to the JSON property `oauthAuthorizationCode`
+        # @return [String]
+        attr_accessor :oauth_authorization_code
+      
+        # The lifetime in seconds of the OAuth2 access token.
+        # Corresponds to the JSON property `oauthExpireIn`
+        # @return [Fixnum]
+        attr_accessor :oauth_expire_in
+      
         # The URI of the user's photo at IdP
         # Corresponds to the JSON property `photoUrl`
         # @return [String]
@@ -1220,6 +1342,9 @@ module Google
           @id_token = args[:id_token] unless args[:id_token].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @local_id = args[:local_id] unless args[:local_id].nil?
+          @oauth_access_token = args[:oauth_access_token] unless args[:oauth_access_token].nil?
+          @oauth_authorization_code = args[:oauth_authorization_code] unless args[:oauth_authorization_code].nil?
+          @oauth_expire_in = args[:oauth_expire_in] unless args[:oauth_expire_in].nil?
           @photo_url = args[:photo_url] unless args[:photo_url].nil?
           @registered = args[:registered] unless args[:registered].nil?
         end

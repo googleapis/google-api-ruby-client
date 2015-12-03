@@ -226,6 +226,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class HttpsHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class HttpsHealthCheckList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class Image
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -267,10 +275,6 @@ module Google
       end
       
       class InstanceGroupManagerAggregatedList
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
-      class InstanceGroupManagerAutoHealingPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -562,6 +566,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class SslCertificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class SslCertificateList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class Tags
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -571,6 +583,18 @@ module Google
       end
       
       class TargetHttpProxyList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class TargetHttpsProxiesSetSslCertificatesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class TargetHttpsProxy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class TargetHttpsProxyList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -1337,6 +1361,37 @@ module Google
         end
       end
       
+      class HttpsHealthCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :check_interval_sec, as: 'checkIntervalSec'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :healthy_threshold, as: 'healthyThreshold'
+          property :host, as: 'host'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :port, as: 'port'
+          property :request_path, as: 'requestPath'
+          property :self_link, as: 'selfLink'
+          property :timeout_sec, as: 'timeoutSec'
+          property :unhealthy_threshold, as: 'unhealthyThreshold'
+        end
+      end
+      
+      class HttpsHealthCheckList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::HttpsHealthCheck, decorator: Google::Apis::ComputeV1::HttpsHealthCheck::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
       class Image
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1468,8 +1523,6 @@ module Google
       class InstanceGroupManager
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :auto_healing_policies, as: 'autoHealingPolicies', class: Google::Apis::ComputeV1::InstanceGroupManagerAutoHealingPolicy, decorator: Google::Apis::ComputeV1::InstanceGroupManagerAutoHealingPolicy::Representation
-      
           property :base_instance_name, as: 'baseInstanceName'
           property :creation_timestamp, as: 'creationTimestamp'
           property :current_actions, as: 'currentActions', class: Google::Apis::ComputeV1::InstanceGroupManagerActionsSummary, decorator: Google::Apis::ComputeV1::InstanceGroupManagerActionsSummary::Representation
@@ -1481,6 +1534,8 @@ module Google
           property :instance_template, as: 'instanceTemplate'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeV1::NamedPort, decorator: Google::Apis::ComputeV1::NamedPort::Representation
+      
           property :self_link, as: 'selfLink'
           collection :target_pools, as: 'targetPools'
           property :target_size, as: 'targetSize'
@@ -1510,14 +1565,6 @@ module Google
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
           property :self_link, as: 'selfLink'
-        end
-      end
-      
-      class InstanceGroupManagerAutoHealingPolicy
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :action_type, as: 'actionType'
-          property :health_check, as: 'healthCheck'
         end
       end
       
@@ -1629,7 +1676,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_state, as: 'instanceState'
-          property :port_name, as: 'portName'
         end
       end
       
@@ -2124,6 +2170,7 @@ module Google
       
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          collection :enabled_features, as: 'enabledFeatures'
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -2291,6 +2338,32 @@ module Google
         end
       end
       
+      class SslCertificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate, as: 'certificate'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :private_key, as: 'privateKey'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class SslCertificateList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::SslCertificate, decorator: Google::Apis::ComputeV1::SslCertificate::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
       class Tags
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2317,6 +2390,39 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           collection :items, as: 'items', class: Google::Apis::ComputeV1::TargetHttpProxy, decorator: Google::Apis::ComputeV1::TargetHttpProxy::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class TargetHttpsProxiesSetSslCertificatesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ssl_certificates, as: 'sslCertificates'
+        end
+      end
+      
+      class TargetHttpsProxy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          collection :ssl_certificates, as: 'sslCertificates'
+          property :url_map, as: 'urlMap'
+        end
+      end
+      
+      class TargetHttpsProxyList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::TargetHttpsProxy, decorator: Google::Apis::ComputeV1::TargetHttpsProxy::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'

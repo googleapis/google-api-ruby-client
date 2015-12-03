@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/gmail/api/
     module GmailV1
       VERSION = 'V1'
-      REVISION = '20150526'
+      REVISION = '20151001'
 
       # View and manage your mail
       AUTH_SCOPE = 'https://mail.google.com/'
@@ -44,6 +44,9 @@ module Google
 
       # View your emails messages and settings
       AUTH_GMAIL_READONLY = 'https://www.googleapis.com/auth/gmail.readonly'
+
+      # Send email on your behalf
+      AUTH_GMAIL_SEND = 'https://www.googleapis.com/auth/gmail.send'
     end
   end
 end

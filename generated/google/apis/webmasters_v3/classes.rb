@@ -247,8 +247,8 @@ module Google
       class ListSitesResponse
         include Google::Apis::Core::Hashable
       
-        # Contains permission level information about a Webmaster Tools site. For more
-        # information, see Permissions in Webmaster Tools.
+        # Contains permission level information about a Search Console site. For more
+        # information, see Permissions in Search Console.
         # Corresponds to the JSON property `siteEntry`
         # @return [Array<Google::Apis::WebmastersV3::WmxSite>]
         attr_accessor :site_entry
@@ -429,8 +429,8 @@ module Google
         end
       end
       
-      # Contains permission level information about a Webmaster Tools site. For more
-      # information, see  Permissions in Webmaster Tools.
+      # Contains permission level information about a Search Console site. For more
+      # information, see  Permissions in Search Console.
       class WmxSite
         include Google::Apis::Core::Hashable
       

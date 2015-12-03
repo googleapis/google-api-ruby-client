@@ -1305,6 +1305,135 @@ module Google
       end
       
       # 
+      class Discoveryclusters
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `clusters`
+        # @return [Array<Google::Apis::BooksV1::Discoveryclusters::Cluster>]
+        attr_accessor :clusters
+      
+        # Resorce type.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `totalClusters`
+        # @return [Fixnum]
+        attr_accessor :total_clusters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @clusters = args[:clusters] unless args[:clusters].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @total_clusters = args[:total_clusters] unless args[:total_clusters].nil?
+        end
+        
+        # 
+        class Cluster
+          include Google::Apis::Core::Hashable
+        
+          # 
+          # Corresponds to the JSON property `banner_with_content_container`
+          # @return [Google::Apis::BooksV1::Discoveryclusters::Cluster::BannerWithContentContainer]
+          attr_accessor :banner_with_content_container
+        
+          # 
+          # Corresponds to the JSON property `subTitle`
+          # @return [String]
+          attr_accessor :sub_title
+        
+          # 
+          # Corresponds to the JSON property `title`
+          # @return [String]
+          attr_accessor :title
+        
+          # 
+          # Corresponds to the JSON property `totalVolumes`
+          # @return [Fixnum]
+          attr_accessor :total_volumes
+        
+          # 
+          # Corresponds to the JSON property `uid`
+          # @return [String]
+          attr_accessor :uid
+        
+          # 
+          # Corresponds to the JSON property `volumes`
+          # @return [Array<Google::Apis::BooksV1::Volume>]
+          attr_accessor :volumes
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @banner_with_content_container = args[:banner_with_content_container] unless args[:banner_with_content_container].nil?
+            @sub_title = args[:sub_title] unless args[:sub_title].nil?
+            @title = args[:title] unless args[:title].nil?
+            @total_volumes = args[:total_volumes] unless args[:total_volumes].nil?
+            @uid = args[:uid] unless args[:uid].nil?
+            @volumes = args[:volumes] unless args[:volumes].nil?
+          end
+          
+          # 
+          class BannerWithContentContainer
+            include Google::Apis::Core::Hashable
+          
+            # 
+            # Corresponds to the JSON property `fillColorArgb`
+            # @return [String]
+            attr_accessor :fill_color_argb
+          
+            # 
+            # Corresponds to the JSON property `imageUrl`
+            # @return [String]
+            attr_accessor :image_url
+          
+            # 
+            # Corresponds to the JSON property `maskColorArgb`
+            # @return [String]
+            attr_accessor :mask_color_argb
+          
+            # 
+            # Corresponds to the JSON property `moreButtonText`
+            # @return [String]
+            attr_accessor :more_button_text
+          
+            # 
+            # Corresponds to the JSON property `moreButtonUrl`
+            # @return [String]
+            attr_accessor :more_button_url
+          
+            # 
+            # Corresponds to the JSON property `textColorArgb`
+            # @return [String]
+            attr_accessor :text_color_argb
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @fill_color_argb = args[:fill_color_argb] unless args[:fill_color_argb].nil?
+              @image_url = args[:image_url] unless args[:image_url].nil?
+              @mask_color_argb = args[:mask_color_argb] unless args[:mask_color_argb].nil?
+              @more_button_text = args[:more_button_text] unless args[:more_button_text].nil?
+              @more_button_url = args[:more_button_url] unless args[:more_button_url].nil?
+              @text_color_argb = args[:text_color_argb] unless args[:text_color_argb].nil?
+            end
+          end
+        end
+      end
+      
+      # 
       class DownloadAccessRestriction
         include Google::Apis::Core::Hashable
       
@@ -1858,6 +1987,62 @@ module Google
       end
       
       # 
+      class Notification
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `body`
+        # @return [String]
+        attr_accessor :body
+      
+        # 
+        # Corresponds to the JSON property `iconUrl`
+        # @return [String]
+        attr_accessor :icon_url
+      
+        # Resource type.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `notification_type`
+        # @return [String]
+        attr_accessor :notification_type
+      
+        # 
+        # Corresponds to the JSON property `show_notification_settings_action`
+        # @return [Boolean]
+        attr_accessor :show_notification_settings_action
+        alias_method :show_notification_settings_action?, :show_notification_settings_action
+      
+        # 
+        # Corresponds to the JSON property `targetUrl`
+        # @return [String]
+        attr_accessor :target_url
+      
+        # 
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] unless args[:body].nil?
+          @icon_url = args[:icon_url] unless args[:icon_url].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @notification_type = args[:notification_type] unless args[:notification_type].nil?
+          @show_notification_settings_action = args[:show_notification_settings_action] unless args[:show_notification_settings_action].nil?
+          @target_url = args[:target_url] unless args[:target_url].nil?
+          @title = args[:title] unless args[:title].nil?
+        end
+      end
+      
+      # 
       class Offers
         include Google::Apis::Core::Hashable
       
@@ -2183,6 +2368,99 @@ module Google
       end
       
       # 
+      class Series
+        include Google::Apis::Core::Hashable
+      
+        # Resource type.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `series`
+        # @return [Array<Google::Apis::BooksV1::Series::Series>]
+        attr_accessor :series
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] unless args[:kind].nil?
+          @series = args[:series] unless args[:series].nil?
+        end
+        
+        # 
+        class Series
+          include Google::Apis::Core::Hashable
+        
+          # 
+          # Corresponds to the JSON property `bannerImageUrl`
+          # @return [String]
+          attr_accessor :banner_image_url
+        
+          # 
+          # Corresponds to the JSON property `imageUrl`
+          # @return [String]
+          attr_accessor :image_url
+        
+          # 
+          # Corresponds to the JSON property `seriesId`
+          # @return [String]
+          attr_accessor :series_id
+        
+          # 
+          # Corresponds to the JSON property `title`
+          # @return [String]
+          attr_accessor :title
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @banner_image_url = args[:banner_image_url] unless args[:banner_image_url].nil?
+            @image_url = args[:image_url] unless args[:image_url].nil?
+            @series_id = args[:series_id] unless args[:series_id].nil?
+            @title = args[:title] unless args[:title].nil?
+          end
+        end
+      end
+      
+      # 
+      class SeriesMembership
+        include Google::Apis::Core::Hashable
+      
+        # Resorce type.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `member`
+        # @return [Array<Google::Apis::BooksV1::Volume>]
+        attr_accessor :member
+      
+        # 
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] unless args[:kind].nil?
+          @member = args[:member] unless args[:member].nil?
+          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+        end
+      end
+      
+      # 
       class UserSettings
         include Google::Apis::Core::Hashable
       
@@ -2196,6 +2474,11 @@ module Google
         # @return [Google::Apis::BooksV1::UserSettings::NotesExport]
         attr_accessor :notes_export
       
+        # 
+        # Corresponds to the JSON property `notification`
+        # @return [Google::Apis::BooksV1::UserSettings::Notification]
+        attr_accessor :notification
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2204,6 +2487,7 @@ module Google
         def update!(**args)
           @kind = args[:kind] unless args[:kind].nil?
           @notes_export = args[:notes_export] unless args[:notes_export].nil?
+          @notification = args[:notification] unless args[:notification].nil?
         end
         
         # User settings in sub-objects, each for different purposes.
@@ -2229,6 +2513,44 @@ module Google
           def update!(**args)
             @folder_name = args[:folder_name] unless args[:folder_name].nil?
             @is_enabled = args[:is_enabled] unless args[:is_enabled].nil?
+          end
+        end
+        
+        # 
+        class Notification
+          include Google::Apis::Core::Hashable
+        
+          # 
+          # Corresponds to the JSON property `moreFromAuthors`
+          # @return [Google::Apis::BooksV1::UserSettings::Notification::MoreFromAuthors]
+          attr_accessor :more_from_authors
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @more_from_authors = args[:more_from_authors] unless args[:more_from_authors].nil?
+          end
+          
+          # 
+          class MoreFromAuthors
+            include Google::Apis::Core::Hashable
+          
+            # 
+            # Corresponds to the JSON property `opted_state`
+            # @return [String]
+            attr_accessor :opted_state
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @opted_state = args[:opted_state] unless args[:opted_state].nil?
+            end
           end
         end
       end
@@ -2822,10 +3144,20 @@ module Google
         class UserInfo
           include Google::Apis::Core::Hashable
         
+          # How this volume was acquired.
+          # Corresponds to the JSON property `acquisitionType`
+          # @return [Fixnum]
+          attr_accessor :acquisition_type
+        
           # Copy/Paste accounting information.
           # Corresponds to the JSON property `copy`
           # @return [Google::Apis::BooksV1::Volume::UserInfo::Copy]
           attr_accessor :copy
+        
+          # Whether this volume is purchased, sample, pd download etc.
+          # Corresponds to the JSON property `entitlementType`
+          # @return [Fixnum]
+          attr_accessor :entitlement_type
         
           # Whether or not this volume is currently in "my books."
           # Corresponds to the JSON property `isInMyBooks`
@@ -2892,7 +3224,9 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @acquisition_type = args[:acquisition_type] unless args[:acquisition_type].nil?
             @copy = args[:copy] unless args[:copy].nil?
+            @entitlement_type = args[:entitlement_type] unless args[:entitlement_type].nil?
             @is_in_my_books = args[:is_in_my_books] unless args[:is_in_my_books].nil?
             @is_preordered = args[:is_preordered] unless args[:is_preordered].nil?
             @is_purchased = args[:is_purchased] unless args[:is_purchased].nil?
@@ -3114,6 +3448,11 @@ module Google
           # @return [Fixnum]
           attr_accessor :sample_page_count
         
+          # 
+          # Corresponds to the JSON property `seriesInfo`
+          # @return [Google::Apis::BooksV1::Volumeseriesinfo]
+          attr_accessor :series_info
+        
           # Volume subtitle. (In LITE projection.)
           # Corresponds to the JSON property `subtitle`
           # @return [String]
@@ -3153,6 +3492,7 @@ module Google
             @ratings_count = args[:ratings_count] unless args[:ratings_count].nil?
             @reading_modes = args[:reading_modes] unless args[:reading_modes].nil?
             @sample_page_count = args[:sample_page_count] unless args[:sample_page_count].nil?
+            @series_info = args[:series_info] unless args[:series_info].nil?
             @subtitle = args[:subtitle] unless args[:subtitle].nil?
             @title = args[:title] unless args[:title].nil?
           end
@@ -3508,6 +3848,107 @@ module Google
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
           @total_items = args[:total_items] unless args[:total_items].nil?
+        end
+      end
+      
+      # 
+      class Volumeseriesinfo
+        include Google::Apis::Core::Hashable
+      
+        # The display number string. This should be used only for display purposes and
+        # the actual sequence should be inferred from the below orderNumber.
+        # Corresponds to the JSON property `bookDisplayNumber`
+        # @return [String]
+        attr_accessor :book_display_number
+      
+        # Resource type.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Short book title in the context of the series.
+        # Corresponds to the JSON property `shortSeriesBookTitle`
+        # @return [String]
+        attr_accessor :short_series_book_title
+      
+        # 
+        # Corresponds to the JSON property `volumeSeries`
+        # @return [Array<Google::Apis::BooksV1::Volumeseriesinfo::VolumeSeries>]
+        attr_accessor :volume_series
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @book_display_number = args[:book_display_number] unless args[:book_display_number].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @short_series_book_title = args[:short_series_book_title] unless args[:short_series_book_title].nil?
+          @volume_series = args[:volume_series] unless args[:volume_series].nil?
+        end
+        
+        # 
+        class VolumeSeries
+          include Google::Apis::Core::Hashable
+        
+          # List of issues. Applicable only for Collection Edition and Omnibus.
+          # Corresponds to the JSON property `issue`
+          # @return [Array<Google::Apis::BooksV1::Volumeseriesinfo::VolumeSeries::Issue>]
+          attr_accessor :issue
+        
+          # The book order number in the series.
+          # Corresponds to the JSON property `orderNumber`
+          # @return [Fixnum]
+          attr_accessor :order_number
+        
+          # The book type in the context of series. Examples - Single Issue, Collection
+          # Edition, etc.
+          # Corresponds to the JSON property `seriesBookType`
+          # @return [String]
+          attr_accessor :series_book_type
+        
+          # The series id.
+          # Corresponds to the JSON property `seriesId`
+          # @return [String]
+          attr_accessor :series_id
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @issue = args[:issue] unless args[:issue].nil?
+            @order_number = args[:order_number] unless args[:order_number].nil?
+            @series_book_type = args[:series_book_type] unless args[:series_book_type].nil?
+            @series_id = args[:series_id] unless args[:series_id].nil?
+          end
+          
+          # 
+          class Issue
+            include Google::Apis::Core::Hashable
+          
+            # 
+            # Corresponds to the JSON property `issueDisplayNumber`
+            # @return [String]
+            attr_accessor :issue_display_number
+          
+            # 
+            # Corresponds to the JSON property `issueOrderNumber`
+            # @return [Fixnum]
+            attr_accessor :issue_order_number
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @issue_display_number = args[:issue_display_number] unless args[:issue_display_number].nil?
+              @issue_order_number = args[:issue_order_number] unless args[:issue_order_number].nil?
+            end
+          end
         end
       end
     end

@@ -82,8 +82,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_change(project, managed_zone, change_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/managedZones/{managedZone}/changes'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{project}/managedZones/{managedZone}/changes', options)
           command.request_representation = Google::Apis::DnsV1::Change::Representation
           command.request_object = change_object
           command.response_representation = Google::Apis::DnsV1::Change::Representation
@@ -127,8 +126,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_change(project, managed_zone, change_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/managedZones/{managedZone}/changes/{changeId}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/managedZones/{managedZone}/changes/{changeId}', options)
           command.response_representation = Google::Apis::DnsV1::Change::Representation
           command.response_class = Google::Apis::DnsV1::Change
           command.params['project'] = project unless project.nil?
@@ -178,8 +176,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_changes(project, managed_zone, max_results: nil, page_token: nil, sort_by: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/managedZones/{managedZone}/changes'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/managedZones/{managedZone}/changes', options)
           command.response_representation = Google::Apis::DnsV1::ListChangesResponse::Representation
           command.response_class = Google::Apis::DnsV1::ListChangesResponse
           command.params['project'] = project unless project.nil?
@@ -220,8 +217,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_managed_zone(project, managed_zone_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/managedZones'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{project}/managedZones', options)
           command.request_representation = Google::Apis::DnsV1::ManagedZone::Representation
           command.request_object = managed_zone_object
           command.response_representation = Google::Apis::DnsV1::ManagedZone::Representation
@@ -261,8 +257,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_managed_zone(project, managed_zone, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/managedZones/{managedZone}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{project}/managedZones/{managedZone}', options)
           command.params['project'] = project unless project.nil?
           command.params['managedZone'] = managed_zone unless managed_zone.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -299,8 +294,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_managed_zone(project, managed_zone, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/managedZones/{managedZone}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/managedZones/{managedZone}', options)
           command.response_representation = Google::Apis::DnsV1::ManagedZone::Representation
           command.response_class = Google::Apis::DnsV1::ManagedZone
           command.params['project'] = project unless project.nil?
@@ -344,8 +338,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_managed_zones(project, dns_name: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/managedZones'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/managedZones', options)
           command.response_representation = Google::Apis::DnsV1::ListManagedZonesResponse::Representation
           command.response_class = Google::Apis::DnsV1::ListManagedZonesResponse
           command.params['project'] = project unless project.nil?
@@ -383,8 +376,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project(project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}', options)
           command.response_representation = Google::Apis::DnsV1::Project::Representation
           command.response_class = Google::Apis::DnsV1::Project
           command.params['project'] = project unless project.nil?
@@ -434,8 +426,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_resource_record_sets(project, managed_zone, max_results: nil, name: nil, page_token: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{project}/managedZones/{managedZone}/rrsets'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{project}/managedZones/{managedZone}/rrsets', options)
           command.response_representation = Google::Apis::DnsV1::ListResourceRecordSetsResponse::Representation
           command.response_class = Google::Apis::DnsV1::ListResourceRecordSetsResponse
           command.params['project'] = project unless project.nil?

@@ -197,8 +197,8 @@ module Google
         # @return [String]
         attr_accessor :insert_time
       
-        # [Output Only] Type of the resource. Always kind#operation for Operation
-        # resources.
+        # [Output Only] Type of the resource. Always replicapoolupdater#operation for
+        # Operation resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -408,6 +408,50 @@ module Google
               @value = args[:value] unless args[:value].nil?
             end
           end
+        end
+      end
+      
+      # Contains a list of Operation resources.
+      class OperationList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # [Output Only] The Operation resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ReplicapoolupdaterV1beta1::Operation>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always replicapoolupdater#operations for
+        # Operations resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] A token used to continue a truncate.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] unless args[:id].nil?
+          @items = args[:items] unless args[:items].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+          @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
       

@@ -78,8 +78,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_batch_report_definitions(on_behalf_of_content_owner, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'batchReportDefinitions'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'batchReportDefinitions', options)
           command.response_representation = Google::Apis::YoutubeAnalyticsV1::BatchReportDefinitionList::Representation
           command.response_class = Google::Apis::YoutubeAnalyticsV1::BatchReportDefinitionList
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
@@ -118,8 +117,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_batch_reports(batch_report_definition_id, on_behalf_of_content_owner, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'batchReports'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'batchReports', options)
           command.response_representation = Google::Apis::YoutubeAnalyticsV1::BatchReportList::Representation
           command.response_class = Google::Apis::YoutubeAnalyticsV1::BatchReportList
           command.query['batchReportDefinitionId'] = batch_report_definition_id unless batch_report_definition_id.nil?
@@ -166,8 +164,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_group_item(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'groupItems'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'groupItems', options)
           command.query['id'] = id unless id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -210,8 +207,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_group_item(group_item_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'groupItems'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'groupItems', options)
           command.request_representation = Google::Apis::YoutubeAnalyticsV1::GroupItem::Representation
           command.request_object = group_item_object
           command.response_representation = Google::Apis::YoutubeAnalyticsV1::GroupItem::Representation
@@ -259,8 +255,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_group_items(group_id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'groupItems'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'groupItems', options)
           command.response_representation = Google::Apis::YoutubeAnalyticsV1::ListGroupItemResponse::Representation
           command.response_class = Google::Apis::YoutubeAnalyticsV1::ListGroupItemResponse
           command.query['groupId'] = group_id unless group_id.nil?
@@ -307,8 +302,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_group(id, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'groups'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'groups', options)
           command.query['id'] = id unless id.nil?
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -351,8 +345,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_group(group_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'groups'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'groups', options)
           command.request_representation = Google::Apis::YoutubeAnalyticsV1::Group::Representation
           command.request_object = group_object
           command.response_representation = Google::Apis::YoutubeAnalyticsV1::Group::Representation
@@ -406,8 +399,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_groups(id: nil, mine: nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'groups'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'groups', options)
           command.response_representation = Google::Apis::YoutubeAnalyticsV1::ListGroupsResponse::Representation
           command.response_class = Google::Apis::YoutubeAnalyticsV1::ListGroupsResponse
           command.query['id'] = id unless id.nil?
@@ -453,8 +445,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_group(group_object = nil, on_behalf_of_content_owner: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'groups'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'groups', options)
           command.request_representation = Google::Apis::YoutubeAnalyticsV1::Group::Representation
           command.request_object = group_object
           command.response_representation = Google::Apis::YoutubeAnalyticsV1::Group::Representation
@@ -534,8 +525,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def query_report(ids, start_date, end_date, metrics, currency: nil, dimensions: nil, filters: nil, max_results: nil, sort: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'reports'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'reports', options)
           command.response_representation = Google::Apis::YoutubeAnalyticsV1::ResultTable::Representation
           command.response_class = Google::Apis::YoutubeAnalyticsV1::ResultTable
           command.query['currency'] = currency unless currency.nil?

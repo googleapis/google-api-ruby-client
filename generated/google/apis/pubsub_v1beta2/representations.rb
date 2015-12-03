@@ -34,30 +34,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class Rule
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
-      class Condition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
-      class LogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
-      class CounterOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
-      class DataAccessOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
-      class CloudAuditOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      end
-      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -144,8 +120,6 @@ module Google
           property :version, as: 'version'
           collection :bindings, as: 'bindings', class: Google::Apis::PubsubV1beta2::Binding, decorator: Google::Apis::PubsubV1beta2::Binding::Representation
       
-          collection :rules, as: 'rules', class: Google::Apis::PubsubV1beta2::Rule, decorator: Google::Apis::PubsubV1beta2::Rule::Representation
-      
           property :etag, :base64 => true, as: 'etag'
         end
       end
@@ -155,65 +129,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :role, as: 'role'
           collection :members, as: 'members'
-        end
-      end
-      
-      class Rule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          collection :permissions, as: 'permissions'
-          property :action, as: 'action'
-          collection :in, as: 'in'
-          collection :not_in, as: 'notIn'
-          collection :conditions, as: 'conditions', class: Google::Apis::PubsubV1beta2::Condition, decorator: Google::Apis::PubsubV1beta2::Condition::Representation
-      
-          collection :log_config, as: 'logConfig', class: Google::Apis::PubsubV1beta2::LogConfig, decorator: Google::Apis::PubsubV1beta2::LogConfig::Representation
-      
-        end
-      end
-      
-      class Condition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :iam, as: 'iam'
-          property :sys, as: 'sys'
-          property :svc, as: 'svc'
-          property :op, as: 'op'
-          property :value, as: 'value'
-          collection :values, as: 'values'
-        end
-      end
-      
-      class LogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :counter, as: 'counter', class: Google::Apis::PubsubV1beta2::CounterOptions, decorator: Google::Apis::PubsubV1beta2::CounterOptions::Representation
-      
-          property :data_access, as: 'dataAccess', class: Google::Apis::PubsubV1beta2::DataAccessOptions, decorator: Google::Apis::PubsubV1beta2::DataAccessOptions::Representation
-      
-          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::PubsubV1beta2::CloudAuditOptions, decorator: Google::Apis::PubsubV1beta2::CloudAuditOptions::Representation
-      
-        end
-      end
-      
-      class CounterOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :metric, as: 'metric'
-          property :field, as: 'field'
-        end
-      end
-      
-      class DataAccessOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class CloudAuditOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -252,6 +167,7 @@ module Google
           property :data, :base64 => true, as: 'data'
           hash :attributes, as: 'attributes'
           property :message_id, as: 'messageId'
+          property :publish_time, as: 'publishTime'
         end
       end
       

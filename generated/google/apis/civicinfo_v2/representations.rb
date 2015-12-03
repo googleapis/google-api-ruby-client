@@ -218,6 +218,7 @@ module Google
           property :election_day, as: 'electionDay'
           property :id, as: 'id'
           property :name, as: 'name'
+          property :ocd_division_id, as: 'ocdDivisionId'
         end
       end
       

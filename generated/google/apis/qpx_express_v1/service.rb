@@ -76,8 +76,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_trips(search_trips_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'search'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'search', options)
           command.request_representation = Google::Apis::QpxExpressV1::SearchTripsRequest::Representation
           command.request_object = search_trips_request_object
           command.response_representation = Google::Apis::QpxExpressV1::SearchTripsResponse::Representation

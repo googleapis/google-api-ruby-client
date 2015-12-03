@@ -80,8 +80,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def commit_edit(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}:commit'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{packageName}/edits/{editId}:commit', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::AppEdit::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::AppEdit
           command.params['packageName'] = package_name unless package_name.nil?
@@ -122,8 +121,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_edit(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{packageName}/edits/{editId}', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -161,8 +159,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_edit(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{packageName}/edits/{editId}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::AppEdit::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::AppEdit
           command.params['packageName'] = package_name unless package_name.nil?
@@ -200,8 +197,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_edit(package_name, app_edit_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{packageName}/edits', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::AppEdit::Representation
           command.request_object = app_edit_object
           command.response_representation = Google::Apis::AndroidpublisherV2::AppEdit::Representation
@@ -242,8 +238,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def validate_edit(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}:validate'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{packageName}/edits/{editId}:validate', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::AppEdit::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::AppEdit
           command.params['packageName'] = package_name unless package_name.nil?
@@ -289,8 +284,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_apk_listing(package_name, edit_id, apk_version_code, language, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings/{language}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings/{language}', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
           command.params['apkVersionCode'] = apk_version_code unless apk_version_code.nil?
@@ -331,8 +325,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_all_apk_listings(package_name, edit_id, apk_version_code, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
           command.params['apkVersionCode'] = apk_version_code unless apk_version_code.nil?
@@ -377,8 +370,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_apk_listing(package_name, edit_id, apk_version_code, language, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings/{language}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings/{language}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::ApkListing::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::ApkListing
           command.params['packageName'] = package_name unless package_name.nil?
@@ -421,8 +413,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_apk_listings(package_name, edit_id, apk_version_code, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::ListApkListingsResponse::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::ListApkListingsResponse
           command.params['packageName'] = package_name unless package_name.nil?
@@ -470,8 +461,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_apk_listing(package_name, edit_id, apk_version_code, language, apk_listing_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings/{language}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings/{language}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::ApkListing::Representation
           command.request_object = apk_listing_object
           command.response_representation = Google::Apis::AndroidpublisherV2::ApkListing::Representation
@@ -522,8 +512,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_apk_listing(package_name, edit_id, apk_version_code, language, apk_listing_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings/{language}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, '{packageName}/edits/{editId}/apks/{apkVersionCode}/listings/{language}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::ApkListing::Representation
           command.request_object = apk_listing_object
           command.response_representation = Google::Apis::AndroidpublisherV2::ApkListing::Representation
@@ -570,8 +559,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def add_externally_hosted_apk(package_name, edit_id, apks_add_externally_hosted_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/apks/externallyHosted'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{packageName}/edits/{editId}/apks/externallyHosted', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::ApksAddExternallyHostedRequest::Representation
           command.request_object = apks_add_externally_hosted_request_object
           command.response_representation = Google::Apis::AndroidpublisherV2::ApksAddExternallyHostedResponse::Representation
@@ -612,8 +600,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_apks(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/apks'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{packageName}/edits/{editId}/apks', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::ListApksResponse::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::ListApksResponse
           command.params['packageName'] = package_name unless package_name.nil?
@@ -656,11 +643,10 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def upload_apk(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/apks'
           if upload_source.nil?
-            command =  make_simple_command(:post, path, options)
+            command =  make_simple_command(:post, '{packageName}/edits/{editId}/apks', options)
           else
-            command = make_upload_command(:post, path, options)
+            command = make_upload_command(:post, '{packageName}/edits/{editId}/apks', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -703,8 +689,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_detail(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/details'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{packageName}/edits/{editId}/details', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::AppDetails::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::AppDetails
           command.params['packageName'] = package_name unless package_name.nil?
@@ -744,8 +729,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_detail(package_name, edit_id, app_details_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/details'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, '{packageName}/edits/{editId}/details', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::AppDetails::Representation
           command.request_object = app_details_object
           command.response_representation = Google::Apis::AndroidpublisherV2::AppDetails::Representation
@@ -787,8 +771,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_detail(package_name, edit_id, app_details_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/details'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, '{packageName}/edits/{editId}/details', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::AppDetails::Representation
           command.request_object = app_details_object
           command.response_representation = Google::Apis::AndroidpublisherV2::AppDetails::Representation
@@ -833,8 +816,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_expansion_file(package_name, edit_id, apk_version_code, expansion_file_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::ExpansionFile::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::ExpansionFile
           command.params['packageName'] = package_name unless package_name.nil?
@@ -882,8 +864,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_expansion_file(package_name, edit_id, apk_version_code, expansion_file_type, expansion_file_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, '{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::ExpansionFile::Representation
           command.request_object = expansion_file_object
           command.response_representation = Google::Apis::AndroidpublisherV2::ExpansionFile::Representation
@@ -932,8 +913,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_expansion_file(package_name, edit_id, apk_version_code, expansion_file_type, expansion_file_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, '{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::ExpansionFile::Representation
           command.request_object = expansion_file_object
           command.response_representation = Google::Apis::AndroidpublisherV2::ExpansionFile::Representation
@@ -984,11 +964,10 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def upload_expansion_file(package_name, edit_id, apk_version_code, expansion_file_type, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}'
           if upload_source.nil?
-            command =  make_simple_command(:post, path, options)
+            command =  make_simple_command(:post, '{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}', options)
           else
-            command = make_upload_command(:post, path, options)
+            command = make_upload_command(:post, '{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -1039,8 +1018,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_image(package_name, edit_id, language, image_type, image_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/listings/{language}/{imageType}/{imageId}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{packageName}/edits/{editId}/listings/{language}/{imageType}/{imageId}', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
           command.params['language'] = language unless language.nil?
@@ -1085,8 +1063,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_all_images(package_name, edit_id, language, image_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/listings/{language}/{imageType}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{packageName}/edits/{editId}/listings/{language}/{imageType}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::ImagesDeleteAllResponse::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::ImagesDeleteAllResponse
           command.params['packageName'] = package_name unless package_name.nil?
@@ -1132,8 +1109,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_images(package_name, edit_id, language, image_type, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/listings/{language}/{imageType}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{packageName}/edits/{editId}/listings/{language}/{imageType}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::ListImagesResponse::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::ListImagesResponse
           command.params['packageName'] = package_name unless package_name.nil?
@@ -1184,11 +1160,10 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def upload_image(package_name, edit_id, language, image_type, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/listings/{language}/{imageType}'
           if upload_source.nil?
-            command =  make_simple_command(:post, path, options)
+            command =  make_simple_command(:post, '{packageName}/edits/{editId}/listings/{language}/{imageType}', options)
           else
-            command = make_upload_command(:post, path, options)
+            command = make_upload_command(:post, '{packageName}/edits/{editId}/listings/{language}/{imageType}', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -1235,8 +1210,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_listing(package_name, edit_id, language, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/listings/{language}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{packageName}/edits/{editId}/listings/{language}', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
           command.params['language'] = language unless language.nil?
@@ -1274,8 +1248,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_all_listings(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/listings'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{packageName}/edits/{editId}/listings', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['editId'] = edit_id unless edit_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1315,8 +1288,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_listing(package_name, edit_id, language, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/listings/{language}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{packageName}/edits/{editId}/listings/{language}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::Listing::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::Listing
           command.params['packageName'] = package_name unless package_name.nil?
@@ -1356,8 +1328,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_listings(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/listings'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{packageName}/edits/{editId}/listings', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::ListListingsResponse::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::ListListingsResponse
           command.params['packageName'] = package_name unless package_name.nil?
@@ -1401,8 +1372,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_listing(package_name, edit_id, language, listing_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/listings/{language}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, '{packageName}/edits/{editId}/listings/{language}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::Listing::Representation
           command.request_object = listing_object
           command.response_representation = Google::Apis::AndroidpublisherV2::Listing::Representation
@@ -1448,8 +1418,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_listing(package_name, edit_id, language, listing_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/listings/{language}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, '{packageName}/edits/{editId}/listings/{language}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::Listing::Representation
           command.request_object = listing_object
           command.response_representation = Google::Apis::AndroidpublisherV2::Listing::Representation
@@ -1492,8 +1461,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_tester(package_name, edit_id, track, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/testers/{track}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{packageName}/edits/{editId}/testers/{track}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::Testers::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::Testers
           command.params['packageName'] = package_name unless package_name.nil?
@@ -1535,8 +1503,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_tester(package_name, edit_id, track, testers_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/testers/{track}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, '{packageName}/edits/{editId}/testers/{track}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::Testers::Representation
           command.request_object = testers_object
           command.response_representation = Google::Apis::AndroidpublisherV2::Testers::Representation
@@ -1580,8 +1547,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_tester(package_name, edit_id, track, testers_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/testers/{track}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, '{packageName}/edits/{editId}/testers/{track}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::Testers::Representation
           command.request_object = testers_object
           command.response_representation = Google::Apis::AndroidpublisherV2::Testers::Representation
@@ -1626,8 +1592,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_track(package_name, edit_id, track, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/tracks/{track}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{packageName}/edits/{editId}/tracks/{track}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::Track::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::Track
           command.params['packageName'] = package_name unless package_name.nil?
@@ -1667,8 +1632,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_tracks(package_name, edit_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/tracks'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{packageName}/edits/{editId}/tracks', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::ListTracksResponse::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::ListTracksResponse
           command.params['packageName'] = package_name unless package_name.nil?
@@ -1712,8 +1676,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_track(package_name, edit_id, track, track_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/tracks/{track}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, '{packageName}/edits/{editId}/tracks/{track}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::Track::Representation
           command.request_object = track_object
           command.response_representation = Google::Apis::AndroidpublisherV2::Track::Representation
@@ -1760,8 +1723,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_track(package_name, edit_id, track, track_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/edits/{editId}/tracks/{track}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, '{packageName}/edits/{editId}/tracks/{track}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::Track::Representation
           command.request_object = track_object
           command.response_representation = Google::Apis::AndroidpublisherV2::Track::Representation
@@ -1807,8 +1769,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_entitlements(package_name, max_results: nil, product_id: nil, start_index: nil, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/entitlements'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{packageName}/entitlements', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::ListEntitlementsResponse::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::ListEntitlementsResponse
           command.params['packageName'] = package_name unless package_name.nil?
@@ -1846,8 +1807,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_update_in_app_products(in_app_products_batch_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'inappproducts/batch'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'inappproducts/batch', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::InAppProductsBatchRequest::Representation
           command.request_object = in_app_products_batch_request_object
           command.response_representation = Google::Apis::AndroidpublisherV2::InAppProductsBatchResponse::Representation
@@ -1886,8 +1846,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_in_app_product(package_name, sku, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/inappproducts/{sku}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, '{packageName}/inappproducts/{sku}', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['sku'] = sku unless sku.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1922,8 +1881,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_in_app_product(package_name, sku, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/inappproducts/{sku}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{packageName}/inappproducts/{sku}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::InAppProduct::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::InAppProduct
           command.params['packageName'] = package_name unless package_name.nil?
@@ -1964,8 +1922,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_in_app_product(package_name, in_app_product_object = nil, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/inappproducts'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{packageName}/inappproducts', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::InAppProduct::Representation
           command.request_object = in_app_product_object
           command.response_representation = Google::Apis::AndroidpublisherV2::InAppProduct::Representation
@@ -2008,8 +1965,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_in_app_products(package_name, max_results: nil, start_index: nil, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/inappproducts'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{packageName}/inappproducts', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::ListInAppProductsResponse::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::ListInAppProductsResponse
           command.params['packageName'] = package_name unless package_name.nil?
@@ -2055,8 +2011,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_in_app_product(package_name, sku, in_app_product_object = nil, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/inappproducts/{sku}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, '{packageName}/inappproducts/{sku}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::InAppProduct::Representation
           command.request_object = in_app_product_object
           command.response_representation = Google::Apis::AndroidpublisherV2::InAppProduct::Representation
@@ -2103,8 +2058,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_in_app_product(package_name, sku, in_app_product_object = nil, auto_convert_missing_prices: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/inappproducts/{sku}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, '{packageName}/inappproducts/{sku}', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::InAppProduct::Representation
           command.request_object = in_app_product_object
           command.response_representation = Google::Apis::AndroidpublisherV2::InAppProduct::Representation
@@ -2148,8 +2102,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_purchase_product(package_name, product_id, token, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/purchases/products/{productId}/tokens/{token}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{packageName}/purchases/products/{productId}/tokens/{token}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::ProductPurchase::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::ProductPurchase
           command.params['packageName'] = package_name unless package_name.nil?
@@ -2192,8 +2145,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_purchase_subscription(package_name, subscription_id, token, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:cancel'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:cancel', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
           command.params['token'] = token unless token.nil?
@@ -2234,8 +2186,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def defer_purchase_subscription(package_name, subscription_id, token, defer_subscription_purchases_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:defer'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:defer', options)
           command.request_representation = Google::Apis::AndroidpublisherV2::DeferSubscriptionPurchasesRequest::Representation
           command.request_object = defer_subscription_purchases_request_object
           command.response_representation = Google::Apis::AndroidpublisherV2::DeferSubscriptionPurchasesResponse::Representation
@@ -2280,8 +2231,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_purchase_subscription(package_name, subscription_id, token, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, '{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}', options)
           command.response_representation = Google::Apis::AndroidpublisherV2::SubscriptionPurchase::Representation
           command.response_class = Google::Apis::AndroidpublisherV2::SubscriptionPurchase
           command.params['packageName'] = package_name unless package_name.nil?
@@ -2324,8 +2274,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def refund_purchase_subscription(package_name, subscription_id, token, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:refund'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:refund', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
           command.params['token'] = token unless token.nil?
@@ -2366,8 +2315,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def revoke_purchase_subscription(package_name, subscription_id, token, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = '{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:revoke'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, '{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:revoke', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
           command.params['token'] = token unless token.nil?

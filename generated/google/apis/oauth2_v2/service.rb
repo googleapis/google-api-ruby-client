@@ -75,8 +75,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_cert_for_open_id_connect(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'oauth2/v2/certs'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'oauth2/v2/certs', options)
           command.response_representation = Google::Apis::Oauth2V2::Jwk::Representation
           command.response_class = Google::Apis::Oauth2V2::Jwk
           command.query['fields'] = fields unless fields.nil?
@@ -111,8 +110,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def tokeninfo(access_token: nil, id_token: nil, token_handle: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'oauth2/v2/tokeninfo'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'oauth2/v2/tokeninfo', options)
           command.response_representation = Google::Apis::Oauth2V2::Tokeninfo::Representation
           command.response_class = Google::Apis::Oauth2V2::Tokeninfo
           command.query['access_token'] = access_token unless access_token.nil?
@@ -147,8 +145,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_userinfo(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'oauth2/v2/userinfo'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'oauth2/v2/userinfo', options)
           command.response_representation = Google::Apis::Oauth2V2::Userinfoplus::Representation
           command.response_class = Google::Apis::Oauth2V2::Userinfoplus
           command.query['fields'] = fields unless fields.nil?
@@ -180,8 +177,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_userinfo_v2(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'userinfo/v2/me'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'userinfo/v2/me', options)
           command.response_representation = Google::Apis::Oauth2V2::Userinfoplus::Representation
           command.response_class = Google::Apis::Oauth2V2::Userinfoplus
           command.query['fields'] = fields unless fields.nil?

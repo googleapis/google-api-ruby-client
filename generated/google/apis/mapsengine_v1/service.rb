@@ -78,8 +78,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_asset(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'assets/{id}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'assets/{id}', options)
           command.response_representation = Google::Apis::MapsengineV1::Asset::Representation
           command.response_class = Google::Apis::MapsengineV1::Asset
           command.params['id'] = id unless id.nil?
@@ -155,8 +154,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_assets(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, project_id: nil, role: nil, search: nil, tags: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'assets'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'assets', options)
           command.response_representation = Google::Apis::MapsengineV1::ListAssetsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListAssetsResponse
           command.query['bbox'] = bbox unless bbox.nil?
@@ -210,8 +208,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_asset_parents(id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'assets/{id}/parents'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'assets/{id}/parents', options)
           command.response_representation = Google::Apis::MapsengineV1::ListParentsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListParentsResponse
           command.params['id'] = id unless id.nil?
@@ -248,8 +245,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_asset_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'assets/{id}/permissions'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'assets/{id}/permissions', options)
           command.response_representation = Google::Apis::MapsengineV1::ListPermissionsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListPermissionsResponse
           command.params['id'] = id unless id.nil?
@@ -283,9 +279,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_processing_layer(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'layers/{id}/cancelProcessing'
-          command =  make_simple_command(:post, path, options)
+        def cancel_layer_processing(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'layers/{id}/cancelProcessing', options)
           command.response_representation = Google::Apis::MapsengineV1::ProcessResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ProcessResponse
           command.params['id'] = id unless id.nil?
@@ -321,8 +316,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_layer(layer_object = nil, process: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'layers'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'layers', options)
           command.request_representation = Google::Apis::MapsengineV1::Layer::Representation
           command.request_object = layer_object
           command.response_representation = Google::Apis::MapsengineV1::Layer::Representation
@@ -361,8 +355,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_layer(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'layers/{id}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'layers/{id}', options)
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -399,8 +392,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_layer(id, version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'layers/{id}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'layers/{id}', options)
           command.response_representation = Google::Apis::MapsengineV1::Layer::Representation
           command.response_class = Google::Apis::MapsengineV1::Layer
           command.params['id'] = id unless id.nil?
@@ -436,8 +428,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_published_layer(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'layers/{id}/published'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'layers/{id}/published', options)
           command.response_representation = Google::Apis::MapsengineV1::PublishedLayer::Representation
           command.response_class = Google::Apis::MapsengineV1::PublishedLayer
           command.params['id'] = id unless id.nil?
@@ -510,8 +501,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_layers(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, processing_status: nil, project_id: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'layers'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'layers', options)
           command.response_representation = Google::Apis::MapsengineV1::ListLayersResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListLayersResponse
           command.query['bbox'] = bbox unless bbox.nil?
@@ -567,9 +557,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_published_layer(max_results: nil, page_token: nil, project_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'layers/published'
-          command =  make_simple_command(:get, path, options)
+        def list_published_layers(max_results: nil, page_token: nil, project_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'layers/published', options)
           command.response_representation = Google::Apis::MapsengineV1::ListPublishedLayersResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListPublishedLayersResponse
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -607,8 +596,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_layer(id, layer_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'layers/{id}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'layers/{id}', options)
           command.request_representation = Google::Apis::MapsengineV1::Layer::Representation
           command.request_object = layer_object
           command.params['id'] = id unless id.nil?
@@ -643,8 +631,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def process_layer(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'layers/{id}/process'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'layers/{id}/process', options)
           command.response_representation = Google::Apis::MapsengineV1::ProcessResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ProcessResponse
           command.params['id'] = id unless id.nil?
@@ -683,8 +670,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def publish_layer(id, force: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'layers/{id}/publish'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'layers/{id}/publish', options)
           command.response_representation = Google::Apis::MapsengineV1::PublishResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::PublishResponse
           command.params['id'] = id unless id.nil?
@@ -720,8 +706,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def unpublish_layer(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'layers/{id}/unpublish'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'layers/{id}/unpublish', options)
           command.response_representation = Google::Apis::MapsengineV1::PublishResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::PublishResponse
           command.params['id'] = id unless id.nil?
@@ -763,8 +748,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_layer_parents(id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'layers/{id}/parents'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'layers/{id}/parents', options)
           command.response_representation = Google::Apis::MapsengineV1::ListParentsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListParentsResponse
           command.params['id'] = id unless id.nil?
@@ -802,8 +786,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_delete_layer_permission(id, batch_delete_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'layers/{id}/permissions/batchDelete'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'layers/{id}/permissions/batchDelete', options)
           command.request_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsRequest::Representation
           command.request_object = batch_delete_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse::Representation
@@ -843,8 +826,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_update_layer_permission(id, batch_update_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'layers/{id}/permissions/batchUpdate'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'layers/{id}/permissions/batchUpdate', options)
           command.request_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest::Representation
           command.request_object = batch_update_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse::Representation
@@ -881,8 +863,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_layer_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'layers/{id}/permissions'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'layers/{id}/permissions', options)
           command.response_representation = Google::Apis::MapsengineV1::ListPermissionsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListPermissionsResponse
           command.params['id'] = id unless id.nil?
@@ -916,8 +897,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_map(map_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'maps'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'maps', options)
           command.request_representation = Google::Apis::MapsengineV1::Map::Representation
           command.request_object = map_object
           command.response_representation = Google::Apis::MapsengineV1::Map::Representation
@@ -955,8 +935,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_map(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'maps/{id}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'maps/{id}', options)
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -993,8 +972,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_map(id, version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'maps/{id}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'maps/{id}', options)
           command.response_representation = Google::Apis::MapsengineV1::Map::Representation
           command.response_class = Google::Apis::MapsengineV1::Map
           command.params['id'] = id unless id.nil?
@@ -1030,8 +1008,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_published_map(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'maps/{id}/published'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'maps/{id}/published', options)
           command.response_representation = Google::Apis::MapsengineV1::PublishedMap::Representation
           command.response_class = Google::Apis::MapsengineV1::PublishedMap
           command.params['id'] = id unless id.nil?
@@ -1104,8 +1081,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_maps(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, processing_status: nil, project_id: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'maps'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'maps', options)
           command.response_representation = Google::Apis::MapsengineV1::ListMapsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListMapsResponse
           command.query['bbox'] = bbox unless bbox.nil?
@@ -1161,9 +1137,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_published_map(max_results: nil, page_token: nil, project_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'maps/published'
-          command =  make_simple_command(:get, path, options)
+        def list_map_published(max_results: nil, page_token: nil, project_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'maps/published', options)
           command.response_representation = Google::Apis::MapsengineV1::ListPublishedMapsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListPublishedMapsResponse
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -1201,8 +1176,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_map(id, map_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'maps/{id}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'maps/{id}', options)
           command.request_representation = Google::Apis::MapsengineV1::Map::Representation
           command.request_object = map_object
           command.params['id'] = id unless id.nil?
@@ -1241,8 +1215,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def publish_map(id, force: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'maps/{id}/publish'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'maps/{id}/publish', options)
           command.response_representation = Google::Apis::MapsengineV1::PublishResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::PublishResponse
           command.params['id'] = id unless id.nil?
@@ -1278,8 +1251,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def unpublish_map(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'maps/{id}/unpublish'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'maps/{id}/unpublish', options)
           command.response_representation = Google::Apis::MapsengineV1::PublishResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::PublishResponse
           command.params['id'] = id unless id.nil?
@@ -1315,8 +1287,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_delete_map_permission(id, batch_delete_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'maps/{id}/permissions/batchDelete'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'maps/{id}/permissions/batchDelete', options)
           command.request_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsRequest::Representation
           command.request_object = batch_delete_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse::Representation
@@ -1356,8 +1327,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_update_map_permission(id, batch_update_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'maps/{id}/permissions/batchUpdate'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'maps/{id}/permissions/batchUpdate', options)
           command.request_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest::Representation
           command.request_object = batch_update_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse::Representation
@@ -1394,8 +1364,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_map_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'maps/{id}/permissions'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'maps/{id}/permissions', options)
           command.response_representation = Google::Apis::MapsengineV1::ListPermissionsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListPermissionsResponse
           command.params['id'] = id unless id.nil?
@@ -1428,8 +1397,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_projects(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'projects', options)
           command.response_representation = Google::Apis::MapsengineV1::ListProjectsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListProjectsResponse
           command.query['fields'] = fields unless fields.nil?
@@ -1468,11 +1436,10 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_icon(project_id, icon_object = nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          path = 'projects/{projectId}/icons'
           if upload_source.nil?
-            command =  make_simple_command(:post, path, options)
+            command =  make_simple_command(:post, 'projects/{projectId}/icons', options)
           else
-            command = make_upload_command(:post, path, options)
+            command = make_upload_command(:post, 'projects/{projectId}/icons', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -1516,11 +1483,10 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_icon(project_id, id, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
-          path = 'projects/{projectId}/icons/{id}'
           if download_dest.nil?
-            command =  make_simple_command(:get, path, options)
+            command =  make_simple_command(:get, 'projects/{projectId}/icons/{id}', options)
           else
-            command = make_download_command(:get, path, options)
+            command = make_download_command(:get, 'projects/{projectId}/icons/{id}', options)
             command.download_dest = download_dest
           end
           command.response_representation = Google::Apis::MapsengineV1::Icon::Representation
@@ -1565,8 +1531,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_icons(project_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'projects/{projectId}/icons'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'projects/{projectId}/icons', options)
           command.response_representation = Google::Apis::MapsengineV1::ListIconsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListIconsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1602,9 +1567,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_processing_raster_collection(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasterCollections/{id}/cancelProcessing'
-          command =  make_simple_command(:post, path, options)
+        def cancel_raster_collection_processing(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'rasterCollections/{id}/cancelProcessing', options)
           command.response_representation = Google::Apis::MapsengineV1::ProcessResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ProcessResponse
           command.params['id'] = id unless id.nil?
@@ -1638,8 +1602,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_raster_collection(raster_collection_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasterCollections'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'rasterCollections', options)
           command.request_representation = Google::Apis::MapsengineV1::RasterCollection::Representation
           command.request_object = raster_collection_object
           command.response_representation = Google::Apis::MapsengineV1::RasterCollection::Representation
@@ -1678,8 +1641,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_raster_collection(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasterCollections/{id}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'rasterCollections/{id}', options)
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1712,8 +1674,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_raster_collection(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasterCollections/{id}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'rasterCollections/{id}', options)
           command.response_representation = Google::Apis::MapsengineV1::RasterCollection::Representation
           command.response_class = Google::Apis::MapsengineV1::RasterCollection
           command.params['id'] = id unless id.nil?
@@ -1786,8 +1747,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_raster_collections(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, processing_status: nil, project_id: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasterCollections'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'rasterCollections', options)
           command.response_representation = Google::Apis::MapsengineV1::ListRasterCollectionsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListRasterCollectionsResponse
           command.query['bbox'] = bbox unless bbox.nil?
@@ -1835,8 +1795,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_raster_collection(id, raster_collection_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasterCollections/{id}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'rasterCollections/{id}', options)
           command.request_representation = Google::Apis::MapsengineV1::RasterCollection::Representation
           command.request_object = raster_collection_object
           command.params['id'] = id unless id.nil?
@@ -1871,8 +1830,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def process_raster_collection(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasterCollections/{id}/process'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'rasterCollections/{id}/process', options)
           command.response_representation = Google::Apis::MapsengineV1::ProcessResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ProcessResponse
           command.params['id'] = id unless id.nil?
@@ -1914,8 +1872,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_raster_collection_parents(id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasterCollections/{id}/parents'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'rasterCollections/{id}/parents', options)
           command.response_representation = Google::Apis::MapsengineV1::ListParentsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListParentsResponse
           command.params['id'] = id unless id.nil?
@@ -1953,8 +1910,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_delete_raster_collection_permission(id, batch_delete_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasterCollections/{id}/permissions/batchDelete'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'rasterCollections/{id}/permissions/batchDelete', options)
           command.request_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsRequest::Representation
           command.request_object = batch_delete_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse::Representation
@@ -1994,8 +1950,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_update_raster_collection_permission(id, batch_update_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasterCollections/{id}/permissions/batchUpdate'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'rasterCollections/{id}/permissions/batchUpdate', options)
           command.request_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest::Representation
           command.request_object = batch_update_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse::Representation
@@ -2032,8 +1987,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_raster_collection_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasterCollections/{id}/permissions'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'rasterCollections/{id}/permissions', options)
           command.response_representation = Google::Apis::MapsengineV1::ListPermissionsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListPermissionsResponse
           command.params['id'] = id unless id.nil?
@@ -2071,8 +2025,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_delete_raster_collection_raster(id, batch_delete_raster_collections_raster_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasterCollections/{id}/rasters/batchDelete'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'rasterCollections/{id}/rasters/batchDelete', options)
           command.request_representation = Google::Apis::MapsengineV1::BatchDeleteRasterCollectionsRasterRequest::Representation
           command.request_object = batch_delete_raster_collections_raster_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchDeleteRasterCollectionsRastersResponse::Representation
@@ -2113,8 +2066,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_insert_raster_collection_raster(id, batch_insert_raster_collections_rasters_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasterCollections/{id}/rasters/batchInsert'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'rasterCollections/{id}/rasters/batchInsert', options)
           command.request_representation = Google::Apis::MapsengineV1::BatchInsertRasterCollectionsRastersRequest::Representation
           command.request_object = batch_insert_raster_collections_rasters_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchInsertRasterCollectionsRastersResponse::Representation
@@ -2185,8 +2137,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_raster_collection_rasters(id, bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasterCollections/{id}/rasters'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'rasterCollections/{id}/rasters', options)
           command.response_representation = Google::Apis::MapsengineV1::ListRasterCollectionsRastersResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListRasterCollectionsRastersResponse
           command.params['id'] = id unless id.nil?
@@ -2234,8 +2185,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_raster(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasters/{id}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'rasters/{id}', options)
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2268,8 +2218,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_raster(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasters/{id}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'rasters/{id}', options)
           command.response_representation = Google::Apis::MapsengineV1::Raster::Representation
           command.response_class = Google::Apis::MapsengineV1::Raster
           command.params['id'] = id unless id.nil?
@@ -2342,8 +2291,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_rasters(project_id, bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, processing_status: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasters'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'rasters', options)
           command.response_representation = Google::Apis::MapsengineV1::ListRastersResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListRastersResponse
           command.query['bbox'] = bbox unless bbox.nil?
@@ -2391,8 +2339,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_raster(id, raster_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasters/{id}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'rasters/{id}', options)
           command.request_representation = Google::Apis::MapsengineV1::Raster::Representation
           command.request_object = raster_object
           command.params['id'] = id unless id.nil?
@@ -2427,8 +2374,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def process_raster(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasters/{id}/process'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'rasters/{id}/process', options)
           command.response_representation = Google::Apis::MapsengineV1::ProcessResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ProcessResponse
           command.params['id'] = id unless id.nil?
@@ -2462,8 +2408,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def upload_raster(raster_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasters/upload'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'rasters/upload', options)
           command.request_representation = Google::Apis::MapsengineV1::Raster::Representation
           command.request_object = raster_object
           command.response_representation = Google::Apis::MapsengineV1::Raster::Representation
@@ -2505,11 +2450,10 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_raster_file(id, filename, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          path = 'rasters/{id}/files'
           if upload_source.nil?
-            command =  make_simple_command(:post, path, options)
+            command =  make_simple_command(:post, 'rasters/{id}/files', options)
           else
-            command = make_upload_command(:post, path, options)
+            command = make_upload_command(:post, 'rasters/{id}/files', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -2553,8 +2497,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_raster_parents(id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasters/{id}/parents'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'rasters/{id}/parents', options)
           command.response_representation = Google::Apis::MapsengineV1::ListParentsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListParentsResponse
           command.params['id'] = id unless id.nil?
@@ -2592,8 +2535,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_delete_raster_permission(id, batch_delete_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasters/{id}/permissions/batchDelete'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'rasters/{id}/permissions/batchDelete', options)
           command.request_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsRequest::Representation
           command.request_object = batch_delete_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse::Representation
@@ -2633,8 +2575,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_update_raster_permission(id, batch_update_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasters/{id}/permissions/batchUpdate'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'rasters/{id}/permissions/batchUpdate', options)
           command.request_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest::Representation
           command.request_object = batch_update_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse::Representation
@@ -2671,8 +2612,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_raster_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'rasters/{id}/permissions'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'rasters/{id}/permissions', options)
           command.response_representation = Google::Apis::MapsengineV1::ListPermissionsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListPermissionsResponse
           command.params['id'] = id unless id.nil?
@@ -2706,8 +2646,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_table(table_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'tables', options)
           command.request_representation = Google::Apis::MapsengineV1::Table::Representation
           command.request_object = table_object
           command.response_representation = Google::Apis::MapsengineV1::Table::Representation
@@ -2745,8 +2684,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_table(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{id}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'tables/{id}', options)
           command.params['id'] = id unless id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2780,8 +2718,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_table(id, version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{id}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'tables/{id}', options)
           command.response_representation = Google::Apis::MapsengineV1::Table::Representation
           command.response_class = Google::Apis::MapsengineV1::Table
           command.params['id'] = id unless id.nil?
@@ -2855,8 +2792,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_tables(bbox: nil, created_after: nil, created_before: nil, creator_email: nil, max_results: nil, modified_after: nil, modified_before: nil, page_token: nil, processing_status: nil, project_id: nil, role: nil, search: nil, tags: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'tables', options)
           command.response_representation = Google::Apis::MapsengineV1::ListTablesResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListTablesResponse
           command.query['bbox'] = bbox unless bbox.nil?
@@ -2904,8 +2840,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_table(id, table_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{id}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'tables/{id}', options)
           command.request_representation = Google::Apis::MapsengineV1::Table::Representation
           command.request_object = table_object
           command.params['id'] = id unless id.nil?
@@ -2940,8 +2875,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def process_table(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{id}/process'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'tables/{id}/process', options)
           command.response_representation = Google::Apis::MapsengineV1::ProcessResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ProcessResponse
           command.params['id'] = id unless id.nil?
@@ -2979,8 +2913,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def upload_table(table_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/upload'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'tables/upload', options)
           command.request_representation = Google::Apis::MapsengineV1::Table::Representation
           command.request_object = table_object
           command.response_representation = Google::Apis::MapsengineV1::Table::Representation
@@ -3017,8 +2950,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_delete_table_feature(id, batch_delete_features_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{id}/features/batchDelete'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'tables/{id}/features/batchDelete', options)
           command.request_representation = Google::Apis::MapsengineV1::BatchDeleteFeaturesRequest::Representation
           command.request_object = batch_delete_features_request_object
           command.params['id'] = id unless id.nil?
@@ -3062,8 +2994,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_insert_table_feature(id, batch_insert_features_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{id}/features/batchInsert'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'tables/{id}/features/batchInsert', options)
           command.request_representation = Google::Apis::MapsengineV1::BatchInsertFeaturesRequest::Representation
           command.request_object = batch_insert_features_request_object
           command.params['id'] = id unless id.nil?
@@ -3114,8 +3045,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_patch_table_feature(id, batch_patch_features_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{id}/features/batchPatch'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'tables/{id}/features/batchPatch', options)
           command.request_representation = Google::Apis::MapsengineV1::BatchPatchFeaturesRequest::Representation
           command.request_object = batch_patch_features_request_object
           command.params['id'] = id unless id.nil?
@@ -3157,8 +3087,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_table_feature(table_id, id, select: nil, version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/features/{id}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'tables/{tableId}/features/{id}', options)
           command.response_representation = Google::Apis::MapsengineV1::Feature::Representation
           command.response_class = Google::Apis::MapsengineV1::Feature
           command.params['tableId'] = table_id unless table_id.nil?
@@ -3221,8 +3150,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_table_features(id, include: nil, intersects: nil, limit: nil, max_results: nil, order_by: nil, page_token: nil, select: nil, version: nil, where: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{id}/features'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'tables/{id}/features', options)
           command.response_representation = Google::Apis::MapsengineV1::ListFeaturesResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListFeaturesResponse
           command.params['id'] = id unless id.nil?
@@ -3275,11 +3203,10 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_table_file(id, filename, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          path = 'tables/{id}/files'
           if upload_source.nil?
-            command =  make_simple_command(:post, path, options)
+            command =  make_simple_command(:post, 'tables/{id}/files', options)
           else
-            command = make_upload_command(:post, path, options)
+            command = make_upload_command(:post, 'tables/{id}/files', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -3323,8 +3250,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_table_parents(id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{id}/parents'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'tables/{id}/parents', options)
           command.response_representation = Google::Apis::MapsengineV1::ListParentsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListParentsResponse
           command.params['id'] = id unless id.nil?
@@ -3362,8 +3288,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_delete_table_permission(id, batch_delete_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{id}/permissions/batchDelete'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'tables/{id}/permissions/batchDelete', options)
           command.request_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsRequest::Representation
           command.request_object = batch_delete_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchDeletePermissionsResponse::Representation
@@ -3403,8 +3328,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_update_table_permission(id, batch_update_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{id}/permissions/batchUpdate'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'tables/{id}/permissions/batchUpdate', options)
           command.request_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsRequest::Representation
           command.request_object = batch_update_permissions_request_object
           command.response_representation = Google::Apis::MapsengineV1::BatchUpdatePermissionsResponse::Representation
@@ -3441,8 +3365,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_table_permissions(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{id}/permissions'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'tables/{id}/permissions', options)
           command.response_representation = Google::Apis::MapsengineV1::ListPermissionsResponse::Representation
           command.response_class = Google::Apis::MapsengineV1::ListPermissionsResponse
           command.params['id'] = id unless id.nil?

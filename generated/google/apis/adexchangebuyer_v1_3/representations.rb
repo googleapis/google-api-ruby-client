@@ -64,6 +64,22 @@ module Google
             class Representation < Google::Apis::Core::JsonRepresentation; end
           end
         end
+        
+        class NativeAd
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class AppIcon
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          end
+          
+          class Image
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          end
+          
+          class Logo
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          end
+        end
       end
       
       class CreativesList
@@ -178,6 +194,8 @@ module Google
           collection :advertiser_id, as: 'advertiserId'
           property :advertiser_name, as: 'advertiserName'
           property :agency_id, as: 'agencyId'
+          property :api_upload_timestamp, as: 'apiUploadTimestamp', type: DateTime
+      
           collection :attribute, as: 'attribute'
           property :buyer_creative_id, as: 'buyerCreativeId'
           collection :click_through_url, as: 'clickThroughUrl'
@@ -188,12 +206,16 @@ module Google
           property :filtering_reasons, as: 'filteringReasons', class: Google::Apis::AdexchangebuyerV1_3::Creative::FilteringReasons, decorator: Google::Apis::AdexchangebuyerV1_3::Creative::FilteringReasons::Representation
       
           property :height, as: 'height'
+          collection :impression_tracking_url, as: 'impressionTrackingUrl'
           property :kind, as: 'kind'
+          property :native_ad, as: 'nativeAd', class: Google::Apis::AdexchangebuyerV1_3::Creative::NativeAd, decorator: Google::Apis::AdexchangebuyerV1_3::Creative::NativeAd::Representation
+      
           collection :product_categories, as: 'productCategories'
           collection :restricted_categories, as: 'restrictedCategories'
           collection :sensitive_categories, as: 'sensitiveCategories'
           property :status, as: 'status'
           collection :vendor_type, as: 'vendorType'
+          property :version, as: 'version'
           property :video_url, as: 'videoURL'
           property :width, as: 'width'
         end
@@ -230,6 +252,54 @@ module Google
             end
           end
         end
+        
+        class NativeAd
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :advertiser, as: 'advertiser'
+            property :app_icon, as: 'appIcon', class: Google::Apis::AdexchangebuyerV1_3::Creative::NativeAd::AppIcon, decorator: Google::Apis::AdexchangebuyerV1_3::Creative::NativeAd::AppIcon::Representation
+        
+            property :body, as: 'body'
+            property :call_to_action, as: 'callToAction'
+            property :click_tracking_url, as: 'clickTrackingUrl'
+            property :headline, as: 'headline'
+            property :image, as: 'image', class: Google::Apis::AdexchangebuyerV1_3::Creative::NativeAd::Image, decorator: Google::Apis::AdexchangebuyerV1_3::Creative::NativeAd::Image::Representation
+        
+            collection :impression_tracking_url, as: 'impressionTrackingUrl'
+            property :logo, as: 'logo', class: Google::Apis::AdexchangebuyerV1_3::Creative::NativeAd::Logo, decorator: Google::Apis::AdexchangebuyerV1_3::Creative::NativeAd::Logo::Representation
+        
+            property :price, as: 'price'
+            property :star_rating, as: 'starRating'
+            property :store, as: 'store'
+          end
+          
+          class AppIcon
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :height, as: 'height'
+              property :url, as: 'url'
+              property :width, as: 'width'
+            end
+          end
+          
+          class Image
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :height, as: 'height'
+              property :url, as: 'url'
+              property :width, as: 'width'
+            end
+          end
+          
+          class Logo
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :height, as: 'height'
+              property :url, as: 'url'
+              property :width, as: 'width'
+            end
+          end
+        end
       end
       
       class CreativesList
@@ -248,6 +318,7 @@ module Google
           property :account_id, as: 'accountId'
           property :advertiser, as: 'advertiser'
           property :currency_code, as: 'currencyCode'
+          property :deal_tier, as: 'dealTier'
           property :end_time, as: 'endTime'
           property :fixed_cpm, as: 'fixedCpm'
           property :id, as: 'id'

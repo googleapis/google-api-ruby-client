@@ -77,8 +77,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_custom_field_defs(team_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'teams/{teamId}/custom_fields'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'teams/{teamId}/custom_fields', options)
           command.response_representation = Google::Apis::CoordinateV1::ListCustomFieldDefResponse::Representation
           command.response_class = Google::Apis::CoordinateV1::ListCustomFieldDefResponse
           command.params['teamId'] = team_id unless team_id.nil?
@@ -115,8 +114,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_job(team_id, job_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'teams/{teamId}/jobs/{jobId}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'teams/{teamId}/jobs/{jobId}', options)
           command.response_representation = Google::Apis::CoordinateV1::Job::Representation
           command.response_class = Google::Apis::CoordinateV1::Job
           command.params['teamId'] = team_id unless team_id.nil?
@@ -176,8 +174,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_job(team_id, address, lat, lng, title, job_object = nil, assignee: nil, custom_field: nil, customer_name: nil, customer_phone_number: nil, note: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'teams/{teamId}/jobs'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'teams/{teamId}/jobs', options)
           command.request_representation = Google::Apis::CoordinateV1::Job::Representation
           command.request_object = job_object
           command.response_representation = Google::Apis::CoordinateV1::Job::Representation
@@ -205,6 +202,8 @@ module Google
         #   Maximum number of results to return in one page.
         # @param [String] min_modified_timestamp_ms
         #   Minimum time a job was modified in milliseconds since epoch.
+        # @param [Boolean] omit_job_changes
+        #   Whether to omit detail job history information.
         # @param [String] page_token
         #   Continuation token
         # @param [String] fields
@@ -228,14 +227,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_jobs(team_id, max_results: nil, min_modified_timestamp_ms: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'teams/{teamId}/jobs'
-          command =  make_simple_command(:get, path, options)
+        def list_jobs(team_id, max_results: nil, min_modified_timestamp_ms: nil, omit_job_changes: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'teams/{teamId}/jobs', options)
           command.response_representation = Google::Apis::CoordinateV1::ListJobResponse::Representation
           command.response_class = Google::Apis::CoordinateV1::ListJobResponse
           command.params['teamId'] = team_id unless team_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['minModifiedTimestampMs'] = min_modified_timestamp_ms unless min_modified_timestamp_ms.nil?
+          command.query['omitJobChanges'] = omit_job_changes unless omit_job_changes.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -297,8 +296,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_job(team_id, job_id, job_object = nil, address: nil, assignee: nil, custom_field: nil, customer_name: nil, customer_phone_number: nil, lat: nil, lng: nil, note: nil, progress: nil, title: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'teams/{teamId}/jobs/{jobId}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'teams/{teamId}/jobs/{jobId}', options)
           command.request_representation = Google::Apis::CoordinateV1::Job::Representation
           command.request_object = job_object
           command.response_representation = Google::Apis::CoordinateV1::Job::Representation
@@ -374,8 +372,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_job(team_id, job_id, job_object = nil, address: nil, assignee: nil, custom_field: nil, customer_name: nil, customer_phone_number: nil, lat: nil, lng: nil, note: nil, progress: nil, title: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'teams/{teamId}/jobs/{jobId}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'teams/{teamId}/jobs/{jobId}', options)
           command.request_representation = Google::Apis::CoordinateV1::Job::Representation
           command.request_object = job_object
           command.response_representation = Google::Apis::CoordinateV1::Job::Representation
@@ -431,8 +428,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_locations(team_id, worker_email, start_timestamp_ms, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'teams/{teamId}/workers/{workerEmail}/locations'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'teams/{teamId}/workers/{workerEmail}/locations', options)
           command.response_representation = Google::Apis::CoordinateV1::ListLocationResponse::Representation
           command.response_class = Google::Apis::CoordinateV1::ListLocationResponse
           command.params['teamId'] = team_id unless team_id.nil?
@@ -473,8 +469,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_schedule(team_id, job_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'teams/{teamId}/jobs/{jobId}/schedule'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'teams/{teamId}/jobs/{jobId}/schedule', options)
           command.response_representation = Google::Apis::CoordinateV1::Schedule::Representation
           command.response_class = Google::Apis::CoordinateV1::Schedule
           command.params['teamId'] = team_id unless team_id.nil?
@@ -523,8 +518,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_schedule(team_id, job_id, schedule_object = nil, all_day: nil, duration: nil, end_time: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'teams/{teamId}/jobs/{jobId}/schedule'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'teams/{teamId}/jobs/{jobId}/schedule', options)
           command.request_representation = Google::Apis::CoordinateV1::Schedule::Representation
           command.request_object = schedule_object
           command.response_representation = Google::Apis::CoordinateV1::Schedule::Representation
@@ -578,8 +572,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_schedule(team_id, job_id, schedule_object = nil, all_day: nil, duration: nil, end_time: nil, start_time: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'teams/{teamId}/jobs/{jobId}/schedule'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'teams/{teamId}/jobs/{jobId}/schedule', options)
           command.request_representation = Google::Apis::CoordinateV1::Schedule::Representation
           command.request_object = schedule_object
           command.response_representation = Google::Apis::CoordinateV1::Schedule::Representation
@@ -625,8 +618,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_teams(admin: nil, dispatcher: nil, worker: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'teams'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'teams', options)
           command.response_representation = Google::Apis::CoordinateV1::ListTeamResponse::Representation
           command.response_class = Google::Apis::CoordinateV1::ListTeamResponse
           command.query['admin'] = admin unless admin.nil?
@@ -663,8 +655,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_workers(team_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'teams/{teamId}/workers'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'teams/{teamId}/workers', options)
           command.response_representation = Google::Apis::CoordinateV1::ListWorkerResponse::Representation
           command.response_class = Google::Apis::CoordinateV1::ListWorkerResponse
           command.params['teamId'] = team_id unless team_id.nil?

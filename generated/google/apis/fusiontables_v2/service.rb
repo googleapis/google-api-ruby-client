@@ -79,8 +79,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_column(table_id, column_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/columns/{columnId}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'tables/{tableId}/columns/{columnId}', options)
           command.params['tableId'] = table_id unless table_id.nil?
           command.params['columnId'] = column_id unless column_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -116,8 +115,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_column(table_id, column_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/columns/{columnId}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'tables/{tableId}/columns/{columnId}', options)
           command.response_representation = Google::Apis::FusiontablesV2::Column::Representation
           command.response_class = Google::Apis::FusiontablesV2::Column
           command.params['tableId'] = table_id unless table_id.nil?
@@ -154,8 +152,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_column(table_id, column_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/columns'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'tables/{tableId}/columns', options)
           command.request_representation = Google::Apis::FusiontablesV2::Column::Representation
           command.request_object = column_object
           command.response_representation = Google::Apis::FusiontablesV2::Column::Representation
@@ -196,8 +193,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_columns(table_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/columns'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'tables/{tableId}/columns', options)
           command.response_representation = Google::Apis::FusiontablesV2::ColumnList::Representation
           command.response_class = Google::Apis::FusiontablesV2::ColumnList
           command.params['tableId'] = table_id unless table_id.nil?
@@ -238,8 +234,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_column(table_id, column_id, column_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/columns/{columnId}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'tables/{tableId}/columns/{columnId}', options)
           command.request_representation = Google::Apis::FusiontablesV2::Column::Representation
           command.request_object = column_object
           command.response_representation = Google::Apis::FusiontablesV2::Column::Representation
@@ -280,8 +275,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_column(table_id, column_id, column_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/columns/{columnId}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'tables/{tableId}/columns/{columnId}', options)
           command.request_representation = Google::Apis::FusiontablesV2::Column::Representation
           command.request_object = column_object
           command.response_representation = Google::Apis::FusiontablesV2::Column::Representation
@@ -340,11 +334,10 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def sql_query(sql, hdrs: nil, typed: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
-          path = 'query'
           if download_dest.nil?
-            command =  make_simple_command(:post, path, options)
+            command =  make_simple_command(:post, 'query', options)
           else
-            command = make_download_command(:post, path, options)
+            command = make_download_command(:post, 'query', options)
             command.download_dest = download_dest
           end
           command.response_representation = Google::Apis::FusiontablesV2::Sqlresponse::Representation
@@ -395,12 +388,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def sql_get_query(sql, hdrs: nil, typed: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
-          path = 'query'
+        def sql_query_get(sql, hdrs: nil, typed: nil, fields: nil, quota_user: nil, user_ip: nil, download_dest: nil, options: nil, &block)
           if download_dest.nil?
-            command =  make_simple_command(:get, path, options)
+            command =  make_simple_command(:get, 'query', options)
           else
-            command = make_download_command(:get, path, options)
+            command = make_download_command(:get, 'query', options)
             command.download_dest = download_dest
           end
           command.response_representation = Google::Apis::FusiontablesV2::Sqlresponse::Representation
@@ -441,8 +433,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_style(table_id, style_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/styles/{styleId}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'tables/{tableId}/styles/{styleId}', options)
           command.params['tableId'] = table_id unless table_id.nil?
           command.params['styleId'] = style_id unless style_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -478,8 +469,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_style(table_id, style_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/styles/{styleId}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'tables/{tableId}/styles/{styleId}', options)
           command.response_representation = Google::Apis::FusiontablesV2::StyleSetting::Representation
           command.response_class = Google::Apis::FusiontablesV2::StyleSetting
           command.params['tableId'] = table_id unless table_id.nil?
@@ -516,8 +506,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_style(table_id, style_setting_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/styles'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'tables/{tableId}/styles', options)
           command.request_representation = Google::Apis::FusiontablesV2::StyleSetting::Representation
           command.request_object = style_setting_object
           command.response_representation = Google::Apis::FusiontablesV2::StyleSetting::Representation
@@ -558,8 +547,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_styles(table_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/styles'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'tables/{tableId}/styles', options)
           command.response_representation = Google::Apis::FusiontablesV2::StyleSettingList::Representation
           command.response_class = Google::Apis::FusiontablesV2::StyleSettingList
           command.params['tableId'] = table_id unless table_id.nil?
@@ -599,8 +587,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_style(table_id, style_id, style_setting_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/styles/{styleId}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'tables/{tableId}/styles/{styleId}', options)
           command.request_representation = Google::Apis::FusiontablesV2::StyleSetting::Representation
           command.request_object = style_setting_object
           command.response_representation = Google::Apis::FusiontablesV2::StyleSetting::Representation
@@ -641,8 +628,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_style(table_id, style_id, style_setting_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/styles/{styleId}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'tables/{tableId}/styles/{styleId}', options)
           command.request_representation = Google::Apis::FusiontablesV2::StyleSetting::Representation
           command.request_object = style_setting_object
           command.response_representation = Google::Apis::FusiontablesV2::StyleSetting::Representation
@@ -682,8 +668,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def copy_table(table_id, copy_presentation: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/copy'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'tables/{tableId}/copy', options)
           command.response_representation = Google::Apis::FusiontablesV2::Table::Representation
           command.response_class = Google::Apis::FusiontablesV2::Table
           command.params['tableId'] = table_id unless table_id.nil?
@@ -719,8 +704,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_table(table_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'tables/{tableId}', options)
           command.params['tableId'] = table_id unless table_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -753,8 +737,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_table(table_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'tables/{tableId}', options)
           command.response_representation = Google::Apis::FusiontablesV2::Table::Representation
           command.response_class = Google::Apis::FusiontablesV2::Table
           command.params['tableId'] = table_id unless table_id.nil?
@@ -810,11 +793,10 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def import_rows(table_id, delimiter: nil, encoding: nil, end_line: nil, is_strict: nil, start_line: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          path = 'tables/{tableId}/import'
           if upload_source.nil?
-            command =  make_simple_command(:post, path, options)
+            command =  make_simple_command(:post, 'tables/{tableId}/import', options)
           else
-            command = make_upload_command(:post, path, options)
+            command = make_upload_command(:post, 'tables/{tableId}/import', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -867,11 +849,10 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def import_table(name, delimiter: nil, encoding: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          path = 'tables/import'
           if upload_source.nil?
-            command =  make_simple_command(:post, path, options)
+            command =  make_simple_command(:post, 'tables/import', options)
           else
-            command = make_upload_command(:post, path, options)
+            command = make_upload_command(:post, 'tables/import', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -910,8 +891,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_table(table_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'tables', options)
           command.request_representation = Google::Apis::FusiontablesV2::Table::Representation
           command.request_object = table_object
           command.response_representation = Google::Apis::FusiontablesV2::Table::Representation
@@ -949,8 +929,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_tables(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'tables', options)
           command.response_representation = Google::Apis::FusiontablesV2::TableList::Representation
           command.response_class = Google::Apis::FusiontablesV2::TableList
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -992,8 +971,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_table(table_id, table_object = nil, replace_view_definition: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'tables/{tableId}', options)
           command.request_representation = Google::Apis::FusiontablesV2::Table::Representation
           command.request_object = table_object
           command.response_representation = Google::Apis::FusiontablesV2::Table::Representation
@@ -1053,12 +1031,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def replace_rows_table(table_id, delimiter: nil, encoding: nil, end_line: nil, is_strict: nil, start_line: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
-          path = 'tables/{tableId}/replace'
+        def replace_table_rows(table_id, delimiter: nil, encoding: nil, end_line: nil, is_strict: nil, start_line: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command =  make_simple_command(:post, path, options)
+            command =  make_simple_command(:post, 'tables/{tableId}/replace', options)
           else
-            command = make_upload_command(:post, path, options)
+            command = make_upload_command(:post, 'tables/{tableId}/replace', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -1106,8 +1083,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_table(table_id, table_object = nil, replace_view_definition: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'tables/{tableId}', options)
           command.request_representation = Google::Apis::FusiontablesV2::Table::Representation
           command.request_object = table_object
           command.response_representation = Google::Apis::FusiontablesV2::Table::Representation
@@ -1148,8 +1124,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_task(table_id, task_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/tasks/{taskId}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'tables/{tableId}/tasks/{taskId}', options)
           command.params['tableId'] = table_id unless table_id.nil?
           command.params['taskId'] = task_id unless task_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1185,8 +1160,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_task(table_id, task_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/tasks/{taskId}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'tables/{tableId}/tasks/{taskId}', options)
           command.response_representation = Google::Apis::FusiontablesV2::Task::Representation
           command.response_class = Google::Apis::FusiontablesV2::Task
           command.params['tableId'] = table_id unless table_id.nil?
@@ -1228,8 +1202,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_tasks(table_id, max_results: nil, page_token: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/tasks'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'tables/{tableId}/tasks', options)
           command.response_representation = Google::Apis::FusiontablesV2::TaskList::Representation
           command.response_class = Google::Apis::FusiontablesV2::TaskList
           command.params['tableId'] = table_id unless table_id.nil?
@@ -1269,8 +1242,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_template(table_id, template_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/templates/{templateId}'
-          command =  make_simple_command(:delete, path, options)
+          command =  make_simple_command(:delete, 'tables/{tableId}/templates/{templateId}', options)
           command.params['tableId'] = table_id unless table_id.nil?
           command.params['templateId'] = template_id unless template_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1306,8 +1278,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_template(table_id, template_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/templates/{templateId}'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'tables/{tableId}/templates/{templateId}', options)
           command.response_representation = Google::Apis::FusiontablesV2::Template::Representation
           command.response_class = Google::Apis::FusiontablesV2::Template
           command.params['tableId'] = table_id unless table_id.nil?
@@ -1344,8 +1315,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def insert_template(table_id, template_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/templates'
-          command =  make_simple_command(:post, path, options)
+          command =  make_simple_command(:post, 'tables/{tableId}/templates', options)
           command.request_representation = Google::Apis::FusiontablesV2::Template::Representation
           command.request_object = template_object
           command.response_representation = Google::Apis::FusiontablesV2::Template::Representation
@@ -1386,8 +1356,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_templates(table_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/templates'
-          command =  make_simple_command(:get, path, options)
+          command =  make_simple_command(:get, 'tables/{tableId}/templates', options)
           command.response_representation = Google::Apis::FusiontablesV2::TemplateList::Representation
           command.response_class = Google::Apis::FusiontablesV2::TemplateList
           command.params['tableId'] = table_id unless table_id.nil?
@@ -1427,8 +1396,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_template(table_id, template_id, template_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/templates/{templateId}'
-          command =  make_simple_command(:patch, path, options)
+          command =  make_simple_command(:patch, 'tables/{tableId}/templates/{templateId}', options)
           command.request_representation = Google::Apis::FusiontablesV2::Template::Representation
           command.request_object = template_object
           command.response_representation = Google::Apis::FusiontablesV2::Template::Representation
@@ -1469,8 +1437,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def update_template(table_id, template_id, template_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          path = 'tables/{tableId}/templates/{templateId}'
-          command =  make_simple_command(:put, path, options)
+          command =  make_simple_command(:put, 'tables/{tableId}/templates/{templateId}', options)
           command.request_representation = Google::Apis::FusiontablesV2::Template::Representation
           command.request_object = template_object
           command.response_representation = Google::Apis::FusiontablesV2::Template::Representation

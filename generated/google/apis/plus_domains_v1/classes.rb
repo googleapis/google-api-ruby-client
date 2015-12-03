@@ -205,6 +205,11 @@ module Google
         class Actor
           include Google::Apis::Core::Hashable
         
+          # Actor info specific to particular clients.
+          # Corresponds to the JSON property `clientSpecificActorInfo`
+          # @return [Google::Apis::PlusDomainsV1::Activity::Actor::ClientSpecificActorInfo]
+          attr_accessor :client_specific_actor_info
+        
           # The name of the actor, suitable for display.
           # Corresponds to the JSON property `displayName`
           # @return [String]
@@ -230,17 +235,62 @@ module Google
           # @return [String]
           attr_accessor :url
         
+          # Verification status of actor.
+          # Corresponds to the JSON property `verification`
+          # @return [Google::Apis::PlusDomainsV1::Activity::Actor::Verification]
+          attr_accessor :verification
+        
           def initialize(**args)
              update!(**args)
           end
         
           # Update properties of this object
           def update!(**args)
+            @client_specific_actor_info = args[:client_specific_actor_info] unless args[:client_specific_actor_info].nil?
             @display_name = args[:display_name] unless args[:display_name].nil?
             @id = args[:id] unless args[:id].nil?
             @image = args[:image] unless args[:image].nil?
             @name = args[:name] unless args[:name].nil?
             @url = args[:url] unless args[:url].nil?
+            @verification = args[:verification] unless args[:verification].nil?
+          end
+          
+          # Actor info specific to particular clients.
+          class ClientSpecificActorInfo
+            include Google::Apis::Core::Hashable
+          
+            # Actor info specific to YouTube clients.
+            # Corresponds to the JSON property `youtubeActorInfo`
+            # @return [Google::Apis::PlusDomainsV1::Activity::Actor::ClientSpecificActorInfo::YoutubeActorInfo]
+            attr_accessor :youtube_actor_info
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @youtube_actor_info = args[:youtube_actor_info] unless args[:youtube_actor_info].nil?
+            end
+            
+            # Actor info specific to YouTube clients.
+            class YoutubeActorInfo
+              include Google::Apis::Core::Hashable
+            
+              # ID of the YouTube channel owned by the Actor.
+              # Corresponds to the JSON property `channelId`
+              # @return [String]
+              attr_accessor :channel_id
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @channel_id = args[:channel_id] unless args[:channel_id].nil?
+              end
+            end
           end
           
           # The image representation of the actor.
@@ -286,6 +336,25 @@ module Google
             def update!(**args)
               @family_name = args[:family_name] unless args[:family_name].nil?
               @given_name = args[:given_name] unless args[:given_name].nil?
+            end
+          end
+          
+          # Verification status of actor.
+          class Verification
+            include Google::Apis::Core::Hashable
+          
+            # Verification for one-time or manual processes.
+            # Corresponds to the JSON property `adHocVerified`
+            # @return [String]
+            attr_accessor :ad_hoc_verified
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @ad_hoc_verified = args[:ad_hoc_verified] unless args[:ad_hoc_verified].nil?
             end
           end
         end
@@ -380,6 +449,11 @@ module Google
           class Actor
             include Google::Apis::Core::Hashable
           
+            # Actor info specific to particular clients.
+            # Corresponds to the JSON property `clientSpecificActorInfo`
+            # @return [Google::Apis::PlusDomainsV1::Activity::Object::Actor::ClientSpecificActorInfo]
+            attr_accessor :client_specific_actor_info
+          
             # The original actor's name, which is suitable for display.
             # Corresponds to the JSON property `displayName`
             # @return [String]
@@ -400,16 +474,61 @@ module Google
             # @return [String]
             attr_accessor :url
           
+            # Verification status of actor.
+            # Corresponds to the JSON property `verification`
+            # @return [Google::Apis::PlusDomainsV1::Activity::Object::Actor::Verification]
+            attr_accessor :verification
+          
             def initialize(**args)
                update!(**args)
             end
           
             # Update properties of this object
             def update!(**args)
+              @client_specific_actor_info = args[:client_specific_actor_info] unless args[:client_specific_actor_info].nil?
               @display_name = args[:display_name] unless args[:display_name].nil?
               @id = args[:id] unless args[:id].nil?
               @image = args[:image] unless args[:image].nil?
               @url = args[:url] unless args[:url].nil?
+              @verification = args[:verification] unless args[:verification].nil?
+            end
+            
+            # Actor info specific to particular clients.
+            class ClientSpecificActorInfo
+              include Google::Apis::Core::Hashable
+            
+              # Actor info specific to YouTube clients.
+              # Corresponds to the JSON property `youtubeActorInfo`
+              # @return [Google::Apis::PlusDomainsV1::Activity::Object::Actor::ClientSpecificActorInfo::YoutubeActorInfo]
+              attr_accessor :youtube_actor_info
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @youtube_actor_info = args[:youtube_actor_info] unless args[:youtube_actor_info].nil?
+              end
+              
+              # Actor info specific to YouTube clients.
+              class YoutubeActorInfo
+                include Google::Apis::Core::Hashable
+              
+                # ID of the YouTube channel owned by the Actor.
+                # Corresponds to the JSON property `channelId`
+                # @return [String]
+                attr_accessor :channel_id
+              
+                def initialize(**args)
+                   update!(**args)
+                end
+              
+                # Update properties of this object
+                def update!(**args)
+                  @channel_id = args[:channel_id] unless args[:channel_id].nil?
+                end
+              end
             end
             
             # The image representation of the original actor.
@@ -428,6 +547,25 @@ module Google
               # Update properties of this object
               def update!(**args)
                 @url = args[:url] unless args[:url].nil?
+              end
+            end
+            
+            # Verification status of actor.
+            class Verification
+              include Google::Apis::Core::Hashable
+            
+              # Verification for one-time or manual processes.
+              # Corresponds to the JSON property `adHocVerified`
+              # @return [String]
+              attr_accessor :ad_hoc_verified
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @ad_hoc_verified = args[:ad_hoc_verified] unless args[:ad_hoc_verified].nil?
               end
             end
           end
@@ -1232,6 +1370,11 @@ module Google
         class Actor
           include Google::Apis::Core::Hashable
         
+          # Actor info specific to particular clients.
+          # Corresponds to the JSON property `clientSpecificActorInfo`
+          # @return [Google::Apis::PlusDomainsV1::Comment::Actor::ClientSpecificActorInfo]
+          attr_accessor :client_specific_actor_info
+        
           # The name of this actor, suitable for display.
           # Corresponds to the JSON property `displayName`
           # @return [String]
@@ -1252,16 +1395,61 @@ module Google
           # @return [String]
           attr_accessor :url
         
+          # Verification status of actor.
+          # Corresponds to the JSON property `verification`
+          # @return [Google::Apis::PlusDomainsV1::Comment::Actor::Verification]
+          attr_accessor :verification
+        
           def initialize(**args)
              update!(**args)
           end
         
           # Update properties of this object
           def update!(**args)
+            @client_specific_actor_info = args[:client_specific_actor_info] unless args[:client_specific_actor_info].nil?
             @display_name = args[:display_name] unless args[:display_name].nil?
             @id = args[:id] unless args[:id].nil?
             @image = args[:image] unless args[:image].nil?
             @url = args[:url] unless args[:url].nil?
+            @verification = args[:verification] unless args[:verification].nil?
+          end
+          
+          # Actor info specific to particular clients.
+          class ClientSpecificActorInfo
+            include Google::Apis::Core::Hashable
+          
+            # Actor info specific to YouTube clients.
+            # Corresponds to the JSON property `youtubeActorInfo`
+            # @return [Google::Apis::PlusDomainsV1::Comment::Actor::ClientSpecificActorInfo::YoutubeActorInfo]
+            attr_accessor :youtube_actor_info
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @youtube_actor_info = args[:youtube_actor_info] unless args[:youtube_actor_info].nil?
+            end
+            
+            # Actor info specific to YouTube clients.
+            class YoutubeActorInfo
+              include Google::Apis::Core::Hashable
+            
+              # ID of the YouTube channel owned by the Actor.
+              # Corresponds to the JSON property `channelId`
+              # @return [String]
+              attr_accessor :channel_id
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @channel_id = args[:channel_id] unless args[:channel_id].nil?
+              end
+            end
           end
           
           # The image representation of this actor.
@@ -1282,6 +1470,25 @@ module Google
             # Update properties of this object
             def update!(**args)
               @url = args[:url] unless args[:url].nil?
+            end
+          end
+          
+          # Verification status of actor.
+          class Verification
+            include Google::Apis::Core::Hashable
+          
+            # Verification for one-time or manual processes.
+            # Corresponds to the JSON property `adHocVerified`
+            # @return [String]
+            attr_accessor :ad_hoc_verified
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @ad_hoc_verified = args[:ad_hoc_verified] unless args[:ad_hoc_verified].nil?
             end
           end
         end

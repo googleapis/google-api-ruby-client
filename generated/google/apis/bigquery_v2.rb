@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/bigquery/
     module BigqueryV2
       VERSION = 'V2'
-      REVISION = '20150723'
+      REVISION = '20151116'
 
       # View and manage your data in Google BigQuery
       AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'
@@ -35,6 +35,9 @@ module Google
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # View your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
 
       # Manage your data and permissions in Google Cloud Storage
       AUTH_DEVSTORAGE_FULL_CONTROL = 'https://www.googleapis.com/auth/devstorage.full_control'

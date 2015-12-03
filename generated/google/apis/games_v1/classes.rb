@@ -1953,6 +1953,16 @@ module Google
         # @return [String]
         attr_accessor :avatar_image_url
       
+        # The url to the landscape mode player banner image.
+        # Corresponds to the JSON property `bannerUrlLandscape`
+        # @return [String]
+        attr_accessor :banner_url_landscape
+      
+        # The url to the portrait mode player banner image.
+        # Corresponds to the JSON property `bannerUrlPortrait`
+        # @return [String]
+        attr_accessor :banner_url_portrait
+      
         # The name to display for the player.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -1998,6 +2008,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @avatar_image_url = args[:avatar_image_url] unless args[:avatar_image_url].nil?
+          @banner_url_landscape = args[:banner_url_landscape] unless args[:banner_url_landscape].nil?
+          @banner_url_portrait = args[:banner_url_portrait] unless args[:banner_url_portrait].nil?
           @display_name = args[:display_name] unless args[:display_name].nil?
           @experience_info = args[:experience_info] unless args[:experience_info].nil?
           @kind = args[:kind] unless args[:kind].nil?

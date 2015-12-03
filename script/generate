@@ -7,12 +7,14 @@ DIR=$(dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ))
 APIS=(adexchangebuyer:v1.3 \
 	adexchangeseller:v2.0 \
 	admin:directory_v1 \
+  admin:datatransfer_v1 \
 	admin:reports_v1 \
 	adsense:v1.4 \
 	adsensehost:v4.1 \
 	analytics:v3 \
 	androidenterprise:v1 \
 	androidpublisher:v2 \
+  appengine:v1beta4 \
 	appsactivity:v1 \
 	appstate:v1 \
 	autoscaler:v1beta2 \
@@ -21,16 +23,20 @@ APIS=(adexchangebuyer:v1.3 \
 	books:v1 \
 	calendar:v3 \
 	civicinfo:v2 \
-	classroom:v1beta1 \
+	classroom:v1 \
+  cloudbilling:v1 \
+  clouddebugger:v2 \
   cloudmonitoring:v2beta2 \
 	cloudresourcemanager:v1beta1 \
+  cloudtrace:v1 \
+	clouduseraccounts:beta \
 	compute:v1 \
 	container:v1 \
 	content:v2 \
 	coordinate:v1 \
 	customsearch:v1 \
 	datastore:v1beta2 \
-	deploymentmanager:v2beta2 \
+  deploymentmanager:v2 \
 	dfareporting:v2.1 \
 	discovery:v1 \
 	dns:v1 \
@@ -41,7 +47,7 @@ APIS=(adexchangebuyer:v1.3 \
 	fusiontables:v2 \
 	games:v1 \
 	gamesConfiguration:v1configuration \
-	gamesConfiguration:v1management \
+	gamesManagement:v1management \
 	gan:v1beta1 \
 	genomics:v1 \
 	gmail:v1 \
@@ -55,18 +61,22 @@ APIS=(adexchangebuyer:v1.3 \
 	mirror:v1 \
 	oauth2:v2 \
 	pagespeedonline:v2 \
+  partners:v2 \
 	plus:v1 \
 	plusDomains:v1 \
 	prediction:v1.6 \
-	pubsub:v1beta2 \
+  proximitybeacon:v1beta1 \
+	pubsub:v1 \
 	qpxExpress:v1 \
 	replicapool:v1beta2 \
 	replicapoolupdater:v1beta1 \
 	reseller:v1 \
 	resourceviews:v1beta2 \
+	script:v1 \
 	siteVerification:v1 \
 	sqladmin:v1beta4 \
 	storage:v1 \
+	storagetransfer:v1 \
 	tagmanager:v1 \
 	taskqueue:v1beta2 \
 	tasks:v1 \
@@ -75,6 +85,7 @@ APIS=(adexchangebuyer:v1.3 \
 	webmasters:v3 \
 	youtube:v3 \
 	youtubeAnalytics:v1 \
+	youtubereporting:v1 \
 )
 
 echo 'a' | bundle exec bin/generate-api gen generated --names_out=$DIR/api_names_out.yaml --id=${APIS[*]}

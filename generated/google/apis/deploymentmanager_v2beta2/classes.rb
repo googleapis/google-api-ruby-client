@@ -347,7 +347,7 @@ module Google
         # @return [String]
         attr_accessor :insert_time
       
-        # [Output Only] Type of the resource. Always compute#Operation for Operation
+        # [Output Only] Type of the resource. Always compute#operation for Operation
         # resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -358,7 +358,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # [Output Only] Type of the operation, such as insert, update, and delete.
+        # [Output Only] Type of the operation, such as insert, compute.instanceGroups.
+        # update, or compute.instanceGroups.delete.
         # Corresponds to the JSON property `operationType`
         # @return [String]
         attr_accessor :operation_type
@@ -377,7 +378,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # [Output Only] Server defined URL for the resource.
+        # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
@@ -780,10 +781,25 @@ module Google
       class Type
         include Google::Apis::Core::Hashable
       
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # [Output Only] Timestamp when the type was created, in RFC3339 text format.
+        # Corresponds to the JSON property `insertTime`
+        # @return [String]
+        attr_accessor :insert_time
+      
         # Name of the type.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # [Output Only] Self link for the type.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
       
         def initialize(**args)
            update!(**args)
@@ -791,7 +807,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @id = args[:id] unless args[:id].nil?
+          @insert_time = args[:insert_time] unless args[:insert_time].nil?
           @name = args[:name] unless args[:name].nil?
+          @self_link = args[:self_link] unless args[:self_link].nil?
         end
       end
       
