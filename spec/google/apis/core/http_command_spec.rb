@@ -264,4 +264,12 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     command.query['a'] = [1,2,3]
     command.execute(client)
   end
+
+  it 'should not remove initial query parameters' do
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3&foo=bar')
+      .to_return(status: [200, ''])
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals?foo=bar')
+    command.query['a'] = [1,2,3]
+    command.execute(client)
+  end
 end
