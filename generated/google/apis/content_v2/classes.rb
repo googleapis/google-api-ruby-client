@@ -1509,7 +1509,8 @@ module Google
         # @return [String]
         attr_accessor :attribute_language
       
-        # The two-letter ISO 639-1 language of the items in the feed.
+        # The two-letter ISO 639-1 language of the items in the feed. Must be a valid
+        # language for targetCountry.
         # Corresponds to the JSON property `contentLanguage`
         # @return [String]
         attr_accessor :content_language
@@ -3418,6 +3419,13 @@ module Google
       class OrdersCancelLineItemRequest
         include Google::Apis::Core::Hashable
       
+        # Amount to refund for the cancelation. Optional. If not set, Google will
+        # calculate the default based on the price and tax of the items involved. The
+        # amount must not be larger than the net amount left on the order.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount
+      
         # The ID of the line item to cancel.
         # Corresponds to the JSON property `lineItemId`
         # @return [String]
@@ -3449,6 +3457,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @amount = args[:amount] unless args[:amount].nil?
           @line_item_id = args[:line_item_id] unless args[:line_item_id].nil?
           @operation_id = args[:operation_id] unless args[:operation_id].nil?
           @quantity = args[:quantity] unless args[:quantity].nil?
@@ -3728,6 +3737,13 @@ module Google
       class OrdersCustomBatchRequestEntryCancelLineItem
         include Google::Apis::Core::Hashable
       
+        # Amount to refund for the cancelation. Optional. If not set, Google will
+        # calculate the default based on the price and tax of the items involved. The
+        # amount must not be larger than the net amount left on the order.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::ContentV2::Price]
+        attr_accessor :amount
+      
         # The ID of the line item to cancel.
         # Corresponds to the JSON property `lineItemId`
         # @return [String]
@@ -3754,6 +3770,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @amount = args[:amount] unless args[:amount].nil?
           @line_item_id = args[:line_item_id] unless args[:line_item_id].nil?
           @quantity = args[:quantity] unless args[:quantity].nil?
           @reason = args[:reason] unless args[:reason].nil?

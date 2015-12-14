@@ -23,7 +23,7 @@ module Google
       # Google Cloud Resource Manager API
       #
       # The Google Cloud Resource Manager API provides methods for creating, reading,
-      #  and updating of project metadata.
+      #  and updating project metadata.
       #
       # @example
       #    require 'google/apis/cloudresourcemanager_v1beta1'
@@ -47,10 +47,10 @@ module Google
           super('https://cloudresourcemanager.googleapis.com/', '')
         end
         
-        # Creates a project resource. Initially, the project resource is owned by its
+        # Creates a Project resource. Initially, the Project resource is owned by its
         # creator exclusively. The creator can later grant permission to others to read
-        # or update the project. Several APIs are activated automatically for the
-        # project, including Google Cloud Storage.
+        # or update the Project. Several APIs are activated automatically for the
+        # Project, including Google Cloud Storage.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::Project] project_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -80,15 +80,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists projects that are visible to the user and satisfy the specified filter.
-        # This method returns projects in an unspecified order. New projects do not
+        # Lists Projects that are visible to the user and satisfy the specified filter.
+        # This method returns Projects in an unspecified order. New Projects do not
         # necessarily appear at the end of the list.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListProject that indicates
-        #   from where listing should continue. Optional.
+        #   A pagination token returned from a previous call to ListProjects that
+        #   indicates from where listing should continue. Optional.
         # @param [Fixnum] page_size
         #   The maximum number of Projects to return in the response. The server can
-        #   return fewer projects than requested. If unspecified, server picks an
+        #   return fewer Projects than requested. If unspecified, server picks an
         #   appropriate default. Optional.
         # @param [String] filter
         #   An expression for filtering the results of the request. Filter rules are case
@@ -129,10 +129,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the project identified by the specified `project_id` (for example, `
-        # my-project-123`). The caller must have read permissions for this project.
+        # Retrieves the Project identified by the specified `project_id` (for example, `
+        # my-project-123`). The caller must have read permissions for this Project.
         # @param [String] project_id
-        #   The project ID (for example, `my-project-123`). Required.
+        #   The Project ID (for example, `my-project-123`). Required.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -160,9 +160,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the attributes of the project identified by the specified `project_id`
+        # Updates the attributes of the Project identified by the specified `project_id`
         # (for example, `my-project-123`). The caller must have modify permissions for
-        # this project.
+        # this Project.
         # @param [String] project_id
         #   The project ID (for example, `my-project-123`). Required.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::Project] project_object
@@ -195,20 +195,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Marks the project identified by the specified `project_id` (for example, `my-
-        # project-123`) for deletion. This method will only affect the project if the
-        # following criteria are met: + The project does not have a billing account
-        # associated with it. + The project has a lifecycle state of ACTIVE. This method
-        # changes the project's lifecycle state from ACTIVE to DELETE_REQUESTED. The
+        # Marks the Project identified by the specified `project_id` (for example, `my-
+        # project-123`) for deletion. This method will only affect the Project if the
+        # following criteria are met: + The Project does not have a billing account
+        # associated with it. + The Project has a lifecycle state of ACTIVE. This method
+        # changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The
         # deletion starts at an unspecified time, at which point the lifecycle state
         # changes to DELETE_IN_PROGRESS. Until the deletion completes, you can check the
-        # lifecycle state checked by retrieving the project with GetProject, and the
-        # project remains visible to ListProjects. However, you cannot update the
-        # project. After the deletion completes, the project is not retrievable by the
+        # lifecycle state checked by retrieving the Project with GetProject, and the
+        # Project remains visible to ListProjects. However, you cannot update the
+        # project. After the deletion completes, the Project is not retrievable by the
         # GetProject and ListProjects methods. The caller must have modify permissions
-        # for this project.
+        # for this Project.
         # @param [String] project_id
-        #   The project ID (for example, `foo-bar-123`). Required.
+        #   The Project ID (for example, `foo-bar-123`). Required.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -236,11 +236,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Restores the project identified by the specified `project_id` (for example, `
-        # my-project-123`). You can only use this method for a project that has a
+        # Restores the Project identified by the specified `project_id` (for example, `
+        # my-project-123`). You can only use this method for a Project that has a
         # lifecycle state of DELETE_REQUESTED. After deletion starts, as indicated by a
-        # lifecycle state of DELETE_IN_PROGRESS, the project cannot be restored. The
-        # caller must have modify permissions for this project.
+        # lifecycle state of DELETE_IN_PROGRESS, the Project cannot be restored. The
+        # caller must have modify permissions for this Project.
         # @param [String] project_id
         #   The project ID (for example, `foo-bar-123`). Required.
         # @param [String] fields
@@ -270,12 +270,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the IAM access control policy for specified project.
+        # Returns the IAM access control policy for the specified Project. Permission is
+        # denied if the policy or the resource does not exist.
         # @param [String] resource
         #   REQUIRED: The resource for which policy is being requested. `resource` is
         #   usually specified as a path, such as, `projects/`project`/zones/`zone`/disks/`
         #   disk``. The format for the path specified in this value is resource specific
-        #   and is specified in the documentation for the respective GetIamPolicy rpc.
+        #   and is specified in the `getIamPolicy` documentation.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -306,14 +307,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the IAM access control policy for the specified project. We do not
-        # currently support 'domain:' prefixed members in a Binding of a Policy. Calling
-        # this method requires enabling the App Engine Admin API.
+        # Sets the IAM access control policy for the specified Project. Replaces any
+        # existing policy. The following constraints apply when using `setIamPolicy()`: +
+        # Project currently supports only `user:`emailid`` and `serviceAccount:`emailid`
+        # ` members in a `Binding` of a `Policy`. + To be added as an `owner`, a user
+        # must be invited via Cloud Platform console and must accept the invitation. +
+        # Members cannot be added to more than one role in the same policy. + There must
+        # be at least one owner who has accepted the Terms of Service (ToS) agreement in
+        # the policy. Calling `setIamPolicy()` to to remove the last ToS-accepted owner
+        # from the policy will fail. + Calling this method requires enabling the App
+        # Engine Admin API. Note: Removing service accounts from policies or changing
+        # their roles can render services completely inoperable. It is important to
+        # understand how the service account is being used before removing or updating
+        # its roles.
         # @param [String] resource
         #   REQUIRED: The resource for which policy is being specified. `resource` is
         #   usually specified as a path, such as, `projects/`project`/zones/`zone`/disks/`
         #   disk``. The format for the path specified in this value is resource specific
-        #   and is specified in the documentation for the respective SetIamPolicy rpc.
+        #   and is specified in the `setIamPolicy` documentation.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -344,14 +355,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Tests the specified permissions against the IAM access control policy for the
-        # specified project.
+        # Returns permissions that a caller has on the specified Project.
         # @param [String] resource
         #   REQUIRED: The resource for which policy detail is being requested. `resource`
         #   is usually specified as a path, such as, `projects/`project`/zones/`zone`/
         #   disks/`disk``. The format for the path specified in this value is resource
-        #   specific and is specified in the documentation for the respective
-        #   TestIamPermissions rpc.
+        #   specific and is specified in the `testIamPermissions` documentation. rpc.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -382,15 +391,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Query Organization resources.
+        # Lists Organization resources that are visible to the user and satisfy the
+        # specified filter. This method returns Organizations in an unspecified order.
+        # New Organizations do not necessarily appear at the end of the list.
         # @param [Fixnum] page_size
         #   The maximum number of Organizations to return in the response. This field is
         #   optional.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to ListOrganizations that
+        #   A pagination token returned from a previous call to `ListOrganizations` that
         #   indicates from where listing should continue. This field is optional.
         # @param [String] filter
-        #   An optional query string used to filter the Organizations to be return in the
+        #   An optional query string used to filter the Organizations to return in the
         #   response. Filter rules are case-insensitive. Organizations may be filtered by `
         #   owner.directoryCustomerId` or by `domain`, where the domain is a Google for
         #   Work domain, for example: |Filter|Description| |------|-----------| |owner.
@@ -426,7 +437,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetches an Organization resource by id.
+        # Fetches an Organization resource identified by the specified `organization_id`.
         # @param [String] organization_id
         #   The id of the Organization resource to fetch.
         # @param [String] fields
@@ -456,7 +467,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an Organization resource.
+        # Updates an Organization resource identified by the specified `organization_id`.
         # @param [String] organization_id
         #   An immutable id for the Organization that is assigned on creation. This should
         #   be omitted when creating a new Organization. This field is read-only.
@@ -490,13 +501,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy on a Organization resource. Replaces any
+        # Sets the access control policy on an Organization resource. Replaces any
         # existing policy.
         # @param [String] resource
         #   REQUIRED: The resource for which policy is being specified. `resource` is
         #   usually specified as a path, such as, `projects/`project`/zones/`zone`/disks/`
         #   disk``. The format for the path specified in this value is resource specific
-        #   and is specified in the documentation for the respective SetIamPolicy rpc.
+        #   and is specified in the `setIamPolicy` documentation.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -527,13 +538,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a Organization resource. May be empty if no
-        # such policy or resource exists.
+        # Gets the access control policy for an Organization resource. May be empty if
+        # no such policy or resource exists.
         # @param [String] resource
         #   REQUIRED: The resource for which policy is being requested. `resource` is
         #   usually specified as a path, such as, `projects/`project`/zones/`zone`/disks/`
         #   disk``. The format for the path specified in this value is resource specific
-        #   and is specified in the documentation for the respective GetIamPolicy rpc.
+        #   and is specified in the `getIamPolicy` documentation.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -569,8 +580,7 @@ module Google
         #   REQUIRED: The resource for which policy detail is being requested. `resource`
         #   is usually specified as a path, such as, `projects/`project`/zones/`zone`/
         #   disks/`disk``. The format for the path specified in this value is resource
-        #   specific and is specified in the documentation for the respective
-        #   TestIamPermissions rpc.
+        #   specific and is specified in the `testIamPermissions` documentation. rpc.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

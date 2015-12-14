@@ -78,6 +78,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class ApplicationVerifyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class Category
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -568,6 +572,14 @@ module Google
           property :kind, as: 'kind'
           property :primary, as: 'primary'
           property :secondary, as: 'secondary'
+        end
+      end
+      
+      class ApplicationVerifyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :player_id, as: 'player_id'
         end
       end
       

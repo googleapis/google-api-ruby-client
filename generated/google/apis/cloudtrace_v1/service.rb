@@ -22,8 +22,8 @@ module Google
     module CloudtraceV1
       # Google Cloud Trace API
       #
-      # The Google Cloud Trace API provides services for reading and writing runtime
-      #  trace data for Cloud applications.
+      # The Cloud Trace API allows you to send traces to and retrieve traces from
+      #  Google Cloud Trace.
       #
       # @example
       #    require 'google/apis/cloudtrace_v1'
@@ -47,12 +47,13 @@ module Google
           super('https://cloudtrace.googleapis.com/', '')
         end
         
-        # Updates the existing traces specified by PatchTracesRequest and inserts the
-        # new traces. Any existing trace or span fields included in an update are
-        # overwritten by the update, and any additional fields in an update are merged
-        # with the existing trace data.
+        # Sends new traces to Cloud Trace or updates existing traces. If the ID of a
+        # trace that you send matches that of an existing trace, any fields in the
+        # existing trace and its spans are overwritten by the provided values, and any
+        # new fields provided are merged with the existing trace data. If the ID does
+        # not match, a new trace is created.
         # @param [String] project_id
-        #   The project id of the trace to patch.
+        #   ID of the Cloud project where the trace data is stored.
         # @param [Google::Apis::CloudtraceV1::Traces] traces_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -83,32 +84,33 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List traces matching the filter expression.
+        # Returns of a list of traces that match the specified filter conditions.
         # @param [String] project_id
-        #   The stringified-version of the project id.
+        #   ID of the Cloud project where the trace data is stored.
         # @param [String] view
-        #   ViewType specifies the projection of the result.
+        #   Type of data returned for traces in the list. Optional. Default is `MINIMAL`.
         # @param [Fixnum] page_size
-        #   Maximum number of topics to return. If not specified or <= 0, the
-        #   implementation will select a reasonable value. The implemenation may always
-        #   return fewer than the requested page_size.
+        #   Maximum number of traces to return. If not specified or <= 0, the
+        #   implementation selects a reasonable value. The implementation may return fewer
+        #   traces than the requested page size. Optional.
         # @param [String] page_token
-        #   The token identifying the page of results to return from the ListTraces method.
-        #   If present, this value is should be taken from the next_page_token field of a
-        #   previous ListTracesResponse.
+        #   Token identifying the page of results to return. If provided, use the value of
+        #   the `next_page_token` field from a previous request. Optional.
         # @param [String] start_time
-        #   End of the time interval (inclusive).
+        #   End of the time interval (inclusive) during which the trace data was collected
+        #   from the application.
         # @param [String] end_time
-        #   Start of the time interval (exclusive).
+        #   Start of the time interval (inclusive) during which the trace data was
+        #   collected from the application.
         # @param [String] filter
         #   An optional filter for the request.
         # @param [String] order_by
-        #   The trace field used to establish the order of traces returned by the
-        #   ListTraces method. Possible options are: trace_id name (name field of root
-        #   span) duration (different between end_time and start_time fields of root span)
-        #   start (start_time field of root span) Descending order can be specified by
-        #   appending "desc" to the sort field: name desc Only one sort field is permitted,
-        #   though this may change in the future.
+        #   Field used to sort the returned traces. Optional. Can be one of the following:
+        #   * `trace_id` * `name` (`name` field of root span in the trace) * `duration` (
+        #   difference between `end_time` and `start_time` fields of the root span) * `
+        #   start` (`start_time` field of the root span) Descending order can be specified
+        #   by appending `desc` to the sort field (for example, `name desc`). Only one
+        #   sort field is permitted.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -143,11 +145,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets one trace by id.
+        # Gets a single trace by its ID.
         # @param [String] project_id
-        #   The project id of the trace to return.
+        #   ID of the Cloud project where the trace data is stored.
         # @param [String] trace_id
-        #   The trace id of the trace to return.
+        #   ID of the trace to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -171,44 +173,6 @@ module Google
           command.response_class = Google::Apis::CloudtraceV1::Trace
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['traceId'] = trace_id unless trace_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Returns a discovery document in the specified `format`. The typeurl in the
-        # returned google.protobuf.Any value depends on the requested format.
-        # @param [String] format
-        #   The format requested for discovery.
-        # @param [Array<String>, String] labels
-        #   A list of labels (like visibility) influencing the scope of the requested doc.
-        # @param [String] version
-        #   The API version of the requested discovery doc.
-        # @param [Array<String>, String] args
-        #   Any additional arguments.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [void]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_discovery(format: nil, labels: nil, version: nil, args: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command =  make_simple_command(:get, 'v1/discovery', options)
-          command.query['format'] = format unless format.nil?
-          command.query['labels'] = labels unless labels.nil?
-          command.query['version'] = version unless version.nil?
-          command.query['args'] = args unless args.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

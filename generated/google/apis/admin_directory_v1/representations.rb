@@ -38,6 +38,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class CalendarResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class CalendarResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class Channel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -291,6 +299,30 @@ module Google
           collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::Asp, decorator: Google::Apis::AdminDirectoryV1::Asp::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class CalendarResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etags, as: 'etags'
+          property :kind, as: 'kind'
+          property :resource_description, as: 'resourceDescription'
+          property :resource_email, as: 'resourceEmail'
+          property :resource_id, as: 'resourceId'
+          property :resource_name, as: 'resourceName'
+          property :resource_type, as: 'resourceType'
+        end
+      end
+      
+      class CalendarResources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::CalendarResource, decorator: Google::Apis::AdminDirectoryV1::CalendarResource::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

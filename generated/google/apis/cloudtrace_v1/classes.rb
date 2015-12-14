@@ -22,17 +22,18 @@ module Google
   module Apis
     module CloudtraceV1
       
-      # The response message for the ListTraces method.
+      # The response message for the `ListTraces` method.
       class ListTracesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of trace records returned.
+        # List of trace records returned.
         # Corresponds to the JSON property `traces`
         # @return [Array<Google::Apis::CloudtraceV1::Trace>]
         attr_accessor :traces
       
-        # If defined, indicates that there are more topics that match the request, and
-        # this value should be passed to the next ListTopicsRequest to continue.
+        # If defined, indicates that there are more traces that match the request and
+        # that this value should be passed to the next request to continue retrieving
+        # additional traces.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -48,24 +49,24 @@ module Google
         end
       end
       
-      # A Trace is a collection of spans describing the execution timings of a single
-      # operation.
+      # A trace describes how long it takes for an application to perform an operation.
+      # It consists of a set of spans, each of which represent a single timed event
+      # within the operation.
       class Trace
         include Google::Apis::Core::Hashable
       
-        # The Project ID of the Google Cloud project.
+        # Project ID of the Cloud project where the trace data is stored.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # A 128-bit numeric value, formatted as a 32-byte hex string, that represents a
-        # trace. Each trace should have an identifier that is globally unique.
+        # Globally unique identifier for the trace. This identifier is a 128-bit numeric
+        # value formatted as a 32-byte hex string.
         # Corresponds to the JSON property `traceId`
         # @return [String]
         attr_accessor :trace_id
       
-        # The collection of span records within this trace. Spans that appear in calls
-        # to PatchTraces may be incomplete or partial.
+        # Collection of spans in the trace.
         # Corresponds to the JSON property `spans`
         # @return [Array<Google::Apis::CloudtraceV1::TraceSpan>]
         attr_accessor :spans
@@ -82,48 +83,51 @@ module Google
         end
       end
       
-      # A span is the data recorded with a single span.
+      # A span represents a single timed event within a trace. Spans can be nested and
+      # form a trace tree. Often, a trace contains a root span that describes the end-
+      # to-end latency of an operation and, optionally, one or more subspans for its
+      # suboperations. Spans do not need to be contiguous. There may be gaps between
+      # spans in a trace.
       class TraceSpan
         include Google::Apis::Core::Hashable
       
-        # Identifier of the span within the trace. Each span should have an identifier
-        # that is unique per trace.
+        # Identifier for the span. This identifier must be unique within a trace.
         # Corresponds to the JSON property `spanId`
         # @return [String]
         attr_accessor :span_id
       
-        # SpanKind distinguishes spans generated in a particular context. For example,
-        # two spans with the same name, one with the kind RPC_CLIENT, and the other with
-        # RPC_SERVER can indicate the queueing latency associated with the span.
+        # Distinguishes between spans generated in a particular context. For example,
+        # two spans with the same name may be distinguished using `RPC_CLIENT` and `
+        # RPC_SERVER` to identify queueing latency associated with the span.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The name of the trace. This is sanitized and displayed on the UI. This may be
-        # a method name or some other per-callsite name. For the same binary and the
-        # same call point, it is a good practice to choose a consistent name in order to
+        # Name of the trace. The trace name is sanitized and displayed in the Cloud
+        # Trace tool in the Google Developers Console. The name may be a method name or
+        # some other per-call site name. For the same executable and the same call point,
+        # a best practice is to use a consistent name, which makes it easier to
         # correlate cross-trace spans.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The start time of the span in nanoseconds from the UNIX epoch.
+        # Start time of the span in nanoseconds from the UNIX epoch.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # The end time of the span in nanoseconds from the UNIX epoch.
+        # End time of the span in nanoseconds from the UNIX epoch.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Identifies the parent of the current span. May be missing. Serialized bytes
-        # representation of SpanId.
+        # ID of the parent span, if any. Optional.
         # Corresponds to the JSON property `parentSpanId`
         # @return [String]
         attr_accessor :parent_span_id
       
-        # Annotations via labels.
+        # Collection of labels associated with the span.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -144,11 +148,11 @@ module Google
         end
       end
       
-      # A list of traces for the PatchTraces method.
+      # List of new or updated traces.
       class Traces
         include Google::Apis::Core::Hashable
       
-        # A list of traces.
+        # List of traces.
         # Corresponds to the JSON property `traces`
         # @return [Array<Google::Apis::CloudtraceV1::Trace>]
         attr_accessor :traces

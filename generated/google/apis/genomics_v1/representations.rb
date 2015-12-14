@@ -146,6 +146,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class StreamReadsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class StreamReadsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class SearchReferenceSetsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -227,6 +235,14 @@ module Google
       end
       
       class CallSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class StreamVariantsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class StreamVariantsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -566,6 +582,25 @@ module Google
         end
       end
       
+      class StreamReadsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
+          property :read_group_set_id, as: 'readGroupSetId'
+          property :reference_name, as: 'referenceName'
+          property :start, as: 'start'
+          property :end, as: 'end'
+        end
+      end
+      
+      class StreamReadsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alignments, as: 'alignments', class: Google::Apis::GenomicsV1::Read, decorator: Google::Apis::GenomicsV1::Read::Representation
+      
+        end
+      end
+      
       class SearchReferenceSetsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -814,6 +849,26 @@ module Google
         include Representable::JSON::Collection
         items
       end
+      
+        end
+      end
+      
+      class StreamVariantsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
+          property :variant_set_id, as: 'variantSetId'
+          collection :call_set_ids, as: 'callSetIds'
+          property :reference_name, as: 'referenceName'
+          property :start, as: 'start'
+          property :end, as: 'end'
+        end
+      end
+      
+      class StreamVariantsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :variants, as: 'variants', class: Google::Apis::GenomicsV1::Variant, decorator: Google::Apis::GenomicsV1::Variant::Representation
       
         end
       end

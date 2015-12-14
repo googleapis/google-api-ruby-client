@@ -212,6 +212,7 @@ module Google
           collection :items, as: 'items', class: Google::Apis::YoutubeAnalyticsV1::Group, decorator: Google::Apis::YoutubeAnalyticsV1::Group::Representation
       
           property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/admin-sdk/directory/
     module AdminDirectoryV1
       VERSION = 'DirectoryV1'
-      REVISION = '20151005'
+      REVISION = '20151208'
 
       # View and manage customer related information
       AUTH_ADMIN_DIRECTORY_CUSTOMER = 'https://www.googleapis.com/auth/admin.directory.customer'
@@ -75,6 +75,12 @@ module Google
 
       # View organization units on your domain
       AUTH_ADMIN_DIRECTORY_ORGUNIT_READONLY = 'https://www.googleapis.com/auth/admin.directory.orgunit.readonly'
+
+      # View and manage the provisioning of calendar resources on your domain
+      AUTH_ADMIN_DIRECTORY_RESOURCE_CALENDAR = 'https://www.googleapis.com/auth/admin.directory.resource.calendar'
+
+      # View calendar resources on your domain
+      AUTH_ADMIN_DIRECTORY_RESOURCE_CALENDAR_READONLY = 'https://www.googleapis.com/auth/admin.directory.resource.calendar.readonly'
 
       # Manage delegated admin roles for your domain
       AUTH_ADMIN_DIRECTORY_ROLEMANAGEMENT = 'https://www.googleapis.com/auth/admin.directory.rolemanagement'

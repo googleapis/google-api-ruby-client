@@ -152,7 +152,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # The JSON template for a user.
+        # Information about a Drive user.
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :user
@@ -892,7 +892,7 @@ module Google
         end
       end
       
-      # A JSON representation of a comment on a file in Google Drive.
+      # A comment on a file in Google Drive.
       class Comment
         include Google::Apis::Core::Hashable
       
@@ -902,7 +902,7 @@ module Google
         # @return [String]
         attr_accessor :anchor
       
-        # The JSON template for a user.
+        # Information about a Drive user.
         # Corresponds to the JSON property `author`
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :author
@@ -1030,7 +1030,7 @@ module Google
         end
       end
       
-      # A JSON representation of a list of comments on a file in Google Drive.
+      # A list of comments on a file in Google Drive.
       class CommentList
         include Google::Apis::Core::Hashable
       
@@ -1073,11 +1073,11 @@ module Google
         end
       end
       
-      # A JSON representation of a reply to a comment on a file in Google Drive.
+      # A comment on a file in Google Drive.
       class CommentReply
         include Google::Apis::Core::Hashable
       
-        # The JSON template for a user.
+        # Information about a Drive user.
         # Corresponds to the JSON property `author`
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :author
@@ -1148,8 +1148,7 @@ module Google
         end
       end
       
-      # A JSON representation of a list of replies to a comment on a file in Google
-      # Drive.
+      # A list of replies to a comment on a file in Google Drive.
       class CommentReplyList
         include Google::Apis::Core::Hashable
       
@@ -1337,7 +1336,7 @@ module Google
         # @return [Google::Apis::DriveV2::File::Labels]
         attr_accessor :labels
       
-        # The JSON template for a user.
+        # Information about a Drive user.
         # Corresponds to the JSON property `lastModifyingUser`
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :last_modifying_user
@@ -1460,7 +1459,7 @@ module Google
         # @return [DateTime]
         attr_accessor :shared_with_me_date
       
-        # The JSON template for a user.
+        # Information about a Drive user.
         # Corresponds to the JSON property `sharingUser`
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :sharing_user
@@ -2353,7 +2352,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The JSON template for a user.
+        # Information about a Drive user.
         # Corresponds to the JSON property `lastModifyingUser`
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :last_modifying_user
@@ -2489,7 +2488,7 @@ module Google
         end
       end
       
-      # The JSON template for a user.
+      # Information about a Drive user.
       class User
         include Google::Apis::Core::Hashable
       

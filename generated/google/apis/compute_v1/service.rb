@@ -57,22 +57,34 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -239,22 +251,34 @@ module Google
         #   The name of the region for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -293,25 +317,37 @@ module Google
         
         # Retrieves the list of autoscalers grouped by scope.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -349,7 +385,7 @@ module Google
         
         # Deletes the specified autoscaler resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [String] autoscaler
@@ -390,7 +426,7 @@ module Google
         
         # Returns the specified autoscaler resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [String] autoscaler
@@ -432,7 +468,7 @@ module Google
         # Creates an autoscaler resource in the specified project using the data
         # included in the request.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [Google::Apis::ComputeV1::Autoscaler] autoscaler_object
@@ -473,27 +509,39 @@ module Google
         
         # Retrieves the list of autoscaler resources contained within the specified zone.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -533,7 +581,7 @@ module Google
         # Updates an autoscaler resource in the specified project using the data
         # included in the request. This method supports patch semantics.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [String] autoscaler
@@ -578,7 +626,7 @@ module Google
         # Updates an autoscaler resource in the specified project using the data
         # included in the request.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [Google::Apis::ComputeV1::Autoscaler] autoscaler_object
@@ -622,7 +670,7 @@ module Google
         
         # Deletes the specified BackendService resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] backend_service
         #   Name of the BackendService resource to delete.
         # @param [String] fields
@@ -660,7 +708,7 @@ module Google
         
         # Returns the specified BackendService resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] backend_service
         #   Name of the BackendService resource to return.
         # @param [String] fields
@@ -739,7 +787,7 @@ module Google
         # Creates a BackendService resource in the specified project using the data
         # included in the request.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::BackendService] backend_service_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -778,25 +826,37 @@ module Google
         # Retrieves the list of BackendService resources available to the specified
         # project.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -835,7 +895,7 @@ module Google
         # Update the entire content of the BackendService resource. This method supports
         # patch semantics.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] backend_service
         #   Name of the BackendService resource to update.
         # @param [Google::Apis::ComputeV1::BackendService] backend_service_object
@@ -876,7 +936,7 @@ module Google
         
         # Update the entire content of the BackendService resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] backend_service
         #   Name of the BackendService resource to update.
         # @param [Google::Apis::ComputeV1::BackendService] backend_service_object
@@ -920,22 +980,34 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1019,22 +1091,34 @@ module Google
         #   The name of the zone for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1071,27 +1155,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of disks grouped by scope.
+        # Retrieves the list of persistent disks grouped by scope.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1127,7 +1223,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a snapshot of this disk.
+        # Creates a snapshot of a specified persistent disk.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -1307,22 +1403,34 @@ module Google
         #   The name of the zone for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1479,22 +1587,34 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1615,25 +1735,37 @@ module Google
         
         # Retrieves the list of forwarding rules grouped by scope.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1671,7 +1803,7 @@ module Google
         
         # Deletes the specified ForwardingRule resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] forwarding_rule
@@ -1712,7 +1844,7 @@ module Google
         
         # Returns the specified ForwardingRule resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] forwarding_rule
@@ -1754,7 +1886,7 @@ module Google
         # Creates a ForwardingRule resource in the specified project and region using
         # the data included in the request.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [Google::Apis::ComputeV1::ForwardingRule] forwarding_rule_object
@@ -1796,27 +1928,39 @@ module Google
         # Retrieves the list of ForwardingRule resources available to the specified
         # project and region.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1853,10 +1997,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes target url for forwarding rule. The new target should be of the same
+        # Changes target URL for forwarding rule. The new target should be of the same
         # type as the old target.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] forwarding_rule
@@ -2018,22 +2162,34 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2071,7 +2227,7 @@ module Google
         
         # Deletes the specified ForwardingRule resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] forwarding_rule
         #   Name of the ForwardingRule resource to delete.
         # @param [String] fields
@@ -2109,7 +2265,7 @@ module Google
         
         # Returns the specified ForwardingRule resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] forwarding_rule
         #   Name of the ForwardingRule resource to return.
         # @param [String] fields
@@ -2148,7 +2304,7 @@ module Google
         # Creates a ForwardingRule resource in the specified project and region using
         # the data included in the request.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::ForwardingRule] forwarding_rule_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2187,25 +2343,37 @@ module Google
         # Retrieves the list of ForwardingRule resources available to the specified
         # project.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2241,10 +2409,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes target url for forwarding rule. The new target should be of the same
+        # Changes target URL for forwarding rule. The new target should be of the same
         # type as the old target.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] forwarding_rule
         #   Name of the ForwardingRule resource in which target is to be set.
         # @param [Google::Apis::ComputeV1::TargetReference] target_reference_object
@@ -2288,22 +2456,34 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2419,22 +2599,34 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2472,7 +2664,7 @@ module Google
         
         # Deletes the specified HttpHealthCheck resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] http_health_check
         #   Name of the HttpHealthCheck resource to delete.
         # @param [String] fields
@@ -2510,7 +2702,7 @@ module Google
         
         # Returns the specified HttpHealthCheck resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] http_health_check
         #   Name of the HttpHealthCheck resource to return.
         # @param [String] fields
@@ -2549,7 +2741,7 @@ module Google
         # Creates a HttpHealthCheck resource in the specified project using the data
         # included in the request.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::HttpHealthCheck] http_health_check_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2588,25 +2780,37 @@ module Google
         # Retrieves the list of HttpHealthCheck resources available to the specified
         # project.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2645,7 +2849,7 @@ module Google
         # Updates a HttpHealthCheck resource in the specified project using the data
         # included in the request. This method supports patch semantics.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] http_health_check
         #   Name of the HttpHealthCheck resource to update.
         # @param [Google::Apis::ComputeV1::HttpHealthCheck] http_health_check_object
@@ -2687,7 +2891,7 @@ module Google
         # Updates a HttpHealthCheck resource in the specified project using the data
         # included in the request.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] http_health_check
         #   Name of the HttpHealthCheck resource to update.
         # @param [Google::Apis::ComputeV1::HttpHealthCheck] http_health_check_object
@@ -2728,7 +2932,7 @@ module Google
         
         # Deletes the specified HttpsHealthCheck resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] https_health_check
         #   Name of the HttpsHealthCheck resource to delete.
         # @param [String] fields
@@ -2766,7 +2970,7 @@ module Google
         
         # Returns the specified HttpsHealthCheck resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] https_health_check
         #   Name of the HttpsHealthCheck resource to return.
         # @param [String] fields
@@ -2805,7 +3009,7 @@ module Google
         # Creates a HttpsHealthCheck resource in the specified project using the data
         # included in the request.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::HttpsHealthCheck] https_health_check_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2844,25 +3048,37 @@ module Google
         # Retrieves the list of HttpsHealthCheck resources available to the specified
         # project.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2901,7 +3117,7 @@ module Google
         # Updates a HttpsHealthCheck resource in the specified project using the data
         # included in the request. This method supports patch semantics.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] https_health_check
         #   Name of the HttpsHealthCheck resource to update.
         # @param [Google::Apis::ComputeV1::HttpsHealthCheck] https_health_check_object
@@ -2943,7 +3159,7 @@ module Google
         # Updates a HttpsHealthCheck resource in the specified project using the data
         # included in the request.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] https_health_check
         #   Name of the HttpsHealthCheck resource to update.
         # @param [Google::Apis::ComputeV1::HttpsHealthCheck] https_health_check_object
@@ -3150,22 +3366,34 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3210,7 +3438,7 @@ module Google
         # removed from the group. You must separately verify the status of the
         # abandoning action with the listmanagedinstances method.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where the managed instance group is located.
         # @param [String] instance_group_manager
@@ -3254,25 +3482,37 @@ module Google
         
         # Retrieves the list of managed instance groups and groups them by zone.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3311,7 +3551,7 @@ module Google
         # Deletes the specified managed instance group and all of the instances in that
         # group.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where the managed instance group is located.
         # @param [String] instance_group_manager
@@ -3358,7 +3598,7 @@ module Google
         # deleted. You must separately verify the status of the deleting action with the
         # listmanagedinstances method.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where the managed instance group is located.
         # @param [String] instance_group_manager
@@ -3402,7 +3642,7 @@ module Google
         
         # Returns all of the details about the specified managed instance group.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where the managed instance group is located.
         # @param [String] instance_group_manager
@@ -3448,7 +3688,7 @@ module Google
         # have not yet been created. You must separately verify the status of the
         # individual instances with the listmanagedinstances method.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where you want to create the managed instance group.
         # @param [Google::Apis::ComputeV1::InstanceGroupManager] instance_group_manager_object
@@ -3490,27 +3730,39 @@ module Google
         # Retrieves a list of managed instance groups that are contained within the
         # specified project and zone.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where the managed instance group is located.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3553,7 +3805,7 @@ module Google
         # creating an instance, the currentAction is CREATING. If a previous action
         # failed, the list displays the errors for that failed action.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where the managed instance group is located.
         # @param [String] instance_group_manager
@@ -3599,7 +3851,7 @@ module Google
         # recreated. You must separately verify the status of the recreating action with
         # the listmanagedinstances method.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where the managed instance group is located.
         # @param [String] instance_group_manager
@@ -3648,7 +3900,7 @@ module Google
         # deleted any instances. You must separately verify the status of the creating
         # or deleting actions with the listmanagedinstances method.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where the managed instance group is located.
         # @param [String] instance_group_manager
@@ -3696,7 +3948,7 @@ module Google
         # group. The templates for existing instances in the group do not change unless
         # you recreate them.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where the managed instance group is located.
         # @param [String] instance_group_manager
@@ -3745,7 +3997,7 @@ module Google
         # target pools. The change might take some time to apply to all of the instances
         # in the group depending on the size of the group.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where the managed instance group is located.
         # @param [String] instance_group_manager
@@ -3790,7 +4042,7 @@ module Google
         # Adds a list of instances to the specified instance group. All of the instances
         # in the instance group must be in the same network/subnetwork.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where the instance group is located.
         # @param [String] instance_group
@@ -3834,25 +4086,37 @@ module Google
         
         # Retrieves the list of instance groups and sorts them by zone.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3891,7 +4155,7 @@ module Google
         # Deletes the specified instance group. The instances in the group are not
         # deleted.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where the instance group is located.
         # @param [String] instance_group
@@ -3932,7 +4196,7 @@ module Google
         
         # Returns the specified instance group resource.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where the instance group is located.
         # @param [String] instance_group
@@ -3974,7 +4238,7 @@ module Google
         # Creates an instance group in the specified project using the parameters that
         # are included in the request.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where you want to create the instance group.
         # @param [Google::Apis::ComputeV1::InstanceGroup] instance_group_object
@@ -4016,27 +4280,39 @@ module Google
         # Retrieves the list of instance groups that are located in the specified
         # project and zone.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where the instance group is located.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4075,7 +4351,7 @@ module Google
         
         # Lists the instances in the specified instance group.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where the instance group is located.
         # @param [String] instance_group
@@ -4084,22 +4360,34 @@ module Google
         # @param [Google::Apis::ComputeV1::InstanceGroupsListInstancesRequest] instance_groups_list_instances_request_object
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4142,7 +4430,7 @@ module Google
         # Removes one or more instances from the specified instance group, but does not
         # delete those instances.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where the instance group is located.
         # @param [String] instance_group
@@ -4186,7 +4474,7 @@ module Google
         
         # Sets the named ports for the specified instance group.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   The name of the zone where the instance group is located.
         # @param [String] instance_group
@@ -4230,7 +4518,7 @@ module Google
         
         # Deletes the specified instance template.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] instance_template
         #   The name of the instance template to delete.
         # @param [String] fields
@@ -4268,7 +4556,7 @@ module Google
         
         # Returns the specified instance template resource.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] instance_template
         #   The name of the instance template.
         # @param [String] fields
@@ -4307,7 +4595,7 @@ module Google
         # Creates an instance template in the specified project using the data that is
         # included in the request.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::InstanceTemplate] instance_template_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4346,25 +4634,37 @@ module Google
         # Retrieves a list of instance templates that are contained within the specified
         # project and zone.
         # @param [String] project
-        #   The project ID for this request.
+        #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4452,22 +4752,34 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4547,8 +4859,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified Instance resource. For more information, see Shutting
-        # down an instance.
+        # Deletes the specified Instance resource. For more information, see Stopping or
+        # Deleting an Instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -4814,22 +5126,34 @@ module Google
         #   The name of the zone for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5217,22 +5541,34 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5317,22 +5653,34 @@ module Google
         #   The name of the zone for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5489,22 +5837,34 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5818,22 +6178,34 @@ module Google
         #   Name of the region scoping this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5913,22 +6285,34 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5966,7 +6350,7 @@ module Google
         
         # Deletes the specified route resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] route
         #   Name of the route resource to delete.
         # @param [String] fields
@@ -6004,7 +6388,7 @@ module Google
         
         # Returns the specified route resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] route
         #   Name of the route resource to return.
         # @param [String] fields
@@ -6043,7 +6427,7 @@ module Google
         # Creates a route resource in the specified project using the data included in
         # the request.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::Route] route_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6081,25 +6465,37 @@ module Google
         
         # Retrieves the list of route resources available to the specified project.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6141,7 +6537,7 @@ module Google
         # snapshots, the data will be moved to the next corresponding snapshot.
         # For more information, see Deleting snaphots.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] snapshot
         #   Name of the Snapshot resource to delete.
         # @param [String] fields
@@ -6179,7 +6575,7 @@ module Google
         
         # Returns the specified Snapshot resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] snapshot
         #   Name of the Snapshot resource to return.
         # @param [String] fields
@@ -6218,25 +6614,37 @@ module Google
         # Retrieves the list of Snapshot resources contained within the specified
         # project.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6274,7 +6682,7 @@ module Google
         
         # Deletes the specified SslCertificate resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] ssl_certificate
         #   Name of the SslCertificate resource to delete.
         # @param [String] fields
@@ -6312,7 +6720,7 @@ module Google
         
         # Returns the specified SslCertificate resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] ssl_certificate
         #   Name of the SslCertificate resource to return.
         # @param [String] fields
@@ -6351,7 +6759,7 @@ module Google
         # Creates a SslCertificate resource in the specified project using the data
         # included in the request.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::SslCertificate] ssl_certificate_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6390,25 +6798,37 @@ module Google
         # Retrieves the list of SslCertificate resources available to the specified
         # project.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6446,7 +6866,7 @@ module Google
         
         # Deletes the specified TargetHttpProxy resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] target_http_proxy
         #   Name of the TargetHttpProxy resource to delete.
         # @param [String] fields
@@ -6484,7 +6904,7 @@ module Google
         
         # Returns the specified TargetHttpProxy resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] target_http_proxy
         #   Name of the TargetHttpProxy resource to return.
         # @param [String] fields
@@ -6523,7 +6943,7 @@ module Google
         # Creates a TargetHttpProxy resource in the specified project using the data
         # included in the request.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::TargetHttpProxy] target_http_proxy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6562,25 +6982,37 @@ module Google
         # Retrieves the list of TargetHttpProxy resources available to the specified
         # project.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6618,7 +7050,7 @@ module Google
         
         # Changes the URL map for TargetHttpProxy.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] target_http_proxy
         #   Name of the TargetHttpProxy resource whose URL map is to be set.
         # @param [Google::Apis::ComputeV1::UrlMapReference] url_map_reference_object
@@ -6659,7 +7091,7 @@ module Google
         
         # Deletes the specified TargetHttpsProxy resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] target_https_proxy
         #   Name of the TargetHttpsProxy resource to delete.
         # @param [String] fields
@@ -6697,7 +7129,7 @@ module Google
         
         # Returns the specified TargetHttpsProxy resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] target_https_proxy
         #   Name of the TargetHttpsProxy resource to return.
         # @param [String] fields
@@ -6736,7 +7168,7 @@ module Google
         # Creates a TargetHttpsProxy resource in the specified project using the data
         # included in the request.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::TargetHttpsProxy] target_https_proxy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6775,25 +7207,37 @@ module Google
         # Retrieves the list of TargetHttpsProxy resources available to the specified
         # project.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6831,7 +7275,7 @@ module Google
         
         # Replaces SslCertificates for TargetHttpsProxy.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] target_https_proxy
         #   Name of the TargetHttpsProxy resource whose SSLCertificate is to be set.
         # @param [Google::Apis::ComputeV1::TargetHttpsProxiesSetSslCertificatesRequest] target_https_proxies_set_ssl_certificates_request_object
@@ -6872,7 +7316,7 @@ module Google
         
         # Changes the URL map for TargetHttpsProxy.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] target_https_proxy
         #   Name of the TargetHttpsProxy resource whose URL map is to be set.
         # @param [Google::Apis::ComputeV1::UrlMapReference] url_map_reference_object
@@ -6913,25 +7357,37 @@ module Google
         
         # Retrieves the list of target instances grouped by scope.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6969,7 +7425,7 @@ module Google
         
         # Deletes the specified TargetInstance resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [String] target_instance
@@ -7010,7 +7466,7 @@ module Google
         
         # Returns the specified TargetInstance resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [String] target_instance
@@ -7052,7 +7508,7 @@ module Google
         # Creates a TargetInstance resource in the specified project and zone using the
         # data included in the request.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [Google::Apis::ComputeV1::TargetInstance] target_instance_object
@@ -7094,27 +7550,39 @@ module Google
         # Retrieves the list of TargetInstance resources available to the specified
         # project and zone.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] zone
         #   Name of the zone scoping this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7194,7 +7662,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds instance url to targetPool.
+        # Adds instance URL to targetPool.
         # @param [String] project
         # @param [String] region
         #   Name of the region scoping this request.
@@ -7239,25 +7707,37 @@ module Google
         
         # Retrieves the list of target pools grouped by scope.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7295,7 +7775,7 @@ module Google
         
         # Deletes the specified TargetPool resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] target_pool
@@ -7336,7 +7816,7 @@ module Google
         
         # Returns the specified TargetPool resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] target_pool
@@ -7422,7 +7902,7 @@ module Google
         # Creates a TargetPool resource in the specified project and region using the
         # data included in the request.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [Google::Apis::ComputeV1::TargetPool] target_pool_object
@@ -7464,27 +7944,39 @@ module Google
         # Retrieves the list of TargetPool resources available to the specified project
         # and region.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7609,7 +8101,7 @@ module Google
         
         # Changes backup pool configurations.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] region
         #   Name of the region scoping this request.
         # @param [String] target_pool
@@ -7659,22 +8151,34 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7842,22 +8346,34 @@ module Google
         #   The name of the region for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7896,7 +8412,7 @@ module Google
         
         # Deletes the specified UrlMap resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] url_map
         #   Name of the UrlMap resource to delete.
         # @param [String] fields
@@ -7934,7 +8450,7 @@ module Google
         
         # Returns the specified UrlMap resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] url_map
         #   Name of the UrlMap resource to return.
         # @param [String] fields
@@ -7973,7 +8489,7 @@ module Google
         # Creates a UrlMap resource in the specified project using the data included in
         # the request.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::UrlMap] url_map_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -8011,25 +8527,37 @@ module Google
         
         # Retrieves the list of UrlMap resources available to the specified project.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8068,7 +8596,7 @@ module Google
         # Update the entire content of the UrlMap resource. This method supports patch
         # semantics.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] url_map
         #   Name of the UrlMap resource to update.
         # @param [Google::Apis::ComputeV1::UrlMap] url_map_object
@@ -8109,7 +8637,7 @@ module Google
         
         # Update the entire content of the UrlMap resource.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] url_map
         #   Name of the UrlMap resource to update.
         # @param [Google::Apis::ComputeV1::UrlMap] url_map_object
@@ -8151,7 +8679,7 @@ module Google
         # Run static validation for the UrlMap. In particular, the tests of the provided
         # UrlMap will be run. Calling this method does NOT create the UrlMap.
         # @param [String] project
-        #   Name of the project scoping this request.
+        #   Project ID for this request.
         # @param [String] url_map
         #   Name of the UrlMap resource to be validated as.
         # @param [Google::Apis::ComputeV1::ValidateUrlMapsRequest] validate_url_maps_request_object
@@ -8195,22 +8723,34 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8378,22 +8918,34 @@ module Google
         #   The name of the region for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8517,22 +9069,34 @@ module Google
         #   Name of the zone scoping this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8612,22 +9176,34 @@ module Google
         #   Project ID for this request.
         # @param [String] filter
         #   Sets a filter expression for filtering listed resources, in the form filter=`
-        #   expression`. Your `expression` must be in the format: FIELD_NAME
-        #   COMPARISON_STRING LITERAL_STRING.
-        #   The FIELD_NAME is the name of the field you want to compare. Only atomic field
-        #   types are supported (string, number, boolean). The COMPARISON_STRING must be
-        #   either eq (equals) or ne (not equals). The LITERAL_STRING is the string value
-        #   to filter to. The literal value must be valid for the type of field (string,
-        #   number, boolean). For string fields, the literal value is interpreted as a
-        #   regular expression using RE2 syntax. The literal value must match the entire
-        #   field.
+        #   expression`. Your `expression` must be in the format: field_name
+        #   comparison_string literal_string.
+        #   The field_name is the name of the field you want to compare. Only atomic field
+        #   types are supported (string, number, boolean). The comparison_string must be
+        #   either eq (equals) or ne (not equals). The literal_string is the string value
+        #   to filter to. The literal value must be valid for the type of field you are
+        #   filtering by (string, number, boolean). For string fields, the literal value
+        #   is interpreted as a regular expression using RE2 syntax. The literal value
+        #   must match the entire field.
         #   For example, filter=name ne example-instance.
+        #   Compute Engine Beta API Only: If you use filtering in the Beta API, you can
+        #   also filter on nested fields. For example, you could filter on instances that
+        #   have set the scheduling.automaticRestart field to true. In particular, use
+        #   filtering on nested fields to take advantage of instance labels to organize
+        #   and filter results based on label values.
+        #   The Beta API also supports filtering on multiple expressions by providing each
+        #   separate expression within parentheses. For example, (scheduling.
+        #   automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are
+        #   treated as AND expressions meaning that resources must match all expressions
+        #   to pass the filters.
         # @param [Fixnum] max_results
-        #   Maximum count of results to be returned.
+        #   The maximum number of results per page that Compute Engine should return. If
+        #   the number of available results is larger than maxResults, Compute Engine
+        #   returns a nextPageToken that can be used to get the next page of results in
+        #   subsequent list requests.
         # @param [String] page_token
-        #   Specifies a page token to use. Use this parameter if you want to list the next
-        #   page of results. Set pageToken to the nextPageToken returned by a previous
-        #   list request.
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

@@ -1578,6 +1578,8 @@ module Google
       class OrdersCancelLineItemRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
           property :line_item_id, as: 'lineItemId'
           property :operation_id, as: 'operationId'
           property :quantity, as: 'quantity'
@@ -1671,6 +1673,8 @@ module Google
       class OrdersCustomBatchRequestEntryCancelLineItem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
           property :line_item_id, as: 'lineItemId'
           property :quantity, as: 'quantity'
           property :reason, as: 'reason'

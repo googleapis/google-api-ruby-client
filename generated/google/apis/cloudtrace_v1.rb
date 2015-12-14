@@ -20,13 +20,13 @@ module Google
   module Apis
     # Google Cloud Trace API
     #
-    # The Google Cloud Trace API provides services for reading and writing runtime
-    # trace data for Cloud applications.
+    # The Cloud Trace API allows you to send traces to and retrieve traces from
+    # Google Cloud Trace.
     #
     # @see https://cloud.google.com/tools/cloud-trace
     module CloudtraceV1
       VERSION = 'V1'
-      REVISION = '20150825'
+      REVISION = '20151207'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

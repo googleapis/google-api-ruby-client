@@ -78,13 +78,14 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource; provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -167,7 +168,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -195,7 +200,8 @@ module Google
       class AddressList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -211,7 +217,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -265,17 +275,19 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # [Output Only] The warning type identifier for this warning.
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata for this warning in key: value format.
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::AddressesScopedList::Warning::Datum>]
           attr_accessor :data
         
-          # [Output Only] Optional human-readable details for this warning.
+          # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
@@ -295,7 +307,13 @@ module Google
           class Datum
             include Google::Apis::Core::Hashable
           
-            # [Output Only] A key for the warning data.
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource, and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
@@ -495,13 +513,14 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource; provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -559,7 +578,8 @@ module Google
       class AutoscalerAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -574,7 +594,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -602,7 +626,8 @@ module Google
       class AutoscalerList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -617,7 +642,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -671,17 +700,19 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # [Output Only] The warning type identifier for this warning.
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata for this warning in key: value format.
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::AutoscalersScopedList::Warning::Datum>]
           attr_accessor :data
         
-          # [Output Only] Optional human-readable details for this warning.
+          # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
@@ -701,7 +732,13 @@ module Google
           class Datum
             include Google::Apis::Core::Hashable
           
-            # [Output Only] A key for the warning data.
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource, and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
@@ -883,8 +920,8 @@ module Google
         # @return [Float]
         attr_accessor :capacity_scaler
       
-        # An optional textual description of the resource. Provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -950,8 +987,8 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource. Provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -971,7 +1008,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :health_checks
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1072,7 +1110,8 @@ module Google
       class BackendServiceList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1088,7 +1127,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1173,13 +1216,14 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource; provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1335,7 +1379,8 @@ module Google
       class DiskAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1351,7 +1396,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1379,7 +1428,8 @@ module Google
       class DiskList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1394,7 +1444,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1470,12 +1524,13 @@ module Google
         # @return [Google::Apis::ComputeV1::DeprecationStatus]
         attr_accessor :deprecated
       
-        # [Output Only] An optional textual description of the resource.
+        # [Output Only] An optional description of this resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1529,7 +1584,8 @@ module Google
       class DiskTypeAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1544,7 +1600,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1572,7 +1632,8 @@ module Google
       class DiskTypeList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1587,7 +1648,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1641,17 +1706,19 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # [Output Only] The warning type identifier for this warning.
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata for this warning in key: value format.
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::DiskTypesScopedList::Warning::Datum>]
           attr_accessor :data
         
-          # [Output Only] Optional human-readable details for this warning.
+          # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
@@ -1671,7 +1738,13 @@ module Google
           class Datum
             include Google::Apis::Core::Hashable
           
-            # [Output Only] A key for the warning data.
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource, and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
@@ -1724,17 +1797,19 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # [Output Only] The warning type identifier for this warning.
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata for this warning in key: value format.
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::DisksScopedList::Warning::Datum>]
           attr_accessor :data
         
-          # [Output Only] Optional human-readable details for this warning.
+          # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
@@ -1754,7 +1829,13 @@ module Google
           class Datum
             include Google::Apis::Core::Hashable
           
-            # [Output Only] A key for the warning data.
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource, and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
@@ -1792,13 +1873,14 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource; provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1918,7 +2000,8 @@ module Google
       class FirewallList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -1934,7 +2017,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1984,18 +2071,20 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource; provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] Type of the resource. Always compute#forwardingRule.
+        # [Output Only] Type of the resource. Always compute#forwardingRule for
+        # Forwarding Rule resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2060,7 +2149,8 @@ module Google
       class ForwardingRuleAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2075,7 +2165,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2118,7 +2212,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2172,17 +2270,19 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # [Output Only] The warning type identifier for this warning.
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata for this warning in key: value format.
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ForwardingRulesScopedList::Warning::Datum>]
           attr_accessor :data
         
-          # [Output Only] Optional human-readable details for this warning.
+          # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
@@ -2202,7 +2302,13 @@ module Google
           class Datum
             include Google::Apis::Core::Hashable
           
-            # [Output Only] A key for the warning data.
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource, and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
@@ -2286,7 +2392,8 @@ module Google
       class HostRule
         include Google::Apis::Core::Hashable
       
-        # An optional textual description.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -2331,8 +2438,8 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource; provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -2350,7 +2457,8 @@ module Google
         # @return [String]
         attr_accessor :host
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2439,7 +2547,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2478,8 +2590,8 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource; provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -2497,7 +2609,8 @@ module Google
         # @return [String]
         attr_accessor :host
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2587,7 +2700,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2630,8 +2747,8 @@ module Google
         # @return [Google::Apis::ComputeV1::DeprecationStatus]
         attr_accessor :deprecated
       
-        # Textual description of the resource; provided by the client when the resource
-        # is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -2641,7 +2758,8 @@ module Google
         # @return [String]
         attr_accessor :disk_size_gb
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2771,7 +2889,8 @@ module Google
       class ImageList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2786,7 +2905,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -2844,7 +2967,8 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::AttachedDisk>]
         attr_accessor :disks
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] Unique identifier for the resource. This identifier is defined
+        # by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2854,10 +2978,19 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Full or partial URL of the machine type resource to use for this instance.
-        # This is provided by the client when the instance is created. For example, the
-        # following is a valid partial url:
-        # zones/zone/machineTypes/machine-type
+        # Full or partial URL of the machine type resource to use for this instance, in
+        # the format: zones/zone/machineTypes/ machine-type. This is provided by the
+        # client when the instance is created. For example, the following is a valid
+        # partial url to a predefined machine type:
+        # zones/us-central1-f/machineTypes/n1-standard-1
+        # To create a custom machine type, provide a URL to a machine type in the
+        # following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24,
+        # etc), and MEMORY is the total memory for this instance. Memory must be a
+        # multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB):
+        # zones/zone/machineTypes/custom-CPUS-MEMORY
+        # For example: zones/us-central1-f/machineTypes/custom-4-5120
+        # For a full list of restrictions, read the Specifications for custom machine
+        # types.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -2954,7 +3087,8 @@ module Google
       class InstanceAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -3004,7 +3138,8 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional text description for the instance group.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -3105,7 +3240,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token that is used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -3150,7 +3289,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token that is used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -3199,7 +3342,8 @@ module Google
         # @return [Google::Apis::ComputeV1::InstanceGroupManagerActionsSummary]
         attr_accessor :current_actions
       
-        # An optional text description for the managed instance group.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -3384,7 +3528,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token that is used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -3429,7 +3577,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token that is used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -3561,17 +3713,19 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # [Output Only] The warning type identifier for this warning.
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata for this warning in key: value format.
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagersScopedList::Warning::Datum>]
           attr_accessor :data
         
-          # [Output Only] Optional human-readable details for this warning.
+          # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
@@ -3591,7 +3745,13 @@ module Google
           class Datum
             include Google::Apis::Core::Hashable
           
-            # [Output Only] A key for the warning data.
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource, and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
@@ -3708,7 +3868,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token that is used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -3803,17 +3967,19 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # [Output Only] The warning type identifier for this warning.
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata for this warning in key: value format.
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceGroupsScopedList::Warning::Datum>]
           attr_accessor :data
         
-          # [Output Only] Optional human-readable details for this warning.
+          # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
@@ -3833,7 +3999,13 @@ module Google
           class Datum
             include Google::Apis::Core::Hashable
           
-            # [Output Only] A key for the warning data.
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource, and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
@@ -3890,7 +4062,8 @@ module Google
       class InstanceList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4070,7 +4243,8 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional text description for the instance template.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -4144,7 +4318,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token that is used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -4230,17 +4408,19 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # [Output Only] The warning type identifier for this warning.
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata for this warning in key: value format.
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstancesScopedList::Warning::Datum>]
           attr_accessor :data
         
-          # [Output Only] Optional human-readable details for this warning.
+          # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
@@ -4260,7 +4440,13 @@ module Google
           class Datum
             include Google::Apis::Core::Hashable
           
-            # [Output Only] A key for the warning data.
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource, and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
@@ -4287,8 +4473,8 @@ module Google
       class License
         include Google::Apis::Core::Hashable
       
-        # If true, the customer will be charged license fee for running software that
-        # contains this license on an instance.
+        # [Output Only] If true, the customer will be charged license fee for running
+        # software that contains this license on an instance.
         # Corresponds to the JSON property `chargesUseFee`
         # @return [Boolean]
         attr_accessor :charges_use_fee
@@ -4342,12 +4528,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] The tumber of CPUs exposed to the instance.
+        # [Output Only] The number of virtual CPUs that are available to the instance.
         # Corresponds to the JSON property `guestCpus`
         # @return [Fixnum]
         attr_accessor :guest_cpus
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4358,7 +4545,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :image_space_gb
       
-        # Type of the resource.
+        # [Output Only] The type of the resource. Always compute#machineType for machine
+        # types.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4446,7 +4634,8 @@ module Google
       class MachineTypeAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4462,7 +4651,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -4490,7 +4683,8 @@ module Google
       class MachineTypeList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4506,7 +4700,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -4560,17 +4758,19 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # [Output Only] The warning type identifier for this warning.
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata for this warning in key: value format.
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::MachineTypesScopedList::Warning::Datum>]
           attr_accessor :data
         
-          # [Output Only] Optional human-readable details for this warning.
+          # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
@@ -4590,7 +4790,13 @@ module Google
           class Datum
             include Google::Apis::Core::Hashable
           
-            # [Output Only] A key for the warning data.
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource, and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
@@ -4854,8 +5060,8 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource. Provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -4867,7 +5073,8 @@ module Google
         # @return [String]
         attr_accessor :gateway_i_pv4
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4963,7 +5170,8 @@ module Google
       class NetworkList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -4979,7 +5187,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5007,8 +5219,7 @@ module Google
       class Operation
         include Google::Apis::Core::Hashable
       
-        # [Output Only] An optional identifier specified by the client when the mutation
-        # was initiated. Must be unique for all Operation resources in the project.
+        # [Output Only] A unique client ID generated by the server.
         # Corresponds to the JSON property `clientOperationId`
         # @return [String]
         attr_accessor :client_operation_id
@@ -5018,8 +5229,14 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # [Output Only] The time that this operation was completed. This is in RFC3339
-        # text format.
+        # [Output Only] A textual description of the operation, which is set when the
+        # operation is created.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The time that this operation was completed. This value is in
+        # RFC3339 text format.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -5037,18 +5254,19 @@ module Google
         attr_accessor :http_error_message
       
         # [Output Only] If the operation fails, this field contains the HTTP error
-        # message that was returned, such as 404.
+        # message that was returned. For example, a 404 means the resource was not found.
         # Corresponds to the JSON property `httpErrorStatusCode`
         # @return [Fixnum]
         attr_accessor :http_error_status_code
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] The time that this operation was requested. This is in RFC3339
-        # text format.
+        # [Output Only] The time that this operation was requested. This value is in
+        # RFC3339 text format.
         # Corresponds to the JSON property `insertTime`
         # @return [String]
         attr_accessor :insert_time
@@ -5064,8 +5282,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # [Output Only] Type of the operation, such as insert, compute.instanceGroups.
-        # update, or compute.instanceGroups.delete.
+        # [Output Only] The type of operation, which can be insert, update, or delete.
         # Corresponds to the JSON property `operationType`
         # @return [String]
         attr_accessor :operation_type
@@ -5089,14 +5306,14 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] The time that this operation was started by the server. This is
-        # in RFC3339 text format.
+        # [Output Only] The time that this operation was started by the server. This
+        # value is in RFC3339 text format.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # [Output Only] Status of the operation. Can be one of the following: PENDING,
-        # RUNNING, or DONE.
+        # [Output Only] The status of the operation, which can be one of the following:
+        # PENDING, RUNNING, or DONE.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -5107,13 +5324,13 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
-        # [Output Only] Unique target ID which identifies a particular incarnation of
-        # the target.
+        # [Output Only] The unique target ID, which identifies a specific incarnation of
+        # the target resource.
         # Corresponds to the JSON property `targetId`
         # @return [String]
         attr_accessor :target_id
       
-        # [Output Only] URL of the resource the operation is mutating.
+        # [Output Only] The URL of the resource that the operation is modifying.
         # Corresponds to the JSON property `targetLink`
         # @return [String]
         attr_accessor :target_link
@@ -5142,6 +5359,7 @@ module Google
         def update!(**args)
           @client_operation_id = args[:client_operation_id] unless args[:client_operation_id].nil?
           @creation_timestamp = args[:creation_timestamp] unless args[:creation_timestamp].nil?
+          @description = args[:description] unless args[:description].nil?
           @end_time = args[:end_time] unless args[:end_time].nil?
           @error = args[:error] unless args[:error].nil?
           @http_error_message = args[:http_error_message] unless args[:http_error_message].nil?
@@ -5220,17 +5438,19 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # [Output Only] The warning type identifier for this warning.
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata for this warning in key: value format.
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::Operation::Warning::Datum>]
           attr_accessor :data
         
-          # [Output Only] Optional human-readable details for this warning.
+          # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
@@ -5250,7 +5470,13 @@ module Google
           class Datum
             include Google::Apis::Core::Hashable
           
-            # [Output Only] A key for the warning data.
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource, and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
@@ -5277,7 +5503,8 @@ module Google
       class OperationAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -5293,7 +5520,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5321,7 +5552,8 @@ module Google
       class OperationList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -5337,7 +5569,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncate.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5391,17 +5627,19 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # [Output Only] The warning type identifier for this warning.
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata for this warning in key: value format.
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::OperationsScopedList::Warning::Datum>]
           attr_accessor :data
         
-          # [Output Only] Optional human-readable details for this warning.
+          # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
@@ -5421,7 +5659,13 @@ module Google
           class Datum
             include Google::Apis::Core::Hashable
           
-            # [Output Only] A key for the warning data.
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource, and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
@@ -5450,12 +5694,14 @@ module Google
       class PathMatcher
         include Google::Apis::Core::Hashable
       
-        # 
+        # The URL to the BackendService resource. This will be used if none of the
+        # pathRules defined by this PathMatcher is met by the URL's path portion.
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
       
-        # An optional textual description of the resource.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -5537,7 +5783,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :enabled_features
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server. This is not the project ID, and is just a unique ID
+        # used by Compute Engine to identify resources.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -5547,7 +5795,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Name of the resource.
+        # The project ID. For example: my-example-project. Use the project ID to make
+        # requests to Compute Engine.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5637,7 +5886,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Unique identifier for the resource; defined by the server .
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -5696,7 +5946,8 @@ module Google
       class RegionList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -5711,7 +5962,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -5775,8 +6030,8 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource. Provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -5786,7 +6041,8 @@ module Google
         # @return [String]
         attr_accessor :dest_range
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -5891,17 +6147,19 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # [Output Only] The warning type identifier for this warning.
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata for this warning in key: value format.
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::Route::Warning::Datum>]
           attr_accessor :data
         
-          # [Output Only] Optional human-readable details for this warning.
+          # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
@@ -5921,7 +6179,13 @@ module Google
           class Datum
             include Google::Apis::Core::Hashable
           
-            # [Output Only] A key for the warning data.
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource, and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
@@ -5963,7 +6227,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6092,8 +6360,8 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource; provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -6103,7 +6371,8 @@ module Google
         # @return [String]
         attr_accessor :disk_size_gb
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -6190,7 +6459,8 @@ module Google
       class SnapshotList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -6205,7 +6475,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6247,13 +6521,14 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource. Provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -6321,7 +6596,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6385,19 +6664,20 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource; provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] Type of resource. Always compute#operation for Operation
-        # resources.
+        # [Output Only] Type of resource. Always compute#targetHttpProxy for target HTTP
+        # proxies.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -6443,7 +6723,8 @@ module Google
       class TargetHttpProxyList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -6459,7 +6740,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6512,18 +6797,20 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource. Provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Type of the resource.
+        # [Output Only] Type of the resource. Always compute#targetHttpsProxy for target
+        # HTTPS proxies.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -6576,7 +6863,8 @@ module Google
       class TargetHttpsProxyList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -6591,7 +6879,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6625,13 +6917,14 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource; provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -6641,7 +6934,8 @@ module Google
         # @return [String]
         attr_accessor :instance
       
-        # Type of the resource.
+        # [Output Only] The type of the resource. Always compute#targetInstance for
+        # target instances.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -6709,7 +7003,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6737,7 +7035,8 @@ module Google
       class TargetInstanceList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -6752,7 +7051,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6806,17 +7109,19 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # [Output Only] The warning type identifier for this warning.
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata for this warning in key: value format.
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetInstancesScopedList::Warning::Datum>]
           attr_accessor :data
         
-          # [Output Only] Optional human-readable details for this warning.
+          # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
@@ -6836,7 +7141,13 @@ module Google
           class Datum
             include Google::Apis::Core::Hashable
           
-            # [Output Only] A key for the warning data.
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource, and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
@@ -6885,8 +7196,8 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource; provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -6913,7 +7224,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :health_checks
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -6924,7 +7236,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :instances
       
-        # Type of the resource.
+        # [Output Only] Type of the resource. Always compute#targetPool for target pools.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -6999,7 +7311,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -7067,7 +7383,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -7197,17 +7517,19 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # [Output Only] The warning type identifier for this warning.
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata for this warning in key: value format.
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetPoolsScopedList::Warning::Datum>]
           attr_accessor :data
         
-          # [Output Only] Optional human-readable details for this warning.
+          # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
@@ -7227,7 +7549,13 @@ module Google
           class Datum
             include Google::Apis::Core::Hashable
           
-            # [Output Only] A key for the warning data.
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource, and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
@@ -7278,8 +7606,8 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource. Provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -7291,7 +7619,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :forwarding_rules
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -7363,7 +7692,8 @@ module Google
       class TargetVpnGatewayAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -7379,7 +7709,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -7407,7 +7741,8 @@ module Google
       class TargetVpnGatewayList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -7423,7 +7758,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -7477,17 +7816,19 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # [Output Only] The warning type identifier for this warning.
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata for this warning in key: value format.
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetVpnGatewaysScopedList::Warning::Datum>]
           attr_accessor :data
         
-          # [Output Only] Optional human-readable details for this warning.
+          # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
@@ -7507,7 +7848,13 @@ module Google
           class Datum
             include Google::Apis::Core::Hashable
           
-            # [Output Only] A key for the warning data.
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource, and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
@@ -7583,8 +7930,8 @@ module Google
         # @return [String]
         attr_accessor :default_service
       
-        # An optional textual description of the resource. Provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -7602,12 +7949,13 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::HostRule>]
         attr_accessor :host_rules
       
-        # [Output Only] Unique identifier for the resource. Set by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Type of the resource.
+        # [Output Only] Type of the resource. Always compute#urlMaps for url maps.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7677,7 +8025,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -7880,8 +8232,8 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # An optional textual description of the resource. Provided by the client when
-        # the resource is created.
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -7891,7 +8243,8 @@ module Google
         # @return [String]
         attr_accessor :detailed_status
       
-        # [Output Only] Unique identifier for the resource. Defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -7981,7 +8334,8 @@ module Google
       class VpnTunnelAggregatedList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -7996,7 +8350,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -8024,7 +8382,8 @@ module Google
       class VpnTunnelList
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -8039,7 +8398,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -8093,17 +8456,19 @@ module Google
         class Warning
           include Google::Apis::Core::Hashable
         
-          # [Output Only] The warning type identifier for this warning.
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
           # Corresponds to the JSON property `code`
           # @return [String]
           attr_accessor :code
         
-          # [Output Only] Metadata for this warning in key: value format.
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::VpnTunnelsScopedList::Warning::Datum>]
           attr_accessor :data
         
-          # [Output Only] Optional human-readable details for this warning.
+          # [Output Only] A human-readable description of the warning code.
           # Corresponds to the JSON property `message`
           # @return [String]
           attr_accessor :message
@@ -8123,7 +8488,13 @@ module Google
           class Datum
             include Google::Apis::Core::Hashable
           
-            # [Output Only] A key for the warning data.
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource, and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
             # Corresponds to the JSON property `key`
             # @return [String]
             attr_accessor :key
@@ -8165,12 +8536,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Unique identifier for the resource; defined by the server.
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # [Output Only] Type of the resource. Always kind#zone for zones.
+        # [Output Only] Type of the resource. Always compute#zone for zones.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8277,7 +8649,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] A token used to continue a truncated list request.
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token

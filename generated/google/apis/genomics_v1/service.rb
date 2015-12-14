@@ -22,8 +22,10 @@ module Google
     module GenomicsV1
       # Genomics API
       #
-      # An API to store, process, explore, and share DNA sequence reads, reference-
-      #  based alignments, and variant calls.
+      # An API to store, process, explore, and share genomic data. It supports
+      #  reference-based alignements, genetic variants, and reference genomes. This API
+      #  provides an implementation of the Global Alliance for Genomics and Health (
+      #  GA4GH) v0.5.1 API as well as several extensions.
       #
       # @example
       #    require 'google/apis/genomics_v1'
@@ -53,7 +55,7 @@ module Google
         # @param [String] project_id
         #   Required. The project to list datasets for.
         # @param [Fixnum] page_size
-        #   The maximum number of results returned by this request. If unspecified,
+        #   The maximum number of results to return in a single page. If unspecified,
         #   defaults to 50. The maximum value is 1024.
         # @param [String] page_token
         #   The continuation token, which is used to page through large result sets. To
@@ -564,7 +566,8 @@ module Google
         # ImportReadGroupSets](google.genomics.v1.ReadServiceV1.ImportReadGroupSets) for
         # caveats.
         # @param [String] read_group_set_id
-        #   Required. The ID of the read group set to export.
+        #   Required. The ID of the read group set to export. The caller must have READ
+        #   access to this read group set.
         # @param [Google::Apis::GenomicsV1::ExportReadGroupSetRequest] export_read_group_set_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -638,9 +641,9 @@ module Google
         #   permissions to the dataset associated with this read group set.
         # @param [Google::Apis::GenomicsV1::ReadGroupSet] read_group_set_object
         # @param [String] update_mask
-        #   An optional mask specifying which fields to update. At this time, mutable
-        #   fields are referenceSetId and name. Acceptable values are "referenceSetId" and
-        #   "name". If unspecified, all mutable fields will be updated.
+        #   An optional mask specifying which fields to update. Supported fields: * name. *
+        #   referenceSetId. Leaving `updateMask` unset is equivalent to specifying all
+        #   mutable fields.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -813,10 +816,13 @@ module Google
         # returns all reads whose alignment to the reference genome overlap the range. A
         # query which specifies only read group set IDs yields all reads in those read
         # group sets, including unmapped reads. All reads returned (including reads on
-        # subsequent pages) are ordered by genomic coordinate (reference sequence &
-        # position). Reads with equivalent genomic coordinates are returned in a
-        # deterministic order. Implements [GlobalAllianceApi.searchReads](https://github.
-        # com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/readmethods.avdl#L85).
+        # subsequent pages) are ordered by genomic coordinate (by reference sequence,
+        # then position). Reads with equivalent genomic coordinates are returned in an
+        # unspecified order. This order is consistent, such that two queries for the
+        # same content (regardless of page size) yield reads in the same order across
+        # their respective streams of paginated responses. Implements [GlobalAllianceApi.
+        # searchReads](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/
+        # avro/readmethods.avdl#L85).
         # @param [Google::Apis::GenomicsV1::SearchReadsRequest] search_reads_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -846,11 +852,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns a stream of all the reads matching the search request, ordered by
+        # reference name, position, and ID.
+        # @param [Google::Apis::GenomicsV1::StreamReadsRequest] stream_reads_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GenomicsV1::StreamReadsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GenomicsV1::StreamReadsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_reads(stream_reads_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/reads:stream', options)
+          command.request_representation = Google::Apis::GenomicsV1::StreamReadsRequest::Representation
+          command.request_object = stream_reads_request_object
+          command.response_representation = Google::Apis::GenomicsV1::StreamReadsResponse::Representation
+          command.response_class = Google::Apis::GenomicsV1::StreamReadsResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Searches for reference sets which match the given criteria. For the
         # definitions of references and other genomics resources, see [Fundamentals of
         # Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-
-        # genomics) Implements [GlobalAllianceApi.searchReferenceSets](http://ga4gh.org/
-        # documentation/api/v0.5.1/ga4gh_api.html#/schema/org.ga4gh.searchReferenceSets).
+        # genomics) Implements [GlobalAllianceApi.searchReferenceSets](https://github.
+        # com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#
+        # L71)
         # @param [Google::Apis::GenomicsV1::SearchReferenceSetsRequest] search_reference_sets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -999,7 +1037,9 @@ module Google
         #   get the next page of results, set this parameter to the value of `
         #   nextPageToken` from the previous response.
         # @param [Fixnum] page_size
-        #   Specifies the maximum number of bases to return in a single page.
+        #   The maximum number of bases to return in a single page. If unspecified,
+        #   defaults to 200Kbp (kilo base pairs). The maximum value is 10Mbp (mega base
+        #   pairs).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1240,6 +1280,37 @@ module Google
           command.response_representation = Google::Apis::GenomicsV1::Variant::Representation
           command.response_class = Google::Apis::GenomicsV1::Variant
           command.params['variantId'] = variant_id unless variant_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a stream of all the variants matching the search request, ordered by
+        # reference name, position, and ID.
+        # @param [Google::Apis::GenomicsV1::StreamVariantsRequest] stream_variants_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GenomicsV1::StreamVariantsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GenomicsV1::StreamVariantsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_variants(stream_variants_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'v1/variants:stream', options)
+          command.request_representation = Google::Apis::GenomicsV1::StreamVariantsRequest::Representation
+          command.request_object = stream_variants_request_object
+          command.response_representation = Google::Apis::GenomicsV1::StreamVariantsResponse::Representation
+          command.response_class = Google::Apis::GenomicsV1::StreamVariantsResponse
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

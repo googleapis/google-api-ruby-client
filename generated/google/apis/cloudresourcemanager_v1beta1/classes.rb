@@ -32,19 +32,19 @@ module Google
         # @return [String]
         attr_accessor :project_number
       
-        # The unique, user-assigned ID of the project. It must be 6 to 30 lowercase
+        # The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase
         # letters, digits, or hyphens. It must start with a letter. Trailing hyphens are
         # prohibited. Example: tokyo-rain-123 Read-only after creation.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # The project lifecycle state. Read-only.
+        # The Project lifecycle state. Read-only.
         # Corresponds to the JSON property `lifecycleState`
         # @return [String]
         attr_accessor :lifecycle_state
       
-        # The user-assigned name of the project. It must be 4 to 30 characters. Allowed
+        # The user-assigned name of the Project. It must be 4 to 30 characters. Allowed
         # characters are: lowercase and uppercase letters, numbers, hyphen, single-quote,
         # double-quote, space, and exclamation point. Example: My Project Read-write.
         # Corresponds to the JSON property `name`
@@ -56,7 +56,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The labels associated with this project. Label keys must be between 1 and 63
+        # The labels associated with this Project. Label keys must be between 1 and 63
         # characters long and must conform to the following regular expression: \[a-z\](\
         # [-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63 characters long
         # and must conform to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
@@ -68,10 +68,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # A container to reference an id for any resource type. A 'resource' in Google
+        # A container to reference an id for any resource type. A `resource` in Google
         # Cloud Platform is a generic term for something you (a developer) may want to
         # interact with through one of our API's. Some examples are an AppEngine app, a
-        # Compute Engine instance, Cloud SQL database, ...
+        # Compute Engine instance, a Cloud SQL database, and so on.
         # Corresponds to the JSON property `parent`
         # @return [Google::Apis::CloudresourcemanagerV1beta1::ResourceId]
         attr_accessor :parent
@@ -92,10 +92,10 @@ module Google
         end
       end
       
-      # A container to reference an id for any resource type. A 'resource' in Google
+      # A container to reference an id for any resource type. A `resource` in Google
       # Cloud Platform is a generic term for something you (a developer) may want to
       # interact with through one of our API's. Some examples are an AppEngine app, a
-      # Compute Engine instance, Cloud SQL database, ...
+      # Compute Engine instance, a Cloud SQL database, and so on.
       class ResourceId
         include Google::Apis::Core::Hashable
       
@@ -128,7 +128,7 @@ module Google
       class ListProjectsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of projects that matched the list filter. This list can be paginated.
+        # The list of Projects that matched the list filter. This list can be paginated.
         # Corresponds to the JSON property `projects`
         # @return [Array<Google::Apis::CloudresourcemanagerV1beta1::Project>]
         attr_accessor :projects
@@ -197,9 +197,7 @@ module Google
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Version of the `Policy`. The default version is 0. 0 =
-        # resourcemanager_projects only support legacy roles. 1 = supports non-legacy
-        # roles 2 = supports AuditConfig
+        # Version of the `Policy`. The default version is 0.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -211,12 +209,14 @@ module Google
         # @return [Array<Google::Apis::CloudresourcemanagerV1beta1::Binding>]
         attr_accessor :bindings
       
-        # The etag is used for optimistic concurrency control as a way to help prevent
+        # `etag` is used for optimistic concurrency control as a way to help prevent
         # simultaneous updates of a policy from overwriting each other. It is strongly
-        # suggested that systems make use of the etag in the read-modify-write cycle to
-        # perform policy updates in order to avoid race conditions. If no etag is
-        # provided in the call to SetIamPolicy, then the existing policy is overwritten
-        # blindly.
+        # suggested that systems make use of the `etag` in the read-modify-write cycle
+        # to perform policy updates in order to avoid race conditions: An `etag` is
+        # returned in the response to `getIamPolicy`, and systems are expected to put
+        # that etag in the request to `setIamPolicy` to ensure that their change will be
+        # applied to the same version of the policy. If no `etag` is provided in the
+        # call to `setIamPolicy`, then the existing policy is overwritten blindly.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -244,7 +244,7 @@ module Google
         attr_accessor :role
       
         # Specifies the identities requesting access for a Cloud Platform resource. `
-        # members` can have the following formats: * `allUsers`: A special identifier
+        # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
         # anyone who is authenticated with a Google account or a service account. * `
@@ -337,7 +337,7 @@ module Google
         end
       end
       
-      # The response returned from the ListOrganizations method.
+      # The response returned from the `ListOrganizations` method.
       class ListOrganizationsResponse
         include Google::Apis::Core::Hashable
       
@@ -384,9 +384,9 @@ module Google
         attr_accessor :display_name
       
         # The entity that owns an Organization. The lifetime of the Organization and all
-        # of its descendants are bound to the OrganizationOwner. If the
-        # OrganizationOwner is deleted, the Organization and all its descendants will be
-        # deleted.
+        # of its descendants are bound to the `OrganizationOwner`. If the `
+        # OrganizationOwner` is deleted, the Organization and all its descendants will
+        # be deleted.
         # Corresponds to the JSON property `owner`
         # @return [Google::Apis::CloudresourcemanagerV1beta1::OrganizationOwner]
         attr_accessor :owner
@@ -411,9 +411,9 @@ module Google
       end
       
       # The entity that owns an Organization. The lifetime of the Organization and all
-      # of its descendants are bound to the OrganizationOwner. If the
-      # OrganizationOwner is deleted, the Organization and all its descendants will be
-      # deleted.
+      # of its descendants are bound to the `OrganizationOwner`. If the `
+      # OrganizationOwner` is deleted, the Organization and all its descendants will
+      # be deleted.
       class OrganizationOwner
         include Google::Apis::Core::Hashable
       

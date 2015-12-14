@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/maps-engine/
     module MapsengineV1
       VERSION = 'V1'
-      REVISION = '20150629'
+      REVISION = '20151202'
 
       # View and manage your Google My Maps data
       AUTH_MAPSENGINE = 'https://www.googleapis.com/auth/mapsengine'

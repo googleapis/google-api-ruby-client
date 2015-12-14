@@ -183,6 +183,103 @@ module Google
         end
       end
       
+      # JSON template for Calendar Resource object in Directory API.
+      class CalendarResource
+        include Google::Apis::Core::Hashable
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etags`
+        # @return [String]
+        attr_accessor :etags
+      
+        # The type of the resource. For calendar resources, the value is admin#directory#
+        # resources#calendars#CalendarResource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The brief description of the calendar resource.
+        # Corresponds to the JSON property `resourceDescription`
+        # @return [String]
+        attr_accessor :resource_description
+      
+        # The read-only email ID for the calendar resource. Generated as part of
+        # creating a new calendar resource.
+        # Corresponds to the JSON property `resourceEmail`
+        # @return [String]
+        attr_accessor :resource_email
+      
+        # The unique ID for the calendar resource.
+        # Corresponds to the JSON property `resourceId`
+        # @return [String]
+        attr_accessor :resource_id
+      
+        # The name of the calendar resource. For example, Training Room 1A
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # The type of the calendar resource. Used for grouping resources in the calendar
+        # user interface.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etags = args[:etags] unless args[:etags].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @resource_description = args[:resource_description] unless args[:resource_description].nil?
+          @resource_email = args[:resource_email] unless args[:resource_email].nil?
+          @resource_id = args[:resource_id] unless args[:resource_id].nil?
+          @resource_name = args[:resource_name] unless args[:resource_name].nil?
+          @resource_type = args[:resource_type] unless args[:resource_type].nil?
+        end
+      end
+      
+      # JSON template for Calendar Resource List Response object in Directory API.
+      class CalendarResources
+        include Google::Apis::Core::Hashable
+      
+        # ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The CalendarResources in this page of results.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::AdminDirectoryV1::CalendarResource>]
+        attr_accessor :items
+      
+        # Identifies this as a collection of CalendarResources. This is always admin#
+        # directory#resources#calendars#calendarResourcesList.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The continuation token, used to page through large result sets. Provide this
+        # value in a subsequent request to return the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] unless args[:etag].nil?
+          @items = args[:items] unless args[:items].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
+        end
+      end
+      
       # An notification channel used to watch for resource changes.
       class Channel
         include Google::Apis::Core::Hashable

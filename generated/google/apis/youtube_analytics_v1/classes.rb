@@ -444,6 +444,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # 
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
         def initialize(**args)
            update!(**args)
         end
@@ -453,6 +458,7 @@ module Google
           @etag = args[:etag] unless args[:etag].nil?
           @items = args[:items] unless args[:items].nil?
           @kind = args[:kind] unless args[:kind].nil?
+          @next_page_token = args[:next_page_token] unless args[:next_page_token].nil?
         end
       end
       

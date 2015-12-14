@@ -12,26 +12,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/appsactivity_v1/service.rb'
-require 'google/apis/appsactivity_v1/classes.rb'
-require 'google/apis/appsactivity_v1/representations.rb'
+require 'google/apis/drive_v3/service.rb'
+require 'google/apis/drive_v3/classes.rb'
+require 'google/apis/drive_v3/representations.rb'
 
 module Google
   module Apis
-    # Google Apps Activity API
+    # Drive API
     #
-    # Provides a historical view of activity.
+    # The API to interact with Drive.
     #
-    # @see https://developers.google.com/google-apps/activity/
-    module AppsactivityV1
-      VERSION = 'V1'
-      REVISION = '20150417'
-
-      # View the activity history of your Google Apps
-      AUTH_ACTIVITY = 'https://www.googleapis.com/auth/activity'
+    # @see https://developers.google.com/drive/
+    module DriveV3
+      VERSION = 'V3'
+      REVISION = '20151209'
 
       # View and manage the files in your Google Drive
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'
+
+      # View and manage its own configuration data in your Google Drive
+      AUTH_DRIVE_APPDATA = 'https://www.googleapis.com/auth/drive.appdata'
+
+      # View and manage Google Drive files and folders that you have opened or created with this app
+      AUTH_DRIVE_FILE = 'https://www.googleapis.com/auth/drive.file'
 
       # View and manage metadata of files in your Google Drive
       AUTH_DRIVE_METADATA = 'https://www.googleapis.com/auth/drive.metadata'
@@ -39,8 +42,14 @@ module Google
       # View metadata for files in your Google Drive
       AUTH_DRIVE_METADATA_READONLY = 'https://www.googleapis.com/auth/drive.metadata.readonly'
 
+      # View the photos, videos and albums in your Google Photos
+      AUTH_DRIVE_PHOTOS_READONLY = 'https://www.googleapis.com/auth/drive.photos.readonly'
+
       # View the files in your Google Drive
       AUTH_DRIVE_READONLY = 'https://www.googleapis.com/auth/drive.readonly'
+
+      # Modify your Google Apps Script scripts' behavior
+      AUTH_DRIVE_SCRIPTS = 'https://www.googleapis.com/auth/drive.scripts'
     end
   end
 end

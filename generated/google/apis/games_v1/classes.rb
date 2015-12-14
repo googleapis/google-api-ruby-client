@@ -645,6 +645,33 @@ module Google
         end
       end
       
+      # This is a JSON template for a third party application verification response
+      # resource.
+      class ApplicationVerifyResponse
+        include Google::Apis::Core::Hashable
+      
+        # Uniquely identifies the type of this resource. Value is always the fixed
+        # string games#applicationVerifyResponse.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The ID of the player that was issued the auth token used in this request.
+        # Corresponds to the JSON property `player_id`
+        # @return [String]
+        attr_accessor :player_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] unless args[:kind].nil?
+          @player_id = args[:player_id] unless args[:player_id].nil?
+        end
+      end
+      
       # This is a JSON template for data related to individual game categories.
       class Category
         include Google::Apis::Core::Hashable

@@ -223,6 +223,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_operation_id, as: 'clientOperationId'
           property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::DeploymentmanagerV2::Operation::Error, decorator: Google::Apis::DeploymentmanagerV2::Operation::Error::Representation
       

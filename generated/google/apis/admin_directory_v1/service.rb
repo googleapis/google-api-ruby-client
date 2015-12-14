@@ -2017,6 +2017,247 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes a calendar resource.
+        # @param [String] customer
+        #   The unique ID for the customer's Google account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [String] calendar_resource_id
+        #   The unique ID of the calendar resource to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_resource_calendar(customer, calendar_resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
+          command.params['customer'] = customer unless customer.nil?
+          command.params['calendarResourceId'] = calendar_resource_id unless calendar_resource_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a calendar resource.
+        # @param [String] customer
+        #   The unique ID for the customer's Google account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [String] calendar_resource_id
+        #   The unique ID of the calendar resource to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::CalendarResource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::CalendarResource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_resource_calendar(customer, calendar_resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
+          command.response_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::CalendarResource
+          command.params['customer'] = customer unless customer.nil?
+          command.params['calendarResourceId'] = calendar_resource_id unless calendar_resource_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inserts a calendar resource.
+        # @param [String] customer
+        #   The unique ID for the customer's Google account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [Google::Apis::AdminDirectoryV1::CalendarResource] calendar_resource_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::CalendarResource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::CalendarResource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_resource_calendar(customer, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'customer/{customer}/resources/calendars', options)
+          command.request_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
+          command.request_object = calendar_resource_object
+          command.response_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::CalendarResource
+          command.params['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of calendar resources for an account.
+        # @param [String] customer
+        #   The unique ID for the customer's Google account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [Fixnum] max_results
+        #   Maximum number of results to return.
+        # @param [String] page_token
+        #   Token to specify the next page in the list.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::CalendarResources] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::CalendarResources]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_resource_calendars(customer, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'customer/{customer}/resources/calendars', options)
+          command.response_representation = Google::Apis::AdminDirectoryV1::CalendarResources::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::CalendarResources
+          command.params['customer'] = customer unless customer.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a calendar resource. This method supports patch semantics.
+        # @param [String] customer
+        #   The unique ID for the customer's Google account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [String] calendar_resource_id
+        #   The unique ID of the calendar resource to update.
+        # @param [Google::Apis::AdminDirectoryV1::CalendarResource] calendar_resource_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::CalendarResource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::CalendarResource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_resource_calendar(customer, calendar_resource_id, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
+          command.request_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
+          command.request_object = calendar_resource_object
+          command.response_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::CalendarResource
+          command.params['customer'] = customer unless customer.nil?
+          command.params['calendarResourceId'] = calendar_resource_id unless calendar_resource_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a calendar resource.
+        # @param [String] customer
+        #   The unique ID for the customer's Google account. As an account administrator,
+        #   you can also use the my_customer alias to represent your account's customer ID.
+        # @param [String] calendar_resource_id
+        #   The unique ID of the calendar resource to update.
+        # @param [Google::Apis::AdminDirectoryV1::CalendarResource] calendar_resource_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AdminDirectoryV1::CalendarResource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AdminDirectoryV1::CalendarResource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_resource_calendar(customer, calendar_resource_id, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
+          command.request_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
+          command.request_object = calendar_resource_object
+          command.response_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
+          command.response_class = Google::Apis::AdminDirectoryV1::CalendarResource
+          command.params['customer'] = customer unless customer.nil?
+          command.params['calendarResourceId'] = calendar_resource_id unless calendar_resource_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a role assignment.
         # @param [String] customer
         #   Immutable ID of the Google Apps account.
