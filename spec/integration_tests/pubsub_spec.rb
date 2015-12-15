@@ -23,10 +23,10 @@ RSpec.describe Google::Apis::PubsubV1beta2, :if => run_integration_tests? do
     request = Pubsub::PublishRequest.new(messages: [])
     request.messages << Pubsub::Message.new(attributes: { "language" => "en" }, data: 'Hello')
     request.messages << Pubsub::Message.new(attributes: { "language" => "en" }, data: 'World')
-    @pubsub.publish(@topic_name, request)
+    @pubsub.publish_topic(@topic_name, request)
 
     # Pull messages
-    response = @pubsub.pull(@subscription_name, Pubsub::PullRequest.new(max_messages: 5))
+    response = @pubsub.pull_subscription(@subscription_name, Pubsub::PullRequest.new(max_messages: 5))
     response.received_messages.each do |received_message|
       data = received_message.message.data
       puts "Received #{data}"
@@ -34,7 +34,7 @@ RSpec.describe Google::Apis::PubsubV1beta2, :if => run_integration_tests? do
 
     # Acknowledge receipt
     ack_ids = response.received_messages.map{ |msg| msg.ack_id }
-    @pubsub.acknowledge(@subscription_name, Pubsub::AcknowledgeRequest.new(ack_ids: ack_ids))
+    @pubsub.acknowledge_subscription(@subscription_name, Pubsub::AcknowledgeRequest.new(ack_ids: ack_ids))
 
     expect(response.received_messages.length).to eq 2
   end

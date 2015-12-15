@@ -13,9 +13,9 @@
 # limitations under the License.
 
 require 'googleauth'
-require 'google/apis/pubsub_v1beta2'
+require 'google/apis/pubsub_v1'
 
-Pubsub = Google::Apis::PubsubV1beta2
+Pubsub = Google::Apis::PubsubV1
 
 pubsub = Pubsub::PubsubService.new
 pubsub.authorization = Google::Auth.get_application_default([Pubsub::AUTH_PUBSUB])
@@ -33,10 +33,10 @@ pubsub.create_subscription(subscription, Pubsub::Subscription.new(topic: topic))
 request = Pubsub::PublishRequest.new(messages: [])
 request.messages << Pubsub::Message.new(attributes: { "language" => "en" }, data: 'Hello')
 request.messages << Pubsub::Message.new(attributes: { "language" => "en" }, data: 'World')
-pubsub.publish(topic, request)
+pubsub.publish_topic(topic, request)
 
 # Pull messages
-response = pubsub.pull(subscription, Pubsub::PullRequest.new(max_messages: 5))
+response = pubsub.pull_subscription(subscription, Pubsub::PullRequest.new(max_messages: 5))
 response.received_messages.each do |received_message|
   data = received_message.message.data
   puts "Received #{data}"
@@ -44,9 +44,8 @@ end
 
 # Acknowledge receipt
 ack_ids = response.received_messages.map{ |msg| msg.ack_id }
-pubsub.acknowledge(subscription, Pubsub::AcknowledgeRequest.new(ack_ids: ack_ids))
+pubsub.acknowledge_subscription(subscription, Pubsub::AcknowledgeRequest.new(ack_ids: ack_ids))
 
 # Delete the subscription & topic
 pubsub.delete_subscription(subscription)
 pubsub.delete_topic(topic)
-
