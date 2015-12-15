@@ -21,6 +21,7 @@ module Google
     # JSON serialized file. Meant to resemble the serialized format
     # http://google-api-python-client.googlecode.com/hg/docs/epy/oauth2client.file.Storage-class.html
     #
+    # @deprecated Use google-auth-library-ruby instead
     class FileStore
 
       attr_accessor :path

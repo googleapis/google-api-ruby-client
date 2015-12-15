@@ -18,6 +18,7 @@ module Google
     # Helper for loading keys from the PKCS12 files downloaded when
     # setting up service accounts at the APIs Console.
     #
+    # @deprecated Use google-auth-library-ruby instead
     module KeyUtils
       ##
       # Loads a key from PKCS12 file, assuming a single private key

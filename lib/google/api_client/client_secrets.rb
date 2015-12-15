@@ -23,7 +23,7 @@ module Google
     # inspired by the Google API Python client.
     #
     # @see https://developers.google.com/api-client-library/python/guide/aaa_client_secrets
-    #
+    # @deprecated Use google-auth-library-ruby instead
     # @example
     #   {
     #     "web": {
@@ -121,7 +121,7 @@ module Google
       def to_json
         return MultiJson.dump(to_hash)
       end
-      
+
       def to_hash
         {
           self.flow => ({
@@ -146,7 +146,7 @@ module Google
           end
         }
       end
-      
+
       def to_authorization
         gem 'signet', '>= 0.4.0'
         require 'signet/oauth_2/client'

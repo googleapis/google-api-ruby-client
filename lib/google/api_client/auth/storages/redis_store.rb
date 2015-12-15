@@ -16,6 +16,7 @@ require 'json'
 
 module Google
   class APIClient
+    # @deprecated Use google-auth-library-ruby instead
     class RedisStore
 
       DEFAULT_REDIS_CREDENTIALS_KEY = "google_api_credentials"
