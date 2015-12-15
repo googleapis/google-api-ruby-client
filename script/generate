@@ -43,6 +43,7 @@ APIS=(adexchangebuyer:v1.3 \
 	doubleclickbidmanager:v1 \
 	doubleclicksearch:v2 \
 	drive:v2 \
+	drive:v3 \
 	fitness:v1 \
 	fusiontables:v2 \
 	games:v1 \
