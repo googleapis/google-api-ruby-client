@@ -31,6 +31,7 @@ APIS=(adexchangebuyer:v1.3 \
   cloudtrace:v1 \
 	clouduseraccounts:beta \
 	compute:v1 \
+	compute:beta \
 	container:v1 \
 	content:v2 \
 	coordinate:v1 \
@@ -89,4 +90,5 @@ APIS=(adexchangebuyer:v1.3 \
 	youtubereporting:v1 \
 )
 
-echo 'a' | bundle exec bin/generate-api gen generated --names_out=$DIR/api_names_out.yaml --id=${APIS[*]}
+
+echo 'a' | bundle exec bin/generate-api gen generated --from-discovery=true --names_out=$DIR/api_names_out.yaml --url='https://content.googleapis.com/discovery/v1/apis/compute/beta/rest'  --id=${APIS[*]}

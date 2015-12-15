@@ -19,18 +19,16 @@ module Google
     Discovery = Google::Apis::DiscoveryV1
 
     desc 'gen OUTDIR', 'Generate ruby API from an API description'
-    method_options url: :string, file: :string, id: :array, preferred_only: :boolean, verbose: :boolean, names: :string, names_out: :string
+    method_options url: :array, file: :array, from_discovery: :boolean, id: :array,
+                   preferred_only: :boolean, verbose: :boolean, names: :string,
+                   names_out: :string
     method_option :preferred_only, default: true
     def gen(dir)
       self.destination_root = dir
       Google::Apis.logger.level = Logger::DEBUG if options[:verbose]
-      if options[:url]
-        generate_from_url(options[:url])
-      elsif options[:file]
-        generate_from_file(options[:file])
-      else
-        generate_from_discovery(preferred_only: options[:preferred_only], id: options[:id] )
-      end
+      generate_from_url(options[:url]) if options[:url]
+      generate_from_file(options[:file]) if options[:file]
+      generate_from_discovery(preferred_only: options[:preferred_only], id: options[:id] ) if options[:from_discovery]
       create_file(options[:names_out]) { |*| generator.dump_api_names } if options[:names_out]
     end
 
@@ -46,14 +44,18 @@ module Google
     end
 
     no_commands do
-      def generate_from_url(url)
-        json = discovery.http(:get, url)
-        generate_api(json)
+      def generate_from_url(urls)
+        Array(urls).each do |url|
+          json = discovery.http(:get, url)
+          generate_api(json)
+        end
       end
 
-      def generate_from_file(file)
-        File.open(file) do |f|
-          generate_api(f.read)
+      def generate_from_file(files)
+        Array(files).each do |file|
+          File.open(file) do |f|
+            generate_api(f.read)
+          end
         end
       end
 
