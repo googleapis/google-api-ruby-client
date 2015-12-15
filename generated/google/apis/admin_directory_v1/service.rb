@@ -2044,7 +2044,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_resource_calendar(customer, calendar_resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_calendar_resource(customer, calendar_resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:delete, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
           command.params['customer'] = customer unless customer.nil?
           command.params['calendarResourceId'] = calendar_resource_id unless calendar_resource_id.nil?
@@ -2081,7 +2081,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_resource_calendar(customer, calendar_resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_calendar_resource(customer, calendar_resource_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::CalendarResource
@@ -2119,7 +2119,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_resource_calendar(customer, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def calendar_resource(customer, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'customer/{customer}/resources/calendars', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
           command.request_object = calendar_resource_object
@@ -2161,7 +2161,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_resource_calendars(customer, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_calendar_resources(customer, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'customer/{customer}/resources/calendars', options)
           command.response_representation = Google::Apis::AdminDirectoryV1::CalendarResources::Representation
           command.response_class = Google::Apis::AdminDirectoryV1::CalendarResources
@@ -2202,7 +2202,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_resource_calendar(customer, calendar_resource_id, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_calendar_resource(customer, calendar_resource_id, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:patch, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
           command.request_object = calendar_resource_object
@@ -2244,7 +2244,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_resource_calendar(customer, calendar_resource_id, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_calendar_resource(customer, calendar_resource_id, calendar_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:put, 'customer/{customer}/resources/calendars/{calendarResourceId}', options)
           command.request_representation = Google::Apis::AdminDirectoryV1::CalendarResource::Representation
           command.request_object = calendar_resource_object

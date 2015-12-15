@@ -27,6 +27,12 @@
 "/admin:directory_v1/directory.orgunits.list": list_org_units
 "/admin:directory_v1/directory.orgunits.patch": patch_org_unit
 "/admin:directory_v1/directory.orgunits.update": update_org_unit
+"/admin:directory_v1/directory.resources.calendars.delete": delete_calendar_resource
+"/admin:directory_v1/directory.resources.calendars.get": get_calendar_resource
+"/admin:directory_v1/directory.resources.calendars.insert": calendar_resource
+"/admin:directory_v1/directory.resources.calendars.list": list_calendar_resources
+"/admin:directory_v1/directory.resources.calendars.patch": patch_calendar_resource
+"/admin:directory_v1/directory.resources.calendars.update": update_calendar_resource
 "/admin:directory_v1/directory.users.aliases.delete/alias": user_alias
 "/adsense:v1.4/AdsenseReportsGenerateResponse": generate_report_response
 "/adsense:v1.4/adsense.accounts.adclients.list": list_account_ad_clients
@@ -629,6 +635,7 @@
 "/doubleclicksearch:v2/UpdateAvailabilityResponse": update_availability_response
 "/drive:v2/drive.files.emptyTrash": empty_trash
 "/drive:v2/drive.permissions.getIdForEmail": get_permission_id_for_email
+"/drive:v3/drive.changes.getStartPageToken": get_changes_start_page_token
 "/fusiontables:v2/fusiontables.table.importRows": import_rows
 "/fusiontables:v2/fusiontables.table.importTable": import_table
 "/games:v1/AchievementDefinitionsListResponse": list_achievement_definitions_response
