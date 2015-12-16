@@ -110,6 +110,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
+      class LocalizedText
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
       class Permission
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
@@ -135,6 +139,26 @@ module Google
       end
       
       class GenerateProductApprovalUrlResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class StoreCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class StoreLayout
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class StoreLayoutClustersListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class StoreLayoutPagesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class StorePage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -357,6 +381,14 @@ module Google
         end
       end
       
+      class LocalizedText
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :locale, as: 'locale'
+          property :text, as: 'text'
+        end
+      end
+      
       class Permission
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -422,6 +454,55 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :url, as: 'url'
+        end
+      end
+      
+      class StoreCluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          collection :name, as: 'name', class: Google::Apis::AndroidenterpriseV1::LocalizedText, decorator: Google::Apis::AndroidenterpriseV1::LocalizedText::Representation
+      
+          property :order_in_page, as: 'orderInPage'
+          collection :product_id, as: 'productId'
+        end
+      end
+      
+      class StoreLayout
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :homepage_id, as: 'homepageId'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class StoreLayoutClustersListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cluster, as: 'cluster', class: Google::Apis::AndroidenterpriseV1::StoreCluster, decorator: Google::Apis::AndroidenterpriseV1::StoreCluster::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class StoreLayoutPagesListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :page, as: 'page', class: Google::Apis::AndroidenterpriseV1::StorePage, decorator: Google::Apis::AndroidenterpriseV1::StorePage::Representation
+      
+        end
+      end
+      
+      class StorePage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          collection :link, as: 'link'
+          collection :name, as: 'name', class: Google::Apis::AndroidenterpriseV1::LocalizedText, decorator: Google::Apis::AndroidenterpriseV1::LocalizedText::Representation
+      
         end
       end
       

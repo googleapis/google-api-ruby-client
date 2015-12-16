@@ -12,23 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/games_configuration_v1configuration/service.rb'
-require 'google/apis/games_configuration_v1configuration/classes.rb'
-require 'google/apis/games_configuration_v1configuration/representations.rb'
+require 'google/apis/kgsearch_v1/service.rb'
+require 'google/apis/kgsearch_v1/classes.rb'
+require 'google/apis/kgsearch_v1/representations.rb'
 
 module Google
   module Apis
-    # Google Play Game Services Publishing API
+    # Knowledge Graph Search API
     #
-    # The Publishing API for Google Play Game Services.
+    # Knowledge Graph Search API allows developers to search the Google Knowledge
+    # Graph for entities.
     #
-    # @see https://developers.google.com/games/services
-    module GamesConfigurationV1configuration
-      VERSION = 'V1configuration'
-      REVISION = '20151209'
-
-      # View and manage your Google Play Developer account
-      AUTH_ANDROIDPUBLISHER = 'https://www.googleapis.com/auth/androidpublisher'
+    # @see https://developers.google.com/knowledge-graph/
+    module KgsearchV1
+      VERSION = 'V1'
+      REVISION = '20151215'
     end
   end
 end

@@ -12,23 +12,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/appstate_v1/service.rb'
-require 'google/apis/appstate_v1/classes.rb'
-require 'google/apis/appstate_v1/representations.rb'
+require 'date'
+require 'google/apis/core/base_service'
+require 'google/apis/core/json_representation'
+require 'google/apis/core/hashable'
+require 'google/apis/errors'
 
 module Google
   module Apis
-    # Google App State API
-    #
-    # The Google App State API.
-    #
-    # @see https://developers.google.com/games/services/web/api/states
-    module AppstateV1
-      VERSION = 'V1'
-      REVISION = '20151209'
-
-      # View and manage your data for this application
-      AUTH_APPSTATE = 'https://www.googleapis.com/auth/appstate'
+    module KgsearchV1
+      
+      class SearchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      end
+      
+      class SearchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context'
+          property :type, as: 'type'
+          collection :item_list_element, as: 'itemListElement'
+        end
+      end
     end
   end
 end

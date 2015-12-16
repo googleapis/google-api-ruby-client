@@ -857,6 +857,31 @@ module Google
         end
       end
       
+      # A localized string with its locale.
+      class LocalizedText
+        include Google::Apis::Core::Hashable
+      
+        # The BCP47 tag for a locale. (e.g. "en-US", "de").
+        # Corresponds to the JSON property `locale`
+        # @return [String]
+        attr_accessor :locale
+      
+        # The text localized in the associated locale.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locale = args[:locale] unless args[:locale].nil?
+          @text = args[:text] unless args[:text].nil?
+        end
+      end
+      
       # A permission represents some extra capability, to be granted to an Android app,
       # which requires explicit consent. An enterprise admin must consent to these
       # permissions on behalf of their users before an entitlement for the app can be
@@ -1124,6 +1149,188 @@ module Google
         end
       end
       
+      # Definition of a Google Play for Work store cluster, a list of products
+      # displayed as part of a store page.
+      class StoreCluster
+        include Google::Apis::Core::Hashable
+      
+        # Unique ID of this cluster. Assigned by the server. Immutable once assigned.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#storeCluster".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Ordered list of localized strings giving the name of this page. The text
+        # displayed is the one that best matches the user locale, or the first entry if
+        # there is no good match. There needs to be at least one entry.
+        # Corresponds to the JSON property `name`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::LocalizedText>]
+        attr_accessor :name
+      
+        # String (US-ASCII only) used to determine order of this cluster within the
+        # parent page's elements. Page elements are sorted in lexicographic order of
+        # this field. Duplicated values are allowed, but ordering between elements with
+        # duplicate order is undefined.
+        # The value of this field is never visible to a user, it is used solely for the
+        # purpose of defining an ordering. Maximum length is 20 characters.
+        # Corresponds to the JSON property `orderInPage`
+        # @return [String]
+        attr_accessor :order_in_page
+      
+        # List of products in the order they are displayed in the cluster. There should
+        # not be duplicates within a cluster.
+        # Corresponds to the JSON property `productId`
+        # @return [Array<String>]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] unless args[:id].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @name = args[:name] unless args[:name].nil?
+          @order_in_page = args[:order_in_page] unless args[:order_in_page].nil?
+          @product_id = args[:product_id] unless args[:product_id].nil?
+        end
+      end
+      
+      # General setting for the Google Play for Work store layout, currently only
+      # specifying the page to display the first time the store is opened.
+      class StoreLayout
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the store page to be used as the homepage. The homepage will be used
+        # as the first page shown in the Google Play for Work store.
+        # If there is no homepage set, an empty store is shown. The homepage can be
+        # unset (by not specifying it) to empty the store.
+        # If there exists at least one page, this field must be set to the ID of a valid
+        # page.
+        # Corresponds to the JSON property `homepageId`
+        # @return [String]
+        attr_accessor :homepage_id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#storeLayout".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @homepage_id = args[:homepage_id] unless args[:homepage_id].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+        end
+      end
+      
+      # The store page resources for the enterprise.
+      class StoreLayoutClustersListResponse
+        include Google::Apis::Core::Hashable
+      
+        # A store cluster of an enterprise.
+        # Corresponds to the JSON property `cluster`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::StoreCluster>]
+        attr_accessor :cluster
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#storeLayoutClustersListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster = args[:cluster] unless args[:cluster].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+        end
+      end
+      
+      # The store page resources for the enterprise.
+      class StoreLayoutPagesListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#storeLayoutPagesListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A store page of an enterprise.
+        # Corresponds to the JSON property `page`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::StorePage>]
+        attr_accessor :page
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] unless args[:kind].nil?
+          @page = args[:page] unless args[:page].nil?
+        end
+      end
+      
+      # Definition of a Google Play for Work store page, made of a localized name and
+      # links to other pages. A page also contains clusters defined as a subcollection.
+      class StorePage
+        include Google::Apis::Core::Hashable
+      
+        # Unique ID of this page. Assigned by the server. Immutable once assigned.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # androidenterprise#storePage".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Ordered list of pages a user should be able to reach from this page. The pages
+        # must exist, must not be this page, and once a link is created the page linked
+        # to cannot be deleted until all links to it are removed. It is recommended that
+        # the basic pages are created first, before adding the links between pages.
+        # No attempt is made to verify that all pages are reachable from the homepage.
+        # Corresponds to the JSON property `link`
+        # @return [Array<String>]
+        attr_accessor :link
+      
+        # Ordered list of localized strings giving the name of this page. The text
+        # displayed is the one that best matches the user locale, or the first entry if
+        # there is no good match. There needs to be at least one entry.
+        # Corresponds to the JSON property `name`
+        # @return [Array<Google::Apis::AndroidenterpriseV1::LocalizedText>]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] unless args[:id].nil?
+          @kind = args[:kind] unless args[:kind].nil?
+          @link = args[:link] unless args[:link].nil?
+          @name = args[:name] unless args[:name].nil?
+        end
+      end
+      
       # A user resource represents an individual user within the enterprise's domain.
       # Note that each user is associated with a Google account based on the user's
       # corporate email address (which must be in one of the enterprise's domains). As
@@ -1146,7 +1353,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The user's primary email, e.g. "jsmith@example.com".
+        # The user's primary email, e.g. "jsmith@example.com". Will always be set for
+        # Google managed users and not set for EMM managed users.
         # Corresponds to the JSON property `primaryEmail`
         # @return [String]
         attr_accessor :primary_email

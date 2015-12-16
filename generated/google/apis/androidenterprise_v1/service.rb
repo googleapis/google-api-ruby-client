@@ -776,6 +776,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the store layout resource.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::StoreLayout] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::StoreLayout]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_enterprise_store_layout(enterprise_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'enterprises/{enterpriseId}/storeLayout', options)
+          command.response_representation = Google::Apis::AndroidenterpriseV1::StoreLayout::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::StoreLayout
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Establishes the binding between the MDM and an enterprise. This is now
         # deprecated; use enroll instead.
         # @param [String] token
@@ -917,6 +952,44 @@ module Google
           command.request_object = enterprise_account_object
           command.response_representation = Google::Apis::AndroidenterpriseV1::EnterpriseAccount::Representation
           command.response_class = Google::Apis::AndroidenterpriseV1::EnterpriseAccount
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the store layout resource.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [Google::Apis::AndroidenterpriseV1::StoreLayout] store_layout_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::StoreLayout] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::StoreLayout]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_enterprise_store_layout(enterprise_id, store_layout_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'enterprises/{enterpriseId}/storeLayout', options)
+          command.request_representation = Google::Apis::AndroidenterpriseV1::StoreLayout::Representation
+          command.request_object = store_layout_object
+          command.response_representation = Google::Apis::AndroidenterpriseV1::StoreLayout::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::StoreLayout
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1810,6 +1883,482 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes a cluster.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] page_id
+        #   The ID of the page.
+        # @param [String] cluster_id
+        #   The ID of the cluster.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_storelayoutcluster(enterprise_id, page_id, cluster_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}', options)
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.params['pageId'] = page_id unless page_id.nil?
+          command.params['clusterId'] = cluster_id unless cluster_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves details of a cluster.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] page_id
+        #   The ID of the page.
+        # @param [String] cluster_id
+        #   The ID of the cluster.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::StoreCluster] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::StoreCluster]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_storelayoutcluster(enterprise_id, page_id, cluster_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}', options)
+          command.response_representation = Google::Apis::AndroidenterpriseV1::StoreCluster::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::StoreCluster
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.params['pageId'] = page_id unless page_id.nil?
+          command.params['clusterId'] = cluster_id unless cluster_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inserts a new cluster in a page.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] page_id
+        #   The ID of the page.
+        # @param [Google::Apis::AndroidenterpriseV1::StoreCluster] store_cluster_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::StoreCluster] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::StoreCluster]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_storelayoutcluster(enterprise_id, page_id, store_cluster_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters', options)
+          command.request_representation = Google::Apis::AndroidenterpriseV1::StoreCluster::Representation
+          command.request_object = store_cluster_object
+          command.response_representation = Google::Apis::AndroidenterpriseV1::StoreCluster::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::StoreCluster
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.params['pageId'] = page_id unless page_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the details of all clusters on the specified page.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] page_id
+        #   The ID of the page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::StoreLayoutClustersListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::StoreLayoutClustersListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_storelayoutclusters(enterprise_id, page_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters', options)
+          command.response_representation = Google::Apis::AndroidenterpriseV1::StoreLayoutClustersListResponse::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::StoreLayoutClustersListResponse
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.params['pageId'] = page_id unless page_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a cluster. This method supports patch semantics.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] page_id
+        #   The ID of the page.
+        # @param [String] cluster_id
+        #   The ID of the cluster.
+        # @param [Google::Apis::AndroidenterpriseV1::StoreCluster] store_cluster_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::StoreCluster] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::StoreCluster]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_storelayoutcluster(enterprise_id, page_id, cluster_id, store_cluster_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}', options)
+          command.request_representation = Google::Apis::AndroidenterpriseV1::StoreCluster::Representation
+          command.request_object = store_cluster_object
+          command.response_representation = Google::Apis::AndroidenterpriseV1::StoreCluster::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::StoreCluster
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.params['pageId'] = page_id unless page_id.nil?
+          command.params['clusterId'] = cluster_id unless cluster_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a cluster.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] page_id
+        #   The ID of the page.
+        # @param [String] cluster_id
+        #   The ID of the cluster.
+        # @param [Google::Apis::AndroidenterpriseV1::StoreCluster] store_cluster_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::StoreCluster] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::StoreCluster]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_storelayoutcluster(enterprise_id, page_id, cluster_id, store_cluster_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}', options)
+          command.request_representation = Google::Apis::AndroidenterpriseV1::StoreCluster::Representation
+          command.request_object = store_cluster_object
+          command.response_representation = Google::Apis::AndroidenterpriseV1::StoreCluster::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::StoreCluster
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.params['pageId'] = page_id unless page_id.nil?
+          command.params['clusterId'] = cluster_id unless cluster_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a store page.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] page_id
+        #   The ID of the page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_storelayoutpage(enterprise_id, page_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'enterprises/{enterpriseId}/storeLayout/pages/{pageId}', options)
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.params['pageId'] = page_id unless page_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves details of a store page.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] page_id
+        #   The ID of the page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::StorePage] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::StorePage]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_storelayoutpage(enterprise_id, page_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'enterprises/{enterpriseId}/storeLayout/pages/{pageId}', options)
+          command.response_representation = Google::Apis::AndroidenterpriseV1::StorePage::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::StorePage
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.params['pageId'] = page_id unless page_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Inserts a new store page.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [Google::Apis::AndroidenterpriseV1::StorePage] store_page_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::StorePage] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::StorePage]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_storelayoutpage(enterprise_id, store_page_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'enterprises/{enterpriseId}/storeLayout/pages', options)
+          command.request_representation = Google::Apis::AndroidenterpriseV1::StorePage::Representation
+          command.request_object = store_page_object
+          command.response_representation = Google::Apis::AndroidenterpriseV1::StorePage::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::StorePage
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the details of all pages in the store.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::StoreLayoutPagesListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::StoreLayoutPagesListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_storelayoutpages(enterprise_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'enterprises/{enterpriseId}/storeLayout/pages', options)
+          command.response_representation = Google::Apis::AndroidenterpriseV1::StoreLayoutPagesListResponse::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::StoreLayoutPagesListResponse
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the content of a store page. This method supports patch semantics.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] page_id
+        #   The ID of the page.
+        # @param [Google::Apis::AndroidenterpriseV1::StorePage] store_page_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::StorePage] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::StorePage]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_storelayoutpage(enterprise_id, page_id, store_page_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:patch, 'enterprises/{enterpriseId}/storeLayout/pages/{pageId}', options)
+          command.request_representation = Google::Apis::AndroidenterpriseV1::StorePage::Representation
+          command.request_object = store_page_object
+          command.response_representation = Google::Apis::AndroidenterpriseV1::StorePage::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::StorePage
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.params['pageId'] = page_id unless page_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the content of a store page.
+        # @param [String] enterprise_id
+        #   The ID of the enterprise.
+        # @param [String] page_id
+        #   The ID of the page.
+        # @param [Google::Apis::AndroidenterpriseV1::StorePage] store_page_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidenterpriseV1::StorePage] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidenterpriseV1::StorePage]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_storelayoutpage(enterprise_id, page_id, store_page_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:put, 'enterprises/{enterpriseId}/storeLayout/pages/{pageId}', options)
+          command.request_representation = Google::Apis::AndroidenterpriseV1::StorePage::Representation
+          command.request_object = store_page_object
+          command.response_representation = Google::Apis::AndroidenterpriseV1::StorePage::Representation
+          command.response_class = Google::Apis::AndroidenterpriseV1::StorePage
+          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
+          command.params['pageId'] = page_id unless page_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generates a token (activation code) to allow this user to configure their work
         # account in the Android Setup Wizard. Revokes any previously generated token.
         # @param [String] enterprise_id
@@ -1925,7 +2474,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Looks up a user by email address.
+        # Looks up a user by email address. This only works for Google managed users.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] email

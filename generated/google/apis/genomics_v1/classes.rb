@@ -159,9 +159,7 @@ module Google
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Version of the `Policy`. The default version is 0. 0 =
-        # resourcemanager_projects only support legacy roles. 1 = supports non-legacy
-        # roles 2 = supports AuditConfig
+        # Version of the `Policy`. The default version is 0.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -173,14 +171,14 @@ module Google
         # @return [Array<Google::Apis::GenomicsV1::Binding>]
         attr_accessor :bindings
       
-        # The etag is used for optimistic concurrency control as a way to help prevent
+        # `etag` is used for optimistic concurrency control as a way to help prevent
         # simultaneous updates of a policy from overwriting each other. It is strongly
-        # suggested that systems make use of the etag in the read-modify-write cycle to
-        # perform policy updates in order to avoid race conditions: Etags are returned
-        # in the response to GetIamPolicy, and systems are expected to put that etag in
-        # the request to SetIamPolicy to ensure that their change will be applied to the
-        # same version of the policy. If no etag is provided in the call to SetIamPolicy,
-        # then the existing policy is overwritten blindly.
+        # suggested that systems make use of the `etag` in the read-modify-write cycle
+        # to perform policy updates in order to avoid race conditions: An `etag` is
+        # returned in the response to `getIamPolicy`, and systems are expected to put
+        # that etag in the request to `setIamPolicy` to ensure that their change will be
+        # applied to the same version of the policy. If no `etag` is provided in the
+        # call to `setIamPolicy`, then the existing policy is overwritten blindly.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -208,7 +206,7 @@ module Google
         attr_accessor :role
       
         # Specifies the identities requesting access for a Cloud Platform resource. `
-        # members` can have the following formats: * `allUsers`: A special identifier
+        # members` can have the following values: * `allUsers`: A special identifier
         # that represents anyone who is on the internet; with or without a Google
         # account. * `allAuthenticatedUsers`: A special identifier that represents
         # anyone who is authenticated with a Google account or a service account. * `
