@@ -1,5 +1,17 @@
+# 0.9.0.pre4
+* (Breaking change) Updated name method name generation for improved
+  consistency, some services may have changed.
+* Updated generated APIs
+* Fix streaming downloads with redirects
+* No longer swallow exceptions raised in blocks
+* Avoid masking errors caused by retries with resumable uploads
+* Deprecating the authorization support under Google::APIClient. Equivalent
+  functionality is now available in google-auth-library-ruby. These will
+  be removed in the 0.9 release.
+
 # 0.9.0.pre3
-* (Breaking change) Update method signatures to include require query parameters in the list of non-keyword args
+* (Breaking change) Update method signatures to include required query
+  parameters in the list of non-keyword args
 
 # 0.9.0.pre2
 * Add raw HTTP status code & body to errors
