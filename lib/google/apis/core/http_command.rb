@@ -144,7 +144,7 @@ module Google
         def prepare!
           header.update(options.header) if options && options.header
           self.url = url.expand(params) if url.is_a?(Addressable::Template)
-          url.query_values = query
+          url.query_values = query.merge(url.query_values || {})
         end
 
         # Release any resources used by this command
