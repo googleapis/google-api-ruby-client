@@ -96,8 +96,8 @@ module Google
             if error
               message = error['reason'] if error.has_key?('reason')
               raise Google::Apis::RateLimitError.new(message,
-                                                     status_code: status, 
-                                                     header: header, 
+                                                     status_code: status,
+                                                     header: header,
                                                      body: body) if RATE_LIMIT_ERRORS.include?(message)
             end
             super(status, header, body, message)
