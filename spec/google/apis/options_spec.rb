@@ -37,12 +37,4 @@ RSpec.describe Google::Apis::RequestOptions do
   it 'should allow nil in merge' do
     expect(options.merge(nil)).to be_an_instance_of(Google::Apis::RequestOptions)
   end
-
-  it 'should override default options' do
-    Google::Apis::RequestOptions.default.header = 'Content-Length: 50'
-    opts = Google::Apis::RequestOptions.new
-    opts.header = 'Content-Length: 70'
-    expect(options.merge(opts).header).to eq 'Content-Length: 70' 
-  end
-
 end

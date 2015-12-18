@@ -18,7 +18,8 @@ module Google
     ClientOptions =  Struct.new(
       :application_name,
       :application_version,
-      :proxy_url)
+      :proxy_url,
+      :use_net_http)
 
     RequestOptions = Struct.new(
       :authorization,
@@ -73,7 +74,8 @@ module Google
         new_options
       end
     end
-
+    
+    ClientOptions.default.use_net_http = false
     ClientOptions.default.application_name = 'unknown'
     ClientOptions.default.application_version = '0.0.0'
 

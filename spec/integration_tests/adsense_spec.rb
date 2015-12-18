@@ -15,6 +15,7 @@ RSpec.describe Google::Apis::AdsenseV1_4, :if => run_integration_tests? do
   end
 
   it 'should download a report with multiple dimensions' do
+    pending "Not enabled for test account"
     report = @adsense.generate_report( Date.today.to_s, Date.today.to_s, dimension: ["DATE", "AD_UNIT_NAME"] )
 
     report_header_names = report.headers.map { |h| h.name }

@@ -1,10 +1,10 @@
 require 'spec_helper'
-require 'google/apis/pubsub_v1beta2'
+require 'google/apis/pubsub_v1'
 require 'googleauth'
 
-Pubsub = Google::Apis::PubsubV1beta2
+Pubsub = Google::Apis::PubsubV1
 
-RSpec.describe Google::Apis::PubsubV1beta2, :if => run_integration_tests? do
+RSpec.describe Google::Apis::PubsubV1, :if => run_integration_tests? do
 
   before(:context) do
     WebMock.allow_net_connect!

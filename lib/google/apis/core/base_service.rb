@@ -19,6 +19,7 @@ require 'google/apis/core/api_command'
 require 'google/apis/core/batch'
 require 'google/apis/core/upload'
 require 'google/apis/core/download'
+require 'google/apis/core/http_client_adapter'
 require 'google/apis/options'
 require 'googleauth'
 require 'hurley'
@@ -291,6 +292,7 @@ module Google
         # @return [Hurley::Client]
         def new_client
           client = Hurley::Client.new
+          client.connection = Google::Apis::Core::HttpClientAdapter.new unless client_options.use_net_http
           client.request_options.timeout = request_options.timeout_sec
           client.request_options.open_timeout = request_options.open_timeout_sec
           client.request_options.proxy = client_options.proxy_url

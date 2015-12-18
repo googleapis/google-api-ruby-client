@@ -87,11 +87,12 @@ end
 # Enable retries for tests
 Google::Apis::RequestOptions.default.retries = 5
 
+# Allow testing different adapters
+Google::Apis::ClientOptions.default.use_net_http = true if ENV['USE_NET_HTTP']
 # Temporarily patch WebMock to allow chunked responses for Net::HTTP
 module Net
   module WebMockHTTPResponse
     def eval_chunk(chunk)
-      puts chunk.is_a? Exception
       chunk if chunk.is_a?(String)
       chunk.read if chunk.is_a?(IO)
       chunk.call if chunk.is_a?(Proc)
@@ -120,6 +121,37 @@ module Net
     end
   end
 end
+
+class WebMockHTTPClient
+  def eval_chunk(chunk)
+    chunk if chunk.is_a?(String)
+    chunk.read if chunk.is_a?(IO)
+    chunk.call if chunk.is_a?(Proc)
+    fail HTTPClient::TimeoutError if chunk == ::Timeout::Error
+    fail chunk if chunk.is_a?(Class)
+    chunk
+  end
+
+  def build_httpclient_response(webmock_response, stream = false, req_header = nil, &block)
+    body = stream ? StringIO.new(webmock_response.body) : webmock_response.body
+    response = HTTP::Message.new_response(body, req_header)
+    response.header.init_response(webmock_response.status[0])
+    response.reason = webmock_response.status[1]
+    webmock_response.headers.to_a.each { |name, value| response.header.set(name, value) }
+
+    raise HTTPClient::TimeoutError if webmock_response.should_timeout
+    webmock_response.raise_error_if_any
+
+    body_parts = Array(webmock_response.body)
+    body_parts.each do |chunk|
+      chunk = eval_chunk(chunk)
+      block.call(response, chunk) if block
+    end
+
+    response
+  end
+end
+
 
 def run_integration_tests?
   ENV['GOOGLE_APPLICATION_CREDENTIALS'] && ENV['GOOGLE_PROJECT_ID']
