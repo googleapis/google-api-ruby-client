@@ -76,7 +76,7 @@ module Google
               options[:render_filter] = ->(value, _doc, *_args) { value.is_a?(DateTime) ? value.rfc3339(3) : value.to_s }
               options[:parse_filter] = ->(fragment, _doc, *_args) { DateTime.parse(fragment) }
             end
-            
+
             options[:render_nil] = true
             options[:getter] = getter_fn(name)
             options[:if] = if_fn(name)
@@ -107,7 +107,8 @@ module Google
           # @param [String] name
           #  Property name
           # @param [Hash] options
-          def hash(name, options)
+          def hash(name = nil, options = nil)
+            return super() unless name # Allow Object.hash
             set_default_options(name, options)
             super(name, options)
           end
