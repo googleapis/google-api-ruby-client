@@ -272,4 +272,13 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     command.query['a'] = [1,2,3]
     command.execute(client)
   end
+
+  it 'should send falsey query parameters' do
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals?a=0&b=false')
+      .to_return(status: [200, ''])
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    command.query['a'] = 0
+    command.query['b'] = false
+    command.execute(client)
+  end
 end

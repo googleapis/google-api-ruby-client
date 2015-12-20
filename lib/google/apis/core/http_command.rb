@@ -264,7 +264,9 @@ module Google
               # Temporary workaround for Hurley bug where the connection preference
               # is ignored and it uses nested anyway
               req.url.query_class = Hurley::Query::Flat
-              query.each { | k, v| req.url.query[k] = v }
+              query.each do | k, v|
+                req.url.query[k] = normalize_query_value(v)
+              end
               # End workaround
               apply_request_options(req)
             end
@@ -290,6 +292,19 @@ module Google
           end
           req.header.update(header)
           req.options.timeout = options.timeout_sec
+        end
+
+        private
+
+        def normalize_query_value(v)
+          case v
+          when Array
+            v.map { |v2| normalize_query_value(v2) }
+          when nil
+            nil
+          else
+            v.to_s
+          end
         end
       end
     end
