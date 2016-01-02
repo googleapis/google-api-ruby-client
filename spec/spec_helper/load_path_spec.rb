@@ -18,15 +18,19 @@ RSpec.describe $LOAD_PATH do
   it('should contain SPEC_DIR') do
     expect($LOAD_PATH).to include(SPEC_DIR)
   end
+
   it('should contain LIB_DIR') do
     expect($LOAD_PATH).to include(LIB_DIR)
   end
+
   it('should contain GENERATED_DIR') do
     expect($LOAD_PATH).to include(GENERATED_DIR)
   end
+
   it('should contain THIRD_PARTY_DIR') do
     expect($LOAD_PATH).to include(THIRD_PARTY_DIR)
   end
+
   it('should already have unique path') do
     expect($LOAD_PATH).to match_array($LOAD_PATH.uniq!)
   end
