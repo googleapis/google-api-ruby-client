@@ -19,6 +19,8 @@ GENERATED_DIR = File.expand_path(File.join(ROOT_DIR, 'generated'))
 THIRD_PARTY_DIR = File.expand_path(File.join(ROOT_DIR, 'third_party'))
 FIXTURES_DIR = File.expand_path(File.join(SPEC_DIR, 'fixtures'))
 
+$LOAD_PATH.uniq!
+
 if defined?(JRUBY_VERSION)
   puts 'Skipping coverage on JRuby'
 else
