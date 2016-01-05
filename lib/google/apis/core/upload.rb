@@ -82,7 +82,7 @@ module Google
         # @raise [Google::Apis::ClientError] if upload source is invalid
         def prepare!
           super
-          if upload_source.is_a?(IO) || upload_source.is_a?(StringIO)
+          if upload_source.is_a?(IO) || upload_source.is_a?(StringIO) || upload_source.is_a?(Tempfile)
             self.upload_io = UploadIO.from_io(upload_source, content_type: upload_content_type)
             @close_io_on_finish = false
           elsif upload_source.is_a?(String)
