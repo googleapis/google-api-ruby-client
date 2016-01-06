@@ -129,6 +129,20 @@ RSpec.describe Google::Apis::Core::RawUploadCommand do
     end
   end
 
+  context('with Tempfile input') do
+    let(:file) do
+      temp_file = Tempfile.new
+      temp_file.write("Hello world\n")
+      temp_file.rewind
+      temp_file
+    end
+    include_examples 'should upload'
+
+    it 'should not close stream' do
+      expect(file.closed?).to be false
+    end
+  end
+
   context('with file path input') do
     let(:file) { File.join(FIXTURES_DIR, 'files', 'test.txt') }
     include_examples 'should upload'
