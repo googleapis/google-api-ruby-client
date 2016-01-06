@@ -131,7 +131,7 @@ RSpec.describe Google::Apis::Core::RawUploadCommand do
 
   context('with Tempfile input') do
     let(:file) do
-      temp_file = Tempfile.new
+      temp_file = Tempfile.new("tempfile")
       temp_file.write("Hello world\n")
       temp_file.rewind
       temp_file
