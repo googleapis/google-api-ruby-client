@@ -82,7 +82,7 @@ module Google
         # @raise [Google::Apis::ClientError] if upload source is invalid
         def prepare!
           super
-          if upload_source.is_a?(IO) || upload_source.is_a?(StringIO)
+          if streamable?(upload_source)
             self.upload_io = UploadIO.from_io(upload_source, content_type: upload_content_type)
             @close_io_on_finish = false
           elsif upload_source.is_a?(String)
@@ -96,6 +96,12 @@ module Google
         # Close IO stream when command done. Only closes the stream if it was opened by the command.
         def release!
           upload_io.close if @close_io_on_finish
+        end
+
+        private
+
+        def streamable?(upload_source)
+          upload_source.is_a?(IO) || upload_source.is_a?(StringIO) || upload_source.is_a?(Tempfile)
         end
       end
 
