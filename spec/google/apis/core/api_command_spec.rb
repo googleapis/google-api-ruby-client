@@ -151,6 +151,41 @@ EOF
     end
   end
 
+  context('with a client error response') do
+    let(:command) do
+      Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    end
+
+    before(:example) do
+      json = <<EOF
+{
+ "error": {
+  "errors": [
+   {
+    "domain": "global",
+    "reason": "timeRangeEmpty",
+    "message": "The specified time range is empty."
+   }
+  ],
+  "code": 400,
+  "message": "The specified time range is empty."
+ }
+}
+EOF
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .to_return(status: [400, 'Bad Request'], headers: { 'Content-Type' => 'application/json' }, body: json)
+    end
+
+    it 'should raise client error' do
+      expect { command.execute(client) }.to raise_error(Google::Apis::ClientError)
+    end
+
+    it 'should raise an error with the reason and message' do
+      expect { command.execute(client) }.to raise_error(
+        /timeRangeEmpty: The specified time range is empty/)
+    end
+  end
+
   context('with an empty error body') do
     let(:command) do
       Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
@@ -165,6 +200,10 @@ EOF
 
     it 'should raise client error' do
       expect { command.execute(client) }.to raise_error(Google::Apis::ClientError)
+    end
+
+    it 'should use the default error message' do
+      expect { command.execute(client) }.to raise_error(/Invalid request/)
     end
   end
 end

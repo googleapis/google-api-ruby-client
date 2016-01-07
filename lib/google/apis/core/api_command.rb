@@ -94,11 +94,11 @@ module Google
           when 400, 402...500
             error = parse_error(body)
             if error
-              message = error['reason'] if error.has_key?('reason')
+              message = sprintf('%s: %s', error['reason'], error['message'])
               raise Google::Apis::RateLimitError.new(message,
                                                      status_code: status,
                                                      header: header,
-                                                     body: body) if RATE_LIMIT_ERRORS.include?(message)
+                                                     body: body) if RATE_LIMIT_ERRORS.include?(error['reason'])
             end
             super(status, header, body, message)
           else
