@@ -12,8 +12,10 @@ describe Google::APIClient::Storage do
 
   describe 'authorize' do
     it 'should authorize' do
+      expect(subject).to respond_to(:store)
       expect(subject).to respond_to(:authorization)
       expect(subject.store).to be == store
+      expect(subject.authorization).to be == nil
     end
   end
 
