@@ -205,6 +205,16 @@ result = translate.list_translations(source: 'en', target: 'es', q: 'Hello world
 puts result.translations.first.translated_text
 ```
 
+## Samples
+
+Samples for versions 0.9 and onward can be found in the `samples` directory.
+Contributions for additional samples are welcome. See [CONTRIBUTING](CONTRIBUTING.md).
+
+Samples for previous versions can be found in the
+[google-api-ruby-client-samples](https://github.com/google/google-api-ruby-client-samples)
+repository.
+
+
 ## Generating APIs
 
 For [Cloud Endpoints](https://cloud.google.com/endpoints/) or other APIs not included in the gem, ruby code can be
