@@ -809,11 +809,6 @@ module Google
         # @return [Google::Apis::BigqueryV2::JobConfigurationExtract]
         attr_accessor :extract
       
-        # [Pick one] Configures a link job.
-        # Corresponds to the JSON property `link`
-        # @return [Google::Apis::BigqueryV2::JobConfigurationLink]
-        attr_accessor :link
-      
         # [Pick one] Configures a load job.
         # Corresponds to the JSON property `load`
         # @return [Google::Apis::BigqueryV2::JobConfigurationLoad]
@@ -833,7 +828,6 @@ module Google
           @copy = args[:copy] unless args[:copy].nil?
           @dry_run = args[:dry_run] unless args[:dry_run].nil?
           @extract = args[:extract] unless args[:extract].nil?
-          @link = args[:link] unless args[:link].nil?
           @load = args[:load] unless args[:load].nil?
           @query = args[:query] unless args[:query].nil?
         end
@@ -902,55 +896,6 @@ module Google
       end
       
       # 
-      class JobConfigurationLink
-        include Google::Apis::Core::Hashable
-      
-        # [Optional] Specifies whether the job is allowed to create new tables. The
-        # following values are supported: CREATE_IF_NEEDED: If the table does not exist,
-        # BigQuery creates the table. CREATE_NEVER: The table must already exist. If it
-        # does not, a 'notFound' error is returned in the job result. The default value
-        # is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one
-        # atomic update upon job completion.
-        # Corresponds to the JSON property `createDisposition`
-        # @return [String]
-        attr_accessor :create_disposition
-      
-        # [Required] The destination table of the link job.
-        # Corresponds to the JSON property `destinationTable`
-        # @return [Google::Apis::BigqueryV2::TableReference]
-        attr_accessor :destination_table
-      
-        # [Required] URI of source table to link.
-        # Corresponds to the JSON property `sourceUri`
-        # @return [Array<String>]
-        attr_accessor :source_uri
-      
-        # [Optional] Specifies the action that occurs if the destination table already
-        # exists. The following values are supported: WRITE_TRUNCATE: If the table
-        # already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table
-        # already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the
-        # table already exists and contains data, a 'duplicate' error is returned in the
-        # job result. The default value is WRITE_EMPTY. Each action is atomic and only
-        # occurs if BigQuery is able to complete the job successfully. Creation,
-        # truncation and append actions occur as one atomic update upon job completion.
-        # Corresponds to the JSON property `writeDisposition`
-        # @return [String]
-        attr_accessor :write_disposition
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_disposition = args[:create_disposition] unless args[:create_disposition].nil?
-          @destination_table = args[:destination_table] unless args[:destination_table].nil?
-          @source_uri = args[:source_uri] unless args[:source_uri].nil?
-          @write_disposition = args[:write_disposition] unless args[:write_disposition].nil?
-        end
-      end
-      
-      # 
       class JobConfigurationLoad
         include Google::Apis::Core::Hashable
       
@@ -994,11 +939,12 @@ module Google
         # @return [String]
         attr_accessor :encoding
       
-        # [Optional] The separator for fields in a CSV file. BigQuery converts the
-        # string to ISO-8859-1 encoding, and then uses the first byte of the encoded
-        # string to split the data in its raw, binary state. BigQuery also supports the
-        # escape sequence "\t" to specify a tab separator. The default value is a comma (
-        # ',').
+        # [Optional] The separator for fields in a CSV file. The separator can be any
+        # ISO-8859-1 single-byte character. To use a character in the range 128-255, you
+        # must encode the character as UTF8. BigQuery converts the string to ISO-8859-1
+        # encoding, and then uses the first byte of the encoded string to split the data
+        # in its raw, binary state. BigQuery also supports the escape sequence "\t" to
+        # specify a tab separator. The default value is a comma (',').
         # Corresponds to the JSON property `fieldDelimiter`
         # @return [String]
         attr_accessor :field_delimiter
@@ -1045,8 +991,8 @@ module Google
         attr_accessor :quote
       
         # [Optional] The schema for the destination table. The schema can be omitted if
-        # the destination table already exists or if the schema can be inferred from the
-        # loaded data.
+        # the destination table already exists, or if you're loading data from Google
+        # Cloud Datastore.
         # Corresponds to the JSON property `schema`
         # @return [Google::Apis::BigqueryV2::TableSchema]
         attr_accessor :schema
@@ -1161,6 +1107,13 @@ module Google
         attr_accessor :flatten_results
         alias_method :flatten_results?, :flatten_results
       
+        # [Optional] Limits the billing tier for this job. Queries that have resource
+        # usage beyond this tier will fail (without incurring a charge). If unspecified,
+        # this will be set to your project default.
+        # Corresponds to the JSON property `maximumBillingTier`
+        # @return [Fixnum]
+        attr_accessor :maximum_billing_tier
+      
         # [Deprecated] This property is deprecated.
         # Corresponds to the JSON property `preserveNulls`
         # @return [Boolean]
@@ -1223,6 +1176,7 @@ module Google
           @default_dataset = args[:default_dataset] unless args[:default_dataset].nil?
           @destination_table = args[:destination_table] unless args[:destination_table].nil?
           @flatten_results = args[:flatten_results] unless args[:flatten_results].nil?
+          @maximum_billing_tier = args[:maximum_billing_tier] unless args[:maximum_billing_tier].nil?
           @preserve_nulls = args[:preserve_nulls] unless args[:preserve_nulls].nil?
           @priority = args[:priority] unless args[:priority].nil?
           @query = args[:query] unless args[:query].nil?
@@ -2024,7 +1978,8 @@ module Google
       
         # [Output-only] Describes the table type. The following values are supported:
         # TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query.
-        # The default value is TABLE.
+        # EXTERNAL: A table that references data stored in an external storage system,
+        # such as Google Cloud Storage. The default value is TABLE.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2110,9 +2065,11 @@ module Google
         attr_accessor :skip_invalid_rows
         alias_method :skip_invalid_rows?, :skip_invalid_rows
       
-        # [Experimental] If specified, treats the destination table as a base template,
-        # and inserts the rows into an instance table named "". BigQuery will manage
-        # creation of the instance table, using the schema of the base template table.
+        # [Optional] If specified, treats the destination table as a base template, and
+        # inserts the rows into an instance table named "`destination``templateSuffix`".
+        # BigQuery will manage creation of the instance table, using the schema of the
+        # base template table. See https://cloud.google.com/bigquery/streaming-data-into-
+        # bigquery#template-tables for considerations when working with templates tables.
         # Corresponds to the JSON property `templateSuffix`
         # @return [String]
         attr_accessor :template_suffix

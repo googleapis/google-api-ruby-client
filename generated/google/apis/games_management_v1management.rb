@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/games/services
     module GamesManagementV1management
       VERSION = 'V1management'
-      REVISION = '20151209'
+      REVISION = '20151215'
 
       # Share your Google+ profile information and view and manage your game activity
       AUTH_GAMES = 'https://www.googleapis.com/auth/games'

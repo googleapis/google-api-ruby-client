@@ -1403,6 +1403,61 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists fan funding events for a channel.
+        # @param [String] part
+        #   The part parameter specifies the fanFundingEvent resource parts that the API
+        #   response will include. Supported values are id and snippet.
+        # @param [String] hl
+        #   The hl parameter instructs the API to retrieve localized resource metadata for
+        #   a specific application language that the YouTube website supports. The
+        #   parameter value must be a language code included in the list returned by the
+        #   i18nLanguages.list method.
+        #   If localized resource details are available in that language, the resource's
+        #   snippet.localized object will contain the localized values. However, if
+        #   localized details are not available, the snippet.localized object will contain
+        #   resource details in the resource's default language.
+        # @param [Fixnum] max_results
+        #   The maxResults parameter specifies the maximum number of items that should be
+        #   returned in the result set.
+        # @param [String] page_token
+        #   The pageToken parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::FanFundingEventListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::FanFundingEventListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_fan_funding_events(part, hl: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'fanFundingEvents', options)
+          command.response_representation = Google::Apis::YoutubeV3::FanFundingEventListResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::FanFundingEventListResponse
+          command.query['hl'] = hl unless hl.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['part'] = part unless part.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns a list of categories that can be associated with YouTube channels.
         # @param [String] part
         #   The part parameter specifies the guideCategory resource properties that the
@@ -1844,6 +1899,10 @@ module Google
         # @param [String] broadcast_status
         #   The broadcastStatus parameter filters the API response to only include
         #   broadcasts with the specified status.
+        # @param [String] broadcast_type
+        #   The broadcastType parameter filters the API response to only include
+        #   broadcasts with the specified type. This is only compatible with the mine
+        #   filter for now.
         # @param [String] id
         #   The id parameter specifies a comma-separated list of YouTube broadcast IDs
         #   that identify the broadcasts being retrieved. In a liveBroadcast resource, the
@@ -1906,11 +1965,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_live_broadcasts(part, broadcast_status: nil, id: nil, max_results: nil, mine: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_live_broadcasts(part, broadcast_status: nil, broadcast_type: nil, id: nil, max_results: nil, mine: nil, on_behalf_of_content_owner: nil, on_behalf_of_content_owner_channel: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'liveBroadcasts', options)
           command.response_representation = Google::Apis::YoutubeV3::ListLiveBroadcastsResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::ListLiveBroadcastsResponse
           command.query['broadcastStatus'] = broadcast_status unless broadcast_status.nil?
+          command.query['broadcastType'] = broadcast_type unless broadcast_type.nil?
           command.query['id'] = id unless id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['mine'] = mine unless mine.nil?
@@ -2077,6 +2137,340 @@ module Google
           command.response_class = Google::Apis::YoutubeV3::LiveBroadcast
           command.query['onBehalfOfContentOwner'] = on_behalf_of_content_owner unless on_behalf_of_content_owner.nil?
           command.query['onBehalfOfContentOwnerChannel'] = on_behalf_of_content_owner_channel unless on_behalf_of_content_owner_channel.nil?
+          command.query['part'] = part unless part.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes a chat ban.
+        # @param [String] id
+        #   The id parameter identifies the chat ban to remove. The value uniquely
+        #   identifies both the ban and the chat.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_live_chat_ban(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'liveChat/bans', options)
+          command.query['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Adds a new ban to the chat.
+        # @param [String] part
+        #   The part parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response returns. Set the parameter value to snippet.
+        # @param [Google::Apis::YoutubeV3::LiveChatBan] live_chat_ban_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::LiveChatBan] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::LiveChatBan]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_live_chat_ban(part, live_chat_ban_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'liveChat/bans', options)
+          command.request_representation = Google::Apis::YoutubeV3::LiveChatBan::Representation
+          command.request_object = live_chat_ban_object
+          command.response_representation = Google::Apis::YoutubeV3::LiveChatBan::Representation
+          command.response_class = Google::Apis::YoutubeV3::LiveChatBan
+          command.query['part'] = part unless part.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a chat message.
+        # @param [String] id
+        #   The id parameter specifies the YouTube chat message ID of the resource that is
+        #   being deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_live_chat_message(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'liveChat/messages', options)
+          command.query['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Adds a message to a live chat.
+        # @param [String] part
+        #   The part parameter serves two purposes. It identifies the properties that the
+        #   write operation will set as well as the properties that the API response will
+        #   include. Set the parameter value to snippet.
+        # @param [Google::Apis::YoutubeV3::LiveChatMessage] live_chat_message_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::LiveChatMessage] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::LiveChatMessage]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_live_chat_message(part, live_chat_message_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'liveChat/messages', options)
+          command.request_representation = Google::Apis::YoutubeV3::LiveChatMessage::Representation
+          command.request_object = live_chat_message_object
+          command.response_representation = Google::Apis::YoutubeV3::LiveChatMessage::Representation
+          command.response_class = Google::Apis::YoutubeV3::LiveChatMessage
+          command.query['part'] = part unless part.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists live chat messages for a specific chat.
+        # @param [String] live_chat_id
+        #   The liveChatId parameter specifies the ID of the chat whose messages will be
+        #   returned.
+        # @param [String] part
+        #   The part parameter specifies the liveChatComment resource parts that the API
+        #   response will include. Supported values are id and snippet.
+        # @param [String] hl
+        #   The hl parameter instructs the API to retrieve localized resource metadata for
+        #   a specific application language that the YouTube website supports. The
+        #   parameter value must be a language code included in the list returned by the
+        #   i18nLanguages.list method.
+        #   If localized resource details are available in that language, the resource's
+        #   snippet.localized object will contain the localized values. However, if
+        #   localized details are not available, the snippet.localized object will contain
+        #   resource details in the resource's default language.
+        # @param [Fixnum] max_results
+        #   The maxResults parameter specifies the maximum number of messages that should
+        #   be returned in the result set.
+        # @param [String] page_token
+        #   The pageToken parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken property identify
+        #   other pages that could be retrieved.
+        # @param [Fixnum] profile_image_size
+        #   The profileImageSize parameter specifies the size of the user profile pictures
+        #   that should be returned in the result set. Default: 88.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::LiveChatMessageListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::LiveChatMessageListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_live_chat_messages(live_chat_id, part, hl: nil, max_results: nil, page_token: nil, profile_image_size: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'liveChat/messages', options)
+          command.response_representation = Google::Apis::YoutubeV3::LiveChatMessageListResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::LiveChatMessageListResponse
+          command.query['hl'] = hl unless hl.nil?
+          command.query['liveChatId'] = live_chat_id unless live_chat_id.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['part'] = part unless part.nil?
+          command.query['profileImageSize'] = profile_image_size unless profile_image_size.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes a chat moderator.
+        # @param [String] id
+        #   The id parameter identifies the chat moderator to remove. The value uniquely
+        #   identifies both the moderator and the chat.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_live_chat_moderator(id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:delete, 'liveChat/moderators', options)
+          command.query['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Adds a new moderator for the chat.
+        # @param [String] part
+        #   The part parameter serves two purposes in this operation. It identifies the
+        #   properties that the write operation will set as well as the properties that
+        #   the API response returns. Set the parameter value to snippet.
+        # @param [Google::Apis::YoutubeV3::LiveChatModerator] live_chat_moderator_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::LiveChatModerator] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::LiveChatModerator]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_live_chat_moderator(part, live_chat_moderator_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:post, 'liveChat/moderators', options)
+          command.request_representation = Google::Apis::YoutubeV3::LiveChatModerator::Representation
+          command.request_object = live_chat_moderator_object
+          command.response_representation = Google::Apis::YoutubeV3::LiveChatModerator::Representation
+          command.response_class = Google::Apis::YoutubeV3::LiveChatModerator
+          command.query['part'] = part unless part.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists moderators for a live chat.
+        # @param [String] live_chat_id
+        #   The liveChatId parameter specifies the YouTube live chat for which the API
+        #   should return moderators.
+        # @param [String] part
+        #   The part parameter specifies the liveChatModerator resource parts that the API
+        #   response will include. Supported values are id and snippet.
+        # @param [Fixnum] max_results
+        #   The maxResults parameter specifies the maximum number of items that should be
+        #   returned in the result set.
+        # @param [String] page_token
+        #   The pageToken parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::LiveChatModeratorListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::LiveChatModeratorListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_live_chat_moderators(live_chat_id, part, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'liveChat/moderators', options)
+          command.response_representation = Google::Apis::YoutubeV3::LiveChatModeratorListResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::LiveChatModeratorListResponse
+          command.query['liveChatId'] = live_chat_id unless live_chat_id.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['part'] = part unless part.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -3073,6 +3467,54 @@ module Google
           command.query['videoLicense'] = video_license unless video_license.nil?
           command.query['videoSyndicated'] = video_syndicated unless video_syndicated.nil?
           command.query['videoType'] = video_type unless video_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists sponsors for a channel.
+        # @param [String] part
+        #   The part parameter specifies the sponsor resource parts that the API response
+        #   will include. Supported values are id and snippet.
+        # @param [String] filter
+        #   The filter parameter specifies which channel sponsors to return.
+        # @param [Fixnum] max_results
+        #   The maxResults parameter specifies the maximum number of items that should be
+        #   returned in the result set.
+        # @param [String] page_token
+        #   The pageToken parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        #   Overrides userIp if both are provided.
+        # @param [String] user_ip
+        #   IP address of the site where the request originates. Use this if you want to
+        #   enforce per-user limits.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::SponsorListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::SponsorListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_sponsors(part, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command =  make_simple_command(:get, 'sponsors', options)
+          command.response_representation = Google::Apis::YoutubeV3::SponsorListResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::SponsorListResponse
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['part'] = part unless part.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

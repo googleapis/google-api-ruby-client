@@ -307,9 +307,9 @@ module Google
         # client will need to poll for the job status to see if the cancel completed
         # successfully. Cancelled jobs may still incur costs.
         # @param [String] project_id
-        #   Project ID of the job to cancel
+        #   [Required] Project ID of the job to cancel
         # @param [String] job_id
-        #   Job ID of the job to cancel
+        #   [Required] Job ID of the job to cancel
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -347,9 +347,9 @@ module Google
         # six month period after creation. Requires that you're the person who ran the
         # job, or have the Is Owner project role.
         # @param [String] project_id
-        #   Project ID of the requested job
+        #   [Required] Project ID of the requested job
         # @param [String] job_id
-        #   Job ID of the requested job
+        #   [Required] Job ID of the requested job
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -385,9 +385,9 @@ module Google
         
         # Retrieves the results of a query job.
         # @param [String] project_id
-        #   Project ID of the query job
+        #   [Required] Project ID of the query job
         # @param [String] job_id
-        #   Job ID of the query job
+        #   [Required] Job ID of the query job
         # @param [Fixnum] max_results
         #   Maximum number of results to read
         # @param [String] page_token

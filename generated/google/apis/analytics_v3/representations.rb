@@ -1264,6 +1264,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
+          property :bot_filtering_enabled, as: 'botFilteringEnabled'
           property :child_link, as: 'childLink', class: Google::Apis::AnalyticsV3::Profile::ChildLink, decorator: Google::Apis::AnalyticsV3::Profile::ChildLink::Representation
       
           property :created, as: 'created', type: DateTime

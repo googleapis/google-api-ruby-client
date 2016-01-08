@@ -142,6 +142,7 @@
 "/analytics:v3/analytics.management.profiles.update": update_profile
 "/analytics:v3/analytics.management.segments.list": list_segments
 "/analytics:v3/analytics.management.unsampledReports.get": get_unsampled_report
+"/analytics:v3/analytics.management.unsampledReports.delete": delete_unsampled_report
 "/analytics:v3/analytics.management.unsampledReports.insert": insert_unsampled_report
 "/analytics:v3/analytics.management.unsampledReports.list": list_unsampled_reports
 "/analytics:v3/analytics.management.uploads.deleteUploadData": delete_upload_data
