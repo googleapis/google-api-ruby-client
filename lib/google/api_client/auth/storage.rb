@@ -28,7 +28,7 @@ module Google
       TOKEN_CREDENTIAL_URI = 'https://accounts.google.com/o/oauth2/token'
 
       # @return [Object] Storage object.
-      attr_reader :store
+      attr_accessor :store
 
       # @return [Signet::OAuth2::Client]
       attr_reader :authorization
