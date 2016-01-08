@@ -1,9 +1,18 @@
+# 0.9.0.pre5
+* Change the default HTTP adapter to HTTPClient due to broken connections with long running uploads with Net::HTTP
+* No longer breaks Object#hash behavior, restores compatibility with Padrino
+* No longer omit falsey values (0, false, etc) in query parameters
+* Updated error messages to include the detailed/human friendly message
+* Allow Tempfile as an upload source
+* Updated samples for various APIs
+
 # 0.9.0.pre4
 * (Breaking change) Updated name method name generation for improved
   consistency, some services may have changed.
 * Updated generated APIs
 * Fix streaming downloads with redirects
 * No longer swallow exceptions raised in blocks
+* Preserve query parameters in URLs when using `http()` for generic requests
 * Avoid masking errors caused by retries with resumable uploads
 * Deprecating the authorization support under Google::APIClient. Equivalent
   functionality is now available in google-auth-library-ruby. These will
