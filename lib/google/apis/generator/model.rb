@@ -99,6 +99,9 @@ module Google
       end
 
       class RestDescription
+        attr_accessor :force_alt_json
+        alias_method :force_alt_json?, :force_alt_json
+
         def version
           ActiveSupport::Inflector.camelize(@version.gsub(/\W/, '-')).gsub(/-/, '_')
         end
