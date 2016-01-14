@@ -374,7 +374,8 @@ module Google
         attr_accessor :http_error_message
       
         # [Output Only] If the operation fails, this field contains the HTTP error
-        # message that was returned. For example, a 404 means the resource was not found.
+        # status code that was returned. For example, a 404 means the resource was not
+        # found.
         # Corresponds to the JSON property `httpErrorStatusCode`
         # @return [Fixnum]
         attr_accessor :http_error_status_code

@@ -334,7 +334,9 @@
 "/calendar:v3/CalendarNotification/method": delivery_method
 "/calendar:v3/Event/gadget/display": display_mode
 "/calendar:v3/EventReminder/method": reminder_method
-"/civicinfo:v2/DivisionSearchResponse": search_division_response
+"/calendar:v3/calendar.events.instances": list_event_instances
+"/calendar:v3/calendar.events.quickAdd": quick_add_event
+/civicinfo:v2/DivisionSearchResponse": search_division_response
 "/civicinfo:v2/ElectionsQueryResponse": query_elections_response
 "/civicinfo:v2/civicinfo.divisions.search": search_divisions
 "/civicinfo:v2/civicinfo.elections.electionQuery": query_election
@@ -783,6 +785,7 @@
 "/genomics:v1/genomics.variantsets.search": search_variant_sets
 "/genomics:v1/genomics.referencesets.search": search_reference_sets
 "/gmail:v1/gmail.users.getProfile": get_user_profile
+"/groupssettings:v1?force_alt_json" : true
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyCreateAuthUriRequest": create_auth_uri_request
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyDeleteAccountRequest": delete_account_request
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyDownloadAccountRequest": download_account_request
@@ -807,8 +810,13 @@
 "/identitytoolkit:v3/identitytoolkit.relyingparty.verifyAssertion": verify_assertion
 "/identitytoolkit:v3/identitytoolkit.relyingparty.verifyPassword": verify_password
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyGetProjectConfigResponse": get_project_config_response
-"/licensing:v1/licensing.licenseAssignments.listForProduct": list_license_assignment_for_product
-"/licensing:v1/licensing.licenseAssignments.listForProductAndSku": list_license_assignment_for_product_and_sku
+"/identitytoolkit:v3/IdentitytoolkitRelyingpartySignOutUserRequest": sign_out_user_request
+"/identitytoolkit:v3/identitytoolkit.relyingparty.signOutUser": sign_out_user
+"/identitytoolkit:v3/identitytoolkit.relyingparty.verifyCustomToken": verify_custom_token
+"/identitytoolkit:v3/IdentitytoolkitRelyingpartySignOutUserResponse": sign_out_user_response
+"/identitytoolkit:v3/IdentitytoolkitRelyingpartyVerifyCustomTokenRequest": verify_custom_token_request
+"/licensing:v1/licensing.licenseAssignments.listForProduct": list_license_assignments_for_product
+"/licensing:v1/licensing.licenseAssignments.listForProductAndSku": list_license_assignments_for_product_and_sku
 "/logging:v1beta3/logging.projects.logServices.indexes.list": list_log_service_indexes
 "/logging:v1beta3/logging.projects.logServices.list": list_log_services
 "/logging:v1beta3/logging.projects.logServices.sinks.create": create_log_service_sink

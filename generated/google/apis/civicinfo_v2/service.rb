@@ -71,18 +71,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CivicinfoV2::SearchDivisionResponse] parsed result object
+        # @yieldparam result [Google::Apis::CivicinfoV2::DivisionSearchResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::CivicinfoV2::SearchDivisionResponse]
+        # @return [Google::Apis::CivicinfoV2::DivisionSearchResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def search_divisions(query: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'divisions', options)
-          command.response_representation = Google::Apis::CivicinfoV2::SearchDivisionResponse::Representation
-          command.response_class = Google::Apis::CivicinfoV2::SearchDivisionResponse
+          command.response_representation = Google::Apis::CivicinfoV2::DivisionSearchResponse::Representation
+          command.response_class = Google::Apis::CivicinfoV2::DivisionSearchResponse
           command.query['query'] = query unless query.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -1267,7 +1267,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def instances_event(calendar_id, event_id, always_include_email: nil, max_attendees: nil, max_results: nil, original_start: nil, page_token: nil, show_deleted: nil, time_max: nil, time_min: nil, time_zone: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_event_instances(calendar_id, event_id, always_include_email: nil, max_attendees: nil, max_results: nil, original_start: nil, page_token: nil, show_deleted: nil, time_max: nil, time_min: nil, time_zone: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:get, 'calendars/{calendarId}/events/{eventId}/instances', options)
           command.response_representation = Google::Apis::CalendarV3::Events::Representation
           command.response_class = Google::Apis::CalendarV3::Events
@@ -1566,7 +1566,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def quick_event_add(calendar_id, text, send_notifications: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def quick_add_event(calendar_id, text, send_notifications: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command =  make_simple_command(:post, 'calendars/{calendarId}/events/quickAdd', options)
           command.response_representation = Google::Apis::CalendarV3::Event::Representation
           command.response_class = Google::Apis::CalendarV3::Event

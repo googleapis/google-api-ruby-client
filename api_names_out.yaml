@@ -334,7 +334,9 @@
 "/calendar:v3/CalendarNotification/method": delivery_method
 "/calendar:v3/Event/gadget/display": display_mode
 "/calendar:v3/EventReminder/method": reminder_method
-"/civicinfo:v2/DivisionSearchResponse": search_division_response
+"/calendar:v3/calendar.events.instances": list_event_instances
+"/calendar:v3/calendar.events.quickAdd": quick_add_event
+/civicinfo:v2/DivisionSearchResponse": search_division_response
 "/civicinfo:v2/ElectionsQueryResponse": query_elections_response
 "/civicinfo:v2/civicinfo.divisions.search": search_divisions
 "/civicinfo:v2/civicinfo.elections.electionQuery": query_election
@@ -759,6 +761,7 @@
 "/genomics:v1/genomics.variantsets.search": search_variant_sets
 "/genomics:v1/genomics.referencesets.search": search_reference_sets
 "/gmail:v1/gmail.users.getProfile": get_user_profile
+"/groupssettings:v1?force_alt_json": true
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyCreateAuthUriRequest": create_auth_uri_request
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyDeleteAccountRequest": delete_account_request
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyDownloadAccountRequest": download_account_request
@@ -783,8 +786,13 @@
 "/identitytoolkit:v3/identitytoolkit.relyingparty.verifyAssertion": verify_assertion
 "/identitytoolkit:v3/identitytoolkit.relyingparty.verifyPassword": verify_password
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyGetProjectConfigResponse": get_project_config_response
-"/licensing:v1/licensing.licenseAssignments.listForProduct": list_license_assignment_for_product
-"/licensing:v1/licensing.licenseAssignments.listForProductAndSku": list_license_assignment_for_product_and_sku
+"/identitytoolkit:v3/IdentitytoolkitRelyingpartySignOutUserRequest": sign_out_user_request
+"/identitytoolkit:v3/identitytoolkit.relyingparty.signOutUser": sign_out_user
+"/identitytoolkit:v3/identitytoolkit.relyingparty.verifyCustomToken": verify_custom_token
+"/identitytoolkit:v3/IdentitytoolkitRelyingpartySignOutUserResponse": sign_out_user_response
+"/identitytoolkit:v3/IdentitytoolkitRelyingpartyVerifyCustomTokenRequest": verify_custom_token_request
+"/licensing:v1/licensing.licenseAssignments.listForProduct": list_license_assignments_for_product
+"/licensing:v1/licensing.licenseAssignments.listForProductAndSku": list_license_assignments_for_product_and_sku
 "/logging:v1beta3/logging.projects.logServices.indexes.list": list_log_service_indexes
 "/logging:v1beta3/logging.projects.logServices.list": list_log_services
 "/logging:v1beta3/logging.projects.logServices.sinks.create": create_log_service_sink
@@ -6084,6 +6092,7 @@
 "/androidenterprise:v1/Product/iconUrl": icon_url
 "/androidenterprise:v1/Product/kind": kind
 "/androidenterprise:v1/Product/productId": product_id
+"/androidenterprise:v1/Product/productPricing": product_pricing
 "/androidenterprise:v1/Product/requiresContainerApp": requires_container_app
 "/androidenterprise:v1/Product/title": title
 "/androidenterprise:v1/Product/workDetailsUrl": work_details_url
@@ -6430,8 +6439,13 @@
 "/androidpublisher:v2/ProductPurchase/kind": kind
 "/androidpublisher:v2/ProductPurchase/purchaseState": purchase_state
 "/androidpublisher:v2/ProductPurchase/purchaseTimeMillis": purchase_time_millis
+"/androidpublisher:v2/Prorate": prorate
+"/androidpublisher:v2/Prorate/defaultPrice": default_price
+"/androidpublisher:v2/Prorate/start": start
 "/androidpublisher:v2/Season": season
 "/androidpublisher:v2/Season/end": end
+"/androidpublisher:v2/Season/prorations": prorations
+"/androidpublisher:v2/Season/prorations/proration": proration
 "/androidpublisher:v2/Season/start": start
 "/androidpublisher:v2/SubscriptionDeferralInfo": subscription_deferral_info
 "/androidpublisher:v2/SubscriptionDeferralInfo/desiredExpiryTimeMillis": desired_expiry_time_millis
@@ -8250,7 +8264,6 @@
 "/calendar:v3/calendar.events.insert/maxAttendees": max_attendees
 "/calendar:v3/calendar.events.insert/sendNotifications": send_notifications
 "/calendar:v3/calendar.events.insert/supportsAttachments": supports_attachments
-"/calendar:v3/calendar.events.instances": instances_event
 "/calendar:v3/calendar.events.instances/alwaysIncludeEmail": always_include_email
 "/calendar:v3/calendar.events.instances/calendarId": calendar_id
 "/calendar:v3/calendar.events.instances/eventId": event_id
@@ -8293,7 +8306,6 @@
 "/calendar:v3/calendar.events.patch/maxAttendees": max_attendees
 "/calendar:v3/calendar.events.patch/sendNotifications": send_notifications
 "/calendar:v3/calendar.events.patch/supportsAttachments": supports_attachments
-"/calendar:v3/calendar.events.quickAdd": quick_event_add
 "/calendar:v3/calendar.events.quickAdd/calendarId": calendar_id
 "/calendar:v3/calendar.events.quickAdd/sendNotifications": send_notifications
 "/calendar:v3/calendar.events.quickAdd/text": text
@@ -8641,6 +8653,7 @@
 "/civicinfo:v2/Contest/sources/source": source
 "/civicinfo:v2/Contest/special": special
 "/civicinfo:v2/Contest/type": type
+"/civicinfo:v2/DivisionSearchResponse": division_search_response
 "/civicinfo:v2/DivisionSearchResponse/kind": kind
 "/civicinfo:v2/DivisionSearchResponse/results": results
 "/civicinfo:v2/DivisionSearchResponse/results/result": result
@@ -20209,6 +20222,7 @@
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartySetAccountInfoRequest/email": email
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartySetAccountInfoRequest/emailVerified": email_verified
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartySetAccountInfoRequest/idToken": id_token
+"/identitytoolkit:v3/IdentitytoolkitRelyingpartySetAccountInfoRequest/instanceId": instance_id
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartySetAccountInfoRequest/localId": local_id
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartySetAccountInfoRequest/oobCode": oob_code
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartySetAccountInfoRequest/password": password
@@ -20216,6 +20230,9 @@
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartySetAccountInfoRequest/provider/provider": provider
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartySetAccountInfoRequest/upgradeToFederatedLogin": upgrade_to_federated_login
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartySetAccountInfoRequest/validSince": valid_since
+"/identitytoolkit:v3/IdentitytoolkitRelyingpartySignOutUserRequest/instanceId": instance_id
+"/identitytoolkit:v3/IdentitytoolkitRelyingpartySignOutUserRequest/localId": local_id
+"/identitytoolkit:v3/IdentitytoolkitRelyingpartySignOutUserResponse/localId": local_id
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyUploadAccountRequest/hashAlgorithm": hash_algorithm
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyUploadAccountRequest/memoryCost": memory_cost
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyUploadAccountRequest/rounds": rounds
@@ -20223,14 +20240,18 @@
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyUploadAccountRequest/signerKey": signer_key
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyUploadAccountRequest/users": users
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyUploadAccountRequest/users/user": user
+"/identitytoolkit:v3/IdentitytoolkitRelyingpartyVerifyAssertionRequest/instanceId": instance_id
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyVerifyAssertionRequest/pendingIdToken": pending_id_token
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyVerifyAssertionRequest/postBody": post_body
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyVerifyAssertionRequest/requestUri": request_uri
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyVerifyAssertionRequest/returnRefreshToken": return_refresh_token
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyVerifyAssertionRequest/sessionId": session_id
+"/identitytoolkit:v3/IdentitytoolkitRelyingpartyVerifyCustomTokenRequest/instanceId": instance_id
+"/identitytoolkit:v3/IdentitytoolkitRelyingpartyVerifyCustomTokenRequest/token": token
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyVerifyPasswordRequest/captchaChallenge": captcha_challenge
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyVerifyPasswordRequest/captchaResponse": captcha_response
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyVerifyPasswordRequest/email": email
+"/identitytoolkit:v3/IdentitytoolkitRelyingpartyVerifyPasswordRequest/instanceId": instance_id
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyVerifyPasswordRequest/password": password
 "/identitytoolkit:v3/IdentitytoolkitRelyingpartyVerifyPasswordRequest/pendingIdToken": pending_id_token
 "/identitytoolkit:v3/IdpConfig": idp_config
@@ -20318,6 +20339,9 @@
 "/identitytoolkit:v3/VerifyAssertionResponse/timeZone": time_zone
 "/identitytoolkit:v3/VerifyAssertionResponse/verifiedProvider": verified_provider
 "/identitytoolkit:v3/VerifyAssertionResponse/verifiedProvider/verified_provider": verified_provider
+"/identitytoolkit:v3/VerifyCustomTokenResponse": verify_custom_token_response
+"/identitytoolkit:v3/VerifyCustomTokenResponse/idToken": id_token
+"/identitytoolkit:v3/VerifyCustomTokenResponse/kind": kind
 "/identitytoolkit:v3/VerifyPasswordResponse": verify_password_response
 "/identitytoolkit:v3/VerifyPasswordResponse/displayName": display_name
 "/identitytoolkit:v3/VerifyPasswordResponse/email": email

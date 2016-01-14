@@ -495,9 +495,9 @@ module Google
         # import - Tags will be converted to strings - tag types are not preserved -
         # Comments (`@CO`) in the input file header will not be preserved - Original
         # header order of references (`@SQ`) will not be preserved - Any reverse
-        # stranded unmapped reads will be reverse complemented, and their qualities (and
-        # "BQ" tag, if any) will be reversed - Unmapped reads will be stripped of
-        # positional information (reference name and position)
+        # stranded unmapped reads will be reverse complemented, and their qualities (
+        # also the "BQ" and "OQ" tags, if any) will be reversed - Unmapped reads will be
+        # stripped of positional information (reference name and position)
         # @param [Google::Apis::GenomicsV1::ImportReadGroupSetsRequest] import_read_group_sets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

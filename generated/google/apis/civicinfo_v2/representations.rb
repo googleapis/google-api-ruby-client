@@ -42,7 +42,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
-      class SearchDivisionResponse
+      class DivisionSearchResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       end
       
@@ -194,7 +194,7 @@ module Google
         end
       end
       
-      class SearchDivisionResponse
+      class DivisionSearchResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'

@@ -410,6 +410,7 @@ module Google
           property :icon_url, as: 'iconUrl'
           property :kind, as: 'kind'
           property :product_id, as: 'productId'
+          property :product_pricing, as: 'productPricing'
           property :requires_container_app, as: 'requiresContainerApp'
           property :title, as: 'title'
           property :work_details_url, as: 'workDetailsUrl'
