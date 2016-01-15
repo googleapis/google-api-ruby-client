@@ -15,7 +15,7 @@ migrate to the latest version.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'google-api-client', '0.9.pre5'
+gem 'google-api-client', '0.9'
 
 ```
 
@@ -25,7 +25,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install google-api-client --pre
+    $ gem install google-api-client
 
 ## Usage
 
