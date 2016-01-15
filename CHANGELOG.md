@@ -1,3 +1,7 @@
+# 0.9
+* Force the use of alt=json for the groups settings API
+* Small tweaks to some calendar API and licensing API method names
+
 # 0.9.0.pre5
 * Change the default HTTP adapter to HTTPClient due to broken connections with long running uploads with Net::HTTP
 * No longer breaks Object#hash behavior, restores compatibility with Padrino
