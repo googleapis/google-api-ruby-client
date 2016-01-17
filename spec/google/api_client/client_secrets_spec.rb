@@ -20,7 +20,6 @@ require 'google/api_client/client_secrets'
 
 FIXTURES_PATH = File.expand_path('../../../fixtures', __FILE__)
 
-require 'pry'
 RSpec.describe Google::APIClient::ClientSecrets do
   describe '::new' do
     let(:filename) { File.join(FIXTURES_PATH, 'files', 'client_secrets.json') }
