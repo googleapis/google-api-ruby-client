@@ -68,43 +68,43 @@ RSpec.describe Google::APIClient::ClientSecrets do
         end
         subject(:secrets) { Google::APIClient::ClientSecrets.new(string_options) }
 
-        it 'should set the @access_token' do
+        it 'should set @access_token' do
           expect(secrets.access_token).to eq 'sample_access_token'
         end
-        it 'should set the @authorization_uri' do
+        it 'should set @authorization_uri' do
           expect(secrets.authorization_uri).to eq 'sample_auth_uri'
         end
-        it 'should set the @client_id' do
+        it 'should set @client_id' do
           expect(secrets.client_id).to eq 'sample_client_id'
         end
-        it 'should set the @client_secret' do
+        it 'should set @client_secret' do
           expect(secrets.client_secret).to eq 'sample_client_secret'
         end
-        it 'should set the @expires_at' do
+        it 'should set @expires_at' do
           expect(secrets.expires_at).to eq 'sample_expires_at'
         end
-        it 'should set the @expires_in' do
+        it 'should set @expires_in' do
           expect(secrets.expires_in).to eq 'sample_expires_in'
         end
-        it 'should set the @flow' do
+        it 'should set @flow' do
           expect(secrets.flow).to eq 'samples'
         end
-        it 'should set the @id_token' do
+        it 'should set @id_token' do
           expect(secrets.id_token).to eq 'sample_id_token'
         end
-        it 'should set the @issued_at' do
+        it 'should set @issued_at' do
           expect(secrets.issued_at).to eq 'sample_issued_at'
         end
-        it 'should set the @javascript_origins' do
+        it 'should set @javascript_origins' do
           expect(secrets.javascript_origins).to eq 'sample_javascript_origins'
         end
-        it 'should set the @redirect_uris' do
+        it 'should set @redirect_uris' do
           expect(secrets.redirect_uris).to eq 'sample_redirect_uris'
         end
-        it 'should set the @refresh_token' do
+        it 'should set @refresh_token' do
           expect(secrets.refresh_token).to eq 'sample_refresh_token'
         end
-        it 'should set the @token_credential_uri' do
+        it 'should set @token_credential_uri' do
           expect(secrets.token_credential_uri).to eq 'sample_token_uri'
         end
       end
@@ -131,43 +131,43 @@ RSpec.describe Google::APIClient::ClientSecrets do
         end
         subject(:secrets) { Google::APIClient::ClientSecrets.new(symbol_options) }
 
-        it 'should set the @access_token' do
+        it 'should set @access_token' do
           expect(secrets.access_token).to eq 'sample_access_token'
         end
-        it 'should set the @authorization_uri' do
+        it 'should set @authorization_uri' do
           expect(secrets.authorization_uri).to eq 'sample_auth_uri'
         end
-        it 'should set the @client_id' do
+        it 'should set @client_id' do
           expect(secrets.client_id).to eq 'sample_client_id'
         end
-        it 'should set the @client_secret' do
+        it 'should set @client_secret' do
           expect(secrets.client_secret).to eq 'sample_client_secret'
         end
-        it 'should set the @expires_at' do
+        it 'should set @expires_at' do
           expect(secrets.expires_at).to eq 'sample_expires_at'
         end
-        it 'should set the @expires_in' do
+        it 'should set @expires_in' do
           expect(secrets.expires_in).to eq 'sample_expires_in'
         end
-        it 'should set the @flow' do
+        it 'should set @flow' do
           expect(secrets.flow).to eq 'samples'
         end
-        it 'should set the @id_token' do
+        it 'should set @id_token' do
           expect(secrets.id_token).to eq 'sample_id_token'
         end
-        it 'should set the @issued_at' do
+        it 'should set @issued_at' do
           expect(secrets.issued_at).to eq 'sample_issued_at'
         end
-        it 'should set the @javascript_origins' do
+        it 'should set @javascript_origins' do
           expect(secrets.javascript_origins).to eq 'sample_javascript_origins'
         end
-        it 'should set the @redirect_uris' do
+        it 'should set @redirect_uris' do
           expect(secrets.redirect_uris).to eq 'sample_redirect_uris'
         end
-        it 'should set the @refresh_token' do
+        it 'should set @refresh_token' do
           expect(secrets.refresh_token).to eq 'sample_refresh_token'
         end
-        it 'should set the @token_credential_uri' do
+        it 'should set @token_credential_uri' do
           expect(secrets.token_credential_uri).to eq 'sample_token_uri'
         end
       end
