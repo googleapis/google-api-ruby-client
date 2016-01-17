@@ -85,7 +85,7 @@ module Google
         @flow = options[:flow] || options.keys.first.to_s || 'web'
         fdata = options[@flow]
         # Make hash keys symbol
-        fdata = fdata.each_with_object({}) { |i, memo| memo[i[0].to_sym] = i[1] }
+        fdata = fdata.each_with_object({}) { |(k, v), memo| memo[k.to_sym] = v }
         @client_id = fdata[:client_id]
         @client_secret = fdata[:client_secret]
         @redirect_uris = fdata[:redirect_uris]
